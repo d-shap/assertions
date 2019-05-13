@@ -637,7 +637,42 @@ public final class NodeAssertionTest extends AssertionTest {
      */
     @Test
     public void toLocalNameTest() throws Exception {
-        // TODO
+        initialize(Raw.nodeAssertion(), createNode("<element/>")).toLocalName().isEqualTo("element");
+        initialize(Raw.nodeAssertion(), createNode("<element xmlns='aaa'/>")).toLocalName().isEqualTo("element");
+        initialize(Raw.nodeAssertion(), createNode("<ns1:element xmlns:ns1='aaa'/>")).toLocalName().isEqualTo("element");
+        initialize(Raw.nodeAssertion(), createNode("<!-- comment -->")).toLocalName().isNull();
+        initialize(Raw.nodeAssertion(), createNode("<?procinstr?>")).toLocalName().isNull();
+
+        try {
+            Raw.nodeAssertion().toLocalName();
+            Assertions.fail("NodeAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.nodeAssertion(), null).toLocalName();
+            Assertions.fail("NodeAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.nodeAssertion(), null, "Message").toLocalName();
+            Assertions.fail("NodeAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.nodeAssertion(), createNode("<ns1:element1 xmlns:ns1='aaa'/>")).toLocalName().isEqualTo("element2");
+            Assertions.fail("NodeAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's local name.\n\tActual and expected values should be the same.\n\tExpected:<element2> but was:<element1>");
+        }
+        try {
+            initialize(Raw.nodeAssertion(), createNode("<ns1:element1 xmlns:ns1='aaa'/>"), "Message").toLocalName().isEqualTo("element2");
+            Assertions.fail("NodeAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's local name.\n\tActual and expected values should be the same.\n\tExpected:<element2> but was:<element1>");
+        }
     }
 
     /**
@@ -647,7 +682,66 @@ public final class NodeAssertionTest extends AssertionTest {
      */
     @Test
     public void toLocalNameMatcherTest() throws Exception {
-        // TODO
+        initialize(Raw.nodeAssertion(), createNode("<element/>")).toLocalName(Matchers.is(Matchers.equalTo("element")));
+        initialize(Raw.nodeAssertion(), createNode("<element xmlns='aaa'/>")).toLocalName(Matchers.is(Matchers.equalTo("element")));
+        initialize(Raw.nodeAssertion(), createNode("<ns1:element xmlns:ns1='aaa'/>")).toLocalName(Matchers.is(Matchers.equalTo("element")));
+        initialize(Raw.nodeAssertion(), createNode("<!-- comment -->")).toLocalName(Matchers.is(Matchers.isEmptyOrNullString()));
+        initialize(Raw.nodeAssertion(), createNode("<?procinstr?>")).toLocalName(Matchers.is(Matchers.isEmptyOrNullString()));
+
+        try {
+            Raw.nodeAssertion().toLocalName(Matchers.equalTo(""));
+            Assertions.fail("NodeAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.nodeAssertion(), null).toLocalName(Matchers.equalTo(""));
+            Assertions.fail("NodeAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.nodeAssertion(), null, "Message").toLocalName(Matchers.equalTo(""));
+            Assertions.fail("NodeAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.nodeAssertion(), null).toLocalName(null);
+            Assertions.fail("NodeAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.nodeAssertion(), null, "Message").toLocalName(null);
+            Assertions.fail("NodeAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.nodeAssertion(), createNode("<element/>")).toLocalName(null);
+            Assertions.fail("NodeAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: matcher.");
+        }
+        try {
+            initialize(Raw.nodeAssertion(), createNode("<element/>"), "Message").toLocalName(null);
+            Assertions.fail("NodeAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: matcher.");
+        }
+        try {
+            initialize(Raw.nodeAssertion(), createNode("<ns1:element1 xmlns:ns1='aaa'/>")).toLocalName(Matchers.equalTo("element2"));
+            Assertions.fail("NodeAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's local name.\nExpected: \"element2\"\n     but: was \"element1\"");
+        }
+        try {
+            initialize(Raw.nodeAssertion(), createNode("<ns1:element1 xmlns:ns1='aaa'/>"), "Message").toLocalName(Matchers.equalTo("element2"));
+            Assertions.fail("NodeAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's local name.\nExpected: \"element2\"\n     but: was \"element1\"");
+        }
     }
 
     /**
@@ -657,7 +751,64 @@ public final class NodeAssertionTest extends AssertionTest {
      */
     @Test
     public void hasLocalNameTest() throws Exception {
-        // TODO
+        initialize(Raw.nodeAssertion(), createNode("<element/>")).hasLocalName("element");
+        initialize(Raw.nodeAssertion(), createNode("<element xmlns='aaa'/>")).hasLocalName("element");
+        initialize(Raw.nodeAssertion(), createNode("<ns1:element xmlns:ns1='aaa'/>")).hasLocalName("element");
+
+        try {
+            Raw.nodeAssertion().hasLocalName("");
+            Assertions.fail("NodeAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.nodeAssertion(), null).hasLocalName("");
+            Assertions.fail("NodeAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.nodeAssertion(), null, "Message").hasLocalName("");
+            Assertions.fail("NodeAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.nodeAssertion(), null).hasLocalName(null);
+            Assertions.fail("NodeAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.nodeAssertion(), null, "Message").hasLocalName(null);
+            Assertions.fail("NodeAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.nodeAssertion(), createNode("<element/>")).hasLocalName(null);
+            Assertions.fail("NodeAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
+        }
+        try {
+            initialize(Raw.nodeAssertion(), createNode("<element/>"), "Message").hasLocalName(null);
+            Assertions.fail("NodeAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
+        }
+        try {
+            initialize(Raw.nodeAssertion(), createNode("<ns1:element1 xmlns:ns1='aaa'/>")).hasLocalName("element2");
+            Assertions.fail("NodeAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's local name.\n\tActual and expected values should be the same.\n\tExpected:<element2> but was:<element1>");
+        }
+        try {
+            initialize(Raw.nodeAssertion(), createNode("<ns1:element1 xmlns:ns1='aaa'/>"), "Message").hasLocalName("element2");
+            Assertions.fail("NodeAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's local name.\n\tActual and expected values should be the same.\n\tExpected:<element2> but was:<element1>");
+        }
     }
 
     /**
