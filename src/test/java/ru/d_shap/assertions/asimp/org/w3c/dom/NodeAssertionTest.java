@@ -21,6 +21,7 @@ package ru.d_shap.assertions.asimp.org.w3c.dom;
 
 import org.hamcrest.Matchers;
 import org.junit.Test;
+import org.w3c.dom.Node;
 
 import ru.d_shap.assertions.AssertionTest;
 import ru.d_shap.assertions.Assertions;
@@ -1003,7 +1004,20 @@ public final class NodeAssertionTest extends AssertionTest {
      */
     @Test
     public void isNullTest() throws Exception {
-        // TODO
+        initialize(Raw.nodeAssertion(), null).isNull();
+
+        try {
+            initialize(Raw.nodeAssertion(), createNode("<element/>")).isNull();
+            Assertions.fail("NodeAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should be null.\n\tActual:<<element/>>");
+        }
+        try {
+            initialize(Raw.nodeAssertion(), createNode("<element/>"), "Message").isNull();
+            Assertions.fail("NodeAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be null.\n\tActual:<<element/>>");
+        }
     }
 
     /**
@@ -1013,7 +1027,21 @@ public final class NodeAssertionTest extends AssertionTest {
      */
     @Test
     public void isSameAsTest() throws Exception {
-        // TODO
+        Node value = createNode("<element/>");
+        initialize(Raw.nodeAssertion(), value).isSameAs(value);
+
+        try {
+            initialize(Raw.nodeAssertion(), value).isSameAs(createNode("<element/>"));
+            Assertions.fail("NodeAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<<element/>> but was:<<element/>>");
+        }
+        try {
+            initialize(Raw.nodeAssertion(), value, "Message").isSameAs(createNode("<element/>"));
+            Assertions.fail("NodeAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be the same.\n\tExpected:<<element/>> but was:<<element/>>");
+        }
     }
 
     /**
@@ -1023,7 +1051,21 @@ public final class NodeAssertionTest extends AssertionTest {
      */
     @Test
     public void isNotSameAsTest() throws Exception {
-        // TODO
+        Node value = createNode("<element/>");
+        initialize(Raw.nodeAssertion(), value).isNotSameAs(createNode("<element/>"));
+
+        try {
+            initialize(Raw.nodeAssertion(), value).isNotSameAs(value);
+            Assertions.fail("NodeAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be different.\n\tActual:<<element/>>");
+        }
+        try {
+            initialize(Raw.nodeAssertion(), value, "Message").isNotSameAs(value);
+            Assertions.fail("NodeAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be different.\n\tActual:<<element/>>");
+        }
     }
 
 }
