@@ -50,6 +50,7 @@ import java.util.TreeMap;
 import java.util.TreeSet;
 
 import javax.xml.XMLConstants;
+import javax.xml.namespace.QName;
 
 import org.w3c.dom.Attr;
 import org.w3c.dom.CharacterData;
@@ -1323,56 +1324,78 @@ public class AssertionTest {
 
         private final CharBuffer _charBuffer;
 
+        private final QName _qname;
+
+        private final Node _node;
+
+        private final Element _element;
+
+        private final Document _document;
+
+        private final Attr _attr;
+
+        private final CharacterData _characterData;
+
         PrivateFieldsClass(final AssertionTest assertionTest) {
             super();
-            _byte = 5;
-            _byteObj = 5;
-            _short = 5;
-            _shortObj = 5;
-            _int = 5;
-            _intObj = 5;
-            _long = 5L;
-            _longObj = 5L;
-            _float = 5.0f;
-            _floatObj = 5.0f;
-            _double = 5.0;
-            _doubleObj = 5.0;
-            _boolean = true;
-            _booleanObj = true;
-            _char = '5';
-            _charObj = '5';
-            _object = new StringBuilder("value");
-            _byteArray = new byte[]{1, 2, 3};
-            _shortArray = new short[]{1, 2, 3};
-            _intArray = new int[]{1, 2, 3};
-            _longArray = new long[]{1L, 2L, 3L};
-            _floatArray = new float[]{1.0f, 2.0f, 3.0f};
-            _doubleArray = new double[]{1.0, 2.0, 3.0};
-            _booleanArray = new boolean[]{true, true, false};
-            _charArray = new char[]{'1', '2', '3'};
-            _objectArray = new String[]{"1", "2", "3"};
-            _class = String.class;
-            _charSequence = new StringBuilder("test");
-            _string = "test";
-            _comparable = Integer.valueOf("5");
-            _iterable = Arrays.asList("1", "2", "3");
-            _throwable = new AssertionError("error");
-            _iterator = Arrays.asList("1", "2", "3").iterator();
-            _list = Arrays.asList("1", "2", "3");
-            _set = assertionTest.createHashSet("1", "2", "3");
-            _sortedSet = assertionTest.createTreeSet("1", "2", "3");
-            _map = assertionTest.createHashMap("1", "val1", "2", "val2", "3", "val3");
-            _sortedMap = assertionTest.createTreeMap("1", "val1", "2", "val2", "3", "val3");
-            _inputStream = new ByteArrayInputStream(new byte[]{1, 2, 3});
-            _reader = new StringReader("123");
-            _bufferedReader = new BufferedReader(new StringReader("1\n2\n3"));
-            _byteBuffer = assertionTest.createByteBuffer(new byte[]{1, 2});
-            _shortBuffer = assertionTest.createShortBuffer(new short[]{1, 2});
-            _intBuffer = assertionTest.createIntBuffer(new int[]{1, 2});
-            _longBuffer = assertionTest.createLongBuffer(new long[]{1L, 2L});
-            _floatBuffer = assertionTest.createFloatBuffer(new float[]{1.0f, 2.0f});
-            _doubleBuffer = assertionTest.createDoubleBuffer(new double[]{1.0f, 2.0f});
-            _charBuffer = assertionTest.createCharBuffer(new char[]{'1', '2'});
+            try {
+                _byte = 5;
+                _byteObj = 5;
+                _short = 5;
+                _shortObj = 5;
+                _int = 5;
+                _intObj = 5;
+                _long = 5L;
+                _longObj = 5L;
+                _float = 5.0f;
+                _floatObj = 5.0f;
+                _double = 5.0;
+                _doubleObj = 5.0;
+                _boolean = true;
+                _booleanObj = true;
+                _char = '5';
+                _charObj = '5';
+                _object = new StringBuilder("value");
+                _byteArray = new byte[]{1, 2, 3};
+                _shortArray = new short[]{1, 2, 3};
+                _intArray = new int[]{1, 2, 3};
+                _longArray = new long[]{1L, 2L, 3L};
+                _floatArray = new float[]{1.0f, 2.0f, 3.0f};
+                _doubleArray = new double[]{1.0, 2.0, 3.0};
+                _booleanArray = new boolean[]{true, true, false};
+                _charArray = new char[]{'1', '2', '3'};
+                _objectArray = new String[]{"1", "2", "3"};
+                _class = String.class;
+                _charSequence = new StringBuilder("test");
+                _string = "test";
+                _comparable = Integer.valueOf("5");
+                _iterable = Arrays.asList("1", "2", "3");
+                _throwable = new AssertionError("error");
+                _iterator = Arrays.asList("1", "2", "3").iterator();
+                _list = Arrays.asList("1", "2", "3");
+                _set = assertionTest.createHashSet("1", "2", "3");
+                _sortedSet = assertionTest.createTreeSet("1", "2", "3");
+                _map = assertionTest.createHashMap("1", "val1", "2", "val2", "3", "val3");
+                _sortedMap = assertionTest.createTreeMap("1", "val1", "2", "val2", "3", "val3");
+                _inputStream = new ByteArrayInputStream(new byte[]{1, 2, 3});
+                _reader = new StringReader("123");
+                _bufferedReader = new BufferedReader(new StringReader("1\n2\n3"));
+                _byteBuffer = assertionTest.createByteBuffer(new byte[]{1, 2});
+                _shortBuffer = assertionTest.createShortBuffer(new short[]{1, 2});
+                _intBuffer = assertionTest.createIntBuffer(new int[]{1, 2});
+                _longBuffer = assertionTest.createLongBuffer(new long[]{1L, 2L});
+                _floatBuffer = assertionTest.createFloatBuffer(new float[]{1.0f, 2.0f});
+                _doubleBuffer = assertionTest.createDoubleBuffer(new double[]{1.0f, 2.0f});
+                _charBuffer = assertionTest.createCharBuffer(new char[]{'1', '2'});
+                _qname = new QName("local");
+                _node = assertionTest.createNode("<node>content</node>");
+                _element = assertionTest.createElement("<element>content</element>");
+                _document = assertionTest.createDocument("<document>content</document>");
+                _attr = assertionTest.createAttr("<element attr='val'/>");
+                _characterData = assertionTest.createCharacterData("<!-- character data -->");
+            } catch (Exception ex) {
+                throw new AssertionError(ex);
+            }
         }
 
     }
