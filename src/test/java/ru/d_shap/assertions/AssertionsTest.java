@@ -40,8 +40,15 @@ import java.util.Set;
 import java.util.SortedMap;
 import java.util.SortedSet;
 
+import javax.xml.namespace.QName;
+
 import org.hamcrest.Matchers;
 import org.junit.Test;
+import org.w3c.dom.Attr;
+import org.w3c.dom.CharacterData;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
 
 /**
  * Tests for {@link Assertions}.
@@ -1102,6 +1109,142 @@ public final class AssertionsTest extends AssertionTest {
             Assertions.fail("Assertions test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2(50), 1(49)]> but was:<[1(49), 2(50)]>");
+        }
+    }
+
+    /**
+     * {@link Assertions} class test.
+     */
+    @Test
+    public void qnameAssertionTest() {
+        Assertions.assertThat((QName) null).isNull();
+        Assertions.assertThat(new QName("local")).hasProperties("local");
+        Assertions.assertThat(null, Raw.qnameAssertion()).isNull();
+        Assertions.assertThat(new QName("local"), Raw.qnameAssertion()).hasProperties("local");
+        Assertions.assertThat(createNullFieldClass(), "_field", Raw.qnameAssertion()).isNull();
+        Assertions.assertThat(createPrivateFieldsClass(), "_qname").isNotNull();
+        Assertions.assertThat(createPrivateFieldsClass(), "_qname", Raw.qnameAssertion()).hasProperties("local");
+
+        try {
+            Assertions.assertThat(new QName("local1")).hasProperties("local2");
+            Assertions.fail("Assertions test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's local part.\n\tActual and expected values should be the same.\n\tExpected:<local2> but was:<local1>");
+        }
+    }
+
+    /**
+     * {@link Assertions} class test.
+     *
+     * @throws Exception exception in test.
+     */
+    @Test
+    public void nodeAssertionTest() throws Exception {
+        Assertions.assertThat((Node) null).isNull();
+        Assertions.assertThat(createNode("<node>content</node>")).hasProperties("node");
+        Assertions.assertThat(null, Raw.nodeAssertion()).isNull();
+        Assertions.assertThat(createNode("<node>content</node>"), Raw.nodeAssertion()).hasProperties("node");
+        Assertions.assertThat(createNullFieldClass(), "_field", Raw.nodeAssertion()).isNull();
+        Assertions.assertThat(createPrivateFieldsClass(), "_node").isNotNull();
+        Assertions.assertThat(createPrivateFieldsClass(), "_node", Raw.nodeAssertion()).hasProperties("node");
+
+        try {
+            Assertions.assertThat(createNode("<node1>content</node1>")).hasProperties("node2");
+            Assertions.fail("Assertions test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's local name.\n\tActual and expected values should be the same.\n\tExpected:<node2> but was:<node1>");
+        }
+    }
+
+    /**
+     * {@link Assertions} class test.
+     *
+     * @throws Exception exception in test.
+     */
+    @Test
+    public void elementAssertionTest() throws Exception {
+        Assertions.assertThat((Element) null).isNull();
+        Assertions.assertThat(createElement("<element>content</element>")).hasProperties("element");
+        Assertions.assertThat(null, Raw.elementAssertion()).isNull();
+        Assertions.assertThat(createElement("<element>content</element>"), Raw.elementAssertion()).hasProperties("element");
+        Assertions.assertThat(createNullFieldClass(), "_field", Raw.elementAssertion()).isNull();
+        Assertions.assertThat(createPrivateFieldsClass(), "_element").isNotNull();
+        Assertions.assertThat(createPrivateFieldsClass(), "_element", Raw.elementAssertion()).hasProperties("element");
+
+        try {
+            Assertions.assertThat(createElement("<element1>content</element1>")).hasProperties("element2");
+            Assertions.fail("Assertions test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's local name.\n\tActual and expected values should be the same.\n\tExpected:<element2> but was:<element1>");
+        }
+    }
+
+    /**
+     * {@link Assertions} class test.
+     *
+     * @throws Exception exception in test.
+     */
+    @Test
+    public void documentAssertionTest() throws Exception {
+        Assertions.assertThat((Document) null).isNull();
+        Assertions.assertThat(createDocument("<document>content</document>")).hasProperties("document");
+        Assertions.assertThat(null, Raw.documentAssertion()).isNull();
+        Assertions.assertThat(createDocument("<document>content</document>"), Raw.documentAssertion()).hasProperties("document");
+        Assertions.assertThat(createNullFieldClass(), "_field", Raw.documentAssertion()).isNull();
+        Assertions.assertThat(createPrivateFieldsClass(), "_document").isNotNull();
+        Assertions.assertThat(createPrivateFieldsClass(), "_document", Raw.documentAssertion()).hasProperties("document");
+
+        try {
+            Assertions.assertThat(createDocument("<document1>content</document1>")).hasProperties("document2");
+            Assertions.fail("Assertions test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's local name.\n\tActual and expected values should be the same.\n\tExpected:<document2> but was:<document1>");
+        }
+    }
+
+    /**
+     * {@link Assertions} class test.
+     *
+     * @throws Exception exception in test.
+     */
+    @Test
+    public void attrAssertionTest() throws Exception {
+        Assertions.assertThat((Attr) null).isNull();
+        Assertions.assertThat(createAttr("<element attr='val'/>")).hasProperties("attr", "val");
+        Assertions.assertThat(null, Raw.attrAssertion()).isNull();
+        Assertions.assertThat(createAttr("<element attr='val'/>"), Raw.attrAssertion()).hasProperties("attr", "val");
+        Assertions.assertThat(createNullFieldClass(), "_field", Raw.attrAssertion()).isNull();
+        Assertions.assertThat(createPrivateFieldsClass(), "_attr").isNotNull();
+        Assertions.assertThat(createPrivateFieldsClass(), "_attr", Raw.attrAssertion()).hasProperties("attr", "val");
+
+        try {
+            Assertions.assertThat(createAttr("<element attr='val1'/>")).hasProperties("attr", "val2");
+            Assertions.fail("Assertions test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's value.\n\tActual and expected values should be the same.\n\tExpected:<val2> but was:<val1>");
+        }
+    }
+
+    /**
+     * {@link Assertions} class test.
+     *
+     * @throws Exception exception in test.
+     */
+    @Test
+    public void characterDataAssertionTest() throws Exception {
+        Assertions.assertThat((CharacterData) null).isNull();
+        Assertions.assertThat(createCharacterData("<!-- character data -->")).hasData(" character data ");
+        Assertions.assertThat(null, Raw.characterDataAssertion()).isNull();
+        Assertions.assertThat(createCharacterData("<!-- character data -->"), Raw.characterDataAssertion()).hasData(" character data ");
+        Assertions.assertThat(createNullFieldClass(), "_field", Raw.characterDataAssertion()).isNull();
+        Assertions.assertThat(createPrivateFieldsClass(), "_characterData").isNotNull();
+        Assertions.assertThat(createPrivateFieldsClass(), "_characterData", Raw.characterDataAssertion()).hasData(" character data ");
+
+        try {
+            Assertions.assertThat(createCharacterData("<!-- character data -->")).hasData("character data");
+            Assertions.fail("Assertions test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's data.\n\tActual and expected values should be the same.\n\tExpected:<character data> but was:< character data >");
         }
     }
 
