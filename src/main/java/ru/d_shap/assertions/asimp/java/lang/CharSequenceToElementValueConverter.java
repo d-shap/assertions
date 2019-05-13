@@ -56,7 +56,7 @@ public final class CharSequenceToElementValueConverter implements ValueConverter
         CharSequence castedValue = ConverterArgumentHelper.getValue(value, CharSequence.class);
         ConverterArgumentHelper.checkArgumentsLength(arguments, 0);
 
-        Document document = ValueConverter.convert(value, Document.class);
+        Document document = ValueConverter.convert(castedValue, Document.class);
         return document.getDocumentElement();
     }
 
