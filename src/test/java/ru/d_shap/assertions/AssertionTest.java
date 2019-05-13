@@ -1155,8 +1155,7 @@ public class AssertionTest {
      * @throws Exception exception in test.
      */
     protected final Element createElement(final String content) throws Exception {
-        Document document = createDocument(content);
-        return document.getDocumentElement();
+        return ValueConverter.convert(content, Element.class);
     }
 
     /**
