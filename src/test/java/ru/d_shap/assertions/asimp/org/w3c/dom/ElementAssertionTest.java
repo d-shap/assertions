@@ -464,7 +464,138 @@ public final class ElementAssertionTest extends AssertionTest {
      */
     @Test
     public void isNotEqualToStringTest() throws Exception {
-        // TODO
+        initialize(Raw.elementAssertion(), createElement("<element1/>")).isNotEqualTo("<element2/>");
+        initialize(Raw.elementAssertion(), createElement("<element1></element1>")).isNotEqualTo("<element2/>");
+        initialize(Raw.elementAssertion(), createElement("<element/>")).isNotEqualTo("<element>content</element>");
+        initialize(Raw.elementAssertion(), createElement("<element/>")).isNotEqualTo("<element attr='val'/>");
+        initialize(Raw.elementAssertion(), createElement("<element xmlns='aaa'/>")).isNotEqualTo("<element xmlns:ns1='aaa'/>");
+
+        try {
+            Raw.elementAssertion().isNotEqualTo("<element/>");
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.elementAssertion(), null).isNotEqualTo("<element/>");
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.elementAssertion(), null, "Message").isNotEqualTo("<element/>");
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.elementAssertion(), null).isNotEqualTo((String) null);
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.elementAssertion(), null, "Message").isNotEqualTo((String) null);
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.elementAssertion(), createElement("<element/>")).isNotEqualTo((String) null);
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
+        }
+        try {
+            initialize(Raw.elementAssertion(), createElement("<element/>"), "Message").isNotEqualTo((String) null);
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
+        }
+        try {
+            initialize(Raw.elementAssertion(), createElement("<element/>")).isNotEqualTo("<element>");
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).toMessage().startsWith("Argument should be valid: expected.\n\tThe argument's value should be the valid XML.\n\t");
+        }
+        try {
+            initialize(Raw.elementAssertion(), createElement("<element/>"), "Message").isNotEqualTo("<element>");
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).toMessage().startsWith("Message.\n\tArgument should be valid: expected.\n\tThe argument's value should be the valid XML.\n\t");
+        }
+        try {
+            initialize(Raw.elementAssertion(), createElement("<element/>")).isNotEqualTo("<element/>");
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be different.\n\tActual:<<element/>>");
+        }
+        try {
+            initialize(Raw.elementAssertion(), createElement("<element/>"), "Message").isNotEqualTo("<element/>");
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be different.\n\tActual:<<element/>>");
+        }
+        try {
+            initialize(Raw.elementAssertion(), createElement("<element></element>")).isNotEqualTo("<element/>");
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be different.\n\tActual:<<element/>>");
+        }
+        try {
+            initialize(Raw.elementAssertion(), createElement("<element></element>"), "Message").isNotEqualTo("<element/>");
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be different.\n\tActual:<<element/>>");
+        }
+        try {
+            initialize(Raw.elementAssertion(), createElement("<element attr1='val1'/>")).isNotEqualTo("<element attr1='val1'/>");
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be different.\n\tActual:<<element attr1=\"val1\"/>>");
+        }
+        try {
+            initialize(Raw.elementAssertion(), createElement("<element attr1='val1'/>"), "Message").isNotEqualTo("<element attr1='val1'/>");
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be different.\n\tActual:<<element attr1=\"val1\"/>>");
+        }
+        try {
+            initialize(Raw.elementAssertion(), createElement("<element><child>text</child></element>")).isNotEqualTo("<element><child>text</child></element>");
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be different.\n\tActual:<<element><child>text</child></element>>");
+        }
+        try {
+            initialize(Raw.elementAssertion(), createElement("<element><child>text</child></element>"), "Message").isNotEqualTo("<element><child>text</child></element>");
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be different.\n\tActual:<<element><child>text</child></element>>");
+        }
+        try {
+            initialize(Raw.elementAssertion(), createElement("<element xmlns='aaa'>text</element>")).isNotEqualTo("<element xmlns='aaa'>text</element>");
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be different.\n\tActual:<<element xmlns=\"aaa\">text</element>>");
+        }
+        try {
+            initialize(Raw.elementAssertion(), createElement("<element xmlns='aaa'>text</element>"), "Message").isNotEqualTo("<element xmlns='aaa'>text</element>");
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be different.\n\tActual:<<element xmlns=\"aaa\">text</element>>");
+        }
+        try {
+            initialize(Raw.elementAssertion(), createElement("<ns1:element xmlns:ns1='aaa' xmlns:ns2='bbb'><ns2:child>text</ns2:child></ns1:element>")).isNotEqualTo("<ns1:element xmlns:ns1='aaa' xmlns:ns2='bbb'><ns2:child>text</ns2:child></ns1:element>");
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be different.\n\tActual:<<ns1:element xmlns:ns1=\"aaa\" xmlns:ns2=\"bbb\"><ns2:child>text</ns2:child></ns1:element>>");
+        }
+        try {
+            initialize(Raw.elementAssertion(), createElement("<ns1:element xmlns:ns1='aaa' xmlns:ns2='bbb'><ns2:child>text</ns2:child></ns1:element>"), "Message").isNotEqualTo("<ns1:element xmlns:ns1='aaa' xmlns:ns2='bbb'><ns2:child>text</ns2:child></ns1:element>");
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be different.\n\tActual:<<ns1:element xmlns:ns1=\"aaa\" xmlns:ns2=\"bbb\"><ns2:child>text</ns2:child></ns1:element>>");
+        }
     }
 
     /**
