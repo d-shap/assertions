@@ -1592,7 +1592,20 @@ public final class ElementAssertionTest extends AssertionTest {
      */
     @Test
     public void isNullTest() throws Exception {
-        // TODO
+        initialize(Raw.elementAssertion(), null).isNull();
+
+        try {
+            initialize(Raw.elementAssertion(), createElement("<element/>")).isNull();
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should be null.\n\tActual:<<element/>>");
+        }
+        try {
+            initialize(Raw.elementAssertion(), createElement("<element/>"), "Message").isNull();
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be null.\n\tActual:<<element/>>");
+        }
     }
 
     /**
@@ -1602,7 +1615,21 @@ public final class ElementAssertionTest extends AssertionTest {
      */
     @Test
     public void isSameAsTest() throws Exception {
-        // TODO
+        Element value = createElement("<element/>");
+        initialize(Raw.elementAssertion(), value).isSameAs(value);
+
+        try {
+            initialize(Raw.elementAssertion(), value).isSameAs(createElement("<element/>"));
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<<element/>> but was:<<element/>>");
+        }
+        try {
+            initialize(Raw.elementAssertion(), value, "Message").isSameAs(createElement("<element/>"));
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be the same.\n\tExpected:<<element/>> but was:<<element/>>");
+        }
     }
 
     /**
@@ -1612,7 +1639,21 @@ public final class ElementAssertionTest extends AssertionTest {
      */
     @Test
     public void isNotSameAsTest() throws Exception {
-        // TODO
+        Element value = createElement("<element/>");
+        initialize(Raw.elementAssertion(), value).isNotSameAs(createElement("<element/>"));
+
+        try {
+            initialize(Raw.elementAssertion(), value).isNotSameAs(value);
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be different.\n\tActual:<<element/>>");
+        }
+        try {
+            initialize(Raw.elementAssertion(), value, "Message").isNotSameAs(value);
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be different.\n\tActual:<<element/>>");
+        }
     }
 
 }
