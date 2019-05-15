@@ -1591,6 +1591,46 @@ public final class ElementAssertionTest extends AssertionTest {
      * @throws Exception exception in test.
      */
     @Test
+    public void hasAttributeLocalNameTest() throws Exception {
+        // TODO
+    }
+
+    /**
+     * {@link ElementAssertion} class test.
+     *
+     * @throws Exception exception in test.
+     */
+    @Test
+    public void hasAttributeNamespaceURIAndLocalNameTest() throws Exception {
+        // TODO
+    }
+
+    /**
+     * {@link ElementAssertion} class test.
+     *
+     * @throws Exception exception in test.
+     */
+    @Test
+    public void hasNotAttributeLocalNameTest() throws Exception {
+        // TODO
+    }
+
+    /**
+     * {@link ElementAssertion} class test.
+     *
+     * @throws Exception exception in test.
+     */
+    @Test
+    public void hasNotAttributeNamespaceURIAndLocalNameTest() throws Exception {
+        // TODO
+    }
+
+    /**
+     * {@link ElementAssertion} class test.
+     *
+     * @throws Exception exception in test.
+     */
+    @Test
     public void isNullTest() throws Exception {
         initialize(Raw.elementAssertion(), null).isNull();
 
