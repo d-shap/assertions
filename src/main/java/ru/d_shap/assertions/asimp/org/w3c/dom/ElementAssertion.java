@@ -290,8 +290,7 @@ public class ElementAssertion extends ReferenceAssertion<Element> {
      * @return the assertion.
      */
     public final AttrAssertion toAttr(final String localName) {
-        checkActualIsNotNull();
-        checkArgumentIsNotNull(localName, "localName");
+        hasAttribute(localName);
         return initializeAssertion(Raw.attrAssertion(), getActual().getAttributeNode(localName), Messages.Check.ATTRIBUTE);
     }
 
@@ -304,9 +303,7 @@ public class ElementAssertion extends ReferenceAssertion<Element> {
      * @return the assertion.
      */
     public final AttrAssertion toAttr(final String namespaceURI, final String localName) {
-        checkActualIsNotNull();
-        checkArgumentIsNotNull(namespaceURI, "namespaceURI");
-        checkArgumentIsNotNull(localName, "localName");
+        hasAttribute(namespaceURI, localName);
         return initializeAssertion(Raw.attrAssertion(), getActual().getAttributeNodeNS(namespaceURI, localName), Messages.Check.ATTRIBUTE);
     }
 
@@ -320,6 +317,7 @@ public class ElementAssertion extends ReferenceAssertion<Element> {
         checkActualIsNotNull();
         checkArgumentIsNotNull(localName, "localName");
         checkArgumentIsNotNull(matcher, "matcher");
+        hasAttribute(localName);
         matcherAssertion(getActual().getAttributeNode(localName), matcher, Messages.Check.ATTRIBUTE);
     }
 
@@ -335,6 +333,7 @@ public class ElementAssertion extends ReferenceAssertion<Element> {
         checkArgumentIsNotNull(namespaceURI, "namespaceURI");
         checkArgumentIsNotNull(localName, "localName");
         checkArgumentIsNotNull(matcher, "matcher");
+        hasAttribute(localName);
         matcherAssertion(getActual().getAttributeNodeNS(namespaceURI, localName), matcher, Messages.Check.ATTRIBUTE);
     }
 
