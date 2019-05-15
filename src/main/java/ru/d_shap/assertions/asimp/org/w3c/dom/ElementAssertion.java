@@ -289,7 +289,7 @@ public class ElementAssertion extends ReferenceAssertion<Element> {
      *
      * @return the assertion.
      */
-    public final AttrAssertion toAttr(final String localName) {
+    public final AttrAssertion toAttribute(final String localName) {
         hasAttribute(localName);
         return initializeAssertion(Raw.attrAssertion(), getActual().getAttributeNode(localName), Messages.Check.ATTRIBUTE);
     }
@@ -302,7 +302,7 @@ public class ElementAssertion extends ReferenceAssertion<Element> {
      *
      * @return the assertion.
      */
-    public final AttrAssertion toAttr(final String namespaceURI, final String localName) {
+    public final AttrAssertion toAttribute(final String namespaceURI, final String localName) {
         hasAttribute(namespaceURI, localName);
         return initializeAssertion(Raw.attrAssertion(), getActual().getAttributeNodeNS(namespaceURI, localName), Messages.Check.ATTRIBUTE);
     }
@@ -313,7 +313,7 @@ public class ElementAssertion extends ReferenceAssertion<Element> {
      * @param localName the local name of the actual value's attribute.
      * @param matcher   the hamcrest matcher.
      */
-    public final void toAttr(final String localName, final Matcher<Attr> matcher) {
+    public final void toAttribute(final String localName, final Matcher<Attr> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(localName, "localName");
         checkArgumentIsNotNull(matcher, "matcher");
@@ -328,7 +328,7 @@ public class ElementAssertion extends ReferenceAssertion<Element> {
      * @param localName    the local name of the actual value's attribute.
      * @param matcher      the hamcrest matcher.
      */
-    public final void toAttr(final String namespaceURI, final String localName, final Matcher<Attr> matcher) {
+    public final void toAttribute(final String namespaceURI, final String localName, final Matcher<Attr> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(namespaceURI, "namespaceURI");
         checkArgumentIsNotNull(localName, "localName");
