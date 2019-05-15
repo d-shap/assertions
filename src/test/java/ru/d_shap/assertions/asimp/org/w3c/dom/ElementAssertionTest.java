@@ -1152,7 +1152,70 @@ public final class ElementAssertionTest extends AssertionTest {
      */
     @Test
     public void toQualifiedNameTest() throws Exception {
-        // TODO
+        initialize(Raw.elementAssertion(), createElement("<element/>")).toQualifiedName().isEqualTo("element");
+        initialize(Raw.elementAssertion(), createElement("<element xmlns='aaa'/>")).toQualifiedName().isEqualTo("element");
+        initialize(Raw.elementAssertion(), createElement("<ns1:element xmlns:ns1='aaa'/>")).toQualifiedName().isEqualTo("ns1:element");
+
+        Element element1 = (Element) createElement("<element xmlns='aaa'><child>text</child></element>").getChildNodes().item(0);
+        initialize(Raw.elementAssertion(), element1).toQualifiedName().isEqualTo("child");
+
+        Element element2 = (Element) createElement("<ns1:element xmlns:ns1='aaa'><ns1:child>text</ns1:child></ns1:element>").getChildNodes().item(0);
+        initialize(Raw.elementAssertion(), element2).toQualifiedName().isEqualTo("ns1:child");
+
+        try {
+            Raw.elementAssertion().toQualifiedName();
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.elementAssertion(), null).toQualifiedName();
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.elementAssertion(), null, "Message").toQualifiedName();
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.elementAssertion(), createElement("<element1 xmlns='aaa'/>")).toQualifiedName().isEqualTo("element2");
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's qualified name.\n\tActual and expected values should be the same.\n\tExpected:<element2> but was:<element1>");
+        }
+        try {
+            initialize(Raw.elementAssertion(), createElement("<element1 xmlns='aaa'/>"), "Message").toQualifiedName().isEqualTo("element2");
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's qualified name.\n\tActual and expected values should be the same.\n\tExpected:<element2> but was:<element1>");
+        }
+        try {
+            initialize(Raw.elementAssertion(), createElement("<ns1:element xmlns:ns1='aaa'/>")).toQualifiedName().isEqualTo("ns2:element");
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's qualified name.\n\tActual and expected values should be the same.\n\tExpected:<ns2:element> but was:<ns1:element>");
+        }
+        try {
+            initialize(Raw.elementAssertion(), createElement("<ns1:element xmlns:ns1='aaa'/>"), "Message").toQualifiedName().isEqualTo("ns2:element");
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's qualified name.\n\tActual and expected values should be the same.\n\tExpected:<ns2:element> but was:<ns1:element>");
+        }
+        try {
+            initialize(Raw.elementAssertion(), createElement("<ns1:element1 xmlns:ns1='aaa'/>")).toQualifiedName().isEqualTo("ns1:element2");
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's qualified name.\n\tActual and expected values should be the same.\n\tExpected:<ns1:element2> but was:<ns1:element1>");
+        }
+        try {
+            initialize(Raw.elementAssertion(), createElement("<ns1:element1 xmlns:ns1='aaa'/>"), "Message").toQualifiedName().isEqualTo("ns1:element2");
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's qualified name.\n\tActual and expected values should be the same.\n\tExpected:<ns1:element2> but was:<ns1:element1>");
+        }
     }
 
     /**
@@ -1162,7 +1225,88 @@ public final class ElementAssertionTest extends AssertionTest {
      */
     @Test
     public void toQualifiedNameMatcherTest() throws Exception {
-        // TODO
+        initialize(Raw.elementAssertion(), createElement("<element/>")).toQualifiedName(Matchers.is(Matchers.equalTo("element")));
+        initialize(Raw.elementAssertion(), createElement("<element xmlns='aaa'/>")).toQualifiedName(Matchers.is(Matchers.equalTo("element")));
+        initialize(Raw.elementAssertion(), createElement("<ns1:element xmlns:ns1='aaa'/>")).toQualifiedName(Matchers.is(Matchers.equalTo("ns1:element")));
+
+        try {
+            Raw.elementAssertion().toQualifiedName(Matchers.equalTo(""));
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.elementAssertion(), null).toQualifiedName(Matchers.equalTo(""));
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.elementAssertion(), null, "Message").toQualifiedName(Matchers.equalTo(""));
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.elementAssertion(), null).toQualifiedName(null);
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.elementAssertion(), null, "Message").toQualifiedName(null);
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.elementAssertion(), createElement("<element/>")).toQualifiedName(null);
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: matcher.");
+        }
+        try {
+            initialize(Raw.elementAssertion(), createElement("<element/>"), "Message").toQualifiedName(null);
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: matcher.");
+        }
+        try {
+            initialize(Raw.elementAssertion(), createElement("<element1 xmlns='aaa'/>")).toQualifiedName(Matchers.equalTo("element2"));
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's qualified name.\nExpected: \"element2\"\n     but: was \"element1\"");
+        }
+        try {
+            initialize(Raw.elementAssertion(), createElement("<element1 xmlns='aaa'/>"), "Message").toQualifiedName(Matchers.equalTo("element2"));
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's qualified name.\nExpected: \"element2\"\n     but: was \"element1\"");
+        }
+        try {
+            initialize(Raw.elementAssertion(), createElement("<ns1:element xmlns:ns1='aaa'/>")).toQualifiedName(Matchers.equalTo("ns2:element"));
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's qualified name.\nExpected: \"ns2:element\"\n     but: was \"ns1:element\"");
+        }
+        try {
+            initialize(Raw.elementAssertion(), createElement("<ns1:element xmlns:ns1='aaa'/>"), "Message").toQualifiedName(Matchers.equalTo("ns2:element"));
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's qualified name.\nExpected: \"ns2:element\"\n     but: was \"ns1:element\"");
+        }
+        try {
+            initialize(Raw.elementAssertion(), createElement("<ns1:element1 xmlns:ns1='aaa'/>")).toQualifiedName(Matchers.equalTo("ns1:element2"));
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's qualified name.\nExpected: \"ns1:element2\"\n     but: was \"ns1:element1\"");
+        }
+        try {
+            initialize(Raw.elementAssertion(), createElement("<ns1:element1 xmlns:ns1='aaa'/>"), "Message").toQualifiedName(Matchers.equalTo("ns1:element2"));
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's qualified name.\nExpected: \"ns1:element2\"\n     but: was \"ns1:element1\"");
+        }
     }
 
     /**
@@ -1172,7 +1316,88 @@ public final class ElementAssertionTest extends AssertionTest {
      */
     @Test
     public void hasQualifiedNameTest() throws Exception {
-        // TODO
+        initialize(Raw.elementAssertion(), createElement("<element/>")).hasQualifiedName("element");
+        initialize(Raw.elementAssertion(), createElement("<element xmlns='aaa'/>")).hasQualifiedName("element");
+        initialize(Raw.elementAssertion(), createElement("<ns1:element xmlns:ns1='aaa'/>")).hasQualifiedName("ns1:element");
+
+        try {
+            Raw.elementAssertion().hasQualifiedName("");
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.elementAssertion(), null).hasQualifiedName("");
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.elementAssertion(), null, "Message").hasQualifiedName("");
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.elementAssertion(), null).hasQualifiedName(null);
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.elementAssertion(), null, "Message").hasQualifiedName(null);
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.elementAssertion(), createElement("<element/>")).hasQualifiedName(null);
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
+        }
+        try {
+            initialize(Raw.elementAssertion(), createElement("<element/>"), "Message").hasQualifiedName(null);
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
+        }
+        try {
+            initialize(Raw.elementAssertion(), createElement("<element1 xmlns='aaa'/>")).hasQualifiedName("element2");
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's qualified name.\n\tActual and expected values should be the same.\n\tExpected:<element2> but was:<element1>");
+        }
+        try {
+            initialize(Raw.elementAssertion(), createElement("<element1 xmlns='aaa'/>"), "Message").hasQualifiedName("element2");
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's qualified name.\n\tActual and expected values should be the same.\n\tExpected:<element2> but was:<element1>");
+        }
+        try {
+            initialize(Raw.elementAssertion(), createElement("<ns1:element xmlns:ns1='aaa'/>")).hasQualifiedName("ns2:element");
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's qualified name.\n\tActual and expected values should be the same.\n\tExpected:<ns2:element> but was:<ns1:element>");
+        }
+        try {
+            initialize(Raw.elementAssertion(), createElement("<ns1:element xmlns:ns1='aaa'/>"), "Message").hasQualifiedName("ns2:element");
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's qualified name.\n\tActual and expected values should be the same.\n\tExpected:<ns2:element> but was:<ns1:element>");
+        }
+        try {
+            initialize(Raw.elementAssertion(), createElement("<ns1:element1 xmlns:ns1='aaa'/>")).hasQualifiedName("ns1:element2");
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's qualified name.\n\tActual and expected values should be the same.\n\tExpected:<ns1:element2> but was:<ns1:element1>");
+        }
+        try {
+            initialize(Raw.elementAssertion(), createElement("<ns1:element1 xmlns:ns1='aaa'/>"), "Message").hasQualifiedName("ns1:element2");
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's qualified name.\n\tActual and expected values should be the same.\n\tExpected:<ns1:element2> but was:<ns1:element1>");
+        }
     }
 
     /**
