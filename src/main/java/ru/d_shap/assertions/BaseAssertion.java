@@ -353,8 +353,8 @@ public abstract class BaseAssertion<T> {
         return getAssertionErrorBuilder(failDescription, getActualValueClass(), actual);
     }
 
-    private AssertionErrorBuilder getAssertionErrorBuilder(final FailDescription failDescription, final Class<?> valueClass, final Object actual) {
-        return AssertionErrorBuilder.getInstance(failDescription, valueClass, actual);
+    private AssertionErrorBuilder getAssertionErrorBuilder(final FailDescription failDescription, final Class<?> actualClass, final Object actual) {
+        return AssertionErrorBuilder.getInstance(failDescription, actualClass, actual);
     }
 
 }
