@@ -71,19 +71,11 @@ final class FailDescriptionValues {
     }
 
     void addExpected(final Object expected) {
-        _expectedClass = _actualClass;
-        _expected1Defined = true;
-        _expected1 = expected;
-        _expected2Defined = false;
-        _expected2 = null;
+        addRawExpected(expected, _actualClass);
     }
 
     void addExpected(final Object expectedFrom, final Object expectedTo) {
-        _expectedClass = _actualClass;
-        _expected1Defined = false;
-        _expected1 = expectedFrom;
-        _expected2Defined = true;
-        _expected2 = expectedTo;
+        addRawExpected(expectedFrom, expectedTo, _actualClass);
     }
 
     void addRawExpected(final Object expected, final Class<?> expectedClass) {
