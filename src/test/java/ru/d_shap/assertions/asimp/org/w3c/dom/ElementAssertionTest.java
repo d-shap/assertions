@@ -1631,6 +1631,86 @@ public final class ElementAssertionTest extends AssertionTest {
      * @throws Exception exception in test.
      */
     @Test
+    public void toAttributeLocalNameTest() throws Exception {
+        // TODO
+    }
+
+    /**
+     * {@link ElementAssertion} class test.
+     *
+     * @throws Exception exception in test.
+     */
+    @Test
+    public void toAttributeNamespaceURIAndLocalNameTest() throws Exception {
+        // TODO
+    }
+
+    /**
+     * {@link ElementAssertion} class test.
+     *
+     * @throws Exception exception in test.
+     */
+    @Test
+    public void toAttributeLocalNameMatcherTest() throws Exception {
+        // TODO
+    }
+
+    /**
+     * {@link ElementAssertion} class test.
+     *
+     * @throws Exception exception in test.
+     */
+    @Test
+    public void toAttributeNamespaceURIAndLocalNameMatcherTest() throws Exception {
+        // TODO
+    }
+
+    /**
+     * {@link ElementAssertion} class test.
+     *
+     * @throws Exception exception in test.
+     */
+    @Test
+    public void hasAttributeValueLocalNameTest() throws Exception {
+        // TODO
+    }
+
+    /**
+     * {@link ElementAssertion} class test.
+     *
+     * @throws Exception exception in test.
+     */
+    @Test
+    public void hasAttributeValueNamespaceURIAndLocalNameTest() throws Exception {
+        // TODO
+    }
+
+    /**
+     * {@link ElementAssertion} class test.
+     *
+     * @throws Exception exception in test.
+     */
+    @Test
+    public void hasNotAttributeValueLocalNameTest() throws Exception {
+        // TODO
+    }
+
+    /**
+     * {@link ElementAssertion} class test.
+     *
+     * @throws Exception exception in test.
+     */
+    @Test
+    public void hasNotAttributeValueNamespaceURIAndLocalNameTest() throws Exception {
+        // TODO
+    }
+
+    /**
+     * {@link ElementAssertion} class test.
+     *
+     * @throws Exception exception in test.
+     */
+    @Test
     public void isNullTest() throws Exception {
         initialize(Raw.elementAssertion(), null).isNull();
 
