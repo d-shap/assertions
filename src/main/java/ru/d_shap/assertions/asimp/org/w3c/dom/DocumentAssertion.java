@@ -100,7 +100,7 @@ public class DocumentAssertion extends ReferenceAssertion<Document> {
      */
     public final CharSequenceAssertion toNamespaceURI() {
         checkActualIsNotNull();
-        return createDocumentElementAssertion().toNamespaceURI();
+        return createElementAssertion().toNamespaceURI();
     }
 
     /**
@@ -110,7 +110,7 @@ public class DocumentAssertion extends ReferenceAssertion<Document> {
      */
     public final void toNamespaceURI(final Matcher<String> matcher) {
         checkActualIsNotNull();
-        createDocumentElementAssertion().toNamespaceURI(matcher);
+        createElementAssertion().toNamespaceURI(matcher);
     }
 
     /**
@@ -120,7 +120,7 @@ public class DocumentAssertion extends ReferenceAssertion<Document> {
      */
     public final void hasNamespaceURI(final String expected) {
         checkActualIsNotNull();
-        createDocumentElementAssertion().hasNamespaceURI(expected);
+        createElementAssertion().hasNamespaceURI(expected);
     }
 
     /**
@@ -130,7 +130,7 @@ public class DocumentAssertion extends ReferenceAssertion<Document> {
      */
     public final CharSequenceAssertion toPrefix() {
         checkActualIsNotNull();
-        return createDocumentElementAssertion().toPrefix();
+        return createElementAssertion().toPrefix();
     }
 
     /**
@@ -140,7 +140,7 @@ public class DocumentAssertion extends ReferenceAssertion<Document> {
      */
     public final void toPrefix(final Matcher<String> matcher) {
         checkActualIsNotNull();
-        createDocumentElementAssertion().toPrefix(matcher);
+        createElementAssertion().toPrefix(matcher);
     }
 
     /**
@@ -150,7 +150,7 @@ public class DocumentAssertion extends ReferenceAssertion<Document> {
      */
     public final void hasPrefix(final String expected) {
         checkActualIsNotNull();
-        createDocumentElementAssertion().hasPrefix(expected);
+        createElementAssertion().hasPrefix(expected);
     }
 
     /**
@@ -160,7 +160,7 @@ public class DocumentAssertion extends ReferenceAssertion<Document> {
      */
     public final CharSequenceAssertion toLocalName() {
         checkActualIsNotNull();
-        return createDocumentElementAssertion().toLocalName();
+        return createElementAssertion().toLocalName();
     }
 
     /**
@@ -170,7 +170,7 @@ public class DocumentAssertion extends ReferenceAssertion<Document> {
      */
     public final void toLocalName(final Matcher<String> matcher) {
         checkActualIsNotNull();
-        createDocumentElementAssertion().toLocalName(matcher);
+        createElementAssertion().toLocalName(matcher);
     }
 
     /**
@@ -180,7 +180,7 @@ public class DocumentAssertion extends ReferenceAssertion<Document> {
      */
     public final void hasLocalName(final String expected) {
         checkActualIsNotNull();
-        createDocumentElementAssertion().hasLocalName(expected);
+        createElementAssertion().hasLocalName(expected);
     }
 
     /**
@@ -190,7 +190,7 @@ public class DocumentAssertion extends ReferenceAssertion<Document> {
      */
     public final CharSequenceAssertion toQualifiedName() {
         checkActualIsNotNull();
-        return createDocumentElementAssertion().toQualifiedName();
+        return createElementAssertion().toQualifiedName();
     }
 
     /**
@@ -200,7 +200,7 @@ public class DocumentAssertion extends ReferenceAssertion<Document> {
      */
     public final void toQualifiedName(final Matcher<String> matcher) {
         checkActualIsNotNull();
-        createDocumentElementAssertion().toQualifiedName(matcher);
+        createElementAssertion().toQualifiedName(matcher);
     }
 
     /**
@@ -210,7 +210,7 @@ public class DocumentAssertion extends ReferenceAssertion<Document> {
      */
     public final void hasQualifiedName(final String expected) {
         checkActualIsNotNull();
-        createDocumentElementAssertion().hasQualifiedName(expected);
+        createElementAssertion().hasQualifiedName(expected);
     }
 
     /**
@@ -220,7 +220,7 @@ public class DocumentAssertion extends ReferenceAssertion<Document> {
      */
     public final void hasProperties(final String expectedLocalName) {
         checkActualIsNotNull();
-        createDocumentElementAssertion().hasProperties(expectedLocalName);
+        createElementAssertion().hasProperties(expectedLocalName);
     }
 
     /**
@@ -231,14 +231,14 @@ public class DocumentAssertion extends ReferenceAssertion<Document> {
      */
     public final void hasProperties(final String expectedNamespaceURI, final String expectedLocalName) {
         checkActualIsNotNull();
-        createDocumentElementAssertion().hasProperties(expectedNamespaceURI, expectedLocalName);
+        createElementAssertion().hasProperties(expectedNamespaceURI, expectedLocalName);
     }
 
     private NodeAssertion createNodeAssertion() {
         return initializeAssertion(Raw.nodeAssertion(), getActual());
     }
 
-    private ElementAssertion createDocumentElementAssertion() {
+    private ElementAssertion createElementAssertion() {
         return initializeAssertion(Raw.elementAssertion(), getActual().getDocumentElement());
     }
 
