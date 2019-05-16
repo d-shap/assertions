@@ -337,6 +337,66 @@ public class ElementAssertion extends ReferenceAssertion<Element> {
         matcherAssertion(getActual().getAttributeNodeNS(namespaceURI, localName), matcher, Messages.Check.ATTRIBUTE);
     }
 
+    /**
+     * Check if the actual value has the specified attribute with the specified value.
+     *
+     * @param localName the local name of the actual value's attribute.
+     * @param value     the value of the actual value's attribute.
+     */
+    public final void hasAttributeValue(final String localName, final String value) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(localName, "localName");
+        checkArgumentIsNotNull(value, "value");
+        toAttribute(localName).hasValue(value);
+    }
+
+    /**
+     * Check if the actual value has the specified attribute with the specified value.
+     *
+     * @param namespaceURI the namespace URI of the actual value's attribute.
+     * @param localName    the local name of the actual value's attribute.
+     * @param value        the value of the actual value's attribute.
+     */
+    public final void hasAttributeValue(final String namespaceURI, final String localName, final String value) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(namespaceURI, "namespaceURI");
+        checkArgumentIsNotNull(localName, "localName");
+        checkArgumentIsNotNull(value, "value");
+        toAttribute(namespaceURI, localName).hasValue(value);
+    }
+
+    /**
+     * Check if the actual value has NOT the specified attribute with the specified value.
+     *
+     * @param localName the local name of the actual value's attribute.
+     * @param value     the value of the actual value's attribute.
+     */
+    public final void hasNotAttributeValue(final String localName, final String value) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(localName, "localName");
+        checkArgumentIsNotNull(value, "value");
+        if (getActual().getAttributeNode(localName) != null) {
+            toAttribute(localName).toValue().isNotEqualTo(value);
+        }
+    }
+
+    /**
+     * Check if the actual value has NOT the specified attribute with the specified value.
+     *
+     * @param namespaceURI the namespace URI of the actual value's attribute.
+     * @param localName    the local name of the actual value's attribute.
+     * @param value        the value of the actual value's attribute.
+     */
+    public final void hasNotAttributeValue(final String namespaceURI, final String localName, final String value) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(namespaceURI, "namespaceURI");
+        checkArgumentIsNotNull(localName, "localName");
+        checkArgumentIsNotNull(value, "value");
+        if (getActual().getAttributeNodeNS(namespaceURI, localName) != null) {
+            toAttribute(namespaceURI, localName).toValue().isNotEqualTo(value);
+        }
+    }
+
     private NodeAssertion createNodeAssertion() {
         return initializeAssertion(Raw.nodeAssertion(), getActual());
     }
