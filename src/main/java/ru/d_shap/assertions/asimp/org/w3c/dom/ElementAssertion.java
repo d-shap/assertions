@@ -19,6 +19,8 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.asimp.org.w3c.dom;
 
+import javax.xml.namespace.QName;
+
 import org.hamcrest.Matcher;
 import org.w3c.dom.Attr;
 import org.w3c.dom.Element;
@@ -235,7 +237,7 @@ public class ElementAssertion extends ReferenceAssertion<Element> {
         checkActualIsNotNull();
         checkArgumentIsNotNull(localName, "localName");
         if (getActual().getAttributeNode(localName) == null) {
-            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.HAS_ATTRIBUTE).addActual().addExpected(localName).build();
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.HAS_ATTRIBUTE).addActual().addRawExpected(new QName(localName), String.class).build();
         }
     }
 
@@ -250,7 +252,7 @@ public class ElementAssertion extends ReferenceAssertion<Element> {
         checkArgumentIsNotNull(namespaceURI, "namespaceURI");
         checkArgumentIsNotNull(localName, "localName");
         if (getActual().getAttributeNodeNS(namespaceURI, localName) == null) {
-            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.HAS_ATTRIBUTE).addActual().addExpected(namespaceURI + ":" + localName).build();
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.HAS_ATTRIBUTE).addActual().addRawExpected(new QName(namespaceURI, localName), String.class).build();
         }
     }
 
@@ -263,7 +265,7 @@ public class ElementAssertion extends ReferenceAssertion<Element> {
         checkActualIsNotNull();
         checkArgumentIsNotNull(localName, "localName");
         if (getActual().getAttributeNode(localName) != null) {
-            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.HAS_NOT_ATTRIBUTE).addActual().build();
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.HAS_NOT_ATTRIBUTE).addActual().addRawExpected(new QName(localName), String.class).build();
         }
     }
 
@@ -278,7 +280,7 @@ public class ElementAssertion extends ReferenceAssertion<Element> {
         checkArgumentIsNotNull(namespaceURI, "namespaceURI");
         checkArgumentIsNotNull(localName, "localName");
         if (getActual().getAttributeNodeNS(namespaceURI, localName) != null) {
-            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.HAS_NOT_ATTRIBUTE).addActual().build();
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.HAS_NOT_ATTRIBUTE).addActual().addRawExpected(new QName(namespaceURI, localName), String.class).build();
         }
     }
 
