@@ -736,17 +736,17 @@ public final class AssertionErrorBuilderTest extends AssertionTest {
         Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), null, null).addActual().addExpected(new ErrorType()).build()).toCause().isNull();
 
         Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, null).addActual().addExpected(new ErrorType()).build()).isInstanceOf(AssertionError.class);
-        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, null).addActual().addExpected(new ErrorType()).build()).hasMessage("");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, null).addActual().addExpected(new ErrorType()).build()).hasMessage("java.io.IOException: test conversion exception.");
         Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, null).addActual().addExpected(new ErrorType()).build()).hasCause(IOException.class);
         Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, null).addActual().addExpected(new ErrorType()).build()).hasCauseMessage("test conversion exception");
 
         Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, "actual").addActual().addExpected(new ErrorType()).build()).isInstanceOf(AssertionError.class);
-        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, "actual").addActual().addExpected(new ErrorType()).build()).hasMessage("");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, "actual").addActual().addExpected(new ErrorType()).build()).hasMessage("java.io.IOException: test conversion exception.");
         Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, "actual").addActual().addExpected(new ErrorType()).build()).hasCause(IOException.class);
         Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, "actual").addActual().addExpected(new ErrorType()).build()).hasCauseMessage("test conversion exception");
 
         Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), String.class, "actual").addActual().addExpected(new ErrorType()).build()).isInstanceOf(AssertionError.class);
-        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), String.class, "actual").addActual().addExpected(new ErrorType()).build()).hasMessage("message.");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), String.class, "actual").addActual().addExpected(new ErrorType()).build()).hasMessage("message.\n\tjava.io.IOException: test conversion exception.");
         Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), String.class, "actual").addActual().addExpected(new ErrorType()).build()).hasCause(IOException.class);
         Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), String.class, "actual").addActual().addExpected(new ErrorType()).build()).hasCauseMessage("test conversion exception");
     }
