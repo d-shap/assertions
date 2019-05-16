@@ -107,7 +107,7 @@ public abstract class BaseAssertion<T> {
 
     private void initialize(final T actual, final FailDescription failDescription) {
         if (_initialized) {
-            throw getAssertionErrorBuilder(failDescription).addMessage(Messages.Fail.Assertion.IS_NOT_INITIALIZED).build();
+            throw getAssertionErrorBuilder(failDescription, actual).addMessage(Messages.Fail.Assertion.IS_NOT_INITIALIZED).build();
         }
         ActualValueValidatorProvider actualValueValidatorProvider = _actualValueValidator.validate(actual);
         if (actualValueValidatorProvider != null) {
@@ -346,11 +346,11 @@ public abstract class BaseAssertion<T> {
      * @return the assertion error builder instance.
      */
     protected final AssertionErrorBuilder getAssertionErrorBuilder() {
-        return getAssertionErrorBuilder(_failDescription);
+        return getAssertionErrorBuilder(_failDescription, _actual);
     }
 
-    private AssertionErrorBuilder getAssertionErrorBuilder(final FailDescription failDescription) {
-        return getAssertionErrorBuilder(failDescription, getActualValueClass(), _actual);
+    private AssertionErrorBuilder getAssertionErrorBuilder(final FailDescription failDescription, final Object actual) {
+        return getAssertionErrorBuilder(failDescription, getActualValueClass(), actual);
     }
 
     private AssertionErrorBuilder getAssertionErrorBuilder(final FailDescription failDescription, final Class<?> valueClass, final Object actual) {
