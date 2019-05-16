@@ -1644,37 +1644,37 @@ public final class ElementAssertionTest extends AssertionTest {
             initialize(Raw.elementAssertion(), createElement("<element/>")).hasAttribute("attr");
             Assertions.fail("ElementAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("");
+            Assertions.assertThat(ex).hasMessage("Actual value should have the expected attribute.\n\tExpected:<attr> but was:<<element/>>");
         }
         try {
             initialize(Raw.elementAssertion(), createElement("<element/>"), "Message").hasAttribute("attr");
             Assertions.fail("ElementAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should have the expected attribute.\n\tExpected:<attr> but was:<<element/>>");
         }
         try {
             initialize(Raw.elementAssertion(), createElement("<element attr1='val'/>")).hasAttribute("attr2");
             Assertions.fail("ElementAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("");
+            Assertions.assertThat(ex).hasMessage("Actual value should have the expected attribute.\n\tExpected:<attr2> but was:<<element attr1=\"val\"/>>");
         }
         try {
             initialize(Raw.elementAssertion(), createElement("<element attr1='val'/>"), "Message").hasAttribute("attr2");
             Assertions.fail("ElementAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should have the expected attribute.\n\tExpected:<attr2> but was:<<element attr1=\"val\"/>>");
         }
         try {
             initialize(Raw.elementAssertion(), createElement("<element xmlns:ns1='aaa' ns1:attr='val'/>")).hasAttribute("attr");
             Assertions.fail("ElementAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("");
+            Assertions.assertThat(ex).hasMessage("Actual value should have the expected attribute.\n\tExpected:<attr> but was:<<element xmlns:ns1=\"aaa\" ns1:attr=\"val\"/>>");
         }
         try {
             initialize(Raw.elementAssertion(), createElement("<element xmlns:ns1='aaa' ns1:attr='val'/>"), "Message").hasAttribute("attr");
             Assertions.fail("ElementAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should have the expected attribute.\n\tExpected:<attr> but was:<<element xmlns:ns1=\"aaa\" ns1:attr=\"val\"/>>");
         }
     }
 
@@ -1685,7 +1685,7 @@ public final class ElementAssertionTest extends AssertionTest {
      */
     @Test
     public void hasAttributeNamespaceURIAndLocalNameTest() throws Exception {
-        // TODO
+        initialize(Raw.elementAssertion(), createElement("<element xmlns:ns1='aaa' ns1:attr='val'/>")).hasAttribute("aaa", "attr");
     }
 
     /**
