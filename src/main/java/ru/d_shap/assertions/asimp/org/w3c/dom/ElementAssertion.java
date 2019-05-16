@@ -237,7 +237,7 @@ public class ElementAssertion extends ReferenceAssertion<Element> {
         checkActualIsNotNull();
         checkArgumentIsNotNull(localName, "localName");
         if (getActual().getAttributeNode(localName) == null) {
-            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.HAS_ATTRIBUTE).addActual().addRawExpected(new QName(localName), String.class).build();
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.HAS_ATTRIBUTE).addActual().addRawExpected(new QName(localName), QName.class).build();
         }
     }
 
@@ -252,7 +252,7 @@ public class ElementAssertion extends ReferenceAssertion<Element> {
         checkArgumentIsNotNull(namespaceURI, "namespaceURI");
         checkArgumentIsNotNull(localName, "localName");
         if (getActual().getAttributeNodeNS(namespaceURI, localName) == null) {
-            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.HAS_ATTRIBUTE).addActual().addRawExpected(new QName(namespaceURI, localName), String.class).build();
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.HAS_ATTRIBUTE).addActual().addRawExpected(new QName(namespaceURI, localName), QName.class).build();
         }
     }
 
@@ -265,7 +265,7 @@ public class ElementAssertion extends ReferenceAssertion<Element> {
         checkActualIsNotNull();
         checkArgumentIsNotNull(localName, "localName");
         if (getActual().getAttributeNode(localName) != null) {
-            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.HAS_NOT_ATTRIBUTE).addActual().addRawExpected(new QName(localName), String.class).build();
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.HAS_NOT_ATTRIBUTE).addActual().addRawExpected(new QName(localName), QName.class).build();
         }
     }
 
@@ -280,7 +280,7 @@ public class ElementAssertion extends ReferenceAssertion<Element> {
         checkArgumentIsNotNull(namespaceURI, "namespaceURI");
         checkArgumentIsNotNull(localName, "localName");
         if (getActual().getAttributeNodeNS(namespaceURI, localName) != null) {
-            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.HAS_NOT_ATTRIBUTE).addActual().addRawExpected(new QName(namespaceURI, localName), String.class).build();
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.HAS_NOT_ATTRIBUTE).addActual().addRawExpected(new QName(namespaceURI, localName), QName.class).build();
         }
     }
 
