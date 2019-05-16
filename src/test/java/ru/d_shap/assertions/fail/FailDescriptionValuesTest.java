@@ -196,6 +196,16 @@ public final class FailDescriptionValuesTest extends AssertionTest {
      * @throws Exception exception in test.
      */
     @Test
+    public void addFailDescriptionEntryRawExpectedTest() throws Exception {
+        // TODO
+    }
+
+    /**
+     * {@link FailDescriptionValues} class test.
+     *
+     * @throws Exception exception in test.
+     */
+    @Test
     public void addFailDescriptionEntryExpectedDeltaTest() throws Exception {
         FailDescriptionValues failDescriptionValues1 = new FailDescriptionValues(String.class, null);
         failDescriptionValues1.addExpected(null);
@@ -221,6 +231,16 @@ public final class FailDescriptionValuesTest extends AssertionTest {
         failDescriptionValues5.addExpected((byte) 4);
         failDescriptionValues5.addDelta(2);
         Assertions.assertThat(getFormattedMessages(failDescriptionValues5)).containsExactlyInOrder("Expected:<4b±2b>");
+    }
+
+    /**
+     * {@link FailDescriptionValues} class test.
+     *
+     * @throws Exception exception in test.
+     */
+    @Test
+    public void addFailDescriptionEntryRawExpectedDeltaTest() throws Exception {
+        // TODO
     }
 
     /**
@@ -263,6 +283,16 @@ public final class FailDescriptionValuesTest extends AssertionTest {
      * @throws Exception exception in test.
      */
     @Test
+    public void addFailDescriptionEntryRawExpected2Test() throws Exception {
+        // TODO
+    }
+
+    /**
+     * {@link FailDescriptionValues} class test.
+     *
+     * @throws Exception exception in test.
+     */
+    @Test
     public void addFailDescriptionEntryExpected2DeltaTest() throws Exception {
         FailDescriptionValues failDescriptionValues1 = new FailDescriptionValues(String.class, null);
         failDescriptionValues1.addExpected(null, null);
@@ -288,6 +318,16 @@ public final class FailDescriptionValuesTest extends AssertionTest {
         failDescriptionValues5.addExpected((byte) 4, (byte) 6);
         failDescriptionValues5.addDelta(2);
         Assertions.assertThat(getFormattedMessages(failDescriptionValues5)).containsExactlyInOrder("Expected:<4b:6b±2b>");
+    }
+
+    /**
+     * {@link FailDescriptionValues} class test.
+     *
+     * @throws Exception exception in test.
+     */
+    @Test
+    public void addFailDescriptionEntryRawExpected2DeltaTest() throws Exception {
+        // TODO
     }
 
     /**
@@ -328,6 +368,16 @@ public final class FailDescriptionValuesTest extends AssertionTest {
         failDescriptionValues6.addExpected("expected1", "expected2");
         failDescriptionValues6.addExpected("expected");
         Assertions.assertThat(getFormattedMessages(failDescriptionValues6)).containsExactlyInOrder("Expected:<expected> but was:<actual>");
+    }
+
+    /**
+     * {@link FailDescriptionValues} class test.
+     *
+     * @throws Exception exception in test.
+     */
+    @Test
+    public void addFailDescriptionEntryActualAndRawExpectedTest() throws Exception {
+        // TODO
     }
 
     /**
@@ -398,6 +448,16 @@ public final class FailDescriptionValuesTest extends AssertionTest {
      * @throws Exception exception in test.
      */
     @Test
+    public void addFailDescriptionEntryActualAndRawExpectedDeltaTest() throws Exception {
+        // TODO
+    }
+
+    /**
+     * {@link FailDescriptionValues} class test.
+     *
+     * @throws Exception exception in test.
+     */
+    @Test
     public void addFailDescriptionEntryActualAndExpected2Test() throws Exception {
         FailDescriptionValues failDescriptionValues1 = new FailDescriptionValues(String.class, null);
         failDescriptionValues1.addActual();
@@ -430,6 +490,16 @@ public final class FailDescriptionValuesTest extends AssertionTest {
         failDescriptionValues6.addExpected("expected");
         failDescriptionValues6.addExpected("expected1", "expected2");
         Assertions.assertThat(getFormattedMessages(failDescriptionValues6)).containsExactlyInOrder("Expected:<expected1:expected2> but was:<actual>");
+    }
+
+    /**
+     * {@link FailDescriptionValues} class test.
+     *
+     * @throws Exception exception in test.
+     */
+    @Test
+    public void addFailDescriptionEntryActualAndRawExpected2Test() throws Exception {
+        // TODO
     }
 
     /**
@@ -492,6 +562,16 @@ public final class FailDescriptionValuesTest extends AssertionTest {
         failDescriptionValues9.addExpected((byte) 4, (byte) 6);
         failDescriptionValues9.addDelta(2);
         Assertions.assertThat(getFormattedMessages(failDescriptionValues9)).containsExactlyInOrder("Expected:<4b:6b±2b> but was:<1b>");
+    }
+
+    /**
+     * {@link FailDescriptionValues} class test.
+     *
+     * @throws Exception exception in test.
+     */
+    @Test
+    public void addFailDescriptionEntryActualAndRawExpected2DeltaTest() throws Exception {
+        // TODO
     }
 
     private List<String> getFormattedMessages(final FailDescriptionValues failDescriptionValues) throws Exception {
