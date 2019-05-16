@@ -32,7 +32,9 @@ import ru.d_shap.assertions.converter.ConversionException;
  */
 final class FailDescriptionValues {
 
-    private final Class<?> _valueClass;
+    private final Class<?> _actualClass;
+
+    private Class<?> _expectedClass;
 
     private boolean _actualDefined;
 
@@ -50,9 +52,10 @@ final class FailDescriptionValues {
 
     private Object _delta;
 
-    FailDescriptionValues(final Class<?> valueClass, final Object actual) {
+    FailDescriptionValues(final Class<?> actualClass, final Object actual) {
         super();
-        _valueClass = valueClass;
+        _actualClass = actualClass;
+        _expectedClass = null;
         _actualDefined = false;
         _actual = actual;
         _expected1Defined = false;
@@ -68,6 +71,7 @@ final class FailDescriptionValues {
     }
 
     void addExpected(final Object expected) {
+        _expectedClass = _actualClass;
         _expected1Defined = true;
         _expected1 = expected;
         _expected2Defined = false;
@@ -75,6 +79,23 @@ final class FailDescriptionValues {
     }
 
     void addExpected(final Object expectedFrom, final Object expectedTo) {
+        _expectedClass = _actualClass;
+        _expected1Defined = false;
+        _expected1 = expectedFrom;
+        _expected2Defined = true;
+        _expected2 = expectedTo;
+    }
+
+    void addRawExpected(final Object expected, final Class<?> expectedClass) {
+        _expectedClass = expectedClass;
+        _expected1Defined = true;
+        _expected1 = expected;
+        _expected2Defined = false;
+        _expected2 = null;
+    }
+
+    void addRawExpected(final Object expectedFrom, final Object expectedTo, final Class<?> expectedClass) {
+        _expectedClass = expectedClass;
         _expected1Defined = false;
         _expected1 = expectedFrom;
         _expected2Defined = true;
@@ -87,7 +108,7 @@ final class FailDescriptionValues {
     }
 
     void addFailDescriptionEntry(final List<FailDescriptionEntry> failDescriptionEntries) throws ConversionException {
-        if (_valueClass != null) {
+        if (_actualClass != null) {
             addActualEntry(failDescriptionEntries);
             addExpectedEntry(failDescriptionEntries);
             addExpected2Entry(failDescriptionEntries);
@@ -139,30 +160,30 @@ final class FailDescriptionValues {
     }
 
     private String getActualMessage(final boolean withDelta) throws ConversionException {
-        String objectStr = AsStringConverter.asString(_actual, _valueClass);
+        String objectStr = AsStringConverter.asString(_actual, _actualClass);
         if (withDelta && _deltaDefined) {
             objectStr += "\u00b1";
-            objectStr += AsStringConverter.asString(_delta, _valueClass);
+            objectStr += AsStringConverter.asString(_delta, _actualClass);
         }
         return "<" + objectStr + ">";
     }
 
     private String getExpectedMessage() throws ConversionException {
-        String objectStr = AsStringConverter.asString(_expected1, _valueClass);
+        String objectStr = AsStringConverter.asString(_expected1, _expectedClass);
         if (_deltaDefined) {
             objectStr += "\u00b1";
-            objectStr += AsStringConverter.asString(_delta, _valueClass);
+            objectStr += AsStringConverter.asString(_delta, _expectedClass);
         }
         return "<" + objectStr + ">";
     }
 
     private String getExpected2Message() throws ConversionException {
-        String objectStr = AsStringConverter.asString(_expected1, _valueClass);
+        String objectStr = AsStringConverter.asString(_expected1, _expectedClass);
         objectStr += ":";
-        objectStr += AsStringConverter.asString(_expected2, _valueClass);
+        objectStr += AsStringConverter.asString(_expected2, _expectedClass);
         if (_deltaDefined) {
             objectStr += "\u00b1";
-            objectStr += AsStringConverter.asString(_delta, _valueClass);
+            objectStr += AsStringConverter.asString(_delta, _expectedClass);
         }
         return "<" + objectStr + ">";
     }
