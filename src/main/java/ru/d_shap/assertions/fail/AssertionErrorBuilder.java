@@ -40,11 +40,11 @@ public final class AssertionErrorBuilder {
 
     private Throwable _throwable;
 
-    private AssertionErrorBuilder(final FailDescription failDescription, final Class<?> valueClass, final Object actual) {
+    private AssertionErrorBuilder(final FailDescription failDescription, final Class<?> actualClass, final Object actual) {
         super();
         _failDescription = failDescription;
         _failDescriptionEntries = new ArrayList<>();
-        _failDescriptionValues = new FailDescriptionValues(valueClass, actual);
+        _failDescriptionValues = new FailDescriptionValues(actualClass, actual);
         _throwable = null;
     }
 
@@ -61,13 +61,13 @@ public final class AssertionErrorBuilder {
      * Get the instance of the assertion error builder.
      *
      * @param failDescription the fail description.
-     * @param valueClass      the actual value class (as specified in the assertion).
+     * @param actualClass     the actual value's class (as specified in the assertion).
      * @param actual          the actual value.
      *
      * @return the instance of the assertion error builder.
      */
-    public static AssertionErrorBuilder getInstance(final FailDescription failDescription, final Class<?> valueClass, final Object actual) {
-        return new AssertionErrorBuilder(failDescription, valueClass, actual);
+    public static AssertionErrorBuilder getInstance(final FailDescription failDescription, final Class<?> actualClass, final Object actual) {
+        return new AssertionErrorBuilder(failDescription, actualClass, actual);
     }
 
     /**
@@ -106,6 +106,7 @@ public final class AssertionErrorBuilder {
 
     /**
      * Add the expected value of the assertion to the assertion error.
+     * The expected value is converted to the actual value's class.
      *
      * @param expected the expected value of the assertion.
      *
@@ -118,6 +119,7 @@ public final class AssertionErrorBuilder {
 
     /**
      * Add the expected value range of the assertion to the assertion error.
+     * The expected value is converted to the actual value's class.
      *
      * @param expectedFrom the lower bound of the expected value range of the assertion.
      * @param expectedTo   the upper bound of the expected value range of the assertion.
@@ -130,7 +132,37 @@ public final class AssertionErrorBuilder {
     }
 
     /**
+     * Add the expected value of the assertion to the assertion error.
+     * The expected value is converted to the specified class.
+     *
+     * @param expected      the expected value of the assertion.
+     * @param expectedClass the specified class for the value conversion.
+     *
+     * @return current object for the chain call.
+     */
+    public AssertionErrorBuilder addRawExpected(final Object expected, final Class<?> expectedClass) {
+        _failDescriptionValues.addRawExpected(expected, expectedClass);
+        return this;
+    }
+
+    /**
+     * Add the expected value of the assertion to the assertion error.
+     * The expected value is converted to the specified class.
+     *
+     * @param expectedFrom  the lower bound of the expected value range of the assertion.
+     * @param expectedTo    the upper bound of the expected value range of the assertion.
+     * @param expectedClass the specified class for the value conversion.
+     *
+     * @return current object for the chain call.
+     */
+    public AssertionErrorBuilder addRawExpected(final Object expectedFrom, final Object expectedTo, final Class<?> expectedClass) {
+        _failDescriptionValues.addRawExpected(expectedFrom, expectedTo, expectedClass);
+        return this;
+    }
+
+    /**
      * Add the actual and expected values' delta to the assertion error.
+     * The delta value is converted to the actual or expected values' class.
      *
      * @param delta the actual and expected values' delta.
      *
