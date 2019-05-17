@@ -783,6 +783,32 @@ public final class FailDescriptionValuesTest extends AssertionTest {
         Assertions.assertThat(getFormattedMessages(failDescriptionValues8)).containsExactlyInOrder("Expected:<expected1:expected2±D!> but was:<<element/>>");
     }
 
+    /**
+     * {@link FailDescriptionValues} class test.
+     *
+     * @throws Exception exception in test.
+     */
+    @Test(expected = NullPointerException.class)
+    public void addRawExpectedNullFailTest() throws Exception {
+        FailDescriptionValues failDescriptionValues = new FailDescriptionValues(Node.class, createNode("<element/>"));
+        failDescriptionValues.addActual();
+        failDescriptionValues.addRawExpected("expected", null);
+        getFormattedMessages(failDescriptionValues);
+    }
+
+    /**
+     * {@link FailDescriptionValues} class test.
+     *
+     * @throws Exception exception in test.
+     */
+    @Test(expected = NullPointerException.class)
+    public void addRawExpected2NullFailTest() throws Exception {
+        FailDescriptionValues failDescriptionValues = new FailDescriptionValues(Node.class, createNode("<element/>"));
+        failDescriptionValues.addActual();
+        failDescriptionValues.addRawExpected("expected1", "expected2", null);
+        getFormattedMessages(failDescriptionValues);
+    }
+
     private List<String> getFormattedMessages(final FailDescriptionValues failDescriptionValues) throws Exception {
         List<FailDescriptionEntry> failDescriptionEntries = new ArrayList<>();
         failDescriptionValues.addFailDescriptionEntry(failDescriptionEntries);
