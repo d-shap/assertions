@@ -1903,7 +1903,100 @@ public final class ElementAssertionTest extends AssertionTest {
      */
     @Test
     public void hasNotAttributeNamespaceURIAndLocalNameTest() throws Exception {
-        // TODO
+        initialize(Raw.elementAssertion(), createElement("<element/>")).hasNotAttribute("aaa", "attr");
+        initialize(Raw.elementAssertion(), createElement("<element xmlns:ns1='aaa' ns1:attr='val'/>")).hasNotAttribute("bbb", "attr");
+        initialize(Raw.elementAssertion(), createElement("<element xmlns:ns1='aaa' ns1:attr1='val'/>")).hasNotAttribute("aaa", "attr2");
+
+        try {
+            Raw.elementAssertion().hasNotAttribute("", "");
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.elementAssertion(), null).hasNotAttribute("", "");
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.elementAssertion(), null, "Message").hasNotAttribute("", "");
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.elementAssertion(), null).hasNotAttribute(null, "");
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.elementAssertion(), null, "Message").hasNotAttribute(null, "");
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.elementAssertion(), createElement("<element/>")).hasNotAttribute(null, "");
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: namespaceURI.");
+        }
+        try {
+            initialize(Raw.elementAssertion(), createElement("<element/>"), "Message").hasNotAttribute(null, "");
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: namespaceURI.");
+        }
+        try {
+            initialize(Raw.elementAssertion(), createElement("<element/>")).hasNotAttribute(null, null);
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: namespaceURI.");
+        }
+        try {
+            initialize(Raw.elementAssertion(), createElement("<element/>"), "Message").hasNotAttribute(null, null);
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: namespaceURI.");
+        }
+        try {
+            initialize(Raw.elementAssertion(), createElement("<element/>")).hasNotAttribute("", null);
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: localName.");
+        }
+        try {
+            initialize(Raw.elementAssertion(), createElement("<element/>"), "Message").hasNotAttribute("", null);
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: localName.");
+        }
+        try {
+            initialize(Raw.elementAssertion(), createElement("<element xmlns:ns1='aaa' ns1:attr='val'/>")).hasNotAttribute("aaa", "attr");
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not have the expected attribute.\n\tExpected:<{aaa}attr> but was:<<element xmlns:ns1=\"aaa\" ns1:attr=\"val\"/>>");
+        }
+        try {
+            initialize(Raw.elementAssertion(), createElement("<element xmlns:ns1='aaa' ns1:attr='val'/>"), "Message").hasNotAttribute("aaa", "attr");
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not have the expected attribute.\n\tExpected:<{aaa}attr> but was:<<element xmlns:ns1=\"aaa\" ns1:attr=\"val\"/>>");
+        }
+        try {
+            initialize(Raw.elementAssertion(), createElement("<element xmlns:ns1='aaa' ns1:attr1='val1' ns1:attr2='val2'/>")).hasNotAttribute("aaa", "attr1");
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not have the expected attribute.\n\tExpected:<{aaa}attr1> but was:<<element xmlns:ns1=\"aaa\" ns1:attr1=\"val1\" ns1:attr2=\"val2\"/>>");
+        }
+        try {
+            initialize(Raw.elementAssertion(), createElement("<element xmlns:ns1='aaa' ns1:attr1='val1' ns1:attr2='val2'/>"), "Message").hasNotAttribute("aaa", "attr1");
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not have the expected attribute.\n\tExpected:<{aaa}attr1> but was:<<element xmlns:ns1=\"aaa\" ns1:attr1=\"val1\" ns1:attr2=\"val2\"/>>");
+        }
     }
 
     /**
