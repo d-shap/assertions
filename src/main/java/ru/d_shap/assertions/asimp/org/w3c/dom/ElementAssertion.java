@@ -293,7 +293,7 @@ public class ElementAssertion extends ReferenceAssertion<Element> {
      */
     public final AttrAssertion toAttribute(final String localName) {
         hasAttribute(localName);
-        return initializeAssertion(Raw.attrAssertion(), getActual().getAttributeNode(localName), Messages.Check.ATTRIBUTE);
+        return initializeAssertion(Raw.attrAssertion(), getActual().getAttributeNode(localName), Messages.Check.ATTRIBUTE, new QName(localName));
     }
 
     /**
@@ -306,7 +306,7 @@ public class ElementAssertion extends ReferenceAssertion<Element> {
      */
     public final AttrAssertion toAttribute(final String namespaceURI, final String localName) {
         hasAttribute(namespaceURI, localName);
-        return initializeAssertion(Raw.attrAssertion(), getActual().getAttributeNodeNS(namespaceURI, localName), Messages.Check.ATTRIBUTE);
+        return initializeAssertion(Raw.attrAssertion(), getActual().getAttributeNodeNS(namespaceURI, localName), Messages.Check.ATTRIBUTE, new QName(namespaceURI, localName));
     }
 
     /**
@@ -320,7 +320,7 @@ public class ElementAssertion extends ReferenceAssertion<Element> {
         checkArgumentIsNotNull(localName, "localName");
         checkArgumentIsNotNull(matcher, "matcher");
         hasAttribute(localName);
-        matcherAssertion(getActual().getAttributeNode(localName), matcher, Messages.Check.ATTRIBUTE);
+        matcherAssertion(getActual().getAttributeNode(localName), matcher, Messages.Check.ATTRIBUTE, new QName(localName));
     }
 
     /**
@@ -336,7 +336,7 @@ public class ElementAssertion extends ReferenceAssertion<Element> {
         checkArgumentIsNotNull(localName, "localName");
         checkArgumentIsNotNull(matcher, "matcher");
         hasAttribute(localName);
-        matcherAssertion(getActual().getAttributeNodeNS(namespaceURI, localName), matcher, Messages.Check.ATTRIBUTE);
+        matcherAssertion(getActual().getAttributeNodeNS(namespaceURI, localName), matcher, Messages.Check.ATTRIBUTE, new QName(namespaceURI, localName));
     }
 
     /**
