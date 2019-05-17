@@ -23,6 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Test;
+import org.w3c.dom.Node;
 
 import ru.d_shap.assertions.AssertionTest;
 import ru.d_shap.assertions.Assertions;
@@ -129,6 +130,22 @@ public final class FailDescriptionValuesTest extends AssertionTest {
      * @throws Exception exception in test.
      */
     @Test
+    public void addFailDescriptionEntryDeltaTest() throws Exception {
+        FailDescriptionValues failDescriptionValues1 = new FailDescriptionValues(String.class, null);
+        failDescriptionValues1.addDelta(null);
+        Assertions.assertThat(getFormattedMessages(failDescriptionValues1)).containsExactlyInOrder();
+
+        FailDescriptionValues failDescriptionValues2 = new FailDescriptionValues(String.class, null);
+        failDescriptionValues2.addDelta("D!");
+        Assertions.assertThat(getFormattedMessages(failDescriptionValues2)).containsExactlyInOrder();
+    }
+
+    /**
+     * {@link FailDescriptionValues} class test.
+     *
+     * @throws Exception exception in test.
+     */
+    @Test
     public void addFailDescriptionEntryActualDeltaTest() throws Exception {
         FailDescriptionValues failDescriptionValues1 = new FailDescriptionValues(String.class, null);
         failDescriptionValues1.addActual();
@@ -197,7 +214,21 @@ public final class FailDescriptionValuesTest extends AssertionTest {
      */
     @Test
     public void addFailDescriptionEntryRawExpectedTest() throws Exception {
-        // TODO
+        FailDescriptionValues failDescriptionValues1 = new FailDescriptionValues(Node.class, null);
+        failDescriptionValues1.addRawExpected(null, String.class);
+        Assertions.assertThat(getFormattedMessages(failDescriptionValues1)).containsExactlyInOrder("Expected:<<NULL>>");
+
+        FailDescriptionValues failDescriptionValues2 = new FailDescriptionValues(Node.class, createNode("<element/>"));
+        failDescriptionValues2.addRawExpected(null, String.class);
+        Assertions.assertThat(getFormattedMessages(failDescriptionValues2)).containsExactlyInOrder("Expected:<<NULL>>");
+
+        FailDescriptionValues failDescriptionValues3 = new FailDescriptionValues(Node.class, null);
+        failDescriptionValues3.addRawExpected("expected", String.class);
+        Assertions.assertThat(getFormattedMessages(failDescriptionValues3)).containsExactlyInOrder("Expected:<expected>");
+
+        FailDescriptionValues failDescriptionValues4 = new FailDescriptionValues(Node.class, createNode("<element/>"));
+        failDescriptionValues4.addRawExpected("expected", String.class);
+        Assertions.assertThat(getFormattedMessages(failDescriptionValues4)).containsExactlyInOrder("Expected:<expected>");
     }
 
     /**
@@ -240,7 +271,25 @@ public final class FailDescriptionValuesTest extends AssertionTest {
      */
     @Test
     public void addFailDescriptionEntryRawExpectedDeltaTest() throws Exception {
-        // TODO
+        FailDescriptionValues failDescriptionValues1 = new FailDescriptionValues(Node.class, null);
+        failDescriptionValues1.addRawExpected(null, String.class);
+        failDescriptionValues1.addDelta(null);
+        Assertions.assertThat(getFormattedMessages(failDescriptionValues1)).containsExactlyInOrder("Expected:<<NULL>±<NULL>>");
+
+        FailDescriptionValues failDescriptionValues2 = new FailDescriptionValues(Node.class, null);
+        failDescriptionValues2.addRawExpected(null, String.class);
+        failDescriptionValues2.addDelta("D!");
+        Assertions.assertThat(getFormattedMessages(failDescriptionValues2)).containsExactlyInOrder("Expected:<<NULL>±D!>");
+
+        FailDescriptionValues failDescriptionValues3 = new FailDescriptionValues(Node.class, null);
+        failDescriptionValues3.addRawExpected("expected", String.class);
+        failDescriptionValues3.addDelta(null);
+        Assertions.assertThat(getFormattedMessages(failDescriptionValues3)).containsExactlyInOrder("Expected:<expected±<NULL>>");
+
+        FailDescriptionValues failDescriptionValues4 = new FailDescriptionValues(Node.class, null);
+        failDescriptionValues4.addRawExpected("expected", String.class);
+        failDescriptionValues4.addDelta("D!");
+        Assertions.assertThat(getFormattedMessages(failDescriptionValues4)).containsExactlyInOrder("Expected:<expected±D!>");
     }
 
     /**
@@ -284,7 +333,21 @@ public final class FailDescriptionValuesTest extends AssertionTest {
      */
     @Test
     public void addFailDescriptionEntryRawExpected2Test() throws Exception {
-        // TODO
+        FailDescriptionValues failDescriptionValues1 = new FailDescriptionValues(Node.class, null);
+        failDescriptionValues1.addRawExpected(null, null, String.class);
+        Assertions.assertThat(getFormattedMessages(failDescriptionValues1)).containsExactlyInOrder("Expected:<<NULL>:<NULL>>");
+
+        FailDescriptionValues failDescriptionValues2 = new FailDescriptionValues(Node.class, createNode("<element/>"));
+        failDescriptionValues2.addRawExpected(null, null, String.class);
+        Assertions.assertThat(getFormattedMessages(failDescriptionValues2)).containsExactlyInOrder("Expected:<<NULL>:<NULL>>");
+
+        FailDescriptionValues failDescriptionValues3 = new FailDescriptionValues(Node.class, null);
+        failDescriptionValues3.addRawExpected("expected1", "expected2", String.class);
+        Assertions.assertThat(getFormattedMessages(failDescriptionValues3)).containsExactlyInOrder("Expected:<expected1:expected2>");
+
+        FailDescriptionValues failDescriptionValues4 = new FailDescriptionValues(Node.class, createNode("<element/>"));
+        failDescriptionValues4.addRawExpected("expected1", "expected2", String.class);
+        Assertions.assertThat(getFormattedMessages(failDescriptionValues4)).containsExactlyInOrder("Expected:<expected1:expected2>");
     }
 
     /**
@@ -327,7 +390,25 @@ public final class FailDescriptionValuesTest extends AssertionTest {
      */
     @Test
     public void addFailDescriptionEntryRawExpected2DeltaTest() throws Exception {
-        // TODO
+        FailDescriptionValues failDescriptionValues1 = new FailDescriptionValues(Node.class, null);
+        failDescriptionValues1.addRawExpected(null, null, String.class);
+        failDescriptionValues1.addDelta(null);
+        Assertions.assertThat(getFormattedMessages(failDescriptionValues1)).containsExactlyInOrder("Expected:<<NULL>:<NULL>±<NULL>>");
+
+        FailDescriptionValues failDescriptionValues2 = new FailDescriptionValues(Node.class, null);
+        failDescriptionValues2.addRawExpected(null, null, String.class);
+        failDescriptionValues2.addDelta("D!");
+        Assertions.assertThat(getFormattedMessages(failDescriptionValues2)).containsExactlyInOrder("Expected:<<NULL>:<NULL>±D!>");
+
+        FailDescriptionValues failDescriptionValues3 = new FailDescriptionValues(Node.class, null);
+        failDescriptionValues3.addRawExpected("expected1", "expected2", String.class);
+        failDescriptionValues3.addDelta(null);
+        Assertions.assertThat(getFormattedMessages(failDescriptionValues3)).containsExactlyInOrder("Expected:<expected1:expected2±<NULL>>");
+
+        FailDescriptionValues failDescriptionValues4 = new FailDescriptionValues(Node.class, null);
+        failDescriptionValues4.addRawExpected("expected1", "expected2", String.class);
+        failDescriptionValues4.addDelta("D!");
+        Assertions.assertThat(getFormattedMessages(failDescriptionValues4)).containsExactlyInOrder("Expected:<expected1:expected2±D!>");
     }
 
     /**
@@ -377,7 +458,25 @@ public final class FailDescriptionValuesTest extends AssertionTest {
      */
     @Test
     public void addFailDescriptionEntryActualAndRawExpectedTest() throws Exception {
-        // TODO
+        FailDescriptionValues failDescriptionValues1 = new FailDescriptionValues(Node.class, null);
+        failDescriptionValues1.addActual();
+        failDescriptionValues1.addRawExpected(null, String.class);
+        Assertions.assertThat(getFormattedMessages(failDescriptionValues1)).containsExactlyInOrder("Expected:<<NULL>> but was:<<NULL>>");
+
+        FailDescriptionValues failDescriptionValues2 = new FailDescriptionValues(Node.class, createNode("<element/>"));
+        failDescriptionValues2.addActual();
+        failDescriptionValues2.addRawExpected(null, String.class);
+        Assertions.assertThat(getFormattedMessages(failDescriptionValues2)).containsExactlyInOrder("Expected:<<NULL>> but was:<<element/>>");
+
+        FailDescriptionValues failDescriptionValues3 = new FailDescriptionValues(Node.class, null);
+        failDescriptionValues3.addActual();
+        failDescriptionValues3.addRawExpected("expected", String.class);
+        Assertions.assertThat(getFormattedMessages(failDescriptionValues3)).containsExactlyInOrder("Expected:<expected> but was:<<NULL>>");
+
+        FailDescriptionValues failDescriptionValues4 = new FailDescriptionValues(Node.class, createNode("<element/>"));
+        failDescriptionValues4.addActual();
+        failDescriptionValues4.addRawExpected("expected", String.class);
+        Assertions.assertThat(getFormattedMessages(failDescriptionValues4)).containsExactlyInOrder("Expected:<expected> but was:<<element/>>");
     }
 
     /**
@@ -449,7 +548,53 @@ public final class FailDescriptionValuesTest extends AssertionTest {
      */
     @Test
     public void addFailDescriptionEntryActualAndRawExpectedDeltaTest() throws Exception {
-        // TODO
+        FailDescriptionValues failDescriptionValues1 = new FailDescriptionValues(Node.class, null);
+        failDescriptionValues1.addActual();
+        failDescriptionValues1.addRawExpected(null, String.class);
+        failDescriptionValues1.addDelta(null);
+        Assertions.assertThat(getFormattedMessages(failDescriptionValues1)).containsExactlyInOrder("Expected:<<NULL>±<NULL>> but was:<<NULL>>");
+
+        FailDescriptionValues failDescriptionValues2 = new FailDescriptionValues(Node.class, null);
+        failDescriptionValues2.addActual();
+        failDescriptionValues2.addRawExpected(null, String.class);
+        failDescriptionValues2.addDelta("D!");
+        Assertions.assertThat(getFormattedMessages(failDescriptionValues2)).containsExactlyInOrder("Expected:<<NULL>±D!> but was:<<NULL>>");
+
+        FailDescriptionValues failDescriptionValues3 = new FailDescriptionValues(Node.class, createNode("<element/>"));
+        failDescriptionValues3.addActual();
+        failDescriptionValues3.addRawExpected(null, String.class);
+        failDescriptionValues3.addDelta(null);
+        Assertions.assertThat(getFormattedMessages(failDescriptionValues3)).containsExactlyInOrder("Expected:<<NULL>±<NULL>> but was:<<element/>>");
+
+        FailDescriptionValues failDescriptionValues4 = new FailDescriptionValues(Node.class, createNode("<element/>"));
+        failDescriptionValues4.addActual();
+        failDescriptionValues4.addRawExpected(null, String.class);
+        failDescriptionValues4.addDelta("D!");
+        Assertions.assertThat(getFormattedMessages(failDescriptionValues4)).containsExactlyInOrder("Expected:<<NULL>±D!> but was:<<element/>>");
+
+        FailDescriptionValues failDescriptionValues5 = new FailDescriptionValues(Node.class, null);
+        failDescriptionValues5.addActual();
+        failDescriptionValues5.addRawExpected("expected", String.class);
+        failDescriptionValues5.addDelta(null);
+        Assertions.assertThat(getFormattedMessages(failDescriptionValues5)).containsExactlyInOrder("Expected:<expected±<NULL>> but was:<<NULL>>");
+
+        FailDescriptionValues failDescriptionValues6 = new FailDescriptionValues(Node.class, null);
+        failDescriptionValues6.addActual();
+        failDescriptionValues6.addRawExpected("expected", String.class);
+        failDescriptionValues6.addDelta("D!");
+        Assertions.assertThat(getFormattedMessages(failDescriptionValues6)).containsExactlyInOrder("Expected:<expected±D!> but was:<<NULL>>");
+
+        FailDescriptionValues failDescriptionValues7 = new FailDescriptionValues(Node.class, createNode("<element/>"));
+        failDescriptionValues7.addActual();
+        failDescriptionValues7.addRawExpected("expected", String.class);
+        failDescriptionValues7.addDelta(null);
+        Assertions.assertThat(getFormattedMessages(failDescriptionValues7)).containsExactlyInOrder("Expected:<expected±<NULL>> but was:<<element/>>");
+
+        FailDescriptionValues failDescriptionValues8 = new FailDescriptionValues(Node.class, createNode("<element/>"));
+        failDescriptionValues8.addActual();
+        failDescriptionValues8.addRawExpected("expected", String.class);
+        failDescriptionValues8.addDelta("D!");
+        Assertions.assertThat(getFormattedMessages(failDescriptionValues8)).containsExactlyInOrder("Expected:<expected±D!> but was:<<element/>>");
     }
 
     /**
@@ -499,7 +644,25 @@ public final class FailDescriptionValuesTest extends AssertionTest {
      */
     @Test
     public void addFailDescriptionEntryActualAndRawExpected2Test() throws Exception {
-        // TODO
+        FailDescriptionValues failDescriptionValues1 = new FailDescriptionValues(Node.class, null);
+        failDescriptionValues1.addActual();
+        failDescriptionValues1.addRawExpected(null, null, String.class);
+        Assertions.assertThat(getFormattedMessages(failDescriptionValues1)).containsExactlyInOrder("Expected:<<NULL>:<NULL>> but was:<<NULL>>");
+
+        FailDescriptionValues failDescriptionValues2 = new FailDescriptionValues(Node.class, createNode("<element/>"));
+        failDescriptionValues2.addActual();
+        failDescriptionValues2.addRawExpected(null, null, String.class);
+        Assertions.assertThat(getFormattedMessages(failDescriptionValues2)).containsExactlyInOrder("Expected:<<NULL>:<NULL>> but was:<<element/>>");
+
+        FailDescriptionValues failDescriptionValues3 = new FailDescriptionValues(Node.class, null);
+        failDescriptionValues3.addActual();
+        failDescriptionValues3.addRawExpected("expected1", "expected2", String.class);
+        Assertions.assertThat(getFormattedMessages(failDescriptionValues3)).containsExactlyInOrder("Expected:<expected1:expected2> but was:<<NULL>>");
+
+        FailDescriptionValues failDescriptionValues4 = new FailDescriptionValues(Node.class, createNode("<element/>"));
+        failDescriptionValues4.addActual();
+        failDescriptionValues4.addRawExpected("expected1", "expected2", String.class);
+        Assertions.assertThat(getFormattedMessages(failDescriptionValues4)).containsExactlyInOrder("Expected:<expected1:expected2> but was:<<element/>>");
     }
 
     /**
@@ -571,7 +734,53 @@ public final class FailDescriptionValuesTest extends AssertionTest {
      */
     @Test
     public void addFailDescriptionEntryActualAndRawExpected2DeltaTest() throws Exception {
-        // TODO
+        FailDescriptionValues failDescriptionValues1 = new FailDescriptionValues(Node.class, null);
+        failDescriptionValues1.addActual();
+        failDescriptionValues1.addRawExpected(null, null, String.class);
+        failDescriptionValues1.addDelta(null);
+        Assertions.assertThat(getFormattedMessages(failDescriptionValues1)).containsExactlyInOrder("Expected:<<NULL>:<NULL>±<NULL>> but was:<<NULL>>");
+
+        FailDescriptionValues failDescriptionValues2 = new FailDescriptionValues(Node.class, null);
+        failDescriptionValues2.addActual();
+        failDescriptionValues2.addRawExpected(null, null, String.class);
+        failDescriptionValues2.addDelta("D!");
+        Assertions.assertThat(getFormattedMessages(failDescriptionValues2)).containsExactlyInOrder("Expected:<<NULL>:<NULL>±D!> but was:<<NULL>>");
+
+        FailDescriptionValues failDescriptionValues3 = new FailDescriptionValues(Node.class, createNode("<element/>"));
+        failDescriptionValues3.addActual();
+        failDescriptionValues3.addRawExpected(null, null, String.class);
+        failDescriptionValues3.addDelta(null);
+        Assertions.assertThat(getFormattedMessages(failDescriptionValues3)).containsExactlyInOrder("Expected:<<NULL>:<NULL>±<NULL>> but was:<<element/>>");
+
+        FailDescriptionValues failDescriptionValues4 = new FailDescriptionValues(Node.class, createNode("<element/>"));
+        failDescriptionValues4.addActual();
+        failDescriptionValues4.addRawExpected(null, null, String.class);
+        failDescriptionValues4.addDelta("D!");
+        Assertions.assertThat(getFormattedMessages(failDescriptionValues4)).containsExactlyInOrder("Expected:<<NULL>:<NULL>±D!> but was:<<element/>>");
+
+        FailDescriptionValues failDescriptionValues5 = new FailDescriptionValues(Node.class, null);
+        failDescriptionValues5.addActual();
+        failDescriptionValues5.addRawExpected("expected1", "expected2", String.class);
+        failDescriptionValues5.addDelta(null);
+        Assertions.assertThat(getFormattedMessages(failDescriptionValues5)).containsExactlyInOrder("Expected:<expected1:expected2±<NULL>> but was:<<NULL>>");
+
+        FailDescriptionValues failDescriptionValues6 = new FailDescriptionValues(Node.class, null);
+        failDescriptionValues6.addActual();
+        failDescriptionValues6.addRawExpected("expected1", "expected2", String.class);
+        failDescriptionValues6.addDelta("D!");
+        Assertions.assertThat(getFormattedMessages(failDescriptionValues6)).containsExactlyInOrder("Expected:<expected1:expected2±D!> but was:<<NULL>>");
+
+        FailDescriptionValues failDescriptionValues7 = new FailDescriptionValues(Node.class, createNode("<element/>"));
+        failDescriptionValues7.addActual();
+        failDescriptionValues7.addRawExpected("expected1", "expected2", String.class);
+        failDescriptionValues7.addDelta(null);
+        Assertions.assertThat(getFormattedMessages(failDescriptionValues7)).containsExactlyInOrder("Expected:<expected1:expected2±<NULL>> but was:<<element/>>");
+
+        FailDescriptionValues failDescriptionValues8 = new FailDescriptionValues(Node.class, createNode("<element/>"));
+        failDescriptionValues8.addActual();
+        failDescriptionValues8.addRawExpected("expected1", "expected2", String.class);
+        failDescriptionValues8.addDelta("D!");
+        Assertions.assertThat(getFormattedMessages(failDescriptionValues8)).containsExactlyInOrder("Expected:<expected1:expected2±D!> but was:<<element/>>");
     }
 
     private List<String> getFormattedMessages(final FailDescriptionValues failDescriptionValues) throws Exception {
