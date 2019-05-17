@@ -1170,6 +1170,22 @@ public final class AssertionErrorBuilderTest extends AssertionTest {
     }
 
     /**
+     * {@link AssertionErrorBuilder} class test.
+     */
+    @Test(expected = NullPointerException.class)
+    public void addRawExpectedNullFailTest() {
+        throw AssertionErrorBuilder.getInstance(new FailDescription("message"), String.class, "actual").addActual().addRawExpected("expected", null).build();
+    }
+
+    /**
+     * {@link AssertionErrorBuilder} class test.
+     */
+    @Test(expected = NullPointerException.class)
+    public void addRawExpected2NullFailTest() {
+        throw AssertionErrorBuilder.getInstance(new FailDescription("message"), String.class, "actual").addActual().addRawExpected("expected1", "expected2", null).build();
+    }
+
+    /**
      * Test class.
      *
      * @author Dmitry Shapovalov
