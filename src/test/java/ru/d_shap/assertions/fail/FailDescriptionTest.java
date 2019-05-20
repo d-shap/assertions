@@ -40,53 +40,58 @@ public final class FailDescriptionTest extends AssertionTest {
 
     /**
      * {@link FailDescription} class test.
+     *
+     * @throws Exception exception in test.
      */
     @Test
-    public void getFullMessageTest() {
+    public void getFullMessageTest() throws Exception {
         Assertions.assertThat(new FailDescription().getFullMessage()).isEqualTo("");
     }
 
     /**
      * {@link FailDescription} class test.
+     *
+     * @throws Exception exception in test.
      */
     @Test
-    public void getFullMessageWithMessageAndArgumentsTest() {
+    public void getFullMessageWithMessageAndArgumentsTest() throws Exception {
         Assertions.assertThat(new FailDescription((String) null).getFullMessage()).isEqualTo("");
-        Assertions.assertThat(new FailDescription(null, 1).getFullMessage()).isEqualTo("");
         Assertions.assertThat(new FailDescription("").getFullMessage()).isEqualTo("");
-        Assertions.assertThat(new FailDescription("", 1).getFullMessage()).isEqualTo("");
         Assertions.assertThat(new FailDescription(" ").getFullMessage()).isEqualTo(" .");
         Assertions.assertThat(new FailDescription("message").getFullMessage()).isEqualTo("message.");
         Assertions.assertThat(new FailDescription("message: {0}", 1).getFullMessage()).isEqualTo("message: 1.");
+        Assertions.assertThat(new FailDescription("message: {0}", '1').getFullMessage()).isEqualTo("message: 1(49).");
     }
 
     /**
      * {@link FailDescription} class test.
+     *
+     * @throws Exception exception in test.
      */
     @Test
-    public void getFullMessageWithFailDescriptionEntryTest() {
+    public void getFullMessageWithFailDescriptionEntryTest() throws Exception {
         Assertions.assertThat(new FailDescription(new FailDescriptionEntry(null, new Object[]{}, false)).getFullMessage()).isEqualTo("");
-        Assertions.assertThat(new FailDescription(new FailDescriptionEntry(null, new Object[]{1}, false)).getFullMessage()).isEqualTo("");
         Assertions.assertThat(new FailDescription(new FailDescriptionEntry("", new Object[]{}, false)).getFullMessage()).isEqualTo("");
-        Assertions.assertThat(new FailDescription(new FailDescriptionEntry("", new Object[]{1}, false)).getFullMessage()).isEqualTo("");
         Assertions.assertThat(new FailDescription(new FailDescriptionEntry(" ", new Object[]{}, false)).getFullMessage()).isEqualTo(" ");
         Assertions.assertThat(new FailDescription(new FailDescriptionEntry("message", new Object[]{}, false)).getFullMessage()).isEqualTo("message");
         Assertions.assertThat(new FailDescription(new FailDescriptionEntry("message: {0}", new Object[]{1}, false)).getFullMessage()).isEqualTo("message: 1");
+        Assertions.assertThat(new FailDescription(new FailDescriptionEntry("message: {0}", new Object[]{'1'}, false)).getFullMessage()).isEqualTo("message: 1(49)");
 
         Assertions.assertThat(new FailDescription(new FailDescriptionEntry(null, new Object[]{}, true)).getFullMessage()).isEqualTo("");
-        Assertions.assertThat(new FailDescription(new FailDescriptionEntry(null, new Object[]{1}, true)).getFullMessage()).isEqualTo("");
         Assertions.assertThat(new FailDescription(new FailDescriptionEntry("", new Object[]{}, true)).getFullMessage()).isEqualTo("");
-        Assertions.assertThat(new FailDescription(new FailDescriptionEntry("", new Object[]{1}, true)).getFullMessage()).isEqualTo("");
         Assertions.assertThat(new FailDescription(new FailDescriptionEntry(" ", new Object[]{}, true)).getFullMessage()).isEqualTo(" .");
         Assertions.assertThat(new FailDescription(new FailDescriptionEntry("message", new Object[]{}, true)).getFullMessage()).isEqualTo("message.");
         Assertions.assertThat(new FailDescription(new FailDescriptionEntry("message: {0}", new Object[]{1}, true)).getFullMessage()).isEqualTo("message: 1.");
+        Assertions.assertThat(new FailDescription(new FailDescriptionEntry("message: {0}", new Object[]{'1'}, true)).getFullMessage()).isEqualTo("message: 1(49).");
     }
 
     /**
      * {@link FailDescription} class test.
+     *
+     * @throws Exception exception in test.
      */
     @Test
-    public void getFullMessageWithFailDescriptionTest() {
+    public void getFullMessageWithFailDescriptionTest() throws Exception {
         FailDescription failDescription1 = new FailDescription("message1");
         Assertions.assertThat(failDescription1.getFullMessage()).isEqualTo("message1.");
         Assertions.assertThat(new FailDescription(failDescription1).getFullMessage()).isEqualTo("message1.");
@@ -96,23 +101,29 @@ public final class FailDescriptionTest extends AssertionTest {
         Assertions.assertThat(failDescription2.getFullMessage()).isEqualTo("message1.\n\tmessage2: 2.");
         Assertions.assertThat(new FailDescription(failDescription2).getFullMessage()).isEqualTo("message1.\n\tmessage2: 2.");
         Assertions.assertThat(failDescription2.getFullMessage()).isEqualTo("message1.\n\tmessage2: 2.");
+
+        FailDescription failDescription3 = new FailDescription(failDescription1, "message2: {0}", '2');
+        Assertions.assertThat(failDescription3.getFullMessage()).isEqualTo("message1.\n\tmessage2: 2(50).");
+        Assertions.assertThat(new FailDescription(failDescription3).getFullMessage()).isEqualTo("message1.\n\tmessage2: 2(50).");
+        Assertions.assertThat(failDescription3.getFullMessage()).isEqualTo("message1.\n\tmessage2: 2(50).");
     }
 
     /**
      * {@link FailDescription} class test.
+     *
+     * @throws Exception exception in test.
      */
     @Test
-    public void getFullMessageWithFailDescriptionAndMessageAndArgumentsTest() {
+    public void getFullMessageWithFailDescriptionAndMessageAndArgumentsTest() throws Exception {
         FailDescription failDescription1 = new FailDescription("message1");
         Assertions.assertThat(failDescription1.getFullMessage()).isEqualTo("message1.");
 
         Assertions.assertThat(new FailDescription(failDescription1, (String) null).getFullMessage()).isEqualTo("message1.");
-        Assertions.assertThat(new FailDescription(failDescription1, null, 1).getFullMessage()).isEqualTo("message1.");
         Assertions.assertThat(new FailDescription(failDescription1, "").getFullMessage()).isEqualTo("message1.");
-        Assertions.assertThat(new FailDescription(failDescription1, "", 1).getFullMessage()).isEqualTo("message1.");
         Assertions.assertThat(new FailDescription(failDescription1, " ").getFullMessage()).isEqualTo("message1.\n\t .");
         Assertions.assertThat(new FailDescription(failDescription1, "message").getFullMessage()).isEqualTo("message1.\n\tmessage.");
         Assertions.assertThat(new FailDescription(failDescription1, "message: {0}", 1).getFullMessage()).isEqualTo("message1.\n\tmessage: 1.");
+        Assertions.assertThat(new FailDescription(failDescription1, "message: {0}", '1').getFullMessage()).isEqualTo("message1.\n\tmessage: 1(49).");
 
         Assertions.assertThat(failDescription1.getFullMessage()).isEqualTo("message1.");
 
@@ -120,39 +131,48 @@ public final class FailDescriptionTest extends AssertionTest {
         Assertions.assertThat(failDescription2.getFullMessage()).isEqualTo("message1.\n\tmessage2: 2.");
 
         Assertions.assertThat(new FailDescription(failDescription2, (String) null).getFullMessage()).isEqualTo("message1.\n\tmessage2: 2.");
-        Assertions.assertThat(new FailDescription(failDescription2, null, 1).getFullMessage()).isEqualTo("message1.\n\tmessage2: 2.");
         Assertions.assertThat(new FailDescription(failDescription2, "").getFullMessage()).isEqualTo("message1.\n\tmessage2: 2.");
-        Assertions.assertThat(new FailDescription(failDescription2, "", 1).getFullMessage()).isEqualTo("message1.\n\tmessage2: 2.");
         Assertions.assertThat(new FailDescription(failDescription2, " ").getFullMessage()).isEqualTo("message1.\n\tmessage2: 2.\n\t .");
         Assertions.assertThat(new FailDescription(failDescription2, "message").getFullMessage()).isEqualTo("message1.\n\tmessage2: 2.\n\tmessage.");
         Assertions.assertThat(new FailDescription(failDescription2, "message: {0}", 1).getFullMessage()).isEqualTo("message1.\n\tmessage2: 2.\n\tmessage: 1.");
 
         Assertions.assertThat(failDescription2.getFullMessage()).isEqualTo("message1.\n\tmessage2: 2.");
+
+        FailDescription failDescription3 = new FailDescription(failDescription1, "message2: {0}", '2');
+        Assertions.assertThat(failDescription3.getFullMessage()).isEqualTo("message1.\n\tmessage2: 2(50).");
+
+        Assertions.assertThat(new FailDescription(failDescription3, (String) null).getFullMessage()).isEqualTo("message1.\n\tmessage2: 2(50).");
+        Assertions.assertThat(new FailDescription(failDescription3, "").getFullMessage()).isEqualTo("message1.\n\tmessage2: 2(50).");
+        Assertions.assertThat(new FailDescription(failDescription3, " ").getFullMessage()).isEqualTo("message1.\n\tmessage2: 2(50).\n\t .");
+        Assertions.assertThat(new FailDescription(failDescription3, "message").getFullMessage()).isEqualTo("message1.\n\tmessage2: 2(50).\n\tmessage.");
+        Assertions.assertThat(new FailDescription(failDescription3, "message: {0}", 1).getFullMessage()).isEqualTo("message1.\n\tmessage2: 2(50).\n\tmessage: 1.");
+
+        Assertions.assertThat(failDescription3.getFullMessage()).isEqualTo("message1.\n\tmessage2: 2(50).");
     }
 
     /**
      * {@link FailDescription} class test.
+     *
+     * @throws Exception exception in test.
      */
     @Test
-    public void getFullMessageWithFailDescriptionAndFailDescriptionEntryTest() {
+    public void getFullMessageWithFailDescriptionAndFailDescriptionEntryTest() throws Exception {
         FailDescription failDescription1 = new FailDescription("message1");
         Assertions.assertThat(failDescription1.getFullMessage()).isEqualTo("message1.");
 
         Assertions.assertThat(new FailDescription(failDescription1, new FailDescriptionEntry(null, new Object[]{}, false)).getFullMessage()).isEqualTo("message1.");
-        Assertions.assertThat(new FailDescription(failDescription1, new FailDescriptionEntry(null, new Object[]{1}, false)).getFullMessage()).isEqualTo("message1.");
         Assertions.assertThat(new FailDescription(failDescription1, new FailDescriptionEntry("", new Object[]{}, false)).getFullMessage()).isEqualTo("message1.");
-        Assertions.assertThat(new FailDescription(failDescription1, new FailDescriptionEntry("", new Object[]{1}, false)).getFullMessage()).isEqualTo("message1.");
         Assertions.assertThat(new FailDescription(failDescription1, new FailDescriptionEntry(" ", new Object[]{}, false)).getFullMessage()).isEqualTo("message1.\n\t ");
         Assertions.assertThat(new FailDescription(failDescription1, new FailDescriptionEntry("message", new Object[]{}, false)).getFullMessage()).isEqualTo("message1.\n\tmessage");
         Assertions.assertThat(new FailDescription(failDescription1, new FailDescriptionEntry("message: {0}", new Object[]{1}, false)).getFullMessage()).isEqualTo("message1.\n\tmessage: 1");
+        Assertions.assertThat(new FailDescription(failDescription1, new FailDescriptionEntry("message: {0}", new Object[]{'1'}, false)).getFullMessage()).isEqualTo("message1.\n\tmessage: 1(49)");
 
         Assertions.assertThat(new FailDescription(failDescription1, new FailDescriptionEntry(null, new Object[]{}, true)).getFullMessage()).isEqualTo("message1.");
-        Assertions.assertThat(new FailDescription(failDescription1, new FailDescriptionEntry(null, new Object[]{1}, true)).getFullMessage()).isEqualTo("message1.");
         Assertions.assertThat(new FailDescription(failDescription1, new FailDescriptionEntry("", new Object[]{}, true)).getFullMessage()).isEqualTo("message1.");
-        Assertions.assertThat(new FailDescription(failDescription1, new FailDescriptionEntry("", new Object[]{1}, true)).getFullMessage()).isEqualTo("message1.");
         Assertions.assertThat(new FailDescription(failDescription1, new FailDescriptionEntry(" ", new Object[]{}, true)).getFullMessage()).isEqualTo("message1.\n\t .");
         Assertions.assertThat(new FailDescription(failDescription1, new FailDescriptionEntry("message", new Object[]{}, true)).getFullMessage()).isEqualTo("message1.\n\tmessage.");
         Assertions.assertThat(new FailDescription(failDescription1, new FailDescriptionEntry("message: {0}", new Object[]{1}, true)).getFullMessage()).isEqualTo("message1.\n\tmessage: 1.");
+        Assertions.assertThat(new FailDescription(failDescription1, new FailDescriptionEntry("message: {0}", new Object[]{'1'}, true)).getFullMessage()).isEqualTo("message1.\n\tmessage: 1(49).");
 
         Assertions.assertThat(failDescription1.getFullMessage()).isEqualTo("message1.");
 
@@ -160,22 +180,37 @@ public final class FailDescriptionTest extends AssertionTest {
         Assertions.assertThat(failDescription2.getFullMessage()).isEqualTo("message1.\n\tmessage2: 2.");
 
         Assertions.assertThat(new FailDescription(failDescription2, new FailDescriptionEntry(null, new Object[]{}, false)).getFullMessage()).isEqualTo("message1.\n\tmessage2: 2.");
-        Assertions.assertThat(new FailDescription(failDescription2, new FailDescriptionEntry(null, new Object[]{1}, false)).getFullMessage()).isEqualTo("message1.\n\tmessage2: 2.");
         Assertions.assertThat(new FailDescription(failDescription2, new FailDescriptionEntry("", new Object[]{}, false)).getFullMessage()).isEqualTo("message1.\n\tmessage2: 2.");
-        Assertions.assertThat(new FailDescription(failDescription2, new FailDescriptionEntry("", new Object[]{1}, false)).getFullMessage()).isEqualTo("message1.\n\tmessage2: 2.");
         Assertions.assertThat(new FailDescription(failDescription2, new FailDescriptionEntry(" ", new Object[]{}, false)).getFullMessage()).isEqualTo("message1.\n\tmessage2: 2.\n\t ");
         Assertions.assertThat(new FailDescription(failDescription2, new FailDescriptionEntry("message", new Object[]{}, false)).getFullMessage()).isEqualTo("message1.\n\tmessage2: 2.\n\tmessage");
         Assertions.assertThat(new FailDescription(failDescription2, new FailDescriptionEntry("message: {0}", new Object[]{1}, false)).getFullMessage()).isEqualTo("message1.\n\tmessage2: 2.\n\tmessage: 1");
 
         Assertions.assertThat(new FailDescription(failDescription2, new FailDescriptionEntry(null, new Object[]{}, true)).getFullMessage()).isEqualTo("message1.\n\tmessage2: 2.");
-        Assertions.assertThat(new FailDescription(failDescription2, new FailDescriptionEntry(null, new Object[]{1}, true)).getFullMessage()).isEqualTo("message1.\n\tmessage2: 2.");
         Assertions.assertThat(new FailDescription(failDescription2, new FailDescriptionEntry("", new Object[]{}, true)).getFullMessage()).isEqualTo("message1.\n\tmessage2: 2.");
-        Assertions.assertThat(new FailDescription(failDescription2, new FailDescriptionEntry("", new Object[]{1}, true)).getFullMessage()).isEqualTo("message1.\n\tmessage2: 2.");
         Assertions.assertThat(new FailDescription(failDescription2, new FailDescriptionEntry(" ", new Object[]{}, true)).getFullMessage()).isEqualTo("message1.\n\tmessage2: 2.\n\t .");
         Assertions.assertThat(new FailDescription(failDescription2, new FailDescriptionEntry("message", new Object[]{}, true)).getFullMessage()).isEqualTo("message1.\n\tmessage2: 2.\n\tmessage.");
         Assertions.assertThat(new FailDescription(failDescription2, new FailDescriptionEntry("message: {0}", new Object[]{1}, true)).getFullMessage()).isEqualTo("message1.\n\tmessage2: 2.\n\tmessage: 1.");
 
         Assertions.assertThat(failDescription2.getFullMessage()).isEqualTo("message1.\n\tmessage2: 2.");
+
+        FailDescription failDescription3 = new FailDescription(failDescription1, "message2: {0}", '2');
+        Assertions.assertThat(failDescription3.getFullMessage()).isEqualTo("message1.\n\tmessage2: 2(50).");
+
+        Assertions.assertThat(new FailDescription(failDescription3, new FailDescriptionEntry(null, new Object[]{}, false)).getFullMessage()).isEqualTo("message1.\n\tmessage2: 2(50).");
+        Assertions.assertThat(new FailDescription(failDescription3, new FailDescriptionEntry("", new Object[]{}, false)).getFullMessage()).isEqualTo("message1.\n\tmessage2: 2(50).");
+        Assertions.assertThat(new FailDescription(failDescription3, new FailDescriptionEntry(" ", new Object[]{}, false)).getFullMessage()).isEqualTo("message1.\n\tmessage2: 2(50).\n\t ");
+        Assertions.assertThat(new FailDescription(failDescription3, new FailDescriptionEntry("message", new Object[]{}, false)).getFullMessage()).isEqualTo("message1.\n\tmessage2: 2(50).\n\tmessage");
+        Assertions.assertThat(new FailDescription(failDescription3, new FailDescriptionEntry("message: {0}", new Object[]{1}, false)).getFullMessage()).isEqualTo("message1.\n\tmessage2: 2(50).\n\tmessage: 1");
+        Assertions.assertThat(new FailDescription(failDescription3, new FailDescriptionEntry("message: {0}", new Object[]{'1'}, false)).getFullMessage()).isEqualTo("message1.\n\tmessage2: 2(50).\n\tmessage: 1(49)");
+
+        Assertions.assertThat(new FailDescription(failDescription3, new FailDescriptionEntry(null, new Object[]{}, true)).getFullMessage()).isEqualTo("message1.\n\tmessage2: 2(50).");
+        Assertions.assertThat(new FailDescription(failDescription3, new FailDescriptionEntry("", new Object[]{}, true)).getFullMessage()).isEqualTo("message1.\n\tmessage2: 2(50).");
+        Assertions.assertThat(new FailDescription(failDescription3, new FailDescriptionEntry(" ", new Object[]{}, true)).getFullMessage()).isEqualTo("message1.\n\tmessage2: 2(50).\n\t .");
+        Assertions.assertThat(new FailDescription(failDescription3, new FailDescriptionEntry("message", new Object[]{}, true)).getFullMessage()).isEqualTo("message1.\n\tmessage2: 2(50).\n\tmessage.");
+        Assertions.assertThat(new FailDescription(failDescription3, new FailDescriptionEntry("message: {0}", new Object[]{1}, true)).getFullMessage()).isEqualTo("message1.\n\tmessage2: 2(50).\n\tmessage: 1.");
+        Assertions.assertThat(new FailDescription(failDescription3, new FailDescriptionEntry("message: {0}", new Object[]{'1'}, true)).getFullMessage()).isEqualTo("message1.\n\tmessage2: 2(50).\n\tmessage: 1(49).");
+
+        Assertions.assertThat(failDescription3.getFullMessage()).isEqualTo("message1.\n\tmessage2: 2(50).");
     }
 
 }
