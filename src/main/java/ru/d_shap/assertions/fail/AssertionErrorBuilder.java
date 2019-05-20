@@ -192,21 +192,33 @@ public final class AssertionErrorBuilder {
      */
     public AssertionError build() {
         try {
-            List<FailDescriptionEntry> failDescriptionEntries = new ArrayList<>(_failDescriptionEntries);
-            _failDescriptionValues.addFailDescriptionEntry(failDescriptionEntries);
-
-            FailDescription failDescription = new FailDescription(_failDescription);
-            for (FailDescriptionEntry failDescriptionEntry : failDescriptionEntries) {
-                failDescription = new FailDescription(failDescription, failDescriptionEntry);
-            }
-            String fullMessage = failDescription.getFullMessage();
-            Throwable throwable = getThrowable(_throwable);
-            return new AssertionError(fullMessage, throwable);
+            return createAssertionError();
         } catch (ConversionException ex) {
-            Throwable throwable = getThrowable(ex);
+            return createAssertionError(ex);
+        }
+    }
+
+    private AssertionError createAssertionError() throws ConversionException {
+        List<FailDescriptionEntry> failDescriptionEntries = new ArrayList<>(_failDescriptionEntries);
+        _failDescriptionValues.addFailDescriptionEntry(failDescriptionEntries);
+
+        FailDescription failDescription = new FailDescription(_failDescription);
+        for (FailDescriptionEntry failDescriptionEntry : failDescriptionEntries) {
+            failDescription = new FailDescription(failDescription, failDescriptionEntry);
+        }
+        String fullMessage = failDescription.getFullMessage();
+        Throwable throwable = getThrowable(_throwable);
+        return new AssertionError(fullMessage, throwable);
+    }
+
+    private AssertionError createAssertionError(final ConversionException conversionException) {
+        Throwable throwable = getThrowable(conversionException);
+        try {
             FailDescription failDescription = new FailDescription(_failDescription, throwable.toString());
             String fullMessage = failDescription.getFullMessage();
             return new AssertionError(fullMessage, throwable);
+        } catch (ConversionException ex) {
+            return new AssertionError(throwable.toString(), throwable);
         }
     }
 
