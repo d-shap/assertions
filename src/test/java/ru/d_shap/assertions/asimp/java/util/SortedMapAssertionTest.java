@@ -488,13 +488,13 @@ public final class SortedMapAssertionTest extends AssertionTest {
             initialize(Raw.<Character, String>sortedMapAssertion(), createTreeMap('1', "value1", '2', "value2", '3', "value3")).toHeadKeys((Character) '2').containsExactlyInOrder('2', '3');
             Assertions.fail("SortedMapAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check actual value's keys.\n\tCheck actual value's head elements up to element: 2.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2(50), 3(51)]> but was:<[1(49)]>");
+            Assertions.assertThat(ex).hasMessage("Check actual value's keys.\n\tCheck actual value's head elements up to element: 2(50).\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2(50), 3(51)]> but was:<[1(49)]>");
         }
         try {
             initialize(Raw.<Character, String>sortedMapAssertion(), createTreeMap('1', "value1", '2', "value2", '3', "value3"), "Message").toHeadKeys((Character) '2').containsExactlyInOrder('2', '3');
             Assertions.fail("SortedMapAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's keys.\n\tCheck actual value's head elements up to element: 2.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2(50), 3(51)]> but was:<[1(49)]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's keys.\n\tCheck actual value's head elements up to element: 2(50).\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2(50), 3(51)]> but was:<[1(49)]>");
         }
         try {
             initialize(Raw.<String, Character>sortedMapAssertion(), createTreeMap("key1", '1', "key2", '2', "key3", '3')).toHeadKeys("key2").containsExactlyInOrder("key2", "key3");
@@ -902,13 +902,13 @@ public final class SortedMapAssertionTest extends AssertionTest {
             initialize(Raw.<Character, String>sortedMapAssertion(), createTreeMap('1', "value1", '2', "value2", '3', "value3")).toTailKeys((Character) '3').containsExactlyInOrder('2', '3');
             Assertions.fail("SortedMapAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check actual value's keys.\n\tCheck actual value's tail elements from element: 3.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2(50), 3(51)]> but was:<[3(51)]>");
+            Assertions.assertThat(ex).hasMessage("Check actual value's keys.\n\tCheck actual value's tail elements from element: 3(51).\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2(50), 3(51)]> but was:<[3(51)]>");
         }
         try {
             initialize(Raw.<Character, String>sortedMapAssertion(), createTreeMap('1', "value1", '2', "value2", '3', "value3"), "Message").toTailKeys((Character) '3').containsExactlyInOrder('2', '3');
             Assertions.fail("SortedMapAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's keys.\n\tCheck actual value's tail elements from element: 3.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2(50), 3(51)]> but was:<[3(51)]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's keys.\n\tCheck actual value's tail elements from element: 3(51).\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2(50), 3(51)]> but was:<[3(51)]>");
         }
         try {
             initialize(Raw.<String, Character>sortedMapAssertion(), createTreeMap("key1", '1', "key2", '2', "key3", '3')).toTailKeys("key3").containsExactlyInOrder("key2", "key3");
@@ -2809,13 +2809,13 @@ public final class SortedMapAssertionTest extends AssertionTest {
             initialize(Raw.<Character, String>sortedMapAssertion(), createTreeMap('1', "value1", '2', "value2", '3', "value3")).toHeadMap((Character) '2').containsExactlyInOrder(createHashMap('2', "value2", '3', "value3"));
             Assertions.fail("SortedMapAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check actual value's head elements up to element: 2.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<{2(50)=value2, 3(51)=value3}> but was:<{1(49)=value1}>");
+            Assertions.assertThat(ex).hasMessage("Check actual value's head elements up to element: 2(50).\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<{2(50)=value2, 3(51)=value3}> but was:<{1(49)=value1}>");
         }
         try {
             initialize(Raw.<Character, String>sortedMapAssertion(), createTreeMap('1', "value1", '2', "value2", '3', "value3"), "Message").toHeadMap((Character) '2').containsExactlyInOrder(createHashMap('2', "value2", '3', "value3"));
             Assertions.fail("SortedMapAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's head elements up to element: 2.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<{2(50)=value2, 3(51)=value3}> but was:<{1(49)=value1}>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's head elements up to element: 2(50).\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<{2(50)=value2, 3(51)=value3}> but was:<{1(49)=value1}>");
         }
         try {
             initialize(Raw.<String, Character>sortedMapAssertion(), createTreeMap("key1", '1', "key2", '2', "key3", '3')).toHeadMap("key2").containsExactlyInOrder(createHashMap("key2", '2', "key3", '3'));
@@ -3248,13 +3248,13 @@ public final class SortedMapAssertionTest extends AssertionTest {
             initialize(Raw.<Character, String>sortedMapAssertion(), createTreeMap('1', "value1", '2', "value2", '3', "value3")).toTailMap((Character) '3').containsExactlyInOrder(createHashMap('2', "value2", '3', "value3"));
             Assertions.fail("SortedMapAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check actual value's tail elements from element: 3.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<{2(50)=value2, 3(51)=value3}> but was:<{3(51)=value3}>");
+            Assertions.assertThat(ex).hasMessage("Check actual value's tail elements from element: 3(51).\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<{2(50)=value2, 3(51)=value3}> but was:<{3(51)=value3}>");
         }
         try {
             initialize(Raw.<Character, String>sortedMapAssertion(), createTreeMap('1', "value1", '2', "value2", '3', "value3"), "Message").toTailMap((Character) '3').containsExactlyInOrder(createHashMap('2', "value2", '3', "value3"));
             Assertions.fail("SortedMapAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's tail elements from element: 3.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<{2(50)=value2, 3(51)=value3}> but was:<{3(51)=value3}>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's tail elements from element: 3(51).\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<{2(50)=value2, 3(51)=value3}> but was:<{3(51)=value3}>");
         }
         try {
             initialize(Raw.<String, Character>sortedMapAssertion(), createTreeMap("key1", '1', "key2", '2', "key3", '3')).toTailMap("key3").containsExactlyInOrder(createHashMap("key2", '2', "key3", '4'));
