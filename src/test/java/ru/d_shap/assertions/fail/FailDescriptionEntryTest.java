@@ -43,9 +43,11 @@ public final class FailDescriptionEntryTest extends AssertionTest {
 
     /**
      * {@link FailDescriptionEntry} class test.
+     *
+     * @throws Exception exception in test.
      */
     @Test
-    public void addFormattedMessageTest() {
+    public void addFormattedMessageTest() throws Exception {
         Assertions.assertThat(getFormattedMessages(null, new Object[]{}, false)).containsExactlyInOrder();
         Assertions.assertThat(getFormattedMessages("", new Object[]{}, false)).containsExactlyInOrder();
         Assertions.assertThat(getFormattedMessages(" ", new Object[]{}, false)).containsExactlyInOrder(" ");
@@ -72,21 +74,17 @@ public final class FailDescriptionEntryTest extends AssertionTest {
         Assertions.assertThat(getFormattedMessages("message!", new Object[]{}, true)).containsExactlyInOrder("message!");
         Assertions.assertThat(getFormattedMessages("message:", new Object[]{}, true)).containsExactlyInOrder("message:.");
 
-        Assertions.assertThat(getFormattedMessages("message {0}", new Object[]{null}, false)).containsExactlyInOrder("message null");
+        Assertions.assertThat(getFormattedMessages("message {0}", new Object[]{null}, false)).containsExactlyInOrder("message <NULL>");
         Assertions.assertThat(getFormattedMessages("{0}", new Object[]{null}, false)).containsExactlyInOrder();
 
-        Assertions.assertThat(getFormattedMessages("message {0}", new Object[]{null}, true)).containsExactlyInOrder("message null.");
+        Assertions.assertThat(getFormattedMessages("message {0}", new Object[]{null}, true)).containsExactlyInOrder("message <NULL>.");
         Assertions.assertThat(getFormattedMessages("{0}", new Object[]{null}, true)).containsExactlyInOrder();
 
-        Assertions.assertThat(getFormattedMessages(null, new Object[]{null}, false)).containsExactlyInOrder();
-        Assertions.assertThat(getFormattedMessages(null, new Object[]{1, "value"}, false)).containsExactlyInOrder();
-        Assertions.assertThat(getFormattedMessages("", new Object[]{null}, false)).containsExactlyInOrder();
-        Assertions.assertThat(getFormattedMessages("", new Object[]{1, "value"}, false)).containsExactlyInOrder();
+        Assertions.assertThat(getFormattedMessages(null, new Object[]{}, false)).containsExactlyInOrder();
+        Assertions.assertThat(getFormattedMessages("", new Object[]{}, false)).containsExactlyInOrder();
 
-        Assertions.assertThat(getFormattedMessages(null, new Object[]{null}, true)).containsExactlyInOrder();
-        Assertions.assertThat(getFormattedMessages(null, new Object[]{1, "value"}, true)).containsExactlyInOrder();
-        Assertions.assertThat(getFormattedMessages("", new Object[]{null}, true)).containsExactlyInOrder();
-        Assertions.assertThat(getFormattedMessages("", new Object[]{1, "value"}, true)).containsExactlyInOrder();
+        Assertions.assertThat(getFormattedMessages(null, new Object[]{}, true)).containsExactlyInOrder();
+        Assertions.assertThat(getFormattedMessages("", new Object[]{}, true)).containsExactlyInOrder();
 
         Assertions.assertThat(getFormattedMessages("message {1} : {0}", new Object[]{1, "value"}, false)).containsExactlyInOrder("message value : 1");
         Assertions.assertThat(getFormattedMessages("message '{1}' : '{0}'", new Object[]{}, false)).containsExactlyInOrder("message {1} : {0}");
@@ -99,45 +97,65 @@ public final class FailDescriptionEntryTest extends AssertionTest {
 
     /**
      * {@link FailDescriptionEntry} class test.
+     *
+     * @throws Exception exception in test.
      */
     @Test(expected = NullPointerException.class)
-    public void nullArgumentsFailTest() {
+    public void nullArgumentsNullMessageFailTest() throws Exception {
+        new FailDescriptionEntry(null, null, false);
+    }
+
+    /**
+     * {@link FailDescriptionEntry} class test.
+     *
+     * @throws Exception exception in test.
+     */
+    @Test(expected = NullPointerException.class)
+    public void nullArgumentsEmptyMessageFailTest() throws Exception {
         new FailDescriptionEntry("", null, false);
     }
 
     /**
      * {@link FailDescriptionEntry} class test.
+     *
+     * @throws Exception exception in test.
      */
     @Test(expected = ArrayIndexOutOfBoundsException.class)
-    public void wrongArgumentCount0FailTest() {
+    public void wrongArgumentCount0FailTest() throws Exception {
         new FailDescriptionEntry("{0}", new Object[]{}, false);
     }
 
     /**
      * {@link FailDescriptionEntry} class test.
+     *
+     * @throws Exception exception in test.
      */
     @Test(expected = ArrayIndexOutOfBoundsException.class)
-    public void wrongArgumentCount1FailTest() {
+    public void wrongArgumentCount1FailTest() throws Exception {
         new FailDescriptionEntry("'{0}'", new Object[]{null}, false);
     }
 
     /**
      * {@link FailDescriptionEntry} class test.
+     *
+     * @throws Exception exception in test.
      */
     @Test(expected = ArrayIndexOutOfBoundsException.class)
-    public void wrongArgumentCount2FailTest() {
+    public void wrongArgumentCount2FailTest() throws Exception {
         new FailDescriptionEntry("{0}", new Object[]{1, "value"}, false);
     }
 
     /**
      * {@link FailDescriptionEntry} class test.
+     *
+     * @throws Exception exception in test.
      */
     @Test(expected = IllegalArgumentException.class)
-    public void convertArgumentToStringFailTest() {
+    public void convertArgumentToStringFailTest() throws Exception {
         getFormattedMessages("{0,number,integer}", new Object[]{1}, true);
     }
 
-    private List<String> getFormattedMessages(final String message, final Object[] arguments, final boolean checkLastSymbol) {
+    private List<String> getFormattedMessages(final String message, final Object[] arguments, final boolean checkLastSymbol) throws Exception {
         FailDescriptionEntry failDescriptionEntry = new FailDescriptionEntry(message, arguments, checkLastSymbol);
         List<String> formattedMessages = new ArrayList<>();
         failDescriptionEntry.addFormattedMessage(formattedMessages);
