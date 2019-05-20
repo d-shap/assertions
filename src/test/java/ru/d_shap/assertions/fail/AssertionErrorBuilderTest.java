@@ -27,6 +27,8 @@ import org.junit.Test;
 import ru.d_shap.assertions.AssertionTest;
 import ru.d_shap.assertions.Assertions;
 import ru.d_shap.assertions.PrivateAccessor;
+import ru.d_shap.assertions.converter.AsStringConverter;
+import ru.d_shap.assertions.converter.AsStringConverterProvider;
 import ru.d_shap.assertions.converter.ConversionException;
 import ru.d_shap.assertions.converter.ValueConverter;
 import ru.d_shap.assertions.converter.ValueConverterProvider;
@@ -1134,8 +1136,10 @@ public final class AssertionErrorBuilderTest extends AssertionTest {
     @Test
     @SuppressWarnings("unchecked")
     public void conversionExceptionTest() throws Exception {
-        List<ValueConverterProvider> converterProviders = (List<ValueConverterProvider>) PrivateAccessor.getFieldValue(ValueConverter.class, null, "CONVERTER_PROVIDERS");
-        converterProviders.add(new ErrorTypeConverter());
+        List<ValueConverterProvider> valueConverterProviders = (List<ValueConverterProvider>) PrivateAccessor.getFieldValue(ValueConverter.class, null, "CONVERTER_PROVIDERS");
+        valueConverterProviders.add(new ErrorTypeValueConverter());
+        List<AsStringConverterProvider> asStringConverterProviders = (List<AsStringConverterProvider>) PrivateAccessor.getFieldValue(AsStringConverter.class, null, "CONVERTER_PROVIDERS");
+        asStringConverterProviders.add(new ErrorTypeAsStringConverter());
 
         Assertions.assertThat(AssertionErrorBuilder.getInstance().addActual().addExpected(new ErrorType()).build()).isInstanceOf(AssertionError.class);
         Assertions.assertThat(AssertionErrorBuilder.getInstance().addActual().addExpected(new ErrorType()).build()).hasMessage("");
@@ -1167,6 +1171,16 @@ public final class AssertionErrorBuilderTest extends AssertionTest {
         Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), String.class, "actual").addActual().addExpected(new ErrorType()).build()).hasMessage("message.\n\tjava.io.IOException: test conversion exception.");
         Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), String.class, "actual").addActual().addExpected(new ErrorType()).build()).hasCause(IOException.class);
         Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), String.class, "actual").addActual().addExpected(new ErrorType()).build()).hasCauseMessage("test conversion exception");
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription(new FailDescription("message"), new FailDescriptionEntry("Error: {0}", new Object[]{"error!!!"}, false)), String.class, "actual").addActual().addExpected(new ErrorType()).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription(new FailDescription("message"), new FailDescriptionEntry("Error: {0}", new Object[]{"error!!!"}, false)), String.class, "actual").addActual().addExpected(new ErrorType()).build()).hasMessage("message.\n\tError: error!!!\n\tjava.io.IOException: test conversion exception.");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription(new FailDescription("message"), new FailDescriptionEntry("Error: {0}", new Object[]{"error!!!"}, false)), String.class, "actual").addActual().addExpected(new ErrorType()).build()).hasCause(IOException.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription(new FailDescription("message"), new FailDescriptionEntry("Error: {0}", new Object[]{"error!!!"}, false)), String.class, "actual").addActual().addExpected(new ErrorType()).build()).hasCauseMessage("test conversion exception");
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription(new FailDescription("message"), new FailDescriptionEntry("Error: {0}", new Object[]{new ErrorType()}, false)), String.class, "actual").addActual().addExpected(new ErrorType()).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription(new FailDescription("message"), new FailDescriptionEntry("Error: {0}", new Object[]{new ErrorType()}, false)), String.class, "actual").addActual().addExpected(new ErrorType()).build()).hasMessage("java.io.IOException: test conversion exception");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription(new FailDescription("message"), new FailDescriptionEntry("Error: {0}", new Object[]{new ErrorType()}, false)), String.class, "actual").addActual().addExpected(new ErrorType()).build()).hasCause(IOException.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription(new FailDescription("message"), new FailDescriptionEntry("Error: {0}", new Object[]{new ErrorType()}, false)), String.class, "actual").addActual().addExpected(new ErrorType()).build()).hasCauseMessage("test conversion exception");
     }
 
     /**
@@ -1203,9 +1217,9 @@ public final class AssertionErrorBuilderTest extends AssertionTest {
      *
      * @author Dmitry Shapovalov
      */
-    private static final class ErrorTypeConverter implements ValueConverterProvider {
+    private static final class ErrorTypeValueConverter implements ValueConverterProvider {
 
-        ErrorTypeConverter() {
+        ErrorTypeValueConverter() {
             super();
         }
 
@@ -1221,6 +1235,29 @@ public final class AssertionErrorBuilderTest extends AssertionTest {
 
         @Override
         public Object convert(final Object value, final Object... arguments) throws ConversionException {
+            throw new ConversionException(new IOException("test conversion exception"));
+        }
+
+    }
+
+    /**
+     * Test class.
+     *
+     * @author Dmitry Shapovalov
+     */
+    private static final class ErrorTypeAsStringConverter implements AsStringConverterProvider {
+
+        ErrorTypeAsStringConverter() {
+            super();
+        }
+
+        @Override
+        public Class<?> getValueClass() {
+            return ErrorType.class;
+        }
+
+        @Override
+        public String asString(final Object value) throws ConversionException {
             throw new ConversionException(new IOException("test conversion exception"));
         }
 
