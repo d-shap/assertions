@@ -61,6 +61,17 @@ public final class AssertionErrorBuilder {
      * Get the instance of the assertion error builder.
      *
      * @param failDescription the fail description.
+     *
+     * @return the instance of the assertion error builder.
+     */
+    public static AssertionErrorBuilder getInstance(final FailDescription failDescription) {
+        return new AssertionErrorBuilder(failDescription, null, null);
+    }
+
+    /**
+     * Get the instance of the assertion error builder.
+     *
+     * @param failDescription the fail description.
      * @param actualClass     the actual value's class (as specified in the assertion).
      * @param actual          the actual value.
      *
