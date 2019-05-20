@@ -24,6 +24,8 @@ import java.text.MessageFormat;
 import java.util.List;
 
 import ru.d_shap.assertions.Messages;
+import ru.d_shap.assertions.converter.AsStringConverter;
+import ru.d_shap.assertions.converter.ConversionException;
 
 /**
  * Fail description entry.
@@ -34,59 +36,63 @@ final class FailDescriptionEntry {
 
     private final MessageFormat _messageFormat;
 
+    private final boolean _isSimpleMessage;
+
     private final Object[] _arguments;
 
     private final boolean _checkLastSymbol;
 
     FailDescriptionEntry(final String message, final Object[] arguments, final boolean checkLastSymbol) {
         super();
-        String[] stringArguments = getStringArguments(arguments);
-        _messageFormat = getMessageFormat(message, stringArguments);
-        _arguments = stringArguments;
+        _messageFormat = getMessageFormat(message, arguments);
+        _isSimpleMessage = Messages.SIMPLE_MESSAGE.equals(message);
+        _arguments = arguments;
         _checkLastSymbol = checkLastSymbol;
     }
 
-    private String[] getStringArguments(final Object[] arguments) {
-        String[] stringArguments = new String[arguments.length];
-        for (int i = 0; i < arguments.length; i++) {
-            if (arguments[i] == null) {
-                stringArguments[i] = null;
-            } else {
-                stringArguments[i] = String.valueOf(arguments[i]);
-            }
-        }
-        return stringArguments;
-    }
-
-    private MessageFormat getMessageFormat(final String message, final String[] stringArguments) {
+    private MessageFormat getMessageFormat(final String message, final Object[] arguments) {
+        MessageFormat messageFormat;
+        int formatLength;
         if (isEmptyString(message)) {
-            return null;
-        }
-        MessageFormat messageFormat = new MessageFormat(message);
-        Format[] formats = messageFormat.getFormatsByArgumentIndex();
-        if (formats.length != stringArguments.length) {
-            throw new ArrayIndexOutOfBoundsException(stringArguments.length);
-        }
-        if (Messages.SIMPLE_MESSAGE.equals(message) && isEmptyString(stringArguments[0])) {
-            return null;
+            messageFormat = null;
+            formatLength = 0;
         } else {
-            return messageFormat;
+            messageFormat = new MessageFormat(message);
+            Format[] formats = messageFormat.getFormatsByArgumentIndex();
+            formatLength = formats.length;
         }
+        if (formatLength != arguments.length) {
+            throw new ArrayIndexOutOfBoundsException(arguments.length);
+        }
+        return messageFormat;
     }
 
     private boolean isEmptyString(final String str) {
         return str == null || "".equals(str);
     }
 
-    void addFormattedMessage(final List<String> formattedMessages) {
+    void addFormattedMessage(final List<String> formattedMessages) throws ConversionException {
         if (_messageFormat == null) {
             return;
         }
-        String formattedMessage = _messageFormat.format(_arguments);
+        String[] stringArguments = getStringArguments(_arguments);
+        if (_isSimpleMessage && (_arguments[0] == null || isEmptyString(stringArguments[0]))) {
+            return;
+        }
+
+        String formattedMessage = _messageFormat.format(stringArguments);
         if (_checkLastSymbol && !formattedMessage.endsWith(".") && !formattedMessage.endsWith("?") && !formattedMessage.endsWith("!")) {
             formattedMessage += ".";
         }
         formattedMessages.add(formattedMessage);
+    }
+
+    private String[] getStringArguments(final Object[] arguments) throws ConversionException {
+        String[] stringArguments = new String[arguments.length];
+        for (int i = 0; i < arguments.length; i++) {
+            stringArguments[i] = AsStringConverter.asString(arguments[i]);
+        }
+        return stringArguments;
     }
 
 }
