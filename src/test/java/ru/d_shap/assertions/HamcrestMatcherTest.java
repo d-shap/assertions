@@ -19,11 +19,17 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions;
 
+import java.io.IOException;
+import java.util.List;
+
 import org.hamcrest.Description;
 import org.hamcrest.Matchers;
 import org.hamcrest.TypeSafeMatcher;
 import org.junit.Test;
 
+import ru.d_shap.assertions.converter.AsStringConverter;
+import ru.d_shap.assertions.converter.AsStringConverterProvider;
+import ru.d_shap.assertions.converter.ConversionException;
 import ru.d_shap.assertions.fail.FailDescription;
 
 /**
@@ -136,6 +142,43 @@ public final class HamcrestMatcherTest extends AssertionTest {
     }
 
     /**
+     * {@link HamcrestMatcher} class test.
+     *
+     * @throws Exception exception in test.
+     */
+    @Test
+    @SuppressWarnings("unchecked")
+    public void conversionExceptionTest() throws Exception {
+        List<AsStringConverterProvider> asStringConverterProviders = (List<AsStringConverterProvider>) PrivateAccessor.getFieldValue(AsStringConverter.class, null, "CONVERTER_PROVIDERS");
+        asStringConverterProviders.add(new ErrorTypeAsStringConverter());
+
+        try {
+            HamcrestMatcher.matcherAssertion(10, Matchers.equalTo(11), "message: {0}", new ErrorType());
+            Assertions.fail("HamcrestMatcher test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("java.io.IOException: test conversion exception.");
+        }
+        try {
+            HamcrestMatcher.matcherAssertion(10, Matchers.equalTo(11), new FailDescription("message: {0}", new ErrorType()));
+            Assertions.fail("HamcrestMatcher test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("java.io.IOException: test conversion exception");
+        }
+        try {
+            HamcrestMatcher.matcherAssertion(10, Matchers.equalTo(11), new FailDescription("message1"), "message: {0}", new ErrorType());
+            Assertions.fail("HamcrestMatcher test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("message1.\n\tjava.io.IOException: test conversion exception.");
+        }
+        try {
+            HamcrestMatcher.matcherAssertion(10, Matchers.equalTo(11), new FailDescription("message: {0}", new ErrorType()), "message: {0}", new ErrorType());
+            Assertions.fail("HamcrestMatcher test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("java.io.IOException: test conversion exception");
+        }
+    }
+
+    /**
      * Test class.
      *
      * @author Dmitry Shapovalov
@@ -239,6 +282,42 @@ public final class HamcrestMatcherTest extends AssertionTest {
         @Override
         public void describeTo(final Description description) {
 
+        }
+
+    }
+
+    /**
+     * Test class.
+     *
+     * @author Dmitry Shapovalov
+     */
+    private static final class ErrorType {
+
+        ErrorType() {
+            super();
+        }
+
+    }
+
+    /**
+     * Test class.
+     *
+     * @author Dmitry Shapovalov
+     */
+    private static final class ErrorTypeAsStringConverter implements AsStringConverterProvider {
+
+        ErrorTypeAsStringConverter() {
+            super();
+        }
+
+        @Override
+        public Class<?> getValueClass() {
+            return ErrorType.class;
+        }
+
+        @Override
+        public String asString(final Object value) throws ConversionException {
+            throw new ConversionException(new IOException("test conversion exception"));
         }
 
     }
