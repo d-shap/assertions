@@ -22,6 +22,8 @@ package ru.d_shap.assertions;
 import org.hamcrest.Matcher;
 import org.hamcrest.MatcherAssert;
 
+import ru.d_shap.assertions.converter.ConversionException;
+import ru.d_shap.assertions.fail.AssertionErrorBuilder;
 import ru.d_shap.assertions.fail.FailDescription;
 
 /**
@@ -40,18 +42,30 @@ final class HamcrestMatcher {
     }
 
     static <W, U extends W> void matcherAssertion(final U actual, final Matcher<W> matcher, final String message, final Object... arguments) {
-        String fullMessage = new FailDescription(message, arguments).getFullMessage();
-        MatcherAssert.assertThat(fullMessage, actual, matcher);
+        try {
+            String fullMessage = new FailDescription(message, arguments).getFullMessage();
+            MatcherAssert.assertThat(fullMessage, actual, matcher);
+        } catch (ConversionException ex) {
+            throw AssertionErrorBuilder.getInstance().addMessage(message, arguments).addMessage(ex).addThrowable(ex).build();
+        }
     }
 
     static <W, U extends W> void matcherAssertion(final U actual, final Matcher<W> matcher, final FailDescription failDescription) {
-        String fullMessage = failDescription.getFullMessage();
-        MatcherAssert.assertThat(fullMessage, actual, matcher);
+        try {
+            String fullMessage = failDescription.getFullMessage();
+            MatcherAssert.assertThat(fullMessage, actual, matcher);
+        } catch (ConversionException ex) {
+            throw AssertionErrorBuilder.getInstance(failDescription).addMessage(ex).addThrowable(ex).build();
+        }
     }
 
     static <W, U extends W> void matcherAssertion(final U actual, final Matcher<W> matcher, final FailDescription failDescription, final String message, final Object... arguments) {
-        String fullMessage = new FailDescription(failDescription, message, arguments).getFullMessage();
-        MatcherAssert.assertThat(fullMessage, actual, matcher);
+        try {
+            String fullMessage = new FailDescription(failDescription, message, arguments).getFullMessage();
+            MatcherAssert.assertThat(fullMessage, actual, matcher);
+        } catch (ConversionException ex) {
+            throw AssertionErrorBuilder.getInstance(failDescription).addMessage(message, arguments).addMessage(ex).addThrowable(ex).build();
+        }
     }
 
 }
