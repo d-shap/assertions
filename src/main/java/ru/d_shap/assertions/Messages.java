@@ -385,6 +385,10 @@ public final class Messages {
 
             public static final String HAS_NOT_ATTRIBUTE = "Actual value should not have the expected attribute.";
 
+            public static final String HAS_CHILD_NODES = "Actual value should have the child nodes.";
+
+            public static final String HAS_NOT_CHILD_NODES = "Actual value should not have the child nodes.";
+
             private Actual() {
                 super();
             }
