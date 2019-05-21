@@ -3028,6 +3028,86 @@ public final class ElementAssertionTest extends AssertionTest {
      * @throws Exception exception in test.
      */
     @Test
+    public void hasChildNodesTest() throws Exception {
+        // TODO
+    }
+
+    /**
+     * {@link ElementAssertion} class test.
+     *
+     * @throws Exception exception in test.
+     */
+    @Test
+    public void hasNotChildNodesTest() throws Exception {
+        // TODO
+    }
+
+    /**
+     * {@link ElementAssertion} class test.
+     *
+     * @throws Exception exception in test.
+     */
+    @Test
+    public void toChildNodesCountTest() throws Exception {
+        // TODO
+    }
+
+    /**
+     * {@link ElementAssertion} class test.
+     *
+     * @throws Exception exception in test.
+     */
+    @Test
+    public void toChildNodesCountMatcherTest() throws Exception {
+        // TODO
+    }
+
+    /**
+     * {@link ElementAssertion} class test.
+     *
+     * @throws Exception exception in test.
+     */
+    @Test
+    public void hasChildNodesCountTest() throws Exception {
+        // TODO
+    }
+
+    /**
+     * {@link ElementAssertion} class test.
+     *
+     * @throws Exception exception in test.
+     */
+    @Test
+    public void toChildElementsCountTest() throws Exception {
+        // TODO
+    }
+
+    /**
+     * {@link ElementAssertion} class test.
+     *
+     * @throws Exception exception in test.
+     */
+    @Test
+    public void toChildElementsCountMatcherTest() throws Exception {
+        // TODO
+    }
+
+    /**
+     * {@link ElementAssertion} class test.
+     *
+     * @throws Exception exception in test.
+     */
+    @Test
+    public void hasChildElementsCountTest() throws Exception {
+        // TODO
+    }
+
+    /**
+     * {@link ElementAssertion} class test.
+     *
+     * @throws Exception exception in test.
+     */
+    @Test
     public void isNullTest() throws Exception {
         initialize(Raw.elementAssertion(), null).isNull();
 
