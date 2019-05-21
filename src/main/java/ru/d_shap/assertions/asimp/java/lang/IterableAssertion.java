@@ -345,7 +345,7 @@ public class IterableAssertion<E> extends ReferenceAssertion<Iterable<E>> {
     }
 
     /**
-     * Make assertion about the actual value size.
+     * Make assertion about the actual value's size.
      *
      * @return the assertion.
      */
