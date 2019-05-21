@@ -3029,7 +3029,54 @@ public final class ElementAssertionTest extends AssertionTest {
      */
     @Test
     public void hasChildNodesTest() throws Exception {
-        // TODO
+        initialize(Raw.elementAssertion(), createElement("<element> </element>")).hasChildNodes();
+        initialize(Raw.elementAssertion(), createElement("<element>text</element>")).hasChildNodes();
+        initialize(Raw.elementAssertion(), createElement("<element><![CDATA[text1]]>text2<![CDATA[text3]]></element>")).hasChildNodes();
+        initialize(Raw.elementAssertion(), createElement("<element><child/><child/><child/></element>")).hasChildNodes();
+        initialize(Raw.elementAssertion(), createElement("<element><?procinstr?></element>")).hasChildNodes();
+
+        try {
+            Raw.elementAssertion().hasChildNodes();
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.elementAssertion(), null).hasChildNodes();
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.elementAssertion(), null, "Message").hasChildNodes();
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.elementAssertion(), createElement("<element/>")).hasChildNodes();
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should have the child nodes.\n\tActual:<<element/>>");
+        }
+        try {
+            initialize(Raw.elementAssertion(), createElement("<element/>"), "Message").hasChildNodes();
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should have the child nodes.\n\tActual:<<element/>>");
+        }
+        try {
+            initialize(Raw.elementAssertion(), createElement("<element></element>")).hasChildNodes();
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should have the child nodes.\n\tActual:<<element/>>");
+        }
+        try {
+            initialize(Raw.elementAssertion(), createElement("<element></element>"), "Message").hasChildNodes();
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should have the child nodes.\n\tActual:<<element/>>");
+        }
     }
 
     /**
@@ -3039,7 +3086,65 @@ public final class ElementAssertionTest extends AssertionTest {
      */
     @Test
     public void hasNotChildNodesTest() throws Exception {
-        // TODO
+        initialize(Raw.elementAssertion(), createElement("<element/>")).hasNotChildNodes();
+        initialize(Raw.elementAssertion(), createElement("<element attr='val'/>")).hasNotChildNodes();
+        initialize(Raw.elementAssertion(), createElement("<element></element>")).hasNotChildNodes();
+        initialize(Raw.elementAssertion(), createElement("<element attr='val'></element>")).hasNotChildNodes();
+
+        try {
+            Raw.elementAssertion().hasNotChildNodes();
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.elementAssertion(), null).hasNotChildNodes();
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.elementAssertion(), null, "Message").hasNotChildNodes();
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.elementAssertion(), createElement("<element>text</element>")).hasNotChildNodes();
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not have the child nodes.\n\tActual:<<element>text</element>>");
+        }
+        try {
+            initialize(Raw.elementAssertion(), createElement("<element>text</element>"), "Message").hasNotChildNodes();
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not have the child nodes.\n\tActual:<<element>text</element>>");
+        }
+        try {
+            initialize(Raw.elementAssertion(), createElement("<element><child/><child/><child/></element>")).hasNotChildNodes();
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not have the child nodes.\n\tActual:<<element><child/><child/><child/></element>>");
+        }
+        try {
+            initialize(Raw.elementAssertion(), createElement("<element><child/><child/><child/></element>"), "Message").hasNotChildNodes();
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not have the child nodes.\n\tActual:<<element><child/><child/><child/></element>>");
+        }
+        try {
+            initialize(Raw.elementAssertion(), createElement("<element><?procinstr?></element>")).hasNotChildNodes();
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not have the child nodes.\n\tActual:<<element><?procinstr?></element>>");
+        }
+        try {
+            initialize(Raw.elementAssertion(), createElement("<element><?procinstr?></element>"), "Message").hasNotChildNodes();
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not have the child nodes.\n\tActual:<<element><?procinstr?></element>>");
+        }
     }
 
     /**
