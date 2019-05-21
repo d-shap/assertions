@@ -24,11 +24,14 @@ import javax.xml.namespace.QName;
 import org.hamcrest.Matcher;
 import org.w3c.dom.Attr;
 import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
 import ru.d_shap.assertions.Messages;
 import ru.d_shap.assertions.Raw;
 import ru.d_shap.assertions.asimp.ReferenceAssertion;
 import ru.d_shap.assertions.asimp.java.lang.CharSequenceAssertion;
+import ru.d_shap.assertions.asimp.primitive.IntAssertion;
 import ru.d_shap.assertions.converter.ConversionExceptionHolder;
 
 /**
@@ -397,6 +400,98 @@ public class ElementAssertion extends ReferenceAssertion<Element> {
         if (getActual().getAttributeNodeNS(namespaceURI, localName) != null) {
             toAttribute(namespaceURI, localName).toValue().isNotEqualTo(value);
         }
+    }
+
+    /**
+     * Check if the actual value has child nodes.
+     */
+    public final void hasChildNodes() {
+        checkActualIsNotNull();
+        if (!getActual().hasChildNodes()) {
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.HAS_CHILD_NODES).addActual().build();
+        }
+    }
+
+    /**
+     * Check if the actual value has NOT child nodes.
+     */
+    public final void hasNotChildNodes() {
+        checkActualIsNotNull();
+        if (getActual().hasChildNodes()) {
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.HAS_NOT_CHILD_NODES).addActual().build();
+        }
+    }
+
+    /**
+     * Make assertion about the actual value's child nodes count.
+     *
+     * @return the assertion.
+     */
+    public final IntAssertion toChildNodesCount() {
+        checkActualIsNotNull();
+        return initializeAssertion(Raw.intAssertion(), getActual().getChildNodes().getLength(), Messages.Check.CHILD_NODES_COUNT);
+    }
+
+    /**
+     * Make assertion about the actual value's child nodes count.
+     *
+     * @param matcher the hamcrest matcher.
+     */
+    public final void toChildNodesCount(final Matcher<Integer> matcher) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(matcher, "matcher");
+        matcherAssertion(getActual().getChildNodes().getLength(), matcher, Messages.Check.CHILD_NODES_COUNT);
+    }
+
+    /**
+     * Check if the actual value's child nodes count is equal to the expected count.
+     *
+     * @param expected the expected count.
+     */
+    public final void hasChildNodesCount(final int expected) {
+        toChildNodesCount().isEqualTo(expected);
+    }
+
+    /**
+     * Make assertion about the actual value's child elements count.
+     *
+     * @return the assertion.
+     */
+    public final IntAssertion toChildElementsCount() {
+        checkActualIsNotNull();
+        return initializeAssertion(Raw.intAssertion(), getChildElementsCount(), Messages.Check.CHILD_ELEMENTS_COUNT);
+    }
+
+    /**
+     * Make assertion about the actual value's child elements count.
+     *
+     * @param matcher the expected count.
+     */
+    public final void toChildElementsCount(final Matcher<Integer> matcher) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(matcher, "matcher");
+        matcherAssertion(getChildElementsCount(), matcher, Messages.Check.CHILD_ELEMENTS_COUNT);
+    }
+
+    private int getChildElementsCount() {
+        NodeList nodeList = getActual().getChildNodes();
+        int count = 0;
+        for (int i = 0; i < nodeList.getLength(); i++) {
+            Node node = nodeList.item(i);
+            if (node instanceof Element) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    /**
+     * Check if the actual value's child elements count is equal to the expected count.
+     *
+     * @param expected the expected count.
+     */
+    public final void hasChildElementsCount(final int expected) {
+        toChildElementsCount().isEqualTo(expected);
     }
 
     private NodeAssertion createNodeAssertion() {
