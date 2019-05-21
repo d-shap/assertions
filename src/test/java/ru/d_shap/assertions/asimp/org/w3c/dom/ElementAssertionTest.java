@@ -19,8 +19,12 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.asimp.org.w3c.dom;
 
+import org.hamcrest.Description;
+import org.hamcrest.Matcher;
 import org.hamcrest.Matchers;
+import org.hamcrest.TypeSafeMatcher;
 import org.junit.Test;
+import org.w3c.dom.Attr;
 import org.w3c.dom.Element;
 
 import ru.d_shap.assertions.AssertionTest;
@@ -2238,7 +2242,126 @@ public final class ElementAssertionTest extends AssertionTest {
      */
     @Test
     public void toAttributeLocalNameMatcherTest() throws Exception {
-        // TODO
+        initialize(Raw.elementAssertion(), createElement("<element attr='val'/>")).toAttribute("attr", new MatcherAttributeValue("val"));
+        initialize(Raw.elementAssertion(), createElement("<element attr1='val1' attr2='val2'/>")).toAttribute("attr1", new MatcherAttributeValue("val1"));
+        initialize(Raw.elementAssertion(), createElement("<element attr1='val1' attr2='val2'/>")).toAttribute("attr2", new MatcherAttributeValue("val2"));
+        initialize(Raw.elementAssertion(), createElement("<element xmlns='aaa'/>")).toAttribute("xmlns", new MatcherAttributeValue("aaa"));
+        initialize(Raw.elementAssertion(), createElement("<ns1:element xmlns:ns1='aaa'/>")).toAttribute("xmlns:ns1", new MatcherAttributeValue("aaa"));
+
+        try {
+            Raw.elementAssertion().toAttribute("", new MatcherAttributeValue(""));
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.elementAssertion(), null).toAttribute("", new MatcherAttributeValue(""));
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.elementAssertion(), null, "Message").toAttribute("", new MatcherAttributeValue(""));
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.elementAssertion(), null).toAttribute(null, new MatcherAttributeValue(""));
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.elementAssertion(), null, "Message").toAttribute(null, new MatcherAttributeValue(""));
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.elementAssertion(), createElement("<element/>")).toAttribute(null, new MatcherAttributeValue(""));
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: localName.");
+        }
+        try {
+            initialize(Raw.elementAssertion(), createElement("<element/>"), "Message").toAttribute(null, new MatcherAttributeValue(""));
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: localName.");
+        }
+        try {
+            initialize(Raw.elementAssertion(), createElement("<element/>")).toAttribute(null, (Matcher<Attr>) null);
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: localName.");
+        }
+        try {
+            initialize(Raw.elementAssertion(), createElement("<element/>"), "Message").toAttribute(null, (Matcher<Attr>) null);
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: localName.");
+        }
+        try {
+            initialize(Raw.elementAssertion(), createElement("<element/>")).toAttribute("", (Matcher<Attr>) null);
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: matcher.");
+        }
+        try {
+            initialize(Raw.elementAssertion(), createElement("<element/>"), "Message").toAttribute("", (Matcher<Attr>) null);
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: matcher.");
+        }
+        try {
+            initialize(Raw.elementAssertion(), createElement("<element/>")).toAttribute("attr", new MatcherAttributeValue(""));
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should have the expected attribute.\n\tExpected:<attr> but was:<<element/>>");
+        }
+        try {
+            initialize(Raw.elementAssertion(), createElement("<element/>"), "Message").toAttribute("attr", new MatcherAttributeValue(""));
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should have the expected attribute.\n\tExpected:<attr> but was:<<element/>>");
+        }
+        try {
+            initialize(Raw.elementAssertion(), createElement("<element attr1='val'/>")).toAttribute("attr2", new MatcherAttributeValue(""));
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should have the expected attribute.\n\tExpected:<attr2> but was:<<element attr1=\"val\"/>>");
+        }
+        try {
+            initialize(Raw.elementAssertion(), createElement("<element attr1='val'/>"), "Message").toAttribute("attr2", new MatcherAttributeValue(""));
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should have the expected attribute.\n\tExpected:<attr2> but was:<<element attr1=\"val\"/>>");
+        }
+        try {
+            initialize(Raw.elementAssertion(), createElement("<element xmlns:ns1='aaa' ns1:attr='val'/>")).toAttribute("attr", new MatcherAttributeValue(""));
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should have the expected attribute.\n\tExpected:<attr> but was:<<element xmlns:ns1=\"aaa\" ns1:attr=\"val\"/>>");
+        }
+        try {
+            initialize(Raw.elementAssertion(), createElement("<element xmlns:ns1='aaa' ns1:attr='val'/>"), "Message").toAttribute("attr", new MatcherAttributeValue(""));
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should have the expected attribute.\n\tExpected:<attr> but was:<<element xmlns:ns1=\"aaa\" ns1:attr=\"val\"/>>");
+        }
+        try {
+            initialize(Raw.elementAssertion(), createElement("<element attr='val1'/>")).toAttribute("attr", new MatcherAttributeValue("val2"));
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's attribute: attr.\nExpected: val2\n     but: was <attr=\"val1\">");
+        }
+        try {
+            initialize(Raw.elementAssertion(), createElement("<element attr='val1'/>"), "Message").toAttribute("attr", new MatcherAttributeValue("val2"));
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's attribute: attr.\nExpected: val2\n     but: was <attr=\"val1\">");
+        }
     }
 
     /**
@@ -2360,6 +2483,32 @@ public final class ElementAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be different.\n\tActual:<<element/>>");
         }
+    }
+
+    /**
+     * Test class.
+     *
+     * @author Dmitry Shapovalov
+     */
+    private static final class MatcherAttributeValue extends TypeSafeMatcher<Attr> {
+
+        private final String _value;
+
+        MatcherAttributeValue(final String value) {
+            super();
+            _value = value;
+        }
+
+        @Override
+        protected boolean matchesSafely(final Attr attr) {
+            return attr.getValue().equals(_value);
+        }
+
+        @Override
+        public void describeTo(final Description description) {
+            description.appendText(_value);
+        }
+
     }
 
 }
