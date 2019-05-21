@@ -123,6 +123,10 @@ public final class Messages {
 
         public static final String DATA = "Check actual value''s data.";
 
+        public static final String CHILD_NODES_COUNT = "Check actual value''s child nodes count.";
+
+        public static final String CHILD_ELEMENTS_COUNT = "Check actual value''s child elements count.";
+
         private Check() {
             super();
         }
