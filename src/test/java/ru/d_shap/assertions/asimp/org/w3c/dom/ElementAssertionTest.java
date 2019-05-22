@@ -3154,7 +3154,47 @@ public final class ElementAssertionTest extends AssertionTest {
      */
     @Test
     public void toChildNodesCountTest() throws Exception {
-        // TODO
+        initialize(Raw.elementAssertion(), createElement("<element/>")).toChildNodesCount().isEqualTo(0);
+        initialize(Raw.elementAssertion(), createElement("<element attr='val'/>")).toChildNodesCount().isEqualTo(0);
+        initialize(Raw.elementAssertion(), createElement("<element></element>")).toChildNodesCount().isEqualTo(0);
+        initialize(Raw.elementAssertion(), createElement("<element> </element>")).toChildNodesCount().isEqualTo(1);
+        initialize(Raw.elementAssertion(), createElement("<element>text</element>")).toChildNodesCount().isEqualTo(1);
+        initialize(Raw.elementAssertion(), createElement("<element><![CDATA[text1]]>text2<![CDATA[text3]]></element>")).toChildNodesCount().isEqualTo(3);
+        initialize(Raw.elementAssertion(), createElement("<element><child/><child/><child/></element>")).toChildNodesCount().isEqualTo(3);
+        initialize(Raw.elementAssertion(), createElement("<element><child/>text1<child/>text2<child/></element>")).toChildNodesCount().isEqualTo(5);
+        initialize(Raw.elementAssertion(), createElement("<element><child><child/><child/></child></element>")).toChildNodesCount().isEqualTo(1);
+        initialize(Raw.elementAssertion(), createElement("<element><?procinstr?></element>")).toChildNodesCount().isEqualTo(1);
+
+        try {
+            Raw.elementAssertion().toChildNodesCount();
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.elementAssertion(), null).toChildNodesCount();
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.elementAssertion(), null, "Message").toChildNodesCount();
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.elementAssertion(), createElement("<element><child/>text1<child/>text2<child/></element>")).toChildNodesCount().isEqualTo(2);
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's child nodes count.\n\tActual and expected values should be the same.\n\tExpected:<2> but was:<5>");
+        }
+        try {
+            initialize(Raw.elementAssertion(), createElement("<element><child/>text1<child/>text2<child/></element>"), "Message").toChildNodesCount().isEqualTo(2);
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's child nodes count.\n\tActual and expected values should be the same.\n\tExpected:<2> but was:<5>");
+        }
     }
 
     /**
@@ -3164,7 +3204,71 @@ public final class ElementAssertionTest extends AssertionTest {
      */
     @Test
     public void toChildNodesCountMatcherTest() throws Exception {
-        // TODO
+        initialize(Raw.elementAssertion(), createElement("<element/>")).toChildNodesCount(Matchers.is(Matchers.equalTo(0)));
+        initialize(Raw.elementAssertion(), createElement("<element attr='val'/>")).toChildNodesCount(Matchers.is(Matchers.equalTo(0)));
+        initialize(Raw.elementAssertion(), createElement("<element></element>")).toChildNodesCount(Matchers.is(Matchers.equalTo(0)));
+        initialize(Raw.elementAssertion(), createElement("<element> </element>")).toChildNodesCount(Matchers.is(Matchers.equalTo(1)));
+        initialize(Raw.elementAssertion(), createElement("<element>text</element>")).toChildNodesCount(Matchers.is(Matchers.equalTo(1)));
+        initialize(Raw.elementAssertion(), createElement("<element><![CDATA[text1]]>text2<![CDATA[text3]]></element>")).toChildNodesCount(Matchers.is(Matchers.equalTo(3)));
+        initialize(Raw.elementAssertion(), createElement("<element><child/><child/><child/></element>")).toChildNodesCount(Matchers.is(Matchers.equalTo(3)));
+        initialize(Raw.elementAssertion(), createElement("<element><child/>text1<child/>text2<child/></element>")).toChildNodesCount(Matchers.is(Matchers.equalTo(5)));
+        initialize(Raw.elementAssertion(), createElement("<element><child><child/><child/></child></element>")).toChildNodesCount(Matchers.is(Matchers.equalTo(1)));
+        initialize(Raw.elementAssertion(), createElement("<element><?procinstr?></element>")).toChildNodesCount(Matchers.is(Matchers.equalTo(1)));
+
+        try {
+            Raw.elementAssertion().toChildNodesCount(Matchers.equalTo(0));
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.elementAssertion(), null).toChildNodesCount(Matchers.equalTo(0));
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.elementAssertion(), null, "Message").toChildNodesCount(Matchers.equalTo(0));
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.elementAssertion(), null).toChildNodesCount(null);
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.elementAssertion(), null, "Message").toChildNodesCount(null);
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.elementAssertion(), createElement("<element/>")).toChildNodesCount(null);
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: matcher.");
+        }
+        try {
+            initialize(Raw.elementAssertion(), createElement("<element/>"), "Message").toChildNodesCount(null);
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: matcher.");
+        }
+        try {
+            initialize(Raw.elementAssertion(), createElement("<element><child/>text1<child/>text2<child/></element>")).toChildNodesCount(Matchers.equalTo(2));
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's child nodes count.\nExpected: <2>\n     but: was <5>");
+        }
+        try {
+            initialize(Raw.elementAssertion(), createElement("<element><child/>text1<child/>text2<child/></element>"), "Message").toChildNodesCount(Matchers.equalTo(2));
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's child nodes count.\nExpected: <2>\n     but: was <5>");
+        }
     }
 
     /**
@@ -3174,7 +3278,47 @@ public final class ElementAssertionTest extends AssertionTest {
      */
     @Test
     public void hasChildNodesCountTest() throws Exception {
-        // TODO
+        initialize(Raw.elementAssertion(), createElement("<element/>")).hasChildNodesCount(0);
+        initialize(Raw.elementAssertion(), createElement("<element attr='val'/>")).hasChildNodesCount(0);
+        initialize(Raw.elementAssertion(), createElement("<element></element>")).hasChildNodesCount(0);
+        initialize(Raw.elementAssertion(), createElement("<element> </element>")).hasChildNodesCount(1);
+        initialize(Raw.elementAssertion(), createElement("<element>text</element>")).hasChildNodesCount(1);
+        initialize(Raw.elementAssertion(), createElement("<element><![CDATA[text1]]>text2<![CDATA[text3]]></element>")).hasChildNodesCount(3);
+        initialize(Raw.elementAssertion(), createElement("<element><child/><child/><child/></element>")).hasChildNodesCount(3);
+        initialize(Raw.elementAssertion(), createElement("<element><child/>text1<child/>text2<child/></element>")).hasChildNodesCount(5);
+        initialize(Raw.elementAssertion(), createElement("<element><child><child/><child/></child></element>")).hasChildNodesCount(1);
+        initialize(Raw.elementAssertion(), createElement("<element><?procinstr?></element>")).hasChildNodesCount(1);
+
+        try {
+            Raw.elementAssertion().hasChildNodesCount(0);
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.elementAssertion(), null).hasChildNodesCount(0);
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.elementAssertion(), null, "Message").hasChildNodesCount(0);
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.elementAssertion(), createElement("<element><child/>text1<child/>text2<child/></element>")).hasChildNodesCount(2);
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's child nodes count.\n\tActual and expected values should be the same.\n\tExpected:<2> but was:<5>");
+        }
+        try {
+            initialize(Raw.elementAssertion(), createElement("<element><child/>text1<child/>text2<child/></element>"), "Message").hasChildNodesCount(2);
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's child nodes count.\n\tActual and expected values should be the same.\n\tExpected:<2> but was:<5>");
+        }
     }
 
     /**
