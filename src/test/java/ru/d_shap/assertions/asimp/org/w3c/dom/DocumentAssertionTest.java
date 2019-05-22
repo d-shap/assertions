@@ -3431,6 +3431,77 @@ public final class DocumentAssertionTest extends AssertionTest {
     }
 
     /**
+     * {@link DocumentAssertion} class test.
+     *
+     * @throws Exception exception in test.
+     */
+    @Test
+    public void isNullTest() throws Exception {
+        initialize(Raw.documentAssertion(), null).isNull();
+
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element/>")).isNull();
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should be null.\n\tActual:<<element/>>");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element/>"), "Message").isNull();
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be null.\n\tActual:<<element/>>");
+        }
+    }
+
+    /**
+     * {@link DocumentAssertion} class test.
+     *
+     * @throws Exception exception in test.
+     */
+    @Test
+    public void isSameAsTest() throws Exception {
+        Document value = createDocument("<element/>");
+        initialize(Raw.documentAssertion(), value).isSameAs(value);
+
+        try {
+            initialize(Raw.documentAssertion(), value).isSameAs(createDocument("<element/>"));
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<<element/>> but was:<<element/>>");
+        }
+        try {
+            initialize(Raw.documentAssertion(), value, "Message").isSameAs(createDocument("<element/>"));
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be the same.\n\tExpected:<<element/>> but was:<<element/>>");
+        }
+    }
+
+    /**
+     * {@link DocumentAssertion} class test.
+     *
+     * @throws Exception exception in test.
+     */
+    @Test
+    public void isNotSameAsTest() throws Exception {
+        Document value = createDocument("<element/>");
+        initialize(Raw.documentAssertion(), value).isNotSameAs(createDocument("<element/>"));
+
+        try {
+            initialize(Raw.documentAssertion(), value).isNotSameAs(value);
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be different.\n\tActual:<<element/>>");
+        }
+        try {
+            initialize(Raw.documentAssertion(), value, "Message").isNotSameAs(value);
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be different.\n\tActual:<<element/>>");
+        }
+    }
+
+    /**
      * Test class.
      *
      * @author Dmitry Shapovalov
