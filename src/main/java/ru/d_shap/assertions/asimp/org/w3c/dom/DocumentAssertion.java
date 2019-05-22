@@ -20,12 +20,14 @@
 package ru.d_shap.assertions.asimp.org.w3c.dom;
 
 import org.hamcrest.Matcher;
+import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
 
 import ru.d_shap.assertions.Messages;
 import ru.d_shap.assertions.Raw;
 import ru.d_shap.assertions.asimp.ReferenceAssertion;
 import ru.d_shap.assertions.asimp.java.lang.CharSequenceAssertion;
+import ru.d_shap.assertions.asimp.primitive.IntAssertion;
 import ru.d_shap.assertions.converter.ConversionExceptionHolder;
 
 /**
@@ -232,6 +234,218 @@ public class DocumentAssertion extends ReferenceAssertion<Document> {
     public final void hasProperties(final String expectedNamespaceURI, final String expectedLocalName) {
         checkActualIsNotNull();
         createElementAssertion().hasProperties(expectedNamespaceURI, expectedLocalName);
+    }
+
+    /**
+     * Check if the actual value has the specified attribute.
+     *
+     * @param localName the specified local name.
+     */
+    public final void hasAttribute(final String localName) {
+        checkActualIsNotNull();
+        createElementAssertion().hasAttribute(localName);
+    }
+
+    /**
+     * Check if the actual value has the specified attribute.
+     *
+     * @param namespaceURI the specified namespace URI.
+     * @param localName    the specified local name.
+     */
+    public final void hasAttribute(final String namespaceURI, final String localName) {
+        checkActualIsNotNull();
+        createElementAssertion().hasAttribute(namespaceURI, localName);
+    }
+
+    /**
+     * Check if the actual value has NOT the specified attribute.
+     *
+     * @param localName the specified local name.
+     */
+    public final void hasNotAttribute(final String localName) {
+        checkActualIsNotNull();
+        createElementAssertion().hasNotAttribute(localName);
+    }
+
+    /**
+     * Check if the actual value has NOT the specified attribute.
+     *
+     * @param namespaceURI the specified namespace URI.
+     * @param localName    the specified local name.
+     */
+    public final void hasNotAttribute(final String namespaceURI, final String localName) {
+        checkActualIsNotNull();
+        createElementAssertion().hasNotAttribute(namespaceURI, localName);
+    }
+
+    /**
+     * Make assertion about the actual value's attribute.
+     *
+     * @param localName the local name of the actual value's attribute.
+     *
+     * @return the assertion.
+     */
+    public final AttrAssertion toAttribute(final String localName) {
+        checkActualIsNotNull();
+        return createElementAssertion().toAttribute(localName);
+    }
+
+    /**
+     * Make assertion about the actual value's attribute.
+     *
+     * @param namespaceURI the namespace URI of the actual value's attribute.
+     * @param localName    the local name of the actual value's attribute.
+     *
+     * @return the assertion.
+     */
+    public final AttrAssertion toAttribute(final String namespaceURI, final String localName) {
+        checkActualIsNotNull();
+        return createElementAssertion().toAttribute(namespaceURI, localName);
+    }
+
+    /**
+     * Make assertion about the actual value's attribute.
+     *
+     * @param localName the local name of the actual value's attribute.
+     * @param matcher   the hamcrest matcher.
+     */
+    public final void toAttribute(final String localName, final Matcher<Attr> matcher) {
+        checkActualIsNotNull();
+        createElementAssertion().toAttribute(localName, matcher);
+    }
+
+    /**
+     * Make assertion about the actual value's attribute.
+     *
+     * @param namespaceURI the namespace URI of the actual value's attribute.
+     * @param localName    the local name of the actual value's attribute.
+     * @param matcher      the hamcrest matcher.
+     */
+    public final void toAttribute(final String namespaceURI, final String localName, final Matcher<Attr> matcher) {
+        checkActualIsNotNull();
+        createElementAssertion().toAttribute(namespaceURI, localName, matcher);
+    }
+
+    /**
+     * Check if the actual value has the specified attribute with the specified value.
+     *
+     * @param localName the local name of the actual value's attribute.
+     * @param value     the value of the actual value's attribute.
+     */
+    public final void hasAttributeValue(final String localName, final String value) {
+        checkActualIsNotNull();
+        createElementAssertion().hasAttributeValue(localName, value);
+    }
+
+    /**
+     * Check if the actual value has the specified attribute with the specified value.
+     *
+     * @param namespaceURI the namespace URI of the actual value's attribute.
+     * @param localName    the local name of the actual value's attribute.
+     * @param value        the value of the actual value's attribute.
+     */
+    public final void hasAttributeValue(final String namespaceURI, final String localName, final String value) {
+        checkActualIsNotNull();
+        createElementAssertion().hasAttributeValue(namespaceURI, localName, value);
+    }
+
+    /**
+     * Check if the actual value has NOT the specified attribute with the specified value.
+     *
+     * @param localName the local name of the actual value's attribute.
+     * @param value     the value of the actual value's attribute.
+     */
+    public final void hasNotAttributeValue(final String localName, final String value) {
+        checkActualIsNotNull();
+        createElementAssertion().hasNotAttributeValue(localName, value);
+    }
+
+    /**
+     * Check if the actual value has NOT the specified attribute with the specified value.
+     *
+     * @param namespaceURI the namespace URI of the actual value's attribute.
+     * @param localName    the local name of the actual value's attribute.
+     * @param value        the value of the actual value's attribute.
+     */
+    public final void hasNotAttributeValue(final String namespaceURI, final String localName, final String value) {
+        checkActualIsNotNull();
+        createElementAssertion().hasNotAttributeValue(namespaceURI, localName, value);
+    }
+
+    /**
+     * Check if the actual value has child nodes.
+     */
+    public final void hasChildNodes() {
+        checkActualIsNotNull();
+        createElementAssertion().hasChildNodes();
+    }
+
+    /**
+     * Check if the actual value has NOT child nodes.
+     */
+    public final void hasNotChildNodes() {
+        checkActualIsNotNull();
+        createElementAssertion().hasNotChildNodes();
+    }
+
+    /**
+     * Make assertion about the actual value's child nodes count.
+     *
+     * @return the assertion.
+     */
+    public final IntAssertion toChildNodesCount() {
+        checkActualIsNotNull();
+        return createElementAssertion().toChildNodesCount();
+    }
+
+    /**
+     * Make assertion about the actual value's child nodes count.
+     *
+     * @param matcher the hamcrest matcher.
+     */
+    public final void toChildNodesCount(final Matcher<Integer> matcher) {
+        checkActualIsNotNull();
+        createElementAssertion().toChildNodesCount(matcher);
+    }
+
+    /**
+     * Check if the actual value's child nodes count is equal to the expected count.
+     *
+     * @param expected the expected count.
+     */
+    public final void hasChildNodesCount(final int expected) {
+        checkActualIsNotNull();
+        createElementAssertion().hasChildNodesCount(expected);
+    }
+
+    /**
+     * Make assertion about the actual value's child elements count.
+     *
+     * @return the assertion.
+     */
+    public final IntAssertion toChildElementsCount() {
+        checkActualIsNotNull();
+        return createElementAssertion().toChildElementsCount();
+    }
+
+    /**
+     * Make assertion about the actual value's child elements count.
+     *
+     * @param matcher the expected count.
+     */
+    public final void toChildElementsCount(final Matcher<Integer> matcher) {
+        checkActualIsNotNull();
+        createElementAssertion().toChildElementsCount(matcher);
+    }
+
+    /**
+     * Check if the actual value's child elements count is equal to the expected count.
+     *
+     * @param expected the expected count.
+     */
+    public final void hasChildElementsCount(final int expected) {
+        checkActualIsNotNull();
+        createElementAssertion().hasChildElementsCount(expected);
     }
 
     private NodeAssertion createNodeAssertion() {
