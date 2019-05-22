@@ -19,8 +19,12 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.asimp.org.w3c.dom;
 
+import org.hamcrest.Description;
+import org.hamcrest.Matcher;
 import org.hamcrest.Matchers;
+import org.hamcrest.TypeSafeMatcher;
 import org.junit.Test;
+import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
 
 import ru.d_shap.assertions.AssertionTest;
@@ -1518,6 +1522,1465 @@ public final class DocumentAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's local name.\n\tActual and expected values should be the same.\n\tExpected:<element2> but was:<element1>");
         }
+    }
+
+    /**
+     * {@link DocumentAssertion} class test.
+     *
+     * @throws Exception exception in test.
+     */
+    @Test
+    public void hasAttributeLocalNameTest() throws Exception {
+        initialize(Raw.documentAssertion(), createDocument("<element attr='val'/>")).hasAttribute("attr");
+        initialize(Raw.documentAssertion(), createDocument("<element attr1='val1' attr2='val2'/>")).hasAttribute("attr1");
+        initialize(Raw.documentAssertion(), createDocument("<element attr1='val1' attr2='val2'/>")).hasAttribute("attr2");
+        initialize(Raw.documentAssertion(), createDocument("<element xmlns='aaa'/>")).hasAttribute("xmlns");
+        initialize(Raw.documentAssertion(), createDocument("<ns1:element xmlns:ns1='aaa'/>")).hasAttribute("xmlns:ns1");
+
+        try {
+            Raw.documentAssertion().hasAttribute("");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), null).hasAttribute("");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), null, "Message").hasAttribute("");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), null).hasAttribute(null);
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), null, "Message").hasAttribute(null);
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element/>")).hasAttribute(null);
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: localName.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element/>"), "Message").hasAttribute(null);
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: localName.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element/>")).hasAttribute("attr");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should have the expected attribute.\n\tExpected:<attr> but was:<<element/>>");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element/>"), "Message").hasAttribute("attr");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should have the expected attribute.\n\tExpected:<attr> but was:<<element/>>");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element attr1='val'/>")).hasAttribute("attr2");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should have the expected attribute.\n\tExpected:<attr2> but was:<<element attr1=\"val\"/>>");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element attr1='val'/>"), "Message").hasAttribute("attr2");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should have the expected attribute.\n\tExpected:<attr2> but was:<<element attr1=\"val\"/>>");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element xmlns:ns1='aaa' ns1:attr='val'/>")).hasAttribute("attr");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should have the expected attribute.\n\tExpected:<attr> but was:<<element xmlns:ns1=\"aaa\" ns1:attr=\"val\"/>>");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element xmlns:ns1='aaa' ns1:attr='val'/>"), "Message").hasAttribute("attr");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should have the expected attribute.\n\tExpected:<attr> but was:<<element xmlns:ns1=\"aaa\" ns1:attr=\"val\"/>>");
+        }
+    }
+
+    /**
+     * {@link DocumentAssertion} class test.
+     *
+     * @throws Exception exception in test.
+     */
+    @Test
+    public void hasAttributeNamespaceURIAndLocalNameTest() throws Exception {
+        initialize(Raw.documentAssertion(), createDocument("<element xmlns:ns1='aaa' ns1:attr='val'/>")).hasAttribute("aaa", "attr");
+        initialize(Raw.documentAssertion(), createDocument("<element xmlns:ns1='aaa' ns1:attr1='val1' ns1:attr2='val2'/>")).hasAttribute("aaa", "attr1");
+        initialize(Raw.documentAssertion(), createDocument("<element xmlns:ns1='aaa' ns1:attr1='val1' ns1:attr2='val2'/>")).hasAttribute("aaa", "attr2");
+
+        try {
+            Raw.documentAssertion().hasAttribute("", "");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), null).hasAttribute("", "");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), null, "Message").hasAttribute("", "");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), null).hasAttribute(null, "");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), null, "Message").hasAttribute(null, "");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element/>")).hasAttribute(null, "");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: namespaceURI.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element/>"), "Message").hasAttribute(null, "");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: namespaceURI.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element/>")).hasAttribute(null, null);
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: namespaceURI.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element/>"), "Message").hasAttribute(null, null);
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: namespaceURI.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element/>")).hasAttribute("", null);
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: localName.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element/>"), "Message").hasAttribute("", null);
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: localName.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element/>")).hasAttribute("aaa", "attr");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should have the expected attribute.\n\tExpected:<{aaa}attr> but was:<<element/>>");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element/>"), "Message").hasAttribute("aaa", "attr");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should have the expected attribute.\n\tExpected:<{aaa}attr> but was:<<element/>>");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element xmlns:ns1='aaa' ns1:attr='val'/>")).hasAttribute("bbb", "attr");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should have the expected attribute.\n\tExpected:<{bbb}attr> but was:<<element xmlns:ns1=\"aaa\" ns1:attr=\"val\"/>>");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element xmlns:ns1='aaa' ns1:attr='val'/>"), "Message").hasAttribute("bbb", "attr");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should have the expected attribute.\n\tExpected:<{bbb}attr> but was:<<element xmlns:ns1=\"aaa\" ns1:attr=\"val\"/>>");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element xmlns:ns1='aaa' ns1:attr1='val'/>")).hasAttribute("aaa", "attr2");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should have the expected attribute.\n\tExpected:<{aaa}attr2> but was:<<element xmlns:ns1=\"aaa\" ns1:attr1=\"val\"/>>");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element xmlns:ns1='aaa' ns1:attr1='val'/>"), "Message").hasAttribute("aaa", "attr2");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should have the expected attribute.\n\tExpected:<{aaa}attr2> but was:<<element xmlns:ns1=\"aaa\" ns1:attr1=\"val\"/>>");
+        }
+    }
+
+    /**
+     * {@link DocumentAssertion} class test.
+     *
+     * @throws Exception exception in test.
+     */
+    @Test
+    public void hasNotAttributeLocalNameTest() throws Exception {
+        initialize(Raw.documentAssertion(), createDocument("<element/>")).hasNotAttribute("attr");
+        initialize(Raw.documentAssertion(), createDocument("<element attr1='val'/>")).hasNotAttribute("attr2");
+        initialize(Raw.documentAssertion(), createDocument("<element xmlns:ns1='aaa' ns1:attr='val'/>")).hasNotAttribute("attr");
+        initialize(Raw.documentAssertion(), createDocument("<element xmlns:ns1='aaa' ns1:attr='val'/>")).hasNotAttribute("ns2:attr");
+
+        try {
+            Raw.documentAssertion().hasNotAttribute("");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), null).hasNotAttribute("");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), null, "Message").hasNotAttribute("");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), null).hasNotAttribute(null);
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), null, "Message").hasNotAttribute(null);
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element/>")).hasNotAttribute(null);
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: localName.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element/>"), "Message").hasNotAttribute(null);
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: localName.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element attr='val'/>")).hasNotAttribute("attr");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not have the expected attribute.\n\tExpected:<attr> but was:<<element attr=\"val\"/>>");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element attr='val'/>"), "Message").hasNotAttribute("attr");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not have the expected attribute.\n\tExpected:<attr> but was:<<element attr=\"val\"/>>");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element attr1='val1' attr2='val2'/>")).hasNotAttribute("attr1");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not have the expected attribute.\n\tExpected:<attr1> but was:<<element attr1=\"val1\" attr2=\"val2\"/>>");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element attr1='val1' attr2='val2'/>"), "Message").hasNotAttribute("attr1");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not have the expected attribute.\n\tExpected:<attr1> but was:<<element attr1=\"val1\" attr2=\"val2\"/>>");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element xmlns='aaa'/>")).hasNotAttribute("xmlns");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not have the expected attribute.\n\tExpected:<xmlns> but was:<<element xmlns=\"aaa\"/>>");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element xmlns='aaa'/>"), "Message").hasNotAttribute("xmlns");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not have the expected attribute.\n\tExpected:<xmlns> but was:<<element xmlns=\"aaa\"/>>");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<ns1:element xmlns:ns1='aaa'/>")).hasNotAttribute("xmlns:ns1");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not have the expected attribute.\n\tExpected:<xmlns:ns1> but was:<<ns1:element xmlns:ns1=\"aaa\"/>>");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<ns1:element xmlns:ns1='aaa'/>"), "Message").hasNotAttribute("xmlns:ns1");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not have the expected attribute.\n\tExpected:<xmlns:ns1> but was:<<ns1:element xmlns:ns1=\"aaa\"/>>");
+        }
+    }
+
+    /**
+     * {@link DocumentAssertion} class test.
+     *
+     * @throws Exception exception in test.
+     */
+    @Test
+    public void hasNotAttributeNamespaceURIAndLocalNameTest() throws Exception {
+        initialize(Raw.documentAssertion(), createDocument("<element/>")).hasNotAttribute("aaa", "attr");
+        initialize(Raw.documentAssertion(), createDocument("<element xmlns:ns1='aaa' ns1:attr='val'/>")).hasNotAttribute("bbb", "attr");
+        initialize(Raw.documentAssertion(), createDocument("<element xmlns:ns1='aaa' ns1:attr1='val'/>")).hasNotAttribute("aaa", "attr2");
+
+        try {
+            Raw.documentAssertion().hasNotAttribute("", "");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), null).hasNotAttribute("", "");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), null, "Message").hasNotAttribute("", "");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), null).hasNotAttribute(null, "");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), null, "Message").hasNotAttribute(null, "");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element/>")).hasNotAttribute(null, "");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: namespaceURI.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element/>"), "Message").hasNotAttribute(null, "");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: namespaceURI.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element/>")).hasNotAttribute(null, null);
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: namespaceURI.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element/>"), "Message").hasNotAttribute(null, null);
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: namespaceURI.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element/>")).hasNotAttribute("", null);
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: localName.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element/>"), "Message").hasNotAttribute("", null);
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: localName.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element xmlns:ns1='aaa' ns1:attr='val'/>")).hasNotAttribute("aaa", "attr");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not have the expected attribute.\n\tExpected:<{aaa}attr> but was:<<element xmlns:ns1=\"aaa\" ns1:attr=\"val\"/>>");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element xmlns:ns1='aaa' ns1:attr='val'/>"), "Message").hasNotAttribute("aaa", "attr");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not have the expected attribute.\n\tExpected:<{aaa}attr> but was:<<element xmlns:ns1=\"aaa\" ns1:attr=\"val\"/>>");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element xmlns:ns1='aaa' ns1:attr1='val1' ns1:attr2='val2'/>")).hasNotAttribute("aaa", "attr1");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not have the expected attribute.\n\tExpected:<{aaa}attr1> but was:<<element xmlns:ns1=\"aaa\" ns1:attr1=\"val1\" ns1:attr2=\"val2\"/>>");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element xmlns:ns1='aaa' ns1:attr1='val1' ns1:attr2='val2'/>"), "Message").hasNotAttribute("aaa", "attr1");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not have the expected attribute.\n\tExpected:<{aaa}attr1> but was:<<element xmlns:ns1=\"aaa\" ns1:attr1=\"val1\" ns1:attr2=\"val2\"/>>");
+        }
+    }
+
+    /**
+     * {@link DocumentAssertion} class test.
+     *
+     * @throws Exception exception in test.
+     */
+    @Test
+    public void toAttributeLocalNameTest() throws Exception {
+        initialize(Raw.documentAssertion(), createDocument("<element attr='val'/>")).toAttribute("attr").hasValue("val");
+        initialize(Raw.documentAssertion(), createDocument("<element attr1='val1' attr2='val2'/>")).toAttribute("attr1").hasValue("val1");
+        initialize(Raw.documentAssertion(), createDocument("<element attr1='val1' attr2='val2'/>")).toAttribute("attr2").hasValue("val2");
+        initialize(Raw.documentAssertion(), createDocument("<element xmlns='aaa'/>")).toAttribute("xmlns").hasValue("aaa");
+        initialize(Raw.documentAssertion(), createDocument("<ns1:element xmlns:ns1='aaa'/>")).toAttribute("xmlns:ns1").hasValue("aaa");
+
+        try {
+            Raw.documentAssertion().toAttribute("");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), null).toAttribute("");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), null, "Message").toAttribute("");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), null).toAttribute(null);
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), null, "Message").toAttribute(null);
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element/>")).toAttribute(null);
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: localName.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element/>"), "Message").toAttribute(null);
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: localName.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element/>")).toAttribute("attr");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should have the expected attribute.\n\tExpected:<attr> but was:<<element/>>");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element/>"), "Message").toAttribute("attr");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should have the expected attribute.\n\tExpected:<attr> but was:<<element/>>");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element attr1='val'/>")).toAttribute("attr2");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should have the expected attribute.\n\tExpected:<attr2> but was:<<element attr1=\"val\"/>>");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element attr1='val'/>"), "Message").toAttribute("attr2");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should have the expected attribute.\n\tExpected:<attr2> but was:<<element attr1=\"val\"/>>");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element xmlns:ns1='aaa' ns1:attr='val'/>")).toAttribute("attr");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should have the expected attribute.\n\tExpected:<attr> but was:<<element xmlns:ns1=\"aaa\" ns1:attr=\"val\"/>>");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element xmlns:ns1='aaa' ns1:attr='val'/>"), "Message").toAttribute("attr");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should have the expected attribute.\n\tExpected:<attr> but was:<<element xmlns:ns1=\"aaa\" ns1:attr=\"val\"/>>");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element attr='val1'/>")).toAttribute("attr").hasValue("val2");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's attribute: attr.\n\tCheck actual value's value.\n\tActual and expected values should be the same.\n\tExpected:<val2> but was:<val1>");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element attr='val1'/>"), "Message").toAttribute("attr").hasValue("val2");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's attribute: attr.\n\tCheck actual value's value.\n\tActual and expected values should be the same.\n\tExpected:<val2> but was:<val1>");
+        }
+    }
+
+    /**
+     * {@link DocumentAssertion} class test.
+     *
+     * @throws Exception exception in test.
+     */
+    @Test
+    public void toAttributeNamespaceURIAndLocalNameTest() throws Exception {
+        initialize(Raw.documentAssertion(), createDocument("<element xmlns:ns1='aaa' ns1:attr='val'/>")).toAttribute("aaa", "attr").hasValue("val");
+        initialize(Raw.documentAssertion(), createDocument("<element xmlns:ns1='aaa' ns1:attr1='val1' ns1:attr2='val2'/>")).toAttribute("aaa", "attr1").hasValue("val1");
+        initialize(Raw.documentAssertion(), createDocument("<element xmlns:ns1='aaa' ns1:attr1='val1' ns1:attr2='val2'/>")).toAttribute("aaa", "attr2").hasValue("val2");
+
+        try {
+            Raw.documentAssertion().toAttribute("", "");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), null).toAttribute("", "");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), null, "Message").toAttribute("", "");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), null).toAttribute(null, "");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), null, "Message").toAttribute(null, "");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element/>")).toAttribute(null, "");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: namespaceURI.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element/>"), "Message").toAttribute(null, "");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: namespaceURI.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element/>")).toAttribute(null, (String) null);
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: namespaceURI.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element/>"), "Message").toAttribute(null, (String) null);
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: namespaceURI.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element/>")).toAttribute("", (String) null);
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: localName.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element/>"), "Message").toAttribute("", (String) null);
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: localName.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element/>")).toAttribute("aaa", "attr");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should have the expected attribute.\n\tExpected:<{aaa}attr> but was:<<element/>>");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element/>"), "Message").toAttribute("aaa", "attr");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should have the expected attribute.\n\tExpected:<{aaa}attr> but was:<<element/>>");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element xmlns:ns1='aaa' ns1:attr='val'/>")).toAttribute("bbb", "attr");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should have the expected attribute.\n\tExpected:<{bbb}attr> but was:<<element xmlns:ns1=\"aaa\" ns1:attr=\"val\"/>>");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element xmlns:ns1='aaa' ns1:attr='val'/>"), "Message").toAttribute("bbb", "attr");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should have the expected attribute.\n\tExpected:<{bbb}attr> but was:<<element xmlns:ns1=\"aaa\" ns1:attr=\"val\"/>>");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element xmlns:ns1='aaa' ns1:attr1='val'/>")).toAttribute("aaa", "attr2");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should have the expected attribute.\n\tExpected:<{aaa}attr2> but was:<<element xmlns:ns1=\"aaa\" ns1:attr1=\"val\"/>>");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element xmlns:ns1='aaa' ns1:attr1='val'/>"), "Message").toAttribute("aaa", "attr2");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should have the expected attribute.\n\tExpected:<{aaa}attr2> but was:<<element xmlns:ns1=\"aaa\" ns1:attr1=\"val\"/>>");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element xmlns:ns1='aaa' ns1:attr='val1'/>")).toAttribute("aaa", "attr").hasValue("val2");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's attribute: {aaa}attr.\n\tCheck actual value's value.\n\tActual and expected values should be the same.\n\tExpected:<val2> but was:<val1>");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element xmlns:ns1='aaa' ns1:attr='val1'/>"), "Message").toAttribute("aaa", "attr").hasValue("val2");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's attribute: {aaa}attr.\n\tCheck actual value's value.\n\tActual and expected values should be the same.\n\tExpected:<val2> but was:<val1>");
+        }
+    }
+
+    /**
+     * {@link DocumentAssertion} class test.
+     *
+     * @throws Exception exception in test.
+     */
+    @Test
+    public void toAttributeLocalNameMatcherTest() throws Exception {
+        initialize(Raw.documentAssertion(), createDocument("<element attr='val'/>")).toAttribute("attr", new MatcherAttributeValue("val"));
+        initialize(Raw.documentAssertion(), createDocument("<element attr1='val1' attr2='val2'/>")).toAttribute("attr1", new MatcherAttributeValue("val1"));
+        initialize(Raw.documentAssertion(), createDocument("<element attr1='val1' attr2='val2'/>")).toAttribute("attr2", new MatcherAttributeValue("val2"));
+        initialize(Raw.documentAssertion(), createDocument("<element xmlns='aaa'/>")).toAttribute("xmlns", new MatcherAttributeValue("aaa"));
+        initialize(Raw.documentAssertion(), createDocument("<ns1:element xmlns:ns1='aaa'/>")).toAttribute("xmlns:ns1", new MatcherAttributeValue("aaa"));
+
+        try {
+            Raw.documentAssertion().toAttribute("", new MatcherAttributeValue(""));
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), null).toAttribute("", new MatcherAttributeValue(""));
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), null, "Message").toAttribute("", new MatcherAttributeValue(""));
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), null).toAttribute(null, new MatcherAttributeValue(""));
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), null, "Message").toAttribute(null, new MatcherAttributeValue(""));
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element/>")).toAttribute(null, new MatcherAttributeValue(""));
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: localName.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element/>"), "Message").toAttribute(null, new MatcherAttributeValue(""));
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: localName.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element/>")).toAttribute(null, (Matcher<Attr>) null);
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: localName.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element/>"), "Message").toAttribute(null, (Matcher<Attr>) null);
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: localName.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element/>")).toAttribute("", (Matcher<Attr>) null);
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: matcher.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element/>"), "Message").toAttribute("", (Matcher<Attr>) null);
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: matcher.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element/>")).toAttribute("attr", new MatcherAttributeValue(""));
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should have the expected attribute.\n\tExpected:<attr> but was:<<element/>>");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element/>"), "Message").toAttribute("attr", new MatcherAttributeValue(""));
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should have the expected attribute.\n\tExpected:<attr> but was:<<element/>>");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element attr1='val'/>")).toAttribute("attr2", new MatcherAttributeValue(""));
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should have the expected attribute.\n\tExpected:<attr2> but was:<<element attr1=\"val\"/>>");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element attr1='val'/>"), "Message").toAttribute("attr2", new MatcherAttributeValue(""));
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should have the expected attribute.\n\tExpected:<attr2> but was:<<element attr1=\"val\"/>>");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element xmlns:ns1='aaa' ns1:attr='val'/>")).toAttribute("attr", new MatcherAttributeValue(""));
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should have the expected attribute.\n\tExpected:<attr> but was:<<element xmlns:ns1=\"aaa\" ns1:attr=\"val\"/>>");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element xmlns:ns1='aaa' ns1:attr='val'/>"), "Message").toAttribute("attr", new MatcherAttributeValue(""));
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should have the expected attribute.\n\tExpected:<attr> but was:<<element xmlns:ns1=\"aaa\" ns1:attr=\"val\"/>>");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element attr='val1'/>")).toAttribute("attr", new MatcherAttributeValue("val2"));
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's attribute: attr.\nExpected: val2\n     but: was <attr=\"val1\">");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element attr='val1'/>"), "Message").toAttribute("attr", new MatcherAttributeValue("val2"));
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's attribute: attr.\nExpected: val2\n     but: was <attr=\"val1\">");
+        }
+    }
+
+    /**
+     * {@link DocumentAssertion} class test.
+     *
+     * @throws Exception exception in test.
+     */
+    @Test
+    public void toAttributeNamespaceURIAndLocalNameMatcherTest() throws Exception {
+        initialize(Raw.documentAssertion(), createDocument("<element xmlns:ns1='aaa' ns1:attr='val'/>")).toAttribute("aaa", "attr", new MatcherAttributeValue("val"));
+        initialize(Raw.documentAssertion(), createDocument("<element xmlns:ns1='aaa' ns1:attr1='val1' ns1:attr2='val2'/>")).toAttribute("aaa", "attr1", new MatcherAttributeValue("val1"));
+        initialize(Raw.documentAssertion(), createDocument("<element xmlns:ns1='aaa' ns1:attr1='val1' ns1:attr2='val2'/>")).toAttribute("aaa", "attr2", new MatcherAttributeValue("val2"));
+
+        try {
+            Raw.documentAssertion().toAttribute("", "", new MatcherAttributeValue(""));
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), null).toAttribute("", "", new MatcherAttributeValue(""));
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), null, "Message").toAttribute("", "", new MatcherAttributeValue(""));
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), null).toAttribute(null, "", new MatcherAttributeValue(""));
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), null, "Message").toAttribute(null, "", new MatcherAttributeValue(""));
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element/>")).toAttribute(null, "", new MatcherAttributeValue(""));
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: namespaceURI.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element/>"), "Message").toAttribute(null, "", new MatcherAttributeValue(""));
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: namespaceURI.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element/>")).toAttribute(null, null, new MatcherAttributeValue(""));
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: namespaceURI.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element/>"), "Message").toAttribute(null, null, new MatcherAttributeValue(""));
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: namespaceURI.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element/>")).toAttribute("", null, new MatcherAttributeValue(""));
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: localName.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element/>"), "Message").toAttribute("", null, new MatcherAttributeValue(""));
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: localName.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element/>")).toAttribute("", null, null);
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: localName.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element/>"), "Message").toAttribute("", null, null);
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: localName.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element/>")).toAttribute("", "", null);
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: matcher.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element/>"), "Message").toAttribute("", "", null);
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: matcher.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element/>")).toAttribute("aaa", "attr", new MatcherAttributeValue(""));
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should have the expected attribute.\n\tExpected:<{aaa}attr> but was:<<element/>>");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element/>"), "Message").toAttribute("aaa", "attr", new MatcherAttributeValue(""));
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should have the expected attribute.\n\tExpected:<{aaa}attr> but was:<<element/>>");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element xmlns:ns1='aaa' ns1:attr='val'/>")).toAttribute("bbb", "attr", new MatcherAttributeValue(""));
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should have the expected attribute.\n\tExpected:<{bbb}attr> but was:<<element xmlns:ns1=\"aaa\" ns1:attr=\"val\"/>>");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element xmlns:ns1='aaa' ns1:attr='val'/>"), "Message").toAttribute("bbb", "attr", new MatcherAttributeValue(""));
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should have the expected attribute.\n\tExpected:<{bbb}attr> but was:<<element xmlns:ns1=\"aaa\" ns1:attr=\"val\"/>>");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element xmlns:ns1='aaa' ns1:attr1='val'/>")).toAttribute("aaa", "attr2", new MatcherAttributeValue(""));
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should have the expected attribute.\n\tExpected:<{aaa}attr2> but was:<<element xmlns:ns1=\"aaa\" ns1:attr1=\"val\"/>>");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element xmlns:ns1='aaa' ns1:attr1='val'/>"), "Message").toAttribute("aaa", "attr2", new MatcherAttributeValue(""));
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should have the expected attribute.\n\tExpected:<{aaa}attr2> but was:<<element xmlns:ns1=\"aaa\" ns1:attr1=\"val\"/>>");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element xmlns:ns1='aaa' ns1:attr='val1'/>")).toAttribute("aaa", "attr", new MatcherAttributeValue("val2"));
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's attribute: {aaa}attr.\nExpected: val2\n     but: was <ns1:attr=\"val1\">");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element xmlns:ns1='aaa' ns1:attr='val1'/>"), "Message").toAttribute("aaa", "attr", new MatcherAttributeValue("val2"));
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's attribute: {aaa}attr.\nExpected: val2\n     but: was <ns1:attr=\"val1\">");
+        }
+    }
+
+    /**
+     * {@link DocumentAssertion} class test.
+     *
+     * @throws Exception exception in test.
+     */
+    @Test
+    public void hasAttributeValueLocalNameTest() throws Exception {
+        initialize(Raw.documentAssertion(), createDocument("<element attr='val'/>")).hasAttributeValue("attr", "val");
+        initialize(Raw.documentAssertion(), createDocument("<element attr1='val1' attr2='val2'/>")).hasAttributeValue("attr1", "val1");
+        initialize(Raw.documentAssertion(), createDocument("<element attr1='val1' attr2='val2'/>")).hasAttributeValue("attr2", "val2");
+        initialize(Raw.documentAssertion(), createDocument("<element xmlns='aaa'/>")).hasAttributeValue("xmlns", "aaa");
+        initialize(Raw.documentAssertion(), createDocument("<ns1:element xmlns:ns1='aaa'/>")).hasAttributeValue("xmlns:ns1", "aaa");
+
+        try {
+            Raw.documentAssertion().hasAttributeValue("", "");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), null).hasAttributeValue("", "");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), null, "Message").hasAttributeValue("", "");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), null).hasAttributeValue(null, "");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), null, "Message").hasAttributeValue(null, "");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element/>")).hasAttributeValue(null, "");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: localName.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element/>"), "Message").hasAttributeValue(null, "");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: localName.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element/>")).hasAttributeValue(null, null);
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: localName.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element/>"), "Message").hasAttributeValue(null, null);
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: localName.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element/>")).hasAttributeValue("", null);
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: value.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element/>"), "Message").hasAttributeValue("", null);
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: value.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element/>")).hasAttributeValue("attr", "val");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should have the expected attribute.\n\tExpected:<attr> but was:<<element/>>");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element/>"), "Message").hasAttributeValue("attr", "val");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should have the expected attribute.\n\tExpected:<attr> but was:<<element/>>");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element attr1='val'/>")).hasAttributeValue("attr2", "val");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should have the expected attribute.\n\tExpected:<attr2> but was:<<element attr1=\"val\"/>>");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element attr1='val'/>"), "Message").hasAttributeValue("attr2", "val");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should have the expected attribute.\n\tExpected:<attr2> but was:<<element attr1=\"val\"/>>");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element xmlns:ns1='aaa' ns1:attr='val'/>")).hasAttributeValue("attr", "val");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should have the expected attribute.\n\tExpected:<attr> but was:<<element xmlns:ns1=\"aaa\" ns1:attr=\"val\"/>>");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element xmlns:ns1='aaa' ns1:attr='val'/>"), "Message").hasAttributeValue("attr", "val");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should have the expected attribute.\n\tExpected:<attr> but was:<<element xmlns:ns1=\"aaa\" ns1:attr=\"val\"/>>");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element attr='val1'/>")).hasAttributeValue("attr", "val2");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's attribute: attr.\n\tCheck actual value's value.\n\tActual and expected values should be the same.\n\tExpected:<val2> but was:<val1>");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element attr='val1'/>"), "Message").hasAttributeValue("attr", "val2");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's attribute: attr.\n\tCheck actual value's value.\n\tActual and expected values should be the same.\n\tExpected:<val2> but was:<val1>");
+        }
+    }
+
+    /**
+     * {@link DocumentAssertion} class test.
+     *
+     * @throws Exception exception in test.
+     */
+    @Test
+    public void hasAttributeValueNamespaceURIAndLocalNameTest() throws Exception {
+        initialize(Raw.documentAssertion(), createDocument("<element xmlns:ns1='aaa' ns1:attr='val'/>")).hasAttributeValue("aaa", "attr", "val");
+        initialize(Raw.documentAssertion(), createDocument("<element xmlns:ns1='aaa' ns1:attr1='val1' ns1:attr2='val2'/>")).hasAttributeValue("aaa", "attr1", "val1");
+        initialize(Raw.documentAssertion(), createDocument("<element xmlns:ns1='aaa' ns1:attr1='val1' ns1:attr2='val2'/>")).hasAttributeValue("aaa", "attr2", "val2");
+
+        try {
+            Raw.documentAssertion().hasAttributeValue("", "", "");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), null).hasAttributeValue("", "", "");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), null, "Message").hasAttributeValue("", "", "");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), null).hasAttributeValue(null, "", "");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), null, "Message").hasAttributeValue(null, "", "");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element/>")).hasAttributeValue(null, "", "");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: namespaceURI.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element/>"), "Message").hasAttributeValue(null, "", "");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: namespaceURI.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element/>")).hasAttributeValue(null, null, "");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: namespaceURI.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element/>"), "Message").hasAttributeValue(null, null, "");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: namespaceURI.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element/>")).hasAttributeValue("", null, "");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: localName.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element/>"), "Message").hasAttributeValue("", null, "");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: localName.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element/>")).hasAttributeValue("", null, null);
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: localName.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element/>"), "Message").hasAttributeValue("", null, null);
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: localName.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element/>")).hasAttributeValue("", "", null);
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: value.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element/>"), "Message").hasAttributeValue("", "", null);
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: value.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element/>")).hasAttributeValue("aaa", "attr", "val");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should have the expected attribute.\n\tExpected:<{aaa}attr> but was:<<element/>>");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element/>"), "Message").hasAttributeValue("aaa", "attr", "val");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should have the expected attribute.\n\tExpected:<{aaa}attr> but was:<<element/>>");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element xmlns:ns1='aaa' ns1:attr='val'/>")).hasAttributeValue("bbb", "attr", "val");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should have the expected attribute.\n\tExpected:<{bbb}attr> but was:<<element xmlns:ns1=\"aaa\" ns1:attr=\"val\"/>>");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element xmlns:ns1='aaa' ns1:attr='val'/>"), "Message").hasAttributeValue("bbb", "attr", "val");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should have the expected attribute.\n\tExpected:<{bbb}attr> but was:<<element xmlns:ns1=\"aaa\" ns1:attr=\"val\"/>>");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element xmlns:ns1='aaa' ns1:attr1='val'/>")).hasAttributeValue("aaa", "attr2", "val");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should have the expected attribute.\n\tExpected:<{aaa}attr2> but was:<<element xmlns:ns1=\"aaa\" ns1:attr1=\"val\"/>>");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element xmlns:ns1='aaa' ns1:attr1='val'/>"), "Message").hasAttributeValue("aaa", "attr2", "val");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should have the expected attribute.\n\tExpected:<{aaa}attr2> but was:<<element xmlns:ns1=\"aaa\" ns1:attr1=\"val\"/>>");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element xmlns:ns1='aaa' ns1:attr='val1'/>")).hasAttributeValue("aaa", "attr", "val2");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's attribute: {aaa}attr.\n\tCheck actual value's value.\n\tActual and expected values should be the same.\n\tExpected:<val2> but was:<val1>");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element xmlns:ns1='aaa' ns1:attr='val1'/>"), "Message").hasAttributeValue("aaa", "attr", "val2");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's attribute: {aaa}attr.\n\tCheck actual value's value.\n\tActual and expected values should be the same.\n\tExpected:<val2> but was:<val1>");
+        }
+    }
+
+    /**
+     * {@link DocumentAssertion} class test.
+     *
+     * @throws Exception exception in test.
+     */
+    @Test
+    public void hasNotAttributeValueLocalNameTest() throws Exception {
+        initialize(Raw.documentAssertion(), createDocument("<element/>")).hasNotAttributeValue("attr", "val");
+        initialize(Raw.documentAssertion(), createDocument("<element attr1='val'/>")).hasNotAttributeValue("attr2", "val");
+        initialize(Raw.documentAssertion(), createDocument("<element attr='val1'/>")).hasNotAttributeValue("attr", "val2");
+        initialize(Raw.documentAssertion(), createDocument("<element attr1='val1' attr2='val2'/>")).hasNotAttributeValue("attr1", "val2");
+        initialize(Raw.documentAssertion(), createDocument("<element attr1='val1' attr2='val2'/>")).hasNotAttributeValue("attr2", "val1");
+        initialize(Raw.documentAssertion(), createDocument("<element xmlns='aaa'/>")).hasNotAttributeValue("xmlns", "bbb");
+        initialize(Raw.documentAssertion(), createDocument("<ns1:element xmlns:ns1='aaa'/>")).hasNotAttributeValue("xmlns:ns2", "aaa");
+        initialize(Raw.documentAssertion(), createDocument("<ns1:element xmlns:ns1='aaa'/>")).hasNotAttributeValue("xmlns:ns1", "bbb");
+
+        try {
+            Raw.documentAssertion().hasNotAttributeValue("", "");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), null).hasNotAttributeValue("", "");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), null, "Message").hasNotAttributeValue("", "");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), null).hasNotAttributeValue(null, "");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), null, "Message").hasNotAttributeValue(null, "");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element/>")).hasNotAttributeValue(null, "");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: localName.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element/>"), "Message").hasNotAttributeValue(null, "");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: localName.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element/>")).hasNotAttributeValue(null, null);
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: localName.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element/>"), "Message").hasNotAttributeValue(null, null);
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: localName.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element/>")).hasNotAttributeValue("", null);
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: value.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element/>"), "Message").hasNotAttributeValue("", null);
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: value.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element attr='val'/>")).hasNotAttributeValue("attr", "val");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's attribute: attr.\n\tCheck actual value's value.\n\tActual and expected values should be different.\n\tActual:<val>");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element attr='val'/>"), "Message").hasNotAttributeValue("attr", "val");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's attribute: attr.\n\tCheck actual value's value.\n\tActual and expected values should be different.\n\tActual:<val>");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element xmlns:ns1='aaa' ns1:attr='val'/>")).hasNotAttributeValue("ns1:attr", "val");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's attribute: ns1:attr.\n\tCheck actual value's value.\n\tActual and expected values should be different.\n\tActual:<val>");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element xmlns:ns1='aaa' ns1:attr='val'/>"), "Message").hasNotAttributeValue("ns1:attr", "val");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's attribute: ns1:attr.\n\tCheck actual value's value.\n\tActual and expected values should be different.\n\tActual:<val>");
+        }
+    }
+
+    /**
+     * {@link DocumentAssertion} class test.
+     *
+     * @throws Exception exception in test.
+     */
+    @Test
+    public void hasNotAttributeValueNamespaceURIAndLocalNameTest() throws Exception {
+        initialize(Raw.documentAssertion(), createDocument("<element/>")).hasNotAttributeValue("aaa", "attr", "val");
+        initialize(Raw.documentAssertion(), createDocument("<element xmlns:ns1='aaa' ns1:attr='val'/>")).hasNotAttributeValue("bbb", "attr", "val");
+        initialize(Raw.documentAssertion(), createDocument("<element xmlns:ns1='aaa' ns1:attr1='val'/>")).hasNotAttributeValue("aaa", "attr2", "val");
+        initialize(Raw.documentAssertion(), createDocument("<element xmlns:ns1='aaa' ns1:attr='val1'/>")).hasNotAttributeValue("aaa", "attr", "val2");
+        initialize(Raw.documentAssertion(), createDocument("<element xmlns:ns1='aaa' ns1:attr1='val1' ns1:attr2='val2'/>")).hasNotAttributeValue("aaa", "attr1", "val2");
+        initialize(Raw.documentAssertion(), createDocument("<element xmlns:ns1='aaa' ns1:attr1='val1' ns1:attr2='val2'/>")).hasNotAttributeValue("aaa", "attr2", "val1");
+
+        try {
+            Raw.documentAssertion().hasNotAttributeValue("", "", "");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), null).hasNotAttributeValue("", "", "");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), null, "Message").hasNotAttributeValue("", "", "");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), null).hasNotAttributeValue(null, "", "");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), null, "Message").hasNotAttributeValue(null, "", "");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element/>")).hasNotAttributeValue(null, "", "");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: namespaceURI.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element/>"), "Message").hasNotAttributeValue(null, "", "");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: namespaceURI.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element/>")).hasNotAttributeValue(null, null, "");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: namespaceURI.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element/>"), "Message").hasNotAttributeValue(null, null, "");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: namespaceURI.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element/>")).hasNotAttributeValue("", null, "");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: localName.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element/>"), "Message").hasNotAttributeValue("", null, "");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: localName.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element/>")).hasNotAttributeValue("", null, null);
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: localName.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element/>"), "Message").hasNotAttributeValue("", null, null);
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: localName.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element/>")).hasNotAttributeValue("", "", null);
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: value.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element/>"), "Message").hasNotAttributeValue("", "", null);
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: value.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element xmlns:ns1='aaa' ns1:attr='val'/>")).hasNotAttributeValue("aaa", "attr", "val");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's attribute: {aaa}attr.\n\tCheck actual value's value.\n\tActual and expected values should be different.\n\tActual:<val>");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element xmlns:ns1='aaa' ns1:attr='val'/>"), "Message").hasNotAttributeValue("aaa", "attr", "val");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's attribute: {aaa}attr.\n\tCheck actual value's value.\n\tActual and expected values should be different.\n\tActual:<val>");
+        }
+    }
+
+    /**
+     * Test class.
+     *
+     * @author Dmitry Shapovalov
+     */
+    private static final class MatcherAttributeValue extends TypeSafeMatcher<Attr> {
+
+        private final String _value;
+
+        MatcherAttributeValue(final String value) {
+            super();
+            _value = value;
+        }
+
+        @Override
+        protected boolean matchesSafely(final Attr attr) {
+            return attr.getValue().equals(_value);
+        }
+
+        @Override
+        public void describeTo(final Description description) {
+            description.appendText(_value);
+        }
+
     }
 
 }
