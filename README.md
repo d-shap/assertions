@@ -225,7 +225,7 @@ And in case of specific assertions custom Hamcrest matchers can be used.
 Assertions library:
 * **&lt;groupId&gt;**: ru.d-shap
 * **&lt;artifactId&gt;**: assertions
-* **&lt;version&gt;**: 1.2
+* **&lt;version&gt;**: 2.0
 
 # Donation
 If you find my code useful, you can [bye me a coffee](https://www.paypal.me/dshapovalov)
