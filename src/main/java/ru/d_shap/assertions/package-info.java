@@ -133,6 +133,18 @@
  * assertThat(qnameValue).hasLocalPart("local");
  * }</pre>
  * <p>
+ * Assertion examples for the org.w3c.dom data types:
+ * </p>
+ * <pre>{@code
+ * assertThat(documentValue).isEqualTo("<element>content</element>");
+ * assertThat(documentValue).isNotEqualTo("&lt;?xml version='1.0'?&gt;\n<root><child attr='val'>text</child><child/></root>");
+ * assertThat(elementValue).isEqualTo(documentValue.getDocumentElement().getFirstChild());
+ * assertThat(elementValue).hasAttribute("http://example.com", "attrName");
+ * assertThat(elementValue).hasAttributeValue("attrName", "attrValue");
+ * assertThat(elementValue).hasChildNodes();
+ * assertThat(elementValue).hasChildElementsCount(5);
+ * }</pre>
+ * <p>
  * Assertion examples for the Hamcrest matchers:
  * </p>
  * <pre>{@code
