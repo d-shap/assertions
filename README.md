@@ -106,6 +106,7 @@ Assertion examples for the org.w3c.dom data types:
 ```
 assertThat(documentValue).isEqualTo("<p>content</p>");
 assertThat(documentValue).isNotEqualTo("<?xml version='1.0'?>\n<p>text 1<br/>text 2<br/>text 3</p>");
+
 assertThat(elementValue).isEqualTo(documentValue.getDocumentElement().getFirstChild());
 assertThat(elementValue).hasAttribute("http://example.com", "attrName");
 assertThat(elementValue).hasAttributeValue("attrName", "attrValue");
