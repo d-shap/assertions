@@ -126,6 +126,13 @@
  * assertThat(charBufferValue).rewindAndContainsNone('a', 'b', 'c');
  * }</pre>
  * <p>
+ * Assertion examples for the javax.xml.namespace data types:
+ * </p>
+ * <pre>{@code
+ * assertThat(qnameValue).hasNamespaceURI("http://example.com");
+ * assertThat(qnameValue).hasLocalPart("local");
+ * }</pre>
+ * <p>
  * Assertion examples for the Hamcrest matchers:
  * </p>
  * <pre>{@code
