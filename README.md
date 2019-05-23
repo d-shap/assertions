@@ -96,6 +96,23 @@ assertThat(doubleBufferValue).rewindAndContainsAll(5.0, 10.0, 15.0);
 assertThat(charBufferValue).rewindAndContainsNone('a', 'b', 'c');
 ```
 
+Assertion examples for the javax.xml.namespace data types:
+```
+assertThat(qnameValue).hasNamespaceURI("http://example.com");
+assertThat(qnameValue).hasLocalPart("local");
+```
+
+Assertion examples for the org.w3c.dom data types:
+```
+assertThat(documentValue).isEqualTo("<p>content</p>");
+assertThat(documentValue).isNotEqualTo("<?xml version='1.0'?>\n<p>text 1<br/>text 2<br/>text 3</p>");
+assertThat(elementValue).isEqualTo(documentValue.getDocumentElement().getFirstChild());
+assertThat(elementValue).hasAttribute("http://example.com", "attrName");
+assertThat(elementValue).hasAttributeValue("attrName", "attrValue");
+assertThat(elementValue).hasChildNodes();
+assertThat(elementValue).hasChildElementsCount(5);
+```
+
 Assertion examples for the Hamcrest matchers:
 ```
 assertThat(intValue, is(equalTo(10)));
@@ -114,14 +131,6 @@ assertThat(listValue, contains(5, 2, 4));
 assertThat(listValue, containsInAnyOrder(2, 4, 5));
 assertThat(listValue, everyItem(greaterThan(1)));
 ```
-
-Custom assertion classes can be used in the next extension points:
-* Assertions.assertThat(java.lang.Object, ru.d_shap.assertions.BaseAssertion)
-* Assertions.assertThat(java.lang.Object, java.lang.String, ru.d_shap.assertions.BaseAssertion)
-* BaseAssertion.as(ru.d_shap.assertions.BaseAssertion)
-* MessageAssertion.that(java.lang.Object, ru.d_shap.assertions.BaseAssertion)
-* MessageAssertion.that(java.lang.Object, java.lang.String, ru.d_shap.assertions.BaseAssertion)
-* ReferenceAssertion.toField(java.lang.String, ru.d_shap.assertions.BaseAssertion)
 
 # Assertions library and Hamcrest
 ## Too many braces
