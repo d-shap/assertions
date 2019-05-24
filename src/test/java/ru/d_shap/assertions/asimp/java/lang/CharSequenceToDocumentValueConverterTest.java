@@ -19,6 +19,10 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.asimp.java.lang;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+import java.io.UnsupportedEncodingException;
+
 import org.junit.Test;
 import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
@@ -122,6 +126,39 @@ public final class CharSequenceToDocumentValueConverterTest extends AssertionTes
     @Test(expected = ArrayIndexOutOfBoundsException.class)
     public void convertWrongArgumentCountFailTest() throws Exception {
         new CharSequenceToDocumentValueConverter().convert("<element/>", new Object());
+    }
+
+    /**
+     * {@link CharSequenceToDocumentValueConverter} class test.
+     *
+     * @throws Exception exception in test.
+     */
+    @Test
+    public void stderrTest() throws Exception {
+        PrintStream stderr = System.err;
+        try {
+            try {
+                ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+                PrintStream printStream = new PrintStream(byteArrayOutputStream, true, ENCODING_UTF_8);
+                System.setErr(printStream);
+                try {
+                    String xml = "<?xml version='1.0'?>\n";
+                    xml += "<document xmlns:ns1='http://example.com'>";
+                    xml += "<ns1:element>value</ns1:element>";
+                    xml += "<document>";
+                    new CharSequenceToDocumentValueConverter().convert(xml);
+                    Assertions.fail("CharSequenceToDocumentValueConverter test fail");
+                } catch (ConversionException ex) {
+                    Assertions.assertThat(ex).hasCause(SAXException.class);
+                }
+                String message = new String(byteArrayOutputStream.toByteArray(), ENCODING_UTF_8);
+                Assertions.assertThat(message).isBlank();
+            } catch (UnsupportedEncodingException ex) {
+                Assertions.fail(ex.getMessage());
+            }
+        } finally {
+            System.setErr(stderr);
+        }
     }
 
 }
