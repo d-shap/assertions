@@ -69,7 +69,6 @@ public class ElementAssertion extends ReferenceAssertion<Element> {
      */
     public final void isEqualTo(final String expected) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected, "expected");
         ConversionExceptionHolder conversionExceptionHolder = new ConversionExceptionHolder();
         Element expectedElement = convertValue(expected, conversionExceptionHolder, Element.class);
         checkArgumentIsValid(conversionExceptionHolder, "expected", Messages.Fail.Argument.IS_VALID_XML);
@@ -92,7 +91,6 @@ public class ElementAssertion extends ReferenceAssertion<Element> {
      */
     public final void isNotEqualTo(final String expected) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected, "expected");
         ConversionExceptionHolder conversionExceptionHolder = new ConversionExceptionHolder();
         Element expectedElement = convertValue(expected, conversionExceptionHolder, Element.class);
         checkArgumentIsValid(conversionExceptionHolder, "expected", Messages.Fail.Argument.IS_VALID_XML);
