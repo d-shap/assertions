@@ -19,8 +19,11 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.asimp.org.w3c.dom;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.PrintStream;
 import java.io.StringWriter;
+import java.io.UnsupportedEncodingException;
 
 import javax.xml.transform.Result;
 import javax.xml.transform.Source;
@@ -121,6 +124,37 @@ public final class NodeAsStringConverterTest extends AssertionTest {
     @Test(expected = ClassCastException.class)
     public void asStringWrongValueTypeFailTest() throws Exception {
         new NodeAsStringConverter().asString(new Object());
+    }
+
+    /**
+     * {@link NodeAsStringConverter} class test.
+     *
+     * @throws Exception exception in test.
+     */
+    @Test
+    public void stderrTest() throws Exception {
+        PrintStream stderr = System.err;
+        try {
+            try {
+                ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+                PrintStream printStream = new PrintStream(byteArrayOutputStream, true, ENCODING_UTF_8);
+                System.setErr(printStream);
+                try {
+                    Source source = new StreamSource(createErrorReader());
+                    Result result = new StreamResult(new StringWriter());
+                    new NodeAsStringConverter().transform(source, result);
+                    Assertions.fail("NodeAsStringConverter test fail");
+                } catch (ConversionException ex) {
+                    Assertions.assertThat(ex).hasCause(TransformerException.class);
+                }
+                String message = new String(byteArrayOutputStream.toByteArray(), ENCODING_UTF_8);
+                Assertions.assertThat(message).isBlank();
+            } catch (UnsupportedEncodingException ex) {
+                Assertions.fail(ex.getMessage());
+            }
+        } finally {
+            System.setErr(stderr);
+        }
     }
 
 }
