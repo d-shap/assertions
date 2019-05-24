@@ -2176,6 +2176,8 @@ public final class BaseAssertionTest extends AssertionTest {
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should be valid: <NULL>.\n\tjava.io.IOException: IO ex.");
+            Assertions.assertThat(ex).hasCause(IOException.class);
+            Assertions.assertThat(ex).hasCauseMessage("IO ex");
         }
         try {
             ConversionExceptionHolder conversionExceptionHolder = new ConversionExceptionHolder();
@@ -2184,6 +2186,8 @@ public final class BaseAssertionTest extends AssertionTest {
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: <NULL>.\n\tjava.io.IOException: IO ex.");
+            Assertions.assertThat(ex).hasCause(IOException.class);
+            Assertions.assertThat(ex).hasCauseMessage("IO ex");
         }
         try {
             ConversionExceptionHolder conversionExceptionHolder = new ConversionExceptionHolder();
@@ -2192,6 +2196,8 @@ public final class BaseAssertionTest extends AssertionTest {
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should be valid: .\n\tjava.io.IOException: IO ex.");
+            Assertions.assertThat(ex).hasCause(IOException.class);
+            Assertions.assertThat(ex).hasCauseMessage("IO ex");
         }
         try {
             ConversionExceptionHolder conversionExceptionHolder = new ConversionExceptionHolder();
@@ -2200,6 +2206,8 @@ public final class BaseAssertionTest extends AssertionTest {
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: .\n\tjava.io.IOException: IO ex.");
+            Assertions.assertThat(ex).hasCause(IOException.class);
+            Assertions.assertThat(ex).hasCauseMessage("IO ex");
         }
         try {
             ConversionExceptionHolder conversionExceptionHolder = new ConversionExceptionHolder();
@@ -2208,6 +2216,8 @@ public final class BaseAssertionTest extends AssertionTest {
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should be valid: arg.\n\tjava.io.IOException: IO ex.");
+            Assertions.assertThat(ex).hasCause(IOException.class);
+            Assertions.assertThat(ex).hasCauseMessage("IO ex");
         }
         try {
             ConversionExceptionHolder conversionExceptionHolder = new ConversionExceptionHolder();
@@ -2216,6 +2226,8 @@ public final class BaseAssertionTest extends AssertionTest {
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: arg.\n\tjava.io.IOException: IO ex.");
+            Assertions.assertThat(ex).hasCause(IOException.class);
+            Assertions.assertThat(ex).hasCauseMessage("IO ex");
         }
         try {
             ConversionExceptionHolder conversionExceptionHolder = new ConversionExceptionHolder();
@@ -2224,6 +2236,8 @@ public final class BaseAssertionTest extends AssertionTest {
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should be valid: arg.\n\tjava.io.IOException: IO ex.");
+            Assertions.assertThat(ex).hasCause(IOException.class);
+            Assertions.assertThat(ex).hasCauseMessage("IO ex");
         }
         try {
             ConversionExceptionHolder conversionExceptionHolder = new ConversionExceptionHolder();
@@ -2232,6 +2246,8 @@ public final class BaseAssertionTest extends AssertionTest {
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: arg.\n\tjava.io.IOException: IO ex.");
+            Assertions.assertThat(ex).hasCause(IOException.class);
+            Assertions.assertThat(ex).hasCauseMessage("IO ex");
         }
         try {
             ConversionExceptionHolder conversionExceptionHolder = new ConversionExceptionHolder();
@@ -2240,6 +2256,8 @@ public final class BaseAssertionTest extends AssertionTest {
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should be valid: arg.\n\tmessage.\n\tjava.io.IOException: IO ex.");
+            Assertions.assertThat(ex).hasCause(IOException.class);
+            Assertions.assertThat(ex).hasCauseMessage("IO ex");
         }
         try {
             ConversionExceptionHolder conversionExceptionHolder = new ConversionExceptionHolder();
@@ -2248,6 +2266,8 @@ public final class BaseAssertionTest extends AssertionTest {
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: arg.\n\tmessage.\n\tjava.io.IOException: IO ex.");
+            Assertions.assertThat(ex).hasCause(IOException.class);
+            Assertions.assertThat(ex).hasCauseMessage("IO ex");
         }
         try {
             ConversionExceptionHolder conversionExceptionHolder = new ConversionExceptionHolder();
@@ -2256,6 +2276,8 @@ public final class BaseAssertionTest extends AssertionTest {
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should be valid: arg.\n\tmessage.\n\tjava.io.IOException: IO ex.");
+            Assertions.assertThat(ex).hasCause(IOException.class);
+            Assertions.assertThat(ex).hasCauseMessage("IO ex");
         }
         try {
             ConversionExceptionHolder conversionExceptionHolder = new ConversionExceptionHolder();
@@ -2264,6 +2286,8 @@ public final class BaseAssertionTest extends AssertionTest {
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: arg.\n\tmessage.\n\tjava.io.IOException: IO ex.");
+            Assertions.assertThat(ex).hasCause(IOException.class);
+            Assertions.assertThat(ex).hasCauseMessage("IO ex");
         }
         try {
             ConversionExceptionHolder conversionExceptionHolder = new ConversionExceptionHolder();
@@ -2272,6 +2296,8 @@ public final class BaseAssertionTest extends AssertionTest {
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should be valid: arg.\n\tmessage: T.\n\tjava.io.IOException: IO ex.");
+            Assertions.assertThat(ex).hasCause(IOException.class);
+            Assertions.assertThat(ex).hasCauseMessage("IO ex");
         }
         try {
             ConversionExceptionHolder conversionExceptionHolder = new ConversionExceptionHolder();
@@ -2280,6 +2306,8 @@ public final class BaseAssertionTest extends AssertionTest {
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: arg.\n\tmessage: T.\n\tjava.io.IOException: IO ex.");
+            Assertions.assertThat(ex).hasCause(IOException.class);
+            Assertions.assertThat(ex).hasCauseMessage("IO ex");
         }
     }
 
