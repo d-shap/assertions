@@ -68,6 +68,8 @@ import ru.d_shap.assertions.converter.ValueConverter;
  */
 public class AssertionTest {
 
+    protected static final String ENCODING_UTF_8 = "UTF-8";
+
     /**
      * Test class constructor.
      */
