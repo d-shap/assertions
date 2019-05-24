@@ -65,7 +65,6 @@ public class DocumentAssertion extends ReferenceAssertion<Document> {
      */
     public final void isEqualTo(final String expected) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected, "expected");
         ConversionExceptionHolder conversionExceptionHolder = new ConversionExceptionHolder();
         Document expectedDocument = convertValue(expected, conversionExceptionHolder, Document.class);
         checkArgumentIsValid(conversionExceptionHolder, "expected", Messages.Fail.Argument.IS_VALID_XML);
@@ -88,7 +87,6 @@ public class DocumentAssertion extends ReferenceAssertion<Document> {
      */
     public final void isNotEqualTo(final String expected) {
         checkActualIsNotNull();
-        checkArgumentIsNotNull(expected, "expected");
         ConversionExceptionHolder conversionExceptionHolder = new ConversionExceptionHolder();
         Document expectedDocument = convertValue(expected, conversionExceptionHolder, Document.class);
         checkArgumentIsValid(conversionExceptionHolder, "expected", Messages.Fail.Argument.IS_VALID_XML);
