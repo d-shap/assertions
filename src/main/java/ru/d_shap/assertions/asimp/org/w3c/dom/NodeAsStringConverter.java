@@ -73,7 +73,6 @@ public final class NodeAsStringConverter implements AsStringConverterProvider {
         try {
             Transformer transformer = TRANSFORMER_FACTORY.newTransformer();
             transformer.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes");
-            transformer.setOutputProperty(OutputKeys.INDENT, "no");
             transformer.setErrorListener(new NoopErrorListener());
             transformer.transform(source, result);
         } catch (TransformerException ex) {
