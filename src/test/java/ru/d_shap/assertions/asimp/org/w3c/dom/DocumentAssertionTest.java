@@ -231,6 +231,18 @@ public final class DocumentAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
+            initialize(Raw.documentAssertion(), null).isEqualTo("<element>");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), null, "Message").isEqualTo("<element>");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
             initialize(Raw.documentAssertion(), createDocument("<element/>")).isEqualTo("<element>");
             Assertions.fail("DocumentAssertion test fail");
         } catch (AssertionError ex) {
@@ -475,6 +487,18 @@ public final class DocumentAssertionTest extends AssertionTest {
             Assertions.fail("DocumentAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), null).isNotEqualTo("<element>");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), null, "Message").isNotEqualTo("<element>");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.documentAssertion(), createDocument("<element/>")).isNotEqualTo("<element>");
