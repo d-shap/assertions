@@ -45,17 +45,16 @@ final class ConverterSelector {
     }
 
     private static <T> boolean retainSubclassConvertersStep(final List<T> list, final ClassExtractor<T> classExtractor) {
-        for (int i = 0; i < list.size(); i++) {
-            T element = list.get(i);
+        for (T element : list) {
             Class<?> clazz = classExtractor.extractClass(element);
-            for (int j = 0; j < list.size(); j++) {
-                T checkElement = list.get(j);
+            for (int i = 0; i < list.size(); i++) {
+                T checkElement = list.get(i);
                 Class<?> checkClazz = classExtractor.extractClass(checkElement);
                 if (checkClazz.equals(clazz)) {
                     continue;
                 }
                 if (checkClazz.isAssignableFrom(clazz)) {
-                    list.remove(j);
+                    list.remove(i);
                     return true;
                 }
             }
