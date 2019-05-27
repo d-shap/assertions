@@ -33,6 +33,8 @@ final class ConverterSelector {
 
     private static final int NON_RELATIVE_DISTANCE = -1;
 
+    private static final int INITIAL_DISTANCE = 0;
+
     private ConverterSelector() {
         super();
     }
@@ -63,7 +65,7 @@ final class ConverterSelector {
     }
 
     static <T> void retainMinimumDistanceConverters(final List<T> list, final Class<?> clazz, final ClassExtractor<T> classExtractor) {
-        List<Integer> distances = new ArrayList<>(list.size());
+        List<Integer> distances = new ArrayList<>();
         int minimumDistance = NON_RELATIVE_DISTANCE;
 
         for (T element : list) {
@@ -82,22 +84,24 @@ final class ConverterSelector {
     }
 
     private static int getMinimumDistance(final int minimumDistance, final int currentDistance) {
-        if (currentDistance >= 0 && (minimumDistance < 0 || minimumDistance > currentDistance)) {
+        if (minimumDistance == NON_RELATIVE_DISTANCE) {
             return currentDistance;
-        } else {
+        }
+        if (currentDistance == NON_RELATIVE_DISTANCE) {
             return minimumDistance;
         }
+        return Math.min(minimumDistance, currentDistance);
     }
 
     private static boolean isMinimumDistance(final int minimumDistance, final int currentDistance) {
-        return minimumDistance >= 0 && currentDistance <= minimumDistance;
+        return minimumDistance != NON_RELATIVE_DISTANCE && currentDistance <= minimumDistance;
     }
 
     static int getDistance(final Class<?> clazz, final Class<?> targetClazz) {
         if (clazz.isInterface()) {
-            return getInterfaceDistanceStep(clazz, targetClazz, true, 0);
+            return getInterfaceDistanceStep(clazz, targetClazz, true, INITIAL_DISTANCE);
         } else {
-            return getDistanceStep(clazz, targetClazz, 0);
+            return getDistanceStep(clazz, targetClazz, INITIAL_DISTANCE);
         }
     }
 
