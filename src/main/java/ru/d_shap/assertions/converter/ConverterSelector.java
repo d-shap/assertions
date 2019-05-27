@@ -49,9 +49,6 @@ final class ConverterSelector {
             T element = list.get(i);
             Class<?> clazz = classExtractor.extractClass(element);
             for (int j = 0; j < list.size(); j++) {
-                if (i == j) {
-                    continue;
-                }
                 T checkElement = list.get(j);
                 Class<?> checkClazz = classExtractor.extractClass(checkElement);
                 if (checkClazz.equals(clazz)) {
