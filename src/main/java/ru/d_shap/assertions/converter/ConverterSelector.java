@@ -31,7 +31,7 @@ import java.util.List;
  */
 final class ConverterSelector {
 
-    private static final int NON_RELATIVE_DISTANCE = Integer.MIN_VALUE;
+    private static final int NON_RELATIVE_DISTANCE = -1;
 
     private ConverterSelector() {
         super();
