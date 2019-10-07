@@ -1401,6 +1401,222 @@ public class AssertionTest {
             }
         }
 
+        byte getByte() {
+            return _byte;
+        }
+
+        Byte getByteObj() {
+            return _byteObj;
+        }
+
+        short getShort() {
+            return _short;
+        }
+
+        Short getShortObj() {
+            return _shortObj;
+        }
+
+        int getInt() {
+            return _int;
+        }
+
+        Integer getIntObj() {
+            return _intObj;
+        }
+
+        long getLong() {
+            return _long;
+        }
+
+        Long getLongObj() {
+            return _longObj;
+        }
+
+        float getFloat() {
+            return _float;
+        }
+
+        Float getFloatObj() {
+            return _floatObj;
+        }
+
+        double getDouble() {
+            return _double;
+        }
+
+        Double getDoubleObj() {
+            return _doubleObj;
+        }
+
+        boolean getBoolean() {
+            return _boolean;
+        }
+
+        Boolean getBooleanObj() {
+            return _booleanObj;
+        }
+
+        char getChar() {
+            return _char;
+        }
+
+        Character getCharObj() {
+            return _charObj;
+        }
+
+        Object getObject() {
+            return _object;
+        }
+
+        byte[] getByteArray() {
+            return _byteArray;
+        }
+
+        short[] getShortArray() {
+            return _shortArray;
+        }
+
+        int[] getIntArray() {
+            return _intArray;
+        }
+
+        long[] getLongArray() {
+            return _longArray;
+        }
+
+        float[] getFloatArray() {
+            return _floatArray;
+        }
+
+        double[] getDoubleArray() {
+            return _doubleArray;
+        }
+
+        boolean[] getBooleanArray() {
+            return _booleanArray;
+        }
+
+        char[] getCharArray() {
+            return _charArray;
+        }
+
+        String[] getObjectArray() {
+            return _objectArray;
+        }
+
+        Class<?> getClassObj() {
+            return _class;
+        }
+
+        CharSequence getCharSequence() {
+            return _charSequence;
+        }
+
+        String getString() {
+            return _string;
+        }
+
+        Comparable<Integer> getComparable() {
+            return _comparable;
+        }
+
+        Iterable<String> getIterable() {
+            return _iterable;
+        }
+
+        Throwable getThrowable() {
+            return _throwable;
+        }
+
+        Iterator<String> getIterator() {
+            return _iterator;
+        }
+
+        List<String> getList() {
+            return _list;
+        }
+
+        Set<String> getSet() {
+            return _set;
+        }
+
+        SortedSet<String> getSortedSet() {
+            return _sortedSet;
+        }
+
+        Map<String, String> getMap() {
+            return _map;
+        }
+
+        SortedMap<String, String> getSortedMap() {
+            return _sortedMap;
+        }
+
+        InputStream getInputStream() {
+            return _inputStream;
+        }
+
+        Reader getReader() {
+            return _reader;
+        }
+
+        BufferedReader getBufferedReader() {
+            return _bufferedReader;
+        }
+
+        ByteBuffer getByteBuffer() {
+            return _byteBuffer;
+        }
+
+        ShortBuffer getShortBuffer() {
+            return _shortBuffer;
+        }
+
+        IntBuffer getIntBuffer() {
+            return _intBuffer;
+        }
+
+        LongBuffer getLongBuffer() {
+            return _longBuffer;
+        }
+
+        FloatBuffer getFloatBuffer() {
+            return _floatBuffer;
+        }
+
+        DoubleBuffer getDoubleBuffer() {
+            return _doubleBuffer;
+        }
+
+        CharBuffer getCharBuffer() {
+            return _charBuffer;
+        }
+
+        QName getQname() {
+            return _qname;
+        }
+
+        Node getNode() {
+            return _node;
+        }
+
+        Element getElement() {
+            return _element;
+        }
+
+        Document getDocument() {
+            return _document;
+        }
+
+        Attr getAttr() {
+            return _attr;
+        }
+
+        CharacterData getCharacterData() {
+            return _characterData;
+        }
+
     }
 
     /**

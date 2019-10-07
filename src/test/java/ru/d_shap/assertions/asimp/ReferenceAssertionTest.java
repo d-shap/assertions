@@ -1545,6 +1545,14 @@ public final class ReferenceAssertionTest extends AssertionTest {
             _parentField = "parentField";
         }
 
+        String getNullField() {
+            return _nullField;
+        }
+
+        String getParentField() {
+            return _parentField;
+        }
+
     }
 
     /**
@@ -1559,6 +1567,10 @@ public final class ReferenceAssertionTest extends AssertionTest {
         ToFieldChildClass() {
             super();
             _childField = "childField";
+        }
+
+        String getChildField() {
+            return _childField;
         }
 
     }
