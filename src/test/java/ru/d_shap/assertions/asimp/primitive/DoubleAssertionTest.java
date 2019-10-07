@@ -984,7 +984,7 @@ public final class DoubleAssertionTest extends AssertionTest {
     @Test
     public void isNaNTest() {
         initialize(Raw.doubleAssertion(), Double.NaN).isNaN();
-        initialize(Raw.doubleAssertion(), 0.0 / 0.0).isNaN();
+        initialize(Raw.doubleAssertion(), Math.sqrt(-2.0)).isNaN();
         initialize(Raw.doubleAssertion(), Double.POSITIVE_INFINITY / Double.NEGATIVE_INFINITY).isNaN();
 
         try {

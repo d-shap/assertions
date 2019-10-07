@@ -972,7 +972,7 @@ public final class FloatAssertionTest extends AssertionTest {
     @Test
     public void isNaNTest() {
         initialize(Raw.floatAssertion(), Float.NaN).isNaN();
-        initialize(Raw.floatAssertion(), 0.0f / 0.0f).isNaN();
+        initialize(Raw.floatAssertion(), (float) Math.sqrt(-2.0f)).isNaN();
         initialize(Raw.floatAssertion(), Float.POSITIVE_INFINITY / Float.NEGATIVE_INFINITY).isNaN();
 
         try {
