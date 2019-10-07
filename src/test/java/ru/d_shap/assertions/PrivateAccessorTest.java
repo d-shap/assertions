@@ -382,19 +382,19 @@ public final class PrivateAccessorTest extends AssertionTest {
             _parentField = "parentField";
         }
 
-        static String parentStaticMethod() {
+        private static String parentStaticMethod() {
             return "parentStaticMethod";
         }
 
-        String parentMethod() {
+        private String parentMethod() {
             return "parentMethod";
         }
 
-        String getNullField() {
+        private String getNullField() {
             return _nullField;
         }
 
-        String getParentField() {
+        private String getParentField() {
             return _parentField;
         }
 
@@ -416,15 +416,15 @@ public final class PrivateAccessorTest extends AssertionTest {
             _childField = "childField";
         }
 
-        static String childStaticMethod(final String param) {
+        private static String childStaticMethod(final String param) {
             return "childStaticMethod:" + param;
         }
 
-        String childMethod(final String param) {
+        private String childMethod(final String param) {
             return "childMethod:" + param;
         }
 
-        String getChildField() {
+        private String getChildField() {
             return _childField;
         }
 
