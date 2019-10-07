@@ -33,6 +33,7 @@ import java.nio.FloatBuffer;
 import java.nio.IntBuffer;
 import java.nio.LongBuffer;
 import java.nio.ShortBuffer;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -68,7 +69,7 @@ import ru.d_shap.assertions.converter.ValueConverter;
  */
 public class AssertionTest {
 
-    protected static final String ENCODING_UTF_8 = "UTF-8";
+    protected static final String ENCODING_UTF_8 = StandardCharsets.UTF_8.name();
 
     /**
      * Test class constructor.
@@ -1496,7 +1497,7 @@ public class AssertionTest {
 
         @Override
         public Object[] toArray() {
-            return _elements.toArray(new Object[_elements.size()]);
+            return _elements.toArray(new Object[0]);
         }
 
         @Override
