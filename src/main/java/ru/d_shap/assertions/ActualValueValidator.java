@@ -43,14 +43,13 @@ final class ActualValueValidator {
     ActualValueValidatorProvider validate(final Object actual) {
         if (actual == null) {
             return null;
-        } else {
-            for (ActualValueValidatorProvider actualValueValidator : _actualValueValidators) {
-                if (!actualValueValidator.isValid(actual)) {
-                    return actualValueValidator;
-                }
-            }
-            return null;
         }
+        for (ActualValueValidatorProvider actualValueValidator : _actualValueValidators) {
+            if (!actualValueValidator.isValid(actual)) {
+                return actualValueValidator;
+            }
+        }
+        return null;
     }
 
 }
