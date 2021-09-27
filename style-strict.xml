@@ -17,6 +17,7 @@
     <module name="NewlineAtEndOfFile">
         <property name="lineSeparator" value="lf" />
     </module>
+    <module name="OrderedProperties" />
     <module name="Translation" />
     <module name="UniqueProperties" />
 
@@ -254,13 +255,10 @@
             <property name="forceStrictCondition" value="true" />
         </module>
         <module name="NoCodeInFile" />
-        <module name="OrderedProperties" />
         <module name="OuterTypeFilename" />
         <module name="TodoComment" />
         <module name="TrailingComment" />
-        <module name="Translation" />
         <!--<module name="UncommentedMain" />-->
-        <module name="UniqueProperties" />
         <module name="UpperEll" />
 
         <!-- Modifiers -->
