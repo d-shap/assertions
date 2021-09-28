@@ -19,7 +19,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.asimp.array;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import ru.d_shap.assertions.converter.ConversionException;
@@ -55,11 +55,8 @@ public final class ShortArrayToListValueConverter implements ValueConverterProvi
         short[] castedValue = ConverterArgumentHelper.getValue(value, short[].class);
         ConverterArgumentHelper.checkArgumentsLength(arguments, 0);
 
-        List<Short> result = new ArrayList<>(castedValue.length);
-        for (short element : castedValue) {
-            result.add(element);
-        }
-        return result;
+        Short[] objectArray = ConverterArgumentHelper.toObjectArray(castedValue);
+        return Arrays.asList(objectArray);
     }
 
 }

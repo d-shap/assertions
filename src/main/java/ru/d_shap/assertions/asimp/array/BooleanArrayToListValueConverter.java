@@ -19,7 +19,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.asimp.array;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import ru.d_shap.assertions.converter.ConversionException;
@@ -55,11 +55,8 @@ public final class BooleanArrayToListValueConverter implements ValueConverterPro
         boolean[] castedValue = ConverterArgumentHelper.getValue(value, boolean[].class);
         ConverterArgumentHelper.checkArgumentsLength(arguments, 0);
 
-        List<Boolean> result = new ArrayList<>(castedValue.length);
-        for (boolean element : castedValue) {
-            result.add(element);
-        }
-        return result;
+        Boolean[] objectArray = ConverterArgumentHelper.toObjectArray(castedValue);
+        return Arrays.asList(objectArray);
     }
 
 }

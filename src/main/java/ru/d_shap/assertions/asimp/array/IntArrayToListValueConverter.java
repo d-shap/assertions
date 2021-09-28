@@ -19,7 +19,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.asimp.array;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import ru.d_shap.assertions.converter.ConversionException;
@@ -55,11 +55,8 @@ public final class IntArrayToListValueConverter implements ValueConverterProvide
         int[] castedValue = ConverterArgumentHelper.getValue(value, int[].class);
         ConverterArgumentHelper.checkArgumentsLength(arguments, 0);
 
-        List<Integer> result = new ArrayList<>(castedValue.length);
-        for (int element : castedValue) {
-            result.add(element);
-        }
-        return result;
+        Integer[] objectArray = ConverterArgumentHelper.toObjectArray(castedValue);
+        return Arrays.asList(objectArray);
     }
 
 }

@@ -19,7 +19,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.asimp.array;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import ru.d_shap.assertions.converter.ConversionException;
@@ -55,11 +55,8 @@ public final class FloatArrayToListValueConverter implements ValueConverterProvi
         float[] castedValue = ConverterArgumentHelper.getValue(value, float[].class);
         ConverterArgumentHelper.checkArgumentsLength(arguments, 0);
 
-        List<Float> result = new ArrayList<>(castedValue.length);
-        for (float element : castedValue) {
-            result.add(element);
-        }
-        return result;
+        Float[] objectArray = ConverterArgumentHelper.toObjectArray(castedValue);
+        return Arrays.asList(objectArray);
     }
 
 }

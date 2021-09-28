@@ -19,7 +19,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.asimp.array;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import ru.d_shap.assertions.converter.ConversionException;
@@ -55,11 +55,8 @@ public final class DoubleArrayToListValueConverter implements ValueConverterProv
         double[] castedValue = ConverterArgumentHelper.getValue(value, double[].class);
         ConverterArgumentHelper.checkArgumentsLength(arguments, 0);
 
-        List<Double> result = new ArrayList<>(castedValue.length);
-        for (double element : castedValue) {
-            result.add(element);
-        }
-        return result;
+        Double[] objectArray = ConverterArgumentHelper.toObjectArray(castedValue);
+        return Arrays.asList(objectArray);
     }
 
 }
