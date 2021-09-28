@@ -45,6 +45,158 @@ public final class ConverterArgumentHelper {
     }
 
     /**
+     * Convert the primitive array to the object array.
+     *
+     * @param array the primitive array.
+     *
+     * @return the object array.
+     */
+    public static Byte[] toObjectArray(final byte[] array) {
+        if (array == null) {
+            return null;
+        } else {
+            Byte[] result = new Byte[array.length];
+            for (int i = 0; i < array.length; i++) {
+                result[i] = array[i];
+            }
+            return result;
+        }
+    }
+
+    /**
+     * Convert the primitive array to the object array.
+     *
+     * @param array the primitive array.
+     *
+     * @return the object array.
+     */
+    public static Short[] toObjectArray(final short[] array) {
+        if (array == null) {
+            return null;
+        } else {
+            Short[] result = new Short[array.length];
+            for (int i = 0; i < array.length; i++) {
+                result[i] = array[i];
+            }
+            return result;
+        }
+    }
+
+    /**
+     * Convert the primitive array to the object array.
+     *
+     * @param array the primitive array.
+     *
+     * @return the object array.
+     */
+    public static Integer[] toObjectArray(final int[] array) {
+        if (array == null) {
+            return null;
+        } else {
+            Integer[] result = new Integer[array.length];
+            for (int i = 0; i < array.length; i++) {
+                result[i] = array[i];
+            }
+            return result;
+        }
+    }
+
+    /**
+     * Convert the primitive array to the object array.
+     *
+     * @param array the primitive array.
+     *
+     * @return the object array.
+     */
+    public static Long[] toObjectArray(final long[] array) {
+        if (array == null) {
+            return null;
+        } else {
+            Long[] result = new Long[array.length];
+            for (int i = 0; i < array.length; i++) {
+                result[i] = array[i];
+            }
+            return result;
+        }
+    }
+
+    /**
+     * Convert the primitive array to the object array.
+     *
+     * @param array the primitive array.
+     *
+     * @return the object array.
+     */
+    public static Float[] toObjectArray(final float[] array) {
+        if (array == null) {
+            return null;
+        } else {
+            Float[] result = new Float[array.length];
+            for (int i = 0; i < array.length; i++) {
+                result[i] = array[i];
+            }
+            return result;
+        }
+    }
+
+    /**
+     * Convert the primitive array to the object array.
+     *
+     * @param array the primitive array.
+     *
+     * @return the object array.
+     */
+    public static Double[] toObjectArray(final double[] array) {
+        if (array == null) {
+            return null;
+        } else {
+            Double[] result = new Double[array.length];
+            for (int i = 0; i < array.length; i++) {
+                result[i] = array[i];
+            }
+            return result;
+        }
+    }
+
+    /**
+     * Convert the primitive array to the object array.
+     *
+     * @param array the primitive array.
+     *
+     * @return the object array.
+     */
+    public static Boolean[] toObjectArray(final boolean[] array) {
+        if (array == null) {
+            return null;
+        } else {
+            Boolean[] result = new Boolean[array.length];
+            for (int i = 0; i < array.length; i++) {
+                result[i] = array[i];
+            }
+            return result;
+        }
+    }
+
+    /**
+     * Convert the primitive array to the object array.
+     *
+     * @param array the primitive array.
+     *
+     * @return the object array.
+     */
+    public static Character[] toObjectArray(final char[] array) {
+        if (array == null) {
+            return null;
+        } else {
+            Character[] result = new Character[array.length];
+            for (int i = 0; i < array.length; i++) {
+                result[i] = array[i];
+            }
+            return result;
+        }
+    }
+
+    /**
      * Check the argument array length.
      *
      * @param arguments the argument array.
