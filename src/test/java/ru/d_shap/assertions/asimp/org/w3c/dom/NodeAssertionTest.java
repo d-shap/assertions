@@ -324,11 +324,11 @@ public final class NodeAssertionTest extends AssertionTest {
      */
     @Test
     public void toNamespaceURIMatcherTest() throws Exception {
-        initialize(Raw.nodeAssertion(), createNode("<element/>")).toNamespaceURI(Matchers.is(Matchers.isEmptyOrNullString()));
+        initialize(Raw.nodeAssertion(), createNode("<element/>")).toNamespaceURI(Matchers.is(Matchers.emptyOrNullString()));
         initialize(Raw.nodeAssertion(), createNode("<element xmlns='aaa'/>")).toNamespaceURI(Matchers.is(Matchers.equalTo("aaa")));
         initialize(Raw.nodeAssertion(), createNode("<ns1:element xmlns:ns1='aaa'/>")).toNamespaceURI(Matchers.is(Matchers.equalTo("aaa")));
-        initialize(Raw.nodeAssertion(), createNode("<!-- comment -->")).toNamespaceURI(Matchers.is(Matchers.isEmptyOrNullString()));
-        initialize(Raw.nodeAssertion(), createNode("<?procinstr?>")).toNamespaceURI(Matchers.is(Matchers.isEmptyOrNullString()));
+        initialize(Raw.nodeAssertion(), createNode("<!-- comment -->")).toNamespaceURI(Matchers.is(Matchers.emptyOrNullString()));
+        initialize(Raw.nodeAssertion(), createNode("<?procinstr?>")).toNamespaceURI(Matchers.is(Matchers.emptyOrNullString()));
 
         try {
             Raw.nodeAssertion().toNamespaceURI(Matchers.equalTo(""));
@@ -504,11 +504,11 @@ public final class NodeAssertionTest extends AssertionTest {
      */
     @Test
     public void toPrefixMatcherTest() throws Exception {
-        initialize(Raw.nodeAssertion(), createNode("<element/>")).toPrefix(Matchers.is(Matchers.isEmptyOrNullString()));
-        initialize(Raw.nodeAssertion(), createNode("<element xmlns='aaa'/>")).toPrefix(Matchers.is(Matchers.isEmptyOrNullString()));
+        initialize(Raw.nodeAssertion(), createNode("<element/>")).toPrefix(Matchers.is(Matchers.emptyOrNullString()));
+        initialize(Raw.nodeAssertion(), createNode("<element xmlns='aaa'/>")).toPrefix(Matchers.is(Matchers.emptyOrNullString()));
         initialize(Raw.nodeAssertion(), createNode("<ns1:element xmlns:ns1='aaa'/>")).toPrefix(Matchers.is(Matchers.equalTo("ns1")));
-        initialize(Raw.nodeAssertion(), createNode("<!-- comment -->")).toPrefix(Matchers.is(Matchers.isEmptyOrNullString()));
-        initialize(Raw.nodeAssertion(), createNode("<?procinstr?>")).toPrefix(Matchers.is(Matchers.isEmptyOrNullString()));
+        initialize(Raw.nodeAssertion(), createNode("<!-- comment -->")).toPrefix(Matchers.is(Matchers.emptyOrNullString()));
+        initialize(Raw.nodeAssertion(), createNode("<?procinstr?>")).toPrefix(Matchers.is(Matchers.emptyOrNullString()));
 
         try {
             Raw.nodeAssertion().toPrefix(Matchers.equalTo(""));
@@ -686,8 +686,8 @@ public final class NodeAssertionTest extends AssertionTest {
         initialize(Raw.nodeAssertion(), createNode("<element/>")).toLocalName(Matchers.is(Matchers.equalTo("element")));
         initialize(Raw.nodeAssertion(), createNode("<element xmlns='aaa'/>")).toLocalName(Matchers.is(Matchers.equalTo("element")));
         initialize(Raw.nodeAssertion(), createNode("<ns1:element xmlns:ns1='aaa'/>")).toLocalName(Matchers.is(Matchers.equalTo("element")));
-        initialize(Raw.nodeAssertion(), createNode("<!-- comment -->")).toLocalName(Matchers.is(Matchers.isEmptyOrNullString()));
-        initialize(Raw.nodeAssertion(), createNode("<?procinstr?>")).toLocalName(Matchers.is(Matchers.isEmptyOrNullString()));
+        initialize(Raw.nodeAssertion(), createNode("<!-- comment -->")).toLocalName(Matchers.is(Matchers.emptyOrNullString()));
+        initialize(Raw.nodeAssertion(), createNode("<?procinstr?>")).toLocalName(Matchers.is(Matchers.emptyOrNullString()));
 
         try {
             Raw.nodeAssertion().toLocalName(Matchers.equalTo(""));

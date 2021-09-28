@@ -283,8 +283,8 @@ public final class AttrAssertionTest extends AssertionTest {
      */
     @Test
     public void toNamespaceURIMatcherTest() throws Exception {
-        initialize(Raw.attrAssertion(), createAttr("<element attr='val1'/>")).toNamespaceURI(Matchers.is(Matchers.isEmptyOrNullString()));
-        initialize(Raw.attrAssertion(), createAttr("<element xmlns:ns1='aaa' attr='val'/>")).toNamespaceURI(Matchers.is(Matchers.isEmptyOrNullString()));
+        initialize(Raw.attrAssertion(), createAttr("<element attr='val1'/>")).toNamespaceURI(Matchers.is(Matchers.emptyOrNullString()));
+        initialize(Raw.attrAssertion(), createAttr("<element xmlns:ns1='aaa' attr='val'/>")).toNamespaceURI(Matchers.is(Matchers.emptyOrNullString()));
         initialize(Raw.attrAssertion(), createAttr("<element xmlns:ns1='aaa' ns1:attr='val'/>")).toNamespaceURI(Matchers.is(Matchers.equalTo("aaa")));
 
         try {
@@ -458,8 +458,8 @@ public final class AttrAssertionTest extends AssertionTest {
      */
     @Test
     public void toPrefixMatcherTest() throws Exception {
-        initialize(Raw.attrAssertion(), createAttr("<element attr='val1'/>")).toPrefix(Matchers.is(Matchers.isEmptyOrNullString()));
-        initialize(Raw.attrAssertion(), createAttr("<element xmlns:ns1='aaa' attr='val'/>")).toPrefix(Matchers.is(Matchers.isEmptyOrNullString()));
+        initialize(Raw.attrAssertion(), createAttr("<element attr='val1'/>")).toPrefix(Matchers.is(Matchers.emptyOrNullString()));
+        initialize(Raw.attrAssertion(), createAttr("<element xmlns:ns1='aaa' attr='val'/>")).toPrefix(Matchers.is(Matchers.emptyOrNullString()));
         initialize(Raw.attrAssertion(), createAttr("<element xmlns:ns1='aaa' ns1:attr='val'/>")).toPrefix(Matchers.is(Matchers.equalTo("ns1")));
 
         try {

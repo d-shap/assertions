@@ -683,7 +683,7 @@ public final class ElementAssertionTest extends AssertionTest {
      */
     @Test
     public void toNamespaceURIMatcherTest() throws Exception {
-        initialize(Raw.elementAssertion(), createElement("<element/>")).toNamespaceURI(Matchers.is(Matchers.isEmptyOrNullString()));
+        initialize(Raw.elementAssertion(), createElement("<element/>")).toNamespaceURI(Matchers.is(Matchers.emptyOrNullString()));
         initialize(Raw.elementAssertion(), createElement("<element xmlns='aaa'/>")).toNamespaceURI(Matchers.is(Matchers.equalTo("aaa")));
         initialize(Raw.elementAssertion(), createElement("<ns1:element xmlns:ns1='aaa'/>")).toNamespaceURI(Matchers.is(Matchers.equalTo("aaa")));
 
@@ -865,8 +865,8 @@ public final class ElementAssertionTest extends AssertionTest {
      */
     @Test
     public void toPrefixMatcherTest() throws Exception {
-        initialize(Raw.elementAssertion(), createElement("<element/>")).toPrefix(Matchers.is(Matchers.isEmptyOrNullString()));
-        initialize(Raw.elementAssertion(), createElement("<element xmlns='aaa'/>")).toPrefix(Matchers.is(Matchers.isEmptyOrNullString()));
+        initialize(Raw.elementAssertion(), createElement("<element/>")).toPrefix(Matchers.is(Matchers.emptyOrNullString()));
+        initialize(Raw.elementAssertion(), createElement("<element xmlns='aaa'/>")).toPrefix(Matchers.is(Matchers.emptyOrNullString()));
         initialize(Raw.elementAssertion(), createElement("<ns1:element xmlns:ns1='aaa'/>")).toPrefix(Matchers.is(Matchers.equalTo("ns1")));
 
         try {

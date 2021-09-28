@@ -704,8 +704,8 @@ public final class MessageAssertionTest extends AssertionTest {
         Assertions.assertWithMessage("Test message").that(10, Matchers.is(Matchers.equalTo(10)));
         Assertions.assertWithMessage("Test message").that(1L, Matchers.instanceOf(Long.class));
         Assertions.assertWithMessage("Test message").that(1L, Matchers.isA(Long.class));
-        Assertions.assertWithMessage("Test message").that("", Matchers.isEmptyString());
-        Assertions.assertWithMessage("Test message").that("", Matchers.isEmptyOrNullString());
+        Assertions.assertWithMessage("Test message").that("", Matchers.emptyString());
+        Assertions.assertWithMessage("Test message").that("", Matchers.emptyOrNullString());
         Assertions.assertWithMessage("Test message").that(new Integer[]{7, 5, 12, 16}, Matchers.arrayWithSize(4));
         Assertions.assertWithMessage("Test message").that(new Integer[]{7, 5, 12, 16}, Matchers.arrayContaining(7, 5, 12, 16));
         Assertions.assertWithMessage("Test message").that(Arrays.asList(5, 2, 4), Matchers.hasSize(3));

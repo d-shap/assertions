@@ -422,8 +422,8 @@ public final class AssertionsTest extends AssertionTest {
         Assertions.assertThat(10, Matchers.is(Matchers.equalTo(10)));
         Assertions.assertThat(1L, Matchers.instanceOf(Long.class));
         Assertions.assertThat(1L, Matchers.isA(Long.class));
-        Assertions.assertThat("", Matchers.isEmptyString());
-        Assertions.assertThat("", Matchers.isEmptyOrNullString());
+        Assertions.assertThat("", Matchers.emptyString());
+        Assertions.assertThat("", Matchers.emptyOrNullString());
         Assertions.assertThat(new Integer[]{7, 5, 12, 16}, Matchers.arrayWithSize(4));
         Assertions.assertThat(new Integer[]{7, 5, 12, 16}, Matchers.arrayContaining(7, 5, 12, 16));
         Assertions.assertThat(Arrays.asList(5, 2, 4), Matchers.hasSize(3));
