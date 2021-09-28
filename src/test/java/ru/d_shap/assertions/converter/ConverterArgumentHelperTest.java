@@ -82,6 +82,102 @@ public final class ConverterArgumentHelperTest extends AssertionTest {
      * {@link ConverterArgumentHelper} class test.
      */
     @Test
+    public void toByteObjectArrayTest() {
+        Assertions.assertThat(ConverterArgumentHelper.toObjectArray((byte[]) null)).isNull();
+        Assertions.assertThat(ConverterArgumentHelper.toObjectArray(new byte[]{})).hasClass(Byte[].class);
+        Assertions.assertThat(ConverterArgumentHelper.toObjectArray(new byte[]{})).containsExactlyInOrder();
+        Assertions.assertThat(ConverterArgumentHelper.toObjectArray(new byte[]{1, 2, 3})).hasClass(Byte[].class);
+        Assertions.assertThat(ConverterArgumentHelper.toObjectArray(new byte[]{1, 2, 3})).containsExactlyInOrder((byte) 1, (byte) 2, (byte) 3);
+    }
+
+    /**
+     * {@link ConverterArgumentHelper} class test.
+     */
+    @Test
+    public void toShortObjectArrayTest() {
+        Assertions.assertThat(ConverterArgumentHelper.toObjectArray((short[]) null)).isNull();
+        Assertions.assertThat(ConverterArgumentHelper.toObjectArray(new short[]{})).hasClass(Short[].class);
+        Assertions.assertThat(ConverterArgumentHelper.toObjectArray(new short[]{})).containsExactlyInOrder();
+        Assertions.assertThat(ConverterArgumentHelper.toObjectArray(new short[]{1, 2, 3})).hasClass(Short[].class);
+        Assertions.assertThat(ConverterArgumentHelper.toObjectArray(new short[]{1, 2, 3})).containsExactlyInOrder((short) 1, (short) 2, (short) 3);
+    }
+
+    /**
+     * {@link ConverterArgumentHelper} class test.
+     */
+    @Test
+    public void toIntegerObjectArrayTest() {
+        Assertions.assertThat(ConverterArgumentHelper.toObjectArray((int[]) null)).isNull();
+        Assertions.assertThat(ConverterArgumentHelper.toObjectArray(new int[]{})).hasClass(Integer[].class);
+        Assertions.assertThat(ConverterArgumentHelper.toObjectArray(new int[]{})).containsExactlyInOrder();
+        Assertions.assertThat(ConverterArgumentHelper.toObjectArray(new int[]{1, 2, 3})).hasClass(Integer[].class);
+        Assertions.assertThat(ConverterArgumentHelper.toObjectArray(new int[]{1, 2, 3})).containsExactlyInOrder(1, 2, 3);
+    }
+
+    /**
+     * {@link ConverterArgumentHelper} class test.
+     */
+    @Test
+    public void toLongObjectArrayTest() {
+        Assertions.assertThat(ConverterArgumentHelper.toObjectArray((long[]) null)).isNull();
+        Assertions.assertThat(ConverterArgumentHelper.toObjectArray(new long[]{})).hasClass(Long[].class);
+        Assertions.assertThat(ConverterArgumentHelper.toObjectArray(new long[]{})).containsExactlyInOrder();
+        Assertions.assertThat(ConverterArgumentHelper.toObjectArray(new long[]{1L, 2L, 3L})).hasClass(Long[].class);
+        Assertions.assertThat(ConverterArgumentHelper.toObjectArray(new long[]{1L, 2L, 3L})).containsExactlyInOrder(1L, 2L, 3L);
+    }
+
+    /**
+     * {@link ConverterArgumentHelper} class test.
+     */
+    @Test
+    public void toFloatObjectArrayTest() {
+        Assertions.assertThat(ConverterArgumentHelper.toObjectArray((float[]) null)).isNull();
+        Assertions.assertThat(ConverterArgumentHelper.toObjectArray(new float[]{})).hasClass(Float[].class);
+        Assertions.assertThat(ConverterArgumentHelper.toObjectArray(new float[]{})).containsExactlyInOrder();
+        Assertions.assertThat(ConverterArgumentHelper.toObjectArray(new float[]{1.0f, 2.0f, 3.0f})).hasClass(Float[].class);
+        Assertions.assertThat(ConverterArgumentHelper.toObjectArray(new float[]{1.0f, 2.0f, 3.0f})).containsExactlyInOrder(1.0f, 2.0f, 3.0f);
+    }
+
+    /**
+     * {@link ConverterArgumentHelper} class test.
+     */
+    @Test
+    public void toDoubleObjectArrayTest() {
+        Assertions.assertThat(ConverterArgumentHelper.toObjectArray((double[]) null)).isNull();
+        Assertions.assertThat(ConverterArgumentHelper.toObjectArray(new double[]{})).hasClass(Double[].class);
+        Assertions.assertThat(ConverterArgumentHelper.toObjectArray(new double[]{})).containsExactlyInOrder();
+        Assertions.assertThat(ConverterArgumentHelper.toObjectArray(new double[]{1.0, 2.0, 3.0})).hasClass(Double[].class);
+        Assertions.assertThat(ConverterArgumentHelper.toObjectArray(new double[]{1.0, 2.0, 3.0})).containsExactlyInOrder(1.0, 2.0, 3.0);
+    }
+
+    /**
+     * {@link ConverterArgumentHelper} class test.
+     */
+    @Test
+    public void toBooleanObjectArrayTest() {
+        Assertions.assertThat(ConverterArgumentHelper.toObjectArray((boolean[]) null)).isNull();
+        Assertions.assertThat(ConverterArgumentHelper.toObjectArray(new boolean[]{})).hasClass(Boolean[].class);
+        Assertions.assertThat(ConverterArgumentHelper.toObjectArray(new boolean[]{})).containsExactlyInOrder();
+        Assertions.assertThat(ConverterArgumentHelper.toObjectArray(new boolean[]{true, true, false})).hasClass(Boolean[].class);
+        Assertions.assertThat(ConverterArgumentHelper.toObjectArray(new boolean[]{true, true, false})).containsExactlyInOrder(true, true, false);
+    }
+
+    /**
+     * {@link ConverterArgumentHelper} class test.
+     */
+    @Test
+    public void toCharacterObjectArrayTest() {
+        Assertions.assertThat(ConverterArgumentHelper.toObjectArray((char[]) null)).isNull();
+        Assertions.assertThat(ConverterArgumentHelper.toObjectArray(new char[]{})).hasClass(Character[].class);
+        Assertions.assertThat(ConverterArgumentHelper.toObjectArray(new char[]{})).containsExactlyInOrder();
+        Assertions.assertThat(ConverterArgumentHelper.toObjectArray(new char[]{'1', '2', '3'})).hasClass(Character[].class);
+        Assertions.assertThat(ConverterArgumentHelper.toObjectArray(new char[]{'1', '2', '3'})).containsExactlyInOrder('1', '2', '3');
+    }
+
+    /**
+     * {@link ConverterArgumentHelper} class test.
+     */
+    @Test
     public void checkArgumentsLengthTest() {
         ConverterArgumentHelper.checkArgumentsLength(new Object[0], 0);
         ConverterArgumentHelper.checkArgumentsLength(new Object[1], 1);
