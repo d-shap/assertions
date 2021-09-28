@@ -751,7 +751,7 @@ public final class DoubleAssertionTest extends AssertionTest {
     @Test
     public void isPositiveInfinityTest() {
         initialize(Raw.doubleAssertion(), Double.POSITIVE_INFINITY).isPositiveInfinity();
-        double val = 0.0;
+        double val = getZero();
         initialize(Raw.doubleAssertion(), 1.0 / val).isPositiveInfinity();
 
         try {
@@ -828,7 +828,7 @@ public final class DoubleAssertionTest extends AssertionTest {
     @Test
     public void isNegativeInfinityTest() {
         initialize(Raw.doubleAssertion(), Double.NEGATIVE_INFINITY).isNegativeInfinity();
-        double val = 0.0;
+        double val = getZero();
         initialize(Raw.doubleAssertion(), -1.0 / val).isNegativeInfinity();
 
         try {
@@ -906,7 +906,7 @@ public final class DoubleAssertionTest extends AssertionTest {
     public void isInfinityTest() {
         initialize(Raw.doubleAssertion(), Double.POSITIVE_INFINITY).isInfinity();
         initialize(Raw.doubleAssertion(), Double.NEGATIVE_INFINITY).isInfinity();
-        double val = 0.0;
+        double val = getZero();
         initialize(Raw.doubleAssertion(), 1.0 / val).isInfinity();
         initialize(Raw.doubleAssertion(), -1.0 / val).isInfinity();
 
@@ -1238,6 +1238,10 @@ public final class DoubleAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be different.\n\tActual:<10000.0>");
         }
+    }
+
+    private double getZero() {
+        return 0.0;
     }
 
 }

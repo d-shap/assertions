@@ -739,7 +739,7 @@ public final class FloatAssertionTest extends AssertionTest {
     @Test
     public void isPositiveInfinityTest() {
         initialize(Raw.floatAssertion(), Float.POSITIVE_INFINITY).isPositiveInfinity();
-        float val = 0.0f;
+        float val = getZero();
         initialize(Raw.floatAssertion(), 1.0f / val).isPositiveInfinity();
 
         try {
@@ -816,7 +816,7 @@ public final class FloatAssertionTest extends AssertionTest {
     @Test
     public void isNegativeInfinityTest() {
         initialize(Raw.floatAssertion(), Float.NEGATIVE_INFINITY).isNegativeInfinity();
-        float val = 0.0f;
+        float val = getZero();
         initialize(Raw.floatAssertion(), -1.0f / val).isNegativeInfinity();
 
         try {
@@ -894,7 +894,7 @@ public final class FloatAssertionTest extends AssertionTest {
     public void isInfinityTest() {
         initialize(Raw.floatAssertion(), Float.POSITIVE_INFINITY).isInfinity();
         initialize(Raw.floatAssertion(), Float.NEGATIVE_INFINITY).isInfinity();
-        float val = 0.0f;
+        float val = getZero();
         initialize(Raw.floatAssertion(), 1.0f / val).isInfinity();
         initialize(Raw.floatAssertion(), -1.0f / val).isInfinity();
 
@@ -1226,6 +1226,10 @@ public final class FloatAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be different.\n\tActual:<10000.0f>");
         }
+    }
+
+    private float getZero() {
+        return 0.0f;
     }
 
 }
