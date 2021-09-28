@@ -1,8 +1,8 @@
 # Assertions library
 Assertions library provides facilities for the unit testing.
 Assertions library allows checking of conditions using predefined assertions.
-This assertions make tests more readable, understandable and maintainable.
-Also this assertions reduce the amount of code needed to perform some complicated checks.
+These assertions make tests more readable, understandable and maintainable.
+Also, these assertions reduce the amount of code needed to perform some complicated checks.
 
 Assertions library is based on the following pillars:
 * The tests should be as simple and as readable, as possible
@@ -160,7 +160,7 @@ Hamcrest check for not equals:
 ```
 assertThat(actual, is(not(equalTo(expected))));
 ```
-Also valid Hamcrest check for not equals, but with less sense:
+Also, valid Hamcrest check for not equals, but with less sense:
 ```
 assertThat(actual, not(is(equalTo(expected))));
 ```
@@ -200,7 +200,7 @@ assertThat("value", anyOf(nullValue(), equalTo("test"), allOf(containsString("al
 assertThat(new HashMap<String, String>(), allOf(hasEntry(equalTo("key1"), anyOf(equalToIgnoringCase("VALUE1"), isEmptyString())), not(hasEntry(startsWith("key2"), not(equalToIgnoringCase("VALUE2"))))));
 ```
 But some combinations of matchers do not make sense.
-Also it is too difficult to understand some complicated combinations of matchers.
+Also, it is too difficult to understand some complicated combinations of matchers.
 The test should be as simple as possible - to prevent mistakes in the test itself.
 And too complicated combinations of matchers are error prone.
 
@@ -222,7 +222,7 @@ But Assertions library can use Hamcrest matchers.
 In this case Assertions library can be used as a main library for the unit testing.
 And in case of specific assertions custom Hamcrest matchers can be used.
 
-# Latest release
+# The latest release
 Assertions library:
 * **&lt;groupId&gt;**: ru.d-shap
 * **&lt;artifactId&gt;**: assertions
