@@ -423,13 +423,13 @@ public final class ReaderAssertionTest extends AssertionTest {
             initialize(Raw.readerAssertion(), new StringReader("123")).toCharArray(Matchers.arrayContaining('1', '2'));
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check all actual value's chars.\nExpected: [\"1\", \"2\"]\n     but: Not matched: \"3\"");
+            Assertions.assertThat(ex).hasMessage("Check all actual value's chars.\nExpected: [\"1\", \"2\"] \n     but: not matched: \"3\"");
         }
         try {
             initialize(Raw.readerAssertion(), new StringReader("123"), "Message").toCharArray(Matchers.arrayContaining('1', '2'));
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck all actual value's chars.\nExpected: [\"1\", \"2\"]\n     but: Not matched: \"3\"");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck all actual value's chars.\nExpected: [\"1\", \"2\"] \n     but: not matched: \"3\"");
         }
     }
 
@@ -537,13 +537,13 @@ public final class ReaderAssertionTest extends AssertionTest {
             initialize(Raw.readerAssertion(), new StringReader("123")).toCharArray(4, Matchers.arrayContaining('1', '2'));
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check next N actual value's chars: 4.\nExpected: [\"1\", \"2\"]\n     but: Not matched: \"3\"");
+            Assertions.assertThat(ex).hasMessage("Check next N actual value's chars: 4.\nExpected: [\"1\", \"2\"] \n     but: not matched: \"3\"");
         }
         try {
             initialize(Raw.readerAssertion(), new StringReader("123"), "Message").toCharArray(4, Matchers.arrayContaining('1', '2'));
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck next N actual value's chars: 4.\nExpected: [\"1\", \"2\"]\n     but: Not matched: \"3\"");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck next N actual value's chars: 4.\nExpected: [\"1\", \"2\"] \n     but: not matched: \"3\"");
         }
     }
 

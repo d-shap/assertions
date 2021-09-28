@@ -587,13 +587,13 @@ public final class SortedSetAssertionTest extends AssertionTest {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3", "val4", "val5")).toHeadSet("val3", Matchers.hasItems("val4", "val5"));
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check actual value's head elements up to element: val3.\nExpected: (a collection containing \"val4\" and a collection containing \"val5\")\n     but: a collection containing \"val4\" was \"val1\", was \"val2\"");
+            Assertions.assertThat(ex).hasMessage("Check actual value's head elements up to element: val3.\nExpected: (a collection containing \"val4\" and a collection containing \"val5\")\n     but: a collection containing \"val4\" mismatches were: [was \"val1\", was \"val2\"]");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3", "val4", "val5"), "Message").toHeadSet("val3", Matchers.hasItems("val4", "val5"));
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's head elements up to element: val3.\nExpected: (a collection containing \"val4\" and a collection containing \"val5\")\n     but: a collection containing \"val4\" was \"val1\", was \"val2\"");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's head elements up to element: val3.\nExpected: (a collection containing \"val4\" and a collection containing \"val5\")\n     but: a collection containing \"val4\" mismatches were: [was \"val1\", was \"val2\"]");
         }
     }
 
@@ -691,37 +691,37 @@ public final class SortedSetAssertionTest extends AssertionTest {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3", "val4", "val5")).toHeadSet(3, Matchers.hasItems("val4", "val6"));
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check actual value's N head elements: 3.\nExpected: (a collection containing \"val4\" and a collection containing \"val6\")\n     but: a collection containing \"val4\" was \"val1\", was \"val2\", was \"val3\"");
+            Assertions.assertThat(ex).hasMessage("Check actual value's N head elements: 3.\nExpected: (a collection containing \"val4\" and a collection containing \"val6\")\n     but: a collection containing \"val4\" mismatches were: [was \"val1\", was \"val2\", was \"val3\"]");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3", "val4", "val5"), "Message").toHeadSet(3, Matchers.hasItems("val4", "val6"));
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's N head elements: 3.\nExpected: (a collection containing \"val4\" and a collection containing \"val6\")\n     but: a collection containing \"val4\" was \"val1\", was \"val2\", was \"val3\"");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's N head elements: 3.\nExpected: (a collection containing \"val4\" and a collection containing \"val6\")\n     but: a collection containing \"val4\" mismatches were: [was \"val1\", was \"val2\", was \"val3\"]");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3", "val4", "val5")).toHeadSet(5, Matchers.hasItems("val4", "val6"));
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check actual value's N head elements: 5.\nExpected: (a collection containing \"val4\" and a collection containing \"val6\")\n     but: a collection containing \"val6\" was \"val1\", was \"val2\", was \"val3\", was \"val4\", was \"val5\"");
+            Assertions.assertThat(ex).hasMessage("Check actual value's N head elements: 5.\nExpected: (a collection containing \"val4\" and a collection containing \"val6\")\n     but: a collection containing \"val6\" mismatches were: [was \"val1\", was \"val2\", was \"val3\", was \"val4\", was \"val5\"]");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3", "val4", "val5"), "Message").toHeadSet(5, Matchers.hasItems("val4", "val6"));
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's N head elements: 5.\nExpected: (a collection containing \"val4\" and a collection containing \"val6\")\n     but: a collection containing \"val6\" was \"val1\", was \"val2\", was \"val3\", was \"val4\", was \"val5\"");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's N head elements: 5.\nExpected: (a collection containing \"val4\" and a collection containing \"val6\")\n     but: a collection containing \"val6\" mismatches were: [was \"val1\", was \"val2\", was \"val3\", was \"val4\", was \"val5\"]");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3", "val4", "val5")).toHeadSet(6, Matchers.hasItems("val4", "val6"));
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check actual value's N head elements: 6.\nExpected: (a collection containing \"val4\" and a collection containing \"val6\")\n     but: a collection containing \"val6\" was \"val1\", was \"val2\", was \"val3\", was \"val4\", was \"val5\"");
+            Assertions.assertThat(ex).hasMessage("Check actual value's N head elements: 6.\nExpected: (a collection containing \"val4\" and a collection containing \"val6\")\n     but: a collection containing \"val6\" mismatches were: [was \"val1\", was \"val2\", was \"val3\", was \"val4\", was \"val5\"]");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3", "val4", "val5"), "Message").toHeadSet(6, Matchers.hasItems("val4", "val6"));
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's N head elements: 6.\nExpected: (a collection containing \"val4\" and a collection containing \"val6\")\n     but: a collection containing \"val6\" was \"val1\", was \"val2\", was \"val3\", was \"val4\", was \"val5\"");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's N head elements: 6.\nExpected: (a collection containing \"val4\" and a collection containing \"val6\")\n     but: a collection containing \"val6\" mismatches were: [was \"val1\", was \"val2\", was \"val3\", was \"val4\", was \"val5\"]");
         }
     }
 
@@ -1014,13 +1014,13 @@ public final class SortedSetAssertionTest extends AssertionTest {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3", "val4", "val5")).toTailSet("val3", Matchers.hasItems("val1", "val2"));
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check actual value's tail elements from element: val3.\nExpected: (a collection containing \"val1\" and a collection containing \"val2\")\n     but: a collection containing \"val1\" was \"val3\", was \"val4\", was \"val5\"");
+            Assertions.assertThat(ex).hasMessage("Check actual value's tail elements from element: val3.\nExpected: (a collection containing \"val1\" and a collection containing \"val2\")\n     but: a collection containing \"val1\" mismatches were: [was \"val3\", was \"val4\", was \"val5\"]");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3", "val4", "val5"), "Message").toTailSet("val3", Matchers.hasItems("val1", "val2"));
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's tail elements from element: val3.\nExpected: (a collection containing \"val1\" and a collection containing \"val2\")\n     but: a collection containing \"val1\" was \"val3\", was \"val4\", was \"val5\"");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's tail elements from element: val3.\nExpected: (a collection containing \"val1\" and a collection containing \"val2\")\n     but: a collection containing \"val1\" mismatches were: [was \"val3\", was \"val4\", was \"val5\"]");
         }
     }
 
@@ -1118,37 +1118,37 @@ public final class SortedSetAssertionTest extends AssertionTest {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3", "val4", "val5")).toTailSet(3, Matchers.hasItems("val4", "val6"));
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check actual value's N tail elements: 3.\nExpected: (a collection containing \"val4\" and a collection containing \"val6\")\n     but: a collection containing \"val6\" was \"val3\", was \"val4\", was \"val5\"");
+            Assertions.assertThat(ex).hasMessage("Check actual value's N tail elements: 3.\nExpected: (a collection containing \"val4\" and a collection containing \"val6\")\n     but: a collection containing \"val6\" mismatches were: [was \"val3\", was \"val4\", was \"val5\"]");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3", "val4", "val5"), "Message").toTailSet(3, Matchers.hasItems("val4", "val6"));
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's N tail elements: 3.\nExpected: (a collection containing \"val4\" and a collection containing \"val6\")\n     but: a collection containing \"val6\" was \"val3\", was \"val4\", was \"val5\"");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's N tail elements: 3.\nExpected: (a collection containing \"val4\" and a collection containing \"val6\")\n     but: a collection containing \"val6\" mismatches were: [was \"val3\", was \"val4\", was \"val5\"]");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3", "val4", "val5")).toTailSet(5, Matchers.hasItems("val4", "val6"));
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check actual value's N tail elements: 5.\nExpected: (a collection containing \"val4\" and a collection containing \"val6\")\n     but: a collection containing \"val6\" was \"val1\", was \"val2\", was \"val3\", was \"val4\", was \"val5\"");
+            Assertions.assertThat(ex).hasMessage("Check actual value's N tail elements: 5.\nExpected: (a collection containing \"val4\" and a collection containing \"val6\")\n     but: a collection containing \"val6\" mismatches were: [was \"val1\", was \"val2\", was \"val3\", was \"val4\", was \"val5\"]");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3", "val4", "val5"), "Message").toTailSet(5, Matchers.hasItems("val4", "val6"));
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's N tail elements: 5.\nExpected: (a collection containing \"val4\" and a collection containing \"val6\")\n     but: a collection containing \"val6\" was \"val1\", was \"val2\", was \"val3\", was \"val4\", was \"val5\"");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's N tail elements: 5.\nExpected: (a collection containing \"val4\" and a collection containing \"val6\")\n     but: a collection containing \"val6\" mismatches were: [was \"val1\", was \"val2\", was \"val3\", was \"val4\", was \"val5\"]");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3", "val4", "val5")).toTailSet(6, Matchers.hasItems("val4", "val6"));
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check actual value's N tail elements: 6.\nExpected: (a collection containing \"val4\" and a collection containing \"val6\")\n     but: a collection containing \"val6\" was \"val1\", was \"val2\", was \"val3\", was \"val4\", was \"val5\"");
+            Assertions.assertThat(ex).hasMessage("Check actual value's N tail elements: 6.\nExpected: (a collection containing \"val4\" and a collection containing \"val6\")\n     but: a collection containing \"val6\" mismatches were: [was \"val1\", was \"val2\", was \"val3\", was \"val4\", was \"val5\"]");
         }
         try {
             initialize(Raw.<String>sortedSetAssertion(), createTreeSet("val1", "val2", "val3", "val4", "val5"), "Message").toTailSet(6, Matchers.hasItems("val4", "val6"));
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's N tail elements: 6.\nExpected: (a collection containing \"val4\" and a collection containing \"val6\")\n     but: a collection containing \"val6\" was \"val1\", was \"val2\", was \"val3\", was \"val4\", was \"val5\"");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's N tail elements: 6.\nExpected: (a collection containing \"val4\" and a collection containing \"val6\")\n     but: a collection containing \"val6\" mismatches were: [was \"val1\", was \"val2\", was \"val3\", was \"val4\", was \"val5\"]");
         }
     }
 

@@ -421,13 +421,13 @@ public final class InputStreamAssertionTest extends AssertionTest {
             initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{1, 2, 3})).toByteArray(Matchers.arrayContaining((byte) 1, (byte) 2));
             Assertions.fail("InputStreamAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check all actual value's bytes.\nExpected: [<1>, <2>]\n     but: Not matched: <3>");
+            Assertions.assertThat(ex).hasMessage("Check all actual value's bytes.\nExpected: [<1>, <2>] \n     but: not matched: <3>");
         }
         try {
             initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{1, 2, 3}), "Message").toByteArray(Matchers.arrayContaining((byte) 1, (byte) 2));
             Assertions.fail("InputStreamAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck all actual value's bytes.\nExpected: [<1>, <2>]\n     but: Not matched: <3>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck all actual value's bytes.\nExpected: [<1>, <2>] \n     but: not matched: <3>");
         }
     }
 
@@ -535,13 +535,13 @@ public final class InputStreamAssertionTest extends AssertionTest {
             initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{1, 2, 3})).toByteArray(4, Matchers.arrayContaining((byte) 1, (byte) 2));
             Assertions.fail("InputStreamAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check next N actual value's bytes: 4.\nExpected: [<1>, <2>]\n     but: Not matched: <3>");
+            Assertions.assertThat(ex).hasMessage("Check next N actual value's bytes: 4.\nExpected: [<1>, <2>] \n     but: not matched: <3>");
         }
         try {
             initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{1, 2, 3}), "Message").toByteArray(4, Matchers.arrayContaining((byte) 1, (byte) 2));
             Assertions.fail("InputStreamAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck next N actual value's bytes: 4.\nExpected: [<1>, <2>]\n     but: Not matched: <3>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck next N actual value's bytes: 4.\nExpected: [<1>, <2>] \n     but: not matched: <3>");
         }
     }
 

@@ -275,13 +275,13 @@ public final class SortedMapAssertionTest extends AssertionTest {
             initialize(Raw.<String, String>sortedMapAssertion(), createTreeMap("key1", "value1", "key2", "value2")).toKeys(Matchers.hasItems("key"));
             Assertions.fail("SortedMapAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check actual value's keys.\nExpected: (a collection containing \"key\")\n     but: a collection containing \"key\" was \"key1\", was \"key2\"");
+            Assertions.assertThat(ex).hasMessage("Check actual value's keys.\nExpected: (a collection containing \"key\")\n     but: a collection containing \"key\" mismatches were: [was \"key1\", was \"key2\"]");
         }
         try {
             initialize(Raw.<String, String>sortedMapAssertion(), createTreeMap("key1", "value1", "key2", "value2"), "Message").toKeys(Matchers.hasItems("key"));
             Assertions.fail("SortedMapAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's keys.\nExpected: (a collection containing \"key\")\n     but: a collection containing \"key\" was \"key1\", was \"key2\"");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's keys.\nExpected: (a collection containing \"key\")\n     but: a collection containing \"key\" mismatches were: [was \"key1\", was \"key2\"]");
         }
     }
 
@@ -707,13 +707,13 @@ public final class SortedMapAssertionTest extends AssertionTest {
             initialize(Raw.<String, String>sortedMapAssertion(), createTreeMap("key1", "value1", "key2", "value2", "key3", "value3")).toHeadKeys("key2", Matchers.hasItems("key2", "key3"));
             Assertions.fail("SortedMapAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check actual value's keys.\n\tCheck actual value's head elements up to element: key2.\nExpected: (a collection containing \"key2\" and a collection containing \"key3\")\n     but: a collection containing \"key2\" was \"key1\"");
+            Assertions.assertThat(ex).hasMessage("Check actual value's keys.\n\tCheck actual value's head elements up to element: key2.\nExpected: (a collection containing \"key2\" and a collection containing \"key3\")\n     but: a collection containing \"key2\" mismatches were: [was \"key1\"]");
         }
         try {
             initialize(Raw.<String, String>sortedMapAssertion(), createTreeMap("key1", "value1", "key2", "value2", "key3", "value3"), "Message").toHeadKeys("key2", Matchers.hasItems("key2", "key3"));
             Assertions.fail("SortedMapAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's keys.\n\tCheck actual value's head elements up to element: key2.\nExpected: (a collection containing \"key2\" and a collection containing \"key3\")\n     but: a collection containing \"key2\" was \"key1\"");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's keys.\n\tCheck actual value's head elements up to element: key2.\nExpected: (a collection containing \"key2\" and a collection containing \"key3\")\n     but: a collection containing \"key2\" mismatches were: [was \"key1\"]");
         }
     }
 
@@ -809,25 +809,25 @@ public final class SortedMapAssertionTest extends AssertionTest {
             initialize(Raw.<String, String>sortedMapAssertion(), createTreeMap("key1", "value1", "key2", "value2", "key3", "value3")).toHeadKeys(1, Matchers.hasItems("key2", "key3"));
             Assertions.fail("SortedMapAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check actual value's keys.\n\tCheck actual value's N head elements: 1.\nExpected: (a collection containing \"key2\" and a collection containing \"key3\")\n     but: a collection containing \"key2\" was \"key1\"");
+            Assertions.assertThat(ex).hasMessage("Check actual value's keys.\n\tCheck actual value's N head elements: 1.\nExpected: (a collection containing \"key2\" and a collection containing \"key3\")\n     but: a collection containing \"key2\" mismatches were: [was \"key1\"]");
         }
         try {
             initialize(Raw.<String, String>sortedMapAssertion(), createTreeMap("key1", "value1", "key2", "value2", "key3", "value3"), "Message").toHeadKeys(1, Matchers.hasItems("key2", "key3"));
             Assertions.fail("SortedMapAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's keys.\n\tCheck actual value's N head elements: 1.\nExpected: (a collection containing \"key2\" and a collection containing \"key3\")\n     but: a collection containing \"key2\" was \"key1\"");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's keys.\n\tCheck actual value's N head elements: 1.\nExpected: (a collection containing \"key2\" and a collection containing \"key3\")\n     but: a collection containing \"key2\" mismatches were: [was \"key1\"]");
         }
         try {
             initialize(Raw.<String, String>sortedMapAssertion(), createTreeMap("key1", "value1", "key2", "value2", "key3", "value3")).toHeadKeys(4, Matchers.hasItems("key2", "key4"));
             Assertions.fail("SortedMapAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check actual value's keys.\n\tCheck actual value's N head elements: 4.\nExpected: (a collection containing \"key2\" and a collection containing \"key4\")\n     but: a collection containing \"key4\" was \"key1\", was \"key2\", was \"key3\"");
+            Assertions.assertThat(ex).hasMessage("Check actual value's keys.\n\tCheck actual value's N head elements: 4.\nExpected: (a collection containing \"key2\" and a collection containing \"key4\")\n     but: a collection containing \"key4\" mismatches were: [was \"key1\", was \"key2\", was \"key3\"]");
         }
         try {
             initialize(Raw.<String, String>sortedMapAssertion(), createTreeMap("key1", "value1", "key2", "value2", "key3", "value3"), "Message").toHeadKeys(4, Matchers.hasItems("key2", "key4"));
             Assertions.fail("SortedMapAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's keys.\n\tCheck actual value's N head elements: 4.\nExpected: (a collection containing \"key2\" and a collection containing \"key4\")\n     but: a collection containing \"key4\" was \"key1\", was \"key2\", was \"key3\"");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's keys.\n\tCheck actual value's N head elements: 4.\nExpected: (a collection containing \"key2\" and a collection containing \"key4\")\n     but: a collection containing \"key4\" mismatches were: [was \"key1\", was \"key2\", was \"key3\"]");
         }
     }
 
@@ -1121,13 +1121,13 @@ public final class SortedMapAssertionTest extends AssertionTest {
             initialize(Raw.<String, String>sortedMapAssertion(), createTreeMap("key1", "value1", "key2", "value2", "key3", "value3")).toTailKeys("key3", Matchers.hasItems("key2", "key3"));
             Assertions.fail("SortedMapAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check actual value's keys.\n\tCheck actual value's tail elements from element: key3.\nExpected: (a collection containing \"key2\" and a collection containing \"key3\")\n     but: a collection containing \"key2\" was \"key3\"");
+            Assertions.assertThat(ex).hasMessage("Check actual value's keys.\n\tCheck actual value's tail elements from element: key3.\nExpected: (a collection containing \"key2\" and a collection containing \"key3\")\n     but: a collection containing \"key2\" mismatches were: [was \"key3\"]");
         }
         try {
             initialize(Raw.<String, String>sortedMapAssertion(), createTreeMap("key1", "value1", "key2", "value2", "key3", "value3"), "Message").toTailKeys("key3", Matchers.hasItems("key2", "key3"));
             Assertions.fail("SortedMapAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's keys.\n\tCheck actual value's tail elements from element: key3.\nExpected: (a collection containing \"key2\" and a collection containing \"key3\")\n     but: a collection containing \"key2\" was \"key3\"");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's keys.\n\tCheck actual value's tail elements from element: key3.\nExpected: (a collection containing \"key2\" and a collection containing \"key3\")\n     but: a collection containing \"key2\" mismatches were: [was \"key3\"]");
         }
     }
 
@@ -1223,25 +1223,25 @@ public final class SortedMapAssertionTest extends AssertionTest {
             initialize(Raw.<String, String>sortedMapAssertion(), createTreeMap("key1", "value1", "key2", "value2", "key3", "value3")).toTailKeys(1, Matchers.hasItems("key2", "key4"));
             Assertions.fail("SortedMapAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check actual value's keys.\n\tCheck actual value's N tail elements: 1.\nExpected: (a collection containing \"key2\" and a collection containing \"key4\")\n     but: a collection containing \"key2\" was \"key3\"");
+            Assertions.assertThat(ex).hasMessage("Check actual value's keys.\n\tCheck actual value's N tail elements: 1.\nExpected: (a collection containing \"key2\" and a collection containing \"key4\")\n     but: a collection containing \"key2\" mismatches were: [was \"key3\"]");
         }
         try {
             initialize(Raw.<String, String>sortedMapAssertion(), createTreeMap("key1", "value1", "key2", "value2", "key3", "value3"), "Message").toTailKeys(1, Matchers.hasItems("key2", "key4"));
             Assertions.fail("SortedMapAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's keys.\n\tCheck actual value's N tail elements: 1.\nExpected: (a collection containing \"key2\" and a collection containing \"key4\")\n     but: a collection containing \"key2\" was \"key3\"");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's keys.\n\tCheck actual value's N tail elements: 1.\nExpected: (a collection containing \"key2\" and a collection containing \"key4\")\n     but: a collection containing \"key2\" mismatches were: [was \"key3\"]");
         }
         try {
             initialize(Raw.<String, String>sortedMapAssertion(), createTreeMap("key1", "value1", "key2", "value2", "key3", "value3")).toTailKeys(4, Matchers.hasItems("key2", "key4"));
             Assertions.fail("SortedMapAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check actual value's keys.\n\tCheck actual value's N tail elements: 4.\nExpected: (a collection containing \"key2\" and a collection containing \"key4\")\n     but: a collection containing \"key4\" was \"key1\", was \"key2\", was \"key3\"");
+            Assertions.assertThat(ex).hasMessage("Check actual value's keys.\n\tCheck actual value's N tail elements: 4.\nExpected: (a collection containing \"key2\" and a collection containing \"key4\")\n     but: a collection containing \"key4\" mismatches were: [was \"key1\", was \"key2\", was \"key3\"]");
         }
         try {
             initialize(Raw.<String, String>sortedMapAssertion(), createTreeMap("key1", "value1", "key2", "value2", "key3", "value3"), "Message").toTailKeys(4, Matchers.hasItems("key2", "key4"));
             Assertions.fail("SortedMapAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's keys.\n\tCheck actual value's N tail elements: 4.\nExpected: (a collection containing \"key2\" and a collection containing \"key4\")\n     but: a collection containing \"key4\" was \"key1\", was \"key2\", was \"key3\"");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's keys.\n\tCheck actual value's N tail elements: 4.\nExpected: (a collection containing \"key2\" and a collection containing \"key4\")\n     but: a collection containing \"key4\" mismatches were: [was \"key1\", was \"key2\", was \"key3\"]");
         }
     }
 
@@ -2563,13 +2563,13 @@ public final class SortedMapAssertionTest extends AssertionTest {
             initialize(Raw.<String, String>sortedMapAssertion(), createTreeMap("key1", "value1", "key2", "value2")).toValues(Matchers.hasItems("value"));
             Assertions.fail("SortedMapAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check actual value's values.\nExpected: (a collection containing \"value\")\n     but: a collection containing \"value\" was \"value1\", was \"value2\"");
+            Assertions.assertThat(ex).hasMessage("Check actual value's values.\nExpected: (a collection containing \"value\")\n     but: a collection containing \"value\" mismatches were: [was \"value1\", was \"value2\"]");
         }
         try {
             initialize(Raw.<String, String>sortedMapAssertion(), createTreeMap("key1", "value1", "key2", "value2"), "Message").toValues(Matchers.hasItems("value"));
             Assertions.fail("SortedMapAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's values.\nExpected: (a collection containing \"value\")\n     but: a collection containing \"value\" was \"value1\", was \"value2\"");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's values.\nExpected: (a collection containing \"value\")\n     but: a collection containing \"value\" mismatches were: [was \"value1\", was \"value2\"]");
         }
     }
 
