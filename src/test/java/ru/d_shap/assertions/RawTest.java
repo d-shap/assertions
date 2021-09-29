@@ -467,6 +467,48 @@ public final class RawTest extends AssertionTest {
      * {@link Raw} class test.
      */
     @Test
+    public void dateAssertionTest() {
+        initialize(Raw.dateAssertion(), null).isNull();
+        try {
+            Raw.dateAssertion().isNull();
+            Assertions.fail("Raw test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+    }
+
+    /**
+     * {@link Raw} class test.
+     */
+    @Test
+    public void calendarAssertionTest() {
+        initialize(Raw.calendarAssertion(), null).isNull();
+        try {
+            Raw.calendarAssertion().isNull();
+            Assertions.fail("Raw test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+    }
+
+    /**
+     * {@link Raw} class test.
+     */
+    @Test
+    public void timeZoneAssertionTest() {
+        initialize(Raw.timeZoneAssertion(), null).isNull();
+        try {
+            Raw.timeZoneAssertion().isNull();
+            Assertions.fail("Raw test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+    }
+
+    /**
+     * {@link Raw} class test.
+     */
+    @Test
     public void inputStreamAssertionTest() {
         initialize(Raw.inputStreamAssertion(), null).isNull();
         try {
@@ -597,6 +639,20 @@ public final class RawTest extends AssertionTest {
         initialize(Raw.charBufferAssertion(), null).isNull();
         try {
             Raw.charBufferAssertion().isNull();
+            Assertions.fail("Raw test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+    }
+
+    /**
+     * {@link Raw} class test.
+     */
+    @Test
+    public void xmlGregorianCalendarAssertionTest() {
+        initialize(Raw.xmlGregorianCalendarAssertion(), null).isNull();
+        try {
+            Raw.xmlGregorianCalendarAssertion().isNull();
             Assertions.fail("Raw test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
