@@ -36,8 +36,11 @@ import java.nio.ShortBuffer;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.Comparator;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
@@ -47,10 +50,14 @@ import java.util.Map;
 import java.util.Set;
 import java.util.SortedMap;
 import java.util.SortedSet;
+import java.util.TimeZone;
 import java.util.TreeMap;
 import java.util.TreeSet;
 
 import javax.xml.XMLConstants;
+import javax.xml.datatype.DatatypeConfigurationException;
+import javax.xml.datatype.DatatypeFactory;
+import javax.xml.datatype.XMLGregorianCalendar;
 import javax.xml.namespace.QName;
 
 import org.w3c.dom.Attr;
@@ -61,6 +68,7 @@ import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 
 import ru.d_shap.assertions.converter.ValueConverter;
+import ru.d_shap.assertions.fail.AssertionErrorBuilder;
 
 /**
  * Base class for all tests.
@@ -184,7 +192,7 @@ public class AssertionTest {
     }
 
     /**
-     * Create new iterable with the values.
+     * Create the iterable with the values.
      *
      * @param values the values.
      * @param <E>    the generic type of the element.
@@ -198,7 +206,7 @@ public class AssertionTest {
     }
 
     /**
-     * Create new iterator with the values.
+     * Create the iterator with the values.
      *
      * @param values the values.
      * @param <E>    the generic type of the element.
@@ -212,7 +220,7 @@ public class AssertionTest {
     }
 
     /**
-     * Create new hash set with the values.
+     * Create the hash set with the values.
      *
      * @param values the values.
      * @param <E>    the generic type of the element.
@@ -226,7 +234,7 @@ public class AssertionTest {
     }
 
     /**
-     * Create new duplicate set with the values.
+     * Create the duplicate set with the values.
      *
      * @param values the values.
      * @param <E>    the generic type of the element.
@@ -242,7 +250,7 @@ public class AssertionTest {
     }
 
     /**
-     * Create new tree set with the values.
+     * Create the tree set with the values.
      *
      * @param values the values.
      * @param <E>    the generic type of the element.
@@ -257,7 +265,7 @@ public class AssertionTest {
     }
 
     /**
-     * Create new empty hash map.
+     * Create the empty hash map.
      *
      * @param <K> the generic type of the key.
      * @param <V> the generic type of the value.
@@ -270,7 +278,7 @@ public class AssertionTest {
     }
 
     /**
-     * Create new hash map with the values.
+     * Create the hash map with the values.
      *
      * @param key   the key.
      * @param value the value.
@@ -286,7 +294,7 @@ public class AssertionTest {
     }
 
     /**
-     * Create new hash map with the values.
+     * Create the hash map with the values.
      *
      * @param key1   the key.
      * @param value1 the value.
@@ -305,7 +313,7 @@ public class AssertionTest {
     }
 
     /**
-     * Create new hash map with the values.
+     * Create the hash map with the values.
      *
      * @param key1   the key.
      * @param value1 the value.
@@ -327,7 +335,7 @@ public class AssertionTest {
     }
 
     /**
-     * Create new hash map with the values.
+     * Create the hash map with the values.
      *
      * @param key1   the key.
      * @param value1 the value.
@@ -352,7 +360,7 @@ public class AssertionTest {
     }
 
     /**
-     * Create new hash map with the values.
+     * Create the hash map with the values.
      *
      * @param key1   the key.
      * @param value1 the value.
@@ -380,7 +388,7 @@ public class AssertionTest {
     }
 
     /**
-     * Create new empty duplicate map.
+     * Create the empty duplicate map.
      *
      * @param <K> the generic type of the key.
      * @param <V> the generic type of the value.
@@ -393,7 +401,7 @@ public class AssertionTest {
     }
 
     /**
-     * Create new duplicate map with the values.
+     * Create the duplicate map with the values.
      *
      * @param key   the key.
      * @param value the value.
@@ -409,7 +417,7 @@ public class AssertionTest {
     }
 
     /**
-     * Create new duplicate map with the values.
+     * Create the duplicate map with the values.
      *
      * @param key1   the key.
      * @param value1 the value.
@@ -428,7 +436,7 @@ public class AssertionTest {
     }
 
     /**
-     * Create new duplicate map with the values.
+     * Create the duplicate map with the values.
      *
      * @param key1   the key.
      * @param value1 the value.
@@ -450,7 +458,7 @@ public class AssertionTest {
     }
 
     /**
-     * Create new duplicate map with the values.
+     * Create the duplicate map with the values.
      *
      * @param key1   the key.
      * @param value1 the value.
@@ -475,7 +483,7 @@ public class AssertionTest {
     }
 
     /**
-     * Create new duplicate map with the values.
+     * Create the duplicate map with the values.
      *
      * @param key1   the key.
      * @param value1 the value.
@@ -503,7 +511,7 @@ public class AssertionTest {
     }
 
     /**
-     * Create new empty tree map.
+     * Create the empty tree map.
      *
      * @param <K> the generic type of the key.
      * @param <V> the generic type of the value.
@@ -516,7 +524,7 @@ public class AssertionTest {
     }
 
     /**
-     * Create new tree map with the values.
+     * Create the tree map with the values.
      *
      * @param key   the key.
      * @param value the value.
@@ -532,7 +540,7 @@ public class AssertionTest {
     }
 
     /**
-     * Create new tree map with the values.
+     * Create the tree map with the values.
      *
      * @param key1   the key.
      * @param value1 the value.
@@ -551,7 +559,7 @@ public class AssertionTest {
     }
 
     /**
-     * Create new tree map with the values.
+     * Create the tree map with the values.
      *
      * @param key1   the key.
      * @param value1 the value.
@@ -573,7 +581,7 @@ public class AssertionTest {
     }
 
     /**
-     * Create new tree map with the values.
+     * Create the tree map with the values.
      *
      * @param key1   the key.
      * @param value1 the value.
@@ -598,7 +606,7 @@ public class AssertionTest {
     }
 
     /**
-     * Create new tree map with the values.
+     * Create the tree map with the values.
      *
      * @param key1   the key.
      * @param value1 the value.
@@ -623,6 +631,64 @@ public class AssertionTest {
         sortedMap.put(key4, value4);
         sortedMap.put(key5, value5);
         return sortedMap;
+    }
+
+    /**
+     * Create the date.
+     *
+     * @return the date.
+     */
+    protected final Date createDate() {
+        return createCalendar().getTime();
+    }
+
+    /**
+     * Create the date.
+     *
+     * @param year   the year.
+     * @param month  the month
+     * @param day    the day
+     * @param hour   the hour
+     * @param minute the minute
+     * @param second the second
+     *
+     * @return the date.
+     */
+    protected final Date createDate(final int year, final int month, final int day, final int hour, final int minute, final int second) {
+        return createCalendar(year, month, day, hour, minute, second).getTime();
+    }
+
+    /**
+     * Create the calendar.
+     *
+     * @return the calendar.
+     */
+    protected final Calendar createCalendar() {
+        return new GregorianCalendar(TimeZone.getTimeZone("UTC"));
+    }
+
+    /**
+     * Create the calendar.
+     *
+     * @param year   the year.
+     * @param month  the month
+     * @param day    the day
+     * @param hour   the hour
+     * @param minute the minute
+     * @param second the second
+     *
+     * @return the calendar.
+     */
+    protected final Calendar createCalendar(final int year, final int month, final int day, final int hour, final int minute, final int second) {
+        Calendar calendar = new GregorianCalendar(TimeZone.getTimeZone("UTC"));
+        calendar.set(Calendar.YEAR, year);
+        calendar.set(Calendar.MONTH, month);
+        calendar.set(Calendar.DAY_OF_MONTH, day);
+        calendar.set(Calendar.HOUR, hour);
+        calendar.set(Calendar.MINUTE, minute);
+        calendar.set(Calendar.SECOND, second);
+        calendar.set(Calendar.MILLISECOND, 0);
+        return calendar;
     }
 
     /**
@@ -1132,6 +1198,43 @@ public class AssertionTest {
      */
     protected final BufferedReader createErrorBufferedReader() {
         return new BufferedReader(createErrorReader());
+    }
+
+    /**
+     * Create the XML gregorian calendar.
+     *
+     * @return the XML gregorian calendar.
+     */
+    protected final XMLGregorianCalendar createXMLGregorianCalendar() {
+        try {
+            GregorianCalendar calendar = (GregorianCalendar) createCalendar();
+            DatatypeFactory datatypeFactory = DatatypeFactory.newInstance();
+            return datatypeFactory.newXMLGregorianCalendar(calendar);
+        } catch (DatatypeConfigurationException ex) {
+            throw AssertionErrorBuilder.getInstance().addMessage(ex.getMessage()).addThrowable(ex).build();
+        }
+    }
+
+    /**
+     * Create the XML gregorian calendar.
+     *
+     * @param year   the year.
+     * @param month  the month
+     * @param day    the day
+     * @param hour   the hour
+     * @param minute the minute
+     * @param second the second
+     *
+     * @return the XML gregorian calendar.
+     */
+    protected final XMLGregorianCalendar createXMLGregorianCalendar(final int year, final int month, final int day, final int hour, final int minute, final int second) {
+        try {
+            GregorianCalendar calendar = (GregorianCalendar) createCalendar(year, month, day, hour, minute, second);
+            DatatypeFactory datatypeFactory = DatatypeFactory.newInstance();
+            return datatypeFactory.newXMLGregorianCalendar(calendar);
+        } catch (DatatypeConfigurationException ex) {
+            throw AssertionErrorBuilder.getInstance().addMessage(ex.getMessage()).addThrowable(ex).build();
+        }
     }
 
     /**
