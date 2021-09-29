@@ -45,12 +45,16 @@ import ru.d_shap.assertions.asimp.java.nio.FloatBufferAssertion;
 import ru.d_shap.assertions.asimp.java.nio.IntBufferAssertion;
 import ru.d_shap.assertions.asimp.java.nio.LongBufferAssertion;
 import ru.d_shap.assertions.asimp.java.nio.ShortBufferAssertion;
+import ru.d_shap.assertions.asimp.java.util.CalendarAssertion;
+import ru.d_shap.assertions.asimp.java.util.DateAssertion;
 import ru.d_shap.assertions.asimp.java.util.IteratorAssertion;
 import ru.d_shap.assertions.asimp.java.util.ListAssertion;
 import ru.d_shap.assertions.asimp.java.util.MapAssertion;
 import ru.d_shap.assertions.asimp.java.util.SetAssertion;
 import ru.d_shap.assertions.asimp.java.util.SortedMapAssertion;
 import ru.d_shap.assertions.asimp.java.util.SortedSetAssertion;
+import ru.d_shap.assertions.asimp.java.util.TimeZoneAssertion;
+import ru.d_shap.assertions.asimp.javax.xml.datatype.XMLGregorianCalendarAssertion;
 import ru.d_shap.assertions.asimp.javax.xml.namespace.QNameAssertion;
 import ru.d_shap.assertions.asimp.org.w3c.dom.AttrAssertion;
 import ru.d_shap.assertions.asimp.org.w3c.dom.CharacterDataAssertion;
@@ -368,6 +372,33 @@ public final class Raw {
     }
 
     /**
+     * Create uninitialized assertion about the date.
+     *
+     * @return the assertion.
+     */
+    public static DateAssertion dateAssertion() {
+        return new DateAssertion();
+    }
+
+    /**
+     * Create uninitialized assertion about the calendar.
+     *
+     * @return the assertion.
+     */
+    public static CalendarAssertion calendarAssertion() {
+        return new CalendarAssertion();
+    }
+
+    /**
+     * Create uninitialized assertion about the time zone.
+     *
+     * @return the assertion.
+     */
+    public static TimeZoneAssertion timeZoneAssertion() {
+        return new TimeZoneAssertion();
+    }
+
+    /**
      * Create uninitialized assertion about the input stream.
      *
      * @return the assertion.
@@ -455,6 +486,15 @@ public final class Raw {
      */
     public static CharBufferAssertion charBufferAssertion() {
         return new CharBufferAssertion();
+    }
+
+    /**
+     * Create uninitialized assertion about the XML gregorian calendar.
+     *
+     * @return the assertion.
+     */
+    public static XMLGregorianCalendarAssertion xmlGregorianCalendarAssertion() {
+        return new XMLGregorianCalendarAssertion();
     }
 
     /**
