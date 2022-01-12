@@ -73,7 +73,7 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         if (getActual() != expected) {
-            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_SAME).addActual().addExpected(expected).build();
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_SAME_REFERENCE).addActual().addExpected(expected).build();
         }
     }
 
@@ -86,7 +86,7 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         if (getActual() == expected) {
-            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_DIFFERENT).addActual().build();
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_DIFFERENT_REFERENCE).addActual().build();
         }
     }
 

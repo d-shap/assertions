@@ -213,9 +213,13 @@ public final class Messages {
 
             public static final String IS_FALSE = "Actual value should be false.";
 
+            public static final String IS_SAME_REFERENCE = "Actual and expected values should point to the same object.";
+
             public static final String IS_SAME = "Actual and expected values should be the same.";
 
             public static final String IS_SAME_IGNORE_CASE = "Actual and expected values should be the same ignoring case.";
+
+            public static final String IS_DIFFERENT_REFERENCE = "Actual and expected values should point to the different objects.";
 
             public static final String IS_DIFFERENT = "Actual and expected values should be different.";
 
