@@ -85,6 +85,16 @@ public final class Messages {
 
         public static final String CAUSE = "Check actual value''s cause.";
 
+        public static final String ID = "Check actual value''s ID.";
+
+        public static final String DISPLAY_NAME = "Check actual value''s display name.";
+
+        public static final String RAW_OFFSET = "Check actual value''s raw offset.";
+
+        public static final String USE_DAYLIGHT_TIME = "Check actual value''s use daylight time.";
+
+        public static final String DST_SAVINGS = "Check actual value''s DST savings.";
+
         public static final String BYTES_ALL = "Check all actual value''s bytes.";
 
         public static final String BYTES_COUNT = "Check next N actual value''s bytes: {0}.";
