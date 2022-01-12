@@ -385,6 +385,10 @@ public final class Messages {
 
             public static final String DOES_NOT_END_WITH_IGNORE_CASE = "Actual value should not end with the expected value ignoring case.";
 
+            public static final String HAS_SAME_RULES = "Actual value should have the same rules as the expected.";
+
+            public static final String DOES_NOT_HAVE_SAME_RULES = "Actual value should not have the same rules as the expected.";
+
             public static final String IS_COMPLETED = "Actual value should be completed.";
 
             public static final String IS_NOT_COMPLETED = "Actual value should not be completed.";
