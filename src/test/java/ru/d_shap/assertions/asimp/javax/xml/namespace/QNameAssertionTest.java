@@ -1019,13 +1019,13 @@ public final class QNameAssertionTest extends AssertionTest {
             initialize(Raw.qnameAssertion(), value).isSameAs(new QName("namespace", "local"));
             Assertions.fail("QNameAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<{namespace}local> but was:<{namespace}local>");
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should point to the same object.\n\tExpected:<{namespace}local> but was:<{namespace}local>");
         }
         try {
             initialize(Raw.qnameAssertion(), value, "Message").isSameAs(new QName("namespace", "local"));
             Assertions.fail("QNameAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be the same.\n\tExpected:<{namespace}local> but was:<{namespace}local>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should point to the same object.\n\tExpected:<{namespace}local> but was:<{namespace}local>");
         }
     }
 
@@ -1041,13 +1041,13 @@ public final class QNameAssertionTest extends AssertionTest {
             initialize(Raw.qnameAssertion(), value).isNotSameAs(value);
             Assertions.fail("QNameAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual and expected values should be different.\n\tActual:<{namespace}local>");
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should point to the different objects.\n\tActual:<{namespace}local>");
         }
         try {
             initialize(Raw.qnameAssertion(), value, "Message").isNotSameAs(value);
             Assertions.fail("QNameAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be different.\n\tActual:<{namespace}local>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should point to the different objects.\n\tActual:<{namespace}local>");
         }
     }
 

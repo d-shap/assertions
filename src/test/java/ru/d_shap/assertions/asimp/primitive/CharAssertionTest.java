@@ -1501,13 +1501,13 @@ public final class CharAssertionTest extends AssertionTest {
             initialize(Raw.charAssertion(), value).isSameAs((char) 10000);
             Assertions.fail("CharAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:< (10000)> but was:< (10000)>");
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should point to the same object.\n\tExpected:< (10000)> but was:< (10000)>");
         }
         try {
             initialize(Raw.charAssertion(), value, "Message").isSameAs((char) 10000);
             Assertions.fail("CharAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be the same.\n\tExpected:< (10000)> but was:< (10000)>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should point to the same object.\n\tExpected:< (10000)> but was:< (10000)>");
         }
     }
 
@@ -1523,13 +1523,13 @@ public final class CharAssertionTest extends AssertionTest {
             initialize(Raw.charAssertion(), value).isNotSameAs(value);
             Assertions.fail("CharAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual and expected values should be different.\n\tActual:< (10000)>");
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should point to the different objects.\n\tActual:< (10000)>");
         }
         try {
             initialize(Raw.charAssertion(), value, "Message").isNotSameAs(value);
             Assertions.fail("CharAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be different.\n\tActual:< (10000)>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should point to the different objects.\n\tActual:< (10000)>");
         }
     }
 

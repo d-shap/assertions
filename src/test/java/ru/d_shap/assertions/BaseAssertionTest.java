@@ -1473,13 +1473,13 @@ public final class BaseAssertionTest extends AssertionTest {
             createBaseAssertionObject(object).as(Raw.objectAssertion()).isNotSameAs(object);
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).messageMatches("Actual and expected values should be different.\n\tActual:<java.lang.Object.*>");
+            Assertions.assertThat(ex).messageMatches("Actual and expected values should point to the different objects.\n\tActual:<java.lang.Object.*>");
         }
         try {
             createBaseAssertionObject(object, "Message").as(Raw.objectAssertion()).isNotSameAs(object);
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).messageMatches("Message.\n\tActual and expected values should be different.\n\tActual:<java.lang.Object.*>");
+            Assertions.assertThat(ex).messageMatches("Message.\n\tActual and expected values should point to the different objects.\n\tActual:<java.lang.Object.*>");
         }
 
         BaseAssertion<Object> baseAssertion = createBaseAssertionObject(object);
@@ -1527,25 +1527,25 @@ public final class BaseAssertionTest extends AssertionTest {
             createBaseAssertionObject(object).as(Raw.objectAssertion(), "As message").isNotSameAs(object);
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).messageMatches("As message.\n\tActual and expected values should be different.\n\tActual:<java.lang.Object.*>");
+            Assertions.assertThat(ex).messageMatches("As message.\n\tActual and expected values should point to the different objects.\n\tActual:<java.lang.Object.*>");
         }
         try {
             createBaseAssertionObject(object, "Message").as(Raw.objectAssertion(), "As message").isNotSameAs(object);
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).messageMatches("Message.\n\tAs message.\n\tActual and expected values should be different.\n\tActual:<java.lang.Object.*>");
+            Assertions.assertThat(ex).messageMatches("Message.\n\tAs message.\n\tActual and expected values should point to the different objects.\n\tActual:<java.lang.Object.*>");
         }
         try {
             createBaseAssertionObject(object).as(Raw.objectAssertion(), "value''s").isNotSameAs(object);
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).messageMatches("value''s.\n\tActual and expected values should be different.\n\tActual:<java.lang.Object.*>");
+            Assertions.assertThat(ex).messageMatches("value''s.\n\tActual and expected values should point to the different objects.\n\tActual:<java.lang.Object.*>");
         }
         try {
             createBaseAssertionObject(object, "Message").as(Raw.objectAssertion(), "value''s").isNotSameAs(object);
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).messageMatches("Message.\n\tvalue''s.\n\tActual and expected values should be different.\n\tActual:<java.lang.Object.*>");
+            Assertions.assertThat(ex).messageMatches("Message.\n\tvalue''s.\n\tActual and expected values should point to the different objects.\n\tActual:<java.lang.Object.*>");
         }
 
         BaseAssertion<Object> baseAssertion = createBaseAssertionObject(object);

@@ -5802,13 +5802,13 @@ public final class SortedMapAssertionTest extends AssertionTest {
             initialize(Raw.sortedMapAssertion(), value).isSameAs(createTreeMap());
             Assertions.fail("SortedMapAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<<EMPTY>> but was:<<EMPTY>>");
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should point to the same object.\n\tExpected:<<EMPTY>> but was:<<EMPTY>>");
         }
         try {
             initialize(Raw.sortedMapAssertion(), value, "Message").isSameAs(createTreeMap());
             Assertions.fail("SortedMapAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be the same.\n\tExpected:<<EMPTY>> but was:<<EMPTY>>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should point to the same object.\n\tExpected:<<EMPTY>> but was:<<EMPTY>>");
         }
     }
 
@@ -5824,13 +5824,13 @@ public final class SortedMapAssertionTest extends AssertionTest {
             initialize(Raw.sortedMapAssertion(), value).isNotSameAs(value);
             Assertions.fail("SortedMapAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual and expected values should be different.\n\tActual:<<EMPTY>>");
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should point to the different objects.\n\tActual:<<EMPTY>>");
         }
         try {
             initialize(Raw.sortedMapAssertion(), value, "Message").isNotSameAs(value);
             Assertions.fail("SortedMapAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be different.\n\tActual:<<EMPTY>>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should point to the different objects.\n\tActual:<<EMPTY>>");
         }
     }
 

@@ -723,13 +723,13 @@ public final class ComparableAssertionTest extends AssertionTest {
             initialize(Raw.<Integer>comparableAssertion(), value).isSameAs(1000);
             Assertions.fail("ComparableAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<1000> but was:<1000>");
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should point to the same object.\n\tExpected:<1000> but was:<1000>");
         }
         try {
             initialize(Raw.<Integer>comparableAssertion(), value, "Message").isSameAs(1000);
             Assertions.fail("ComparableAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be the same.\n\tExpected:<1000> but was:<1000>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should point to the same object.\n\tExpected:<1000> but was:<1000>");
         }
     }
 
@@ -745,13 +745,13 @@ public final class ComparableAssertionTest extends AssertionTest {
             initialize(Raw.<Integer>comparableAssertion(), value).isNotSameAs(value);
             Assertions.fail("ComparableAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual and expected values should be different.\n\tActual:<1000>");
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should point to the different objects.\n\tActual:<1000>");
         }
         try {
             initialize(Raw.<Integer>comparableAssertion(), value, "Message").isNotSameAs(value);
             Assertions.fail("ComparableAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be different.\n\tActual:<1000>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should point to the different objects.\n\tActual:<1000>");
         }
     }
 

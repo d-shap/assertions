@@ -153,13 +153,13 @@ public final class ReferenceAssertionTest extends AssertionTest {
             createReferenceAssertion(new StringBuilder("value")).isSameAs(new StringBuilder("value"));
             Assertions.fail("ReferenceAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<value> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should point to the same object.\n\tExpected:<value> but was:<value>");
         }
         try {
             createReferenceAssertion(new StringBuilder("value"), "Message").isSameAs(new StringBuilder("value"));
             Assertions.fail("ReferenceAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be the same.\n\tExpected:<value> but was:<value>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should point to the same object.\n\tExpected:<value> but was:<value>");
         }
     }
 
@@ -218,14 +218,14 @@ public final class ReferenceAssertionTest extends AssertionTest {
             createReferenceAssertion(value).isNotSameAs(value);
             Assertions.fail("ReferenceAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual and expected values should be different.\n\tActual:<value>");
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should point to the different objects.\n\tActual:<value>");
         }
         try {
             StringBuilder value = new StringBuilder("value");
             createReferenceAssertion(value, "Message").isNotSameAs(value);
             Assertions.fail("ReferenceAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be different.\n\tActual:<value>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should point to the different objects.\n\tActual:<value>");
         }
     }
 
@@ -276,14 +276,13 @@ public final class ReferenceAssertionTest extends AssertionTest {
             createReferenceAssertion(new StringBuilder("value")).toClass().isSameAs(String.class);
             Assertions.fail("ReferenceAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check actual value's class.\n\tActual and expected values should be the same.\n\tExpected:<java.lang.String> but was:<java.lang.StringBuilder>");
-            Assertions.assertThat(ex).hasMessage("Check actual value's class.\n\tActual and expected values should be the same.\n\tExpected:<java.lang.String> but was:<java.lang.StringBuilder>");
+            Assertions.assertThat(ex).hasMessage("Check actual value's class.\n\tActual and expected values should point to the same object.\n\tExpected:<java.lang.String> but was:<java.lang.StringBuilder>");
         }
         try {
             createReferenceAssertion(new StringBuilder("value"), "Message").toClass().isSameAs(String.class);
             Assertions.fail("ReferenceAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's class.\n\tActual and expected values should be the same.\n\tExpected:<java.lang.String> but was:<java.lang.StringBuilder>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's class.\n\tActual and expected values should point to the same object.\n\tExpected:<java.lang.String> but was:<java.lang.StringBuilder>");
         }
     }
 

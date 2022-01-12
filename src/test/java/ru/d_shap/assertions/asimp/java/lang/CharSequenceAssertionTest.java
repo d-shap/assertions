@@ -4602,13 +4602,13 @@ public final class CharSequenceAssertionTest extends AssertionTest {
             initialize(Raw.charSequenceAssertion(), value).isSameAs("value2");
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<value2> but was:<value1>");
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should point to the same object.\n\tExpected:<value2> but was:<value1>");
         }
         try {
             initialize(Raw.charSequenceAssertion(), value, "Message").isSameAs("value2");
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be the same.\n\tExpected:<value2> but was:<value1>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should point to the same object.\n\tExpected:<value2> but was:<value1>");
         }
     }
 
@@ -4624,13 +4624,13 @@ public final class CharSequenceAssertionTest extends AssertionTest {
             initialize(Raw.charSequenceAssertion(), value).isNotSameAs(value);
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual and expected values should be different.\n\tActual:<value1>");
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should point to the different objects.\n\tActual:<value1>");
         }
         try {
             initialize(Raw.charSequenceAssertion(), value, "Message").isNotSameAs(value);
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be different.\n\tActual:<value1>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should point to the different objects.\n\tActual:<value1>");
         }
     }
 

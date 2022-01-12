@@ -1208,13 +1208,13 @@ public final class DoubleAssertionTest extends AssertionTest {
             initialize(Raw.doubleAssertion(), value).isSameAs(10000.0);
             Assertions.fail("DoubleAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<10000.0> but was:<10000.0>");
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should point to the same object.\n\tExpected:<10000.0> but was:<10000.0>");
         }
         try {
             initialize(Raw.doubleAssertion(), value, "Message").isSameAs(10000.0);
             Assertions.fail("DoubleAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be the same.\n\tExpected:<10000.0> but was:<10000.0>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should point to the same object.\n\tExpected:<10000.0> but was:<10000.0>");
         }
     }
 
@@ -1230,13 +1230,13 @@ public final class DoubleAssertionTest extends AssertionTest {
             initialize(Raw.doubleAssertion(), value).isNotSameAs(value);
             Assertions.fail("DoubleAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual and expected values should be different.\n\tActual:<10000.0>");
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should point to the different objects.\n\tActual:<10000.0>");
         }
         try {
             initialize(Raw.doubleAssertion(), value, "Message").isNotSameAs(value);
             Assertions.fail("DoubleAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be different.\n\tActual:<10000.0>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should point to the different objects.\n\tActual:<10000.0>");
         }
     }
 

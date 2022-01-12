@@ -507,13 +507,13 @@ public final class ByteAssertionTest extends AssertionTest {
             initialize(Raw.byteAssertion(), value).isSameAs((byte) 101);
             Assertions.fail("ByteAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<101b> but was:<100b>");
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should point to the same object.\n\tExpected:<101b> but was:<100b>");
         }
         try {
             initialize(Raw.byteAssertion(), value, "Message").isSameAs((byte) 101);
             Assertions.fail("ByteAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be the same.\n\tExpected:<101b> but was:<100b>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should point to the same object.\n\tExpected:<101b> but was:<100b>");
         }
     }
 
@@ -529,13 +529,13 @@ public final class ByteAssertionTest extends AssertionTest {
             initialize(Raw.byteAssertion(), value).isNotSameAs(value);
             Assertions.fail("ByteAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual and expected values should be different.\n\tActual:<100b>");
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should point to the different objects.\n\tActual:<100b>");
         }
         try {
             initialize(Raw.byteAssertion(), value, "Message").isNotSameAs(value);
             Assertions.fail("ByteAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be different.\n\tActual:<100b>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should point to the different objects.\n\tActual:<100b>");
         }
     }
 

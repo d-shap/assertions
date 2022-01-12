@@ -495,13 +495,13 @@ public final class IntAssertionTest extends AssertionTest {
             initialize(Raw.intAssertion(), value).isSameAs(10000);
             Assertions.fail("IntAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<10000> but was:<10000>");
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should point to the same object.\n\tExpected:<10000> but was:<10000>");
         }
         try {
             initialize(Raw.intAssertion(), value, "Message").isSameAs(10000);
             Assertions.fail("IntAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be the same.\n\tExpected:<10000> but was:<10000>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should point to the same object.\n\tExpected:<10000> but was:<10000>");
         }
     }
 
@@ -517,13 +517,13 @@ public final class IntAssertionTest extends AssertionTest {
             initialize(Raw.intAssertion(), value).isNotSameAs(value);
             Assertions.fail("IntAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual and expected values should be different.\n\tActual:<10000>");
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should point to the different objects.\n\tActual:<10000>");
         }
         try {
             initialize(Raw.intAssertion(), value, "Message").isNotSameAs(value);
             Assertions.fail("IntAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be different.\n\tActual:<10000>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should point to the different objects.\n\tActual:<10000>");
         }
     }
 

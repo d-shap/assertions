@@ -553,13 +553,13 @@ public final class CharacterDataAssertionTest extends AssertionTest {
             initialize(Raw.characterDataAssertion(), value).isSameAs(createCharacterData("text"));
             Assertions.fail("CharacterDataAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<text> but was:<text>");
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should point to the same object.\n\tExpected:<text> but was:<text>");
         }
         try {
             initialize(Raw.characterDataAssertion(), value, "Message").isSameAs(createCharacterData("text"));
             Assertions.fail("CharacterDataAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be the same.\n\tExpected:<text> but was:<text>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should point to the same object.\n\tExpected:<text> but was:<text>");
         }
     }
 
@@ -577,13 +577,13 @@ public final class CharacterDataAssertionTest extends AssertionTest {
             initialize(Raw.characterDataAssertion(), value).isNotSameAs(value);
             Assertions.fail("CharacterDataAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual and expected values should be different.\n\tActual:<text>");
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should point to the different objects.\n\tActual:<text>");
         }
         try {
             initialize(Raw.characterDataAssertion(), value, "Message").isNotSameAs(value);
             Assertions.fail("CharacterDataAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be different.\n\tActual:<text>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should point to the different objects.\n\tActual:<text>");
         }
     }
 

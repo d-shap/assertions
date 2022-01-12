@@ -1196,13 +1196,13 @@ public final class FloatAssertionTest extends AssertionTest {
             initialize(Raw.floatAssertion(), value).isSameAs(10000.0f);
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<10000.0f> but was:<10000.0f>");
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should point to the same object.\n\tExpected:<10000.0f> but was:<10000.0f>");
         }
         try {
             initialize(Raw.floatAssertion(), value, "Message").isSameAs(10000.0f);
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be the same.\n\tExpected:<10000.0f> but was:<10000.0f>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should point to the same object.\n\tExpected:<10000.0f> but was:<10000.0f>");
         }
     }
 
@@ -1218,13 +1218,13 @@ public final class FloatAssertionTest extends AssertionTest {
             initialize(Raw.floatAssertion(), value).isNotSameAs(value);
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual and expected values should be different.\n\tActual:<10000.0f>");
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should point to the different objects.\n\tActual:<10000.0f>");
         }
         try {
             initialize(Raw.floatAssertion(), value, "Message").isNotSameAs(value);
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be different.\n\tActual:<10000.0f>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should point to the different objects.\n\tActual:<10000.0f>");
         }
     }
 

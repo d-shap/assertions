@@ -1446,13 +1446,13 @@ public final class AttrAssertionTest extends AssertionTest {
             initialize(Raw.attrAssertion(), value).isSameAs(createAttr("<element attr='val1'/>"));
             Assertions.fail("AttrAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<attr=val1> but was:<attr=val1>");
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should point to the same object.\n\tExpected:<attr=val1> but was:<attr=val1>");
         }
         try {
             initialize(Raw.attrAssertion(), value, "Message").isSameAs(createAttr("<element attr='val1'/>"));
             Assertions.fail("AttrAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be the same.\n\tExpected:<attr=val1> but was:<attr=val1>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should point to the same object.\n\tExpected:<attr=val1> but was:<attr=val1>");
         }
     }
 
@@ -1470,13 +1470,13 @@ public final class AttrAssertionTest extends AssertionTest {
             initialize(Raw.attrAssertion(), value).isNotSameAs(value);
             Assertions.fail("AttrAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual and expected values should be different.\n\tActual:<attr=val1>");
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should point to the different objects.\n\tActual:<attr=val1>");
         }
         try {
             initialize(Raw.attrAssertion(), value, "Message").isNotSameAs(value);
             Assertions.fail("AttrAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be different.\n\tActual:<attr=val1>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should point to the different objects.\n\tActual:<attr=val1>");
         }
     }
 

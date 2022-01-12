@@ -171,13 +171,13 @@ public final class BooleanAssertionTest extends AssertionTest {
             initialize(Raw.booleanAssertion(), value).isSameAs(false);
             Assertions.fail("BooleanAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<F> but was:<T>");
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should point to the same object.\n\tExpected:<F> but was:<T>");
         }
         try {
             initialize(Raw.booleanAssertion(), value, "Message").isSameAs(false);
             Assertions.fail("BooleanAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be the same.\n\tExpected:<F> but was:<T>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should point to the same object.\n\tExpected:<F> but was:<T>");
         }
     }
 
@@ -193,13 +193,13 @@ public final class BooleanAssertionTest extends AssertionTest {
             initialize(Raw.booleanAssertion(), value).isNotSameAs(value);
             Assertions.fail("BooleanAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual and expected values should be different.\n\tActual:<T>");
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should point to the different objects.\n\tActual:<T>");
         }
         try {
             initialize(Raw.booleanAssertion(), value, "Message").isNotSameAs(value);
             Assertions.fail("BooleanAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be different.\n\tActual:<T>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should point to the different objects.\n\tActual:<T>");
         }
     }
 

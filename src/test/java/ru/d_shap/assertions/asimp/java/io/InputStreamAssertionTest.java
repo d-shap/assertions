@@ -1657,13 +1657,13 @@ public final class InputStreamAssertionTest extends AssertionTest {
             initialize(Raw.inputStreamAssertion(), value).isSameAs(new ByteArrayInputStream(new byte[]{0, 0, 0}));
             Assertions.fail("InputStreamAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).messageMatches("Actual and expected values should be the same.\n\tExpected:<java.io.ByteArrayInputStream.*> but was:<java.io.ByteArrayInputStream.*>");
+            Assertions.assertThat(ex).messageMatches("Actual and expected values should point to the same object.\n\tExpected:<java.io.ByteArrayInputStream.*> but was:<java.io.ByteArrayInputStream.*>");
         }
         try {
             initialize(Raw.inputStreamAssertion(), value, "Message").isSameAs(new ByteArrayInputStream(new byte[]{0, 0, 0}));
             Assertions.fail("InputStreamAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).messageMatches("Message.\n\tActual and expected values should be the same.\n\tExpected:<java.io.ByteArrayInputStream.*> but was:<java.io.ByteArrayInputStream.*>");
+            Assertions.assertThat(ex).messageMatches("Message.\n\tActual and expected values should point to the same object.\n\tExpected:<java.io.ByteArrayInputStream.*> but was:<java.io.ByteArrayInputStream.*>");
         }
     }
 
@@ -1679,13 +1679,13 @@ public final class InputStreamAssertionTest extends AssertionTest {
             initialize(Raw.inputStreamAssertion(), value).isNotSameAs(value);
             Assertions.fail("InputStreamAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).messageMatches("Actual and expected values should be different.\n\tActual:<java.io.ByteArrayInputStream.*>");
+            Assertions.assertThat(ex).messageMatches("Actual and expected values should point to the different objects.\n\tActual:<java.io.ByteArrayInputStream.*>");
         }
         try {
             initialize(Raw.inputStreamAssertion(), value, "Message").isNotSameAs(value);
             Assertions.fail("InputStreamAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).messageMatches("Message.\n\tActual and expected values should be different.\n\tActual:<java.io.ByteArrayInputStream.*>");
+            Assertions.assertThat(ex).messageMatches("Message.\n\tActual and expected values should point to the different objects.\n\tActual:<java.io.ByteArrayInputStream.*>");
         }
     }
 

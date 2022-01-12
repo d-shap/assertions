@@ -2576,13 +2576,13 @@ public final class IteratorAssertionTest extends AssertionTest {
             initialize(Raw.<String>iteratorAssertion(), value).isSameAs(Arrays.asList("val1", "val2", "val3").iterator());
             Assertions.fail("IteratorAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).messageMatches("Actual and expected values should be the same.\n\tExpected:<java.util.AbstractList.*> but was:<java.util.AbstractList.*>");
+            Assertions.assertThat(ex).messageMatches("Actual and expected values should point to the same object.\n\tExpected:<java.util.AbstractList.*> but was:<java.util.AbstractList.*>");
         }
         try {
             initialize(Raw.<String>iteratorAssertion(), value, "Message").isSameAs(Arrays.asList("val1", "val2", "val3").iterator());
             Assertions.fail("IteratorAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).messageMatches("Message.\n\tActual and expected values should be the same.\n\tExpected:<java.util.AbstractList.*> but was:<java.util.AbstractList.*>");
+            Assertions.assertThat(ex).messageMatches("Message.\n\tActual and expected values should point to the same object.\n\tExpected:<java.util.AbstractList.*> but was:<java.util.AbstractList.*>");
         }
     }
 
@@ -2598,13 +2598,13 @@ public final class IteratorAssertionTest extends AssertionTest {
             initialize(Raw.<String>iteratorAssertion(), value).isNotSameAs(value);
             Assertions.fail("IteratorAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).messageMatches("Actual and expected values should be different.\n\tActual:<java.util.AbstractList.*>");
+            Assertions.assertThat(ex).messageMatches("Actual and expected values should point to the different objects.\n\tActual:<java.util.AbstractList.*>");
         }
         try {
             initialize(Raw.<String>iteratorAssertion(), value, "Message").isNotSameAs(value);
             Assertions.fail("IteratorAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).messageMatches("Message.\n\tActual and expected values should be different.\n\tActual:<java.util.AbstractList.*>");
+            Assertions.assertThat(ex).messageMatches("Message.\n\tActual and expected values should point to the different objects.\n\tActual:<java.util.AbstractList.*>");
         }
     }
 

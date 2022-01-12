@@ -1661,13 +1661,13 @@ public final class IterableAssertionTest extends AssertionTest {
             initialize(Raw.<String>iterableAssertion(), value).isSameAs(Arrays.asList("val1", "val2", "val3"));
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<[val1, val2, val3]> but was:<[val1, val2, val3]>");
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should point to the same object.\n\tExpected:<[val1, val2, val3]> but was:<[val1, val2, val3]>");
         }
         try {
             initialize(Raw.<String>iterableAssertion(), value, "Message").isSameAs(Arrays.asList("val1", "val2", "val3"));
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be the same.\n\tExpected:<[val1, val2, val3]> but was:<[val1, val2, val3]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should point to the same object.\n\tExpected:<[val1, val2, val3]> but was:<[val1, val2, val3]>");
         }
     }
 
@@ -1683,13 +1683,13 @@ public final class IterableAssertionTest extends AssertionTest {
             initialize(Raw.<String>iterableAssertion(), value).isNotSameAs(value);
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual and expected values should be different.\n\tActual:<[val1, val2, val3]>");
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should point to the different objects.\n\tActual:<[val1, val2, val3]>");
         }
         try {
             initialize(Raw.<String>iterableAssertion(), value, "Message").isNotSameAs(value);
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be different.\n\tActual:<[val1, val2, val3]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should point to the different objects.\n\tActual:<[val1, val2, val3]>");
         }
     }
 

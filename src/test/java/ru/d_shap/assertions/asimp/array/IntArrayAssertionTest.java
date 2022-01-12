@@ -1420,13 +1420,13 @@ public final class IntArrayAssertionTest extends AssertionTest {
             initialize(Raw.intArrayAssertion(), value).isSameAs(new int[]{1, 2});
             Assertions.fail("IntArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<[1, 2]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should point to the same object.\n\tExpected:<[1, 2]> but was:<[1, 2]>");
         }
         try {
             initialize(Raw.intArrayAssertion(), value, "Message").isSameAs(new int[]{1, 2});
             Assertions.fail("IntArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be the same.\n\tExpected:<[1, 2]> but was:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should point to the same object.\n\tExpected:<[1, 2]> but was:<[1, 2]>");
         }
     }
 
@@ -1442,13 +1442,13 @@ public final class IntArrayAssertionTest extends AssertionTest {
             initialize(Raw.intArrayAssertion(), value).isNotSameAs(value);
             Assertions.fail("IntArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual and expected values should be different.\n\tActual:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should point to the different objects.\n\tActual:<[1, 2]>");
         }
         try {
             initialize(Raw.intArrayAssertion(), value, "Message").isNotSameAs(value);
             Assertions.fail("IntArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be different.\n\tActual:<[1, 2]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should point to the different objects.\n\tActual:<[1, 2]>");
         }
     }
 

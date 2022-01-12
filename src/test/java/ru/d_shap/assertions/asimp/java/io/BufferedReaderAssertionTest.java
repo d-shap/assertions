@@ -2513,13 +2513,13 @@ public final class BufferedReaderAssertionTest extends AssertionTest {
             initialize(Raw.bufferedReaderAssertion(), value).isSameAs(new BufferedReader(new StringReader("\u0000\u0000\u0000")));
             Assertions.fail("BufferedReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).messageMatches("Actual and expected values should be the same.\n\tExpected:<java.io.BufferedReader.*> but was:<java.io.BufferedReader.*>");
+            Assertions.assertThat(ex).messageMatches("Actual and expected values should point to the same object.\n\tExpected:<java.io.BufferedReader.*> but was:<java.io.BufferedReader.*>");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), value, "Message").isSameAs(new BufferedReader(new StringReader("\u0000\u0000\u0000")));
             Assertions.fail("BufferedReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).messageMatches("Message.\n\tActual and expected values should be the same.\n\tExpected:<java.io.BufferedReader.*> but was:<java.io.BufferedReader.*>");
+            Assertions.assertThat(ex).messageMatches("Message.\n\tActual and expected values should point to the same object.\n\tExpected:<java.io.BufferedReader.*> but was:<java.io.BufferedReader.*>");
         }
     }
 
@@ -2535,13 +2535,13 @@ public final class BufferedReaderAssertionTest extends AssertionTest {
             initialize(Raw.bufferedReaderAssertion(), value).isNotSameAs(value);
             Assertions.fail("BufferedReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).messageMatches("Actual and expected values should be different.\n\tActual:<java.io.BufferedReader.*>");
+            Assertions.assertThat(ex).messageMatches("Actual and expected values should point to the different objects.\n\tActual:<java.io.BufferedReader.*>");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), value, "Message").isNotSameAs(value);
             Assertions.fail("BufferedReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).messageMatches("Message.\n\tActual and expected values should be different.\n\tActual:<java.io.BufferedReader.*>");
+            Assertions.assertThat(ex).messageMatches("Message.\n\tActual and expected values should point to the different objects.\n\tActual:<java.io.BufferedReader.*>");
         }
     }
 

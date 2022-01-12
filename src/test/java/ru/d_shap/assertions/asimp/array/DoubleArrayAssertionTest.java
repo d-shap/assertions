@@ -1420,13 +1420,13 @@ public final class DoubleArrayAssertionTest extends AssertionTest {
             initialize(Raw.doubleArrayAssertion(), value).isSameAs(new double[]{1.0, 2.0});
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<[1.0, 2.0]> but was:<[1.0, 2.0]>");
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should point to the same object.\n\tExpected:<[1.0, 2.0]> but was:<[1.0, 2.0]>");
         }
         try {
             initialize(Raw.doubleArrayAssertion(), value, "Message").isSameAs(new double[]{1.0, 2.0});
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be the same.\n\tExpected:<[1.0, 2.0]> but was:<[1.0, 2.0]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should point to the same object.\n\tExpected:<[1.0, 2.0]> but was:<[1.0, 2.0]>");
         }
     }
 
@@ -1442,13 +1442,13 @@ public final class DoubleArrayAssertionTest extends AssertionTest {
             initialize(Raw.doubleArrayAssertion(), value).isNotSameAs(value);
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual and expected values should be different.\n\tActual:<[1.0, 2.0]>");
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should point to the different objects.\n\tActual:<[1.0, 2.0]>");
         }
         try {
             initialize(Raw.doubleArrayAssertion(), value, "Message").isNotSameAs(value);
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be different.\n\tActual:<[1.0, 2.0]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should point to the different objects.\n\tActual:<[1.0, 2.0]>");
         }
     }
 

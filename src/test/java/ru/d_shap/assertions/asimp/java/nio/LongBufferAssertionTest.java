@@ -3671,13 +3671,13 @@ public final class LongBufferAssertionTest extends AssertionTest {
             initialize(Raw.longBufferAssertion(), value).isSameAs(createLongBuffer(new long[]{1L, 2L}));
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<[1L, 2L]> but was:<[1L, 2L]>");
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should point to the same object.\n\tExpected:<[1L, 2L]> but was:<[1L, 2L]>");
         }
         try {
             initialize(Raw.longBufferAssertion(), value, "Message").isSameAs(createLongBuffer(new long[]{1L, 2L}));
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be the same.\n\tExpected:<[1L, 2L]> but was:<[1L, 2L]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should point to the same object.\n\tExpected:<[1L, 2L]> but was:<[1L, 2L]>");
         }
     }
 
@@ -3693,13 +3693,13 @@ public final class LongBufferAssertionTest extends AssertionTest {
             initialize(Raw.longBufferAssertion(), value).isNotSameAs(value);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual and expected values should be different.\n\tActual:<[1L, 2L]>");
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should point to the different objects.\n\tActual:<[1L, 2L]>");
         }
         try {
             initialize(Raw.longBufferAssertion(), value, "Message").isNotSameAs(value);
             Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be different.\n\tActual:<[1L, 2L]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should point to the different objects.\n\tActual:<[1L, 2L]>");
         }
     }
 

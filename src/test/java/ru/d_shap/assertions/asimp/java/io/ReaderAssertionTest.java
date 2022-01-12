@@ -1449,13 +1449,13 @@ public final class ReaderAssertionTest extends AssertionTest {
             initialize(Raw.readerAssertion(), value).isSameAs(new StringReader("\u0000\u0000\u0000"));
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).messageMatches("Actual and expected values should be the same.\n\tExpected:<java.io.StringReader.*> but was:<java.io.StringReader.*>");
+            Assertions.assertThat(ex).messageMatches("Actual and expected values should point to the same object.\n\tExpected:<java.io.StringReader.*> but was:<java.io.StringReader.*>");
         }
         try {
             initialize(Raw.readerAssertion(), value, "Message").isSameAs(new StringReader("\u0000\u0000\u0000"));
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).messageMatches("Message.\n\tActual and expected values should be the same.\n\tExpected:<java.io.StringReader.*> but was:<java.io.StringReader.*>");
+            Assertions.assertThat(ex).messageMatches("Message.\n\tActual and expected values should point to the same object.\n\tExpected:<java.io.StringReader.*> but was:<java.io.StringReader.*>");
         }
     }
 
@@ -1471,13 +1471,13 @@ public final class ReaderAssertionTest extends AssertionTest {
             initialize(Raw.readerAssertion(), value).isNotSameAs(value);
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).messageMatches("Actual and expected values should be different.\n\tActual:<java.io.StringReader.*>");
+            Assertions.assertThat(ex).messageMatches("Actual and expected values should point to the different objects.\n\tActual:<java.io.StringReader.*>");
         }
         try {
             initialize(Raw.readerAssertion(), value, "Message").isNotSameAs(value);
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).messageMatches("Message.\n\tActual and expected values should be different.\n\tActual:<java.io.StringReader.*>");
+            Assertions.assertThat(ex).messageMatches("Message.\n\tActual and expected values should point to the different objects.\n\tActual:<java.io.StringReader.*>");
         }
     }
 

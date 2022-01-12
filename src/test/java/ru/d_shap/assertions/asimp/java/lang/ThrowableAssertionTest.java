@@ -676,13 +676,13 @@ public final class ThrowableAssertionTest extends AssertionTest {
             initialize(Raw.throwableAssertion(), value).isSameAs(new Exception("value"));
             Assertions.fail("ThrowableAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).toMessage().isEqualTo("Actual and expected values should be the same.\n\tExpected:<java.lang.Exception: value> but was:<java.lang.Exception: value>");
+            Assertions.assertThat(ex).toMessage().isEqualTo("Actual and expected values should point to the same object.\n\tExpected:<java.lang.Exception: value> but was:<java.lang.Exception: value>");
         }
         try {
             initialize(Raw.throwableAssertion(), value, "Message").isSameAs(new Exception("value"));
             Assertions.fail("ThrowableAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).toMessage().isEqualTo("Message.\n\tActual and expected values should be the same.\n\tExpected:<java.lang.Exception: value> but was:<java.lang.Exception: value>");
+            Assertions.assertThat(ex).toMessage().isEqualTo("Message.\n\tActual and expected values should point to the same object.\n\tExpected:<java.lang.Exception: value> but was:<java.lang.Exception: value>");
         }
     }
 
@@ -698,13 +698,13 @@ public final class ThrowableAssertionTest extends AssertionTest {
             initialize(Raw.throwableAssertion(), value).isNotSameAs(value);
             Assertions.fail("ThrowableAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).toMessage().isEqualTo("Actual and expected values should be different.\n\tActual:<java.lang.Exception: value>");
+            Assertions.assertThat(ex).toMessage().isEqualTo("Actual and expected values should point to the different objects.\n\tActual:<java.lang.Exception: value>");
         }
         try {
             initialize(Raw.throwableAssertion(), value, "Message").isNotSameAs(value);
             Assertions.fail("ThrowableAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).toMessage().isEqualTo("Message.\n\tActual and expected values should be different.\n\tActual:<java.lang.Exception: value>");
+            Assertions.assertThat(ex).toMessage().isEqualTo("Message.\n\tActual and expected values should point to the different objects.\n\tActual:<java.lang.Exception: value>");
         }
     }
 

@@ -3491,13 +3491,13 @@ public final class DocumentAssertionTest extends AssertionTest {
             initialize(Raw.documentAssertion(), value).isSameAs(createDocument("<element/>"));
             Assertions.fail("DocumentAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<<element/>> but was:<<element/>>");
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should point to the same object.\n\tExpected:<<element/>> but was:<<element/>>");
         }
         try {
             initialize(Raw.documentAssertion(), value, "Message").isSameAs(createDocument("<element/>"));
             Assertions.fail("DocumentAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be the same.\n\tExpected:<<element/>> but was:<<element/>>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should point to the same object.\n\tExpected:<<element/>> but was:<<element/>>");
         }
     }
 
@@ -3515,13 +3515,13 @@ public final class DocumentAssertionTest extends AssertionTest {
             initialize(Raw.documentAssertion(), value).isNotSameAs(value);
             Assertions.fail("DocumentAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual and expected values should be different.\n\tActual:<<element/>>");
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should point to the different objects.\n\tActual:<<element/>>");
         }
         try {
             initialize(Raw.documentAssertion(), value, "Message").isNotSameAs(value);
             Assertions.fail("DocumentAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be different.\n\tActual:<<element/>>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should point to the different objects.\n\tActual:<<element/>>");
         }
     }
 

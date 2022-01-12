@@ -1967,13 +1967,13 @@ public final class ByteArrayAssertionTest extends AssertionTest {
             initialize(Raw.byteArrayAssertion(), value).isSameAs(new byte[]{1, 2});
             Assertions.fail("ByteArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<[1b, 2b]> but was:<[1b, 2b]>");
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should point to the same object.\n\tExpected:<[1b, 2b]> but was:<[1b, 2b]>");
         }
         try {
             initialize(Raw.byteArrayAssertion(), value, "Message").isSameAs(new byte[]{1, 2});
             Assertions.fail("ByteArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be the same.\n\tExpected:<[1b, 2b]> but was:<[1b, 2b]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should point to the same object.\n\tExpected:<[1b, 2b]> but was:<[1b, 2b]>");
         }
     }
 
@@ -1989,13 +1989,13 @@ public final class ByteArrayAssertionTest extends AssertionTest {
             initialize(Raw.byteArrayAssertion(), value).isNotSameAs(value);
             Assertions.fail("ByteArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual and expected values should be different.\n\tActual:<[1b, 2b]>");
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should point to the different objects.\n\tActual:<[1b, 2b]>");
         }
         try {
             initialize(Raw.byteArrayAssertion(), value, "Message").isNotSameAs(value);
             Assertions.fail("ByteArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be different.\n\tActual:<[1b, 2b]>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should point to the different objects.\n\tActual:<[1b, 2b]>");
         }
     }
 

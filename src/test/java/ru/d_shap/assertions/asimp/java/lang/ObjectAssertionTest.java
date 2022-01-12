@@ -199,13 +199,13 @@ public final class ObjectAssertionTest extends AssertionTest {
             initialize(Raw.objectAssertion(), value).isSameAs(new Object());
             Assertions.fail("ObjectAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).messageMatches("Actual and expected values should be the same.\n\tExpected:<java.lang.Object@.*> but was:<java.lang.Object@.*>");
+            Assertions.assertThat(ex).messageMatches("Actual and expected values should point to the same object.\n\tExpected:<java.lang.Object@.*> but was:<java.lang.Object@.*>");
         }
         try {
             initialize(Raw.objectAssertion(), value, "Message").isSameAs(new Object());
             Assertions.fail("ObjectAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).messageMatches("Message.\n\tActual and expected values should be the same.\n\tExpected:<java.lang.Object@.*> but was:<java.lang.Object@.*>");
+            Assertions.assertThat(ex).messageMatches("Message.\n\tActual and expected values should point to the same object.\n\tExpected:<java.lang.Object@.*> but was:<java.lang.Object@.*>");
         }
     }
 
@@ -221,13 +221,13 @@ public final class ObjectAssertionTest extends AssertionTest {
             initialize(Raw.objectAssertion(), value).isNotSameAs(value);
             Assertions.fail("ObjectAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).messageMatches("Actual and expected values should be different.\n\tActual:<java.lang.Object@.*>");
+            Assertions.assertThat(ex).messageMatches("Actual and expected values should point to the different objects.\n\tActual:<java.lang.Object@.*>");
         }
         try {
             initialize(Raw.objectAssertion(), value, "Message").isNotSameAs(value);
             Assertions.fail("ObjectAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).messageMatches("Message.\n\tActual and expected values should be different.\n\tActual:<java.lang.Object@.*>");
+            Assertions.assertThat(ex).messageMatches("Message.\n\tActual and expected values should point to the different objects.\n\tActual:<java.lang.Object@.*>");
         }
     }
 

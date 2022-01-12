@@ -507,13 +507,13 @@ public final class ShortAssertionTest extends AssertionTest {
             initialize(Raw.shortAssertion(), value).isSameAs((short) 10000);
             Assertions.fail("ShortAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<10000s> but was:<10000s>");
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should point to the same object.\n\tExpected:<10000s> but was:<10000s>");
         }
         try {
             initialize(Raw.shortAssertion(), value, "Message").isSameAs((short) 10000);
             Assertions.fail("ShortAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be the same.\n\tExpected:<10000s> but was:<10000s>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should point to the same object.\n\tExpected:<10000s> but was:<10000s>");
         }
     }
 
@@ -529,13 +529,13 @@ public final class ShortAssertionTest extends AssertionTest {
             initialize(Raw.shortAssertion(), value).isNotSameAs(value);
             Assertions.fail("ShortAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual and expected values should be different.\n\tActual:<10000s>");
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should point to the different objects.\n\tActual:<10000s>");
         }
         try {
             initialize(Raw.shortAssertion(), value, "Message").isNotSameAs(value);
             Assertions.fail("ShortAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be different.\n\tActual:<10000s>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should point to the different objects.\n\tActual:<10000s>");
         }
     }
 
