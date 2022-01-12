@@ -26,6 +26,7 @@ import java.util.List;
 import java.util.Map;
 
 import ru.d_shap.assertions.Messages;
+import ru.d_shap.assertions.asimp.array.BooleanArrayAsStringConverter;
 import ru.d_shap.assertions.asimp.array.ByteArrayAsStringConverter;
 import ru.d_shap.assertions.asimp.array.CharArrayAsStringConverter;
 import ru.d_shap.assertions.asimp.array.DoubleArrayAsStringConverter;
@@ -79,6 +80,7 @@ public final class AsStringConverter {
 
         list.add(new MapAsStringConverter());
 
+        list.add(new BooleanArrayAsStringConverter());
         list.add(new ByteArrayAsStringConverter());
         list.add(new CharArrayAsStringConverter());
         list.add(new DoubleArrayAsStringConverter());
