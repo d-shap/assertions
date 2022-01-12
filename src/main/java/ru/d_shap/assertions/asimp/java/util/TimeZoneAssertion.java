@@ -136,7 +136,7 @@ public class TimeZoneAssertion extends ReferenceAssertion<TimeZone> {
      *
      * @param expected the expected value.
      */
-    public void hasRawOffset(final int expected) {
+    public final void hasRawOffset(final int expected) {
         toRawOffset().isEqualTo(expected);
     }
 
