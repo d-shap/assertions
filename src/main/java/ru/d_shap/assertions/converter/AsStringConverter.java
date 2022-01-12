@@ -19,7 +19,6 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.converter;
 
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -65,43 +64,41 @@ public final class AsStringConverter {
     private static final List<AsStringConverterProvider> CONVERTER_PROVIDERS;
 
     static {
-        List<AsStringConverterProvider> list = new LinkedList<>();
+        CONVERTER_PROVIDERS = new LinkedList<>();
 
-        list.add(new BooleanAsStringConverter());
-        list.add(new ByteAsStringConverter());
-        list.add(new CharAsStringConverter());
-        list.add(new DoubleAsStringConverter());
-        list.add(new FloatAsStringConverter());
-        list.add(new LongAsStringConverter());
-        list.add(new ShortAsStringConverter());
+        CONVERTER_PROVIDERS.add(new BooleanAsStringConverter());
+        CONVERTER_PROVIDERS.add(new ByteAsStringConverter());
+        CONVERTER_PROVIDERS.add(new CharAsStringConverter());
+        CONVERTER_PROVIDERS.add(new DoubleAsStringConverter());
+        CONVERTER_PROVIDERS.add(new FloatAsStringConverter());
+        CONVERTER_PROVIDERS.add(new LongAsStringConverter());
+        CONVERTER_PROVIDERS.add(new ShortAsStringConverter());
 
-        list.add(new ClassAsStringConverter());
-        list.add(new IterableAsStringConverter());
+        CONVERTER_PROVIDERS.add(new ClassAsStringConverter());
+        CONVERTER_PROVIDERS.add(new IterableAsStringConverter());
 
-        list.add(new MapAsStringConverter());
+        CONVERTER_PROVIDERS.add(new MapAsStringConverter());
 
-        list.add(new BooleanArrayAsStringConverter());
-        list.add(new ByteArrayAsStringConverter());
-        list.add(new CharArrayAsStringConverter());
-        list.add(new DoubleArrayAsStringConverter());
-        list.add(new FloatArrayAsStringConverter());
-        list.add(new IntArrayAsStringConverter());
-        list.add(new LongArrayAsStringConverter());
-        list.add(new ObjectArrayAsStringConverter());
-        list.add(new ShortArrayAsStringConverter());
+        CONVERTER_PROVIDERS.add(new BooleanArrayAsStringConverter());
+        CONVERTER_PROVIDERS.add(new ByteArrayAsStringConverter());
+        CONVERTER_PROVIDERS.add(new CharArrayAsStringConverter());
+        CONVERTER_PROVIDERS.add(new DoubleArrayAsStringConverter());
+        CONVERTER_PROVIDERS.add(new FloatArrayAsStringConverter());
+        CONVERTER_PROVIDERS.add(new IntArrayAsStringConverter());
+        CONVERTER_PROVIDERS.add(new LongArrayAsStringConverter());
+        CONVERTER_PROVIDERS.add(new ObjectArrayAsStringConverter());
+        CONVERTER_PROVIDERS.add(new ShortArrayAsStringConverter());
 
-        list.add(new ByteBufferAsStringConverter());
-        list.add(new CharBufferAsStringConverter());
-        list.add(new DoubleBufferAsStringConverter());
-        list.add(new FloatBufferAsStringConverter());
-        list.add(new IntBufferAsStringConverter());
-        list.add(new LongBufferAsStringConverter());
-        list.add(new ShortBufferAsStringConverter());
+        CONVERTER_PROVIDERS.add(new ByteBufferAsStringConverter());
+        CONVERTER_PROVIDERS.add(new CharBufferAsStringConverter());
+        CONVERTER_PROVIDERS.add(new DoubleBufferAsStringConverter());
+        CONVERTER_PROVIDERS.add(new FloatBufferAsStringConverter());
+        CONVERTER_PROVIDERS.add(new IntBufferAsStringConverter());
+        CONVERTER_PROVIDERS.add(new LongBufferAsStringConverter());
+        CONVERTER_PROVIDERS.add(new ShortBufferAsStringConverter());
 
-        list.add(new AttrAsStringConverter());
-        list.add(new NodeAsStringConverter());
-
-        CONVERTER_PROVIDERS = Collections.unmodifiableList(list);
+        CONVERTER_PROVIDERS.add(new AttrAsStringConverter());
+        CONVERTER_PROVIDERS.add(new NodeAsStringConverter());
     }
 
     private static final Map<ConverterKey, AsStringConverterProvider> CONVERTER_MAP = new HashMap<>();
