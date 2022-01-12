@@ -19,14 +19,40 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.converter;
 
+import java.util.Collections;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-import java.util.ServiceLoader;
 
 import ru.d_shap.assertions.Messages;
+import ru.d_shap.assertions.asimp.array.ByteArrayAsStringConverter;
+import ru.d_shap.assertions.asimp.array.CharArrayAsStringConverter;
+import ru.d_shap.assertions.asimp.array.DoubleArrayAsStringConverter;
+import ru.d_shap.assertions.asimp.array.FloatArrayAsStringConverter;
+import ru.d_shap.assertions.asimp.array.IntArrayAsStringConverter;
+import ru.d_shap.assertions.asimp.array.LongArrayAsStringConverter;
+import ru.d_shap.assertions.asimp.array.ObjectArrayAsStringConverter;
+import ru.d_shap.assertions.asimp.array.ShortArrayAsStringConverter;
+import ru.d_shap.assertions.asimp.java.lang.ClassAsStringConverter;
+import ru.d_shap.assertions.asimp.java.lang.IterableAsStringConverter;
+import ru.d_shap.assertions.asimp.java.nio.ByteBufferAsStringConverter;
+import ru.d_shap.assertions.asimp.java.nio.CharBufferAsStringConverter;
+import ru.d_shap.assertions.asimp.java.nio.DoubleBufferAsStringConverter;
+import ru.d_shap.assertions.asimp.java.nio.FloatBufferAsStringConverter;
+import ru.d_shap.assertions.asimp.java.nio.IntBufferAsStringConverter;
+import ru.d_shap.assertions.asimp.java.nio.LongBufferAsStringConverter;
+import ru.d_shap.assertions.asimp.java.nio.ShortBufferAsStringConverter;
+import ru.d_shap.assertions.asimp.java.util.MapAsStringConverter;
+import ru.d_shap.assertions.asimp.org.w3c.dom.AttrAsStringConverter;
+import ru.d_shap.assertions.asimp.org.w3c.dom.NodeAsStringConverter;
+import ru.d_shap.assertions.asimp.primitive.BooleanAsStringConverter;
+import ru.d_shap.assertions.asimp.primitive.ByteAsStringConverter;
+import ru.d_shap.assertions.asimp.primitive.CharAsStringConverter;
+import ru.d_shap.assertions.asimp.primitive.DoubleAsStringConverter;
+import ru.d_shap.assertions.asimp.primitive.FloatAsStringConverter;
+import ru.d_shap.assertions.asimp.primitive.LongAsStringConverter;
+import ru.d_shap.assertions.asimp.primitive.ShortAsStringConverter;
 
 /**
  * Class to convert the value to the string representation of the value.
@@ -38,13 +64,42 @@ public final class AsStringConverter {
     private static final List<AsStringConverterProvider> CONVERTER_PROVIDERS;
 
     static {
-        CONVERTER_PROVIDERS = new LinkedList<>();
-        ServiceLoader<AsStringConverterProvider> serviceLoader = ServiceLoader.load(AsStringConverterProvider.class);
-        Iterator<AsStringConverterProvider> iterator = serviceLoader.iterator();
-        while (iterator.hasNext()) {
-            AsStringConverterProvider converterProvider = iterator.next();
-            CONVERTER_PROVIDERS.add(converterProvider);
-        }
+        List<AsStringConverterProvider> list = new LinkedList<>();
+
+        list.add(new BooleanAsStringConverter());
+        list.add(new ByteAsStringConverter());
+        list.add(new CharAsStringConverter());
+        list.add(new DoubleAsStringConverter());
+        list.add(new FloatAsStringConverter());
+        list.add(new LongAsStringConverter());
+        list.add(new ShortAsStringConverter());
+
+        list.add(new ClassAsStringConverter());
+        list.add(new IterableAsStringConverter());
+
+        list.add(new MapAsStringConverter());
+
+        list.add(new ByteArrayAsStringConverter());
+        list.add(new CharArrayAsStringConverter());
+        list.add(new DoubleArrayAsStringConverter());
+        list.add(new FloatArrayAsStringConverter());
+        list.add(new IntArrayAsStringConverter());
+        list.add(new LongArrayAsStringConverter());
+        list.add(new ObjectArrayAsStringConverter());
+        list.add(new ShortArrayAsStringConverter());
+
+        list.add(new ByteBufferAsStringConverter());
+        list.add(new CharBufferAsStringConverter());
+        list.add(new DoubleBufferAsStringConverter());
+        list.add(new FloatBufferAsStringConverter());
+        list.add(new IntBufferAsStringConverter());
+        list.add(new LongBufferAsStringConverter());
+        list.add(new ShortBufferAsStringConverter());
+
+        list.add(new AttrAsStringConverter());
+        list.add(new NodeAsStringConverter());
+
+        CONVERTER_PROVIDERS = Collections.unmodifiableList(list);
     }
 
     private static final Map<ConverterKey, AsStringConverterProvider> CONVERTER_MAP = new HashMap<>();
