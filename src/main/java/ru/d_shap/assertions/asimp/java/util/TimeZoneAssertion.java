@@ -51,6 +51,58 @@ public class TimeZoneAssertion extends ReferenceAssertion<TimeZone> {
     }
 
     /**
+     * Check if the actual value is equal to the expected value.
+     *
+     * @param expected the expected value.
+     */
+    public final void isEqualTo(final TimeZone expected) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(expected, "expected");
+        if (!getActual().equals(expected)) {
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_SAME).addActual().addExpected(expected).build();
+        }
+    }
+
+    /**
+     * Check if the actual value is NOT equal to the expected value.
+     *
+     * @param expected the expected value.
+     */
+    public final void isNotEqualTo(final TimeZone expected) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(expected, "expected");
+        if (getActual().equals(expected)) {
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_DIFFERENT).addActual().build();
+        }
+    }
+
+    /**
+     * Check if the actual value has the same rules as the expected value.
+     *
+     * @param expected the expected value.
+     */
+    public final void hasSameRules(final TimeZone expected) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(expected, "expected");
+        if (!getActual().hasSameRules(expected)) {
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.HAS_SAME_RULES).addActual().addExpected(expected).build();
+        }
+    }
+
+    /**
+     * Check if the actual value does NOT have the same rules as the expected value.
+     *
+     * @param expected the expected value.
+     */
+    public final void doesNotHaveSameRules(final TimeZone expected) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(expected, "expected");
+        if (getActual().hasSameRules(expected)) {
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.DOES_NOT_HAVE_SAME_RULES).addActual().build();
+        }
+    }
+
+    /**
      * Make assertion about the actual value's ID.
      *
      * @return the assertion.
