@@ -62,4 +62,188 @@ public class TimeZoneAssertionTest extends AssertionTest {
         }
     }
 
+    /**
+     * {@link TimeZoneAssertion} class test.
+     */
+    @Test
+    public void isEqualToTest() {
+        // TODO
+    }
+
+    /**
+     * {@link TimeZoneAssertion} class test.
+     */
+    @Test
+    public void isNotEqualToTest() {
+        // TODO
+    }
+
+    /**
+     * {@link TimeZoneAssertion} class test.
+     */
+    @Test
+    public void hasSameRulesTest() {
+        // TODO
+    }
+
+    /**
+     * {@link TimeZoneAssertion} class test.
+     */
+    @Test
+    public void doesNotHaveSameRulesTest() {
+        // TODO
+    }
+
+    /**
+     * {@link TimeZoneAssertion} class test.
+     */
+    @Test
+    public void toIdTest() {
+        // TODO
+    }
+
+    /**
+     * {@link TimeZoneAssertion} class test.
+     */
+    @Test
+    public void toIdMatcherTest() {
+        // TODO
+    }
+
+    /**
+     * {@link TimeZoneAssertion} class test.
+     */
+    @Test
+    public void hasIdTest() {
+        // TODO
+    }
+
+    /**
+     * {@link TimeZoneAssertion} class test.
+     */
+    @Test
+    public void toDisplayNameTest() {
+        // TODO
+    }
+
+    /**
+     * {@link TimeZoneAssertion} class test.
+     */
+    @Test
+    public void toDisplayNameMatcherTest() {
+        // TODO
+    }
+
+    /**
+     * {@link TimeZoneAssertion} class test.
+     */
+    @Test
+    public void hasDisplayNameTest() {
+        // TODO
+    }
+
+    /**
+     * {@link TimeZoneAssertion} class test.
+     */
+    @Test
+    public void toRawOffsetTest() {
+        // TODO
+    }
+
+    /**
+     * {@link TimeZoneAssertion} class test.
+     */
+    @Test
+    public void toRawOffsetMatcherTest() {
+        // TODO
+    }
+
+    /**
+     * {@link TimeZoneAssertion} class test.
+     */
+    @Test
+    public void hasRawOffsetTest() {
+        // TODO
+    }
+
+    /**
+     * {@link TimeZoneAssertion} class test.
+     */
+    @Test
+    public void toUseDaylightTimeTest() {
+        // TODO
+    }
+
+    /**
+     * {@link TimeZoneAssertion} class test.
+     */
+    @Test
+    public void toUseDaylightTimeMatcherTest() {
+        // TODO
+    }
+
+    /**
+     * {@link TimeZoneAssertion} class test.
+     */
+    @Test
+    public void useDaylightTimeTest() {
+        // TODO
+    }
+
+    /**
+     * {@link TimeZoneAssertion} class test.
+     */
+    @Test
+    public void doesNotUseDaylightTimeTest() {
+        // TODO
+    }
+
+    /**
+     * {@link TimeZoneAssertion} class test.
+     */
+    @Test
+    public void toDstSavingsTest() {
+        // TODO
+    }
+
+    /**
+     * {@link TimeZoneAssertion} class test.
+     */
+    @Test
+    public void toDstSavingsMatcherTest() {
+        // TODO
+    }
+
+    /**
+     * {@link TimeZoneAssertion} class test.
+     */
+    @Test
+    public void hasDstSavingsTest() {
+        // TODO
+    }
+
+    /**
+     * {@link TimeZoneAssertion} class test.
+     */
+    @Test
+    public void isNullTest() {
+        // TODO
+    }
+
+    /**
+     * {@link TimeZoneAssertion} class test.
+     */
+    @Test
+    public void isSameAsTest() {
+        // TODO
+    }
+
+    /**
+     * {@link TimeZoneAssertion} class test.
+     */
+    @Test
+    public void isNotSameAsTest() {
+        // TODO
+    }
+
 }
