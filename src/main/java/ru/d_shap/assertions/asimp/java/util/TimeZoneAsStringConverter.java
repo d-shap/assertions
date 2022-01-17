@@ -19,7 +19,6 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.asimp.java.util;
 
-import java.util.Locale;
 import java.util.TimeZone;
 
 import ru.d_shap.assertions.converter.AsStringConverterProvider;
@@ -49,7 +48,7 @@ public final class TimeZoneAsStringConverter implements AsStringConverterProvide
     public String asString(final Object value) throws ConversionException {
         TimeZone castedValue = ConverterArgumentHelper.getValue(value, TimeZone.class);
 
-        return castedValue.getDisplayName(Locale.US);
+        return castedValue.getID();
     }
 
 }
