@@ -521,19 +521,19 @@ public class TimeZoneAssertionTest extends AssertionTest {
         initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("Europe/Vienna")).hasId("Europe/Vienna");
 
         try {
-            Raw.timeZoneAssertion().toId();
+            Raw.timeZoneAssertion().hasId("");
             Assertions.fail("TimeZoneAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
-            initialize(Raw.timeZoneAssertion(), null).toId();
+            initialize(Raw.timeZoneAssertion(), null).hasId("");
             Assertions.fail("TimeZoneAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
-            initialize(Raw.timeZoneAssertion(), null, "Message").toId();
+            initialize(Raw.timeZoneAssertion(), null, "Message").hasId("");
             Assertions.fail("TimeZoneAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
@@ -557,7 +557,56 @@ public class TimeZoneAssertionTest extends AssertionTest {
      */
     @Test
     public void toDisplayNameTest() {
-        // TODO
+        initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("UTC")).toDisplayName().isEqualTo("Coordinated Universal Time");
+        initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("GMT")).toDisplayName().isEqualTo("Greenwich Mean Time");
+        initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("Asia/Novosibirsk")).toDisplayName().isEqualTo("Novosibirsk Time");
+        initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("Asia/Krasnoyarsk")).toDisplayName().isEqualTo("Krasnoyarsk Time");
+        initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("Asia/Vientiane")).toDisplayName().isEqualTo("Indochina Time");
+        initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("Europe/Berlin")).toDisplayName().isEqualTo("Central European Time");
+        initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("Europe/Vienna")).toDisplayName().isEqualTo("Central European Time");
+
+        try {
+            Raw.timeZoneAssertion().toDisplayName();
+            Assertions.fail("TimeZoneAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.timeZoneAssertion(), null).toDisplayName();
+            Assertions.fail("TimeZoneAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.timeZoneAssertion(), null, "Message").toDisplayName();
+            Assertions.fail("TimeZoneAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            clearActual(initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("UTC")).toDisplayName()).isEqualTo("UTC");
+            Assertions.fail("TimeZoneAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's display name.\n\tActual value should not be null.");
+        }
+        try {
+            clearActual(initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("UTC"), "Message").toDisplayName()).isEqualTo("UTC");
+            Assertions.fail("TimeZoneAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's display name.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("UTC")).toDisplayName().isEqualTo("Greenwich Mean Time");
+            Assertions.fail("TimeZoneAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's display name.\n\tActual and expected values should be the same.\n\tExpected:<Greenwich Mean Time> but was:<Coordinated Universal Time>");
+        }
+        try {
+            initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("UTC"), "Message").toDisplayName().isEqualTo("Greenwich Mean Time");
+            Assertions.fail("TimeZoneAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's display name.\n\tActual and expected values should be the same.\n\tExpected:<Greenwich Mean Time> but was:<Coordinated Universal Time>");
+        }
     }
 
     /**
@@ -565,7 +614,68 @@ public class TimeZoneAssertionTest extends AssertionTest {
      */
     @Test
     public void toDisplayNameMatcherTest() {
-        // TODO
+        initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("UTC")).toDisplayName(Matchers.is(Matchers.equalTo("Coordinated Universal Time")));
+        initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("GMT")).toDisplayName(Matchers.is(Matchers.equalTo("Greenwich Mean Time")));
+        initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("Asia/Novosibirsk")).toDisplayName(Matchers.is(Matchers.equalTo("Novosibirsk Time")));
+        initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("Asia/Krasnoyarsk")).toDisplayName(Matchers.is(Matchers.equalTo("Krasnoyarsk Time")));
+        initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("Asia/Vientiane")).toDisplayName(Matchers.is(Matchers.equalTo("Indochina Time")));
+        initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("Europe/Berlin")).toDisplayName(Matchers.is(Matchers.equalTo("Central European Time")));
+        initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("Europe/Vienna")).toDisplayName(Matchers.is(Matchers.equalTo("Central European Time")));
+
+        try {
+            Raw.timeZoneAssertion().toDisplayName(Matchers.equalTo(""));
+            Assertions.fail("TimeZoneAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.timeZoneAssertion(), null).toDisplayName(Matchers.equalTo(""));
+            Assertions.fail("TimeZoneAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.timeZoneAssertion(), null, "Message").toDisplayName(Matchers.equalTo(""));
+            Assertions.fail("TimeZoneAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.timeZoneAssertion(), null).toDisplayName(null);
+            Assertions.fail("TimeZoneAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.timeZoneAssertion(), null, "Message").toDisplayName(null);
+            Assertions.fail("TimeZoneAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("UTC")).toDisplayName(null);
+            Assertions.fail("TimeZoneAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: matcher.");
+        }
+        try {
+            initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("UTC"), "Message").toDisplayName(null);
+            Assertions.fail("TimeZoneAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: matcher.");
+        }
+        try {
+            initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("UTC")).toDisplayName(Matchers.is(Matchers.equalTo("Greenwich Mean Time")));
+            Assertions.fail("TimeZoneAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's display name.\nExpected: is \"Greenwich Mean Time\"\n     but: was \"Coordinated Universal Time\"");
+        }
+        try {
+            initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("UTC"), "Message").toDisplayName(Matchers.is(Matchers.equalTo("Greenwich Mean Time")));
+            Assertions.fail("TimeZoneAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's display name.\nExpected: is \"Greenwich Mean Time\"\n     but: was \"Coordinated Universal Time\"");
+        }
     }
 
     /**
@@ -573,7 +683,44 @@ public class TimeZoneAssertionTest extends AssertionTest {
      */
     @Test
     public void hasDisplayNameTest() {
-        // TODO
+        initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("UTC")).hasDisplayName("Coordinated Universal Time");
+        initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("GMT")).hasDisplayName("Greenwich Mean Time");
+        initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("Asia/Novosibirsk")).hasDisplayName("Novosibirsk Time");
+        initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("Asia/Krasnoyarsk")).hasDisplayName("Krasnoyarsk Time");
+        initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("Asia/Vientiane")).hasDisplayName("Indochina Time");
+        initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("Europe/Berlin")).hasDisplayName("Central European Time");
+        initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("Europe/Vienna")).hasDisplayName("Central European Time");
+
+        try {
+            Raw.timeZoneAssertion().hasDisplayName("");
+            Assertions.fail("TimeZoneAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.timeZoneAssertion(), null).hasDisplayName("");
+            Assertions.fail("TimeZoneAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.timeZoneAssertion(), null, "Message").hasDisplayName("");
+            Assertions.fail("TimeZoneAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("UTC")).hasDisplayName("Greenwich Mean Time");
+            Assertions.fail("TimeZoneAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's display name.\n\tActual and expected values should be the same.\n\tExpected:<Greenwich Mean Time> but was:<Coordinated Universal Time>");
+        }
+        try {
+            initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("UTC"), "Message").hasDisplayName("Greenwich Mean Time");
+            Assertions.fail("TimeZoneAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's display name.\n\tActual and expected values should be the same.\n\tExpected:<Greenwich Mean Time> but was:<Coordinated Universal Time>");
+        }
     }
 
     /**
