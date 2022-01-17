@@ -98,7 +98,7 @@ public class TimeZoneAssertion extends ReferenceAssertion<TimeZone> {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         if (getActual().hasSameRules(expected)) {
-            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.DOES_NOT_HAVE_SAME_RULES).addActual().build();
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.DOES_NOT_HAVE_SAME_RULES).addActual().addExpected(expected).build();
         }
     }
 
