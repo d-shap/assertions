@@ -21,8 +21,12 @@ package ru.d_shap.assertions.asimp.java.util;
 
 import java.util.Calendar;
 
+import org.hamcrest.Matcher;
+
 import ru.d_shap.assertions.Messages;
+import ru.d_shap.assertions.Raw;
 import ru.d_shap.assertions.asimp.ReferenceAssertion;
+import ru.d_shap.assertions.asimp.primitive.IntAssertion;
 
 /**
  * Assertions for the calendar.
@@ -149,6 +153,36 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
         if (getActual().compareTo(expectedFrom) >= 0 && getActual().compareTo(expectedTo) < 0) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_IN_RANGE).addActual().addExpected(expectedFrom, expectedTo).build();
         }
+    }
+
+    /**
+     * Make assertion about the actual value's year.
+     *
+     * @return the assertion.
+     */
+    public final IntAssertion toYear() {
+        checkActualIsNotNull();
+        return initializeAssertion(Raw.intAssertion(), getActual().get(Calendar.YEAR), Messages.Check.YEAR);
+    }
+
+    /**
+     * Make assertion about the actual value's year.
+     *
+     * @param matcher the hamcrest matcher.
+     */
+    public final void toYear(final Matcher<Integer> matcher) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(matcher, "matcher");
+        matcherAssertion(getActual().get(Calendar.YEAR), matcher, Messages.Check.YEAR);
+    }
+
+    /**
+     * Check if the actual value's year is equal to the expected year.
+     *
+     * @param expected the expected value.
+     */
+    public final void hasYear(final int expected) {
+        toYear().isEqualTo(expected);
     }
 
 }
