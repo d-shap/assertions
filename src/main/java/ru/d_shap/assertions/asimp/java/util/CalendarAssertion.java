@@ -21,6 +21,7 @@ package ru.d_shap.assertions.asimp.java.util;
 
 import java.util.Calendar;
 
+import ru.d_shap.assertions.Messages;
 import ru.d_shap.assertions.asimp.ReferenceAssertion;
 
 /**
@@ -40,6 +41,114 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
     @Override
     protected final Class<Calendar> getActualValueClass() {
         return Calendar.class;
+    }
+
+    /**
+     * Check if the actual value is equal to the expected value.
+     *
+     * @param expected the expected value.
+     */
+    public final void isEqualTo(final Calendar expected) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(expected, "expected");
+        if (!getActual().equals(expected)) {
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_SAME).addActual().addExpected(expected).build();
+        }
+    }
+
+    /**
+     * Check if the actual value is NOT equal to the expected value.
+     *
+     * @param expected the expected value.
+     */
+    public final void isNotEqualTo(final Calendar expected) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(expected, "expected");
+        if (getActual().equals(expected)) {
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_DIFFERENT).addActual().build();
+        }
+    }
+
+    /**
+     * Check if the actual value is greater than the expected value.
+     *
+     * @param expected the expected value.
+     */
+    public final void isGreaterThan(final Calendar expected) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(expected, "expected");
+        if (getActual().compareTo(expected) <= 0) {
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_GREATER).addActual().addExpected(expected).build();
+        }
+    }
+
+    /**
+     * Check if the actual value is greater than or equal to the expected value.
+     *
+     * @param expected the expected value.
+     */
+    public final void isGreaterThanOrEqualTo(final Calendar expected) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(expected, "expected");
+        if (getActual().compareTo(expected) < 0) {
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_GREATER_OR_EQUAL).addActual().addExpected(expected).build();
+        }
+    }
+
+    /**
+     * Check if the actual value is less than the expected value.
+     *
+     * @param expected the expected value.
+     */
+    public final void isLessThan(final Calendar expected) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(expected, "expected");
+        if (getActual().compareTo(expected) >= 0) {
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_LESS).addActual().addExpected(expected).build();
+        }
+    }
+
+    /**
+     * Check if the actual value is less than or equal to the expected value.
+     *
+     * @param expected the expected value.
+     */
+    public final void isLessThanOrEqualTo(final Calendar expected) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(expected, "expected");
+        if (getActual().compareTo(expected) > 0) {
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_LESS_OR_EQUAL).addActual().addExpected(expected).build();
+        }
+    }
+
+    /**
+     * Check if the actual value is in the expected range.
+     *
+     * @param expectedFrom the expected lower (inclusive) bound of the range.
+     * @param expectedTo   the expected upper (exclusive) bound of the range.
+     */
+    public final void isInRange(final Calendar expectedFrom, final Calendar expectedTo) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(expectedFrom, "expectedFrom");
+        checkArgumentIsNotNull(expectedTo, "expectedTo");
+        if (getActual().compareTo(expectedFrom) < 0 || getActual().compareTo(expectedTo) >= 0) {
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_IN_RANGE).addActual().addExpected(expectedFrom, expectedTo).build();
+        }
+    }
+
+    /**
+     * Check if the actual value is NOT in the expected range.
+     *
+     * @param expectedFrom the expected lower (inclusive) bound of the range.
+     * @param expectedTo   the expected upper (exclusive) bound of the range.
+     */
+    public final void isNotInRange(final Calendar expectedFrom, final Calendar expectedTo) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(expectedFrom, "expectedFrom");
+        checkArgumentIsNotNull(expectedTo, "expectedTo");
+        if (getActual().compareTo(expectedFrom) >= 0 && getActual().compareTo(expectedTo) < 0) {
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_IN_RANGE).addActual().addExpected(expectedFrom, expectedTo).build();
+        }
     }
 
 }
