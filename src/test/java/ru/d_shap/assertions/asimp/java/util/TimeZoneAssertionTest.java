@@ -1267,7 +1267,20 @@ public class TimeZoneAssertionTest extends AssertionTest {
      */
     @Test
     public void isNullTest() {
-        // TODO
+        initialize(Raw.timeZoneAssertion(), null).isNull();
+
+        try {
+            initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("UTC")).isNull();
+            Assertions.fail("TimeZoneAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should be null.\n\tActual:<UTC>");
+        }
+        try {
+            initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("UTC"), "Message").isNull();
+            Assertions.fail("TimeZoneAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be null.\n\tActual:<UTC>");
+        }
     }
 
     /**
@@ -1275,7 +1288,21 @@ public class TimeZoneAssertionTest extends AssertionTest {
      */
     @Test
     public void isSameAsTest() {
-        // TODO
+        TimeZone value = TimeZone.getTimeZone("UTC");
+        initialize(Raw.timeZoneAssertion(), value).isSameAs(value);
+
+        try {
+            initialize(Raw.timeZoneAssertion(), value).isSameAs(TimeZone.getTimeZone("GMT"));
+            Assertions.fail("TimeZoneAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should point to the same object.\n\tExpected:<GMT> but was:<UTC>");
+        }
+        try {
+            initialize(Raw.timeZoneAssertion(), value, "Message").isSameAs(TimeZone.getTimeZone("GMT"));
+            Assertions.fail("TimeZoneAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should point to the same object.\n\tExpected:<GMT> but was:<UTC>");
+        }
     }
 
     /**
@@ -1283,7 +1310,21 @@ public class TimeZoneAssertionTest extends AssertionTest {
      */
     @Test
     public void isNotSameAsTest() {
-        // TODO
+        TimeZone value = TimeZone.getTimeZone("UTC");
+        initialize(Raw.timeZoneAssertion(), value).isNotSameAs(TimeZone.getTimeZone("GMT"));
+
+        try {
+            initialize(Raw.timeZoneAssertion(), value).isNotSameAs(value);
+            Assertions.fail("TimeZoneAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should point to the different objects.\n\tActual:<UTC>");
+        }
+        try {
+            initialize(Raw.timeZoneAssertion(), value, "Message").isNotSameAs(value);
+            Assertions.fail("TimeZoneAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should point to the different objects.\n\tActual:<UTC>");
+        }
     }
 
 }
