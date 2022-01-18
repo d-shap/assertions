@@ -766,6 +766,18 @@ public class TimeZoneAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's raw offset.\n\tActual value should not be null.");
         }
+        try {
+            initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("UTC")).toRawOffset().isEqualTo(60 * 60 * 1000);
+            Assertions.fail("TimeZoneAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's raw offset.\n\tActual and expected values should be the same.\n\tExpected:<3600000> but was:<0>");
+        }
+        try {
+            initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("UTC"), "Message").toRawOffset().isEqualTo(60 * 60 * 1000);
+            Assertions.fail("TimeZoneAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's raw offset.\n\tActual and expected values should be the same.\n\tExpected:<3600000> but was:<0>");
+        }
     }
 
     /**
@@ -887,7 +899,56 @@ public class TimeZoneAssertionTest extends AssertionTest {
      */
     @Test
     public void toUseDaylightTimeTest() {
-        // TODO
+        initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("UTC")).toUseDaylightTime().isFalse();
+        initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("GMT")).toUseDaylightTime().isFalse();
+        initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("Asia/Novosibirsk")).toUseDaylightTime().isFalse();
+        initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("Asia/Krasnoyarsk")).toUseDaylightTime().isFalse();
+        initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("Asia/Vientiane")).toUseDaylightTime().isFalse();
+        initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("Europe/Berlin")).toUseDaylightTime().isTrue();
+        initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("Europe/Vienna")).toUseDaylightTime().isTrue();
+
+        try {
+            Raw.timeZoneAssertion().toUseDaylightTime();
+            Assertions.fail("TimeZoneAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.timeZoneAssertion(), null).toUseDaylightTime();
+            Assertions.fail("TimeZoneAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.timeZoneAssertion(), null, "Message").toUseDaylightTime();
+            Assertions.fail("TimeZoneAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            clearActual(initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("UTC")).toUseDaylightTime()).isTrue();
+            Assertions.fail("TimeZoneAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's use daylight time.\n\tActual value should not be null.");
+        }
+        try {
+            clearActual(initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("UTC"), "Message").toUseDaylightTime()).isTrue();
+            Assertions.fail("TimeZoneAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's use daylight time.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("UTC")).toUseDaylightTime().isTrue();
+            Assertions.fail("TimeZoneAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's use daylight time.\n\tActual value should be true.");
+        }
+        try {
+            initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("UTC"), "Message").toUseDaylightTime().isTrue();
+            Assertions.fail("TimeZoneAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's use daylight time.\n\tActual value should be true.");
+        }
     }
 
     /**
@@ -895,7 +956,68 @@ public class TimeZoneAssertionTest extends AssertionTest {
      */
     @Test
     public void toUseDaylightTimeMatcherTest() {
-        // TODO
+        initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("UTC")).toUseDaylightTime(Matchers.is(Matchers.equalTo(false)));
+        initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("GMT")).toUseDaylightTime(Matchers.is(Matchers.equalTo(false)));
+        initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("Asia/Novosibirsk")).toUseDaylightTime(Matchers.is(Matchers.equalTo(false)));
+        initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("Asia/Krasnoyarsk")).toUseDaylightTime(Matchers.is(Matchers.equalTo(false)));
+        initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("Asia/Vientiane")).toUseDaylightTime(Matchers.is(Matchers.equalTo(false)));
+        initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("Europe/Berlin")).toUseDaylightTime(Matchers.is(Matchers.equalTo(true)));
+        initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("Europe/Vienna")).toUseDaylightTime(Matchers.is(Matchers.equalTo(true)));
+
+        try {
+            Raw.timeZoneAssertion().toUseDaylightTime(Matchers.equalTo(false));
+            Assertions.fail("TimeZoneAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.timeZoneAssertion(), null).toUseDaylightTime(Matchers.equalTo(false));
+            Assertions.fail("TimeZoneAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.timeZoneAssertion(), null, "Message").toUseDaylightTime(Matchers.equalTo(false));
+            Assertions.fail("TimeZoneAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.timeZoneAssertion(), null).toUseDaylightTime(null);
+            Assertions.fail("TimeZoneAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.timeZoneAssertion(), null, "Message").toUseDaylightTime(null);
+            Assertions.fail("TimeZoneAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("UTC")).toUseDaylightTime(null);
+            Assertions.fail("TimeZoneAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: matcher.");
+        }
+        try {
+            initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("UTC"), "Message").toUseDaylightTime(null);
+            Assertions.fail("TimeZoneAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: matcher.");
+        }
+        try {
+            initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("UTC")).toUseDaylightTime(Matchers.is(Matchers.equalTo(true)));
+            Assertions.fail("TimeZoneAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's use daylight time.\nExpected: is <true>\n     but: was <false>");
+        }
+        try {
+            initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("UTC"), "Message").toUseDaylightTime(Matchers.is(Matchers.equalTo(true)));
+            Assertions.fail("TimeZoneAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's use daylight time.\nExpected: is <true>\n     but: was <false>");
+        }
     }
 
     /**
