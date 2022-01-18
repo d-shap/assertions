@@ -1410,6 +1410,8 @@ public class AssertionTest {
 
         private final SortedMap<String, String> _sortedMap;
 
+        private final TimeZone _timeZone;
+
         private final InputStream _inputStream;
 
         private final Reader _reader;
@@ -1483,6 +1485,7 @@ public class AssertionTest {
                 _sortedSet = assertionTest.createTreeSet("1", "2", "3");
                 _map = assertionTest.createHashMap("1", "val1", "2", "val2", "3", "val3");
                 _sortedMap = assertionTest.createTreeMap("1", "val1", "2", "val2", "3", "val3");
+                _timeZone = TimeZone.getTimeZone("GMT");
                 _inputStream = new ByteArrayInputStream(new byte[]{1, 2, 3});
                 _reader = new StringReader("123");
                 _bufferedReader = new BufferedReader(new StringReader("1\n2\n3"));
@@ -1654,6 +1657,10 @@ public class AssertionTest {
 
         SortedMap<String, String> getSortedMap() {
             return _sortedMap;
+        }
+
+        TimeZone getTimeZone() {
+            return _timeZone;
         }
 
         InputStream getInputStream() {
