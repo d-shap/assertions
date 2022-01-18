@@ -119,9 +119,13 @@ public final class Messages {
 
         public static final String RAW_OFFSET = "Check actual value''s raw offset.";
 
+        public static final String ZONE_OFFSET = "Check actual value''s zone offset.";
+
         public static final String USE_DAYLIGHT_TIME = "Check actual value''s use daylight time.";
 
         public static final String DST_SAVINGS = "Check actual value''s DST savings.";
+
+        public static final String DST_OFFSET = "Check actual value''s DST offset.";
 
         public static final String BYTES_ALL = "Check all actual value''s bytes.";
 
