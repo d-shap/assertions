@@ -39,6 +39,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.SortedMap;
 import java.util.SortedSet;
+import java.util.TimeZone;
 
 import javax.xml.namespace.QName;
 
@@ -899,6 +900,27 @@ public final class AssertionsTest extends AssertionTest {
             Assertions.fail("Assertions test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's size.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
+        }
+    }
+
+    /**
+     * {@link Assertions} class test.
+     */
+    @Test
+    public void timeZoneAssertionTest() {
+        Assertions.assertThat((TimeZone) null).isNull();
+        Assertions.assertThat(TimeZone.getTimeZone("UTC")).hasDisplayName("Coordinated Universal Time");
+        Assertions.assertThat(null, Raw.timeZoneAssertion()).isNull();
+        Assertions.assertThat(TimeZone.getTimeZone("UTC"), Raw.timeZoneAssertion()).hasDisplayName("Coordinated Universal Time");
+        Assertions.assertThat(createNullFieldClass(), "_field", Raw.timeZoneAssertion()).isNull();
+        Assertions.assertThat(createPrivateFieldsClass(), "_timeZone").isNotNull();
+        Assertions.assertThat(createPrivateFieldsClass(), "_timeZone", Raw.timeZoneAssertion()).hasDisplayName("Greenwich Mean Time");
+
+        try {
+            Assertions.assertThat(TimeZone.getTimeZone("UTC")).hasDisplayName("Greenwich Mean Time");
+            Assertions.fail("Assertions test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's display name.\n\tActual and expected values should be the same.\n\tExpected:<Greenwich Mean Time> but was:<Coordinated Universal Time>");
         }
     }
 
