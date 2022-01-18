@@ -38,6 +38,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.SortedMap;
 import java.util.SortedSet;
+import java.util.TimeZone;
 
 import javax.xml.namespace.QName;
 
@@ -1619,6 +1620,45 @@ public final class MessageAssertionTest extends AssertionTest {
             Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("value''s.\n\tCheck actual value's size.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
+        }
+    }
+
+    /**
+     * {@link MessageAssertion} class test.
+     */
+    @Test
+    public void timeZoneAssertionTest() {
+        Assertions.assertWithMessage("Test message").that((TimeZone) null).isNull();
+        Assertions.assertWithMessage("Test message").that(TimeZone.getTimeZone("UTC")).hasDisplayName("Coordinated Universal Time");
+        Assertions.assertWithMessage("Test message").that(null, Raw.timeZoneAssertion()).isNull();
+        Assertions.assertWithMessage("Test message").that(TimeZone.getTimeZone("UTC"), Raw.timeZoneAssertion()).hasDisplayName("Coordinated Universal Time");
+        Assertions.assertWithMessage("Test message").that(createNullFieldClass(), "_field", Raw.timeZoneAssertion()).isNull();
+        Assertions.assertWithMessage("Test message").that(createPrivateFieldsClass(), "_timeZone").isNotNull();
+        Assertions.assertWithMessage("Test message").that(createPrivateFieldsClass(), "_timeZone", Raw.timeZoneAssertion()).hasDisplayName("Greenwich Mean Time");
+
+        try {
+            Assertions.assertWithMessage(null).that(TimeZone.getTimeZone("UTC")).hasDisplayName("Greenwich Mean Time");
+            Assertions.fail("MessageAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's display name.\n\tActual and expected values should be the same.\n\tExpected:<Greenwich Mean Time> but was:<Coordinated Universal Time>");
+        }
+        try {
+            Assertions.assertWithMessage("").that(TimeZone.getTimeZone("UTC")).hasDisplayName("Greenwich Mean Time");
+            Assertions.fail("MessageAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's display name.\n\tActual and expected values should be the same.\n\tExpected:<Greenwich Mean Time> but was:<Coordinated Universal Time>");
+        }
+        try {
+            Assertions.assertWithMessage("Test message").that(TimeZone.getTimeZone("UTC")).hasDisplayName("Greenwich Mean Time");
+            Assertions.fail("MessageAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Test message.\n\tCheck actual value's display name.\n\tActual and expected values should be the same.\n\tExpected:<Greenwich Mean Time> but was:<Coordinated Universal Time>");
+        }
+        try {
+            Assertions.assertWithMessage("value''s.").that(TimeZone.getTimeZone("UTC")).hasDisplayName("Greenwich Mean Time");
+            Assertions.fail("MessageAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("value''s.\n\tCheck actual value's display name.\n\tActual and expected values should be the same.\n\tExpected:<Greenwich Mean Time> but was:<Coordinated Universal Time>");
         }
     }
 
