@@ -35,6 +35,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.SortedMap;
 import java.util.SortedSet;
+import java.util.TimeZone;
 
 import javax.xml.namespace.QName;
 
@@ -76,6 +77,7 @@ import ru.d_shap.assertions.asimp.java.util.MapAssertion;
 import ru.d_shap.assertions.asimp.java.util.SetAssertion;
 import ru.d_shap.assertions.asimp.java.util.SortedMapAssertion;
 import ru.d_shap.assertions.asimp.java.util.SortedSetAssertion;
+import ru.d_shap.assertions.asimp.java.util.TimeZoneAssertion;
 import ru.d_shap.assertions.asimp.javax.xml.namespace.QNameAssertion;
 import ru.d_shap.assertions.asimp.org.w3c.dom.AttrAssertion;
 import ru.d_shap.assertions.asimp.org.w3c.dom.CharacterDataAssertion;
@@ -681,6 +683,19 @@ public final class Assertions {
     public static <K, V> SortedMapAssertion<K, V> assertThat(final SortedMap<K, V> actual) {
         SortedMapAssertion<K, V> assertion = Raw.sortedMapAssertion();
         ((BaseAssertion<SortedMap<K, V>>) assertion).initialize(actual);
+        return assertion;
+    }
+
+    /**
+     * Make assertion about the time zone.
+     *
+     * @param actual the actual value.
+     *
+     * @return the assertion.
+     */
+    public static TimeZoneAssertion assertThat(final TimeZone actual) {
+        TimeZoneAssertion assertion = Raw.timeZoneAssertion();
+        ((BaseAssertion<TimeZone>) assertion).initialize(actual);
         return assertion;
     }
 
