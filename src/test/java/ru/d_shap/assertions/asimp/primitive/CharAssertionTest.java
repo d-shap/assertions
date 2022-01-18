@@ -209,13 +209,13 @@ public final class CharAssertionTest extends AssertionTest {
         }
         try {
             initialize(Raw.charAssertion(), 's').isGreaterThan('t');
-            Assertions.fail("Byte assertion test fail");
+            Assertions.fail("CharAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be greater than the expected.\n\tExpected:<t(116)> but was:<s(115)>");
         }
         try {
             initialize(Raw.charAssertion(), 's', "Message").isGreaterThan('t');
-            Assertions.fail("Byte assertion test fail");
+            Assertions.fail("CharAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be greater than the expected.\n\tExpected:<t(116)> but was:<s(115)>");
         }
@@ -303,13 +303,13 @@ public final class CharAssertionTest extends AssertionTest {
         }
         try {
             initialize(Raw.charAssertion(), 't').isLessThan('s');
-            Assertions.fail("Byte assertion test fail");
+            Assertions.fail("CharAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be less than the expected.\n\tExpected:<s(115)> but was:<t(116)>");
         }
         try {
             initialize(Raw.charAssertion(), 't', "Message").isLessThan('s');
-            Assertions.fail("Byte assertion test fail");
+            Assertions.fail("CharAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be less than the expected.\n\tExpected:<s(115)> but was:<t(116)>");
         }

@@ -362,19 +362,19 @@ public final class LongBufferAssertionTest extends AssertionTest {
 
         try {
             Raw.longBufferAssertion().contains(1L);
-            Assertions.fail("Long buffer assertion test fail");
+            Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.longBufferAssertion(), null).contains(1L);
-            Assertions.fail("Long buffer assertion test fail");
+            Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.longBufferAssertion(), null, "Message").contains(1L);
-            Assertions.fail("Long buffer assertion test fail");
+            Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
@@ -415,7 +415,7 @@ public final class LongBufferAssertionTest extends AssertionTest {
 
         try {
             Raw.longBufferAssertion().rewindAndContains(1L);
-            Assertions.fail("Long buffer assertion test fail");
+            Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
@@ -462,7 +462,7 @@ public final class LongBufferAssertionTest extends AssertionTest {
 
         try {
             Raw.longBufferAssertion().doesNotContain(1L);
-            Assertions.fail("Long buffer assertion test fail");
+            Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
@@ -508,7 +508,7 @@ public final class LongBufferAssertionTest extends AssertionTest {
 
         try {
             Raw.longBufferAssertion().rewindAndDoesNotContain(1L);
-            Assertions.fail("Long buffer assertion test fail");
+            Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
@@ -561,7 +561,7 @@ public final class LongBufferAssertionTest extends AssertionTest {
 
         try {
             Raw.longBufferAssertion().containsAll(1L);
-            Assertions.fail("Long buffer assertion test fail");
+            Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
@@ -650,7 +650,7 @@ public final class LongBufferAssertionTest extends AssertionTest {
 
         try {
             Raw.longBufferAssertion().containsAll(new ArrayList<Long>());
-            Assertions.fail("Long buffer assertion test fail");
+            Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
@@ -740,7 +740,7 @@ public final class LongBufferAssertionTest extends AssertionTest {
 
         try {
             Raw.longBufferAssertion().rewindAndContainsAll(1L);
-            Assertions.fail("Long buffer assertion test fail");
+            Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
@@ -824,7 +824,7 @@ public final class LongBufferAssertionTest extends AssertionTest {
 
         try {
             Raw.longBufferAssertion().rewindAndContainsAll(new ArrayList<Long>());
-            Assertions.fail("Long buffer assertion test fail");
+            Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
@@ -906,7 +906,7 @@ public final class LongBufferAssertionTest extends AssertionTest {
 
         try {
             Raw.longBufferAssertion().containsAllInOrder(1L);
-            Assertions.fail("Long buffer assertion test fail");
+            Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
@@ -1000,7 +1000,7 @@ public final class LongBufferAssertionTest extends AssertionTest {
 
         try {
             Raw.longBufferAssertion().containsAllInOrder(new ArrayList<Long>());
-            Assertions.fail("Long buffer assertion test fail");
+            Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
@@ -1095,7 +1095,7 @@ public final class LongBufferAssertionTest extends AssertionTest {
 
         try {
             Raw.longBufferAssertion().rewindAndContainsAllInOrder(1L);
-            Assertions.fail("Long buffer assertion test fail");
+            Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
@@ -1184,7 +1184,7 @@ public final class LongBufferAssertionTest extends AssertionTest {
 
         try {
             Raw.longBufferAssertion().rewindAndContainsAllInOrder(new ArrayList<Long>());
-            Assertions.fail("Long buffer assertion test fail");
+            Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
@@ -1274,7 +1274,7 @@ public final class LongBufferAssertionTest extends AssertionTest {
 
         try {
             Raw.longBufferAssertion().containsExactly(1L);
-            Assertions.fail("Long buffer assertion test fail");
+            Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
@@ -1370,7 +1370,7 @@ public final class LongBufferAssertionTest extends AssertionTest {
 
         try {
             Raw.longBufferAssertion().containsExactly(new ArrayList<Long>());
-            Assertions.fail("Long buffer assertion test fail");
+            Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
@@ -1467,7 +1467,7 @@ public final class LongBufferAssertionTest extends AssertionTest {
 
         try {
             Raw.longBufferAssertion().rewindAndContainsExactly(1L);
-            Assertions.fail("Long buffer assertion test fail");
+            Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
@@ -1558,7 +1558,7 @@ public final class LongBufferAssertionTest extends AssertionTest {
 
         try {
             Raw.longBufferAssertion().rewindAndContainsExactly(new ArrayList<Long>());
-            Assertions.fail("Long buffer assertion test fail");
+            Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
@@ -1647,7 +1647,7 @@ public final class LongBufferAssertionTest extends AssertionTest {
 
         try {
             Raw.longBufferAssertion().containsExactlyInOrder(1L);
-            Assertions.fail("Long buffer assertion test fail");
+            Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
@@ -1748,7 +1748,7 @@ public final class LongBufferAssertionTest extends AssertionTest {
 
         try {
             Raw.longBufferAssertion().containsExactlyInOrder(new ArrayList<Long>());
-            Assertions.fail("Long buffer assertion test fail");
+            Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
@@ -1850,7 +1850,7 @@ public final class LongBufferAssertionTest extends AssertionTest {
 
         try {
             Raw.longBufferAssertion().rewindAndContainsExactlyInOrder(1L);
-            Assertions.fail("Long buffer assertion test fail");
+            Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
@@ -1946,7 +1946,7 @@ public final class LongBufferAssertionTest extends AssertionTest {
 
         try {
             Raw.longBufferAssertion().rewindAndContainsExactlyInOrder(new ArrayList<Long>());
-            Assertions.fail("Long buffer assertion test fail");
+            Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
@@ -2042,7 +2042,7 @@ public final class LongBufferAssertionTest extends AssertionTest {
 
         try {
             Raw.longBufferAssertion().containsAny(1L);
-            Assertions.fail("Long buffer assertion test fail");
+            Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
@@ -2132,7 +2132,7 @@ public final class LongBufferAssertionTest extends AssertionTest {
 
         try {
             Raw.longBufferAssertion().containsAny(new ArrayList<Long>());
-            Assertions.fail("Long buffer assertion test fail");
+            Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
@@ -2223,7 +2223,7 @@ public final class LongBufferAssertionTest extends AssertionTest {
 
         try {
             Raw.longBufferAssertion().rewindAndContainsAny(1L);
-            Assertions.fail("Long buffer assertion test fail");
+            Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
@@ -2308,7 +2308,7 @@ public final class LongBufferAssertionTest extends AssertionTest {
 
         try {
             Raw.longBufferAssertion().rewindAndContainsAny(new ArrayList<Long>());
-            Assertions.fail("Long buffer assertion test fail");
+            Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
@@ -2392,7 +2392,7 @@ public final class LongBufferAssertionTest extends AssertionTest {
 
         try {
             Raw.longBufferAssertion().containsNone(1L);
-            Assertions.fail("Long buffer assertion test fail");
+            Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
@@ -2470,7 +2470,7 @@ public final class LongBufferAssertionTest extends AssertionTest {
 
         try {
             Raw.longBufferAssertion().containsNone(new ArrayList<Long>());
-            Assertions.fail("Long buffer assertion test fail");
+            Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
@@ -2547,7 +2547,7 @@ public final class LongBufferAssertionTest extends AssertionTest {
 
         try {
             Raw.longBufferAssertion().rewindAndContainsNone(1L);
-            Assertions.fail("Long buffer assertion test fail");
+            Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
@@ -2630,7 +2630,7 @@ public final class LongBufferAssertionTest extends AssertionTest {
 
         try {
             Raw.longBufferAssertion().rewindAndContainsNone(new ArrayList<Long>());
-            Assertions.fail("Long buffer assertion test fail");
+            Assertions.fail("LongBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
