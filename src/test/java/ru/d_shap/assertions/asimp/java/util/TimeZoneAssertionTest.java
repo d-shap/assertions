@@ -919,7 +919,44 @@ public class TimeZoneAssertionTest extends AssertionTest {
      */
     @Test
     public void toDstSavingsTest() {
-        // TODO
+        initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("UTC")).toDstSavings().isEqualTo(0);
+        initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("GMT")).toDstSavings().isEqualTo(0);
+        initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("Asia/Novosibirsk")).toDstSavings().isEqualTo(0);
+        initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("Asia/Krasnoyarsk")).toDstSavings().isEqualTo(0);
+        initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("Asia/Vientiane")).toDstSavings().isEqualTo(0);
+        initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("Europe/Berlin")).toDstSavings().isEqualTo(60 * 60 * 1000);
+        initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("Europe/Vienna")).toDstSavings().isEqualTo(60 * 60 * 1000);
+
+        try {
+            Raw.timeZoneAssertion().toDstSavings();
+            Assertions.fail("TimeZoneAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.timeZoneAssertion(), null).toDstSavings();
+            Assertions.fail("TimeZoneAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.timeZoneAssertion(), null, "Message").toDstSavings();
+            Assertions.fail("TimeZoneAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            clearActual(initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("UTC")).toDstSavings()).isEqualTo(60 * 60 * 1000);
+            Assertions.fail("TimeZoneAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's DST savings.\n\tActual value should not be null.");
+        }
+        try {
+            clearActual(initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("UTC"), "Message").toDstSavings()).isEqualTo(60 * 60 * 1000);
+            Assertions.fail("TimeZoneAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's DST savings.\n\tActual value should not be null.");
+        }
     }
 
     /**
@@ -927,7 +964,68 @@ public class TimeZoneAssertionTest extends AssertionTest {
      */
     @Test
     public void toDstSavingsMatcherTest() {
-        // TODO
+        initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("UTC")).toDstSavings(Matchers.is(Matchers.equalTo(0)));
+        initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("GMT")).toDstSavings(Matchers.is(Matchers.equalTo(0)));
+        initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("Asia/Novosibirsk")).toDstSavings(Matchers.is(Matchers.equalTo(0)));
+        initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("Asia/Krasnoyarsk")).toDstSavings(Matchers.is(Matchers.equalTo(0)));
+        initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("Asia/Vientiane")).toDstSavings(Matchers.is(Matchers.equalTo(0)));
+        initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("Europe/Berlin")).toDstSavings(Matchers.is(Matchers.equalTo(60 * 60 * 1000)));
+        initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("Europe/Vienna")).toDstSavings(Matchers.is(Matchers.equalTo(60 * 60 * 1000)));
+
+        try {
+            Raw.timeZoneAssertion().toDstSavings(Matchers.equalTo(0));
+            Assertions.fail("TimeZoneAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.timeZoneAssertion(), null).toDstSavings(Matchers.equalTo(0));
+            Assertions.fail("TimeZoneAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.timeZoneAssertion(), null, "Message").toDstSavings(Matchers.equalTo(0));
+            Assertions.fail("TimeZoneAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.timeZoneAssertion(), null).toDstSavings(null);
+            Assertions.fail("TimeZoneAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.timeZoneAssertion(), null, "Message").toDstSavings(null);
+            Assertions.fail("TimeZoneAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("UTC")).toDstSavings(null);
+            Assertions.fail("TimeZoneAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: matcher.");
+        }
+        try {
+            initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("UTC"), "Message").toDstSavings(null);
+            Assertions.fail("TimeZoneAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: matcher.");
+        }
+        try {
+            initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("UTC")).toDstSavings(Matchers.is(Matchers.equalTo(60 * 60 * 1000)));
+            Assertions.fail("TimeZoneAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's DST savings.\nExpected: is <3600000>\n     but: was <0>");
+        }
+        try {
+            initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("UTC"), "Message").toDstSavings(Matchers.is(Matchers.equalTo(60 * 60 * 1000)));
+            Assertions.fail("TimeZoneAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's DST savings.\nExpected: is <3600000>\n     but: was <0>");
+        }
     }
 
     /**
@@ -935,7 +1033,44 @@ public class TimeZoneAssertionTest extends AssertionTest {
      */
     @Test
     public void hasDstSavingsTest() {
-        // TODO
+        initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("UTC")).hasDstSavings(0);
+        initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("GMT")).hasDstSavings(0);
+        initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("Asia/Novosibirsk")).hasDstSavings(0);
+        initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("Asia/Krasnoyarsk")).hasDstSavings(0);
+        initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("Asia/Vientiane")).hasDstSavings(0);
+        initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("Europe/Berlin")).hasDstSavings(60 * 60 * 1000);
+        initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("Europe/Vienna")).hasDstSavings(60 * 60 * 1000);
+
+        try {
+            Raw.timeZoneAssertion().hasDstSavings(0);
+            Assertions.fail("TimeZoneAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.timeZoneAssertion(), null).hasDstSavings(0);
+            Assertions.fail("TimeZoneAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.timeZoneAssertion(), null, "Message").hasDstSavings(0);
+            Assertions.fail("TimeZoneAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("UTC")).hasDstSavings(60 * 60 * 1000);
+            Assertions.fail("TimeZoneAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's DST savings.\n\tActual and expected values should be the same.\n\tExpected:<3600000> but was:<0>");
+        }
+        try {
+            initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("UTC"), "Message").hasDstSavings(60 * 60 * 1000);
+            Assertions.fail("TimeZoneAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's DST savings.\n\tActual and expected values should be the same.\n\tExpected:<3600000> but was:<0>");
+        }
     }
 
     /**
