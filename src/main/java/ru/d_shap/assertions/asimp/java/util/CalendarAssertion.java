@@ -395,4 +395,189 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
         toDayOfWeek().isEqualTo(expected);
     }
 
+    /**
+     * Make assertion about the actual value's AM/PM.
+     *
+     * @return the assertion.
+     */
+    public final IntAssertion toAmPm() {
+        checkActualIsNotNull();
+        return initializeAssertion(Raw.intAssertion(), getActual().get(Calendar.AM_PM), Messages.Check.AM_PM);
+    }
+
+    /**
+     * Make assertion about the actual value's AM/PM.
+     *
+     * @param matcher the hamcrest matcher.
+     */
+    public final void toAmPm(final Matcher<Integer> matcher) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(matcher, "matcher");
+        matcherAssertion(getActual().get(Calendar.AM_PM), matcher, Messages.Check.AM_PM);
+    }
+
+    /**
+     * Check if the actual value's AM/PM is equal to AM.
+     */
+    public final void isAm() {
+        toAmPm().isEqualTo(Calendar.AM);
+    }
+
+    /**
+     * Check if the actual value's AM/PM is equal to PM.
+     */
+    public final void isPm() {
+        toAmPm().isEqualTo(Calendar.PM);
+    }
+
+    /**
+     * Make assertion about the actual value's hour of day.
+     *
+     * @return the assertion.
+     */
+    public final IntAssertion toHourOfDay() {
+        checkActualIsNotNull();
+        return initializeAssertion(Raw.intAssertion(), getActual().get(Calendar.HOUR_OF_DAY), Messages.Check.HOUR_OF_DAY);
+    }
+
+    /**
+     * Make assertion about the actual value's hour of day.
+     *
+     * @param matcher the hamcrest matcher.
+     */
+    public final void toHourOfDay(final Matcher<Integer> matcher) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(matcher, "matcher");
+        matcherAssertion(getActual().get(Calendar.HOUR_OF_DAY), matcher, Messages.Check.HOUR_OF_DAY);
+    }
+
+    /**
+     * Check if the actual value's hour of day is equal to the expected hour of day.
+     *
+     * @param expected the expected value.
+     */
+    public final void hasHourOfDay(final int expected) {
+        toHourOfDay().isEqualTo(expected);
+    }
+
+    /**
+     * Make assertion about the actual value's hour.
+     *
+     * @return the assertion.
+     */
+    public final IntAssertion toHour() {
+        checkActualIsNotNull();
+        return initializeAssertion(Raw.intAssertion(), getActual().get(Calendar.HOUR), Messages.Check.HOUR);
+    }
+
+    /**
+     * Make assertion about the actual value's hour.
+     *
+     * @param matcher the hamcrest matcher.
+     */
+    public final void toHour(final Matcher<Integer> matcher) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(matcher, "matcher");
+        matcherAssertion(getActual().get(Calendar.HOUR), matcher, Messages.Check.HOUR);
+    }
+
+    /**
+     * Check if the actual value's hour is equal to the expected hour.
+     *
+     * @param expected the expected value.
+     */
+    public final void hasHour(final int expected) {
+        toHour().isEqualTo(expected);
+    }
+
+    /**
+     * Make assertion about the actual value's minute.
+     *
+     * @return the assertion.
+     */
+    public final IntAssertion toMinute() {
+        checkActualIsNotNull();
+        return initializeAssertion(Raw.intAssertion(), getActual().get(Calendar.MINUTE), Messages.Check.MINUTE);
+    }
+
+    /**
+     * Make assertion about the actual value's minute.
+     *
+     * @param matcher the hamcrest matcher.
+     */
+    public final void toMinute(final Matcher<Integer> matcher) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(matcher, "matcher");
+        matcherAssertion(getActual().get(Calendar.MINUTE), matcher, Messages.Check.MINUTE);
+    }
+
+    /**
+     * Check if the actual value's minute is equal to the expected minute.
+     *
+     * @param expected the expected value.
+     */
+    public final void hasMinute(final int expected) {
+        toMinute().isEqualTo(expected);
+    }
+
+    /**
+     * Make assertion about the actual value's second.
+     *
+     * @return the assertion.
+     */
+    public final IntAssertion toSecond() {
+        checkActualIsNotNull();
+        return initializeAssertion(Raw.intAssertion(), getActual().get(Calendar.SECOND), Messages.Check.SECOND);
+    }
+
+    /**
+     * Make assertion about the actual value's second.
+     *
+     * @param matcher the hamcrest matcher.
+     */
+    public final void toSecond(final Matcher<Integer> matcher) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(matcher, "matcher");
+        matcherAssertion(getActual().get(Calendar.SECOND), matcher, Messages.Check.SECOND);
+    }
+
+    /**
+     * Check if the actual value's second is equal to the expected second.
+     *
+     * @param expected the expected value.
+     */
+    public final void hasSecond(final int expected) {
+        toSecond().isEqualTo(expected);
+    }
+
+    /**
+     * Make assertion about the actual value's millisecond.
+     *
+     * @return the assertion.
+     */
+    public final IntAssertion toMillisecond() {
+        checkActualIsNotNull();
+        return initializeAssertion(Raw.intAssertion(), getActual().get(Calendar.MILLISECOND), Messages.Check.MILLISECOND);
+    }
+
+    /**
+     * Make assertion about the actual value's millisecond.
+     *
+     * @param matcher the hamcrest matcher.
+     */
+    public final void toMillisecond(final Matcher<Integer> matcher) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(matcher, "matcher");
+        matcherAssertion(getActual().get(Calendar.MILLISECOND), matcher, Messages.Check.MILLISECOND);
+    }
+
+    /**
+     * Check if the actual value's millisecond is equal to the expected millisecond.
+     *
+     * @param expected the expected value.
+     */
+    public final void hasMillisecond(final int expected) {
+        toMillisecond().isEqualTo(expected);
+    }
+
 }
