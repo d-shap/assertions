@@ -127,6 +127,8 @@ public final class Messages {
 
         public static final String DST_OFFSET = "Check actual value''s DST offset.";
 
+        public static final String TIME_ZONE = "Check actual value''s time zone.";
+
         public static final String BYTES_ALL = "Check all actual value''s bytes.";
 
         public static final String BYTES_COUNT = "Check next N actual value''s bytes: {0}.";
