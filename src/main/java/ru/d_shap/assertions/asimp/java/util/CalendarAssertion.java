@@ -805,4 +805,45 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
         hasTimeZoneId(timeZoneId);
     }
 
+    /**
+     * Make assertion about the actual value's date in the specified time zone.
+     *
+     * @param timeZone the specified time zone.
+     *
+     * @return the assertion.
+     */
+    public final CalendarAssertion toTimeZoneCalendar(final TimeZone timeZone) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(timeZone, "timeZone");
+        Calendar calendar = getActual();
+        Calendar newCalendar = Calendar.getInstance();
+        newCalendar.setTimeZone(calendar.getTimeZone());
+        newCalendar.setTime(calendar.getTime());
+        newCalendar.setTimeZone(timeZone);
+        return initializeAssertion(Raw.calendarAssertion(), newCalendar, Messages.Check.TIME_ZONE_DATE, timeZone);
+    }
+
+    /**
+     * Make assertion about the actual value's date in the specified time zone.
+     *
+     * @param timeZoneId the specified time zone ID.
+     *
+     * @return the assertion.
+     */
+    public final CalendarAssertion toTimeZoneCalendar(final String timeZoneId) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(timeZoneId, "timeZoneId");
+        TimeZone timeZone = TimeZone.getTimeZone(timeZoneId);
+        return toTimeZoneCalendar(timeZone);
+    }
+
+    /**
+     * Make assertion about the actual value's date in the UTC time zone.
+     *
+     * @return the assertion.
+     */
+    public final CalendarAssertion toUtcTimeZoneCalendar() {
+        return toTimeZoneCalendar("UTC");
+    }
+
 }
