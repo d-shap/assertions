@@ -20,6 +20,7 @@
 package ru.d_shap.assertions.asimp.java.util;
 
 import java.util.Calendar;
+import java.util.TimeZone;
 
 import org.hamcrest.Matcher;
 
@@ -578,6 +579,105 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
      */
     public final void hasMillisecond(final int expected) {
         toMillisecond().isEqualTo(expected);
+    }
+
+    /**
+     * Make assertion about the actual value's zone offset.
+     *
+     * @return the assertion.
+     */
+    public final IntAssertion toZoneOffset() {
+        checkActualIsNotNull();
+        return initializeAssertion(Raw.intAssertion(), getActual().get(Calendar.ZONE_OFFSET), Messages.Check.ZONE_OFFSET);
+    }
+
+    /**
+     * Make assertion about the actual value's zone offset.
+     *
+     * @param matcher the hamcrest matcher.
+     */
+    public final void toZoneOffset(final Matcher<Integer> matcher) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(matcher, "matcher");
+        matcherAssertion(getActual().get(Calendar.ZONE_OFFSET), matcher, Messages.Check.ZONE_OFFSET);
+    }
+
+    /**
+     * Check if the actual value's zone offset is equal to the expected zone offset.
+     *
+     * @param expected the expected value.
+     */
+    public final void hasZoneOffset(final int expected) {
+        toZoneOffset().isEqualTo(expected);
+    }
+
+    /**
+     * Make assertion about the actual value's DST offset.
+     *
+     * @return the assertion.
+     */
+    public final IntAssertion toDstOffset() {
+        checkActualIsNotNull();
+        return initializeAssertion(Raw.intAssertion(), getActual().get(Calendar.DST_OFFSET), Messages.Check.DST_OFFSET);
+    }
+
+    /**
+     * Make assertion about the actual value's DST offset.
+     *
+     * @param matcher the hamcrest matcher.
+     */
+    public final void toDstOffset(final Matcher<Integer> matcher) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(matcher, "matcher");
+        matcherAssertion(getActual().get(Calendar.DST_OFFSET), matcher, Messages.Check.DST_OFFSET);
+    }
+
+    /**
+     * Check if the actual value's DST offset is equal to the expected DST offset.
+     *
+     * @param expected the expected value.
+     */
+    public final void hasDstOffset(final int expected) {
+        toDstOffset().isEqualTo(expected);
+    }
+
+    /**
+     * Make assertion about the actual value's time zone.
+     *
+     * @return the assertion.
+     */
+    public final TimeZoneAssertion toTimeZone() {
+        checkActualIsNotNull();
+        return initializeAssertion(Raw.timeZoneAssertion(), getActual().getTimeZone(), Messages.Check.TIME_ZONE);
+    }
+
+    /**
+     * Make assertion about the actual value's time zone.
+     *
+     * @param matcher the hamcrest matcher.
+     */
+    public final void toTimeZone(final Matcher<TimeZone> matcher) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(matcher, "matcher");
+        matcherAssertion(getActual().getTimeZone(), matcher, Messages.Check.TIME_ZONE);
+    }
+
+    /**
+     * Check if the actual value's time zone is equal to the expected time zone.
+     *
+     * @param expected the expected value.
+     */
+    public final void hasTimeZone(final TimeZone expected) {
+        toTimeZone().isEqualTo(expected);
+    }
+
+    /**
+     * Check if the actual value's time zone ID is equal to the expected time zone ID.
+     *
+     * @param expected the expected value.
+     */
+    public final void hasTimeZoneId(final String expected) {
+        toTimeZone().hasId(expected);
     }
 
 }
