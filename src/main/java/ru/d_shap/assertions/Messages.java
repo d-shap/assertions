@@ -101,9 +101,9 @@ public final class Messages {
 
         public static final String DAY_OF_WEEK = "Check actual value''s day of week.";
 
-        public static final String HOUR_OF_DAY = "Check actual value''s hour of day.";
-
         public static final String AM_PM = "Check actual value''s AM/PM.";
+
+        public static final String HOUR_OF_DAY = "Check actual value''s hour of day.";
 
         public static final String HOUR = "Check actual value''s hour.";
 
