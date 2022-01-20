@@ -129,6 +129,8 @@ public final class Messages {
 
         public static final String TIME_ZONE = "Check actual value''s time zone.";
 
+        public static final String TIME_ZONE_DATE = "Check actual value''s date in time zone: {0}.";
+
         public static final String BYTES_ALL = "Check all actual value''s bytes.";
 
         public static final String BYTES_COUNT = "Check next N actual value''s bytes: {0}.";
