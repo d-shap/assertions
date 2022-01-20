@@ -709,6 +709,17 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
     }
 
     /**
+     * Check if the actual value's date properties are equal to the expected date properties in the UTC time zone.
+     *
+     * @param year       the expected year.
+     * @param month      the expected month.
+     * @param dayOfMonth the expected day of month.
+     */
+    public final void hasUtcDate(final int year, final int month, final int dayOfMonth) {
+        toUtcTimeZoneCalendar().hasDate(year, month, dayOfMonth);
+    }
+
+    /**
      * Check if the actual value's time properties are equal to the expected time properties.
      *
      * @param hourOfDay the expected hour of day.
@@ -766,6 +777,29 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
         hasSecond(second);
         hasMillisecond(millisecond);
         hasTimeZoneId(timeZoneId);
+    }
+
+    /**
+     * Check if the actual value's time properties are equal to the expected time properties in the UTC time zone.
+     *
+     * @param hourOfDay the expected hour of day.
+     * @param minute    the expected minute.
+     * @param second    the expected second.
+     */
+    public final void hasUtcTime(final int hourOfDay, final int minute, final int second) {
+        toUtcTimeZoneCalendar().hasTime(hourOfDay, minute, second);
+    }
+
+    /**
+     * Check if the actual value's time properties are equal to the expected time properties in the UTC time zone.
+     *
+     * @param hourOfDay   the expected hour of day.
+     * @param minute      the expected minute.
+     * @param second      the expected second.
+     * @param millisecond the expected millisecond.
+     */
+    public final void hasUtcTime(final int hourOfDay, final int minute, final int second, final int millisecond) {
+        toUtcTimeZoneCalendar().hasTime(hourOfDay, minute, second, millisecond);
     }
 
     /**
@@ -850,6 +884,35 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
         hasSecond(second);
         hasMillisecond(millisecond);
         hasTimeZoneId(timeZoneId);
+    }
+
+    /**
+     * Check if the actual value's date and time properties are equal to the expected date and time properties in the UTC time zone.
+     *
+     * @param year       the expected year.
+     * @param month      the expected month.
+     * @param dayOfMonth the expected day of month.
+     * @param hourOfDay  the expected hour of day.
+     * @param minute     the expected minute.
+     * @param second     the expected second.
+     */
+    public final void hasUtcDateAndTime(final int year, final int month, final int dayOfMonth, final int hourOfDay, final int minute, final int second) {
+        toUtcTimeZoneCalendar().hasDateAndTime(year, month, dayOfMonth, hourOfDay, minute, second);
+    }
+
+    /**
+     * Check if the actual value's date and time properties are equal to the expected date and time properties in the UTC time zone.
+     *
+     * @param year        the expected year.
+     * @param month       the expected month.
+     * @param dayOfMonth  the expected day of month.
+     * @param hourOfDay   the expected hour of day.
+     * @param minute      the expected minute.
+     * @param second      the expected second.
+     * @param millisecond the expected millisecond.
+     */
+    public final void hasUtcDateAndTime(final int year, final int month, final int dayOfMonth, final int hourOfDay, final int minute, final int second, final int millisecond) {
+        toUtcTimeZoneCalendar().hasDateAndTime(year, month, dayOfMonth, hourOfDay, minute, second, millisecond);
     }
 
     /**
