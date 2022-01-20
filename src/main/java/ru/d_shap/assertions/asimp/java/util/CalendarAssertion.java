@@ -185,4 +185,154 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
         toYear().isEqualTo(expected);
     }
 
+    /**
+     * Make assertion about the actual value's month.
+     *
+     * @return the assertion.
+     */
+    public final IntAssertion toMonth() {
+        checkActualIsNotNull();
+        return initializeAssertion(Raw.intAssertion(), getActual().get(Calendar.MONTH), Messages.Check.MONTH);
+    }
+
+    /**
+     * Make assertion about the actual value's month.
+     *
+     * @param matcher the hamcrest matcher.
+     */
+    public final void toMonth(final Matcher<Integer> matcher) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(matcher, "matcher");
+        matcherAssertion(getActual().get(Calendar.MONTH), matcher, Messages.Check.MONTH);
+    }
+
+    /**
+     * Check if the actual value's month is equal to the expected month.
+     *
+     * @param expected the expected value.
+     */
+    public final void hasMonth(final int expected) {
+        toMonth().isEqualTo(expected);
+    }
+
+    /**
+     * Make assertion about the actual value's week of year.
+     *
+     * @return the assertion.
+     */
+    public final IntAssertion toWeekOfYear() {
+        checkActualIsNotNull();
+        return initializeAssertion(Raw.intAssertion(), getActual().get(Calendar.WEEK_OF_YEAR), Messages.Check.WEEK_OF_YEAR);
+    }
+
+    /**
+     * Make assertion about the actual value's week of year.
+     *
+     * @param matcher the hamcrest matcher.
+     */
+    public final void toWeekOfYear(final Matcher<Integer> matcher) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(matcher, "matcher");
+        matcherAssertion(getActual().get(Calendar.WEEK_OF_YEAR), matcher, Messages.Check.WEEK_OF_YEAR);
+    }
+
+    /**
+     * Check if the actual value's week of year is equal to the expected week of year.
+     *
+     * @param expected the expected value.
+     */
+    public final void hasWeekOfYear(final int expected) {
+        toWeekOfYear().isEqualTo(expected);
+    }
+
+    /**
+     * Make assertion about the actual value's week of month.
+     *
+     * @return the assertion.
+     */
+    public final IntAssertion toWeekOfMonth() {
+        checkActualIsNotNull();
+        return initializeAssertion(Raw.intAssertion(), getActual().get(Calendar.WEEK_OF_MONTH), Messages.Check.WEEK_OF_MONTH);
+    }
+
+    /**
+     * Make assertion about the actual value's week of month.
+     *
+     * @param matcher the hamcrest matcher.
+     */
+    public final void toWeekOfMonth(final Matcher<Integer> matcher) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(matcher, "matcher");
+        matcherAssertion(getActual().get(Calendar.WEEK_OF_MONTH), matcher, Messages.Check.WEEK_OF_MONTH);
+    }
+
+    /**
+     * Check if the actual value's week of month is equal to the expected week of month.
+     *
+     * @param expected the expected value.
+     */
+    public final void hasWeekOfMonth(final int expected) {
+        toWeekOfMonth().isEqualTo(expected);
+    }
+
+    /**
+     * Make assertion about the actual value's day of year.
+     *
+     * @return the assertion.
+     */
+    public final IntAssertion toDayOfYear() {
+        checkActualIsNotNull();
+        return initializeAssertion(Raw.intAssertion(), getActual().get(Calendar.DAY_OF_YEAR), Messages.Check.DAY_OF_YEAR);
+    }
+
+    /**
+     * Make assertion about the actual value's day of year.
+     *
+     * @param matcher the hamcrest matcher.
+     */
+    public final void toDayOfYear(final Matcher<Integer> matcher) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(matcher, "matcher");
+        matcherAssertion(getActual().get(Calendar.DAY_OF_YEAR), matcher, Messages.Check.DAY_OF_YEAR);
+    }
+
+    /**
+     * Check if the actual value's day day of year is equal to the expected day of year.
+     *
+     * @param expected the expected value.
+     */
+    public final void hasDayOfYear(final int expected) {
+        toDayOfYear().isEqualTo(expected);
+    }
+
+    /**
+     * Make assertion about the actual value's day of month.
+     *
+     * @return the assertion.
+     */
+    public final IntAssertion toDayOfMonth() {
+        checkActualIsNotNull();
+        return initializeAssertion(Raw.intAssertion(), getActual().get(Calendar.DAY_OF_MONTH), Messages.Check.DAY_OF_MONTH);
+    }
+
+    /**
+     * Make assertion about the actual value's day of month.
+     *
+     * @param matcher the hamcrest matcher.
+     */
+    public final void toDayOfMonth(final Matcher<Integer> matcher) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(matcher, "matcher");
+        matcherAssertion(getActual().get(Calendar.DAY_OF_MONTH), matcher, Messages.Check.DAY_OF_MONTH);
+    }
+
+    /**
+     * Check if the actual value's day of month is equal to the expected day of month.
+     *
+     * @param expected the expected value.
+     */
+    public final void hasDayOfMonth(final int expected) {
+        toDayOfMonth().isEqualTo(expected);
+    }
+
 }
