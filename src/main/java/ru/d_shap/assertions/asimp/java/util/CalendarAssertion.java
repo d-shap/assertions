@@ -680,4 +680,85 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
         toTimeZone().hasId(expected);
     }
 
+    /**
+     * Check if the actual value's date properties are equal to the expected date properties.
+     *
+     * @param year       the expected year.
+     * @param month      the expected month.
+     * @param dayOfMonth the expected day of month.
+     */
+    public final void hasDate(final int year, final int month, final int dayOfMonth) {
+        hasYear(year);
+        hasMonth(month);
+        hasDayOfMonth(dayOfMonth);
+    }
+
+    /**
+     * Check if the actual value's time properties are equal to the expected time properties.
+     *
+     * @param hourOfDay the expected hour of day.
+     * @param minute    the expected minute.
+     * @param second    the expected second.
+     */
+    public final void hasTime(final int hourOfDay, final int minute, final int second) {
+        hasHourOfDay(hourOfDay);
+        hasMinute(minute);
+        hasSecond(second);
+    }
+
+    /**
+     * Check if the actual value's time properties are equal to the expected time properties.
+     *
+     * @param hourOfDay   the expected hour of day.
+     * @param minute      the expected minute.
+     * @param second      the expected second.
+     * @param millisecond the expected millisecond.
+     */
+    public final void hasTime(final int hourOfDay, final int minute, final int second, final int millisecond) {
+        hasHourOfDay(hourOfDay);
+        hasMinute(minute);
+        hasSecond(second);
+        hasMillisecond(millisecond);
+    }
+
+    /**
+     * Check if the actual value's date and time properties are equal to the expected date and time properties.
+     *
+     * @param year       the expected year.
+     * @param month      the expected month.
+     * @param dayOfMonth the expected day of month.
+     * @param hourOfDay  the expected hour of day.
+     * @param minute     the expected minute.
+     * @param second     the expected second.
+     */
+    public final void hasDateAndTime(final int year, final int month, final int dayOfMonth, final int hourOfDay, final int minute, final int second) {
+        hasYear(year);
+        hasMonth(month);
+        hasDayOfMonth(dayOfMonth);
+        hasHourOfDay(hourOfDay);
+        hasMinute(minute);
+        hasSecond(second);
+    }
+
+    /**
+     * Check if the actual value's date and time properties are equal to the expected date and time properties.
+     *
+     * @param year        the expected year.
+     * @param month       the expected month.
+     * @param dayOfMonth  the expected day of month.
+     * @param hourOfDay   the expected hour of day.
+     * @param minute      the expected minute.
+     * @param second      the expected second.
+     * @param millisecond the expected millisecond.
+     */
+    public final void hasDateAndTime(final int year, final int month, final int dayOfMonth, final int hourOfDay, final int minute, final int second, final int millisecond) {
+        hasYear(year);
+        hasMonth(month);
+        hasDayOfMonth(dayOfMonth);
+        hasHourOfDay(hourOfDay);
+        hasMinute(minute);
+        hasSecond(second);
+        hasMillisecond(millisecond);
+    }
+
 }
