@@ -89,17 +89,17 @@ public final class Messages {
 
         public static final String MONTH = "Check actual value''s month.";
 
-        public static final String DAY_OF_MONTH = "Check actual value''s day of month.";
+        public static final String WEEK_OF_YEAR = "Check actual value''s week of year.";
 
         public static final String WEEK_OF_MONTH = "Check actual value''s week of month.";
 
-        public static final String DAY_OF_WEEK = "Check actual value''s day of week.";
+        public static final String DAY_OF_YEAR = "Check actual value''s day of year.";
+
+        public static final String DAY_OF_MONTH = "Check actual value''s day of month.";
 
         public static final String DAY_OF_WEEK_IN_MONTH = "Check actual value''s day of week in month.";
 
-        public static final String DAY_OF_YEAR = "Check actual value''s day of year.";
-
-        public static final String WEEK_OF_YEAR = "Check actual value''s week of year.";
+        public static final String DAY_OF_WEEK = "Check actual value''s day of week.";
 
         public static final String HOUR_OF_DAY = "Check actual value''s hour of day.";
 
