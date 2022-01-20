@@ -335,4 +335,64 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
         toDayOfMonth().isEqualTo(expected);
     }
 
+    /**
+     * Make assertion about the actual value's day of week in month.
+     *
+     * @return the assertion.
+     */
+    public final IntAssertion toDayOfWeekInMonth() {
+        checkActualIsNotNull();
+        return initializeAssertion(Raw.intAssertion(), getActual().get(Calendar.DAY_OF_WEEK_IN_MONTH), Messages.Check.DAY_OF_WEEK_IN_MONTH);
+    }
+
+    /**
+     * Make assertion about the actual value's day of week in month.
+     *
+     * @param matcher the hamcrest matcher.
+     */
+    public final void toDayOfWeekInMonth(final Matcher<Integer> matcher) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(matcher, "matcher");
+        matcherAssertion(getActual().get(Calendar.DAY_OF_WEEK_IN_MONTH), matcher, Messages.Check.DAY_OF_WEEK_IN_MONTH);
+    }
+
+    /**
+     * Check if the actual value's day of week in month is equal to the expected day of week in month.
+     *
+     * @param expected the expected value.
+     */
+    public final void hasDayOfWeekInMonth(final int expected) {
+        toDayOfWeekInMonth().isEqualTo(expected);
+    }
+
+    /**
+     * Make assertion about the actual value's day of week.
+     *
+     * @return the assertion.
+     */
+    public final IntAssertion toDayOfWeek() {
+        checkActualIsNotNull();
+        return initializeAssertion(Raw.intAssertion(), getActual().get(Calendar.DAY_OF_WEEK), Messages.Check.DAY_OF_WEEK);
+    }
+
+    /**
+     * Make assertion about the actual value's day of week.
+     *
+     * @param matcher the hamcrest matcher.
+     */
+    public final void toDayOfWeek(final Matcher<Integer> matcher) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(matcher, "matcher");
+        matcherAssertion(getActual().get(Calendar.DAY_OF_WEEK), matcher, Messages.Check.DAY_OF_WEEK);
+    }
+
+    /**
+     * Check if the actual value's day of week is equal to the expected day of week.
+     *
+     * @param expected the expected value.
+     */
+    public final void hasDayOfWeek(final int expected) {
+        toDayOfWeek().isEqualTo(expected);
+    }
+
 }
