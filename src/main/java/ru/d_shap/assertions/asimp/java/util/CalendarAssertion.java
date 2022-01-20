@@ -743,6 +743,27 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
     /**
      * Check if the actual value's date and time properties are equal to the expected date and time properties.
      *
+     * @param year       the expected year.
+     * @param month      the expected month.
+     * @param dayOfMonth the expected day of month.
+     * @param hourOfDay  the expected hour of day.
+     * @param minute     the expected minute.
+     * @param second     the expected second.
+     * @param timeZoneId the expected time zone ID.
+     */
+    public final void hasDateAndTime(final int year, final int month, final int dayOfMonth, final int hourOfDay, final int minute, final int second, final String timeZoneId) {
+        hasYear(year);
+        hasMonth(month);
+        hasDayOfMonth(dayOfMonth);
+        hasHourOfDay(hourOfDay);
+        hasMinute(minute);
+        hasSecond(second);
+        hasTimeZoneId(timeZoneId);
+    }
+
+    /**
+     * Check if the actual value's date and time properties are equal to the expected date and time properties.
+     *
      * @param year        the expected year.
      * @param month       the expected month.
      * @param dayOfMonth  the expected day of month.
@@ -759,6 +780,29 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
         hasMinute(minute);
         hasSecond(second);
         hasMillisecond(millisecond);
+    }
+
+    /**
+     * Check if the actual value's date and time properties are equal to the expected date and time properties.
+     *
+     * @param year        the expected year.
+     * @param month       the expected month.
+     * @param dayOfMonth  the expected day of month.
+     * @param hourOfDay   the expected hour of day.
+     * @param minute      the expected minute.
+     * @param second      the expected second.
+     * @param millisecond the expected millisecond.
+     * @param timeZoneId  the expected time zone ID.
+     */
+    public final void hasDateAndTime(final int year, final int month, final int dayOfMonth, final int hourOfDay, final int minute, final int second, final int millisecond, final String timeZoneId) {
+        hasYear(year);
+        hasMonth(month);
+        hasDayOfMonth(dayOfMonth);
+        hasHourOfDay(hourOfDay);
+        hasMinute(minute);
+        hasSecond(second);
+        hasMillisecond(millisecond);
+        hasTimeZoneId(timeZoneId);
     }
 
 }
