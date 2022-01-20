@@ -694,6 +694,21 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
     }
 
     /**
+     * Check if the actual value's date properties are equal to the expected date properties.
+     *
+     * @param year       the expected year.
+     * @param month      the expected month.
+     * @param dayOfMonth the expected day of month.
+     * @param timeZoneId the expected time zone ID.
+     */
+    public final void hasDate(final int year, final int month, final int dayOfMonth, final String timeZoneId) {
+        hasYear(year);
+        hasMonth(month);
+        hasDayOfMonth(dayOfMonth);
+        hasTimeZoneId(timeZoneId);
+    }
+
+    /**
      * Check if the actual value's time properties are equal to the expected time properties.
      *
      * @param hourOfDay the expected hour of day.
@@ -709,6 +724,21 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
     /**
      * Check if the actual value's time properties are equal to the expected time properties.
      *
+     * @param hourOfDay  the expected hour of day.
+     * @param minute     the expected minute.
+     * @param second     the expected second.
+     * @param timeZoneId the expected time zone ID.
+     */
+    public final void hasTime(final int hourOfDay, final int minute, final int second, final String timeZoneId) {
+        hasHourOfDay(hourOfDay);
+        hasMinute(minute);
+        hasSecond(second);
+        hasTimeZoneId(timeZoneId);
+    }
+
+    /**
+     * Check if the actual value's time properties are equal to the expected time properties.
+     *
      * @param hourOfDay   the expected hour of day.
      * @param minute      the expected minute.
      * @param second      the expected second.
@@ -719,6 +749,23 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
         hasMinute(minute);
         hasSecond(second);
         hasMillisecond(millisecond);
+    }
+
+    /**
+     * Check if the actual value's time properties are equal to the expected time properties.
+     *
+     * @param hourOfDay   the expected hour of day.
+     * @param minute      the expected minute.
+     * @param second      the expected second.
+     * @param millisecond the expected millisecond.
+     * @param timeZoneId  the expected time zone ID.
+     */
+    public final void hasTime(final int hourOfDay, final int minute, final int second, final int millisecond, final String timeZoneId) {
+        hasHourOfDay(hourOfDay);
+        hasMinute(minute);
+        hasSecond(second);
+        hasMillisecond(millisecond);
+        hasTimeZoneId(timeZoneId);
     }
 
     /**
