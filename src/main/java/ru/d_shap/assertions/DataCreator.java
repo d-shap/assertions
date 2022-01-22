@@ -31,17 +31,17 @@ import javax.xml.datatype.XMLGregorianCalendar;
 import ru.d_shap.assertions.fail.AssertionErrorBuilder;
 
 /**
- * Helper class to create date objects.
+ * Helper class to create objects of various types.
  *
  * @author Dmitry Shapovalov
  */
-public final class DateCreator {
+public final class DataCreator {
 
     public static final String TIMEZONE_UTC = "UTC";
 
     public static final String TIMEZONE_GMT = "GMT";
 
-    private DateCreator() {
+    private DataCreator() {
         super();
     }
 

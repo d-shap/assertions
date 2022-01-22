@@ -24,7 +24,7 @@ import java.util.TimeZone;
 
 import org.hamcrest.Matcher;
 
-import ru.d_shap.assertions.DateCreator;
+import ru.d_shap.assertions.DataCreator;
 import ru.d_shap.assertions.Messages;
 import ru.d_shap.assertions.Raw;
 import ru.d_shap.assertions.asimp.ReferenceAssertion;
@@ -953,7 +953,7 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
      * @return the assertion.
      */
     public final CalendarAssertion toUtcTimeZoneCalendar() {
-        return toTimeZoneCalendar(DateCreator.TIMEZONE_UTC);
+        return toTimeZoneCalendar(DataCreator.TIMEZONE_UTC);
     }
 
 }
