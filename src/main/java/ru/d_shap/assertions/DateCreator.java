@@ -20,6 +20,7 @@
 package ru.d_shap.assertions;
 
 import java.util.Calendar;
+import java.util.Date;
 import java.util.TimeZone;
 
 /**
@@ -35,6 +36,40 @@ public final class DateCreator {
 
     private DateCreator() {
         super();
+    }
+
+    /**
+     * Create date object.
+     *
+     * @param year       the year.
+     * @param month      the month.
+     * @param dayOfMonth the day of month.
+     * @param hourOfDay  the hour of day.
+     * @param minute     the minute.
+     * @param second     the second.
+     *
+     * @return the created object.
+     */
+    public static Date createDate(final int year, final int month, final int dayOfMonth, final int hourOfDay, final int minute, final int second) {
+        return createDate(year, month, dayOfMonth, hourOfDay, minute, second, 0);
+    }
+
+    /**
+     * Create date object.
+     *
+     * @param year        the year.
+     * @param month       the month.
+     * @param dayOfMonth  the day of month.
+     * @param hourOfDay   the hour of day.
+     * @param minute      the minute.
+     * @param second      the second.
+     * @param millisecond the millisecond.
+     *
+     * @return the created object.
+     */
+    public static Date createDate(final int year, final int month, final int dayOfMonth, final int hourOfDay, final int minute, final int second, final int millisecond) {
+        Calendar calendar = createUtcCalendar(year, month, dayOfMonth, hourOfDay, minute, second, millisecond);
+        return calendar.getTime();
     }
 
     /**
