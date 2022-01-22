@@ -199,28 +199,105 @@ public final class DateCreator {
         calendar.set(Calendar.MILLISECOND, millisecond);
     }
 
+    /**
+     * Create XML calendar object in the default time zone.
+     *
+     * @param year       the year.
+     * @param month      the month.
+     * @param dayOfMonth the day of month.
+     * @param hourOfDay  the hour of day.
+     * @param minute     the minute.
+     * @param second     the second.
+     *
+     * @return the created object.
+     */
     public static XMLGregorianCalendar createXmlCalendar(final int year, final int month, final int dayOfMonth, final int hourOfDay, final int minute, final int second) {
         return createXmlCalendar(year, month, dayOfMonth, hourOfDay, minute, second, 0);
     }
 
+    /**
+     * Create XML calendar object in the default time zone.
+     *
+     * @param year        the year.
+     * @param month       the month.
+     * @param dayOfMonth  the day of month.
+     * @param hourOfDay   the hour of day.
+     * @param minute      the minute.
+     * @param second      the second.
+     * @param millisecond the millisecond.
+     *
+     * @return the created object.
+     */
     public static XMLGregorianCalendar createXmlCalendar(final int year, final int month, final int dayOfMonth, final int hourOfDay, final int minute, final int second, final int millisecond) {
         GregorianCalendar calendar = (GregorianCalendar) createCalendar(year, month, dayOfMonth, hourOfDay, minute, second, millisecond);
         return convertToXmlCalendar(calendar);
     }
 
+    /**
+     * Create XML calendar object in the specified time zone.
+     *
+     * @param year       the year.
+     * @param month      the month.
+     * @param dayOfMonth the day of month.
+     * @param hourOfDay  the hour of day.
+     * @param minute     the minute.
+     * @param second     the second.
+     * @param timeZoneId the time zone ID.
+     *
+     * @return the created object.
+     */
     public static XMLGregorianCalendar createXmlCalendar(final int year, final int month, final int dayOfMonth, final int hourOfDay, final int minute, final int second, final String timeZoneId) {
         return createXmlCalendar(year, month, dayOfMonth, hourOfDay, minute, second, 0, timeZoneId);
     }
 
+    /**
+     * Create XML calendar object in the specified time zone.
+     *
+     * @param year        the year.
+     * @param month       the month.
+     * @param dayOfMonth  the day of month.
+     * @param hourOfDay   the hour of day.
+     * @param minute      the minute.
+     * @param second      the second.
+     * @param millisecond the millisecond.
+     * @param timeZoneId  the time zone ID.
+     *
+     * @return the created object.
+     */
     public static XMLGregorianCalendar createXmlCalendar(final int year, final int month, final int dayOfMonth, final int hourOfDay, final int minute, final int second, final int millisecond, final String timeZoneId) {
         GregorianCalendar calendar = (GregorianCalendar) createCalendar(year, month, dayOfMonth, hourOfDay, minute, second, millisecond, timeZoneId);
         return convertToXmlCalendar(calendar);
     }
 
+    /**
+     * Create XML calendar object in the UTC time zone.
+     *
+     * @param year       the year.
+     * @param month      the month.
+     * @param dayOfMonth the day of month.
+     * @param hourOfDay  the hour of day.
+     * @param minute     the minute.
+     * @param second     the second.
+     *
+     * @return the created object.
+     */
     public static XMLGregorianCalendar createUtcXmlCalendar(final int year, final int month, final int dayOfMonth, final int hourOfDay, final int minute, final int second) {
         return createUtcXmlCalendar(year, month, dayOfMonth, hourOfDay, minute, second, 0);
     }
 
+    /**
+     * Create XML calendar object in the UTC time zone.
+     *
+     * @param year        the year.
+     * @param month       the month.
+     * @param dayOfMonth  the day of month.
+     * @param hourOfDay   the hour of day.
+     * @param minute      the minute.
+     * @param second      the second.
+     * @param millisecond the millisecond.
+     *
+     * @return the created object.
+     */
     public static XMLGregorianCalendar createUtcXmlCalendar(final int year, final int month, final int dayOfMonth, final int hourOfDay, final int minute, final int second, final int millisecond) {
         GregorianCalendar calendar = (GregorianCalendar) createUtcCalendar(year, month, dayOfMonth, hourOfDay, minute, second, millisecond);
         return convertToXmlCalendar(calendar);
