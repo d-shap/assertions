@@ -43,6 +43,7 @@ import ru.d_shap.assertions.asimp.java.nio.FloatBufferAsStringConverter;
 import ru.d_shap.assertions.asimp.java.nio.IntBufferAsStringConverter;
 import ru.d_shap.assertions.asimp.java.nio.LongBufferAsStringConverter;
 import ru.d_shap.assertions.asimp.java.nio.ShortBufferAsStringConverter;
+import ru.d_shap.assertions.asimp.java.util.CalendarAsStringConverter;
 import ru.d_shap.assertions.asimp.java.util.MapAsStringConverter;
 import ru.d_shap.assertions.asimp.java.util.TimeZoneAsStringConverter;
 import ru.d_shap.assertions.asimp.org.w3c.dom.AttrAsStringConverter;
@@ -79,6 +80,7 @@ public final class AsStringConverter {
         CONVERTER_PROVIDERS.add(new IterableAsStringConverter());
 
         CONVERTER_PROVIDERS.add(new MapAsStringConverter());
+        CONVERTER_PROVIDERS.add(new CalendarAsStringConverter());
         CONVERTER_PROVIDERS.add(new TimeZoneAsStringConverter());
 
         CONVERTER_PROVIDERS.add(new BooleanArrayAsStringConverter());
