@@ -21,6 +21,7 @@ package ru.d_shap.assertions;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.TimeZone;
 
 /**
@@ -102,7 +103,7 @@ public final class DateCreator {
      * @return the created object.
      */
     public static Calendar createCalendar(final int year, final int month, final int dayOfMonth, final int hourOfDay, final int minute, final int second, final int millisecond) {
-        Calendar calendar = Calendar.getInstance();
+        Calendar calendar = new GregorianCalendar();
         fillCalendarValues(calendar, year, month, dayOfMonth, hourOfDay, minute, second, millisecond);
         return calendar;
     }
@@ -139,7 +140,7 @@ public final class DateCreator {
      * @return the created object.
      */
     public static Calendar createCalendar(final int year, final int month, final int dayOfMonth, final int hourOfDay, final int minute, final int second, final int millisecond, final String timeZoneId) {
-        Calendar calendar = Calendar.getInstance();
+        Calendar calendar = new GregorianCalendar();
         TimeZone timeZone = TimeZone.getTimeZone(timeZoneId);
         calendar.setTimeZone(timeZone);
         fillCalendarValues(calendar, year, month, dayOfMonth, hourOfDay, minute, second, millisecond);
@@ -176,9 +177,8 @@ public final class DateCreator {
      * @return the created object.
      */
     public static Calendar createUtcCalendar(final int year, final int month, final int dayOfMonth, final int hourOfDay, final int minute, final int second, final int millisecond) {
-        Calendar calendar = Calendar.getInstance();
         TimeZone timeZone = TimeZone.getTimeZone(TIMEZONE_UTC);
-        calendar.setTimeZone(timeZone);
+        Calendar calendar = new GregorianCalendar(timeZone);
         fillCalendarValues(calendar, year, month, dayOfMonth, hourOfDay, minute, second, millisecond);
         return calendar;
     }
