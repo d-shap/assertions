@@ -24,6 +24,12 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.TimeZone;
 
+import javax.xml.datatype.DatatypeConfigurationException;
+import javax.xml.datatype.DatatypeFactory;
+import javax.xml.datatype.XMLGregorianCalendar;
+
+import ru.d_shap.assertions.fail.AssertionErrorBuilder;
+
 /**
  * Helper class to create date objects.
  *
@@ -191,6 +197,42 @@ public final class DateCreator {
         calendar.set(Calendar.MINUTE, minute);
         calendar.set(Calendar.SECOND, second);
         calendar.set(Calendar.MILLISECOND, millisecond);
+    }
+
+    public static XMLGregorianCalendar createXmlCalendar(final int year, final int month, final int dayOfMonth, final int hourOfDay, final int minute, final int second) {
+        return createXmlCalendar(year, month, dayOfMonth, hourOfDay, minute, second, 0);
+    }
+
+    public static XMLGregorianCalendar createXmlCalendar(final int year, final int month, final int dayOfMonth, final int hourOfDay, final int minute, final int second, final int millisecond) {
+        GregorianCalendar calendar = (GregorianCalendar) createCalendar(year, month, dayOfMonth, hourOfDay, minute, second, millisecond);
+        return convertToXmlCalendar(calendar);
+    }
+
+    public static XMLGregorianCalendar createXmlCalendar(final int year, final int month, final int dayOfMonth, final int hourOfDay, final int minute, final int second, final String timeZoneId) {
+        return createXmlCalendar(year, month, dayOfMonth, hourOfDay, minute, second, 0, timeZoneId);
+    }
+
+    public static XMLGregorianCalendar createXmlCalendar(final int year, final int month, final int dayOfMonth, final int hourOfDay, final int minute, final int second, final int millisecond, final String timeZoneId) {
+        GregorianCalendar calendar = (GregorianCalendar) createCalendar(year, month, dayOfMonth, hourOfDay, minute, second, millisecond, timeZoneId);
+        return convertToXmlCalendar(calendar);
+    }
+
+    public static XMLGregorianCalendar createUtcXmlCalendar(final int year, final int month, final int dayOfMonth, final int hourOfDay, final int minute, final int second) {
+        return createUtcXmlCalendar(year, month, dayOfMonth, hourOfDay, minute, second, 0);
+    }
+
+    public static XMLGregorianCalendar createUtcXmlCalendar(final int year, final int month, final int dayOfMonth, final int hourOfDay, final int minute, final int second, final int millisecond) {
+        GregorianCalendar calendar = (GregorianCalendar) createUtcCalendar(year, month, dayOfMonth, hourOfDay, minute, second, millisecond);
+        return convertToXmlCalendar(calendar);
+    }
+
+    private static XMLGregorianCalendar convertToXmlCalendar(final GregorianCalendar calendar) {
+        try {
+            DatatypeFactory datatypeFactory = DatatypeFactory.newInstance();
+            return datatypeFactory.newXMLGregorianCalendar(calendar);
+        } catch (DatatypeConfigurationException ex) {
+            throw AssertionErrorBuilder.getInstance().addMessage(ex).addThrowable(ex).build();
+        }
     }
 
 }
