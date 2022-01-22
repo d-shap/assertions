@@ -928,9 +928,8 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
         checkArgumentIsNotNull(timeZone, "timeZone");
         Calendar calendar = getActual();
         Calendar newCalendar = Calendar.getInstance();
-        newCalendar.setTimeZone(calendar.getTimeZone());
-        newCalendar.setTime(calendar.getTime());
         newCalendar.setTimeZone(timeZone);
+        newCalendar.setTime(calendar.getTime());
         return initializeAssertion(Raw.calendarAssertion(), newCalendar, Messages.Check.TIME_ZONE_DATE, timeZone);
     }
 
