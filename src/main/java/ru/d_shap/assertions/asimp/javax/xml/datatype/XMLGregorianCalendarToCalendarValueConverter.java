@@ -65,7 +65,13 @@ public final class XMLGregorianCalendarToCalendarValueConverter implements Value
         } else {
             result.setTimeZone(castedTimeZone);
         }
-        result.setTime(calendar.getTime());
+        result.set(Calendar.YEAR, castedValue.getYear());
+        result.set(Calendar.MONTH, castedValue.getMonth() - 1);
+        result.set(Calendar.DAY_OF_MONTH, castedValue.getDay());
+        result.set(Calendar.HOUR_OF_DAY, castedValue.getHour());
+        result.set(Calendar.MINUTE, castedValue.getMinute());
+        result.set(Calendar.SECOND, castedValue.getSecond());
+        result.set(Calendar.MILLISECOND, castedValue.getMillisecond());
         return result;
     }
 
