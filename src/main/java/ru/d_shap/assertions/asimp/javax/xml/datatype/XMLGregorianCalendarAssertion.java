@@ -707,7 +707,7 @@ public class XMLGregorianCalendarAssertion extends ReferenceAssertion<XMLGregori
 
     private CalendarAssertion createCalendarAssertion() {
         checkActualIsNotNull();
-        Calendar calendar = convertValue(getActual(), null, Calendar.class);
+        Calendar calendar = convertValue(getActual(), null, Calendar.class, (TimeZone) null);
         return initializeAssertion(Raw.calendarAssertion(), calendar);
     }
 
@@ -721,11 +721,8 @@ public class XMLGregorianCalendarAssertion extends ReferenceAssertion<XMLGregori
     public final CalendarAssertion toTimeZoneCalendar(final TimeZone timeZone) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(timeZone, "timeZone");
-        Calendar calendar = getActual().toGregorianCalendar();
-        Calendar newCalendar = Calendar.getInstance();
-        newCalendar.setTimeZone(timeZone);
-        newCalendar.setTime(calendar.getTime());
-        return initializeAssertion(Raw.calendarAssertion(), newCalendar, Messages.Check.TIME_ZONE_DATE, timeZone);
+        Calendar calendar = convertValue(getActual(), null, Calendar.class, timeZone);
+        return initializeAssertion(Raw.calendarAssertion(), calendar, Messages.Check.TIME_ZONE_DATE, timeZone);
     }
 
     /**
