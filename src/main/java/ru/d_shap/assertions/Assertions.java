@@ -29,6 +29,8 @@ import java.nio.FloatBuffer;
 import java.nio.IntBuffer;
 import java.nio.LongBuffer;
 import java.nio.ShortBuffer;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -37,6 +39,7 @@ import java.util.SortedMap;
 import java.util.SortedSet;
 import java.util.TimeZone;
 
+import javax.xml.datatype.XMLGregorianCalendar;
 import javax.xml.namespace.QName;
 
 import org.hamcrest.Matcher;
@@ -71,6 +74,8 @@ import ru.d_shap.assertions.asimp.java.nio.FloatBufferAssertion;
 import ru.d_shap.assertions.asimp.java.nio.IntBufferAssertion;
 import ru.d_shap.assertions.asimp.java.nio.LongBufferAssertion;
 import ru.d_shap.assertions.asimp.java.nio.ShortBufferAssertion;
+import ru.d_shap.assertions.asimp.java.util.CalendarAssertion;
+import ru.d_shap.assertions.asimp.java.util.DateAssertion;
 import ru.d_shap.assertions.asimp.java.util.IteratorAssertion;
 import ru.d_shap.assertions.asimp.java.util.ListAssertion;
 import ru.d_shap.assertions.asimp.java.util.MapAssertion;
@@ -78,6 +83,7 @@ import ru.d_shap.assertions.asimp.java.util.SetAssertion;
 import ru.d_shap.assertions.asimp.java.util.SortedMapAssertion;
 import ru.d_shap.assertions.asimp.java.util.SortedSetAssertion;
 import ru.d_shap.assertions.asimp.java.util.TimeZoneAssertion;
+import ru.d_shap.assertions.asimp.javax.xml.datatype.XMLGregorianCalendarAssertion;
 import ru.d_shap.assertions.asimp.javax.xml.namespace.QNameAssertion;
 import ru.d_shap.assertions.asimp.org.w3c.dom.AttrAssertion;
 import ru.d_shap.assertions.asimp.org.w3c.dom.CharacterDataAssertion;
@@ -687,6 +693,32 @@ public final class Assertions {
     }
 
     /**
+     * Make assertion about the date.
+     *
+     * @param actual the actual value.
+     *
+     * @return the assertion.
+     */
+    public static DateAssertion assertThat(final Date actual) {
+        DateAssertion assertion = Raw.dateAssertion();
+        ((BaseAssertion<Date>) assertion).initialize(actual);
+        return assertion;
+    }
+
+    /**
+     * Make assertion about the calendar.
+     *
+     * @param actual the actual value.
+     *
+     * @return the assertion.
+     */
+    public static CalendarAssertion assertThat(final Calendar actual) {
+        CalendarAssertion assertion = Raw.calendarAssertion();
+        ((BaseAssertion<Calendar>) assertion).initialize(actual);
+        return assertion;
+    }
+
+    /**
      * Make assertion about the time zone.
      *
      * @param actual the actual value.
@@ -826,6 +858,19 @@ public final class Assertions {
     public static CharBufferAssertion assertThat(final CharBuffer actual) {
         CharBufferAssertion assertion = Raw.charBufferAssertion();
         ((BaseAssertion<CharBuffer>) assertion).initialize(actual);
+        return assertion;
+    }
+
+    /**
+     * Make assertion about the XML gregorian calendar.
+     *
+     * @param actual the actual value.
+     *
+     * @return the assertion.
+     */
+    public static XMLGregorianCalendarAssertion assertThat(final XMLGregorianCalendar actual) {
+        XMLGregorianCalendarAssertion assertion = Raw.xmlGregorianCalendarAssertion();
+        ((BaseAssertion<XMLGregorianCalendar>) assertion).initialize(actual);
         return assertion;
     }
 
