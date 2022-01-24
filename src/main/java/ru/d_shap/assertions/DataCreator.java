@@ -75,7 +75,7 @@ public final class DataCreator {
      * @return the created object.
      */
     public static Date createDate(final int year, final int month, final int dayOfMonth, final int hourOfDay, final int minute, final int second, final int millisecond) {
-        Calendar calendar = createUtcCalendar(year, month, dayOfMonth, hourOfDay, minute, second, millisecond);
+        Calendar calendar = createCalendar(year, month, dayOfMonth, hourOfDay, minute, second, millisecond);
         return calendar.getTime();
     }
 
