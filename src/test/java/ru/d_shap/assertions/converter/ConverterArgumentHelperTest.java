@@ -252,6 +252,9 @@ public final class ConverterArgumentHelperTest extends AssertionTest {
      */
     @Test
     public void getArgumentTest() {
+        Assertions.assertThat(ConverterArgumentHelper.getArgument(new Object[]{null}, 0, Object.class)).isNull();
+        Assertions.assertThat(ConverterArgumentHelper.getArgument(new Object[]{null}, 0, String.class)).isNull();
+
         Assertions.assertThat(ConverterArgumentHelper.getArgument(new Object[]{"value"}, 0, Object.class)).isEqualTo("value");
         Assertions.assertThat(ConverterArgumentHelper.getArgument(new Object[]{"value"}, 0, String.class)).isEqualTo("value");
 
@@ -282,14 +285,6 @@ public final class ConverterArgumentHelperTest extends AssertionTest {
     @Test(expected = NullPointerException.class)
     public void getArgumentNull1FailTest() {
         ConverterArgumentHelper.getArgument(null, 0, Object.class);
-    }
-
-    /**
-     * {@link ConverterArgumentHelper} class test.
-     */
-    @Test(expected = NullPointerException.class)
-    public void getArgumentNull2FailTest() {
-        ConverterArgumentHelper.getArgument(new Object[]{null}, 0, Object.class);
     }
 
     /**
