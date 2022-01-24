@@ -57,6 +57,8 @@ public final class CalendarAsStringConverterTest extends AssertionTest {
     public void asStringTest() throws Exception {
         Assertions.assertThat(new CalendarAsStringConverter().asString(createUtcCalendar(2020, Calendar.JULY, 11, 15, 23, 47))).isEqualTo("2020-07-11T15:23:47.000+0000");
         Assertions.assertThat(new CalendarAsStringConverter().asString(createUtcCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47))).isEqualTo("2020-12-11T15:23:47.000+0000");
+        Assertions.assertThat(new CalendarAsStringConverter().asString(createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "Asia/Vientiane"))).isEqualTo("2020-07-11T15:23:47.000+0700");
+        Assertions.assertThat(new CalendarAsStringConverter().asString(createCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47, "Asia/Vientiane"))).isEqualTo("2020-12-11T15:23:47.000+0700");
         Assertions.assertThat(new CalendarAsStringConverter().asString(createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "Europe/Berlin"))).isEqualTo("2020-07-11T15:23:47.000+0200");
         Assertions.assertThat(new CalendarAsStringConverter().asString(createCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47, "Europe/Berlin"))).isEqualTo("2020-12-11T15:23:47.000+0100");
     }
