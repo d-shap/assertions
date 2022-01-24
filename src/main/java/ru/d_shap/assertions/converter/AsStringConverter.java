@@ -47,6 +47,7 @@ import ru.d_shap.assertions.asimp.java.util.CalendarAsStringConverter;
 import ru.d_shap.assertions.asimp.java.util.DateAsStringConverter;
 import ru.d_shap.assertions.asimp.java.util.MapAsStringConverter;
 import ru.d_shap.assertions.asimp.java.util.TimeZoneAsStringConverter;
+import ru.d_shap.assertions.asimp.javax.xml.datatype.XMLGregorianCalendarAsStringConverter;
 import ru.d_shap.assertions.asimp.org.w3c.dom.AttrAsStringConverter;
 import ru.d_shap.assertions.asimp.org.w3c.dom.NodeAsStringConverter;
 import ru.d_shap.assertions.asimp.primitive.BooleanAsStringConverter;
@@ -102,6 +103,8 @@ public final class AsStringConverter {
         CONVERTER_PROVIDERS.add(new IntBufferAsStringConverter());
         CONVERTER_PROVIDERS.add(new LongBufferAsStringConverter());
         CONVERTER_PROVIDERS.add(new ShortBufferAsStringConverter());
+
+        CONVERTER_PROVIDERS.add(new XMLGregorianCalendarAsStringConverter());
 
         CONVERTER_PROVIDERS.add(new AttrAsStringConverter());
         CONVERTER_PROVIDERS.add(new NodeAsStringConverter());
