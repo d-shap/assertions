@@ -20,6 +20,7 @@
 package ru.d_shap.assertions.asimp.javax.xml.datatype;
 
 import java.util.Calendar;
+import java.util.TimeZone;
 
 import javax.xml.datatype.XMLGregorianCalendar;
 
@@ -51,7 +52,7 @@ public final class XMLGregorianCalendarAsStringConverter implements AsStringConv
     public String asString(final Object value) throws ConversionException {
         XMLGregorianCalendar castedValue = ConverterArgumentHelper.getValue(value, XMLGregorianCalendar.class);
 
-        return AsStringConverter.asString(castedValue, Calendar.class);
+        return AsStringConverter.asString(castedValue, Calendar.class, (TimeZone) null);
     }
 
 }
