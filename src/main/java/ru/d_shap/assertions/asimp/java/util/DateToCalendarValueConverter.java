@@ -31,7 +31,7 @@ import ru.d_shap.assertions.converter.ValueConverterProvider;
  *
  * @author Dmitry Shapovalov
  */
-public class DateToCalendarValueConverter implements ValueConverterProvider {
+public final class DateToCalendarValueConverter implements ValueConverterProvider {
 
     /**
      * Create new object.
