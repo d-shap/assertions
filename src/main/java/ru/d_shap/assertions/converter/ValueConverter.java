@@ -57,6 +57,7 @@ import ru.d_shap.assertions.asimp.java.nio.FloatBufferToFloatArrayValueConverter
 import ru.d_shap.assertions.asimp.java.nio.IntBufferToIntArrayValueConverter;
 import ru.d_shap.assertions.asimp.java.nio.LongBufferToLongArrayValueConverter;
 import ru.d_shap.assertions.asimp.java.nio.ShortBufferToShortArrayValueConverter;
+import ru.d_shap.assertions.asimp.java.util.DateToCalendarValueConverter;
 import ru.d_shap.assertions.asimp.java.util.IteratorToListValueConverter;
 import ru.d_shap.assertions.asimp.primitive.IntToByteValueConverter;
 import ru.d_shap.assertions.asimp.primitive.IntToCharValueConverter;
@@ -82,6 +83,7 @@ public final class ValueConverter {
         CONVERTER_PROVIDERS.add(new CharSequenceToElementValueConverter());
         CONVERTER_PROVIDERS.add(new IterableToListValueConverter());
 
+        CONVERTER_PROVIDERS.add(new DateToCalendarValueConverter());
         CONVERTER_PROVIDERS.add(new IteratorToListValueConverter());
 
         CONVERTER_PROVIDERS.add(new BooleanArrayToListValueConverter());
