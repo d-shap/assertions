@@ -221,7 +221,6 @@ public final class ConverterArgumentHelper {
     public static <T> T getArgument(final Object[] arguments, final int index, final Class<T> clazz) {
         if (index >= 0 && index < arguments.length) {
             Object value = arguments[index];
-            value.getClass();
             return clazz.cast(value);
         } else {
             throw new ArrayIndexOutOfBoundsException(arguments.length);
