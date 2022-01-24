@@ -60,7 +60,9 @@ public final class XMLGregorianCalendarToCalendarValueConverter implements Value
 
         Calendar calendar = castedValue.toGregorianCalendar();
         Calendar result = Calendar.getInstance();
-        if (castedTimeZone != null) {
+        if (castedTimeZone == null) {
+            result.setTimeZone(calendar.getTimeZone());
+        } else {
             result.setTimeZone(castedTimeZone);
         }
         result.setTime(calendar.getTime());
