@@ -59,6 +59,7 @@ import ru.d_shap.assertions.asimp.java.nio.LongBufferToLongArrayValueConverter;
 import ru.d_shap.assertions.asimp.java.nio.ShortBufferToShortArrayValueConverter;
 import ru.d_shap.assertions.asimp.java.util.DateToCalendarValueConverter;
 import ru.d_shap.assertions.asimp.java.util.IteratorToListValueConverter;
+import ru.d_shap.assertions.asimp.javax.xml.datatype.XMLGregorianCalendarToCalendarValueConverter;
 import ru.d_shap.assertions.asimp.primitive.IntToByteValueConverter;
 import ru.d_shap.assertions.asimp.primitive.IntToCharValueConverter;
 import ru.d_shap.assertions.asimp.primitive.IntToShortValueConverter;
@@ -118,6 +119,8 @@ public final class ValueConverter {
         CONVERTER_PROVIDERS.add(new IntBufferToIntArrayValueConverter());
         CONVERTER_PROVIDERS.add(new LongBufferToLongArrayValueConverter());
         CONVERTER_PROVIDERS.add(new ShortBufferToShortArrayValueConverter());
+
+        CONVERTER_PROVIDERS.add(new XMLGregorianCalendarToCalendarValueConverter());
     }
 
     private static final Map<ConverterKey, ValueConverterProvider> CONVERTER_MAP = new HashMap<>();
