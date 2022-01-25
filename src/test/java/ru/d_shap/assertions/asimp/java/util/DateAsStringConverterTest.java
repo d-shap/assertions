@@ -60,6 +60,7 @@ public final class DateAsStringConverterTest extends AssertionTest {
         Assertions.assertThat(new DateAsStringConverter().asString(createDate(2020, Calendar.DECEMBER, 11, 15, 23, 47))).isEqualTo("2020-12-11T15:23:47.000");
         Assertions.assertThat(new DateAsStringConverter().asString(createDate(2020, Calendar.JULY, 11, 15, 23, 47, 554))).isEqualTo("2020-07-11T15:23:47.554");
         Assertions.assertThat(new DateAsStringConverter().asString(createDate(2020, Calendar.DECEMBER, 11, 15, 23, 47, 554))).isEqualTo("2020-12-11T15:23:47.554");
+
         Assertions.assertThat(new DateAsStringConverter().asString(createDate(1324, Calendar.JULY, 11, 15, 23, 47))).isEqualTo("1324-07-11T15:23:47.000");
         Assertions.assertThat(new DateAsStringConverter().asString(createDate(1324, Calendar.DECEMBER, 11, 15, 23, 47))).isEqualTo("1324-12-11T15:23:47.000");
         Assertions.assertThat(new DateAsStringConverter().asString(createDate(1324, Calendar.JULY, 11, 15, 23, 47, 554))).isEqualTo("1324-07-11T15:23:47.554");
