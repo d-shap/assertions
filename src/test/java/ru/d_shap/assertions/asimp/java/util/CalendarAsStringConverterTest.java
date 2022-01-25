@@ -63,10 +63,15 @@ public final class CalendarAsStringConverterTest extends AssertionTest {
         Assertions.assertThat(new CalendarAsStringConverter().asString(createCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47, "Asia/Vientiane"))).isEqualTo("2020-12-11T15:23:47.000+0700");
         Assertions.assertThat(new CalendarAsStringConverter().asString(createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "Europe/Berlin"))).isEqualTo("2020-07-11T15:23:47.000+0200");
         Assertions.assertThat(new CalendarAsStringConverter().asString(createCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47, "Europe/Berlin"))).isEqualTo("2020-12-11T15:23:47.000+0100");
+
         Assertions.assertThat(new CalendarAsStringConverter().asString(createUtcCalendar(1324, Calendar.JULY, 11, 15, 23, 47))).isEqualTo("1324-07-11T15:23:47.000+0000");
         Assertions.assertThat(new CalendarAsStringConverter().asString(createUtcCalendar(1324, Calendar.DECEMBER, 11, 15, 23, 47))).isEqualTo("1324-12-11T15:23:47.000+0000");
         Assertions.assertThat(new CalendarAsStringConverter().asString(createUtcCalendar(1324, Calendar.JULY, 11, 15, 23, 47, 554))).isEqualTo("1324-07-11T15:23:47.554+0000");
         Assertions.assertThat(new CalendarAsStringConverter().asString(createUtcCalendar(1324, Calendar.DECEMBER, 11, 15, 23, 47, 554))).isEqualTo("1324-12-11T15:23:47.554+0000");
+        Assertions.assertThat(new CalendarAsStringConverter().asString(createCalendar(1324, Calendar.JULY, 11, 15, 23, 47, "Asia/Vientiane"))).isEqualTo("1324-07-11T15:23:47.000+0700");
+        Assertions.assertThat(new CalendarAsStringConverter().asString(createCalendar(1324, Calendar.DECEMBER, 11, 15, 23, 47, "Asia/Vientiane"))).isEqualTo("1324-12-11T15:23:47.000+0700");
+        Assertions.assertThat(new CalendarAsStringConverter().asString(createCalendar(1324, Calendar.JULY, 11, 15, 23, 47, "Europe/Berlin"))).isEqualTo("1324-07-11T15:23:47.000+0100");
+        Assertions.assertThat(new CalendarAsStringConverter().asString(createCalendar(1324, Calendar.DECEMBER, 11, 15, 23, 47, "Europe/Berlin"))).isEqualTo("1324-12-11T15:23:47.000+0100");
     }
 
     /**
