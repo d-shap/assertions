@@ -58,9 +58,9 @@ public final class XMLGregorianCalendarToCalendarValueConverter implements Value
         ConverterArgumentHelper.checkArgumentsLength(arguments, 1);
         TimeZone castedTimeZone = ConverterArgumentHelper.getArgument(arguments, 0, TimeZone.class);
 
-        Calendar calendar = castedValue.toGregorianCalendar();
         Calendar result = Calendar.getInstance();
         if (castedTimeZone == null) {
+            Calendar calendar = castedValue.toGregorianCalendar();
             result.setTimeZone(calendar.getTimeZone());
         } else {
             result.setTimeZone(castedTimeZone);
