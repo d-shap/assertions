@@ -2276,7 +2276,53 @@ public class CalendarAssertionTest extends AssertionTest {
      */
     @Test
     public void toMillisecondTest() {
-        // TODO
+        initialize(Raw.calendarAssertion(), createUtcCalendar(2020, Calendar.JULY, 11, 15, 23, 47)).toMillisecond().isEqualTo(0);
+        initialize(Raw.calendarAssertion(), createUtcCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47)).toMillisecond().isEqualTo(0);
+        initialize(Raw.calendarAssertion(), createUtcCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543)).toMillisecond().isEqualTo(543);
+        initialize(Raw.calendarAssertion(), createUtcCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).toMillisecond().isEqualTo(543);
+
+        try {
+            Raw.calendarAssertion().toMillisecond();
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), null).toMillisecond();
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), null, "Message").toMillisecond();
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            clearActual(initialize(Raw.calendarAssertion(), createUtcCalendar(2020, Calendar.JULY, 11, 15, 23, 47)).toMillisecond()).isEqualTo(193);
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's millisecond.\n\tActual value should not be null.");
+        }
+        try {
+            clearActual(initialize(Raw.calendarAssertion(), createUtcCalendar(2020, Calendar.JULY, 11, 15, 23, 47), "Message").toMillisecond()).isEqualTo(193);
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's millisecond.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), createUtcCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 543)).toMillisecond().isEqualTo(544);
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's millisecond.\n\tActual and expected values should be the same.\n\tExpected:<544> but was:<543>");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), createUtcCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 543), "Message").toMillisecond().isEqualTo(544);
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's millisecond.\n\tActual and expected values should be the same.\n\tExpected:<544> but was:<543>");
+        }
     }
 
     /**
@@ -2284,7 +2330,65 @@ public class CalendarAssertionTest extends AssertionTest {
      */
     @Test
     public void toMillisecondMatcherTest() {
-        // TODO
+        initialize(Raw.calendarAssertion(), createUtcCalendar(2020, Calendar.JULY, 11, 15, 23, 47)).toMillisecond(Matchers.is(Matchers.equalTo(0)));
+        initialize(Raw.calendarAssertion(), createUtcCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47)).toMillisecond(Matchers.is(Matchers.equalTo(0)));
+        initialize(Raw.calendarAssertion(), createUtcCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543)).toMillisecond(Matchers.is(Matchers.equalTo(543)));
+        initialize(Raw.calendarAssertion(), createUtcCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).toMillisecond(Matchers.is(Matchers.equalTo(543)));
+
+        try {
+            Raw.calendarAssertion().toMillisecond(Matchers.equalTo(0));
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), null).toMillisecond(Matchers.equalTo(0));
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), null, "Message").toMillisecond(Matchers.equalTo(0));
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), null).toMillisecond(null);
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), null, "Message").toMillisecond(null);
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), createUtcCalendar(2020, Calendar.JULY, 11, 15, 23, 47)).toMillisecond(null);
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: matcher.");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), createUtcCalendar(2020, Calendar.JULY, 11, 15, 23, 47), "Message").toMillisecond(null);
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: matcher.");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), createUtcCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 543)).toMillisecond(Matchers.is(Matchers.equalTo(544)));
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's millisecond.\nExpected: is <544>\n     but: was <543>");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), createUtcCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 543), "Message").toMillisecond(Matchers.is(Matchers.equalTo(544)));
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's millisecond.\nExpected: is <544>\n     but: was <543>");
+        }
     }
 
     /**
@@ -2292,7 +2396,41 @@ public class CalendarAssertionTest extends AssertionTest {
      */
     @Test
     public void hasMillisecondTest() {
-        // TODO
+        initialize(Raw.calendarAssertion(), createUtcCalendar(2020, Calendar.JULY, 11, 15, 23, 47)).hasMillisecond(0);
+        initialize(Raw.calendarAssertion(), createUtcCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47)).hasMillisecond(0);
+        initialize(Raw.calendarAssertion(), createUtcCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543)).hasMillisecond(543);
+        initialize(Raw.calendarAssertion(), createUtcCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).hasMillisecond(543);
+
+        try {
+            Raw.calendarAssertion().hasMillisecond(0);
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), null).hasMillisecond(0);
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), null, "Message").hasMillisecond(0);
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), createUtcCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 543)).hasMillisecond(544);
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's millisecond.\n\tActual and expected values should be the same.\n\tExpected:<544> but was:<543>");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), createUtcCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 543), "Message").hasMillisecond(544);
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's millisecond.\n\tActual and expected values should be the same.\n\tExpected:<544> but was:<543>");
+        }
     }
 
     /**
