@@ -836,8 +836,8 @@ public class CalendarAssertionTest extends AssertionTest {
     public void toDayOfYearMatcherTest() {
         initialize(Raw.calendarAssertion(), createUtcCalendar(2020, Calendar.JULY, 11, 15, 23, 47)).toDayOfYear(Matchers.is(Matchers.equalTo(193)));
         initialize(Raw.calendarAssertion(), createUtcCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47)).toDayOfYear(Matchers.is(Matchers.equalTo(346)));
-        initialize(Raw.calendarAssertion(), createUtcCalendar(1324, Calendar.JULY, 3, 3, 23, 47)).toDayOfYear(Matchers.is(Matchers.equalTo(185)));
-        initialize(Raw.calendarAssertion(), createUtcCalendar(1324, Calendar.DECEMBER, 3, 3, 23, 47)).toDayOfYear(Matchers.is(Matchers.equalTo(338)));
+        initialize(Raw.calendarAssertion(), createUtcCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543)).toDayOfYear(Matchers.is(Matchers.equalTo(203)));
+        initialize(Raw.calendarAssertion(), createUtcCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).toDayOfYear(Matchers.is(Matchers.equalTo(356)));
 
         try {
             Raw.calendarAssertion().toDayOfYear(Matchers.equalTo(0));
@@ -902,8 +902,8 @@ public class CalendarAssertionTest extends AssertionTest {
     public void hasDayOfYearTest() {
         initialize(Raw.calendarAssertion(), createUtcCalendar(2020, Calendar.JULY, 11, 15, 23, 47)).hasDayOfYear(193);
         initialize(Raw.calendarAssertion(), createUtcCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47)).hasDayOfYear(346);
-        initialize(Raw.calendarAssertion(), createUtcCalendar(1324, Calendar.JULY, 3, 3, 23, 47)).hasDayOfYear(185);
-        initialize(Raw.calendarAssertion(), createUtcCalendar(1324, Calendar.DECEMBER, 3, 3, 23, 47)).hasDayOfYear(338);
+        initialize(Raw.calendarAssertion(), createUtcCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543)).hasDayOfYear(203);
+        initialize(Raw.calendarAssertion(), createUtcCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).hasDayOfYear(356);
 
         try {
             Raw.calendarAssertion().hasDayOfYear(0);
@@ -944,8 +944,8 @@ public class CalendarAssertionTest extends AssertionTest {
     public void toDayOfMonthTest() {
         initialize(Raw.calendarAssertion(), createUtcCalendar(2020, Calendar.JULY, 11, 15, 23, 47)).toDayOfMonth().isEqualTo(11);
         initialize(Raw.calendarAssertion(), createUtcCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47)).toDayOfMonth().isEqualTo(11);
-        initialize(Raw.calendarAssertion(), createUtcCalendar(1324, Calendar.JULY, 3, 3, 23, 47)).toDayOfMonth().isEqualTo(3);
-        initialize(Raw.calendarAssertion(), createUtcCalendar(1324, Calendar.DECEMBER, 3, 3, 23, 47)).toDayOfMonth().isEqualTo(3);
+        initialize(Raw.calendarAssertion(), createUtcCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543)).toDayOfMonth().isEqualTo(21);
+        initialize(Raw.calendarAssertion(), createUtcCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).toDayOfMonth().isEqualTo(21);
 
         try {
             Raw.calendarAssertion().toDayOfMonth();
@@ -998,8 +998,8 @@ public class CalendarAssertionTest extends AssertionTest {
     public void toDayOfMonthMatcherTest() {
         initialize(Raw.calendarAssertion(), createUtcCalendar(2020, Calendar.JULY, 11, 15, 23, 47)).toDayOfMonth(Matchers.is(Matchers.equalTo(11)));
         initialize(Raw.calendarAssertion(), createUtcCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47)).toDayOfMonth(Matchers.is(Matchers.equalTo(11)));
-        initialize(Raw.calendarAssertion(), createUtcCalendar(1324, Calendar.JULY, 3, 3, 23, 47)).toDayOfMonth(Matchers.is(Matchers.equalTo(3)));
-        initialize(Raw.calendarAssertion(), createUtcCalendar(1324, Calendar.DECEMBER, 3, 3, 23, 47)).toDayOfMonth(Matchers.is(Matchers.equalTo(3)));
+        initialize(Raw.calendarAssertion(), createUtcCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543)).toDayOfMonth(Matchers.is(Matchers.equalTo(21)));
+        initialize(Raw.calendarAssertion(), createUtcCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).toDayOfMonth(Matchers.is(Matchers.equalTo(21)));
 
         try {
             Raw.calendarAssertion().toDayOfMonth(Matchers.equalTo(0));
@@ -1064,8 +1064,8 @@ public class CalendarAssertionTest extends AssertionTest {
     public void hasDayOfMonthTest() {
         initialize(Raw.calendarAssertion(), createUtcCalendar(2020, Calendar.JULY, 11, 15, 23, 47)).hasDayOfMonth(11);
         initialize(Raw.calendarAssertion(), createUtcCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47)).hasDayOfMonth(11);
-        initialize(Raw.calendarAssertion(), createUtcCalendar(1324, Calendar.JULY, 3, 3, 23, 47)).hasDayOfMonth(3);
-        initialize(Raw.calendarAssertion(), createUtcCalendar(1324, Calendar.DECEMBER, 3, 3, 23, 47)).hasDayOfMonth(3);
+        initialize(Raw.calendarAssertion(), createUtcCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543)).hasDayOfMonth(21);
+        initialize(Raw.calendarAssertion(), createUtcCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).hasDayOfMonth(21);
 
         try {
             Raw.calendarAssertion().hasDayOfMonth(0);
@@ -1106,8 +1106,8 @@ public class CalendarAssertionTest extends AssertionTest {
     public void toDayOfWeekInMonthTest() {
         initialize(Raw.calendarAssertion(), createUtcCalendar(2020, Calendar.JULY, 11, 15, 23, 47)).toDayOfWeekInMonth().isEqualTo(2);
         initialize(Raw.calendarAssertion(), createUtcCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47)).toDayOfWeekInMonth().isEqualTo(2);
-        initialize(Raw.calendarAssertion(), createUtcCalendar(1324, Calendar.JULY, 3, 3, 23, 47)).toDayOfWeekInMonth().isEqualTo(1);
-        initialize(Raw.calendarAssertion(), createUtcCalendar(1324, Calendar.DECEMBER, 3, 3, 23, 47)).toDayOfWeekInMonth().isEqualTo(1);
+        initialize(Raw.calendarAssertion(), createUtcCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543)).toDayOfWeekInMonth().isEqualTo(3);
+        initialize(Raw.calendarAssertion(), createUtcCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).toDayOfWeekInMonth().isEqualTo(3);
 
         try {
             Raw.calendarAssertion().toDayOfWeekInMonth();
@@ -1160,8 +1160,8 @@ public class CalendarAssertionTest extends AssertionTest {
     public void toDayOfWeekInMonthMatcherTest() {
         initialize(Raw.calendarAssertion(), createUtcCalendar(2020, Calendar.JULY, 11, 15, 23, 47)).toDayOfWeekInMonth(Matchers.is(Matchers.equalTo(2)));
         initialize(Raw.calendarAssertion(), createUtcCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47)).toDayOfWeekInMonth(Matchers.is(Matchers.equalTo(2)));
-        initialize(Raw.calendarAssertion(), createUtcCalendar(1324, Calendar.JULY, 3, 3, 23, 47)).toDayOfWeekInMonth(Matchers.is(Matchers.equalTo(1)));
-        initialize(Raw.calendarAssertion(), createUtcCalendar(1324, Calendar.DECEMBER, 3, 3, 23, 47)).toDayOfWeekInMonth(Matchers.is(Matchers.equalTo(1)));
+        initialize(Raw.calendarAssertion(), createUtcCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543)).toDayOfWeekInMonth(Matchers.is(Matchers.equalTo(3)));
+        initialize(Raw.calendarAssertion(), createUtcCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).toDayOfWeekInMonth(Matchers.is(Matchers.equalTo(3)));
 
         try {
             Raw.calendarAssertion().toDayOfWeekInMonth(Matchers.equalTo(0));
@@ -1226,8 +1226,8 @@ public class CalendarAssertionTest extends AssertionTest {
     public void hasDayOfWeekInMonthTest() {
         initialize(Raw.calendarAssertion(), createUtcCalendar(2020, Calendar.JULY, 11, 15, 23, 47)).hasDayOfWeekInMonth(2);
         initialize(Raw.calendarAssertion(), createUtcCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47)).hasDayOfWeekInMonth(2);
-        initialize(Raw.calendarAssertion(), createUtcCalendar(1324, Calendar.JULY, 3, 3, 23, 47)).hasDayOfWeekInMonth(1);
-        initialize(Raw.calendarAssertion(), createUtcCalendar(1324, Calendar.DECEMBER, 3, 3, 23, 47)).hasDayOfWeekInMonth(1);
+        initialize(Raw.calendarAssertion(), createUtcCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543)).hasDayOfWeekInMonth(3);
+        initialize(Raw.calendarAssertion(), createUtcCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).hasDayOfWeekInMonth(3);
 
         try {
             Raw.calendarAssertion().hasDayOfWeekInMonth(0);
@@ -1268,8 +1268,8 @@ public class CalendarAssertionTest extends AssertionTest {
     public void toDayOfWeekTest() {
         initialize(Raw.calendarAssertion(), createUtcCalendar(2020, Calendar.JULY, 11, 15, 23, 47)).toDayOfWeek().isEqualTo(Calendar.SATURDAY);
         initialize(Raw.calendarAssertion(), createUtcCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47)).toDayOfWeek().isEqualTo(Calendar.FRIDAY);
-        initialize(Raw.calendarAssertion(), createUtcCalendar(1324, Calendar.JULY, 3, 3, 23, 47)).toDayOfWeek().isEqualTo(Calendar.TUESDAY);
-        initialize(Raw.calendarAssertion(), createUtcCalendar(1324, Calendar.DECEMBER, 3, 3, 23, 47)).toDayOfWeek().isEqualTo(Calendar.MONDAY);
+        initialize(Raw.calendarAssertion(), createUtcCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543)).toDayOfWeek().isEqualTo(Calendar.SATURDAY);
+        initialize(Raw.calendarAssertion(), createUtcCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).toDayOfWeek().isEqualTo(Calendar.FRIDAY);
 
         try {
             Raw.calendarAssertion().toDayOfWeek();
@@ -1322,8 +1322,8 @@ public class CalendarAssertionTest extends AssertionTest {
     public void toDayOfWeekMatcherTest() {
         initialize(Raw.calendarAssertion(), createUtcCalendar(2020, Calendar.JULY, 11, 15, 23, 47)).toDayOfWeek(Matchers.is(Matchers.equalTo(Calendar.SATURDAY)));
         initialize(Raw.calendarAssertion(), createUtcCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47)).toDayOfWeek(Matchers.is(Matchers.equalTo(Calendar.FRIDAY)));
-        initialize(Raw.calendarAssertion(), createUtcCalendar(1324, Calendar.JULY, 3, 3, 23, 47)).toDayOfWeek(Matchers.is(Matchers.equalTo(Calendar.TUESDAY)));
-        initialize(Raw.calendarAssertion(), createUtcCalendar(1324, Calendar.DECEMBER, 3, 3, 23, 47)).toDayOfWeek(Matchers.is(Matchers.equalTo(Calendar.MONDAY)));
+        initialize(Raw.calendarAssertion(), createUtcCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543)).toDayOfWeek(Matchers.is(Matchers.equalTo(Calendar.SATURDAY)));
+        initialize(Raw.calendarAssertion(), createUtcCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).toDayOfWeek(Matchers.is(Matchers.equalTo(Calendar.FRIDAY)));
 
         try {
             Raw.calendarAssertion().toDayOfWeek(Matchers.equalTo(0));
@@ -1388,8 +1388,8 @@ public class CalendarAssertionTest extends AssertionTest {
     public void hasDayOfWeekTest() {
         initialize(Raw.calendarAssertion(), createUtcCalendar(2020, Calendar.JULY, 11, 15, 23, 47)).hasDayOfWeek(Calendar.SATURDAY);
         initialize(Raw.calendarAssertion(), createUtcCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47)).hasDayOfWeek(Calendar.FRIDAY);
-        initialize(Raw.calendarAssertion(), createUtcCalendar(1324, Calendar.JULY, 3, 3, 23, 47)).hasDayOfWeek(Calendar.TUESDAY);
-        initialize(Raw.calendarAssertion(), createUtcCalendar(1324, Calendar.DECEMBER, 3, 3, 23, 47)).hasDayOfWeek(Calendar.MONDAY);
+        initialize(Raw.calendarAssertion(), createUtcCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543)).hasDayOfWeek(Calendar.SATURDAY);
+        initialize(Raw.calendarAssertion(), createUtcCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).hasDayOfWeek(Calendar.FRIDAY);
 
         try {
             Raw.calendarAssertion().hasDayOfWeek(0);
@@ -1430,8 +1430,8 @@ public class CalendarAssertionTest extends AssertionTest {
     public void toAmPmTest() {
         initialize(Raw.calendarAssertion(), createUtcCalendar(2020, Calendar.JULY, 11, 15, 23, 47)).toAmPm().isEqualTo(Calendar.PM);
         initialize(Raw.calendarAssertion(), createUtcCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47)).toAmPm().isEqualTo(Calendar.PM);
-        initialize(Raw.calendarAssertion(), createUtcCalendar(1324, Calendar.JULY, 3, 3, 23, 47)).toAmPm().isEqualTo(Calendar.AM);
-        initialize(Raw.calendarAssertion(), createUtcCalendar(1324, Calendar.DECEMBER, 3, 3, 23, 47)).toAmPm().isEqualTo(Calendar.AM);
+        initialize(Raw.calendarAssertion(), createUtcCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543)).toAmPm().isEqualTo(Calendar.AM);
+        initialize(Raw.calendarAssertion(), createUtcCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).toAmPm().isEqualTo(Calendar.AM);
 
         try {
             Raw.calendarAssertion().toAmPm();
@@ -1484,8 +1484,8 @@ public class CalendarAssertionTest extends AssertionTest {
     public void toAmPmMatcherTest() {
         initialize(Raw.calendarAssertion(), createUtcCalendar(2020, Calendar.JULY, 11, 15, 23, 47)).toAmPm(Matchers.is(Matchers.equalTo(Calendar.PM)));
         initialize(Raw.calendarAssertion(), createUtcCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47)).toAmPm(Matchers.is(Matchers.equalTo(Calendar.PM)));
-        initialize(Raw.calendarAssertion(), createUtcCalendar(1324, Calendar.JULY, 3, 3, 23, 47)).toAmPm(Matchers.is(Matchers.equalTo(Calendar.AM)));
-        initialize(Raw.calendarAssertion(), createUtcCalendar(1324, Calendar.DECEMBER, 3, 3, 23, 47)).toAmPm(Matchers.is(Matchers.equalTo(Calendar.AM)));
+        initialize(Raw.calendarAssertion(), createUtcCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543)).toAmPm(Matchers.is(Matchers.equalTo(Calendar.AM)));
+        initialize(Raw.calendarAssertion(), createUtcCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).toAmPm(Matchers.is(Matchers.equalTo(Calendar.AM)));
 
         try {
             Raw.calendarAssertion().toAmPm(Matchers.equalTo(0));
@@ -1548,8 +1548,8 @@ public class CalendarAssertionTest extends AssertionTest {
      */
     @Test
     public void isAmTest() {
-        initialize(Raw.calendarAssertion(), createUtcCalendar(1324, Calendar.JULY, 3, 3, 23, 47)).isAm();
-        initialize(Raw.calendarAssertion(), createUtcCalendar(1324, Calendar.DECEMBER, 3, 3, 23, 47)).isAm();
+        initialize(Raw.calendarAssertion(), createUtcCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543)).isAm();
+        initialize(Raw.calendarAssertion(), createUtcCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).isAm();
 
         try {
             Raw.calendarAssertion().isAm();
@@ -1630,8 +1630,8 @@ public class CalendarAssertionTest extends AssertionTest {
     public void toHourOfDayTest() {
         initialize(Raw.calendarAssertion(), createUtcCalendar(2020, Calendar.JULY, 11, 15, 23, 47)).toHourOfDay().isEqualTo(15);
         initialize(Raw.calendarAssertion(), createUtcCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47)).toHourOfDay().isEqualTo(15);
-        initialize(Raw.calendarAssertion(), createUtcCalendar(1324, Calendar.JULY, 3, 3, 23, 47)).toHourOfDay().isEqualTo(3);
-        initialize(Raw.calendarAssertion(), createUtcCalendar(1324, Calendar.DECEMBER, 3, 3, 23, 47)).toHourOfDay().isEqualTo(3);
+        initialize(Raw.calendarAssertion(), createUtcCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543)).toHourOfDay().isEqualTo(3);
+        initialize(Raw.calendarAssertion(), createUtcCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).toHourOfDay().isEqualTo(3);
 
         try {
             Raw.calendarAssertion().toHourOfDay();
@@ -1684,8 +1684,8 @@ public class CalendarAssertionTest extends AssertionTest {
     public void toHourOfDayMatcherTest() {
         initialize(Raw.calendarAssertion(), createUtcCalendar(2020, Calendar.JULY, 11, 15, 23, 47)).toHourOfDay(Matchers.is(Matchers.equalTo(15)));
         initialize(Raw.calendarAssertion(), createUtcCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47)).toHourOfDay(Matchers.is(Matchers.equalTo(15)));
-        initialize(Raw.calendarAssertion(), createUtcCalendar(1324, Calendar.JULY, 3, 3, 23, 47)).toHourOfDay(Matchers.is(Matchers.equalTo(3)));
-        initialize(Raw.calendarAssertion(), createUtcCalendar(1324, Calendar.DECEMBER, 3, 3, 23, 47)).toHourOfDay(Matchers.is(Matchers.equalTo(3)));
+        initialize(Raw.calendarAssertion(), createUtcCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543)).toHourOfDay(Matchers.is(Matchers.equalTo(3)));
+        initialize(Raw.calendarAssertion(), createUtcCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).toHourOfDay(Matchers.is(Matchers.equalTo(3)));
 
         try {
             Raw.calendarAssertion().toHourOfDay(Matchers.equalTo(0));
@@ -1750,8 +1750,8 @@ public class CalendarAssertionTest extends AssertionTest {
     public void hasHourOfDayTest() {
         initialize(Raw.calendarAssertion(), createUtcCalendar(2020, Calendar.JULY, 11, 15, 23, 47)).hasHourOfDay(15);
         initialize(Raw.calendarAssertion(), createUtcCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47)).hasHourOfDay(15);
-        initialize(Raw.calendarAssertion(), createUtcCalendar(1324, Calendar.JULY, 3, 3, 23, 47)).hasHourOfDay(3);
-        initialize(Raw.calendarAssertion(), createUtcCalendar(1324, Calendar.DECEMBER, 3, 3, 23, 47)).hasHourOfDay(3);
+        initialize(Raw.calendarAssertion(), createUtcCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543)).hasHourOfDay(3);
+        initialize(Raw.calendarAssertion(), createUtcCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).hasHourOfDay(3);
 
         try {
             Raw.calendarAssertion().hasHourOfDay(0);
@@ -1792,8 +1792,8 @@ public class CalendarAssertionTest extends AssertionTest {
     public void toHourTest() {
         initialize(Raw.calendarAssertion(), createUtcCalendar(2020, Calendar.JULY, 11, 15, 23, 47)).toHour().isEqualTo(3);
         initialize(Raw.calendarAssertion(), createUtcCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47)).toHour().isEqualTo(3);
-        initialize(Raw.calendarAssertion(), createUtcCalendar(1324, Calendar.JULY, 3, 3, 23, 47)).toHour().isEqualTo(3);
-        initialize(Raw.calendarAssertion(), createUtcCalendar(1324, Calendar.DECEMBER, 3, 3, 23, 47)).toHour().isEqualTo(3);
+        initialize(Raw.calendarAssertion(), createUtcCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543)).toHour().isEqualTo(3);
+        initialize(Raw.calendarAssertion(), createUtcCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).toHour().isEqualTo(3);
 
         try {
             Raw.calendarAssertion().toHour();
@@ -1846,8 +1846,8 @@ public class CalendarAssertionTest extends AssertionTest {
     public void toHourMatcherTest() {
         initialize(Raw.calendarAssertion(), createUtcCalendar(2020, Calendar.JULY, 11, 15, 23, 47)).toHour(Matchers.is(Matchers.equalTo(3)));
         initialize(Raw.calendarAssertion(), createUtcCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47)).toHour(Matchers.is(Matchers.equalTo(3)));
-        initialize(Raw.calendarAssertion(), createUtcCalendar(1324, Calendar.JULY, 3, 3, 23, 47)).toHour(Matchers.is(Matchers.equalTo(3)));
-        initialize(Raw.calendarAssertion(), createUtcCalendar(1324, Calendar.DECEMBER, 3, 3, 23, 47)).toHour(Matchers.is(Matchers.equalTo(3)));
+        initialize(Raw.calendarAssertion(), createUtcCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543)).toHour(Matchers.is(Matchers.equalTo(3)));
+        initialize(Raw.calendarAssertion(), createUtcCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).toHour(Matchers.is(Matchers.equalTo(3)));
 
         try {
             Raw.calendarAssertion().toHour(Matchers.equalTo(0));
@@ -1912,8 +1912,8 @@ public class CalendarAssertionTest extends AssertionTest {
     public void hasHourTest() {
         initialize(Raw.calendarAssertion(), createUtcCalendar(2020, Calendar.JULY, 11, 15, 23, 47)).hasHour(3);
         initialize(Raw.calendarAssertion(), createUtcCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47)).hasHour(3);
-        initialize(Raw.calendarAssertion(), createUtcCalendar(1324, Calendar.JULY, 3, 3, 23, 47)).hasHour(3);
-        initialize(Raw.calendarAssertion(), createUtcCalendar(1324, Calendar.DECEMBER, 3, 3, 23, 47)).hasHour(3);
+        initialize(Raw.calendarAssertion(), createUtcCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543)).hasHour(3);
+        initialize(Raw.calendarAssertion(), createUtcCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).hasHour(3);
 
         try {
             Raw.calendarAssertion().hasHour(0);
@@ -1952,7 +1952,53 @@ public class CalendarAssertionTest extends AssertionTest {
      */
     @Test
     public void toMinuteTest() {
-        // TODO
+        initialize(Raw.calendarAssertion(), createUtcCalendar(2020, Calendar.JULY, 11, 15, 23, 47)).toMinute().isEqualTo(23);
+        initialize(Raw.calendarAssertion(), createUtcCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47)).toMinute().isEqualTo(23);
+        initialize(Raw.calendarAssertion(), createUtcCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543)).toMinute().isEqualTo(22);
+        initialize(Raw.calendarAssertion(), createUtcCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).toMinute().isEqualTo(22);
+
+        try {
+            Raw.calendarAssertion().toMinute();
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), null).toMinute();
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), null, "Message").toMinute();
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            clearActual(initialize(Raw.calendarAssertion(), createUtcCalendar(2020, Calendar.JULY, 11, 15, 23, 47)).toMinute()).isEqualTo(193);
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's minute.\n\tActual value should not be null.");
+        }
+        try {
+            clearActual(initialize(Raw.calendarAssertion(), createUtcCalendar(2020, Calendar.JULY, 11, 15, 23, 47), "Message").toMinute()).isEqualTo(193);
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's minute.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), createUtcCalendar(2020, Calendar.JULY, 11, 15, 23, 47)).toMinute().isEqualTo(22);
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's minute.\n\tActual and expected values should be the same.\n\tExpected:<22> but was:<23>");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), createUtcCalendar(2020, Calendar.JULY, 11, 15, 23, 47), "Message").toMinute().isEqualTo(22);
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's minute.\n\tActual and expected values should be the same.\n\tExpected:<22> but was:<23>");
+        }
     }
 
     /**
@@ -1960,7 +2006,65 @@ public class CalendarAssertionTest extends AssertionTest {
      */
     @Test
     public void toMinuteMatcherTest() {
-        // TODO
+        initialize(Raw.calendarAssertion(), createUtcCalendar(2020, Calendar.JULY, 11, 15, 23, 47)).toMinute(Matchers.is(Matchers.equalTo(23)));
+        initialize(Raw.calendarAssertion(), createUtcCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47)).toMinute(Matchers.is(Matchers.equalTo(23)));
+        initialize(Raw.calendarAssertion(), createUtcCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543)).toMinute(Matchers.is(Matchers.equalTo(22)));
+        initialize(Raw.calendarAssertion(), createUtcCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).toMinute(Matchers.is(Matchers.equalTo(22)));
+
+        try {
+            Raw.calendarAssertion().toMinute(Matchers.equalTo(0));
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), null).toMinute(Matchers.equalTo(0));
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), null, "Message").toMinute(Matchers.equalTo(0));
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), null).toMinute(null);
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), null, "Message").toMinute(null);
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), createUtcCalendar(2020, Calendar.JULY, 11, 15, 23, 47)).toMinute(null);
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: matcher.");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), createUtcCalendar(2020, Calendar.JULY, 11, 15, 23, 47), "Message").toMinute(null);
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: matcher.");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), createUtcCalendar(2020, Calendar.JULY, 11, 15, 23, 47)).toMinute(Matchers.is(Matchers.equalTo(22)));
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's minute.\nExpected: is <22>\n     but: was <23>");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), createUtcCalendar(2020, Calendar.JULY, 11, 15, 23, 47), "Message").toMinute(Matchers.is(Matchers.equalTo(22)));
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's minute.\nExpected: is <22>\n     but: was <23>");
+        }
     }
 
     /**
@@ -1968,7 +2072,41 @@ public class CalendarAssertionTest extends AssertionTest {
      */
     @Test
     public void hasMinuteTest() {
-        // TODO
+        initialize(Raw.calendarAssertion(), createUtcCalendar(2020, Calendar.JULY, 11, 15, 23, 47)).hasMinute(23);
+        initialize(Raw.calendarAssertion(), createUtcCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47)).hasMinute(23);
+        initialize(Raw.calendarAssertion(), createUtcCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543)).hasMinute(22);
+        initialize(Raw.calendarAssertion(), createUtcCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).hasMinute(22);
+
+        try {
+            Raw.calendarAssertion().hasMinute(0);
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), null).hasMinute(0);
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), null, "Message").hasMinute(0);
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), createUtcCalendar(2020, Calendar.JULY, 11, 15, 23, 47)).hasMinute(22);
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's minute.\n\tActual and expected values should be the same.\n\tExpected:<22> but was:<23>");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), createUtcCalendar(2020, Calendar.JULY, 11, 15, 23, 47), "Message").hasMinute(22);
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's minute.\n\tActual and expected values should be the same.\n\tExpected:<22> but was:<23>");
+        }
     }
 
     /**
