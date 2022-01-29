@@ -20,6 +20,7 @@
 package ru.d_shap.assertions.asimp.java.util;
 
 import java.util.Calendar;
+import java.util.TimeZone;
 
 import org.hamcrest.Matchers;
 import org.junit.Test;
@@ -2810,7 +2811,61 @@ public class CalendarAssertionTest extends AssertionTest {
      */
     @Test
     public void toTimeZoneTest() {
-        // TODO
+        initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC")).toTimeZone().isEqualTo(TimeZone.getTimeZone("UTC"));
+        initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47, "UTC")).toTimeZone().isEqualTo(TimeZone.getTimeZone("UTC"));
+        initialize(Raw.calendarAssertion(), createCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543, "UTC")).toTimeZone().isEqualTo(TimeZone.getTimeZone("UTC"));
+        initialize(Raw.calendarAssertion(), createCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543, "UTC")).toTimeZone().isEqualTo(TimeZone.getTimeZone("UTC"));
+        initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "Asia/Vientiane")).toTimeZone().isEqualTo(TimeZone.getTimeZone("Asia/Vientiane"));
+        initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47, "Asia/Vientiane")).toTimeZone().isEqualTo(TimeZone.getTimeZone("Asia/Vientiane"));
+        initialize(Raw.calendarAssertion(), createCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543, "Asia/Vientiane")).toTimeZone().isEqualTo(TimeZone.getTimeZone("Asia/Vientiane"));
+        initialize(Raw.calendarAssertion(), createCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543, "Asia/Vientiane")).toTimeZone().isEqualTo(TimeZone.getTimeZone("Asia/Vientiane"));
+        initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "Europe/Berlin")).toTimeZone().isEqualTo(TimeZone.getTimeZone("Europe/Berlin"));
+        initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47, "Europe/Berlin")).toTimeZone().isEqualTo(TimeZone.getTimeZone("Europe/Berlin"));
+        initialize(Raw.calendarAssertion(), createCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543, "Europe/Berlin")).toTimeZone().isEqualTo(TimeZone.getTimeZone("Europe/Berlin"));
+        initialize(Raw.calendarAssertion(), createCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543, "Europe/Berlin")).toTimeZone().isEqualTo(TimeZone.getTimeZone("Europe/Berlin"));
+
+        try {
+            Raw.calendarAssertion().toTimeZone();
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), null).toTimeZone();
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), null, "Message").toTimeZone();
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            clearActual(initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC")).toTimeZone()).isEqualTo(TimeZone.getTimeZone("UTC"));
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's time zone.\n\tActual value should not be null.");
+        }
+        try {
+            clearActual(initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC"), "Message").toTimeZone()).isEqualTo(TimeZone.getTimeZone("UTCn"));
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's time zone.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 543, "UTC")).toTimeZone().isEqualTo(TimeZone.getTimeZone("Europe/Berlin"));
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's time zone.\n\tActual and expected values should be the same.\n\tExpected:<Europe/Berlin> but was:<UTC>");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 543, "UTC"), "Message").toTimeZone().isEqualTo(TimeZone.getTimeZone("Europe/Berlin"));
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's time zone.\n\tActual and expected values should be the same.\n\tExpected:<Europe/Berlin> but was:<UTC>");
+        }
     }
 
     /**
@@ -2818,7 +2873,73 @@ public class CalendarAssertionTest extends AssertionTest {
      */
     @Test
     public void toTimeZoneMatcherTest() {
-        // TODO
+        initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC")).toTimeZone(Matchers.is(Matchers.equalTo(TimeZone.getTimeZone("UTC"))));
+        initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47, "UTC")).toTimeZone(Matchers.is(Matchers.equalTo(TimeZone.getTimeZone("UTC"))));
+        initialize(Raw.calendarAssertion(), createCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543, "UTC")).toTimeZone(Matchers.is(Matchers.equalTo(TimeZone.getTimeZone("UTC"))));
+        initialize(Raw.calendarAssertion(), createCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543, "UTC")).toTimeZone(Matchers.is(Matchers.equalTo(TimeZone.getTimeZone("UTC"))));
+        initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "Asia/Vientiane")).toTimeZone(Matchers.is(Matchers.equalTo(TimeZone.getTimeZone("Asia/Vientiane"))));
+        initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47, "Asia/Vientiane")).toTimeZone(Matchers.is(Matchers.equalTo(TimeZone.getTimeZone("Asia/Vientiane"))));
+        initialize(Raw.calendarAssertion(), createCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543, "Asia/Vientiane")).toTimeZone(Matchers.is(Matchers.equalTo(TimeZone.getTimeZone("Asia/Vientiane"))));
+        initialize(Raw.calendarAssertion(), createCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543, "Asia/Vientiane")).toTimeZone(Matchers.is(Matchers.equalTo(TimeZone.getTimeZone("Asia/Vientiane"))));
+        initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "Europe/Berlin")).toTimeZone(Matchers.is(Matchers.equalTo(TimeZone.getTimeZone("Europe/Berlin"))));
+        initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47, "Europe/Berlin")).toTimeZone(Matchers.is(Matchers.equalTo(TimeZone.getTimeZone("Europe/Berlin"))));
+        initialize(Raw.calendarAssertion(), createCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543, "Europe/Berlin")).toTimeZone(Matchers.is(Matchers.equalTo(TimeZone.getTimeZone("Europe/Berlin"))));
+        initialize(Raw.calendarAssertion(), createCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543, "Europe/Berlin")).toTimeZone(Matchers.is(Matchers.equalTo(TimeZone.getTimeZone("Europe/Berlin"))));
+
+        try {
+            Raw.calendarAssertion().toTimeZone(Matchers.equalTo(TimeZone.getTimeZone("UTC")));
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), null).toTimeZone(Matchers.equalTo(TimeZone.getTimeZone("UTC")));
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), null, "Message").toTimeZone(Matchers.equalTo(TimeZone.getTimeZone("UTC")));
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), null).toTimeZone(null);
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), null, "Message").toTimeZone(null);
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC")).toTimeZone(null);
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: matcher.");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC"), "Message").toTimeZone(null);
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: matcher.");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 543, "UTC")).toTimeZone(Matchers.is(Matchers.equalTo(TimeZone.getTimeZone("Europe/Berlin"))));
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).toMessage().matches("Check actual value's time zone.\nExpected: is <.*>\n     but: was <.*>");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 543, "UTC"), "Message").toTimeZone(Matchers.is(Matchers.equalTo(TimeZone.getTimeZone("Europe/Berlin"))));
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).toMessage().matches("Message.\n\tCheck actual value's time zone.\nExpected: is <.*>\n     but: was <.*>");
+        }
     }
 
     /**
@@ -2826,7 +2947,49 @@ public class CalendarAssertionTest extends AssertionTest {
      */
     @Test
     public void hasTimeZoneTest() {
-        // TODO
+        initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC")).hasTimeZone(TimeZone.getTimeZone("UTC"));
+        initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47, "UTC")).hasTimeZone(TimeZone.getTimeZone("UTC"));
+        initialize(Raw.calendarAssertion(), createCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543, "UTC")).hasTimeZone(TimeZone.getTimeZone("UTC"));
+        initialize(Raw.calendarAssertion(), createCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543, "UTC")).hasTimeZone(TimeZone.getTimeZone("UTC"));
+        initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "Asia/Vientiane")).hasTimeZone(TimeZone.getTimeZone("Asia/Vientiane"));
+        initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47, "Asia/Vientiane")).hasTimeZone(TimeZone.getTimeZone("Asia/Vientiane"));
+        initialize(Raw.calendarAssertion(), createCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543, "Asia/Vientiane")).hasTimeZone(TimeZone.getTimeZone("Asia/Vientiane"));
+        initialize(Raw.calendarAssertion(), createCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543, "Asia/Vientiane")).hasTimeZone(TimeZone.getTimeZone("Asia/Vientiane"));
+        initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "Europe/Berlin")).hasTimeZone(TimeZone.getTimeZone("Europe/Berlin"));
+        initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47, "Europe/Berlin")).hasTimeZone(TimeZone.getTimeZone("Europe/Berlin"));
+        initialize(Raw.calendarAssertion(), createCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543, "Europe/Berlin")).hasTimeZone(TimeZone.getTimeZone("Europe/Berlin"));
+        initialize(Raw.calendarAssertion(), createCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543, "Europe/Berlin")).hasTimeZone(TimeZone.getTimeZone("Europe/Berlin"));
+
+        try {
+            Raw.calendarAssertion().hasTimeZone(TimeZone.getTimeZone("UTC"));
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), null).hasTimeZone(TimeZone.getTimeZone("UTC"));
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), null, "Message").hasTimeZone(TimeZone.getTimeZone("UTC"));
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 543, "UTC")).hasTimeZone(TimeZone.getTimeZone("Europe/Berlin"));
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's time zone.\n\tActual and expected values should be the same.\n\tExpected:<Europe/Berlin> but was:<UTC>");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 543, "UTC"), "Message").hasTimeZone(TimeZone.getTimeZone("Europe/Berlin"));
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's time zone.\n\tActual and expected values should be the same.\n\tExpected:<Europe/Berlin> but was:<UTC>");
+        }
     }
 
     /**
@@ -2834,7 +2997,49 @@ public class CalendarAssertionTest extends AssertionTest {
      */
     @Test
     public void hasTimeZoneIdTest() {
-        // TODO
+        initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC")).hasTimeZoneId("UTC");
+        initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47, "UTC")).hasTimeZoneId("UTC");
+        initialize(Raw.calendarAssertion(), createCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543, "UTC")).hasTimeZoneId("UTC");
+        initialize(Raw.calendarAssertion(), createCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543, "UTC")).hasTimeZoneId("UTC");
+        initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "Asia/Vientiane")).hasTimeZoneId("Asia/Vientiane");
+        initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47, "Asia/Vientiane")).hasTimeZoneId("Asia/Vientiane");
+        initialize(Raw.calendarAssertion(), createCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543, "Asia/Vientiane")).hasTimeZoneId("Asia/Vientiane");
+        initialize(Raw.calendarAssertion(), createCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543, "Asia/Vientiane")).hasTimeZoneId("Asia/Vientiane");
+        initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "Europe/Berlin")).hasTimeZoneId("Europe/Berlin");
+        initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47, "Europe/Berlin")).hasTimeZoneId("Europe/Berlin");
+        initialize(Raw.calendarAssertion(), createCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543, "Europe/Berlin")).hasTimeZoneId("Europe/Berlin");
+        initialize(Raw.calendarAssertion(), createCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543, "Europe/Berlin")).hasTimeZoneId("Europe/Berlin");
+
+        try {
+            Raw.calendarAssertion().hasTimeZoneId("UTC");
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), null).hasTimeZoneId("UTC");
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), null, "Message").hasTimeZoneId("UTC");
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 543, "UTC")).hasTimeZoneId("Europe/Berlin");
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's time zone.\n\tCheck actual value's ID.\n\tActual and expected values should be the same.\n\tExpected:<Europe/Berlin> but was:<UTC>");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 543, "UTC"), "Message").hasTimeZoneId("Europe/Berlin");
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's time zone.\n\tCheck actual value's ID.\n\tActual and expected values should be the same.\n\tExpected:<Europe/Berlin> but was:<UTC>");
+        }
     }
 
     /**
