@@ -2624,7 +2624,61 @@ public class CalendarAssertionTest extends AssertionTest {
      */
     @Test
     public void toDstOffsetTest() {
-        // TODO
+        initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC")).toDstOffset().isEqualTo(0);
+        initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47, "UTC")).toDstOffset().isEqualTo(0);
+        initialize(Raw.calendarAssertion(), createCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543, "UTC")).toDstOffset().isEqualTo(0);
+        initialize(Raw.calendarAssertion(), createCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543, "UTC")).toDstOffset().isEqualTo(0);
+        initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "Asia/Vientiane")).toDstOffset().isEqualTo(0);
+        initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47, "Asia/Vientiane")).toDstOffset().isEqualTo(0);
+        initialize(Raw.calendarAssertion(), createCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543, "Asia/Vientiane")).toDstOffset().isEqualTo(0);
+        initialize(Raw.calendarAssertion(), createCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543, "Asia/Vientiane")).toDstOffset().isEqualTo(0);
+        initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "Europe/Berlin")).toDstOffset().isEqualTo(60 * 60 * 1000);
+        initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47, "Europe/Berlin")).toDstOffset().isEqualTo(0);
+        initialize(Raw.calendarAssertion(), createCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543, "Europe/Berlin")).toDstOffset().isEqualTo(0);
+        initialize(Raw.calendarAssertion(), createCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543, "Europe/Berlin")).toDstOffset().isEqualTo(0);
+
+        try {
+            Raw.calendarAssertion().toDstOffset();
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), null).toDstOffset();
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), null, "Message").toDstOffset();
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            clearActual(initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC")).toDstOffset()).isEqualTo(100);
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's DST offset.\n\tActual value should not be null.");
+        }
+        try {
+            clearActual(initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC"), "Message").toDstOffset()).isEqualTo(100);
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's DST offset.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 543, "UTC")).toDstOffset().isEqualTo(100);
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's DST offset.\n\tActual and expected values should be the same.\n\tExpected:<100> but was:<0>");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 543, "UTC"), "Message").toDstOffset().isEqualTo(100);
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's DST offset.\n\tActual and expected values should be the same.\n\tExpected:<100> but was:<0>");
+        }
     }
 
     /**
@@ -2632,7 +2686,73 @@ public class CalendarAssertionTest extends AssertionTest {
      */
     @Test
     public void toDstOffsetMatcherTest() {
-        // TODO
+        initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC")).toDstOffset(Matchers.is(Matchers.equalTo(0)));
+        initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47, "UTC")).toDstOffset(Matchers.is(Matchers.equalTo(0)));
+        initialize(Raw.calendarAssertion(), createCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543, "UTC")).toDstOffset(Matchers.is(Matchers.equalTo(0)));
+        initialize(Raw.calendarAssertion(), createCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543, "UTC")).toDstOffset(Matchers.is(Matchers.equalTo(0)));
+        initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "Asia/Vientiane")).toDstOffset(Matchers.is(Matchers.equalTo(0)));
+        initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47, "Asia/Vientiane")).toDstOffset(Matchers.is(Matchers.equalTo(0)));
+        initialize(Raw.calendarAssertion(), createCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543, "Asia/Vientiane")).toDstOffset(Matchers.is(Matchers.equalTo(0)));
+        initialize(Raw.calendarAssertion(), createCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543, "Asia/Vientiane")).toDstOffset(Matchers.is(Matchers.equalTo(0)));
+        initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "Europe/Berlin")).toDstOffset(Matchers.is(Matchers.equalTo(60 * 60 * 1000)));
+        initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47, "Europe/Berlin")).toDstOffset(Matchers.is(Matchers.equalTo(0)));
+        initialize(Raw.calendarAssertion(), createCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543, "Europe/Berlin")).toDstOffset(Matchers.is(Matchers.equalTo(0)));
+        initialize(Raw.calendarAssertion(), createCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543, "Europe/Berlin")).toDstOffset(Matchers.is(Matchers.equalTo(0)));
+
+        try {
+            Raw.calendarAssertion().toDstOffset(Matchers.equalTo(0));
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), null).toDstOffset(Matchers.equalTo(0));
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), null, "Message").toDstOffset(Matchers.equalTo(0));
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), null).toDstOffset(null);
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), null, "Message").toDstOffset(null);
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC")).toDstOffset(null);
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: matcher.");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC"), "Message").toDstOffset(null);
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: matcher.");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 543, "UTC")).toDstOffset(Matchers.is(Matchers.equalTo(100)));
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's DST offset.\nExpected: is <100>\n     but: was <0>");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 543, "UTC"), "Message").toDstOffset(Matchers.is(Matchers.equalTo(100)));
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's DST offset.\nExpected: is <100>\n     but: was <0>");
+        }
     }
 
     /**
@@ -2640,7 +2760,49 @@ public class CalendarAssertionTest extends AssertionTest {
      */
     @Test
     public void hasDstOffsetTest() {
-        // TODO
+        initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC")).hasDstOffset(0);
+        initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47, "UTC")).hasDstOffset(0);
+        initialize(Raw.calendarAssertion(), createCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543, "UTC")).hasDstOffset(0);
+        initialize(Raw.calendarAssertion(), createCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543, "UTC")).hasDstOffset(0);
+        initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "Asia/Vientiane")).hasDstOffset(0);
+        initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47, "Asia/Vientiane")).hasDstOffset(0);
+        initialize(Raw.calendarAssertion(), createCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543, "Asia/Vientiane")).hasDstOffset(0);
+        initialize(Raw.calendarAssertion(), createCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543, "Asia/Vientiane")).hasDstOffset(0);
+        initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "Europe/Berlin")).hasDstOffset(60 * 60 * 1000);
+        initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47, "Europe/Berlin")).hasDstOffset(0);
+        initialize(Raw.calendarAssertion(), createCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543, "Europe/Berlin")).hasDstOffset(0);
+        initialize(Raw.calendarAssertion(), createCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543, "Europe/Berlin")).hasDstOffset(0);
+
+        try {
+            Raw.calendarAssertion().hasDstOffset(0);
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), null).hasDstOffset(0);
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), null, "Message").hasDstOffset(0);
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 543, "UTC")).hasDstOffset(100);
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's DST offset.\n\tActual and expected values should be the same.\n\tExpected:<100> but was:<0>");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 543, "UTC"), "Message").hasDstOffset(100);
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's DST offset.\n\tActual and expected values should be the same.\n\tExpected:<100> but was:<0>");
+        }
     }
 
     /**
