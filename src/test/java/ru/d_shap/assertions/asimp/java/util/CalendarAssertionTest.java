@@ -3281,7 +3281,73 @@ public class CalendarAssertionTest extends AssertionTest {
      */
     @Test
     public void hasTimeTest() {
-        // TODO
+        initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC")).hasTime(15, 23, 47);
+        initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47, "UTC")).hasTime(15, 23, 47);
+        initialize(Raw.calendarAssertion(), createCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543, "UTC")).hasTime(3, 22, 46);
+        initialize(Raw.calendarAssertion(), createCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543, "UTC")).hasTime(3, 22, 46);
+        initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "Asia/Vientiane")).hasTime(15, 23, 47);
+        initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47, "Asia/Vientiane")).hasTime(15, 23, 47);
+        initialize(Raw.calendarAssertion(), createCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543, "Asia/Vientiane")).hasTime(3, 22, 46);
+        initialize(Raw.calendarAssertion(), createCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543, "Asia/Vientiane")).hasTime(3, 22, 46);
+        initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "Europe/Berlin")).hasTime(15, 23, 47);
+        initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47, "Europe/Berlin")).hasTime(15, 23, 47);
+        initialize(Raw.calendarAssertion(), createCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543, "Europe/Berlin")).hasTime(3, 22, 46);
+        initialize(Raw.calendarAssertion(), createCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543, "Europe/Berlin")).hasTime(3, 22, 46);
+
+        try {
+            Raw.calendarAssertion().hasTime(1, 1, 1);
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), null).hasTime(1, 1, 1);
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), null, "Message").hasTime(1, 1, 1);
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC")).hasTime(16, 23, 47);
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's hour of day.\n\tActual and expected values should be the same.\n\tExpected:<16> but was:<15>");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC"), "Message").hasTime(16, 23, 47);
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's hour of day.\n\tActual and expected values should be the same.\n\tExpected:<16> but was:<15>");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC")).hasTime(15, 22, 47);
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's minute.\n\tActual and expected values should be the same.\n\tExpected:<22> but was:<23>");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC"), "Message").hasTime(15, 22, 47);
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's minute.\n\tActual and expected values should be the same.\n\tExpected:<22> but was:<23>");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC")).hasTime(15, 23, 45);
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's second.\n\tActual and expected values should be the same.\n\tExpected:<45> but was:<47>");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC"), "Message").hasTime(15, 23, 45);
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's second.\n\tActual and expected values should be the same.\n\tExpected:<45> but was:<47>");
+        }
     }
 
     /**
@@ -3289,7 +3355,85 @@ public class CalendarAssertionTest extends AssertionTest {
      */
     @Test
     public void hasTimeTimeZoneIdTest() {
-        // TODO
+        initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC")).hasTime(15, 23, 47, "UTC");
+        initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47, "UTC")).hasTime(15, 23, 47, "UTC");
+        initialize(Raw.calendarAssertion(), createCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543, "UTC")).hasTime(3, 22, 46, "UTC");
+        initialize(Raw.calendarAssertion(), createCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543, "UTC")).hasTime(3, 22, 46, "UTC");
+        initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "Asia/Vientiane")).hasTime(15, 23, 47, "Asia/Vientiane");
+        initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47, "Asia/Vientiane")).hasTime(15, 23, 47, "Asia/Vientiane");
+        initialize(Raw.calendarAssertion(), createCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543, "Asia/Vientiane")).hasTime(3, 22, 46, "Asia/Vientiane");
+        initialize(Raw.calendarAssertion(), createCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543, "Asia/Vientiane")).hasTime(3, 22, 46, "Asia/Vientiane");
+        initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "Europe/Berlin")).hasTime(15, 23, 47, "Europe/Berlin");
+        initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47, "Europe/Berlin")).hasTime(15, 23, 47, "Europe/Berlin");
+        initialize(Raw.calendarAssertion(), createCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543, "Europe/Berlin")).hasTime(3, 22, 46, "Europe/Berlin");
+        initialize(Raw.calendarAssertion(), createCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543, "Europe/Berlin")).hasTime(3, 22, 46, "Europe/Berlin");
+
+        try {
+            Raw.calendarAssertion().hasTime(1, 1, 1, "UTC");
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), null).hasTime(1, 1, 1, "UTC");
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), null, "Message").hasTime(1, 1, 1, "UTC");
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC")).hasTime(16, 23, 47, "UTC");
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's hour of day.\n\tActual and expected values should be the same.\n\tExpected:<16> but was:<15>");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC"), "Message").hasTime(16, 23, 47, "UTC");
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's hour of day.\n\tActual and expected values should be the same.\n\tExpected:<16> but was:<15>");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC")).hasTime(15, 22, 47, "UTC");
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's minute.\n\tActual and expected values should be the same.\n\tExpected:<22> but was:<23>");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC"), "Message").hasTime(15, 22, 47, "UTC");
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's minute.\n\tActual and expected values should be the same.\n\tExpected:<22> but was:<23>");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC")).hasTime(15, 23, 45, "UTC");
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's second.\n\tActual and expected values should be the same.\n\tExpected:<45> but was:<47>");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC"), "Message").hasTime(15, 23, 45, "UTC");
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's second.\n\tActual and expected values should be the same.\n\tExpected:<45> but was:<47>");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC")).hasTime(15, 23, 47, "Europe/Berlin");
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's time zone.\n\tCheck actual value's ID.\n\tActual and expected values should be the same.\n\tExpected:<Europe/Berlin> but was:<UTC>");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC"), "Message").hasTime(15, 23, 47, "Europe/Berlin");
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's time zone.\n\tCheck actual value's ID.\n\tActual and expected values should be the same.\n\tExpected:<Europe/Berlin> but was:<UTC>");
+        }
     }
 
     /**
@@ -3297,7 +3441,85 @@ public class CalendarAssertionTest extends AssertionTest {
      */
     @Test
     public void hasTimeMillisecondTest() {
-        // TODO
+        initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC")).hasTime(15, 23, 47, 0);
+        initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47, "UTC")).hasTime(15, 23, 47, 0);
+        initialize(Raw.calendarAssertion(), createCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543, "UTC")).hasTime(3, 22, 46, 543);
+        initialize(Raw.calendarAssertion(), createCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543, "UTC")).hasTime(3, 22, 46, 543);
+        initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "Asia/Vientiane")).hasTime(15, 23, 47, 0);
+        initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47, "Asia/Vientiane")).hasTime(15, 23, 47, 0);
+        initialize(Raw.calendarAssertion(), createCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543, "Asia/Vientiane")).hasTime(3, 22, 46, 543);
+        initialize(Raw.calendarAssertion(), createCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543, "Asia/Vientiane")).hasTime(3, 22, 46, 543);
+        initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "Europe/Berlin")).hasTime(15, 23, 47, 0);
+        initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47, "Europe/Berlin")).hasTime(15, 23, 47, 0);
+        initialize(Raw.calendarAssertion(), createCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543, "Europe/Berlin")).hasTime(3, 22, 46, 543);
+        initialize(Raw.calendarAssertion(), createCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543, "Europe/Berlin")).hasTime(3, 22, 46, 543);
+
+        try {
+            Raw.calendarAssertion().hasTime(1, 1, 1, 1);
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), null).hasTime(1, 1, 1, 1);
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), null, "Message").hasTime(1, 1, 1, 1);
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "UTC")).hasTime(16, 23, 47, 345);
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's hour of day.\n\tActual and expected values should be the same.\n\tExpected:<16> but was:<15>");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "UTC"), "Message").hasTime(16, 23, 47, 345);
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's hour of day.\n\tActual and expected values should be the same.\n\tExpected:<16> but was:<15>");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "UTC")).hasTime(15, 22, 47, 345);
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's minute.\n\tActual and expected values should be the same.\n\tExpected:<22> but was:<23>");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "UTC"), "Message").hasTime(15, 22, 47, 345);
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's minute.\n\tActual and expected values should be the same.\n\tExpected:<22> but was:<23>");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "UTC")).hasTime(15, 23, 45, 345);
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's second.\n\tActual and expected values should be the same.\n\tExpected:<45> but was:<47>");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "UTC"), "Message").hasTime(15, 23, 45, 345);
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's second.\n\tActual and expected values should be the same.\n\tExpected:<45> but was:<47>");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "UTC")).hasTime(15, 23, 47, 555);
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's millisecond.\n\tActual and expected values should be the same.\n\tExpected:<555> but was:<345>");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "UTC"), "Message").hasTime(15, 23, 47, 555);
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's millisecond.\n\tActual and expected values should be the same.\n\tExpected:<555> but was:<345>");
+        }
     }
 
     /**
@@ -3305,7 +3527,98 @@ public class CalendarAssertionTest extends AssertionTest {
      */
     @Test
     public void hasTimeMillisecondTimeZoneIdTest() {
-        // TODO
+        initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC")).hasTime(15, 23, 47, 0, "UTC");
+        initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47, "UTC")).hasTime(15, 23, 47, 0, "UTC");
+        initialize(Raw.calendarAssertion(), createCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543, "UTC")).hasTime(3, 22, 46, 543, "UTC");
+        initialize(Raw.calendarAssertion(), createCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543, "UTC")).hasTime(3, 22, 46, 543, "UTC");
+        initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "Asia/Vientiane")).hasTime(15, 23, 47, 0, "Asia/Vientiane");
+        initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47, "Asia/Vientiane")).hasTime(15, 23, 47, 0, "Asia/Vientiane");
+        initialize(Raw.calendarAssertion(), createCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543, "Asia/Vientiane")).hasTime(3, 22, 46, 543, "Asia/Vientiane");
+        initialize(Raw.calendarAssertion(), createCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543, "Asia/Vientiane")).hasTime(3, 22, 46, 543, "Asia/Vientiane");
+        initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "Europe/Berlin")).hasTime(15, 23, 47, 0, "Europe/Berlin");
+        initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47, "Europe/Berlin")).hasTime(15, 23, 47, 0, "Europe/Berlin");
+        initialize(Raw.calendarAssertion(), createCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543, "Europe/Berlin")).hasTime(3, 22, 46, 543, "Europe/Berlin");
+        initialize(Raw.calendarAssertion(), createCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543, "Europe/Berlin")).hasTime(3, 22, 46, 543, "Europe/Berlin");
+
+        try {
+            Raw.calendarAssertion().hasTime(1, 1, 1, 1, "UTC");
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), null).hasTime(1, 1, 1, 1, "UTC");
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), null, "Message").hasTime(1, 1, 1, 1, "UTC");
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "UTC")).hasTime(16, 23, 47, 345, "UTC");
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's hour of day.\n\tActual and expected values should be the same.\n\tExpected:<16> but was:<15>");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "UTC"), "Message").hasTime(16, 23, 47, 345, "UTC");
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's hour of day.\n\tActual and expected values should be the same.\n\tExpected:<16> but was:<15>");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "UTC")).hasTime(15, 22, 47, 345, "UTC");
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's minute.\n\tActual and expected values should be the same.\n\tExpected:<22> but was:<23>");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "UTC"), "Message").hasTime(15, 22, 47, 345, "UTC");
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's minute.\n\tActual and expected values should be the same.\n\tExpected:<22> but was:<23>");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "UTC")).hasTime(15, 23, 45, 345, "UTC");
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's second.\n\tActual and expected values should be the same.\n\tExpected:<45> but was:<47>");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "UTC"), "Message").hasTime(15, 23, 45, 345, "UTC");
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's second.\n\tActual and expected values should be the same.\n\tExpected:<45> but was:<47>");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "UTC")).hasTime(15, 23, 47, 555, "UTC");
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's millisecond.\n\tActual and expected values should be the same.\n\tExpected:<555> but was:<345>");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "UTC"), "Message").hasTime(15, 23, 47, 555, "UTC");
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's millisecond.\n\tActual and expected values should be the same.\n\tExpected:<555> but was:<345>");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "UTC")).hasTime(15, 23, 47, 345, "Europe/Berlin");
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's time zone.\n\tCheck actual value's ID.\n\tActual and expected values should be the same.\n\tExpected:<Europe/Berlin> but was:<UTC>");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "UTC"), "Message").hasTime(15, 23, 47, 345, "Europe/Berlin");
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's time zone.\n\tCheck actual value's ID.\n\tActual and expected values should be the same.\n\tExpected:<Europe/Berlin> but was:<UTC>");
+        }
+
     }
 
     /**
