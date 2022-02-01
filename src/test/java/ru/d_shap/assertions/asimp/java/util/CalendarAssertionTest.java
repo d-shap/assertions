@@ -5559,7 +5559,20 @@ public class CalendarAssertionTest extends AssertionTest {
      */
     @Test
     public void isNullTest() {
-        // TODO
+        initialize(Raw.calendarAssertion(), null).isNull();
+
+        try {
+            initialize(Raw.calendarAssertion(), createUtcCalendar(2020, Calendar.JULY, 11, 15, 23, 47)).isNull();
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should be null.\n\tActual:<2020-07-11T15:23:47.000+0000>");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), createUtcCalendar(2020, Calendar.JULY, 11, 15, 23, 47), "Message").isNull();
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be null.\n\tActual:<2020-07-11T15:23:47.000+0000>");
+        }
     }
 
     /**
@@ -5567,7 +5580,21 @@ public class CalendarAssertionTest extends AssertionTest {
      */
     @Test
     public void isSameAsTest() {
-        // TODO
+        Calendar value = createUtcCalendar(2020, Calendar.JULY, 11, 15, 23, 47);
+        initialize(Raw.calendarAssertion(), value).isSameAs(value);
+
+        try {
+            initialize(Raw.calendarAssertion(), value).isSameAs(createUtcCalendar(2020, Calendar.JULY, 11, 15, 23, 47));
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should point to the same object.\n\tExpected:<2020-07-11T15:23:47.000+0000> but was:<2020-07-11T15:23:47.000+0000>");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), value, "Message").isSameAs(createUtcCalendar(2020, Calendar.JULY, 11, 15, 23, 47));
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should point to the same object.\n\tExpected:<2020-07-11T15:23:47.000+0000> but was:<2020-07-11T15:23:47.000+0000>");
+        }
     }
 
     /**
@@ -5575,7 +5602,21 @@ public class CalendarAssertionTest extends AssertionTest {
      */
     @Test
     public void isNotSameAsTest() {
-        // TODO
+        Calendar value = createUtcCalendar(2020, Calendar.JULY, 11, 15, 23, 47);
+        initialize(Raw.calendarAssertion(), value).isNotSameAs(createUtcCalendar(2020, Calendar.JULY, 11, 15, 23, 47));
+
+        try {
+            initialize(Raw.calendarAssertion(), value).isNotSameAs(value);
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should point to the different objects.\n\tActual:<2020-07-11T15:23:47.000+0000>");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), value, "Message").isNotSameAs(value);
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should point to the different objects.\n\tActual:<2020-07-11T15:23:47.000+0000>");
+        }
     }
 
 }
