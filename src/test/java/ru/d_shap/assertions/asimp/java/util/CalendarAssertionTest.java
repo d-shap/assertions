@@ -5509,7 +5509,49 @@ public class CalendarAssertionTest extends AssertionTest {
      */
     @Test
     public void toUtcTimeZoneCalendarTest() {
-        // TODO
+        initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC")).toUtcTimeZoneCalendar().isEqualTo(createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC"));
+        initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47, "UTC")).toUtcTimeZoneCalendar().isEqualTo(createCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47, "UTC"));
+        initialize(Raw.calendarAssertion(), createCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543, "UTC")).toUtcTimeZoneCalendar().isEqualTo(createCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543, "UTC"));
+        initialize(Raw.calendarAssertion(), createCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543, "UTC")).toUtcTimeZoneCalendar().isEqualTo(createCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543, "UTC"));
+        initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "Asia/Vientiane")).toUtcTimeZoneCalendar().isEqualTo(createCalendar(2020, Calendar.JULY, 11, 8, 23, 47, "UTC"));
+        initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47, "Asia/Vientiane")).toUtcTimeZoneCalendar().isEqualTo(createCalendar(2020, Calendar.DECEMBER, 11, 8, 23, 47, "UTC"));
+        initialize(Raw.calendarAssertion(), createCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543, "Asia/Vientiane")).toUtcTimeZoneCalendar().isEqualTo(createCalendar(1324, Calendar.JULY, 20, 20, 22, 46, 543, "UTC"));
+        initialize(Raw.calendarAssertion(), createCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543, "Asia/Vientiane")).toUtcTimeZoneCalendar().isEqualTo(createCalendar(1324, Calendar.DECEMBER, 20, 20, 22, 46, 543, "UTC"));
+        initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "Europe/Berlin")).toUtcTimeZoneCalendar().isEqualTo(createCalendar(2020, Calendar.JULY, 11, 13, 23, 47, "UTC"));
+        initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47, "Europe/Berlin")).toUtcTimeZoneCalendar().isEqualTo(createCalendar(2020, Calendar.DECEMBER, 11, 14, 23, 47, "UTC"));
+        initialize(Raw.calendarAssertion(), createCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543, "Europe/Berlin")).toUtcTimeZoneCalendar().isEqualTo(createCalendar(1324, Calendar.JULY, 21, 2, 22, 46, 543, "UTC"));
+        initialize(Raw.calendarAssertion(), createCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543, "Europe/Berlin")).toUtcTimeZoneCalendar().isEqualTo(createCalendar(1324, Calendar.DECEMBER, 21, 2, 22, 46, 543, "UTC"));
+
+        try {
+            Raw.calendarAssertion().toUtcTimeZoneCalendar();
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), null).toUtcTimeZoneCalendar();
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), null, "Message").toUtcTimeZoneCalendar();
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "Asia/Vientiane")).toUtcTimeZoneCalendar().isEqualTo(createCalendar(2020, Calendar.JULY, 10, 8, 23, 47, "UTC"));
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's date in time zone: UTC.\n\tActual and expected values should be the same.\n\tExpected:<2020-07-10T08:23:47.000+0000> but was:<2020-07-11T08:23:47.000+0000>");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "Asia/Vientiane"), "Message").toUtcTimeZoneCalendar().isEqualTo(createCalendar(2020, Calendar.JULY, 10, 8, 23, 47, "UTC"));
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's date in time zone: UTC.\n\tActual and expected values should be the same.\n\tExpected:<2020-07-10T08:23:47.000+0000> but was:<2020-07-11T08:23:47.000+0000>");
+        }
     }
 
     /**
