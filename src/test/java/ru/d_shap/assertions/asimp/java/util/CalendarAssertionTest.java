@@ -801,7 +801,138 @@ public class CalendarAssertionTest extends AssertionTest {
      */
     @Test
     public void isNotInRangeTest() {
-        // TODO
+        initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "UTC")).isNotInRange(createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "UTC"), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "UTC"));
+        initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "UTC")).isNotInRange(createCalendar(2018, Calendar.JULY, 11, 15, 23, 47, 345, "UTC"), createCalendar(2019, Calendar.JULY, 11, 15, 23, 47, 345, "UTC"));
+        initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "UTC")).isNotInRange(createCalendar(2021, Calendar.JULY, 11, 15, 23, 47, 345, "UTC"), createCalendar(2022, Calendar.JULY, 11, 15, 23, 47, 345, "UTC"));
+        initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "UTC")).isNotInRange(createCalendar(2020, Calendar.MAY, 11, 15, 23, 47, 345, "UTC"), createCalendar(2020, Calendar.JUNE, 11, 15, 23, 47, 345, "UTC"));
+        initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "UTC")).isNotInRange(createCalendar(2020, Calendar.AUGUST, 11, 15, 23, 47, 345, "UTC"), createCalendar(2020, Calendar.SEPTEMBER, 11, 15, 23, 47, 345, "UTC"));
+        initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "UTC")).isNotInRange(createCalendar(2020, Calendar.JULY, 9, 15, 23, 47, 345, "UTC"), createCalendar(2020, Calendar.JULY, 10, 15, 23, 47, 345, "UTC"));
+        initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "UTC")).isNotInRange(createCalendar(2020, Calendar.JULY, 12, 15, 23, 47, 345, "UTC"), createCalendar(2020, Calendar.JULY, 13, 15, 23, 47, 345, "UTC"));
+        initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "UTC")).isNotInRange(createCalendar(2020, Calendar.JULY, 11, 13, 23, 47, 345, "UTC"), createCalendar(2020, Calendar.JULY, 11, 14, 23, 47, 345, "UTC"));
+        initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "UTC")).isNotInRange(createCalendar(2020, Calendar.JULY, 11, 16, 23, 47, 345, "UTC"), createCalendar(2020, Calendar.JULY, 11, 17, 23, 47, 345, "UTC"));
+        initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "UTC")).isNotInRange(createCalendar(2020, Calendar.JULY, 11, 15, 21, 47, 345, "UTC"), createCalendar(2020, Calendar.JULY, 11, 15, 22, 47, 345, "UTC"));
+        initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "UTC")).isNotInRange(createCalendar(2020, Calendar.JULY, 11, 15, 24, 47, 345, "UTC"), createCalendar(2020, Calendar.JULY, 11, 15, 25, 47, 345, "UTC"));
+        initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "UTC")).isNotInRange(createCalendar(2020, Calendar.JULY, 11, 15, 23, 45, 345, "UTC"), createCalendar(2020, Calendar.JULY, 11, 15, 23, 46, 345, "UTC"));
+        initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "UTC")).isNotInRange(createCalendar(2020, Calendar.JULY, 11, 15, 23, 48, 345, "UTC"), createCalendar(2020, Calendar.JULY, 11, 15, 23, 49, 345, "UTC"));
+        initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "UTC")).isNotInRange(createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 343, "UTC"), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 344, "UTC"));
+        initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "UTC")).isNotInRange(createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 346, "UTC"), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 347, "UTC"));
+        initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "Asia/Vientiane")).isNotInRange(createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "Europe/Berlin"), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "UTC"));
+        initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "UTC")).isNotInRange(createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "Asia/Vientiane"), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "Europe/Berlin"));
+
+        try {
+            Raw.calendarAssertion().isNotInRange(createCalendar(1, 1, 1, 1, 1, 1, 1, "UTC"), createCalendar(1, 1, 1, 1, 1, 1, 1, "UTC"));
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), null).isNotInRange(createCalendar(1, 1, 1, 1, 1, 1, 1, "UTC"), createCalendar(1, 1, 1, 1, 1, 1, 1, "UTC"));
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), null, "Message").isNotInRange(createCalendar(1, 1, 1, 1, 1, 1, 1, "UTC"), createCalendar(1, 1, 1, 1, 1, 1, 1, "UTC"));
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), null).isNotInRange(null, createCalendar(1, 1, 1, 1, 1, 1, 1, "UTC"));
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), null, "Message").isNotInRange(null, createCalendar(1, 1, 1, 1, 1, 1, 1, "UTC"));
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), null).isNotInRange(createCalendar(1, 1, 1, 1, 1, 1, 1, "UTC"), null);
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), null, "Message").isNotInRange(createCalendar(1, 1, 1, 1, 1, 1, 1, "UTC"), null);
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), createCalendar(1, 1, 1, 1, 1, 1, 1, "UTC")).isNotInRange(null, createCalendar(1, 1, 1, 1, 1, 1, 1, "UTC"));
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expectedFrom.");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), createCalendar(1, 1, 1, 1, 1, 1, 1, "UTC"), "Message").isNotInRange(null, createCalendar(1, 1, 1, 1, 1, 1, 1, "UTC"));
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expectedFrom.");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), createCalendar(1, 1, 1, 1, 1, 1, 1, "UTC")).isNotInRange(null, null);
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expectedFrom.");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), createCalendar(1, 1, 1, 1, 1, 1, 1, "UTC"), "Message").isNotInRange(null, null);
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expectedFrom.");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), createCalendar(1, 1, 1, 1, 1, 1, 1, "UTC")).isNotInRange(createCalendar(1, 1, 1, 1, 1, 1, 1, "UTC"), null);
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expectedTo.");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), createCalendar(1, 1, 1, 1, 1, 1, 1, "UTC"), "Message").isNotInRange(createCalendar(1, 1, 1, 1, 1, 1, 1, "UTC"), null);
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expectedTo.");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "UTC")).isNotInRange(createCalendar(2019, Calendar.JULY, 11, 15, 23, 47, 345, "UTC"), createCalendar(2021, Calendar.JULY, 11, 15, 23, 47, 345, "UTC"));
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be in the expected range.\n\tExpected:<2019-07-11T15:23:47.345+0000:2021-07-11T15:23:47.345+0000> but was:<2020-07-11T15:23:47.345+0000>");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "UTC"), "Message").isNotInRange(createCalendar(2019, Calendar.JULY, 11, 15, 23, 47, 345, "UTC"), createCalendar(2021, Calendar.JULY, 11, 15, 23, 47, 345, "UTC"));
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be in the expected range.\n\tExpected:<2019-07-11T15:23:47.345+0000:2021-07-11T15:23:47.345+0000> but was:<2020-07-11T15:23:47.345+0000>");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "UTC")).isNotInRange(createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "UTC"), createCalendar(2021, Calendar.JULY, 11, 15, 23, 47, 345, "UTC"));
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be in the expected range.\n\tExpected:<2020-07-11T15:23:47.345+0000:2021-07-11T15:23:47.345+0000> but was:<2020-07-11T15:23:47.345+0000>");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "UTC"), "Message").isNotInRange(createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "UTC"), createCalendar(2021, Calendar.JULY, 11, 15, 23, 47, 345, "UTC"));
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be in the expected range.\n\tExpected:<2020-07-11T15:23:47.345+0000:2021-07-11T15:23:47.345+0000> but was:<2020-07-11T15:23:47.345+0000>");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "Europe/Berlin")).isNotInRange(createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "Asia/Vientiane"), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "UTC"));
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be in the expected range.\n\tExpected:<2020-07-11T15:23:47.345+0700:2020-07-11T15:23:47.345+0000> but was:<2020-07-11T15:23:47.345+0200>");
+        }
+        try {
+            initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "Europe/Berlin"), "Message").isNotInRange(createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "Asia/Vientiane"), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "UTC"));
+            Assertions.fail("CalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be in the expected range.\n\tExpected:<2020-07-11T15:23:47.345+0700:2020-07-11T15:23:47.345+0000> but was:<2020-07-11T15:23:47.345+0200>");
+        }
     }
 
     /**
