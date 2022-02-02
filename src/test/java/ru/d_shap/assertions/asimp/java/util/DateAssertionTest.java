@@ -3516,7 +3516,20 @@ public class DateAssertionTest extends AssertionTest {
      */
     @Test
     public void isNullTest() {
-        // TODO
+        initialize(Raw.dateAssertion(), null).isNull();
+
+        try {
+            initialize(Raw.dateAssertion(), createDate(2020, Calendar.JULY, 11, 15, 23, 47)).isNull();
+            Assertions.fail("DateAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should be null.\n\tActual:<2020-07-11T15:23:47.000>");
+        }
+        try {
+            initialize(Raw.dateAssertion(), createDate(2020, Calendar.JULY, 11, 15, 23, 47), "Message").isNull();
+            Assertions.fail("DateAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be null.\n\tActual:<2020-07-11T15:23:47.000>");
+        }
     }
 
     /**
@@ -3524,7 +3537,21 @@ public class DateAssertionTest extends AssertionTest {
      */
     @Test
     public void isSameAsTest() {
-        // TODO
+        Date value = createDate(2020, Calendar.JULY, 11, 15, 23, 47);
+        initialize(Raw.dateAssertion(), value).isSameAs(value);
+
+        try {
+            initialize(Raw.dateAssertion(), value).isSameAs(createDate(2020, Calendar.JULY, 11, 15, 23, 47));
+            Assertions.fail("DateAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should point to the same object.\n\tExpected:<2020-07-11T15:23:47.000> but was:<2020-07-11T15:23:47.000>");
+        }
+        try {
+            initialize(Raw.dateAssertion(), value, "Message").isSameAs(createDate(2020, Calendar.JULY, 11, 15, 23, 47));
+            Assertions.fail("DateAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should point to the same object.\n\tExpected:<2020-07-11T15:23:47.000> but was:<2020-07-11T15:23:47.000>");
+        }
     }
 
     /**
@@ -3532,7 +3559,21 @@ public class DateAssertionTest extends AssertionTest {
      */
     @Test
     public void isNotSameAsTest() {
-        // TODO
+        Date value = createDate(2020, Calendar.JULY, 11, 15, 23, 47);
+        initialize(Raw.dateAssertion(), value).isNotSameAs(createDate(2020, Calendar.JULY, 11, 15, 23, 47));
+
+        try {
+            initialize(Raw.dateAssertion(), value).isNotSameAs(value);
+            Assertions.fail("DateAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should point to the different objects.\n\tActual:<2020-07-11T15:23:47.000>");
+        }
+        try {
+            initialize(Raw.dateAssertion(), value, "Message").isNotSameAs(value);
+            Assertions.fail("DateAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should point to the different objects.\n\tActual:<2020-07-11T15:23:47.000>");
+        }
     }
 
 }
