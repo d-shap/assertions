@@ -19,6 +19,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.asimp.java.util;
 
+import java.util.Calendar;
 import java.util.Date;
 
 import org.junit.Test;
@@ -67,7 +68,77 @@ public class DateAssertionTest extends AssertionTest {
      */
     @Test
     public void isEqualToTest() {
-        // TODO
+        initialize(Raw.dateAssertion(), createDate(2020, Calendar.JULY, 11, 15, 23, 47)).isEqualTo(createDate(2020, Calendar.JULY, 11, 15, 23, 47));
+        initialize(Raw.dateAssertion(), createDate(2020, Calendar.DECEMBER, 11, 15, 23, 47)).isEqualTo(createDate(2020, Calendar.DECEMBER, 11, 15, 23, 47));
+        initialize(Raw.dateAssertion(), createDate(1324, Calendar.JULY, 21, 3, 22, 46, 543)).isEqualTo(createDate(1324, Calendar.JULY, 21, 3, 22, 46, 543));
+        initialize(Raw.dateAssertion(), createDate(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).isEqualTo(createDate(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543));
+
+        try {
+            Raw.dateAssertion().isEqualTo(createDate(1, 1, 1, 1, 1, 1));
+            Assertions.fail("DateAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.dateAssertion(), null).isEqualTo(createDate(1, 1, 1, 1, 1, 1));
+            Assertions.fail("DateAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.dateAssertion(), null, "Message").isEqualTo(createDate(1, 1, 1, 1, 1, 1));
+            Assertions.fail("DateAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.dateAssertion(), null).isEqualTo(null);
+            Assertions.fail("DateAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.dateAssertion(), null, "Message").isEqualTo(null);
+            Assertions.fail("DateAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.dateAssertion(), createDate(2020, Calendar.JULY, 11, 15, 23, 47)).isEqualTo(null);
+            Assertions.fail("DateAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
+        }
+        try {
+            initialize(Raw.dateAssertion(), createDate(2020, Calendar.JULY, 11, 15, 23, 47), "Message").isEqualTo(null);
+            Assertions.fail("DateAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
+        }
+        try {
+            initialize(Raw.dateAssertion(), createDate(2020, Calendar.JULY, 11, 15, 23, 47, 345)).isEqualTo(createDate(2019, Calendar.AUGUST, 12, 16, 22, 46, 555));
+            Assertions.fail("DateAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<2019-08-12T16:22:46.555> but was:<2020-07-11T15:23:47.345>");
+        }
+        try {
+            initialize(Raw.dateAssertion(), createDate(2020, Calendar.JULY, 11, 15, 23, 47, 345), "Message").isEqualTo(createDate(2019, Calendar.AUGUST, 12, 16, 22, 46, 555));
+            Assertions.fail("DateAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be the same.\n\tExpected:<2019-08-12T16:22:46.555> but was:<2020-07-11T15:23:47.345>");
+        }
+        try {
+            initialize(Raw.dateAssertion(), createDate(2020, Calendar.JULY, 11, 15, 23, 47)).isEqualTo(createDate(2020, Calendar.JULY, 11, 17, 23, 47));
+            Assertions.fail("DateAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<2020-07-11T17:23:47.000> but was:<2020-07-11T15:23:47.000>");
+        }
+        try {
+            initialize(Raw.dateAssertion(), createDate(2020, Calendar.JULY, 11, 15, 23, 47), "Message").isEqualTo(createDate(2020, Calendar.JULY, 11, 17, 23, 47));
+            Assertions.fail("DateAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be the same.\n\tExpected:<2020-07-11T17:23:47.000> but was:<2020-07-11T15:23:47.000>");
+        }
     }
 
     /**
@@ -75,7 +146,79 @@ public class DateAssertionTest extends AssertionTest {
      */
     @Test
     public void isNotEqualToTest() {
-        // TODO
+        initialize(Raw.dateAssertion(), createDate(2020, Calendar.JULY, 11, 15, 23, 47)).isNotEqualTo(createDate(2019, Calendar.JULY, 11, 15, 23, 47));
+        initialize(Raw.dateAssertion(), createDate(2020, Calendar.JULY, 11, 15, 23, 47)).isNotEqualTo(createDate(2020, Calendar.AUGUST, 11, 15, 23, 47));
+        initialize(Raw.dateAssertion(), createDate(2020, Calendar.JULY, 11, 15, 23, 47)).isNotEqualTo(createDate(2020, Calendar.JULY, 12, 15, 23, 47));
+        initialize(Raw.dateAssertion(), createDate(2020, Calendar.JULY, 11, 15, 23, 47)).isNotEqualTo(createDate(2020, Calendar.JULY, 11, 16, 23, 47));
+        initialize(Raw.dateAssertion(), createDate(2020, Calendar.JULY, 11, 15, 23, 47)).isNotEqualTo(createDate(2020, Calendar.JULY, 11, 15, 22, 47));
+        initialize(Raw.dateAssertion(), createDate(2020, Calendar.JULY, 11, 15, 23, 47)).isNotEqualTo(createDate(2020, Calendar.JULY, 11, 15, 23, 46));
+
+        try {
+            Raw.dateAssertion().isNotEqualTo(createDate(1, 1, 1, 1, 1, 1));
+            Assertions.fail("DateAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.dateAssertion(), null).isNotEqualTo(createDate(1, 1, 1, 1, 1, 1));
+            Assertions.fail("DateAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.dateAssertion(), null, "Message").isNotEqualTo(createDate(1, 1, 1, 1, 1, 1));
+            Assertions.fail("DateAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.dateAssertion(), null).isNotEqualTo(null);
+            Assertions.fail("DateAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.dateAssertion(), null, "Message").isNotEqualTo(null);
+            Assertions.fail("DateAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.dateAssertion(), createDate(2020, Calendar.JULY, 11, 15, 23, 47)).isNotEqualTo(null);
+            Assertions.fail("DateAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
+        }
+        try {
+            initialize(Raw.dateAssertion(), createDate(2020, Calendar.JULY, 11, 15, 23, 47), "Message").isNotEqualTo(null);
+            Assertions.fail("DateAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
+        }
+        try {
+            initialize(Raw.dateAssertion(), createDate(2020, Calendar.JULY, 11, 15, 23, 47, 345)).isNotEqualTo(createDate(2020, Calendar.JULY, 11, 15, 23, 47, 345));
+            Assertions.fail("DateAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be different.\n\tActual:<2020-07-11T15:23:47.345>");
+        }
+        try {
+            initialize(Raw.dateAssertion(), createDate(2020, Calendar.JULY, 11, 15, 23, 47, 345), "Message").isNotEqualTo(createDate(2020, Calendar.JULY, 11, 15, 23, 47, 345));
+            Assertions.fail("DateAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be different.\n\tActual:<2020-07-11T15:23:47.345>");
+        }
+        try {
+            initialize(Raw.dateAssertion(), createDate(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).isNotEqualTo(createDate(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543));
+            Assertions.fail("DateAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be different.\n\tActual:<1324-12-21T03:22:46.543>");
+        }
+        try {
+            initialize(Raw.dateAssertion(), createDate(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543), "Message").isNotEqualTo(createDate(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543));
+            Assertions.fail("DateAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be different.\n\tActual:<1324-12-21T03:22:46.543>");
+        }
     }
 
     /**
