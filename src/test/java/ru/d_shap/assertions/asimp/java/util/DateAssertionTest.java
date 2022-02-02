@@ -62,4 +62,476 @@ public class DateAssertionTest extends AssertionTest {
         }
     }
 
+    /**
+     * {@link DateAssertion} class test.
+     */
+    @Test
+    public void isEqualToTest() {
+        // TODO
+    }
+
+    /**
+     * {@link DateAssertion} class test.
+     */
+    @Test
+    public void isNotEqualToTest() {
+        // TODO
+    }
+
+    /**
+     * {@link DateAssertion} class test.
+     */
+    @Test
+    public void isGreaterThanTest() {
+        // TODO
+    }
+
+    /**
+     * {@link DateAssertion} class test.
+     */
+    @Test
+    public void isGreaterThanOrEqualToTest() {
+        // TODO
+    }
+
+    /**
+     * {@link DateAssertion} class test.
+     */
+    @Test
+    public void isLessThanTest() {
+        // TODO
+    }
+
+    /**
+     * {@link DateAssertion} class test.
+     */
+    @Test
+    public void isLessThanOrEqualToTest() {
+        // TODO
+    }
+
+    /**
+     * {@link DateAssertion} class test.
+     */
+    @Test
+    public void isInRangeTest() {
+        // TODO
+    }
+
+    /**
+     * {@link DateAssertion} class test.
+     */
+    @Test
+    public void isNotInRangeTest() {
+        // TODO
+    }
+
+    /**
+     * {@link DateAssertion} class test.
+     */
+    @Test
+    public void toYearTest() {
+        // TODO
+    }
+
+    /**
+     * {@link DateAssertion} class test.
+     */
+    @Test
+    public void toYearMatcherTest() {
+        // TODO
+    }
+
+    /**
+     * {@link DateAssertion} class test.
+     */
+    @Test
+    public void hasYearTest() {
+        // TODO
+    }
+
+    /**
+     * {@link DateAssertion} class test.
+     */
+    @Test
+    public void toMonthTest() {
+        // TODO
+    }
+
+    /**
+     * {@link DateAssertion} class test.
+     */
+    @Test
+    public void toMonthMatcherTest() {
+        // TODO
+    }
+
+    /**
+     * {@link DateAssertion} class test.
+     */
+    @Test
+    public void hasMonthTest() {
+        // TODO
+    }
+
+    /**
+     * {@link DateAssertion} class test.
+     */
+    @Test
+    public void toWeekOfYearTest() {
+        // TODO
+    }
+
+    /**
+     * {@link DateAssertion} class test.
+     */
+    @Test
+    public void toWeekOfYearMatcherTest() {
+        // TODO
+    }
+
+    /**
+     * {@link DateAssertion} class test.
+     */
+    @Test
+    public void hasWeekOfYearTest() {
+        // TODO
+    }
+
+    /**
+     * {@link DateAssertion} class test.
+     */
+    @Test
+    public void toWeekOfMonthTest() {
+        // TODO
+    }
+
+    /**
+     * {@link DateAssertion} class test.
+     */
+    @Test
+    public void toWeekOfMonthMatcherTest() {
+        // TODO
+    }
+
+    /**
+     * {@link DateAssertion} class test.
+     */
+    @Test
+    public void hasWeekOfMonthTest() {
+        // TODO
+    }
+
+    /**
+     * {@link DateAssertion} class test.
+     */
+    @Test
+    public void toDayOfYearTest() {
+        // TODO
+    }
+
+    /**
+     * {@link DateAssertion} class test.
+     */
+    @Test
+    public void toDayOfYearMatcherTest() {
+        // TODO
+    }
+
+    /**
+     * {@link DateAssertion} class test.
+     */
+    @Test
+    public void hasDayOfYearTest() {
+        // TODO
+    }
+
+    /**
+     * {@link DateAssertion} class test.
+     */
+    @Test
+    public void toDayOfMonthTest() {
+        // TODO
+    }
+
+    /**
+     * {@link DateAssertion} class test.
+     */
+    @Test
+    public void toDayOfMonthMatcherTest() {
+        // TODO
+    }
+
+    /**
+     * {@link DateAssertion} class test.
+     */
+    @Test
+    public void hasDayOfMonthTest() {
+        // TODO
+    }
+
+    /**
+     * {@link DateAssertion} class test.
+     */
+    @Test
+    public void toDayOfWeekInMonthTest() {
+        // TODO
+    }
+
+    /**
+     * {@link DateAssertion} class test.
+     */
+    @Test
+    public void toDayOfWeekInMonthMatcherTest() {
+        // TODO
+    }
+
+    /**
+     * {@link DateAssertion} class test.
+     */
+    @Test
+    public void hasDayOfWeekInMonthTest() {
+        // TODO
+    }
+
+    /**
+     * {@link DateAssertion} class test.
+     */
+    @Test
+    public void toDayOfWeekTest() {
+        // TODO
+    }
+
+    /**
+     * {@link DateAssertion} class test.
+     */
+    @Test
+    public void toDayOfWeekMatcherTest() {
+        // TODO
+    }
+
+    /**
+     * {@link DateAssertion} class test.
+     */
+    @Test
+    public void hasDayOfWeekTest() {
+        // TODO
+    }
+
+    /**
+     * {@link DateAssertion} class test.
+     */
+    @Test
+    public void toAmPmTest() {
+        // TODO
+    }
+
+    /**
+     * {@link DateAssertion} class test.
+     */
+    @Test
+    public void toAmPmMatcherTest() {
+        // TODO
+    }
+
+    /**
+     * {@link DateAssertion} class test.
+     */
+    @Test
+    public void isAmTest() {
+        // TODO
+    }
+
+    /**
+     * {@link DateAssertion} class test.
+     */
+    @Test
+    public void isPmTest() {
+        // TODO
+    }
+
+    /**
+     * {@link DateAssertion} class test.
+     */
+    @Test
+    public void toHourOfDayTest() {
+        // TODO
+    }
+
+    /**
+     * {@link DateAssertion} class test.
+     */
+    @Test
+    public void toHourOfDayMatcherTest() {
+        // TODO
+    }
+
+    /**
+     * {@link DateAssertion} class test.
+     */
+    @Test
+    public void hasHourOfDayTest() {
+        // TODO
+    }
+
+    /**
+     * {@link DateAssertion} class test.
+     */
+    @Test
+    public void toHourTest() {
+        // TODO
+    }
+
+    /**
+     * {@link DateAssertion} class test.
+     */
+    @Test
+    public void toHourMatcherTest() {
+        // TODO
+    }
+
+    /**
+     * {@link DateAssertion} class test.
+     */
+    @Test
+    public void hasHourTest() {
+        // TODO
+    }
+
+    /**
+     * {@link DateAssertion} class test.
+     */
+    @Test
+    public void toMinuteTest() {
+        // TODO
+    }
+
+    /**
+     * {@link DateAssertion} class test.
+     */
+    @Test
+    public void toMinuteMatcherTest() {
+        // TODO
+    }
+
+    /**
+     * {@link DateAssertion} class test.
+     */
+    @Test
+    public void hasMinuteTest() {
+        // TODO
+    }
+
+    /**
+     * {@link DateAssertion} class test.
+     */
+    @Test
+    public void toSecondTest() {
+        // TODO
+    }
+
+    /**
+     * {@link DateAssertion} class test.
+     */
+    @Test
+    public void toSecondMatcherTest() {
+        // TODO
+    }
+
+    /**
+     * {@link DateAssertion} class test.
+     */
+    @Test
+    public void hasSecondTest() {
+        // TODO
+    }
+
+    /**
+     * {@link DateAssertion} class test.
+     */
+    @Test
+    public void toMillisecondTest() {
+        // TODO
+    }
+
+    /**
+     * {@link DateAssertion} class test.
+     */
+    @Test
+    public void toMillisecondMatcherTest() {
+        // TODO
+    }
+
+    /**
+     * {@link DateAssertion} class test.
+     */
+    @Test
+    public void hasMillisecondTest() {
+        // TODO
+    }
+
+    /**
+     * {@link DateAssertion} class test.
+     */
+    @Test
+    public void hasDateTest() {
+        // TODO
+    }
+
+    /**
+     * {@link DateAssertion} class test.
+     */
+    @Test
+    public void hasTimeTest() {
+        // TODO
+    }
+
+    /**
+     * {@link DateAssertion} class test.
+     */
+    @Test
+    public void hasTimeMillisecondTest() {
+        // TODO
+    }
+
+    /**
+     * {@link DateAssertion} class test.
+     */
+    @Test
+    public void hasDateAndTimeTest() {
+        // TODO
+    }
+
+    /**
+     * {@link DateAssertion} class test.
+     */
+    @Test
+    public void hasDateAndTimeMillisecondTest() {
+        // TODO
+    }
+
+    /**
+     * {@link DateAssertion} class test.
+     */
+    @Test
+    public void isNullTest() {
+        // TODO
+    }
+
+    /**
+     * {@link DateAssertion} class test.
+     */
+    @Test
+    public void isSameAsTest() {
+        // TODO
+    }
+
+    /**
+     * {@link DateAssertion} class test.
+     */
+    @Test
+    public void isNotSameAsTest() {
+        // TODO
+    }
+
 }
