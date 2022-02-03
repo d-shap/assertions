@@ -66,12 +66,12 @@ public final class DateToCalendarValueConverterTest extends AssertionTest {
     @Test
     public void convertTest() throws Exception {
         Assertions.assertThat(new DateToCalendarValueConverter().convert(createDate(2020, Calendar.JULY, 11, 15, 23, 47))).isInstanceOf(Calendar.class);
-        Assertions.assertThat(new DateToCalendarValueConverter().convert(createDate(2020, Calendar.JULY, 11, 15, 23, 47)), Raw.calendarAssertion()).hasDateAndTime(2020, Calendar.JULY, 11, 15, 23, 47);
-        Assertions.assertThat(new DateToCalendarValueConverter().convert(createDate(2020, Calendar.JULY, 11, 15, 23, 47))).as(Raw.calendarAssertion()).hasDateAndTime(2020, Calendar.JULY, 11, 15, 23, 47);
+        Assertions.assertThat(new DateToCalendarValueConverter().convert(createDate(2020, Calendar.JULY, 11, 15, 23, 47)), Raw.calendarAssertion()).hasDateAndTime(2020, Calendar.JULY, 11, 15, 23, 47, 0);
+        Assertions.assertThat(new DateToCalendarValueConverter().convert(createDate(2020, Calendar.JULY, 11, 15, 23, 47))).as(Raw.calendarAssertion()).hasDateAndTime(2020, Calendar.JULY, 11, 15, 23, 47, 0);
 
         Assertions.assertThat(new DateToCalendarValueConverter().convert(createDate(2020, Calendar.DECEMBER, 11, 15, 23, 47))).isInstanceOf(Calendar.class);
-        Assertions.assertThat(new DateToCalendarValueConverter().convert(createDate(2020, Calendar.DECEMBER, 11, 15, 23, 47)), Raw.calendarAssertion()).hasDateAndTime(2020, Calendar.DECEMBER, 11, 15, 23, 47);
-        Assertions.assertThat(new DateToCalendarValueConverter().convert(createDate(2020, Calendar.DECEMBER, 11, 15, 23, 47))).as(Raw.calendarAssertion()).hasDateAndTime(2020, Calendar.DECEMBER, 11, 15, 23, 47);
+        Assertions.assertThat(new DateToCalendarValueConverter().convert(createDate(2020, Calendar.DECEMBER, 11, 15, 23, 47)), Raw.calendarAssertion()).hasDateAndTime(2020, Calendar.DECEMBER, 11, 15, 23, 47, 0);
+        Assertions.assertThat(new DateToCalendarValueConverter().convert(createDate(2020, Calendar.DECEMBER, 11, 15, 23, 47))).as(Raw.calendarAssertion()).hasDateAndTime(2020, Calendar.DECEMBER, 11, 15, 23, 47, 0);
 
         Assertions.assertThat(new DateToCalendarValueConverter().convert(createDate(1324, Calendar.JULY, 21, 3, 22, 46, 543))).isInstanceOf(Calendar.class);
         Assertions.assertThat(new DateToCalendarValueConverter().convert(createDate(1324, Calendar.JULY, 21, 3, 22, 46, 543)), Raw.calendarAssertion()).hasDateAndTime(1324, Calendar.JULY, 21, 3, 22, 46, 543);
