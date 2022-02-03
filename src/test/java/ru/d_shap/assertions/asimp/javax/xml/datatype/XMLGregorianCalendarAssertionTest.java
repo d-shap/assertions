@@ -422,4 +422,28 @@ public class XMLGregorianCalendarAssertionTest extends AssertionTest {
         // TODO
     }
 
+    /**
+     * {@link XMLGregorianCalendarAssertion} class test.
+     */
+    @Test
+    public void isNullTest() {
+        // TODO
+    }
+
+    /**
+     * {@link XMLGregorianCalendarAssertion} class test.
+     */
+    @Test
+    public void isSameAsTest() {
+        // TODO
+    }
+
+    /**
+     * {@link XMLGregorianCalendarAssertion} class test.
+     */
+    @Test
+    public void isNotSameAsTest() {
+        // TODO
+    }
+
 }
