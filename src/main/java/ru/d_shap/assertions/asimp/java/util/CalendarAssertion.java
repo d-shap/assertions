@@ -695,7 +695,7 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
     }
 
     /**
-     * Check if the actual value's date properties are equal to the expected date properties.
+     * Check if the actual value's date and time zone properties are equal to the expected date and time zone properties.
      *
      * @param year       the expected year.
      * @param month      the expected month.
@@ -710,7 +710,7 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
     }
 
     /**
-     * Check if the actual value's date properties are equal to the expected date properties.
+     * Check if the actual value's date and time zone properties are equal to the expected date and time zone properties.
      *
      * @param year       the expected year.
      * @param month      the expected month.
@@ -764,7 +764,7 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
     }
 
     /**
-     * Check if the actual value's time properties are equal to the expected time properties.
+     * Check if the actual value's time and time zone properties are equal to the expected time and time zone properties.
      *
      * @param hourOfDay  the expected hour of day.
      * @param minute     the expected minute.
@@ -779,7 +779,7 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
     }
 
     /**
-     * Check if the actual value's time properties are equal to the expected time properties.
+     * Check if the actual value's time and time zone properties are equal to the expected time and time zone properties.
      *
      * @param hourOfDay  the expected hour of day.
      * @param minute     the expected minute.
@@ -794,7 +794,7 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
     }
 
     /**
-     * Check if the actual value's time properties are equal to the expected time properties.
+     * Check if the actual value's time and time zone properties are equal to the expected time and time zone properties.
      *
      * @param hourOfDay   the expected hour of day.
      * @param minute      the expected minute.
@@ -811,7 +811,7 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
     }
 
     /**
-     * Check if the actual value's time properties are equal to the expected time properties.
+     * Check if the actual value's time and time zone properties are equal to the expected time and time zone properties.
      *
      * @param hourOfDay   the expected hour of day.
      * @param minute      the expected minute.
@@ -891,7 +891,7 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
     }
 
     /**
-     * Check if the actual value's date and time properties are equal to the expected date and time properties.
+     * Check if the actual value's date, time and time zone properties are equal to the expected date, time and time zone properties.
      *
      * @param year       the expected year.
      * @param month      the expected month.
@@ -912,7 +912,7 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
     }
 
     /**
-     * Check if the actual value's date and time properties are equal to the expected date and time properties.
+     * Check if the actual value's date, time and time zone properties are equal to the expected date, time and time zone properties.
      *
      * @param year       the expected year.
      * @param month      the expected month.
@@ -933,7 +933,7 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
     }
 
     /**
-     * Check if the actual value's date and time properties are equal to the expected date and time properties.
+     * Check if the actual value's date, time and time zone properties are equal to the expected date, time and time zone properties.
      *
      * @param year        the expected year.
      * @param month       the expected month.
@@ -956,7 +956,7 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
     }
 
     /**
-     * Check if the actual value's date and time properties are equal to the expected date and time properties.
+     * Check if the actual value's date, time and time zone properties are equal to the expected date, time and time zone properties.
      *
      * @param year        the expected year.
      * @param month       the expected month.
