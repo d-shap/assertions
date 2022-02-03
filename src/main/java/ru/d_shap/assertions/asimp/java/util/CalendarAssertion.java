@@ -702,11 +702,26 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
      * @param dayOfMonth the expected day of month.
      * @param timeZoneId the expected time zone ID.
      */
-    public final void hasDate(final int year, final int month, final int dayOfMonth, final String timeZoneId) {
+    public final void hasTimeZoneDate(final int year, final int month, final int dayOfMonth, final String timeZoneId) {
         hasYear(year);
         hasMonth(month);
         hasDayOfMonth(dayOfMonth);
         hasTimeZoneId(timeZoneId);
+    }
+
+    /**
+     * Check if the actual value's date properties are equal to the expected date properties.
+     *
+     * @param year       the expected year.
+     * @param month      the expected month.
+     * @param dayOfMonth the expected day of month.
+     * @param zoneOffset the expected zone offset.
+     */
+    public final void hasTimeZoneDate(final int year, final int month, final int dayOfMonth, final int zoneOffset) {
+        hasYear(year);
+        hasMonth(month);
+        hasDayOfMonth(dayOfMonth);
+        hasZoneOffset(zoneOffset);
     }
 
     /**
@@ -736,21 +751,6 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
     /**
      * Check if the actual value's time properties are equal to the expected time properties.
      *
-     * @param hourOfDay  the expected hour of day.
-     * @param minute     the expected minute.
-     * @param second     the expected second.
-     * @param timeZoneId the expected time zone ID.
-     */
-    public final void hasTime(final int hourOfDay, final int minute, final int second, final String timeZoneId) {
-        hasHourOfDay(hourOfDay);
-        hasMinute(minute);
-        hasSecond(second);
-        hasTimeZoneId(timeZoneId);
-    }
-
-    /**
-     * Check if the actual value's time properties are equal to the expected time properties.
-     *
      * @param hourOfDay   the expected hour of day.
      * @param minute      the expected minute.
      * @param second      the expected second.
@@ -766,18 +766,65 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
     /**
      * Check if the actual value's time properties are equal to the expected time properties.
      *
+     * @param hourOfDay  the expected hour of day.
+     * @param minute     the expected minute.
+     * @param second     the expected second.
+     * @param timeZoneId the expected time zone ID.
+     */
+    public final void hasTimeZoneTime(final int hourOfDay, final int minute, final int second, final String timeZoneId) {
+        hasHourOfDay(hourOfDay);
+        hasMinute(minute);
+        hasSecond(second);
+        hasTimeZoneId(timeZoneId);
+    }
+
+    /**
+     * Check if the actual value's time properties are equal to the expected time properties.
+     *
+     * @param hourOfDay  the expected hour of day.
+     * @param minute     the expected minute.
+     * @param second     the expected second.
+     * @param zoneOffset the expected zone offset.
+     */
+    public final void hasTimeZoneTime(final int hourOfDay, final int minute, final int second, final int zoneOffset) {
+        hasHourOfDay(hourOfDay);
+        hasMinute(minute);
+        hasSecond(second);
+        hasZoneOffset(zoneOffset);
+    }
+
+    /**
+     * Check if the actual value's time properties are equal to the expected time properties.
+     *
      * @param hourOfDay   the expected hour of day.
      * @param minute      the expected minute.
      * @param second      the expected second.
      * @param millisecond the expected millisecond.
      * @param timeZoneId  the expected time zone ID.
      */
-    public final void hasTime(final int hourOfDay, final int minute, final int second, final int millisecond, final String timeZoneId) {
+    public final void hasTimeZoneTime(final int hourOfDay, final int minute, final int second, final int millisecond, final String timeZoneId) {
         hasHourOfDay(hourOfDay);
         hasMinute(minute);
         hasSecond(second);
         hasMillisecond(millisecond);
         hasTimeZoneId(timeZoneId);
+    }
+
+    /**
+     * Check if the actual value's time properties are equal to the expected time properties.
+     *
+     * @param hourOfDay   the expected hour of day.
+     * @param minute      the expected minute.
+     * @param second      the expected second.
+     * @param millisecond the expected millisecond.
+     * @param zoneOffset  the expected zone offset.
+     */
+    public final void hasTimeZoneTime(final int hourOfDay, final int minute, final int second, final int millisecond, final int zoneOffset) {
+        hasHourOfDay(hourOfDay);
+        hasMinute(minute);
+        hasSecond(second);
+        hasMillisecond(millisecond);
+        hasZoneOffset(zoneOffset);
     }
 
     /**
@@ -825,27 +872,6 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
     /**
      * Check if the actual value's date and time properties are equal to the expected date and time properties.
      *
-     * @param year       the expected year.
-     * @param month      the expected month.
-     * @param dayOfMonth the expected day of month.
-     * @param hourOfDay  the expected hour of day.
-     * @param minute     the expected minute.
-     * @param second     the expected second.
-     * @param timeZoneId the expected time zone ID.
-     */
-    public final void hasDateAndTime(final int year, final int month, final int dayOfMonth, final int hourOfDay, final int minute, final int second, final String timeZoneId) {
-        hasYear(year);
-        hasMonth(month);
-        hasDayOfMonth(dayOfMonth);
-        hasHourOfDay(hourOfDay);
-        hasMinute(minute);
-        hasSecond(second);
-        hasTimeZoneId(timeZoneId);
-    }
-
-    /**
-     * Check if the actual value's date and time properties are equal to the expected date and time properties.
-     *
      * @param year        the expected year.
      * @param month       the expected month.
      * @param dayOfMonth  the expected day of month.
@@ -867,6 +893,48 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
     /**
      * Check if the actual value's date and time properties are equal to the expected date and time properties.
      *
+     * @param year       the expected year.
+     * @param month      the expected month.
+     * @param dayOfMonth the expected day of month.
+     * @param hourOfDay  the expected hour of day.
+     * @param minute     the expected minute.
+     * @param second     the expected second.
+     * @param timeZoneId the expected time zone ID.
+     */
+    public final void hasTimeZoneDateAndTime(final int year, final int month, final int dayOfMonth, final int hourOfDay, final int minute, final int second, final String timeZoneId) {
+        hasYear(year);
+        hasMonth(month);
+        hasDayOfMonth(dayOfMonth);
+        hasHourOfDay(hourOfDay);
+        hasMinute(minute);
+        hasSecond(second);
+        hasTimeZoneId(timeZoneId);
+    }
+
+    /**
+     * Check if the actual value's date and time properties are equal to the expected date and time properties.
+     *
+     * @param year       the expected year.
+     * @param month      the expected month.
+     * @param dayOfMonth the expected day of month.
+     * @param hourOfDay  the expected hour of day.
+     * @param minute     the expected minute.
+     * @param second     the expected second.
+     * @param zoneOffset the expected zone offset.
+     */
+    public final void hasTimeZoneDateAndTime(final int year, final int month, final int dayOfMonth, final int hourOfDay, final int minute, final int second, final int zoneOffset) {
+        hasYear(year);
+        hasMonth(month);
+        hasDayOfMonth(dayOfMonth);
+        hasHourOfDay(hourOfDay);
+        hasMinute(minute);
+        hasSecond(second);
+        hasZoneOffset(zoneOffset);
+    }
+
+    /**
+     * Check if the actual value's date and time properties are equal to the expected date and time properties.
+     *
      * @param year        the expected year.
      * @param month       the expected month.
      * @param dayOfMonth  the expected day of month.
@@ -876,7 +944,7 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
      * @param millisecond the expected millisecond.
      * @param timeZoneId  the expected time zone ID.
      */
-    public final void hasDateAndTime(final int year, final int month, final int dayOfMonth, final int hourOfDay, final int minute, final int second, final int millisecond, final String timeZoneId) {
+    public final void hasTimeZoneDateAndTime(final int year, final int month, final int dayOfMonth, final int hourOfDay, final int minute, final int second, final int millisecond, final String timeZoneId) {
         hasYear(year);
         hasMonth(month);
         hasDayOfMonth(dayOfMonth);
@@ -885,6 +953,29 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
         hasSecond(second);
         hasMillisecond(millisecond);
         hasTimeZoneId(timeZoneId);
+    }
+
+    /**
+     * Check if the actual value's date and time properties are equal to the expected date and time properties.
+     *
+     * @param year        the expected year.
+     * @param month       the expected month.
+     * @param dayOfMonth  the expected day of month.
+     * @param hourOfDay   the expected hour of day.
+     * @param minute      the expected minute.
+     * @param second      the expected second.
+     * @param millisecond the expected millisecond.
+     * @param zoneOffset  the expected zone offset.
+     */
+    public final void hasTimeZoneDateAndTime(final int year, final int month, final int dayOfMonth, final int hourOfDay, final int minute, final int second, final int millisecond, final int zoneOffset) {
+        hasYear(year);
+        hasMonth(month);
+        hasDayOfMonth(dayOfMonth);
+        hasHourOfDay(hourOfDay);
+        hasMinute(minute);
+        hasSecond(second);
+        hasMillisecond(millisecond);
+        hasZoneOffset(zoneOffset);
     }
 
     /**
