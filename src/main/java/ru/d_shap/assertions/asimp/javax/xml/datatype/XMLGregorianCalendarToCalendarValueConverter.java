@@ -58,20 +58,25 @@ public final class XMLGregorianCalendarToCalendarValueConverter implements Value
         ConverterArgumentHelper.checkArgumentsLength(arguments, 1);
         TimeZone castedTimeZone = ConverterArgumentHelper.getArgument(arguments, 0, TimeZone.class);
 
+        Calendar castedCalendar = castedValue.toGregorianCalendar();
+
+        Calendar tempCalendar = Calendar.getInstance();
+        tempCalendar.setTimeZone(castedCalendar.getTimeZone());
+        tempCalendar.set(Calendar.YEAR, castedValue.getYear());
+        tempCalendar.set(Calendar.MONTH, castedValue.getMonth() - 1);
+        tempCalendar.set(Calendar.DAY_OF_MONTH, castedValue.getDay());
+        tempCalendar.set(Calendar.HOUR_OF_DAY, castedValue.getHour());
+        tempCalendar.set(Calendar.MINUTE, castedValue.getMinute());
+        tempCalendar.set(Calendar.SECOND, castedValue.getSecond());
+        tempCalendar.set(Calendar.MILLISECOND, castedValue.getMillisecond());
+
         Calendar result = Calendar.getInstance();
         if (castedTimeZone == null) {
-            Calendar calendar = castedValue.toGregorianCalendar();
-            result.setTimeZone(calendar.getTimeZone());
+            result.setTimeZone(tempCalendar.getTimeZone());
         } else {
             result.setTimeZone(castedTimeZone);
         }
-        result.set(Calendar.YEAR, castedValue.getYear());
-        result.set(Calendar.MONTH, castedValue.getMonth() - 1);
-        result.set(Calendar.DAY_OF_MONTH, castedValue.getDay());
-        result.set(Calendar.HOUR_OF_DAY, castedValue.getHour());
-        result.set(Calendar.MINUTE, castedValue.getMinute());
-        result.set(Calendar.SECOND, castedValue.getSecond());
-        result.set(Calendar.MILLISECOND, castedValue.getMillisecond());
+        result.setTime(tempCalendar.getTime());
         return result;
     }
 
