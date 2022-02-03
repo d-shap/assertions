@@ -535,7 +535,7 @@ public class XMLGregorianCalendarAssertion extends ReferenceAssertion<XMLGregori
     }
 
     /**
-     * v    *
+     * Check if the actual value's date, time and time zone properties are equal to the expected date, time and time zone properties.
      *
      * @param year        the expected year.
      * @param month       the expected month.
