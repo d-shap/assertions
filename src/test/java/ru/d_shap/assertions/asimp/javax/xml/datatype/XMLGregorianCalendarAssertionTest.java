@@ -330,6 +330,14 @@ public class XMLGregorianCalendarAssertionTest extends AssertionTest {
      * {@link XMLGregorianCalendarAssertion} class test.
      */
     @Test
+    public void hasTimeZoneDateTest() {
+        // TODO
+    }
+
+    /**
+     * {@link XMLGregorianCalendarAssertion} class test.
+     */
+    @Test
     public void hasUtcDateTest() {
         // TODO
     }
@@ -347,6 +355,22 @@ public class XMLGregorianCalendarAssertionTest extends AssertionTest {
      */
     @Test
     public void hasTimeMillisecondTest() {
+        // TODO
+    }
+
+    /**
+     * {@link XMLGregorianCalendarAssertion} class test.
+     */
+    @Test
+    public void hasTimeZoneTimeTest() {
+        // TODO
+    }
+
+    /**
+     * {@link XMLGregorianCalendarAssertion} class test.
+     */
+    @Test
+    public void hasTimeZoneTimeMillisecondTest() {
         // TODO
     }
 
@@ -379,6 +403,22 @@ public class XMLGregorianCalendarAssertionTest extends AssertionTest {
      */
     @Test
     public void hasDateAndTimeMillisecondTest() {
+        // TODO
+    }
+
+    /**
+     * {@link XMLGregorianCalendarAssertion} class test.
+     */
+    @Test
+    public void hasTimeZoneDateAndTimeTest() {
+        // TODO
+    }
+
+    /**
+     * {@link XMLGregorianCalendarAssertion} class test.
+     */
+    @Test
+    public void hasTimeZoneDateAndTimeMillisecondTest() {
         // TODO
     }
 
