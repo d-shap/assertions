@@ -397,6 +397,18 @@ public class XMLGregorianCalendarAssertion extends ReferenceAssertion<XMLGregori
     }
 
     /**
+     * Check if the actual value's date properties are equal to the expected date properties.
+     *
+     * @param year       the expected year.
+     * @param month      the expected month.
+     * @param dayOfMonth the expected day of month.
+     * @param zoneOffset the expected zone offset.
+     */
+    public final void hasTimeZoneDate(final int year, final int month, final int dayOfMonth, final int zoneOffset) {
+        createCalendarAssertion().hasTimeZoneDate(year, month, dayOfMonth, zoneOffset);
+    }
+
+    /**
      * Check if the actual value's date properties are equal to the expected date properties in the UTC time zone.
      *
      * @param year       the expected year.
@@ -428,6 +440,31 @@ public class XMLGregorianCalendarAssertion extends ReferenceAssertion<XMLGregori
      */
     public final void hasTime(final int hourOfDay, final int minute, final int second, final int millisecond) {
         createCalendarAssertion().hasTime(hourOfDay, minute, millisecond);
+    }
+
+    /**
+     * Check if the actual value's time properties are equal to the expected time properties.
+     *
+     * @param hourOfDay  the expected hour of day.
+     * @param minute     the expected minute.
+     * @param second     the expected second.
+     * @param zoneOffset the expected zone offset.
+     */
+    public final void hasTimeZoneTime(final int hourOfDay, final int minute, final int second, final int zoneOffset) {
+        createCalendarAssertion().hasTimeZoneTime(hourOfDay, minute, second, zoneOffset);
+    }
+
+    /**
+     * Check if the actual value's time properties are equal to the expected time properties.
+     *
+     * @param hourOfDay   the expected hour of day.
+     * @param minute      the expected minute.
+     * @param second      the expected second.
+     * @param millisecond the expected millisecond.
+     * @param zoneOffset  the expected zone offset.
+     */
+    public final void hasTimeZoneTime(final int hourOfDay, final int minute, final int second, final int millisecond, final int zoneOffset) {
+        createCalendarAssertion().hasTimeZoneTime(hourOfDay, minute, millisecond, zoneOffset);
     }
 
     /**
@@ -480,6 +517,37 @@ public class XMLGregorianCalendarAssertion extends ReferenceAssertion<XMLGregori
      */
     public final void hasDateAndTime(final int year, final int month, final int dayOfMonth, final int hourOfDay, final int minute, final int second, final int millisecond) {
         createCalendarAssertion().hasDateAndTime(year, month, dayOfMonth, hourOfDay, minute, second, millisecond);
+    }
+
+    /**
+     * Check if the actual value's date and time properties are equal to the expected date and time properties.
+     *
+     * @param year       the expected year.
+     * @param month      the expected month.
+     * @param dayOfMonth the expected day of month.
+     * @param hourOfDay  the expected hour of day.
+     * @param minute     the expected minute.
+     * @param second     the expected second.
+     * @param zoneOffset the expected zone offset.
+     */
+    public final void hasTimeZoneDateAndTime(final int year, final int month, final int dayOfMonth, final int hourOfDay, final int minute, final int second, final int zoneOffset) {
+        createCalendarAssertion().hasTimeZoneDateAndTime(year, month, dayOfMonth, hourOfDay, minute, second, zoneOffset);
+    }
+
+    /**
+     * Check if the actual value's date and time properties are equal to the expected date and time properties.
+     *
+     * @param year        the expected year.
+     * @param month       the expected month.
+     * @param dayOfMonth  the expected day of month.
+     * @param hourOfDay   the expected hour of day.
+     * @param minute      the expected minute.
+     * @param second      the expected second.
+     * @param millisecond the expected millisecond.
+     * @param zoneOffset  the expected zone offset.
+     */
+    public final void hasTimeZoneDateAndTime(final int year, final int month, final int dayOfMonth, final int hourOfDay, final int minute, final int second, final int millisecond, final int zoneOffset) {
+        createCalendarAssertion().hasTimeZoneDateAndTime(year, month, dayOfMonth, hourOfDay, minute, second, millisecond, zoneOffset);
     }
 
     /**
