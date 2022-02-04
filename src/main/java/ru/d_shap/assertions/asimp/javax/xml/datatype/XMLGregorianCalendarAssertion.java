@@ -439,7 +439,7 @@ public class XMLGregorianCalendarAssertion extends ReferenceAssertion<XMLGregori
      * @param millisecond the expected millisecond.
      */
     public final void hasTime(final int hourOfDay, final int minute, final int second, final int millisecond) {
-        createCalendarAssertion().hasTime(hourOfDay, minute, millisecond);
+        createCalendarAssertion().hasTime(hourOfDay, minute, second, millisecond);
     }
 
     /**
@@ -464,7 +464,7 @@ public class XMLGregorianCalendarAssertion extends ReferenceAssertion<XMLGregori
      * @param zoneOffset  the expected zone offset.
      */
     public final void hasTimeZoneTime(final int hourOfDay, final int minute, final int second, final int millisecond, final int zoneOffset) {
-        createCalendarAssertion().hasTimeZoneTime(hourOfDay, minute, millisecond, zoneOffset);
+        createCalendarAssertion().hasTimeZoneTime(hourOfDay, minute, second, millisecond, zoneOffset);
     }
 
     /**
@@ -487,7 +487,7 @@ public class XMLGregorianCalendarAssertion extends ReferenceAssertion<XMLGregori
      * @param millisecond the expected millisecond.
      */
     public final void hasUtcTime(final int hourOfDay, final int minute, final int second, final int millisecond) {
-        createCalendarAssertion().hasUtcTime(hourOfDay, minute, millisecond);
+        createCalendarAssertion().hasUtcTime(hourOfDay, minute, second, millisecond);
     }
 
     /**
