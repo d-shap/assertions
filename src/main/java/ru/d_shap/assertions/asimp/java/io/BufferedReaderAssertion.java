@@ -309,12 +309,8 @@ public class BufferedReaderAssertion extends ReferenceAssertion<BufferedReader> 
      */
     public final LongAssertion toLinesLength() {
         checkActualIsNotNull();
-        try {
-            long linesLength = getLinesLength();
-            return initializeAssertion(Raw.longAssertion(), linesLength, Messages.Check.LINES_LENGTH);
-        } catch (IOException ex) {
-            throw createWrapperAssertionError(ex);
-        }
+        long linesLength = getLinesLength();
+        return initializeAssertion(Raw.longAssertion(), linesLength, Messages.Check.LINES_LENGTH);
     }
 
     /**
@@ -325,25 +321,25 @@ public class BufferedReaderAssertion extends ReferenceAssertion<BufferedReader> 
     public final void toLinesLength(final Matcher<Long> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
+        long linesLength = getLinesLength();
+        matcherAssertion(linesLength, matcher, Messages.Check.LINES_LENGTH);
+    }
+
+    private long getLinesLength() {
         try {
-            long linesLength = getLinesLength();
-            matcherAssertion(linesLength, matcher, Messages.Check.LINES_LENGTH);
+            String read;
+            long length = 0;
+            while (true) {
+                read = getActual().readLine();
+                if (read == null) {
+                    break;
+                }
+                length++;
+            }
+            return length;
         } catch (IOException ex) {
             throw createWrapperAssertionError(ex);
         }
-    }
-
-    private long getLinesLength() throws IOException {
-        String read;
-        long length = 0;
-        while (true) {
-            read = getActual().readLine();
-            if (read == null) {
-                break;
-            }
-            length++;
-        }
-        return length;
     }
 
     /**

@@ -261,12 +261,8 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
      */
     public final LongAssertion toLength() {
         checkActualIsNotNull();
-        try {
-            long length = getLength();
-            return initializeAssertion(Raw.longAssertion(), length, Messages.Check.LENGTH);
-        } catch (IOException ex) {
-            throw createWrapperAssertionError(ex);
-        }
+        long length = getLength();
+        return initializeAssertion(Raw.longAssertion(), length, Messages.Check.LENGTH);
     }
 
     /**
@@ -277,25 +273,25 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
     public final void toLength(final Matcher<Long> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
+        long length = getLength();
+        matcherAssertion(length, matcher, Messages.Check.LENGTH);
+    }
+
+    private long getLength() {
         try {
-            long length = getLength();
-            matcherAssertion(length, matcher, Messages.Check.LENGTH);
+            int read;
+            long length = 0;
+            while (true) {
+                read = getActual().read();
+                if (read < 0) {
+                    break;
+                }
+                length++;
+            }
+            return length;
         } catch (IOException ex) {
             throw createWrapperAssertionError(ex);
         }
-    }
-
-    private long getLength() throws IOException {
-        int read;
-        long length = 0;
-        while (true) {
-            read = getActual().read();
-            if (read < 0) {
-                break;
-            }
-            length++;
-        }
-        return length;
     }
 
     /**
