@@ -1624,6 +1624,22 @@ public final class MessageAssertionTest extends AssertionTest {
     }
 
     /**
+     * {@link Assertions} class test.
+     */
+    @Test
+    public void dateAssertionTest() {
+        // TODO
+    }
+
+    /**
+     * {@link Assertions} class test.
+     */
+    @Test
+    public void calendarAssertionTest() {
+        // TODO
+    }
+
+    /**
      * {@link MessageAssertion} class test.
      */
     @Test
@@ -2050,6 +2066,14 @@ public final class MessageAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("value''s.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2(50), 1(49)]> but was:<[1(49), 2(50)]>");
         }
+    }
+
+    /**
+     * {@link Assertions} class test.
+     */
+    @Test
+    public void xmlGregorianCalendarAssertionTest() {
+        // TODO
     }
 
     /**

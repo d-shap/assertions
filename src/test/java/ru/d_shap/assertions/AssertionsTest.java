@@ -907,6 +907,22 @@ public final class AssertionsTest extends AssertionTest {
      * {@link Assertions} class test.
      */
     @Test
+    public void dateAssertionTest() {
+        // TODO
+    }
+
+    /**
+     * {@link Assertions} class test.
+     */
+    @Test
+    public void calendarAssertionTest() {
+        // TODO
+    }
+
+    /**
+     * {@link Assertions} class test.
+     */
+    @Test
     public void timeZoneAssertionTest() {
         Assertions.assertThat((TimeZone) null).isNull();
         Assertions.assertThat(TimeZone.getTimeZone("UTC")).hasDisplayName("Coordinated Universal Time");
@@ -1132,6 +1148,14 @@ public final class AssertionsTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2(50), 1(49)]> but was:<[1(49), 2(50)]>");
         }
+    }
+
+    /**
+     * {@link Assertions} class test.
+     */
+    @Test
+    public void xmlGregorianCalendarAssertionTest() {
+        // TODO
     }
 
     /**
