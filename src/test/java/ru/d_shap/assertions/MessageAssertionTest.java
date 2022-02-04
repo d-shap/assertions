@@ -32,6 +32,8 @@ import java.nio.IntBuffer;
 import java.nio.LongBuffer;
 import java.nio.ShortBuffer;
 import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -40,6 +42,7 @@ import java.util.SortedMap;
 import java.util.SortedSet;
 import java.util.TimeZone;
 
+import javax.xml.datatype.XMLGregorianCalendar;
 import javax.xml.namespace.QName;
 
 import org.hamcrest.Matchers;
@@ -1624,19 +1627,81 @@ public final class MessageAssertionTest extends AssertionTest {
     }
 
     /**
-     * {@link Assertions} class test.
+     * {@link MessageAssertion} class test.
      */
     @Test
     public void dateAssertionTest() {
-        // TODO
+        Assertions.assertWithMessage("Test message").that((Date) null).isNull();
+        Assertions.assertWithMessage("Test message").that(createDate(2020, Calendar.JULY, 11, 15, 23, 47)).hasDateAndTime(2020, Calendar.JULY, 11, 15, 23, 47, 0);
+        Assertions.assertWithMessage("Test message").that(null, Raw.dateAssertion()).isNull();
+        Assertions.assertWithMessage("Test message").that(createDate(2020, Calendar.JULY, 11, 15, 23, 47), Raw.dateAssertion()).hasDateAndTime(2020, Calendar.JULY, 11, 15, 23, 47, 0);
+        Assertions.assertWithMessage("Test message").that(createNullFieldClass(), "_field", Raw.dateAssertion()).isNull();
+        Assertions.assertWithMessage("Test message").that(createPrivateFieldsClass(), "_date").isNotNull();
+        Assertions.assertWithMessage("Test message").that(createPrivateFieldsClass(), "_date", Raw.dateAssertion()).hasDateAndTime(2020, Calendar.JULY, 11, 15, 23, 47, 0);
+
+        try {
+            Assertions.assertWithMessage(null).that(createDate(2020, Calendar.JULY, 11, 15, 23, 47)).hasDateAndTime(2019, Calendar.AUGUST, 11, 15, 23, 45, 0);
+            Assertions.fail("Assertions test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's year.\n\tActual and expected values should be the same.\n\tExpected:<2019> but was:<2020>");
+        }
+        try {
+            Assertions.assertWithMessage("").that(createDate(2020, Calendar.JULY, 11, 15, 23, 47)).hasDateAndTime(2019, Calendar.AUGUST, 11, 15, 23, 45, 0);
+            Assertions.fail("Assertions test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's year.\n\tActual and expected values should be the same.\n\tExpected:<2019> but was:<2020>");
+        }
+        try {
+            Assertions.assertWithMessage("Test message").that(createDate(2020, Calendar.JULY, 11, 15, 23, 47)).hasDateAndTime(2019, Calendar.AUGUST, 11, 15, 23, 45, 0);
+            Assertions.fail("Assertions test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Test message.\n\tCheck actual value's year.\n\tActual and expected values should be the same.\n\tExpected:<2019> but was:<2020>");
+        }
+        try {
+            Assertions.assertWithMessage("value''s.").that(createDate(2020, Calendar.JULY, 11, 15, 23, 47)).hasDateAndTime(2019, Calendar.AUGUST, 11, 15, 23, 45, 0);
+            Assertions.fail("Assertions test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("value''s.\n\tCheck actual value's year.\n\tActual and expected values should be the same.\n\tExpected:<2019> but was:<2020>");
+        }
     }
 
     /**
-     * {@link Assertions} class test.
+     * {@link MessageAssertion} class test.
      */
     @Test
     public void calendarAssertionTest() {
-        // TODO
+        Assertions.assertWithMessage("Test message").that((Calendar) null).isNull();
+        Assertions.assertWithMessage("Test message").that(createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "Europe/Berlin")).hasUtcDateAndTime(2020, Calendar.JULY, 11, 13, 23, 47, 0);
+        Assertions.assertWithMessage("Test message").that(null, Raw.calendarAssertion()).isNull();
+        Assertions.assertWithMessage("Test message").that(createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "Europe/Berlin"), Raw.calendarAssertion()).hasUtcDateAndTime(2020, Calendar.JULY, 11, 13, 23, 47, 0);
+        Assertions.assertWithMessage("Test message").that(createNullFieldClass(), "_field", Raw.calendarAssertion()).isNull();
+        Assertions.assertWithMessage("Test message").that(createPrivateFieldsClass(), "_calendar").isNotNull();
+        Assertions.assertWithMessage("Test message").that(createPrivateFieldsClass(), "_calendar", Raw.calendarAssertion()).hasUtcDateAndTime(2020, Calendar.JULY, 11, 13, 23, 47, 0);
+
+        try {
+            Assertions.assertWithMessage(null).that(createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "Europe/Berlin")).hasUtcDateAndTime(2019, Calendar.AUGUST, 11, 13, 23, 45, 0);
+            Assertions.fail("Assertions test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's date in time zone: UTC.\n\tCheck actual value's year.\n\tActual and expected values should be the same.\n\tExpected:<2019> but was:<2020>");
+        }
+        try {
+            Assertions.assertWithMessage("").that(createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "Europe/Berlin")).hasUtcDateAndTime(2019, Calendar.AUGUST, 11, 13, 23, 45, 0);
+            Assertions.fail("Assertions test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's date in time zone: UTC.\n\tCheck actual value's year.\n\tActual and expected values should be the same.\n\tExpected:<2019> but was:<2020>");
+        }
+        try {
+            Assertions.assertWithMessage("Test message").that(createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "Europe/Berlin")).hasUtcDateAndTime(2019, Calendar.AUGUST, 11, 13, 23, 45, 0);
+            Assertions.fail("Assertions test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Test message.\n\tCheck actual value's date in time zone: UTC.\n\tCheck actual value's year.\n\tActual and expected values should be the same.\n\tExpected:<2019> but was:<2020>");
+        }
+        try {
+            Assertions.assertWithMessage("value''s.").that(createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "Europe/Berlin")).hasUtcDateAndTime(2019, Calendar.AUGUST, 11, 13, 23, 45, 0);
+            Assertions.fail("Assertions test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("value''s.\n\tCheck actual value's date in time zone: UTC.\n\tCheck actual value's year.\n\tActual and expected values should be the same.\n\tExpected:<2019> but was:<2020>");
+        }
     }
 
     /**
@@ -2069,11 +2134,42 @@ public final class MessageAssertionTest extends AssertionTest {
     }
 
     /**
-     * {@link Assertions} class test.
+     * {@link MessageAssertion} class test.
      */
     @Test
     public void xmlGregorianCalendarAssertionTest() {
-        // TODO
+        Assertions.assertWithMessage("Test message").that((XMLGregorianCalendar) null).isNull();
+        Assertions.assertWithMessage("Test message").that(createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "Europe/Berlin")).hasUtcDateAndTime(2020, Calendar.JULY, 11, 13, 23, 47, 0);
+        Assertions.assertWithMessage("Test message").that(null, Raw.xmlGregorianCalendarAssertion()).isNull();
+        Assertions.assertWithMessage("Test message").that(createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "Europe/Berlin"), Raw.xmlGregorianCalendarAssertion()).hasUtcDateAndTime(2020, Calendar.JULY, 11, 13, 23, 47, 0);
+        Assertions.assertWithMessage("Test message").that(createNullFieldClass(), "_field", Raw.xmlGregorianCalendarAssertion()).isNull();
+        Assertions.assertWithMessage("Test message").that(createPrivateFieldsClass(), "_xmlGregorianCalendar").isNotNull();
+        Assertions.assertWithMessage("Test message").that(createPrivateFieldsClass(), "_xmlGregorianCalendar", Raw.xmlGregorianCalendarAssertion()).hasUtcDateAndTime(2020, Calendar.JULY, 11, 13, 23, 47, 0);
+
+        try {
+            Assertions.assertWithMessage(null).that(createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "Europe/Berlin")).hasUtcDateAndTime(2019, Calendar.AUGUST, 11, 13, 23, 45, 0);
+            Assertions.fail("Assertions test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's date in time zone: UTC.\n\tCheck actual value's year.\n\tActual and expected values should be the same.\n\tExpected:<2019> but was:<2020>");
+        }
+        try {
+            Assertions.assertWithMessage("").that(createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "Europe/Berlin")).hasUtcDateAndTime(2019, Calendar.AUGUST, 11, 13, 23, 45, 0);
+            Assertions.fail("Assertions test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's date in time zone: UTC.\n\tCheck actual value's year.\n\tActual and expected values should be the same.\n\tExpected:<2019> but was:<2020>");
+        }
+        try {
+            Assertions.assertWithMessage("Test message").that(createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "Europe/Berlin")).hasUtcDateAndTime(2019, Calendar.AUGUST, 11, 13, 23, 45, 0);
+            Assertions.fail("Assertions test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Test message.\n\tCheck actual value's date in time zone: UTC.\n\tCheck actual value's year.\n\tActual and expected values should be the same.\n\tExpected:<2019> but was:<2020>");
+        }
+        try {
+            Assertions.assertWithMessage("value''s.").that(createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "Europe/Berlin")).hasUtcDateAndTime(2019, Calendar.AUGUST, 11, 13, 23, 45, 0);
+            Assertions.fail("Assertions test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("value''s.\n\tCheck actual value's date in time zone: UTC.\n\tCheck actual value's year.\n\tActual and expected values should be the same.\n\tExpected:<2019> but was:<2020>");
+        }
     }
 
     /**
