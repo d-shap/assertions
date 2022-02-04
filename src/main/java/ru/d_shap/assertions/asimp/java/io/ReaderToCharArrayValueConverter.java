@@ -52,7 +52,7 @@ public final class ReaderToCharArrayValueConverter implements ValueConverterProv
     }
 
     @Override
-    public Object convert(final Object value, final Object... arguments) throws ConversionException {
+    public Object convert(final Object value, final Object... arguments) {
         Reader castedValue = ConverterArgumentHelper.getValue(value, Reader.class);
         ConverterArgumentHelper.checkArgumentsLength(arguments, 1);
         int castedCount = ConverterArgumentHelper.getArgument(arguments, 0, Integer.class);

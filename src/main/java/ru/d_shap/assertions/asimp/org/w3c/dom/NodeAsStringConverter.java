@@ -59,7 +59,7 @@ public final class NodeAsStringConverter implements AsStringConverterProvider {
     }
 
     @Override
-    public String asString(final Object value) throws ConversionException {
+    public String asString(final Object value) {
         Node castedValue = ConverterArgumentHelper.getValue(value, Node.class);
 
         Source source = new DOMSource(castedValue);
@@ -69,7 +69,7 @@ public final class NodeAsStringConverter implements AsStringConverterProvider {
         return writer.toString();
     }
 
-    void transform(final Source source, final Result result) throws ConversionException {
+    void transform(final Source source, final Result result) {
         try {
             Transformer transformer = TRANSFORMER_FACTORY.newTransformer();
             transformer.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes");

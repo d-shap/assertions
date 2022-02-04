@@ -23,7 +23,6 @@ import java.nio.ShortBuffer;
 
 import ru.d_shap.assertions.converter.AsStringConverter;
 import ru.d_shap.assertions.converter.AsStringConverterProvider;
-import ru.d_shap.assertions.converter.ConversionException;
 import ru.d_shap.assertions.converter.ConverterArgumentHelper;
 
 /**
@@ -46,7 +45,7 @@ public final class ShortBufferAsStringConverter implements AsStringConverterProv
     }
 
     @Override
-    public String asString(final Object value) throws ConversionException {
+    public String asString(final Object value) {
         ShortBuffer castedValue = ConverterArgumentHelper.getValue(value, ShortBuffer.class);
 
         return AsStringConverter.asString(castedValue, short[].class, false);

@@ -22,7 +22,6 @@ package ru.d_shap.assertions.asimp.java.util;
 import java.util.Calendar;
 import java.util.Date;
 
-import ru.d_shap.assertions.converter.ConversionException;
 import ru.d_shap.assertions.converter.ConverterArgumentHelper;
 import ru.d_shap.assertions.converter.ValueConverterProvider;
 
@@ -51,7 +50,7 @@ public final class DateToCalendarValueConverter implements ValueConverterProvide
     }
 
     @Override
-    public Object convert(final Object value, final Object... arguments) throws ConversionException {
+    public Object convert(final Object value, final Object... arguments) {
         Date castedValue = ConverterArgumentHelper.getValue(value, Date.class);
         ConverterArgumentHelper.checkArgumentsLength(arguments, 0);
 

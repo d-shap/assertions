@@ -19,7 +19,6 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.asimp.array;
 
-import ru.d_shap.assertions.converter.ConversionException;
 import ru.d_shap.assertions.converter.ConverterArgumentHelper;
 import ru.d_shap.assertions.converter.ValueConverterProvider;
 
@@ -48,7 +47,7 @@ public final class IntArrayToShortArrayValueConverter implements ValueConverterP
     }
 
     @Override
-    public Object convert(final Object value, final Object... arguments) throws ConversionException {
+    public Object convert(final Object value, final Object... arguments) {
         int[] castedValue = ConverterArgumentHelper.getValue(value, int[].class);
         ConverterArgumentHelper.checkArgumentsLength(arguments, 0);
 
@@ -65,7 +64,7 @@ public final class IntArrayToShortArrayValueConverter implements ValueConverterP
         }
     }
 
-    private boolean canConvertToTargetClass(final int[] castedValue) throws ConversionException {
+    private boolean canConvertToTargetClass(final int[] castedValue) {
         for (int intValue : castedValue) {
             short shortValue = (short) intValue;
             if (intValue != shortValue) {

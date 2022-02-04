@@ -20,7 +20,6 @@
 package ru.d_shap.assertions.asimp.primitive;
 
 import ru.d_shap.assertions.converter.AsStringConverterProvider;
-import ru.d_shap.assertions.converter.ConversionException;
 import ru.d_shap.assertions.converter.ConverterArgumentHelper;
 
 /**
@@ -43,7 +42,7 @@ public final class CharAsStringConverter implements AsStringConverterProvider {
     }
 
     @Override
-    public String asString(final Object value) throws ConversionException {
+    public String asString(final Object value) {
         char castedValue = ConverterArgumentHelper.getValue(value, Character.class);
 
         int intValue = castedValue;

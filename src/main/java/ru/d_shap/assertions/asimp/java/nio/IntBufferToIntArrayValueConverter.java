@@ -21,7 +21,6 @@ package ru.d_shap.assertions.asimp.java.nio;
 
 import java.nio.IntBuffer;
 
-import ru.d_shap.assertions.converter.ConversionException;
 import ru.d_shap.assertions.converter.ConverterArgumentHelper;
 import ru.d_shap.assertions.converter.ValueConverterProvider;
 
@@ -50,7 +49,7 @@ public final class IntBufferToIntArrayValueConverter implements ValueConverterPr
     }
 
     @Override
-    public Object convert(final Object value, final Object... arguments) throws ConversionException {
+    public Object convert(final Object value, final Object... arguments) {
         IntBuffer castedValue = ConverterArgumentHelper.getValue(value, IntBuffer.class);
         ConverterArgumentHelper.checkArgumentsLength(arguments, 1);
         boolean castedRewind = ConverterArgumentHelper.getArgument(arguments, 0, Boolean.class);

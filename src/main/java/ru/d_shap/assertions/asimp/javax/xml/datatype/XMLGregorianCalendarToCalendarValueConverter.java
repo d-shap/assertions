@@ -24,7 +24,6 @@ import java.util.TimeZone;
 
 import javax.xml.datatype.XMLGregorianCalendar;
 
-import ru.d_shap.assertions.converter.ConversionException;
 import ru.d_shap.assertions.converter.ConverterArgumentHelper;
 import ru.d_shap.assertions.converter.ValueConverterProvider;
 
@@ -53,7 +52,7 @@ public final class XMLGregorianCalendarToCalendarValueConverter implements Value
     }
 
     @Override
-    public Object convert(final Object value, final Object... arguments) throws ConversionException {
+    public Object convert(final Object value, final Object... arguments) {
         XMLGregorianCalendar castedValue = ConverterArgumentHelper.getValue(value, XMLGregorianCalendar.class);
         ConverterArgumentHelper.checkArgumentsLength(arguments, 1);
         TimeZone castedTimeZone = ConverterArgumentHelper.getArgument(arguments, 0, TimeZone.class);

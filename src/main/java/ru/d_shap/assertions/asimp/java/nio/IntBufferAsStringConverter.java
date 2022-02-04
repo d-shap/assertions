@@ -23,7 +23,6 @@ import java.nio.IntBuffer;
 
 import ru.d_shap.assertions.converter.AsStringConverter;
 import ru.d_shap.assertions.converter.AsStringConverterProvider;
-import ru.d_shap.assertions.converter.ConversionException;
 import ru.d_shap.assertions.converter.ConverterArgumentHelper;
 
 /**
@@ -46,7 +45,7 @@ public final class IntBufferAsStringConverter implements AsStringConverterProvid
     }
 
     @Override
-    public String asString(final Object value) throws ConversionException {
+    public String asString(final Object value) {
         IntBuffer castedValue = ConverterArgumentHelper.getValue(value, IntBuffer.class);
 
         return AsStringConverter.asString(castedValue, int[].class, false);

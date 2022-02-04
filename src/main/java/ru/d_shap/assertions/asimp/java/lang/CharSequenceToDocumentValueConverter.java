@@ -67,7 +67,7 @@ public final class CharSequenceToDocumentValueConverter implements ValueConverte
     }
 
     @Override
-    public Object convert(final Object value, final Object... arguments) throws ConversionException {
+    public Object convert(final Object value, final Object... arguments) {
         CharSequence castedValue = ConverterArgumentHelper.getValue(value, CharSequence.class);
         ConverterArgumentHelper.checkArgumentsLength(arguments, 0);
 

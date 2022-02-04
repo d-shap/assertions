@@ -23,7 +23,6 @@ import java.nio.DoubleBuffer;
 
 import ru.d_shap.assertions.converter.AsStringConverter;
 import ru.d_shap.assertions.converter.AsStringConverterProvider;
-import ru.d_shap.assertions.converter.ConversionException;
 import ru.d_shap.assertions.converter.ConverterArgumentHelper;
 
 /**
@@ -46,7 +45,7 @@ public final class DoubleBufferAsStringConverter implements AsStringConverterPro
     }
 
     @Override
-    public String asString(final Object value) throws ConversionException {
+    public String asString(final Object value) {
         DoubleBuffer castedValue = ConverterArgumentHelper.getValue(value, DoubleBuffer.class);
 
         return AsStringConverter.asString(castedValue, double[].class, false);

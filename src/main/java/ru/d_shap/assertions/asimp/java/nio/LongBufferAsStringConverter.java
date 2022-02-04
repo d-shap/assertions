@@ -23,7 +23,6 @@ import java.nio.LongBuffer;
 
 import ru.d_shap.assertions.converter.AsStringConverter;
 import ru.d_shap.assertions.converter.AsStringConverterProvider;
-import ru.d_shap.assertions.converter.ConversionException;
 import ru.d_shap.assertions.converter.ConverterArgumentHelper;
 
 /**
@@ -46,7 +45,7 @@ public final class LongBufferAsStringConverter implements AsStringConverterProvi
     }
 
     @Override
-    public String asString(final Object value) throws ConversionException {
+    public String asString(final Object value) {
         LongBuffer castedValue = ConverterArgumentHelper.getValue(value, LongBuffer.class);
 
         return AsStringConverter.asString(castedValue, long[].class, false);

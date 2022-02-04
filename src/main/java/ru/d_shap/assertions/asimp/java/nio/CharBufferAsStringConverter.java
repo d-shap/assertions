@@ -23,7 +23,6 @@ import java.nio.CharBuffer;
 
 import ru.d_shap.assertions.converter.AsStringConverter;
 import ru.d_shap.assertions.converter.AsStringConverterProvider;
-import ru.d_shap.assertions.converter.ConversionException;
 import ru.d_shap.assertions.converter.ConverterArgumentHelper;
 
 /**
@@ -46,7 +45,7 @@ public final class CharBufferAsStringConverter implements AsStringConverterProvi
     }
 
     @Override
-    public String asString(final Object value) throws ConversionException {
+    public String asString(final Object value) {
         CharBuffer castedValue = ConverterArgumentHelper.getValue(value, CharBuffer.class);
 
         return AsStringConverter.asString(castedValue, char[].class, false);

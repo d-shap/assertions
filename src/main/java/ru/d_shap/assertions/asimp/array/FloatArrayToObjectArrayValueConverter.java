@@ -19,7 +19,6 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.asimp.array;
 
-import ru.d_shap.assertions.converter.ConversionException;
 import ru.d_shap.assertions.converter.ConverterArgumentHelper;
 import ru.d_shap.assertions.converter.ValueConverterProvider;
 
@@ -48,7 +47,7 @@ public final class FloatArrayToObjectArrayValueConverter implements ValueConvert
     }
 
     @Override
-    public Object convert(final Object value, final Object... arguments) throws ConversionException {
+    public Object convert(final Object value, final Object... arguments) {
         float[] castedValue = ConverterArgumentHelper.getValue(value, float[].class);
         ConverterArgumentHelper.checkArgumentsLength(arguments, 0);
 

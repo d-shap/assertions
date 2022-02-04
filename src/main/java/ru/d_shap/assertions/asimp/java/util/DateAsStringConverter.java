@@ -23,7 +23,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import ru.d_shap.assertions.converter.AsStringConverterProvider;
-import ru.d_shap.assertions.converter.ConversionException;
 import ru.d_shap.assertions.converter.ConverterArgumentHelper;
 
 /**
@@ -46,7 +45,7 @@ public final class DateAsStringConverter implements AsStringConverterProvider {
     }
 
     @Override
-    public String asString(final Object value) throws ConversionException {
+    public String asString(final Object value) {
         Date castedValue = ConverterArgumentHelper.getValue(value, Date.class);
 
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS");

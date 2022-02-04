@@ -22,7 +22,6 @@ package ru.d_shap.assertions.asimp.java.lang;
 import ru.d_shap.assertions.Messages;
 import ru.d_shap.assertions.converter.AsStringConverter;
 import ru.d_shap.assertions.converter.AsStringConverterProvider;
-import ru.d_shap.assertions.converter.ConversionException;
 import ru.d_shap.assertions.converter.ConverterArgumentHelper;
 
 /**
@@ -45,7 +44,7 @@ public final class IterableAsStringConverter implements AsStringConverterProvide
     }
 
     @Override
-    public String asString(final Object value) throws ConversionException {
+    public String asString(final Object value) {
         Iterable<?> castedValue = ConverterArgumentHelper.getValue(value, Iterable.class);
 
         StringBuilder result = new StringBuilder();

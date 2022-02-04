@@ -22,7 +22,6 @@ package ru.d_shap.assertions.asimp.array;
 import java.util.Arrays;
 import java.util.List;
 
-import ru.d_shap.assertions.converter.ConversionException;
 import ru.d_shap.assertions.converter.ConverterArgumentHelper;
 import ru.d_shap.assertions.converter.ValueConverterProvider;
 
@@ -51,7 +50,7 @@ public final class LongArrayToListValueConverter implements ValueConverterProvid
     }
 
     @Override
-    public Object convert(final Object value, final Object... arguments) throws ConversionException {
+    public Object convert(final Object value, final Object... arguments) {
         long[] castedValue = ConverterArgumentHelper.getValue(value, long[].class);
         ConverterArgumentHelper.checkArgumentsLength(arguments, 0);
 

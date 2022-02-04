@@ -23,7 +23,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import ru.d_shap.assertions.converter.ConversionException;
 import ru.d_shap.assertions.converter.ConverterArgumentHelper;
 import ru.d_shap.assertions.converter.ValueConverterProvider;
 
@@ -52,7 +51,7 @@ public final class IteratorToListValueConverter implements ValueConverterProvide
     }
 
     @Override
-    public Object convert(final Object value, final Object... arguments) throws ConversionException {
+    public Object convert(final Object value, final Object... arguments) {
         Iterator<?> castedValue = ConverterArgumentHelper.getValue(value, Iterator.class);
         ConverterArgumentHelper.checkArgumentsLength(arguments, 1);
         int castedCount = ConverterArgumentHelper.getArgument(arguments, 0, Integer.class);

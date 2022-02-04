@@ -24,7 +24,6 @@ import javax.xml.namespace.QName;
 import org.w3c.dom.Attr;
 
 import ru.d_shap.assertions.converter.AsStringConverterProvider;
-import ru.d_shap.assertions.converter.ConversionException;
 import ru.d_shap.assertions.converter.ConverterArgumentHelper;
 
 /**
@@ -47,7 +46,7 @@ public final class AttrAsStringConverter implements AsStringConverterProvider {
     }
 
     @Override
-    public String asString(final Object value) throws ConversionException {
+    public String asString(final Object value) {
         Attr castedValue = ConverterArgumentHelper.getValue(value, Attr.class);
 
         QName qName = new QName(castedValue.getNamespaceURI(), castedValue.getLocalName());

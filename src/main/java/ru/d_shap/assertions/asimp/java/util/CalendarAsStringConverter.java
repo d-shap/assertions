@@ -23,7 +23,6 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 import ru.d_shap.assertions.converter.AsStringConverterProvider;
-import ru.d_shap.assertions.converter.ConversionException;
 import ru.d_shap.assertions.converter.ConverterArgumentHelper;
 
 /**
@@ -46,7 +45,7 @@ public final class CalendarAsStringConverter implements AsStringConverterProvide
     }
 
     @Override
-    public String asString(final Object value) throws ConversionException {
+    public String asString(final Object value) {
         Calendar castedValue = ConverterArgumentHelper.getValue(value, Calendar.class);
 
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ");

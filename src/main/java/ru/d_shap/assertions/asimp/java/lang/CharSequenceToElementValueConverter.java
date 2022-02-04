@@ -22,7 +22,6 @@ package ru.d_shap.assertions.asimp.java.lang;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
-import ru.d_shap.assertions.converter.ConversionException;
 import ru.d_shap.assertions.converter.ConverterArgumentHelper;
 import ru.d_shap.assertions.converter.ValueConverter;
 import ru.d_shap.assertions.converter.ValueConverterProvider;
@@ -52,7 +51,7 @@ public final class CharSequenceToElementValueConverter implements ValueConverter
     }
 
     @Override
-    public Object convert(final Object value, final Object... arguments) throws ConversionException {
+    public Object convert(final Object value, final Object... arguments) {
         CharSequence castedValue = ConverterArgumentHelper.getValue(value, CharSequence.class);
         ConverterArgumentHelper.checkArgumentsLength(arguments, 0);
 

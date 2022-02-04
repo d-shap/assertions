@@ -209,7 +209,7 @@ public final class AssertionErrorBuilder {
         }
     }
 
-    private AssertionError createAssertionError() throws ConversionException {
+    private AssertionError createAssertionError() {
         List<FailDescriptionEntry> failDescriptionEntries = new ArrayList<>(_failDescriptionEntries);
         _failDescriptionValues.addFailDescriptionEntry(failDescriptionEntries);
 

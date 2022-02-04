@@ -22,7 +22,6 @@ package ru.d_shap.assertions.asimp.java.util;
 import java.util.TimeZone;
 
 import ru.d_shap.assertions.converter.AsStringConverterProvider;
-import ru.d_shap.assertions.converter.ConversionException;
 import ru.d_shap.assertions.converter.ConverterArgumentHelper;
 
 /**
@@ -45,7 +44,7 @@ public final class TimeZoneAsStringConverter implements AsStringConverterProvide
     }
 
     @Override
-    public String asString(final Object value) throws ConversionException {
+    public String asString(final Object value) {
         TimeZone castedValue = ConverterArgumentHelper.getValue(value, TimeZone.class);
 
         return castedValue.getID();

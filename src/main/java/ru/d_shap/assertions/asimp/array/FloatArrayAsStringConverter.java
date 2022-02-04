@@ -23,7 +23,6 @@ import java.util.List;
 
 import ru.d_shap.assertions.converter.AsStringConverter;
 import ru.d_shap.assertions.converter.AsStringConverterProvider;
-import ru.d_shap.assertions.converter.ConversionException;
 import ru.d_shap.assertions.converter.ConverterArgumentHelper;
 
 /**
@@ -46,7 +45,7 @@ public final class FloatArrayAsStringConverter implements AsStringConverterProvi
     }
 
     @Override
-    public String asString(final Object value) throws ConversionException {
+    public String asString(final Object value) {
         float[] castedValue = ConverterArgumentHelper.getValue(value, float[].class);
 
         return AsStringConverter.asString(castedValue, List.class);

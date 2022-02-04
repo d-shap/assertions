@@ -52,7 +52,7 @@ public final class InputStreamToByteArrayValueConverter implements ValueConverte
     }
 
     @Override
-    public Object convert(final Object value, final Object... arguments) throws ConversionException {
+    public Object convert(final Object value, final Object... arguments) {
         InputStream castedValue = ConverterArgumentHelper.getValue(value, InputStream.class);
         ConverterArgumentHelper.checkArgumentsLength(arguments, 1);
         int castedCount = ConverterArgumentHelper.getArgument(arguments, 0, Integer.class);
