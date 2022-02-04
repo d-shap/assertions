@@ -1546,6 +1546,10 @@ public class AssertionTest {
 
         private final SortedMap<String, String> _sortedMap;
 
+        private final Date _date;
+
+        private final Calendar _calendar;
+
         private final TimeZone _timeZone;
 
         private final InputStream _inputStream;
@@ -1567,6 +1571,8 @@ public class AssertionTest {
         private final DoubleBuffer _doubleBuffer;
 
         private final CharBuffer _charBuffer;
+
+        private final XMLGregorianCalendar _xmlGregorianCalendar;
 
         private final QName _qname;
 
@@ -1621,6 +1627,8 @@ public class AssertionTest {
                 _sortedSet = assertionTest.createTreeSet("1", "2", "3");
                 _map = assertionTest.createHashMap("1", "val1", "2", "val2", "3", "val3");
                 _sortedMap = assertionTest.createTreeMap("1", "val1", "2", "val2", "3", "val3");
+                _date = assertionTest.createDate(2020, Calendar.JULY, 11, 15, 23, 47);
+                _calendar = assertionTest.createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "Europe/Berlin");
                 _timeZone = TimeZone.getTimeZone("GMT");
                 _inputStream = new ByteArrayInputStream(new byte[]{1, 2, 3});
                 _reader = new StringReader("123");
@@ -1632,6 +1640,7 @@ public class AssertionTest {
                 _floatBuffer = assertionTest.createFloatBuffer(new float[]{1.0f, 2.0f});
                 _doubleBuffer = assertionTest.createDoubleBuffer(new double[]{1.0f, 2.0f});
                 _charBuffer = assertionTest.createCharBuffer(new char[]{'1', '2'});
+                _xmlGregorianCalendar = assertionTest.createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "Europe/Berlin");
                 _qname = new QName("local");
                 _node = assertionTest.createNode("<node>content</node>");
                 _element = assertionTest.createElement("<element>content</element>");
@@ -1795,6 +1804,14 @@ public class AssertionTest {
             return _sortedMap;
         }
 
+        Date getDate() {
+            return _date;
+        }
+
+        Calendar getCalendar() {
+            return _calendar;
+        }
+
         TimeZone getTimeZone() {
             return _timeZone;
         }
@@ -1837,6 +1854,10 @@ public class AssertionTest {
 
         CharBuffer getCharBuffer() {
             return _charBuffer;
+        }
+
+        XMLGregorianCalendar getXmlGregorianCalendar() {
+            return _xmlGregorianCalendar;
         }
 
         QName getQname() {
