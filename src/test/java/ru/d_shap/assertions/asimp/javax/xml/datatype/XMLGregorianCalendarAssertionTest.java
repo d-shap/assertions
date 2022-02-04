@@ -22,6 +22,8 @@ package ru.d_shap.assertions.asimp.javax.xml.datatype;
 import java.util.Calendar;
 import java.util.TimeZone;
 
+import javax.xml.datatype.XMLGregorianCalendar;
+
 import org.hamcrest.Matchers;
 import org.junit.Test;
 
@@ -3976,7 +3978,20 @@ public class XMLGregorianCalendarAssertionTest extends AssertionTest {
      */
     @Test
     public void isNullTest() {
-        // TODO
+        initialize(Raw.xmlGregorianCalendarAssertion(), null).isNull();
+
+        try {
+            initialize(Raw.xmlGregorianCalendarAssertion(), createUtcXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47)).isNull();
+            Assertions.fail("XMLGregorianCalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should be null.\n\tActual:<2020-07-11T15:23:47.000+0000>");
+        }
+        try {
+            initialize(Raw.xmlGregorianCalendarAssertion(), createUtcXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47), "Message").isNull();
+            Assertions.fail("XMLGregorianCalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be null.\n\tActual:<2020-07-11T15:23:47.000+0000>");
+        }
     }
 
     /**
@@ -3984,7 +3999,21 @@ public class XMLGregorianCalendarAssertionTest extends AssertionTest {
      */
     @Test
     public void isSameAsTest() {
-        // TODO
+        XMLGregorianCalendar value = createUtcXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47);
+        initialize(Raw.xmlGregorianCalendarAssertion(), value).isSameAs(value);
+
+        try {
+            initialize(Raw.xmlGregorianCalendarAssertion(), value).isSameAs(createUtcXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47));
+            Assertions.fail("XMLGregorianCalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should point to the same object.\n\tExpected:<2020-07-11T15:23:47.000+0000> but was:<2020-07-11T15:23:47.000+0000>");
+        }
+        try {
+            initialize(Raw.xmlGregorianCalendarAssertion(), value, "Message").isSameAs(createUtcXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47));
+            Assertions.fail("XMLGregorianCalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should point to the same object.\n\tExpected:<2020-07-11T15:23:47.000+0000> but was:<2020-07-11T15:23:47.000+0000>");
+        }
     }
 
     /**
@@ -3992,7 +4021,21 @@ public class XMLGregorianCalendarAssertionTest extends AssertionTest {
      */
     @Test
     public void isNotSameAsTest() {
-        // TODO
+        XMLGregorianCalendar value = createUtcXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47);
+        initialize(Raw.xmlGregorianCalendarAssertion(), value).isNotSameAs(createUtcXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47));
+
+        try {
+            initialize(Raw.xmlGregorianCalendarAssertion(), value).isNotSameAs(value);
+            Assertions.fail("XMLGregorianCalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should point to the different objects.\n\tActual:<2020-07-11T15:23:47.000+0000>");
+        }
+        try {
+            initialize(Raw.xmlGregorianCalendarAssertion(), value, "Message").isNotSameAs(value);
+            Assertions.fail("XMLGregorianCalendarAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should point to the different objects.\n\tActual:<2020-07-11T15:23:47.000+0000>");
+        }
     }
 
 }
