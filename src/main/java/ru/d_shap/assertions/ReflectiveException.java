@@ -32,7 +32,7 @@ public final class ReflectiveException extends RuntimeException {
      *
      * @param cause the cause of the exception.
      */
-    public ReflectiveException(final Throwable cause) {
+    public ReflectiveException(final ReflectiveOperationException cause) {
         super(cause);
     }
 
