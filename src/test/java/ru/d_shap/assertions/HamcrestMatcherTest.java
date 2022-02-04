@@ -316,7 +316,7 @@ public final class HamcrestMatcherTest extends AssertionTest {
         }
 
         @Override
-        public String asString(final Object value) throws ConversionException {
+        public String asString(final Object value) {
             throw new ConversionException(new IOException("test conversion exception"));
         }
 

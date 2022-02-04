@@ -1645,7 +1645,7 @@ public final class AssertionErrorBuilderTest extends AssertionTest {
         }
 
         @Override
-        public Object convert(final Object value, final Object... arguments) throws ConversionException {
+        public Object convert(final Object value, final Object... arguments) {
             throw new ConversionException(new IOException("test conversion exception"));
         }
 
@@ -1668,7 +1668,7 @@ public final class AssertionErrorBuilderTest extends AssertionTest {
         }
 
         @Override
-        public String asString(final Object value) throws ConversionException {
+        public String asString(final Object value) {
             throw new ConversionException(new IOException("test conversion exception"));
         }
 

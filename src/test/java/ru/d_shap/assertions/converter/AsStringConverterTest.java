@@ -196,7 +196,7 @@ public final class AsStringConverterTest extends AssertionTest {
         }
 
         @Override
-        public String asString(final Object value) throws ConversionException {
+        public String asString(final Object value) {
             return "InterfaceA as string";
         }
 
@@ -219,7 +219,7 @@ public final class AsStringConverterTest extends AssertionTest {
         }
 
         @Override
-        public String asString(final Object value) throws ConversionException {
+        public String asString(final Object value) {
             return "InterfaceB as string";
         }
 

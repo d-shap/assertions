@@ -292,7 +292,7 @@ public final class ValueConverterTest extends AssertionTest {
         }
 
         @Override
-        public Object convert(final Object value, final Object... arguments) throws ConversionException {
+        public Object convert(final Object value, final Object... arguments) {
             return new ToClassX();
         }
 
@@ -320,7 +320,7 @@ public final class ValueConverterTest extends AssertionTest {
         }
 
         @Override
-        public Object convert(final Object value, final Object... arguments) throws ConversionException {
+        public Object convert(final Object value, final Object... arguments) {
             return new ToClassY();
         }
 
@@ -348,7 +348,7 @@ public final class ValueConverterTest extends AssertionTest {
         }
 
         @Override
-        public Object convert(final Object value, final Object... arguments) throws ConversionException {
+        public Object convert(final Object value, final Object... arguments) {
             return new ToClassX();
         }
 
@@ -376,7 +376,7 @@ public final class ValueConverterTest extends AssertionTest {
         }
 
         @Override
-        public Object convert(final Object value, final Object... arguments) throws ConversionException {
+        public Object convert(final Object value, final Object... arguments) {
             return new ToClassY();
         }
 
@@ -404,7 +404,7 @@ public final class ValueConverterTest extends AssertionTest {
         }
 
         @Override
-        public Object convert(final Object value, final Object... arguments) throws ConversionException {
+        public Object convert(final Object value, final Object... arguments) {
             return new ToClassZ1();
         }
 
@@ -432,7 +432,7 @@ public final class ValueConverterTest extends AssertionTest {
         }
 
         @Override
-        public Object convert(final Object value, final Object... arguments) throws ConversionException {
+        public Object convert(final Object value, final Object... arguments) {
             return new ToClassZ2();
         }
 
@@ -460,7 +460,7 @@ public final class ValueConverterTest extends AssertionTest {
         }
 
         @Override
-        public Object convert(final Object value, final Object... arguments) throws ConversionException {
+        public Object convert(final Object value, final Object... arguments) {
             return new ToClassZ1();
         }
 
@@ -488,7 +488,7 @@ public final class ValueConverterTest extends AssertionTest {
         }
 
         @Override
-        public Object convert(final Object value, final Object... arguments) throws ConversionException {
+        public Object convert(final Object value, final Object... arguments) {
             return new ToClassZ2();
         }
 
