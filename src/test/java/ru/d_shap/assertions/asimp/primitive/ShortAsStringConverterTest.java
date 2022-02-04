@@ -48,11 +48,9 @@ public final class ShortAsStringConverterTest extends AssertionTest {
 
     /**
      * {@link ShortAsStringConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void asStringTest() throws Exception {
+    public void asStringTest() {
         Assertions.assertThat(new ShortAsStringConverter().asString((short) 1)).isEqualTo("1s");
         Assertions.assertThat(new ShortAsStringConverter().asString((short) 100)).isEqualTo("100s");
         Assertions.assertThat(new ShortAsStringConverter().asString((short) 127)).isEqualTo("127s");
@@ -63,21 +61,17 @@ public final class ShortAsStringConverterTest extends AssertionTest {
 
     /**
      * {@link ShortAsStringConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = NullPointerException.class)
-    public void asStringNullValueFailTest() throws Exception {
+    public void asStringNullValueFailTest() {
         new ShortAsStringConverter().asString(null);
     }
 
     /**
      * {@link ShortAsStringConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = ClassCastException.class)
-    public void asStringWrongValueTypeFailTest() throws Exception {
+    public void asStringWrongValueTypeFailTest() {
         new ShortAsStringConverter().asString(new Object());
     }
 

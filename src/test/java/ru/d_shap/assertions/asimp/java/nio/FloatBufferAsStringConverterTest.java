@@ -50,11 +50,9 @@ public final class FloatBufferAsStringConverterTest extends AssertionTest {
 
     /**
      * {@link FloatBufferAsStringConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void asStringTest() throws Exception {
+    public void asStringTest() {
         Assertions.assertThat(new FloatBufferAsStringConverter().asString(createFloatBuffer(new float[]{}))).isEqualTo("<EMPTY>");
 
         Assertions.assertThat(new FloatBufferAsStringConverter().asString(createFloatBuffer(new float[]{1.0f}))).isEqualTo("[1.0f]");
@@ -76,21 +74,17 @@ public final class FloatBufferAsStringConverterTest extends AssertionTest {
 
     /**
      * {@link FloatBufferAsStringConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = NullPointerException.class)
-    public void asStringNullValueFailTest() throws Exception {
+    public void asStringNullValueFailTest() {
         new FloatBufferAsStringConverter().asString(null);
     }
 
     /**
      * {@link FloatBufferAsStringConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = ClassCastException.class)
-    public void asStringWrongValueTypeFailTest() throws Exception {
+    public void asStringWrongValueTypeFailTest() {
         new FloatBufferAsStringConverter().asString(new Object());
     }
 

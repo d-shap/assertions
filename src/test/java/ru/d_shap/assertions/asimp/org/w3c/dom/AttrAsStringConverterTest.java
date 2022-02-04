@@ -49,11 +49,9 @@ public final class AttrAsStringConverterTest extends AssertionTest {
 
     /**
      * {@link AttrAsStringConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void asStringTest() throws Exception {
+    public void asStringTest() {
         Assertions.assertThat(new AttrAsStringConverter().asString(createAttr("<element attr='val'/>"))).isEqualTo("attr=val");
         Assertions.assertThat(new AttrAsStringConverter().asString(createAttr("<element attr1='val'/>"))).isEqualTo("attr1=val");
         Assertions.assertThat(new AttrAsStringConverter().asString(createAttr("<element attr='val1'/>"))).isEqualTo("attr=val1");
@@ -64,21 +62,17 @@ public final class AttrAsStringConverterTest extends AssertionTest {
 
     /**
      * {@link AttrAsStringConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = NullPointerException.class)
-    public void asStringNullValueFailTest() throws Exception {
+    public void asStringNullValueFailTest() {
         new AttrAsStringConverter().asString(null);
     }
 
     /**
      * {@link AttrAsStringConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = ClassCastException.class)
-    public void asStringWrongValueTypeFailTest() throws Exception {
+    public void asStringWrongValueTypeFailTest() {
         new AttrAsStringConverter().asString(new Object());
     }
 

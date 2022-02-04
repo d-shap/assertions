@@ -50,11 +50,9 @@ public final class TimeZoneAsStringConverterTest extends AssertionTest {
 
     /**
      * {@link TimeZoneAsStringConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void asStringTest() throws Exception {
+    public void asStringTest() {
         Assertions.assertThat(new TimeZoneAsStringConverter().asString(TimeZone.getTimeZone("UTC"))).isEqualTo("UTC");
         Assertions.assertThat(new TimeZoneAsStringConverter().asString(TimeZone.getTimeZone("GMT"))).isEqualTo("GMT");
         Assertions.assertThat(new TimeZoneAsStringConverter().asString(TimeZone.getTimeZone("Asia/Novosibirsk"))).isEqualTo("Asia/Novosibirsk");
@@ -66,21 +64,17 @@ public final class TimeZoneAsStringConverterTest extends AssertionTest {
 
     /**
      * {@link TimeZoneAsStringConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = NullPointerException.class)
-    public void asStringNullValueFailTest() throws Exception {
+    public void asStringNullValueFailTest() {
         new TimeZoneAsStringConverter().asString(null);
     }
 
     /**
      * {@link TimeZoneAsStringConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = ClassCastException.class)
-    public void asStringWrongValueTypeFailTest() throws Exception {
+    public void asStringWrongValueTypeFailTest() {
         new TimeZoneAsStringConverter().asString(new Object());
     }
 

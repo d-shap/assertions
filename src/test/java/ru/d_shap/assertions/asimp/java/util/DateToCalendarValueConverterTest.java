@@ -60,11 +60,9 @@ public final class DateToCalendarValueConverterTest extends AssertionTest {
 
     /**
      * {@link DateToCalendarValueConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void convertTest() throws Exception {
+    public void convertTest() {
         Assertions.assertThat(new DateToCalendarValueConverter().convert(createDate(2020, Calendar.JULY, 11, 15, 23, 47))).isInstanceOf(Calendar.class);
         Assertions.assertThat(new DateToCalendarValueConverter().convert(createDate(2020, Calendar.JULY, 11, 15, 23, 47)), Raw.calendarAssertion()).hasDateAndTime(2020, Calendar.JULY, 11, 15, 23, 47, 0);
         Assertions.assertThat(new DateToCalendarValueConverter().convert(createDate(2020, Calendar.JULY, 11, 15, 23, 47))).as(Raw.calendarAssertion()).hasDateAndTime(2020, Calendar.JULY, 11, 15, 23, 47, 0);
@@ -81,31 +79,25 @@ public final class DateToCalendarValueConverterTest extends AssertionTest {
 
     /**
      * {@link DateToCalendarValueConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = NullPointerException.class)
-    public void convertNullValueFailTest() throws Exception {
+    public void convertNullValueFailTest() {
         new DateToCalendarValueConverter().convert(null);
     }
 
     /**
      * {@link DateToCalendarValueConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = ClassCastException.class)
-    public void convertWrongValueTypeFailTest() throws Exception {
+    public void convertWrongValueTypeFailTest() {
         new DateToCalendarValueConverter().convert(new Object());
     }
 
     /**
      * {@link DateToCalendarValueConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = ArrayIndexOutOfBoundsException.class)
-    public void convertWrongArgumentCountFailTest() throws Exception {
+    public void convertWrongArgumentCountFailTest() {
         new DateToCalendarValueConverter().convert(createDate(2020, Calendar.JULY, 11, 15, 23, 47), new Object());
     }
 

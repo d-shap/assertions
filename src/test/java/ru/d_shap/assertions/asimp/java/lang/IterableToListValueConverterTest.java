@@ -60,11 +60,9 @@ public final class IterableToListValueConverterTest extends AssertionTest {
 
     /**
      * {@link IterableToListValueConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void convertTest() throws Exception {
+    public void convertTest() {
         Assertions.assertThat(new IterableToListValueConverter().convert(createIterable())).isInstanceOf(List.class);
         Assertions.assertThat(new IterableToListValueConverter().convert(createIterable()), Raw.<String>listAssertion()).containsExactlyInOrder();
         Assertions.assertThat(new IterableToListValueConverter().convert(createIterable())).as(Raw.<String>listAssertion()).containsExactlyInOrder();
@@ -94,31 +92,25 @@ public final class IterableToListValueConverterTest extends AssertionTest {
 
     /**
      * {@link IterableToListValueConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = NullPointerException.class)
-    public void convertNullValueFailTest() throws Exception {
+    public void convertNullValueFailTest() {
         new IterableToListValueConverter().convert(null);
     }
 
     /**
      * {@link IterableToListValueConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = ClassCastException.class)
-    public void convertWrongValueTypeFailTest() throws Exception {
+    public void convertWrongValueTypeFailTest() {
         new IterableToListValueConverter().convert(new Object());
     }
 
     /**
      * {@link IterableToListValueConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = ArrayIndexOutOfBoundsException.class)
-    public void convertWrongArgumentCountFailTest() throws Exception {
+    public void convertWrongArgumentCountFailTest() {
         new IterableToListValueConverter().convert(createIterable(), new Object());
     }
 

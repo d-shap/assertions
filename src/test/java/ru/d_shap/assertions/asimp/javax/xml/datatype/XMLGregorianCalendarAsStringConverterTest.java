@@ -52,11 +52,9 @@ public final class XMLGregorianCalendarAsStringConverterTest extends AssertionTe
 
     /**
      * {@link XMLGregorianCalendarAsStringConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void asStringTest() throws Exception {
+    public void asStringTest() {
         Assertions.assertThat(new XMLGregorianCalendarAsStringConverter().asString(createUtcXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47))).isEqualTo("2020-07-11T15:23:47.000+0000");
         Assertions.assertThat(new XMLGregorianCalendarAsStringConverter().asString(createUtcXmlCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47))).isEqualTo("2020-12-11T15:23:47.000+0000");
         Assertions.assertThat(new XMLGregorianCalendarAsStringConverter().asString(createUtcXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 554))).isEqualTo("2020-07-11T15:23:47.554+0000");
@@ -78,21 +76,17 @@ public final class XMLGregorianCalendarAsStringConverterTest extends AssertionTe
 
     /**
      * {@link XMLGregorianCalendarAsStringConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = NullPointerException.class)
-    public void asStringNullValueFailTest() throws Exception {
+    public void asStringNullValueFailTest() {
         new XMLGregorianCalendarAsStringConverter().asString(null);
     }
 
     /**
      * {@link XMLGregorianCalendarAsStringConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = ClassCastException.class)
-    public void asStringWrongValueTypeFailTest() throws Exception {
+    public void asStringWrongValueTypeFailTest() {
         new XMLGregorianCalendarAsStringConverter().asString(new Object());
     }
 

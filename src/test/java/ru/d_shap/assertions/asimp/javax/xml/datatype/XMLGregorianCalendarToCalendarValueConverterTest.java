@@ -62,11 +62,9 @@ public final class XMLGregorianCalendarToCalendarValueConverterTest extends Asse
 
     /**
      * {@link XMLGregorianCalendarToCalendarValueConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void convertTest() throws Exception {
+    public void convertTest() {
         Assertions.assertThat(new XMLGregorianCalendarToCalendarValueConverter().convert(createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC"), (TimeZone) null)).isInstanceOf(Calendar.class);
         Assertions.assertThat(new XMLGregorianCalendarToCalendarValueConverter().convert(createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC"), (TimeZone) null), Raw.calendarAssertion()).hasTimeZoneDateAndTime(2020, Calendar.JULY, 11, 15, 23, 47, 0, "GMT+00:00");
         Assertions.assertThat(new XMLGregorianCalendarToCalendarValueConverter().convert(createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC"), (TimeZone) null)).as(Raw.calendarAssertion()).hasTimeZoneDateAndTime(2020, Calendar.JULY, 11, 15, 23, 47, 0, "GMT+00:00");
@@ -122,51 +120,41 @@ public final class XMLGregorianCalendarToCalendarValueConverterTest extends Asse
 
     /**
      * {@link XMLGregorianCalendarToCalendarValueConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = NullPointerException.class)
-    public void convertNullValueFailTest() throws Exception {
+    public void convertNullValueFailTest() {
         new XMLGregorianCalendarToCalendarValueConverter().convert(null);
     }
 
     /**
      * {@link XMLGregorianCalendarToCalendarValueConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = ClassCastException.class)
-    public void convertWrongValueTypeFailTest() throws Exception {
+    public void convertWrongValueTypeFailTest() {
         new XMLGregorianCalendarToCalendarValueConverter().convert(new Object());
     }
 
     /**
      * {@link XMLGregorianCalendarToCalendarValueConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = ArrayIndexOutOfBoundsException.class)
-    public void convertWrongArgumentCount0FailTest() throws Exception {
+    public void convertWrongArgumentCount0FailTest() {
         new XMLGregorianCalendarToCalendarValueConverter().convert(createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47));
     }
 
     /**
      * {@link XMLGregorianCalendarToCalendarValueConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = ArrayIndexOutOfBoundsException.class)
-    public void convertWrongArgumentCount2FailTest() throws Exception {
+    public void convertWrongArgumentCount2FailTest() {
         new XMLGregorianCalendarToCalendarValueConverter().convert(createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47), new Object(), new Object());
     }
 
     /**
      * {@link XMLGregorianCalendarToCalendarValueConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = ClassCastException.class)
-    public void convertWrongArgumentTypeFailTest() throws Exception {
+    public void convertWrongArgumentTypeFailTest() {
         new XMLGregorianCalendarToCalendarValueConverter().convert(createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47), new Object());
     }
 

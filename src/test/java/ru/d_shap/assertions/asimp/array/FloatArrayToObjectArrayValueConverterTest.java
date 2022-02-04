@@ -57,11 +57,9 @@ public final class FloatArrayToObjectArrayValueConverterTest extends AssertionTe
 
     /**
      * {@link FloatArrayToObjectArrayValueConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void convertTest() throws Exception {
+    public void convertTest() {
         Assertions.assertThat(new FloatArrayToObjectArrayValueConverter().convert(new float[]{})).isInstanceOf(Float[].class);
         Assertions.assertThat(new FloatArrayToObjectArrayValueConverter().convert(new float[]{}), Raw.objectArrayAssertion()).containsExactlyInOrder();
         Assertions.assertThat(new FloatArrayToObjectArrayValueConverter().convert(new float[]{})).as(Raw.objectArrayAssertion()).containsExactlyInOrder();
@@ -77,31 +75,25 @@ public final class FloatArrayToObjectArrayValueConverterTest extends AssertionTe
 
     /**
      * {@link FloatArrayToObjectArrayValueConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = NullPointerException.class)
-    public void convertNullValueFailTest() throws Exception {
+    public void convertNullValueFailTest() {
         new FloatArrayToObjectArrayValueConverter().convert(null);
     }
 
     /**
      * {@link FloatArrayToObjectArrayValueConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = ClassCastException.class)
-    public void convertWrongValueTypeFailTest() throws Exception {
+    public void convertWrongValueTypeFailTest() {
         new FloatArrayToObjectArrayValueConverter().convert(new Object());
     }
 
     /**
      * {@link FloatArrayToObjectArrayValueConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = ArrayIndexOutOfBoundsException.class)
-    public void convertWrongArgumentCountFailTest() throws Exception {
+    public void convertWrongArgumentCountFailTest() {
         new FloatArrayToObjectArrayValueConverter().convert(new float[]{}, new Object());
     }
 

@@ -59,11 +59,9 @@ public final class BooleanArrayToListValueConverterTest extends AssertionTest {
 
     /**
      * {@link BooleanArrayToListValueConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void convertTest() throws Exception {
+    public void convertTest() {
         Assertions.assertThat(new BooleanArrayToListValueConverter().convert(new boolean[]{})).isInstanceOf(List.class);
         Assertions.assertThat(new BooleanArrayToListValueConverter().convert(new boolean[]{}), Raw.<Boolean>listAssertion()).containsExactlyInOrder();
         Assertions.assertThat(new BooleanArrayToListValueConverter().convert(new boolean[]{})).as(Raw.<Boolean>listAssertion()).containsExactlyInOrder();
@@ -79,31 +77,25 @@ public final class BooleanArrayToListValueConverterTest extends AssertionTest {
 
     /**
      * {@link BooleanArrayToListValueConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = NullPointerException.class)
-    public void convertNullValueFailTest() throws Exception {
+    public void convertNullValueFailTest() {
         new BooleanArrayToListValueConverter().convert(null);
     }
 
     /**
      * {@link BooleanArrayToListValueConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = ClassCastException.class)
-    public void convertWrongValueTypeFailTest() throws Exception {
+    public void convertWrongValueTypeFailTest() {
         new BooleanArrayToListValueConverter().convert(new Object());
     }
 
     /**
      * {@link BooleanArrayToListValueConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = ArrayIndexOutOfBoundsException.class)
-    public void convertWrongArgumentCountFailTest() throws Exception {
+    public void convertWrongArgumentCountFailTest() {
         new BooleanArrayToListValueConverter().convert(new boolean[]{}, new Object());
     }
 

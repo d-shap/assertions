@@ -59,11 +59,9 @@ public final class ShortBufferToShortArrayValueConverterTest extends AssertionTe
 
     /**
      * {@link ShortBufferToShortArrayValueConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void convertTest() throws Exception {
+    public void convertTest() {
         Assertions.assertThat(new ShortBufferToShortArrayValueConverter().convert(createShortBuffer(new short[]{}), false)).isInstanceOf(short[].class);
         Assertions.assertThat(new ShortBufferToShortArrayValueConverter().convert(createShortBuffer(new short[]{}), false), Raw.shortArrayAssertion()).containsExactlyInOrder();
         Assertions.assertThat(new ShortBufferToShortArrayValueConverter().convert(createShortBuffer(new short[]{}), false)).as(Raw.shortArrayAssertion()).containsExactlyInOrder();
@@ -171,51 +169,41 @@ public final class ShortBufferToShortArrayValueConverterTest extends AssertionTe
 
     /**
      * {@link ShortBufferToShortArrayValueConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = NullPointerException.class)
-    public void convertNullValueFailTest() throws Exception {
+    public void convertNullValueFailTest() {
         new ShortBufferToShortArrayValueConverter().convert(null);
     }
 
     /**
      * {@link ShortBufferToShortArrayValueConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = ClassCastException.class)
-    public void convertWrongValueTypeFailTest() throws Exception {
+    public void convertWrongValueTypeFailTest() {
         new ShortBufferToShortArrayValueConverter().convert(new Object());
     }
 
     /**
      * {@link ShortBufferToShortArrayValueConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = ArrayIndexOutOfBoundsException.class)
-    public void convertWrongArgumentCount0FailTest() throws Exception {
+    public void convertWrongArgumentCount0FailTest() {
         new ShortBufferToShortArrayValueConverter().convert(createShortBuffer(new short[]{}));
     }
 
     /**
      * {@link ShortBufferToShortArrayValueConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = ArrayIndexOutOfBoundsException.class)
-    public void convertWrongArgumentCount2FailTest() throws Exception {
+    public void convertWrongArgumentCount2FailTest() {
         new ShortBufferToShortArrayValueConverter().convert(createShortBuffer(new short[]{}), new Object(), new Object());
     }
 
     /**
      * {@link ShortBufferToShortArrayValueConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = ClassCastException.class)
-    public void convertWrongArgumentTypeFailTest() throws Exception {
+    public void convertWrongArgumentTypeFailTest() {
         new ShortBufferToShortArrayValueConverter().convert(createShortBuffer(new short[]{}), new Object());
     }
 

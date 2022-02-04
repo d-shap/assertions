@@ -51,11 +51,9 @@ public final class MapAsStringConverterTest extends AssertionTest {
 
     /**
      * {@link MapAsStringConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void asStringTest() throws Exception {
+    public void asStringTest() {
         Map<String, String> map = new LinkedHashMap<>();
         Assertions.assertThat(new MapAsStringConverter().asString(map)).isEqualTo("<EMPTY>");
 
@@ -73,21 +71,17 @@ public final class MapAsStringConverterTest extends AssertionTest {
 
     /**
      * {@link MapAsStringConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = NullPointerException.class)
-    public void asStringNullValueFailTest() throws Exception {
+    public void asStringNullValueFailTest() {
         new MapAsStringConverter().asString(null);
     }
 
     /**
      * {@link MapAsStringConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = ClassCastException.class)
-    public void asStringWrongValueTypeFailTest() throws Exception {
+    public void asStringWrongValueTypeFailTest() {
         new MapAsStringConverter().asString(new Object());
     }
 

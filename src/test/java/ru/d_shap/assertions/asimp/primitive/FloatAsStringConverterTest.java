@@ -48,11 +48,9 @@ public final class FloatAsStringConverterTest extends AssertionTest {
 
     /**
      * {@link FloatAsStringConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void asStringTest() throws Exception {
+    public void asStringTest() {
         Assertions.assertThat(new FloatAsStringConverter().asString(0.99f)).isEqualTo("0.99f");
         Assertions.assertThat(new FloatAsStringConverter().asString(1.0f)).isEqualTo("1.0f");
         Assertions.assertThat(new FloatAsStringConverter().asString(5000.0f)).isEqualTo("5000.0f");
@@ -71,21 +69,17 @@ public final class FloatAsStringConverterTest extends AssertionTest {
 
     /**
      * {@link FloatAsStringConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = NullPointerException.class)
-    public void asStringNullValueFailTest() throws Exception {
+    public void asStringNullValueFailTest() {
         new FloatAsStringConverter().asString(null);
     }
 
     /**
      * {@link FloatAsStringConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = ClassCastException.class)
-    public void asStringWrongValueTypeFailTest() throws Exception {
+    public void asStringWrongValueTypeFailTest() {
         new FloatAsStringConverter().asString(new Object());
     }
 

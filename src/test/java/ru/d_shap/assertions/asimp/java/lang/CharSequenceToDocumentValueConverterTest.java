@@ -64,11 +64,9 @@ public final class CharSequenceToDocumentValueConverterTest extends AssertionTes
 
     /**
      * {@link CharSequenceToDocumentValueConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void convertTest() throws Exception {
+    public void convertTest() {
         Assertions.assertThat(new CharSequenceToDocumentValueConverter().convert("<element/>")).isInstanceOf(Document.class);
         Assertions.assertThat(new CharSequenceToDocumentValueConverter().convert("<element/>"), Raw.documentAssertion()).hasProperties("element");
         Assertions.assertThat(new CharSequenceToDocumentValueConverter().convert("<element/>")).as(Raw.documentAssertion()).hasProperties("element");
@@ -100,41 +98,33 @@ public final class CharSequenceToDocumentValueConverterTest extends AssertionTes
 
     /**
      * {@link CharSequenceToDocumentValueConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = NullPointerException.class)
-    public void convertNullValueFailTest() throws Exception {
+    public void convertNullValueFailTest() {
         new CharSequenceToDocumentValueConverter().convert(null);
     }
 
     /**
      * {@link CharSequenceToDocumentValueConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = ClassCastException.class)
-    public void convertWrongValueTypeFailTest() throws Exception {
+    public void convertWrongValueTypeFailTest() {
         new CharSequenceToDocumentValueConverter().convert(new Object());
     }
 
     /**
      * {@link CharSequenceToDocumentValueConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = ArrayIndexOutOfBoundsException.class)
-    public void convertWrongArgumentCountFailTest() throws Exception {
+    public void convertWrongArgumentCountFailTest() {
         new CharSequenceToDocumentValueConverter().convert("<element/>", new Object());
     }
 
     /**
      * {@link CharSequenceToDocumentValueConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void stderrTest() throws Exception {
+    public void stderrTest() {
         PrintStream stderr = System.err;
         try {
             try {

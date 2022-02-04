@@ -48,11 +48,9 @@ public final class LongArrayAsStringConverterTest extends AssertionTest {
 
     /**
      * {@link LongArrayAsStringConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void asStringTest() throws Exception {
+    public void asStringTest() {
         Assertions.assertThat(new LongArrayAsStringConverter().asString(new long[]{})).isEqualTo("<EMPTY>");
         Assertions.assertThat(new LongArrayAsStringConverter().asString(new long[]{1L})).isEqualTo("[1L]");
         Assertions.assertThat(new LongArrayAsStringConverter().asString(new long[]{1L, 2L})).isEqualTo("[1L, 2L]");
@@ -61,21 +59,17 @@ public final class LongArrayAsStringConverterTest extends AssertionTest {
 
     /**
      * {@link LongArrayAsStringConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = NullPointerException.class)
-    public void asStringNullValueFailTest() throws Exception {
+    public void asStringNullValueFailTest() {
         new LongArrayAsStringConverter().asString(null);
     }
 
     /**
      * {@link LongArrayAsStringConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = ClassCastException.class)
-    public void asStringWrongValueTypeFailTest() throws Exception {
+    public void asStringWrongValueTypeFailTest() {
         new LongArrayAsStringConverter().asString(new Object());
     }
 

@@ -59,11 +59,9 @@ public final class ByteBufferToByteArrayValueConverterTest extends AssertionTest
 
     /**
      * {@link ByteBufferToByteArrayValueConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void convertTest() throws Exception {
+    public void convertTest() {
         Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{}), false)).isInstanceOf(byte[].class);
         Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{}), false), Raw.byteArrayAssertion()).containsExactlyInOrder();
         Assertions.assertThat(new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{}), false)).as(Raw.byteArrayAssertion()).containsExactlyInOrder();
@@ -171,51 +169,41 @@ public final class ByteBufferToByteArrayValueConverterTest extends AssertionTest
 
     /**
      * {@link ByteBufferToByteArrayValueConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = NullPointerException.class)
-    public void convertNullValueFailTest() throws Exception {
+    public void convertNullValueFailTest() {
         new ByteBufferToByteArrayValueConverter().convert(null);
     }
 
     /**
      * {@link ByteBufferToByteArrayValueConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = ClassCastException.class)
-    public void convertWrongValueTypeFailTest() throws Exception {
+    public void convertWrongValueTypeFailTest() {
         new ByteBufferToByteArrayValueConverter().convert(new Object());
     }
 
     /**
      * {@link ByteBufferToByteArrayValueConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = ArrayIndexOutOfBoundsException.class)
-    public void convertWrongArgumentCount0FailTest() throws Exception {
+    public void convertWrongArgumentCount0FailTest() {
         new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{}));
     }
 
     /**
      * {@link ByteBufferToByteArrayValueConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = ArrayIndexOutOfBoundsException.class)
-    public void convertWrongArgumentCount2FailTest() throws Exception {
+    public void convertWrongArgumentCount2FailTest() {
         new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{}), new Object(), new Object());
     }
 
     /**
      * {@link ByteBufferToByteArrayValueConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = ClassCastException.class)
-    public void convertWrongArgumentTypeFailTest() throws Exception {
+    public void convertWrongArgumentTypeFailTest() {
         new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{}), new Object());
     }
 

@@ -50,11 +50,9 @@ public final class ShortBufferAsStringConverterTest extends AssertionTest {
 
     /**
      * {@link ShortBufferAsStringConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void asStringTest() throws Exception {
+    public void asStringTest() {
         Assertions.assertThat(new ShortBufferAsStringConverter().asString(createShortBuffer(new short[]{}))).isEqualTo("<EMPTY>");
 
         Assertions.assertThat(new ShortBufferAsStringConverter().asString(createShortBuffer(new short[]{1}))).isEqualTo("[1s]");
@@ -76,21 +74,17 @@ public final class ShortBufferAsStringConverterTest extends AssertionTest {
 
     /**
      * {@link ShortBufferAsStringConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = NullPointerException.class)
-    public void asStringNullValueFailTest() throws Exception {
+    public void asStringNullValueFailTest() {
         new ShortBufferAsStringConverter().asString(null);
     }
 
     /**
      * {@link ShortBufferAsStringConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = ClassCastException.class)
-    public void asStringWrongValueTypeFailTest() throws Exception {
+    public void asStringWrongValueTypeFailTest() {
         new ShortBufferAsStringConverter().asString(new Object());
     }
 

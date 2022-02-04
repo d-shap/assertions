@@ -48,11 +48,9 @@ public final class LongAsStringConverterTest extends AssertionTest {
 
     /**
      * {@link LongAsStringConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void asStringTest() throws Exception {
+    public void asStringTest() {
         Assertions.assertThat(new LongAsStringConverter().asString(1L)).isEqualTo("1L");
         Assertions.assertThat(new LongAsStringConverter().asString(10L)).isEqualTo("10L");
         Assertions.assertThat(new LongAsStringConverter().asString(1000000L)).isEqualTo("1000000L");
@@ -62,21 +60,17 @@ public final class LongAsStringConverterTest extends AssertionTest {
 
     /**
      * {@link LongAsStringConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = NullPointerException.class)
-    public void asStringNullValueFailTest() throws Exception {
+    public void asStringNullValueFailTest() {
         new LongAsStringConverter().asString(null);
     }
 
     /**
      * {@link LongAsStringConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = ClassCastException.class)
-    public void asStringWrongValueTypeFailTest() throws Exception {
+    public void asStringWrongValueTypeFailTest() {
         new LongAsStringConverter().asString(new Object());
     }
 

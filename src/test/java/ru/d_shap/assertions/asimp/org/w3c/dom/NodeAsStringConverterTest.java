@@ -62,11 +62,9 @@ public final class NodeAsStringConverterTest extends AssertionTest {
 
     /**
      * {@link NodeAsStringConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void asStringTest() throws Exception {
+    public void asStringTest() {
         Assertions.assertThat(new NodeAsStringConverter().asString(createNode("<element/>"))).isEqualTo("<element/>");
         Assertions.assertThat(new NodeAsStringConverter().asString(createNode("<element></element>"))).isEqualTo("<element/>");
         Assertions.assertThat(new NodeAsStringConverter().asString(createNode("<element>aaa</element>"))).isEqualTo("<element>aaa</element>");
@@ -77,11 +75,9 @@ public final class NodeAsStringConverterTest extends AssertionTest {
 
     /**
      * {@link NodeAsStringConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void transformTest() throws Exception {
+    public void transformTest() {
         try {
             Source source = new StreamSource(createErrorReader());
             Result result = new StreamResult(new StringWriter());
@@ -96,11 +92,9 @@ public final class NodeAsStringConverterTest extends AssertionTest {
 
     /**
      * {@link NodeAsStringConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void noopErrorListenerTest() throws Exception {
+    public void noopErrorListenerTest() {
         new NodeAsStringConverter.NoopErrorListener().warning(null);
         new NodeAsStringConverter.NoopErrorListener().error(null);
         new NodeAsStringConverter.NoopErrorListener().fatalError(null);
@@ -108,31 +102,25 @@ public final class NodeAsStringConverterTest extends AssertionTest {
 
     /**
      * {@link NodeAsStringConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = NullPointerException.class)
-    public void asStringNullValueFailTest() throws Exception {
+    public void asStringNullValueFailTest() {
         new NodeAsStringConverter().asString(null);
     }
 
     /**
      * {@link NodeAsStringConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = ClassCastException.class)
-    public void asStringWrongValueTypeFailTest() throws Exception {
+    public void asStringWrongValueTypeFailTest() {
         new NodeAsStringConverter().asString(new Object());
     }
 
     /**
      * {@link NodeAsStringConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void stderrTest() throws Exception {
+    public void stderrTest() {
         PrintStream stderr = System.err;
         try {
             try {

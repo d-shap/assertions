@@ -50,11 +50,9 @@ public final class LongBufferAsStringConverterTest extends AssertionTest {
 
     /**
      * {@link LongBufferAsStringConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void asStringTest() throws Exception {
+    public void asStringTest() {
         Assertions.assertThat(new LongBufferAsStringConverter().asString(createLongBuffer(new long[]{}))).isEqualTo("<EMPTY>");
 
         Assertions.assertThat(new LongBufferAsStringConverter().asString(createLongBuffer(new long[]{1L}))).isEqualTo("[1L]");
@@ -76,21 +74,17 @@ public final class LongBufferAsStringConverterTest extends AssertionTest {
 
     /**
      * {@link LongBufferAsStringConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = NullPointerException.class)
-    public void asStringNullValueFailTest() throws Exception {
+    public void asStringNullValueFailTest() {
         new LongBufferAsStringConverter().asString(null);
     }
 
     /**
      * {@link LongBufferAsStringConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = ClassCastException.class)
-    public void asStringWrongValueTypeFailTest() throws Exception {
+    public void asStringWrongValueTypeFailTest() {
         new LongBufferAsStringConverter().asString(new Object());
     }
 

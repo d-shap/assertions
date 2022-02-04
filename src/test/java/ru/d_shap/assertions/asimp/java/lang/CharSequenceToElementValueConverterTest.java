@@ -60,11 +60,9 @@ public final class CharSequenceToElementValueConverterTest extends AssertionTest
 
     /**
      * {@link CharSequenceToElementValueConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void convertTest() throws Exception {
+    public void convertTest() {
         Assertions.assertThat(new CharSequenceToElementValueConverter().convert("<element/>")).isInstanceOf(Element.class);
         Assertions.assertThat(new CharSequenceToElementValueConverter().convert("<element/>"), Raw.elementAssertion()).hasProperties("element");
         Assertions.assertThat(new CharSequenceToElementValueConverter().convert("<element/>")).as(Raw.elementAssertion()).hasProperties("element");
@@ -96,31 +94,25 @@ public final class CharSequenceToElementValueConverterTest extends AssertionTest
 
     /**
      * {@link CharSequenceToElementValueConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = NullPointerException.class)
-    public void convertNullValueFailTest() throws Exception {
+    public void convertNullValueFailTest() {
         new CharSequenceToElementValueConverter().convert(null);
     }
 
     /**
      * {@link CharSequenceToElementValueConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = ClassCastException.class)
-    public void convertWrongValueTypeFailTest() throws Exception {
+    public void convertWrongValueTypeFailTest() {
         new CharSequenceToElementValueConverter().convert(new Object());
     }
 
     /**
      * {@link CharSequenceToElementValueConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = ArrayIndexOutOfBoundsException.class)
-    public void convertWrongArgumentCountFailTest() throws Exception {
+    public void convertWrongArgumentCountFailTest() {
         new CharSequenceToElementValueConverter().convert("<element/>", new Object());
     }
 

@@ -57,11 +57,9 @@ public final class DoubleArrayToObjectArrayValueConverterTest extends AssertionT
 
     /**
      * {@link DoubleArrayToObjectArrayValueConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void convertTest() throws Exception {
+    public void convertTest() {
         Assertions.assertThat(new DoubleArrayToObjectArrayValueConverter().convert(new double[]{})).isInstanceOf(Double[].class);
         Assertions.assertThat(new DoubleArrayToObjectArrayValueConverter().convert(new double[]{}), Raw.objectArrayAssertion()).containsExactlyInOrder();
         Assertions.assertThat(new DoubleArrayToObjectArrayValueConverter().convert(new double[]{})).as(Raw.objectArrayAssertion()).containsExactlyInOrder();
@@ -77,31 +75,25 @@ public final class DoubleArrayToObjectArrayValueConverterTest extends AssertionT
 
     /**
      * {@link DoubleArrayToObjectArrayValueConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = NullPointerException.class)
-    public void convertNullValueFailTest() throws Exception {
+    public void convertNullValueFailTest() {
         new DoubleArrayToObjectArrayValueConverter().convert(null);
     }
 
     /**
      * {@link DoubleArrayToObjectArrayValueConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = ClassCastException.class)
-    public void convertWrongValueTypeFailTest() throws Exception {
+    public void convertWrongValueTypeFailTest() {
         new DoubleArrayToObjectArrayValueConverter().convert(new Object());
     }
 
     /**
      * {@link DoubleArrayToObjectArrayValueConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = ArrayIndexOutOfBoundsException.class)
-    public void convertWrongArgumentCountFailTest() throws Exception {
+    public void convertWrongArgumentCountFailTest() {
         new DoubleArrayToObjectArrayValueConverter().convert(new double[]{}, new Object());
     }
 

@@ -59,11 +59,9 @@ public final class FloatArrayToListValueConverterTest extends AssertionTest {
 
     /**
      * {@link FloatArrayToListValueConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void convertTest() throws Exception {
+    public void convertTest() {
         Assertions.assertThat(new FloatArrayToListValueConverter().convert(new float[]{})).isInstanceOf(List.class);
         Assertions.assertThat(new FloatArrayToListValueConverter().convert(new float[]{}), Raw.<Float>listAssertion()).containsExactlyInOrder();
         Assertions.assertThat(new FloatArrayToListValueConverter().convert(new float[]{})).as(Raw.<Float>listAssertion()).containsExactlyInOrder();
@@ -79,31 +77,25 @@ public final class FloatArrayToListValueConverterTest extends AssertionTest {
 
     /**
      * {@link FloatArrayToListValueConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = NullPointerException.class)
-    public void convertNullValueFailTest() throws Exception {
+    public void convertNullValueFailTest() {
         new FloatArrayToListValueConverter().convert(null);
     }
 
     /**
      * {@link FloatArrayToListValueConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = ClassCastException.class)
-    public void convertWrongValueTypeFailTest() throws Exception {
+    public void convertWrongValueTypeFailTest() {
         new FloatArrayToListValueConverter().convert(new Object());
     }
 
     /**
      * {@link FloatArrayToListValueConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = ArrayIndexOutOfBoundsException.class)
-    public void convertWrongArgumentCountFailTest() throws Exception {
+    public void convertWrongArgumentCountFailTest() {
         new FloatArrayToListValueConverter().convert(new float[]{}, new Object());
     }
 

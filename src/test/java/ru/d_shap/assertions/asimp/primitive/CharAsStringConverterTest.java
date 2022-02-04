@@ -48,11 +48,9 @@ public final class CharAsStringConverterTest extends AssertionTest {
 
     /**
      * {@link CharAsStringConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void asStringTest() throws Exception {
+    public void asStringTest() {
         Assertions.assertThat(new CharAsStringConverter().asString('0')).isEqualTo("0(48)");
         Assertions.assertThat(new CharAsStringConverter().asString('1')).isEqualTo("1(49)");
         Assertions.assertThat(new CharAsStringConverter().asString('a')).isEqualTo("a(97)");
@@ -65,21 +63,17 @@ public final class CharAsStringConverterTest extends AssertionTest {
 
     /**
      * {@link CharAsStringConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = NullPointerException.class)
-    public void asStringNullValueFailTest() throws Exception {
+    public void asStringNullValueFailTest() {
         new CharAsStringConverter().asString(null);
     }
 
     /**
      * {@link CharAsStringConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = ClassCastException.class)
-    public void asStringWrongValueTypeFailTest() throws Exception {
+    public void asStringWrongValueTypeFailTest() {
         new CharAsStringConverter().asString(new Object());
     }
 

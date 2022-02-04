@@ -50,11 +50,9 @@ public final class CharBufferAsStringConverterTest extends AssertionTest {
 
     /**
      * {@link CharBufferAsStringConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void asStringTest() throws Exception {
+    public void asStringTest() {
         Assertions.assertThat(new CharBufferAsStringConverter().asString(createCharBuffer(new char[]{}))).isEqualTo("<EMPTY>");
 
         Assertions.assertThat(new CharBufferAsStringConverter().asString(createCharBuffer(new char[]{'1'}))).isEqualTo("[1(49)]");
@@ -76,21 +74,17 @@ public final class CharBufferAsStringConverterTest extends AssertionTest {
 
     /**
      * {@link CharBufferAsStringConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = NullPointerException.class)
-    public void asStringNullValueFailTest() throws Exception {
+    public void asStringNullValueFailTest() {
         new CharBufferAsStringConverter().asString(null);
     }
 
     /**
      * {@link CharBufferAsStringConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = ClassCastException.class)
-    public void asStringWrongValueTypeFailTest() throws Exception {
+    public void asStringWrongValueTypeFailTest() {
         new CharBufferAsStringConverter().asString(new Object());
     }
 

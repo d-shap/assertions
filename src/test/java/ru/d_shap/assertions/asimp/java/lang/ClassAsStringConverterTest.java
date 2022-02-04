@@ -50,11 +50,9 @@ public final class ClassAsStringConverterTest extends AssertionTest {
 
     /**
      * {@link ClassAsStringConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void asStringTest() throws Exception {
+    public void asStringTest() {
         Assertions.assertThat(new ClassAsStringConverter().asString(Object.class)).isEqualTo("java.lang.Object");
         Assertions.assertThat(new ClassAsStringConverter().asString(Boolean.class)).isEqualTo("java.lang.Boolean");
         Assertions.assertThat(new ClassAsStringConverter().asString(Map.class)).isEqualTo("java.util.Map");
@@ -63,21 +61,17 @@ public final class ClassAsStringConverterTest extends AssertionTest {
 
     /**
      * {@link ClassAsStringConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = NullPointerException.class)
-    public void asStringNullValueFailTest() throws Exception {
+    public void asStringNullValueFailTest() {
         new ClassAsStringConverter().asString(null);
     }
 
     /**
      * {@link ClassAsStringConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = ClassCastException.class)
-    public void asStringWrongValueTypeFailTest() throws Exception {
+    public void asStringWrongValueTypeFailTest() {
         new ClassAsStringConverter().asString(new Object());
     }
 

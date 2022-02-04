@@ -59,11 +59,9 @@ public final class DoubleBufferToDoubleArrayValueConverterTest extends Assertion
 
     /**
      * {@link DoubleBufferToDoubleArrayValueConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void convertTest() throws Exception {
+    public void convertTest() {
         Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{}), false)).isInstanceOf(double[].class);
         Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{}), false), Raw.doubleArrayAssertion()).containsExactlyInOrder();
         Assertions.assertThat(new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{}), false)).as(Raw.doubleArrayAssertion()).containsExactlyInOrder();
@@ -171,51 +169,41 @@ public final class DoubleBufferToDoubleArrayValueConverterTest extends Assertion
 
     /**
      * {@link DoubleBufferToDoubleArrayValueConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = NullPointerException.class)
-    public void convertNullValueFailTest() throws Exception {
+    public void convertNullValueFailTest() {
         new DoubleBufferToDoubleArrayValueConverter().convert(null);
     }
 
     /**
      * {@link DoubleBufferToDoubleArrayValueConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = ClassCastException.class)
-    public void convertWrongValueTypeFailTest() throws Exception {
+    public void convertWrongValueTypeFailTest() {
         new DoubleBufferToDoubleArrayValueConverter().convert(new Object());
     }
 
     /**
      * {@link DoubleBufferToDoubleArrayValueConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = ArrayIndexOutOfBoundsException.class)
-    public void convertWrongArgumentCount0FailTest() throws Exception {
+    public void convertWrongArgumentCount0FailTest() {
         new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{}));
     }
 
     /**
      * {@link DoubleBufferToDoubleArrayValueConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = ArrayIndexOutOfBoundsException.class)
-    public void convertWrongArgumentCount2FailTest() throws Exception {
+    public void convertWrongArgumentCount2FailTest() {
         new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{}), new Object(), new Object());
     }
 
     /**
      * {@link DoubleBufferToDoubleArrayValueConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = ClassCastException.class)
-    public void convertWrongArgumentTypeFailTest() throws Exception {
+    public void convertWrongArgumentTypeFailTest() {
         new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{}), new Object());
     }
 

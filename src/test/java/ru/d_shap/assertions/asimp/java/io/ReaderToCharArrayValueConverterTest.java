@@ -62,11 +62,9 @@ public final class ReaderToCharArrayValueConverterTest extends AssertionTest {
 
     /**
      * {@link ReaderToCharArrayValueConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void convertTest() throws Exception {
+    public void convertTest() {
         Assertions.assertThat(new ReaderToCharArrayValueConverter().convert(new StringReader(""), -1)).isInstanceOf(char[].class);
         Assertions.assertThat(new ReaderToCharArrayValueConverter().convert(new StringReader(""), -1), Raw.charArrayAssertion()).containsExactlyInOrder();
         Assertions.assertThat(new ReaderToCharArrayValueConverter().convert(new StringReader(""), -1)).as(Raw.charArrayAssertion()).containsExactlyInOrder();
@@ -134,51 +132,41 @@ public final class ReaderToCharArrayValueConverterTest extends AssertionTest {
 
     /**
      * {@link ReaderToCharArrayValueConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = NullPointerException.class)
-    public void convertNullValueFailTest() throws Exception {
+    public void convertNullValueFailTest() {
         new ReaderToCharArrayValueConverter().convert(null);
     }
 
     /**
      * {@link ReaderToCharArrayValueConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = ClassCastException.class)
-    public void convertWrongValueTypeFailTest() throws Exception {
+    public void convertWrongValueTypeFailTest() {
         new ReaderToCharArrayValueConverter().convert(new Object());
     }
 
     /**
      * {@link ReaderToCharArrayValueConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = ArrayIndexOutOfBoundsException.class)
-    public void convertWrongArgumentCount0FailTest() throws Exception {
+    public void convertWrongArgumentCount0FailTest() {
         new ReaderToCharArrayValueConverter().convert(new StringReader(""));
     }
 
     /**
      * {@link ReaderToCharArrayValueConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = ArrayIndexOutOfBoundsException.class)
-    public void convertWrongArgumentCount2FailTest() throws Exception {
+    public void convertWrongArgumentCount2FailTest() {
         new ReaderToCharArrayValueConverter().convert(new StringReader(""), new Object(), new Object());
     }
 
     /**
      * {@link ReaderToCharArrayValueConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = ClassCastException.class)
-    public void convertWrongArgumentTypeFailTest() throws Exception {
+    public void convertWrongArgumentTypeFailTest() {
         new ReaderToCharArrayValueConverter().convert(new StringReader(""), new Object());
     }
 

@@ -48,11 +48,9 @@ public final class DoubleArrayAsStringConverterTest extends AssertionTest {
 
     /**
      * {@link DoubleArrayAsStringConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void asStringTest() throws Exception {
+    public void asStringTest() {
         Assertions.assertThat(new DoubleArrayAsStringConverter().asString(new double[]{})).isEqualTo("<EMPTY>");
         Assertions.assertThat(new DoubleArrayAsStringConverter().asString(new double[]{1.0})).isEqualTo("[1.0]");
         Assertions.assertThat(new DoubleArrayAsStringConverter().asString(new double[]{1.0, 2.0})).isEqualTo("[1.0, 2.0]");
@@ -61,21 +59,17 @@ public final class DoubleArrayAsStringConverterTest extends AssertionTest {
 
     /**
      * {@link DoubleArrayAsStringConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = NullPointerException.class)
-    public void asStringNullValueFailTest() throws Exception {
+    public void asStringNullValueFailTest() {
         new DoubleArrayAsStringConverter().asString(null);
     }
 
     /**
      * {@link DoubleArrayAsStringConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = ClassCastException.class)
-    public void asStringWrongValueTypeFailTest() throws Exception {
+    public void asStringWrongValueTypeFailTest() {
         new DoubleArrayAsStringConverter().asString(new Object());
     }
 

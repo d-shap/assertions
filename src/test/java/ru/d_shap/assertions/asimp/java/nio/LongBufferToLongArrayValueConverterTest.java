@@ -59,11 +59,9 @@ public final class LongBufferToLongArrayValueConverterTest extends AssertionTest
 
     /**
      * {@link LongBufferToLongArrayValueConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void convertTest() throws Exception {
+    public void convertTest() {
         Assertions.assertThat(new LongBufferToLongArrayValueConverter().convert(createLongBuffer(new long[]{}), false)).isInstanceOf(long[].class);
         Assertions.assertThat(new LongBufferToLongArrayValueConverter().convert(createLongBuffer(new long[]{}), false), Raw.longArrayAssertion()).containsExactlyInOrder();
         Assertions.assertThat(new LongBufferToLongArrayValueConverter().convert(createLongBuffer(new long[]{}), false)).as(Raw.longArrayAssertion()).containsExactlyInOrder();
@@ -171,51 +169,41 @@ public final class LongBufferToLongArrayValueConverterTest extends AssertionTest
 
     /**
      * {@link LongBufferToLongArrayValueConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = NullPointerException.class)
-    public void convertNullValueFailTest() throws Exception {
+    public void convertNullValueFailTest() {
         new LongBufferToLongArrayValueConverter().convert(null);
     }
 
     /**
      * {@link LongBufferToLongArrayValueConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = ClassCastException.class)
-    public void convertWrongValueTypeFailTest() throws Exception {
+    public void convertWrongValueTypeFailTest() {
         new LongBufferToLongArrayValueConverter().convert(new Object());
     }
 
     /**
      * {@link LongBufferToLongArrayValueConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = ArrayIndexOutOfBoundsException.class)
-    public void convertWrongArgumentCount0FailTest() throws Exception {
+    public void convertWrongArgumentCount0FailTest() {
         new LongBufferToLongArrayValueConverter().convert(createLongBuffer(new long[]{}));
     }
 
     /**
      * {@link LongBufferToLongArrayValueConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = ArrayIndexOutOfBoundsException.class)
-    public void convertWrongArgumentCount2FailTest() throws Exception {
+    public void convertWrongArgumentCount2FailTest() {
         new LongBufferToLongArrayValueConverter().convert(createLongBuffer(new long[]{}), new Object(), new Object());
     }
 
     /**
      * {@link LongBufferToLongArrayValueConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = ClassCastException.class)
-    public void convertWrongArgumentTypeFailTest() throws Exception {
+    public void convertWrongArgumentTypeFailTest() {
         new LongBufferToLongArrayValueConverter().convert(createLongBuffer(new long[]{}), new Object());
     }
 

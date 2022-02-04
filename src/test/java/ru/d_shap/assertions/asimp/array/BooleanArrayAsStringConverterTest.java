@@ -48,11 +48,9 @@ public final class BooleanArrayAsStringConverterTest extends AssertionTest {
 
     /**
      * {@link BooleanArrayAsStringConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void asStringTest() throws Exception {
+    public void asStringTest() {
         Assertions.assertThat(new BooleanArrayAsStringConverter().asString(new boolean[]{})).isEqualTo("<EMPTY>");
         Assertions.assertThat(new BooleanArrayAsStringConverter().asString(new boolean[]{true})).isEqualTo("[T]");
         Assertions.assertThat(new BooleanArrayAsStringConverter().asString(new boolean[]{true, false})).isEqualTo("[T, F]");
@@ -61,21 +59,17 @@ public final class BooleanArrayAsStringConverterTest extends AssertionTest {
 
     /**
      * {@link BooleanArrayAsStringConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = NullPointerException.class)
-    public void asStringNullValueFailTest() throws Exception {
+    public void asStringNullValueFailTest() {
         new BooleanArrayAsStringConverter().asString(null);
     }
 
     /**
      * {@link BooleanArrayAsStringConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = ClassCastException.class)
-    public void asStringWrongValueTypeFailTest() throws Exception {
+    public void asStringWrongValueTypeFailTest() {
         new BooleanArrayAsStringConverter().asString(new Object());
     }
 

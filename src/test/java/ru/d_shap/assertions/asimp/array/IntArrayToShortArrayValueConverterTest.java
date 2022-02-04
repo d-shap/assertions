@@ -57,11 +57,9 @@ public final class IntArrayToShortArrayValueConverterTest extends AssertionTest 
 
     /**
      * {@link IntArrayToShortArrayValueConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void convertTest() throws Exception {
+    public void convertTest() {
         Assertions.assertThat(new IntArrayToShortArrayValueConverter().convert(new int[]{})).isInstanceOf(short[].class);
         Assertions.assertThat(new IntArrayToShortArrayValueConverter().convert(new int[]{}), Raw.shortArrayAssertion()).containsExactlyInOrder();
         Assertions.assertThat(new IntArrayToShortArrayValueConverter().convert(new int[]{})).as(Raw.shortArrayAssertion()).containsExactlyInOrder();
@@ -89,31 +87,25 @@ public final class IntArrayToShortArrayValueConverterTest extends AssertionTest 
 
     /**
      * {@link IntArrayToShortArrayValueConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = NullPointerException.class)
-    public void convertNullValueFailTest() throws Exception {
+    public void convertNullValueFailTest() {
         new IntArrayToShortArrayValueConverter().convert(null);
     }
 
     /**
      * {@link IntArrayToShortArrayValueConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = ClassCastException.class)
-    public void convertWrongValueTypeFailTest() throws Exception {
+    public void convertWrongValueTypeFailTest() {
         new IntArrayToShortArrayValueConverter().convert(new Object());
     }
 
     /**
      * {@link IntArrayToShortArrayValueConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = ArrayIndexOutOfBoundsException.class)
-    public void convertWrongArgumentCountFailTest() throws Exception {
+    public void convertWrongArgumentCountFailTest() {
         new IntArrayToShortArrayValueConverter().convert(new int[]{}, new Object());
     }
 

@@ -1379,10 +1379,8 @@ public class AssertionTest {
      * @param content the content.
      *
      * @return the node.
-     *
-     * @throws Exception exception in test.
      */
-    protected final Node createNode(final String content) throws Exception {
+    protected final Node createNode(final String content) {
         String enclosedContent = "<element>" + content + "</element>";
         Element element = createElement(enclosedContent);
         return element.getFirstChild();
@@ -1394,10 +1392,8 @@ public class AssertionTest {
      * @param content the content.
      *
      * @return the element.
-     *
-     * @throws Exception exception in test.
      */
-    protected final Element createElement(final String content) throws Exception {
+    protected final Element createElement(final String content) {
         return ValueConverter.convert(content, Element.class);
     }
 
@@ -1407,10 +1403,8 @@ public class AssertionTest {
      * @param content the content.
      *
      * @return the document.
-     *
-     * @throws Exception exception in test.
      */
-    protected final Document createDocument(final String content) throws Exception {
+    protected final Document createDocument(final String content) {
         return ValueConverter.convert(content, Document.class);
     }
 
@@ -1420,10 +1414,8 @@ public class AssertionTest {
      * @param content the content.
      *
      * @return the attr.
-     *
-     * @throws Exception exception in test.
      */
-    protected final Attr createAttr(final String content) throws Exception {
+    protected final Attr createAttr(final String content) {
         Element element = createElement(content);
         NamedNodeMap attributes = element.getAttributes();
         for (int i = 0; i < attributes.getLength(); i++) {
@@ -1441,10 +1433,8 @@ public class AssertionTest {
      * @param content the content.
      *
      * @return the character data.
-     *
-     * @throws Exception exception in test.
      */
-    protected final CharacterData createCharacterData(final String content) throws Exception {
+    protected final CharacterData createCharacterData(final String content) {
         return (CharacterData) createNode(content);
     }
 

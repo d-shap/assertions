@@ -48,11 +48,9 @@ public final class DoubleAsStringConverterTest extends AssertionTest {
 
     /**
      * {@link DoubleAsStringConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void asStringTest() throws Exception {
+    public void asStringTest() {
         Assertions.assertThat(new DoubleAsStringConverter().asString(0.99)).isEqualTo("0.99");
         Assertions.assertThat(new DoubleAsStringConverter().asString(1.0)).isEqualTo("1.0");
         Assertions.assertThat(new DoubleAsStringConverter().asString(5000.0)).isEqualTo("5000.0");
@@ -71,21 +69,17 @@ public final class DoubleAsStringConverterTest extends AssertionTest {
 
     /**
      * {@link DoubleAsStringConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = NullPointerException.class)
-    public void asStringNullValueFailTest() throws Exception {
+    public void asStringNullValueFailTest() {
         new DoubleAsStringConverter().asString(null);
     }
 
     /**
      * {@link DoubleAsStringConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = ClassCastException.class)
-    public void asStringWrongValueTypeFailTest() throws Exception {
+    public void asStringWrongValueTypeFailTest() {
         new DoubleAsStringConverter().asString(new Object());
     }
 

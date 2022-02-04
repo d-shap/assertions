@@ -57,11 +57,9 @@ public final class IntToShortValueConverterTest extends AssertionTest {
 
     /**
      * {@link IntToShortValueConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void convertTest() throws Exception {
+    public void convertTest() {
         Assertions.assertThat(new IntToShortValueConverter().convert(0)).isInstanceOf(Short.class);
         Assertions.assertThat(new IntToShortValueConverter().convert(0), Raw.shortAssertion()).isEqualTo(0);
         Assertions.assertThat(new IntToShortValueConverter().convert(0)).as(Raw.shortAssertion()).isEqualTo(0);
@@ -93,31 +91,25 @@ public final class IntToShortValueConverterTest extends AssertionTest {
 
     /**
      * {@link IntToShortValueConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = NullPointerException.class)
-    public void convertNullValueFailTest() throws Exception {
+    public void convertNullValueFailTest() {
         new IntToShortValueConverter().convert(null);
     }
 
     /**
      * {@link IntToShortValueConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = ClassCastException.class)
-    public void convertWrongValueTypeFailTest() throws Exception {
+    public void convertWrongValueTypeFailTest() {
         new IntToShortValueConverter().convert(new Object());
     }
 
     /**
      * {@link IntToShortValueConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = ArrayIndexOutOfBoundsException.class)
-    public void convertWrongArgumentCountFailTest() throws Exception {
+    public void convertWrongArgumentCountFailTest() {
         new IntToShortValueConverter().convert(0, new Object());
     }
 

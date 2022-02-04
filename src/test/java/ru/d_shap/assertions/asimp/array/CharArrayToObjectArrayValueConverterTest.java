@@ -57,11 +57,9 @@ public final class CharArrayToObjectArrayValueConverterTest extends AssertionTes
 
     /**
      * {@link CharArrayToObjectArrayValueConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void convertTest() throws Exception {
+    public void convertTest() {
         Assertions.assertThat(new CharArrayToObjectArrayValueConverter().convert(new char[]{})).isInstanceOf(Character[].class);
         Assertions.assertThat(new CharArrayToObjectArrayValueConverter().convert(new char[]{}), Raw.objectArrayAssertion()).containsExactlyInOrder();
         Assertions.assertThat(new CharArrayToObjectArrayValueConverter().convert(new char[]{})).as(Raw.objectArrayAssertion()).containsExactlyInOrder();
@@ -77,31 +75,25 @@ public final class CharArrayToObjectArrayValueConverterTest extends AssertionTes
 
     /**
      * {@link CharArrayToObjectArrayValueConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = NullPointerException.class)
-    public void convertNullValueFailTest() throws Exception {
+    public void convertNullValueFailTest() {
         new CharArrayToObjectArrayValueConverter().convert(null);
     }
 
     /**
      * {@link CharArrayToObjectArrayValueConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = ClassCastException.class)
-    public void convertWrongValueTypeFailTest() throws Exception {
+    public void convertWrongValueTypeFailTest() {
         new CharArrayToObjectArrayValueConverter().convert(new Object());
     }
 
     /**
      * {@link CharArrayToObjectArrayValueConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = ArrayIndexOutOfBoundsException.class)
-    public void convertWrongArgumentCountFailTest() throws Exception {
+    public void convertWrongArgumentCountFailTest() {
         new CharArrayToObjectArrayValueConverter().convert(new char[]{}, new Object());
     }
 

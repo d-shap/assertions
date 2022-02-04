@@ -48,11 +48,9 @@ public final class IterableAsStringConverterTest extends AssertionTest {
 
     /**
      * {@link IterableAsStringConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void asStringTest() throws Exception {
+    public void asStringTest() {
         Assertions.assertThat(new IterableAsStringConverter().asString(createIterable())).isEqualTo("<EMPTY>");
         Assertions.assertThat(new IterableAsStringConverter().asString(createIterable(""))).isEqualTo("[]");
         Assertions.assertThat(new IterableAsStringConverter().asString(createIterable("val1"))).isEqualTo("[val1]");
@@ -62,21 +60,17 @@ public final class IterableAsStringConverterTest extends AssertionTest {
 
     /**
      * {@link IterableAsStringConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = NullPointerException.class)
-    public void asStringNullValueFailTest() throws Exception {
+    public void asStringNullValueFailTest() {
         new IterableAsStringConverter().asString(null);
     }
 
     /**
      * {@link IterableAsStringConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = ClassCastException.class)
-    public void asStringWrongValueTypeFailTest() throws Exception {
+    public void asStringWrongValueTypeFailTest() {
         new IterableAsStringConverter().asString(new Object());
     }
 

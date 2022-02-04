@@ -59,11 +59,9 @@ public final class CharBufferToCharArrayValueConverterTest extends AssertionTest
 
     /**
      * {@link CharBufferToCharArrayValueConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void convertTest() throws Exception {
+    public void convertTest() {
         Assertions.assertThat(new CharBufferToCharArrayValueConverter().convert(createCharBuffer(new char[]{}), false)).isInstanceOf(char[].class);
         Assertions.assertThat(new CharBufferToCharArrayValueConverter().convert(createCharBuffer(new char[]{}), false), Raw.charArrayAssertion()).containsExactlyInOrder();
         Assertions.assertThat(new CharBufferToCharArrayValueConverter().convert(createCharBuffer(new char[]{}), false)).as(Raw.charArrayAssertion()).containsExactlyInOrder();
@@ -171,51 +169,41 @@ public final class CharBufferToCharArrayValueConverterTest extends AssertionTest
 
     /**
      * {@link CharBufferToCharArrayValueConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = NullPointerException.class)
-    public void convertNullValueFailTest() throws Exception {
+    public void convertNullValueFailTest() {
         new CharBufferToCharArrayValueConverter().convert(null);
     }
 
     /**
      * {@link CharBufferToCharArrayValueConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = ClassCastException.class)
-    public void convertWrongValueTypeFailTest() throws Exception {
+    public void convertWrongValueTypeFailTest() {
         new CharBufferToCharArrayValueConverter().convert(new Object());
     }
 
     /**
      * {@link CharBufferToCharArrayValueConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = ArrayIndexOutOfBoundsException.class)
-    public void convertWrongArgumentCount0FailTest() throws Exception {
+    public void convertWrongArgumentCount0FailTest() {
         new CharBufferToCharArrayValueConverter().convert(createCharBuffer(new char[]{}));
     }
 
     /**
      * {@link CharBufferToCharArrayValueConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = ArrayIndexOutOfBoundsException.class)
-    public void convertWrongArgumentCount2FailTest() throws Exception {
+    public void convertWrongArgumentCount2FailTest() {
         new CharBufferToCharArrayValueConverter().convert(createCharBuffer(new char[]{}), new Object(), new Object());
     }
 
     /**
      * {@link CharBufferToCharArrayValueConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = ClassCastException.class)
-    public void convertWrongArgumentTypeFailTest() throws Exception {
+    public void convertWrongArgumentTypeFailTest() {
         new CharBufferToCharArrayValueConverter().convert(createCharBuffer(new char[]{}), new Object());
     }
 

@@ -48,11 +48,9 @@ public final class ByteArrayAsStringConverterTest extends AssertionTest {
 
     /**
      * {@link ByteArrayAsStringConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void asStringTest() throws Exception {
+    public void asStringTest() {
         Assertions.assertThat(new ByteArrayAsStringConverter().asString(new byte[]{})).isEqualTo("<EMPTY>");
         Assertions.assertThat(new ByteArrayAsStringConverter().asString(new byte[]{1})).isEqualTo("[1b]");
         Assertions.assertThat(new ByteArrayAsStringConverter().asString(new byte[]{1, 2})).isEqualTo("[1b, 2b]");
@@ -61,21 +59,17 @@ public final class ByteArrayAsStringConverterTest extends AssertionTest {
 
     /**
      * {@link ByteArrayAsStringConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = NullPointerException.class)
-    public void asStringNullValueFailTest() throws Exception {
+    public void asStringNullValueFailTest() {
         new ByteArrayAsStringConverter().asString(null);
     }
 
     /**
      * {@link ByteArrayAsStringConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = ClassCastException.class)
-    public void asStringWrongValueTypeFailTest() throws Exception {
+    public void asStringWrongValueTypeFailTest() {
         new ByteArrayAsStringConverter().asString(new Object());
     }
 

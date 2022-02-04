@@ -57,11 +57,9 @@ public final class ShortArrayToObjectArrayValueConverterTest extends AssertionTe
 
     /**
      * {@link ShortArrayToObjectArrayValueConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void convertTest() throws Exception {
+    public void convertTest() {
         Assertions.assertThat(new ShortArrayToObjectArrayValueConverter().convert(new short[]{})).isInstanceOf(Short[].class);
         Assertions.assertThat(new ShortArrayToObjectArrayValueConverter().convert(new short[]{}), Raw.objectArrayAssertion()).containsExactlyInOrder();
         Assertions.assertThat(new ShortArrayToObjectArrayValueConverter().convert(new short[]{})).as(Raw.objectArrayAssertion()).containsExactlyInOrder();
@@ -77,31 +75,25 @@ public final class ShortArrayToObjectArrayValueConverterTest extends AssertionTe
 
     /**
      * {@link ShortArrayToObjectArrayValueConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = NullPointerException.class)
-    public void convertNullValueFailTest() throws Exception {
+    public void convertNullValueFailTest() {
         new ShortArrayToObjectArrayValueConverter().convert(null);
     }
 
     /**
      * {@link ShortArrayToObjectArrayValueConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = ClassCastException.class)
-    public void convertWrongValueTypeFailTest() throws Exception {
+    public void convertWrongValueTypeFailTest() {
         new ShortArrayToObjectArrayValueConverter().convert(new Object());
     }
 
     /**
      * {@link ShortArrayToObjectArrayValueConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = ArrayIndexOutOfBoundsException.class)
-    public void convertWrongArgumentCountFailTest() throws Exception {
+    public void convertWrongArgumentCountFailTest() {
         new ShortArrayToObjectArrayValueConverter().convert(new short[]{}, new Object());
     }
 

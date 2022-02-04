@@ -48,11 +48,9 @@ public final class CharArrayAsStringConverterTest extends AssertionTest {
 
     /**
      * {@link CharArrayAsStringConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void asStringTest() throws Exception {
+    public void asStringTest() {
         Assertions.assertThat(new CharArrayAsStringConverter().asString(new char[]{})).isEqualTo("<EMPTY>");
         Assertions.assertThat(new CharArrayAsStringConverter().asString(new char[]{'1'})).isEqualTo("[1(49)]");
         Assertions.assertThat(new CharArrayAsStringConverter().asString(new char[]{'1', '2'})).isEqualTo("[1(49), 2(50)]");
@@ -61,21 +59,17 @@ public final class CharArrayAsStringConverterTest extends AssertionTest {
 
     /**
      * {@link CharArrayAsStringConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = NullPointerException.class)
-    public void asStringNullValueFailTest() throws Exception {
+    public void asStringNullValueFailTest() {
         new CharArrayAsStringConverter().asString(null);
     }
 
     /**
      * {@link CharArrayAsStringConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = ClassCastException.class)
-    public void asStringWrongValueTypeFailTest() throws Exception {
+    public void asStringWrongValueTypeFailTest() {
         new CharArrayAsStringConverter().asString(new Object());
     }
 
