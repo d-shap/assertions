@@ -23,7 +23,6 @@ import java.util.List;
 
 import ru.d_shap.assertions.Messages;
 import ru.d_shap.assertions.converter.AsStringConverter;
-import ru.d_shap.assertions.converter.ConversionException;
 
 /**
  * Fail description actual and expected values.
@@ -99,7 +98,7 @@ final class FailDescriptionValues {
         _delta = delta;
     }
 
-    void addFailDescriptionEntry(final List<FailDescriptionEntry> failDescriptionEntries) throws ConversionException {
+    void addFailDescriptionEntry(final List<FailDescriptionEntry> failDescriptionEntries) {
         if (_actualClass != null) {
             addActualEntry(failDescriptionEntries);
             addExpectedEntry(failDescriptionEntries);
@@ -109,7 +108,7 @@ final class FailDescriptionValues {
         }
     }
 
-    private void addActualEntry(final List<FailDescriptionEntry> failDescriptionEntries) throws ConversionException {
+    private void addActualEntry(final List<FailDescriptionEntry> failDescriptionEntries) {
         if (_actualDefined && !_expected1Defined && !_expected2Defined) {
             String actual = getActualMessage(true);
             FailDescriptionEntry failDescriptionEntry = new FailDescriptionEntry(Messages.Value.ACTUAL, new Object[]{actual}, false);
@@ -117,7 +116,7 @@ final class FailDescriptionValues {
         }
     }
 
-    private void addExpectedEntry(final List<FailDescriptionEntry> failDescriptionEntries) throws ConversionException {
+    private void addExpectedEntry(final List<FailDescriptionEntry> failDescriptionEntries) {
         if (!_actualDefined && _expected1Defined) {
             String expected = getExpectedMessage();
             FailDescriptionEntry failDescriptionEntry = new FailDescriptionEntry(Messages.Value.EXPECTED, new Object[]{expected}, false);
@@ -125,7 +124,7 @@ final class FailDescriptionValues {
         }
     }
 
-    private void addExpected2Entry(final List<FailDescriptionEntry> failDescriptionEntries) throws ConversionException {
+    private void addExpected2Entry(final List<FailDescriptionEntry> failDescriptionEntries) {
         if (!_actualDefined && _expected2Defined) {
             String expected = getExpected2Message();
             FailDescriptionEntry failDescriptionEntry = new FailDescriptionEntry(Messages.Value.EXPECTED, new Object[]{expected}, false);
@@ -133,7 +132,7 @@ final class FailDescriptionValues {
         }
     }
 
-    private void addActualAndExpectedEntry(final List<FailDescriptionEntry> failDescriptionEntries) throws ConversionException {
+    private void addActualAndExpectedEntry(final List<FailDescriptionEntry> failDescriptionEntries) {
         if (_actualDefined && _expected1Defined) {
             String actual = getActualMessage(false);
             String expected = getExpectedMessage();
@@ -142,7 +141,7 @@ final class FailDescriptionValues {
         }
     }
 
-    private void addActualAndExpected2Entry(final List<FailDescriptionEntry> failDescriptionEntries) throws ConversionException {
+    private void addActualAndExpected2Entry(final List<FailDescriptionEntry> failDescriptionEntries) {
         if (_actualDefined && _expected2Defined) {
             String actual = getActualMessage(false);
             String expected = getExpected2Message();
@@ -151,7 +150,7 @@ final class FailDescriptionValues {
         }
     }
 
-    private String getActualMessage(final boolean withDelta) throws ConversionException {
+    private String getActualMessage(final boolean withDelta) {
         String objectStr = AsStringConverter.asString(_actual, _actualClass);
         if (withDelta && _deltaDefined) {
             objectStr += "\u00b1";
@@ -160,7 +159,7 @@ final class FailDescriptionValues {
         return "<" + objectStr + ">";
     }
 
-    private String getExpectedMessage() throws ConversionException {
+    private String getExpectedMessage() {
         String objectStr = AsStringConverter.asString(_expected1, _expectedClass);
         if (_deltaDefined) {
             objectStr += "\u00b1";
@@ -169,7 +168,7 @@ final class FailDescriptionValues {
         return "<" + objectStr + ">";
     }
 
-    private String getExpected2Message() throws ConversionException {
+    private String getExpected2Message() {
         String objectStr = AsStringConverter.asString(_expected1, _expectedClass);
         objectStr += ":";
         objectStr += AsStringConverter.asString(_expected2, _expectedClass);

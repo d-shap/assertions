@@ -25,7 +25,6 @@ import java.util.List;
 
 import ru.d_shap.assertions.Messages;
 import ru.d_shap.assertions.converter.AsStringConverter;
-import ru.d_shap.assertions.converter.ConversionException;
 
 /**
  * Fail description entry.
@@ -71,7 +70,7 @@ final class FailDescriptionEntry {
         return str == null || "".equals(str);
     }
 
-    void addFormattedMessage(final List<String> formattedMessages) throws ConversionException {
+    void addFormattedMessage(final List<String> formattedMessages) {
         if (_messageFormat == null) {
             return;
         }
@@ -87,7 +86,7 @@ final class FailDescriptionEntry {
         formattedMessages.add(formattedMessage);
     }
 
-    private String[] getStringArguments(final Object[] arguments) throws ConversionException {
+    private String[] getStringArguments(final Object[] arguments) {
         String[] stringArguments = new String[arguments.length];
         for (int i = 0; i < arguments.length; i++) {
             stringArguments[i] = AsStringConverter.asString(arguments[i]);

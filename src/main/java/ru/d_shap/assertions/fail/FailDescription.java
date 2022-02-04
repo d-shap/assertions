@@ -23,7 +23,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ru.d_shap.assertions.Messages;
-import ru.d_shap.assertions.converter.ConversionException;
 
 /**
  * Fail description.
@@ -102,10 +101,8 @@ public final class FailDescription {
      * Get the full fail message.
      *
      * @return the full fail message.
-     *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
      */
-    public String getFullMessage() throws ConversionException {
+    public String getFullMessage() {
         List<String> formattedMessages = new ArrayList<>();
         for (FailDescriptionEntry failDescriptionEntry : _failDescriptionEntries) {
             failDescriptionEntry.addFormattedMessage(formattedMessages);
