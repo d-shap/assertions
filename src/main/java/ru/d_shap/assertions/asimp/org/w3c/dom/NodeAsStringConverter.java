@@ -92,17 +92,17 @@ public final class NodeAsStringConverter implements AsStringConverterProvider {
         }
 
         @Override
-        public void warning(final TransformerException exception) throws TransformerException {
+        public void warning(final TransformerException exception) {
             // Ignore
         }
 
         @Override
-        public void error(final TransformerException exception) throws TransformerException {
+        public void error(final TransformerException exception) {
             // Ignore
         }
 
         @Override
-        public void fatalError(final TransformerException exception) throws TransformerException {
+        public void fatalError(final TransformerException exception) {
             // Ignore
         }
 
