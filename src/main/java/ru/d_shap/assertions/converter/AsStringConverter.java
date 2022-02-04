@@ -124,10 +124,8 @@ public final class AsStringConverter {
      * @param value the value.
      *
      * @return the string representation of the value.
-     *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
      */
-    public static String asString(final Object value) throws ConversionException {
+    public static String asString(final Object value) {
         if (value == null) {
             return Messages.NULL;
         }
@@ -148,10 +146,8 @@ public final class AsStringConverter {
      * @param arguments   the conversion arguments.
      *
      * @return the string representation of the value.
-     *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
      */
-    public static String asString(final Object value, final Class<?> targetClass, final Object... arguments) throws ConversionException {
+    public static String asString(final Object value, final Class<?> targetClass, final Object... arguments) {
         Object convertedValue = ValueConverter.convert(value, targetClass, arguments);
         return asString(convertedValue);
     }

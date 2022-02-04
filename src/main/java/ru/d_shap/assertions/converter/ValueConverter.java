@@ -142,11 +142,9 @@ public final class ValueConverter {
      * @param <V>         the generic type of the value converted to the target class.
      *
      * @return the value converted to the target class (or the same value if conversion cannot be performed).
-     *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
      */
     @SuppressWarnings("unchecked")
-    public static <V> V convert(final Object value, final Class<?> targetClass, final Object... arguments) throws ConversionException {
+    public static <V> V convert(final Object value, final Class<?> targetClass, final Object... arguments) {
         if (value == null) {
             return null;
         }

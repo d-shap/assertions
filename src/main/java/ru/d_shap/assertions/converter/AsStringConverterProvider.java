@@ -39,9 +39,7 @@ public interface AsStringConverterProvider {
      * @param value the value.
      *
      * @return the string representation of the value.
-     *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
      */
-    String asString(Object value) throws ConversionException;
+    String asString(Object value);
 
 }

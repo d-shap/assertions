@@ -47,9 +47,7 @@ public interface ValueConverterProvider {
      * @param arguments the conversion arguments.
      *
      * @return the value converted to the target class (or the same value if conversion cannot be performed).
-     *
-     * @throws ConversionException wrapper for exceptions, that can occur during conversion.
      */
-    Object convert(Object value, Object... arguments) throws ConversionException;
+    Object convert(Object value, Object... arguments);
 
 }
