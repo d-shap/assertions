@@ -24,7 +24,7 @@ package ru.d_shap.assertions.converter;
  *
  * @author Dmitry Shapovalov
  */
-public final class ConversionException extends Exception {
+public final class ConversionException extends RuntimeException {
 
     private static final long serialVersionUID = 1L;
 
