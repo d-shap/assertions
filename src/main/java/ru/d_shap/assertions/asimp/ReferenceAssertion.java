@@ -25,12 +25,12 @@ import org.hamcrest.Matcher;
 
 import ru.d_shap.assertions.BaseAssertion;
 import ru.d_shap.assertions.Messages;
-import ru.d_shap.assertions.PrivateAccessor;
 import ru.d_shap.assertions.Raw;
 import ru.d_shap.assertions.asimp.java.lang.CharSequenceAssertion;
 import ru.d_shap.assertions.asimp.java.lang.ClassAssertion;
 import ru.d_shap.assertions.asimp.java.lang.ObjectAssertion;
 import ru.d_shap.assertions.asimp.primitive.IntAssertion;
+import ru.d_shap.assertions.data.PrivateAccessor;
 
 /**
  * Base class for all reference type assertions.
