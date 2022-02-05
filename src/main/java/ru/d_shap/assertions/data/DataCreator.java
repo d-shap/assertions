@@ -31,7 +31,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
 import ru.d_shap.assertions.fail.AssertionErrorBuilder;
 
 /**
- * Helper class to create objects for tests.
+ * Helper class to create objects of various types.
  *
  * @author Dmitry Shapovalov
  */
