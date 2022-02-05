@@ -17,13 +17,16 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-package ru.d_shap.assertions;
+package ru.d_shap.assertions.data;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
 import org.junit.Test;
+
+import ru.d_shap.assertions.AssertionTest;
+import ru.d_shap.assertions.Assertions;
 
 /**
  * Tests for {@link PrivateAccessor}.
