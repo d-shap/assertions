@@ -28,8 +28,6 @@ import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
 
-import ru.d_shap.assertions.fail.AssertionErrorBuilder;
-
 /**
  * Helper class to create objects of various types.
  *
@@ -308,7 +306,7 @@ public final class DataCreator {
             DatatypeFactory datatypeFactory = DatatypeFactory.newInstance();
             return datatypeFactory.newXMLGregorianCalendar(calendar);
         } catch (DatatypeConfigurationException ex) {
-            throw AssertionErrorBuilder.getInstance().addMessage(ex).addThrowable(ex).build();
+            throw new DataException(ex);
         }
     }
 
