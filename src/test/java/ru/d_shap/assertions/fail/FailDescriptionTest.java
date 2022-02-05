@@ -40,21 +40,17 @@ public final class FailDescriptionTest extends AssertionTest {
 
     /**
      * {@link FailDescription} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void getFullMessageTest() throws Exception {
+    public void getFullMessageTest() {
         Assertions.assertThat(new FailDescription().getFullMessage()).isEqualTo("");
     }
 
     /**
      * {@link FailDescription} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void getFullMessageWithMessageAndArgumentsTest() throws Exception {
+    public void getFullMessageWithMessageAndArgumentsTest() {
         Assertions.assertThat(new FailDescription((String) null).getFullMessage()).isEqualTo("");
         Assertions.assertThat(new FailDescription("").getFullMessage()).isEqualTo("");
         Assertions.assertThat(new FailDescription(" ").getFullMessage()).isEqualTo(" .");
@@ -65,11 +61,9 @@ public final class FailDescriptionTest extends AssertionTest {
 
     /**
      * {@link FailDescription} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void getFullMessageWithFailDescriptionEntryTest() throws Exception {
+    public void getFullMessageWithFailDescriptionEntryTest() {
         Assertions.assertThat(new FailDescription(new FailDescriptionEntry(null, new Object[]{}, false)).getFullMessage()).isEqualTo("");
         Assertions.assertThat(new FailDescription(new FailDescriptionEntry("", new Object[]{}, false)).getFullMessage()).isEqualTo("");
         Assertions.assertThat(new FailDescription(new FailDescriptionEntry(" ", new Object[]{}, false)).getFullMessage()).isEqualTo(" ");
@@ -87,11 +81,9 @@ public final class FailDescriptionTest extends AssertionTest {
 
     /**
      * {@link FailDescription} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void getFullMessageWithFailDescriptionTest() throws Exception {
+    public void getFullMessageWithFailDescriptionTest() {
         FailDescription failDescription1 = new FailDescription("message1");
         Assertions.assertThat(failDescription1.getFullMessage()).isEqualTo("message1.");
         Assertions.assertThat(new FailDescription(failDescription1).getFullMessage()).isEqualTo("message1.");
@@ -110,11 +102,9 @@ public final class FailDescriptionTest extends AssertionTest {
 
     /**
      * {@link FailDescription} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void getFullMessageWithFailDescriptionAndMessageAndArgumentsTest() throws Exception {
+    public void getFullMessageWithFailDescriptionAndMessageAndArgumentsTest() {
         FailDescription failDescription1 = new FailDescription("message1");
         Assertions.assertThat(failDescription1.getFullMessage()).isEqualTo("message1.");
 
@@ -152,11 +142,9 @@ public final class FailDescriptionTest extends AssertionTest {
 
     /**
      * {@link FailDescription} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void getFullMessageWithFailDescriptionAndFailDescriptionEntryTest() throws Exception {
+    public void getFullMessageWithFailDescriptionAndFailDescriptionEntryTest() {
         FailDescription failDescription1 = new FailDescription("message1");
         Assertions.assertThat(failDescription1.getFullMessage()).isEqualTo("message1.");
 

@@ -27,7 +27,7 @@ import org.junit.Test;
 
 import ru.d_shap.assertions.AssertionTest;
 import ru.d_shap.assertions.Assertions;
-import ru.d_shap.assertions.PrivateAccessor;
+import ru.d_shap.assertions.data.PrivateAccessor;
 
 /**
  * Tests for {@link AsStringConverter}.
@@ -53,11 +53,9 @@ public final class AsStringConverterTest extends AssertionTest {
 
     /**
      * {@link AsStringConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void asStringTest() throws Exception {
+    public void asStringTest() {
         Assertions.assertThat(AsStringConverter.asString(null)).isEqualTo("<NULL>");
 
         Assertions.assertThat(AsStringConverter.asString(1)).isEqualTo("1");
@@ -71,11 +69,9 @@ public final class AsStringConverterTest extends AssertionTest {
 
     /**
      * {@link AsStringConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void asStringValueConverterTest() throws Exception {
+    public void asStringValueConverterTest() {
         Assertions.assertThat(AsStringConverter.asString(null, String.class)).isEqualTo("<NULL>");
 
         Assertions.assertThat(AsStringConverter.asString(100, Character.class)).isEqualTo("d(100)");
@@ -94,12 +90,10 @@ public final class AsStringConverterTest extends AssertionTest {
 
     /**
      * {@link AsStringConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
     @SuppressWarnings("unchecked")
-    public void converterSelectTest() throws Exception {
+    public void converterSelectTest() {
         List<AsStringConverterProvider> converterProviders = (List<AsStringConverterProvider>) PrivateAccessor.getFieldValue(AsStringConverter.class, null, "CONVERTER_PROVIDERS");
         converterProviders.add(new InterfaceAAsStringConverter());
         converterProviders.add(new InterfaceBAsStringConverter());

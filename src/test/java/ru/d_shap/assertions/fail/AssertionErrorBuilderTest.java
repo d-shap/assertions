@@ -26,12 +26,12 @@ import org.junit.Test;
 
 import ru.d_shap.assertions.AssertionTest;
 import ru.d_shap.assertions.Assertions;
-import ru.d_shap.assertions.PrivateAccessor;
 import ru.d_shap.assertions.converter.AsStringConverter;
 import ru.d_shap.assertions.converter.AsStringConverterProvider;
 import ru.d_shap.assertions.converter.ConversionException;
 import ru.d_shap.assertions.converter.ValueConverter;
 import ru.d_shap.assertions.converter.ValueConverterProvider;
+import ru.d_shap.assertions.data.PrivateAccessor;
 
 /**
  * Tests for {@link AssertionErrorBuilder}.
@@ -1529,12 +1529,10 @@ public final class AssertionErrorBuilderTest extends AssertionTest {
 
     /**
      * {@link AssertionErrorBuilder} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
     @SuppressWarnings("unchecked")
-    public void conversionExceptionTest() throws Exception {
+    public void conversionExceptionTest() {
         List<ValueConverterProvider> valueConverterProviders = (List<ValueConverterProvider>) PrivateAccessor.getFieldValue(ValueConverter.class, null, "CONVERTER_PROVIDERS");
         valueConverterProviders.add(new ErrorTypeValueConverter());
         List<AsStringConverterProvider> asStringConverterProviders = (List<AsStringConverterProvider>) PrivateAccessor.getFieldValue(AsStringConverter.class, null, "CONVERTER_PROVIDERS");

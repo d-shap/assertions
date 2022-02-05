@@ -43,11 +43,9 @@ public final class FailDescriptionEntryTest extends AssertionTest {
 
     /**
      * {@link FailDescriptionEntry} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void addFormattedMessageTest() throws Exception {
+    public void addFormattedMessageTest() {
         Assertions.assertThat(getFormattedMessages(null, new Object[]{}, false)).containsExactlyInOrder();
         Assertions.assertThat(getFormattedMessages("", new Object[]{}, false)).containsExactlyInOrder();
         Assertions.assertThat(getFormattedMessages(" ", new Object[]{}, false)).containsExactlyInOrder(" ");
@@ -97,65 +95,53 @@ public final class FailDescriptionEntryTest extends AssertionTest {
 
     /**
      * {@link FailDescriptionEntry} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = NullPointerException.class)
-    public void nullArgumentsNullMessageFailTest() throws Exception {
+    public void nullArgumentsNullMessageFailTest() {
         new FailDescriptionEntry(null, null, false);
     }
 
     /**
      * {@link FailDescriptionEntry} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = NullPointerException.class)
-    public void nullArgumentsEmptyMessageFailTest() throws Exception {
+    public void nullArgumentsEmptyMessageFailTest() {
         new FailDescriptionEntry("", null, false);
     }
 
     /**
      * {@link FailDescriptionEntry} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = ArrayIndexOutOfBoundsException.class)
-    public void wrongArgumentCount0FailTest() throws Exception {
+    public void wrongArgumentCount0FailTest() {
         new FailDescriptionEntry("{0}", new Object[]{}, false);
     }
 
     /**
      * {@link FailDescriptionEntry} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = ArrayIndexOutOfBoundsException.class)
-    public void wrongArgumentCount1FailTest() throws Exception {
+    public void wrongArgumentCount1FailTest() {
         new FailDescriptionEntry("'{0}'", new Object[]{null}, false);
     }
 
     /**
      * {@link FailDescriptionEntry} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = ArrayIndexOutOfBoundsException.class)
-    public void wrongArgumentCount2FailTest() throws Exception {
+    public void wrongArgumentCount2FailTest() {
         new FailDescriptionEntry("{0}", new Object[]{1, "value"}, false);
     }
 
     /**
      * {@link FailDescriptionEntry} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test(expected = IllegalArgumentException.class)
-    public void convertArgumentToStringFailTest() throws Exception {
+    public void convertArgumentToStringFailTest() {
         getFormattedMessages("{0,number,integer}", new Object[]{1}, true);
     }
 
-    private List<String> getFormattedMessages(final String message, final Object[] arguments, final boolean checkLastSymbol) throws Exception {
+    private List<String> getFormattedMessages(final String message, final Object[] arguments, final boolean checkLastSymbol) {
         FailDescriptionEntry failDescriptionEntry = new FailDescriptionEntry(message, arguments, checkLastSymbol);
         List<String> formattedMessages = new ArrayList<>();
         failDescriptionEntry.addFormattedMessage(formattedMessages);

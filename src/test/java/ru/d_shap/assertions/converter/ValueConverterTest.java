@@ -27,8 +27,8 @@ import org.junit.Test;
 
 import ru.d_shap.assertions.AssertionTest;
 import ru.d_shap.assertions.Assertions;
-import ru.d_shap.assertions.PrivateAccessor;
 import ru.d_shap.assertions.Raw;
+import ru.d_shap.assertions.data.PrivateAccessor;
 
 /**
  * Tests for {@link ValueConverter}.
@@ -54,11 +54,9 @@ public final class ValueConverterTest extends AssertionTest {
 
     /**
      * {@link ValueConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void convertTest() throws Exception {
+    public void convertTest() {
         Assertions.assertThat(ValueConverter.convert(null, String.class)).isNull();
 
         Assertions.assertThat(ValueConverter.convert(100, Character.class)).isInstanceOf(Character.class);
@@ -84,12 +82,10 @@ public final class ValueConverterTest extends AssertionTest {
 
     /**
      * {@link ValueConverter} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
     @SuppressWarnings("unchecked")
-    public void converterSelectTest() throws Exception {
+    public void converterSelectTest() {
         List<ValueConverterProvider> converterProviders = (List<ValueConverterProvider>) PrivateAccessor.getFieldValue(ValueConverter.class, null, "CONVERTER_PROVIDERS");
         converterProviders.add(new FromClassAToClassXConverter());
         converterProviders.add(new FromClassAToClassYConverter());
