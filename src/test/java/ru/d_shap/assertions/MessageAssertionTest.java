@@ -2213,11 +2213,9 @@ public final class MessageAssertionTest extends AssertionTest {
 
     /**
      * {@link MessageAssertion} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void nodeAssertionTest() throws Exception {
+    public void nodeAssertionTest() {
         Assertions.assertWithMessage("Test message").that((Node) null).isNull();
         Assertions.assertWithMessage("Test message").that(createNode("<node>content</node>")).hasProperties("node");
         Assertions.assertWithMessage("Test message").that(null, Raw.nodeAssertion()).isNull();
@@ -2254,11 +2252,9 @@ public final class MessageAssertionTest extends AssertionTest {
 
     /**
      * {@link MessageAssertion} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void elementAssertionTest() throws Exception {
+    public void elementAssertionTest() {
         Assertions.assertWithMessage("Test message").that((Element) null).isNull();
         Assertions.assertWithMessage("Test message").that(createElement("<element>content</element>")).hasProperties("element");
         Assertions.assertWithMessage("Test message").that(null, Raw.elementAssertion()).isNull();
@@ -2295,11 +2291,9 @@ public final class MessageAssertionTest extends AssertionTest {
 
     /**
      * {@link MessageAssertion} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void documentAssertionTest() throws Exception {
+    public void documentAssertionTest() {
         Assertions.assertWithMessage("Test message").that((Document) null).isNull();
         Assertions.assertWithMessage("Test message").that(createDocument("<document>content</document>")).hasProperties("document");
         Assertions.assertWithMessage("Test message").that(null, Raw.documentAssertion()).isNull();
@@ -2336,11 +2330,9 @@ public final class MessageAssertionTest extends AssertionTest {
 
     /**
      * {@link MessageAssertion} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void attrAssertionTest() throws Exception {
+    public void attrAssertionTest() {
         Assertions.assertWithMessage("Test message").that((Attr) null).isNull();
         Assertions.assertWithMessage("Test message").that(createAttr("<element attr='val'/>")).hasProperties("attr", "val");
         Assertions.assertWithMessage("Test message").that(null, Raw.attrAssertion()).isNull();
@@ -2377,11 +2369,9 @@ public final class MessageAssertionTest extends AssertionTest {
 
     /**
      * {@link MessageAssertion} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void characterDataAssertionTest() throws Exception {
+    public void characterDataAssertionTest() {
         Assertions.assertWithMessage("Test message").that((CharacterData) null).isNull();
         Assertions.assertWithMessage("Test message").that(createCharacterData("<!-- character data -->")).hasData(" character data ");
         Assertions.assertWithMessage("Test message").that(null, Raw.characterDataAssertion()).isNull();
