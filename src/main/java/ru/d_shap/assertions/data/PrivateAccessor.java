@@ -45,11 +45,9 @@ public final class PrivateAccessor {
      * @param <T>       the generic type of the class.
      *
      * @return the specified field.
-     *
-     * @throws NoSuchFieldException if the specified field can not be found.
      */
     @SuppressWarnings("unchecked")
-    public static <T> Field getField(final T object, final String fieldName) throws NoSuchFieldException {
+    public static <T> Field getField(final T object, final String fieldName) {
         return getField((Class<T>) object.getClass(), object, fieldName);
     }
 
@@ -62,10 +60,8 @@ public final class PrivateAccessor {
      * @param <T>       the generic type of the class.
      *
      * @return the specified field.
-     *
-     * @throws NoSuchFieldException if the specified field can not be found.
      */
-    public static <T> Field getField(final Class<T> clazz, final T object, final String fieldName) throws NoSuchFieldException {
+    public static <T> Field getField(final Class<T> clazz, final T object, final String fieldName) {
         Class<?> currentClazz = clazz;
         NoSuchFieldException noSuchFieldException = null;
         while (currentClazz != null) {
@@ -78,7 +74,7 @@ public final class PrivateAccessor {
                 currentClazz = currentClazz.getSuperclass();
             }
         }
-        throw noSuchFieldException;
+        throw new ReflectiveException(noSuchFieldException);
     }
 
     /**
@@ -89,12 +85,13 @@ public final class PrivateAccessor {
      * @param <T>       the generic type of the class.
      *
      * @return the value of the specified field.
-     *
-     * @throws NoSuchFieldException   if the specified field can not be found.
-     * @throws IllegalAccessException if the specified field is not accessible.
      */
-    public static <T> Object getFieldValue(final T object, final String fieldName) throws NoSuchFieldException, IllegalAccessException {
-        return getField(object, fieldName).get(object);
+    public static <T> Object getFieldValue(final T object, final String fieldName) {
+        try {
+            return getField(object, fieldName).get(object);
+        } catch (IllegalAccessException ex) {
+            throw new ReflectiveException(ex);
+        }
     }
 
     /**
@@ -106,12 +103,13 @@ public final class PrivateAccessor {
      * @param <T>       the generic type of the class.
      *
      * @return the value of the specified field.
-     *
-     * @throws NoSuchFieldException   if the specified field can not be found.
-     * @throws IllegalAccessException if the specified field is not accessible.
      */
-    public static <T> Object getFieldValue(final Class<T> clazz, final T object, final String fieldName) throws NoSuchFieldException, IllegalAccessException {
-        return getField(clazz, object, fieldName).get(object);
+    public static <T> Object getFieldValue(final Class<T> clazz, final T object, final String fieldName) {
+        try {
+            return getField(clazz, object, fieldName).get(object);
+        } catch (IllegalAccessException ex) {
+            throw new ReflectiveException(ex);
+        }
     }
 
     /**
@@ -123,11 +121,9 @@ public final class PrivateAccessor {
      * @param <T>            the generic type of the class.
      *
      * @return the specified method.
-     *
-     * @throws NoSuchMethodException if the specified method can not be found.
      */
     @SuppressWarnings("unchecked")
-    public static <T> Method getMethod(final T object, final String methodName, final Class<?>... parameterTypes) throws NoSuchMethodException {
+    public static <T> Method getMethod(final T object, final String methodName, final Class<?>... parameterTypes) {
         return getMethod((Class<T>) object.getClass(), object, methodName, parameterTypes);
     }
 
@@ -141,10 +137,8 @@ public final class PrivateAccessor {
      * @param <T>            the generic type of the class.
      *
      * @return the specified method.
-     *
-     * @throws NoSuchMethodException if the specified method can not be found.
      */
-    public static <T> Method getMethod(final Class<T> clazz, final T object, final String methodName, final Class<?>... parameterTypes) throws NoSuchMethodException {
+    public static <T> Method getMethod(final Class<T> clazz, final T object, final String methodName, final Class<?>... parameterTypes) {
         Class<?> currentClazz = clazz;
         NoSuchMethodException noSuchMethodException = null;
         while (currentClazz != null) {
@@ -157,7 +151,7 @@ public final class PrivateAccessor {
                 currentClazz = currentClazz.getSuperclass();
             }
         }
-        throw noSuchMethodException;
+        throw new ReflectiveException(noSuchMethodException);
     }
 
     /**
@@ -168,13 +162,15 @@ public final class PrivateAccessor {
      * @param <T>            the generic type of the class.
      *
      * @return the specified constructor.
-     *
-     * @throws NoSuchMethodException if the specified constructor can not be found.
      */
-    public static <T> Constructor<T> getConstructor(final Class<T> clazz, final Class<?>... parameterTypes) throws NoSuchMethodException {
-        Constructor<T> constructor = clazz.getDeclaredConstructor(parameterTypes);
-        setAccessible(constructor);
-        return constructor;
+    public static <T> Constructor<T> getConstructor(final Class<T> clazz, final Class<?>... parameterTypes) {
+        try {
+            Constructor<T> constructor = clazz.getDeclaredConstructor(parameterTypes);
+            setAccessible(constructor);
+            return constructor;
+        } catch (NoSuchMethodException ex) {
+            throw new ReflectiveException(ex);
+        }
     }
 
     /**

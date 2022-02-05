@@ -31,6 +31,7 @@ import ru.d_shap.assertions.asimp.java.lang.ClassAssertion;
 import ru.d_shap.assertions.asimp.java.lang.ObjectAssertion;
 import ru.d_shap.assertions.asimp.primitive.IntAssertion;
 import ru.d_shap.assertions.data.PrivateAccessor;
+import ru.d_shap.assertions.data.ReflectiveException;
 
 /**
  * Base class for all reference type assertions.
@@ -252,7 +253,7 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
         try {
             Object fieldValue = PrivateAccessor.getFieldValue(getActual(), fieldName);
             return initializeAssertion(Raw.objectAssertion(), fieldValue, Messages.Check.FIELD, fieldName);
-        } catch (ReflectiveOperationException ex) {
+        } catch (ReflectiveException ex) {
             throw getAssertionErrorBuilder().addThrowable(ex).addMessage(Messages.Fail.Actual.CONTAINS_FIELD).addExpected(fieldName).build();
         }
     }
@@ -288,7 +289,7 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
         try {
             Object fieldValue = PrivateAccessor.getFieldValue(getActual(), fieldName);
             matcherAssertion(fieldValue, (Matcher<Object>) matcher, Messages.Check.FIELD, fieldName);
-        } catch (ReflectiveOperationException ex) {
+        } catch (ReflectiveException ex) {
             throw getAssertionErrorBuilder().addThrowable(ex).addMessage(Messages.Fail.Actual.CONTAINS_FIELD).addExpected(fieldName).build();
         }
     }
