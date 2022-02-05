@@ -43,11 +43,9 @@ public final class AttrAssertionTest extends AssertionTest {
 
     /**
      * {@link AttrAssertion} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void actualValueValidatorTest() throws Exception {
+    public void actualValueValidatorTest() {
         initialize(Raw.attrAssertion(), createAttr("<element attr='val'/>"));
 
         try {
@@ -66,11 +64,9 @@ public final class AttrAssertionTest extends AssertionTest {
 
     /**
      * {@link AttrAssertion} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void isEqualToTest() throws Exception {
+    public void isEqualToTest() {
         initialize(Raw.attrAssertion(), createAttr("<element attr='val'/>")).isEqualTo(createAttr("<element attr='val'/>"));
         initialize(Raw.attrAssertion(), createAttr("<element attr1='val1'/>")).isEqualTo(createAttr("<element attr1='val1'/>"));
 
@@ -156,11 +152,9 @@ public final class AttrAssertionTest extends AssertionTest {
 
     /**
      * {@link AttrAssertion} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void isNotEqualToTest() throws Exception {
+    public void isNotEqualToTest() {
         initialize(Raw.attrAssertion(), createAttr("<element attr='val1'/>")).isNotEqualTo(createAttr("<element attr='val2'/>"));
         initialize(Raw.attrAssertion(), createAttr("<element attr1='val'/>")).isNotEqualTo(createAttr("<element attr2='val'/>"));
         initialize(Raw.attrAssertion(), createAttr("<element xmlns:ns1='aaa' ns1:attr='val'/>")).isNotEqualTo(createAttr("<element attr='val'/>"));
@@ -235,11 +229,9 @@ public final class AttrAssertionTest extends AssertionTest {
 
     /**
      * {@link AttrAssertion} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void toNamespaceURITest() throws Exception {
+    public void toNamespaceURITest() {
         initialize(Raw.attrAssertion(), createAttr("<element attr='val1'/>")).toNamespaceURI().isNull();
         initialize(Raw.attrAssertion(), createAttr("<element xmlns:ns1='aaa' attr='val'/>")).toNamespaceURI().isNull();
         initialize(Raw.attrAssertion(), createAttr("<element xmlns:ns1='aaa' ns1:attr='val'/>")).toNamespaceURI().isEqualTo("aaa");
@@ -278,11 +270,9 @@ public final class AttrAssertionTest extends AssertionTest {
 
     /**
      * {@link AttrAssertion} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void toNamespaceURIMatcherTest() throws Exception {
+    public void toNamespaceURIMatcherTest() {
         initialize(Raw.attrAssertion(), createAttr("<element attr='val1'/>")).toNamespaceURI(Matchers.is(Matchers.emptyOrNullString()));
         initialize(Raw.attrAssertion(), createAttr("<element xmlns:ns1='aaa' attr='val'/>")).toNamespaceURI(Matchers.is(Matchers.emptyOrNullString()));
         initialize(Raw.attrAssertion(), createAttr("<element xmlns:ns1='aaa' ns1:attr='val'/>")).toNamespaceURI(Matchers.is(Matchers.equalTo("aaa")));
@@ -345,11 +335,9 @@ public final class AttrAssertionTest extends AssertionTest {
 
     /**
      * {@link AttrAssertion} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void hasNamespaceURITest() throws Exception {
+    public void hasNamespaceURITest() {
         initialize(Raw.attrAssertion(), createAttr("<element xmlns:ns1='aaa' ns1:attr='val'/>")).hasNamespaceURI("aaa");
 
         try {
@@ -410,11 +398,9 @@ public final class AttrAssertionTest extends AssertionTest {
 
     /**
      * {@link AttrAssertion} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void toPrefixTest() throws Exception {
+    public void toPrefixTest() {
         initialize(Raw.attrAssertion(), createAttr("<element attr='val1'/>")).toPrefix().isNull();
         initialize(Raw.attrAssertion(), createAttr("<element xmlns:ns1='aaa' attr='val'/>")).toPrefix().isNull();
         initialize(Raw.attrAssertion(), createAttr("<element xmlns:ns1='aaa' ns1:attr='val'/>")).toPrefix().isEqualTo("ns1");
@@ -453,11 +439,9 @@ public final class AttrAssertionTest extends AssertionTest {
 
     /**
      * {@link AttrAssertion} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void toPrefixMatcherTest() throws Exception {
+    public void toPrefixMatcherTest() {
         initialize(Raw.attrAssertion(), createAttr("<element attr='val1'/>")).toPrefix(Matchers.is(Matchers.emptyOrNullString()));
         initialize(Raw.attrAssertion(), createAttr("<element xmlns:ns1='aaa' attr='val'/>")).toPrefix(Matchers.is(Matchers.emptyOrNullString()));
         initialize(Raw.attrAssertion(), createAttr("<element xmlns:ns1='aaa' ns1:attr='val'/>")).toPrefix(Matchers.is(Matchers.equalTo("ns1")));
@@ -520,11 +504,9 @@ public final class AttrAssertionTest extends AssertionTest {
 
     /**
      * {@link AttrAssertion} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void hasPrefixTest() throws Exception {
+    public void hasPrefixTest() {
         initialize(Raw.attrAssertion(), createAttr("<element xmlns:ns1='aaa' ns1:attr='val'/>")).hasPrefix("ns1");
 
         try {
@@ -585,11 +567,9 @@ public final class AttrAssertionTest extends AssertionTest {
 
     /**
      * {@link AttrAssertion} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void toLocalNameTest() throws Exception {
+    public void toLocalNameTest() {
         initialize(Raw.attrAssertion(), createAttr("<element attr='val1'/>")).toLocalName().isEqualTo("attr");
         initialize(Raw.attrAssertion(), createAttr("<element xmlns:ns1='aaa' attr='val'/>")).toLocalName().isEqualTo("attr");
         initialize(Raw.attrAssertion(), createAttr("<element xmlns:ns1='aaa' ns1:attr='val'/>")).toLocalName().isEqualTo("attr");
@@ -628,11 +608,9 @@ public final class AttrAssertionTest extends AssertionTest {
 
     /**
      * {@link AttrAssertion} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void toLocalNameMatcherTest() throws Exception {
+    public void toLocalNameMatcherTest() {
         initialize(Raw.attrAssertion(), createAttr("<element attr='val1'/>")).toLocalName(Matchers.is(Matchers.equalTo("attr")));
         initialize(Raw.attrAssertion(), createAttr("<element xmlns:ns1='aaa' attr='val'/>")).toLocalName(Matchers.is(Matchers.equalTo("attr")));
         initialize(Raw.attrAssertion(), createAttr("<element xmlns:ns1='aaa' ns1:attr='val'/>")).toLocalName(Matchers.is(Matchers.equalTo("attr")));
@@ -695,11 +673,9 @@ public final class AttrAssertionTest extends AssertionTest {
 
     /**
      * {@link AttrAssertion} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void hasLocalNameTest() throws Exception {
+    public void hasLocalNameTest() {
         initialize(Raw.attrAssertion(), createAttr("<element attr='val1'/>")).hasLocalName("attr");
         initialize(Raw.attrAssertion(), createAttr("<element xmlns:ns1='aaa' attr='val'/>")).hasLocalName("attr");
         initialize(Raw.attrAssertion(), createAttr("<element xmlns:ns1='aaa' ns1:attr='val'/>")).hasLocalName("attr");
@@ -762,11 +738,9 @@ public final class AttrAssertionTest extends AssertionTest {
 
     /**
      * {@link AttrAssertion} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void toQualifiedNameTest() throws Exception {
+    public void toQualifiedNameTest() {
         initialize(Raw.attrAssertion(), createAttr("<element attr='val1'/>")).toQualifiedName().isEqualTo("attr");
         initialize(Raw.attrAssertion(), createAttr("<element xmlns:ns1='aaa' attr='val'/>")).toQualifiedName().isEqualTo("attr");
         initialize(Raw.attrAssertion(), createAttr("<element xmlns:ns1='aaa' ns1:attr='val'/>")).toQualifiedName().isEqualTo("ns1:attr");
@@ -817,11 +791,9 @@ public final class AttrAssertionTest extends AssertionTest {
 
     /**
      * {@link AttrAssertion} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void toQualifiedNameMatcherTest() throws Exception {
+    public void toQualifiedNameMatcherTest() {
         initialize(Raw.attrAssertion(), createAttr("<element attr='val1'/>")).toQualifiedName(Matchers.is(Matchers.equalTo("attr")));
         initialize(Raw.attrAssertion(), createAttr("<element xmlns:ns1='aaa' attr='val'/>")).toQualifiedName(Matchers.is(Matchers.equalTo("attr")));
         initialize(Raw.attrAssertion(), createAttr("<element xmlns:ns1='aaa' ns1:attr='val'/>")).toQualifiedName(Matchers.is(Matchers.equalTo("ns1:attr")));
@@ -896,11 +868,9 @@ public final class AttrAssertionTest extends AssertionTest {
 
     /**
      * {@link AttrAssertion} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void hasQualifiedNameTest() throws Exception {
+    public void hasQualifiedNameTest() {
         initialize(Raw.attrAssertion(), createAttr("<element attr='val1'/>")).hasQualifiedName("attr");
         initialize(Raw.attrAssertion(), createAttr("<element xmlns:ns1='aaa' attr='val'/>")).hasQualifiedName("attr");
         initialize(Raw.attrAssertion(), createAttr("<element xmlns:ns1='aaa' ns1:attr='val'/>")).hasQualifiedName("ns1:attr");
@@ -975,11 +945,9 @@ public final class AttrAssertionTest extends AssertionTest {
 
     /**
      * {@link AttrAssertion} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void toValueTest() throws Exception {
+    public void toValueTest() {
         initialize(Raw.attrAssertion(), createAttr("<element attr='val1'/>")).toValue().isEqualTo("val1");
         initialize(Raw.attrAssertion(), createAttr("<element attr='val2'/>")).toValue().isEqualTo("val2");
         initialize(Raw.attrAssertion(), createAttr("<element xmlns:ns1='aaa' attr='val'/>")).toValue().isEqualTo("val");
@@ -1019,11 +987,9 @@ public final class AttrAssertionTest extends AssertionTest {
 
     /**
      * {@link AttrAssertion} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void toValueMatcherTest() throws Exception {
+    public void toValueMatcherTest() {
         initialize(Raw.attrAssertion(), createAttr("<element attr='val1'/>")).toValue(Matchers.is(Matchers.equalTo("val1")));
         initialize(Raw.attrAssertion(), createAttr("<element attr='val2'/>")).toValue(Matchers.is(Matchers.equalTo("val2")));
         initialize(Raw.attrAssertion(), createAttr("<element xmlns:ns1='aaa' attr='val'/>")).toValue(Matchers.is(Matchers.equalTo("val")));
@@ -1087,11 +1053,9 @@ public final class AttrAssertionTest extends AssertionTest {
 
     /**
      * {@link AttrAssertion} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void hasValueTest() throws Exception {
+    public void hasValueTest() {
         initialize(Raw.attrAssertion(), createAttr("<element attr='val1'/>")).hasValue("val1");
         initialize(Raw.attrAssertion(), createAttr("<element attr='val2'/>")).hasValue("val2");
         initialize(Raw.attrAssertion(), createAttr("<element xmlns:ns1='aaa' attr='val'/>")).hasValue("val");
@@ -1155,11 +1119,9 @@ public final class AttrAssertionTest extends AssertionTest {
 
     /**
      * {@link AttrAssertion} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void hasPropertiesLocalNameTest() throws Exception {
+    public void hasPropertiesLocalNameTest() {
         initialize(Raw.attrAssertion(), createAttr("<element attr='val1'/>")).hasProperties("attr", "val1");
         initialize(Raw.attrAssertion(), createAttr("<element attr='val2'/>")).hasProperties("attr", "val2");
         initialize(Raw.attrAssertion(), createAttr("<element bttr='val1'/>")).hasProperties("bttr", "val1");
@@ -1270,11 +1232,9 @@ public final class AttrAssertionTest extends AssertionTest {
 
     /**
      * {@link AttrAssertion} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void hasPropertiesNamespaceURIAndLocalNameTest() throws Exception {
+    public void hasPropertiesNamespaceURIAndLocalNameTest() {
         initialize(Raw.attrAssertion(), createAttr("<element xmlns:ns1='aaa' ns1:attr='val1'/>")).hasProperties("aaa", "attr", "val1");
         initialize(Raw.attrAssertion(), createAttr("<element xmlns:ns2='aaa' ns2:attr='val1'/>")).hasProperties("aaa", "attr", "val1");
         initialize(Raw.attrAssertion(), createAttr("<element xmlns:ns1='bbb' ns1:attr='val1'/>")).hasProperties("bbb", "attr", "val1");
@@ -1411,11 +1371,9 @@ public final class AttrAssertionTest extends AssertionTest {
 
     /**
      * {@link AttrAssertion} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void isNullTest() throws Exception {
+    public void isNullTest() {
         initialize(Raw.attrAssertion(), null).isNull();
 
         try {
@@ -1434,11 +1392,9 @@ public final class AttrAssertionTest extends AssertionTest {
 
     /**
      * {@link AttrAssertion} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void isSameAsTest() throws Exception {
+    public void isSameAsTest() {
         Attr value = createAttr("<element attr='val1'/>");
         initialize(Raw.attrAssertion(), value).isSameAs(value);
 
@@ -1458,11 +1414,9 @@ public final class AttrAssertionTest extends AssertionTest {
 
     /**
      * {@link AttrAssertion} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void isNotSameAsTest() throws Exception {
+    public void isNotSameAsTest() {
         Attr value = createAttr("<element attr='val1'/>");
         initialize(Raw.attrAssertion(), value).isNotSameAs(createAttr("<element attr='val1'/>"));
 

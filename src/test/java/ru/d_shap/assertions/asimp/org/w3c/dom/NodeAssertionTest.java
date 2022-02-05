@@ -43,11 +43,9 @@ public final class NodeAssertionTest extends AssertionTest {
 
     /**
      * {@link NodeAssertion} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void actualValueValidatorTest() throws Exception {
+    public void actualValueValidatorTest() {
         initialize(Raw.nodeAssertion(), createNode("<element/>"));
 
         try {
@@ -66,11 +64,9 @@ public final class NodeAssertionTest extends AssertionTest {
 
     /**
      * {@link NodeAssertion} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void isEqualToTest() throws Exception {
+    public void isEqualToTest() {
         initialize(Raw.nodeAssertion(), createNode("<element/>")).isEqualTo(createNode("<element/>"));
         initialize(Raw.nodeAssertion(), createNode("<element></element>")).isEqualTo(createNode("<element/>"));
         initialize(Raw.nodeAssertion(), createNode("<!-- comment -->")).isEqualTo(createNode("<!-- comment -->"));
@@ -170,11 +166,9 @@ public final class NodeAssertionTest extends AssertionTest {
 
     /**
      * {@link NodeAssertion} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void isNotEqualToTest() throws Exception {
+    public void isNotEqualToTest() {
         initialize(Raw.nodeAssertion(), createNode("<element1/>")).isNotEqualTo(createNode("<element2/>"));
         initialize(Raw.nodeAssertion(), createNode("<element/>")).isNotEqualTo(createNode("<element>content</element>"));
         initialize(Raw.nodeAssertion(), createNode("<element/>")).isNotEqualTo(createNode("<element attr='val'/>"));
@@ -274,11 +268,9 @@ public final class NodeAssertionTest extends AssertionTest {
 
     /**
      * {@link NodeAssertion} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void toNamespaceURITest() throws Exception {
+    public void toNamespaceURITest() {
         initialize(Raw.nodeAssertion(), createNode("<element/>")).toNamespaceURI().isNull();
         initialize(Raw.nodeAssertion(), createNode("<element xmlns='aaa'/>")).toNamespaceURI().isEqualTo("aaa");
         initialize(Raw.nodeAssertion(), createNode("<ns1:element xmlns:ns1='aaa'/>")).toNamespaceURI().isEqualTo("aaa");
@@ -319,11 +311,9 @@ public final class NodeAssertionTest extends AssertionTest {
 
     /**
      * {@link NodeAssertion} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void toNamespaceURIMatcherTest() throws Exception {
+    public void toNamespaceURIMatcherTest() {
         initialize(Raw.nodeAssertion(), createNode("<element/>")).toNamespaceURI(Matchers.is(Matchers.emptyOrNullString()));
         initialize(Raw.nodeAssertion(), createNode("<element xmlns='aaa'/>")).toNamespaceURI(Matchers.is(Matchers.equalTo("aaa")));
         initialize(Raw.nodeAssertion(), createNode("<ns1:element xmlns:ns1='aaa'/>")).toNamespaceURI(Matchers.is(Matchers.equalTo("aaa")));
@@ -388,11 +378,9 @@ public final class NodeAssertionTest extends AssertionTest {
 
     /**
      * {@link NodeAssertion} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void hasNamespaceURITest() throws Exception {
+    public void hasNamespaceURITest() {
         initialize(Raw.nodeAssertion(), createNode("<element xmlns='aaa'/>")).hasNamespaceURI("aaa");
         initialize(Raw.nodeAssertion(), createNode("<ns1:element xmlns:ns1='aaa'/>")).hasNamespaceURI("aaa");
 
@@ -454,11 +442,9 @@ public final class NodeAssertionTest extends AssertionTest {
 
     /**
      * {@link NodeAssertion} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void toPrefixTest() throws Exception {
+    public void toPrefixTest() {
         initialize(Raw.nodeAssertion(), createNode("<element/>")).toPrefix().isNull();
         initialize(Raw.nodeAssertion(), createNode("<element xmlns='aaa'/>")).toPrefix().isNull();
         initialize(Raw.nodeAssertion(), createNode("<ns1:element xmlns:ns1='aaa'/>")).toPrefix().isEqualTo("ns1");
@@ -499,11 +485,9 @@ public final class NodeAssertionTest extends AssertionTest {
 
     /**
      * {@link NodeAssertion} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void toPrefixMatcherTest() throws Exception {
+    public void toPrefixMatcherTest() {
         initialize(Raw.nodeAssertion(), createNode("<element/>")).toPrefix(Matchers.is(Matchers.emptyOrNullString()));
         initialize(Raw.nodeAssertion(), createNode("<element xmlns='aaa'/>")).toPrefix(Matchers.is(Matchers.emptyOrNullString()));
         initialize(Raw.nodeAssertion(), createNode("<ns1:element xmlns:ns1='aaa'/>")).toPrefix(Matchers.is(Matchers.equalTo("ns1")));
@@ -568,11 +552,9 @@ public final class NodeAssertionTest extends AssertionTest {
 
     /**
      * {@link NodeAssertion} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void hasPrefixTest() throws Exception {
+    public void hasPrefixTest() {
         initialize(Raw.nodeAssertion(), createNode("<ns1:element xmlns:ns1='aaa'/>")).hasPrefix("ns1");
 
         try {
@@ -633,11 +615,9 @@ public final class NodeAssertionTest extends AssertionTest {
 
     /**
      * {@link NodeAssertion} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void toLocalNameTest() throws Exception {
+    public void toLocalNameTest() {
         initialize(Raw.nodeAssertion(), createNode("<element/>")).toLocalName().isEqualTo("element");
         initialize(Raw.nodeAssertion(), createNode("<element xmlns='aaa'/>")).toLocalName().isEqualTo("element");
         initialize(Raw.nodeAssertion(), createNode("<ns1:element xmlns:ns1='aaa'/>")).toLocalName().isEqualTo("element");
@@ -678,11 +658,9 @@ public final class NodeAssertionTest extends AssertionTest {
 
     /**
      * {@link NodeAssertion} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void toLocalNameMatcherTest() throws Exception {
+    public void toLocalNameMatcherTest() {
         initialize(Raw.nodeAssertion(), createNode("<element/>")).toLocalName(Matchers.is(Matchers.equalTo("element")));
         initialize(Raw.nodeAssertion(), createNode("<element xmlns='aaa'/>")).toLocalName(Matchers.is(Matchers.equalTo("element")));
         initialize(Raw.nodeAssertion(), createNode("<ns1:element xmlns:ns1='aaa'/>")).toLocalName(Matchers.is(Matchers.equalTo("element")));
@@ -747,11 +725,9 @@ public final class NodeAssertionTest extends AssertionTest {
 
     /**
      * {@link NodeAssertion} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void hasLocalNameTest() throws Exception {
+    public void hasLocalNameTest() {
         initialize(Raw.nodeAssertion(), createNode("<element/>")).hasLocalName("element");
         initialize(Raw.nodeAssertion(), createNode("<element xmlns='aaa'/>")).hasLocalName("element");
         initialize(Raw.nodeAssertion(), createNode("<ns1:element xmlns:ns1='aaa'/>")).hasLocalName("element");
@@ -814,11 +790,9 @@ public final class NodeAssertionTest extends AssertionTest {
 
     /**
      * {@link NodeAssertion} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void hasPropertiesLocalNameTest() throws Exception {
+    public void hasPropertiesLocalNameTest() {
         initialize(Raw.nodeAssertion(), createNode("<element/>")).hasProperties("element");
         initialize(Raw.nodeAssertion(), createNode("<element attr='val'/>")).hasProperties("element");
         initialize(Raw.nodeAssertion(), createNode("<element2/>")).hasProperties("element2");
@@ -894,11 +868,9 @@ public final class NodeAssertionTest extends AssertionTest {
 
     /**
      * {@link NodeAssertion} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void hasPropertiesNamespaceURIAndLocalNameTest() throws Exception {
+    public void hasPropertiesNamespaceURIAndLocalNameTest() {
         initialize(Raw.nodeAssertion(), createNode("<element xmlns='aaa'/>")).hasProperties("aaa", "element");
         initialize(Raw.nodeAssertion(), createNode("<ns1:element xmlns:ns1='aaa'/>")).hasProperties("aaa", "element");
         initialize(Raw.nodeAssertion(), createNode("<ns2:element xmlns:ns2='aaa'/>")).hasProperties("aaa", "element");
@@ -999,11 +971,9 @@ public final class NodeAssertionTest extends AssertionTest {
 
     /**
      * {@link NodeAssertion} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void isNullTest() throws Exception {
+    public void isNullTest() {
         initialize(Raw.nodeAssertion(), null).isNull();
 
         try {
@@ -1022,11 +992,9 @@ public final class NodeAssertionTest extends AssertionTest {
 
     /**
      * {@link NodeAssertion} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void isSameAsTest() throws Exception {
+    public void isSameAsTest() {
         Node value = createNode("<element/>");
         initialize(Raw.nodeAssertion(), value).isSameAs(value);
 
@@ -1046,11 +1014,9 @@ public final class NodeAssertionTest extends AssertionTest {
 
     /**
      * {@link NodeAssertion} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void isNotSameAsTest() throws Exception {
+    public void isNotSameAsTest() {
         Node value = createNode("<element/>");
         initialize(Raw.nodeAssertion(), value).isNotSameAs(createNode("<element/>"));
 

@@ -43,11 +43,9 @@ public final class CharacterDataAssertionTest extends AssertionTest {
 
     /**
      * {@link CharacterDataAssertion} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void actualValueValidatorTest() throws Exception {
+    public void actualValueValidatorTest() {
         initialize(Raw.characterDataAssertion(), createCharacterData("text"));
 
         try {
@@ -66,11 +64,9 @@ public final class CharacterDataAssertionTest extends AssertionTest {
 
     /**
      * {@link CharacterDataAssertion} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void isEqualToTest() throws Exception {
+    public void isEqualToTest() {
         initialize(Raw.characterDataAssertion(), createCharacterData("text")).isEqualTo(createCharacterData("text"));
         initialize(Raw.characterDataAssertion(), createCharacterData("<!-- comment -->")).isEqualTo(createCharacterData("<!-- comment -->"));
         initialize(Raw.characterDataAssertion(), createCharacterData("<![CDATA[<element>value<element>]]>")).isEqualTo(createCharacterData("<![CDATA[<element>value<element>]]>"));
@@ -169,11 +165,9 @@ public final class CharacterDataAssertionTest extends AssertionTest {
 
     /**
      * {@link CharacterDataAssertion} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void isNotEqualToTest() throws Exception {
+    public void isNotEqualToTest() {
         initialize(Raw.characterDataAssertion(), createCharacterData("text1")).isNotEqualTo(createCharacterData("text2"));
         initialize(Raw.characterDataAssertion(), createCharacterData("<!-- comment1 -->")).isNotEqualTo(createCharacterData("<!-- comment2 -->"));
         initialize(Raw.characterDataAssertion(), createCharacterData("<![CDATA[<element>value1<element>]]>")).isNotEqualTo(createCharacterData("<![CDATA[<element>value2<element>]]>"));
@@ -263,11 +257,9 @@ public final class CharacterDataAssertionTest extends AssertionTest {
 
     /**
      * {@link CharacterDataAssertion} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void toDataTest() throws Exception {
+    public void toDataTest() {
         initialize(Raw.characterDataAssertion(), createCharacterData("text")).toData().isEqualTo("text");
         initialize(Raw.characterDataAssertion(), createCharacterData("<!--comment-->")).toData().isEqualTo("comment");
         initialize(Raw.characterDataAssertion(), createCharacterData("<!-- comment -->")).toData().isEqualTo(" comment ");
@@ -332,11 +324,9 @@ public final class CharacterDataAssertionTest extends AssertionTest {
 
     /**
      * {@link CharacterDataAssertion} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void toDataMatcherTest() throws Exception {
+    public void toDataMatcherTest() {
         initialize(Raw.characterDataAssertion(), createCharacterData("text")).toData(Matchers.is(Matchers.equalTo("text")));
         initialize(Raw.characterDataAssertion(), createCharacterData("<!--comment-->")).toData(Matchers.is(Matchers.equalTo("comment")));
         initialize(Raw.characterDataAssertion(), createCharacterData("<!-- comment -->")).toData(Matchers.is(Matchers.equalTo(" comment ")));
@@ -425,11 +415,9 @@ public final class CharacterDataAssertionTest extends AssertionTest {
 
     /**
      * {@link CharacterDataAssertion} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void hasDataTest() throws Exception {
+    public void hasDataTest() {
         initialize(Raw.characterDataAssertion(), createCharacterData("text")).hasData("text");
         initialize(Raw.characterDataAssertion(), createCharacterData("<!--comment-->")).hasData("comment");
         initialize(Raw.characterDataAssertion(), createCharacterData("<!-- comment -->")).hasData(" comment ");
@@ -518,11 +506,9 @@ public final class CharacterDataAssertionTest extends AssertionTest {
 
     /**
      * {@link CharacterDataAssertion} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void isNullTest() throws Exception {
+    public void isNullTest() {
         initialize(Raw.characterDataAssertion(), null).isNull();
 
         try {
@@ -541,11 +527,9 @@ public final class CharacterDataAssertionTest extends AssertionTest {
 
     /**
      * {@link CharacterDataAssertion} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void isSameAsTest() throws Exception {
+    public void isSameAsTest() {
         CharacterData value = createCharacterData("text");
         initialize(Raw.characterDataAssertion(), value).isSameAs(value);
 
@@ -565,11 +549,9 @@ public final class CharacterDataAssertionTest extends AssertionTest {
 
     /**
      * {@link CharacterDataAssertion} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void isNotSameAsTest() throws Exception {
+    public void isNotSameAsTest() {
         CharacterData value = createCharacterData("text");
         initialize(Raw.characterDataAssertion(), value).isNotSameAs(createCharacterData("text"));
 

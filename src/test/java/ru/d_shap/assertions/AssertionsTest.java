@@ -1223,11 +1223,9 @@ public final class AssertionsTest extends AssertionTest {
 
     /**
      * {@link Assertions} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void nodeAssertionTest() throws Exception {
+    public void nodeAssertionTest() {
         Assertions.assertThat((Node) null).isNull();
         Assertions.assertThat(createNode("<node>content</node>")).hasProperties("node");
         Assertions.assertThat(null, Raw.nodeAssertion()).isNull();
@@ -1246,11 +1244,9 @@ public final class AssertionsTest extends AssertionTest {
 
     /**
      * {@link Assertions} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void elementAssertionTest() throws Exception {
+    public void elementAssertionTest() {
         Assertions.assertThat((Element) null).isNull();
         Assertions.assertThat(createElement("<element>content</element>")).hasProperties("element");
         Assertions.assertThat(null, Raw.elementAssertion()).isNull();
@@ -1269,11 +1265,9 @@ public final class AssertionsTest extends AssertionTest {
 
     /**
      * {@link Assertions} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void documentAssertionTest() throws Exception {
+    public void documentAssertionTest() {
         Assertions.assertThat((Document) null).isNull();
         Assertions.assertThat(createDocument("<document>content</document>")).hasProperties("document");
         Assertions.assertThat(null, Raw.documentAssertion()).isNull();
@@ -1292,11 +1286,9 @@ public final class AssertionsTest extends AssertionTest {
 
     /**
      * {@link Assertions} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void attrAssertionTest() throws Exception {
+    public void attrAssertionTest() {
         Assertions.assertThat((Attr) null).isNull();
         Assertions.assertThat(createAttr("<element attr='val'/>")).hasProperties("attr", "val");
         Assertions.assertThat(null, Raw.attrAssertion()).isNull();
@@ -1315,11 +1307,9 @@ public final class AssertionsTest extends AssertionTest {
 
     /**
      * {@link Assertions} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void characterDataAssertionTest() throws Exception {
+    public void characterDataAssertionTest() {
         Assertions.assertThat((CharacterData) null).isNull();
         Assertions.assertThat(createCharacterData("<!-- character data -->")).hasData(" character data ");
         Assertions.assertThat(null, Raw.characterDataAssertion()).isNull();

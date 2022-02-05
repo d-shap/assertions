@@ -47,11 +47,9 @@ public final class DocumentAssertionTest extends AssertionTest {
 
     /**
      * {@link DocumentAssertion} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void actualValueValidatorTest() throws Exception {
+    public void actualValueValidatorTest() {
         initialize(Raw.documentAssertion(), createDocument("<element/>"));
 
         try {
@@ -70,11 +68,9 @@ public final class DocumentAssertionTest extends AssertionTest {
 
     /**
      * {@link DocumentAssertion} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void isEqualToElementTest() throws Exception {
+    public void isEqualToElementTest() {
         initialize(Raw.documentAssertion(), createDocument("<element/>")).isEqualTo(createDocument("<element/>"));
         initialize(Raw.documentAssertion(), createDocument("<element></element>")).isEqualTo(createDocument("<element/>"));
         initialize(Raw.documentAssertion(), createDocument("<element attr1='val1' attr2='val2'/>")).isEqualTo(createDocument("<element attr2='val2' attr1='val1'/>"));
@@ -176,11 +172,9 @@ public final class DocumentAssertionTest extends AssertionTest {
 
     /**
      * {@link DocumentAssertion} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void isEqualToStringTest() throws Exception {
+    public void isEqualToStringTest() {
         initialize(Raw.documentAssertion(), createDocument("<element/>")).isEqualTo("<element/>");
         initialize(Raw.documentAssertion(), createDocument("<element></element>")).isEqualTo("<element/>");
         initialize(Raw.documentAssertion(), createDocument("<element attr1='val1' attr2='val2'/>")).isEqualTo("<element attr2='val2' attr1='val1'/>");
@@ -306,11 +300,9 @@ public final class DocumentAssertionTest extends AssertionTest {
 
     /**
      * {@link DocumentAssertion} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void isNotEqualToElementTest() throws Exception {
+    public void isNotEqualToElementTest() {
         initialize(Raw.documentAssertion(), createDocument("<element1/>")).isNotEqualTo(createDocument("<element2/>"));
         initialize(Raw.documentAssertion(), createDocument("<element1></element1>")).isNotEqualTo(createDocument("<element2/>"));
         initialize(Raw.documentAssertion(), createDocument("<element/>")).isNotEqualTo(createDocument("<element>content</element>"));
@@ -435,11 +427,9 @@ public final class DocumentAssertionTest extends AssertionTest {
 
     /**
      * {@link DocumentAssertion} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void isNotEqualToStringTest() throws Exception {
+    public void isNotEqualToStringTest() {
         initialize(Raw.documentAssertion(), createDocument("<element1/>")).isNotEqualTo("<element2/>");
         initialize(Raw.documentAssertion(), createDocument("<element1></element1>")).isNotEqualTo("<element2/>");
         initialize(Raw.documentAssertion(), createDocument("<element/>")).isNotEqualTo("<element>content</element>");
@@ -588,11 +578,9 @@ public final class DocumentAssertionTest extends AssertionTest {
 
     /**
      * {@link DocumentAssertion} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void toNamespaceURITest() throws Exception {
+    public void toNamespaceURITest() {
         initialize(Raw.documentAssertion(), createDocument("<element/>")).toNamespaceURI().isNull();
         initialize(Raw.documentAssertion(), createDocument("<element xmlns='aaa'/>")).toNamespaceURI().isEqualTo("aaa");
         initialize(Raw.documentAssertion(), createDocument("<ns1:element xmlns:ns1='aaa'/>")).toNamespaceURI().isEqualTo("aaa");
@@ -631,11 +619,9 @@ public final class DocumentAssertionTest extends AssertionTest {
 
     /**
      * {@link DocumentAssertion} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void toNamespaceURIMatcherTest() throws Exception {
+    public void toNamespaceURIMatcherTest() {
         initialize(Raw.documentAssertion(), createDocument("<element/>")).toNamespaceURI(Matchers.is(Matchers.emptyOrNullString()));
         initialize(Raw.documentAssertion(), createDocument("<element xmlns='aaa'/>")).toNamespaceURI(Matchers.is(Matchers.equalTo("aaa")));
         initialize(Raw.documentAssertion(), createDocument("<ns1:element xmlns:ns1='aaa'/>")).toNamespaceURI(Matchers.is(Matchers.equalTo("aaa")));
@@ -698,11 +684,9 @@ public final class DocumentAssertionTest extends AssertionTest {
 
     /**
      * {@link DocumentAssertion} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void hasNamespaceURITest() throws Exception {
+    public void hasNamespaceURITest() {
         initialize(Raw.documentAssertion(), createDocument("<element xmlns='aaa'/>")).hasNamespaceURI("aaa");
         initialize(Raw.documentAssertion(), createDocument("<ns1:element xmlns:ns1='aaa'/>")).hasNamespaceURI("aaa");
 
@@ -764,11 +748,9 @@ public final class DocumentAssertionTest extends AssertionTest {
 
     /**
      * {@link DocumentAssertion} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void toPrefixTest() throws Exception {
+    public void toPrefixTest() {
         initialize(Raw.documentAssertion(), createDocument("<element/>")).toPrefix().isNull();
         initialize(Raw.documentAssertion(), createDocument("<element xmlns='aaa'/>")).toPrefix().isNull();
         initialize(Raw.documentAssertion(), createDocument("<ns1:element xmlns:ns1='aaa'/>")).toPrefix().isEqualTo("ns1");
@@ -807,11 +789,9 @@ public final class DocumentAssertionTest extends AssertionTest {
 
     /**
      * {@link DocumentAssertion} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void toPrefixMatcherTest() throws Exception {
+    public void toPrefixMatcherTest() {
         initialize(Raw.documentAssertion(), createDocument("<element/>")).toPrefix(Matchers.is(Matchers.emptyOrNullString()));
         initialize(Raw.documentAssertion(), createDocument("<element xmlns='aaa'/>")).toPrefix(Matchers.is(Matchers.emptyOrNullString()));
         initialize(Raw.documentAssertion(), createDocument("<ns1:element xmlns:ns1='aaa'/>")).toPrefix(Matchers.is(Matchers.equalTo("ns1")));
@@ -874,11 +854,9 @@ public final class DocumentAssertionTest extends AssertionTest {
 
     /**
      * {@link DocumentAssertion} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void hasPrefixTest() throws Exception {
+    public void hasPrefixTest() {
         initialize(Raw.documentAssertion(), createDocument("<ns1:element xmlns:ns1='aaa'/>")).hasPrefix("ns1");
 
         try {
@@ -939,11 +917,9 @@ public final class DocumentAssertionTest extends AssertionTest {
 
     /**
      * {@link DocumentAssertion} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void toLocalNameTest() throws Exception {
+    public void toLocalNameTest() {
         initialize(Raw.documentAssertion(), createDocument("<element/>")).toLocalName().isEqualTo("element");
         initialize(Raw.documentAssertion(), createDocument("<element xmlns='aaa'/>")).toLocalName().isEqualTo("element");
         initialize(Raw.documentAssertion(), createDocument("<ns1:element xmlns:ns1='aaa'/>")).toLocalName().isEqualTo("element");
@@ -982,11 +958,9 @@ public final class DocumentAssertionTest extends AssertionTest {
 
     /**
      * {@link DocumentAssertion} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void toLocalNameMatcherTest() throws Exception {
+    public void toLocalNameMatcherTest() {
         initialize(Raw.documentAssertion(), createDocument("<element/>")).toLocalName(Matchers.is(Matchers.equalTo("element")));
         initialize(Raw.documentAssertion(), createDocument("<element xmlns='aaa'/>")).toLocalName(Matchers.is(Matchers.equalTo("element")));
         initialize(Raw.documentAssertion(), createDocument("<ns1:element xmlns:ns1='aaa'/>")).toLocalName(Matchers.is(Matchers.equalTo("element")));
@@ -1049,11 +1023,9 @@ public final class DocumentAssertionTest extends AssertionTest {
 
     /**
      * {@link DocumentAssertion} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void hasLocalNameTest() throws Exception {
+    public void hasLocalNameTest() {
         initialize(Raw.documentAssertion(), createDocument("<element/>")).hasLocalName("element");
         initialize(Raw.documentAssertion(), createDocument("<element xmlns='aaa'/>")).hasLocalName("element");
         initialize(Raw.documentAssertion(), createDocument("<ns1:element xmlns:ns1='aaa'/>")).hasLocalName("element");
@@ -1116,11 +1088,9 @@ public final class DocumentAssertionTest extends AssertionTest {
 
     /**
      * {@link DocumentAssertion} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void toQualifiedNameTest() throws Exception {
+    public void toQualifiedNameTest() {
         initialize(Raw.documentAssertion(), createDocument("<element/>")).toQualifiedName().isEqualTo("element");
         initialize(Raw.documentAssertion(), createDocument("<element xmlns='aaa'/>")).toQualifiedName().isEqualTo("element");
         initialize(Raw.documentAssertion(), createDocument("<ns1:element xmlns:ns1='aaa'/>")).toQualifiedName().isEqualTo("ns1:element");
@@ -1183,11 +1153,9 @@ public final class DocumentAssertionTest extends AssertionTest {
 
     /**
      * {@link DocumentAssertion} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void toQualifiedNameMatcherTest() throws Exception {
+    public void toQualifiedNameMatcherTest() {
         initialize(Raw.documentAssertion(), createDocument("<element/>")).toQualifiedName(Matchers.is(Matchers.equalTo("element")));
         initialize(Raw.documentAssertion(), createDocument("<element xmlns='aaa'/>")).toQualifiedName(Matchers.is(Matchers.equalTo("element")));
         initialize(Raw.documentAssertion(), createDocument("<ns1:element xmlns:ns1='aaa'/>")).toQualifiedName(Matchers.is(Matchers.equalTo("ns1:element")));
@@ -1274,11 +1242,9 @@ public final class DocumentAssertionTest extends AssertionTest {
 
     /**
      * {@link DocumentAssertion} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void hasQualifiedNameTest() throws Exception {
+    public void hasQualifiedNameTest() {
         initialize(Raw.documentAssertion(), createDocument("<element/>")).hasQualifiedName("element");
         initialize(Raw.documentAssertion(), createDocument("<element xmlns='aaa'/>")).hasQualifiedName("element");
         initialize(Raw.documentAssertion(), createDocument("<ns1:element xmlns:ns1='aaa'/>")).hasQualifiedName("ns1:element");
@@ -1365,11 +1331,9 @@ public final class DocumentAssertionTest extends AssertionTest {
 
     /**
      * {@link DocumentAssertion} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void hasPropertiesLocalNameTest() throws Exception {
+    public void hasPropertiesLocalNameTest() {
         initialize(Raw.documentAssertion(), createDocument("<element/>")).hasProperties("element");
         initialize(Raw.documentAssertion(), createDocument("<element attr='val'/>")).hasProperties("element");
         initialize(Raw.documentAssertion(), createDocument("<element2/>")).hasProperties("element2");
@@ -1445,11 +1409,9 @@ public final class DocumentAssertionTest extends AssertionTest {
 
     /**
      * {@link DocumentAssertion} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void hasPropertiesNamespaceURIAndLocalNameTest() throws Exception {
+    public void hasPropertiesNamespaceURIAndLocalNameTest() {
         initialize(Raw.documentAssertion(), createDocument("<element xmlns='aaa'/>")).hasProperties("aaa", "element");
         initialize(Raw.documentAssertion(), createDocument("<ns1:element xmlns:ns1='aaa'/>")).hasProperties("aaa", "element");
         initialize(Raw.documentAssertion(), createDocument("<ns2:element xmlns:ns2='aaa'/>")).hasProperties("aaa", "element");
@@ -1550,11 +1512,9 @@ public final class DocumentAssertionTest extends AssertionTest {
 
     /**
      * {@link DocumentAssertion} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void hasAttributeLocalNameTest() throws Exception {
+    public void hasAttributeLocalNameTest() {
         initialize(Raw.documentAssertion(), createDocument("<element attr='val'/>")).hasAttribute("attr");
         initialize(Raw.documentAssertion(), createDocument("<element attr1='val1' attr2='val2'/>")).hasAttribute("attr1");
         initialize(Raw.documentAssertion(), createDocument("<element attr1='val1' attr2='val2'/>")).hasAttribute("attr2");
@@ -1643,11 +1603,9 @@ public final class DocumentAssertionTest extends AssertionTest {
 
     /**
      * {@link DocumentAssertion} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void hasAttributeNamespaceURIAndLocalNameTest() throws Exception {
+    public void hasAttributeNamespaceURIAndLocalNameTest() {
         initialize(Raw.documentAssertion(), createDocument("<element xmlns:ns1='aaa' ns1:attr='val'/>")).hasAttribute("aaa", "attr");
         initialize(Raw.documentAssertion(), createDocument("<element xmlns:ns1='aaa' ns1:attr1='val1' ns1:attr2='val2'/>")).hasAttribute("aaa", "attr1");
         initialize(Raw.documentAssertion(), createDocument("<element xmlns:ns1='aaa' ns1:attr1='val1' ns1:attr2='val2'/>")).hasAttribute("aaa", "attr2");
@@ -1758,11 +1716,9 @@ public final class DocumentAssertionTest extends AssertionTest {
 
     /**
      * {@link DocumentAssertion} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void hasNotAttributeLocalNameTest() throws Exception {
+    public void hasNotAttributeLocalNameTest() {
         initialize(Raw.documentAssertion(), createDocument("<element/>")).hasNotAttribute("attr");
         initialize(Raw.documentAssertion(), createDocument("<element attr1='val'/>")).hasNotAttribute("attr2");
         initialize(Raw.documentAssertion(), createDocument("<element xmlns:ns1='aaa' ns1:attr='val'/>")).hasNotAttribute("attr");
@@ -1862,11 +1818,9 @@ public final class DocumentAssertionTest extends AssertionTest {
 
     /**
      * {@link DocumentAssertion} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void hasNotAttributeNamespaceURIAndLocalNameTest() throws Exception {
+    public void hasNotAttributeNamespaceURIAndLocalNameTest() {
         initialize(Raw.documentAssertion(), createDocument("<element/>")).hasNotAttribute("aaa", "attr");
         initialize(Raw.documentAssertion(), createDocument("<element xmlns:ns1='aaa' ns1:attr='val'/>")).hasNotAttribute("bbb", "attr");
         initialize(Raw.documentAssertion(), createDocument("<element xmlns:ns1='aaa' ns1:attr1='val'/>")).hasNotAttribute("aaa", "attr2");
@@ -1965,11 +1919,9 @@ public final class DocumentAssertionTest extends AssertionTest {
 
     /**
      * {@link DocumentAssertion} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void toAttributeLocalNameTest() throws Exception {
+    public void toAttributeLocalNameTest() {
         initialize(Raw.documentAssertion(), createDocument("<element attr='val'/>")).toAttribute("attr").hasValue("val");
         initialize(Raw.documentAssertion(), createDocument("<element attr1='val1' attr2='val2'/>")).toAttribute("attr1").hasValue("val1");
         initialize(Raw.documentAssertion(), createDocument("<element attr1='val1' attr2='val2'/>")).toAttribute("attr2").hasValue("val2");
@@ -2070,11 +2022,9 @@ public final class DocumentAssertionTest extends AssertionTest {
 
     /**
      * {@link DocumentAssertion} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void toAttributeNamespaceURIAndLocalNameTest() throws Exception {
+    public void toAttributeNamespaceURIAndLocalNameTest() {
         initialize(Raw.documentAssertion(), createDocument("<element xmlns:ns1='aaa' ns1:attr='val'/>")).toAttribute("aaa", "attr").hasValue("val");
         initialize(Raw.documentAssertion(), createDocument("<element xmlns:ns1='aaa' ns1:attr1='val1' ns1:attr2='val2'/>")).toAttribute("aaa", "attr1").hasValue("val1");
         initialize(Raw.documentAssertion(), createDocument("<element xmlns:ns1='aaa' ns1:attr1='val1' ns1:attr2='val2'/>")).toAttribute("aaa", "attr2").hasValue("val2");
@@ -2197,11 +2147,9 @@ public final class DocumentAssertionTest extends AssertionTest {
 
     /**
      * {@link DocumentAssertion} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void toAttributeLocalNameMatcherTest() throws Exception {
+    public void toAttributeLocalNameMatcherTest() {
         initialize(Raw.documentAssertion(), createDocument("<element attr='val'/>")).toAttribute("attr", new MatcherAttributeValue("val"));
         initialize(Raw.documentAssertion(), createDocument("<element attr1='val1' attr2='val2'/>")).toAttribute("attr1", new MatcherAttributeValue("val1"));
         initialize(Raw.documentAssertion(), createDocument("<element attr1='val1' attr2='val2'/>")).toAttribute("attr2", new MatcherAttributeValue("val2"));
@@ -2326,11 +2274,9 @@ public final class DocumentAssertionTest extends AssertionTest {
 
     /**
      * {@link DocumentAssertion} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void toAttributeNamespaceURIAndLocalNameMatcherTest() throws Exception {
+    public void toAttributeNamespaceURIAndLocalNameMatcherTest() {
         initialize(Raw.documentAssertion(), createDocument("<element xmlns:ns1='aaa' ns1:attr='val'/>")).toAttribute("aaa", "attr", new MatcherAttributeValue("val"));
         initialize(Raw.documentAssertion(), createDocument("<element xmlns:ns1='aaa' ns1:attr1='val1' ns1:attr2='val2'/>")).toAttribute("aaa", "attr1", new MatcherAttributeValue("val1"));
         initialize(Raw.documentAssertion(), createDocument("<element xmlns:ns1='aaa' ns1:attr1='val1' ns1:attr2='val2'/>")).toAttribute("aaa", "attr2", new MatcherAttributeValue("val2"));
@@ -2477,11 +2423,9 @@ public final class DocumentAssertionTest extends AssertionTest {
 
     /**
      * {@link DocumentAssertion} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void hasAttributeValueLocalNameTest() throws Exception {
+    public void hasAttributeValueLocalNameTest() {
         initialize(Raw.documentAssertion(), createDocument("<element attr='val'/>")).hasAttributeValue("attr", "val");
         initialize(Raw.documentAssertion(), createDocument("<element attr1='val1' attr2='val2'/>")).hasAttributeValue("attr1", "val1");
         initialize(Raw.documentAssertion(), createDocument("<element attr1='val1' attr2='val2'/>")).hasAttributeValue("attr2", "val2");
@@ -2606,11 +2550,9 @@ public final class DocumentAssertionTest extends AssertionTest {
 
     /**
      * {@link DocumentAssertion} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void hasAttributeValueNamespaceURIAndLocalNameTest() throws Exception {
+    public void hasAttributeValueNamespaceURIAndLocalNameTest() {
         initialize(Raw.documentAssertion(), createDocument("<element xmlns:ns1='aaa' ns1:attr='val'/>")).hasAttributeValue("aaa", "attr", "val");
         initialize(Raw.documentAssertion(), createDocument("<element xmlns:ns1='aaa' ns1:attr1='val1' ns1:attr2='val2'/>")).hasAttributeValue("aaa", "attr1", "val1");
         initialize(Raw.documentAssertion(), createDocument("<element xmlns:ns1='aaa' ns1:attr1='val1' ns1:attr2='val2'/>")).hasAttributeValue("aaa", "attr2", "val2");
@@ -2757,11 +2699,9 @@ public final class DocumentAssertionTest extends AssertionTest {
 
     /**
      * {@link DocumentAssertion} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void hasNotAttributeValueLocalNameTest() throws Exception {
+    public void hasNotAttributeValueLocalNameTest() {
         initialize(Raw.documentAssertion(), createDocument("<element/>")).hasNotAttributeValue("attr", "val");
         initialize(Raw.documentAssertion(), createDocument("<element attr1='val'/>")).hasNotAttributeValue("attr2", "val");
         initialize(Raw.documentAssertion(), createDocument("<element attr='val1'/>")).hasNotAttributeValue("attr", "val2");
@@ -2865,11 +2805,9 @@ public final class DocumentAssertionTest extends AssertionTest {
 
     /**
      * {@link DocumentAssertion} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void hasNotAttributeValueNamespaceURIAndLocalNameTest() throws Exception {
+    public void hasNotAttributeValueNamespaceURIAndLocalNameTest() {
         initialize(Raw.documentAssertion(), createDocument("<element/>")).hasNotAttributeValue("aaa", "attr", "val");
         initialize(Raw.documentAssertion(), createDocument("<element xmlns:ns1='aaa' ns1:attr='val'/>")).hasNotAttributeValue("bbb", "attr", "val");
         initialize(Raw.documentAssertion(), createDocument("<element xmlns:ns1='aaa' ns1:attr1='val'/>")).hasNotAttributeValue("aaa", "attr2", "val");
@@ -2983,11 +2921,9 @@ public final class DocumentAssertionTest extends AssertionTest {
 
     /**
      * {@link DocumentAssertion} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void hasChildNodesTest() throws Exception {
+    public void hasChildNodesTest() {
         initialize(Raw.documentAssertion(), createDocument("<element> </element>")).hasChildNodes();
         initialize(Raw.documentAssertion(), createDocument("<element>text</element>")).hasChildNodes();
         initialize(Raw.documentAssertion(), createDocument("<element><![CDATA[text1]]>text2<![CDATA[text3]]></element>")).hasChildNodes();
@@ -3040,11 +2976,9 @@ public final class DocumentAssertionTest extends AssertionTest {
 
     /**
      * {@link DocumentAssertion} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void hasNotChildNodesTest() throws Exception {
+    public void hasNotChildNodesTest() {
         initialize(Raw.documentAssertion(), createDocument("<element/>")).hasNotChildNodes();
         initialize(Raw.documentAssertion(), createDocument("<element attr='val'/>")).hasNotChildNodes();
         initialize(Raw.documentAssertion(), createDocument("<element></element>")).hasNotChildNodes();
@@ -3108,11 +3042,9 @@ public final class DocumentAssertionTest extends AssertionTest {
 
     /**
      * {@link DocumentAssertion} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void toChildNodesCountTest() throws Exception {
+    public void toChildNodesCountTest() {
         initialize(Raw.documentAssertion(), createDocument("<element/>")).toChildNodesCount().isEqualTo(0);
         initialize(Raw.documentAssertion(), createDocument("<element attr='val'/>")).toChildNodesCount().isEqualTo(0);
         initialize(Raw.documentAssertion(), createDocument("<element></element>")).toChildNodesCount().isEqualTo(0);
@@ -3158,11 +3090,9 @@ public final class DocumentAssertionTest extends AssertionTest {
 
     /**
      * {@link DocumentAssertion} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void toChildNodesCountMatcherTest() throws Exception {
+    public void toChildNodesCountMatcherTest() {
         initialize(Raw.documentAssertion(), createDocument("<element/>")).toChildNodesCount(Matchers.is(Matchers.equalTo(0)));
         initialize(Raw.documentAssertion(), createDocument("<element attr='val'/>")).toChildNodesCount(Matchers.is(Matchers.equalTo(0)));
         initialize(Raw.documentAssertion(), createDocument("<element></element>")).toChildNodesCount(Matchers.is(Matchers.equalTo(0)));
@@ -3232,11 +3162,9 @@ public final class DocumentAssertionTest extends AssertionTest {
 
     /**
      * {@link DocumentAssertion} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void hasChildNodesCountTest() throws Exception {
+    public void hasChildNodesCountTest() {
         initialize(Raw.documentAssertion(), createDocument("<element/>")).hasChildNodesCount(0);
         initialize(Raw.documentAssertion(), createDocument("<element attr='val'/>")).hasChildNodesCount(0);
         initialize(Raw.documentAssertion(), createDocument("<element></element>")).hasChildNodesCount(0);
@@ -3282,11 +3210,9 @@ public final class DocumentAssertionTest extends AssertionTest {
 
     /**
      * {@link DocumentAssertion} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void toChildElementsCountTest() throws Exception {
+    public void toChildElementsCountTest() {
         initialize(Raw.documentAssertion(), createDocument("<element/>")).toChildElementsCount().isEqualTo(0);
         initialize(Raw.documentAssertion(), createDocument("<element attr='val'/>")).toChildElementsCount().isEqualTo(0);
         initialize(Raw.documentAssertion(), createDocument("<element></element>")).toChildElementsCount().isEqualTo(0);
@@ -3332,11 +3258,9 @@ public final class DocumentAssertionTest extends AssertionTest {
 
     /**
      * {@link DocumentAssertion} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void toChildElementsCountMatcherTest() throws Exception {
+    public void toChildElementsCountMatcherTest() {
         initialize(Raw.documentAssertion(), createDocument("<element/>")).toChildElementsCount(Matchers.is(Matchers.equalTo(0)));
         initialize(Raw.documentAssertion(), createDocument("<element attr='val'/>")).toChildElementsCount(Matchers.is(Matchers.equalTo(0)));
         initialize(Raw.documentAssertion(), createDocument("<element></element>")).toChildElementsCount(Matchers.is(Matchers.equalTo(0)));
@@ -3406,11 +3330,9 @@ public final class DocumentAssertionTest extends AssertionTest {
 
     /**
      * {@link DocumentAssertion} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void hasChildElementsCountTest() throws Exception {
+    public void hasChildElementsCountTest() {
         initialize(Raw.documentAssertion(), createDocument("<element/>")).hasChildElementsCount(0);
         initialize(Raw.documentAssertion(), createDocument("<element attr='val'/>")).hasChildElementsCount(0);
         initialize(Raw.documentAssertion(), createDocument("<element></element>")).hasChildElementsCount(0);
@@ -3456,11 +3378,9 @@ public final class DocumentAssertionTest extends AssertionTest {
 
     /**
      * {@link DocumentAssertion} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void isNullTest() throws Exception {
+    public void isNullTest() {
         initialize(Raw.documentAssertion(), null).isNull();
 
         try {
@@ -3479,11 +3399,9 @@ public final class DocumentAssertionTest extends AssertionTest {
 
     /**
      * {@link DocumentAssertion} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void isSameAsTest() throws Exception {
+    public void isSameAsTest() {
         Document value = createDocument("<element/>");
         initialize(Raw.documentAssertion(), value).isSameAs(value);
 
@@ -3503,11 +3421,9 @@ public final class DocumentAssertionTest extends AssertionTest {
 
     /**
      * {@link DocumentAssertion} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void isNotSameAsTest() throws Exception {
+    public void isNotSameAsTest() {
         Document value = createDocument("<element/>");
         initialize(Raw.documentAssertion(), value).isNotSameAs(createDocument("<element/>"));
 
