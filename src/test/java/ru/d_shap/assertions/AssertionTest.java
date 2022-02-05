@@ -164,7 +164,7 @@ public class AssertionTest {
      */
     protected final <W, S extends BaseAssertion<W>> S clearActual(final S assertion) {
         try {
-            Field field = PrivateAccessor.getField(BaseAssertion.class, assertion, "_actual");
+            Field field = PrivateAccessor.getField(BaseAssertion.class, "_actual");
             field.set(assertion, null);
             return assertion;
         } catch (ReflectiveException ex) {

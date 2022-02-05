@@ -88,48 +88,48 @@ public final class PrivateAccessorTest extends AssertionTest {
      * @throws Exception exception in test.
      */
     @Test
-    public void getFieldWithClassAndObjectTest() throws Exception {
+    public void getFieldWithClassTest() throws Exception {
         ParentClass parentClass = new ParentClass();
 
-        Field nullStaticFieldParent = PrivateAccessor.getField(ParentClass.class, null, "NULL_STATIC_FIELD");
+        Field nullStaticFieldParent = PrivateAccessor.getField(ParentClass.class, "NULL_STATIC_FIELD");
         Object nullStaticFieldParentValue = nullStaticFieldParent.get(null);
         Assertions.assertThat(nullStaticFieldParentValue).isNull();
 
-        Field parentStaticFieldParent = PrivateAccessor.getField(ParentClass.class, null, "PARENT_STATIC_FIELD");
+        Field parentStaticFieldParent = PrivateAccessor.getField(ParentClass.class, "PARENT_STATIC_FIELD");
         Object parentStaticFieldParentValue = parentStaticFieldParent.get(null);
         Assertions.assertThat(parentStaticFieldParentValue).isEqualTo("parentStaticField");
 
-        Field nullFieldParent = PrivateAccessor.getField(ParentClass.class, parentClass, "_nullField");
+        Field nullFieldParent = PrivateAccessor.getField(ParentClass.class, "_nullField");
         Object nullFieldParentValue = nullFieldParent.get(parentClass);
         Assertions.assertThat(nullFieldParentValue).isNull();
 
-        Field parentFieldParent = PrivateAccessor.getField(ParentClass.class, parentClass, "_parentField");
+        Field parentFieldParent = PrivateAccessor.getField(ParentClass.class, "_parentField");
         Object parentFieldParentValue = parentFieldParent.get(parentClass);
         Assertions.assertThat(parentFieldParentValue).isEqualTo("parentField");
 
         ChildClass childClass = new ChildClass();
 
-        Field nullStaticFieldChild = PrivateAccessor.getField(ChildClass.class, null, "NULL_STATIC_FIELD");
+        Field nullStaticFieldChild = PrivateAccessor.getField(ChildClass.class, "NULL_STATIC_FIELD");
         Object nullStaticFieldChildValue = nullStaticFieldChild.get(null);
         Assertions.assertThat(nullStaticFieldChildValue).isNull();
 
-        Field parentStaticFieldChild = PrivateAccessor.getField(ChildClass.class, null, "PARENT_STATIC_FIELD");
+        Field parentStaticFieldChild = PrivateAccessor.getField(ChildClass.class, "PARENT_STATIC_FIELD");
         Object parentStaticFieldChildValue = parentStaticFieldChild.get(null);
         Assertions.assertThat(parentStaticFieldChildValue).isEqualTo("parentStaticField");
 
-        Field childStaticFieldChild = PrivateAccessor.getField(ChildClass.class, null, "CHILD_STATIC_FIELD");
+        Field childStaticFieldChild = PrivateAccessor.getField(ChildClass.class, "CHILD_STATIC_FIELD");
         Object childStaticFieldChildValue = childStaticFieldChild.get(null);
         Assertions.assertThat(childStaticFieldChildValue).isEqualTo("childStaticField");
 
-        Field nullFieldChild = PrivateAccessor.getField(ChildClass.class, childClass, "_nullField");
+        Field nullFieldChild = PrivateAccessor.getField(ChildClass.class, "_nullField");
         Object nullFieldChildValue = nullFieldChild.get(childClass);
         Assertions.assertThat(nullFieldChildValue).isNull();
 
-        Field parentFieldChild = PrivateAccessor.getField(ChildClass.class, childClass, "_parentField");
+        Field parentFieldChild = PrivateAccessor.getField(ChildClass.class, "_parentField");
         Object parentFieldChildValue = parentFieldChild.get(childClass);
         Assertions.assertThat(parentFieldChildValue).isEqualTo("parentField");
 
-        Field childField = PrivateAccessor.getField(ChildClass.class, childClass, "_childField");
+        Field childField = PrivateAccessor.getField(ChildClass.class, "_childField");
         Object childFieldValue = childField.get(childClass);
         Assertions.assertThat(childFieldValue).isEqualTo("childField");
     }
@@ -248,32 +248,32 @@ public final class PrivateAccessorTest extends AssertionTest {
      * @throws Exception exception in test.
      */
     @Test
-    public void getMethodWithClassAndObjectTest() throws Exception {
+    public void getMethodWithClassTest() throws Exception {
         ParentClass parentClass = new ParentClass();
 
-        Method parentStaticMethodParent = PrivateAccessor.getMethod(ParentClass.class, null, "parentStaticMethod");
+        Method parentStaticMethodParent = PrivateAccessor.getMethod(ParentClass.class, "parentStaticMethod");
         Object parentStaticMethodParentValue = parentStaticMethodParent.invoke(null);
         Assertions.assertThat(parentStaticMethodParentValue).isEqualTo("parentStaticMethod");
 
-        Method parentMethodParent = PrivateAccessor.getMethod(ParentClass.class, parentClass, "parentMethod");
+        Method parentMethodParent = PrivateAccessor.getMethod(ParentClass.class, "parentMethod");
         Object parentMethodParentValue = parentMethodParent.invoke(parentClass);
         Assertions.assertThat(parentMethodParentValue).isEqualTo("parentMethod");
 
         ChildClass childClass = new ChildClass();
 
-        Method parentStaticMethodChild = PrivateAccessor.getMethod(ChildClass.class, null, "parentStaticMethod");
+        Method parentStaticMethodChild = PrivateAccessor.getMethod(ChildClass.class, "parentStaticMethod");
         Object parentStaticMethodChildValue = parentStaticMethodChild.invoke(null);
         Assertions.assertThat(parentStaticMethodChildValue).isEqualTo("parentStaticMethod");
 
-        Method childStaticMethodChild = PrivateAccessor.getMethod(ChildClass.class, null, "childStaticMethod", String.class);
+        Method childStaticMethodChild = PrivateAccessor.getMethod(ChildClass.class, "childStaticMethod", String.class);
         Object childStaticMethodChildValue = childStaticMethodChild.invoke(null, "param");
         Assertions.assertThat(childStaticMethodChildValue).isEqualTo("childStaticMethod:param");
 
-        Method parentMethodChild = PrivateAccessor.getMethod(ChildClass.class, childClass, "parentMethod");
+        Method parentMethodChild = PrivateAccessor.getMethod(ChildClass.class, "parentMethod");
         Object parentMethodChildValue = parentMethodChild.invoke(childClass);
         Assertions.assertThat(parentMethodChildValue).isEqualTo("parentMethod");
 
-        Method childMethodChild = PrivateAccessor.getMethod(ChildClass.class, childClass, "childMethod", String.class);
+        Method childMethodChild = PrivateAccessor.getMethod(ChildClass.class, "childMethod", String.class);
         Object childMethodChildValue = childMethodChild.invoke(childClass, "param");
         Assertions.assertThat(childMethodChildValue).isEqualTo("childMethod:param");
     }

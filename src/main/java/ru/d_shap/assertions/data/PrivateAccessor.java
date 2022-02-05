@@ -42,26 +42,22 @@ public final class PrivateAccessor {
      *
      * @param object    the object.
      * @param fieldName the field name.
-     * @param <T>       the generic type of the class.
      *
      * @return the specified field.
      */
-    @SuppressWarnings("unchecked")
-    public static <T> Field getField(final T object, final String fieldName) {
-        return getField((Class<T>) object.getClass(), object, fieldName);
+    public static Field getField(final Object object, final String fieldName) {
+        return getField(object.getClass(), fieldName);
     }
 
     /**
      * Get the specified field.
      *
      * @param clazz     the class.
-     * @param object    the object or null for static field.
      * @param fieldName the field name.
-     * @param <T>       the generic type of the class.
      *
      * @return the specified field.
      */
-    public static <T> Field getField(final Class<T> clazz, final T object, final String fieldName) {
+    public static Field getField(final Class<?> clazz, final String fieldName) {
         Class<?> currentClazz = clazz;
         NoSuchFieldException noSuchFieldException = null;
         while (currentClazz != null) {
@@ -106,7 +102,7 @@ public final class PrivateAccessor {
      */
     public static <T> Object getFieldValue(final Class<T> clazz, final T object, final String fieldName) {
         try {
-            return getField(clazz, object, fieldName).get(object);
+            return getField(clazz, fieldName).get(object);
         } catch (IllegalAccessException ex) {
             throw new ReflectiveException(ex);
         }
@@ -118,27 +114,23 @@ public final class PrivateAccessor {
      * @param object         the object.
      * @param methodName     the method name.
      * @param parameterTypes the method parameter types.
-     * @param <T>            the generic type of the class.
      *
      * @return the specified method.
      */
-    @SuppressWarnings("unchecked")
-    public static <T> Method getMethod(final T object, final String methodName, final Class<?>... parameterTypes) {
-        return getMethod((Class<T>) object.getClass(), object, methodName, parameterTypes);
+    public static Method getMethod(final Object object, final String methodName, final Class<?>... parameterTypes) {
+        return getMethod(object.getClass(), methodName, parameterTypes);
     }
 
     /**
      * Get the specified method.
      *
      * @param clazz          the class.
-     * @param object         the object or null for static method.
      * @param methodName     the method name.
      * @param parameterTypes the method parameter types.
-     * @param <T>            the generic type of the class.
      *
      * @return the specified method.
      */
-    public static <T> Method getMethod(final Class<T> clazz, final T object, final String methodName, final Class<?>... parameterTypes) {
+    public static Method getMethod(final Class<?> clazz, final String methodName, final Class<?>... parameterTypes) {
         Class<?> currentClazz = clazz;
         NoSuchMethodException noSuchMethodException = null;
         while (currentClazz != null) {
