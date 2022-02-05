@@ -139,9 +139,14 @@ public final class PrivateAccessorTest extends AssertionTest {
      *
      * @throws Exception exception in test.
      */
-    @Test(expected = NoSuchFieldException.class)
+    @Test
     public void getFieldWrongNameFailTest() throws Exception {
-        PrivateAccessor.getField(new ChildClass(), "wrongFieldName");
+        try {
+            PrivateAccessor.getField(new ChildClass(), "wrongFieldName");
+            Assertions.fail("PrivateAccessor test fail");
+        } catch (ReflectiveException ex) {
+            Assertions.assertThat(ex).hasCause(NoSuchFieldException.class);
+        }
     }
 
     /**
@@ -278,9 +283,14 @@ public final class PrivateAccessorTest extends AssertionTest {
      *
      * @throws Exception exception in test.
      */
-    @Test(expected = NoSuchMethodException.class)
+    @Test
     public void getMethodWrongNameFailTest() throws Exception {
-        PrivateAccessor.getMethod(new ChildClass(), "wrongMethodName");
+        try {
+            PrivateAccessor.getMethod(new ChildClass(), "wrongMethodName");
+            Assertions.fail("PrivateAccessor test fail");
+        } catch (ReflectiveException ex) {
+            Assertions.assertThat(ex).hasCause(NoSuchMethodException.class);
+        }
     }
 
     /**
@@ -300,9 +310,14 @@ public final class PrivateAccessorTest extends AssertionTest {
      *
      * @throws Exception exception in test.
      */
-    @Test(expected = NoSuchMethodException.class)
+    @Test
     public void getConstructorWrongNameFailTest() throws Exception {
-        PrivateAccessor.getConstructor(ChildClass.class, String.class);
+        try {
+            PrivateAccessor.getConstructor(ChildClass.class, String.class);
+            Assertions.fail("PrivateAccessor test fail");
+        } catch (ReflectiveException ex) {
+            Assertions.assertThat(ex).hasCause(NoSuchMethodException.class);
+        }
     }
 
     /**
