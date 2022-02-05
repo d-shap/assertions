@@ -44,7 +44,7 @@ public final class DataExceptionTest extends AssertionTest {
      * {@link DataException} class test.
      */
     @Test
-    public void DataExceptionCauseTest() {
+    public void dataExceptionCauseTest() {
         Assertions.assertThat(new DataException(null)).isNotNull();
         Assertions.assertThat(new DataException(null)).isInstanceOf(DataException.class);
         Assertions.assertThat(new DataException(null)).toMessage().isNull();

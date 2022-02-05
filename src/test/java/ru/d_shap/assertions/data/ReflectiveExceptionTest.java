@@ -42,7 +42,7 @@ public final class ReflectiveExceptionTest extends AssertionTest {
      * {@link ReflectiveException} class test.
      */
     @Test
-    public void ReflectiveExceptionCauseTest() {
+    public void reflectiveExceptionCauseTest() {
         Assertions.assertThat(new ReflectiveException(null)).isNotNull();
         Assertions.assertThat(new ReflectiveException(null)).isInstanceOf(ReflectiveException.class);
         Assertions.assertThat(new ReflectiveException(null)).toMessage().isNull();
