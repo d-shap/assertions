@@ -16,14 +16,14 @@
 //
 // You should have received a copy of the GNU Lesser General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
-package ru.d_shap.assertions;
+package ru.d_shap.assertions.data;
 
 /**
- * Wrapper for exceptions, that can occur during reflective operations.
+ * Wrapper for exceptions, that can occur during data processing.
  *
  * @author Dmitry Shapovalov
  */
-public final class ReflectiveException extends RuntimeException {
+public final class DataException extends RuntimeException {
 
     private static final long serialVersionUID = 1L;
 
@@ -32,7 +32,7 @@ public final class ReflectiveException extends RuntimeException {
      *
      * @param cause the cause of the exception.
      */
-    public ReflectiveException(final ReflectiveOperationException cause) {
+    public DataException(final Throwable cause) {
         super(cause);
     }
 

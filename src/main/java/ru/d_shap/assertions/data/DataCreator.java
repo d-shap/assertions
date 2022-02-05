@@ -17,7 +17,7 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-package ru.d_shap.assertions;
+package ru.d_shap.assertions.data;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -31,7 +31,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
 import ru.d_shap.assertions.fail.AssertionErrorBuilder;
 
 /**
- * Helper class to create objects of various types.
+ * Helper class to create objects for tests.
  *
  * @author Dmitry Shapovalov
  */

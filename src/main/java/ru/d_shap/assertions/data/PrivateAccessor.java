@@ -17,7 +17,7 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-package ru.d_shap.assertions;
+package ru.d_shap.assertions.data;
 
 import java.lang.reflect.AccessibleObject;
 import java.lang.reflect.Constructor;
@@ -27,7 +27,7 @@ import java.security.AccessController;
 import java.security.PrivilegedAction;
 
 /**
- * Class to make the private class elements accessible.
+ * Helper class to make the private class elements accessible.
  *
  * @author Dmitry Shapovalov
  */
