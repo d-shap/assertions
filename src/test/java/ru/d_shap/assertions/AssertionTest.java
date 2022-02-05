@@ -65,6 +65,9 @@ import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 
 import ru.d_shap.assertions.converter.ValueConverter;
+import ru.d_shap.assertions.data.DataCreator;
+import ru.d_shap.assertions.data.PrivateAccessor;
+import ru.d_shap.assertions.data.ReflectiveException;
 
 /**
  * Base class for all tests.
@@ -164,7 +167,9 @@ public class AssertionTest {
             Field field = PrivateAccessor.getField(BaseAssertion.class, assertion, "_actual");
             field.set(assertion, null);
             return assertion;
-        } catch (NoSuchFieldException | IllegalAccessException ex) {
+        } catch (ReflectiveException ex) {
+            throw new AssertionError(ex.getCause());
+        } catch (IllegalAccessException ex) {
             throw new AssertionError(ex);
         }
     }
