@@ -297,6 +297,68 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
     }
 
     /**
+     * Make assertion about the actual value's method call result.
+     *
+     * @param methodName the method name.
+     * @param arguments  the arguments used to call the method.
+     *
+     * @return the assertion.
+     */
+    public final ObjectAssertion toMethodCallResult(final String methodName, final Object... arguments) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(methodName, "methodName");
+        checkArgumentIsNotNull(arguments, "arguments");
+        try {
+            Object methodCallResult = ReflectionHelper.callMethod(getActual(), methodName, arguments);
+            return initializeAssertion(Raw.objectAssertion(), methodCallResult, Messages.Check.METHOD, methodName);
+        } catch (ReflectiveException ex) {
+            Throwable cause = ex.getCause();
+            throw getAssertionErrorBuilder().addThrowable(cause).addMessage(Messages.Fail.Actual.CONTAINS_METHOD).addExpected(methodName).build();
+        }
+    }
+
+    /**
+     * Make assertion of the specified type about the actual value's method call result.
+     *
+     * @param methodName the method name.
+     * @param assertion  the assertion.
+     * @param arguments  the arguments used to call the method.
+     * @param <W>        the generic type of the assertion's actual value.
+     * @param <S>        the generic type of the assertion.
+     *
+     * @return the assertion.
+     */
+    public final <W, S extends BaseAssertion<W>> S toMethodCallResult(final String methodName, final S assertion, final Object... arguments) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(methodName, "methodName");
+        checkArgumentIsNotNull(assertion, "assertion");
+        checkArgumentIsNotNull(arguments, "arguments");
+        return toMethodCallResult(methodName, arguments).as(assertion);
+    }
+
+    /**
+     * Make assertion about the actual value's method call result.
+     *
+     * @param methodName the method name.
+     * @param matcher    the hamcrest matcher.
+     * @param arguments  the arguments used to call the method.
+     */
+    @SuppressWarnings("unchecked")
+    public final void toMethodCallResult(final String methodName, final Matcher<?> matcher, final Object... arguments) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(methodName, "methodName");
+        checkArgumentIsNotNull(matcher, "matcher");
+        checkArgumentIsNotNull(arguments, "arguments");
+        try {
+            Object methodCallResult = ReflectionHelper.callMethod(getActual(), methodName, arguments);
+            matcherAssertion(methodCallResult, (Matcher<Object>) matcher, Messages.Check.METHOD, methodName);
+        } catch (ReflectiveException ex) {
+            Throwable cause = ex.getCause();
+            throw getAssertionErrorBuilder().addThrowable(cause).addMessage(Messages.Fail.Actual.CONTAINS_METHOD).addExpected(methodName).build();
+        }
+    }
+
+    /**
      * Make the private class element accessible.
      *
      * @param accessibleObject the private class element.
