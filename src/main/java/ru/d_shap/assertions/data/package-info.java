@@ -22,7 +22,7 @@
  * Package contains classes to create and process test object.
  * </p>
  * <p>
- * Often many objects should be created during testing. But some objects cannot be created
+ * Often, many objects should be created during testing. But some objects cannot be created
  * with one constructor or method call. First, the constructor or factory method should be called,
  * then multiple setters should be called. And only then the object can be used.
  * </p>
