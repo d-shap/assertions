@@ -30,7 +30,7 @@ import ru.d_shap.assertions.asimp.java.lang.CharSequenceAssertion;
 import ru.d_shap.assertions.asimp.java.lang.ClassAssertion;
 import ru.d_shap.assertions.asimp.java.lang.ObjectAssertion;
 import ru.d_shap.assertions.asimp.primitive.IntAssertion;
-import ru.d_shap.assertions.data.PrivateAccessor;
+import ru.d_shap.assertions.data.ReflectionHelper;
 import ru.d_shap.assertions.data.ReflectiveException;
 
 /**
@@ -251,10 +251,11 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
         checkActualIsNotNull();
         checkArgumentIsNotNull(fieldName, "fieldName");
         try {
-            Object fieldValue = PrivateAccessor.getFieldValue(getActual(), fieldName);
+            Object fieldValue = ReflectionHelper.getFieldValue(getActual(), fieldName);
             return initializeAssertion(Raw.objectAssertion(), fieldValue, Messages.Check.FIELD, fieldName);
         } catch (ReflectiveException ex) {
-            throw getAssertionErrorBuilder().addThrowable(ex).addMessage(Messages.Fail.Actual.CONTAINS_FIELD).addExpected(fieldName).build();
+            Throwable cause = ex.getCause();
+            throw getAssertionErrorBuilder().addThrowable(cause).addMessage(Messages.Fail.Actual.CONTAINS_FIELD).addExpected(fieldName).build();
         }
     }
 
@@ -287,10 +288,11 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
         checkArgumentIsNotNull(fieldName, "fieldName");
         checkArgumentIsNotNull(matcher, "matcher");
         try {
-            Object fieldValue = PrivateAccessor.getFieldValue(getActual(), fieldName);
+            Object fieldValue = ReflectionHelper.getFieldValue(getActual(), fieldName);
             matcherAssertion(fieldValue, (Matcher<Object>) matcher, Messages.Check.FIELD, fieldName);
         } catch (ReflectiveException ex) {
-            throw getAssertionErrorBuilder().addThrowable(ex).addMessage(Messages.Fail.Actual.CONTAINS_FIELD).addExpected(fieldName).build();
+            Throwable cause = ex.getCause();
+            throw getAssertionErrorBuilder().addThrowable(cause).addMessage(Messages.Fail.Actual.CONTAINS_FIELD).addExpected(fieldName).build();
         }
     }
 
@@ -300,7 +302,7 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
      * @param accessibleObject the private class element.
      */
     protected final void setAccessible(final AccessibleObject accessibleObject) {
-        PrivateAccessor.setAccessible(accessibleObject);
+        ReflectionHelper.setAccessible(accessibleObject);
     }
 
 }
