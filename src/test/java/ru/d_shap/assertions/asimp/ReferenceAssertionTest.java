@@ -1479,6 +1479,30 @@ public final class ReferenceAssertionTest extends AssertionTest {
 
     /**
      * {@link ReferenceAssertion} class test.
+     */
+    @Test
+    public void toMethodCallResultTest() {
+        // TODO
+    }
+
+    /**
+     * {@link ReferenceAssertion} class test.
+     */
+    @Test
+    public void toMethodCallResultAssertionTest() {
+        // TODO
+    }
+
+    /**
+     * {@link ReferenceAssertion} class test.
+     */
+    @Test
+    public void toMethodCallResultMatcherTest() {
+        // TODO
+    }
+
+    /**
+     * {@link ReferenceAssertion} class test.
      *
      * @throws Exception exception in test.
      */
