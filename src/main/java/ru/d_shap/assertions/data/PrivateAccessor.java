@@ -77,6 +77,23 @@ public final class PrivateAccessor {
     /**
      * Get the value of the specified field.
      *
+     * @param object the object or null for static field.
+     * @param field  the specified field.
+     * @param <T>    the generic type of the class.
+     *
+     * @return the value of the specified field.
+     */
+    public static <T> Object getFieldValue(final T object, final Field field) {
+        try {
+            return field.get(object);
+        } catch (IllegalAccessException ex) {
+            throw new ReflectiveException(ex);
+        }
+    }
+
+    /**
+     * Get the value of the specified field.
+     *
      * @param object    the object.
      * @param fieldName the field name.
      * @param <T>       the generic type of the class.
@@ -85,7 +102,8 @@ public final class PrivateAccessor {
      */
     public static <T> Object getFieldValue(final T object, final String fieldName) {
         try {
-            return getField(object, fieldName).get(object);
+            Field field = getField(object, fieldName);
+            return field.get(object);
         } catch (IllegalAccessException ex) {
             throw new ReflectiveException(ex);
         }
@@ -103,7 +121,8 @@ public final class PrivateAccessor {
      */
     public static <T> Object getFieldValue(final Class<T> clazz, final T object, final String fieldName) {
         try {
-            return getField(clazz, fieldName).get(object);
+            Field field = getField(clazz, fieldName);
+            return field.get(object);
         } catch (IllegalAccessException ex) {
             throw new ReflectiveException(ex);
         }
