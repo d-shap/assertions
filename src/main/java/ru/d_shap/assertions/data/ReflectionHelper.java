@@ -28,13 +28,13 @@ import java.security.AccessController;
 import java.security.PrivilegedAction;
 
 /**
- * Helper class to make the private class elements accessible.
+ * Helper class to perform reflection operations.
  *
  * @author Dmitry Shapovalov
  */
-public final class PrivateAccessor {
+public final class ReflectionHelper {
 
-    private PrivateAccessor() {
+    private ReflectionHelper() {
         super();
     }
 
