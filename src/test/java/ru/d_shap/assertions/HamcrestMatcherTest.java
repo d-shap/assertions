@@ -30,7 +30,7 @@ import org.junit.Test;
 import ru.d_shap.assertions.converter.AsStringConverter;
 import ru.d_shap.assertions.converter.AsStringConverterProvider;
 import ru.d_shap.assertions.converter.ConversionException;
-import ru.d_shap.assertions.data.PrivateAccessor;
+import ru.d_shap.assertions.data.ReflectionHelper;
 import ru.d_shap.assertions.fail.FailDescription;
 
 /**
@@ -148,7 +148,7 @@ public final class HamcrestMatcherTest extends AssertionTest {
     @Test
     @SuppressWarnings("unchecked")
     public void conversionExceptionTest() {
-        List<AsStringConverterProvider> asStringConverterProviders = (List<AsStringConverterProvider>) PrivateAccessor.getFieldValue(AsStringConverter.class, null, "CONVERTER_PROVIDERS");
+        List<AsStringConverterProvider> asStringConverterProviders = (List<AsStringConverterProvider>) ReflectionHelper.getFieldValue(AsStringConverter.class, null, "CONVERTER_PROVIDERS");
         asStringConverterProviders.add(new ErrorTypeAsStringConverter());
 
         try {
