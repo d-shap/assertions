@@ -30,8 +30,8 @@ import ru.d_shap.assertions.asimp.java.lang.CharSequenceAssertion;
 import ru.d_shap.assertions.asimp.java.lang.ClassAssertion;
 import ru.d_shap.assertions.asimp.java.lang.ObjectAssertion;
 import ru.d_shap.assertions.asimp.primitive.IntAssertion;
+import ru.d_shap.assertions.data.ReflectionException;
 import ru.d_shap.assertions.data.ReflectionHelper;
-import ru.d_shap.assertions.data.ReflectiveException;
 
 /**
  * Base class for all reference type assertions.
@@ -253,7 +253,7 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
         try {
             Object fieldValue = ReflectionHelper.getFieldValue(getActual(), fieldName);
             return initializeAssertion(Raw.objectAssertion(), fieldValue, Messages.Check.FIELD, fieldName);
-        } catch (ReflectiveException ex) {
+        } catch (ReflectionException ex) {
             Throwable cause = ex.getCause();
             throw getAssertionErrorBuilder().addThrowable(cause).addMessage(Messages.Fail.Actual.CONTAINS_FIELD).addExpected(fieldName).build();
         }
@@ -290,7 +290,7 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
         try {
             Object fieldValue = ReflectionHelper.getFieldValue(getActual(), fieldName);
             matcherAssertion(fieldValue, (Matcher<Object>) matcher, Messages.Check.FIELD, fieldName);
-        } catch (ReflectiveException ex) {
+        } catch (ReflectionException ex) {
             Throwable cause = ex.getCause();
             throw getAssertionErrorBuilder().addThrowable(cause).addMessage(Messages.Fail.Actual.CONTAINS_FIELD).addExpected(fieldName).build();
         }
@@ -311,7 +311,7 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
         try {
             Object methodCallResult = ReflectionHelper.callMethod(getActual(), methodName, arguments);
             return initializeAssertion(Raw.objectAssertion(), methodCallResult, Messages.Check.METHOD, methodName, arguments);
-        } catch (ReflectiveException ex) {
+        } catch (ReflectionException ex) {
             Throwable cause = ex.getCause();
             throw getAssertionErrorBuilder().addThrowable(cause).addMessage(Messages.Fail.Actual.CONTAINS_CALLABLE_METHOD).addExpected(methodName).build();
         }
@@ -352,7 +352,7 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
         try {
             Object methodCallResult = ReflectionHelper.callMethod(getActual(), methodName, arguments);
             matcherAssertion(methodCallResult, (Matcher<Object>) matcher, Messages.Check.METHOD, methodName, arguments);
-        } catch (ReflectiveException ex) {
+        } catch (ReflectionException ex) {
             Throwable cause = ex.getCause();
             throw getAssertionErrorBuilder().addThrowable(cause).addMessage(Messages.Fail.Actual.CONTAINS_CALLABLE_METHOD).addExpected(methodName).build();
         }

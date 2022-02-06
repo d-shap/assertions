@@ -20,11 +20,11 @@
 package ru.d_shap.assertions.data;
 
 /**
- * Wrapper for exceptions, that can occur during reflective operations.
+ * Wrapper for exceptions, that can occur during reflection operations.
  *
  * @author Dmitry Shapovalov
  */
-public final class ReflectiveException extends RuntimeException {
+public final class ReflectionException extends RuntimeException {
 
     private static final long serialVersionUID = 1L;
 
@@ -33,7 +33,7 @@ public final class ReflectiveException extends RuntimeException {
      *
      * @param cause the cause of the exception.
      */
-    public ReflectiveException(final ReflectiveOperationException cause) {
+    public ReflectionException(final ReflectiveOperationException cause) {
         super(cause);
     }
 

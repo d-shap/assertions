@@ -27,8 +27,8 @@ import org.hamcrest.Matcher;
 import ru.d_shap.assertions.Messages;
 import ru.d_shap.assertions.Raw;
 import ru.d_shap.assertions.asimp.ReferenceAssertion;
+import ru.d_shap.assertions.data.ReflectionException;
 import ru.d_shap.assertions.data.ReflectionHelper;
-import ru.d_shap.assertions.data.ReflectiveException;
 
 /**
  * Assertions for the class.
@@ -247,7 +247,7 @@ public class ClassAssertion extends ReferenceAssertion<Class<?>> {
         setAccessible(constructor);
         try {
             ReflectionHelper.callConstructor(constructor);
-        } catch (ReflectiveException ex) {
+        } catch (ReflectionException ex) {
             Throwable cause = ex.getCause();
             throw getAssertionErrorBuilder().addThrowable(cause).addMessage(Messages.Fail.Actual.CONTAINS_CALLABLE_CONSTRUCTOR).build();
         }

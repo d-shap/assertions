@@ -72,7 +72,7 @@ public final class ReflectionHelper {
                 currentClazz = currentClazz.getSuperclass();
             }
         }
-        throw new ReflectiveException(noSuchFieldException);
+        throw new ReflectionException(noSuchFieldException);
     }
 
     /**
@@ -88,7 +88,7 @@ public final class ReflectionHelper {
         try {
             return field.get(object);
         } catch (IllegalAccessException ex) {
-            throw new ReflectiveException(ex);
+            throw new ReflectionException(ex);
         }
     }
 
@@ -157,7 +157,7 @@ public final class ReflectionHelper {
                 currentClazz = currentClazz.getSuperclass();
             }
         }
-        throw new ReflectiveException(noSuchMethodException);
+        throw new ReflectionException(noSuchMethodException);
     }
 
     /**
@@ -174,7 +174,7 @@ public final class ReflectionHelper {
         try {
             return method.invoke(object, arguments);
         } catch (IllegalAccessException | InvocationTargetException ex) {
-            throw new ReflectiveException(ex);
+            throw new ReflectionException(ex);
         }
     }
 
@@ -235,7 +235,7 @@ public final class ReflectionHelper {
             setAccessible(constructor);
             return constructor;
         } catch (NoSuchMethodException ex) {
-            throw new ReflectiveException(ex);
+            throw new ReflectionException(ex);
         }
     }
 
@@ -252,7 +252,7 @@ public final class ReflectionHelper {
         try {
             return constructor.newInstance(arguments);
         } catch (IllegalAccessException | InvocationTargetException | InstantiationException ex) {
-            throw new ReflectiveException(ex);
+            throw new ReflectionException(ex);
         }
     }
 
