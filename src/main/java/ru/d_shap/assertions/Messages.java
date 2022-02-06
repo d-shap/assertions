@@ -441,9 +441,9 @@ public final class Messages {
 
             public static final String CONTAINS_FIELD = "Actual value should contain the expected field.";
 
-            public static final String CONTAINS_METHOD = "Actual value should contain the expected method.";
+            public static final String CONTAINS_CALLABLE_METHOD = "Actual value should contain the expected callable method.";
 
-            public static final String CONTAINS_CONSTRUCTOR = "Actual value should contain the expected constructor.";
+            public static final String CONTAINS_CALLABLE_CONSTRUCTOR = "Actual value should contain the expected callable constructor.";
 
             public static final String HAS_ATTRIBUTE = "Actual value should have the expected attribute.";
 
