@@ -28,7 +28,7 @@ import org.junit.Test;
 import ru.d_shap.assertions.AssertionTest;
 import ru.d_shap.assertions.Assertions;
 import ru.d_shap.assertions.Raw;
-import ru.d_shap.assertions.data.PrivateAccessor;
+import ru.d_shap.assertions.data.ReflectionHelper;
 
 /**
  * Tests for {@link ValueConverter}.
@@ -86,7 +86,7 @@ public final class ValueConverterTest extends AssertionTest {
     @Test
     @SuppressWarnings("unchecked")
     public void converterSelectTest() {
-        List<ValueConverterProvider> converterProviders = (List<ValueConverterProvider>) PrivateAccessor.getFieldValue(ValueConverter.class, null, "CONVERTER_PROVIDERS");
+        List<ValueConverterProvider> converterProviders = (List<ValueConverterProvider>) ReflectionHelper.getFieldValue(ValueConverter.class, null, "CONVERTER_PROVIDERS");
         converterProviders.add(new FromClassAToClassXConverter());
         converterProviders.add(new FromClassAToClassYConverter());
         converterProviders.add(new FromClassBToClassXConverter());

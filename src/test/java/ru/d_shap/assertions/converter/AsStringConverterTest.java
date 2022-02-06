@@ -27,7 +27,7 @@ import org.junit.Test;
 
 import ru.d_shap.assertions.AssertionTest;
 import ru.d_shap.assertions.Assertions;
-import ru.d_shap.assertions.data.PrivateAccessor;
+import ru.d_shap.assertions.data.ReflectionHelper;
 
 /**
  * Tests for {@link AsStringConverter}.
@@ -94,7 +94,7 @@ public final class AsStringConverterTest extends AssertionTest {
     @Test
     @SuppressWarnings("unchecked")
     public void converterSelectTest() {
-        List<AsStringConverterProvider> converterProviders = (List<AsStringConverterProvider>) PrivateAccessor.getFieldValue(AsStringConverter.class, null, "CONVERTER_PROVIDERS");
+        List<AsStringConverterProvider> converterProviders = (List<AsStringConverterProvider>) ReflectionHelper.getFieldValue(AsStringConverter.class, null, "CONVERTER_PROVIDERS");
         converterProviders.add(new InterfaceAAsStringConverter());
         converterProviders.add(new InterfaceBAsStringConverter());
 
