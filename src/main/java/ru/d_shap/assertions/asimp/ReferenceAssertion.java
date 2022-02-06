@@ -313,7 +313,7 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
             return initializeAssertion(Raw.objectAssertion(), methodCallResult, Messages.Check.METHOD, methodName, arguments);
         } catch (ReflectiveException ex) {
             Throwable cause = ex.getCause();
-            throw getAssertionErrorBuilder().addThrowable(cause).addMessage(Messages.Fail.Actual.CONTAINS_METHOD).addExpected(methodName).build();
+            throw getAssertionErrorBuilder().addThrowable(cause).addMessage(Messages.Fail.Actual.CONTAINS_CALLABLE_METHOD).addExpected(methodName).build();
         }
     }
 
@@ -354,7 +354,7 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
             matcherAssertion(methodCallResult, (Matcher<Object>) matcher, Messages.Check.METHOD, methodName, arguments);
         } catch (ReflectiveException ex) {
             Throwable cause = ex.getCause();
-            throw getAssertionErrorBuilder().addThrowable(cause).addMessage(Messages.Fail.Actual.CONTAINS_METHOD).addExpected(methodName).build();
+            throw getAssertionErrorBuilder().addThrowable(cause).addMessage(Messages.Fail.Actual.CONTAINS_CALLABLE_METHOD).addExpected(methodName).build();
         }
     }
 

@@ -249,7 +249,7 @@ public class ClassAssertion extends ReferenceAssertion<Class<?>> {
             ReflectionHelper.callConstructor(constructor);
         } catch (ReflectiveException ex) {
             Throwable cause = ex.getCause();
-            throw getAssertionErrorBuilder().addThrowable(cause).addMessage(Messages.Fail.Actual.CONTAINS_CONSTRUCTOR).build();
+            throw getAssertionErrorBuilder().addThrowable(cause).addMessage(Messages.Fail.Actual.CONTAINS_CALLABLE_CONSTRUCTOR).build();
         }
     }
 
