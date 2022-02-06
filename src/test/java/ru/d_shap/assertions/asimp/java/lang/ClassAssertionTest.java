@@ -35,6 +35,7 @@ import org.junit.Test;
 import ru.d_shap.assertions.AssertionTest;
 import ru.d_shap.assertions.Assertions;
 import ru.d_shap.assertions.Raw;
+import ru.d_shap.assertions.data.ReflectionException;
 
 /**
  * Tests for {@link ClassAssertion}.
@@ -1270,13 +1271,15 @@ public final class ClassAssertionTest extends AssertionTest {
             initialize(Raw.classAssertion(), AbstractClass.class).hasOnePrivateConstructor();
             Assertions.fail("ClassAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasCause(InstantiationException.class);
+            Assertions.assertThat(ex).hasCause(ReflectionException.class);
+            Assertions.assertThat(ex).toCause().hasCause(InstantiationException.class);
         }
         try {
             initialize(Raw.classAssertion(), FailConstructorClass.class).hasOnePrivateConstructor();
             Assertions.fail("ClassAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasCause(InvocationTargetException.class);
+            Assertions.assertThat(ex).hasCause(ReflectionException.class);
+            Assertions.assertThat(ex).toCause().hasCause(InvocationTargetException.class);
         }
     }
 
