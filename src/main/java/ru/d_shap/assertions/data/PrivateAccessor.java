@@ -59,6 +59,7 @@ public final class PrivateAccessor {
      * @return the specified field.
      */
     public static Field getField(final Class<?> clazz, final String fieldName) {
+        clazz.getName();
         Class<?> currentClazz = clazz;
         NoSuchFieldException noSuchFieldException = null;
         while (currentClazz != null) {
@@ -77,13 +78,13 @@ public final class PrivateAccessor {
     /**
      * Get the value of the specified field.
      *
-     * @param object the object or null for static field.
      * @param field  the specified field.
+     * @param object the object or null for static field.
      * @param <T>    the generic type of the class.
      *
      * @return the value of the specified field.
      */
-    public static <T> Object getFieldValue(final T object, final Field field) {
+    public static <T> Object getFieldValue(final Field field, final T object) {
         try {
             return field.get(object);
         } catch (IllegalAccessException ex) {
@@ -102,7 +103,7 @@ public final class PrivateAccessor {
      */
     public static <T> Object getFieldValue(final T object, final String fieldName) {
         Field field = getField(object, fieldName);
-        return getFieldValue(object, field);
+        return getFieldValue(field, object);
     }
 
     /**
@@ -117,7 +118,7 @@ public final class PrivateAccessor {
      */
     public static <T> Object getFieldValue(final Class<T> clazz, final T object, final String fieldName) {
         Field field = getField(clazz, fieldName);
-        return getFieldValue(object, field);
+        return getFieldValue(field, object);
     }
 
     /**
@@ -143,6 +144,7 @@ public final class PrivateAccessor {
      * @return the specified method.
      */
     public static Method getMethod(final Class<?> clazz, final String methodName, final Class<?>... parameterTypes) {
+        clazz.getName();
         Class<?> currentClazz = clazz;
         NoSuchMethodException noSuchMethodException = null;
         while (currentClazz != null) {
@@ -161,14 +163,14 @@ public final class PrivateAccessor {
     /**
      * Call the specified method.
      *
-     * @param object    the object or null for static method.
      * @param method    the specified method.
+     * @param object    the object or null for static method.
      * @param arguments the arguments used to call the method.
      * @param <T>       the generic type of the class.
      *
      * @return the result of the method call.
      */
-    public static <T> Object callMethod(final T object, final Method method, final Object... arguments) {
+    public static <T> Object callMethod(final Method method, final T object, final Object... arguments) {
         try {
             return method.invoke(object, arguments);
         } catch (IllegalAccessException | InvocationTargetException ex) {
@@ -189,7 +191,7 @@ public final class PrivateAccessor {
     public static <T> Object callMethod(final T object, final String methodName, final Object... arguments) {
         Class<?>[] parameterTypes = getParameterTypes(arguments);
         Method method = getMethod(object, methodName, parameterTypes);
-        return callMethod(object, method, arguments);
+        return callMethod(method, object, arguments);
     }
 
     /**
@@ -206,7 +208,7 @@ public final class PrivateAccessor {
     public static <T> Object callMethod(final Class<T> clazz, final T object, final String methodName, final Object... arguments) {
         Class<?>[] parameterTypes = getParameterTypes(arguments);
         Method method = getMethod(clazz, methodName, parameterTypes);
-        return callMethod(object, method, arguments);
+        return callMethod(method, object, arguments);
     }
 
     private static Class<?>[] getParameterTypes(final Object... arguments) {
