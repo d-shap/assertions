@@ -101,12 +101,8 @@ public final class PrivateAccessor {
      * @return the value of the specified field.
      */
     public static <T> Object getFieldValue(final T object, final String fieldName) {
-        try {
-            Field field = getField(object, fieldName);
-            return field.get(object);
-        } catch (IllegalAccessException ex) {
-            throw new ReflectiveException(ex);
-        }
+        Field field = getField(object, fieldName);
+        return getFieldValue(object, field);
     }
 
     /**
@@ -120,12 +116,8 @@ public final class PrivateAccessor {
      * @return the value of the specified field.
      */
     public static <T> Object getFieldValue(final Class<T> clazz, final T object, final String fieldName) {
-        try {
-            Field field = getField(clazz, fieldName);
-            return field.get(object);
-        } catch (IllegalAccessException ex) {
-            throw new ReflectiveException(ex);
-        }
+        Field field = getField(clazz, fieldName);
+        return getFieldValue(object, field);
     }
 
     /**
@@ -169,6 +161,24 @@ public final class PrivateAccessor {
     /**
      * Call the specified method.
      *
+     * @param object    the object or null for static method.
+     * @param method    the specified method.
+     * @param arguments the arguments used to call the method.
+     * @param <T>       the generic type of the class.
+     *
+     * @return the result of the method call.
+     */
+    public static <T> Object callMethod(final T object, final Method method, final Object... arguments) {
+        try {
+            return method.invoke(object, arguments);
+        } catch (IllegalAccessException | InvocationTargetException ex) {
+            throw new ReflectiveException(ex);
+        }
+    }
+
+    /**
+     * Call the specified method.
+     *
      * @param object     the object.
      * @param methodName the method name.
      * @param arguments  the arguments used to call the method.
@@ -177,12 +187,9 @@ public final class PrivateAccessor {
      * @return the result of the method call.
      */
     public static <T> Object callMethod(final T object, final String methodName, final Object... arguments) {
-        try {
-            Class<?>[] parameterTypes = getParameterTypes(arguments);
-            return getMethod(object, methodName, parameterTypes).invoke(object, arguments);
-        } catch (IllegalAccessException | InvocationTargetException ex) {
-            throw new ReflectiveException(ex);
-        }
+        Class<?>[] parameterTypes = getParameterTypes(arguments);
+        Method method = getMethod(object, methodName, parameterTypes);
+        return callMethod(object, method, arguments);
     }
 
     /**
@@ -197,12 +204,9 @@ public final class PrivateAccessor {
      * @return the result of the method call.
      */
     public static <T> Object callMethod(final Class<T> clazz, final T object, final String methodName, final Object... arguments) {
-        try {
-            Class<?>[] parameterTypes = getParameterTypes(arguments);
-            return getMethod(clazz, methodName, parameterTypes).invoke(object, arguments);
-        } catch (IllegalAccessException | InvocationTargetException ex) {
-            throw new ReflectiveException(ex);
-        }
+        Class<?>[] parameterTypes = getParameterTypes(arguments);
+        Method method = getMethod(clazz, methodName, parameterTypes);
+        return callMethod(object, method, arguments);
     }
 
     private static Class<?>[] getParameterTypes(final Object... arguments) {
