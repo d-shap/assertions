@@ -46,4 +46,116 @@ public final class DataHelperTest extends AssertionTest {
         Assertions.assertThat(DataHelper.class).hasOnePrivateConstructor();
     }
 
+    /**
+     * {@link DataHelper} class test.
+     */
+    @Test
+    public void createDateTest() {
+        // TODO
+    }
+
+    /**
+     * {@link DataHelper} class test.
+     */
+    @Test
+    public void createDateMillisecondTest() {
+        // TODO
+    }
+
+    /**
+     * {@link DataHelper} class test.
+     */
+    @Test
+    public void createCalendarTest() {
+        // TODO
+    }
+
+    /**
+     * {@link DataHelper} class test.
+     */
+    @Test
+    public void createCalendarMillisecondTest() {
+        // TODO
+    }
+
+    /**
+     * {@link DataHelper} class test.
+     */
+    @Test
+    public void createCalendarTimeZoneIdTest() {
+        // TODO
+    }
+
+    /**
+     * {@link DataHelper} class test.
+     */
+    @Test
+    public void createCalendarMillisecondTimeZoneIdTest() {
+        // TODO
+    }
+
+    /**
+     * {@link DataHelper} class test.
+     */
+    @Test
+    public void createUtcCalendarTest() {
+        // TODO
+    }
+
+    /**
+     * {@link DataHelper} class test.
+     */
+    @Test
+    public void createUtcCalendarMillisecondTest() {
+        // TODO
+    }
+
+    /**
+     * {@link DataHelper} class test.
+     */
+    @Test
+    public void createXmlCalendarTest() {
+        // TODO
+    }
+
+    /**
+     * {@link DataHelper} class test.
+     */
+    @Test
+    public void createXmlCalendarMillisecondTest() {
+        // TODO
+    }
+
+    /**
+     * {@link DataHelper} class test.
+     */
+    @Test
+    public void createXmlCalendarTimeZoneIdTest() {
+        // TODO
+    }
+
+    /**
+     * {@link DataHelper} class test.
+     */
+    @Test
+    public void createXmlCalendarMillisecondTimeZoneIdTest() {
+        // TODO
+    }
+
+    /**
+     * {@link DataHelper} class test.
+     */
+    @Test
+    public void createUtcXmlCalendarTest() {
+        // TODO
+    }
+
+    /**
+     * {@link DataHelper} class test.
+     */
+    @Test
+    public void createUtcXmlCalendarMillisecondTest() {
+        // TODO
+    }
+
 }
