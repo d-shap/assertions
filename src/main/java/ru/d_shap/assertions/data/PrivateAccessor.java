@@ -22,6 +22,7 @@ package ru.d_shap.assertions.data;
 import java.lang.reflect.AccessibleObject;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.security.AccessController;
 import java.security.PrivilegedAction;
@@ -144,6 +145,43 @@ public final class PrivateAccessor {
             }
         }
         throw new ReflectiveException(noSuchMethodException);
+    }
+
+    /**
+     * Call the specified method.
+     *
+     * @param object     the object.
+     * @param methodName the method name.
+     * @param arguments  the arguments used to call the method.
+     * @param <T>        the generic type of the class.
+     *
+     * @return the result of the method call.
+     */
+    public static <T> Object callMethod(final T object, final String methodName, final Object... arguments) {
+        try {
+            return getMethod(object, methodName).invoke(object, arguments);
+        } catch (IllegalAccessException | InvocationTargetException ex) {
+            throw new ReflectiveException(ex);
+        }
+    }
+
+    /**
+     * Call the specified method.
+     *
+     * @param clazz      the class.
+     * @param object     the object or null for static method.
+     * @param methodName the method name.
+     * @param arguments  the arguments used to call the method.
+     * @param <T>        the generic type of the class.
+     *
+     * @return the result of the method call.
+     */
+    public static <T> Object callMethod(final Class<T> clazz, final T object, final String methodName, final Object... arguments) {
+        try {
+            return getMethod(clazz, methodName).invoke(object, arguments);
+        } catch (IllegalAccessException | InvocationTargetException ex) {
+            throw new ReflectiveException(ex);
+        }
     }
 
     /**
