@@ -155,6 +155,16 @@ public final class ReflectionHelperTest extends AssertionTest {
      * @throws Exception exception in test.
      */
     @Test
+    public void getFieldValueWithFieldTest() throws Exception {
+        // TODO
+    }
+
+    /**
+     * {@link ReflectionHelper} class test.
+     *
+     * @throws Exception exception in test.
+     */
+    @Test
     public void getFieldValueWithObjectTest() throws Exception {
         ParentClass parentClass = new ParentClass();
 
@@ -299,6 +309,36 @@ public final class ReflectionHelperTest extends AssertionTest {
      * @throws Exception exception in test.
      */
     @Test
+    public void callMethodWithMethodTest() throws Exception {
+        // TODO
+    }
+
+    /**
+     * {@link ReflectionHelper} class test.
+     *
+     * @throws Exception exception in test.
+     */
+    @Test
+    public void callMethodWithObjectTest() throws Exception {
+        // TODO
+    }
+
+    /**
+     * {@link ReflectionHelper} class test.
+     *
+     * @throws Exception exception in test.
+     */
+    @Test
+    public void callMethodWithClassAndObjectTest() throws Exception {
+        // TODO
+    }
+
+    /**
+     * {@link ReflectionHelper} class test.
+     *
+     * @throws Exception exception in test.
+     */
+    @Test
     public void getConstructorWithClassTest() throws Exception {
         Constructor<PrivateConstructorClass> constructor = ReflectionHelper.getConstructor(PrivateConstructorClass.class);
         PrivateConstructorClass object = constructor.newInstance();
@@ -311,13 +351,33 @@ public final class ReflectionHelperTest extends AssertionTest {
      * @throws Exception exception in test.
      */
     @Test
-    public void getConstructorWrongNameFailTest() throws Exception {
+    public void getConstructorWrongParameterCountFailTest() throws Exception {
         try {
             ReflectionHelper.getConstructor(ChildClass.class, String.class);
             Assertions.fail("PrivateAccessor test fail");
         } catch (ReflectionException ex) {
             Assertions.assertThat(ex).hasCause(NoSuchMethodException.class);
         }
+    }
+
+    /**
+     * {@link ReflectionHelper} class test.
+     *
+     * @throws Exception exception in test.
+     */
+    @Test
+    public void callConstructorWithConstructorTest() throws Exception {
+        // TODO
+    }
+
+    /**
+     * {@link ReflectionHelper} class test.
+     *
+     * @throws Exception exception in test.
+     */
+    @Test
+    public void callConstructorWithClassTest() throws Exception {
+        // TODO
     }
 
     /**
