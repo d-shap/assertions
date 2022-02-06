@@ -25,25 +25,25 @@ import ru.d_shap.assertions.AssertionTest;
 import ru.d_shap.assertions.Assertions;
 
 /**
- * Tests for {@link DataCreator}.
+ * Tests for {@link DataHelper}.
  *
  * @author Dmitry Shapovalov
  */
-public final class DataCreatorTest extends AssertionTest {
+public final class DataHelperTest extends AssertionTest {
 
     /**
      * Test class constructor.
      */
-    public DataCreatorTest() {
+    public DataHelperTest() {
         super();
     }
 
     /**
-     * {@link DataCreator} class test.
+     * {@link DataHelper} class test.
      */
     @Test
     public void constructorTest() {
-        Assertions.assertThat(DataCreator.class).hasOnePrivateConstructor();
+        Assertions.assertThat(DataHelper.class).hasOnePrivateConstructor();
     }
 
 }
