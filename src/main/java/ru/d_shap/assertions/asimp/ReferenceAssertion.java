@@ -310,7 +310,7 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
         checkArgumentIsNotNull(arguments, "arguments");
         try {
             Object methodCallResult = ReflectionHelper.callMethod(getActual(), methodName, arguments);
-            return initializeAssertion(Raw.objectAssertion(), methodCallResult, Messages.Check.METHOD, methodName);
+            return initializeAssertion(Raw.objectAssertion(), methodCallResult, Messages.Check.METHOD, methodName, arguments);
         } catch (ReflectiveException ex) {
             Throwable cause = ex.getCause();
             throw getAssertionErrorBuilder().addThrowable(cause).addMessage(Messages.Fail.Actual.CONTAINS_METHOD).addExpected(methodName).build();
@@ -351,7 +351,7 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
         checkArgumentIsNotNull(arguments, "arguments");
         try {
             Object methodCallResult = ReflectionHelper.callMethod(getActual(), methodName, arguments);
-            matcherAssertion(methodCallResult, (Matcher<Object>) matcher, Messages.Check.METHOD, methodName);
+            matcherAssertion(methodCallResult, (Matcher<Object>) matcher, Messages.Check.METHOD, methodName, arguments);
         } catch (ReflectiveException ex) {
             Throwable cause = ex.getCause();
             throw getAssertionErrorBuilder().addThrowable(cause).addMessage(Messages.Fail.Actual.CONTAINS_METHOD).addExpected(methodName).build();
