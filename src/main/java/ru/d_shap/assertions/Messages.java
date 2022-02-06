@@ -55,6 +55,8 @@ public final class Messages {
 
         public static final String FIELD = "Check actual value''s field: {0}.";
 
+        public static final String METHOD = "Check actual value''s method call result: {0}.";
+
         public static final String LENGTH = "Check actual value''s length.";
 
         public static final String SIZE = "Check actual value''s size.";
