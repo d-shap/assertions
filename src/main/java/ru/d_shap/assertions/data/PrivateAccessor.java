@@ -159,7 +159,8 @@ public final class PrivateAccessor {
      */
     public static <T> Object callMethod(final T object, final String methodName, final Object... arguments) {
         try {
-            return getMethod(object, methodName).invoke(object, arguments);
+            Class<?>[] parameterTypes = getParameterTypes(arguments);
+            return getMethod(object, methodName, parameterTypes).invoke(object, arguments);
         } catch (IllegalAccessException | InvocationTargetException ex) {
             throw new ReflectiveException(ex);
         }
@@ -178,10 +179,20 @@ public final class PrivateAccessor {
      */
     public static <T> Object callMethod(final Class<T> clazz, final T object, final String methodName, final Object... arguments) {
         try {
-            return getMethod(clazz, methodName).invoke(object, arguments);
+            Class<?>[] parameterTypes = getParameterTypes(arguments);
+            return getMethod(clazz, methodName, parameterTypes).invoke(object, arguments);
         } catch (IllegalAccessException | InvocationTargetException ex) {
             throw new ReflectiveException(ex);
         }
+    }
+
+    private static Class<?>[] getParameterTypes(final Object... arguments) {
+        Class<?>[] result = new Class[arguments.length];
+        for (int i = 0; i < arguments.length; i++) {
+            Object argument = arguments[i];
+            result[i] = argument.getClass();
+        }
+        return result;
     }
 
     /**
@@ -199,6 +210,24 @@ public final class PrivateAccessor {
             setAccessible(constructor);
             return constructor;
         } catch (NoSuchMethodException ex) {
+            throw new ReflectiveException(ex);
+        }
+    }
+
+    /**
+     * Call the specified constructor.
+     *
+     * @param clazz     the class.
+     * @param arguments the arguments used to call the constructor.
+     * @param <T>       the generic type of the class.
+     *
+     * @return the object created.
+     */
+    public static <T> T callConstructor(final Class<T> clazz, final Object... arguments) {
+        try {
+            Class<?>[] parameterTypes = getParameterTypes(arguments);
+            return getConstructor(clazz, parameterTypes).newInstance(arguments);
+        } catch (IllegalAccessException | InvocationTargetException | InstantiationException ex) {
             throw new ReflectiveException(ex);
         }
     }
