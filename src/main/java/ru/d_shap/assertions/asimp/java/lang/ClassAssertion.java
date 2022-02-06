@@ -20,7 +20,6 @@
 package ru.d_shap.assertions.asimp.java.lang;
 
 import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Modifier;
 
 import org.hamcrest.Matcher;
@@ -28,6 +27,8 @@ import org.hamcrest.Matcher;
 import ru.d_shap.assertions.Messages;
 import ru.d_shap.assertions.Raw;
 import ru.d_shap.assertions.asimp.ReferenceAssertion;
+import ru.d_shap.assertions.data.ReflectionHelper;
+import ru.d_shap.assertions.data.ReflectiveException;
 
 /**
  * Assertions for the class.
@@ -245,9 +246,10 @@ public class ClassAssertion extends ReferenceAssertion<Class<?>> {
         }
         setAccessible(constructor);
         try {
-            constructor.newInstance();
-        } catch (InstantiationException | IllegalAccessException | InvocationTargetException ex) {
-            throw getAssertionErrorBuilder().addThrowable(ex).build();
+            ReflectionHelper.callConstructor(constructor);
+        } catch (ReflectiveException ex) {
+            Throwable cause = ex.getCause();
+            throw getAssertionErrorBuilder().addThrowable(cause).addMessage(Messages.Fail.Actual.CONTAINS_CONSTRUCTOR).build();
         }
     }
 
