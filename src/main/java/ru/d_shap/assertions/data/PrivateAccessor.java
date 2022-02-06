@@ -240,6 +240,23 @@ public final class PrivateAccessor {
     /**
      * Call the specified constructor.
      *
+     * @param constructor the specified constructor.
+     * @param arguments   the arguments used to call the constructor.
+     * @param <T>         the generic type of the class.
+     *
+     * @return the object created.
+     */
+    public static <T> T callConstructor(final Constructor<T> constructor, final Object... arguments) {
+        try {
+            return constructor.newInstance(arguments);
+        } catch (IllegalAccessException | InvocationTargetException | InstantiationException ex) {
+            throw new ReflectiveException(ex);
+        }
+    }
+
+    /**
+     * Call the specified constructor.
+     *
      * @param clazz     the class.
      * @param arguments the arguments used to call the constructor.
      * @param <T>       the generic type of the class.
@@ -247,12 +264,9 @@ public final class PrivateAccessor {
      * @return the object created.
      */
     public static <T> T callConstructor(final Class<T> clazz, final Object... arguments) {
-        try {
-            Class<?>[] parameterTypes = getParameterTypes(arguments);
-            return getConstructor(clazz, parameterTypes).newInstance(arguments);
-        } catch (IllegalAccessException | InvocationTargetException | InstantiationException ex) {
-            throw new ReflectiveException(ex);
-        }
+        Class<?>[] parameterTypes = getParameterTypes(arguments);
+        Constructor<T> constructor = getConstructor(clazz, parameterTypes);
+        return callConstructor(constructor, arguments);
     }
 
     /**
