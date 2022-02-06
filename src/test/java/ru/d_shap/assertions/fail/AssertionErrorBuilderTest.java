@@ -31,7 +31,7 @@ import ru.d_shap.assertions.converter.AsStringConverterProvider;
 import ru.d_shap.assertions.converter.ConversionException;
 import ru.d_shap.assertions.converter.ValueConverter;
 import ru.d_shap.assertions.converter.ValueConverterProvider;
-import ru.d_shap.assertions.data.PrivateAccessor;
+import ru.d_shap.assertions.data.ReflectionHelper;
 
 /**
  * Tests for {@link AssertionErrorBuilder}.
@@ -1533,9 +1533,9 @@ public final class AssertionErrorBuilderTest extends AssertionTest {
     @Test
     @SuppressWarnings("unchecked")
     public void conversionExceptionTest() {
-        List<ValueConverterProvider> valueConverterProviders = (List<ValueConverterProvider>) PrivateAccessor.getFieldValue(ValueConverter.class, null, "CONVERTER_PROVIDERS");
+        List<ValueConverterProvider> valueConverterProviders = (List<ValueConverterProvider>) ReflectionHelper.getFieldValue(ValueConverter.class, null, "CONVERTER_PROVIDERS");
         valueConverterProviders.add(new ErrorTypeValueConverter());
-        List<AsStringConverterProvider> asStringConverterProviders = (List<AsStringConverterProvider>) PrivateAccessor.getFieldValue(AsStringConverter.class, null, "CONVERTER_PROVIDERS");
+        List<AsStringConverterProvider> asStringConverterProviders = (List<AsStringConverterProvider>) ReflectionHelper.getFieldValue(AsStringConverter.class, null, "CONVERTER_PROVIDERS");
         asStringConverterProviders.add(new ErrorTypeAsStringConverter());
 
         Assertions.assertThat(AssertionErrorBuilder.getInstance().addActual().addExpected(new ErrorType()).build()).isInstanceOf(AssertionError.class);
