@@ -65,9 +65,9 @@ import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 
 import ru.d_shap.assertions.converter.ValueConverter;
-import ru.d_shap.assertions.data.DataCreator;
-import ru.d_shap.assertions.data.PrivateAccessor;
-import ru.d_shap.assertions.data.ReflectiveException;
+import ru.d_shap.assertions.data.DataHelper;
+import ru.d_shap.assertions.data.ReflectionException;
+import ru.d_shap.assertions.data.ReflectionHelper;
 
 /**
  * Base class for all tests.
@@ -164,10 +164,10 @@ public class AssertionTest {
      */
     protected final <W, S extends BaseAssertion<W>> S clearActual(final S assertion) {
         try {
-            Field field = PrivateAccessor.getField(BaseAssertion.class, "_actual");
+            Field field = ReflectionHelper.getField(BaseAssertion.class, "_actual");
             field.set(assertion, null);
             return assertion;
-        } catch (ReflectiveException ex) {
+        } catch (ReflectionException ex) {
             throw new AssertionError(ex.getCause());
         } catch (IllegalAccessException ex) {
             throw new AssertionError(ex);
@@ -647,7 +647,7 @@ public class AssertionTest {
      * @return the created object.
      */
     protected final Date createDate(final int year, final int month, final int dayOfMonth, final int hourOfDay, final int minute, final int second) {
-        return DataCreator.createDate(year, month, dayOfMonth, hourOfDay, minute, second);
+        return DataHelper.createDate(year, month, dayOfMonth, hourOfDay, minute, second);
     }
 
     /**
@@ -664,7 +664,7 @@ public class AssertionTest {
      * @return the created object.
      */
     protected final Date createDate(final int year, final int month, final int dayOfMonth, final int hourOfDay, final int minute, final int second, final int millisecond) {
-        return DataCreator.createDate(year, month, dayOfMonth, hourOfDay, minute, second, millisecond);
+        return DataHelper.createDate(year, month, dayOfMonth, hourOfDay, minute, second, millisecond);
     }
 
     /**
@@ -680,7 +680,7 @@ public class AssertionTest {
      * @return the created object.
      */
     protected final Calendar createCalendar(final int year, final int month, final int dayOfMonth, final int hourOfDay, final int minute, final int second) {
-        return DataCreator.createCalendar(year, month, dayOfMonth, hourOfDay, minute, second);
+        return DataHelper.createCalendar(year, month, dayOfMonth, hourOfDay, minute, second);
     }
 
     /**
@@ -697,7 +697,7 @@ public class AssertionTest {
      * @return the created object.
      */
     protected final Calendar createCalendar(final int year, final int month, final int dayOfMonth, final int hourOfDay, final int minute, final int second, final int millisecond) {
-        return DataCreator.createCalendar(year, month, dayOfMonth, hourOfDay, minute, second, millisecond);
+        return DataHelper.createCalendar(year, month, dayOfMonth, hourOfDay, minute, second, millisecond);
     }
 
     /**
@@ -714,7 +714,7 @@ public class AssertionTest {
      * @return the created object.
      */
     protected final Calendar createCalendar(final int year, final int month, final int dayOfMonth, final int hourOfDay, final int minute, final int second, final String timeZoneId) {
-        return DataCreator.createCalendar(year, month, dayOfMonth, hourOfDay, minute, second, timeZoneId);
+        return DataHelper.createCalendar(year, month, dayOfMonth, hourOfDay, minute, second, timeZoneId);
     }
 
     /**
@@ -732,7 +732,7 @@ public class AssertionTest {
      * @return the created object.
      */
     protected final Calendar createCalendar(final int year, final int month, final int dayOfMonth, final int hourOfDay, final int minute, final int second, final int millisecond, final String timeZoneId) {
-        return DataCreator.createCalendar(year, month, dayOfMonth, hourOfDay, minute, second, millisecond, timeZoneId);
+        return DataHelper.createCalendar(year, month, dayOfMonth, hourOfDay, minute, second, millisecond, timeZoneId);
     }
 
     /**
@@ -748,7 +748,7 @@ public class AssertionTest {
      * @return the created object.
      */
     protected final Calendar createUtcCalendar(final int year, final int month, final int dayOfMonth, final int hourOfDay, final int minute, final int second) {
-        return DataCreator.createUtcCalendar(year, month, dayOfMonth, hourOfDay, minute, second);
+        return DataHelper.createUtcCalendar(year, month, dayOfMonth, hourOfDay, minute, second);
     }
 
     /**
@@ -765,7 +765,7 @@ public class AssertionTest {
      * @return the created object.
      */
     protected final Calendar createUtcCalendar(final int year, final int month, final int dayOfMonth, final int hourOfDay, final int minute, final int second, final int millisecond) {
-        return DataCreator.createUtcCalendar(year, month, dayOfMonth, hourOfDay, minute, second, millisecond);
+        return DataHelper.createUtcCalendar(year, month, dayOfMonth, hourOfDay, minute, second, millisecond);
     }
 
     /**
@@ -1290,7 +1290,7 @@ public class AssertionTest {
      * @return the created object.
      */
     protected final XMLGregorianCalendar createXmlCalendar(final int year, final int month, final int dayOfMonth, final int hourOfDay, final int minute, final int second) {
-        return DataCreator.createXmlCalendar(year, month, dayOfMonth, hourOfDay, minute, second);
+        return DataHelper.createXmlCalendar(year, month, dayOfMonth, hourOfDay, minute, second);
     }
 
     /**
@@ -1307,7 +1307,7 @@ public class AssertionTest {
      * @return the created object.
      */
     protected final XMLGregorianCalendar createXmlCalendar(final int year, final int month, final int dayOfMonth, final int hourOfDay, final int minute, final int second, final int millisecond) {
-        return DataCreator.createXmlCalendar(year, month, dayOfMonth, hourOfDay, minute, second, millisecond);
+        return DataHelper.createXmlCalendar(year, month, dayOfMonth, hourOfDay, minute, second, millisecond);
     }
 
     /**
@@ -1324,7 +1324,7 @@ public class AssertionTest {
      * @return the created object.
      */
     protected final XMLGregorianCalendar createXmlCalendar(final int year, final int month, final int dayOfMonth, final int hourOfDay, final int minute, final int second, final String timeZoneId) {
-        return DataCreator.createXmlCalendar(year, month, dayOfMonth, hourOfDay, minute, second, timeZoneId);
+        return DataHelper.createXmlCalendar(year, month, dayOfMonth, hourOfDay, minute, second, timeZoneId);
     }
 
     /**
@@ -1342,7 +1342,7 @@ public class AssertionTest {
      * @return the created object.
      */
     protected final XMLGregorianCalendar createXmlCalendar(final int year, final int month, final int dayOfMonth, final int hourOfDay, final int minute, final int second, final int millisecond, final String timeZoneId) {
-        return DataCreator.createXmlCalendar(year, month, dayOfMonth, hourOfDay, minute, second, millisecond, timeZoneId);
+        return DataHelper.createXmlCalendar(year, month, dayOfMonth, hourOfDay, minute, second, millisecond, timeZoneId);
     }
 
     /**
@@ -1358,7 +1358,7 @@ public class AssertionTest {
      * @return the created object.
      */
     protected final XMLGregorianCalendar createUtcXmlCalendar(final int year, final int month, final int dayOfMonth, final int hourOfDay, final int minute, final int second) {
-        return DataCreator.createUtcXmlCalendar(year, month, dayOfMonth, hourOfDay, minute, second);
+        return DataHelper.createUtcXmlCalendar(year, month, dayOfMonth, hourOfDay, minute, second);
     }
 
     /**
@@ -1375,7 +1375,7 @@ public class AssertionTest {
      * @return the created object.
      */
     protected final XMLGregorianCalendar createUtcXmlCalendar(final int year, final int month, final int dayOfMonth, final int hourOfDay, final int minute, final int second, final int millisecond) {
-        return DataCreator.createUtcXmlCalendar(year, month, dayOfMonth, hourOfDay, minute, second, millisecond);
+        return DataHelper.createUtcXmlCalendar(year, month, dayOfMonth, hourOfDay, minute, second, millisecond);
     }
 
     /**
