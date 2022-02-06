@@ -32,7 +32,7 @@ import ru.d_shap.assertions.Raw;
 import ru.d_shap.assertions.asimp.ReferenceAssertion;
 import ru.d_shap.assertions.asimp.java.util.CalendarAssertion;
 import ru.d_shap.assertions.asimp.primitive.IntAssertion;
-import ru.d_shap.assertions.data.DataCreator;
+import ru.d_shap.assertions.data.DataHelper;
 
 /**
  * Assertions for the XML gregorian calendar.
@@ -619,7 +619,7 @@ public class XMLGregorianCalendarAssertion extends ReferenceAssertion<XMLGregori
      * @return the assertion.
      */
     public final CalendarAssertion toUtcTimeZoneCalendar() {
-        return toTimeZoneCalendar(DataCreator.TIMEZONE_UTC);
+        return toTimeZoneCalendar(DataHelper.TIMEZONE_UTC);
     }
 
 }

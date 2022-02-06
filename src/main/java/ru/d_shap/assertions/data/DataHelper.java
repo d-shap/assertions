@@ -33,13 +33,13 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *
  * @author Dmitry Shapovalov
  */
-public final class DataCreator {
+public final class DataHelper {
 
     public static final String TIMEZONE_UTC = "UTC";
 
     public static final String TIMEZONE_GMT = "GMT";
 
-    private DataCreator() {
+    private DataHelper() {
         super();
     }
 

@@ -28,7 +28,7 @@ import ru.d_shap.assertions.Messages;
 import ru.d_shap.assertions.Raw;
 import ru.d_shap.assertions.asimp.ReferenceAssertion;
 import ru.d_shap.assertions.asimp.primitive.IntAssertion;
-import ru.d_shap.assertions.data.DataCreator;
+import ru.d_shap.assertions.data.DataHelper;
 
 /**
  * Assertions for the calendar.
@@ -1044,7 +1044,7 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
      * @return the assertion.
      */
     public final CalendarAssertion toUtcTimeZoneCalendar() {
-        return toTimeZoneCalendar(DataCreator.TIMEZONE_UTC);
+        return toTimeZoneCalendar(DataHelper.TIMEZONE_UTC);
     }
 
 }
