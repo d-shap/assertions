@@ -585,7 +585,63 @@ public final class ReflectionHelperTest extends AssertionTest {
      */
     @Test
     public void callConstructorWithConstructorTest() {
-        // TODO
+        Constructor<PrivateConstructorClass> constructor1 = ReflectionHelper.getConstructor(PrivateConstructorClass.class);
+        PrivateConstructorClass object1 = ReflectionHelper.callConstructor(constructor1);
+        Assertions.assertThat(object1.getValue()).isEqualTo("No args");
+
+        Constructor<PrivateConstructorClass> constructor2 = ReflectionHelper.getConstructor(PrivateConstructorClass.class, String.class);
+        PrivateConstructorClass object2 = ReflectionHelper.callConstructor(constructor2, "param");
+        Assertions.assertThat(object2.getValue()).isEqualTo("One arg: param");
+
+        Constructor<PrivateConstructorClass> constructor3 = ReflectionHelper.getConstructor(PrivateConstructorClass.class, String.class, int.class);
+        PrivateConstructorClass object3 = ReflectionHelper.callConstructor(constructor3, "param", 5);
+        Assertions.assertThat(object3.getValue()).isEqualTo("Two args: param,5");
+    }
+
+    /**
+     * {@link ReflectionHelper} class test.
+     */
+    @Test
+    public void callConstructorWithConstructorNoAccessFailTest() {
+        try {
+            Constructor<PrivateConstructorClass> constructor = ReflectionHelper.getConstructor(PrivateConstructorClass.class);
+            constructor.setAccessible(false);
+            ReflectionHelper.callConstructor(constructor);
+            Assertions.fail("PrivateAccessor test fail");
+        } catch (ReflectionException ex) {
+            Assertions.assertThat(ex).messageMatches("Class .* can not access a member of class .* with modifiers \"private\"");
+            Assertions.assertThat(ex).hasCause(IllegalAccessException.class);
+        }
+    }
+
+    /**
+     * {@link ReflectionHelper} class test.
+     */
+    @Test
+    public void callConstructorWithConstructorInvocationFailTest() {
+        try {
+            Constructor<PrivateConstructorClass> constructor = ReflectionHelper.getConstructor(PrivateConstructorClass.class, int.class);
+            ReflectionHelper.callConstructor(constructor, 5);
+            Assertions.fail("PrivateAccessor test fail");
+        } catch (ReflectionException ex) {
+            Assertions.assertThat(ex).toMessage().isNull();
+            Assertions.assertThat(ex).hasCause(InvocationTargetException.class);
+        }
+    }
+
+    /**
+     * {@link ReflectionHelper} class test.
+     */
+    @Test
+    public void callConstructorWithClassAndParameterTypesTest() {
+        PrivateConstructorClass object1 = ReflectionHelper.callConstructor(PrivateConstructorClass.class, new Class<?>[]{}, new Object[]{});
+        Assertions.assertThat(object1.getValue()).isEqualTo("No args");
+
+        PrivateConstructorClass object2 = ReflectionHelper.callConstructor(PrivateConstructorClass.class, new Class<?>[]{String.class}, new Object[]{"param"});
+        Assertions.assertThat(object2.getValue()).isEqualTo("One arg: param");
+
+        PrivateConstructorClass object3 = ReflectionHelper.callConstructor(PrivateConstructorClass.class, new Class<?>[]{String.class, int.class}, new Object[]{"param", 5});
+        Assertions.assertThat(object3.getValue()).isEqualTo("Two args: param,5");
     }
 
     /**
@@ -593,7 +649,19 @@ public final class ReflectionHelperTest extends AssertionTest {
      */
     @Test
     public void callConstructorWithClassTest() {
-        // TODO
+        PrivateConstructorClass object1 = ReflectionHelper.callConstructor(PrivateConstructorClass.class);
+        Assertions.assertThat(object1.getValue()).isEqualTo("No args");
+
+        PrivateConstructorClass object2 = ReflectionHelper.callConstructor(PrivateConstructorClass.class, "param");
+        Assertions.assertThat(object2.getValue()).isEqualTo("One arg: param");
+
+        try {
+            ReflectionHelper.callConstructor(PrivateConstructorClass.class, "param", 5);
+            Assertions.fail("PrivateAccessor test fail");
+        } catch (ReflectionException ex) {
+            Assertions.assertThat(ex).messageMatches(".*\\$PrivateConstructorClass.<init>\\(java.lang.String, java.lang.Integer\\)");
+            Assertions.assertThat(ex).hasCause(NoSuchMethodException.class);
+        }
     }
 
     /**
@@ -754,6 +822,11 @@ public final class ReflectionHelperTest extends AssertionTest {
         private PrivateConstructorClass(final String param1, final int param2) {
             super();
             _value = "Two args: " + param1 + "," + param2;
+        }
+
+        private PrivateConstructorClass(final int param) {
+            super();
+            throw new RuntimeException("test exception");
         }
 
         String getValue() {
