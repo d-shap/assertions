@@ -21,6 +21,7 @@ package ru.d_shap.assertions.data;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 import org.junit.Test;
@@ -362,31 +363,86 @@ public final class ReflectionHelperTest extends AssertionTest {
 
     /**
      * {@link ReflectionHelper} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void callMethodWithMethodTest() throws Exception {
+    public void callMethodWithMethodTest() {
+        ParentClass parentClass = new ParentClass();
+
+        Method parentStaticMethodParent = ReflectionHelper.getMethod(ParentClass.class, "parentStaticMethod");
+        Object parentStaticMethodParentValue = ReflectionHelper.callMethod(parentStaticMethodParent, (Object) null);
+        Assertions.assertThat(parentStaticMethodParentValue).isEqualTo("parentStaticMethod");
+
+        Method parentMethodParent = ReflectionHelper.getMethod(ParentClass.class, "parentMethod");
+        Object parentMethodParentValue = ReflectionHelper.callMethod(parentMethodParent, parentClass);
+        Assertions.assertThat(parentMethodParentValue).isEqualTo("parentMethod");
+
+        ChildClass childClass = new ChildClass();
+
+        Method parentStaticMethodChild = ReflectionHelper.getMethod(ChildClass.class, "parentStaticMethod");
+        Object parentStaticMethodChildValue = ReflectionHelper.callMethod(parentStaticMethodChild, (Object) null);
+        Assertions.assertThat(parentStaticMethodChildValue).isEqualTo("parentStaticMethod");
+
+        Method childStaticMethodChild = ReflectionHelper.getMethod(ChildClass.class, "childStaticMethod", String.class);
+        Object childStaticMethodChildValue = ReflectionHelper.callMethod(childStaticMethodChild, (Object) null, "param");
+        Assertions.assertThat(childStaticMethodChildValue).isEqualTo("childStaticMethod:param");
+
+        Method parentMethodChild = ReflectionHelper.getMethod(ChildClass.class, "parentMethod");
+        Object parentMethodChildValue = ReflectionHelper.callMethod(parentMethodChild, childClass);
+        Assertions.assertThat(parentMethodChildValue).isEqualTo("parentMethod");
+
+        Method childMethod1Child = ReflectionHelper.getMethod(ChildClass.class, "childMethod", String.class);
+        Object childMethod1ChildValue = ReflectionHelper.callMethod(childMethod1Child, childClass, "param");
+        Assertions.assertThat(childMethod1ChildValue).isEqualTo("childMethod:param");
+
+        Method childMethod2Child = ReflectionHelper.getMethod(ChildClass.class, "childMethod", String.class, int.class);
+        Object childMethod2ChildValue = ReflectionHelper.callMethod(childMethod2Child, childClass, "param", 5);
+        Assertions.assertThat(childMethod2ChildValue).isEqualTo("childMethod:param,5");
+    }
+
+    /**
+     * {@link ReflectionHelper} class test.
+     */
+    @Test
+    public void callMethodWithMethodNoAccessFailTest() {
+        try {
+            Method method = ReflectionHelper.getMethod(ChildClass.class, "childMethod", String.class);
+            method.setAccessible(false);
+            ReflectionHelper.callMethod(method, new ChildClass(), "param");
+            Assertions.fail("PrivateAccessor test fail");
+        } catch (ReflectionException ex) {
+            Assertions.assertThat(ex).messageMatches("Class .* can not access a member of class .* with modifiers \"private\"");
+            Assertions.assertThat(ex).hasCause(IllegalAccessException.class);
+        }
+    }
+
+    /**
+     * {@link ReflectionHelper} class test.
+     */
+    @Test
+    public void callMethodWithMethodInvocationFailTest() {
+        try {
+            Method method = ReflectionHelper.getMethod(ChildClass.class, "childFailMethod");
+            ReflectionHelper.callMethod(method, new ChildClass());
+            Assertions.fail("PrivateAccessor test fail");
+        } catch (ReflectionException ex) {
+            Assertions.assertThat(ex).toMessage().isNull();
+            Assertions.assertThat(ex).hasCause(InvocationTargetException.class);
+        }
+    }
+
+    /**
+     * {@link ReflectionHelper} class test.
+     */
+    @Test
+    public void callMethodWithObjectTest() {
         // TODO
     }
 
     /**
      * {@link ReflectionHelper} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void callMethodWithObjectTest() throws Exception {
-        // TODO
-    }
-
-    /**
-     * {@link ReflectionHelper} class test.
-     *
-     * @throws Exception exception in test.
-     */
-    @Test
-    public void callMethodWithClassAndObjectTest() throws Exception {
+    public void callMethodWithClassAndObjectTest() {
         // TODO
     }
 
@@ -515,20 +571,20 @@ public final class ReflectionHelperTest extends AssertionTest {
             _parentField = "parentField";
         }
 
-        private static String parentStaticMethod() {
-            return "parentStaticMethod";
-        }
-
-        private String parentMethod() {
-            return "parentMethod";
-        }
-
         private String getNullField() {
             return _nullField;
         }
 
         private String getParentField() {
             return _parentField;
+        }
+
+        private static String parentStaticMethod() {
+            return "parentStaticMethod";
+        }
+
+        private String parentMethod() {
+            return "parentMethod";
         }
 
     }
@@ -549,6 +605,10 @@ public final class ReflectionHelperTest extends AssertionTest {
             _childField = "childField";
         }
 
+        private String getChildField() {
+            return _childField;
+        }
+
         private static String childStaticMethod(final String param) {
             return "childStaticMethod:" + param;
         }
@@ -561,8 +621,8 @@ public final class ReflectionHelperTest extends AssertionTest {
             return "childMethod:" + param1 + "," + param2;
         }
 
-        private String getChildField() {
-            return _childField;
+        private void childFailMethod() {
+            throw new RuntimeException("test exception");
         }
 
     }
