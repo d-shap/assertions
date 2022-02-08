@@ -290,6 +290,21 @@ public final class ReflectionHelper {
     /**
      * Call the specified constructor.
      *
+     * @param clazz          the class.
+     * @param parameterTypes the constructor parameter types.
+     * @param arguments      the arguments used to call the constructor.
+     * @param <T>            the generic type of the class.
+     *
+     * @return the object created.
+     */
+    public static <T> T callConstructor(final Class<T> clazz, final Class<?>[] parameterTypes, final Object[] arguments) {
+        Constructor<T> constructor = getConstructor(clazz, parameterTypes);
+        return callConstructor(constructor, arguments);
+    }
+
+    /**
+     * Call the specified constructor.
+     *
      * @param clazz     the class.
      * @param arguments the arguments used to call the constructor.
      * @param <T>       the generic type of the class.
@@ -298,8 +313,7 @@ public final class ReflectionHelper {
      */
     public static <T> T callConstructor(final Class<T> clazz, final Object... arguments) {
         Class<?>[] parameterTypes = getParameterTypes(arguments);
-        Constructor<T> constructor = getConstructor(clazz, parameterTypes);
-        return callConstructor(constructor, arguments);
+        return callConstructor(clazz, parameterTypes, arguments);
     }
 
     /**
