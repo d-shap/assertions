@@ -677,7 +677,7 @@ public final class ReflectionHelperTest extends AssertionTest {
             field.get(parentClass);
             Assertions.fail("PrivateAccessor test fail");
         } catch (IllegalAccessException ex) {
-            Assertions.assertThat(ex).toMessage().contains("with modifiers \"private final\"");
+            Assertions.assertThat(ex).messageMatches("Class .* can not access a member of class .* with modifiers \"private final\"");
         }
         ReflectionHelper.setAccessible(field);
         Object value = field.get(parentClass);
@@ -697,7 +697,7 @@ public final class ReflectionHelperTest extends AssertionTest {
             method.invoke(parentClass);
             Assertions.fail("PrivateAccessor test fail");
         } catch (IllegalAccessException ex) {
-            Assertions.assertThat(ex).toMessage().contains("with modifiers \"private\"");
+            Assertions.assertThat(ex).messageMatches("Class .* can not access a member of class .* with modifiers \"private\"");
         }
         ReflectionHelper.setAccessible(method);
         Object value = method.invoke(parentClass);
@@ -716,7 +716,7 @@ public final class ReflectionHelperTest extends AssertionTest {
             constructor.newInstance();
             Assertions.fail("PrivateAccessor test fail");
         } catch (IllegalAccessException ex) {
-            Assertions.assertThat(ex).toMessage().contains("with modifiers \"private\"");
+            Assertions.assertThat(ex).messageMatches("Class .* can not access a member of class .* with modifiers \"private\"");
         }
         ReflectionHelper.setAccessible(constructor);
         PrivateConstructorClass privateConstructor = constructor.newInstance();
