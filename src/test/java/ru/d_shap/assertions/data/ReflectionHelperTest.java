@@ -553,9 +553,17 @@ public final class ReflectionHelperTest extends AssertionTest {
      */
     @Test
     public void getConstructorWithClassTest() throws Exception {
-        Constructor<PrivateConstructorClass> constructor = ReflectionHelper.getConstructor(PrivateConstructorClass.class);
-        PrivateConstructorClass object = constructor.newInstance();
-        Assertions.assertThat(object).isNotNull();
+        Constructor<PrivateConstructorClass> constructor1 = ReflectionHelper.getConstructor(PrivateConstructorClass.class);
+        PrivateConstructorClass object1 = constructor1.newInstance();
+        Assertions.assertThat(object1.getValue()).isEqualTo("No args");
+
+        Constructor<PrivateConstructorClass> constructor2 = ReflectionHelper.getConstructor(PrivateConstructorClass.class, String.class);
+        PrivateConstructorClass object2 = constructor2.newInstance("param");
+        Assertions.assertThat(object2.getValue()).isEqualTo("One arg: param");
+
+        Constructor<PrivateConstructorClass> constructor3 = ReflectionHelper.getConstructor(PrivateConstructorClass.class, String.class, int.class);
+        PrivateConstructorClass object3 = constructor3.newInstance("param", 5);
+        Assertions.assertThat(object3.getValue()).isEqualTo("Two args: param,5");
     }
 
     /**
@@ -567,27 +575,24 @@ public final class ReflectionHelperTest extends AssertionTest {
             ReflectionHelper.getConstructor(ChildClass.class, String.class);
             Assertions.fail("PrivateAccessor test fail");
         } catch (ReflectionException ex) {
+            Assertions.assertThat(ex).messageMatches(".*\\$ChildClass.<init>\\(java.lang.String\\)");
             Assertions.assertThat(ex).hasCause(NoSuchMethodException.class);
         }
     }
 
     /**
      * {@link ReflectionHelper} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void callConstructorWithConstructorTest() throws Exception {
+    public void callConstructorWithConstructorTest() {
         // TODO
     }
 
     /**
      * {@link ReflectionHelper} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void callConstructorWithClassTest() throws Exception {
+    public void callConstructorWithClassTest() {
         // TODO
     }
 
@@ -734,8 +739,25 @@ public final class ReflectionHelperTest extends AssertionTest {
      */
     private static final class PrivateConstructorClass {
 
+        private final String _value;
+
         private PrivateConstructorClass() {
             super();
+            _value = "No args";
+        }
+
+        private PrivateConstructorClass(final String param) {
+            super();
+            _value = "One arg: " + param;
+        }
+
+        private PrivateConstructorClass(final String param1, final int param2) {
+            super();
+            _value = "Two args: " + param1 + "," + param2;
+        }
+
+        String getValue() {
+            return _value;
         }
 
     }
