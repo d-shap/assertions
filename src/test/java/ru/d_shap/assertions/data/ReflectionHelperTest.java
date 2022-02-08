@@ -298,9 +298,13 @@ public final class ReflectionHelperTest extends AssertionTest {
         Object parentMethodChildValue = parentMethodChild.invoke(childClass);
         Assertions.assertThat(parentMethodChildValue).isEqualTo("parentMethod");
 
-        Method childMethodChild = ReflectionHelper.getMethod(childClass, "childMethod", String.class);
-        Object childMethodChildValue = childMethodChild.invoke(childClass, "param");
-        Assertions.assertThat(childMethodChildValue).isEqualTo("childMethod:param");
+        Method childMethod1Child = ReflectionHelper.getMethod(childClass, "childMethod", String.class);
+        Object childMethod1ChildValue = childMethod1Child.invoke(childClass, "param");
+        Assertions.assertThat(childMethod1ChildValue).isEqualTo("childMethod:param");
+
+        Method childMethod2Child = ReflectionHelper.getMethod(childClass, "childMethod", String.class, int.class);
+        Object childMethod2ChildValue = childMethod2Child.invoke(childClass, "param", 5);
+        Assertions.assertThat(childMethod2ChildValue).isEqualTo("childMethod:param,5");
     }
 
     /**
@@ -334,18 +338,20 @@ public final class ReflectionHelperTest extends AssertionTest {
         Object parentMethodChildValue = parentMethodChild.invoke(childClass);
         Assertions.assertThat(parentMethodChildValue).isEqualTo("parentMethod");
 
-        Method childMethodChild = ReflectionHelper.getMethod(ChildClass.class, "childMethod", String.class);
-        Object childMethodChildValue = childMethodChild.invoke(childClass, "param");
-        Assertions.assertThat(childMethodChildValue).isEqualTo("childMethod:param");
+        Method childMethod1Child = ReflectionHelper.getMethod(ChildClass.class, "childMethod", String.class);
+        Object childMethod1ChildValue = childMethod1Child.invoke(childClass, "param");
+        Assertions.assertThat(childMethod1ChildValue).isEqualTo("childMethod:param");
+
+        Method childMethod2Child = ReflectionHelper.getMethod(ChildClass.class, "childMethod", String.class, int.class);
+        Object childMethod2ChildValue = childMethod2Child.invoke(childClass, "param", 5);
+        Assertions.assertThat(childMethod2ChildValue).isEqualTo("childMethod:param,5");
     }
 
     /**
      * {@link ReflectionHelper} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void getMethodWrongNameFailTest() throws Exception {
+    public void getMethodWrongNameFailTest() {
         try {
             ReflectionHelper.getMethod(new ChildClass(), "wrongMethodName");
             Assertions.fail("PrivateAccessor test fail");
@@ -398,11 +404,9 @@ public final class ReflectionHelperTest extends AssertionTest {
 
     /**
      * {@link ReflectionHelper} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void getConstructorWrongParameterCountFailTest() throws Exception {
+    public void getConstructorWrongParameterCountFailTest() {
         try {
             ReflectionHelper.getConstructor(ChildClass.class, String.class);
             Assertions.fail("PrivateAccessor test fail");
@@ -551,6 +555,10 @@ public final class ReflectionHelperTest extends AssertionTest {
 
         private String childMethod(final String param) {
             return "childMethod:" + param;
+        }
+
+        private String childMethod(final String param1, final int param2) {
+            return "childMethod:" + param1 + "," + param2;
         }
 
         private String getChildField() {
