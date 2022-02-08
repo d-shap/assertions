@@ -34,7 +34,15 @@ public final class ReflectionException extends RuntimeException {
      * @param cause the cause of the exception.
      */
     public ReflectionException(final ReflectiveOperationException cause) {
-        super(cause);
+        super(getMessage(cause), cause);
+    }
+
+    private static String getMessage(final ReflectiveOperationException cause) {
+        if (cause == null) {
+            return null;
+        } else {
+            return cause.getMessage();
+        }
     }
 
 }
