@@ -42,23 +42,26 @@ public final class ReflectionExceptionTest extends AssertionTest {
      * {@link ReflectionException} class test.
      */
     @Test
-    public void reflectiveExceptionCauseTest() {
-        Assertions.assertThat(new ReflectionException(null)).isNotNull();
-        Assertions.assertThat(new ReflectionException(null)).isInstanceOf(ReflectionException.class);
+    public void reflectiveExceptionMessageTest() {
         Assertions.assertThat(new ReflectionException(null)).toMessage().isNull();
-        Assertions.assertThat(new ReflectionException(null)).toCause().isNull();
 
-        Assertions.assertThat(new ReflectionException(new NoSuchFieldException())).isNotNull();
-        Assertions.assertThat(new ReflectionException(new NoSuchFieldException())).isInstanceOf(ReflectionException.class);
-        Assertions.assertThat(new ReflectionException(new NoSuchFieldException())).hasMessage("java.lang.NoSuchFieldException");
-        Assertions.assertThat(new ReflectionException(new NoSuchFieldException())).hasCause(NoSuchFieldException.class);
+        Assertions.assertThat(new ReflectionException(new NoSuchFieldException())).toMessage().isNull();
         Assertions.assertThat(new ReflectionException(new NoSuchFieldException())).toCause().toMessage().isNull();
 
-        Assertions.assertThat(new ReflectionException(new NoSuchFieldException("exception"))).isNotNull();
-        Assertions.assertThat(new ReflectionException(new NoSuchFieldException("exception"))).isInstanceOf(ReflectionException.class);
-        Assertions.assertThat(new ReflectionException(new NoSuchFieldException("exception"))).hasMessage("java.lang.NoSuchFieldException: exception");
+        Assertions.assertThat(new ReflectionException(new NoSuchFieldException("exception"))).hasMessage("exception");
+        Assertions.assertThat(new ReflectionException(new NoSuchFieldException("exception"))).toCause().hasMessage("exception");
+    }
+
+    /**
+     * {@link ReflectionException} class test.
+     */
+    @Test
+    public void reflectiveExceptionCauseTest() {
+        Assertions.assertThat(new ReflectionException(null)).toCause().isNull();
+
+        Assertions.assertThat(new ReflectionException(new NoSuchFieldException())).hasCause(NoSuchFieldException.class);
+
         Assertions.assertThat(new ReflectionException(new NoSuchFieldException("exception"))).hasCause(NoSuchFieldException.class);
-        Assertions.assertThat(new ReflectionException(new NoSuchFieldException("exception"))).hasCauseMessage("exception");
     }
 
 }
