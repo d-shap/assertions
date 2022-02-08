@@ -435,7 +435,21 @@ public final class ReflectionHelperTest extends AssertionTest {
      */
     @Test
     public void callMethodWithObjectTest() {
-        // TODO
+        ParentClass parentClass = new ParentClass();
+
+        Object parentMethodParentValue = ReflectionHelper.callMethod(parentClass, "parentMethod");
+        Assertions.assertThat(parentMethodParentValue).isEqualTo("parentMethod");
+
+        ChildClass childClass = new ChildClass();
+
+        Object parentMethodChildValue = ReflectionHelper.callMethod(childClass, "parentMethod");
+        Assertions.assertThat(parentMethodChildValue).isEqualTo("parentMethod");
+
+        Object childMethod1ChildValue = ReflectionHelper.callMethod(childClass, "childMethod", "param");
+        Assertions.assertThat(childMethod1ChildValue).isEqualTo("childMethod:param");
+
+        Object childMethod2ChildValue = ReflectionHelper.callMethod(childClass, "childMethod", "param", 5);
+        Assertions.assertThat(childMethod2ChildValue).isEqualTo("childMethod:param,5");
     }
 
     /**
@@ -443,7 +457,30 @@ public final class ReflectionHelperTest extends AssertionTest {
      */
     @Test
     public void callMethodWithClassAndObjectTest() {
-        // TODO
+        ParentClass parentClass = new ParentClass();
+
+        Object parentStaticMethodParentValue = ReflectionHelper.callMethod(ParentClass.class, (ParentClass) null, "parentStaticMethod");
+        Assertions.assertThat(parentStaticMethodParentValue).isEqualTo("parentStaticMethod");
+
+        Object parentMethodParentValue = ReflectionHelper.callMethod(ParentClass.class, parentClass, "parentMethod");
+        Assertions.assertThat(parentMethodParentValue).isEqualTo("parentMethod");
+
+        ChildClass childClass = new ChildClass();
+
+        Object parentStaticMethodChildValue = ReflectionHelper.callMethod(ChildClass.class, (ChildClass) null, "parentStaticMethod");
+        Assertions.assertThat(parentStaticMethodChildValue).isEqualTo("parentStaticMethod");
+
+        Object childStaticMethodChildValue = ReflectionHelper.callMethod(ChildClass.class, (ChildClass) null, "childStaticMethod", "param");
+        Assertions.assertThat(childStaticMethodChildValue).isEqualTo("childStaticMethod:param");
+
+        Object parentMethodChildValue = ReflectionHelper.callMethod(ChildClass.class, childClass, "parentMethod");
+        Assertions.assertThat(parentMethodChildValue).isEqualTo("parentMethod");
+
+        Object childMethod1ChildValue = ReflectionHelper.callMethod(ChildClass.class, childClass, "childMethod", "param");
+        Assertions.assertThat(childMethod1ChildValue).isEqualTo("childMethod:param");
+
+        Object childMethod2ChildValue = ReflectionHelper.callMethod(ChildClass.class, childClass, "childMethod", "param", 5);
+        Assertions.assertThat(childMethod2ChildValue).isEqualTo("childMethod:param,5");
     }
 
     /**
