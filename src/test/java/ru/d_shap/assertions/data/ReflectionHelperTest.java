@@ -136,36 +136,89 @@ public final class ReflectionHelperTest extends AssertionTest {
 
     /**
      * {@link ReflectionHelper} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void getFieldWrongNameFailTest() throws Exception {
+    public void getFieldWrongNameFailTest() {
         try {
             ReflectionHelper.getField(new ChildClass(), "wrongFieldName");
             Assertions.fail("PrivateAccessor test fail");
         } catch (ReflectionException ex) {
+            Assertions.assertThat(ex).hasMessage("wrongFieldName");
             Assertions.assertThat(ex).hasCause(NoSuchFieldException.class);
         }
     }
 
     /**
      * {@link ReflectionHelper} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void getFieldValueWithFieldTest() throws Exception {
-        // TODO
+    public void getFieldValueWithFieldTest() {
+        ParentClass parentClass = new ParentClass();
+
+        Field nullStaticFieldParent = ReflectionHelper.getField(ParentClass.class, "NULL_STATIC_FIELD");
+        Object nullStaticFieldParentValue = ReflectionHelper.getFieldValue(nullStaticFieldParent, (Object) null);
+        Assertions.assertThat(nullStaticFieldParentValue).isNull();
+
+        Field parentStaticFieldParent = ReflectionHelper.getField(ParentClass.class, "PARENT_STATIC_FIELD");
+        Object parentStaticFieldParentValue = ReflectionHelper.getFieldValue(parentStaticFieldParent, (Object) null);
+        Assertions.assertThat(parentStaticFieldParentValue).isEqualTo("parentStaticField");
+
+        Field nullFieldParent = ReflectionHelper.getField(ParentClass.class, "_nullField");
+        Object nullFieldParentValue = ReflectionHelper.getFieldValue(nullFieldParent, parentClass);
+        Assertions.assertThat(nullFieldParentValue).isNull();
+
+        Field parentFieldParent = ReflectionHelper.getField(ParentClass.class, "_parentField");
+        Object parentFieldParentValue = ReflectionHelper.getFieldValue(parentFieldParent, parentClass);
+        Assertions.assertThat(parentFieldParentValue).isEqualTo("parentField");
+
+        ChildClass childClass = new ChildClass();
+
+        Field nullStaticFieldChild = ReflectionHelper.getField(ChildClass.class, "NULL_STATIC_FIELD");
+        Object nullStaticFieldChildValue = ReflectionHelper.getFieldValue(nullStaticFieldChild, (Object) null);
+        Assertions.assertThat(nullStaticFieldChildValue).isNull();
+
+        Field parentStaticFieldChild = ReflectionHelper.getField(ChildClass.class, "PARENT_STATIC_FIELD");
+        Object parentStaticFieldChildValue = ReflectionHelper.getFieldValue(parentStaticFieldChild, (Object) null);
+        Assertions.assertThat(parentStaticFieldChildValue).isEqualTo("parentStaticField");
+
+        Field childStaticFieldChild = ReflectionHelper.getField(ChildClass.class, "CHILD_STATIC_FIELD");
+        Object childStaticFieldChildValue = ReflectionHelper.getFieldValue(childStaticFieldChild, (Object) null);
+        Assertions.assertThat(childStaticFieldChildValue).isEqualTo("childStaticField");
+
+        Field nullFieldChild = ReflectionHelper.getField(ChildClass.class, "_nullField");
+        Object nullFieldChildValue = ReflectionHelper.getFieldValue(nullFieldChild, childClass);
+        Assertions.assertThat(nullFieldChildValue).isNull();
+
+        Field parentFieldChild = ReflectionHelper.getField(ChildClass.class, "_parentField");
+        Object parentFieldChildValue = ReflectionHelper.getFieldValue(parentFieldChild, childClass);
+        Assertions.assertThat(parentFieldChildValue).isEqualTo("parentField");
+
+        Field childField = ReflectionHelper.getField(ChildClass.class, "_childField");
+        Object childFieldValue = ReflectionHelper.getFieldValue(childField, childClass);
+        Assertions.assertThat(childFieldValue).isEqualTo("childField");
     }
 
     /**
      * {@link ReflectionHelper} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void getFieldValueWithObjectTest() throws Exception {
+    public void getFieldValueWithFieldNoAccessFailTest() {
+        try {
+            Field field = ReflectionHelper.getField(ChildClass.class, "_childField");
+            field.setAccessible(false);
+            ReflectionHelper.getFieldValue(field, new ChildClass());
+            Assertions.fail("PrivateAccessor test fail");
+        } catch (ReflectionException ex) {
+            Assertions.assertThat(ex).messageMatches("Class .* can not access a member of class .* with modifiers \"private final\"");
+            Assertions.assertThat(ex).hasCause(IllegalAccessException.class);
+        }
+    }
+
+    /**
+     * {@link ReflectionHelper} class test.
+     */
+    @Test
+    public void getFieldValueWithObjectTest() {
         ParentClass parentClass = new ParentClass();
 
         Object nullFieldParentValue = ReflectionHelper.getFieldValue(parentClass, "_nullField");
@@ -188,11 +241,9 @@ public final class ReflectionHelperTest extends AssertionTest {
 
     /**
      * {@link ReflectionHelper} class test.
-     *
-     * @throws Exception exception in test.
      */
     @Test
-    public void getFieldValueWithClassAndObjectTest() throws Exception {
+    public void getFieldValueWithClassAndObjectTest() {
         ParentClass parentClass = new ParentClass();
 
         Object nullStaticFieldParentValue = ReflectionHelper.getFieldValue(ParentClass.class, null, "NULL_STATIC_FIELD");
