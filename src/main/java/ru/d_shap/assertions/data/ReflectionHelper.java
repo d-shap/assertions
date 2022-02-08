@@ -181,6 +181,22 @@ public final class ReflectionHelper {
     /**
      * Call the specified method.
      *
+     * @param object         the object.
+     * @param methodName     the method name.
+     * @param parameterTypes the method parameter types.
+     * @param arguments      the arguments used to call the method.
+     * @param <T>            the generic type of the class.
+     *
+     * @return the result of the method call.
+     */
+    public static <T> Object callMethod(final T object, final String methodName, final Class<?>[] parameterTypes, final Object[] arguments) {
+        Method method = getMethod(object, methodName, parameterTypes);
+        return callMethod(method, object, arguments);
+    }
+
+    /**
+     * Call the specified method.
+     *
      * @param object     the object.
      * @param methodName the method name.
      * @param arguments  the arguments used to call the method.
@@ -190,7 +206,23 @@ public final class ReflectionHelper {
      */
     public static <T> Object callMethod(final T object, final String methodName, final Object... arguments) {
         Class<?>[] parameterTypes = getParameterTypes(arguments);
-        Method method = getMethod(object, methodName, parameterTypes);
+        return callMethod(object, methodName, parameterTypes, arguments);
+    }
+
+    /**
+     * Call the specified method.
+     *
+     * @param clazz          the class.
+     * @param object         the object or null for static method.
+     * @param methodName     the method name.
+     * @param parameterTypes the method parameter types.
+     * @param arguments      the arguments used to call the method.
+     * @param <T>            the generic type of the class.
+     *
+     * @return the result of the method call.
+     */
+    public static <T> Object callMethod(final Class<T> clazz, final T object, final String methodName, final Class<?>[] parameterTypes, final Object[] arguments) {
+        Method method = getMethod(clazz, methodName, parameterTypes);
         return callMethod(method, object, arguments);
     }
 
@@ -207,8 +239,7 @@ public final class ReflectionHelper {
      */
     public static <T> Object callMethod(final Class<T> clazz, final T object, final String methodName, final Object... arguments) {
         Class<?>[] parameterTypes = getParameterTypes(arguments);
-        Method method = getMethod(clazz, methodName, parameterTypes);
-        return callMethod(method, object, arguments);
+        return callMethod(clazz, object, methodName, parameterTypes, arguments);
     }
 
     private static Class<?>[] getParameterTypes(final Object... arguments) {
