@@ -1481,6 +1481,14 @@ public final class ReferenceAssertionTest extends AssertionTest {
      * {@link ReferenceAssertion} class test.
      */
     @Test
+    public void toMethodCallResultWithParameterTypesTest() {
+        // TODO
+    }
+
+    /**
+     * {@link ReferenceAssertion} class test.
+     */
+    @Test
     public void toMethodCallResultTest() {
         // TODO
     }
@@ -1489,7 +1497,23 @@ public final class ReferenceAssertionTest extends AssertionTest {
      * {@link ReferenceAssertion} class test.
      */
     @Test
+    public void toMethodCallResultAssertionWithParameterTypesTest() {
+        // TODO
+    }
+
+    /**
+     * {@link ReferenceAssertion} class test.
+     */
+    @Test
     public void toMethodCallResultAssertionTest() {
+        // TODO
+    }
+
+    /**
+     * {@link ReferenceAssertion} class test.
+     */
+    @Test
+    public void toMethodCallResultMatcherWithParameterTypesTest() {
         // TODO
     }
 
