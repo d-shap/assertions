@@ -297,6 +297,28 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
     /**
      * Make assertion about the actual value's method call result.
      *
+     * @param methodName     the method name.
+     * @param parameterTypes the method parameter types.
+     * @param arguments      the arguments used to call the method.
+     *
+     * @return the assertion.
+     */
+    public final ObjectAssertion toMethodCallResult(final String methodName, final Class<?>[] parameterTypes, final Object[] arguments) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(methodName, "methodName");
+        checkArgumentIsNotNull(parameterTypes, "parameterTypes");
+        checkArgumentIsNotNull(arguments, "arguments");
+        try {
+            Object methodCallResult = ReflectionHelper.callMethod(getActual(), methodName, parameterTypes, arguments);
+            return initializeAssertion(Raw.objectAssertion(), methodCallResult, Messages.Check.METHOD, methodName, arguments);
+        } catch (ReflectionException ex) {
+            throw getAssertionErrorBuilder().addThrowable(ex).addMessage(Messages.Fail.Actual.CONTAINS_CALLABLE_METHOD).addExpected(methodName).build();
+        }
+    }
+
+    /**
+     * Make assertion about the actual value's method call result.
+     *
      * @param methodName the method name.
      * @param arguments  the arguments used to call the method.
      *
@@ -312,6 +334,27 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
         } catch (ReflectionException ex) {
             throw getAssertionErrorBuilder().addThrowable(ex).addMessage(Messages.Fail.Actual.CONTAINS_CALLABLE_METHOD).addExpected(methodName).build();
         }
+    }
+
+    /**
+     * Make assertion about the actual value's method call result.
+     *
+     * @param methodName     the method name.
+     * @param assertion      the assertion.
+     * @param parameterTypes the method parameter types.
+     * @param arguments      the arguments used to call the method.
+     * @param <W>            the generic type of the assertion's actual value.
+     * @param <S>            the generic type of the assertion.
+     *
+     * @return the assertion.
+     */
+    public final <W, S extends BaseAssertion<W>> S toMethodCallResult(final String methodName, final S assertion, final Class<?>[] parameterTypes, final Object[] arguments) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(methodName, "methodName");
+        checkArgumentIsNotNull(assertion, "assertion");
+        checkArgumentIsNotNull(parameterTypes, "parameterTypes");
+        checkArgumentIsNotNull(arguments, "arguments");
+        return toMethodCallResult(methodName, parameterTypes, arguments).as(assertion);
     }
 
     /**
@@ -331,6 +374,29 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
         checkArgumentIsNotNull(assertion, "assertion");
         checkArgumentIsNotNull(arguments, "arguments");
         return toMethodCallResult(methodName, arguments).as(assertion);
+    }
+
+    /**
+     * Make assertion about the actual value's method call result.
+     *
+     * @param methodName     the method name.
+     * @param matcher        the hamcrest matcher.
+     * @param parameterTypes the method parameter types.
+     * @param arguments      the arguments used to call the method.
+     */
+    @SuppressWarnings("unchecked")
+    public final void toMethodCallResult(final String methodName, final Matcher<?> matcher, final Class<?>[] parameterTypes, final Object[] arguments) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(methodName, "methodName");
+        checkArgumentIsNotNull(matcher, "matcher");
+        checkArgumentIsNotNull(parameterTypes, "parameterTypes");
+        checkArgumentIsNotNull(arguments, "arguments");
+        try {
+            Object methodCallResult = ReflectionHelper.callMethod(getActual(), methodName, parameterTypes, arguments);
+            matcherAssertion(methodCallResult, (Matcher<Object>) matcher, Messages.Check.METHOD, methodName, arguments);
+        } catch (ReflectionException ex) {
+            throw getAssertionErrorBuilder().addThrowable(ex).addMessage(Messages.Fail.Actual.CONTAINS_CALLABLE_METHOD).addExpected(methodName).build();
+        }
     }
 
     /**
