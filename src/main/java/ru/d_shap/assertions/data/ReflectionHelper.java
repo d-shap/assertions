@@ -196,6 +196,7 @@ public final class ReflectionHelper {
 
     /**
      * Call the specified method.
+     * Method with primitive parameters will not be called, use the overloaded method with parameter types.
      *
      * @param object     the object.
      * @param methodName the method name.
@@ -228,6 +229,7 @@ public final class ReflectionHelper {
 
     /**
      * Call the specified method.
+     * Method with primitive parameters will not be called, use the overloaded method with parameter types.
      *
      * @param clazz      the class.
      * @param object     the object or null for static method.
@@ -304,6 +306,7 @@ public final class ReflectionHelper {
 
     /**
      * Call the specified constructor.
+     * Constructor with primitive parameters will not be called, use the overloaded method with parameter types.
      *
      * @param clazz     the class.
      * @param arguments the arguments used to call the constructor.
