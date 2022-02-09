@@ -1153,15 +1153,15 @@ public final class ReferenceAssertionTest extends AssertionTest {
      */
     @Test
     public void toFieldTest() {
-        createReferenceAssertion(new ToFieldParentClass()).toField("_nullField").isNull();
-        createReferenceAssertion(new ToFieldParentClass()).toField("_parentField").isNotNull();
-        createReferenceAssertion(new ToFieldParentClass()).toField("_parentField").isEqualTo("parentField");
+        createReferenceAssertion(new ParentClass()).toField("_nullField").isNull();
+        createReferenceAssertion(new ParentClass()).toField("_parentField").isNotNull();
+        createReferenceAssertion(new ParentClass()).toField("_parentField").isEqualTo("parentField");
 
-        createReferenceAssertion(new ToFieldChildClass()).toField("_nullField").isNull();
-        createReferenceAssertion(new ToFieldChildClass()).toField("_parentField").isNotNull();
-        createReferenceAssertion(new ToFieldChildClass()).toField("_parentField").isEqualTo("parentField");
-        createReferenceAssertion(new ToFieldChildClass()).toField("_childField").isNotNull();
-        createReferenceAssertion(new ToFieldChildClass()).toField("_childField").isEqualTo("childField");
+        createReferenceAssertion(new ChildClass()).toField("_nullField").isNull();
+        createReferenceAssertion(new ChildClass()).toField("_parentField").isNotNull();
+        createReferenceAssertion(new ChildClass()).toField("_parentField").isEqualTo("parentField");
+        createReferenceAssertion(new ChildClass()).toField("_childField").isNotNull();
+        createReferenceAssertion(new ChildClass()).toField("_childField").isEqualTo("childField");
 
         try {
             createReferenceAssertion().toField("value");
@@ -1206,61 +1206,61 @@ public final class ReferenceAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: fieldName.");
         }
         try {
-            createReferenceAssertion(new ToFieldParentClass()).toField("wrongFieldName");
+            createReferenceAssertion(new ParentClass()).toField("wrongFieldName");
             Assertions.fail("ReferenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain the expected field.\n\tExpected:<wrongFieldName>");
         }
         try {
-            createReferenceAssertion(new ToFieldParentClass(), "Message").toField("wrongFieldName");
+            createReferenceAssertion(new ParentClass(), "Message").toField("wrongFieldName");
             Assertions.fail("ReferenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain the expected field.\n\tExpected:<wrongFieldName>");
         }
         try {
-            createReferenceAssertion(new ToFieldChildClass()).toField("wrongFieldName");
+            createReferenceAssertion(new ChildClass()).toField("wrongFieldName");
             Assertions.fail("ReferenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain the expected field.\n\tExpected:<wrongFieldName>");
         }
         try {
-            createReferenceAssertion(new ToFieldChildClass(), "Message").toField("wrongFieldName");
+            createReferenceAssertion(new ChildClass(), "Message").toField("wrongFieldName");
             Assertions.fail("ReferenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain the expected field.\n\tExpected:<wrongFieldName>");
         }
         try {
-            clearActual(createReferenceAssertion(new ToFieldParentClass()).toField("_parentField")).isEqualTo("value");
+            clearActual(createReferenceAssertion(new ParentClass()).toField("_parentField")).isEqualTo("value");
             Assertions.fail("ReferenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's field: _parentField.\n\tActual value should not be null.");
         }
         try {
-            clearActual(createReferenceAssertion(new ToFieldParentClass(), "Message").toField("_parentField")).isEqualTo("value");
+            clearActual(createReferenceAssertion(new ParentClass(), "Message").toField("_parentField")).isEqualTo("value");
             Assertions.fail("ReferenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's field: _parentField.\n\tActual value should not be null.");
         }
         try {
-            createReferenceAssertion(new ToFieldParentClass()).toField("_parentField").isEqualTo("wrongFieldValue");
+            createReferenceAssertion(new ParentClass()).toField("_parentField").isEqualTo("wrongFieldValue");
             Assertions.fail("ReferenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's field: _parentField.\n\tActual and expected values should be the same.\n\tExpected:<wrongFieldValue> but was:<parentField>");
         }
         try {
-            createReferenceAssertion(new ToFieldParentClass(), "Message").toField("_parentField").isEqualTo("wrongFieldValue");
+            createReferenceAssertion(new ParentClass(), "Message").toField("_parentField").isEqualTo("wrongFieldValue");
             Assertions.fail("ReferenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's field: _parentField.\n\tActual and expected values should be the same.\n\tExpected:<wrongFieldValue> but was:<parentField>");
         }
         try {
-            createReferenceAssertion(new ToFieldChildClass()).toField("_childField").isEqualTo("wrongFieldValue");
+            createReferenceAssertion(new ChildClass()).toField("_childField").isEqualTo("wrongFieldValue");
             Assertions.fail("ReferenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's field: _childField.\n\tActual and expected values should be the same.\n\tExpected:<wrongFieldValue> but was:<childField>");
         }
         try {
-            createReferenceAssertion(new ToFieldChildClass(), "Message").toField("_childField").isEqualTo("wrongFieldValue");
+            createReferenceAssertion(new ChildClass(), "Message").toField("_childField").isEqualTo("wrongFieldValue");
             Assertions.fail("ReferenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's field: _childField.\n\tActual and expected values should be the same.\n\tExpected:<wrongFieldValue> but was:<childField>");
@@ -1272,14 +1272,14 @@ public final class ReferenceAssertionTest extends AssertionTest {
      */
     @Test
     public void toFieldAssertionTest() {
-        createReferenceAssertion(new ToFieldParentClass()).toField("_nullField", Raw.charSequenceAssertion()).isNull();
-        createReferenceAssertion(new ToFieldParentClass()).toField("_nullField", Raw.classAssertion()).isNull();
-        createReferenceAssertion(new ToFieldParentClass()).toField("_parentField", Raw.charSequenceAssertion()).isEqualTo("parentField");
+        createReferenceAssertion(new ParentClass()).toField("_nullField", Raw.charSequenceAssertion()).isNull();
+        createReferenceAssertion(new ParentClass()).toField("_nullField", Raw.classAssertion()).isNull();
+        createReferenceAssertion(new ParentClass()).toField("_parentField", Raw.charSequenceAssertion()).isEqualTo("parentField");
 
-        createReferenceAssertion(new ToFieldChildClass()).toField("_nullField", Raw.charSequenceAssertion()).isNull();
-        createReferenceAssertion(new ToFieldChildClass()).toField("_nullField", Raw.classAssertion()).isNull();
-        createReferenceAssertion(new ToFieldChildClass()).toField("_parentField", Raw.charSequenceAssertion()).isEqualTo("parentField");
-        createReferenceAssertion(new ToFieldChildClass()).toField("_childField", Raw.charSequenceAssertion()).isEqualTo("childField");
+        createReferenceAssertion(new ChildClass()).toField("_nullField", Raw.charSequenceAssertion()).isNull();
+        createReferenceAssertion(new ChildClass()).toField("_nullField", Raw.classAssertion()).isNull();
+        createReferenceAssertion(new ChildClass()).toField("_parentField", Raw.charSequenceAssertion()).isEqualTo("parentField");
+        createReferenceAssertion(new ChildClass()).toField("_childField", Raw.charSequenceAssertion()).isEqualTo("childField");
 
         try {
             createReferenceAssertion().toField("value", Raw.objectAssertion());
@@ -1348,25 +1348,25 @@ public final class ReferenceAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: assertion.");
         }
         try {
-            clearActual(createReferenceAssertion(new ToFieldParentClass()).toField("_parentField", Raw.charSequenceAssertion())).isEqualTo("value");
+            clearActual(createReferenceAssertion(new ParentClass()).toField("_parentField", Raw.charSequenceAssertion())).isEqualTo("value");
             Assertions.fail("ReferenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's field: _parentField.\n\tActual value should not be null.");
         }
         try {
-            clearActual(createReferenceAssertion(new ToFieldParentClass(), "Message").toField("_parentField", Raw.charSequenceAssertion())).isEqualTo("value");
+            clearActual(createReferenceAssertion(new ParentClass(), "Message").toField("_parentField", Raw.charSequenceAssertion())).isEqualTo("value");
             Assertions.fail("ReferenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's field: _parentField.\n\tActual value should not be null.");
         }
         try {
-            createReferenceAssertion(new ToFieldParentClass()).toField("_nullField", Raw.charSequenceAssertion()).isNotNull();
+            createReferenceAssertion(new ParentClass()).toField("_nullField", Raw.charSequenceAssertion()).isNotNull();
             Assertions.fail("ReferenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's field: _nullField.\n\tActual value should not be null.");
         }
         try {
-            createReferenceAssertion(new ToFieldParentClass(), "Message").toField("_nullField", Raw.charSequenceAssertion()).isNotNull();
+            createReferenceAssertion(new ParentClass(), "Message").toField("_nullField", Raw.charSequenceAssertion()).isNotNull();
             Assertions.fail("ReferenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's field: _nullField.\n\tActual value should not be null.");
@@ -1378,12 +1378,12 @@ public final class ReferenceAssertionTest extends AssertionTest {
      */
     @Test
     public void toFieldMatcherTest() {
-        createReferenceAssertion(new ToFieldParentClass()).toField("_nullField", Matchers.nullValue());
-        createReferenceAssertion(new ToFieldParentClass()).toField("_parentField", Matchers.equalTo("parentField"));
+        createReferenceAssertion(new ParentClass()).toField("_nullField", Matchers.nullValue());
+        createReferenceAssertion(new ParentClass()).toField("_parentField", Matchers.equalTo("parentField"));
 
-        createReferenceAssertion(new ToFieldChildClass()).toField("_nullField", Matchers.nullValue());
-        createReferenceAssertion(new ToFieldChildClass()).toField("_parentField", Matchers.equalTo("parentField"));
-        createReferenceAssertion(new ToFieldChildClass()).toField("_childField", Matchers.equalTo("childField"));
+        createReferenceAssertion(new ChildClass()).toField("_nullField", Matchers.nullValue());
+        createReferenceAssertion(new ChildClass()).toField("_parentField", Matchers.equalTo("parentField"));
+        createReferenceAssertion(new ChildClass()).toField("_childField", Matchers.equalTo("childField"));
 
         try {
             createReferenceAssertion().toField("value", Matchers.nullValue());
@@ -1452,25 +1452,25 @@ public final class ReferenceAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: matcher.");
         }
         try {
-            createReferenceAssertion(new ToFieldParentClass()).toField("wrongFieldName", Matchers.not(Matchers.nullValue()));
+            createReferenceAssertion(new ParentClass()).toField("wrongFieldName", Matchers.not(Matchers.nullValue()));
             Assertions.fail("ReferenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain the expected field.\n\tExpected:<wrongFieldName>");
         }
         try {
-            createReferenceAssertion(new ToFieldParentClass(), "Message").toField("wrongFieldName", Matchers.not(Matchers.nullValue()));
+            createReferenceAssertion(new ParentClass(), "Message").toField("wrongFieldName", Matchers.not(Matchers.nullValue()));
             Assertions.fail("ReferenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain the expected field.\n\tExpected:<wrongFieldName>");
         }
         try {
-            createReferenceAssertion(new ToFieldParentClass()).toField("_nullField", Matchers.not(Matchers.nullValue()));
+            createReferenceAssertion(new ParentClass()).toField("_nullField", Matchers.not(Matchers.nullValue()));
             Assertions.fail("ReferenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's field: _nullField.\nExpected: not null\n     but: was null");
         }
         try {
-            createReferenceAssertion(new ToFieldParentClass(), "Message").toField("_nullField", Matchers.not(Matchers.nullValue()));
+            createReferenceAssertion(new ParentClass(), "Message").toField("_nullField", Matchers.not(Matchers.nullValue()));
             Assertions.fail("ReferenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's field: _nullField.\nExpected: not null\n     but: was null");
@@ -1482,7 +1482,15 @@ public final class ReferenceAssertionTest extends AssertionTest {
      */
     @Test
     public void toMethodCallResultWithParameterTypesTest() {
-        // TODO
+        createReferenceAssertion(new ParentClass()).toField("_nullField").isNull();
+        createReferenceAssertion(new ParentClass()).toField("_parentField").isNotNull();
+        createReferenceAssertion(new ParentClass()).toField("_parentField").isEqualTo("parentField");
+
+        createReferenceAssertion(new ChildClass()).toField("_nullField").isNull();
+        createReferenceAssertion(new ChildClass()).toField("_parentField").isNotNull();
+        createReferenceAssertion(new ChildClass()).toField("_parentField").isEqualTo("parentField");
+        createReferenceAssertion(new ChildClass()).toField("_childField").isNotNull();
+        createReferenceAssertion(new ChildClass()).toField("_childField").isEqualTo("childField");
     }
 
     /**
@@ -1532,7 +1540,7 @@ public final class ReferenceAssertionTest extends AssertionTest {
      */
     @Test
     public void setAccessibleTest() throws Exception {
-        ToFieldChildClass privateField = new ToFieldChildClass();
+        ChildClass privateField = new ChildClass();
         Field field = privateField.getClass().getDeclaredField("_childField");
         try {
             field.get(privateField);
@@ -1580,24 +1588,28 @@ public final class ReferenceAssertionTest extends AssertionTest {
      *
      * @author Dmitry Shapovalov
      */
-    private static class ToFieldParentClass {
+    private static class ParentClass {
 
         private final String _nullField;
 
         private final String _parentField;
 
-        ToFieldParentClass() {
+        ParentClass() {
             super();
             _nullField = null;
             _parentField = "parentField";
         }
 
-        String getNullField() {
+        private String getNullField() {
             return _nullField;
         }
 
-        String getParentField() {
+        private String getParentField() {
             return _parentField;
+        }
+
+        private String parentMethod() {
+            return "parentMethod";
         }
 
     }
@@ -1607,17 +1619,29 @@ public final class ReferenceAssertionTest extends AssertionTest {
      *
      * @author Dmitry Shapovalov
      */
-    private static class ToFieldChildClass extends ToFieldParentClass {
+    private static class ChildClass extends ParentClass {
 
         private final String _childField;
 
-        ToFieldChildClass() {
+        ChildClass() {
             super();
             _childField = "childField";
         }
 
-        String getChildField() {
+        private String getChildField() {
             return _childField;
+        }
+
+        private String childMethod(final String param) {
+            return "childMethod:" + param;
+        }
+
+        private String childMethod(final String param1, final int param2) {
+            return "childMethod:" + param1 + "," + param2;
+        }
+
+        private void childFailMethod() {
+            throw new RuntimeException("test exception");
         }
 
     }
