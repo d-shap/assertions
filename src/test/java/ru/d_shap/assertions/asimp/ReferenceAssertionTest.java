@@ -1482,15 +1482,149 @@ public final class ReferenceAssertionTest extends AssertionTest {
      */
     @Test
     public void toMethodCallResultWithParameterTypesTest() {
-        createReferenceAssertion(new ParentClass()).toField("_nullField").isNull();
-        createReferenceAssertion(new ParentClass()).toField("_parentField").isNotNull();
-        createReferenceAssertion(new ParentClass()).toField("_parentField").isEqualTo("parentField");
+        createReferenceAssertion(new ParentClass()).toMethodCallResult("parentMethod", new Class<?>[]{}, new Object[]{}).isEqualTo("parentMethod");
+        createReferenceAssertion(new ChildClass()).toMethodCallResult("parentMethod", new Class<?>[]{}, new Object[]{}).isEqualTo("parentMethod");
+        createReferenceAssertion(new ChildClass()).toMethodCallResult("childMethod", new Class<?>[]{String.class}, new Object[]{"param"}).isEqualTo("childMethod:param");
+        createReferenceAssertion(new ChildClass()).toMethodCallResult("childMethod", new Class<?>[]{String.class, int.class}, new Object[]{"param", 5}).isEqualTo("childMethod:param,5");
 
-        createReferenceAssertion(new ChildClass()).toField("_nullField").isNull();
-        createReferenceAssertion(new ChildClass()).toField("_parentField").isNotNull();
-        createReferenceAssertion(new ChildClass()).toField("_parentField").isEqualTo("parentField");
-        createReferenceAssertion(new ChildClass()).toField("_childField").isNotNull();
-        createReferenceAssertion(new ChildClass()).toField("_childField").isEqualTo("childField");
+        try {
+            createReferenceAssertion().toMethodCallResult("method", new Class<?>[]{}, new Object[]{});
+            Assertions.fail("ReferenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            createReferenceAssertion(null).toMethodCallResult("method", new Class<?>[]{}, new Object[]{});
+            Assertions.fail("ReferenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            createReferenceAssertion(null, "Message").toMethodCallResult("method", new Class<?>[]{}, new Object[]{});
+            Assertions.fail("ReferenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            createReferenceAssertion(null).toMethodCallResult(null, new Class<?>[]{}, new Object[]{});
+            Assertions.fail("ReferenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            createReferenceAssertion(null, "Message").toMethodCallResult(null, new Class<?>[]{}, new Object[]{});
+            Assertions.fail("ReferenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            createReferenceAssertion(new ChildClass()).toMethodCallResult(null, new Class<?>[]{}, new Object[]{});
+            Assertions.fail("ReferenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: methodName.");
+        }
+        try {
+            createReferenceAssertion(new ChildClass(), "Message").toMethodCallResult(null, new Class<?>[]{}, new Object[]{});
+            Assertions.fail("ReferenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: methodName.");
+        }
+        try {
+            createReferenceAssertion(new ChildClass()).toMethodCallResult(null, (Class<?>[]) null, new Object[]{});
+            Assertions.fail("ReferenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: methodName.");
+        }
+        try {
+            createReferenceAssertion(new ChildClass(), "Message").toMethodCallResult(null, (Class<?>[]) null, new Object[]{});
+            Assertions.fail("ReferenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: methodName.");
+        }
+        try {
+            createReferenceAssertion(new ChildClass()).toMethodCallResult("method", (Class<?>[]) null, new Object[]{});
+            Assertions.fail("ReferenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: parameterTypes.");
+        }
+        try {
+            createReferenceAssertion(new ChildClass(), "Message").toMethodCallResult("method", (Class<?>[]) null, new Object[]{});
+            Assertions.fail("ReferenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: parameterTypes.");
+        }
+        try {
+            createReferenceAssertion(new ChildClass()).toMethodCallResult("method", (Class<?>[]) null, null);
+            Assertions.fail("ReferenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: parameterTypes.");
+        }
+        try {
+            createReferenceAssertion(new ChildClass(), "Message").toMethodCallResult("method", (Class<?>[]) null, null);
+            Assertions.fail("ReferenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: parameterTypes.");
+        }
+        try {
+            createReferenceAssertion(new ChildClass()).toMethodCallResult("method", new Class<?>[]{}, null);
+            Assertions.fail("ReferenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: arguments.");
+        }
+        try {
+            createReferenceAssertion(new ChildClass(), "Message").toMethodCallResult("method", new Class<?>[]{}, null);
+            Assertions.fail("ReferenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: arguments.");
+        }
+        try {
+            createReferenceAssertion(new ChildClass()).toMethodCallResult("wrongMethodName", new Class<?>[]{}, new Object[]{});
+            Assertions.fail("ReferenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should contain the expected callable method.\n\tExpected:<wrongMethodName>");
+        }
+        try {
+            createReferenceAssertion(new ChildClass(), "Message").toMethodCallResult("wrongMethodName", new Class<?>[]{}, new Object[]{});
+            Assertions.fail("ReferenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain the expected callable method.\n\tExpected:<wrongMethodName>");
+        }
+        try {
+            createReferenceAssertion(new ChildClass()).toMethodCallResult("childMethod", new Class<?>[]{int.class}, new Object[]{5});
+            Assertions.fail("ReferenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should contain the expected callable method.\n\tExpected:<childMethod>");
+        }
+        try {
+            createReferenceAssertion(new ChildClass(), "Message").toMethodCallResult("childMethod", new Class<?>[]{int.class}, new Object[]{5});
+            Assertions.fail("ReferenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain the expected callable method.\n\tExpected:<childMethod>");
+        }
+        try {
+            createReferenceAssertion(new ChildClass()).toMethodCallResult("childFailMethod", new Class<?>[]{}, new Object[]{});
+            Assertions.fail("ReferenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should contain the expected callable method.\n\tExpected:<childFailMethod>");
+        }
+        try {
+            createReferenceAssertion(new ChildClass(), "Message").toMethodCallResult("childFailMethod", new Class<?>[]{}, new Object[]{});
+            Assertions.fail("ReferenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain the expected callable method.\n\tExpected:<childFailMethod>");
+        }
+        try {
+            createReferenceAssertion(new ChildClass()).toMethodCallResult("childMethod", new Class<?>[]{String.class}, new Object[]{"param"}).isEqualTo("value");
+            Assertions.fail("ReferenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's method call result: childMethod[param].\n\tActual and expected values should be the same.\n\tExpected:<value> but was:<childMethod:param>");
+        }
+        try {
+            createReferenceAssertion(new ChildClass(), "Message").toMethodCallResult("childMethod", new Class<?>[]{String.class}, new Object[]{"param"}).isEqualTo("value");
+            Assertions.fail("ReferenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's method call result: childMethod[param].\n\tActual and expected values should be the same.\n\tExpected:<value> but was:<childMethod:param>");
+        }
     }
 
     /**
