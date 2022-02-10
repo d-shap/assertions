@@ -41,6 +41,7 @@ import ru.d_shap.assertions.asimp.array.IntArrayToObjectArrayValueConverter;
 import ru.d_shap.assertions.asimp.array.IntArrayToShortArrayValueConverter;
 import ru.d_shap.assertions.asimp.array.LongArrayToListValueConverter;
 import ru.d_shap.assertions.asimp.array.LongArrayToObjectArrayValueConverter;
+import ru.d_shap.assertions.asimp.array.ObjectArrayToClassArrayValueConverter;
 import ru.d_shap.assertions.asimp.array.ObjectArrayToListValueConverter;
 import ru.d_shap.assertions.asimp.array.ShortArrayToListValueConverter;
 import ru.d_shap.assertions.asimp.array.ShortArrayToObjectArrayValueConverter;
@@ -108,6 +109,7 @@ public final class ValueConverter {
         CONVERTER_PROVIDERS.add(new IntArrayToShortArrayValueConverter());
         CONVERTER_PROVIDERS.add(new LongArrayToListValueConverter());
         CONVERTER_PROVIDERS.add(new LongArrayToObjectArrayValueConverter());
+        CONVERTER_PROVIDERS.add(new ObjectArrayToClassArrayValueConverter());
         CONVERTER_PROVIDERS.add(new ObjectArrayToListValueConverter());
         CONVERTER_PROVIDERS.add(new ShortArrayToListValueConverter());
         CONVERTER_PROVIDERS.add(new ShortArrayToObjectArrayValueConverter());
