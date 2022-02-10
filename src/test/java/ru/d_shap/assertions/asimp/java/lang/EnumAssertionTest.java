@@ -25,6 +25,7 @@ import org.junit.Test;
 import ru.d_shap.assertions.AssertionTest;
 import ru.d_shap.assertions.Assertions;
 import ru.d_shap.assertions.Raw;
+import ru.d_shap.assertions.data.ReflectionException;
 
 /**
  * Tests for {@link EnumAssertion}.
@@ -224,16 +225,20 @@ public final class EnumAssertionTest extends AssertionTest {
     @Test
     public void callReflectionCatchStatemensTest() {
         try {
-            initialize(new EnumAssertion("wrongMethodName", "valueOf"), Values.class).toValueCount();
+            initialize(new EnumAssertion("wrongMethodName1", "valueOf"), Values.class).toValueCount();
             Assertions.fail("EnumAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasCause(NoSuchMethodException.class);
+            Assertions.assertThat(ex).hasMessage("Actual value should contain the expected callable method.\n\tExpected:<wrongMethodName1>");
+            Assertions.assertThat(ex).hasCause(ReflectionException.class);
+            Assertions.assertThat(ex).toCause().hasCause(NoSuchMethodException.class);
         }
         try {
-            initialize(new EnumAssertion("values", "wrongMethodName"), Values.class).toValueCount();
+            initialize(new EnumAssertion("values", "wrongMethodName2"), Values.class).toValueCount();
             Assertions.fail("EnumAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasCause(NoSuchMethodException.class);
+            Assertions.assertThat(ex).hasMessage("Actual value should contain the expected callable method.\n\tExpected:<wrongMethodName2>");
+            Assertions.assertThat(ex).hasCause(ReflectionException.class);
+            Assertions.assertThat(ex).toCause().hasCause(NoSuchMethodException.class);
         }
     }
 
