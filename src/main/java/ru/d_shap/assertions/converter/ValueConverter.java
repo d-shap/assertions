@@ -49,6 +49,7 @@ import ru.d_shap.assertions.asimp.java.io.InputStreamToByteArrayValueConverter;
 import ru.d_shap.assertions.asimp.java.io.ReaderToCharArrayValueConverter;
 import ru.d_shap.assertions.asimp.java.lang.CharSequenceToDocumentValueConverter;
 import ru.d_shap.assertions.asimp.java.lang.CharSequenceToElementValueConverter;
+import ru.d_shap.assertions.asimp.java.lang.ClassToClassValueConverter;
 import ru.d_shap.assertions.asimp.java.lang.IterableToListValueConverter;
 import ru.d_shap.assertions.asimp.java.lang.ObjectToClassValueConverter;
 import ru.d_shap.assertions.asimp.java.nio.ByteBufferToByteArrayValueConverter;
@@ -83,6 +84,7 @@ public final class ValueConverter {
 
         CONVERTER_PROVIDERS.add(new CharSequenceToDocumentValueConverter());
         CONVERTER_PROVIDERS.add(new CharSequenceToElementValueConverter());
+        CONVERTER_PROVIDERS.add(new ClassToClassValueConverter());
         CONVERTER_PROVIDERS.add(new IterableToListValueConverter());
         CONVERTER_PROVIDERS.add(new ObjectToClassValueConverter());
 
