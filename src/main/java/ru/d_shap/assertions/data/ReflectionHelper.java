@@ -85,8 +85,14 @@ public final class ReflectionHelper {
      * @return the value of the specified field.
      */
     public static <T> Object getFieldValue(final Field field, final T object) {
+        return getFieldValue(field, object, true);
+    }
+
+    static <T> Object getFieldValue(final Field field, final T object, final boolean setAccessible) {
         try {
-            setAccessible(field);
+            if (setAccessible) {
+                setAccessible(field);
+            }
             return field.get(object);
         } catch (IllegalAccessException ex) {
             throw new ReflectionException(ex);
@@ -172,8 +178,14 @@ public final class ReflectionHelper {
      * @return the result of the method call.
      */
     public static <T> Object callMethod(final Method method, final T object, final Object... arguments) {
+        return callMethod(method, object, true, arguments);
+    }
+
+    static <T> Object callMethod(final Method method, final T object, final boolean setAccessible, final Object... arguments) {
         try {
-            setAccessible(method);
+            if (setAccessible) {
+                setAccessible(method);
+            }
             return method.invoke(object, arguments);
         } catch (IllegalAccessException | InvocationTargetException ex) {
             throw new ReflectionException(ex);
@@ -286,8 +298,14 @@ public final class ReflectionHelper {
      * @return the object created.
      */
     public static <T> T callConstructor(final Constructor<T> constructor, final Object... arguments) {
+        return callConstructor(constructor, true, arguments);
+    }
+
+    static <T> T callConstructor(final Constructor<T> constructor, final boolean setAccessible, final Object... arguments) {
         try {
-            setAccessible(constructor);
+            if (setAccessible) {
+                setAccessible(constructor);
+            }
             return constructor.newInstance(arguments);
         } catch (IllegalAccessException | InvocationTargetException | InstantiationException ex) {
             throw new ReflectionException(ex);
