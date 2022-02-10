@@ -91,7 +91,7 @@ public final class CharSequenceToDocumentValueConverterTest extends AssertionTes
             new CharSequenceToDocumentValueConverter().convert("<element>");
             Assertions.fail("CharSequenceToDocumentValueConverter test fail");
         } catch (ConversionException ex) {
-            Assertions.assertThat(ex).toMessage().contains("XML document structures must start and end within the same entity.");
+            Assertions.assertThat(ex).messageMatches(".*XML document structures must start and end within the same entity.");
             Assertions.assertThat(ex).hasCause(SAXException.class);
         }
     }
@@ -139,6 +139,7 @@ public final class CharSequenceToDocumentValueConverterTest extends AssertionTes
                     new CharSequenceToDocumentValueConverter().convert(xml);
                     Assertions.fail("CharSequenceToDocumentValueConverter test fail");
                 } catch (ConversionException ex) {
+                    Assertions.assertThat(ex).messageMatches(".*XML document structures must start and end within the same entity.");
                     Assertions.assertThat(ex).hasCause(SAXException.class);
                 }
                 String message = new String(byteArrayOutputStream.toByteArray(), ENCODING_UTF_8);
