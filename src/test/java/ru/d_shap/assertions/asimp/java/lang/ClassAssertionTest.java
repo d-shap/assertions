@@ -1256,21 +1256,16 @@ public final class ClassAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Actual value's constructor should not be acccessible.\n\tActual:<java.lang.Object>");
         }
         try {
-            initialize(Raw.classAssertion(), Number.class).hasOnePrivateConstructor();
+            initialize(Raw.classAssertion(), Object.class, "Message").hasOnePrivateConstructor();
             Assertions.fail("ClassAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value's constructor should not be acccessible.\n\tActual:<java.lang.Number>");
-        }
-        try {
-            initialize(Raw.classAssertion(), Number.class, "Message").hasOnePrivateConstructor();
-            Assertions.fail("ClassAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value's constructor should not be acccessible.\n\tActual:<java.lang.Number>");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value's constructor should not be acccessible.\n\tActual:<java.lang.Object>");
         }
         try {
             initialize(Raw.classAssertion(), AbstractClass.class).hasOnePrivateConstructor();
             Assertions.fail("ClassAssertion test fail");
         } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should contain the expected callable constructor.");
             Assertions.assertThat(ex).hasCause(ReflectionException.class);
             Assertions.assertThat(ex).toCause().hasCause(InstantiationException.class);
         }
@@ -1278,6 +1273,7 @@ public final class ClassAssertionTest extends AssertionTest {
             initialize(Raw.classAssertion(), FailConstructorClass.class).hasOnePrivateConstructor();
             Assertions.fail("ClassAssertion test fail");
         } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should contain the expected callable constructor.");
             Assertions.assertThat(ex).hasCause(ReflectionException.class);
             Assertions.assertThat(ex).toCause().hasCause(InvocationTargetException.class);
         }
