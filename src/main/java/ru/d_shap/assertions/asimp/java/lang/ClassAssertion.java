@@ -232,7 +232,7 @@ public class ClassAssertion extends ReferenceAssertion<Class<?>> {
      */
     public final void hasOnePrivateConstructor() {
         checkActualIsNotNull();
-        Constructor<?>[] constructors = getActual().getDeclaredConstructors();
+        Constructor<?>[] constructors = ReflectionHelper.getConstructors(getActual());
         if (constructors.length != 1) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_CONSTRUCTOR_DEFAULT).addActual().build();
         }
@@ -244,7 +244,6 @@ public class ClassAssertion extends ReferenceAssertion<Class<?>> {
         if (!Modifier.isPrivate(modifiers)) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_CONSTRUCTOR_NOT_ACCESSIBLE).addActual().build();
         }
-        setAccessible(constructor);
         try {
             ReflectionHelper.callConstructor(constructor);
         } catch (ReflectionException ex) {
