@@ -326,6 +326,14 @@ public final class ReflectionHelperTest extends AssertionTest {
         ReflectionHelper.setAccessible(childMethod2Child);
         Object childMethod2ChildValue = childMethod2Child.invoke(childClass, "param", 5);
         Assertions.assertThat(childMethod2ChildValue).isEqualTo("childMethod:param,5");
+
+        try {
+            ReflectionHelper.getMethod(childClass, "childMethod", null, int.class);
+            Assertions.fail("PrivateAccessor test fail");
+        } catch (ReflectionException ex) {
+            Assertions.assertThat(ex).messageMatches(".*\\$ChildClass.childMethod\\(null, int\\)");
+            Assertions.assertThat(ex).hasCause(NoSuchMethodException.class);
+        }
     }
 
     /**
@@ -373,6 +381,14 @@ public final class ReflectionHelperTest extends AssertionTest {
         ReflectionHelper.setAccessible(childMethod2Child);
         Object childMethod2ChildValue = childMethod2Child.invoke(childClass, "param", 5);
         Assertions.assertThat(childMethod2ChildValue).isEqualTo("childMethod:param,5");
+
+        try {
+            ReflectionHelper.getMethod(ChildClass.class, "childMethod", null, int.class);
+            Assertions.fail("PrivateAccessor test fail");
+        } catch (ReflectionException ex) {
+            Assertions.assertThat(ex).messageMatches(".*\\$ChildClass.childMethod\\(null, int\\)");
+            Assertions.assertThat(ex).hasCause(NoSuchMethodException.class);
+        }
     }
 
     /**
@@ -425,6 +441,10 @@ public final class ReflectionHelperTest extends AssertionTest {
         Method childMethod2Child = ReflectionHelper.getMethod(ChildClass.class, "childMethod", String.class, int.class);
         Object childMethod2ChildValue = ReflectionHelper.callMethod(childMethod2Child, childClass, "param", 5);
         Assertions.assertThat(childMethod2ChildValue).isEqualTo("childMethod:param,5");
+
+        Method childMethod3Child = ReflectionHelper.getMethod(ChildClass.class, "childMethod", String.class, int.class);
+        Object childMethod3ChildValue = ReflectionHelper.callMethod(childMethod3Child, childClass, null, 5);
+        Assertions.assertThat(childMethod3ChildValue).isEqualTo("childMethod:null,5");
     }
 
     /**
@@ -504,6 +524,14 @@ public final class ReflectionHelperTest extends AssertionTest {
             Assertions.assertThat(ex).messageMatches(".*\\$ChildClass.childMethod\\(java.lang.String, java.lang.Integer\\)");
             Assertions.assertThat(ex).hasCause(NoSuchMethodException.class);
         }
+
+        try {
+            ReflectionHelper.callMethod(childClass, "childMethod", null, Integer.valueOf("5"));
+            Assertions.fail("PrivateAccessor test fail");
+        } catch (ReflectionException ex) {
+            Assertions.assertThat(ex).messageMatches(".*\\$ChildClass.childMethod\\(null, java.lang.Integer\\)");
+            Assertions.assertThat(ex).hasCause(NoSuchMethodException.class);
+        }
     }
 
     /**
@@ -571,6 +599,14 @@ public final class ReflectionHelperTest extends AssertionTest {
             Assertions.assertThat(ex).messageMatches(".*\\$ChildClass.childMethod\\(java.lang.String, java.lang.Integer\\)");
             Assertions.assertThat(ex).hasCause(NoSuchMethodException.class);
         }
+
+        try {
+            ReflectionHelper.callMethod(ChildClass.class, childClass, "childMethod", null, Integer.valueOf("5"));
+            Assertions.fail("PrivateAccessor test fail");
+        } catch (ReflectionException ex) {
+            Assertions.assertThat(ex).messageMatches(".*\\$ChildClass.childMethod\\(null, java.lang.Integer\\)");
+            Assertions.assertThat(ex).hasCause(NoSuchMethodException.class);
+        }
     }
 
     /**
@@ -604,6 +640,14 @@ public final class ReflectionHelperTest extends AssertionTest {
         ReflectionHelper.setAccessible(constructor3);
         PrivateConstructorClass object3 = constructor3.newInstance("param", 5);
         Assertions.assertThat(object3.getValue()).isEqualTo("Two args: param,5");
+
+        try {
+            ReflectionHelper.getConstructor(PrivateConstructorClass.class, null, int.class);
+            Assertions.fail("PrivateAccessor test fail");
+        } catch (ReflectionException ex) {
+            Assertions.assertThat(ex).messageMatches(".*\\$PrivateConstructorClass.<init>\\(null, int\\)");
+            Assertions.assertThat(ex).hasCause(NoSuchMethodException.class);
+        }
     }
 
     /**
@@ -636,6 +680,10 @@ public final class ReflectionHelperTest extends AssertionTest {
         Constructor<PrivateConstructorClass> constructor3 = ReflectionHelper.getConstructor(PrivateConstructorClass.class, String.class, int.class);
         PrivateConstructorClass object3 = ReflectionHelper.callConstructor(constructor3, "param", 5);
         Assertions.assertThat(object3.getValue()).isEqualTo("Two args: param,5");
+
+        Constructor<PrivateConstructorClass> constructor4 = ReflectionHelper.getConstructor(PrivateConstructorClass.class, String.class, int.class);
+        PrivateConstructorClass object4 = ReflectionHelper.callConstructor(constructor4, null, 5);
+        Assertions.assertThat(object4.getValue()).isEqualTo("Two args: null,5");
     }
 
     /**
@@ -699,6 +747,14 @@ public final class ReflectionHelperTest extends AssertionTest {
             Assertions.fail("PrivateAccessor test fail");
         } catch (ReflectionException ex) {
             Assertions.assertThat(ex).messageMatches(".*\\$PrivateConstructorClass.<init>\\(java.lang.String, java.lang.Integer\\)");
+            Assertions.assertThat(ex).hasCause(NoSuchMethodException.class);
+        }
+
+        try {
+            ReflectionHelper.callConstructor(PrivateConstructorClass.class, null, Integer.parseInt("5"));
+            Assertions.fail("PrivateAccessor test fail");
+        } catch (ReflectionException ex) {
+            Assertions.assertThat(ex).messageMatches(".*\\$PrivateConstructorClass.<init>\\(null, java.lang.Integer\\)");
             Assertions.assertThat(ex).hasCause(NoSuchMethodException.class);
         }
     }
