@@ -26,6 +26,8 @@ import org.hamcrest.Matcher;
 import ru.d_shap.assertions.Messages;
 import ru.d_shap.assertions.Raw;
 import ru.d_shap.assertions.asimp.primitive.IntAssertion;
+import ru.d_shap.assertions.data.ReflectionException;
+import ru.d_shap.assertions.data.ReflectionHelper;
 
 /**
  * Assertions for the enum.
@@ -80,20 +82,27 @@ public class EnumAssertion extends ClassAssertion {
     }
 
     private int getValueCount() {
+        Method valuesMethod;
         try {
-            Method valuesMethod = getActual().getDeclaredMethod(_valuesMethodName);
-            Object[] values = (Object[]) valuesMethod.invoke(null);
-
-            Method valueOfMethod = getActual().getDeclaredMethod(_valueOfMethodName, String.class);
-            for (Object value : values) {
-                String valueName = value.toString();
-                valueOfMethod.invoke(null, valueName);
-            }
-
-            return values.length;
-        } catch (ReflectiveOperationException ex) {
-            throw getAssertionErrorBuilder().addThrowable(ex).build();
+            valuesMethod = ReflectionHelper.getMethod(getActual(), _valuesMethodName);
+        } catch (ReflectionException ex) {
+            throw getAssertionErrorBuilder().addThrowable(ex).addMessage(Messages.Fail.Actual.CONTAINS_CALLABLE_METHOD).addRawExpected(_valuesMethodName, String.class).build();
         }
+        Object[] values = (Object[]) ReflectionHelper.callMethod(valuesMethod, (Object) null);
+
+        Method valueOfMethod;
+        try {
+            valueOfMethod = ReflectionHelper.getMethod(getActual(), _valueOfMethodName, String.class);
+        } catch (ReflectionException ex) {
+            throw getAssertionErrorBuilder().addThrowable(ex).addMessage(Messages.Fail.Actual.CONTAINS_CALLABLE_METHOD).addRawExpected(_valueOfMethodName, String.class).build();
+        }
+        for (Object value : values) {
+            String valueName = value.toString();
+            ReflectionHelper.callMethod(valueOfMethod, getActual(), valueName);
+        }
+
+        return values.length;
+
     }
 
     /**
