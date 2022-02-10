@@ -102,7 +102,6 @@ public class EnumAssertion extends ClassAssertion {
         }
 
         return values.length;
-
     }
 
     /**
