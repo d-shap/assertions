@@ -66,9 +66,7 @@ public final class ReflectionHelper {
         NoSuchFieldException noSuchFieldException = null;
         while (currentClazz != null) {
             try {
-                Field field = currentClazz.getDeclaredField(fieldName);
-                setAccessible(field);
-                return field;
+                return currentClazz.getDeclaredField(fieldName);
             } catch (NoSuchFieldException ex) {
                 noSuchFieldException = ex;
                 currentClazz = currentClazz.getSuperclass();
@@ -88,6 +86,7 @@ public final class ReflectionHelper {
      */
     public static <T> Object getFieldValue(final Field field, final T object) {
         try {
+            setAccessible(field);
             return field.get(object);
         } catch (IllegalAccessException ex) {
             throw new ReflectionException(ex);
@@ -151,9 +150,7 @@ public final class ReflectionHelper {
         NoSuchMethodException noSuchMethodException = null;
         while (currentClazz != null) {
             try {
-                Method method = currentClazz.getDeclaredMethod(methodName, parameterTypes);
-                setAccessible(method);
-                return method;
+                return currentClazz.getDeclaredMethod(methodName, parameterTypes);
             } catch (NoSuchMethodException ex) {
                 if (noSuchMethodException == null) {
                     noSuchMethodException = ex;
@@ -176,6 +173,7 @@ public final class ReflectionHelper {
      */
     public static <T> Object callMethod(final Method method, final T object, final Object... arguments) {
         try {
+            setAccessible(method);
             return method.invoke(object, arguments);
         } catch (IllegalAccessException | InvocationTargetException ex) {
             throw new ReflectionException(ex);
@@ -258,11 +256,7 @@ public final class ReflectionHelper {
      */
     @SuppressWarnings("unchecked")
     public static <T> Constructor<T>[] getConstructors(final Class<T> clazz) {
-        Constructor<T>[] constructors = (Constructor<T>[]) clazz.getDeclaredConstructors();
-        for (Constructor<T> constructor : constructors) {
-            setAccessible(constructor);
-        }
-        return constructors;
+        return (Constructor<T>[]) clazz.getDeclaredConstructors();
     }
 
     /**
@@ -276,9 +270,7 @@ public final class ReflectionHelper {
      */
     public static <T> Constructor<T> getConstructor(final Class<T> clazz, final Class<?>... parameterTypes) {
         try {
-            Constructor<T> constructor = clazz.getDeclaredConstructor(parameterTypes);
-            setAccessible(constructor);
-            return constructor;
+            return clazz.getDeclaredConstructor(parameterTypes);
         } catch (NoSuchMethodException ex) {
             throw new ReflectionException(ex);
         }
@@ -295,6 +287,7 @@ public final class ReflectionHelper {
      */
     public static <T> T callConstructor(final Constructor<T> constructor, final Object... arguments) {
         try {
+            setAccessible(constructor);
             return constructor.newInstance(arguments);
         } catch (IllegalAccessException | InvocationTargetException | InstantiationException ex) {
             throw new ReflectionException(ex);
