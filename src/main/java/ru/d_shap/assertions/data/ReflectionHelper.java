@@ -249,13 +249,30 @@ public final class ReflectionHelper {
     }
 
     /**
-     * Get the specified constructor.
+     * Get all class constructors.
+     *
+     * @param clazz the class.
+     * @param <T>   the generic type of the class.
+     *
+     * @return all class constructors.
+     */
+    @SuppressWarnings("unchecked")
+    public static <T> Constructor<T>[] getConstructors(final Class<T> clazz) {
+        Constructor<T>[] constructors = (Constructor<T>[]) clazz.getDeclaredConstructors();
+        for (Constructor<T> constructor : constructors) {
+            setAccessible(constructor);
+        }
+        return constructors;
+    }
+
+    /**
+     * Get the specified class constructor.
      *
      * @param clazz          the class.
      * @param parameterTypes the constructor parameter types.
      * @param <T>            the generic type of the class.
      *
-     * @return the specified constructor.
+     * @return the specified class constructor.
      */
     public static <T> Constructor<T> getConstructor(final Class<T> clazz, final Class<?>... parameterTypes) {
         try {
@@ -268,9 +285,9 @@ public final class ReflectionHelper {
     }
 
     /**
-     * Call the specified constructor.
+     * Call the specified class constructor.
      *
-     * @param constructor the specified constructor.
+     * @param constructor the specified class constructor.
      * @param arguments   the arguments used to call the constructor.
      * @param <T>         the generic type of the class.
      *
@@ -285,7 +302,7 @@ public final class ReflectionHelper {
     }
 
     /**
-     * Call the specified constructor.
+     * Call the specified class constructor.
      *
      * @param clazz          the class.
      * @param parameterTypes the constructor parameter types.
@@ -300,7 +317,7 @@ public final class ReflectionHelper {
     }
 
     /**
-     * Call the specified constructor.
+     * Call the specified class constructor.
      * Constructor with primitive parameters will not be called, use the overloaded method with parameter types.
      *
      * @param clazz     the class.
