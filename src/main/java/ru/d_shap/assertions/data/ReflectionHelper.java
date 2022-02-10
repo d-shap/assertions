@@ -27,6 +27,8 @@ import java.lang.reflect.Method;
 import java.security.AccessController;
 import java.security.PrivilegedAction;
 
+import ru.d_shap.assertions.converter.ValueConverter;
+
 /**
  * Helper class to perform reflection operations.
  *
@@ -245,12 +247,7 @@ public final class ReflectionHelper {
     }
 
     private static Class<?>[] getParameterTypes(final Object... arguments) {
-        Class<?>[] result = new Class[arguments.length];
-        for (int i = 0; i < arguments.length; i++) {
-            Object argument = arguments[i];
-            result[i] = argument.getClass();
-        }
-        return result;
+        return ValueConverter.convert(arguments, Class[].class);
     }
 
     /**
