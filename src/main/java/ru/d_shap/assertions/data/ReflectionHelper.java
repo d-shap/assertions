@@ -246,10 +246,6 @@ public final class ReflectionHelper {
         return callMethod(clazz, object, methodName, parameterTypes, arguments);
     }
 
-    private static Class<?>[] getParameterTypes(final Object... arguments) {
-        return ValueConverter.convert(arguments, Class[].class);
-    }
-
     /**
      * Get the specified constructor.
      *
@@ -314,6 +310,17 @@ public final class ReflectionHelper {
     public static <T> T callConstructor(final Class<T> clazz, final Object... arguments) {
         Class<?>[] parameterTypes = getParameterTypes(arguments);
         return callConstructor(clazz, parameterTypes, arguments);
+    }
+
+    /**
+     * Get the parameter types for the specified arguments.
+     *
+     * @param arguments the specified arguments.
+     *
+     * @return the parameter types.
+     */
+    public static Class<?>[] getParameterTypes(final Object... arguments) {
+        return ValueConverter.convert(arguments, Class[].class);
     }
 
     /**
