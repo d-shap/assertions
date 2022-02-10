@@ -359,6 +359,7 @@ public final class ReflectionHelperTest extends AssertionTest {
             ReflectionHelper.getMethod(new ChildClass(), "wrongMethodName");
             Assertions.fail("PrivateAccessor test fail");
         } catch (ReflectionException ex) {
+            Assertions.assertThat(ex).messageMatches(".*\\$ChildClass.wrongMethodName\\(\\)");
             Assertions.assertThat(ex).hasCause(NoSuchMethodException.class);
         }
     }
@@ -476,7 +477,7 @@ public final class ReflectionHelperTest extends AssertionTest {
             ReflectionHelper.callMethod(childClass, "childMethod", "param", 5);
             Assertions.fail("PrivateAccessor test fail");
         } catch (ReflectionException ex) {
-            Assertions.assertThat(ex).hasMessage("java.lang.Object.childMethod(java.lang.String, java.lang.Integer)");
+            Assertions.assertThat(ex).messageMatches(".*\\$ChildClass.childMethod\\(java.lang.String, java.lang.Integer\\)");
             Assertions.assertThat(ex).hasCause(NoSuchMethodException.class);
         }
     }
@@ -543,7 +544,7 @@ public final class ReflectionHelperTest extends AssertionTest {
             ReflectionHelper.callMethod(ChildClass.class, childClass, "childMethod", "param", 5);
             Assertions.fail("PrivateAccessor test fail");
         } catch (ReflectionException ex) {
-            Assertions.assertThat(ex).hasMessage("java.lang.Object.childMethod(java.lang.String, java.lang.Integer)");
+            Assertions.assertThat(ex).messageMatches(".*\\$ChildClass.childMethod\\(java.lang.String, java.lang.Integer\\)");
             Assertions.assertThat(ex).hasCause(NoSuchMethodException.class);
         }
     }
