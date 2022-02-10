@@ -155,7 +155,9 @@ public final class ReflectionHelper {
                 setAccessible(method);
                 return method;
             } catch (NoSuchMethodException ex) {
-                noSuchMethodException = ex;
+                if (noSuchMethodException == null) {
+                    noSuchMethodException = ex;
+                }
                 currentClazz = currentClazz.getSuperclass();
             }
         }
