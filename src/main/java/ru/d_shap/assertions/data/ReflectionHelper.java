@@ -181,7 +181,7 @@ public final class ReflectionHelper {
         return callMethod(method, object, true, arguments);
     }
 
-    static <T> Object callMethod(final Method method, final T object, final boolean setAccessible, final Object... arguments) {
+    static <T> Object callMethod(final Method method, final T object, final boolean setAccessible, final Object[] arguments) {
         try {
             if (setAccessible) {
                 setAccessible(method);
@@ -301,7 +301,7 @@ public final class ReflectionHelper {
         return callConstructor(constructor, true, arguments);
     }
 
-    static <T> T callConstructor(final Constructor<T> constructor, final boolean setAccessible, final Object... arguments) {
+    static <T> T callConstructor(final Constructor<T> constructor, final boolean setAccessible, final Object[] arguments) {
         try {
             if (setAccessible) {
                 setAccessible(constructor);
