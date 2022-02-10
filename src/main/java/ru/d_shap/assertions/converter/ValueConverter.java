@@ -50,6 +50,7 @@ import ru.d_shap.assertions.asimp.java.io.ReaderToCharArrayValueConverter;
 import ru.d_shap.assertions.asimp.java.lang.CharSequenceToDocumentValueConverter;
 import ru.d_shap.assertions.asimp.java.lang.CharSequenceToElementValueConverter;
 import ru.d_shap.assertions.asimp.java.lang.IterableToListValueConverter;
+import ru.d_shap.assertions.asimp.java.lang.ObjectToClassValueConverter;
 import ru.d_shap.assertions.asimp.java.nio.ByteBufferToByteArrayValueConverter;
 import ru.d_shap.assertions.asimp.java.nio.CharBufferToCharArrayValueConverter;
 import ru.d_shap.assertions.asimp.java.nio.DoubleBufferToDoubleArrayValueConverter;
@@ -83,6 +84,7 @@ public final class ValueConverter {
         CONVERTER_PROVIDERS.add(new CharSequenceToDocumentValueConverter());
         CONVERTER_PROVIDERS.add(new CharSequenceToElementValueConverter());
         CONVERTER_PROVIDERS.add(new IterableToListValueConverter());
+        CONVERTER_PROVIDERS.add(new ObjectToClassValueConverter());
 
         CONVERTER_PROVIDERS.add(new DateToCalendarValueConverter());
         CONVERTER_PROVIDERS.add(new IteratorToListValueConverter());
