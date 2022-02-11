@@ -445,6 +445,10 @@ public final class Messages {
 
             public static final String CALL_METHOD = "Actual value should call the expected method.";
 
+            public static final String CONTAINS_CONSTRUCTOR = "Actual value should contain the expected constructor.";
+
+            public static final String CALL_CONSTRUCTOR = "Actual value should call the expected constructor.";
+
             public static final String HAS_ATTRIBUTE = "Actual value should have the expected attribute.";
 
             public static final String HAS_NOT_ATTRIBUTE = "Actual value should not have the expected attribute.";
