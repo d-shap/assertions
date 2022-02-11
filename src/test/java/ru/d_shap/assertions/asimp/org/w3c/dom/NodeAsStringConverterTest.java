@@ -84,7 +84,7 @@ public final class NodeAsStringConverterTest extends AssertionTest {
             new NodeAsStringConverter().transform(source, result);
             Assertions.fail("NodeAsStringConverter test fail");
         } catch (ConversionException ex) {
-            Assertions.assertThat(ex).toMessage().contains("read exception");
+            Assertions.assertThat(ex).messageMatches(".*read exception");
             Assertions.assertThat(ex).hasCause(TransformerException.class);
             Assertions.assertThat(ex).toCause().hasCause(IOException.class);
         }
@@ -133,6 +133,7 @@ public final class NodeAsStringConverterTest extends AssertionTest {
                     new NodeAsStringConverter().transform(source, result);
                     Assertions.fail("NodeAsStringConverter test fail");
                 } catch (ConversionException ex) {
+                    Assertions.assertThat(ex).messageMatches(".*read exception");
                     Assertions.assertThat(ex).hasCause(TransformerException.class);
                 }
                 String message = new String(byteArrayOutputStream.toByteArray(), ENCODING_UTF_8);
