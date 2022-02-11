@@ -20,6 +20,7 @@
 package ru.d_shap.assertions.asimp;
 
 import java.lang.reflect.AccessibleObject;
+import java.lang.reflect.Method;
 
 import org.hamcrest.Matcher;
 
@@ -308,11 +309,17 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
         checkArgumentIsNotNull(methodName, "methodName");
         checkArgumentIsNotNull(parameterTypes, "parameterTypes");
         checkArgumentIsNotNull(arguments, "arguments");
+        Method method;
         try {
-            Object methodCallResult = ReflectionHelper.callMethod(getActual(), methodName, parameterTypes, arguments);
+            method = ReflectionHelper.getMethod(getActual(), methodName, parameterTypes);
+        } catch (ReflectionException ex) {
+            throw getAssertionErrorBuilder().addThrowable(ex).addMessage(Messages.Fail.Actual.CONTAINS_METHOD).addExpected(methodName).build();
+        }
+        try {
+            Object methodCallResult = ReflectionHelper.callMethod(method, arguments);
             return initializeAssertion(Raw.objectAssertion(), methodCallResult, Messages.Check.METHOD, methodName, arguments);
         } catch (ReflectionException ex) {
-            throw getAssertionErrorBuilder().addThrowable(ex).addMessage(Messages.Fail.Actual.CONTAINS_CALLABLE_METHOD).addExpected(methodName).build();
+            throw getAssertionErrorBuilder().addThrowable(ex).addMessage(Messages.Fail.Actual.CALL_METHOD).addExpected(methodName).build();
         }
     }
 
@@ -328,11 +335,18 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
         checkActualIsNotNull();
         checkArgumentIsNotNull(methodName, "methodName");
         checkArgumentIsNotNull(arguments, "arguments");
+        Method method;
         try {
-            Object methodCallResult = ReflectionHelper.callMethod(getActual(), methodName, arguments);
+            Class<?>[] parameterTypes = ReflectionHelper.getParameterTypes(arguments);
+            method = ReflectionHelper.getMethod(getActual(), methodName, parameterTypes);
+        } catch (ReflectionException ex) {
+            throw getAssertionErrorBuilder().addThrowable(ex).addMessage(Messages.Fail.Actual.CONTAINS_METHOD).addExpected(methodName).build();
+        }
+        try {
+            Object methodCallResult = ReflectionHelper.callMethod(method, arguments);
             return initializeAssertion(Raw.objectAssertion(), methodCallResult, Messages.Check.METHOD, methodName, arguments);
         } catch (ReflectionException ex) {
-            throw getAssertionErrorBuilder().addThrowable(ex).addMessage(Messages.Fail.Actual.CONTAINS_CALLABLE_METHOD).addExpected(methodName).build();
+            throw getAssertionErrorBuilder().addThrowable(ex).addMessage(Messages.Fail.Actual.CALL_METHOD).addExpected(methodName).build();
         }
     }
 
@@ -391,11 +405,17 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
         checkArgumentIsNotNull(matcher, "matcher");
         checkArgumentIsNotNull(parameterTypes, "parameterTypes");
         checkArgumentIsNotNull(arguments, "arguments");
+        Method method;
         try {
-            Object methodCallResult = ReflectionHelper.callMethod(getActual(), methodName, parameterTypes, arguments);
+            method = ReflectionHelper.getMethod(getActual(), methodName, parameterTypes);
+        } catch (ReflectionException ex) {
+            throw getAssertionErrorBuilder().addThrowable(ex).addMessage(Messages.Fail.Actual.CONTAINS_METHOD).addExpected(methodName).build();
+        }
+        try {
+            Object methodCallResult = ReflectionHelper.callMethod(method, arguments);
             matcherAssertion(methodCallResult, (Matcher<Object>) matcher, Messages.Check.METHOD, methodName, arguments);
         } catch (ReflectionException ex) {
-            throw getAssertionErrorBuilder().addThrowable(ex).addMessage(Messages.Fail.Actual.CONTAINS_CALLABLE_METHOD).addExpected(methodName).build();
+            throw getAssertionErrorBuilder().addThrowable(ex).addMessage(Messages.Fail.Actual.CALL_METHOD).addExpected(methodName).build();
         }
     }
 
@@ -412,11 +432,18 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
         checkArgumentIsNotNull(methodName, "methodName");
         checkArgumentIsNotNull(matcher, "matcher");
         checkArgumentIsNotNull(arguments, "arguments");
+        Method method;
         try {
-            Object methodCallResult = ReflectionHelper.callMethod(getActual(), methodName, arguments);
+            Class<?>[] parameterTypes = ReflectionHelper.getParameterTypes(arguments);
+            method = ReflectionHelper.getMethod(getActual(), methodName, parameterTypes);
+        } catch (ReflectionException ex) {
+            throw getAssertionErrorBuilder().addThrowable(ex).addMessage(Messages.Fail.Actual.CONTAINS_METHOD).addExpected(methodName).build();
+        }
+        try {
+            Object methodCallResult = ReflectionHelper.callMethod(method, arguments);
             matcherAssertion(methodCallResult, (Matcher<Object>) matcher, Messages.Check.METHOD, methodName, arguments);
         } catch (ReflectionException ex) {
-            throw getAssertionErrorBuilder().addThrowable(ex).addMessage(Messages.Fail.Actual.CONTAINS_CALLABLE_METHOD).addExpected(methodName).build();
+            throw getAssertionErrorBuilder().addThrowable(ex).addMessage(Messages.Fail.Actual.CALL_METHOD).addExpected(methodName).build();
         }
     }
 
