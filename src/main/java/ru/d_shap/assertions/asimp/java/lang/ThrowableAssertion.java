@@ -77,6 +77,17 @@ public class ThrowableAssertion extends ReferenceAssertion<Throwable> {
     }
 
     /**
+     * Check if the message of the throwable contains the expected value.
+     *
+     * @param expected the expected value.
+     */
+    public final void messageContains(final String expected) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(expected, "expected");
+        toMessage().contains(expected);
+    }
+
+    /**
      * Check if the message of the throwable matches the expected value.
      *
      * @param expected the expected value.
@@ -128,6 +139,17 @@ public class ThrowableAssertion extends ReferenceAssertion<Throwable> {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         toCause().hasMessage(expected);
+    }
+
+    /**
+     * Check if the message of the cause of the throwable contains the expected value.
+     *
+     * @param expected the expected value.
+     */
+    public final void causeMessageContains(final String expected) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(expected, "expected");
+        toCause().messageContains(expected);
     }
 
     /**
