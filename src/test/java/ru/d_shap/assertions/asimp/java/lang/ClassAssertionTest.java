@@ -1265,7 +1265,7 @@ public final class ClassAssertionTest extends AssertionTest {
             initialize(Raw.classAssertion(), AbstractClass.class).hasOnePrivateConstructor();
             Assertions.fail("ClassAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain the expected callable constructor.");
+            Assertions.assertThat(ex).hasMessage("Actual value should call the expected constructor.");
             Assertions.assertThat(ex).hasCause(ReflectionException.class);
             Assertions.assertThat(ex).toCause().hasCause(InstantiationException.class);
         }
@@ -1273,7 +1273,7 @@ public final class ClassAssertionTest extends AssertionTest {
             initialize(Raw.classAssertion(), FailConstructorClass.class).hasOnePrivateConstructor();
             Assertions.fail("ClassAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should contain the expected callable constructor.");
+            Assertions.assertThat(ex).hasMessage("Actual value should call the expected constructor.");
             Assertions.assertThat(ex).hasCause(ReflectionException.class);
             Assertions.assertThat(ex).toCause().hasCause(InvocationTargetException.class);
         }
