@@ -39,22 +39,12 @@ public class EnumAssertion extends ClassAssertion {
 
     private static final String VALUE_OF_METHOD_NAME = "valueOf";
 
-    private final String _valuesMethodName;
-
-    private final String _valueOfMethodName;
-
     /**
      * Create new object.
      */
     public EnumAssertion() {
-        this(VALUES_METHOD_NAME, VALUE_OF_METHOD_NAME);
-    }
-
-    EnumAssertion(final String valuesMethodName, final String valueOfMethodName) {
         super();
         addActualValueValidator(new EnumActualValueValidator());
-        _valuesMethodName = valuesMethodName;
-        _valueOfMethodName = valueOfMethodName;
     }
 
     /**
@@ -81,10 +71,10 @@ public class EnumAssertion extends ClassAssertion {
     }
 
     private int getValueCount() {
-        Method valuesMethod = ReflectionHelper.getMethod(getActual(), _valuesMethodName);
+        Method valuesMethod = ReflectionHelper.getMethod(getActual(), VALUES_METHOD_NAME);
         Object[] values = (Object[]) ReflectionHelper.callMethod(valuesMethod, (Object) null);
 
-        Method valueOfMethod = ReflectionHelper.getMethod(getActual(), _valueOfMethodName, String.class);
+        Method valueOfMethod = ReflectionHelper.getMethod(getActual(), VALUE_OF_METHOD_NAME, String.class);
         for (Object value : values) {
             String valueName = value.toString();
             ReflectionHelper.callMethod(valueOfMethod, getActual(), valueName);
