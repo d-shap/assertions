@@ -66,6 +66,62 @@ public class ThrowableAssertion extends ReferenceAssertion<Throwable> {
     }
 
     /**
+     * Check if the message of the throwable is null.
+     */
+    public final void messageIsNull() {
+        checkActualIsNotNull();
+        toMessage().isNull();
+    }
+
+    /**
+     * Check if the message of the throwable is empty.
+     */
+    public final void messageIsEmpty() {
+        checkActualIsNotNull();
+        toMessage().isEmpty();
+    }
+
+    /**
+     * Check if the message of the throwable is null or empty.
+     */
+    public final void messageIsNullOrEmpty() {
+        checkActualIsNotNull();
+        toMessage().isNullOrEmpty();
+    }
+
+    /**
+     * Check if the message of the throwable is NOT empty.
+     */
+    public final void messageIsNotEmpty() {
+        checkActualIsNotNull();
+        toMessage().isNotEmpty();
+    }
+
+    /**
+     * Check if the message of the throwable is blank.
+     */
+    public final void messageIsBlank() {
+        checkActualIsNotNull();
+        toMessage().isBlank();
+    }
+
+    /**
+     * Check if the message of the throwable is null or blank.
+     */
+    public final void messageIsNullOrBlank() {
+        checkActualIsNotNull();
+        toMessage().isNullOrBlank();
+    }
+
+    /**
+     * Check if the message of the throwable is NOT blank.
+     */
+    public final void messageIsNotBlank() {
+        checkActualIsNotNull();
+        toMessage().isNotBlank();
+    }
+
+    /**
      * Check if the message of the throwable has the expected value.
      *
      * @param expected the expected value.
@@ -85,6 +141,17 @@ public class ThrowableAssertion extends ReferenceAssertion<Throwable> {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         toMessage().contains(expected);
+    }
+
+    /**
+     * Check if the message of the throwable contains the expected value ignoring case.
+     *
+     * @param expected the expected value.
+     */
+    public final void messageContainsIgnoreCase(final String expected) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(expected, "expected");
+        toMessage().containsIgnoreCase(expected);
     }
 
     /**
