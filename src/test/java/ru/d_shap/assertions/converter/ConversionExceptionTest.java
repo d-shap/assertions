@@ -47,14 +47,14 @@ public final class ConversionExceptionTest extends AssertionTest {
     public void conversionExceptionCauseTest() {
         Assertions.assertThat(new ConversionException(null)).isNotNull();
         Assertions.assertThat(new ConversionException(null)).isInstanceOf(ConversionException.class);
-        Assertions.assertThat(new ConversionException(null)).toMessage().isNull();
-        Assertions.assertThat(new ConversionException(null)).toCause().isNull();
+        Assertions.assertThat(new ConversionException(null)).messageIsNull();
+        Assertions.assertThat(new ConversionException(null)).causeIsNull();
 
         Assertions.assertThat(new ConversionException(new IOException())).isNotNull();
         Assertions.assertThat(new ConversionException(new IOException())).isInstanceOf(ConversionException.class);
         Assertions.assertThat(new ConversionException(new IOException())).hasMessage("java.io.IOException");
         Assertions.assertThat(new ConversionException(new IOException())).hasCause(IOException.class);
-        Assertions.assertThat(new ConversionException(new IOException())).toCause().toMessage().isNull();
+        Assertions.assertThat(new ConversionException(new IOException())).causeMessageIsNull();
 
         Assertions.assertThat(new ConversionException(new IOException("exception"))).isNotNull();
         Assertions.assertThat(new ConversionException(new IOException("exception"))).isInstanceOf(ConversionException.class);

@@ -43,10 +43,10 @@ public final class ReflectionExceptionTest extends AssertionTest {
      */
     @Test
     public void reflectiveExceptionMessageTest() {
-        Assertions.assertThat(new ReflectionException(null)).toMessage().isNull();
+        Assertions.assertThat(new ReflectionException(null)).messageIsNull();
 
-        Assertions.assertThat(new ReflectionException(new NoSuchFieldException())).toMessage().isNull();
-        Assertions.assertThat(new ReflectionException(new NoSuchFieldException())).toCause().toMessage().isNull();
+        Assertions.assertThat(new ReflectionException(new NoSuchFieldException())).messageIsNull();
+        Assertions.assertThat(new ReflectionException(new NoSuchFieldException())).causeMessageIsNull();
 
         Assertions.assertThat(new ReflectionException(new NoSuchFieldException("exception"))).hasMessage("exception");
         Assertions.assertThat(new ReflectionException(new NoSuchFieldException("exception"))).hasCauseMessage("exception");
@@ -57,7 +57,7 @@ public final class ReflectionExceptionTest extends AssertionTest {
      */
     @Test
     public void reflectiveExceptionCauseTest() {
-        Assertions.assertThat(new ReflectionException(null)).toCause().isNull();
+        Assertions.assertThat(new ReflectionException(null)).causeIsNull();
 
         Assertions.assertThat(new ReflectionException(new NoSuchFieldException())).hasCause(NoSuchFieldException.class);
 

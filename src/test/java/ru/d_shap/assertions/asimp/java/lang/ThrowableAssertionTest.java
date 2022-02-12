@@ -463,11 +463,11 @@ public final class ThrowableAssertionTest extends AssertionTest {
         initialize(Raw.throwableAssertion(), new Exception(new RuntimeException("value"))).toCause().isInstanceOf(RuntimeException.class);
         initialize(Raw.throwableAssertion(), new Exception(new RuntimeException("value"))).toCause().isInstanceOf(Exception.class);
         initialize(Raw.throwableAssertion(), new Exception(new RuntimeException("value"))).toCause().isInstanceOf(Throwable.class);
-        initialize(Raw.throwableAssertion(), new Exception(new RuntimeException("value"))).toCause().toCause().isNull();
+        initialize(Raw.throwableAssertion(), new Exception(new RuntimeException("value"))).toCause().causeIsNull();
 
         initialize(Raw.throwableAssertion(), new Exception(new Error("value"))).toCause().isInstanceOf(Error.class);
         initialize(Raw.throwableAssertion(), new Exception(new Error("value"))).toCause().isInstanceOf(Throwable.class);
-        initialize(Raw.throwableAssertion(), new Exception(new Error("value"))).toCause().toCause().isNull();
+        initialize(Raw.throwableAssertion(), new Exception(new Error("value"))).toCause().causeIsNull();
 
         initialize(Raw.throwableAssertion(), new Exception()).toCause().isNull();
 

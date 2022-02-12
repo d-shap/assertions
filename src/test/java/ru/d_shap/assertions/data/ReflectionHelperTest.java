@@ -472,7 +472,7 @@ public final class ReflectionHelperTest extends AssertionTest {
             ReflectionHelper.callMethod(method, new ChildClass());
             Assertions.fail("PrivateAccessor test fail");
         } catch (ReflectionException ex) {
-            Assertions.assertThat(ex).toMessage().isNull();
+            Assertions.assertThat(ex).messageIsNull();
             Assertions.assertThat(ex).hasCause(InvocationTargetException.class);
         }
     }
@@ -711,7 +711,7 @@ public final class ReflectionHelperTest extends AssertionTest {
             ReflectionHelper.callConstructor(constructor, 5);
             Assertions.fail("PrivateAccessor test fail");
         } catch (ReflectionException ex) {
-            Assertions.assertThat(ex).toMessage().isNull();
+            Assertions.assertThat(ex).messageIsNull();
             Assertions.assertThat(ex).hasCause(InvocationTargetException.class);
         }
     }
