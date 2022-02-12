@@ -187,6 +187,14 @@ public class ThrowableAssertion extends ReferenceAssertion<Throwable> {
     }
 
     /**
+     * Check if the cause of the throwable is null.
+     */
+    public final void causeIsNull() {
+        checkActualIsNotNull();
+        toCause().isNull();
+    }
+
+    /**
      * Check if the cause of the throwable is instance of the expected class.
      *
      * @param expected the expected class.
