@@ -309,17 +309,18 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
         checkArgumentIsNotNull(methodName, "methodName");
         checkArgumentIsNotNull(parameterTypes, "parameterTypes");
         checkArgumentIsNotNull(arguments, "arguments");
+        ExecutableDescription executableDescription = new ExecutableDescription(methodName, parameterTypes);
         Method method;
         try {
             method = ReflectionHelper.getMethod(getActual(), methodName, parameterTypes);
         } catch (ReflectionException ex) {
-            throw getAssertionErrorBuilder().addThrowable(ex).addMessage(Messages.Fail.Actual.CONTAINS_METHOD).addExpected(methodName).build();
+            throw getAssertionErrorBuilder().addThrowable(ex).addMessage(Messages.Fail.Actual.CONTAINS_METHOD).addExpected(executableDescription).build();
         }
         try {
             Object methodCallResult = ReflectionHelper.callMethod(method, getActual(), arguments);
-            return initializeAssertion(Raw.objectAssertion(), methodCallResult, Messages.Check.METHOD, methodName, arguments);
+            return initializeAssertion(Raw.objectAssertion(), methodCallResult, Messages.Check.METHOD, executableDescription);
         } catch (ReflectionException ex) {
-            throw getAssertionErrorBuilder().addThrowable(ex).addMessage(Messages.Fail.Actual.CALL_METHOD).addExpected(methodName).build();
+            throw getAssertionErrorBuilder().addThrowable(ex).addMessage(Messages.Fail.Actual.CALL_METHOD).addExpected(executableDescription).build();
         }
     }
 
