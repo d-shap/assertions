@@ -187,6 +187,62 @@ public final class ThrowableAssertionTest extends AssertionTest {
      * {@link ThrowableAssertion} class test.
      */
     @Test
+    public void messageIsNullTest() {
+        // TODO
+    }
+
+    /**
+     * {@link ThrowableAssertion} class test.
+     */
+    @Test
+    public void messageIsEmptyTest() {
+        // TODO
+    }
+
+    /**
+     * {@link ThrowableAssertion} class test.
+     */
+    @Test
+    public void messageIsNullOrEmptyTest() {
+        // TODO
+    }
+
+    /**
+     * {@link ThrowableAssertion} class test.
+     */
+    @Test
+    public void messageIsNotEmptyTest() {
+        // TODO
+    }
+
+    /**
+     * {@link ThrowableAssertion} class test.
+     */
+    @Test
+    public void messageIsBlankTest() {
+        // TODO
+    }
+
+    /**
+     * {@link ThrowableAssertion} class test.
+     */
+    @Test
+    public void messageIsNullOrBlankTest() {
+        // TODO
+    }
+
+    /**
+     * {@link ThrowableAssertion} class test.
+     */
+    @Test
+    public void messageIsNotBlankTest() {
+        // TODO
+    }
+
+    /**
+     * {@link ThrowableAssertion} class test.
+     */
+    @Test
     public void hasMessageTest() {
         initialize(Raw.throwableAssertion(), new Exception("value")).hasMessage("value");
         initialize(Raw.throwableAssertion(), new Exception("some exception value")).hasMessage("some exception value");
@@ -323,6 +379,14 @@ public final class ThrowableAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).toMessage().isEqualTo("Message.\n\tCheck actual value's message.\n\tActual value should contain the expected value.\n\tExpected:<LU> but was:<value>");
         }
+    }
+
+    /**
+     * {@link ThrowableAssertion} class test.
+     */
+    @Test
+    public void messageContainsIgnoreCaseTest() {
+        // TODO
     }
 
     /**
@@ -527,6 +591,14 @@ public final class ThrowableAssertionTest extends AssertionTest {
      * {@link ThrowableAssertion} class test.
      */
     @Test
+    public void causeIsNullTest() {
+        // TODO
+    }
+
+    /**
+     * {@link ThrowableAssertion} class test.
+     */
+    @Test
     public void hasCauseTest() {
         initialize(Raw.throwableAssertion(), new Exception(new RuntimeException("value"))).hasCause(RuntimeException.class);
         initialize(Raw.throwableAssertion(), new Exception(new RuntimeException("value"))).hasCause(Exception.class);
@@ -589,6 +661,62 @@ public final class ThrowableAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).toMessage().isEqualTo("Message.\n\tCheck actual value's cause.\n\tCheck actual value's class.\n\tActual value should be the subtype of the expected value.\n\tExpected:<java.lang.RuntimeException> but was:<java.lang.Error>");
         }
+    }
+
+    /**
+     * {@link ThrowableAssertion} class test.
+     */
+    @Test
+    public void causeMessageIsNullTest() {
+        // TODO
+    }
+
+    /**
+     * {@link ThrowableAssertion} class test.
+     */
+    @Test
+    public void causeMessageIsEmptyTest() {
+        // TODO
+    }
+
+    /**
+     * {@link ThrowableAssertion} class test.
+     */
+    @Test
+    public void causeMessageIsNullOrEmptyTest() {
+        // TODO
+    }
+
+    /**
+     * {@link ThrowableAssertion} class test.
+     */
+    @Test
+    public void causeMessageIsNotEmptyTest() {
+        // TODO
+    }
+
+    /**
+     * {@link ThrowableAssertion} class test.
+     */
+    @Test
+    public void causeMessageIsBlankTest() {
+        // TODO
+    }
+
+    /**
+     * {@link ThrowableAssertion} class test.
+     */
+    @Test
+    public void causeMessageIsNullOrBlankTest() {
+        // TODO
+    }
+
+    /**
+     * {@link ThrowableAssertion} class test.
+     */
+    @Test
+    public void causeMessageIsNotBlankTest() {
+        // TODO
     }
 
     /**
@@ -731,6 +859,14 @@ public final class ThrowableAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).toMessage().isEqualTo("Message.\n\tCheck actual value's cause.\n\tCheck actual value's message.\n\tActual value should contain the expected value.\n\tExpected:<LU> but was:<value>");
         }
+    }
+
+    /**
+     * {@link ThrowableAssertion} class test.
+     */
+    @Test
+    public void causeMessageContainsIgnoreCaseTest() {
+        // TODO
     }
 
     /**
