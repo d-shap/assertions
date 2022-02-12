@@ -732,12 +732,12 @@
     <Match>
         <Bug pattern="DP_DO_INSIDE_DO_PRIVILEGED" />
     </Match>
-    <Match>
+    <!--<Match>
         <Bug pattern="EI_EXPOSE_REP" />
-    </Match>
-    <Match>
+    </Match>-->
+    <!--<Match>
         <Bug pattern="EI_EXPOSE_REP2" />
-    </Match>
+    </Match>-->
     <Match>
         <Bug pattern="FI_PUBLIC_SHOULD_BE_PROTECTED" />
     </Match>
