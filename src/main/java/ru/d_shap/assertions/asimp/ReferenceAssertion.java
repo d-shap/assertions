@@ -336,18 +336,19 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
         checkActualIsNotNull();
         checkArgumentIsNotNull(methodName, "methodName");
         checkArgumentIsNotNull(arguments, "arguments");
+        Class<?>[] parameterTypes = ReflectionHelper.getParameterTypes(arguments);
+        ExecutableDescription executableDescription = new ExecutableDescription(methodName, parameterTypes);
         Method method;
         try {
-            Class<?>[] parameterTypes = ReflectionHelper.getParameterTypes(arguments);
             method = ReflectionHelper.getMethod(getActual(), methodName, parameterTypes);
         } catch (ReflectionException ex) {
-            throw getAssertionErrorBuilder().addThrowable(ex).addMessage(Messages.Fail.Actual.CONTAINS_METHOD).addExpected(methodName).build();
+            throw getAssertionErrorBuilder().addThrowable(ex).addMessage(Messages.Fail.Actual.CONTAINS_METHOD).addExpected(executableDescription).build();
         }
         try {
             Object methodCallResult = ReflectionHelper.callMethod(method, getActual(), arguments);
-            return initializeAssertion(Raw.objectAssertion(), methodCallResult, Messages.Check.METHOD, methodName, arguments);
+            return initializeAssertion(Raw.objectAssertion(), methodCallResult, Messages.Check.METHOD, executableDescription);
         } catch (ReflectionException ex) {
-            throw getAssertionErrorBuilder().addThrowable(ex).addMessage(Messages.Fail.Actual.CALL_METHOD).addExpected(methodName).build();
+            throw getAssertionErrorBuilder().addThrowable(ex).addMessage(Messages.Fail.Actual.CALL_METHOD).addExpected(executableDescription).build();
         }
     }
 
@@ -406,17 +407,18 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
         checkArgumentIsNotNull(matcher, "matcher");
         checkArgumentIsNotNull(parameterTypes, "parameterTypes");
         checkArgumentIsNotNull(arguments, "arguments");
+        ExecutableDescription executableDescription = new ExecutableDescription(methodName, parameterTypes);
         Method method;
         try {
             method = ReflectionHelper.getMethod(getActual(), methodName, parameterTypes);
         } catch (ReflectionException ex) {
-            throw getAssertionErrorBuilder().addThrowable(ex).addMessage(Messages.Fail.Actual.CONTAINS_METHOD).addExpected(methodName).build();
+            throw getAssertionErrorBuilder().addThrowable(ex).addMessage(Messages.Fail.Actual.CONTAINS_METHOD).addExpected(executableDescription).build();
         }
         try {
             Object methodCallResult = ReflectionHelper.callMethod(method, getActual(), arguments);
-            matcherAssertion(methodCallResult, (Matcher<Object>) matcher, Messages.Check.METHOD, methodName, arguments);
+            matcherAssertion(methodCallResult, (Matcher<Object>) matcher, Messages.Check.METHOD, executableDescription);
         } catch (ReflectionException ex) {
-            throw getAssertionErrorBuilder().addThrowable(ex).addMessage(Messages.Fail.Actual.CALL_METHOD).addExpected(methodName).build();
+            throw getAssertionErrorBuilder().addThrowable(ex).addMessage(Messages.Fail.Actual.CALL_METHOD).addExpected(executableDescription).build();
         }
     }
 
@@ -433,18 +435,19 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
         checkArgumentIsNotNull(methodName, "methodName");
         checkArgumentIsNotNull(matcher, "matcher");
         checkArgumentIsNotNull(arguments, "arguments");
+        Class<?>[] parameterTypes = ReflectionHelper.getParameterTypes(arguments);
+        ExecutableDescription executableDescription = new ExecutableDescription(methodName, parameterTypes);
         Method method;
         try {
-            Class<?>[] parameterTypes = ReflectionHelper.getParameterTypes(arguments);
             method = ReflectionHelper.getMethod(getActual(), methodName, parameterTypes);
         } catch (ReflectionException ex) {
-            throw getAssertionErrorBuilder().addThrowable(ex).addMessage(Messages.Fail.Actual.CONTAINS_METHOD).addExpected(methodName).build();
+            throw getAssertionErrorBuilder().addThrowable(ex).addMessage(Messages.Fail.Actual.CONTAINS_METHOD).addExpected(executableDescription).build();
         }
         try {
             Object methodCallResult = ReflectionHelper.callMethod(method, getActual(), arguments);
-            matcherAssertion(methodCallResult, (Matcher<Object>) matcher, Messages.Check.METHOD, methodName, arguments);
+            matcherAssertion(methodCallResult, (Matcher<Object>) matcher, Messages.Check.METHOD, executableDescription);
         } catch (ReflectionException ex) {
-            throw getAssertionErrorBuilder().addThrowable(ex).addMessage(Messages.Fail.Actual.CALL_METHOD).addExpected(methodName).build();
+            throw getAssertionErrorBuilder().addThrowable(ex).addMessage(Messages.Fail.Actual.CALL_METHOD).addExpected(executableDescription).build();
         }
     }
 
