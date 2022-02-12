@@ -87,7 +87,7 @@ public final class CharSequenceToElementValueConverterTest extends AssertionTest
             new CharSequenceToElementValueConverter().convert("<element>");
             Assertions.fail("CharSequenceToElementValueConverter test fail");
         } catch (ConversionException ex) {
-            Assertions.assertThat(ex).toMessage().contains("XML document structures must start and end within the same entity.");
+            Assertions.assertThat(ex).messageContains("XML document structures must start and end within the same entity.");
             Assertions.assertThat(ex).hasCause(SAXException.class);
         }
     }

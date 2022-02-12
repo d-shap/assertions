@@ -3739,13 +3739,13 @@ public class CalendarAssertionTest extends AssertionTest {
             initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 543, "UTC")).toTimeZone(Matchers.is(Matchers.equalTo(TimeZone.getTimeZone("Europe/Berlin"))));
             Assertions.fail("CalendarAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).toMessage().matches("Check actual value's time zone.\nExpected: is <.*>\n     but: was <.*>");
+            Assertions.assertThat(ex).messageMatches("Check actual value's time zone.\nExpected: is <.*>\n     but: was <.*>");
         }
         try {
             initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 543, "UTC"), "Message").toTimeZone(Matchers.is(Matchers.equalTo(TimeZone.getTimeZone("Europe/Berlin"))));
             Assertions.fail("CalendarAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).toMessage().matches("Message.\n\tCheck actual value's time zone.\nExpected: is <.*>\n     but: was <.*>");
+            Assertions.assertThat(ex).messageMatches("Message.\n\tCheck actual value's time zone.\nExpected: is <.*>\n     but: was <.*>");
         }
     }
 

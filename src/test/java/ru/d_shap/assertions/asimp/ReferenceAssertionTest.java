@@ -1703,7 +1703,7 @@ public final class ReferenceAssertionTest extends AssertionTest {
             field.get(privateField);
             Assertions.fail("PrivateAccessor test fail");
         } catch (IllegalAccessException ex) {
-            Assertions.assertThat(ex).toMessage().contains("with modifiers \"private final\"");
+            Assertions.assertThat(ex).messageContains("with modifiers \"private final\"");
         }
         createReferenceAssertion(new Object()).setAccessible(field);
         Object value = field.get(privateField);
