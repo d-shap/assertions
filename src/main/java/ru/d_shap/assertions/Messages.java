@@ -55,7 +55,9 @@ public final class Messages {
 
         public static final String FIELD = "Check actual value''s field: {0}.";
 
-        public static final String METHOD = "Check actual value''s method call result: {0}.";
+        public static final String CALL_METHOD_RESULT = "Check actual value''s method call result: {0}.";
+
+        public static final String CALL_METHOD_EXCEPTION = "Check actual value''s method call exception: {0}.";
 
         public static final String LENGTH = "Check actual value''s length.";
 
@@ -445,7 +447,9 @@ public final class Messages {
 
             public static final String CONTAINS_METHOD = "Actual value should contain the expected method.";
 
-            public static final String CALL_METHOD = "Actual value should call the expected method.";
+            public static final String CALL_METHOD_RESULT = "Actual value should call the expected method.";
+
+            public static final String CALL_METHOD_EXCEPTION = "Actual value should fail to call the expected method.";
 
             public static final String HAS_ATTRIBUTE = "Actual value should have the expected attribute.";
 
