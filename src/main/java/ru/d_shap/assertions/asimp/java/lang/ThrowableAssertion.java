@@ -206,7 +206,7 @@ public class ThrowableAssertion extends ReferenceAssertion<Throwable> {
     }
 
     /**
-     * Check if the message of the throwable is null.
+     * Check if the message of the cause of the throwable is null.
      */
     public final void causeMessageIsNull() {
         checkActualIsNotNull();
@@ -214,7 +214,7 @@ public class ThrowableAssertion extends ReferenceAssertion<Throwable> {
     }
 
     /**
-     * Check if the message of the throwable is empty.
+     * Check if the message of the cause of the throwable is empty.
      */
     public final void causeMessageIsEmpty() {
         checkActualIsNotNull();
@@ -222,7 +222,7 @@ public class ThrowableAssertion extends ReferenceAssertion<Throwable> {
     }
 
     /**
-     * Check if the message of the throwable is null or empty.
+     * Check if the message of the cause of the throwable is null or empty.
      */
     public final void causeMessageIsNullOrEmpty() {
         checkActualIsNotNull();
@@ -230,7 +230,7 @@ public class ThrowableAssertion extends ReferenceAssertion<Throwable> {
     }
 
     /**
-     * Check if the message of the throwable is NOT empty.
+     * Check if the message of the cause of the throwable is NOT empty.
      */
     public final void causeMessageIsNotEmpty() {
         checkActualIsNotNull();
@@ -238,7 +238,7 @@ public class ThrowableAssertion extends ReferenceAssertion<Throwable> {
     }
 
     /**
-     * Check if the message of the throwable is blank.
+     * Check if the message of the cause of the throwable is blank.
      */
     public final void causeMessageIsBlank() {
         checkActualIsNotNull();
@@ -246,7 +246,7 @@ public class ThrowableAssertion extends ReferenceAssertion<Throwable> {
     }
 
     /**
-     * Check if the message of the throwable is null or blank.
+     * Check if the message of the cause of the throwable is null or blank.
      */
     public final void causeMessageIsNullOrBlank() {
         checkActualIsNotNull();
@@ -254,7 +254,7 @@ public class ThrowableAssertion extends ReferenceAssertion<Throwable> {
     }
 
     /**
-     * Check if the message of the throwable is NOT blank.
+     * Check if the message of the cause of the throwable is NOT blank.
      */
     public final void causeMessageIsNotBlank() {
         checkActualIsNotNull();
@@ -284,7 +284,7 @@ public class ThrowableAssertion extends ReferenceAssertion<Throwable> {
     }
 
     /**
-     * Check if the message of the throwable contains the expected value ignoring case.
+     * Check if the message of the cause of the throwable contains the expected value ignoring case.
      *
      * @param expected the expected value.
      */
