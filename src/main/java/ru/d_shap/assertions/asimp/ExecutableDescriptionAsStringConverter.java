@@ -47,7 +47,8 @@ public final class ExecutableDescriptionAsStringConverter implements AsStringCon
         ExecutableDescription castedValue = ConverterArgumentHelper.getValue(value, ExecutableDescription.class);
 
         StringBuilder result = new StringBuilder();
-        result.append(castedValue.getName());
+        String name = castedValue.getName();
+        result.append(AsStringConverter.asString(name));
         result.append('(');
         boolean first = true;
         for (Class<?> parameterType : castedValue.getParameterTypes()) {
