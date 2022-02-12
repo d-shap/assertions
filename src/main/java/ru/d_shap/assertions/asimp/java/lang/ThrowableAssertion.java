@@ -206,6 +206,62 @@ public class ThrowableAssertion extends ReferenceAssertion<Throwable> {
     }
 
     /**
+     * Check if the message of the throwable is null.
+     */
+    public final void causeMessageIsNull() {
+        checkActualIsNotNull();
+        toCause().messageIsNull();
+    }
+
+    /**
+     * Check if the message of the throwable is empty.
+     */
+    public final void causeMessageIsEmpty() {
+        checkActualIsNotNull();
+        toCause().messageIsEmpty();
+    }
+
+    /**
+     * Check if the message of the throwable is null or empty.
+     */
+    public final void causeMessageIsNullOrEmpty() {
+        checkActualIsNotNull();
+        toCause().messageIsNullOrEmpty();
+    }
+
+    /**
+     * Check if the message of the throwable is NOT empty.
+     */
+    public final void causeMessageIsNotEmpty() {
+        checkActualIsNotNull();
+        toCause().messageIsNotEmpty();
+    }
+
+    /**
+     * Check if the message of the throwable is blank.
+     */
+    public final void causeMessageIsBlank() {
+        checkActualIsNotNull();
+        toCause().messageIsBlank();
+    }
+
+    /**
+     * Check if the message of the throwable is null or blank.
+     */
+    public final void causeMessageIsNullOrBlank() {
+        checkActualIsNotNull();
+        toCause().messageIsNullOrBlank();
+    }
+
+    /**
+     * Check if the message of the throwable is NOT blank.
+     */
+    public final void causeMessageIsNotBlank() {
+        checkActualIsNotNull();
+        toCause().messageIsNotBlank();
+    }
+
+    /**
      * Check if the message of the cause of the throwable has the expected value.
      *
      * @param expected the expected value.
@@ -225,6 +281,17 @@ public class ThrowableAssertion extends ReferenceAssertion<Throwable> {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         toCause().messageContains(expected);
+    }
+
+    /**
+     * Check if the message of the throwable contains the expected value ignoring case.
+     *
+     * @param expected the expected value.
+     */
+    public final void causeMessageContainsIgnoreCase(final String expected) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(expected, "expected");
+        toCause().messageContainsIgnoreCase(expected);
     }
 
     /**
