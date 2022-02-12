@@ -45,18 +45,15 @@ public final class DataExceptionTest extends AssertionTest {
      */
     @Test
     public void dataExceptionCauseTest() {
-        Assertions.assertThat(new DataException(null)).isNotNull();
         Assertions.assertThat(new DataException(null)).isInstanceOf(DataException.class);
         Assertions.assertThat(new DataException(null)).messageIsNull();
         Assertions.assertThat(new DataException(null)).causeIsNull();
 
-        Assertions.assertThat(new DataException(new DatatypeConfigurationException())).isNotNull();
         Assertions.assertThat(new DataException(new DatatypeConfigurationException())).isInstanceOf(DataException.class);
         Assertions.assertThat(new DataException(new DatatypeConfigurationException())).hasMessage("javax.xml.datatype.DatatypeConfigurationException");
         Assertions.assertThat(new DataException(new DatatypeConfigurationException())).hasCause(DatatypeConfigurationException.class);
         Assertions.assertThat(new DataException(new DatatypeConfigurationException())).causeMessageIsNull();
 
-        Assertions.assertThat(new DataException(new DatatypeConfigurationException("exception"))).isNotNull();
         Assertions.assertThat(new DataException(new DatatypeConfigurationException("exception"))).isInstanceOf(DataException.class);
         Assertions.assertThat(new DataException(new DatatypeConfigurationException("exception"))).hasMessage("javax.xml.datatype.DatatypeConfigurationException: exception");
         Assertions.assertThat(new DataException(new DatatypeConfigurationException("exception"))).hasCause(DatatypeConfigurationException.class);
