@@ -375,7 +375,7 @@ public final class Messages {
 
             public static final String CONSTRUCTOR_NOT_ACCESSIBLE = "Actual value''s constructor should not be acccessible.";
 
-            public static final String CONSTRUCTOR_CALLABLE = "Actual value''s constructor should not be callable.";
+            public static final String CONSTRUCTOR_CALLABLE = "Actual value''s constructor should be callable.";
 
             public static final String CONTAINS = "Actual value should contain the expected value.";
 
