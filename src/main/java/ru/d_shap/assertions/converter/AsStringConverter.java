@@ -25,6 +25,7 @@ import java.util.List;
 import java.util.Map;
 
 import ru.d_shap.assertions.Messages;
+import ru.d_shap.assertions.asimp.ExecutableDescriptionAsStringConverter;
 import ru.d_shap.assertions.asimp.array.BooleanArrayAsStringConverter;
 import ru.d_shap.assertions.asimp.array.ByteArrayAsStringConverter;
 import ru.d_shap.assertions.asimp.array.CharArrayAsStringConverter;
@@ -69,6 +70,8 @@ public final class AsStringConverter {
 
     static {
         CONVERTER_PROVIDERS = new LinkedList<>();
+
+        CONVERTER_PROVIDERS.add(new ExecutableDescriptionAsStringConverter());
 
         CONVERTER_PROVIDERS.add(new BooleanAsStringConverter());
         CONVERTER_PROVIDERS.add(new ByteAsStringConverter());
