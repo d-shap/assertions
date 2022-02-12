@@ -34,7 +34,7 @@ public final class ExecutableDescription {
      * @param name           the name of the executable.
      * @param parameterTypes the executable parameter types.
      */
-    public ExecutableDescription(final String name, final Class<?>[] parameterTypes) {
+    public ExecutableDescription(final String name, final Class<?>... parameterTypes) {
         super();
         _name = name;
         _parameterTypes = parameterTypes;
