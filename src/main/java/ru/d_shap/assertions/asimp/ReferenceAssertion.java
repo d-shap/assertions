@@ -30,6 +30,7 @@ import ru.d_shap.assertions.Raw;
 import ru.d_shap.assertions.asimp.java.lang.CharSequenceAssertion;
 import ru.d_shap.assertions.asimp.java.lang.ClassAssertion;
 import ru.d_shap.assertions.asimp.java.lang.ObjectAssertion;
+import ru.d_shap.assertions.asimp.java.lang.ThrowableAssertion;
 import ru.d_shap.assertions.asimp.primitive.IntAssertion;
 import ru.d_shap.assertions.data.ReflectionException;
 import ru.d_shap.assertions.data.ReflectionHelper;
@@ -318,9 +319,9 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
         }
         try {
             Object methodCallResult = ReflectionHelper.callMethod(method, getActual(), arguments);
-            return initializeAssertion(Raw.objectAssertion(), methodCallResult, Messages.Check.METHOD, executableDescription);
+            return initializeAssertion(Raw.objectAssertion(), methodCallResult, Messages.Check.CALL_METHOD_RESULT, executableDescription);
         } catch (ReflectionException ex) {
-            throw getAssertionErrorBuilder().addThrowable(ex).addMessage(Messages.Fail.Actual.CALL_METHOD).addExpected(executableDescription).build();
+            throw getAssertionErrorBuilder().addThrowable(ex).addMessage(Messages.Fail.Actual.CALL_METHOD_RESULT).addExpected(executableDescription).build();
         }
     }
 
@@ -346,9 +347,9 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
         }
         try {
             Object methodCallResult = ReflectionHelper.callMethod(method, getActual(), arguments);
-            return initializeAssertion(Raw.objectAssertion(), methodCallResult, Messages.Check.METHOD, executableDescription);
+            return initializeAssertion(Raw.objectAssertion(), methodCallResult, Messages.Check.CALL_METHOD_RESULT, executableDescription);
         } catch (ReflectionException ex) {
-            throw getAssertionErrorBuilder().addThrowable(ex).addMessage(Messages.Fail.Actual.CALL_METHOD).addExpected(executableDescription).build();
+            throw getAssertionErrorBuilder().addThrowable(ex).addMessage(Messages.Fail.Actual.CALL_METHOD_RESULT).addExpected(executableDescription).build();
         }
     }
 
@@ -416,9 +417,9 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
         }
         try {
             Object methodCallResult = ReflectionHelper.callMethod(method, getActual(), arguments);
-            matcherAssertion(methodCallResult, (Matcher<Object>) matcher, Messages.Check.METHOD, executableDescription);
+            matcherAssertion(methodCallResult, (Matcher<Object>) matcher, Messages.Check.CALL_METHOD_RESULT, executableDescription);
         } catch (ReflectionException ex) {
-            throw getAssertionErrorBuilder().addThrowable(ex).addMessage(Messages.Fail.Actual.CALL_METHOD).addExpected(executableDescription).build();
+            throw getAssertionErrorBuilder().addThrowable(ex).addMessage(Messages.Fail.Actual.CALL_METHOD_RESULT).addExpected(executableDescription).build();
         }
     }
 
@@ -445,9 +446,40 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
         }
         try {
             Object methodCallResult = ReflectionHelper.callMethod(method, getActual(), arguments);
-            matcherAssertion(methodCallResult, (Matcher<Object>) matcher, Messages.Check.METHOD, executableDescription);
+            matcherAssertion(methodCallResult, (Matcher<Object>) matcher, Messages.Check.CALL_METHOD_RESULT, executableDescription);
         } catch (ReflectionException ex) {
-            throw getAssertionErrorBuilder().addThrowable(ex).addMessage(Messages.Fail.Actual.CALL_METHOD).addExpected(executableDescription).build();
+            throw getAssertionErrorBuilder().addThrowable(ex).addMessage(Messages.Fail.Actual.CALL_METHOD_RESULT).addExpected(executableDescription).build();
+        }
+    }
+
+    /**
+     * Make assertion about the actual value's method call exception.
+     *
+     * @param methodName     the method name.
+     * @param parameterTypes the method parameter types.
+     * @param arguments      the arguments used to call the method.
+     *
+     * @return the assertion.
+     */
+    public final ThrowableAssertion toMethodCallException(final String methodName, final Class<?>[] parameterTypes, final Object[] arguments) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(methodName, "methodName");
+        checkArgumentIsNotNull(parameterTypes, "parameterTypes");
+        checkArgumentIsNotNull(arguments, "arguments");
+        ExecutableDescription executableDescription = new ExecutableDescription(methodName, parameterTypes);
+        Method method;
+        try {
+            method = ReflectionHelper.getMethod(getActual(), methodName, parameterTypes);
+        } catch (ReflectionException ex) {
+            throw getAssertionErrorBuilder().addThrowable(ex).addMessage(Messages.Fail.Actual.CONTAINS_METHOD).addExpected(executableDescription).build();
+        }
+        try {
+            ReflectionHelper.callMethod(method, getActual(), arguments);
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.CALL_METHOD_EXCEPTION).addExpected(executableDescription).build();
+        } catch (ReflectionException ex) {
+            Throwable cause = ex.getCause();
+            cause = cause.getCause();
+            return initializeAssertion(Raw.throwableAssertion(), cause, Messages.Check.CALL_METHOD_EXCEPTION, executableDescription);
         }
     }
 
