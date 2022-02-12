@@ -21,6 +21,8 @@ package ru.d_shap.assertions.asimp;
 
 /**
  * Class to describe the class' executable (method or constructor).
+ *
+ * @author Dmitry Shapovalov
  */
 public final class ExecutableDescription {
 
