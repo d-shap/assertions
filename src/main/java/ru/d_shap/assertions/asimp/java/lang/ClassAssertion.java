@@ -242,12 +242,12 @@ public class ClassAssertion extends ReferenceAssertion<Class<?>> {
         }
         int modifiers = constructor.getModifiers();
         if (!Modifier.isPrivate(modifiers)) {
-            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_CONSTRUCTOR_NOT_ACCESSIBLE).addActual().build();
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.CONSTRUCTOR_NOT_ACCESSIBLE).addActual().build();
         }
         try {
             ReflectionHelper.callConstructor(constructor);
         } catch (ReflectionException ex) {
-            throw getAssertionErrorBuilder().addThrowable(ex).addMessage(Messages.Fail.Actual.CALL_CONSTRUCTOR).build();
+            throw getAssertionErrorBuilder().addThrowable(ex).addMessage(Messages.Fail.Actual.CONSTRUCTOR_CALLABLE).build();
         }
     }
 

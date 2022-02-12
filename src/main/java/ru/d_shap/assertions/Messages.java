@@ -373,7 +373,9 @@ public final class Messages {
 
             public static final String IS_CONSTRUCTOR_DEFAULT = "Actual value should have one default constructor.";
 
-            public static final String IS_CONSTRUCTOR_NOT_ACCESSIBLE = "Actual value''s constructor should not be acccessible.";
+            public static final String CONSTRUCTOR_NOT_ACCESSIBLE = "Actual value''s constructor should not be acccessible.";
+
+            public static final String CONSTRUCTOR_CALLABLE = "Actual value''s constructor should not be callable.";
 
             public static final String CONTAINS = "Actual value should contain the expected value.";
 
@@ -444,8 +446,6 @@ public final class Messages {
             public static final String CONTAINS_METHOD = "Actual value should contain the expected method.";
 
             public static final String CALL_METHOD = "Actual value should call the expected method.";
-
-            public static final String CALL_CONSTRUCTOR = "Actual value should call the expected constructor.";
 
             public static final String HAS_ATTRIBUTE = "Actual value should have the expected attribute.";
 
