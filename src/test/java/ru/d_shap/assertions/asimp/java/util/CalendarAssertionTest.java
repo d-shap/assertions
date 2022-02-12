@@ -6083,6 +6083,34 @@ public class CalendarAssertionTest extends AssertionTest {
      * {@link CalendarAssertion} class test.
      */
     @Test
+    public void changeTimeZoneTest() {
+        TimeZone timeZone = TimeZone.getDefault();
+
+        try {
+            TimeZone.setDefault(TimeZone.getTimeZone("Asia/Vientiane"));
+
+            initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47)).hasDateAndTime(2020, Calendar.JULY, 11, 15, 23, 47);
+            initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47)).hasUtcDateAndTime(2020, Calendar.JULY, 11, 8, 23, 47);
+            initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47)).hasTimeZoneId("Asia/Vientiane");
+            initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47)).hasZoneOffset(7 * 60 * 60 * 1000);
+            initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47)).hasDstOffset(0);
+
+            TimeZone.setDefault(TimeZone.getTimeZone("Europe/Berlin"));
+
+            initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47)).hasDateAndTime(2020, Calendar.JULY, 11, 15, 23, 47);
+            initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47)).hasUtcDateAndTime(2020, Calendar.JULY, 11, 13, 23, 47);
+            initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47)).hasTimeZoneId("Europe/Berlin");
+            initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47)).hasZoneOffset(60 * 60 * 1000);
+            initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47)).hasDstOffset(60 * 60 * 1000);
+        } finally {
+            TimeZone.setDefault(timeZone);
+        }
+    }
+
+    /**
+     * {@link CalendarAssertion} class test.
+     */
+    @Test
     public void isNullTest() {
         initialize(Raw.calendarAssertion(), null).isNull();
 

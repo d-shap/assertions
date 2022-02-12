@@ -3977,6 +3977,30 @@ public class XMLGregorianCalendarAssertionTest extends AssertionTest {
      * {@link XMLGregorianCalendarAssertion} class test.
      */
     @Test
+    public void changeTimeZoneTest() {
+        TimeZone timeZone = TimeZone.getDefault();
+
+        try {
+            TimeZone.setDefault(TimeZone.getTimeZone("Asia/Vientiane"));
+
+            initialize(Raw.xmlGregorianCalendarAssertion(), createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47)).hasDateAndTime(2020, Calendar.JULY, 11, 15, 23, 47);
+            initialize(Raw.xmlGregorianCalendarAssertion(), createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47)).hasUtcDateAndTime(2020, Calendar.JULY, 11, 8, 23, 47);
+            initialize(Raw.xmlGregorianCalendarAssertion(), createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47)).hasZoneOffset(7 * 60 * 60 * 1000);
+
+            TimeZone.setDefault(TimeZone.getTimeZone("Europe/Berlin"));
+
+            initialize(Raw.xmlGregorianCalendarAssertion(), createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47)).hasDateAndTime(2020, Calendar.JULY, 11, 15, 23, 47);
+            initialize(Raw.xmlGregorianCalendarAssertion(), createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47)).hasUtcDateAndTime(2020, Calendar.JULY, 11, 13, 23, 47);
+            initialize(Raw.xmlGregorianCalendarAssertion(), createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47)).hasZoneOffset(2 * 60 * 60 * 1000);
+        } finally {
+            TimeZone.setDefault(timeZone);
+        }
+    }
+
+    /**
+     * {@link XMLGregorianCalendarAssertion} class test.
+     */
+    @Test
     public void isNullTest() {
         initialize(Raw.xmlGregorianCalendarAssertion(), null).isNull();
 
