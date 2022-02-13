@@ -477,8 +477,38 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
             ReflectionHelper.callMethod(method, getActual(), arguments);
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.CALL_METHOD_EXCEPTION).addExpected(executableDescription).build();
         } catch (ReflectionException ex) {
-            Throwable cause = ex.getCause();
-            cause = cause.getCause();
+            ReflectiveOperationException reflectiveOperationException = (ReflectiveOperationException) ex.getCause();
+            Throwable cause = reflectiveOperationException.getCause();
+            return initializeAssertion(Raw.throwableAssertion(), cause, Messages.Check.CALL_METHOD_EXCEPTION, executableDescription);
+        }
+    }
+
+    /**
+     * Make assertion about the actual value's method call exception.
+     *
+     * @param methodName the method name.
+     * @param arguments  the arguments used to call the method.
+     *
+     * @return the assertion.
+     */
+    public final ThrowableAssertion toMethodCallException(final String methodName, final Object... arguments) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(methodName, "methodName");
+        checkArgumentIsNotNull(arguments, "arguments");
+        Class<?>[] parameterTypes = ReflectionHelper.getParameterTypes(arguments);
+        ExecutableDescription executableDescription = new ExecutableDescription(methodName, parameterTypes);
+        Method method;
+        try {
+            method = ReflectionHelper.getMethod(getActual(), methodName, parameterTypes);
+        } catch (ReflectionException ex) {
+            throw getAssertionErrorBuilder().addThrowable(ex).addMessage(Messages.Fail.Actual.CONTAINS_METHOD).addExpected(executableDescription).build();
+        }
+        try {
+            ReflectionHelper.callMethod(method, getActual(), arguments);
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.CALL_METHOD_EXCEPTION).addExpected(executableDescription).build();
+        } catch (ReflectionException ex) {
+            ReflectiveOperationException reflectiveOperationException = (ReflectiveOperationException) ex.getCause();
+            Throwable cause = reflectiveOperationException.getCause();
             return initializeAssertion(Raw.throwableAssertion(), cause, Messages.Check.CALL_METHOD_EXCEPTION, executableDescription);
         }
     }
