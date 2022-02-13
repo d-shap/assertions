@@ -514,6 +514,67 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
     }
 
     /**
+     * Make assertion about the actual value's method call exception.
+     *
+     * @param methodName     the method name.
+     * @param matcher        the hamcrest matcher.
+     * @param parameterTypes the method parameter types.
+     * @param arguments      the arguments used to call the method.
+     */
+    public final void toMethodCallException(final String methodName, final Matcher<Throwable> matcher, final Class<?>[] parameterTypes, final Object[] arguments) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(methodName, "methodName");
+        checkArgumentIsNotNull(matcher, "matcher");
+        checkArgumentIsNotNull(parameterTypes, "parameterTypes");
+        checkArgumentIsNotNull(arguments, "arguments");
+        ExecutableDescription executableDescription = new ExecutableDescription(methodName, parameterTypes);
+        Method method;
+        try {
+            method = ReflectionHelper.getMethod(getActual(), methodName, parameterTypes);
+        } catch (ReflectionException ex) {
+            throw getAssertionErrorBuilder().addThrowable(ex).addMessage(Messages.Fail.Actual.CONTAINS_METHOD).addExpected(executableDescription).build();
+        }
+        try {
+            ReflectionHelper.callMethod(method, getActual(), arguments);
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.CALL_METHOD_EXCEPTION).addExpected(executableDescription).build();
+        } catch (ReflectionException ex) {
+            ReflectiveOperationException reflectiveOperationException = (ReflectiveOperationException) ex.getCause();
+            Throwable cause = reflectiveOperationException.getCause();
+            matcherAssertion(cause, matcher, Messages.Check.CALL_METHOD_RESULT, executableDescription);
+        }
+    }
+
+    /**
+     * Make assertion about the actual value's method call exception.
+     *
+     * @param methodName the method name.
+     * @param matcher    the hamcrest matcher.
+     * @param arguments  the arguments used to call the method.
+     */
+    public final void toMethodCallException(final String methodName, final Matcher<Throwable> matcher, final Object... arguments) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(methodName, "methodName");
+        checkArgumentIsNotNull(matcher, "matcher");
+        checkArgumentIsNotNull(arguments, "arguments");
+        Class<?>[] parameterTypes = ReflectionHelper.getParameterTypes(arguments);
+        ExecutableDescription executableDescription = new ExecutableDescription(methodName, parameterTypes);
+        Method method;
+        try {
+            method = ReflectionHelper.getMethod(getActual(), methodName, parameterTypes);
+        } catch (ReflectionException ex) {
+            throw getAssertionErrorBuilder().addThrowable(ex).addMessage(Messages.Fail.Actual.CONTAINS_METHOD).addExpected(executableDescription).build();
+        }
+        try {
+            ReflectionHelper.callMethod(method, getActual(), arguments);
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.CALL_METHOD_EXCEPTION).addExpected(executableDescription).build();
+        } catch (ReflectionException ex) {
+            ReflectiveOperationException reflectiveOperationException = (ReflectiveOperationException) ex.getCause();
+            Throwable cause = reflectiveOperationException.getCause();
+            matcherAssertion(cause, matcher, Messages.Check.CALL_METHOD_RESULT, executableDescription);
+        }
+    }
+
+    /**
      * Make the private class element accessible.
      *
      * @param accessibleObject the private class element.
