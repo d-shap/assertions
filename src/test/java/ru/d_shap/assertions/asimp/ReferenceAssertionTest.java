@@ -2572,6 +2572,38 @@ public final class ReferenceAssertionTest extends AssertionTest {
 
     /**
      * {@link ReferenceAssertion} class test.
+     */
+    @Test
+    public void toMethodCallExceptionWithParameterTypesTest() {
+        // TODO
+    }
+
+    /**
+     * {@link ReferenceAssertion} class test.
+     */
+    @Test
+    public void toMethodCallExceptionTest() {
+        // TODO
+    }
+
+    /**
+     * {@link ReferenceAssertion} class test.
+     */
+    @Test
+    public void toMethodCallExceptionMatcherWithParameterTypesTest() {
+        // TODO
+    }
+
+    /**
+     * {@link ReferenceAssertion} class test.
+     */
+    @Test
+    public void toMethodCallExceptionMatcherTest() {
+        // TODO
+    }
+
+    /**
+     * {@link ReferenceAssertion} class test.
      *
      * @throws Exception exception in test.
      */
