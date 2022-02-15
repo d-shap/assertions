@@ -33,6 +33,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <project.module.name>ru.d_shap.${project.artifactId}</project.module.name>
         <maven.compiler.target>1.7</maven.compiler.target>
         <maven.compiler.source>1.7</maven.compiler.source>
         <checkstyle.plugin.version>3.1.2</checkstyle.plugin.version>
@@ -47,8 +48,9 @@
         <jacoco.plugin.version>0.8.7</jacoco.plugin.version>
         <jdepend.plugin.version>2.0</jdepend.plugin.version>
         <pitest.plugin.version>1.4.11</pitest.plugin.version>
+        <jar.plugin.version>3.2.2</jar.plugin.version>
         <source.plugin.version>3.2.1</source.plugin.version>
-        <javadoc.plugin.version>3.3.1</javadoc.plugin.version>
+        <javadoc.plugin.version>3.3.2</javadoc.plugin.version>
         <gpg.plugin.version>3.0.1</gpg.plugin.version>
     </properties>
 
@@ -311,6 +313,18 @@
             <id>build-release</id>
             <build>
                 <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-jar-plugin</artifactId>
+                        <version>${jar.plugin.version}</version>
+                        <configuration>
+                            <archive>
+                                <manifestEntries>
+                                    <Automatic-Module-Name>${project.module.name}</Automatic-Module-Name>
+                                </manifestEntries>
+                            </archive>
+                        </configuration>
+                    </plugin>
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-source-plugin</artifactId>
