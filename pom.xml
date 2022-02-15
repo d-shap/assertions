@@ -38,13 +38,13 @@
         <maven.compiler.source>1.7</maven.compiler.source>
         <checkstyle.plugin.version>3.1.2</checkstyle.plugin.version>
         <checkstyle.version>8.45.1</checkstyle.version>
-        <checkstyle.file>${basedir}/style-strict.xml</checkstyle.file>
-        <checkstyle.header.file>${basedir}/style-header-java.txt</checkstyle.header.file>
+        <checkstyle.file>${basedir}/checks/style-strict.xml</checkstyle.file>
+        <checkstyle.header.file>${basedir}/checks/style-header-java.txt</checkstyle.header.file>
         <pmd.plugin.version>3.15.0</pmd.plugin.version>
         <pmd.version>6.39.0</pmd.version>
-        <pmd.file>${basedir}/pmd-strict.xml</pmd.file>
+        <pmd.file>${basedir}/checks/pmd-strict.xml</pmd.file>
         <findbugs.plugin.version>3.0.5</findbugs.plugin.version>
-        <findbugs.file>${basedir}/findbugs-strict.xml</findbugs.file>
+        <findbugs.file>${basedir}/checks/findbugs-strict.xml</findbugs.file>
         <jacoco.plugin.version>0.8.7</jacoco.plugin.version>
         <jdepend.plugin.version>2.0</jdepend.plugin.version>
         <pitest.plugin.version>1.4.11</pitest.plugin.version>
