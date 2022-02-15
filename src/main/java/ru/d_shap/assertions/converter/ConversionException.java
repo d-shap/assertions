@@ -34,7 +34,15 @@ public final class ConversionException extends RuntimeException {
      * @param cause the cause of the exception.
      */
     public ConversionException(final Throwable cause) {
-        super(cause);
+        super(getMessage(cause), cause);
+    }
+
+    private static String getMessage(final Throwable cause) {
+        if (cause == null) {
+            return null;
+        } else {
+            return cause.getMessage();
+        }
     }
 
 }
