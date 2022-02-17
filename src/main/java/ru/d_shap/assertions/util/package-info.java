@@ -29,5 +29,9 @@
  * <p>
  * Classes in this package provides simple methods to create objects, that can be used in tests.
  * </p>
+ * <p>
+ * Also classes in this package provide useful utilities for testing, for example, access the inner
+ * state of the object with reflection, or check if the object is serializable.
+ * </p>
  */
 package ru.d_shap.assertions.util;
