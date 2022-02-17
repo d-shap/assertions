@@ -159,7 +159,7 @@ public final class ReflectionHelperTest extends AssertionTest {
     public void getFieldWrongNameFailTest() {
         try {
             ReflectionHelper.getField(new ChildClass(), "wrongFieldName");
-            Assertions.fail("PrivateAccessor test fail");
+            Assertions.fail("ReflectionHelper test fail");
         } catch (ReflectionException ex) {
             Assertions.assertThat(ex).hasMessage("wrongFieldName");
             Assertions.assertThat(ex).hasCause(NoSuchFieldException.class);
@@ -224,7 +224,7 @@ public final class ReflectionHelperTest extends AssertionTest {
         try {
             Field field = ReflectionHelper.getField(ChildClass.class, "_childField");
             ReflectionHelper.getFieldValue(field, new ChildClass(), false);
-            Assertions.fail("PrivateAccessor test fail");
+            Assertions.fail("ReflectionHelper test fail");
         } catch (ReflectionException ex) {
             Assertions.assertThat(ex).messageMatches("Class .* can not access a member of class .* with modifiers \"private final\"");
             Assertions.assertThat(ex).hasCause(IllegalAccessException.class);
@@ -329,7 +329,7 @@ public final class ReflectionHelperTest extends AssertionTest {
 
         try {
             ReflectionHelper.getMethod(childClass, "childMethod", null, int.class);
-            Assertions.fail("PrivateAccessor test fail");
+            Assertions.fail("ReflectionHelper test fail");
         } catch (ReflectionException ex) {
             Assertions.assertThat(ex).messageMatches(".*\\$ChildClass.childMethod\\(null, int\\)");
             Assertions.assertThat(ex).hasCause(NoSuchMethodException.class);
@@ -384,7 +384,7 @@ public final class ReflectionHelperTest extends AssertionTest {
 
         try {
             ReflectionHelper.getMethod(ChildClass.class, "childMethod", null, int.class);
-            Assertions.fail("PrivateAccessor test fail");
+            Assertions.fail("ReflectionHelper test fail");
         } catch (ReflectionException ex) {
             Assertions.assertThat(ex).messageMatches(".*\\$ChildClass.childMethod\\(null, int\\)");
             Assertions.assertThat(ex).hasCause(NoSuchMethodException.class);
@@ -398,7 +398,7 @@ public final class ReflectionHelperTest extends AssertionTest {
     public void getMethodWrongNameFailTest() {
         try {
             ReflectionHelper.getMethod(new ChildClass(), "wrongMethodName");
-            Assertions.fail("PrivateAccessor test fail");
+            Assertions.fail("ReflectionHelper test fail");
         } catch (ReflectionException ex) {
             Assertions.assertThat(ex).messageMatches(".*\\$ChildClass.wrongMethodName\\(\\)");
             Assertions.assertThat(ex).hasCause(NoSuchMethodException.class);
@@ -455,7 +455,7 @@ public final class ReflectionHelperTest extends AssertionTest {
         try {
             Method method = ReflectionHelper.getMethod(ChildClass.class, "childMethod", String.class);
             ReflectionHelper.callMethod(method, new ChildClass(), false, new Object[]{"param"});
-            Assertions.fail("PrivateAccessor test fail");
+            Assertions.fail("ReflectionHelper test fail");
         } catch (ReflectionException ex) {
             Assertions.assertThat(ex).messageMatches("Class .* can not access a member of class .* with modifiers \"private\"");
             Assertions.assertThat(ex).hasCause(IllegalAccessException.class);
@@ -470,7 +470,7 @@ public final class ReflectionHelperTest extends AssertionTest {
         try {
             Method method = ReflectionHelper.getMethod(ChildClass.class, "childFailMethod");
             ReflectionHelper.callMethod(method, new ChildClass());
-            Assertions.fail("PrivateAccessor test fail");
+            Assertions.fail("ReflectionHelper test fail");
         } catch (ReflectionException ex) {
             Assertions.assertThat(ex).messageIsNull();
             Assertions.assertThat(ex).hasCause(InvocationTargetException.class);
@@ -519,7 +519,7 @@ public final class ReflectionHelperTest extends AssertionTest {
 
         try {
             ReflectionHelper.callMethod(childClass, "childMethod", "param", 5);
-            Assertions.fail("PrivateAccessor test fail");
+            Assertions.fail("ReflectionHelper test fail");
         } catch (ReflectionException ex) {
             Assertions.assertThat(ex).messageMatches(".*\\$ChildClass.childMethod\\(java.lang.String, java.lang.Integer\\)");
             Assertions.assertThat(ex).hasCause(NoSuchMethodException.class);
@@ -527,7 +527,7 @@ public final class ReflectionHelperTest extends AssertionTest {
 
         try {
             ReflectionHelper.callMethod(childClass, "childMethod", null, Integer.valueOf("5"));
-            Assertions.fail("PrivateAccessor test fail");
+            Assertions.fail("ReflectionHelper test fail");
         } catch (ReflectionException ex) {
             Assertions.assertThat(ex).messageMatches(".*\\$ChildClass.childMethod\\(null, java.lang.Integer\\)");
             Assertions.assertThat(ex).hasCause(NoSuchMethodException.class);
@@ -594,7 +594,7 @@ public final class ReflectionHelperTest extends AssertionTest {
 
         try {
             ReflectionHelper.callMethod(ChildClass.class, childClass, "childMethod", "param", 5);
-            Assertions.fail("PrivateAccessor test fail");
+            Assertions.fail("ReflectionHelper test fail");
         } catch (ReflectionException ex) {
             Assertions.assertThat(ex).messageMatches(".*\\$ChildClass.childMethod\\(java.lang.String, java.lang.Integer\\)");
             Assertions.assertThat(ex).hasCause(NoSuchMethodException.class);
@@ -602,7 +602,7 @@ public final class ReflectionHelperTest extends AssertionTest {
 
         try {
             ReflectionHelper.callMethod(ChildClass.class, childClass, "childMethod", null, Integer.valueOf("5"));
-            Assertions.fail("PrivateAccessor test fail");
+            Assertions.fail("ReflectionHelper test fail");
         } catch (ReflectionException ex) {
             Assertions.assertThat(ex).messageMatches(".*\\$ChildClass.childMethod\\(null, java.lang.Integer\\)");
             Assertions.assertThat(ex).hasCause(NoSuchMethodException.class);
@@ -643,7 +643,7 @@ public final class ReflectionHelperTest extends AssertionTest {
 
         try {
             ReflectionHelper.getConstructor(PrivateConstructorClass.class, null, int.class);
-            Assertions.fail("PrivateAccessor test fail");
+            Assertions.fail("ReflectionHelper test fail");
         } catch (ReflectionException ex) {
             Assertions.assertThat(ex).messageMatches(".*\\$PrivateConstructorClass.<init>\\(null, int\\)");
             Assertions.assertThat(ex).hasCause(NoSuchMethodException.class);
@@ -657,7 +657,7 @@ public final class ReflectionHelperTest extends AssertionTest {
     public void getConstructorWrongParameterCountFailTest() {
         try {
             ReflectionHelper.getConstructor(ChildClass.class, String.class);
-            Assertions.fail("PrivateAccessor test fail");
+            Assertions.fail("ReflectionHelper test fail");
         } catch (ReflectionException ex) {
             Assertions.assertThat(ex).messageMatches(".*\\$ChildClass.<init>\\(java.lang.String\\)");
             Assertions.assertThat(ex).hasCause(NoSuchMethodException.class);
@@ -694,7 +694,7 @@ public final class ReflectionHelperTest extends AssertionTest {
         try {
             Constructor<PrivateConstructorClass> constructor = ReflectionHelper.getConstructor(PrivateConstructorClass.class);
             ReflectionHelper.callConstructor(constructor, false, new Object[]{});
-            Assertions.fail("PrivateAccessor test fail");
+            Assertions.fail("ReflectionHelper test fail");
         } catch (ReflectionException ex) {
             Assertions.assertThat(ex).messageMatches("Class .* can not access a member of class .* with modifiers \"private\"");
             Assertions.assertThat(ex).hasCause(IllegalAccessException.class);
@@ -709,7 +709,7 @@ public final class ReflectionHelperTest extends AssertionTest {
         try {
             Constructor<PrivateConstructorClass> constructor = ReflectionHelper.getConstructor(PrivateConstructorClass.class, int.class);
             ReflectionHelper.callConstructor(constructor, 5);
-            Assertions.fail("PrivateAccessor test fail");
+            Assertions.fail("ReflectionHelper test fail");
         } catch (ReflectionException ex) {
             Assertions.assertThat(ex).messageIsNull();
             Assertions.assertThat(ex).hasCause(InvocationTargetException.class);
@@ -744,7 +744,7 @@ public final class ReflectionHelperTest extends AssertionTest {
 
         try {
             ReflectionHelper.callConstructor(PrivateConstructorClass.class, "param", 5);
-            Assertions.fail("PrivateAccessor test fail");
+            Assertions.fail("ReflectionHelper test fail");
         } catch (ReflectionException ex) {
             Assertions.assertThat(ex).messageMatches(".*\\$PrivateConstructorClass.<init>\\(java.lang.String, java.lang.Integer\\)");
             Assertions.assertThat(ex).hasCause(NoSuchMethodException.class);
@@ -752,7 +752,7 @@ public final class ReflectionHelperTest extends AssertionTest {
 
         try {
             ReflectionHelper.callConstructor(PrivateConstructorClass.class, null, Integer.parseInt("5"));
-            Assertions.fail("PrivateAccessor test fail");
+            Assertions.fail("ReflectionHelper test fail");
         } catch (ReflectionException ex) {
             Assertions.assertThat(ex).messageMatches(".*\\$PrivateConstructorClass.<init>\\(null, java.lang.Integer\\)");
             Assertions.assertThat(ex).hasCause(NoSuchMethodException.class);
@@ -784,7 +784,7 @@ public final class ReflectionHelperTest extends AssertionTest {
         Field field = parentClass.getClass().getDeclaredField("_parentField");
         try {
             field.get(parentClass);
-            Assertions.fail("PrivateAccessor test fail");
+            Assertions.fail("ReflectionHelper test fail");
         } catch (IllegalAccessException ex) {
             Assertions.assertThat(ex).messageMatches("Class .* can not access a member of class .* with modifiers \"private final\"");
         }
@@ -804,7 +804,7 @@ public final class ReflectionHelperTest extends AssertionTest {
         Method method = parentClass.getClass().getDeclaredMethod("parentMethod");
         try {
             method.invoke(parentClass);
-            Assertions.fail("PrivateAccessor test fail");
+            Assertions.fail("ReflectionHelper test fail");
         } catch (IllegalAccessException ex) {
             Assertions.assertThat(ex).messageMatches("Class .* can not access a member of class .* with modifiers \"private\"");
         }
@@ -823,7 +823,7 @@ public final class ReflectionHelperTest extends AssertionTest {
         Constructor<PrivateConstructorClass> constructor = PrivateConstructorClass.class.getDeclaredConstructor();
         try {
             constructor.newInstance();
-            Assertions.fail("PrivateAccessor test fail");
+            Assertions.fail("ReflectionHelper test fail");
         } catch (IllegalAccessException ex) {
             Assertions.assertThat(ex).messageMatches("Class .* can not access a member of class .* with modifiers \"private\"");
         }
