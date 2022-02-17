@@ -118,14 +118,14 @@ public final class InputStreamToByteArrayValueConverterTest extends AssertionTes
             new InputStreamToByteArrayValueConverter().convert(createErrorInputStream(), 0);
             Assertions.fail("InputStreamToByteArrayValueConverter test fail");
         } catch (ConversionException ex) {
-            Assertions.assertThat(ex).hasMessage("java.io.IOException: read exception");
+            Assertions.assertThat(ex).hasMessage("read exception");
             Assertions.assertThat(ex).hasCause(IOException.class);
         }
         try {
             new InputStreamToByteArrayValueConverter().convert(createErrorInputStream(), 2);
             Assertions.fail("InputStreamToByteArrayValueConverter test fail");
         } catch (ConversionException ex) {
-            Assertions.assertThat(ex).hasMessage("java.io.IOException: read exception");
+            Assertions.assertThat(ex).hasMessage("read exception");
             Assertions.assertThat(ex).hasCause(IOException.class);
         }
     }
