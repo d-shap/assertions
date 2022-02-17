@@ -44,7 +44,7 @@ public final class DataExceptionTest extends AssertionTest {
      * {@link DataException} class test.
      */
     @Test
-    public void reflectiveExceptionMessageTest() {
+    public void dataExceptionMessageTest() {
         Assertions.assertThat(new DataException(null)).messageIsNull();
 
         Assertions.assertThat(new DataException(new DatatypeConfigurationException())).messageIsNull();
