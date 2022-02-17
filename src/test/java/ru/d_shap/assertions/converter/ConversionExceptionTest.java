@@ -44,7 +44,7 @@ public final class ConversionExceptionTest extends AssertionTest {
      * {@link ConversionException} class test.
      */
     @Test
-    public void conversionExceptionMessageTest() {
+    public void getMessageTest() {
         Assertions.assertThat(new ConversionException(null)).messageIsNull();
 
         Assertions.assertThat(new ConversionException(new IOException())).messageIsNull();
@@ -58,7 +58,7 @@ public final class ConversionExceptionTest extends AssertionTest {
      * {@link ConversionException} class test.
      */
     @Test
-    public void conversionExceptionCauseTest() {
+    public void getCauseTest() {
         Assertions.assertThat(new ConversionException(null)).causeIsNull();
 
         Assertions.assertThat(new ConversionException(new IOException())).hasCause(IOException.class);

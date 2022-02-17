@@ -42,7 +42,7 @@ public final class ReflectionExceptionTest extends AssertionTest {
      * {@link ReflectionException} class test.
      */
     @Test
-    public void reflectionExceptionMessageTest() {
+    public void getMessageTest() {
         Assertions.assertThat(new ReflectionException(null)).messageIsNull();
 
         Assertions.assertThat(new ReflectionException(new NoSuchFieldException())).messageIsNull();
@@ -56,7 +56,7 @@ public final class ReflectionExceptionTest extends AssertionTest {
      * {@link ReflectionException} class test.
      */
     @Test
-    public void reflectionExceptionCauseTest() {
+    public void getCauseTest() {
         Assertions.assertThat(new ReflectionException(null)).causeIsNull();
 
         Assertions.assertThat(new ReflectionException(new NoSuchFieldException())).hasCause(NoSuchFieldException.class);

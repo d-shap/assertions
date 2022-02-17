@@ -44,7 +44,7 @@ public final class DataExceptionTest extends AssertionTest {
      * {@link DataException} class test.
      */
     @Test
-    public void dataExceptionMessageTest() {
+    public void getMessageTest() {
         Assertions.assertThat(new DataException(null)).messageIsNull();
 
         Assertions.assertThat(new DataException(new DatatypeConfigurationException())).messageIsNull();
@@ -58,7 +58,7 @@ public final class DataExceptionTest extends AssertionTest {
      * {@link DataException} class test.
      */
     @Test
-    public void dataExceptionCauseTest() {
+    public void getCauseTest() {
         Assertions.assertThat(new DataException(null)).causeIsNull();
 
         Assertions.assertThat(new DataException(new DatatypeConfigurationException())).hasCause(DatatypeConfigurationException.class);

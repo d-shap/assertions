@@ -44,7 +44,7 @@ public final class SerializationExceptionTest extends AssertionTest {
      * {@link SerializationException} class test.
      */
     @Test
-    public void serializationExceptionMessageTest() {
+    public void getMessageTest() {
         Assertions.assertThat(new SerializationException(null)).messageIsNull();
 
         Assertions.assertThat(new SerializationException(new IOException())).messageIsNull();
@@ -58,7 +58,7 @@ public final class SerializationExceptionTest extends AssertionTest {
      * {@link SerializationException} class test.
      */
     @Test
-    public void serializationExceptionCauseTest() {
+    public void getCauseTest() {
         Assertions.assertThat(new SerializationException(null)).causeIsNull();
 
         Assertions.assertThat(new SerializationException(new IOException())).hasCause(IOException.class);
