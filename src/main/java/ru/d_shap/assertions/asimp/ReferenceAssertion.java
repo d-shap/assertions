@@ -32,8 +32,8 @@ import ru.d_shap.assertions.asimp.java.lang.ClassAssertion;
 import ru.d_shap.assertions.asimp.java.lang.ObjectAssertion;
 import ru.d_shap.assertions.asimp.java.lang.ThrowableAssertion;
 import ru.d_shap.assertions.asimp.primitive.IntAssertion;
-import ru.d_shap.assertions.data.ReflectionException;
-import ru.d_shap.assertions.data.ReflectionHelper;
+import ru.d_shap.assertions.util.ReflectionException;
+import ru.d_shap.assertions.util.ReflectionHelper;
 
 /**
  * Base class for all reference type assertions.

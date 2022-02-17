@@ -27,8 +27,8 @@ import org.hamcrest.Matcher;
 import ru.d_shap.assertions.Messages;
 import ru.d_shap.assertions.Raw;
 import ru.d_shap.assertions.asimp.ReferenceAssertion;
-import ru.d_shap.assertions.data.ReflectionException;
-import ru.d_shap.assertions.data.ReflectionHelper;
+import ru.d_shap.assertions.util.ReflectionException;
+import ru.d_shap.assertions.util.ReflectionHelper;
 
 /**
  * Assertions for the class.

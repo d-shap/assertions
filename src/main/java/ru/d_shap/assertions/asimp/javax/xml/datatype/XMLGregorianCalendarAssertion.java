@@ -32,7 +32,7 @@ import ru.d_shap.assertions.Raw;
 import ru.d_shap.assertions.asimp.ReferenceAssertion;
 import ru.d_shap.assertions.asimp.java.util.CalendarAssertion;
 import ru.d_shap.assertions.asimp.primitive.IntAssertion;
-import ru.d_shap.assertions.data.DataHelper;
+import ru.d_shap.assertions.util.DataHelper;
 
 /**
  * Assertions for the XML gregorian calendar.

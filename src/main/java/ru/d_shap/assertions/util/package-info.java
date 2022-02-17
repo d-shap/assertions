@@ -19,7 +19,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 /**
  * <p>
- * Package contains classes to create and process test object.
+ * Package contains utility classes.
  * </p>
  * <p>
  * Often, many objects should be created during testing. But some objects cannot be created
@@ -30,4 +30,4 @@
  * Classes in this package provides simple methods to create objects, that can be used in tests.
  * </p>
  */
-package ru.d_shap.assertions.data;
+package ru.d_shap.assertions.util;

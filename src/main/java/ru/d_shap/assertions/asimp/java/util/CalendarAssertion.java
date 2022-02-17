@@ -28,7 +28,7 @@ import ru.d_shap.assertions.Messages;
 import ru.d_shap.assertions.Raw;
 import ru.d_shap.assertions.asimp.ReferenceAssertion;
 import ru.d_shap.assertions.asimp.primitive.IntAssertion;
-import ru.d_shap.assertions.data.DataHelper;
+import ru.d_shap.assertions.util.DataHelper;
 
 /**
  * Assertions for the calendar.
