@@ -17,7 +17,9 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-package ru.d_shap.assertions.data;
+package ru.d_shap.assertions.util;
+
+import javax.xml.datatype.DatatypeConfigurationException;
 
 import org.junit.Test;
 
@@ -25,43 +27,43 @@ import ru.d_shap.assertions.AssertionTest;
 import ru.d_shap.assertions.Assertions;
 
 /**
- * Tests for {@link ReflectionException}.
+ * Tests for {@link DataException}.
  *
  * @author Dmitry Shapovalov
  */
-public final class ReflectionExceptionTest extends AssertionTest {
+public final class DataExceptionTest extends AssertionTest {
 
     /**
      * Test class constructor.
      */
-    public ReflectionExceptionTest() {
+    public DataExceptionTest() {
         super();
     }
 
     /**
-     * {@link ReflectionException} class test.
+     * {@link DataException} class test.
      */
     @Test
-    public void reflectionExceptionMessageTest() {
-        Assertions.assertThat(new ReflectionException(null)).messageIsNull();
+    public void dataExceptionMessageTest() {
+        Assertions.assertThat(new DataException(null)).messageIsNull();
 
-        Assertions.assertThat(new ReflectionException(new NoSuchFieldException())).messageIsNull();
-        Assertions.assertThat(new ReflectionException(new NoSuchFieldException())).causeMessageIsNull();
+        Assertions.assertThat(new DataException(new DatatypeConfigurationException())).messageIsNull();
+        Assertions.assertThat(new DataException(new DatatypeConfigurationException())).causeMessageIsNull();
 
-        Assertions.assertThat(new ReflectionException(new NoSuchFieldException("exception"))).hasMessage("exception");
-        Assertions.assertThat(new ReflectionException(new NoSuchFieldException("exception"))).hasCauseMessage("exception");
+        Assertions.assertThat(new DataException(new DatatypeConfigurationException("exception"))).hasMessage("exception");
+        Assertions.assertThat(new DataException(new DatatypeConfigurationException("exception"))).hasCauseMessage("exception");
     }
 
     /**
-     * {@link ReflectionException} class test.
+     * {@link DataException} class test.
      */
     @Test
-    public void reflectionExceptionCauseTest() {
-        Assertions.assertThat(new ReflectionException(null)).causeIsNull();
+    public void dataExceptionCauseTest() {
+        Assertions.assertThat(new DataException(null)).causeIsNull();
 
-        Assertions.assertThat(new ReflectionException(new NoSuchFieldException())).hasCause(NoSuchFieldException.class);
+        Assertions.assertThat(new DataException(new DatatypeConfigurationException())).hasCause(DatatypeConfigurationException.class);
 
-        Assertions.assertThat(new ReflectionException(new NoSuchFieldException("exception"))).hasCause(NoSuchFieldException.class);
+        Assertions.assertThat(new DataException(new DatatypeConfigurationException("exception"))).hasCause(DatatypeConfigurationException.class);
     }
 
 }

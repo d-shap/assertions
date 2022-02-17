@@ -31,7 +31,7 @@ import ru.d_shap.assertions.converter.AsStringConverterProvider;
 import ru.d_shap.assertions.converter.ConversionException;
 import ru.d_shap.assertions.converter.ValueConverter;
 import ru.d_shap.assertions.converter.ValueConverterProvider;
-import ru.d_shap.assertions.data.ReflectionHelper;
+import ru.d_shap.assertions.util.ReflectionHelper;
 
 /**
  * Tests for {@link AssertionErrorBuilder}.

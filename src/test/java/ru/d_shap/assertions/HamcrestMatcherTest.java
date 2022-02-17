@@ -30,8 +30,8 @@ import org.junit.Test;
 import ru.d_shap.assertions.converter.AsStringConverter;
 import ru.d_shap.assertions.converter.AsStringConverterProvider;
 import ru.d_shap.assertions.converter.ConversionException;
-import ru.d_shap.assertions.data.ReflectionHelper;
 import ru.d_shap.assertions.fail.FailDescription;
+import ru.d_shap.assertions.util.ReflectionHelper;
 
 /**
  * Tests for {@link HamcrestMatcher}.

@@ -65,9 +65,9 @@ import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 
 import ru.d_shap.assertions.converter.ValueConverter;
-import ru.d_shap.assertions.data.DataHelper;
-import ru.d_shap.assertions.data.ReflectionException;
-import ru.d_shap.assertions.data.ReflectionHelper;
+import ru.d_shap.assertions.util.DataHelper;
+import ru.d_shap.assertions.util.ReflectionException;
+import ru.d_shap.assertions.util.ReflectionHelper;
 
 /**
  * Base class for all tests.

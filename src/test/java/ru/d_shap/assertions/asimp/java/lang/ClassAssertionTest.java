@@ -35,7 +35,7 @@ import org.junit.Test;
 import ru.d_shap.assertions.AssertionTest;
 import ru.d_shap.assertions.Assertions;
 import ru.d_shap.assertions.Raw;
-import ru.d_shap.assertions.data.ReflectionException;
+import ru.d_shap.assertions.util.ReflectionException;
 
 /**
  * Tests for {@link ClassAssertion}.
