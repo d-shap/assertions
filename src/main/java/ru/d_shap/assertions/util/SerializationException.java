@@ -19,6 +19,8 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.util;
 
+import java.io.IOException;
+
 /**
  * Wrapper for exceptions, that can occur during serialization and deserialization.
  *
@@ -33,11 +35,11 @@ public final class SerializationException extends RuntimeException {
      *
      * @param cause the cause of the exception.
      */
-    public SerializationException(final Throwable cause) {
+    public SerializationException(final IOException cause) {
         super(getMessage(cause), cause);
     }
 
-    private static String getMessage(final Throwable cause) {
+    private static String getMessage(final IOException cause) {
         if (cause == null) {
             return null;
         } else {
