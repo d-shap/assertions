@@ -2580,7 +2580,8 @@ public final class ReferenceAssertionTest extends AssertionTest {
 
         createReferenceAssertion(new ChildClass()).toMethodCallException("parentFailMethod", new Class<?>[]{}, new Object[]{}).hasMessage("test io exception");
         createReferenceAssertion(new ChildClass()).toMethodCallException("childFailMethod", new Class<?>[]{}, new Object[]{}).hasMessage("test rt exception");
-        createReferenceAssertion(new ChildClass()).toMethodCallException("childFailMethod", new Class<?>[]{String.class}, new Object[]{"childMethod"}).hasMessage("test rt exception: childMethod");
+        createReferenceAssertion(new ChildClass()).toMethodCallException("childFailMethod", new Class<?>[]{String.class}, new Object[]{"param"}).hasMessage("test rt exception: param");
+        createReferenceAssertion(new ChildClass()).toMethodCallException("childFailMethod", new Class<?>[]{String.class, int.class}, new Object[]{"param", 5}).hasMessage("test rt exception: param,5");
 
         try {
             createReferenceAssertion().toMethodCallException("method", new Class<?>[]{}, new Object[]{});
@@ -2885,6 +2886,10 @@ public final class ReferenceAssertionTest extends AssertionTest {
 
         private void childFailMethod(final String param) {
             throw new RuntimeException("test rt exception: " + param);
+        }
+
+        private void childFailMethod(final String param1, final int param2) {
+            throw new RuntimeException("test rt exception: " + param1 + "," + param2);
         }
 
     }
