@@ -36,6 +36,8 @@
         <project.module.name>ru.d_shap.${project.artifactId}</project.module.name>
         <maven.compiler.target>1.7</maven.compiler.target>
         <maven.compiler.source>1.7</maven.compiler.source>
+
+        <!-- Plugins' properties -->
         <checkstyle.plugin.version>3.1.2</checkstyle.plugin.version>
         <checkstyle.version>8.45.1</checkstyle.version>
         <checkstyle.file>${basedir}/checks/style-strict.xml</checkstyle.file>
@@ -46,7 +48,6 @@
         <findbugs.plugin.version>3.0.5</findbugs.plugin.version>
         <findbugs.file>${basedir}/checks/findbugs-strict.xml</findbugs.file>
         <jacoco.plugin.version>0.8.7</jacoco.plugin.version>
-        <jdepend.plugin.version>2.0</jdepend.plugin.version>
         <pitest.plugin.version>1.4.11</pitest.plugin.version>
         <jar.plugin.version>3.2.2</jar.plugin.version>
         <source.plugin.version>3.2.1</source.plugin.version>
@@ -233,27 +234,6 @@
     </build>
 
     <profiles>
-        <profile>
-            <id>build-jdepend</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.codehaus.mojo</groupId>
-                        <artifactId>jdepend-maven-plugin</artifactId>
-                        <version>${jdepend.plugin.version}</version>
-                        <executions>
-                            <execution>
-                                <id>generate-jdepend</id>
-                                <phase>compile</phase>
-                                <goals>
-                                    <goal>generate</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
         <profile>
             <id>build-pitest</id>
             <build>
