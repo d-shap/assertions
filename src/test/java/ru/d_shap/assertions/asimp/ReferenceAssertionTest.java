@@ -3236,25 +3236,27 @@ public final class ReferenceAssertionTest extends AssertionTest {
     /**
      * Test class.
      *
+     * @param <E> the generic type of the matcher.
+     *
      * @author Dmitry Shapovalov
      */
     private static final class ExceptionMessageMatcher<E extends Throwable> extends TypeSafeMatcher<E> {
 
-        private final Matcher<? super String> matcher;
+        private final Matcher<? super String> _matcher;
 
         ExceptionMessageMatcher(final Matcher<String> matcher) {
             super();
-            this.matcher = matcher;
+            _matcher = matcher;
         }
 
         @Override
-        protected boolean matchesSafely(final E ex) {
-            return matcher.matches(ex.getMessage());
+        protected boolean matchesSafely(final E throwable) {
+            return _matcher.matches(throwable.getMessage());
         }
 
         @Override
         public void describeTo(final Description description) {
-            description.appendDescriptionOf(matcher);
+            description.appendDescriptionOf(_matcher);
         }
 
     }
