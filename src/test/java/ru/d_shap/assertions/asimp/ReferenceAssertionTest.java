@@ -1657,7 +1657,7 @@ public final class ReferenceAssertionTest extends AssertionTest {
      * {@link ReferenceAssertion} class test.
      */
     @Test
-    public void toMethodCallResultTest() {
+    public void toMethodCallResultWithParametersTest() {
         createReferenceAssertion(new ParentClass()).toMethodCallResult("parentMethod").isEqualTo("parentMethod");
 
         createReferenceAssertion(new ChildClass()).toMethodCallResult("parentMethod").isEqualTo("parentMethod");
@@ -2022,7 +2022,7 @@ public final class ReferenceAssertionTest extends AssertionTest {
      * {@link ReferenceAssertion} class test.
      */
     @Test
-    public void toMethodCallResultAssertionTest() {
+    public void toMethodCallResultAssertionWithParametersTest() {
         createReferenceAssertion(new ParentClass()).toMethodCallResult("parentMethod", Raw.charSequenceAssertion()).isEqualToIgnoreCase("ParentMethod");
 
         createReferenceAssertion(new ChildClass()).toMethodCallResult("parentMethod", Raw.charSequenceAssertion()).isEqualToIgnoreCase("ParentMethod");
@@ -2399,7 +2399,7 @@ public final class ReferenceAssertionTest extends AssertionTest {
      * {@link ReferenceAssertion} class test.
      */
     @Test
-    public void toMethodCallResultMatcherTest() {
+    public void toMethodCallResultMatcherWithParametersTest() {
         createReferenceAssertion(new ParentClass()).toMethodCallResult("parentMethod", Matchers.equalTo("parentMethod"));
 
         createReferenceAssertion(new ChildClass()).toMethodCallResult("parentMethod", Matchers.equalTo("parentMethod"));
@@ -2751,7 +2751,7 @@ public final class ReferenceAssertionTest extends AssertionTest {
      * {@link ReferenceAssertion} class test.
      */
     @Test
-    public void toMethodCallExceptionTest() {
+    public void toMethodCallExceptionWithParametersTest() {
         createReferenceAssertion(new ParentClass()).toMethodCallException("parentFailMethod").hasMessage("test io exception");
 
         createReferenceAssertion(new ChildClass()).toMethodCallException("parentFailMethod").hasMessage("test io exception");
@@ -3100,7 +3100,7 @@ public final class ReferenceAssertionTest extends AssertionTest {
      * {@link ReferenceAssertion} class test.
      */
     @Test
-    public void toMethodCallExceptionMatcherTest() {
+    public void toMethodCallExceptionMatcherWithParametersTest() {
         createReferenceAssertion(new ParentClass()).toMethodCallException("parentFailMethod", exceptionMessage("test io exception"));
 
         createReferenceAssertion(new ChildClass()).toMethodCallException("parentFailMethod", exceptionMessage("test io exception"));
