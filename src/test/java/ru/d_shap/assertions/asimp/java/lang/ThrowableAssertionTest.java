@@ -757,7 +757,66 @@ public final class ThrowableAssertionTest extends AssertionTest {
      */
     @Test
     public void messageContainsIgnoreCaseTest() {
-        // TODO
+        initialize(Raw.throwableAssertion(), new Exception("value")).messageContainsIgnoreCase("value");
+        initialize(Raw.throwableAssertion(), new Exception("value")).messageContainsIgnoreCase("va");
+        initialize(Raw.throwableAssertion(), new Exception("value")).messageContainsIgnoreCase("lu");
+        initialize(Raw.throwableAssertion(), new Exception("value")).messageContainsIgnoreCase("LU");
+        initialize(Raw.throwableAssertion(), new Exception("value")).messageContainsIgnoreCase("e");
+
+        try {
+            Raw.throwableAssertion().messageContainsIgnoreCase("value");
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).toMessage().isEqualTo("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), null).messageContainsIgnoreCase("value");
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).toMessage().isEqualTo("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), null, "Message").messageContainsIgnoreCase("value");
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).toMessage().isEqualTo("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), null).messageContainsIgnoreCase(null);
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).toMessage().isEqualTo("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), null, "Message").messageContainsIgnoreCase(null);
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).toMessage().isEqualTo("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), new Exception()).messageContainsIgnoreCase(null);
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).toMessage().isEqualTo("Argument should not be null: expected.");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), new Exception(), "Message").messageContainsIgnoreCase(null);
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).toMessage().isEqualTo("Message.\n\tArgument should not be null: expected.");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), new Exception("value")).messageContainsIgnoreCase("vae");
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).toMessage().isEqualTo("Check actual value's message.\n\tActual value should contain the expected value ignoring case.\n\tExpected:<vae> but was:<value>");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), new Exception("value"), "Message").messageContainsIgnoreCase("vae");
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).toMessage().isEqualTo("Message.\n\tCheck actual value's message.\n\tActual value should contain the expected value ignoring case.\n\tExpected:<vae> but was:<value>");
+        }
     }
 
     /**
