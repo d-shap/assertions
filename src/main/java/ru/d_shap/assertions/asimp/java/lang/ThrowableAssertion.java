@@ -222,6 +222,14 @@ public class ThrowableAssertion extends ReferenceAssertion<Throwable> {
     }
 
     /**
+     * Check if the message of the cause of the throwable is NOT null.
+     */
+    public final void causeMessageIsNotNull() {
+        checkActualIsNotNull();
+        toCause().messageIsNotNull();
+    }
+
+    /**
      * Check if the message of the cause of the throwable is empty.
      */
     public final void causeMessageIsEmpty() {
