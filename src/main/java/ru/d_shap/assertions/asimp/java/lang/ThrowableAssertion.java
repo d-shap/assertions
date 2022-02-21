@@ -74,6 +74,14 @@ public class ThrowableAssertion extends ReferenceAssertion<Throwable> {
     }
 
     /**
+     * Check if the message of the throwable is NOT null.
+     */
+    public final void messageIsNotNull() {
+        checkActualIsNotNull();
+        toMessage().isNotNull();
+    }
+
+    /**
      * Check if the message of the throwable is empty.
      */
     public final void messageIsEmpty() {
