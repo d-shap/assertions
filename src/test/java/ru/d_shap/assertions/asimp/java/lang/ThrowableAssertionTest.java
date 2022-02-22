@@ -1272,7 +1272,74 @@ public final class ThrowableAssertionTest extends AssertionTest {
      */
     @Test
     public void causeMessageIsEmptyTest() {
-        // TODO
+        initialize(Raw.throwableAssertion(), new Exception(new RuntimeException(""))).causeMessageIsEmpty();
+
+        try {
+            Raw.throwableAssertion().causeMessageIsEmpty();
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).toMessage().isEqualTo("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), null).causeMessageIsEmpty();
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).toMessage().isEqualTo("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), null, "Message").causeMessageIsEmpty();
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).toMessage().isEqualTo("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), new Exception()).causeMessageIsEmpty();
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).toMessage().isEqualTo("Check actual value's cause.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), new Exception(), "Message").causeMessageIsEmpty();
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).toMessage().isEqualTo("Message.\n\tCheck actual value's cause.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), new Exception(new RuntimeException())).causeMessageIsEmpty();
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).toMessage().isEqualTo("Check actual value's cause.\n\tCheck actual value's message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), new Exception(new RuntimeException()), "Message").causeMessageIsEmpty();
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).toMessage().isEqualTo("Message.\n\tCheck actual value's cause.\n\tCheck actual value's message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), new Exception(new RuntimeException(" "))).causeMessageIsEmpty();
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).toMessage().isEqualTo("Check actual value's cause.\n\tCheck actual value's message.\n\tActual value should be empty.\n\tActual:< >");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), new Exception(new RuntimeException(" ")), "Message").causeMessageIsEmpty();
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).toMessage().isEqualTo("Message.\n\tCheck actual value's cause.\n\tCheck actual value's message.\n\tActual value should be empty.\n\tActual:< >");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), new Exception(new RuntimeException("value"))).causeMessageIsEmpty();
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).toMessage().isEqualTo("Check actual value's cause.\n\tCheck actual value's message.\n\tActual value should be empty.\n\tActual:<value>");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), new Exception(new RuntimeException("value")), "Message").causeMessageIsEmpty();
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).toMessage().isEqualTo("Message.\n\tCheck actual value's cause.\n\tCheck actual value's message.\n\tActual value should be empty.\n\tActual:<value>");
+        }
     }
 
     /**
@@ -1280,7 +1347,63 @@ public final class ThrowableAssertionTest extends AssertionTest {
      */
     @Test
     public void causeMessageIsNullOrEmptyTest() {
-        // TODO
+        initialize(Raw.throwableAssertion(), new Exception(new RuntimeException())).causeMessageIsNullOrEmpty();
+        initialize(Raw.throwableAssertion(), new Exception(new RuntimeException(""))).causeMessageIsNullOrEmpty();
+
+        try {
+            Raw.throwableAssertion().causeMessageIsNullOrEmpty();
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).toMessage().isEqualTo("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), null).causeMessageIsNullOrEmpty();
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).toMessage().isEqualTo("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), null, "Message").causeMessageIsNullOrEmpty();
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).toMessage().isEqualTo("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), new Exception()).causeMessageIsNullOrEmpty();
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).toMessage().isEqualTo("Check actual value's cause.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), new Exception(), "Message").causeMessageIsNullOrEmpty();
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).toMessage().isEqualTo("Message.\n\tCheck actual value's cause.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), new Exception(new RuntimeException(" "))).causeMessageIsNullOrEmpty();
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).toMessage().isEqualTo("Check actual value's cause.\n\tCheck actual value's message.\n\tActual value should be null or empty.\n\tActual:< >");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), new Exception(new RuntimeException(" ")), "Message").causeMessageIsNullOrEmpty();
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).toMessage().isEqualTo("Message.\n\tCheck actual value's cause.\n\tCheck actual value's message.\n\tActual value should be null or empty.\n\tActual:< >");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), new Exception(new RuntimeException("value"))).causeMessageIsNullOrEmpty();
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).toMessage().isEqualTo("Check actual value's cause.\n\tCheck actual value's message.\n\tActual value should be null or empty.\n\tActual:<value>");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), new Exception(new RuntimeException("value")), "Message").causeMessageIsNullOrEmpty();
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).toMessage().isEqualTo("Message.\n\tCheck actual value's cause.\n\tCheck actual value's message.\n\tActual value should be null or empty.\n\tActual:<value>");
+        }
     }
 
     /**
@@ -1288,7 +1411,63 @@ public final class ThrowableAssertionTest extends AssertionTest {
      */
     @Test
     public void causeMessageIsNotEmptyTest() {
-        // TODO
+        initialize(Raw.throwableAssertion(), new Exception(new RuntimeException(" "))).causeMessageIsNotEmpty();
+        initialize(Raw.throwableAssertion(), new Exception(new RuntimeException("value"))).causeMessageIsNotEmpty();
+
+        try {
+            Raw.throwableAssertion().causeMessageIsNotEmpty();
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).toMessage().isEqualTo("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), null).causeMessageIsNotEmpty();
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).toMessage().isEqualTo("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), null, "Message").causeMessageIsNotEmpty();
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).toMessage().isEqualTo("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), new Exception()).causeMessageIsNotEmpty();
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).toMessage().isEqualTo("Check actual value's cause.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), new Exception(), "Message").causeMessageIsNotEmpty();
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).toMessage().isEqualTo("Message.\n\tCheck actual value's cause.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), new Exception(new RuntimeException())).causeMessageIsNotEmpty();
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).toMessage().isEqualTo("Check actual value's cause.\n\tCheck actual value's message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), new Exception(new RuntimeException()), "Message").causeMessageIsNotEmpty();
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).toMessage().isEqualTo("Message.\n\tCheck actual value's cause.\n\tCheck actual value's message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), new Exception(new RuntimeException(""))).causeMessageIsNotEmpty();
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).toMessage().isEqualTo("Check actual value's cause.\n\tCheck actual value's message.\n\tActual value should not be empty.");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), new Exception(new RuntimeException("")), "Message").causeMessageIsNotEmpty();
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).toMessage().isEqualTo("Message.\n\tCheck actual value's cause.\n\tCheck actual value's message.\n\tActual value should not be empty.");
+        }
     }
 
     /**
