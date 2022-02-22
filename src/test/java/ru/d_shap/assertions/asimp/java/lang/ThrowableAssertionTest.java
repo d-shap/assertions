@@ -1178,6 +1178,14 @@ public final class ThrowableAssertionTest extends AssertionTest {
      * {@link ThrowableAssertion} class test.
      */
     @Test
+    public void causeMessageIsNotNullTest() {
+        // TODO
+    }
+
+    /**
+     * {@link ThrowableAssertion} class test.
+     */
+    @Test
     public void causeMessageIsEmptyTest() {
         // TODO
     }
