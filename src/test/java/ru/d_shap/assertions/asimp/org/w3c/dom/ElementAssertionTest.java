@@ -267,13 +267,13 @@ public final class ElementAssertionTest extends AssertionTest {
             initialize(Raw.elementAssertion(), createElement("<element/>")).isEqualTo("<element>");
             Assertions.fail("ElementAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).toMessage().startsWith("Argument should be valid: expected.\n\tThe argument's value should be the valid XML.\n\t");
+            Assertions.assertThat(ex).messageMatches("Argument should be valid: expected.\n\tThe argument's value should be the valid XML.\n\t.*");
         }
         try {
             initialize(Raw.elementAssertion(), createElement("<element/>"), "Message").isEqualTo("<element>");
             Assertions.fail("ElementAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).toMessage().startsWith("Message.\n\tArgument should be valid: expected.\n\tThe argument's value should be the valid XML.\n\t");
+            Assertions.assertThat(ex).messageMatches("Message.\n\tArgument should be valid: expected.\n\tThe argument's value should be the valid XML.\n\t.*");
         }
         try {
             initialize(Raw.elementAssertion(), createElement("<element1/>")).isEqualTo("<element2/>");
@@ -535,13 +535,13 @@ public final class ElementAssertionTest extends AssertionTest {
             initialize(Raw.elementAssertion(), createElement("<element/>")).isNotEqualTo("<element>");
             Assertions.fail("ElementAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).toMessage().startsWith("Argument should be valid: expected.\n\tThe argument's value should be the valid XML.\n\t");
+            Assertions.assertThat(ex).messageMatches("Argument should be valid: expected.\n\tThe argument's value should be the valid XML.\n\t.*");
         }
         try {
             initialize(Raw.elementAssertion(), createElement("<element/>"), "Message").isNotEqualTo("<element>");
             Assertions.fail("ElementAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).toMessage().startsWith("Message.\n\tArgument should be valid: expected.\n\tThe argument's value should be the valid XML.\n\t");
+            Assertions.assertThat(ex).messageMatches("Message.\n\tArgument should be valid: expected.\n\tThe argument's value should be the valid XML.\n\t.*");
         }
         try {
             initialize(Raw.elementAssertion(), createElement("<element/>")).isNotEqualTo("<element/>");
