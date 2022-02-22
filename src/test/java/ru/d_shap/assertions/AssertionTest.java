@@ -2247,7 +2247,7 @@ public class AssertionTest {
         }
 
         @Override
-        public void close() throws IOException {
+        public void close() {
             // Ignore
         }
 
