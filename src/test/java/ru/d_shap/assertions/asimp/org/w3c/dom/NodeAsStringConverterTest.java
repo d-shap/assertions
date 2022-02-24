@@ -85,8 +85,7 @@ public final class NodeAsStringConverterTest extends AssertionTest {
             Assertions.fail("NodeAsStringConverter test fail");
         } catch (ConversionException ex) {
             Assertions.assertThat(ex).messageMatches(".*read exception");
-            Assertions.assertThat(ex).hasCause(TransformerException.class);
-            Assertions.assertThat(ex).toCause().hasCause(IOException.class);
+            Assertions.assertThat(ex).hasCauses(TransformerException.class, IOException.class);
         }
     }
 
