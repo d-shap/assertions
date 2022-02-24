@@ -222,6 +222,24 @@ public class ThrowableAssertion extends ReferenceAssertion<Throwable> {
     }
 
     /**
+     * Check if the causes of the throwable is instance of the expected classes.
+     *
+     * @param expected the expected classes.
+     */
+    public final void hasCauses(final Class<?>... expected) {
+        hasCauses(0, expected);
+    }
+
+    private void hasCauses(final int idx, final Class<?>... expected) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(expected, "expected");
+        if (idx < expected.length) {
+            toCause().isInstanceOf(expected[idx]);
+            toCause().hasCauses(idx + 1, expected);
+        }
+    }
+
+    /**
      * Check if the message of the cause of the throwable is null.
      */
     public final void causeMessageIsNull() {
