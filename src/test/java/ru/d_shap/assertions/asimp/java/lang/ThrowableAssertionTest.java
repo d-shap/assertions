@@ -1168,6 +1168,14 @@ public final class ThrowableAssertionTest extends AssertionTest {
      * {@link ThrowableAssertion} class test.
      */
     @Test
+    public void hasCausesTest() {
+        // TODO
+    }
+
+    /**
+     * {@link ThrowableAssertion} class test.
+     */
+    @Test
     public void causeMessageIsNullTest() {
         initialize(Raw.throwableAssertion(), new Exception(new Error())).causeMessageIsNull();
 
