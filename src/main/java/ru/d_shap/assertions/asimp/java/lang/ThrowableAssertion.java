@@ -227,6 +227,11 @@ public class ThrowableAssertion extends ReferenceAssertion<Throwable> {
      * @param expected the expected classes.
      */
     public final void hasCauses(final Class<?>... expected) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(expected, "expected");
+        for (int i = 0; i < expected.length; i++) {
+            checkArgumentIsNotNull(expected[i], "expected");
+        }
         hasCauses(0, expected);
     }
 
