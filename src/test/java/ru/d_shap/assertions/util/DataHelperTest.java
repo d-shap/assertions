@@ -234,7 +234,10 @@ public final class DataHelperTest extends AssertionTest {
      */
     @Test
     public void createUtcCalendarTest() {
-        // TODO
+        Assertions.assertThat(DataHelper.createUtcCalendar(2020, Calendar.FEBRUARY, 15, 4, 12, 3)).hasTimeZoneDateAndTime(2020, Calendar.FEBRUARY, 15, 4, 12, 3, 0, "UTC");
+        Assertions.assertThat(DataHelper.createUtcCalendar(2020, Calendar.AUGUST, 16, 5, 13, 4)).hasTimeZoneDateAndTime(2020, Calendar.AUGUST, 16, 5, 13, 4, 0, "UTC");
+        Assertions.assertThat(DataHelper.createUtcCalendar(1322, Calendar.FEBRUARY, 17, 6, 14, 5)).hasTimeZoneDateAndTime(1322, Calendar.FEBRUARY, 17, 6, 14, 5, 0, "UTC");
+        Assertions.assertThat(DataHelper.createUtcCalendar(1322, Calendar.AUGUST, 18, 7, 15, 6)).hasTimeZoneDateAndTime(1322, Calendar.AUGUST, 18, 7, 15, 6, 0, "UTC");
     }
 
     /**
@@ -242,7 +245,10 @@ public final class DataHelperTest extends AssertionTest {
      */
     @Test
     public void createUtcCalendarMillisecondTest() {
-        // TODO
+        Assertions.assertThat(DataHelper.createUtcCalendar(2020, Calendar.FEBRUARY, 15, 4, 12, 3, 555)).hasTimeZoneDateAndTime(2020, Calendar.FEBRUARY, 15, 4, 12, 3, 555, "UTC");
+        Assertions.assertThat(DataHelper.createUtcCalendar(2020, Calendar.AUGUST, 16, 5, 13, 4, 666)).hasTimeZoneDateAndTime(2020, Calendar.AUGUST, 16, 5, 13, 4, 666, "UTC");
+        Assertions.assertThat(DataHelper.createUtcCalendar(1322, Calendar.FEBRUARY, 17, 6, 14, 5, 777)).hasTimeZoneDateAndTime(1322, Calendar.FEBRUARY, 17, 6, 14, 5, 777, "UTC");
+        Assertions.assertThat(DataHelper.createUtcCalendar(1322, Calendar.AUGUST, 18, 7, 15, 6, 888)).hasTimeZoneDateAndTime(1322, Calendar.AUGUST, 18, 7, 15, 6, 888, "UTC");
     }
 
     /**
