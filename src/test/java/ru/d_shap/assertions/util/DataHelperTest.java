@@ -256,7 +256,45 @@ public final class DataHelperTest extends AssertionTest {
      */
     @Test
     public void createXmlCalendarTest() {
-        // TODO
+        Assertions.assertThat(DataHelper.createXmlCalendar(2020, Calendar.FEBRUARY, 15, 4, 12, 3)).hasDateAndTime(2020, Calendar.FEBRUARY, 15, 4, 12, 3, 0);
+        Assertions.assertThat(DataHelper.createXmlCalendar(2020, Calendar.AUGUST, 16, 5, 13, 4)).hasDateAndTime(2020, Calendar.AUGUST, 16, 5, 13, 4, 0);
+        Assertions.assertThat(DataHelper.createXmlCalendar(1322, Calendar.FEBRUARY, 17, 6, 14, 5)).hasDateAndTime(1322, Calendar.FEBRUARY, 17, 6, 14, 5, 0);
+        Assertions.assertThat(DataHelper.createXmlCalendar(1322, Calendar.AUGUST, 18, 7, 15, 6)).hasDateAndTime(1322, Calendar.AUGUST, 18, 7, 15, 6, 0);
+
+        TimeZone timeZone = TimeZone.getDefault();
+        try {
+            TimeZone.setDefault(TimeZone.getTimeZone("UTC"));
+            Assertions.assertThat(DataHelper.createXmlCalendar(2020, Calendar.FEBRUARY, 15, 4, 12, 3)).hasTimeZoneDateAndTime(2020, Calendar.FEBRUARY, 15, 4, 12, 3, 0, 0);
+            Assertions.assertThat(DataHelper.createXmlCalendar(2020, Calendar.AUGUST, 16, 5, 13, 4)).hasTimeZoneDateAndTime(2020, Calendar.AUGUST, 16, 5, 13, 4, 0, 0);
+            Assertions.assertThat(DataHelper.createXmlCalendar(1322, Calendar.FEBRUARY, 17, 6, 14, 5)).hasTimeZoneDateAndTime(1322, Calendar.FEBRUARY, 17, 6, 14, 5, 0, 0);
+            Assertions.assertThat(DataHelper.createXmlCalendar(1322, Calendar.AUGUST, 18, 7, 15, 6)).hasTimeZoneDateAndTime(1322, Calendar.AUGUST, 18, 7, 15, 6, 0, 0);
+            Assertions.assertThat(DataHelper.createXmlCalendar(2020, Calendar.FEBRUARY, 15, 4, 12, 3)).hasUtcDateAndTime(2020, Calendar.FEBRUARY, 15, 4, 12, 3, 0);
+            Assertions.assertThat(DataHelper.createXmlCalendar(2020, Calendar.AUGUST, 16, 5, 13, 4)).hasUtcDateAndTime(2020, Calendar.AUGUST, 16, 5, 13, 4, 0);
+            Assertions.assertThat(DataHelper.createXmlCalendar(1322, Calendar.FEBRUARY, 17, 6, 14, 5)).hasUtcDateAndTime(1322, Calendar.FEBRUARY, 17, 6, 14, 5, 0);
+            Assertions.assertThat(DataHelper.createXmlCalendar(1322, Calendar.AUGUST, 18, 7, 15, 6)).hasUtcDateAndTime(1322, Calendar.AUGUST, 18, 7, 15, 6, 0);
+
+            TimeZone.setDefault(TimeZone.getTimeZone("Asia/Vientiane"));
+            Assertions.assertThat(DataHelper.createXmlCalendar(2020, Calendar.FEBRUARY, 15, 4, 12, 3)).hasTimeZoneDateAndTime(2020, Calendar.FEBRUARY, 15, 4, 12, 3, 0, 7 * 60 * 60 * 1000);
+            Assertions.assertThat(DataHelper.createXmlCalendar(2020, Calendar.AUGUST, 16, 5, 13, 4)).hasTimeZoneDateAndTime(2020, Calendar.AUGUST, 16, 5, 13, 4, 0, 7 * 60 * 60 * 1000);
+            Assertions.assertThat(DataHelper.createXmlCalendar(1322, Calendar.FEBRUARY, 17, 6, 14, 5)).hasTimeZoneDateAndTime(1322, Calendar.FEBRUARY, 17, 6, 14, 5, 0, 7 * 60 * 60 * 1000);
+            Assertions.assertThat(DataHelper.createXmlCalendar(1322, Calendar.AUGUST, 18, 7, 15, 6)).hasTimeZoneDateAndTime(1322, Calendar.AUGUST, 18, 7, 15, 6, 0, 7 * 60 * 60 * 1000);
+            Assertions.assertThat(DataHelper.createXmlCalendar(2020, Calendar.FEBRUARY, 15, 4, 12, 3)).hasUtcDateAndTime(2020, Calendar.FEBRUARY, 14, 21, 12, 3, 0);
+            Assertions.assertThat(DataHelper.createXmlCalendar(2020, Calendar.AUGUST, 16, 5, 13, 4)).hasUtcDateAndTime(2020, Calendar.AUGUST, 15, 22, 13, 4, 0);
+            Assertions.assertThat(DataHelper.createXmlCalendar(1322, Calendar.FEBRUARY, 17, 6, 14, 5)).hasUtcDateAndTime(1322, Calendar.FEBRUARY, 16, 23, 14, 5, 0);
+            Assertions.assertThat(DataHelper.createXmlCalendar(1322, Calendar.AUGUST, 18, 7, 15, 6)).hasUtcDateAndTime(1322, Calendar.AUGUST, 18, 0, 15, 6, 0);
+
+            TimeZone.setDefault(TimeZone.getTimeZone("Europe/Berlin"));
+            Assertions.assertThat(DataHelper.createXmlCalendar(2020, Calendar.FEBRUARY, 15, 4, 12, 3)).hasTimeZoneDateAndTime(2020, Calendar.FEBRUARY, 15, 4, 12, 3, 0, 60 * 60 * 1000);
+            Assertions.assertThat(DataHelper.createXmlCalendar(2020, Calendar.AUGUST, 16, 5, 13, 4)).hasTimeZoneDateAndTime(2020, Calendar.AUGUST, 16, 5, 13, 4, 0, 2 * 60 * 60 * 1000);
+            Assertions.assertThat(DataHelper.createXmlCalendar(1322, Calendar.FEBRUARY, 17, 6, 14, 5)).hasTimeZoneDateAndTime(1322, Calendar.FEBRUARY, 17, 6, 14, 5, 0, 60 * 60 * 1000);
+            Assertions.assertThat(DataHelper.createXmlCalendar(1322, Calendar.AUGUST, 18, 7, 15, 6)).hasTimeZoneDateAndTime(1322, Calendar.AUGUST, 18, 7, 15, 6, 0, 60 * 60 * 1000);
+            Assertions.assertThat(DataHelper.createXmlCalendar(2020, Calendar.FEBRUARY, 15, 4, 12, 3)).hasUtcDateAndTime(2020, Calendar.FEBRUARY, 15, 3, 12, 3, 0);
+            Assertions.assertThat(DataHelper.createXmlCalendar(2020, Calendar.AUGUST, 16, 5, 13, 4)).hasUtcDateAndTime(2020, Calendar.AUGUST, 16, 3, 13, 4, 0);
+            Assertions.assertThat(DataHelper.createXmlCalendar(1322, Calendar.FEBRUARY, 17, 6, 14, 5)).hasUtcDateAndTime(1322, Calendar.FEBRUARY, 17, 5, 14, 5, 0);
+            Assertions.assertThat(DataHelper.createXmlCalendar(1322, Calendar.AUGUST, 18, 7, 15, 6)).hasUtcDateAndTime(1322, Calendar.AUGUST, 18, 6, 15, 6, 0);
+        } finally {
+            TimeZone.setDefault(timeZone);
+        }
     }
 
     /**
@@ -264,7 +302,45 @@ public final class DataHelperTest extends AssertionTest {
      */
     @Test
     public void createXmlCalendarMillisecondTest() {
-        // TODO
+        Assertions.assertThat(DataHelper.createXmlCalendar(2020, Calendar.FEBRUARY, 15, 4, 12, 3, 555)).hasDateAndTime(2020, Calendar.FEBRUARY, 15, 4, 12, 3, 555);
+        Assertions.assertThat(DataHelper.createXmlCalendar(2020, Calendar.AUGUST, 16, 5, 13, 4, 666)).hasDateAndTime(2020, Calendar.AUGUST, 16, 5, 13, 4, 666);
+        Assertions.assertThat(DataHelper.createXmlCalendar(1322, Calendar.FEBRUARY, 17, 6, 14, 5, 777)).hasDateAndTime(1322, Calendar.FEBRUARY, 17, 6, 14, 5, 777);
+        Assertions.assertThat(DataHelper.createXmlCalendar(1322, Calendar.AUGUST, 18, 7, 15, 6, 888)).hasDateAndTime(1322, Calendar.AUGUST, 18, 7, 15, 6, 888);
+
+        TimeZone timeZone = TimeZone.getDefault();
+        try {
+            TimeZone.setDefault(TimeZone.getTimeZone("UTC"));
+            Assertions.assertThat(DataHelper.createXmlCalendar(2020, Calendar.FEBRUARY, 15, 4, 12, 3, 555)).hasTimeZoneDateAndTime(2020, Calendar.FEBRUARY, 15, 4, 12, 3, 555, 0);
+            Assertions.assertThat(DataHelper.createXmlCalendar(2020, Calendar.AUGUST, 16, 5, 13, 4, 666)).hasTimeZoneDateAndTime(2020, Calendar.AUGUST, 16, 5, 13, 4, 666, 0);
+            Assertions.assertThat(DataHelper.createXmlCalendar(1322, Calendar.FEBRUARY, 17, 6, 14, 5, 777)).hasTimeZoneDateAndTime(1322, Calendar.FEBRUARY, 17, 6, 14, 5, 777, 0);
+            Assertions.assertThat(DataHelper.createXmlCalendar(1322, Calendar.AUGUST, 18, 7, 15, 6, 888)).hasTimeZoneDateAndTime(1322, Calendar.AUGUST, 18, 7, 15, 6, 888, 0);
+            Assertions.assertThat(DataHelper.createXmlCalendar(2020, Calendar.FEBRUARY, 15, 4, 12, 3, 555)).hasUtcDateAndTime(2020, Calendar.FEBRUARY, 15, 4, 12, 3, 555);
+            Assertions.assertThat(DataHelper.createXmlCalendar(2020, Calendar.AUGUST, 16, 5, 13, 4, 666)).hasUtcDateAndTime(2020, Calendar.AUGUST, 16, 5, 13, 4, 666);
+            Assertions.assertThat(DataHelper.createXmlCalendar(1322, Calendar.FEBRUARY, 17, 6, 14, 5, 777)).hasUtcDateAndTime(1322, Calendar.FEBRUARY, 17, 6, 14, 5, 777);
+            Assertions.assertThat(DataHelper.createXmlCalendar(1322, Calendar.AUGUST, 18, 7, 15, 6, 888)).hasUtcDateAndTime(1322, Calendar.AUGUST, 18, 7, 15, 6, 888);
+
+            TimeZone.setDefault(TimeZone.getTimeZone("Asia/Vientiane"));
+            Assertions.assertThat(DataHelper.createXmlCalendar(2020, Calendar.FEBRUARY, 15, 4, 12, 3, 555)).hasTimeZoneDateAndTime(2020, Calendar.FEBRUARY, 15, 4, 12, 3, 555, 7 * 60 * 60 * 1000);
+            Assertions.assertThat(DataHelper.createXmlCalendar(2020, Calendar.AUGUST, 16, 5, 13, 4, 666)).hasTimeZoneDateAndTime(2020, Calendar.AUGUST, 16, 5, 13, 4, 666, 7 * 60 * 60 * 1000);
+            Assertions.assertThat(DataHelper.createXmlCalendar(1322, Calendar.FEBRUARY, 17, 6, 14, 5, 777)).hasTimeZoneDateAndTime(1322, Calendar.FEBRUARY, 17, 6, 14, 5, 777, 7 * 60 * 60 * 1000);
+            Assertions.assertThat(DataHelper.createXmlCalendar(1322, Calendar.AUGUST, 18, 7, 15, 6, 888)).hasTimeZoneDateAndTime(1322, Calendar.AUGUST, 18, 7, 15, 6, 888, 7 * 60 * 60 * 1000);
+            Assertions.assertThat(DataHelper.createXmlCalendar(2020, Calendar.FEBRUARY, 15, 4, 12, 3, 555)).hasUtcDateAndTime(2020, Calendar.FEBRUARY, 14, 21, 12, 3, 555);
+            Assertions.assertThat(DataHelper.createXmlCalendar(2020, Calendar.AUGUST, 16, 5, 13, 4, 666)).hasUtcDateAndTime(2020, Calendar.AUGUST, 15, 22, 13, 4, 666);
+            Assertions.assertThat(DataHelper.createXmlCalendar(1322, Calendar.FEBRUARY, 17, 6, 14, 5, 777)).hasUtcDateAndTime(1322, Calendar.FEBRUARY, 16, 23, 14, 5, 777);
+            Assertions.assertThat(DataHelper.createXmlCalendar(1322, Calendar.AUGUST, 18, 7, 15, 6, 888)).hasUtcDateAndTime(1322, Calendar.AUGUST, 18, 0, 15, 6, 888);
+
+            TimeZone.setDefault(TimeZone.getTimeZone("Europe/Berlin"));
+            Assertions.assertThat(DataHelper.createXmlCalendar(2020, Calendar.FEBRUARY, 15, 4, 12, 3, 555)).hasTimeZoneDateAndTime(2020, Calendar.FEBRUARY, 15, 4, 12, 3, 555, 60 * 60 * 1000);
+            Assertions.assertThat(DataHelper.createXmlCalendar(2020, Calendar.AUGUST, 16, 5, 13, 4, 666)).hasTimeZoneDateAndTime(2020, Calendar.AUGUST, 16, 5, 13, 4, 666, 2 * 60 * 60 * 1000);
+            Assertions.assertThat(DataHelper.createXmlCalendar(1322, Calendar.FEBRUARY, 17, 6, 14, 5, 777)).hasTimeZoneDateAndTime(1322, Calendar.FEBRUARY, 17, 6, 14, 5, 777, 60 * 60 * 1000);
+            Assertions.assertThat(DataHelper.createXmlCalendar(1322, Calendar.AUGUST, 18, 7, 15, 6, 888)).hasTimeZoneDateAndTime(1322, Calendar.AUGUST, 18, 7, 15, 6, 888, 60 * 60 * 1000);
+            Assertions.assertThat(DataHelper.createXmlCalendar(2020, Calendar.FEBRUARY, 15, 4, 12, 3, 555)).hasUtcDateAndTime(2020, Calendar.FEBRUARY, 15, 3, 12, 3, 555);
+            Assertions.assertThat(DataHelper.createXmlCalendar(2020, Calendar.AUGUST, 16, 5, 13, 4, 666)).hasUtcDateAndTime(2020, Calendar.AUGUST, 16, 3, 13, 4, 666);
+            Assertions.assertThat(DataHelper.createXmlCalendar(1322, Calendar.FEBRUARY, 17, 6, 14, 5, 777)).hasUtcDateAndTime(1322, Calendar.FEBRUARY, 17, 5, 14, 5, 777);
+            Assertions.assertThat(DataHelper.createXmlCalendar(1322, Calendar.AUGUST, 18, 7, 15, 6, 888)).hasUtcDateAndTime(1322, Calendar.AUGUST, 18, 6, 15, 6, 888);
+        } finally {
+            TimeZone.setDefault(timeZone);
+        }
     }
 
     /**
@@ -272,7 +348,32 @@ public final class DataHelperTest extends AssertionTest {
      */
     @Test
     public void createXmlCalendarTimeZoneIdTest() {
-        // TODO
+        Assertions.assertThat(DataHelper.createXmlCalendar(2020, Calendar.FEBRUARY, 15, 4, 12, 3, "UTC")).hasTimeZoneDateAndTime(2020, Calendar.FEBRUARY, 15, 4, 12, 3, 0, 0);
+        Assertions.assertThat(DataHelper.createXmlCalendar(2020, Calendar.AUGUST, 16, 5, 13, 4, "UTC")).hasTimeZoneDateAndTime(2020, Calendar.AUGUST, 16, 5, 13, 4, 0, 0);
+        Assertions.assertThat(DataHelper.createXmlCalendar(1322, Calendar.FEBRUARY, 17, 6, 14, 5, "UTC")).hasTimeZoneDateAndTime(1322, Calendar.FEBRUARY, 17, 6, 14, 5, 0, 0);
+        Assertions.assertThat(DataHelper.createXmlCalendar(1322, Calendar.AUGUST, 18, 7, 15, 6, "UTC")).hasTimeZoneDateAndTime(1322, Calendar.AUGUST, 18, 7, 15, 6, 0, 0);
+        Assertions.assertThat(DataHelper.createXmlCalendar(2020, Calendar.FEBRUARY, 15, 4, 12, 3, "UTC")).hasUtcDateAndTime(2020, Calendar.FEBRUARY, 15, 4, 12, 3, 0);
+        Assertions.assertThat(DataHelper.createXmlCalendar(2020, Calendar.AUGUST, 16, 5, 13, 4, "UTC")).hasUtcDateAndTime(2020, Calendar.AUGUST, 16, 5, 13, 4, 0);
+        Assertions.assertThat(DataHelper.createXmlCalendar(1322, Calendar.FEBRUARY, 17, 6, 14, 5, "UTC")).hasUtcDateAndTime(1322, Calendar.FEBRUARY, 17, 6, 14, 5, 0);
+        Assertions.assertThat(DataHelper.createXmlCalendar(1322, Calendar.AUGUST, 18, 7, 15, 6, "UTC")).hasUtcDateAndTime(1322, Calendar.AUGUST, 18, 7, 15, 6, 0);
+
+        Assertions.assertThat(DataHelper.createXmlCalendar(2020, Calendar.FEBRUARY, 15, 4, 12, 3, "Asia/Vientiane")).hasTimeZoneDateAndTime(2020, Calendar.FEBRUARY, 15, 4, 12, 3, 0, 7 * 60 * 60 * 1000);
+        Assertions.assertThat(DataHelper.createXmlCalendar(2020, Calendar.AUGUST, 16, 5, 13, 4, "Asia/Vientiane")).hasTimeZoneDateAndTime(2020, Calendar.AUGUST, 16, 5, 13, 4, 0, 7 * 60 * 60 * 1000);
+        Assertions.assertThat(DataHelper.createXmlCalendar(1322, Calendar.FEBRUARY, 17, 6, 14, 5, "Asia/Vientiane")).hasTimeZoneDateAndTime(1322, Calendar.FEBRUARY, 17, 6, 14, 5, 0, 7 * 60 * 60 * 1000);
+        Assertions.assertThat(DataHelper.createXmlCalendar(1322, Calendar.AUGUST, 18, 7, 15, 6, "Asia/Vientiane")).hasTimeZoneDateAndTime(1322, Calendar.AUGUST, 18, 7, 15, 6, 0, 7 * 60 * 60 * 1000);
+        Assertions.assertThat(DataHelper.createXmlCalendar(2020, Calendar.FEBRUARY, 15, 4, 12, 3, "Asia/Vientiane")).hasUtcDateAndTime(2020, Calendar.FEBRUARY, 14, 21, 12, 3, 0);
+        Assertions.assertThat(DataHelper.createXmlCalendar(2020, Calendar.AUGUST, 16, 5, 13, 4, "Asia/Vientiane")).hasUtcDateAndTime(2020, Calendar.AUGUST, 15, 22, 13, 4, 0);
+        Assertions.assertThat(DataHelper.createXmlCalendar(1322, Calendar.FEBRUARY, 17, 6, 14, 5, "Asia/Vientiane")).hasUtcDateAndTime(1322, Calendar.FEBRUARY, 16, 23, 14, 5, 0);
+        Assertions.assertThat(DataHelper.createXmlCalendar(1322, Calendar.AUGUST, 18, 7, 15, 6, "Asia/Vientiane")).hasUtcDateAndTime(1322, Calendar.AUGUST, 18, 0, 15, 6, 0);
+
+        Assertions.assertThat(DataHelper.createXmlCalendar(2020, Calendar.FEBRUARY, 15, 4, 12, 3, "Europe/Berlin")).hasTimeZoneDateAndTime(2020, Calendar.FEBRUARY, 15, 4, 12, 3, 0, 60 * 60 * 1000);
+        Assertions.assertThat(DataHelper.createXmlCalendar(2020, Calendar.AUGUST, 16, 5, 13, 4, "Europe/Berlin")).hasTimeZoneDateAndTime(2020, Calendar.AUGUST, 16, 5, 13, 4, 0, 2 * 60 * 60 * 1000);
+        Assertions.assertThat(DataHelper.createXmlCalendar(1322, Calendar.FEBRUARY, 17, 6, 14, 5, "Europe/Berlin")).hasTimeZoneDateAndTime(1322, Calendar.FEBRUARY, 17, 6, 14, 5, 0, 60 * 60 * 1000);
+        Assertions.assertThat(DataHelper.createXmlCalendar(1322, Calendar.AUGUST, 18, 7, 15, 6, "Europe/Berlin")).hasTimeZoneDateAndTime(1322, Calendar.AUGUST, 18, 7, 15, 6, 0, 60 * 60 * 1000);
+        Assertions.assertThat(DataHelper.createXmlCalendar(2020, Calendar.FEBRUARY, 15, 4, 12, 3, "Europe/Berlin")).hasUtcDateAndTime(2020, Calendar.FEBRUARY, 15, 3, 12, 3, 0);
+        Assertions.assertThat(DataHelper.createXmlCalendar(2020, Calendar.AUGUST, 16, 5, 13, 4, "Europe/Berlin")).hasUtcDateAndTime(2020, Calendar.AUGUST, 16, 3, 13, 4, 0);
+        Assertions.assertThat(DataHelper.createXmlCalendar(1322, Calendar.FEBRUARY, 17, 6, 14, 5, "Europe/Berlin")).hasUtcDateAndTime(1322, Calendar.FEBRUARY, 17, 5, 14, 5, 0);
+        Assertions.assertThat(DataHelper.createXmlCalendar(1322, Calendar.AUGUST, 18, 7, 15, 6, "Europe/Berlin")).hasUtcDateAndTime(1322, Calendar.AUGUST, 18, 6, 15, 6, 0);
     }
 
     /**
@@ -280,7 +381,32 @@ public final class DataHelperTest extends AssertionTest {
      */
     @Test
     public void createXmlCalendarMillisecondTimeZoneIdTest() {
-        // TODO
+        Assertions.assertThat(DataHelper.createXmlCalendar(2020, Calendar.FEBRUARY, 15, 4, 12, 3, 555, "UTC")).hasTimeZoneDateAndTime(2020, Calendar.FEBRUARY, 15, 4, 12, 3, 555, 0);
+        Assertions.assertThat(DataHelper.createXmlCalendar(2020, Calendar.AUGUST, 16, 5, 13, 4, 666, "UTC")).hasTimeZoneDateAndTime(2020, Calendar.AUGUST, 16, 5, 13, 4, 666, 0);
+        Assertions.assertThat(DataHelper.createXmlCalendar(1322, Calendar.FEBRUARY, 17, 6, 14, 5, 777, "UTC")).hasTimeZoneDateAndTime(1322, Calendar.FEBRUARY, 17, 6, 14, 5, 777, 0);
+        Assertions.assertThat(DataHelper.createXmlCalendar(1322, Calendar.AUGUST, 18, 7, 15, 6, 888, "UTC")).hasTimeZoneDateAndTime(1322, Calendar.AUGUST, 18, 7, 15, 6, 888, 0);
+        Assertions.assertThat(DataHelper.createXmlCalendar(2020, Calendar.FEBRUARY, 15, 4, 12, 3, 555, "UTC")).hasUtcDateAndTime(2020, Calendar.FEBRUARY, 15, 4, 12, 3, 555);
+        Assertions.assertThat(DataHelper.createXmlCalendar(2020, Calendar.AUGUST, 16, 5, 13, 4, 666, "UTC")).hasUtcDateAndTime(2020, Calendar.AUGUST, 16, 5, 13, 4, 666);
+        Assertions.assertThat(DataHelper.createXmlCalendar(1322, Calendar.FEBRUARY, 17, 6, 14, 5, 777, "UTC")).hasUtcDateAndTime(1322, Calendar.FEBRUARY, 17, 6, 14, 5, 777);
+        Assertions.assertThat(DataHelper.createXmlCalendar(1322, Calendar.AUGUST, 18, 7, 15, 6, 888, "UTC")).hasUtcDateAndTime(1322, Calendar.AUGUST, 18, 7, 15, 6, 888);
+
+        Assertions.assertThat(DataHelper.createXmlCalendar(2020, Calendar.FEBRUARY, 15, 4, 12, 3, 555, "Asia/Vientiane")).hasTimeZoneDateAndTime(2020, Calendar.FEBRUARY, 15, 4, 12, 3, 555, 7 * 60 * 60 * 1000);
+        Assertions.assertThat(DataHelper.createXmlCalendar(2020, Calendar.AUGUST, 16, 5, 13, 4, 666, "Asia/Vientiane")).hasTimeZoneDateAndTime(2020, Calendar.AUGUST, 16, 5, 13, 4, 666, 7 * 60 * 60 * 1000);
+        Assertions.assertThat(DataHelper.createXmlCalendar(1322, Calendar.FEBRUARY, 17, 6, 14, 5, 777, "Asia/Vientiane")).hasTimeZoneDateAndTime(1322, Calendar.FEBRUARY, 17, 6, 14, 5, 777, 7 * 60 * 60 * 1000);
+        Assertions.assertThat(DataHelper.createXmlCalendar(1322, Calendar.AUGUST, 18, 7, 15, 6, 888, "Asia/Vientiane")).hasTimeZoneDateAndTime(1322, Calendar.AUGUST, 18, 7, 15, 6, 888, 7 * 60 * 60 * 1000);
+        Assertions.assertThat(DataHelper.createXmlCalendar(2020, Calendar.FEBRUARY, 15, 4, 12, 3, 555, "Asia/Vientiane")).hasUtcDateAndTime(2020, Calendar.FEBRUARY, 14, 21, 12, 3, 555);
+        Assertions.assertThat(DataHelper.createXmlCalendar(2020, Calendar.AUGUST, 16, 5, 13, 4, 666, "Asia/Vientiane")).hasUtcDateAndTime(2020, Calendar.AUGUST, 15, 22, 13, 4, 666);
+        Assertions.assertThat(DataHelper.createXmlCalendar(1322, Calendar.FEBRUARY, 17, 6, 14, 5, 777, "Asia/Vientiane")).hasUtcDateAndTime(1322, Calendar.FEBRUARY, 16, 23, 14, 5, 777);
+        Assertions.assertThat(DataHelper.createXmlCalendar(1322, Calendar.AUGUST, 18, 7, 15, 6, 888, "Asia/Vientiane")).hasUtcDateAndTime(1322, Calendar.AUGUST, 18, 0, 15, 6, 888);
+
+        Assertions.assertThat(DataHelper.createXmlCalendar(2020, Calendar.FEBRUARY, 15, 4, 12, 3, 555, "Europe/Berlin")).hasTimeZoneDateAndTime(2020, Calendar.FEBRUARY, 15, 4, 12, 3, 555, 60 * 60 * 1000);
+        Assertions.assertThat(DataHelper.createXmlCalendar(2020, Calendar.AUGUST, 16, 5, 13, 4, 666, "Europe/Berlin")).hasTimeZoneDateAndTime(2020, Calendar.AUGUST, 16, 5, 13, 4, 666, 2 * 60 * 60 * 1000);
+        Assertions.assertThat(DataHelper.createXmlCalendar(1322, Calendar.FEBRUARY, 17, 6, 14, 5, 777, "Europe/Berlin")).hasTimeZoneDateAndTime(1322, Calendar.FEBRUARY, 17, 6, 14, 5, 777, 60 * 60 * 1000);
+        Assertions.assertThat(DataHelper.createXmlCalendar(1322, Calendar.AUGUST, 18, 7, 15, 6, 888, "Europe/Berlin")).hasTimeZoneDateAndTime(1322, Calendar.AUGUST, 18, 7, 15, 6, 888, 60 * 60 * 1000);
+        Assertions.assertThat(DataHelper.createXmlCalendar(2020, Calendar.FEBRUARY, 15, 4, 12, 3, 555, "Europe/Berlin")).hasUtcDateAndTime(2020, Calendar.FEBRUARY, 15, 3, 12, 3, 555);
+        Assertions.assertThat(DataHelper.createXmlCalendar(2020, Calendar.AUGUST, 16, 5, 13, 4, 666, "Europe/Berlin")).hasUtcDateAndTime(2020, Calendar.AUGUST, 16, 3, 13, 4, 666);
+        Assertions.assertThat(DataHelper.createXmlCalendar(1322, Calendar.FEBRUARY, 17, 6, 14, 5, 777, "Europe/Berlin")).hasUtcDateAndTime(1322, Calendar.FEBRUARY, 17, 5, 14, 5, 777);
+        Assertions.assertThat(DataHelper.createXmlCalendar(1322, Calendar.AUGUST, 18, 7, 15, 6, 888, "Europe/Berlin")).hasUtcDateAndTime(1322, Calendar.AUGUST, 18, 6, 15, 6, 888);
     }
 
     /**
@@ -288,7 +414,10 @@ public final class DataHelperTest extends AssertionTest {
      */
     @Test
     public void createUtcXmlCalendarTest() {
-        // TODO
+        Assertions.assertThat(DataHelper.createUtcXmlCalendar(2020, Calendar.FEBRUARY, 15, 4, 12, 3)).hasTimeZoneDateAndTime(2020, Calendar.FEBRUARY, 15, 4, 12, 3, 0, 0);
+        Assertions.assertThat(DataHelper.createUtcXmlCalendar(2020, Calendar.AUGUST, 16, 5, 13, 4)).hasTimeZoneDateAndTime(2020, Calendar.AUGUST, 16, 5, 13, 4, 0, 0);
+        Assertions.assertThat(DataHelper.createUtcXmlCalendar(1322, Calendar.FEBRUARY, 17, 6, 14, 5)).hasTimeZoneDateAndTime(1322, Calendar.FEBRUARY, 17, 6, 14, 5, 0, 0);
+        Assertions.assertThat(DataHelper.createUtcXmlCalendar(1322, Calendar.AUGUST, 18, 7, 15, 6)).hasTimeZoneDateAndTime(1322, Calendar.AUGUST, 18, 7, 15, 6, 0, 0);
     }
 
     /**
@@ -296,7 +425,10 @@ public final class DataHelperTest extends AssertionTest {
      */
     @Test
     public void createUtcXmlCalendarMillisecondTest() {
-        // TODO
+        Assertions.assertThat(DataHelper.createUtcXmlCalendar(2020, Calendar.FEBRUARY, 15, 4, 12, 3, 555)).hasTimeZoneDateAndTime(2020, Calendar.FEBRUARY, 15, 4, 12, 3, 555, 0);
+        Assertions.assertThat(DataHelper.createUtcXmlCalendar(2020, Calendar.AUGUST, 16, 5, 13, 4, 666)).hasTimeZoneDateAndTime(2020, Calendar.AUGUST, 16, 5, 13, 4, 666, 0);
+        Assertions.assertThat(DataHelper.createUtcXmlCalendar(1322, Calendar.FEBRUARY, 17, 6, 14, 5, 777)).hasTimeZoneDateAndTime(1322, Calendar.FEBRUARY, 17, 6, 14, 5, 777, 0);
+        Assertions.assertThat(DataHelper.createUtcXmlCalendar(1322, Calendar.AUGUST, 18, 7, 15, 6, 888)).hasTimeZoneDateAndTime(1322, Calendar.AUGUST, 18, 7, 15, 6, 888, 0);
     }
 
 }
