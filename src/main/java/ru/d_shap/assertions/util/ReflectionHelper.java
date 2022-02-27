@@ -362,11 +362,6 @@ public final class ReflectionHelper {
         AccessController.doPrivileged(new PrivilegedAccessAction(accessibleObject));
     }
 
-    /**
-     * Privileged action to make the private class element accessible.
-     *
-     * @author Dmitry Shapovalov
-     */
     private static final class PrivilegedAccessAction implements PrivilegedAction<Void> {
 
         private final AccessibleObject _accessibleObject;

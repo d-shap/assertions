@@ -832,11 +832,6 @@ public final class ReflectionHelperTest extends AssertionTest {
         Assertions.assertThat(privateConstructor).isNotNull();
     }
 
-    /**
-     * Test class.
-     *
-     * @author Dmitry Shapovalov
-     */
     private static class ParentClass {
 
         private static final String NULL_STATIC_FIELD = null;
@@ -871,11 +866,6 @@ public final class ReflectionHelperTest extends AssertionTest {
 
     }
 
-    /**
-     * Test class.
-     *
-     * @author Dmitry Shapovalov
-     */
     private static class ChildClass extends ParentClass {
 
         private static final String CHILD_STATIC_FIELD = "childStaticField";
@@ -909,11 +899,6 @@ public final class ReflectionHelperTest extends AssertionTest {
 
     }
 
-    /**
-     * Test class.
-     *
-     * @author Dmitry Shapovalov
-     */
     private static final class PrivateConstructorClass {
 
         private final String _value;

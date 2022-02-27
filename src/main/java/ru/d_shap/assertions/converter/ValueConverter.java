@@ -190,11 +190,6 @@ public final class ValueConverter {
         return ConverterSelector.selectConverter(converterProviders, VALUE_CLASS_EXTRACTOR);
     }
 
-    /**
-     * Value class extractor.
-     *
-     * @author Dmitry Shapovalov
-     */
     private static final class ValueClassExtractor implements ConverterSelector.ClassExtractor<ValueConverterProvider> {
 
         ValueClassExtractor() {
@@ -208,11 +203,6 @@ public final class ValueConverter {
 
     }
 
-    /**
-     * Target class extractor.
-     *
-     * @author Dmitry Shapovalov
-     */
     private static final class TargetClassExtractor implements ConverterSelector.ClassExtractor<ValueConverterProvider> {
 
         TargetClassExtractor() {

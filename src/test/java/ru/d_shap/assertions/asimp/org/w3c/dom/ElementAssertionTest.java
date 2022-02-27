@@ -3506,11 +3506,6 @@ public final class ElementAssertionTest extends AssertionTest {
         }
     }
 
-    /**
-     * Test class.
-     *
-     * @author Dmitry Shapovalov
-     */
     private static final class MatcherAttributeValue extends TypeSafeMatcher<Attr> {
 
         private final String _value;

@@ -1608,11 +1608,6 @@ public final class AssertionErrorBuilderTest extends AssertionTest {
         throw AssertionErrorBuilder.getInstance(new FailDescription("message"), String.class, "actual").addActual().addRawExpected("expected1", "expected2", null).build();
     }
 
-    /**
-     * Test class.
-     *
-     * @author Dmitry Shapovalov
-     */
     private static final class ErrorType {
 
         ErrorType() {
@@ -1621,11 +1616,6 @@ public final class AssertionErrorBuilderTest extends AssertionTest {
 
     }
 
-    /**
-     * Test class.
-     *
-     * @author Dmitry Shapovalov
-     */
     private static final class ErrorTypeValueConverter implements ValueConverterProvider {
 
         ErrorTypeValueConverter() {
@@ -1649,11 +1639,6 @@ public final class AssertionErrorBuilderTest extends AssertionTest {
 
     }
 
-    /**
-     * Test class.
-     *
-     * @author Dmitry Shapovalov
-     */
     private static final class ErrorTypeAsStringConverter implements AsStringConverterProvider {
 
         ErrorTypeAsStringConverter() {

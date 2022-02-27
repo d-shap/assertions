@@ -1444,11 +1444,6 @@ public class AssertionTest {
         return (CharacterData) createNode(content);
     }
 
-    /**
-     * Test class.
-     *
-     * @author Dmitry Shapovalov
-     */
     private static final class NullFieldClass {
 
         private Object _field;
@@ -1459,11 +1454,6 @@ public class AssertionTest {
 
     }
 
-    /**
-     * Test class.
-     *
-     * @author Dmitry Shapovalov
-     */
     private static final class PrivateFieldsClass {
 
         private final byte _byte;
@@ -1882,13 +1872,6 @@ public class AssertionTest {
 
     }
 
-    /**
-     * Test class.
-     *
-     * @param <E> the generic type of the element.
-     *
-     * @author Dmitry Shapovalov
-     */
     private static final class IterableImpl<E> implements Iterable<E> {
 
         private final List<E> _list;
@@ -1905,13 +1888,6 @@ public class AssertionTest {
 
     }
 
-    /**
-     * Test class.
-     *
-     * @param <E> the generic type of the element.
-     *
-     * @author Dmitry Shapovalov
-     */
     private static final class IteratorImpl<E> implements Iterator<E> {
 
         private final Iterator<E> _iterator;
@@ -1938,13 +1914,6 @@ public class AssertionTest {
 
     }
 
-    /**
-     * Test class.
-     *
-     * @param <E>the generic type of the element.
-     *
-     * @author Dmitry Shapovalov
-     */
     private static final class DuplicateSet<E> implements Set<E> {
 
         private final List<E> _elements;
@@ -2025,14 +1994,6 @@ public class AssertionTest {
 
     }
 
-    /**
-     * Test class.
-     *
-     * @param <K> the generic type of the key.
-     * @param <V> the generic type of the value.
-     *
-     * @author Dmitry Shapovalov
-     */
     private static final class DuplicateMap<K, V> implements Map<K, V> {
 
         private final List<K> _keys;
@@ -2123,14 +2084,6 @@ public class AssertionTest {
 
     }
 
-    /**
-     * Test class.
-     *
-     * @param <K> the generic type of the key.
-     * @param <V> the generic type of the value.
-     *
-     * @author Dmitry Shapovalov
-     */
     private static final class DuplicateMapEntry<K, V> implements Map.Entry<K, V> {
 
         private final K _key;
@@ -2160,13 +2113,6 @@ public class AssertionTest {
 
     }
 
-    /**
-     * Test class.
-     *
-     * @param <E> the generic type of the element.
-     *
-     * @author Dmitry Shapovalov
-     */
     private static final class NullFirstComparator<E> implements Comparator<E> {
 
         NullFirstComparator() {
@@ -2202,11 +2148,6 @@ public class AssertionTest {
 
     }
 
-    /**
-     * Test class.
-     *
-     * @author Dmitry Shapovalov
-     */
     private static final class ErrorInputStream extends InputStream {
 
         ErrorInputStream() {
@@ -2225,11 +2166,6 @@ public class AssertionTest {
 
     }
 
-    /**
-     * Test class.
-     *
-     * @author Dmitry Shapovalov
-     */
     private static final class ErrorReader extends Reader {
 
         ErrorReader() {

@@ -179,11 +179,6 @@ public final class AsStringConverter {
         return ConverterSelector.selectConverter(converterProviders, VALUE_CLASS_EXTRACTOR);
     }
 
-    /**
-     * Value class extractor.
-     *
-     * @author Dmitry Shapovalov
-     */
     private static final class ValueClassExtractor implements ConverterSelector.ClassExtractor<AsStringConverterProvider> {
 
         ValueClassExtractor() {

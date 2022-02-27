@@ -85,11 +85,6 @@ public final class ActualValueValidatorTest extends AssertionTest {
         return new BaseActualValueValidatorImpl(valid);
     }
 
-    /**
-     * Test class.
-     *
-     * @author Dmitry Shapovalov
-     */
     private static final class BaseActualValueValidatorImpl implements ActualValueValidatorProvider {
 
         private final boolean _valid;

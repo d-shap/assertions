@@ -2338,11 +2338,6 @@ public final class BaseAssertionTest extends AssertionTest {
         return new BaseAssertionCharSequenceImpl();
     }
 
-    /**
-     * Test class.
-     *
-     * @author Dmitry Shapovalov
-     */
     private static final class BaseAssertionObjectImpl extends BaseAssertion<Object> {
 
         BaseAssertionObjectImpl() {
@@ -2356,11 +2351,6 @@ public final class BaseAssertionTest extends AssertionTest {
 
     }
 
-    /**
-     * Test class.
-     *
-     * @author Dmitry Shapovalov
-     */
     private static final class BaseAssertionCharSequenceImpl extends BaseAssertion<CharSequence> {
 
         BaseAssertionCharSequenceImpl() {

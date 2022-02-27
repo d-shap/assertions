@@ -177,11 +177,6 @@ public final class HamcrestMatcherTest extends AssertionTest {
         }
     }
 
-    /**
-     * Test class.
-     *
-     * @author Dmitry Shapovalov
-     */
     private static class ClassA {
 
         ClassA() {
@@ -190,11 +185,6 @@ public final class HamcrestMatcherTest extends AssertionTest {
 
     }
 
-    /**
-     * Test class.
-     *
-     * @author Dmitry Shapovalov
-     */
     private static class ClassB extends ClassA {
 
         ClassB() {
@@ -203,11 +193,6 @@ public final class HamcrestMatcherTest extends AssertionTest {
 
     }
 
-    /**
-     * Test class.
-     *
-     * @author Dmitry Shapovalov
-     */
     private static class ClassC extends ClassB {
 
         ClassC() {
@@ -216,11 +201,6 @@ public final class HamcrestMatcherTest extends AssertionTest {
 
     }
 
-    /**
-     * Test class.
-     *
-     * @author Dmitry Shapovalov
-     */
     private static final class MatcherA extends TypeSafeMatcher<ClassA> {
 
         MatcherA() {
@@ -239,11 +219,6 @@ public final class HamcrestMatcherTest extends AssertionTest {
 
     }
 
-    /**
-     * Test class.
-     *
-     * @author Dmitry Shapovalov
-     */
     private static final class MatcherB extends TypeSafeMatcher<ClassB> {
 
         MatcherB() {
@@ -262,11 +237,6 @@ public final class HamcrestMatcherTest extends AssertionTest {
 
     }
 
-    /**
-     * Test class.
-     *
-     * @author Dmitry Shapovalov
-     */
     private static final class MatcherC extends TypeSafeMatcher<ClassC> {
 
         MatcherC() {
@@ -285,11 +255,6 @@ public final class HamcrestMatcherTest extends AssertionTest {
 
     }
 
-    /**
-     * Test class.
-     *
-     * @author Dmitry Shapovalov
-     */
     private static final class ErrorType {
 
         ErrorType() {
@@ -298,11 +263,6 @@ public final class HamcrestMatcherTest extends AssertionTest {
 
     }
 
-    /**
-     * Test class.
-     *
-     * @author Dmitry Shapovalov
-     */
     private static final class ErrorTypeAsStringConverter implements AsStringConverterProvider {
 
         ErrorTypeAsStringConverter() {

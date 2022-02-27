@@ -1382,11 +1382,6 @@ public final class ClassAssertionTest extends AssertionTest {
         }
     }
 
-    /**
-     * Test class.
-     *
-     * @author Dmitry Shapovalov
-     */
     private abstract static class AbstractClass {
 
         private AbstractClass() {
@@ -1395,11 +1390,6 @@ public final class ClassAssertionTest extends AssertionTest {
 
     }
 
-    /**
-     * Test class.
-     *
-     * @author Dmitry Shapovalov
-     */
     private static final class FailConstructorClass {
 
         private FailConstructorClass() {

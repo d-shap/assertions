@@ -102,56 +102,26 @@ public final class AsStringConverterTest extends AssertionTest {
         Assertions.assertThat(AsStringConverter.asString(new ClassB())).isEqualTo("InterfaceB as string");
     }
 
-    /**
-     * Test class.
-     *
-     * @author Dmitry Shapovalov
-     */
     private interface InterfaceA {
 
     }
 
-    /**
-     * Test class.
-     *
-     * @author Dmitry Shapovalov
-     */
     private interface InterfaceB extends InterfaceA {
 
     }
 
-    /**
-     * Test class.
-     *
-     * @author Dmitry Shapovalov
-     */
     private interface InterfaceC extends InterfaceB {
 
     }
 
-    /**
-     * Test class.
-     *
-     * @author Dmitry Shapovalov
-     */
     private interface InterfaceD extends InterfaceC {
 
     }
 
-    /**
-     * Test class.
-     *
-     * @author Dmitry Shapovalov
-     */
     private interface InterfaceE extends InterfaceD {
 
     }
 
-    /**
-     * Test class.
-     *
-     * @author Dmitry Shapovalov
-     */
     private static class ClassA implements InterfaceA {
 
         ClassA() {
@@ -160,11 +130,6 @@ public final class AsStringConverterTest extends AssertionTest {
 
     }
 
-    /**
-     * Test class.
-     *
-     * @author Dmitry Shapovalov
-     */
     private static class ClassB extends ClassA implements InterfaceE {
 
         ClassB() {
@@ -173,11 +138,6 @@ public final class AsStringConverterTest extends AssertionTest {
 
     }
 
-    /**
-     * Test class.
-     *
-     * @author Dmitry Shapovalov
-     */
     private static final class InterfaceAAsStringConverter implements AsStringConverterProvider {
 
         InterfaceAAsStringConverter() {
@@ -196,11 +156,6 @@ public final class AsStringConverterTest extends AssertionTest {
 
     }
 
-    /**
-     * Test class.
-     *
-     * @author Dmitry Shapovalov
-     */
     private static final class InterfaceBAsStringConverter implements AsStringConverterProvider {
 
         InterfaceBAsStringConverter() {

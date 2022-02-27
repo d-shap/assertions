@@ -3241,11 +3241,6 @@ public final class ReferenceAssertionTest extends AssertionTest {
         return new ExceptionMessageMatcher<>(Matchers.is(message));
     }
 
-    /**
-     * Test class.
-     *
-     * @author Dmitry Shapovalov
-     */
     private static final class ReferenceAssertionImpl extends ReferenceAssertion<Object> {
 
         ReferenceAssertionImpl() {
@@ -3259,11 +3254,6 @@ public final class ReferenceAssertionTest extends AssertionTest {
 
     }
 
-    /**
-     * Test class.
-     *
-     * @author Dmitry Shapovalov
-     */
     private static class ParentClass {
 
         private final String _nullField;
@@ -3294,11 +3284,6 @@ public final class ReferenceAssertionTest extends AssertionTest {
 
     }
 
-    /**
-     * Test class.
-     *
-     * @author Dmitry Shapovalov
-     */
     private static class ChildClass extends ParentClass {
 
         private final String _childField;
@@ -3334,13 +3319,6 @@ public final class ReferenceAssertionTest extends AssertionTest {
 
     }
 
-    /**
-     * Test class.
-     *
-     * @param <E> the generic type of the matcher.
-     *
-     * @author Dmitry Shapovalov
-     */
     private static final class ExceptionMessageMatcher<E extends Throwable> extends TypeSafeMatcher<E> {
 
         private final Matcher<? super String> _matcher;

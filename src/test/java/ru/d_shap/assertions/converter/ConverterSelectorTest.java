@@ -310,11 +310,6 @@ public final class ConverterSelectorTest extends AssertionTest {
         return result;
     }
 
-    /**
-     * Test class.
-     *
-     * @author Dmitry Shapovalov
-     */
     private static final class ClassHolder {
 
         private final Class<?> _clazz;
@@ -349,11 +344,6 @@ public final class ConverterSelectorTest extends AssertionTest {
 
     }
 
-    /**
-     * Test class.
-     *
-     * @author Dmitry Shapovalov
-     */
     private static final class ClassHolderExtractor implements ConverterSelector.ClassExtractor<ClassHolder> {
 
         ClassHolderExtractor() {

@@ -117,56 +117,26 @@ public final class ValueConverterTest extends AssertionTest {
         Assertions.assertThat(ValueConverter.convert(new FromClassC2(), InterfaceE.class)).hasClass(ToClassZ2.class);
     }
 
-    /**
-     * Test class.
-     *
-     * @author Dmitry Shapovalov
-     */
     private interface InterfaceA {
 
     }
 
-    /**
-     * Test class.
-     *
-     * @author Dmitry Shapovalov
-     */
     private interface InterfaceB extends InterfaceA {
 
     }
 
-    /**
-     * Test class.
-     *
-     * @author Dmitry Shapovalov
-     */
     private interface InterfaceC extends InterfaceB {
 
     }
 
-    /**
-     * Test class.
-     *
-     * @author Dmitry Shapovalov
-     */
     private interface InterfaceD extends InterfaceC {
 
     }
 
-    /**
-     * Test class.
-     *
-     * @author Dmitry Shapovalov
-     */
     private interface InterfaceE extends InterfaceD {
 
     }
 
-    /**
-     * Test class.
-     *
-     * @author Dmitry Shapovalov
-     */
     private static class FromClassA {
 
         FromClassA() {
@@ -175,11 +145,6 @@ public final class ValueConverterTest extends AssertionTest {
 
     }
 
-    /**
-     * Test class.
-     *
-     * @author Dmitry Shapovalov
-     */
     private static class FromClassB extends FromClassA {
 
         FromClassB() {
@@ -188,11 +153,6 @@ public final class ValueConverterTest extends AssertionTest {
 
     }
 
-    /**
-     * Test class.
-     *
-     * @author Dmitry Shapovalov
-     */
     private static class FromClassC1 implements InterfaceA {
 
         FromClassC1() {
@@ -201,11 +161,6 @@ public final class ValueConverterTest extends AssertionTest {
 
     }
 
-    /**
-     * Test class.
-     *
-     * @author Dmitry Shapovalov
-     */
     private static class FromClassC2 extends FromClassC1 implements InterfaceE {
 
         FromClassC2() {
@@ -214,11 +169,6 @@ public final class ValueConverterTest extends AssertionTest {
 
     }
 
-    /**
-     * Test class.
-     *
-     * @author Dmitry Shapovalov
-     */
     private static class ToClassX {
 
         ToClassX() {
@@ -227,11 +177,6 @@ public final class ValueConverterTest extends AssertionTest {
 
     }
 
-    /**
-     * Test class.
-     *
-     * @author Dmitry Shapovalov
-     */
     private static class ToClassY extends ToClassX {
 
         ToClassY() {
@@ -240,11 +185,6 @@ public final class ValueConverterTest extends AssertionTest {
 
     }
 
-    /**
-     * Test class.
-     *
-     * @author Dmitry Shapovalov
-     */
     private static class ToClassZ1 implements InterfaceA {
 
         ToClassZ1() {
@@ -253,11 +193,6 @@ public final class ValueConverterTest extends AssertionTest {
 
     }
 
-    /**
-     * Test class.
-     *
-     * @author Dmitry Shapovalov
-     */
     private static class ToClassZ2 extends ToClassZ1 implements InterfaceE {
 
         ToClassZ2() {
@@ -266,11 +201,6 @@ public final class ValueConverterTest extends AssertionTest {
 
     }
 
-    /**
-     * Test class.
-     *
-     * @author Dmitry Shapovalov
-     */
     private static final class FromClassAToClassXConverter implements ValueConverterProvider {
 
         FromClassAToClassXConverter() {
@@ -294,11 +224,6 @@ public final class ValueConverterTest extends AssertionTest {
 
     }
 
-    /**
-     * Test class.
-     *
-     * @author Dmitry Shapovalov
-     */
     private static final class FromClassAToClassYConverter implements ValueConverterProvider {
 
         FromClassAToClassYConverter() {
@@ -322,11 +247,6 @@ public final class ValueConverterTest extends AssertionTest {
 
     }
 
-    /**
-     * Test class.
-     *
-     * @author Dmitry Shapovalov
-     */
     private static final class FromClassBToClassXConverter implements ValueConverterProvider {
 
         FromClassBToClassXConverter() {
@@ -350,11 +270,6 @@ public final class ValueConverterTest extends AssertionTest {
 
     }
 
-    /**
-     * Test class.
-     *
-     * @author Dmitry Shapovalov
-     */
     private static final class FromClassBToClassYConverter implements ValueConverterProvider {
 
         FromClassBToClassYConverter() {
@@ -378,11 +293,6 @@ public final class ValueConverterTest extends AssertionTest {
 
     }
 
-    /**
-     * Test class.
-     *
-     * @author Dmitry Shapovalov
-     */
     private static final class InterfaceAToClassZ1Converter implements ValueConverterProvider {
 
         InterfaceAToClassZ1Converter() {
@@ -406,11 +316,6 @@ public final class ValueConverterTest extends AssertionTest {
 
     }
 
-    /**
-     * Test class.
-     *
-     * @author Dmitry Shapovalov
-     */
     private static final class InterfaceBToClassZ1Converter implements ValueConverterProvider {
 
         InterfaceBToClassZ1Converter() {
@@ -434,11 +339,6 @@ public final class ValueConverterTest extends AssertionTest {
 
     }
 
-    /**
-     * Test class.
-     *
-     * @author Dmitry Shapovalov
-     */
     private static final class FromClassC1InterfaceAConverter implements ValueConverterProvider {
 
         FromClassC1InterfaceAConverter() {
@@ -462,11 +362,6 @@ public final class ValueConverterTest extends AssertionTest {
 
     }
 
-    /**
-     * Test class.
-     *
-     * @author Dmitry Shapovalov
-     */
     private static final class FromClassC1InterfaceBConverter implements ValueConverterProvider {
 
         FromClassC1InterfaceBConverter() {
