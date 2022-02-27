@@ -20,7 +20,12 @@
 package ru.d_shap.assertions.util;
 
 import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.TimeZone;
+
+import javax.xml.datatype.DatatypeConfigurationException;
+import javax.xml.datatype.DatatypeFactory;
+import javax.xml.datatype.XMLGregorianCalendar;
 
 import org.junit.Test;
 
@@ -429,6 +434,37 @@ public final class DataHelperTest extends AssertionTest {
         Assertions.assertThat(DataHelper.createUtcXmlCalendar(2020, Calendar.AUGUST, 16, 5, 13, 4, 666)).hasTimeZoneDateAndTime(2020, Calendar.AUGUST, 16, 5, 13, 4, 666, 0);
         Assertions.assertThat(DataHelper.createUtcXmlCalendar(1322, Calendar.FEBRUARY, 17, 6, 14, 5, 777)).hasTimeZoneDateAndTime(1322, Calendar.FEBRUARY, 17, 6, 14, 5, 777, 0);
         Assertions.assertThat(DataHelper.createUtcXmlCalendar(1322, Calendar.AUGUST, 18, 7, 15, 6, 888)).hasTimeZoneDateAndTime(1322, Calendar.AUGUST, 18, 7, 15, 6, 888, 0);
+    }
+
+    /**
+     * {@link DataHelper} class test.
+     */
+    @Test
+    public void convertToXmlCalendarFailTest() {
+        GregorianCalendar calendar = (GregorianCalendar) DataHelper.createCalendar(2020, Calendar.FEBRUARY, 15, 4, 12, 3);
+        XMLGregorianCalendar xmlGregorianCalendar = DataHelper.convertToXmlCalendar(calendar, new DataHelper.DatatypeFactoryCreatorImpl());
+        Assertions.assertThat(xmlGregorianCalendar).hasDateAndTime(2020, Calendar.FEBRUARY, 15, 4, 12, 3, 0);
+
+        try {
+            DataHelper.convertToXmlCalendar(calendar, new DatatypeFactoryCreatorFailImpl());
+            Assertions.fail("DataHelper test fail");
+        } catch (DataException ex) {
+            Assertions.assertThat(ex).hasCause(DatatypeConfigurationException.class);
+            Assertions.assertThat(ex).hasCauseMessage("test exception");
+        }
+    }
+
+    private static final class DatatypeFactoryCreatorFailImpl implements DataHelper.DatatypeFactoryCreator {
+
+        DatatypeFactoryCreatorFailImpl() {
+            super();
+        }
+
+        @Override
+        public DatatypeFactory newDatatypeFactory() throws DatatypeConfigurationException {
+            throw new DatatypeConfigurationException("test exception");
+        }
+
     }
 
 }
