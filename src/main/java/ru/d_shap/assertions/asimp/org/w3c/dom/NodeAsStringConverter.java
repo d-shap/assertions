@@ -80,11 +80,6 @@ public final class NodeAsStringConverter implements AsStringConverterProvider {
         }
     }
 
-    /**
-     * Error listener to prevent output to system error stream.
-     *
-     * @author Dmitry Shapovalov
-     */
     static final class NoopErrorListener implements ErrorListener {
 
         NoopErrorListener() {

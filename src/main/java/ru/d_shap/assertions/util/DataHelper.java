@@ -313,11 +313,6 @@ public final class DataHelper {
         }
     }
 
-    /**
-     * Interface to create XML Datatype Factory.
-     *
-     * @author Dmitry Shapovalov
-     */
     interface DatatypeFactoryCreator {
 
         /**
@@ -331,11 +326,6 @@ public final class DataHelper {
 
     }
 
-    /**
-     * Implementation to create XML Datatype Factory.
-     *
-     * @author Dmitry Shapovalov
-     */
     static final class DatatypeFactoryCreatorImpl implements DatatypeFactoryCreator {
 
         DatatypeFactoryCreatorImpl() {
