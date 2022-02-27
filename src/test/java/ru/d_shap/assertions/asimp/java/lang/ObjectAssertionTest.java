@@ -44,6 +44,7 @@ public final class ObjectAssertionTest extends AssertionTest {
      */
     @Test
     public void isEqualToTest() {
+        initialize(Raw.objectAssertion(), (String) null).isEqualTo(null);
         initialize(Raw.objectAssertion(), "value").isEqualTo("value");
 
         try {
@@ -65,28 +66,16 @@ public final class ObjectAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.objectAssertion(), null).isEqualTo(null);
+            initialize(Raw.objectAssertion(), "value").isEqualTo(null);
             Assertions.fail("ObjectAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Actual value should be null.\n\tActual:<value>");
         }
         try {
-            initialize(Raw.objectAssertion(), null, "Message").isEqualTo(null);
+            initialize(Raw.objectAssertion(), "value", "Message").isEqualTo(null);
             Assertions.fail("ObjectAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
-        }
-        try {
-            initialize(Raw.objectAssertion(), new Object()).isEqualTo(null);
-            Assertions.fail("ObjectAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
-        }
-        try {
-            initialize(Raw.objectAssertion(), new Object(), "Message").isEqualTo(null);
-            Assertions.fail("ObjectAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be null.\n\tActual:<value>");
         }
         try {
             initialize(Raw.objectAssertion(), "value1").isEqualTo("value2");

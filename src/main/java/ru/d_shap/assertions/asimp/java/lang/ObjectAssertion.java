@@ -47,10 +47,15 @@ public class ObjectAssertion extends ReferenceAssertion<Object> {
      * @param expected the expected value.
      */
     public final void isEqualTo(final Object expected) {
-        checkActualIsNotNull();
-        checkArgumentIsNotNull(expected, "expected");
-        if (!getActual().equals(expected)) {
-            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_SAME).addActual().addExpected(expected).build();
+        if (expected == null) {
+            if (getActual() != null) {
+                throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NULL).addActual().build();
+            }
+        } else {
+            checkActualIsNotNull();
+            if (!getActual().equals(expected)) {
+                throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_SAME).addActual().addExpected(expected).build();
+            }
         }
     }
 
