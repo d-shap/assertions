@@ -67,6 +67,7 @@ public final class CharacterDataAssertionTest extends AssertionTest {
      */
     @Test
     public void isEqualToTest() {
+        initialize(Raw.characterDataAssertion(), null).isEqualTo(null);
         initialize(Raw.characterDataAssertion(), createCharacterData("text")).isEqualTo(createCharacterData("text"));
         initialize(Raw.characterDataAssertion(), createCharacterData("<!-- comment -->")).isEqualTo(createCharacterData("<!-- comment -->"));
         initialize(Raw.characterDataAssertion(), createCharacterData("<![CDATA[<element>value<element>]]>")).isEqualTo(createCharacterData("<![CDATA[<element>value<element>]]>"));
@@ -90,28 +91,16 @@ public final class CharacterDataAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.characterDataAssertion(), null).isEqualTo(null);
-            Assertions.fail("CharacterDataAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
-        }
-        try {
-            initialize(Raw.characterDataAssertion(), null, "Message").isEqualTo(null);
-            Assertions.fail("CharacterDataAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
-        }
-        try {
             initialize(Raw.characterDataAssertion(), createCharacterData("text")).isEqualTo(null);
             Assertions.fail("CharacterDataAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
+            Assertions.assertThat(ex).hasMessage("Actual value should be null.\n\tActual:<text>");
         }
         try {
             initialize(Raw.characterDataAssertion(), createCharacterData("text"), "Message").isEqualTo(null);
             Assertions.fail("CharacterDataAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be null.\n\tActual:<text>");
         }
         try {
             initialize(Raw.characterDataAssertion(), createCharacterData("text1")).isEqualTo(createCharacterData("text2"));
@@ -168,6 +157,8 @@ public final class CharacterDataAssertionTest extends AssertionTest {
      */
     @Test
     public void isNotEqualToTest() {
+        initialize(Raw.characterDataAssertion(), null).isNotEqualTo(createCharacterData("text2"));
+        initialize(Raw.characterDataAssertion(), createCharacterData("text1")).isNotEqualTo(null);
         initialize(Raw.characterDataAssertion(), createCharacterData("text1")).isNotEqualTo(createCharacterData("text2"));
         initialize(Raw.characterDataAssertion(), createCharacterData("<!-- comment1 -->")).isNotEqualTo(createCharacterData("<!-- comment2 -->"));
         initialize(Raw.characterDataAssertion(), createCharacterData("<![CDATA[<element>value1<element>]]>")).isNotEqualTo(createCharacterData("<![CDATA[<element>value2<element>]]>"));
@@ -182,18 +173,6 @@ public final class CharacterDataAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
-            initialize(Raw.characterDataAssertion(), null).isNotEqualTo(createCharacterData("text"));
-            Assertions.fail("CharacterDataAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
-        }
-        try {
-            initialize(Raw.characterDataAssertion(), null, "Message").isNotEqualTo(createCharacterData("text"));
-            Assertions.fail("CharacterDataAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
-        }
-        try {
             initialize(Raw.characterDataAssertion(), null).isNotEqualTo(null);
             Assertions.fail("CharacterDataAssertion test fail");
         } catch (AssertionError ex) {
@@ -204,18 +183,6 @@ public final class CharacterDataAssertionTest extends AssertionTest {
             Assertions.fail("CharacterDataAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
-        }
-        try {
-            initialize(Raw.characterDataAssertion(), createCharacterData("text")).isNotEqualTo(null);
-            Assertions.fail("CharacterDataAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
-        }
-        try {
-            initialize(Raw.characterDataAssertion(), createCharacterData("text"), "Message").isNotEqualTo(null);
-            Assertions.fail("CharacterDataAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.characterDataAssertion(), createCharacterData("text")).isNotEqualTo(createCharacterData("text"));
