@@ -371,6 +371,7 @@ public final class CharSequenceAssertionTest extends AssertionTest {
      */
     @Test
     public void isEqualToTest() {
+        initialize(Raw.charSequenceAssertion(), null).isEqualTo(null);
         initialize(Raw.charSequenceAssertion(), "value").isEqualTo("value");
         initialize(Raw.charSequenceAssertion(), "ЗНАЧЕНИЕ").isEqualTo("ЗНАЧЕНИЕ");
         initialize(Raw.charSequenceAssertion(), "значение").isEqualTo("значение");
@@ -396,28 +397,16 @@ public final class CharSequenceAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.charSequenceAssertion(), null).isEqualTo(null);
+            initialize(Raw.charSequenceAssertion(), "value").isEqualTo(null);
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Actual value should be null.\n\tActual:<value>");
         }
         try {
-            initialize(Raw.charSequenceAssertion(), null, "Message").isEqualTo(null);
+            initialize(Raw.charSequenceAssertion(), "value", "Message").isEqualTo(null);
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
-        }
-        try {
-            initialize(Raw.charSequenceAssertion(), "").isEqualTo(null);
-            Assertions.fail("CharSequenceAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
-        }
-        try {
-            initialize(Raw.charSequenceAssertion(), "", "Message").isEqualTo(null);
-            Assertions.fail("CharSequenceAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be null.\n\tActual:<value>");
         }
         try {
             initialize(Raw.charSequenceAssertion(), "value").isEqualTo("");
@@ -487,6 +476,7 @@ public final class CharSequenceAssertionTest extends AssertionTest {
      */
     @Test
     public void isEqualToIgnoreCaseTest() {
+        initialize(Raw.charSequenceAssertion(), null).isEqualToIgnoreCase(null);
         initialize(Raw.charSequenceAssertion(), "valUe").isEqualToIgnoreCase("vALue");
         initialize(Raw.charSequenceAssertion(), "ЗНАЧЕНИЕ").isEqualToIgnoreCase("значение");
         initialize(Raw.charSequenceAssertion(), "значение").isEqualToIgnoreCase("ЗНАЧЕНИЕ");
@@ -512,28 +502,16 @@ public final class CharSequenceAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.charSequenceAssertion(), null).isEqualToIgnoreCase(null);
+            initialize(Raw.charSequenceAssertion(), "value").isEqualToIgnoreCase(null);
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+            Assertions.assertThat(ex).hasMessage("Actual value should be null.\n\tActual:<value>");
         }
         try {
-            initialize(Raw.charSequenceAssertion(), null, "Message").isEqualToIgnoreCase(null);
+            initialize(Raw.charSequenceAssertion(), "value", "Message").isEqualToIgnoreCase(null);
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
-        }
-        try {
-            initialize(Raw.charSequenceAssertion(), "").isEqualToIgnoreCase(null);
-            Assertions.fail("CharSequenceAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
-        }
-        try {
-            initialize(Raw.charSequenceAssertion(), "", "Message").isEqualToIgnoreCase(null);
-            Assertions.fail("CharSequenceAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be null.\n\tActual:<value>");
         }
         try {
             initialize(Raw.charSequenceAssertion(), "vALue").isEqualToIgnoreCase("");
@@ -590,6 +568,8 @@ public final class CharSequenceAssertionTest extends AssertionTest {
      */
     @Test
     public void isNotEqualToTest() {
+        initialize(Raw.charSequenceAssertion(), null).isNotEqualTo("value");
+        initialize(Raw.charSequenceAssertion(), "value").isNotEqualTo(null);
         initialize(Raw.charSequenceAssertion(), "value").isNotEqualTo("значение");
         initialize(Raw.charSequenceAssertion(), "value").isNotEqualTo("ЗНАЧЕНИЕ");
         initialize(Raw.charSequenceAssertion(), "значение").isNotEqualTo("value");
@@ -605,18 +585,6 @@ public final class CharSequenceAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
-            initialize(Raw.charSequenceAssertion(), null).isNotEqualTo("value");
-            Assertions.fail("CharSequenceAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
-        }
-        try {
-            initialize(Raw.charSequenceAssertion(), null, "Message").isNotEqualTo("value");
-            Assertions.fail("CharSequenceAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
-        }
-        try {
             initialize(Raw.charSequenceAssertion(), null).isNotEqualTo(null);
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
@@ -627,18 +595,6 @@ public final class CharSequenceAssertionTest extends AssertionTest {
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
-        }
-        try {
-            initialize(Raw.charSequenceAssertion(), "").isNotEqualTo(null);
-            Assertions.fail("CharSequenceAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
-        }
-        try {
-            initialize(Raw.charSequenceAssertion(), "", "Message").isNotEqualTo(null);
-            Assertions.fail("CharSequenceAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.charSequenceAssertion(), "").isNotEqualTo("");
@@ -683,6 +639,8 @@ public final class CharSequenceAssertionTest extends AssertionTest {
      */
     @Test
     public void isNotEqualToIgnoreCaseTest() {
+        initialize(Raw.charSequenceAssertion(), "value").isNotEqualToIgnoreCase(null);
+        initialize(Raw.charSequenceAssertion(), null).isNotEqualToIgnoreCase("value");
         initialize(Raw.charSequenceAssertion(), "vaLUe").isNotEqualToIgnoreCase("знАЧенИЕ");
         initialize(Raw.charSequenceAssertion(), "VAluE").isNotEqualToIgnoreCase("ЗНачЕНие");
         initialize(Raw.charSequenceAssertion(), "знАЧенИЕ").isNotEqualToIgnoreCase("vaLUe");
@@ -698,18 +656,6 @@ public final class CharSequenceAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
-            initialize(Raw.charSequenceAssertion(), null).isNotEqualToIgnoreCase("value");
-            Assertions.fail("CharSequenceAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
-        }
-        try {
-            initialize(Raw.charSequenceAssertion(), null, "Message").isNotEqualToIgnoreCase("value");
-            Assertions.fail("CharSequenceAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
-        }
-        try {
             initialize(Raw.charSequenceAssertion(), null).isNotEqualToIgnoreCase(null);
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
@@ -720,18 +666,6 @@ public final class CharSequenceAssertionTest extends AssertionTest {
             Assertions.fail("CharSequenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
-        }
-        try {
-            initialize(Raw.charSequenceAssertion(), "").isNotEqualToIgnoreCase(null);
-            Assertions.fail("CharSequenceAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
-        }
-        try {
-            initialize(Raw.charSequenceAssertion(), "", "Message").isNotEqualToIgnoreCase(null);
-            Assertions.fail("CharSequenceAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.charSequenceAssertion(), "").isNotEqualToIgnoreCase("");
