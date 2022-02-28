@@ -77,6 +77,7 @@ public final class ClassAssertionTest extends AssertionTest {
      */
     @Test
     public void isEqualToTest() {
+        initialize(Raw.classAssertion(), null).isEqualTo(null);
         initialize(Raw.classAssertion(), Integer.class).isEqualTo(Integer.class);
         initialize(Raw.classAssertion(), String.class).isEqualTo(String.class);
 
@@ -99,28 +100,16 @@ public final class ClassAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.classAssertion(), null).isEqualTo(null);
-            Assertions.fail("ClassAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
-        }
-        try {
-            initialize(Raw.classAssertion(), null, "Message").isEqualTo(null);
-            Assertions.fail("ClassAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
-        }
-        try {
             initialize(Raw.classAssertion(), Object.class).isEqualTo(null);
             Assertions.fail("ClassAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
+            Assertions.assertThat(ex).hasMessage("Actual value should be null.\n\tActual:<java.lang.Object>");
         }
         try {
             initialize(Raw.classAssertion(), Object.class, "Message").isEqualTo(null);
             Assertions.fail("ClassAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be null.\n\tActual:<java.lang.Object>");
         }
         try {
             initialize(Raw.classAssertion(), String.class).isEqualTo(Integer.class);
@@ -141,6 +130,8 @@ public final class ClassAssertionTest extends AssertionTest {
      */
     @Test
     public void isNotEqualToTest() {
+        initialize(Raw.classAssertion(), null).isNotEqualTo(String.class);
+        initialize(Raw.classAssertion(), String.class).isNotEqualTo(null);
         initialize(Raw.classAssertion(), Integer.class).isNotEqualTo(String.class);
         initialize(Raw.classAssertion(), String.class).isNotEqualTo(Object.class);
 
@@ -149,18 +140,6 @@ public final class ClassAssertionTest extends AssertionTest {
             Assertions.fail("ClassAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
-        }
-        try {
-            initialize(Raw.classAssertion(), null).isNotEqualTo(Object.class);
-            Assertions.fail("ClassAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
-        }
-        try {
-            initialize(Raw.classAssertion(), null, "Message").isNotEqualTo(Object.class);
-            Assertions.fail("ClassAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.classAssertion(), null).isNotEqualTo(null);
@@ -173,18 +152,6 @@ public final class ClassAssertionTest extends AssertionTest {
             Assertions.fail("ClassAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
-        }
-        try {
-            initialize(Raw.classAssertion(), Object.class).isNotEqualTo(null);
-            Assertions.fail("ClassAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
-        }
-        try {
-            initialize(Raw.classAssertion(), Object.class, "Message").isNotEqualTo(null);
-            Assertions.fail("ClassAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.classAssertion(), String.class).isNotEqualTo(String.class);
