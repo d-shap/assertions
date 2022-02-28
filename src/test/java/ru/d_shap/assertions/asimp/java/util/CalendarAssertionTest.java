@@ -156,8 +156,8 @@ public class CalendarAssertionTest extends AssertionTest {
      */
     @Test
     public void isNotEqualToTest() {
-        initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC")).isNotEqualTo(null);
         initialize(Raw.calendarAssertion(), null).isNotEqualTo(createCalendar(2019, Calendar.JULY, 11, 15, 23, 47, "UTC"));
+        initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC")).isNotEqualTo(null);
         initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC")).isNotEqualTo(createCalendar(2019, Calendar.JULY, 11, 15, 23, 47, "UTC"));
         initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC")).isNotEqualTo(createCalendar(2020, Calendar.AUGUST, 11, 15, 23, 47, "UTC"));
         initialize(Raw.calendarAssertion(), createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC")).isNotEqualTo(createCalendar(2020, Calendar.JULY, 12, 15, 23, 47, "UTC"));

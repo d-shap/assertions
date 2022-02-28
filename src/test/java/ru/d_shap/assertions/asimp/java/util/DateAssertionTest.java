@@ -136,8 +136,8 @@ public class DateAssertionTest extends AssertionTest {
      */
     @Test
     public void isNotEqualToTest() {
-        initialize(Raw.dateAssertion(), createDate(2020, Calendar.JULY, 11, 15, 23, 47)).isNotEqualTo(null);
         initialize(Raw.dateAssertion(), null).isNotEqualTo(createDate(2019, Calendar.JULY, 11, 15, 23, 47));
+        initialize(Raw.dateAssertion(), createDate(2020, Calendar.JULY, 11, 15, 23, 47)).isNotEqualTo(null);
         initialize(Raw.dateAssertion(), createDate(2020, Calendar.JULY, 11, 15, 23, 47)).isNotEqualTo(createDate(2019, Calendar.JULY, 11, 15, 23, 47));
         initialize(Raw.dateAssertion(), createDate(2020, Calendar.JULY, 11, 15, 23, 47)).isNotEqualTo(createDate(2020, Calendar.AUGUST, 11, 15, 23, 47));
         initialize(Raw.dateAssertion(), createDate(2020, Calendar.JULY, 11, 15, 23, 47)).isNotEqualTo(createDate(2020, Calendar.JULY, 12, 15, 23, 47));
