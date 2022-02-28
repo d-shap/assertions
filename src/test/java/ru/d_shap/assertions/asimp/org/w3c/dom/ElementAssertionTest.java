@@ -71,6 +71,7 @@ public final class ElementAssertionTest extends AssertionTest {
      */
     @Test
     public void isEqualToElementTest() {
+        initialize(Raw.elementAssertion(), null).isEqualTo((Element) null);
         initialize(Raw.elementAssertion(), createElement("<element/>")).isEqualTo(createElement("<element/>"));
         initialize(Raw.elementAssertion(), createElement("<element></element>")).isEqualTo(createElement("<element/>"));
         initialize(Raw.elementAssertion(), createElement("<element attr1='val1' attr2='val2'/>")).isEqualTo(createElement("<element attr2='val2' attr1='val1'/>"));
@@ -97,28 +98,16 @@ public final class ElementAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.elementAssertion(), null).isEqualTo((Element) null);
-            Assertions.fail("ElementAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
-        }
-        try {
-            initialize(Raw.elementAssertion(), null, "Message").isEqualTo((Element) null);
-            Assertions.fail("ElementAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
-        }
-        try {
             initialize(Raw.elementAssertion(), createElement("<element/>")).isEqualTo((Element) null);
             Assertions.fail("ElementAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
+            Assertions.assertThat(ex).hasMessage("Actual value should be null.\n\tActual:<<element/>>");
         }
         try {
             initialize(Raw.elementAssertion(), createElement("<element/>"), "Message").isEqualTo((Element) null);
             Assertions.fail("ElementAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be null.\n\tActual:<<element/>>");
         }
         try {
             initialize(Raw.elementAssertion(), createElement("<element1/>")).isEqualTo(createElement("<element2/>"));
@@ -202,6 +191,7 @@ public final class ElementAssertionTest extends AssertionTest {
      */
     @Test
     public void isEqualToStringTest() {
+        initialize(Raw.elementAssertion(), null).isEqualTo((String) null);
         initialize(Raw.elementAssertion(), createElement("<element/>")).isEqualTo("<element/>");
         initialize(Raw.elementAssertion(), createElement("<element></element>")).isEqualTo("<element/>");
         initialize(Raw.elementAssertion(), createElement("<element attr1='val1' attr2='val2'/>")).isEqualTo("<element attr2='val2' attr1='val1'/>");
@@ -228,28 +218,16 @@ public final class ElementAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.elementAssertion(), null).isEqualTo((String) null);
-            Assertions.fail("ElementAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
-        }
-        try {
-            initialize(Raw.elementAssertion(), null, "Message").isEqualTo((String) null);
-            Assertions.fail("ElementAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
-        }
-        try {
             initialize(Raw.elementAssertion(), createElement("<element/>")).isEqualTo((String) null);
             Assertions.fail("ElementAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
+            Assertions.assertThat(ex).hasMessage("Actual value should be null.\n\tActual:<<element/>>");
         }
         try {
             initialize(Raw.elementAssertion(), createElement("<element/>"), "Message").isEqualTo((String) null);
             Assertions.fail("ElementAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be null.\n\tActual:<<element/>>");
         }
         try {
             initialize(Raw.elementAssertion(), null).isEqualTo("<element>");
@@ -330,6 +308,8 @@ public final class ElementAssertionTest extends AssertionTest {
      */
     @Test
     public void isNotEqualToElementTest() {
+        initialize(Raw.elementAssertion(), null).isNotEqualTo(createElement("<element2/>"));
+        initialize(Raw.elementAssertion(), createElement("<element1/>")).isNotEqualTo((Element) null);
         initialize(Raw.elementAssertion(), createElement("<element1/>")).isNotEqualTo(createElement("<element2/>"));
         initialize(Raw.elementAssertion(), createElement("<element1></element1>")).isNotEqualTo(createElement("<element2/>"));
         initialize(Raw.elementAssertion(), createElement("<element/>")).isNotEqualTo(createElement("<element>content</element>"));
@@ -357,18 +337,6 @@ public final class ElementAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
-            initialize(Raw.elementAssertion(), null).isNotEqualTo(createElement("<element/>"));
-            Assertions.fail("ElementAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
-        }
-        try {
-            initialize(Raw.elementAssertion(), null, "Message").isNotEqualTo(createElement("<element/>"));
-            Assertions.fail("ElementAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
-        }
-        try {
             initialize(Raw.elementAssertion(), null).isNotEqualTo((Element) null);
             Assertions.fail("ElementAssertion test fail");
         } catch (AssertionError ex) {
@@ -379,18 +347,6 @@ public final class ElementAssertionTest extends AssertionTest {
             Assertions.fail("ElementAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
-        }
-        try {
-            initialize(Raw.elementAssertion(), createElement("<element/>")).isNotEqualTo((Element) null);
-            Assertions.fail("ElementAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
-        }
-        try {
-            initialize(Raw.elementAssertion(), createElement("<element/>"), "Message").isNotEqualTo((Element) null);
-            Assertions.fail("ElementAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.elementAssertion(), createElement("<element/>")).isNotEqualTo(createElement("<element/>"));
@@ -471,6 +427,8 @@ public final class ElementAssertionTest extends AssertionTest {
      */
     @Test
     public void isNotEqualToStringTest() {
+        initialize(Raw.elementAssertion(), null).isNotEqualTo("<element2/>");
+        initialize(Raw.elementAssertion(), createElement("<element1/>")).isNotEqualTo((String) null);
         initialize(Raw.elementAssertion(), createElement("<element1/>")).isNotEqualTo("<element2/>");
         initialize(Raw.elementAssertion(), createElement("<element1></element1>")).isNotEqualTo("<element2/>");
         initialize(Raw.elementAssertion(), createElement("<element/>")).isNotEqualTo("<element>content</element>");
@@ -484,18 +442,6 @@ public final class ElementAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
-            initialize(Raw.elementAssertion(), null).isNotEqualTo("<element/>");
-            Assertions.fail("ElementAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
-        }
-        try {
-            initialize(Raw.elementAssertion(), null, "Message").isNotEqualTo("<element/>");
-            Assertions.fail("ElementAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
-        }
-        try {
             initialize(Raw.elementAssertion(), null).isNotEqualTo((String) null);
             Assertions.fail("ElementAssertion test fail");
         } catch (AssertionError ex) {
@@ -503,30 +449,6 @@ public final class ElementAssertionTest extends AssertionTest {
         }
         try {
             initialize(Raw.elementAssertion(), null, "Message").isNotEqualTo((String) null);
-            Assertions.fail("ElementAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
-        }
-        try {
-            initialize(Raw.elementAssertion(), createElement("<element/>")).isNotEqualTo((String) null);
-            Assertions.fail("ElementAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
-        }
-        try {
-            initialize(Raw.elementAssertion(), createElement("<element/>"), "Message").isNotEqualTo((String) null);
-            Assertions.fail("ElementAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
-        }
-        try {
-            initialize(Raw.elementAssertion(), null).isNotEqualTo("<element>");
-            Assertions.fail("ElementAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
-        }
-        try {
-            initialize(Raw.elementAssertion(), null, "Message").isNotEqualTo("<element>");
             Assertions.fail("ElementAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
