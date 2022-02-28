@@ -48,9 +48,7 @@ public class ObjectAssertion extends ReferenceAssertion<Object> {
      */
     public final void isEqualTo(final Object expected) {
         if (expected == null) {
-            if (getActual() != null) {
-                throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NULL).addActual().build();
-            }
+            isNull();
         } else {
             checkActualIsNotNull();
             if (!getActual().equals(expected)) {
@@ -65,10 +63,12 @@ public class ObjectAssertion extends ReferenceAssertion<Object> {
      * @param expected the expected value.
      */
     public final void isNotEqualTo(final Object expected) {
-        checkActualIsNotNull();
-        checkArgumentIsNotNull(expected, "expected");
-        if (getActual().equals(expected)) {
-            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_DIFFERENT).addActual().build();
+        if (expected == null) {
+            isNotNull();
+        } else {
+            if (getActual() != null && getActual().equals(expected)) {
+                throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_DIFFERENT).addActual().build();
+            }
         }
     }
 
