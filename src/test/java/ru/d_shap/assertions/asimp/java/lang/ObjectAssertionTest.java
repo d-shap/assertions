@@ -44,7 +44,7 @@ public final class ObjectAssertionTest extends AssertionTest {
      */
     @Test
     public void isEqualToTest() {
-        initialize(Raw.objectAssertion(), (String) null).isEqualTo(null);
+        initialize(Raw.objectAssertion(), null).isEqualTo(null);
         initialize(Raw.objectAssertion(), "value").isEqualTo("value");
 
         try {
@@ -96,6 +96,8 @@ public final class ObjectAssertionTest extends AssertionTest {
      */
     @Test
     public void isNotEqualToTest() {
+        initialize(Raw.objectAssertion(), null).isNotEqualTo("value");
+        initialize(Raw.objectAssertion(), "value").isNotEqualTo(null);
         initialize(Raw.objectAssertion(), "value1").isNotEqualTo("value2");
         initialize(Raw.objectAssertion(), "value2").isNotEqualTo("value1");
 
@@ -104,18 +106,6 @@ public final class ObjectAssertionTest extends AssertionTest {
             Assertions.fail("ObjectAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
-        }
-        try {
-            initialize(Raw.objectAssertion(), null).isNotEqualTo("value");
-            Assertions.fail("ObjectAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
-        }
-        try {
-            initialize(Raw.objectAssertion(), null, "Message").isNotEqualTo("value");
-            Assertions.fail("ObjectAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.objectAssertion(), null).isNotEqualTo(null);
@@ -128,18 +118,6 @@ public final class ObjectAssertionTest extends AssertionTest {
             Assertions.fail("ObjectAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
-        }
-        try {
-            initialize(Raw.objectAssertion(), new Object()).isNotEqualTo(null);
-            Assertions.fail("ObjectAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
-        }
-        try {
-            initialize(Raw.objectAssertion(), new Object(), "Message").isNotEqualTo(null);
-            Assertions.fail("ObjectAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.objectAssertion(), "value").isNotEqualTo("value");
