@@ -120,8 +120,8 @@ public final class ComparableAssertionTest extends AssertionTest {
      */
     @Test
     public void isNotEqualToTest() {
-        initialize(Raw.<Integer>comparableAssertion(), 0).isNotEqualTo(null);
         initialize(Raw.<Integer>comparableAssertion(), null).isNotEqualTo(0);
+        initialize(Raw.<Integer>comparableAssertion(), 0).isNotEqualTo(null);
         initialize(Raw.<Integer>comparableAssertion(), 10).isNotEqualTo(15);
         initialize(Raw.<Integer>comparableAssertion(), 75).isNotEqualTo(76);
         initialize(Raw.<Integer>comparableAssertion(), 236).isNotEqualTo(143);

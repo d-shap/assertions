@@ -639,8 +639,8 @@ public final class CharSequenceAssertionTest extends AssertionTest {
      */
     @Test
     public void isNotEqualToIgnoreCaseTest() {
-        initialize(Raw.charSequenceAssertion(), "value").isNotEqualToIgnoreCase(null);
         initialize(Raw.charSequenceAssertion(), null).isNotEqualToIgnoreCase("value");
+        initialize(Raw.charSequenceAssertion(), "value").isNotEqualToIgnoreCase(null);
         initialize(Raw.charSequenceAssertion(), "vaLUe").isNotEqualToIgnoreCase("знАЧенИЕ");
         initialize(Raw.charSequenceAssertion(), "VAluE").isNotEqualToIgnoreCase("ЗНачЕНие");
         initialize(Raw.charSequenceAssertion(), "знАЧенИЕ").isNotEqualToIgnoreCase("vaLUe");
