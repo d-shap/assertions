@@ -67,6 +67,7 @@ public final class AttrAssertionTest extends AssertionTest {
      */
     @Test
     public void isEqualToTest() {
+        initialize(Raw.attrAssertion(), null).isEqualTo(null);
         initialize(Raw.attrAssertion(), createAttr("<element attr='val'/>")).isEqualTo(createAttr("<element attr='val'/>"));
         initialize(Raw.attrAssertion(), createAttr("<element attr1='val1'/>")).isEqualTo(createAttr("<element attr1='val1'/>"));
 
@@ -89,28 +90,16 @@ public final class AttrAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.attrAssertion(), null).isEqualTo(null);
-            Assertions.fail("AttrAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
-        }
-        try {
-            initialize(Raw.attrAssertion(), null, "Message").isEqualTo(null);
-            Assertions.fail("AttrAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
-        }
-        try {
             initialize(Raw.attrAssertion(), createAttr("<element attr='val'/>")).isEqualTo(null);
             Assertions.fail("AttrAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
+            Assertions.assertThat(ex).hasMessage("Actual value should be null.\n\tActual:<attr=val>");
         }
         try {
             initialize(Raw.attrAssertion(), createAttr("<element attr='val'/>"), "Message").isEqualTo(null);
             Assertions.fail("AttrAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be null.\n\tActual:<attr=val>");
         }
         try {
             initialize(Raw.attrAssertion(), createAttr("<element attr='val1'/>")).isEqualTo(createAttr("<element attr='val2'/>"));
@@ -155,6 +144,8 @@ public final class AttrAssertionTest extends AssertionTest {
      */
     @Test
     public void isNotEqualToTest() {
+        initialize(Raw.attrAssertion(), null).isNotEqualTo(createAttr("<element attr='val2'/>"));
+        initialize(Raw.attrAssertion(), createAttr("<element attr='val1'/>")).isNotEqualTo(null);
         initialize(Raw.attrAssertion(), createAttr("<element attr='val1'/>")).isNotEqualTo(createAttr("<element attr='val2'/>"));
         initialize(Raw.attrAssertion(), createAttr("<element attr1='val'/>")).isNotEqualTo(createAttr("<element attr2='val'/>"));
         initialize(Raw.attrAssertion(), createAttr("<element xmlns:ns1='aaa' ns1:attr='val'/>")).isNotEqualTo(createAttr("<element attr='val'/>"));
@@ -164,18 +155,6 @@ public final class AttrAssertionTest extends AssertionTest {
             Assertions.fail("AttrAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
-        }
-        try {
-            initialize(Raw.attrAssertion(), null).isNotEqualTo(createAttr("<element attr='val'/>"));
-            Assertions.fail("AttrAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
-        }
-        try {
-            initialize(Raw.attrAssertion(), null, "Message").isNotEqualTo(createAttr("<element attr='val'/>"));
-            Assertions.fail("AttrAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.attrAssertion(), null).isNotEqualTo(null);
@@ -188,18 +167,6 @@ public final class AttrAssertionTest extends AssertionTest {
             Assertions.fail("AttrAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
-        }
-        try {
-            initialize(Raw.attrAssertion(), createAttr("<element attr='val'/>")).isNotEqualTo(null);
-            Assertions.fail("AttrAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
-        }
-        try {
-            initialize(Raw.attrAssertion(), createAttr("<element attr='val'/>"), "Message").isNotEqualTo(null);
-            Assertions.fail("AttrAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.attrAssertion(), createAttr("<element attr='val'/>")).isNotEqualTo(createAttr("<element attr='val'/>"));
