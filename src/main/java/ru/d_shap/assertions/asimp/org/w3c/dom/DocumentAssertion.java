@@ -64,11 +64,15 @@ public class DocumentAssertion extends ReferenceAssertion<Document> {
      * @param expected the expected value.
      */
     public final void isEqualTo(final String expected) {
-        checkActualIsNotNull();
-        ConversionExceptionHolder conversionExceptionHolder = new ConversionExceptionHolder();
-        Document expectedDocument = convertValue(expected, conversionExceptionHolder, Document.class);
-        checkArgumentIsValid(conversionExceptionHolder, "expected", Messages.Fail.Argument.IS_VALID_XML);
-        createNodeAssertion().isEqualTo(expectedDocument);
+        if (expected == null) {
+            isNull();
+        } else {
+            checkActualIsNotNull();
+            ConversionExceptionHolder conversionExceptionHolder = new ConversionExceptionHolder();
+            Document expectedDocument = convertValue(expected, conversionExceptionHolder, Document.class);
+            checkArgumentIsValid(conversionExceptionHolder, "expected", Messages.Fail.Argument.IS_VALID_XML);
+            createNodeAssertion().isEqualTo(expectedDocument);
+        }
     }
 
     /**
@@ -86,11 +90,16 @@ public class DocumentAssertion extends ReferenceAssertion<Document> {
      * @param expected the expected value.
      */
     public final void isNotEqualTo(final String expected) {
-        checkActualIsNotNull();
-        ConversionExceptionHolder conversionExceptionHolder = new ConversionExceptionHolder();
-        Document expectedDocument = convertValue(expected, conversionExceptionHolder, Document.class);
-        checkArgumentIsValid(conversionExceptionHolder, "expected", Messages.Fail.Argument.IS_VALID_XML);
-        createNodeAssertion().isNotEqualTo(expectedDocument);
+        if (expected == null) {
+            isNotNull();
+        } else {
+            if (getActual() != null) {
+                ConversionExceptionHolder conversionExceptionHolder = new ConversionExceptionHolder();
+                Document expectedDocument = convertValue(expected, conversionExceptionHolder, Document.class);
+                checkArgumentIsValid(conversionExceptionHolder, "expected", Messages.Fail.Argument.IS_VALID_XML);
+                createNodeAssertion().isNotEqualTo(expectedDocument);
+            }
+        }
     }
 
     /**
