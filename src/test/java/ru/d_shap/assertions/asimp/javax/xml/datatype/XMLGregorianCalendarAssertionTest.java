@@ -71,6 +71,7 @@ public class XMLGregorianCalendarAssertionTest extends AssertionTest {
      */
     @Test
     public void isEqualToTest() {
+        initialize(Raw.xmlGregorianCalendarAssertion(), null).isEqualTo(null);
         initialize(Raw.xmlGregorianCalendarAssertion(), createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC")).isEqualTo(createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC"));
         initialize(Raw.xmlGregorianCalendarAssertion(), createXmlCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47, "UTC")).isEqualTo(createXmlCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47, "UTC"));
         initialize(Raw.xmlGregorianCalendarAssertion(), createXmlCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543, "UTC")).isEqualTo(createXmlCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543, "UTC"));
@@ -105,28 +106,16 @@ public class XMLGregorianCalendarAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.xmlGregorianCalendarAssertion(), null).isEqualTo(null);
-            Assertions.fail("XMLGregorianCalendarAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
-        }
-        try {
-            initialize(Raw.xmlGregorianCalendarAssertion(), null, "Message").isEqualTo(null);
-            Assertions.fail("XMLGregorianCalendarAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
-        }
-        try {
             initialize(Raw.xmlGregorianCalendarAssertion(), createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC")).isEqualTo(null);
             Assertions.fail("XMLGregorianCalendarAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
+            Assertions.assertThat(ex).hasMessage("Actual value should be null.\n\tActual:<2020-07-11T15:23:47.000+0000>");
         }
         try {
             initialize(Raw.xmlGregorianCalendarAssertion(), createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC"), "Message").isEqualTo(null);
             Assertions.fail("XMLGregorianCalendarAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be null.\n\tActual:<2020-07-11T15:23:47.000+0000>");
         }
         try {
             initialize(Raw.xmlGregorianCalendarAssertion(), createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "UTC")).isEqualTo(createXmlCalendar(2019, Calendar.AUGUST, 12, 16, 22, 46, 555, "UTC"));
@@ -159,6 +148,8 @@ public class XMLGregorianCalendarAssertionTest extends AssertionTest {
      */
     @Test
     public void isNotEqualToTest() {
+        initialize(Raw.xmlGregorianCalendarAssertion(), null).isNotEqualTo(createXmlCalendar(2019, Calendar.JULY, 11, 15, 23, 47, "UTC"));
+        initialize(Raw.xmlGregorianCalendarAssertion(), createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC")).isNotEqualTo(null);
         initialize(Raw.xmlGregorianCalendarAssertion(), createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC")).isNotEqualTo(createXmlCalendar(2019, Calendar.JULY, 11, 15, 23, 47, "UTC"));
         initialize(Raw.xmlGregorianCalendarAssertion(), createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC")).isNotEqualTo(createXmlCalendar(2020, Calendar.AUGUST, 11, 15, 23, 47, "UTC"));
         initialize(Raw.xmlGregorianCalendarAssertion(), createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC")).isNotEqualTo(createXmlCalendar(2020, Calendar.JULY, 12, 15, 23, 47, "UTC"));
@@ -184,18 +175,6 @@ public class XMLGregorianCalendarAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
-            initialize(Raw.xmlGregorianCalendarAssertion(), null).isNotEqualTo(createXmlCalendar(1, 1, 1, 1, 1, 1, "UTC"));
-            Assertions.fail("XMLGregorianCalendarAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
-        }
-        try {
-            initialize(Raw.xmlGregorianCalendarAssertion(), null, "Message").isNotEqualTo(createXmlCalendar(1, 1, 1, 1, 1, 1, "UTC"));
-            Assertions.fail("XMLGregorianCalendarAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
-        }
-        try {
             initialize(Raw.xmlGregorianCalendarAssertion(), null).isNotEqualTo(null);
             Assertions.fail("XMLGregorianCalendarAssertion test fail");
         } catch (AssertionError ex) {
@@ -206,18 +185,6 @@ public class XMLGregorianCalendarAssertionTest extends AssertionTest {
             Assertions.fail("XMLGregorianCalendarAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
-        }
-        try {
-            initialize(Raw.xmlGregorianCalendarAssertion(), createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC")).isNotEqualTo(null);
-            Assertions.fail("XMLGregorianCalendarAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
-        }
-        try {
-            initialize(Raw.xmlGregorianCalendarAssertion(), createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC"), "Message").isNotEqualTo(null);
-            Assertions.fail("XMLGregorianCalendarAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.xmlGregorianCalendarAssertion(), createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "UTC")).isNotEqualTo(createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "UTC"));
