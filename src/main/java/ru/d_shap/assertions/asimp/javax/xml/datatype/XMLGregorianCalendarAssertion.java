@@ -59,10 +59,13 @@ public class XMLGregorianCalendarAssertion extends ReferenceAssertion<XMLGregori
      * @param expected the expected value.
      */
     public final void isEqualTo(final XMLGregorianCalendar expected) {
-        checkActualIsNotNull();
-        checkArgumentIsNotNull(expected, "expected");
-        if (!getActual().equals(expected)) {
-            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_SAME).addActual().addExpected(expected).build();
+        if (expected == null) {
+            isNull();
+        } else {
+            checkActualIsNotNull();
+            if (!getActual().equals(expected)) {
+                throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_SAME).addActual().addExpected(expected).build();
+            }
         }
     }
 
@@ -72,10 +75,12 @@ public class XMLGregorianCalendarAssertion extends ReferenceAssertion<XMLGregori
      * @param expected the expected value.
      */
     public final void isNotEqualTo(final XMLGregorianCalendar expected) {
-        checkActualIsNotNull();
-        checkArgumentIsNotNull(expected, "expected");
-        if (getActual().equals(expected)) {
-            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_DIFFERENT).addActual().build();
+        if (expected == null) {
+            isNotNull();
+        } else {
+            if (getActual() != null && getActual().equals(expected)) {
+                throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_DIFFERENT).addActual().build();
+            }
         }
     }
 

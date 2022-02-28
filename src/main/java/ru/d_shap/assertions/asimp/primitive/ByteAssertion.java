@@ -54,6 +54,19 @@ public class ByteAssertion extends ReferenceAssertion<Byte> {
     }
 
     /**
+     * Check if the actual value is equal to the expected value.
+     *
+     * @param expected the expected value.
+     */
+    public final void isEqualTo(final Byte expected) {
+        if (expected == null) {
+            isNull();
+        } else {
+            isEqualTo(expected.byteValue());
+        }
+    }
+
+    /**
      * Check if the actual value is NOT equal to the expected value.
      *
      * @param expected the expected value.
@@ -62,6 +75,21 @@ public class ByteAssertion extends ReferenceAssertion<Byte> {
         checkActualIsNotNull();
         if (getActual() == expected) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_DIFFERENT).addActual().build();
+        }
+    }
+
+    /**
+     * Check if the actual value is NOT equal to the expected value.
+     *
+     * @param expected the expected value.
+     */
+    public final void isNotEqualTo(final Byte expected) {
+        if (expected == null) {
+            isNotNull();
+        } else {
+            if (getActual() != null) {
+                isNotEqualTo(expected.byteValue());
+            }
         }
     }
 

@@ -129,10 +129,13 @@ public class CharSequenceAssertion extends ReferenceAssertion<CharSequence> {
      * @param expected the expected value.
      */
     public final void isEqualTo(final String expected) {
-        checkActualIsNotNull();
-        checkArgumentIsNotNull(expected, "expected");
-        if (!getActual().toString().equals(expected)) {
-            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_SAME).addActual().addExpected(expected).build();
+        if (expected == null) {
+            isNull();
+        } else {
+            checkActualIsNotNull();
+            if (!getActual().toString().equals(expected)) {
+                throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_SAME).addActual().addExpected(expected).build();
+            }
         }
     }
 
@@ -142,10 +145,13 @@ public class CharSequenceAssertion extends ReferenceAssertion<CharSequence> {
      * @param expected the expected value.
      */
     public final void isEqualToIgnoreCase(final String expected) {
-        checkActualIsNotNull();
-        checkArgumentIsNotNull(expected, "expected");
-        if (!getActual().toString().equalsIgnoreCase(expected)) {
-            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_SAME_IGNORE_CASE).addActual().addExpected(expected).build();
+        if (expected == null) {
+            isNull();
+        } else {
+            checkActualIsNotNull();
+            if (!getActual().toString().equalsIgnoreCase(expected)) {
+                throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_SAME_IGNORE_CASE).addActual().addExpected(expected).build();
+            }
         }
     }
 
@@ -155,10 +161,12 @@ public class CharSequenceAssertion extends ReferenceAssertion<CharSequence> {
      * @param expected the expected value.
      */
     public final void isNotEqualTo(final String expected) {
-        checkActualIsNotNull();
-        checkArgumentIsNotNull(expected, "expected");
-        if (getActual().toString().equals(expected)) {
-            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_DIFFERENT).addActual().build();
+        if (expected == null) {
+            isNotNull();
+        } else {
+            if (getActual() != null && getActual().toString().equals(expected)) {
+                throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_DIFFERENT).addActual().build();
+            }
         }
     }
 
@@ -168,10 +176,12 @@ public class CharSequenceAssertion extends ReferenceAssertion<CharSequence> {
      * @param expected the expected value.
      */
     public final void isNotEqualToIgnoreCase(final String expected) {
-        checkActualIsNotNull();
-        checkArgumentIsNotNull(expected, "expected");
-        if (getActual().toString().equalsIgnoreCase(expected)) {
-            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_DIFFERENT_IGNORE_CASE).addActual().build();
+        if (expected == null) {
+            isNotNull();
+        } else {
+            if (getActual() != null && getActual().toString().equalsIgnoreCase(expected)) {
+                throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_DIFFERENT_IGNORE_CASE).addActual().build();
+            }
         }
     }
 

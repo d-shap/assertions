@@ -54,10 +54,13 @@ public class DateAssertion extends ReferenceAssertion<Date> {
      * @param expected the expected value.
      */
     public final void isEqualTo(final Date expected) {
-        checkActualIsNotNull();
-        checkArgumentIsNotNull(expected, "expected");
-        if (!getActual().equals(expected)) {
-            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_SAME).addActual().addExpected(expected).build();
+        if (expected == null) {
+            isNull();
+        } else {
+            checkActualIsNotNull();
+            if (!getActual().equals(expected)) {
+                throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_SAME).addActual().addExpected(expected).build();
+            }
         }
     }
 
@@ -67,10 +70,12 @@ public class DateAssertion extends ReferenceAssertion<Date> {
      * @param expected the expected value.
      */
     public final void isNotEqualTo(final Date expected) {
-        checkActualIsNotNull();
-        checkArgumentIsNotNull(expected, "expected");
-        if (getActual().equals(expected)) {
-            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_DIFFERENT).addActual().build();
+        if (expected == null) {
+            isNotNull();
+        } else {
+            if (getActual() != null && getActual().equals(expected)) {
+                throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_DIFFERENT).addActual().build();
+            }
         }
     }
 

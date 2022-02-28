@@ -66,6 +66,29 @@ public class FloatAssertion extends ReferenceAssertion<Float> {
     }
 
     /**
+     * Check if the actual value is equal to the expected value.
+     *
+     * @param expected the expected value.
+     */
+    public final void isEqualTo(final Float expected) {
+        isEqualTo(expected, DEFAULT_DELTA);
+    }
+
+    /**
+     * Check if the actual value is equal to the expected value.
+     *
+     * @param expected the expected value.
+     * @param delta    maximum delta between the actual value and the expected value.
+     */
+    public final void isEqualTo(final Float expected, final float delta) {
+        if (expected == null) {
+            isNull();
+        } else {
+            isEqualTo(expected.floatValue(), delta);
+        }
+    }
+
+    /**
      * Check if the actual value is NOT equal to the expected value.
      *
      * @param expected the expected value.
@@ -84,6 +107,31 @@ public class FloatAssertion extends ReferenceAssertion<Float> {
         checkActualIsNotNull();
         if (Math.abs(expected - getActual()) <= delta) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_DIFFERENT).addActual().addDelta(delta).build();
+        }
+    }
+
+    /**
+     * Check if the actual value is NOT equal to the expected value.
+     *
+     * @param expected the expected value.
+     */
+    public final void isNotEqualTo(final Float expected) {
+        isNotEqualTo(expected, DEFAULT_DELTA);
+    }
+
+    /**
+     * Check if the actual value is NOT equal to the expected value.
+     *
+     * @param expected the expected value.
+     * @param delta    maximum delta between the actual value and the expected value.
+     */
+    public final void isNotEqualTo(final Float expected, final float delta) {
+        if (expected == null) {
+            isNotNull();
+        } else {
+            if (getActual() != null) {
+                isNotEqualTo(expected.floatValue(), delta);
+            }
         }
     }
 

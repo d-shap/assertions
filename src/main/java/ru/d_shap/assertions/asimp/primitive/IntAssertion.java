@@ -54,6 +54,19 @@ public class IntAssertion extends ReferenceAssertion<Integer> {
     }
 
     /**
+     * Check if the actual value is equal to the expected value.
+     *
+     * @param expected the expected value.
+     */
+    public final void isEqualTo(final Integer expected) {
+        if (expected == null) {
+            isNull();
+        } else {
+            isEqualTo(expected.intValue());
+        }
+    }
+
+    /**
      * Check if the actual value is NOT equal to the expected value.
      *
      * @param expected the expected value.
@@ -62,6 +75,21 @@ public class IntAssertion extends ReferenceAssertion<Integer> {
         checkActualIsNotNull();
         if (getActual() == expected) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_DIFFERENT).addActual().build();
+        }
+    }
+
+    /**
+     * Check if the actual value is NOT equal to the expected value.
+     *
+     * @param expected the expected value.
+     */
+    public final void isNotEqualTo(final Integer expected) {
+        if (expected == null) {
+            isNotNull();
+        } else {
+            if (getActual() != null) {
+                isNotEqualTo(expected.intValue());
+            }
         }
     }
 

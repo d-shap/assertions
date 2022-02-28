@@ -54,6 +54,19 @@ public class CharAssertion extends ReferenceAssertion<Character> {
     }
 
     /**
+     * Check if the actual value is equal to the expected value.
+     *
+     * @param expected the expected value.
+     */
+    public final void isEqualTo(final Character expected) {
+        if (expected == null) {
+            isNull();
+        } else {
+            isEqualTo(expected.charValue());
+        }
+    }
+
+    /**
      * Check if the actual value is NOT equal to the expected value.
      *
      * @param expected the expected value.
@@ -62,6 +75,21 @@ public class CharAssertion extends ReferenceAssertion<Character> {
         checkActualIsNotNull();
         if (getActual() == expected) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_DIFFERENT).addActual().build();
+        }
+    }
+
+    /**
+     * Check if the actual value is NOT equal to the expected value.
+     *
+     * @param expected the expected value.
+     */
+    public final void isNotEqualTo(final Character expected) {
+        if (expected == null) {
+            isNotNull();
+        } else {
+            if (getActual() != null) {
+                isNotEqualTo(expected.charValue());
+            }
         }
     }
 
