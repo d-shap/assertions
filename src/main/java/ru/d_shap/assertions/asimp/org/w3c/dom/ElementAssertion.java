@@ -97,10 +97,10 @@ public class ElementAssertion extends ReferenceAssertion<Element> {
         if (expected == null) {
             isNotNull();
         } else {
+            ConversionExceptionHolder conversionExceptionHolder = new ConversionExceptionHolder();
+            Element expectedElement = convertValue(expected, conversionExceptionHolder, Element.class);
+            checkArgumentIsValid(conversionExceptionHolder, "expected", Messages.Fail.Argument.IS_VALID_XML);
             if (getActual() != null) {
-                ConversionExceptionHolder conversionExceptionHolder = new ConversionExceptionHolder();
-                Element expectedElement = convertValue(expected, conversionExceptionHolder, Element.class);
-                checkArgumentIsValid(conversionExceptionHolder, "expected", Messages.Fail.Argument.IS_VALID_XML);
                 createNodeAssertion().isNotEqualTo(expectedElement);
             }
         }
