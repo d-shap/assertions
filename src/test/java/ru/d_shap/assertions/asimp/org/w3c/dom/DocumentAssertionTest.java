@@ -413,6 +413,18 @@ public final class DocumentAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
+            initialize(Raw.documentAssertion(), null).isNotEqualTo("<element>");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).messageMatches("Argument should be valid: expected.\n\tThe argument's value should be the valid XML.\n\t.*");
+        }
+        try {
+            initialize(Raw.documentAssertion(), null, "Message").isNotEqualTo("<element>");
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).messageMatches("Message.\n\tArgument should be valid: expected.\n\tThe argument's value should be the valid XML.\n\t.*");
+        }
+        try {
             initialize(Raw.documentAssertion(), createDocument("<element/>")).isNotEqualTo("<element>");
             Assertions.fail("DocumentAssertion test fail");
         } catch (AssertionError ex) {

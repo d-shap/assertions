@@ -454,6 +454,18 @@ public final class ElementAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
+            initialize(Raw.elementAssertion(), null).isNotEqualTo("<element>");
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).messageMatches("Argument should be valid: expected.\n\tThe argument's value should be the valid XML.\n\t.*");
+        }
+        try {
+            initialize(Raw.elementAssertion(), null, "Message").isNotEqualTo("<element>");
+            Assertions.fail("ElementAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).messageMatches("Message.\n\tArgument should be valid: expected.\n\tThe argument's value should be the valid XML.\n\t.*");
+        }
+        try {
             initialize(Raw.elementAssertion(), createElement("<element/>")).isNotEqualTo("<element>");
             Assertions.fail("ElementAssertion test fail");
         } catch (AssertionError ex) {
