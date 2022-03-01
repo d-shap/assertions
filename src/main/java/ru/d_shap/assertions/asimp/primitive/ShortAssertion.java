@@ -106,6 +106,17 @@ public class ShortAssertion extends ReferenceAssertion<Short> {
     }
 
     /**
+     * Check if the actual value is greater than the expected value.
+     *
+     * @param expected the expected value.
+     */
+    public final void isGreaterThan(final Short expected) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(expected, "expected");
+        isGreaterThan(expected.shortValue());
+    }
+
+    /**
      * Check if the actual value is greater than or equal to the expected value.
      *
      * @param expected the expected value.
@@ -115,6 +126,17 @@ public class ShortAssertion extends ReferenceAssertion<Short> {
         if (getActual() < expected) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_GREATER_OR_EQUAL).addActual().addExpected(expected).build();
         }
+    }
+
+    /**
+     * Check if the actual value is greater than or equal to the expected value.
+     *
+     * @param expected the expected value.
+     */
+    public final void isGreaterThanOrEqualTo(final Short expected) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(expected, "expected");
+        isGreaterThanOrEqualTo(expected.shortValue());
     }
 
     /**
@@ -130,6 +152,17 @@ public class ShortAssertion extends ReferenceAssertion<Short> {
     }
 
     /**
+     * Check if the actual value is less than the expected value.
+     *
+     * @param expected the expected value.
+     */
+    public final void isLessThan(final Short expected) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(expected, "expected");
+        isLessThan(expected.shortValue());
+    }
+
+    /**
      * Check if the actual value is less than or equal to the expected value.
      *
      * @param expected the expected value.
@@ -139,6 +172,17 @@ public class ShortAssertion extends ReferenceAssertion<Short> {
         if (getActual() > expected) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_LESS_OR_EQUAL).addActual().addExpected(expected).build();
         }
+    }
+
+    /**
+     * Check if the actual value is less than or equal to the expected value.
+     *
+     * @param expected the expected value.
+     */
+    public final void isLessThanOrEqualTo(final Short expected) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(expected, "expected");
+        isLessThanOrEqualTo(expected.shortValue());
     }
 
     /**
@@ -155,6 +199,19 @@ public class ShortAssertion extends ReferenceAssertion<Short> {
     }
 
     /**
+     * Check if the actual value is in the expected range.
+     *
+     * @param expectedFrom the expected lower (inclusive) bound of the range.
+     * @param expectedTo   the expected upper (exclusive) bound of the range.
+     */
+    public final void isInRange(final Short expectedFrom, final Short expectedTo) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(expectedFrom, "expectedFrom");
+        checkArgumentIsNotNull(expectedTo, "expectedTo");
+        isInRange(expectedFrom.shortValue(), expectedTo.shortValue());
+    }
+
+    /**
      * Check if the actual value is NOT in the expected range.
      *
      * @param expectedFrom the expected lower (inclusive) bound of the range.
@@ -165,6 +222,19 @@ public class ShortAssertion extends ReferenceAssertion<Short> {
         if (getActual() >= expectedFrom && getActual() < expectedTo) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_IN_RANGE).addActual().addExpected(expectedFrom, expectedTo).build();
         }
+    }
+
+    /**
+     * Check if the actual value is NOT in the expected range.
+     *
+     * @param expectedFrom the expected lower (inclusive) bound of the range.
+     * @param expectedTo   the expected upper (exclusive) bound of the range.
+     */
+    public final void isNotInRange(final Short expectedFrom, final Short expectedTo) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(expectedFrom, "expectedFrom");
+        checkArgumentIsNotNull(expectedTo, "expectedTo");
+        isNotInRange(expectedFrom.shortValue(), expectedTo.shortValue());
     }
 
 }

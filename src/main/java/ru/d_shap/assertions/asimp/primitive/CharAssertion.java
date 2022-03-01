@@ -106,6 +106,17 @@ public class CharAssertion extends ReferenceAssertion<Character> {
     }
 
     /**
+     * Check if the actual value is greater than the expected value.
+     *
+     * @param expected the expected value.
+     */
+    public final void isGreaterThan(final Character expected) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(expected, "expected");
+        isGreaterThan(expected.charValue());
+    }
+
+    /**
      * Check if the actual value is greater than or equal to the expected value.
      *
      * @param expected the expected value.
@@ -115,6 +126,17 @@ public class CharAssertion extends ReferenceAssertion<Character> {
         if (getActual() < expected) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_GREATER_OR_EQUAL).addActual().addExpected(expected).build();
         }
+    }
+
+    /**
+     * Check if the actual value is greater than or equal to the expected value.
+     *
+     * @param expected the expected value.
+     */
+    public final void isGreaterThanOrEqualTo(final Character expected) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(expected, "expected");
+        isGreaterThanOrEqualTo(expected.charValue());
     }
 
     /**
@@ -130,6 +152,17 @@ public class CharAssertion extends ReferenceAssertion<Character> {
     }
 
     /**
+     * Check if the actual value is less than the expected value.
+     *
+     * @param expected the expected value.
+     */
+    public final void isLessThan(final Character expected) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(expected, "expected");
+        isLessThan(expected.charValue());
+    }
+
+    /**
      * Check if the actual value is less than or equal to the expected value.
      *
      * @param expected the expected value.
@@ -139,6 +172,17 @@ public class CharAssertion extends ReferenceAssertion<Character> {
         if (getActual() > expected) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_LESS_OR_EQUAL).addActual().addExpected(expected).build();
         }
+    }
+
+    /**
+     * Check if the actual value is less than or equal to the expected value.
+     *
+     * @param expected the expected value.
+     */
+    public final void isLessThanOrEqualTo(final Character expected) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(expected, "expected");
+        isLessThanOrEqualTo(expected.charValue());
     }
 
     /**
@@ -155,6 +199,19 @@ public class CharAssertion extends ReferenceAssertion<Character> {
     }
 
     /**
+     * Check if the actual value is in the expected range.
+     *
+     * @param expectedFrom the expected lower (inclusive) bound of the range.
+     * @param expectedTo   the expected upper (exclusive) bound of the range.
+     */
+    public final void isInRange(final Character expectedFrom, final Character expectedTo) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(expectedFrom, "expectedFrom");
+        checkArgumentIsNotNull(expectedTo, "expectedTo");
+        isInRange(expectedFrom.charValue(), expectedTo.charValue());
+    }
+
+    /**
      * Check if the actual value is NOT in the expected range.
      *
      * @param expectedFrom the expected lower (inclusive) bound of the range.
@@ -165,6 +222,19 @@ public class CharAssertion extends ReferenceAssertion<Character> {
         if (getActual() >= expectedFrom && getActual() < expectedTo) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_IN_RANGE).addActual().addExpected(expectedFrom, expectedTo).build();
         }
+    }
+
+    /**
+     * Check if the actual value is NOT in the expected range.
+     *
+     * @param expectedFrom the expected lower (inclusive) bound of the range.
+     * @param expectedTo   the expected upper (exclusive) bound of the range.
+     */
+    public final void isNotInRange(final Character expectedFrom, final Character expectedTo) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(expectedFrom, "expectedFrom");
+        checkArgumentIsNotNull(expectedTo, "expectedTo");
+        isNotInRange(expectedFrom.charValue(), expectedTo.charValue());
     }
 
     /**

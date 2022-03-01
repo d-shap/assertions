@@ -148,6 +148,17 @@ public class FloatAssertion extends ReferenceAssertion<Float> {
     }
 
     /**
+     * Check if the actual value is greater than the expected value.
+     *
+     * @param expected the expected value.
+     */
+    public final void isGreaterThan(final Float expected) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(expected, "expected");
+        isGreaterThan(expected.floatValue());
+    }
+
+    /**
      * Check if the actual value is greater than or equal to the expected value.
      *
      * @param expected the expected value.
@@ -157,6 +168,17 @@ public class FloatAssertion extends ReferenceAssertion<Float> {
         if (getActual() < expected) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_GREATER_OR_EQUAL).addActual().addExpected(expected).build();
         }
+    }
+
+    /**
+     * Check if the actual value is greater than or equal to the expected value.
+     *
+     * @param expected the expected value.
+     */
+    public final void isGreaterThanOrEqualTo(final Float expected) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(expected, "expected");
+        isGreaterThanOrEqualTo(expected.floatValue());
     }
 
     /**
@@ -172,6 +194,17 @@ public class FloatAssertion extends ReferenceAssertion<Float> {
     }
 
     /**
+     * Check if the actual value is less than the expected value.
+     *
+     * @param expected the expected value.
+     */
+    public final void isLessThan(final Float expected) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(expected, "expected");
+        isLessThan(expected.floatValue());
+    }
+
+    /**
      * Check if the actual value is less than or equal to the expected value.
      *
      * @param expected the expected value.
@@ -181,6 +214,17 @@ public class FloatAssertion extends ReferenceAssertion<Float> {
         if (getActual() > expected) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_LESS_OR_EQUAL).addActual().addExpected(expected).build();
         }
+    }
+
+    /**
+     * Check if the actual value is less than or equal to the expected value.
+     *
+     * @param expected the expected value.
+     */
+    public final void isLessThanOrEqualTo(final Float expected) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(expected, "expected");
+        isLessThanOrEqualTo(expected.floatValue());
     }
 
     /**
@@ -197,6 +241,19 @@ public class FloatAssertion extends ReferenceAssertion<Float> {
     }
 
     /**
+     * Check if the actual value is in the expected range.
+     *
+     * @param expectedFrom the expected lower (inclusive) bound of the range.
+     * @param expectedTo   the expected upper (exclusive) bound of the range.
+     */
+    public final void isInRange(final Float expectedFrom, final Float expectedTo) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(expectedFrom, "expectedFrom");
+        checkArgumentIsNotNull(expectedTo, "expectedTo");
+        isInRange(expectedFrom.floatValue(), expectedTo.floatValue());
+    }
+
+    /**
      * Check if the actual value is NOT in the expected range.
      *
      * @param expectedFrom the expected lower (inclusive) bound of the range.
@@ -207,6 +264,19 @@ public class FloatAssertion extends ReferenceAssertion<Float> {
         if (getActual() >= expectedFrom && getActual() < expectedTo) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_IN_RANGE).addActual().addExpected(expectedFrom, expectedTo).build();
         }
+    }
+
+    /**
+     * Check if the actual value is NOT in the expected range.
+     *
+     * @param expectedFrom the expected lower (inclusive) bound of the range.
+     * @param expectedTo   the expected upper (exclusive) bound of the range.
+     */
+    public final void isNotInRange(final Float expectedFrom, final Float expectedTo) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(expectedFrom, "expectedFrom");
+        checkArgumentIsNotNull(expectedTo, "expectedTo");
+        isNotInRange(expectedFrom.floatValue(), expectedTo.floatValue());
     }
 
     /**

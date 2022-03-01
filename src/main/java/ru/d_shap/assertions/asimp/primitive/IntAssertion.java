@@ -106,6 +106,17 @@ public class IntAssertion extends ReferenceAssertion<Integer> {
     }
 
     /**
+     * Check if the actual value is greater than the expected value.
+     *
+     * @param expected the expected value.
+     */
+    public final void isGreaterThan(final Integer expected) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(expected, "expected");
+        isGreaterThan(expected.intValue());
+    }
+
+    /**
      * Check if the actual value is greater than or equal to the expected value.
      *
      * @param expected the expected value.
@@ -115,6 +126,17 @@ public class IntAssertion extends ReferenceAssertion<Integer> {
         if (getActual() < expected) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_GREATER_OR_EQUAL).addActual().addExpected(expected).build();
         }
+    }
+
+    /**
+     * Check if the actual value is greater than or equal to the expected value.
+     *
+     * @param expected the expected value.
+     */
+    public final void isGreaterThanOrEqualTo(final Integer expected) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(expected, "expected");
+        isGreaterThanOrEqualTo(expected.intValue());
     }
 
     /**
@@ -130,6 +152,17 @@ public class IntAssertion extends ReferenceAssertion<Integer> {
     }
 
     /**
+     * Check if the actual value is less than the expected value.
+     *
+     * @param expected the expected value.
+     */
+    public final void isLessThan(final Integer expected) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(expected, "expected");
+        isLessThan(expected.intValue());
+    }
+
+    /**
      * Check if the actual value is less than or equal to the expected value.
      *
      * @param expected the expected value.
@@ -139,6 +172,17 @@ public class IntAssertion extends ReferenceAssertion<Integer> {
         if (getActual() > expected) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_LESS_OR_EQUAL).addActual().addExpected(expected).build();
         }
+    }
+
+    /**
+     * Check if the actual value is less than or equal to the expected value.
+     *
+     * @param expected the expected value.
+     */
+    public final void isLessThanOrEqualTo(final Integer expected) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(expected, "expected");
+        isLessThanOrEqualTo(expected.intValue());
     }
 
     /**
@@ -155,6 +199,19 @@ public class IntAssertion extends ReferenceAssertion<Integer> {
     }
 
     /**
+     * Check if the actual value is in the expected range.
+     *
+     * @param expectedFrom the expected lower (inclusive) bound of the range.
+     * @param expectedTo   the expected upper (exclusive) bound of the range.
+     */
+    public final void isInRange(final Integer expectedFrom, final Integer expectedTo) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(expectedFrom, "expectedFrom");
+        checkArgumentIsNotNull(expectedTo, "expectedTo");
+        isInRange(expectedFrom.intValue(), expectedTo.intValue());
+    }
+
+    /**
      * Check if the actual value is NOT in the expected range.
      *
      * @param expectedFrom the expected lower (inclusive) bound of the range.
@@ -165,6 +222,19 @@ public class IntAssertion extends ReferenceAssertion<Integer> {
         if (getActual() >= expectedFrom && getActual() < expectedTo) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_IN_RANGE).addActual().addExpected(expectedFrom, expectedTo).build();
         }
+    }
+
+    /**
+     * Check if the actual value is NOT in the expected range.
+     *
+     * @param expectedFrom the expected lower (inclusive) bound of the range.
+     * @param expectedTo   the expected upper (exclusive) bound of the range.
+     */
+    public final void isNotInRange(final Integer expectedFrom, final Integer expectedTo) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(expectedFrom, "expectedFrom");
+        checkArgumentIsNotNull(expectedTo, "expectedTo");
+        isNotInRange(expectedFrom.intValue(), expectedTo.intValue());
     }
 
 }
