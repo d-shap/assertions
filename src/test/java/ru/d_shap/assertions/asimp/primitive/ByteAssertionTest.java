@@ -64,7 +64,7 @@ public final class ByteAssertionTest extends AssertionTest {
      * {@link ByteAssertion} class test.
      */
     @Test
-    public void isEqualToTest() {
+    public void isEqualToPrimitiveTest() {
         initialize(Raw.byteAssertion(), (byte) 10).isEqualTo(10);
         initialize(Raw.byteAssertion(), (byte) 75).isEqualTo(75);
         initialize(Raw.byteAssertion(), (byte) 236).isEqualTo((byte) 236);
@@ -118,7 +118,60 @@ public final class ByteAssertionTest extends AssertionTest {
      * {@link ByteAssertion} class test.
      */
     @Test
-    public void isNotEqualToTest() {
+    public void isEqualToObjectTest() {
+        initialize(Raw.byteAssertion(), null).isEqualTo(null);
+        initialize(Raw.byteAssertion(), (byte) 10).isEqualTo(Byte.valueOf("10"));
+        initialize(Raw.byteAssertion(), (byte) 75).isEqualTo(Byte.valueOf("75"));
+
+        try {
+            Raw.byteAssertion().isEqualTo(Byte.valueOf("1"));
+            Assertions.fail("ByteAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.byteAssertion(), null).isEqualTo(Byte.valueOf("1"));
+            Assertions.fail("ByteAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.byteAssertion(), null, "Message").isEqualTo(Byte.valueOf("1"));
+            Assertions.fail("ByteAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.byteAssertion(), (byte) 1).isEqualTo(null);
+            Assertions.fail("ByteAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should be null.\n\tActual:<1b>");
+        }
+        try {
+            initialize(Raw.byteAssertion(), (byte) 1, "Message").isEqualTo(null);
+            Assertions.fail("ByteAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be null.\n\tActual:<1b>");
+        }
+        try {
+            initialize(Raw.byteAssertion(), (byte) 10).isEqualTo(Byte.valueOf("20"));
+            Assertions.fail("ByteAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<20b> but was:<10b>");
+        }
+        try {
+            initialize(Raw.byteAssertion(), (byte) 10, "Message").isEqualTo(Byte.valueOf("20"));
+            Assertions.fail("ByteAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be the same.\n\tExpected:<20b> but was:<10b>");
+        }
+    }
+
+    /**
+     * {@link ByteAssertion} class test.
+     */
+    @Test
+    public void isNotEqualToPrimitiveTest() {
         initialize(Raw.byteAssertion(), (byte) 10).isNotEqualTo(15);
         initialize(Raw.byteAssertion(), (byte) 75).isNotEqualTo(76);
         initialize(Raw.byteAssertion(), (byte) 236).isNotEqualTo(143);
@@ -160,7 +213,49 @@ public final class ByteAssertionTest extends AssertionTest {
      * {@link ByteAssertion} class test.
      */
     @Test
-    public void isGreaterThanTest() {
+    public void isNotEqualToObjectTest() {
+        initialize(Raw.byteAssertion(), null).isNotEqualTo(Byte.valueOf("5"));
+        initialize(Raw.byteAssertion(), (byte) 5).isNotEqualTo(null);
+        initialize(Raw.byteAssertion(), (byte) 10).isNotEqualTo(Byte.valueOf("15"));
+        initialize(Raw.byteAssertion(), (byte) 75).isNotEqualTo(Byte.valueOf("76"));
+
+        try {
+            Raw.byteAssertion().isNotEqualTo(Byte.valueOf("1"));
+            Assertions.fail("ByteAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.byteAssertion(), null).isNotEqualTo(null);
+            Assertions.fail("ByteAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.byteAssertion(), null, "Message").isNotEqualTo(null);
+            Assertions.fail("ByteAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.byteAssertion(), (byte) 10).isNotEqualTo(Byte.valueOf("10"));
+            Assertions.fail("ByteAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be different.\n\tActual:<10b>");
+        }
+        try {
+            initialize(Raw.byteAssertion(), (byte) 10, "Message").isNotEqualTo(Byte.valueOf("10"));
+            Assertions.fail("ByteAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be different.\n\tActual:<10b>");
+        }
+    }
+
+    /**
+     * {@link ByteAssertion} class test.
+     */
+    @Test
+    public void isGreaterThanPrimitiveTest() {
         initialize(Raw.byteAssertion(), (byte) 10).isGreaterThan(5);
         initialize(Raw.byteAssertion(), (byte) 60).isGreaterThan(30);
         initialize(Raw.byteAssertion(), (byte) 245).isGreaterThan((byte) 244);
@@ -213,7 +308,7 @@ public final class ByteAssertionTest extends AssertionTest {
      * {@link ByteAssertion} class test.
      */
     @Test
-    public void isGreaterThanOrEqualToTest() {
+    public void isGreaterThanOrEqualToPrimitiveTest() {
         initialize(Raw.byteAssertion(), (byte) 10).isGreaterThanOrEqualTo(5);
         initialize(Raw.byteAssertion(), (byte) 60).isGreaterThanOrEqualTo(60);
         initialize(Raw.byteAssertion(), (byte) 245).isGreaterThanOrEqualTo((byte) 244);
@@ -254,7 +349,7 @@ public final class ByteAssertionTest extends AssertionTest {
      * {@link ByteAssertion} class test.
      */
     @Test
-    public void isLessThanTest() {
+    public void isLessThanPrimitiveTest() {
         initialize(Raw.byteAssertion(), (byte) 5).isLessThan(10);
         initialize(Raw.byteAssertion(), (byte) 30).isLessThan(60);
         initialize(Raw.byteAssertion(), (byte) 244).isLessThan(245);
@@ -307,7 +402,7 @@ public final class ByteAssertionTest extends AssertionTest {
      * {@link ByteAssertion} class test.
      */
     @Test
-    public void isLessThanOrEqualToTest() {
+    public void isLessThanOrEqualToPrimitiveTest() {
         initialize(Raw.byteAssertion(), (byte) 5).isLessThanOrEqualTo(10);
         initialize(Raw.byteAssertion(), (byte) 60).isLessThanOrEqualTo(60);
         initialize(Raw.byteAssertion(), (byte) 244).isLessThanOrEqualTo(245);
@@ -348,7 +443,7 @@ public final class ByteAssertionTest extends AssertionTest {
      * {@link ByteAssertion} class test.
      */
     @Test
-    public void isInRangeTest() {
+    public void isInRangePrimitiveTest() {
         initialize(Raw.byteAssertion(), (byte) 5).isInRange(4, 6);
         initialize(Raw.byteAssertion(), (byte) 5).isInRange(5, 6);
         initialize(Raw.byteAssertion(), (byte) 5).isInRange(1, 10);
@@ -413,7 +508,7 @@ public final class ByteAssertionTest extends AssertionTest {
      * {@link ByteAssertion} class test.
      */
     @Test
-    public void isNotInRangeTest() {
+    public void isNotInRangePrimitiveTest() {
         initialize(Raw.byteAssertion(), (byte) 5).isNotInRange(1, 5);
         initialize(Raw.byteAssertion(), (byte) 5).isNotInRange(6, 10);
         initialize(Raw.byteAssertion(), (byte) 5).isNotInRange(8, 9);
