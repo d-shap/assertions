@@ -56,6 +56,15 @@ public class DoubleAssertion extends ReferenceAssertion<Double> {
      * Check if the actual value is equal to the expected value.
      *
      * @param expected the expected value.
+     */
+    public final void isEqualTo(final Double expected) {
+        isEqualTo(expected, DEFAULT_DELTA);
+    }
+
+    /**
+     * Check if the actual value is equal to the expected value.
+     *
+     * @param expected the expected value.
      * @param delta    maximum delta between the actual value and the expected value.
      */
     public final void isEqualTo(final double expected, final double delta) {
@@ -63,15 +72,6 @@ public class DoubleAssertion extends ReferenceAssertion<Double> {
         if (Math.abs(expected - getActual()) > delta) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_SAME).addActual().addExpected(expected).addDelta(delta).build();
         }
-    }
-
-    /**
-     * Check if the actual value is equal to the expected value.
-     *
-     * @param expected the expected value.
-     */
-    public final void isEqualTo(final Double expected) {
-        isEqualTo(expected, DEFAULT_DELTA);
     }
 
     /**
@@ -101,6 +101,15 @@ public class DoubleAssertion extends ReferenceAssertion<Double> {
      * Check if the actual value is NOT equal to the expected value.
      *
      * @param expected the expected value.
+     */
+    public final void isNotEqualTo(final Double expected) {
+        isNotEqualTo(expected, DEFAULT_DELTA);
+    }
+
+    /**
+     * Check if the actual value is NOT equal to the expected value.
+     *
+     * @param expected the expected value.
      * @param delta    maximum delta between the actual value and the expected value.
      */
     public final void isNotEqualTo(final double expected, final double delta) {
@@ -108,15 +117,6 @@ public class DoubleAssertion extends ReferenceAssertion<Double> {
         if (Math.abs(expected - getActual()) <= delta) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_DIFFERENT).addActual().addDelta(delta).build();
         }
-    }
-
-    /**
-     * Check if the actual value is NOT equal to the expected value.
-     *
-     * @param expected the expected value.
-     */
-    public final void isNotEqualTo(final Double expected) {
-        isNotEqualTo(expected, DEFAULT_DELTA);
     }
 
     /**
