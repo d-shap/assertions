@@ -64,7 +64,7 @@ public final class FloatAssertionTest extends AssertionTest {
      * {@link FloatAssertion} class test.
      */
     @Test
-    public void isEqualToDefaultDeltaTest() {
+    public void isEqualToDefaultDeltaPrimitiveTest() {
         initialize(Raw.floatAssertion(), 10.1f).isEqualTo(10.1f);
         initialize(Raw.floatAssertion(), 10.01f).isEqualTo(10.01f);
         initialize(Raw.floatAssertion(), 10.001f).isEqualTo(10.001f);
@@ -110,7 +110,15 @@ public final class FloatAssertionTest extends AssertionTest {
      * {@link FloatAssertion} class test.
      */
     @Test
-    public void isEqualToSpecifiedDeltaTest() {
+    public void isEqualToDefaultDeltaObjectTest() {
+        // TODO
+    }
+
+    /**
+     * {@link FloatAssertion} class test.
+     */
+    @Test
+    public void isEqualToSpecifiedDeltaPrimitiveTest() {
         initialize(Raw.floatAssertion(), 10.0f).isEqualTo(10.0f, 0.01f);
         initialize(Raw.floatAssertion(), 10.0f).isEqualTo(9.999f, 0.01f);
         initialize(Raw.floatAssertion(), 10.0f).isEqualTo(10.001f, 0.01f);
@@ -179,7 +187,15 @@ public final class FloatAssertionTest extends AssertionTest {
      * {@link FloatAssertion} class test.
      */
     @Test
-    public void isNotEqualToDefaultDeltaTest() {
+    public void isEqualToSpecifiedDeltaObjectTest() {
+        // TODO
+    }
+
+    /**
+     * {@link FloatAssertion} class test.
+     */
+    @Test
+    public void isNotEqualToDefaultDeltaPrimitiveTest() {
         initialize(Raw.floatAssertion(), 10.1f).isNotEqualTo(10.2f);
         initialize(Raw.floatAssertion(), 10.01f).isNotEqualTo(10.02f);
         initialize(Raw.floatAssertion(), 10.001f).isNotEqualTo(10.002f);
@@ -222,7 +238,15 @@ public final class FloatAssertionTest extends AssertionTest {
      * {@link FloatAssertion} class test.
      */
     @Test
-    public void isNotEqualToSpecifiedDeltaTest() {
+    public void isNotEqualToDefaultDeltaObjectTest() {
+        // TODO
+    }
+
+    /**
+     * {@link FloatAssertion} class test.
+     */
+    @Test
+    public void isNotEqualToSpecifiedDeltaPrimitiveTest() {
         initialize(Raw.floatAssertion(), 10.0f).isNotEqualTo(10.01f, 0.001f);
         initialize(Raw.floatAssertion(), 10.0f).isNotEqualTo(9.99f, 0.001f);
         initialize(Raw.floatAssertion(), 10.0f).isNotEqualTo(20.0f, 0.0f);
@@ -311,7 +335,15 @@ public final class FloatAssertionTest extends AssertionTest {
      * {@link FloatAssertion} class test.
      */
     @Test
-    public void isGreaterThanTest() {
+    public void isNotEqualToSpecifiedDeltaObjectTest() {
+        // TODO
+    }
+
+    /**
+     * {@link FloatAssertion} class test.
+     */
+    @Test
+    public void isGreaterThanPrimitiveTest() {
         initialize(Raw.floatAssertion(), 10.0f).isGreaterThan(9.0f);
         initialize(Raw.floatAssertion(), 10.0f).isGreaterThan(8.0f);
         initialize(Raw.floatAssertion(), 10.0f).isGreaterThan(-1.0f);
@@ -364,7 +396,15 @@ public final class FloatAssertionTest extends AssertionTest {
      * {@link FloatAssertion} class test.
      */
     @Test
-    public void isGreaterThanOrEqualToTest() {
+    public void isGreaterThanObjectTest() {
+        // TODO
+    }
+
+    /**
+     * {@link FloatAssertion} class test.
+     */
+    @Test
+    public void isGreaterThanOrEqualToPrimitiveTest() {
         initialize(Raw.floatAssertion(), 10.0f).isGreaterThanOrEqualTo(9.0f);
         initialize(Raw.floatAssertion(), 10.0f).isGreaterThanOrEqualTo(10.0f);
         initialize(Raw.floatAssertion(), 10.0f).isGreaterThanOrEqualTo(-1.0f);
@@ -405,7 +445,15 @@ public final class FloatAssertionTest extends AssertionTest {
      * {@link FloatAssertion} class test.
      */
     @Test
-    public void isLessThanTest() {
+    public void isGreaterThanOrEqualToObjectTest() {
+        // TODO
+    }
+
+    /**
+     * {@link FloatAssertion} class test.
+     */
+    @Test
+    public void isLessThanPrimitiveTest() {
         initialize(Raw.floatAssertion(), 10.0f).isLessThan(11.0f);
         initialize(Raw.floatAssertion(), 10.0f).isLessThan(12.0f);
         initialize(Raw.floatAssertion(), 10.0f).isLessThan(100.0f);
@@ -458,7 +506,15 @@ public final class FloatAssertionTest extends AssertionTest {
      * {@link FloatAssertion} class test.
      */
     @Test
-    public void isLessThanOrEqualToTest() {
+    public void isLessThanObjectTest() {
+        // TODO
+    }
+
+    /**
+     * {@link FloatAssertion} class test.
+     */
+    @Test
+    public void isLessThanOrEqualToPrimitiveTest() {
         initialize(Raw.floatAssertion(), 10.0f).isLessThanOrEqualTo(11.0f);
         initialize(Raw.floatAssertion(), 10.0f).isLessThanOrEqualTo(10.0f);
         initialize(Raw.floatAssertion(), 10.0f).isLessThanOrEqualTo(100.0f);
@@ -499,7 +555,15 @@ public final class FloatAssertionTest extends AssertionTest {
      * {@link FloatAssertion} class test.
      */
     @Test
-    public void isInRangeTest() {
+    public void isLessThanOrEqualToObjectTest() {
+        // TODO
+    }
+
+    /**
+     * {@link FloatAssertion} class test.
+     */
+    @Test
+    public void isInRangePrimitiveTest() {
         initialize(Raw.floatAssertion(), 5.0f).isInRange(4.0f, 6.0f);
         initialize(Raw.floatAssertion(), 5.0f).isInRange(5.0f, 6.0f);
         initialize(Raw.floatAssertion(), 5.0f).isInRange(1.0f, 10.0f);
@@ -564,7 +628,15 @@ public final class FloatAssertionTest extends AssertionTest {
      * {@link FloatAssertion} class test.
      */
     @Test
-    public void isNotInRangeTest() {
+    public void isInRangeObjectTest() {
+        // TODO
+    }
+
+    /**
+     * {@link FloatAssertion} class test.
+     */
+    @Test
+    public void isNotInRangePrimitiveTest() {
         initialize(Raw.floatAssertion(), 5.0f).isNotInRange(1.0f, 5.0f);
         initialize(Raw.floatAssertion(), 5.0f).isNotInRange(6.0f, 10.0f);
         initialize(Raw.floatAssertion(), 5.0f).isNotInRange(8.0f, 9.0f);
@@ -623,6 +695,14 @@ public final class FloatAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be in the expected range.\n\tExpected:<1.0f:10.0f> but was:<5.0f>");
         }
+    }
+
+    /**
+     * {@link FloatAssertion} class test.
+     */
+    @Test
+    public void isNotInRangeObjectTest() {
+        // TODO
     }
 
     /**

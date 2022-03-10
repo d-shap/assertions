@@ -64,7 +64,7 @@ public final class LongAssertionTest extends AssertionTest {
      * {@link LongAssertion} class test.
      */
     @Test
-    public void isEqualToTest() {
+    public void isEqualToPrimitiveTest() {
         initialize(Raw.longAssertion(), 10L).isEqualTo(10L);
         initialize(Raw.longAssertion(), 75L).isEqualTo(75L);
         initialize(Raw.longAssertion(), 236L).isEqualTo(236L);
@@ -106,7 +106,15 @@ public final class LongAssertionTest extends AssertionTest {
      * {@link LongAssertion} class test.
      */
     @Test
-    public void isNotEqualToTest() {
+    public void isEqualToObjectTest() {
+        // TODO
+    }
+
+    /**
+     * {@link LongAssertion} class test.
+     */
+    @Test
+    public void isNotEqualToPrimitiveTest() {
         initialize(Raw.longAssertion(), 10L).isNotEqualTo(15L);
         initialize(Raw.longAssertion(), 75L).isNotEqualTo(76L);
         initialize(Raw.longAssertion(), 236L).isNotEqualTo(143L);
@@ -148,7 +156,15 @@ public final class LongAssertionTest extends AssertionTest {
      * {@link LongAssertion} class test.
      */
     @Test
-    public void isGreaterThanTest() {
+    public void isNotEqualToObjectTest() {
+        // TODO
+    }
+
+    /**
+     * {@link LongAssertion} class test.
+     */
+    @Test
+    public void isGreaterThanPrimitiveTest() {
         initialize(Raw.longAssertion(), 10L).isGreaterThan(5L);
         initialize(Raw.longAssertion(), 60L).isGreaterThan(30L);
         initialize(Raw.longAssertion(), 245L).isGreaterThan(244L);
@@ -201,7 +217,15 @@ public final class LongAssertionTest extends AssertionTest {
      * {@link LongAssertion} class test.
      */
     @Test
-    public void isGreaterThanOrEqualToTest() {
+    public void isGreaterThanObjectTest() {
+        // TODO
+    }
+
+    /**
+     * {@link LongAssertion} class test.
+     */
+    @Test
+    public void isGreaterThanOrEqualToPrimitiveTest() {
         initialize(Raw.longAssertion(), 10L).isGreaterThanOrEqualTo(5L);
         initialize(Raw.longAssertion(), 60L).isGreaterThanOrEqualTo(60L);
         initialize(Raw.longAssertion(), 245L).isGreaterThanOrEqualTo(244L);
@@ -242,7 +266,15 @@ public final class LongAssertionTest extends AssertionTest {
      * {@link LongAssertion} class test.
      */
     @Test
-    public void isLessThanTest() {
+    public void isGreaterThanOrEqualToObjectTest() {
+        // TODO
+    }
+
+    /**
+     * {@link LongAssertion} class test.
+     */
+    @Test
+    public void isLessThanPrimitiveTest() {
         initialize(Raw.longAssertion(), 5L).isLessThan(10L);
         initialize(Raw.longAssertion(), 30L).isLessThan(60L);
         initialize(Raw.longAssertion(), 244L).isLessThan(245L);
@@ -295,7 +327,15 @@ public final class LongAssertionTest extends AssertionTest {
      * {@link LongAssertion} class test.
      */
     @Test
-    public void isLessThanOrEqualToTest() {
+    public void isLessThanObjectTest() {
+        // TODO
+    }
+
+    /**
+     * {@link LongAssertion} class test.
+     */
+    @Test
+    public void isLessThanOrEqualToPrimitiveTest() {
         initialize(Raw.longAssertion(), 5L).isLessThanOrEqualTo(10L);
         initialize(Raw.longAssertion(), 60L).isLessThanOrEqualTo(60L);
         initialize(Raw.longAssertion(), 244L).isLessThanOrEqualTo(245L);
@@ -336,7 +376,15 @@ public final class LongAssertionTest extends AssertionTest {
      * {@link LongAssertion} class test.
      */
     @Test
-    public void isInRangeTest() {
+    public void isLessThanOrEqualToObjectTest() {
+        // TODO
+    }
+
+    /**
+     * {@link LongAssertion} class test.
+     */
+    @Test
+    public void isInRangePrimitiveTest() {
         initialize(Raw.longAssertion(), 5L).isInRange(4L, 6L);
         initialize(Raw.longAssertion(), 5L).isInRange(5L, 6L);
         initialize(Raw.longAssertion(), 5L).isInRange(1L, 10L);
@@ -401,7 +449,15 @@ public final class LongAssertionTest extends AssertionTest {
      * {@link LongAssertion} class test.
      */
     @Test
-    public void isNotInRangeTest() {
+    public void isInRangeObjectTest() {
+        // TODO
+    }
+
+    /**
+     * {@link LongAssertion} class test.
+     */
+    @Test
+    public void isNotInRangePrimitiveTest() {
         initialize(Raw.longAssertion(), 5L).isNotInRange(1L, 5L);
         initialize(Raw.longAssertion(), 5L).isNotInRange(6L, 10L);
         initialize(Raw.longAssertion(), 5L).isNotInRange(8L, 9L);
@@ -460,6 +516,14 @@ public final class LongAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be in the expected range.\n\tExpected:<1L:10L> but was:<5L>");
         }
+    }
+
+    /**
+     * {@link LongAssertion} class test.
+     */
+    @Test
+    public void isNotInRangeObjectTest() {
+        // TODO
     }
 
     /**

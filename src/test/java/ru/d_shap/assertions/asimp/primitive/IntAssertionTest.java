@@ -64,7 +64,7 @@ public final class IntAssertionTest extends AssertionTest {
      * {@link IntAssertion} class test.
      */
     @Test
-    public void isEqualToTest() {
+    public void isEqualToPrimitiveTest() {
         initialize(Raw.intAssertion(), 10).isEqualTo(10);
         initialize(Raw.intAssertion(), 75).isEqualTo(75);
         initialize(Raw.intAssertion(), 236).isEqualTo(236);
@@ -106,7 +106,15 @@ public final class IntAssertionTest extends AssertionTest {
      * {@link IntAssertion} class test.
      */
     @Test
-    public void isNotEqualToTest() {
+    public void isEqualToObjectTest() {
+        // TODO
+    }
+
+    /**
+     * {@link IntAssertion} class test.
+     */
+    @Test
+    public void isNotEqualToPrimitiveTest() {
         initialize(Raw.intAssertion(), 10).isNotEqualTo(15);
         initialize(Raw.intAssertion(), 75).isNotEqualTo(76);
         initialize(Raw.intAssertion(), 236).isNotEqualTo(143);
@@ -148,7 +156,15 @@ public final class IntAssertionTest extends AssertionTest {
      * {@link IntAssertion} class test.
      */
     @Test
-    public void isGreaterThanTest() {
+    public void isNotEqualToObjectTest() {
+        // TODO
+    }
+
+    /**
+     * {@link IntAssertion} class test.
+     */
+    @Test
+    public void isGreaterThanPrimitiveTest() {
         initialize(Raw.intAssertion(), 10).isGreaterThan(5);
         initialize(Raw.intAssertion(), 60).isGreaterThan(30);
         initialize(Raw.intAssertion(), 245).isGreaterThan(244);
@@ -201,7 +217,15 @@ public final class IntAssertionTest extends AssertionTest {
      * {@link IntAssertion} class test.
      */
     @Test
-    public void isGreaterThanOrEqualToTest() {
+    public void isGreaterThanObjectTest() {
+        // TODO
+    }
+
+    /**
+     * {@link IntAssertion} class test.
+     */
+    @Test
+    public void isGreaterThanOrEqualToPrimitiveTest() {
         initialize(Raw.intAssertion(), 10).isGreaterThanOrEqualTo(5);
         initialize(Raw.intAssertion(), 60).isGreaterThanOrEqualTo(60);
         initialize(Raw.intAssertion(), 245).isGreaterThanOrEqualTo(244);
@@ -242,7 +266,15 @@ public final class IntAssertionTest extends AssertionTest {
      * {@link IntAssertion} class test.
      */
     @Test
-    public void isLessThanTest() {
+    public void isGreaterThanOrEqualToObjectTest() {
+        // TODO
+    }
+
+    /**
+     * {@link IntAssertion} class test.
+     */
+    @Test
+    public void isLessThanPrimitiveTest() {
         initialize(Raw.intAssertion(), 5).isLessThan(10);
         initialize(Raw.intAssertion(), 30).isLessThan(60);
         initialize(Raw.intAssertion(), 244).isLessThan(245);
@@ -295,7 +327,15 @@ public final class IntAssertionTest extends AssertionTest {
      * {@link IntAssertion} class test.
      */
     @Test
-    public void isLessThanOrEqualToTest() {
+    public void isLessThanObjectTest() {
+        // TODO
+    }
+
+    /**
+     * {@link IntAssertion} class test.
+     */
+    @Test
+    public void isLessThanOrEqualToPrimitiveTest() {
         initialize(Raw.intAssertion(), 5).isLessThanOrEqualTo(10);
         initialize(Raw.intAssertion(), 60).isLessThanOrEqualTo(60);
         initialize(Raw.intAssertion(), 244).isLessThanOrEqualTo(245);
@@ -336,7 +376,15 @@ public final class IntAssertionTest extends AssertionTest {
      * {@link IntAssertion} class test.
      */
     @Test
-    public void isInRangeTest() {
+    public void isLessThanOrEqualToObjectTest() {
+        // TODO
+    }
+
+    /**
+     * {@link IntAssertion} class test.
+     */
+    @Test
+    public void isInRangePrimitiveTest() {
         initialize(Raw.intAssertion(), 5).isInRange(4, 6);
         initialize(Raw.intAssertion(), 5).isInRange(5, 6);
         initialize(Raw.intAssertion(), 5).isInRange(1, 10);
@@ -401,7 +449,15 @@ public final class IntAssertionTest extends AssertionTest {
      * {@link IntAssertion} class test.
      */
     @Test
-    public void isNotInRangeTest() {
+    public void isInRangeObjectTest() {
+        // TODO
+    }
+
+    /**
+     * {@link IntAssertion} class test.
+     */
+    @Test
+    public void isNotInRangePrimitiveTest() {
         initialize(Raw.intAssertion(), 5).isNotInRange(1, 5);
         initialize(Raw.intAssertion(), 5).isNotInRange(6, 10);
         initialize(Raw.intAssertion(), 5).isNotInRange(8, 9);
@@ -460,6 +516,14 @@ public final class IntAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be in the expected range.\n\tExpected:<1:10> but was:<5>");
         }
+    }
+
+    /**
+     * {@link IntAssertion} class test.
+     */
+    @Test
+    public void isNotInRangeObjectTest() {
+        // TODO
     }
 
     /**

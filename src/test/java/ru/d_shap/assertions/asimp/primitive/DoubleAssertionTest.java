@@ -64,7 +64,7 @@ public final class DoubleAssertionTest extends AssertionTest {
      * {@link DoubleAssertion} class test.
      */
     @Test
-    public void isEqualToDefaultDeltaTest() {
+    public void isEqualToDefaultDeltaPrimitiveTest() {
         initialize(Raw.doubleAssertion(), 10.1).isEqualTo(10.1);
         initialize(Raw.doubleAssertion(), 10.01).isEqualTo(10.01);
         initialize(Raw.doubleAssertion(), 10.001).isEqualTo(10.001);
@@ -116,7 +116,15 @@ public final class DoubleAssertionTest extends AssertionTest {
      * {@link DoubleAssertion} class test.
      */
     @Test
-    public void isEqualToSpecifiedDeltaTest() {
+    public void isEqualToDefaultDeltaObjectTest() {
+        // TODO
+    }
+
+    /**
+     * {@link DoubleAssertion} class test.
+     */
+    @Test
+    public void isEqualToSpecifiedDeltaPrimitiveTest() {
         initialize(Raw.doubleAssertion(), 10.0).isEqualTo(10.0, 0.01);
         initialize(Raw.doubleAssertion(), 10.0).isEqualTo(9.999, 0.01);
         initialize(Raw.doubleAssertion(), 10.0).isEqualTo(10.001, 0.01);
@@ -185,7 +193,15 @@ public final class DoubleAssertionTest extends AssertionTest {
      * {@link DoubleAssertion} class test.
      */
     @Test
-    public void isNotEqualToDefaultDeltaTest() {
+    public void isEqualToSpecifiedDeltaObjectTest() {
+        // TODO
+    }
+
+    /**
+     * {@link DoubleAssertion} class test.
+     */
+    @Test
+    public void isNotEqualToDefaultDeltaPrimitiveTest() {
         initialize(Raw.doubleAssertion(), 10.1).isNotEqualTo(10.2);
         initialize(Raw.doubleAssertion(), 10.01).isNotEqualTo(10.02);
         initialize(Raw.doubleAssertion(), 10.001).isNotEqualTo(10.002);
@@ -234,7 +250,15 @@ public final class DoubleAssertionTest extends AssertionTest {
      * {@link DoubleAssertion} class test.
      */
     @Test
-    public void isNotEqualSpecifiedDeltaTest() {
+    public void isNotEqualToDefaultDeltaObjectTest() {
+        // TODO
+    }
+
+    /**
+     * {@link DoubleAssertion} class test.
+     */
+    @Test
+    public void isNotEqualToSpecifiedDeltaPrimitiveTest() {
         initialize(Raw.doubleAssertion(), 10.0).isNotEqualTo(10.01, 0.001);
         initialize(Raw.doubleAssertion(), 10.0).isNotEqualTo(9.99, 0.001);
         initialize(Raw.doubleAssertion(), 10.0).isNotEqualTo(20.0, 0.0);
@@ -323,7 +347,15 @@ public final class DoubleAssertionTest extends AssertionTest {
      * {@link DoubleAssertion} class test.
      */
     @Test
-    public void isGreaterThanTest() {
+    public void isNotEqualToSpecifiedDeltaObjectTest() {
+        // TODO
+    }
+
+    /**
+     * {@link DoubleAssertion} class test.
+     */
+    @Test
+    public void isGreaterThanPrimitiveTest() {
         initialize(Raw.doubleAssertion(), 10.0).isGreaterThan(9.0);
         initialize(Raw.doubleAssertion(), 10.0).isGreaterThan(8.0);
         initialize(Raw.doubleAssertion(), 10.0).isGreaterThan(-1.0);
@@ -376,7 +408,15 @@ public final class DoubleAssertionTest extends AssertionTest {
      * {@link DoubleAssertion} class test.
      */
     @Test
-    public void isGreaterThanOrEqualToTest() {
+    public void isGreaterThanObjectTest() {
+        // TODO
+    }
+
+    /**
+     * {@link DoubleAssertion} class test.
+     */
+    @Test
+    public void isGreaterThanOrEqualToPrimitiveTest() {
         initialize(Raw.doubleAssertion(), 10.0).isGreaterThanOrEqualTo(9.0);
         initialize(Raw.doubleAssertion(), 10.0).isGreaterThanOrEqualTo(10.0);
         initialize(Raw.doubleAssertion(), 10.0).isGreaterThanOrEqualTo(-1.0);
@@ -417,7 +457,15 @@ public final class DoubleAssertionTest extends AssertionTest {
      * {@link DoubleAssertion} class test.
      */
     @Test
-    public void isLessThanTest() {
+    public void isGreaterThanOrEqualToObjectTest() {
+        // TODO
+    }
+
+    /**
+     * {@link DoubleAssertion} class test.
+     */
+    @Test
+    public void isLessThanPrimitiveTest() {
         initialize(Raw.doubleAssertion(), 10.0).isLessThan(11.0);
         initialize(Raw.doubleAssertion(), 10.0).isLessThan(12.0);
         initialize(Raw.doubleAssertion(), 10.0).isLessThan(100.0);
@@ -470,7 +518,15 @@ public final class DoubleAssertionTest extends AssertionTest {
      * {@link DoubleAssertion} class test.
      */
     @Test
-    public void isLessThanOrEqualToTest() {
+    public void isLessThanObjectTest() {
+        // TODO
+    }
+
+    /**
+     * {@link DoubleAssertion} class test.
+     */
+    @Test
+    public void isLessThanOrEqualToPrimitiveTest() {
         initialize(Raw.doubleAssertion(), 10.0).isLessThanOrEqualTo(11.0);
         initialize(Raw.doubleAssertion(), 10.0).isLessThanOrEqualTo(10.0);
         initialize(Raw.doubleAssertion(), 10.0).isLessThanOrEqualTo(100.0);
@@ -511,7 +567,15 @@ public final class DoubleAssertionTest extends AssertionTest {
      * {@link DoubleAssertion} class test.
      */
     @Test
-    public void isInRangeTest() {
+    public void isLessThanOrEqualToObjectTest() {
+        // TODO
+    }
+
+    /**
+     * {@link DoubleAssertion} class test.
+     */
+    @Test
+    public void isInRangePrimitiveTest() {
         initialize(Raw.doubleAssertion(), 5.0).isInRange(4.0, 6.0);
         initialize(Raw.doubleAssertion(), 5.0).isInRange(5.0, 6.0);
         initialize(Raw.doubleAssertion(), 5.0).isInRange(1.0, 10.0);
@@ -576,7 +640,15 @@ public final class DoubleAssertionTest extends AssertionTest {
      * {@link DoubleAssertion} class test.
      */
     @Test
-    public void isNotInRangeTest() {
+    public void isInRangeObjectTest() {
+        // TODO
+    }
+
+    /**
+     * {@link DoubleAssertion} class test.
+     */
+    @Test
+    public void isNotInRangePrimitiveTest() {
         initialize(Raw.doubleAssertion(), 5.0).isNotInRange(1.0, 5.0);
         initialize(Raw.doubleAssertion(), 5.0).isNotInRange(6.0, 10.0);
         initialize(Raw.doubleAssertion(), 5.0).isNotInRange(8.0, 9.0);
@@ -635,6 +707,14 @@ public final class DoubleAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be in the expected range.\n\tExpected:<1.0:10.0> but was:<5.0>");
         }
+    }
+
+    /**
+     * {@link DoubleAssertion} class test.
+     */
+    @Test
+    public void isNotInRangeObjectTest() {
+        // TODO
     }
 
     /**

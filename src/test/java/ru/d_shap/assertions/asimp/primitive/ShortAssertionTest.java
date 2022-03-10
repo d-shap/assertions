@@ -64,7 +64,7 @@ public final class ShortAssertionTest extends AssertionTest {
      * {@link ShortAssertion} class test.
      */
     @Test
-    public void isEqualToTest() {
+    public void isEqualToPrimitiveTest() {
         initialize(Raw.shortAssertion(), (short) 10).isEqualTo(10);
         initialize(Raw.shortAssertion(), (short) 75).isEqualTo(75);
         initialize(Raw.shortAssertion(), (short) 236).isEqualTo(236);
@@ -118,7 +118,15 @@ public final class ShortAssertionTest extends AssertionTest {
      * {@link ShortAssertion} class test.
      */
     @Test
-    public void isNotEqualToTest() {
+    public void isEqualToObjectTest() {
+        // TODO
+    }
+
+    /**
+     * {@link ShortAssertion} class test.
+     */
+    @Test
+    public void isNotEqualToPrimitiveTest() {
         initialize(Raw.shortAssertion(), (short) 10).isNotEqualTo(15);
         initialize(Raw.shortAssertion(), (short) 75).isNotEqualTo(76);
         initialize(Raw.shortAssertion(), (short) 236).isNotEqualTo(143);
@@ -160,7 +168,15 @@ public final class ShortAssertionTest extends AssertionTest {
      * {@link ShortAssertion} class test.
      */
     @Test
-    public void isGreaterThanTest() {
+    public void isNotEqualToObjectTest() {
+        // TODO
+    }
+
+    /**
+     * {@link ShortAssertion} class test.
+     */
+    @Test
+    public void isGreaterThanPrimitiveTest() {
         initialize(Raw.shortAssertion(), (short) 10).isGreaterThan(5);
         initialize(Raw.shortAssertion(), (short) 60).isGreaterThan(30);
         initialize(Raw.shortAssertion(), (short) 245).isGreaterThan(244);
@@ -213,7 +229,15 @@ public final class ShortAssertionTest extends AssertionTest {
      * {@link ShortAssertion} class test.
      */
     @Test
-    public void isGreaterThanOrEqualToTest() {
+    public void isGreaterThanObjectTest() {
+        // TODO
+    }
+
+    /**
+     * {@link ShortAssertion} class test.
+     */
+    @Test
+    public void isGreaterThanOrEqualToPrimitiveTest() {
         initialize(Raw.shortAssertion(), (short) 10).isGreaterThanOrEqualTo(5);
         initialize(Raw.shortAssertion(), (short) 60).isGreaterThanOrEqualTo(60);
         initialize(Raw.shortAssertion(), (short) 245).isGreaterThanOrEqualTo(244);
@@ -254,7 +278,15 @@ public final class ShortAssertionTest extends AssertionTest {
      * {@link ShortAssertion} class test.
      */
     @Test
-    public void isLessThanTest() {
+    public void isGreaterThanOrEqualToObjectTest() {
+        // TODO
+    }
+
+    /**
+     * {@link ShortAssertion} class test.
+     */
+    @Test
+    public void isLessThanPrimitiveTest() {
         initialize(Raw.shortAssertion(), (short) 5).isLessThan(10);
         initialize(Raw.shortAssertion(), (short) 30).isLessThan(60);
         initialize(Raw.shortAssertion(), (short) 244).isLessThan(245);
@@ -307,7 +339,15 @@ public final class ShortAssertionTest extends AssertionTest {
      * {@link ShortAssertion} class test.
      */
     @Test
-    public void isLessThanOrEqualToTest() {
+    public void isLessThanObjectTest() {
+        // TODO
+    }
+
+    /**
+     * {@link ShortAssertion} class test.
+     */
+    @Test
+    public void isLessThanOrEqualToPrimitiveTest() {
         initialize(Raw.shortAssertion(), (short) 5).isLessThanOrEqualTo(10);
         initialize(Raw.shortAssertion(), (short) 60).isLessThanOrEqualTo(60);
         initialize(Raw.shortAssertion(), (short) 244).isLessThanOrEqualTo(245);
@@ -348,7 +388,15 @@ public final class ShortAssertionTest extends AssertionTest {
      * {@link ShortAssertion} class test.
      */
     @Test
-    public void isInRangeTest() {
+    public void isLessThanOrEqualToObjectTest() {
+        // TODO
+    }
+
+    /**
+     * {@link ShortAssertion} class test.
+     */
+    @Test
+    public void isInRangePrimitiveTest() {
         initialize(Raw.shortAssertion(), (short) 5).isInRange(4, 6);
         initialize(Raw.shortAssertion(), (short) 5).isInRange(5, 6);
         initialize(Raw.shortAssertion(), (short) 5).isInRange(1, 10);
@@ -413,7 +461,15 @@ public final class ShortAssertionTest extends AssertionTest {
      * {@link ShortAssertion} class test.
      */
     @Test
-    public void isNotInRangeTest() {
+    public void isInRangeObjectTest() {
+        // TODO
+    }
+
+    /**
+     * {@link ShortAssertion} class test.
+     */
+    @Test
+    public void isNotInRangePrimitiveTest() {
         initialize(Raw.shortAssertion(), (short) 5).isNotInRange(1, 5);
         initialize(Raw.shortAssertion(), (short) 5).isNotInRange(6, 10);
         initialize(Raw.shortAssertion(), (short) 5).isNotInRange(8, 9);
@@ -472,6 +528,14 @@ public final class ShortAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be in the expected range.\n\tExpected:<1s:10s> but was:<5s>");
         }
+    }
+
+    /**
+     * {@link ShortAssertion} class test.
+     */
+    @Test
+    public void isNotInRangeObjectTest() {
+        // TODO
     }
 
     /**

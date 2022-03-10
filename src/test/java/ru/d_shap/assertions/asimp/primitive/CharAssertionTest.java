@@ -64,7 +64,7 @@ public final class CharAssertionTest extends AssertionTest {
      * {@link CharAssertion} class test.
      */
     @Test
-    public void isEqualToTest() {
+    public void isEqualToPrimitiveTest() {
         initialize(Raw.charAssertion(), 'a').isEqualTo('a');
         initialize(Raw.charAssertion(), 'Z').isEqualTo('Z');
         initialize(Raw.charAssertion(), 'Й').isEqualTo('Й');
@@ -130,7 +130,15 @@ public final class CharAssertionTest extends AssertionTest {
      * {@link CharAssertion} class test.
      */
     @Test
-    public void isNotEqualToTest() {
+    public void isEqualToObjectTest() {
+        // TODO
+    }
+
+    /**
+     * {@link CharAssertion} class test.
+     */
+    @Test
+    public void isNotEqualToPrimitiveTest() {
         initialize(Raw.charAssertion(), 'a').isNotEqualTo('b');
         initialize(Raw.charAssertion(), 'Z').isNotEqualTo('X');
         initialize(Raw.charAssertion(), '1').isNotEqualTo('2');
@@ -172,7 +180,15 @@ public final class CharAssertionTest extends AssertionTest {
      * {@link CharAssertion} class test.
      */
     @Test
-    public void isGreaterThanTest() {
+    public void isNotEqualToObjectTest() {
+        // TODO
+    }
+
+    /**
+     * {@link CharAssertion} class test.
+     */
+    @Test
+    public void isGreaterThanPrimitiveTest() {
         initialize(Raw.charAssertion(), 'b').isGreaterThan('a');
         initialize(Raw.charAssertion(), '7').isGreaterThan('0');
         initialize(Raw.charAssertion(), 'Z').isGreaterThan('F');
@@ -225,7 +241,15 @@ public final class CharAssertionTest extends AssertionTest {
      * {@link CharAssertion} class test.
      */
     @Test
-    public void isGreaterThanOrEqualToTest() {
+    public void isGreaterThanObjectTest() {
+        // TODO
+    }
+
+    /**
+     * {@link CharAssertion} class test.
+     */
+    @Test
+    public void isGreaterThanOrEqualToPrimitiveTest() {
         initialize(Raw.charAssertion(), 'b').isGreaterThanOrEqualTo('a');
         initialize(Raw.charAssertion(), '7').isGreaterThanOrEqualTo('7');
         initialize(Raw.charAssertion(), 'Z').isGreaterThanOrEqualTo('F');
@@ -266,7 +290,15 @@ public final class CharAssertionTest extends AssertionTest {
      * {@link CharAssertion} class test.
      */
     @Test
-    public void isLessThanTest() {
+    public void isGreaterThanOrEqualToObjectTest() {
+        // TODO
+    }
+
+    /**
+     * {@link CharAssertion} class test.
+     */
+    @Test
+    public void isLessThanPrimitiveTest() {
         initialize(Raw.charAssertion(), 'a').isLessThan('b');
         initialize(Raw.charAssertion(), '0').isLessThan('7');
         initialize(Raw.charAssertion(), 'F').isLessThan('Z');
@@ -319,7 +351,15 @@ public final class CharAssertionTest extends AssertionTest {
      * {@link CharAssertion} class test.
      */
     @Test
-    public void isLessThanOrEqualToTest() {
+    public void isLessThanObjectTest() {
+        // TODO
+    }
+
+    /**
+     * {@link CharAssertion} class test.
+     */
+    @Test
+    public void isLessThanOrEqualToPrimitiveTest() {
         initialize(Raw.charAssertion(), 'a').isLessThanOrEqualTo('b');
         initialize(Raw.charAssertion(), '7').isLessThanOrEqualTo('7');
         initialize(Raw.charAssertion(), 'F').isLessThanOrEqualTo('Z');
@@ -360,7 +400,15 @@ public final class CharAssertionTest extends AssertionTest {
      * {@link CharAssertion} class test.
      */
     @Test
-    public void isInRangeTest() {
+    public void isLessThanOrEqualToObjectTest() {
+        // TODO
+    }
+
+    /**
+     * {@link CharAssertion} class test.
+     */
+    @Test
+    public void isInRangePrimitiveTest() {
         initialize(Raw.charAssertion(), 's').isInRange('p', 'x');
         initialize(Raw.charAssertion(), 's').isInRange('s', 'x');
         initialize(Raw.charAssertion(), 's').isInRange('a', 'x');
@@ -425,7 +473,15 @@ public final class CharAssertionTest extends AssertionTest {
      * {@link CharAssertion} class test.
      */
     @Test
-    public void isNotInRangeTest() {
+    public void isInRangeObjectTest() {
+        // TODO
+    }
+
+    /**
+     * {@link CharAssertion} class test.
+     */
+    @Test
+    public void isNotInRangePrimitiveTest() {
         initialize(Raw.charAssertion(), 's').isNotInRange('a', 's');
         initialize(Raw.charAssertion(), 's').isNotInRange('t', 'x');
         initialize(Raw.charAssertion(), 's').isNotInRange('a', 'c');
@@ -484,6 +540,14 @@ public final class CharAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be in the expected range.\n\tExpected:<a(97):x(120)> but was:<s(115)>");
         }
+    }
+
+    /**
+     * {@link CharAssertion} class test.
+     */
+    @Test
+    public void isNotInRangeObjectTest() {
+        // TODO
     }
 
     /**
