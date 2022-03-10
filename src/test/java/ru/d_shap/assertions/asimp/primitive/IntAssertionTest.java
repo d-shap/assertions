@@ -107,7 +107,54 @@ public final class IntAssertionTest extends AssertionTest {
      */
     @Test
     public void isEqualToObjectTest() {
-        // TODO
+        initialize(Raw.intAssertion(), null).isEqualTo(null);
+        initialize(Raw.intAssertion(), 10).isEqualTo(Integer.valueOf("10"));
+        initialize(Raw.intAssertion(), 75).isEqualTo(Integer.valueOf("75"));
+        initialize(Raw.intAssertion(), 236).isEqualTo(Integer.valueOf("236"));
+        initialize(Raw.intAssertion(), 257).isEqualTo(Integer.valueOf("257"));
+
+        try {
+            Raw.intAssertion().isEqualTo(Integer.valueOf("1"));
+            Assertions.fail("IntAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.intAssertion(), null).isEqualTo(Integer.valueOf("1"));
+            Assertions.fail("IntAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.intAssertion(), null, "Message").isEqualTo(Integer.valueOf("1"));
+            Assertions.fail("IntAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.intAssertion(), 1).isEqualTo(null);
+            Assertions.fail("IntAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should be null.\n\tActual:<1>");
+        }
+        try {
+            initialize(Raw.intAssertion(), 1, "Message").isEqualTo(null);
+            Assertions.fail("IntAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be null.\n\tActual:<1>");
+        }
+        try {
+            initialize(Raw.intAssertion(), 10).isEqualTo(Integer.valueOf("20"));
+            Assertions.fail("IntAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<20> but was:<10>");
+        }
+        try {
+            initialize(Raw.intAssertion(), 10, "Message").isEqualTo(Integer.valueOf("20"));
+            Assertions.fail("IntAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be the same.\n\tExpected:<20> but was:<10>");
+        }
     }
 
     /**
@@ -157,7 +204,43 @@ public final class IntAssertionTest extends AssertionTest {
      */
     @Test
     public void isNotEqualToObjectTest() {
-        // TODO
+        initialize(Raw.intAssertion(), null).isNotEqualTo(Integer.valueOf("5"));
+        initialize(Raw.intAssertion(), 5).isNotEqualTo(null);
+        initialize(Raw.intAssertion(), 10).isNotEqualTo(Integer.valueOf("15"));
+        initialize(Raw.intAssertion(), 75).isNotEqualTo(Integer.valueOf("76"));
+        initialize(Raw.intAssertion(), 236).isNotEqualTo(Integer.valueOf("143"));
+        initialize(Raw.intAssertion(), 257).isNotEqualTo(Integer.valueOf("2"));
+
+        try {
+            Raw.intAssertion().isNotEqualTo(Integer.valueOf("1"));
+            Assertions.fail("IntAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.intAssertion(), null).isNotEqualTo(null);
+            Assertions.fail("IntAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.intAssertion(), null, "Message").isNotEqualTo(null);
+            Assertions.fail("IntAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.intAssertion(), 10).isNotEqualTo(Integer.valueOf("10"));
+            Assertions.fail("IntAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be different.\n\tActual:<10>");
+        }
+        try {
+            initialize(Raw.intAssertion(), 10, "Message").isNotEqualTo(Integer.valueOf("10"));
+            Assertions.fail("IntAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be different.\n\tActual:<10>");
+        }
     }
 
     /**
@@ -218,7 +301,76 @@ public final class IntAssertionTest extends AssertionTest {
      */
     @Test
     public void isGreaterThanObjectTest() {
-        // TODO
+        initialize(Raw.intAssertion(), 10).isGreaterThan(Integer.valueOf("5"));
+        initialize(Raw.intAssertion(), 60).isGreaterThan(Integer.valueOf("30"));
+        initialize(Raw.intAssertion(), 245).isGreaterThan(Integer.valueOf("244"));
+
+        try {
+            Raw.intAssertion().isGreaterThan(Integer.valueOf("1"));
+            Assertions.fail("IntAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.intAssertion(), null).isGreaterThan(Integer.valueOf("1"));
+            Assertions.fail("IntAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.intAssertion(), null, "Message").isGreaterThan(Integer.valueOf("1"));
+            Assertions.fail("IntAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.intAssertion(), null).isGreaterThan(null);
+            Assertions.fail("IntAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.intAssertion(), null, "Message").isGreaterThan(null);
+            Assertions.fail("IntAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.intAssertion(), 1).isGreaterThan(null);
+            Assertions.fail("IntAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
+        }
+        try {
+            initialize(Raw.intAssertion(), 1, "Message").isGreaterThan(null);
+            Assertions.fail("IntAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
+        }
+        try {
+            initialize(Raw.intAssertion(), 10).isGreaterThan(Integer.valueOf("10"));
+            Assertions.fail("IntAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should be greater than the expected.\n\tExpected:<10> but was:<10>");
+        }
+        try {
+            initialize(Raw.intAssertion(), 10, "Message").isGreaterThan(Integer.valueOf("10"));
+            Assertions.fail("IntAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be greater than the expected.\n\tExpected:<10> but was:<10>");
+        }
+        try {
+            initialize(Raw.intAssertion(), 10).isGreaterThan(Integer.valueOf("11"));
+            Assertions.fail("IntAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should be greater than the expected.\n\tExpected:<11> but was:<10>");
+        }
+        try {
+            initialize(Raw.intAssertion(), 10, "Message").isGreaterThan(Integer.valueOf("11"));
+            Assertions.fail("IntAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be greater than the expected.\n\tExpected:<11> but was:<10>");
+        }
     }
 
     /**
@@ -267,7 +419,64 @@ public final class IntAssertionTest extends AssertionTest {
      */
     @Test
     public void isGreaterThanOrEqualToObjectTest() {
-        // TODO
+        initialize(Raw.intAssertion(), 10).isGreaterThanOrEqualTo(Integer.valueOf("5"));
+        initialize(Raw.intAssertion(), 60).isGreaterThanOrEqualTo(Integer.valueOf("60"));
+        initialize(Raw.intAssertion(), 245).isGreaterThanOrEqualTo(Integer.valueOf("244"));
+
+        try {
+            Raw.intAssertion().isGreaterThanOrEqualTo(Integer.valueOf("1"));
+            Assertions.fail("IntAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.intAssertion(), null).isGreaterThanOrEqualTo(Integer.valueOf("1"));
+            Assertions.fail("IntAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.intAssertion(), null, "Message").isGreaterThanOrEqualTo(Integer.valueOf("1"));
+            Assertions.fail("IntAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.intAssertion(), null).isGreaterThanOrEqualTo(null);
+            Assertions.fail("IntAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.intAssertion(), null, "Message").isGreaterThanOrEqualTo(null);
+            Assertions.fail("IntAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.intAssertion(), 1).isGreaterThanOrEqualTo(null);
+            Assertions.fail("IntAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
+        }
+        try {
+            initialize(Raw.intAssertion(), 1, "Message").isGreaterThanOrEqualTo(null);
+            Assertions.fail("IntAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
+        }
+        try {
+            initialize(Raw.intAssertion(), 10).isGreaterThanOrEqualTo(Integer.valueOf("11"));
+            Assertions.fail("IntAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should be greater than or equal to the expected.\n\tExpected:<11> but was:<10>");
+        }
+        try {
+            initialize(Raw.intAssertion(), 10, "Message").isGreaterThanOrEqualTo(Integer.valueOf("11"));
+            Assertions.fail("IntAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be greater than or equal to the expected.\n\tExpected:<11> but was:<10>");
+        }
     }
 
     /**
@@ -328,7 +537,76 @@ public final class IntAssertionTest extends AssertionTest {
      */
     @Test
     public void isLessThanObjectTest() {
-        // TODO
+        initialize(Raw.intAssertion(), 5).isLessThan(Integer.valueOf("10"));
+        initialize(Raw.intAssertion(), 30).isLessThan(Integer.valueOf("60"));
+        initialize(Raw.intAssertion(), 244).isLessThan(Integer.valueOf("245"));
+
+        try {
+            Raw.intAssertion().isLessThan(Integer.valueOf("1"));
+            Assertions.fail("IntAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.intAssertion(), null).isLessThan(Integer.valueOf("1"));
+            Assertions.fail("IntAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.intAssertion(), null, "Message").isLessThan(Integer.valueOf("1"));
+            Assertions.fail("IntAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.intAssertion(), null).isLessThan(null);
+            Assertions.fail("IntAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.intAssertion(), null, "Message").isLessThan(null);
+            Assertions.fail("IntAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.intAssertion(), 1).isLessThan(null);
+            Assertions.fail("IntAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
+        }
+        try {
+            initialize(Raw.intAssertion(), 1, "Message").isLessThan(null);
+            Assertions.fail("IntAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
+        }
+        try {
+            initialize(Raw.intAssertion(), 10).isLessThan(Integer.valueOf("10"));
+            Assertions.fail("IntAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should be less than the expected.\n\tExpected:<10> but was:<10>");
+        }
+        try {
+            initialize(Raw.intAssertion(), 10, "Message").isLessThan(Integer.valueOf("10"));
+            Assertions.fail("IntAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be less than the expected.\n\tExpected:<10> but was:<10>");
+        }
+        try {
+            initialize(Raw.intAssertion(), 11).isLessThan(Integer.valueOf("10"));
+            Assertions.fail("IntAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should be less than the expected.\n\tExpected:<10> but was:<11>");
+        }
+        try {
+            initialize(Raw.intAssertion(), 11, "Message").isLessThan(Integer.valueOf("10"));
+            Assertions.fail("IntAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be less than the expected.\n\tExpected:<10> but was:<11>");
+        }
     }
 
     /**
@@ -377,7 +655,64 @@ public final class IntAssertionTest extends AssertionTest {
      */
     @Test
     public void isLessThanOrEqualToObjectTest() {
-        // TODO
+        initialize(Raw.intAssertion(), 5).isLessThanOrEqualTo(Integer.valueOf("10"));
+        initialize(Raw.intAssertion(), 60).isLessThanOrEqualTo(Integer.valueOf("60"));
+        initialize(Raw.intAssertion(), 244).isLessThanOrEqualTo(Integer.valueOf("245"));
+
+        try {
+            Raw.intAssertion().isLessThanOrEqualTo(Integer.valueOf("1"));
+            Assertions.fail("IntAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.intAssertion(), null).isLessThanOrEqualTo(Integer.valueOf("1"));
+            Assertions.fail("IntAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.intAssertion(), null, "Message").isLessThanOrEqualTo(Integer.valueOf("1"));
+            Assertions.fail("IntAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.intAssertion(), null).isLessThanOrEqualTo(null);
+            Assertions.fail("IntAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.intAssertion(), null, "Message").isLessThanOrEqualTo(null);
+            Assertions.fail("IntAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.intAssertion(), 1).isLessThanOrEqualTo(null);
+            Assertions.fail("IntAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
+        }
+        try {
+            initialize(Raw.intAssertion(), 1, "Message").isLessThanOrEqualTo(null);
+            Assertions.fail("IntAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
+        }
+        try {
+            initialize(Raw.intAssertion(), 11).isLessThanOrEqualTo(Integer.valueOf("10"));
+            Assertions.fail("IntAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should be less than or equal to the expected.\n\tExpected:<10> but was:<11>");
+        }
+        try {
+            initialize(Raw.intAssertion(), 11, "Message").isLessThanOrEqualTo(Integer.valueOf("10"));
+            Assertions.fail("IntAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be less than or equal to the expected.\n\tExpected:<10> but was:<11>");
+        }
     }
 
     /**
@@ -450,7 +785,112 @@ public final class IntAssertionTest extends AssertionTest {
      */
     @Test
     public void isInRangeObjectTest() {
-        // TODO
+        initialize(Raw.intAssertion(), 5).isInRange(Integer.valueOf("4"), Integer.valueOf("6"));
+        initialize(Raw.intAssertion(), 5).isInRange(Integer.valueOf("5"), Integer.valueOf("6"));
+        initialize(Raw.intAssertion(), 5).isInRange(Integer.valueOf("1"), Integer.valueOf("10"));
+
+        try {
+            Raw.intAssertion().isInRange(Integer.valueOf("1"), Integer.valueOf("1"));
+            Assertions.fail("IntAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.intAssertion(), null).isInRange(Integer.valueOf("1"), Integer.valueOf("1"));
+            Assertions.fail("IntAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.intAssertion(), null, "Message").isInRange(Integer.valueOf("1"), Integer.valueOf("1"));
+            Assertions.fail("IntAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.intAssertion(), null).isInRange(null, Integer.valueOf("1"));
+            Assertions.fail("IntAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.intAssertion(), null, "Message").isInRange(null, Integer.valueOf("1"));
+            Assertions.fail("IntAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.intAssertion(), 1).isInRange(null, Integer.valueOf("1"));
+            Assertions.fail("IntAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expectedFrom.");
+        }
+        try {
+            initialize(Raw.intAssertion(), 1, "Message").isInRange(null, Integer.valueOf("1"));
+            Assertions.fail("IntAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expectedFrom.");
+        }
+        try {
+            initialize(Raw.intAssertion(), 1).isInRange(null, null);
+            Assertions.fail("IntAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expectedFrom.");
+        }
+        try {
+            initialize(Raw.intAssertion(), 1, "Message").isInRange(null, null);
+            Assertions.fail("IntAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expectedFrom.");
+        }
+        try {
+            initialize(Raw.intAssertion(), 1).isInRange(Integer.valueOf("1"), null);
+            Assertions.fail("IntAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expectedTo.");
+        }
+        try {
+            initialize(Raw.intAssertion(), 1, "Message").isInRange(Integer.valueOf("1"), null);
+            Assertions.fail("IntAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expectedTo.");
+        }
+        try {
+            initialize(Raw.intAssertion(), 5).isInRange(Integer.valueOf("1"), Integer.valueOf("5"));
+            Assertions.fail("IntAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should be in the expected range.\n\tExpected:<1:5> but was:<5>");
+        }
+        try {
+            initialize(Raw.intAssertion(), 5, "Message").isInRange(Integer.valueOf("1"), Integer.valueOf("5"));
+            Assertions.fail("IntAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be in the expected range.\n\tExpected:<1:5> but was:<5>");
+        }
+        try {
+            initialize(Raw.intAssertion(), 5).isInRange(Integer.valueOf("6"), Integer.valueOf("10"));
+            Assertions.fail("IntAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should be in the expected range.\n\tExpected:<6:10> but was:<5>");
+        }
+        try {
+            initialize(Raw.intAssertion(), 5, "Message").isInRange(Integer.valueOf("6"), Integer.valueOf("10"));
+            Assertions.fail("IntAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be in the expected range.\n\tExpected:<6:10> but was:<5>");
+        }
+        try {
+            initialize(Raw.intAssertion(), 5).isInRange(Integer.valueOf("8"), Integer.valueOf("9"));
+            Assertions.fail("IntAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should be in the expected range.\n\tExpected:<8:9> but was:<5>");
+        }
+        try {
+            initialize(Raw.intAssertion(), 5, "Message").isInRange(Integer.valueOf("8"), Integer.valueOf("9"));
+            Assertions.fail("IntAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be in the expected range.\n\tExpected:<8:9> but was:<5>");
+        }
     }
 
     /**
@@ -523,7 +963,112 @@ public final class IntAssertionTest extends AssertionTest {
      */
     @Test
     public void isNotInRangeObjectTest() {
-        // TODO
+        initialize(Raw.intAssertion(), 5).isNotInRange(Integer.valueOf("1"), Integer.valueOf("5"));
+        initialize(Raw.intAssertion(), 5).isNotInRange(Integer.valueOf("6"), Integer.valueOf("10"));
+        initialize(Raw.intAssertion(), 5).isNotInRange(Integer.valueOf("8"), Integer.valueOf("9"));
+
+        try {
+            Raw.intAssertion().isNotInRange(Integer.valueOf("1"), Integer.valueOf("1"));
+            Assertions.fail("IntAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.intAssertion(), null).isNotInRange(Integer.valueOf("1"), Integer.valueOf("1"));
+            Assertions.fail("IntAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.intAssertion(), null, "Message").isNotInRange(Integer.valueOf("1"), Integer.valueOf("1"));
+            Assertions.fail("IntAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.intAssertion(), null).isNotInRange(null, Integer.valueOf("1"));
+            Assertions.fail("IntAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.intAssertion(), null, "Message").isNotInRange(null, Integer.valueOf("1"));
+            Assertions.fail("IntAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.intAssertion(), 1).isNotInRange(null, Integer.valueOf("1"));
+            Assertions.fail("IntAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expectedFrom.");
+        }
+        try {
+            initialize(Raw.intAssertion(), 1, "Message").isNotInRange(null, Integer.valueOf("1"));
+            Assertions.fail("IntAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expectedFrom.");
+        }
+        try {
+            initialize(Raw.intAssertion(), 1).isNotInRange(null, null);
+            Assertions.fail("IntAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expectedFrom.");
+        }
+        try {
+            initialize(Raw.intAssertion(), 1, "Message").isNotInRange(null, null);
+            Assertions.fail("IntAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expectedFrom.");
+        }
+        try {
+            initialize(Raw.intAssertion(), 1).isNotInRange(Integer.valueOf("1"), null);
+            Assertions.fail("IntAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expectedTo.");
+        }
+        try {
+            initialize(Raw.intAssertion(), 1, "Message").isNotInRange(Integer.valueOf("1"), null);
+            Assertions.fail("IntAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expectedTo.");
+        }
+        try {
+            initialize(Raw.intAssertion(), 5).isNotInRange(Integer.valueOf("4"), Integer.valueOf("6"));
+            Assertions.fail("IntAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be in the expected range.\n\tExpected:<4:6> but was:<5>");
+        }
+        try {
+            initialize(Raw.intAssertion(), 5, "Message").isNotInRange(Integer.valueOf("4"), Integer.valueOf("6"));
+            Assertions.fail("IntAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be in the expected range.\n\tExpected:<4:6> but was:<5>");
+        }
+        try {
+            initialize(Raw.intAssertion(), 5).isNotInRange(Integer.valueOf("5"), Integer.valueOf("6"));
+            Assertions.fail("IntAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be in the expected range.\n\tExpected:<5:6> but was:<5>");
+        }
+        try {
+            initialize(Raw.intAssertion(), 5, "Message").isNotInRange(Integer.valueOf("5"), Integer.valueOf("6"));
+            Assertions.fail("IntAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be in the expected range.\n\tExpected:<5:6> but was:<5>");
+        }
+        try {
+            initialize(Raw.intAssertion(), 5).isNotInRange(Integer.valueOf("1"), Integer.valueOf("10"));
+            Assertions.fail("IntAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be in the expected range.\n\tExpected:<1:10> but was:<5>");
+        }
+        try {
+            initialize(Raw.intAssertion(), 5, "Message").isNotInRange(Integer.valueOf("1"), Integer.valueOf("10"));
+            Assertions.fail("IntAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be in the expected range.\n\tExpected:<1:10> but was:<5>");
+        }
     }
 
     /**
