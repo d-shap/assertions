@@ -111,7 +111,58 @@ public final class FloatAssertionTest extends AssertionTest {
      */
     @Test
     public void isEqualToDefaultDeltaObjectTest() {
-        // TODO
+        initialize(Raw.floatAssertion(), null).isEqualTo(null);
+        initialize(Raw.floatAssertion(), 10.1f).isEqualTo(Float.valueOf("10.1"));
+        initialize(Raw.floatAssertion(), 10.01f).isEqualTo(Float.valueOf("10.01"));
+        initialize(Raw.floatAssertion(), 10.001f).isEqualTo(Float.valueOf("10.001"));
+        initialize(Raw.floatAssertion(), 10.0001f).isEqualTo(Float.valueOf("10.0001"));
+        initialize(Raw.floatAssertion(), 10.00001f).isEqualTo(Float.valueOf("10.00001"));
+        initialize(Raw.floatAssertion(), 10.000011f).isEqualTo(Float.valueOf("10.000012"));
+        initialize(Raw.floatAssertion(), 10.000001f).isEqualTo(Float.valueOf("10.000002"));
+        initialize(Raw.floatAssertion(), 10.0000001f).isEqualTo(Float.valueOf("10.0000002"));
+
+        try {
+            Raw.floatAssertion().isEqualTo(Float.valueOf("1.0"));
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.floatAssertion(), null).isEqualTo(Float.valueOf("1.0"));
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.floatAssertion(), null, "Message").isEqualTo(Float.valueOf("1.0"));
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.floatAssertion(), Float.valueOf("1.0")).isEqualTo(null);
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should be null.\n\tActual:<1.0f>");
+        }
+        try {
+            initialize(Raw.floatAssertion(), Float.valueOf("1.0"), "Message").isEqualTo(null);
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be null.\n\tActual:<1.0f>");
+        }
+        try {
+            initialize(Raw.floatAssertion(), 10.00001f).isEqualTo(Float.valueOf("10.00002"));
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<10.00002f±1.0E-5f> but was:<10.00001f>");
+        }
+        try {
+            initialize(Raw.floatAssertion(), 10.00001f, "Message").isEqualTo(Float.valueOf("10.00002"));
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be the same.\n\tExpected:<10.00002f±1.0E-5f> but was:<10.00001f>");
+        }
     }
 
     /**
@@ -188,7 +239,79 @@ public final class FloatAssertionTest extends AssertionTest {
      */
     @Test
     public void isEqualToSpecifiedDeltaObjectTest() {
-        // TODO
+        initialize(Raw.floatAssertion(), null).isEqualTo(null, 0.01f);
+        initialize(Raw.floatAssertion(), 10.0f).isEqualTo(Float.valueOf("10.0"), 0.01f);
+        initialize(Raw.floatAssertion(), 10.0f).isEqualTo(Float.valueOf("9.999"), 0.01f);
+        initialize(Raw.floatAssertion(), 10.0f).isEqualTo(Float.valueOf("10.001"), 0.01f);
+        initialize(Raw.floatAssertion(), 0.0f).isEqualTo(Float.valueOf("0.0"), 0.01f);
+        initialize(Raw.floatAssertion(), Float.MAX_VALUE).isEqualTo(Float.valueOf(Float.MAX_VALUE), 0.01f);
+
+        try {
+            Raw.floatAssertion().isEqualTo(Float.valueOf("1.0"), 0.01f);
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.floatAssertion(), null).isEqualTo(Float.valueOf("1.0"), 0.01f);
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.floatAssertion(), null, "Message").isEqualTo(Float.valueOf("1.0"), 0.01f);
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.floatAssertion(), Float.valueOf("1.0")).isEqualTo(null, 0.01f);
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should be null.\n\tActual:<1.0f>");
+        }
+        try {
+            initialize(Raw.floatAssertion(), Float.valueOf("1.0"), "Message").isEqualTo(null, 0.01f);
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be null.\n\tActual:<1.0f>");
+        }
+        try {
+            initialize(Raw.floatAssertion(), 10.0f).isEqualTo(Float.valueOf("10.01"), 0.001f);
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<10.01f±0.001f> but was:<10.0f>");
+        }
+        try {
+            initialize(Raw.floatAssertion(), 10.0f, "Message").isEqualTo(Float.valueOf("10.01"), 0.001f);
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be the same.\n\tExpected:<10.01f±0.001f> but was:<10.0f>");
+        }
+        try {
+            initialize(Raw.floatAssertion(), 10.0f).isEqualTo(Float.valueOf("9.99"), 0.001f);
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<9.99f±0.001f> but was:<10.0f>");
+        }
+        try {
+            initialize(Raw.floatAssertion(), 10.0f, "Message").isEqualTo(Float.valueOf("9.99"), 0.001f);
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be the same.\n\tExpected:<9.99f±0.001f> but was:<10.0f>");
+        }
+        try {
+            initialize(Raw.floatAssertion(), 10.0f).isEqualTo(Float.valueOf("20.0"), 0.0f);
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<20.0f±0.0f> but was:<10.0f>");
+        }
+        try {
+            initialize(Raw.floatAssertion(), 10.0f, "Message").isEqualTo(Float.valueOf("20.0"), 0.0f);
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be the same.\n\tExpected:<20.0f±0.0f> but was:<10.0f>");
+        }
     }
 
     /**
@@ -239,7 +362,44 @@ public final class FloatAssertionTest extends AssertionTest {
      */
     @Test
     public void isNotEqualToDefaultDeltaObjectTest() {
-        // TODO
+        initialize(Raw.floatAssertion(), null).isNotEqualTo(Float.valueOf("5.0"));
+        initialize(Raw.floatAssertion(), 5.0f).isNotEqualTo(null);
+        initialize(Raw.floatAssertion(), 10.1f).isNotEqualTo(Float.valueOf("10.2"));
+        initialize(Raw.floatAssertion(), 10.01f).isNotEqualTo(Float.valueOf("10.02"));
+        initialize(Raw.floatAssertion(), 10.001f).isNotEqualTo(Float.valueOf("10.002"));
+        initialize(Raw.floatAssertion(), 10.0001f).isNotEqualTo(Float.valueOf("10.0002"));
+        initialize(Raw.floatAssertion(), 10.00001f).isNotEqualTo(Float.valueOf("10.00002"));
+
+        try {
+            Raw.floatAssertion().isNotEqualTo(Float.valueOf("1.0"));
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.floatAssertion(), null).isNotEqualTo(null);
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.floatAssertion(), null, "Message").isNotEqualTo(null);
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.floatAssertion(), 10.000001f).isNotEqualTo(Float.valueOf("10.000002"));
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be different.\n\tActual:<10.000001f±1.0E-5f>");
+        }
+        try {
+            initialize(Raw.floatAssertion(), 10.000001f, "Message").isNotEqualTo(Float.valueOf("10.000002"));
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be different.\n\tActual:<10.000001f±1.0E-5f>");
+        }
     }
 
     /**
@@ -336,7 +496,66 @@ public final class FloatAssertionTest extends AssertionTest {
      */
     @Test
     public void isNotEqualToSpecifiedDeltaObjectTest() {
-        // TODO
+        initialize(Raw.floatAssertion(), null).isNotEqualTo(Float.valueOf("5.0"), 0.001f);
+        initialize(Raw.floatAssertion(), 5.0f).isNotEqualTo(null, 0.001f);
+        initialize(Raw.floatAssertion(), 10.0f).isNotEqualTo(Float.valueOf("10.01"), 0.001f);
+        initialize(Raw.floatAssertion(), 10.0f).isNotEqualTo(Float.valueOf("9.99"), 0.001f);
+        initialize(Raw.floatAssertion(), 10.0f).isNotEqualTo(Float.valueOf("20.0"), 0.0f);
+
+        try {
+            Raw.floatAssertion().isNotEqualTo(Float.valueOf("1.0"), 0.001f);
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.floatAssertion(), null).isNotEqualTo(null, 0.001f);
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.floatAssertion(), null, "Message").isNotEqualTo(null, 0.001f);
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.floatAssertion(), 10.0f).isNotEqualTo(Float.valueOf("10.001"), 0.01f);
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be different.\n\tActual:<10.0f±0.01f>");
+        }
+        try {
+            initialize(Raw.floatAssertion(), 10.0f, "Message").isNotEqualTo(Float.valueOf("10.001"), 0.01f);
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be different.\n\tActual:<10.0f±0.01f>");
+        }
+        try {
+            initialize(Raw.floatAssertion(), 10.0f).isNotEqualTo(Float.valueOf("9.999"), 0.01f);
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be different.\n\tActual:<10.0f±0.01f>");
+        }
+        try {
+            initialize(Raw.floatAssertion(), 10.0f, "Message").isNotEqualTo(Float.valueOf("9.999"), 0.01f);
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be different.\n\tActual:<10.0f±0.01f>");
+        }
+        try {
+            initialize(Raw.floatAssertion(), 10.0f).isNotEqualTo(Float.valueOf("10.0"), 0.01f);
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be different.\n\tActual:<10.0f±0.01f>");
+        }
+        try {
+            initialize(Raw.floatAssertion(), 10.0f, "Message").isNotEqualTo(Float.valueOf("10.0"), 0.01f);
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be different.\n\tActual:<10.0f±0.01f>");
+        }
     }
 
     /**
