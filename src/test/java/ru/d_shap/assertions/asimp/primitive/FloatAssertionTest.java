@@ -1278,7 +1278,112 @@ public final class FloatAssertionTest extends AssertionTest {
      */
     @Test
     public void isNotInRangeObjectTest() {
-        // TODO
+        initialize(Raw.floatAssertion(), 5.0f).isNotInRange(Float.valueOf("1.0"), Float.valueOf("5.0"));
+        initialize(Raw.floatAssertion(), 5.0f).isNotInRange(Float.valueOf("6.0"), Float.valueOf("10.0"));
+        initialize(Raw.floatAssertion(), 5.0f).isNotInRange(Float.valueOf("8.0"), Float.valueOf("9.0"));
+
+        try {
+            Raw.floatAssertion().isNotInRange(Float.valueOf("1.0"), Float.valueOf("1.0"));
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.floatAssertion(), null).isNotInRange(Float.valueOf("1.0"), Float.valueOf("1.0"));
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.floatAssertion(), null, "Message").isNotInRange(Float.valueOf("1.0"), Float.valueOf("1.0"));
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.floatAssertion(), null).isNotInRange(null, Float.valueOf("1.0"));
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.floatAssertion(), null, "Message").isNotInRange(null, Float.valueOf("1.0"));
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.floatAssertion(), 1.0f).isNotInRange(null, Float.valueOf("1.0"));
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expectedFrom.");
+        }
+        try {
+            initialize(Raw.floatAssertion(), 1.0f, "Message").isNotInRange(null, Float.valueOf("1.0"));
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expectedFrom.");
+        }
+        try {
+            initialize(Raw.floatAssertion(), 1.0f).isNotInRange(null, null);
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expectedFrom.");
+        }
+        try {
+            initialize(Raw.floatAssertion(), 1.0f, "Message").isNotInRange(null, null);
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expectedFrom.");
+        }
+        try {
+            initialize(Raw.floatAssertion(), 1.0f).isNotInRange(Float.valueOf("1.0"), null);
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expectedTo.");
+        }
+        try {
+            initialize(Raw.floatAssertion(), 1.0f, "Message").isNotInRange(Float.valueOf("1.0"), null);
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expectedTo.");
+        }
+        try {
+            initialize(Raw.floatAssertion(), 5.0f).isNotInRange(Float.valueOf("4.0"), Float.valueOf("6.0"));
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be in the expected range.\n\tExpected:<4.0f:6.0f> but was:<5.0f>");
+        }
+        try {
+            initialize(Raw.floatAssertion(), 5.0f, "Message").isNotInRange(Float.valueOf("4.0"), Float.valueOf("6.0"));
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be in the expected range.\n\tExpected:<4.0f:6.0f> but was:<5.0f>");
+        }
+        try {
+            initialize(Raw.floatAssertion(), 5.0f).isNotInRange(Float.valueOf("5.0"), Float.valueOf("6.0"));
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be in the expected range.\n\tExpected:<5.0f:6.0f> but was:<5.0f>");
+        }
+        try {
+            initialize(Raw.floatAssertion(), 5.0f, "Message").isNotInRange(Float.valueOf("5.0"), Float.valueOf("6.0"));
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be in the expected range.\n\tExpected:<5.0f:6.0f> but was:<5.0f>");
+        }
+        try {
+            initialize(Raw.floatAssertion(), 5.0f).isNotInRange(Float.valueOf("1.0"), Float.valueOf("10.0"));
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be in the expected range.\n\tExpected:<1.0f:10.0f> but was:<5.0f>");
+        }
+        try {
+            initialize(Raw.floatAssertion(), 5.0f, "Message").isNotInRange(Float.valueOf("1.0"), Float.valueOf("10.0"));
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be in the expected range.\n\tExpected:<1.0f:10.0f> but was:<5.0f>");
+        }
     }
 
     /**
