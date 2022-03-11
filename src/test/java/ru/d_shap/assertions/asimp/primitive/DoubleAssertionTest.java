@@ -1124,7 +1124,112 @@ public final class DoubleAssertionTest extends AssertionTest {
      */
     @Test
     public void isInRangeObjectTest() {
-        // TODO
+        initialize(Raw.doubleAssertion(), 5.0).isInRange(Double.valueOf("4.0"), Double.valueOf("6.0"));
+        initialize(Raw.doubleAssertion(), 5.0).isInRange(Double.valueOf("5.0"), Double.valueOf("6.0"));
+        initialize(Raw.doubleAssertion(), 5.0).isInRange(Double.valueOf("1.0"), Double.valueOf("10.0"));
+
+        try {
+            Raw.doubleAssertion().isInRange(Double.valueOf("1.0"), Double.valueOf("1.0"));
+            Assertions.fail("DoubleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.doubleAssertion(), null).isInRange(Double.valueOf("1.0"), Double.valueOf("1.0"));
+            Assertions.fail("DoubleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.doubleAssertion(), null, "Message").isInRange(Double.valueOf("1.0"), Double.valueOf("1.0"));
+            Assertions.fail("DoubleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.doubleAssertion(), null).isInRange(null, Double.valueOf("1.0"));
+            Assertions.fail("DoubleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.doubleAssertion(), null, "Message").isInRange(null, Double.valueOf("1.0"));
+            Assertions.fail("DoubleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.doubleAssertion(), 1.0).isInRange(null, Double.valueOf("1.0"));
+            Assertions.fail("DoubleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expectedFrom.");
+        }
+        try {
+            initialize(Raw.doubleAssertion(), 1.0, "Message").isInRange(null, Double.valueOf("1.0"));
+            Assertions.fail("DoubleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expectedFrom.");
+        }
+        try {
+            initialize(Raw.doubleAssertion(), 1.0).isInRange(null, null);
+            Assertions.fail("DoubleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expectedFrom.");
+        }
+        try {
+            initialize(Raw.doubleAssertion(), 1.0, "Message").isInRange(null, null);
+            Assertions.fail("DoubleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expectedFrom.");
+        }
+        try {
+            initialize(Raw.doubleAssertion(), 1.0).isInRange(Double.valueOf("1.0"), null);
+            Assertions.fail("DoubleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expectedTo.");
+        }
+        try {
+            initialize(Raw.doubleAssertion(), 1.0, "Message").isInRange(Double.valueOf("1.0"), null);
+            Assertions.fail("DoubleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expectedTo.");
+        }
+        try {
+            initialize(Raw.doubleAssertion(), 5.0).isInRange(Double.valueOf("1.0"), Double.valueOf("5.0"));
+            Assertions.fail("DoubleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should be in the expected range.\n\tExpected:<1.0:5.0> but was:<5.0>");
+        }
+        try {
+            initialize(Raw.doubleAssertion(), 5.0, "Message").isInRange(Double.valueOf("1.0"), Double.valueOf("5.0"));
+            Assertions.fail("DoubleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be in the expected range.\n\tExpected:<1.0:5.0> but was:<5.0>");
+        }
+        try {
+            initialize(Raw.doubleAssertion(), 5.0).isInRange(Double.valueOf("6.0"), Double.valueOf("10.0"));
+            Assertions.fail("DoubleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should be in the expected range.\n\tExpected:<6.0:10.0> but was:<5.0>");
+        }
+        try {
+            initialize(Raw.doubleAssertion(), 5.0, "Message").isInRange(Double.valueOf("6.0"), Double.valueOf("10.0"));
+            Assertions.fail("DoubleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be in the expected range.\n\tExpected:<6.0:10.0> but was:<5.0>");
+        }
+        try {
+            initialize(Raw.doubleAssertion(), 5.0).isInRange(Double.valueOf("8.0"), Double.valueOf("9.0"));
+            Assertions.fail("DoubleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should be in the expected range.\n\tExpected:<8.0:9.0> but was:<5.0>");
+        }
+        try {
+            initialize(Raw.doubleAssertion(), 5.0, "Message").isInRange(Double.valueOf("8.0"), Double.valueOf("9.0"));
+            Assertions.fail("DoubleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be in the expected range.\n\tExpected:<8.0:9.0> but was:<5.0>");
+        }
     }
 
     /**
@@ -1197,7 +1302,112 @@ public final class DoubleAssertionTest extends AssertionTest {
      */
     @Test
     public void isNotInRangeObjectTest() {
-        // TODO
+        initialize(Raw.doubleAssertion(), 5.0).isNotInRange(Double.valueOf("1.0"), Double.valueOf("5.0"));
+        initialize(Raw.doubleAssertion(), 5.0).isNotInRange(Double.valueOf("6.0"), Double.valueOf("10.0"));
+        initialize(Raw.doubleAssertion(), 5.0).isNotInRange(Double.valueOf("8.0"), Double.valueOf("9.0"));
+
+        try {
+            Raw.doubleAssertion().isNotInRange(Double.valueOf("1.0"), Double.valueOf("1.0"));
+            Assertions.fail("DoubleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.doubleAssertion(), null).isNotInRange(Double.valueOf("1.0"), Double.valueOf("1.0"));
+            Assertions.fail("DoubleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.doubleAssertion(), null, "Message").isNotInRange(Double.valueOf("1.0"), Double.valueOf("1.0"));
+            Assertions.fail("DoubleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.doubleAssertion(), null).isNotInRange(null, Double.valueOf("1.0"));
+            Assertions.fail("DoubleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.doubleAssertion(), null, "Message").isNotInRange(null, Double.valueOf("1.0"));
+            Assertions.fail("DoubleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.doubleAssertion(), 1.0).isNotInRange(null, Double.valueOf("1.0"));
+            Assertions.fail("DoubleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expectedFrom.");
+        }
+        try {
+            initialize(Raw.doubleAssertion(), 1.0, "Message").isNotInRange(null, Double.valueOf("1.0"));
+            Assertions.fail("DoubleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expectedFrom.");
+        }
+        try {
+            initialize(Raw.doubleAssertion(), 1.0).isNotInRange(null, null);
+            Assertions.fail("DoubleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expectedFrom.");
+        }
+        try {
+            initialize(Raw.doubleAssertion(), 1.0, "Message").isNotInRange(null, null);
+            Assertions.fail("DoubleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expectedFrom.");
+        }
+        try {
+            initialize(Raw.doubleAssertion(), 1.0).isNotInRange(Double.valueOf("1.0"), null);
+            Assertions.fail("DoubleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expectedTo.");
+        }
+        try {
+            initialize(Raw.doubleAssertion(), 1.0, "Message").isNotInRange(Double.valueOf("1.0"), null);
+            Assertions.fail("DoubleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expectedTo.");
+        }
+        try {
+            initialize(Raw.doubleAssertion(), 5.0).isNotInRange(Double.valueOf("4.0"), Double.valueOf("6.0"));
+            Assertions.fail("DoubleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be in the expected range.\n\tExpected:<4.0:6.0> but was:<5.0>");
+        }
+        try {
+            initialize(Raw.doubleAssertion(), 5.0, "Message").isNotInRange(Double.valueOf("4.0"), Double.valueOf("6.0"));
+            Assertions.fail("DoubleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be in the expected range.\n\tExpected:<4.0:6.0> but was:<5.0>");
+        }
+        try {
+            initialize(Raw.doubleAssertion(), 5.0).isNotInRange(Double.valueOf("5.0"), Double.valueOf("6.0"));
+            Assertions.fail("DoubleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be in the expected range.\n\tExpected:<5.0:6.0> but was:<5.0>");
+        }
+        try {
+            initialize(Raw.doubleAssertion(), 5.0, "Message").isNotInRange(Double.valueOf("5.0"), Double.valueOf("6.0"));
+            Assertions.fail("DoubleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be in the expected range.\n\tExpected:<5.0:6.0> but was:<5.0>");
+        }
+        try {
+            initialize(Raw.doubleAssertion(), 5.0).isNotInRange(Double.valueOf("1.0"), Double.valueOf("10.0"));
+            Assertions.fail("DoubleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be in the expected range.\n\tExpected:<1.0:10.0> but was:<5.0>");
+        }
+        try {
+            initialize(Raw.doubleAssertion(), 5.0, "Message").isNotInRange(Double.valueOf("1.0"), Double.valueOf("10.0"));
+            Assertions.fail("DoubleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be in the expected range.\n\tExpected:<1.0:10.0> but was:<5.0>");
+        }
     }
 
     /**
