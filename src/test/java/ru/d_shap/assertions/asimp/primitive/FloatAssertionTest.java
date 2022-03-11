@@ -1100,7 +1100,112 @@ public final class FloatAssertionTest extends AssertionTest {
      */
     @Test
     public void isInRangeObjectTest() {
-        // TODO
+        initialize(Raw.floatAssertion(), 5.0f).isInRange(Float.valueOf("4.0"), Float.valueOf("6.0"));
+        initialize(Raw.floatAssertion(), 5.0f).isInRange(Float.valueOf("5.0"), Float.valueOf("6.0"));
+        initialize(Raw.floatAssertion(), 5.0f).isInRange(Float.valueOf("1.0"), Float.valueOf("10.0"));
+
+        try {
+            Raw.floatAssertion().isInRange(Float.valueOf("1.0"), Float.valueOf("1.0"));
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.floatAssertion(), null).isInRange(Float.valueOf("1.0"), Float.valueOf("1.0"));
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.floatAssertion(), null, "Message").isInRange(Float.valueOf("1.0"), Float.valueOf("1.0"));
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.floatAssertion(), null).isInRange(null, Float.valueOf("1.0"));
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.floatAssertion(), null, "Message").isInRange(null, Float.valueOf("1.0"));
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.floatAssertion(), 1.0f).isInRange(null, Float.valueOf("1.0"));
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expectedFrom.");
+        }
+        try {
+            initialize(Raw.floatAssertion(), 1.0f, "Message").isInRange(null, Float.valueOf("1.0"));
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expectedFrom.");
+        }
+        try {
+            initialize(Raw.floatAssertion(), 1.0f).isInRange(null, null);
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expectedFrom.");
+        }
+        try {
+            initialize(Raw.floatAssertion(), 1.0f, "Message").isInRange(null, null);
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expectedFrom.");
+        }
+        try {
+            initialize(Raw.floatAssertion(), 1.0f).isInRange(Float.valueOf("1.0"), null);
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expectedTo.");
+        }
+        try {
+            initialize(Raw.floatAssertion(), 1.0f, "Message").isInRange(Float.valueOf("1.0"), null);
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expectedTo.");
+        }
+        try {
+            initialize(Raw.floatAssertion(), 5.0f).isInRange(Float.valueOf("1.0"), Float.valueOf("5.0"));
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should be in the expected range.\n\tExpected:<1.0f:5.0f> but was:<5.0f>");
+        }
+        try {
+            initialize(Raw.floatAssertion(), 5.0f, "Message").isInRange(Float.valueOf("1.0"), Float.valueOf("5.0"));
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be in the expected range.\n\tExpected:<1.0f:5.0f> but was:<5.0f>");
+        }
+        try {
+            initialize(Raw.floatAssertion(), 5.0f).isInRange(Float.valueOf("6.0"), Float.valueOf("10.0"));
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should be in the expected range.\n\tExpected:<6.0f:10.0f> but was:<5.0f>");
+        }
+        try {
+            initialize(Raw.floatAssertion(), 5.0f, "Message").isInRange(Float.valueOf("6.0"), Float.valueOf("10.0"));
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be in the expected range.\n\tExpected:<6.0f:10.0f> but was:<5.0f>");
+        }
+        try {
+            initialize(Raw.floatAssertion(), 5.0f).isInRange(Float.valueOf("8.0"), Float.valueOf("9.0"));
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should be in the expected range.\n\tExpected:<8.0f:9.0f> but was:<5.0f>");
+        }
+        try {
+            initialize(Raw.floatAssertion(), 5.0f, "Message").isInRange(Float.valueOf("8.0"), Float.valueOf("9.0"));
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be in the expected range.\n\tExpected:<8.0f:9.0f> but was:<5.0f>");
+        }
     }
 
     /**
