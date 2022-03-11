@@ -640,7 +640,76 @@ public final class DoubleAssertionTest extends AssertionTest {
      */
     @Test
     public void isGreaterThanObjectTest() {
-        // TODO
+        initialize(Raw.doubleAssertion(), 10.0).isGreaterThan(Double.valueOf("9.0"));
+        initialize(Raw.doubleAssertion(), 10.0).isGreaterThan(Double.valueOf("8.0"));
+        initialize(Raw.doubleAssertion(), 10.0).isGreaterThan(Double.valueOf("-1.0"));
+
+        try {
+            Raw.doubleAssertion().isGreaterThan(Double.valueOf("1.0"));
+            Assertions.fail("DoubleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.doubleAssertion(), null).isGreaterThan(Double.valueOf("1.0"));
+            Assertions.fail("DoubleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.doubleAssertion(), null, "Message").isGreaterThan(Double.valueOf("1.0"));
+            Assertions.fail("DoubleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.doubleAssertion(), null).isGreaterThan(null);
+            Assertions.fail("DoubleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.doubleAssertion(), null, "Message").isGreaterThan(null);
+            Assertions.fail("DoubleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.doubleAssertion(), 1.0).isGreaterThan(null);
+            Assertions.fail("DoubleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
+        }
+        try {
+            initialize(Raw.doubleAssertion(), 1.0, "Message").isGreaterThan(null);
+            Assertions.fail("DoubleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
+        }
+        try {
+            initialize(Raw.doubleAssertion(), 10.0).isGreaterThan(Double.valueOf("10.0"));
+            Assertions.fail("DoubleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should be greater than the expected.\n\tExpected:<10.0> but was:<10.0>");
+        }
+        try {
+            initialize(Raw.doubleAssertion(), 10.0, "Message").isGreaterThan(Double.valueOf("10.0"));
+            Assertions.fail("DoubleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be greater than the expected.\n\tExpected:<10.0> but was:<10.0>");
+        }
+        try {
+            initialize(Raw.doubleAssertion(), 10.0).isGreaterThan(Double.valueOf("11.0"));
+            Assertions.fail("DoubleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should be greater than the expected.\n\tExpected:<11.0> but was:<10.0>");
+        }
+        try {
+            initialize(Raw.doubleAssertion(), 10.0, "Message").isGreaterThan(Double.valueOf("11.0"));
+            Assertions.fail("DoubleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be greater than the expected.\n\tExpected:<11.0> but was:<10.0>");
+        }
     }
 
     /**
@@ -689,7 +758,64 @@ public final class DoubleAssertionTest extends AssertionTest {
      */
     @Test
     public void isGreaterThanOrEqualToObjectTest() {
-        // TODO
+        initialize(Raw.doubleAssertion(), 10.0).isGreaterThanOrEqualTo(Double.valueOf("9.0"));
+        initialize(Raw.doubleAssertion(), 10.0).isGreaterThanOrEqualTo(Double.valueOf("10.0"));
+        initialize(Raw.doubleAssertion(), 10.0).isGreaterThanOrEqualTo(Double.valueOf("-1.0"));
+
+        try {
+            Raw.doubleAssertion().isGreaterThanOrEqualTo(Double.valueOf("1.0"));
+            Assertions.fail("DoubleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.doubleAssertion(), null).isGreaterThanOrEqualTo(Double.valueOf("1.0"));
+            Assertions.fail("DoubleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.doubleAssertion(), null, "Message").isGreaterThanOrEqualTo(Double.valueOf("1.0"));
+            Assertions.fail("DoubleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.doubleAssertion(), null).isGreaterThanOrEqualTo(null);
+            Assertions.fail("DoubleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.doubleAssertion(), null, "Message").isGreaterThanOrEqualTo(null);
+            Assertions.fail("DoubleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.doubleAssertion(), 1.0).isGreaterThanOrEqualTo(null);
+            Assertions.fail("DoubleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
+        }
+        try {
+            initialize(Raw.doubleAssertion(), 1.0, "Message").isGreaterThanOrEqualTo(null);
+            Assertions.fail("DoubleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
+        }
+        try {
+            initialize(Raw.doubleAssertion(), 10.0).isGreaterThanOrEqualTo(Double.valueOf("11.0"));
+            Assertions.fail("DoubleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should be greater than or equal to the expected.\n\tExpected:<11.0> but was:<10.0>");
+        }
+        try {
+            initialize(Raw.doubleAssertion(), 10.0, "Message").isGreaterThanOrEqualTo(Double.valueOf("11.0"));
+            Assertions.fail("DoubleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be greater than or equal to the expected.\n\tExpected:<11.0> but was:<10.0>");
+        }
     }
 
     /**
@@ -750,7 +876,76 @@ public final class DoubleAssertionTest extends AssertionTest {
      */
     @Test
     public void isLessThanObjectTest() {
-        // TODO
+        initialize(Raw.doubleAssertion(), 10.0).isLessThan(Double.valueOf("11.0"));
+        initialize(Raw.doubleAssertion(), 10.0).isLessThan(Double.valueOf("12.0"));
+        initialize(Raw.doubleAssertion(), 10.0).isLessThan(Double.valueOf("100.0"));
+
+        try {
+            Raw.doubleAssertion().isLessThan(Double.valueOf("1.0"));
+            Assertions.fail("DoubleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.doubleAssertion(), null).isLessThan(Double.valueOf("1.0"));
+            Assertions.fail("DoubleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.doubleAssertion(), null, "Message").isLessThan(Double.valueOf("1.0"));
+            Assertions.fail("DoubleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.doubleAssertion(), null).isLessThan(null);
+            Assertions.fail("DoubleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.doubleAssertion(), null, "Message").isLessThan(null);
+            Assertions.fail("DoubleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.doubleAssertion(), 1.0).isLessThan(null);
+            Assertions.fail("DoubleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
+        }
+        try {
+            initialize(Raw.doubleAssertion(), 1.0, "Message").isLessThan(null);
+            Assertions.fail("DoubleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
+        }
+        try {
+            initialize(Raw.doubleAssertion(), 10.0).isLessThan(Double.valueOf("10.0"));
+            Assertions.fail("DoubleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should be less than the expected.\n\tExpected:<10.0> but was:<10.0>");
+        }
+        try {
+            initialize(Raw.doubleAssertion(), 10.0, "Message").isLessThan(Double.valueOf("10.0"));
+            Assertions.fail("DoubleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be less than the expected.\n\tExpected:<10.0> but was:<10.0>");
+        }
+        try {
+            initialize(Raw.doubleAssertion(), 10.0).isLessThan(Double.valueOf("9.0"));
+            Assertions.fail("DoubleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should be less than the expected.\n\tExpected:<9.0> but was:<10.0>");
+        }
+        try {
+            initialize(Raw.doubleAssertion(), 10.0, "Message").isLessThan(Double.valueOf("9.0"));
+            Assertions.fail("DoubleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be less than the expected.\n\tExpected:<9.0> but was:<10.0>");
+        }
     }
 
     /**
@@ -799,7 +994,64 @@ public final class DoubleAssertionTest extends AssertionTest {
      */
     @Test
     public void isLessThanOrEqualToObjectTest() {
-        // TODO
+        initialize(Raw.doubleAssertion(), 10.0).isLessThanOrEqualTo(Double.valueOf("11.0"));
+        initialize(Raw.doubleAssertion(), 10.0).isLessThanOrEqualTo(Double.valueOf("10.0"));
+        initialize(Raw.doubleAssertion(), 10.0).isLessThanOrEqualTo(Double.valueOf("100.0"));
+
+        try {
+            Raw.doubleAssertion().isLessThanOrEqualTo(Double.valueOf("1.0"));
+            Assertions.fail("DoubleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.doubleAssertion(), null).isLessThanOrEqualTo(Double.valueOf("1.0"));
+            Assertions.fail("DoubleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.doubleAssertion(), null, "Message").isLessThanOrEqualTo(Double.valueOf("1.0"));
+            Assertions.fail("DoubleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.doubleAssertion(), null).isLessThanOrEqualTo(null);
+            Assertions.fail("DoubleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.doubleAssertion(), null, "Message").isLessThanOrEqualTo(null);
+            Assertions.fail("DoubleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.doubleAssertion(), 1.0).isLessThanOrEqualTo(null);
+            Assertions.fail("DoubleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
+        }
+        try {
+            initialize(Raw.doubleAssertion(), 1.0, "Message").isLessThanOrEqualTo(null);
+            Assertions.fail("DoubleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
+        }
+        try {
+            initialize(Raw.doubleAssertion(), 10.0).isLessThanOrEqualTo(Double.valueOf("9.0"));
+            Assertions.fail("DoubleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should be less than or equal to the expected.\n\tExpected:<9.0> but was:<10.0>");
+        }
+        try {
+            initialize(Raw.doubleAssertion(), 10.0, "Message").isLessThanOrEqualTo(Double.valueOf("9.0"));
+            Assertions.fail("DoubleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be less than or equal to the expected.\n\tExpected:<9.0> but was:<10.0>");
+        }
     }
 
     /**
