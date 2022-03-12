@@ -72,7 +72,6 @@ public class FloatAssertion extends ReferenceAssertion<Float> {
         if (Float.isNaN(expected)) {
             isNaN();
         } else if (Float.isInfinite(expected)) {
-            isInfinity();
             if (expected == Float.POSITIVE_INFINITY) {
                 isPositiveInfinity();
             }

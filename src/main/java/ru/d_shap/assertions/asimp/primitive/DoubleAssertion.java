@@ -72,7 +72,6 @@ public class DoubleAssertion extends ReferenceAssertion<Double> {
         if (Double.isNaN(expected)) {
             isNaN();
         } else if (Double.isInfinite(expected)) {
-            isInfinity();
             if (expected == Double.POSITIVE_INFINITY) {
                 isPositiveInfinity();
             }
