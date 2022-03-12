@@ -302,7 +302,7 @@ public class FloatAssertion extends ReferenceAssertion<Float> {
     }
 
     /**
-     * Check if the actual value is not zero.
+     * Check if the actual value is NOT zero.
      */
     public final void isNonZero() {
         checkActualIsNotNull();
@@ -352,7 +352,7 @@ public class FloatAssertion extends ReferenceAssertion<Float> {
     }
 
     /**
-     * Check if the actual value is not NaN.
+     * Check if the actual value is NOT NaN.
      */
     public final void isNotNaN() {
         checkActualIsNotNull();
