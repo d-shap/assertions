@@ -1431,63 +1431,63 @@ public final class FloatAssertionTest extends AssertionTest {
      * {@link FloatAssertion} class test.
      */
     @Test
-    public void isNonZeroTest() {
-        initialize(Raw.floatAssertion(), 10.0f).isNonZero();
-        initialize(Raw.floatAssertion(), -10.0f).isNonZero();
-        initialize(Raw.floatAssertion(), Float.POSITIVE_INFINITY).isNonZero();
-        initialize(Raw.floatAssertion(), Float.NEGATIVE_INFINITY).isNonZero();
-        initialize(Raw.floatAssertion(), Float.NaN).isNonZero();
+    public void isNotZeroTest() {
+        initialize(Raw.floatAssertion(), 10.0f).isNotZero();
+        initialize(Raw.floatAssertion(), -10.0f).isNotZero();
+        initialize(Raw.floatAssertion(), Float.POSITIVE_INFINITY).isNotZero();
+        initialize(Raw.floatAssertion(), Float.NEGATIVE_INFINITY).isNotZero();
+        initialize(Raw.floatAssertion(), Float.NaN).isNotZero();
 
         try {
-            Raw.floatAssertion().isNonZero();
+            Raw.floatAssertion().isNotZero();
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
-            initialize(Raw.floatAssertion(), null).isNonZero();
+            initialize(Raw.floatAssertion(), null).isNotZero();
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
-            initialize(Raw.floatAssertion(), null, "Message").isNonZero();
+            initialize(Raw.floatAssertion(), null, "Message").isNotZero();
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.floatAssertion(), 0.0f).isNonZero();
+            initialize(Raw.floatAssertion(), 0.0f).isNotZero();
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be zero.");
         }
         try {
-            initialize(Raw.floatAssertion(), 0.0f, "Message").isNonZero();
+            initialize(Raw.floatAssertion(), 0.0f, "Message").isNotZero();
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be zero.");
         }
         try {
-            initialize(Raw.floatAssertion(), +0.0f).isNonZero();
+            initialize(Raw.floatAssertion(), +0.0f).isNotZero();
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be zero.");
         }
         try {
-            initialize(Raw.floatAssertion(), +0.0f, "Message").isNonZero();
+            initialize(Raw.floatAssertion(), +0.0f, "Message").isNotZero();
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be zero.");
         }
         try {
-            initialize(Raw.floatAssertion(), -0.0f).isNonZero();
+            initialize(Raw.floatAssertion(), -0.0f).isNotZero();
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be zero.");
         }
         try {
-            initialize(Raw.floatAssertion(), -0.0f, "Message").isNonZero();
+            initialize(Raw.floatAssertion(), -0.0f, "Message").isNotZero();
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be zero.");

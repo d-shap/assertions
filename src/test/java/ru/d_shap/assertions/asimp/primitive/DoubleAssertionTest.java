@@ -1455,63 +1455,63 @@ public final class DoubleAssertionTest extends AssertionTest {
      * {@link DoubleAssertion} class test.
      */
     @Test
-    public void isNonZeroTest() {
-        initialize(Raw.doubleAssertion(), 10.0).isNonZero();
-        initialize(Raw.doubleAssertion(), -10.0).isNonZero();
-        initialize(Raw.doubleAssertion(), Double.POSITIVE_INFINITY).isNonZero();
-        initialize(Raw.doubleAssertion(), Double.NEGATIVE_INFINITY).isNonZero();
-        initialize(Raw.doubleAssertion(), Double.NaN).isNonZero();
+    public void isNotZeroTest() {
+        initialize(Raw.doubleAssertion(), 10.0).isNotZero();
+        initialize(Raw.doubleAssertion(), -10.0).isNotZero();
+        initialize(Raw.doubleAssertion(), Double.POSITIVE_INFINITY).isNotZero();
+        initialize(Raw.doubleAssertion(), Double.NEGATIVE_INFINITY).isNotZero();
+        initialize(Raw.doubleAssertion(), Double.NaN).isNotZero();
 
         try {
-            Raw.doubleAssertion().isNonZero();
+            Raw.doubleAssertion().isNotZero();
             Assertions.fail("DoubleAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
-            initialize(Raw.doubleAssertion(), null).isNonZero();
+            initialize(Raw.doubleAssertion(), null).isNotZero();
             Assertions.fail("DoubleAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
-            initialize(Raw.doubleAssertion(), null, "Message").isNonZero();
+            initialize(Raw.doubleAssertion(), null, "Message").isNotZero();
             Assertions.fail("DoubleAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.doubleAssertion(), 0.0).isNonZero();
+            initialize(Raw.doubleAssertion(), 0.0).isNotZero();
             Assertions.fail("DoubleAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be zero.");
         }
         try {
-            initialize(Raw.doubleAssertion(), 0.0, "Message").isNonZero();
+            initialize(Raw.doubleAssertion(), 0.0, "Message").isNotZero();
             Assertions.fail("DoubleAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be zero.");
         }
         try {
-            initialize(Raw.doubleAssertion(), +0.0).isNonZero();
+            initialize(Raw.doubleAssertion(), +0.0).isNotZero();
             Assertions.fail("DoubleAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be zero.");
         }
         try {
-            initialize(Raw.doubleAssertion(), +0.0, "Message").isNonZero();
+            initialize(Raw.doubleAssertion(), +0.0, "Message").isNotZero();
             Assertions.fail("DoubleAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be zero.");
         }
         try {
-            initialize(Raw.doubleAssertion(), -0.0).isNonZero();
+            initialize(Raw.doubleAssertion(), -0.0).isNotZero();
             Assertions.fail("DoubleAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be zero.");
         }
         try {
-            initialize(Raw.doubleAssertion(), -0.0, "Message").isNonZero();
+            initialize(Raw.doubleAssertion(), -0.0, "Message").isNotZero();
             Assertions.fail("DoubleAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be zero.");

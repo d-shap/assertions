@@ -304,7 +304,7 @@ public class DoubleAssertion extends ReferenceAssertion<Double> {
     /**
      * Check if the actual value is NOT zero.
      */
-    public final void isNonZero() {
+    public final void isNotZero() {
         checkActualIsNotNull();
         if (getActual() == 0.0f) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NON_ZERO).build();
