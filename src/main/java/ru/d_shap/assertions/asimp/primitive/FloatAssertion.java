@@ -307,7 +307,7 @@ public class FloatAssertion extends ReferenceAssertion<Float> {
     public final void isNotZero() {
         checkActualIsNotNull();
         if (getActual() == 0.0f) {
-            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NON_ZERO).build();
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_ZERO).build();
         }
     }
 
@@ -322,6 +322,16 @@ public class FloatAssertion extends ReferenceAssertion<Float> {
     }
 
     /**
+     * Check if the actual value is NOT positive infinity.
+     */
+    public final void isNotPositiveInfinity() {
+        checkActualIsNotNull();
+        if (getActual() == Float.POSITIVE_INFINITY) {
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_POSITIVE_INFINITY).addActual().build();
+        }
+    }
+
+    /**
      * Check if the actual value is negative infinity.
      */
     public final void isNegativeInfinity() {
@@ -332,12 +342,32 @@ public class FloatAssertion extends ReferenceAssertion<Float> {
     }
 
     /**
+     * Check if the actual value is NOT negative infinity.
+     */
+    public final void isNotNegativeInfinity() {
+        checkActualIsNotNull();
+        if (getActual() == Float.NEGATIVE_INFINITY) {
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_NEGATIVE_INFINITY).addActual().build();
+        }
+    }
+
+    /**
      * Check if the actual value is infinity.
      */
     public final void isInfinity() {
         checkActualIsNotNull();
         if (!getActual().isInfinite()) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_INFINITY).addActual().build();
+        }
+    }
+
+    /**
+     * Check if the actual value is NOT infinity.
+     */
+    public final void isNotInfinity() {
+        checkActualIsNotNull();
+        if (getActual().isInfinite()) {
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_INFINITY).addActual().build();
         }
     }
 
@@ -362,12 +392,22 @@ public class FloatAssertion extends ReferenceAssertion<Float> {
     }
 
     /**
-     * Check if the actual value is finite value.
+     * Check if the actual value is finite.
      */
     public final void isFinite() {
         checkActualIsNotNull();
         if (getActual().isNaN() || getActual().isInfinite()) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_FINITE).addActual().build();
+        }
+    }
+
+    /**
+     * Check if the actual value is NOT finite.
+     */
+    public final void isNotFinite() {
+        checkActualIsNotNull();
+        if (!getActual().isNaN() && !getActual().isInfinite()) {
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_FINITE).addActual().build();
         }
     }
 
