@@ -291,19 +291,27 @@ public final class Messages {
 
             public static final String IS_ZERO = "Actual value should be zero.";
 
-            public static final String IS_NON_ZERO = "Actual value should not be zero.";
+            public static final String IS_NOT_ZERO = "Actual value should not be zero.";
 
             public static final String IS_POSITIVE_INFINITY = "Actual value should be positive infinity.";
 
+            public static final String IS_NOT_POSITIVE_INFINITY = "Actual value should not be positive infinity.";
+
             public static final String IS_NEGATIVE_INFINITY = "Actual value should be negative infinity.";
 
+            public static final String IS_NOT_NEGATIVE_INFINITY = "Actual value should not be negative infinity.";
+
             public static final String IS_INFINITY = "Actual value should be infinity.";
+
+            public static final String IS_NOT_INFINITY = "Actual value should not be infinity.";
 
             public static final String IS_NAN = "Actual value should be NaN.";
 
             public static final String IS_NOT_NAN = "Actual value should not be NaN.";
 
             public static final String IS_FINITE = "Actual value should be finite.";
+
+            public static final String IS_NOT_FINITE = "Actual value should not be finite.";
 
             public static final String IS_ALPHABETIC = "Actual value should be the alphabetic symbol.";
 
