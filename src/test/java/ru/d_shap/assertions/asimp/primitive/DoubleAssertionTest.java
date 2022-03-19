@@ -1449,6 +1449,42 @@ public final class DoubleAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be zero.\n\tActual:<10.0>");
         }
+        try {
+            initialize(Raw.doubleAssertion(), Double.POSITIVE_INFINITY).isZero();
+            Assertions.fail("DoubleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should be zero.\n\tActual:<Infinity>");
+        }
+        try {
+            initialize(Raw.doubleAssertion(), Double.POSITIVE_INFINITY, "Message").isZero();
+            Assertions.fail("DoubleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be zero.\n\tActual:<Infinity>");
+        }
+        try {
+            initialize(Raw.doubleAssertion(), Double.NEGATIVE_INFINITY).isZero();
+            Assertions.fail("DoubleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should be zero.\n\tActual:<-Infinity>");
+        }
+        try {
+            initialize(Raw.doubleAssertion(), Double.NEGATIVE_INFINITY, "Message").isZero();
+            Assertions.fail("DoubleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be zero.\n\tActual:<-Infinity>");
+        }
+        try {
+            initialize(Raw.doubleAssertion(), Double.NaN).isZero();
+            Assertions.fail("DoubleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should be zero.\n\tActual:<NaN>");
+        }
+        try {
+            initialize(Raw.doubleAssertion(), Double.NaN, "Message").isZero();
+            Assertions.fail("DoubleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be zero.\n\tActual:<NaN>");
+        }
     }
 
     /**

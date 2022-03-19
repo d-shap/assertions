@@ -1425,6 +1425,42 @@ public final class FloatAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be zero.\n\tActual:<10.0f>");
         }
+        try {
+            initialize(Raw.floatAssertion(), Float.POSITIVE_INFINITY).isZero();
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should be zero.\n\tActual:<Infinity>");
+        }
+        try {
+            initialize(Raw.floatAssertion(), Float.POSITIVE_INFINITY, "Message").isZero();
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be zero.\n\tActual:<Infinity>");
+        }
+        try {
+            initialize(Raw.floatAssertion(), Float.NEGATIVE_INFINITY).isZero();
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should be zero.\n\tActual:<-Infinity>");
+        }
+        try {
+            initialize(Raw.floatAssertion(), Float.NEGATIVE_INFINITY, "Message").isZero();
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be zero.\n\tActual:<-Infinity>");
+        }
+        try {
+            initialize(Raw.floatAssertion(), Float.NaN).isZero();
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should be zero.\n\tActual:<NaN>");
+        }
+        try {
+            initialize(Raw.floatAssertion(), Float.NaN, "Message").isZero();
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be zero.\n\tActual:<NaN>");
+        }
     }
 
     /**
