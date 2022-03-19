@@ -1575,6 +1575,14 @@ public final class FloatAssertionTest extends AssertionTest {
      * {@link FloatAssertion} class test.
      */
     @Test
+    public void isNotPositiveInfinityTest() {
+        // TODO
+    }
+
+    /**
+     * {@link FloatAssertion} class test.
+     */
+    @Test
     public void isNegativeInfinityTest() {
         initialize(Raw.floatAssertion(), Float.NEGATIVE_INFINITY).isNegativeInfinity();
         float val = getZero();
@@ -1646,6 +1654,14 @@ public final class FloatAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be negative infinity.\n\tActual:<Infinity>");
         }
+    }
+
+    /**
+     * {@link FloatAssertion} class test.
+     */
+    @Test
+    public void isNotNegativeInfinityTest() {
+        // TODO
     }
 
     /**
@@ -1725,6 +1741,14 @@ public final class FloatAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be infinity.\n\tActual:<NaN>");
         }
+    }
+
+    /**
+     * {@link FloatAssertion} class test.
+     */
+    @Test
+    public void isNotInfinityTest() {
+        // TODO
     }
 
     /**
@@ -1922,6 +1946,14 @@ public final class FloatAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be finite.\n\tActual:<-Infinity>");
         }
+    }
+
+    /**
+     * {@link FloatAssertion} class test.
+     */
+    @Test
+    public void isNotFiniteTest() {
+        // TODO
     }
 
     /**

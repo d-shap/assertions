@@ -1599,6 +1599,14 @@ public final class DoubleAssertionTest extends AssertionTest {
      * {@link DoubleAssertion} class test.
      */
     @Test
+    public void isNotPositiveInfinityTest() {
+        // TODO
+    }
+
+    /**
+     * {@link DoubleAssertion} class test.
+     */
+    @Test
     public void isNegativeInfinityTest() {
         initialize(Raw.doubleAssertion(), Double.NEGATIVE_INFINITY).isNegativeInfinity();
         double val = getZero();
@@ -1670,6 +1678,14 @@ public final class DoubleAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be negative infinity.\n\tActual:<Infinity>");
         }
+    }
+
+    /**
+     * {@link DoubleAssertion} class test.
+     */
+    @Test
+    public void isNotNegativeInfinityTest() {
+        // TODO
     }
 
     /**
@@ -1749,6 +1765,14 @@ public final class DoubleAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be infinity.\n\tActual:<NaN>");
         }
+    }
+
+    /**
+     * {@link DoubleAssertion} class test.
+     */
+    @Test
+    public void isNotInfinityTest() {
+        // TODO
     }
 
     /**
@@ -1946,6 +1970,14 @@ public final class DoubleAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be finite.\n\tActual:<-Infinity>");
         }
+    }
+
+    /**
+     * {@link DoubleAssertion} class test.
+     */
+    @Test
+    public void isNotFiniteTest() {
+        // TODO
     }
 
     /**
