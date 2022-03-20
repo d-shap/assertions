@@ -126,8 +126,19 @@ public class DoubleAssertion extends ReferenceAssertion<Double> {
      */
     public final void isNotEqualTo(final double expected, final double delta) {
         checkActualIsNotNull();
-        if (Math.abs(expected - getActual()) <= delta) {
-            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_DIFFERENT).addActual().addDelta(delta).build();
+        if (Double.isNaN(expected)) {
+            isNotNaN();
+        } else if (Double.isInfinite(expected)) {
+            if (expected == Double.POSITIVE_INFINITY) {
+                isNotPositiveInfinity();
+            }
+            if (expected == Double.NEGATIVE_INFINITY) {
+                isNotNegativeInfinity();
+            }
+        } else {
+            if (!getActual().isNaN() && !getActual().isInfinite() && Math.abs(expected - getActual()) <= delta) {
+                throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_DIFFERENT).addActual().addDelta(delta).build();
+            }
         }
     }
 
