@@ -327,7 +327,7 @@ public class DoubleAssertion extends ReferenceAssertion<Double> {
     public final void isNotPositiveInfinity() {
         checkActualIsNotNull();
         if (getActual() == Double.POSITIVE_INFINITY) {
-            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_POSITIVE_INFINITY).addActual().build();
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_POSITIVE_INFINITY).build();
         }
     }
 
@@ -347,7 +347,7 @@ public class DoubleAssertion extends ReferenceAssertion<Double> {
     public final void isNotNegativeInfinity() {
         checkActualIsNotNull();
         if (getActual() == Double.NEGATIVE_INFINITY) {
-            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_NEGATIVE_INFINITY).addActual().build();
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_NEGATIVE_INFINITY).build();
         }
     }
 
