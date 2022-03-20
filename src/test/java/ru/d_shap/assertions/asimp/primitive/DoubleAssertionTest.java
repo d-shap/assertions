@@ -2127,7 +2127,64 @@ public final class DoubleAssertionTest extends AssertionTest {
      */
     @Test
     public void isNotFiniteTest() {
-        // TODO
+        initialize(Raw.doubleAssertion(), Double.NaN).isNotFinite();
+        initialize(Raw.doubleAssertion(), Double.POSITIVE_INFINITY).isNotFinite();
+        initialize(Raw.doubleAssertion(), Double.NEGATIVE_INFINITY).isNotFinite();
+
+        try {
+            Raw.doubleAssertion().isNotFinite();
+            Assertions.fail("DoubleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.doubleAssertion(), null).isNotFinite();
+            Assertions.fail("DoubleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.doubleAssertion(), null, "Message").isNotFinite();
+            Assertions.fail("DoubleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.doubleAssertion(), 0.0).isNotFinite();
+            Assertions.fail("DoubleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be finite.\n\tActual:<0.0>");
+        }
+        try {
+            initialize(Raw.doubleAssertion(), 0.0, "Message").isNotFinite();
+            Assertions.fail("DoubleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be finite.\n\tActual:<0.0>");
+        }
+        try {
+            initialize(Raw.doubleAssertion(), 10.0).isNotFinite();
+            Assertions.fail("DoubleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be finite.\n\tActual:<10.0>");
+        }
+        try {
+            initialize(Raw.doubleAssertion(), 10.0, "Message").isNotFinite();
+            Assertions.fail("DoubleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be finite.\n\tActual:<10.0>");
+        }
+        try {
+            initialize(Raw.doubleAssertion(), -10.0).isNotFinite();
+            Assertions.fail("DoubleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be finite.\n\tActual:<-10.0>");
+        }
+        try {
+            initialize(Raw.doubleAssertion(), -10.0, "Message").isNotFinite();
+            Assertions.fail("DoubleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be finite.\n\tActual:<-10.0>");
+        }
     }
 
     /**

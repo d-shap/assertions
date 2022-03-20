@@ -2103,7 +2103,64 @@ public final class FloatAssertionTest extends AssertionTest {
      */
     @Test
     public void isNotFiniteTest() {
-        // TODO
+        initialize(Raw.floatAssertion(), Float.NaN).isNotFinite();
+        initialize(Raw.floatAssertion(), Float.POSITIVE_INFINITY).isNotFinite();
+        initialize(Raw.floatAssertion(), Float.NEGATIVE_INFINITY).isNotFinite();
+
+        try {
+            Raw.floatAssertion().isNotFinite();
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.floatAssertion(), null).isNotFinite();
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.floatAssertion(), null, "Message").isNotFinite();
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.floatAssertion(), 0.0f).isNotFinite();
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be finite.\n\tActual:<0.0f>");
+        }
+        try {
+            initialize(Raw.floatAssertion(), 0.0f, "Message").isNotFinite();
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be finite.\n\tActual:<0.0f>");
+        }
+        try {
+            initialize(Raw.floatAssertion(), 10.0f).isNotFinite();
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be finite.\n\tActual:<10.0f>");
+        }
+        try {
+            initialize(Raw.floatAssertion(), 10.0f, "Message").isNotFinite();
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be finite.\n\tActual:<10.0f>");
+        }
+        try {
+            initialize(Raw.floatAssertion(), -10.0f).isNotFinite();
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be finite.\n\tActual:<-10.0f>");
+        }
+        try {
+            initialize(Raw.floatAssertion(), -10.0f, "Message").isNotFinite();
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be finite.\n\tActual:<-10.0f>");
+        }
     }
 
     /**
