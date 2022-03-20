@@ -226,6 +226,8 @@ public final class Messages {
 
             public static final String IS_NOT_EMPTY = "Argument should not be empty: {0}.";
 
+            public static final String IS_FINITE = "Argument should be finite: {0}.";
+
             public static final String IS_VALID = "Argument should be valid: {0}.";
 
             public static final String RESULT_IS_ALWAYS_TRUE = "The result is always true.";
