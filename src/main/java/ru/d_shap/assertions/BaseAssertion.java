@@ -294,6 +294,58 @@ public abstract class BaseAssertion<T> {
     }
 
     /**
+     * Check if the argument is finite.
+     *
+     * @param argument     the argument.
+     * @param argumentName the argument name.
+     */
+    protected final void checkArgumentIsFinite(final float argument, final String argumentName) {
+        checkInitialized();
+        if (Float.isNaN(argument) || Float.isInfinite(argument)) {
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_FINITE, argumentName).build();
+        }
+    }
+
+    /**
+     * Check if the argument is finite.
+     *
+     * @param argument     the argument.
+     * @param argumentName the argument name.
+     */
+    protected final void checkArgumentIsFinite(final Float argument, final String argumentName) {
+        checkArgumentIsNotNull(argument, argumentName);
+        if (argument.isNaN() || argument.isInfinite()) {
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_FINITE, argumentName).build();
+        }
+    }
+
+    /**
+     * Check if the argument is finite.
+     *
+     * @param argument     the argument.
+     * @param argumentName the argument name.
+     */
+    protected final void checkArgumentIsFinite(final double argument, final String argumentName) {
+        checkInitialized();
+        if (Double.isNaN(argument) || Double.isInfinite(argument)) {
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_FINITE, argumentName).build();
+        }
+    }
+
+    /**
+     * Check if the argument is finite.
+     *
+     * @param argument     the argument.
+     * @param argumentName the argument name.
+     */
+    protected final void checkArgumentIsFinite(final Double argument, final String argumentName) {
+        checkArgumentIsNotNull(argument, argumentName);
+        if (argument.isNaN() || argument.isInfinite()) {
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_FINITE, argumentName).build();
+        }
+    }
+
+    /**
      * Check if the argument is valid.
      *
      * @param valid        is the argument valid.
