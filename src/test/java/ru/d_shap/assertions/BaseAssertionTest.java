@@ -2035,6 +2035,38 @@ public final class BaseAssertionTest extends AssertionTest {
      * {@link BaseAssertion} class test.
      */
     @Test
+    public void checkArgumentIsFiniteFloatPrimitiveTest() {
+        // TODO
+    }
+
+    /**
+     * {@link BaseAssertion} class test.
+     */
+    @Test
+    public void checkArgumentIsFiniteFloatObjectTest() {
+        // TODO
+    }
+
+    /**
+     * {@link BaseAssertion} class test.
+     */
+    @Test
+    public void checkArgumentIsFiniteDoublePrimitiveTest() {
+        // TODO
+    }
+
+    /**
+     * {@link BaseAssertion} class test.
+     */
+    @Test
+    public void checkArgumentIsFiniteDoubleObjectTest() {
+        // TODO
+    }
+
+    /**
+     * {@link BaseAssertion} class test.
+     */
+    @Test
     public void checkArgumentIsValidBooleanTest() {
         createBaseAssertionObject(null).checkArgumentIsValid(true, null, null);
         createBaseAssertionObject(null).checkArgumentIsValid(true, "", null);
