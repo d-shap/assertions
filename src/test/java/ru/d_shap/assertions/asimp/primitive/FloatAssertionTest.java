@@ -865,13 +865,13 @@ public final class FloatAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
-            initialize(Raw.floatAssertion(), 1.0f).isGreaterThanOrEqualTo(Float.NaN);
+            initialize(Raw.floatAssertion(), 1.0f).isGreaterThanOrEqualTo(Float.valueOf("NaN"));
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should be finite: expected.");
         }
         try {
-            initialize(Raw.floatAssertion(), 1.0f, "Message").isGreaterThanOrEqualTo(Float.NaN);
+            initialize(Raw.floatAssertion(), 1.0f, "Message").isGreaterThanOrEqualTo(Float.valueOf("NaN"));
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be finite: expected.");
@@ -1031,13 +1031,13 @@ public final class FloatAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
-            initialize(Raw.floatAssertion(), 1.0f).isLessThan(Float.NaN);
+            initialize(Raw.floatAssertion(), 1.0f).isLessThan(Float.valueOf("NaN"));
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should be finite: expected.");
         }
         try {
-            initialize(Raw.floatAssertion(), 1.0f, "Message").isLessThan(Float.NaN);
+            initialize(Raw.floatAssertion(), 1.0f, "Message").isLessThan(Float.valueOf("NaN"));
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be finite: expected.");
@@ -1197,13 +1197,13 @@ public final class FloatAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
-            initialize(Raw.floatAssertion(), 1.0f).isLessThanOrEqualTo(Float.NaN);
+            initialize(Raw.floatAssertion(), 1.0f).isLessThanOrEqualTo(Float.valueOf("NaN"));
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should be finite: expected.");
         }
         try {
-            initialize(Raw.floatAssertion(), 1.0f, "Message").isLessThanOrEqualTo(Float.NaN);
+            initialize(Raw.floatAssertion(), 1.0f, "Message").isLessThanOrEqualTo(Float.valueOf("NaN"));
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be finite: expected.");
