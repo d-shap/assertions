@@ -153,7 +153,8 @@ public class FloatAssertion extends ReferenceAssertion<Float> {
      * @param expected the expected value.
      */
     public final void isGreaterThan(final float expected) {
-        checkActualIsNotNull();
+        isFinite();
+        checkArgumentIsFinite(expected, "expected");
         if (getActual() <= expected) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_GREATER).addActual().addExpected(expected).build();
         }
@@ -165,8 +166,8 @@ public class FloatAssertion extends ReferenceAssertion<Float> {
      * @param expected the expected value.
      */
     public final void isGreaterThan(final Float expected) {
-        checkActualIsNotNull();
-        checkArgumentIsNotNull(expected, "expected");
+        isFinite();
+        checkArgumentIsFinite(expected, "expected");
         isGreaterThan(expected.floatValue());
     }
 
@@ -176,7 +177,8 @@ public class FloatAssertion extends ReferenceAssertion<Float> {
      * @param expected the expected value.
      */
     public final void isGreaterThanOrEqualTo(final float expected) {
-        checkActualIsNotNull();
+        isFinite();
+        checkArgumentIsFinite(expected, "expected");
         if (getActual() < expected) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_GREATER_OR_EQUAL).addActual().addExpected(expected).build();
         }
@@ -188,8 +190,8 @@ public class FloatAssertion extends ReferenceAssertion<Float> {
      * @param expected the expected value.
      */
     public final void isGreaterThanOrEqualTo(final Float expected) {
-        checkActualIsNotNull();
-        checkArgumentIsNotNull(expected, "expected");
+        isFinite();
+        checkArgumentIsFinite(expected, "expected");
         isGreaterThanOrEqualTo(expected.floatValue());
     }
 
@@ -199,7 +201,8 @@ public class FloatAssertion extends ReferenceAssertion<Float> {
      * @param expected the expected value.
      */
     public final void isLessThan(final float expected) {
-        checkActualIsNotNull();
+        isFinite();
+        checkArgumentIsFinite(expected, "expected");
         if (getActual() >= expected) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_LESS).addActual().addExpected(expected).build();
         }
@@ -211,8 +214,8 @@ public class FloatAssertion extends ReferenceAssertion<Float> {
      * @param expected the expected value.
      */
     public final void isLessThan(final Float expected) {
-        checkActualIsNotNull();
-        checkArgumentIsNotNull(expected, "expected");
+        isFinite();
+        checkArgumentIsFinite(expected, "expected");
         isLessThan(expected.floatValue());
     }
 
@@ -222,7 +225,8 @@ public class FloatAssertion extends ReferenceAssertion<Float> {
      * @param expected the expected value.
      */
     public final void isLessThanOrEqualTo(final float expected) {
-        checkActualIsNotNull();
+        isFinite();
+        checkArgumentIsFinite(expected, "expected");
         if (getActual() > expected) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_LESS_OR_EQUAL).addActual().addExpected(expected).build();
         }
@@ -234,8 +238,8 @@ public class FloatAssertion extends ReferenceAssertion<Float> {
      * @param expected the expected value.
      */
     public final void isLessThanOrEqualTo(final Float expected) {
-        checkActualIsNotNull();
-        checkArgumentIsNotNull(expected, "expected");
+        isFinite();
+        checkArgumentIsFinite(expected, "expected");
         isLessThanOrEqualTo(expected.floatValue());
     }
 
@@ -246,7 +250,9 @@ public class FloatAssertion extends ReferenceAssertion<Float> {
      * @param expectedTo   the expected upper (exclusive) bound of the range.
      */
     public final void isInRange(final float expectedFrom, final float expectedTo) {
-        checkActualIsNotNull();
+        isFinite();
+        checkArgumentIsFinite(expectedFrom, "expectedFrom");
+        checkArgumentIsFinite(expectedTo, "expectedTo");
         if (getActual() < expectedFrom || getActual() >= expectedTo) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_IN_RANGE).addActual().addExpected(expectedFrom, expectedTo).build();
         }
@@ -259,9 +265,9 @@ public class FloatAssertion extends ReferenceAssertion<Float> {
      * @param expectedTo   the expected upper (exclusive) bound of the range.
      */
     public final void isInRange(final Float expectedFrom, final Float expectedTo) {
-        checkActualIsNotNull();
-        checkArgumentIsNotNull(expectedFrom, "expectedFrom");
-        checkArgumentIsNotNull(expectedTo, "expectedTo");
+        isFinite();
+        checkArgumentIsFinite(expectedFrom, "expectedFrom");
+        checkArgumentIsFinite(expectedTo, "expectedTo");
         isInRange(expectedFrom.floatValue(), expectedTo.floatValue());
     }
 
@@ -272,7 +278,9 @@ public class FloatAssertion extends ReferenceAssertion<Float> {
      * @param expectedTo   the expected upper (exclusive) bound of the range.
      */
     public final void isNotInRange(final float expectedFrom, final float expectedTo) {
-        checkActualIsNotNull();
+        isFinite();
+        checkArgumentIsFinite(expectedFrom, "expectedFrom");
+        checkArgumentIsFinite(expectedTo, "expectedTo");
         if (getActual() >= expectedFrom && getActual() < expectedTo) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_IN_RANGE).addActual().addExpected(expectedFrom, expectedTo).build();
         }
@@ -285,9 +293,9 @@ public class FloatAssertion extends ReferenceAssertion<Float> {
      * @param expectedTo   the expected upper (exclusive) bound of the range.
      */
     public final void isNotInRange(final Float expectedFrom, final Float expectedTo) {
-        checkActualIsNotNull();
-        checkArgumentIsNotNull(expectedFrom, "expectedFrom");
-        checkArgumentIsNotNull(expectedTo, "expectedTo");
+        isFinite();
+        checkArgumentIsFinite(expectedFrom, "expectedFrom");
+        checkArgumentIsFinite(expectedTo, "expectedTo");
         isNotInRange(expectedFrom.floatValue(), expectedTo.floatValue());
     }
 

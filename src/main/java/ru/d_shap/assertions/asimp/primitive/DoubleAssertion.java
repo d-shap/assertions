@@ -153,7 +153,8 @@ public class DoubleAssertion extends ReferenceAssertion<Double> {
      * @param expected the expected value.
      */
     public final void isGreaterThan(final double expected) {
-        checkActualIsNotNull();
+        isFinite();
+        checkArgumentIsFinite(expected, "expected");
         if (getActual() <= expected) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_GREATER).addActual().addExpected(expected).build();
         }
@@ -165,8 +166,8 @@ public class DoubleAssertion extends ReferenceAssertion<Double> {
      * @param expected the expected value.
      */
     public final void isGreaterThan(final Double expected) {
-        checkActualIsNotNull();
-        checkArgumentIsNotNull(expected, "expected");
+        isFinite();
+        checkArgumentIsFinite(expected, "expected");
         isGreaterThan(expected.doubleValue());
     }
 
@@ -176,7 +177,8 @@ public class DoubleAssertion extends ReferenceAssertion<Double> {
      * @param expected the expected value.
      */
     public final void isGreaterThanOrEqualTo(final double expected) {
-        checkActualIsNotNull();
+        isFinite();
+        checkArgumentIsFinite(expected, "expected");
         if (getActual() < expected) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_GREATER_OR_EQUAL).addActual().addExpected(expected).build();
         }
@@ -188,8 +190,8 @@ public class DoubleAssertion extends ReferenceAssertion<Double> {
      * @param expected the expected value.
      */
     public final void isGreaterThanOrEqualTo(final Double expected) {
-        checkActualIsNotNull();
-        checkArgumentIsNotNull(expected, "expected");
+        isFinite();
+        checkArgumentIsFinite(expected, "expected");
         isGreaterThanOrEqualTo(expected.doubleValue());
     }
 
@@ -199,7 +201,8 @@ public class DoubleAssertion extends ReferenceAssertion<Double> {
      * @param expected the expected value.
      */
     public final void isLessThan(final double expected) {
-        checkActualIsNotNull();
+        isFinite();
+        checkArgumentIsFinite(expected, "expected");
         if (getActual() >= expected) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_LESS).addActual().addExpected(expected).build();
         }
@@ -211,8 +214,8 @@ public class DoubleAssertion extends ReferenceAssertion<Double> {
      * @param expected the expected value.
      */
     public final void isLessThan(final Double expected) {
-        checkActualIsNotNull();
-        checkArgumentIsNotNull(expected, "expected");
+        isFinite();
+        checkArgumentIsFinite(expected, "expected");
         isLessThan(expected.doubleValue());
     }
 
@@ -222,7 +225,8 @@ public class DoubleAssertion extends ReferenceAssertion<Double> {
      * @param expected the expected value.
      */
     public final void isLessThanOrEqualTo(final double expected) {
-        checkActualIsNotNull();
+        isFinite();
+        checkArgumentIsFinite(expected, "expected");
         if (getActual() > expected) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_LESS_OR_EQUAL).addActual().addExpected(expected).build();
         }
@@ -234,8 +238,8 @@ public class DoubleAssertion extends ReferenceAssertion<Double> {
      * @param expected the expected value.
      */
     public final void isLessThanOrEqualTo(final Double expected) {
-        checkActualIsNotNull();
-        checkArgumentIsNotNull(expected, "expected");
+        isFinite();
+        checkArgumentIsFinite(expected, "expected");
         isLessThanOrEqualTo(expected.doubleValue());
     }
 
@@ -246,7 +250,9 @@ public class DoubleAssertion extends ReferenceAssertion<Double> {
      * @param expectedTo   the expected upper (exclusive) bound of the range.
      */
     public final void isInRange(final double expectedFrom, final double expectedTo) {
-        checkActualIsNotNull();
+        isFinite();
+        checkArgumentIsFinite(expectedFrom, "expectedFrom");
+        checkArgumentIsFinite(expectedTo, "expectedTo");
         if (getActual() < expectedFrom || getActual() >= expectedTo) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_IN_RANGE).addActual().addExpected(expectedFrom, expectedTo).build();
         }
@@ -259,9 +265,9 @@ public class DoubleAssertion extends ReferenceAssertion<Double> {
      * @param expectedTo   the expected upper (exclusive) bound of the range.
      */
     public final void isInRange(final Double expectedFrom, final Double expectedTo) {
-        checkActualIsNotNull();
-        checkArgumentIsNotNull(expectedFrom, "expectedFrom");
-        checkArgumentIsNotNull(expectedTo, "expectedTo");
+        isFinite();
+        checkArgumentIsFinite(expectedFrom, "expectedFrom");
+        checkArgumentIsFinite(expectedTo, "expectedTo");
         isInRange(expectedFrom.doubleValue(), expectedTo.doubleValue());
     }
 
@@ -272,7 +278,9 @@ public class DoubleAssertion extends ReferenceAssertion<Double> {
      * @param expectedTo   the expected upper (exclusive) bound of the range.
      */
     public final void isNotInRange(final double expectedFrom, final double expectedTo) {
-        checkActualIsNotNull();
+        isFinite();
+        checkArgumentIsFinite(expectedFrom, "expectedFrom");
+        checkArgumentIsFinite(expectedTo, "expectedTo");
         if (getActual() >= expectedFrom && getActual() < expectedTo) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_IN_RANGE).addActual().addExpected(expectedFrom, expectedTo).build();
         }
@@ -285,9 +293,9 @@ public class DoubleAssertion extends ReferenceAssertion<Double> {
      * @param expectedTo   the expected upper (exclusive) bound of the range.
      */
     public final void isNotInRange(final Double expectedFrom, final Double expectedTo) {
-        checkActualIsNotNull();
-        checkArgumentIsNotNull(expectedFrom, "expectedFrom");
-        checkArgumentIsNotNull(expectedTo, "expectedTo");
+        isFinite();
+        checkArgumentIsFinite(expectedFrom, "expectedFrom");
+        checkArgumentIsFinite(expectedTo, "expectedTo");
         isNotInRange(expectedFrom.doubleValue(), expectedTo.doubleValue());
     }
 
