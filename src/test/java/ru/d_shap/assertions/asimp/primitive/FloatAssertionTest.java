@@ -1250,6 +1250,42 @@ public final class FloatAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
+            initialize(Raw.floatAssertion(), Float.NaN).isInRange(1.0f, 1.0f);
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should be finite.\n\tActual:<NaN>");
+        }
+        try {
+            initialize(Raw.floatAssertion(), Float.NaN, "Message").isInRange(1.0f, 1.0f);
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be finite.\n\tActual:<NaN>");
+        }
+        try {
+            initialize(Raw.floatAssertion(), 1.0f).isInRange(Float.NaN, 1.0f);
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should be finite: expectedFrom.");
+        }
+        try {
+            initialize(Raw.floatAssertion(), 1.0f, "Message").isInRange(Float.NaN, 1.0f);
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be finite: expectedFrom.");
+        }
+        try {
+            initialize(Raw.floatAssertion(), 1.0f).isInRange(1.0f, Float.NaN);
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should be finite: expectedTo.");
+        }
+        try {
+            initialize(Raw.floatAssertion(), 1.0f, "Message").isInRange(1.0f, Float.NaN);
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be finite: expectedTo.");
+        }
+        try {
             initialize(Raw.floatAssertion(), 5.0f).isInRange(1.0f, 5.0f);
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
@@ -1315,6 +1351,18 @@ public final class FloatAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
+            initialize(Raw.floatAssertion(), Float.NaN).isInRange(Float.valueOf("1.0"), Float.valueOf("1.0"));
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should be finite.\n\tActual:<NaN>");
+        }
+        try {
+            initialize(Raw.floatAssertion(), Float.NaN, "Message").isInRange(Float.valueOf("1.0"), Float.valueOf("1.0"));
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be finite.\n\tActual:<NaN>");
+        }
+        try {
             initialize(Raw.floatAssertion(), null).isInRange(null, Float.valueOf("1.0"));
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
@@ -1339,6 +1387,18 @@ public final class FloatAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expectedFrom.");
         }
         try {
+            initialize(Raw.floatAssertion(), 1.0f).isInRange(Float.valueOf("NaN"), Float.valueOf("1.0"));
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should be finite: expectedFrom.");
+        }
+        try {
+            initialize(Raw.floatAssertion(), 1.0f, "Message").isInRange(Float.valueOf("NaN"), Float.valueOf("1.0"));
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be finite: expectedFrom.");
+        }
+        try {
             initialize(Raw.floatAssertion(), 1.0f).isInRange(null, null);
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
@@ -1361,6 +1421,18 @@ public final class FloatAssertionTest extends AssertionTest {
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expectedTo.");
+        }
+        try {
+            initialize(Raw.floatAssertion(), 1.0f).isInRange(Float.valueOf("1.0"), Float.valueOf("NaN"));
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should be finite: expectedTo.");
+        }
+        try {
+            initialize(Raw.floatAssertion(), 1.0f, "Message").isInRange(Float.valueOf("1.0"), Float.valueOf("NaN"));
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be finite: expectedTo.");
         }
         try {
             initialize(Raw.floatAssertion(), 5.0f).isInRange(Float.valueOf("1.0"), Float.valueOf("5.0"));
@@ -1428,6 +1500,42 @@ public final class FloatAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
+            initialize(Raw.floatAssertion(), Float.NaN).isNotInRange(1.0f, 1.0f);
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should be finite.\n\tActual:<NaN>");
+        }
+        try {
+            initialize(Raw.floatAssertion(), Float.NaN, "Message").isNotInRange(1.0f, 1.0f);
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be finite.\n\tActual:<NaN>");
+        }
+        try {
+            initialize(Raw.floatAssertion(), 1.0f).isNotInRange(Float.NaN, 1.0f);
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should be finite: expectedFrom.");
+        }
+        try {
+            initialize(Raw.floatAssertion(), 1.0f, "Message").isNotInRange(Float.NaN, 1.0f);
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be finite: expectedFrom.");
+        }
+        try {
+            initialize(Raw.floatAssertion(), 1.0f).isNotInRange(1.0f, Float.NaN);
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should be finite: expectedTo.");
+        }
+        try {
+            initialize(Raw.floatAssertion(), 1.0f, "Message").isNotInRange(1.0f, Float.NaN);
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be finite: expectedTo.");
+        }
+        try {
             initialize(Raw.floatAssertion(), 5.0f).isNotInRange(4.0f, 6.0f);
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
@@ -1493,6 +1601,18 @@ public final class FloatAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
+            initialize(Raw.floatAssertion(), Float.NaN).isNotInRange(Float.valueOf("1.0"), Float.valueOf("1.0"));
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should be finite.\n\tActual:<NaN>");
+        }
+        try {
+            initialize(Raw.floatAssertion(), Float.NaN, "Message").isNotInRange(Float.valueOf("1.0"), Float.valueOf("1.0"));
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be finite.\n\tActual:<NaN>");
+        }
+        try {
             initialize(Raw.floatAssertion(), null).isNotInRange(null, Float.valueOf("1.0"));
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
@@ -1517,6 +1637,18 @@ public final class FloatAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expectedFrom.");
         }
         try {
+            initialize(Raw.floatAssertion(), 1.0f).isNotInRange(Float.valueOf("NaN"), Float.valueOf("1.0"));
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should be finite: expectedFrom.");
+        }
+        try {
+            initialize(Raw.floatAssertion(), 1.0f, "Message").isNotInRange(Float.valueOf("NaN"), Float.valueOf("1.0"));
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be finite: expectedFrom.");
+        }
+        try {
             initialize(Raw.floatAssertion(), 1.0f).isNotInRange(null, null);
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
@@ -1539,6 +1671,18 @@ public final class FloatAssertionTest extends AssertionTest {
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expectedTo.");
+        }
+        try {
+            initialize(Raw.floatAssertion(), 1.0f).isNotInRange(Float.valueOf("1.0"), Float.valueOf("NaN"));
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should be finite: expectedTo.");
+        }
+        try {
+            initialize(Raw.floatAssertion(), 1.0f, "Message").isNotInRange(Float.valueOf("1.0"), Float.valueOf("NaN"));
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be finite: expectedTo.");
         }
         try {
             initialize(Raw.floatAssertion(), 5.0f).isNotInRange(Float.valueOf("4.0"), Float.valueOf("6.0"));
