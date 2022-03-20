@@ -1852,7 +1852,53 @@ public final class FloatAssertionTest extends AssertionTest {
      */
     @Test
     public void isNotInfinityTest() {
-        // TODO
+        initialize(Raw.floatAssertion(), 0.0f).isNotInfinity();
+        initialize(Raw.floatAssertion(), 10.0f).isNotInfinity();
+        initialize(Raw.floatAssertion(), -10.0f).isNotInfinity();
+        initialize(Raw.floatAssertion(), Float.NaN).isNotInfinity();
+
+        try {
+            Raw.floatAssertion().isNotInfinity();
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.floatAssertion(), null).isNotInfinity();
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.floatAssertion(), null, "Message").isNotInfinity();
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.floatAssertion(), Float.POSITIVE_INFINITY).isNotInfinity();
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be infinity.\n\tActual:<Infinity>");
+        }
+        try {
+            initialize(Raw.floatAssertion(), Float.POSITIVE_INFINITY, "Message").isNotInfinity();
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be infinity.\n\tActual:<Infinity>");
+        }
+        try {
+            initialize(Raw.floatAssertion(), Float.NEGATIVE_INFINITY).isNotInfinity();
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be infinity.\n\tActual:<-Infinity>");
+        }
+        try {
+            initialize(Raw.floatAssertion(), Float.NEGATIVE_INFINITY, "Message").isNotInfinity();
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be infinity.\n\tActual:<-Infinity>");
+        }
     }
 
     /**

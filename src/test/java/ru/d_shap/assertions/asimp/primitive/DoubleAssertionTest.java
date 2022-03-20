@@ -1876,7 +1876,53 @@ public final class DoubleAssertionTest extends AssertionTest {
      */
     @Test
     public void isNotInfinityTest() {
-        // TODO
+        initialize(Raw.doubleAssertion(), 0.0).isNotInfinity();
+        initialize(Raw.doubleAssertion(), 10.0).isNotInfinity();
+        initialize(Raw.doubleAssertion(), -10.0).isNotInfinity();
+        initialize(Raw.doubleAssertion(), Double.NaN).isNotInfinity();
+
+        try {
+            Raw.doubleAssertion().isNotInfinity();
+            Assertions.fail("DoubleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.doubleAssertion(), null).isNotInfinity();
+            Assertions.fail("DoubleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.doubleAssertion(), null, "Message").isNotInfinity();
+            Assertions.fail("DoubleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.doubleAssertion(), Double.POSITIVE_INFINITY).isNotInfinity();
+            Assertions.fail("DoubleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be infinity.\n\tActual:<Infinity>");
+        }
+        try {
+            initialize(Raw.doubleAssertion(), Double.POSITIVE_INFINITY, "Message").isNotInfinity();
+            Assertions.fail("DoubleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be infinity.\n\tActual:<Infinity>");
+        }
+        try {
+            initialize(Raw.doubleAssertion(), Double.NEGATIVE_INFINITY).isNotInfinity();
+            Assertions.fail("DoubleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be infinity.\n\tActual:<-Infinity>");
+        }
+        try {
+            initialize(Raw.doubleAssertion(), Double.NEGATIVE_INFINITY, "Message").isNotInfinity();
+            Assertions.fail("DoubleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be infinity.\n\tActual:<-Infinity>");
+        }
     }
 
     /**
