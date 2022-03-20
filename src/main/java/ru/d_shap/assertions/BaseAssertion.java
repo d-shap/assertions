@@ -302,7 +302,7 @@ public abstract class BaseAssertion<T> {
     protected final void checkArgumentIsFinite(final float argument, final String argumentName) {
         checkInitialized();
         if (Float.isNaN(argument) || Float.isInfinite(argument)) {
-            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_FINITE, argumentName).build();
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Argument.IS_FINITE, argumentName).build();
         }
     }
 
@@ -315,7 +315,7 @@ public abstract class BaseAssertion<T> {
     protected final void checkArgumentIsFinite(final Float argument, final String argumentName) {
         checkArgumentIsNotNull(argument, argumentName);
         if (argument.isNaN() || argument.isInfinite()) {
-            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_FINITE, argumentName).build();
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Argument.IS_FINITE, argumentName).build();
         }
     }
 
@@ -328,7 +328,7 @@ public abstract class BaseAssertion<T> {
     protected final void checkArgumentIsFinite(final double argument, final String argumentName) {
         checkInitialized();
         if (Double.isNaN(argument) || Double.isInfinite(argument)) {
-            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_FINITE, argumentName).build();
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Argument.IS_FINITE, argumentName).build();
         }
     }
 
@@ -341,7 +341,7 @@ public abstract class BaseAssertion<T> {
     protected final void checkArgumentIsFinite(final Double argument, final String argumentName) {
         checkArgumentIsNotNull(argument, argumentName);
         if (argument.isNaN() || argument.isInfinite()) {
-            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_FINITE, argumentName).build();
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Argument.IS_FINITE, argumentName).build();
         }
     }
 
