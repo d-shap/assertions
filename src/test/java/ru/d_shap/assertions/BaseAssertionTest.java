@@ -2036,7 +2036,69 @@ public final class BaseAssertionTest extends AssertionTest {
      */
     @Test
     public void checkArgumentIsFiniteFloatPrimitiveTest() {
-        // TODO
+        createBaseAssertionObject(null).checkArgumentIsFinite(0.0f, "");
+        createBaseAssertionObject(null).checkArgumentIsFinite(0.0f, "arg");
+
+        createBaseAssertionObject(null).checkArgumentIsFinite(10.0f, "");
+        createBaseAssertionObject(null).checkArgumentIsFinite(10.0f, "arg");
+
+        createBaseAssertionObject(null).checkArgumentIsFinite(-10.0f, "");
+        createBaseAssertionObject(null).checkArgumentIsFinite(-10.0f, "arg");
+
+        try {
+            createBaseAssertionObject().checkArgumentIsFinite(0.0f, "");
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            createBaseAssertionObject(new Object()).checkArgumentIsFinite(Float.NaN, null);
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should be finite: <NULL>.");
+        }
+        try {
+            createBaseAssertionObject(new Object(), "Message").checkArgumentIsFinite(Float.NaN, null);
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be finite: <NULL>.");
+        }
+        try {
+            createBaseAssertionObject(new Object()).checkArgumentIsFinite(Float.NaN, "arg");
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should be finite: arg.");
+        }
+        try {
+            createBaseAssertionObject(new Object(), "Message").checkArgumentIsFinite(Float.NaN, "arg");
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be finite: arg.");
+        }
+        try {
+            createBaseAssertionObject(new Object()).checkArgumentIsFinite(Float.POSITIVE_INFINITY, "arg");
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should be finite: arg.");
+        }
+        try {
+            createBaseAssertionObject(new Object(), "Message").checkArgumentIsFinite(Float.POSITIVE_INFINITY, "arg");
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be finite: arg.");
+        }
+        try {
+            createBaseAssertionObject(new Object()).checkArgumentIsFinite(Float.NEGATIVE_INFINITY, "arg");
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should be finite: arg.");
+        }
+        try {
+            createBaseAssertionObject(new Object(), "Message").checkArgumentIsFinite(Float.NEGATIVE_INFINITY, "arg");
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be finite: arg.");
+        }
     }
 
     /**
@@ -2044,7 +2106,93 @@ public final class BaseAssertionTest extends AssertionTest {
      */
     @Test
     public void checkArgumentIsFiniteFloatObjectTest() {
-        // TODO
+        createBaseAssertionObject(null).checkArgumentIsFinite(Float.valueOf("0.0"), "");
+        createBaseAssertionObject(null).checkArgumentIsFinite(Float.valueOf("0.0"), "arg");
+
+        createBaseAssertionObject(null).checkArgumentIsFinite(Float.valueOf("10.0"), "");
+        createBaseAssertionObject(null).checkArgumentIsFinite(Float.valueOf("10.0"), "arg");
+
+        createBaseAssertionObject(null).checkArgumentIsFinite(Float.valueOf("-10.0"), "");
+        createBaseAssertionObject(null).checkArgumentIsFinite(Float.valueOf("-10.0"), "arg");
+
+        try {
+            createBaseAssertionObject().checkArgumentIsFinite(Float.valueOf("0.0"), "");
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            createBaseAssertionObject(new Object()).checkArgumentIsFinite((Float) null, null);
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: <NULL>.");
+        }
+        try {
+            createBaseAssertionObject(new Object(), "Message").checkArgumentIsFinite((Float) null, null);
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: <NULL>.");
+        }
+        try {
+            createBaseAssertionObject(new Object()).checkArgumentIsFinite((Float) null, "arg");
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: arg.");
+        }
+        try {
+            createBaseAssertionObject(new Object(), "Message").checkArgumentIsFinite((Float) null, "arg");
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: arg.");
+        }
+        try {
+            createBaseAssertionObject(new Object()).checkArgumentIsFinite(Float.valueOf("NaN"), null);
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should be finite: <NULL>.");
+        }
+        try {
+            createBaseAssertionObject(new Object(), "Message").checkArgumentIsFinite(Float.valueOf("NaN"), null);
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be finite: <NULL>.");
+        }
+        try {
+            createBaseAssertionObject(new Object()).checkArgumentIsFinite(Float.valueOf("NaN"), "arg");
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should be finite: arg.");
+        }
+        try {
+            createBaseAssertionObject(new Object(), "Message").checkArgumentIsFinite(Float.valueOf("NaN"), "arg");
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be finite: arg.");
+        }
+        try {
+            createBaseAssertionObject(new Object()).checkArgumentIsFinite(Float.valueOf("Infinity"), "arg");
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should be finite: arg.");
+        }
+        try {
+            createBaseAssertionObject(new Object(), "Message").checkArgumentIsFinite(Float.valueOf("Infinity"), "arg");
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be finite: arg.");
+        }
+        try {
+            createBaseAssertionObject(new Object()).checkArgumentIsFinite(Float.valueOf("-Infinity"), "arg");
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should be finite: arg.");
+        }
+        try {
+            createBaseAssertionObject(new Object(), "Message").checkArgumentIsFinite(Float.valueOf("-Infinity"), "arg");
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be finite: arg.");
+        }
     }
 
     /**
