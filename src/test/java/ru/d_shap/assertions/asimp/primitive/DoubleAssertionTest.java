@@ -1636,7 +1636,41 @@ public final class DoubleAssertionTest extends AssertionTest {
      */
     @Test
     public void isNotPositiveInfinityTest() {
-        // TODO
+        initialize(Raw.doubleAssertion(), 0.0).isNotPositiveInfinity();
+        initialize(Raw.doubleAssertion(), 10.0).isNotPositiveInfinity();
+        initialize(Raw.doubleAssertion(), Double.NaN).isNotPositiveInfinity();
+        initialize(Raw.doubleAssertion(), Double.NEGATIVE_INFINITY).isNotPositiveInfinity();
+
+        try {
+            Raw.doubleAssertion().isNotPositiveInfinity();
+            Assertions.fail("DoubleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.doubleAssertion(), null).isNotPositiveInfinity();
+            Assertions.fail("DoubleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.doubleAssertion(), null, "Message").isNotPositiveInfinity();
+            Assertions.fail("DoubleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.doubleAssertion(), Double.POSITIVE_INFINITY).isNotPositiveInfinity();
+            Assertions.fail("DoubleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be positive infinity.");
+        }
+        try {
+            initialize(Raw.doubleAssertion(), Double.POSITIVE_INFINITY, "Message").isNotPositiveInfinity();
+            Assertions.fail("DoubleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be positive infinity.");
+        }
     }
 
     /**
@@ -1721,7 +1755,41 @@ public final class DoubleAssertionTest extends AssertionTest {
      */
     @Test
     public void isNotNegativeInfinityTest() {
-        // TODO
+        initialize(Raw.doubleAssertion(), 0.0).isNotNegativeInfinity();
+        initialize(Raw.doubleAssertion(), 10.0).isNotNegativeInfinity();
+        initialize(Raw.doubleAssertion(), Double.NaN).isNotNegativeInfinity();
+        initialize(Raw.doubleAssertion(), Double.POSITIVE_INFINITY).isNotNegativeInfinity();
+
+        try {
+            Raw.doubleAssertion().isNotNegativeInfinity();
+            Assertions.fail("DoubleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.doubleAssertion(), null).isNotNegativeInfinity();
+            Assertions.fail("DoubleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.doubleAssertion(), null, "Message").isNotNegativeInfinity();
+            Assertions.fail("DoubleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.doubleAssertion(), Double.NEGATIVE_INFINITY).isNotNegativeInfinity();
+            Assertions.fail("DoubleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be negative infinity.");
+        }
+        try {
+            initialize(Raw.doubleAssertion(), Double.NEGATIVE_INFINITY, "Message").isNotNegativeInfinity();
+            Assertions.fail("DoubleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be negative infinity.");
+        }
     }
 
     /**
