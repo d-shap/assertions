@@ -102,6 +102,24 @@ public final class DoubleAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
+            initialize(Raw.doubleAssertion(), 1.0).isEqualTo(Float.NaN);
+            Assertions.fail("doubleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should be NaN.\n\tActual:<1.0>");
+        }
+        try {
+            initialize(Raw.doubleAssertion(), 1.0).isEqualTo(Float.POSITIVE_INFINITY);
+            Assertions.fail("doubleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should be positive infinity.\n\tActual:<1.0>");
+        }
+        try {
+            initialize(Raw.doubleAssertion(), 1.0).isEqualTo(Float.NEGATIVE_INFINITY);
+            Assertions.fail("doubleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should be negative infinity.\n\tActual:<1.0>");
+        }
+        try {
             initialize(Raw.doubleAssertion(), Double.NaN).isEqualTo(1.0);
             Assertions.fail("DoubleAssertion test fail");
         } catch (AssertionError ex) {
@@ -240,6 +258,24 @@ public final class DoubleAssertionTest extends AssertionTest {
             Assertions.fail("DoubleAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be null.\n\tActual:<1.0>");
+        }
+        try {
+            initialize(Raw.doubleAssertion(), 1.0).isEqualTo(Double.valueOf("NaN"));
+            Assertions.fail("doubleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should be NaN.\n\tActual:<1.0>");
+        }
+        try {
+            initialize(Raw.doubleAssertion(), 1.0).isEqualTo(Double.valueOf("Infinity"));
+            Assertions.fail("doubleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should be positive infinity.\n\tActual:<1.0>");
+        }
+        try {
+            initialize(Raw.doubleAssertion(), 1.0).isEqualTo(Double.valueOf("-Infinity"));
+            Assertions.fail("doubleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should be negative infinity.\n\tActual:<1.0>");
         }
         try {
             initialize(Raw.doubleAssertion(), Double.NaN).isEqualTo(null);
