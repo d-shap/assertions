@@ -68,16 +68,12 @@ public class FloatAssertion extends ReferenceAssertion<Float> {
      * @param delta    maximum delta between the actual value and the expected value.
      */
     public final void isEqualTo(final float expected, final float delta) {
-        checkActualIsNotNull();
         if (Float.isNaN(expected)) {
             isNaN();
-        } else if (Float.isInfinite(expected)) {
-            if (expected == Float.POSITIVE_INFINITY) {
-                isPositiveInfinity();
-            }
-            if (expected == Float.NEGATIVE_INFINITY) {
-                isNegativeInfinity();
-            }
+        } else if (expected == Float.POSITIVE_INFINITY) {
+            isPositiveInfinity();
+        } else if (expected == Float.NEGATIVE_INFINITY) {
+            isNegativeInfinity();
         } else {
             isFinite();
             if (Math.abs(expected - getActual()) > delta) {
@@ -154,9 +150,7 @@ public class FloatAssertion extends ReferenceAssertion<Float> {
         if (expected == null) {
             isNotNull();
         } else {
-            if (getActual() != null) {
-                isNotEqualTo(expected.floatValue(), delta);
-            }
+            isNotEqualTo(expected.floatValue(), delta);
         }
     }
 

@@ -72,8 +72,7 @@ public class LongAssertion extends ReferenceAssertion<Long> {
      * @param expected the expected value.
      */
     public final void isNotEqualTo(final long expected) {
-        checkActualIsNotNull();
-        if (getActual() == expected) {
+        if (getActual() != null && getActual() == expected) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_DIFFERENT).addActual().build();
         }
     }
@@ -87,9 +86,7 @@ public class LongAssertion extends ReferenceAssertion<Long> {
         if (expected == null) {
             isNotNull();
         } else {
-            if (getActual() != null) {
-                isNotEqualTo(expected.longValue());
-            }
+            isNotEqualTo(expected.longValue());
         }
     }
 

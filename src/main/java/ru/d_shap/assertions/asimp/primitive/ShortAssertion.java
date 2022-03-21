@@ -72,8 +72,7 @@ public class ShortAssertion extends ReferenceAssertion<Short> {
      * @param expected the expected value.
      */
     public final void isNotEqualTo(final int expected) {
-        checkActualIsNotNull();
-        if (getActual() == expected) {
+        if (getActual() != null && getActual() == expected) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_DIFFERENT).addActual().build();
         }
     }
@@ -87,9 +86,7 @@ public class ShortAssertion extends ReferenceAssertion<Short> {
         if (expected == null) {
             isNotNull();
         } else {
-            if (getActual() != null) {
-                isNotEqualTo(expected.shortValue());
-            }
+            isNotEqualTo(expected.shortValue());
         }
     }
 

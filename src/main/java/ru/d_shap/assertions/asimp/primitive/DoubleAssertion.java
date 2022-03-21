@@ -68,16 +68,12 @@ public class DoubleAssertion extends ReferenceAssertion<Double> {
      * @param delta    maximum delta between the actual value and the expected value.
      */
     public final void isEqualTo(final double expected, final double delta) {
-        checkActualIsNotNull();
         if (Double.isNaN(expected)) {
             isNaN();
-        } else if (Double.isInfinite(expected)) {
-            if (expected == Double.POSITIVE_INFINITY) {
-                isPositiveInfinity();
-            }
-            if (expected == Double.NEGATIVE_INFINITY) {
-                isNegativeInfinity();
-            }
+        } else if (expected == Double.POSITIVE_INFINITY) {
+            isPositiveInfinity();
+        } else if (expected == Double.NEGATIVE_INFINITY) {
+            isNegativeInfinity();
         } else {
             isFinite();
             if (Math.abs(expected - getActual()) > delta) {
@@ -154,9 +150,7 @@ public class DoubleAssertion extends ReferenceAssertion<Double> {
         if (expected == null) {
             isNotNull();
         } else {
-            if (getActual() != null) {
-                isNotEqualTo(expected.doubleValue(), delta);
-            }
+            isNotEqualTo(expected.doubleValue(), delta);
         }
     }
 
