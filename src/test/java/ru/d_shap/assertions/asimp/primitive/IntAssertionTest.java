@@ -162,6 +162,7 @@ public final class IntAssertionTest extends AssertionTest {
      */
     @Test
     public void isNotEqualToPrimitiveTest() {
+        initialize(Raw.intAssertion(), null).isNotEqualTo(1);
         initialize(Raw.intAssertion(), 10).isNotEqualTo(15);
         initialize(Raw.intAssertion(), 75).isNotEqualTo(76);
         initialize(Raw.intAssertion(), 236).isNotEqualTo(143);
@@ -172,18 +173,6 @@ public final class IntAssertionTest extends AssertionTest {
             Assertions.fail("IntAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
-        }
-        try {
-            initialize(Raw.intAssertion(), null).isNotEqualTo(1);
-            Assertions.fail("IntAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
-        }
-        try {
-            initialize(Raw.intAssertion(), null, "Message").isNotEqualTo(1);
-            Assertions.fail("IntAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.intAssertion(), 10).isNotEqualTo(10);
@@ -204,8 +193,8 @@ public final class IntAssertionTest extends AssertionTest {
      */
     @Test
     public void isNotEqualToObjectTest() {
-        initialize(Raw.intAssertion(), null).isNotEqualTo(Integer.valueOf("5"));
-        initialize(Raw.intAssertion(), 5).isNotEqualTo(null);
+        initialize(Raw.intAssertion(), null).isNotEqualTo(Integer.valueOf("1"));
+        initialize(Raw.intAssertion(), 1).isNotEqualTo(null);
         initialize(Raw.intAssertion(), 10).isNotEqualTo(Integer.valueOf("15"));
         initialize(Raw.intAssertion(), 75).isNotEqualTo(Integer.valueOf("76"));
         initialize(Raw.intAssertion(), 236).isNotEqualTo(Integer.valueOf("143"));

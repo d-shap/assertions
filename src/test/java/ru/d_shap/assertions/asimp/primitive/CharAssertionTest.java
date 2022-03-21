@@ -198,6 +198,7 @@ public final class CharAssertionTest extends AssertionTest {
      */
     @Test
     public void isNotEqualToPrimitiveTest() {
+        initialize(Raw.charAssertion(), null).isNotEqualTo('1');
         initialize(Raw.charAssertion(), 'a').isNotEqualTo('b');
         initialize(Raw.charAssertion(), 'Z').isNotEqualTo('X');
         initialize(Raw.charAssertion(), '1').isNotEqualTo('2');
@@ -208,18 +209,6 @@ public final class CharAssertionTest extends AssertionTest {
             Assertions.fail("CharAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
-        }
-        try {
-            initialize(Raw.charAssertion(), null).isNotEqualTo('1');
-            Assertions.fail("CharAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
-        }
-        try {
-            initialize(Raw.charAssertion(), null, "Message").isNotEqualTo('1');
-            Assertions.fail("CharAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.charAssertion(), 'a').isNotEqualTo('a');
@@ -240,8 +229,8 @@ public final class CharAssertionTest extends AssertionTest {
      */
     @Test
     public void isNotEqualToObjectTest() {
-        initialize(Raw.charAssertion(), null).isNotEqualTo(Character.valueOf('5'));
-        initialize(Raw.charAssertion(), '5').isNotEqualTo(null);
+        initialize(Raw.charAssertion(), null).isNotEqualTo(Character.valueOf('1'));
+        initialize(Raw.charAssertion(), '1').isNotEqualTo(null);
         initialize(Raw.charAssertion(), 'a').isNotEqualTo(Character.valueOf('b'));
         initialize(Raw.charAssertion(), 'Z').isNotEqualTo(Character.valueOf('X'));
         initialize(Raw.charAssertion(), '1').isNotEqualTo(Character.valueOf('2'));

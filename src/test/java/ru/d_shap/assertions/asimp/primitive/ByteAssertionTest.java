@@ -172,6 +172,7 @@ public final class ByteAssertionTest extends AssertionTest {
      */
     @Test
     public void isNotEqualToPrimitiveTest() {
+        initialize(Raw.byteAssertion(), null).isNotEqualTo(1);
         initialize(Raw.byteAssertion(), (byte) 10).isNotEqualTo(15);
         initialize(Raw.byteAssertion(), (byte) 75).isNotEqualTo(76);
         initialize(Raw.byteAssertion(), (byte) 236).isNotEqualTo(143);
@@ -182,18 +183,6 @@ public final class ByteAssertionTest extends AssertionTest {
             Assertions.fail("ByteAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
-        }
-        try {
-            initialize(Raw.byteAssertion(), null).isNotEqualTo(1);
-            Assertions.fail("ByteAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
-        }
-        try {
-            initialize(Raw.byteAssertion(), null, "Message").isNotEqualTo(1);
-            Assertions.fail("ByteAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.byteAssertion(), (byte) 10).isNotEqualTo(10);
@@ -214,8 +203,8 @@ public final class ByteAssertionTest extends AssertionTest {
      */
     @Test
     public void isNotEqualToObjectTest() {
-        initialize(Raw.byteAssertion(), null).isNotEqualTo(Byte.valueOf("5"));
-        initialize(Raw.byteAssertion(), (byte) 5).isNotEqualTo(null);
+        initialize(Raw.byteAssertion(), null).isNotEqualTo(Byte.valueOf("1"));
+        initialize(Raw.byteAssertion(), (byte) 1).isNotEqualTo(null);
         initialize(Raw.byteAssertion(), (byte) 10).isNotEqualTo(Byte.valueOf("15"));
         initialize(Raw.byteAssertion(), (byte) 75).isNotEqualTo(Byte.valueOf("76"));
 

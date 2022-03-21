@@ -162,6 +162,7 @@ public final class LongAssertionTest extends AssertionTest {
      */
     @Test
     public void isNotEqualToPrimitiveTest() {
+        initialize(Raw.longAssertion(), null).isNotEqualTo(1);
         initialize(Raw.longAssertion(), 10L).isNotEqualTo(15L);
         initialize(Raw.longAssertion(), 75L).isNotEqualTo(76L);
         initialize(Raw.longAssertion(), 236L).isNotEqualTo(143L);
@@ -172,18 +173,6 @@ public final class LongAssertionTest extends AssertionTest {
             Assertions.fail("LongAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
-        }
-        try {
-            initialize(Raw.longAssertion(), null).isNotEqualTo(1L);
-            Assertions.fail("LongAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
-        }
-        try {
-            initialize(Raw.longAssertion(), null, "Message").isNotEqualTo(1L);
-            Assertions.fail("LongAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.longAssertion(), 10L).isNotEqualTo(10L);
@@ -204,8 +193,8 @@ public final class LongAssertionTest extends AssertionTest {
      */
     @Test
     public void isNotEqualToObjectTest() {
-        initialize(Raw.longAssertion(), null).isNotEqualTo(Long.valueOf("5"));
-        initialize(Raw.longAssertion(), 5L).isNotEqualTo(null);
+        initialize(Raw.longAssertion(), null).isNotEqualTo(Long.valueOf("1"));
+        initialize(Raw.longAssertion(), 1L).isNotEqualTo(null);
         initialize(Raw.longAssertion(), 10L).isNotEqualTo(Long.valueOf("15"));
         initialize(Raw.longAssertion(), 75L).isNotEqualTo(Long.valueOf("76"));
         initialize(Raw.longAssertion(), 236L).isNotEqualTo(Long.valueOf("143"));

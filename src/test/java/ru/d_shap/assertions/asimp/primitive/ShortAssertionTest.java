@@ -174,6 +174,7 @@ public final class ShortAssertionTest extends AssertionTest {
      */
     @Test
     public void isNotEqualToPrimitiveTest() {
+        initialize(Raw.shortAssertion(), null).isNotEqualTo(1);
         initialize(Raw.shortAssertion(), (short) 10).isNotEqualTo(15);
         initialize(Raw.shortAssertion(), (short) 75).isNotEqualTo(76);
         initialize(Raw.shortAssertion(), (short) 236).isNotEqualTo(143);
@@ -184,18 +185,6 @@ public final class ShortAssertionTest extends AssertionTest {
             Assertions.fail("ShortAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
-        }
-        try {
-            initialize(Raw.shortAssertion(), null).isNotEqualTo(1);
-            Assertions.fail("ShortAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
-        }
-        try {
-            initialize(Raw.shortAssertion(), null, "Message").isNotEqualTo(1);
-            Assertions.fail("ShortAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.shortAssertion(), (short) 10).isNotEqualTo(10);
@@ -216,8 +205,8 @@ public final class ShortAssertionTest extends AssertionTest {
      */
     @Test
     public void isNotEqualToObjectTest() {
-        initialize(Raw.shortAssertion(), null).isNotEqualTo(Short.valueOf("5"));
-        initialize(Raw.shortAssertion(), (short) 5).isNotEqualTo(null);
+        initialize(Raw.shortAssertion(), null).isNotEqualTo(Short.valueOf("1"));
+        initialize(Raw.shortAssertion(), (short) 1).isNotEqualTo(null);
         initialize(Raw.shortAssertion(), (short) 10).isNotEqualTo(Short.valueOf("15"));
         initialize(Raw.shortAssertion(), (short) 75).isNotEqualTo(Short.valueOf("76"));
         initialize(Raw.shortAssertion(), (short) 236).isNotEqualTo(Short.valueOf("143"));
