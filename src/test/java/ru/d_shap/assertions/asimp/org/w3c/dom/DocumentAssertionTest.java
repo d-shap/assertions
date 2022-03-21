@@ -281,8 +281,8 @@ public final class DocumentAssertionTest extends AssertionTest {
      */
     @Test
     public void isNotEqualToElementTest() {
-        initialize(Raw.documentAssertion(), null).isNotEqualTo(createDocument("<element2/>"));
-        initialize(Raw.documentAssertion(), createDocument("<element1/>")).isNotEqualTo((Document) null);
+        initialize(Raw.documentAssertion(), null).isNotEqualTo(createDocument("<element/>"));
+        initialize(Raw.documentAssertion(), createDocument("<element/>")).isNotEqualTo((Document) null);
         initialize(Raw.documentAssertion(), createDocument("<element1/>")).isNotEqualTo(createDocument("<element2/>"));
         initialize(Raw.documentAssertion(), createDocument("<element1></element1>")).isNotEqualTo(createDocument("<element2/>"));
         initialize(Raw.documentAssertion(), createDocument("<element/>")).isNotEqualTo(createDocument("<element>content</element>"));
@@ -386,8 +386,8 @@ public final class DocumentAssertionTest extends AssertionTest {
      */
     @Test
     public void isNotEqualToStringTest() {
-        initialize(Raw.documentAssertion(), null).isNotEqualTo("<element2/>");
-        initialize(Raw.documentAssertion(), createDocument("<element1/>")).isNotEqualTo((String) null);
+        initialize(Raw.documentAssertion(), null).isNotEqualTo("<element/>");
+        initialize(Raw.documentAssertion(), createDocument("<element/>")).isNotEqualTo((String) null);
         initialize(Raw.documentAssertion(), createDocument("<element1/>")).isNotEqualTo("<element2/>");
         initialize(Raw.documentAssertion(), createDocument("<element1></element1>")).isNotEqualTo("<element2/>");
         initialize(Raw.documentAssertion(), createDocument("<element/>")).isNotEqualTo("<element>content</element>");

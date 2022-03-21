@@ -308,8 +308,8 @@ public final class ElementAssertionTest extends AssertionTest {
      */
     @Test
     public void isNotEqualToElementTest() {
-        initialize(Raw.elementAssertion(), null).isNotEqualTo(createElement("<element2/>"));
-        initialize(Raw.elementAssertion(), createElement("<element1/>")).isNotEqualTo((Element) null);
+        initialize(Raw.elementAssertion(), null).isNotEqualTo(createElement("<element/>"));
+        initialize(Raw.elementAssertion(), createElement("<element/>")).isNotEqualTo((Element) null);
         initialize(Raw.elementAssertion(), createElement("<element1/>")).isNotEqualTo(createElement("<element2/>"));
         initialize(Raw.elementAssertion(), createElement("<element1></element1>")).isNotEqualTo(createElement("<element2/>"));
         initialize(Raw.elementAssertion(), createElement("<element/>")).isNotEqualTo(createElement("<element>content</element>"));
@@ -427,8 +427,8 @@ public final class ElementAssertionTest extends AssertionTest {
      */
     @Test
     public void isNotEqualToStringTest() {
-        initialize(Raw.elementAssertion(), null).isNotEqualTo("<element2/>");
-        initialize(Raw.elementAssertion(), createElement("<element1/>")).isNotEqualTo((String) null);
+        initialize(Raw.elementAssertion(), null).isNotEqualTo("<element/>");
+        initialize(Raw.elementAssertion(), createElement("<element/>")).isNotEqualTo((String) null);
         initialize(Raw.elementAssertion(), createElement("<element1/>")).isNotEqualTo("<element2/>");
         initialize(Raw.elementAssertion(), createElement("<element1></element1>")).isNotEqualTo("<element2/>");
         initialize(Raw.elementAssertion(), createElement("<element/>")).isNotEqualTo("<element>content</element>");
