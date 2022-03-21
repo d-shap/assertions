@@ -96,6 +96,24 @@ public final class FloatAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
+            initialize(Raw.floatAssertion(), null).isEqualTo(Float.NaN);
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.floatAssertion(), null).isEqualTo(Float.POSITIVE_INFINITY);
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.floatAssertion(), null).isEqualTo(Float.NEGATIVE_INFINITY);
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
             initialize(Raw.floatAssertion(), 1.0f).isEqualTo(Float.NaN);
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
@@ -505,6 +523,13 @@ public final class FloatAssertionTest extends AssertionTest {
      */
     @Test
     public void isNotEqualToDefaultDeltaPrimitiveTest() {
+        initialize(Raw.floatAssertion(), null).isNotEqualTo(1.0f);
+        initialize(Raw.floatAssertion(), null).isNotEqualTo(Float.NaN);
+        initialize(Raw.floatAssertion(), null).isNotEqualTo(Float.POSITIVE_INFINITY);
+        initialize(Raw.floatAssertion(), null).isNotEqualTo(Float.NEGATIVE_INFINITY);
+        initialize(Raw.floatAssertion(), 1.0f).isNotEqualTo(Float.NaN);
+        initialize(Raw.floatAssertion(), 1.0f).isNotEqualTo(Float.POSITIVE_INFINITY);
+        initialize(Raw.floatAssertion(), 1.0f).isNotEqualTo(Float.NEGATIVE_INFINITY);
         initialize(Raw.floatAssertion(), Float.NaN).isNotEqualTo(1.0f);
         initialize(Raw.floatAssertion(), Float.NaN).isNotEqualTo(Float.POSITIVE_INFINITY);
         initialize(Raw.floatAssertion(), Float.NaN).isNotEqualTo(Float.NEGATIVE_INFINITY);
@@ -525,18 +550,6 @@ public final class FloatAssertionTest extends AssertionTest {
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
-        }
-        try {
-            initialize(Raw.floatAssertion(), null).isNotEqualTo(1.0f);
-            Assertions.fail("FloatAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
-        }
-        try {
-            initialize(Raw.floatAssertion(), null, "Message").isNotEqualTo(1.0f);
-            Assertions.fail("FloatAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.floatAssertion(), Float.NaN).isNotEqualTo(Float.NaN);
@@ -665,18 +678,6 @@ public final class FloatAssertionTest extends AssertionTest {
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
-        }
-        try {
-            initialize(Raw.floatAssertion(), null).isNotEqualTo(1.0f, 0.001f);
-            Assertions.fail("FloatAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
-        }
-        try {
-            initialize(Raw.floatAssertion(), null, "Message").isNotEqualTo(1.0f, 0.001f);
-            Assertions.fail("FloatAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.floatAssertion(), 10.0f).isNotEqualTo(10.001f, 0.01f);
