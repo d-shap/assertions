@@ -65,6 +65,9 @@ public final class FloatAssertionTest extends AssertionTest {
      */
     @Test
     public void isEqualToDefaultDeltaPrimitiveTest() {
+        initialize(Raw.floatAssertion(), Float.NaN).isEqualTo(Float.NaN);
+        initialize(Raw.floatAssertion(), Float.POSITIVE_INFINITY).isEqualTo(Float.POSITIVE_INFINITY);
+        initialize(Raw.floatAssertion(), Float.NEGATIVE_INFINITY).isEqualTo(Float.NEGATIVE_INFINITY);
         initialize(Raw.floatAssertion(), 10.1f).isEqualTo(10.1f);
         initialize(Raw.floatAssertion(), 10.01f).isEqualTo(10.01f);
         initialize(Raw.floatAssertion(), 10.001f).isEqualTo(10.001f);
@@ -93,6 +96,60 @@ public final class FloatAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
+            initialize(Raw.floatAssertion(), Float.NaN).isEqualTo(1.0f);
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should be finite.\n\tActual:<NaN>");
+        }
+        try {
+            initialize(Raw.floatAssertion(), Float.NaN).isEqualTo(Float.POSITIVE_INFINITY);
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should be positive infinity.\n\tActual:<NaN>");
+        }
+        try {
+            initialize(Raw.floatAssertion(), Float.NaN).isEqualTo(Float.NEGATIVE_INFINITY);
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should be negative infinity.\n\tActual:<NaN>");
+        }
+        try {
+            initialize(Raw.floatAssertion(), Float.POSITIVE_INFINITY).isEqualTo(1.0f);
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should be finite.\n\tActual:<Infinity>");
+        }
+        try {
+            initialize(Raw.floatAssertion(), Float.POSITIVE_INFINITY).isEqualTo(Float.NaN);
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should be NaN.\n\tActual:<Infinity>");
+        }
+        try {
+            initialize(Raw.floatAssertion(), Float.POSITIVE_INFINITY).isEqualTo(Float.NEGATIVE_INFINITY);
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should be negative infinity.\n\tActual:<Infinity>");
+        }
+        try {
+            initialize(Raw.floatAssertion(), Float.NEGATIVE_INFINITY).isEqualTo(1.0f);
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should be finite.\n\tActual:<-Infinity>");
+        }
+        try {
+            initialize(Raw.floatAssertion(), Float.NEGATIVE_INFINITY).isEqualTo(Float.NaN);
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should be NaN.\n\tActual:<-Infinity>");
+        }
+        try {
+            initialize(Raw.floatAssertion(), Float.NEGATIVE_INFINITY).isEqualTo(Float.POSITIVE_INFINITY);
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should be positive infinity.\n\tActual:<-Infinity>");
+        }
+        try {
             initialize(Raw.floatAssertion(), 10.00001f).isEqualTo(10.00002f);
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
@@ -112,6 +169,9 @@ public final class FloatAssertionTest extends AssertionTest {
     @Test
     public void isEqualToDefaultDeltaObjectTest() {
         initialize(Raw.floatAssertion(), null).isEqualTo(null);
+        initialize(Raw.floatAssertion(), Float.NaN).isEqualTo(Float.valueOf("NaN"));
+        initialize(Raw.floatAssertion(), Float.POSITIVE_INFINITY).isEqualTo(Float.valueOf("Infinity"));
+        initialize(Raw.floatAssertion(), Float.NEGATIVE_INFINITY).isEqualTo(Float.valueOf("-Infinity"));
         initialize(Raw.floatAssertion(), 10.1f).isEqualTo(Float.valueOf("10.1"));
         initialize(Raw.floatAssertion(), 10.01f).isEqualTo(Float.valueOf("10.01"));
         initialize(Raw.floatAssertion(), 10.001f).isEqualTo(Float.valueOf("10.001"));
@@ -140,6 +200,24 @@ public final class FloatAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
+            initialize(Raw.floatAssertion(), null).isEqualTo(Float.valueOf("NaN"));
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.floatAssertion(), null).isEqualTo(Float.valueOf("Infinity"));
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.floatAssertion(), null).isEqualTo(Float.valueOf("-Infinity"));
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
             initialize(Raw.floatAssertion(), 1.0f).isEqualTo(null);
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
@@ -150,6 +228,78 @@ public final class FloatAssertionTest extends AssertionTest {
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be null.\n\tActual:<1.0f>");
+        }
+        try {
+            initialize(Raw.floatAssertion(), Float.NaN).isEqualTo(null);
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should be null.\n\tActual:<NaN>");
+        }
+        try {
+            initialize(Raw.floatAssertion(), Float.NaN).isEqualTo(Float.valueOf("1.0"));
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should be finite.\n\tActual:<NaN>");
+        }
+        try {
+            initialize(Raw.floatAssertion(), Float.NaN).isEqualTo(Float.valueOf("Infinity"));
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should be positive infinity.\n\tActual:<NaN>");
+        }
+        try {
+            initialize(Raw.floatAssertion(), Float.NaN).isEqualTo(Float.valueOf("-Infinity"));
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should be negative infinity.\n\tActual:<NaN>");
+        }
+        try {
+            initialize(Raw.floatAssertion(), Float.POSITIVE_INFINITY).isEqualTo(null);
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should be null.\n\tActual:<Infinity>");
+        }
+        try {
+            initialize(Raw.floatAssertion(), Float.POSITIVE_INFINITY).isEqualTo(Float.valueOf("1.0"));
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should be finite.\n\tActual:<Infinity>");
+        }
+        try {
+            initialize(Raw.floatAssertion(), Float.POSITIVE_INFINITY).isEqualTo(Float.valueOf("NaN"));
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should be NaN.\n\tActual:<Infinity>");
+        }
+        try {
+            initialize(Raw.floatAssertion(), Float.POSITIVE_INFINITY).isEqualTo(Float.valueOf("-Infinity"));
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should be negative infinity.\n\tActual:<Infinity>");
+        }
+        try {
+            initialize(Raw.floatAssertion(), Float.NEGATIVE_INFINITY).isEqualTo(null);
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should be null.\n\tActual:<-Infinity>");
+        }
+        try {
+            initialize(Raw.floatAssertion(), Float.NEGATIVE_INFINITY).isEqualTo(Float.valueOf("1.0"));
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should be finite.\n\tActual:<-Infinity>");
+        }
+        try {
+            initialize(Raw.floatAssertion(), Float.NEGATIVE_INFINITY).isEqualTo(Float.valueOf("NaN"));
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should be NaN.\n\tActual:<-Infinity>");
+        }
+        try {
+            initialize(Raw.floatAssertion(), Float.NEGATIVE_INFINITY).isEqualTo(Float.valueOf("Infinity"));
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should be positive infinity.\n\tActual:<-Infinity>");
         }
         try {
             initialize(Raw.floatAssertion(), 10.00001f).isEqualTo(Float.valueOf("10.00002"));
@@ -319,6 +469,15 @@ public final class FloatAssertionTest extends AssertionTest {
      */
     @Test
     public void isNotEqualToDefaultDeltaPrimitiveTest() {
+        initialize(Raw.floatAssertion(), Float.NaN).isNotEqualTo(1.0f);
+        initialize(Raw.floatAssertion(), Float.NaN).isNotEqualTo(Float.POSITIVE_INFINITY);
+        initialize(Raw.floatAssertion(), Float.NaN).isNotEqualTo(Float.NEGATIVE_INFINITY);
+        initialize(Raw.floatAssertion(), Float.POSITIVE_INFINITY).isNotEqualTo(1.0f);
+        initialize(Raw.floatAssertion(), Float.POSITIVE_INFINITY).isNotEqualTo(Float.NaN);
+        initialize(Raw.floatAssertion(), Float.POSITIVE_INFINITY).isNotEqualTo(Float.NEGATIVE_INFINITY);
+        initialize(Raw.floatAssertion(), Float.NEGATIVE_INFINITY).isNotEqualTo(1.0f);
+        initialize(Raw.floatAssertion(), Float.NEGATIVE_INFINITY).isNotEqualTo(Float.NaN);
+        initialize(Raw.floatAssertion(), Float.NEGATIVE_INFINITY).isNotEqualTo(Float.POSITIVE_INFINITY);
         initialize(Raw.floatAssertion(), 10.1f).isNotEqualTo(10.2f);
         initialize(Raw.floatAssertion(), 10.01f).isNotEqualTo(10.02f);
         initialize(Raw.floatAssertion(), 10.001f).isNotEqualTo(10.002f);
@@ -344,6 +503,24 @@ public final class FloatAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
+            initialize(Raw.floatAssertion(), Float.NaN).isNotEqualTo(Float.NaN);
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be NaN.");
+        }
+        try {
+            initialize(Raw.floatAssertion(), Float.POSITIVE_INFINITY).isNotEqualTo(Float.POSITIVE_INFINITY);
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be positive infinity.");
+        }
+        try {
+            initialize(Raw.floatAssertion(), Float.NEGATIVE_INFINITY).isNotEqualTo(Float.NEGATIVE_INFINITY);
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be negative infinity.");
+        }
+        try {
             initialize(Raw.floatAssertion(), 10.000001f).isNotEqualTo(10.000002f);
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
@@ -362,8 +539,26 @@ public final class FloatAssertionTest extends AssertionTest {
      */
     @Test
     public void isNotEqualToDefaultDeltaObjectTest() {
-        initialize(Raw.floatAssertion(), null).isNotEqualTo(Float.valueOf("5.0"));
-        initialize(Raw.floatAssertion(), 5.0f).isNotEqualTo(null);
+        initialize(Raw.floatAssertion(), null).isNotEqualTo(Float.valueOf("1.0"));
+        initialize(Raw.floatAssertion(), null).isNotEqualTo(Float.valueOf("NaN"));
+        initialize(Raw.floatAssertion(), null).isNotEqualTo(Float.valueOf("Infinity"));
+        initialize(Raw.floatAssertion(), null).isNotEqualTo(Float.valueOf("-Infinity"));
+        initialize(Raw.floatAssertion(), 1.0f).isNotEqualTo(null);
+        initialize(Raw.floatAssertion(), 1.0f).isNotEqualTo(Float.valueOf("NaN"));
+        initialize(Raw.floatAssertion(), 1.0f).isNotEqualTo(Float.valueOf("Infinity"));
+        initialize(Raw.floatAssertion(), 1.0f).isNotEqualTo(Float.valueOf("-Infinity"));
+        initialize(Raw.floatAssertion(), Float.NaN).isNotEqualTo(null);
+        initialize(Raw.floatAssertion(), Float.NaN).isNotEqualTo(Float.valueOf("1.0"));
+        initialize(Raw.floatAssertion(), Float.NaN).isNotEqualTo(Float.valueOf("Infinity"));
+        initialize(Raw.floatAssertion(), Float.NaN).isNotEqualTo(Float.valueOf("-Infinity"));
+        initialize(Raw.floatAssertion(), Float.POSITIVE_INFINITY).isNotEqualTo(null);
+        initialize(Raw.floatAssertion(), Float.POSITIVE_INFINITY).isNotEqualTo(Float.valueOf("1.0"));
+        initialize(Raw.floatAssertion(), Float.POSITIVE_INFINITY).isNotEqualTo(Float.valueOf("NaN"));
+        initialize(Raw.floatAssertion(), Float.POSITIVE_INFINITY).isNotEqualTo(Float.valueOf("-Infinity"));
+        initialize(Raw.floatAssertion(), Float.NEGATIVE_INFINITY).isNotEqualTo(null);
+        initialize(Raw.floatAssertion(), Float.NEGATIVE_INFINITY).isNotEqualTo(Float.valueOf("1.0"));
+        initialize(Raw.floatAssertion(), Float.NEGATIVE_INFINITY).isNotEqualTo(Float.valueOf("NaN"));
+        initialize(Raw.floatAssertion(), Float.NEGATIVE_INFINITY).isNotEqualTo(Float.valueOf("Infinity"));
         initialize(Raw.floatAssertion(), 10.1f).isNotEqualTo(Float.valueOf("10.2"));
         initialize(Raw.floatAssertion(), 10.01f).isNotEqualTo(Float.valueOf("10.02"));
         initialize(Raw.floatAssertion(), 10.001f).isNotEqualTo(Float.valueOf("10.002"));
@@ -387,6 +582,24 @@ public final class FloatAssertionTest extends AssertionTest {
             Assertions.fail("FloatAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.floatAssertion(), Float.NaN).isNotEqualTo(Float.valueOf("NaN"));
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be NaN.");
+        }
+        try {
+            initialize(Raw.floatAssertion(), Float.POSITIVE_INFINITY).isNotEqualTo(Float.valueOf("Infinity"));
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be positive infinity.");
+        }
+        try {
+            initialize(Raw.floatAssertion(), Float.NEGATIVE_INFINITY).isNotEqualTo(Float.valueOf("-Infinity"));
+            Assertions.fail("FloatAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be negative infinity.");
         }
         try {
             initialize(Raw.floatAssertion(), 10.000001f).isNotEqualTo(Float.valueOf("10.000002"));
