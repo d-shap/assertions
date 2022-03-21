@@ -138,7 +138,7 @@ public class TimeZoneAssertionTest extends AssertionTest {
      */
     @Test
     public void isNotEqualToTest() {
-        initialize(Raw.timeZoneAssertion(), null).isNotEqualTo(TimeZone.getTimeZone("GMT"));
+        initialize(Raw.timeZoneAssertion(), null).isNotEqualTo(TimeZone.getTimeZone("UTC"));
         initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("UTC")).isNotEqualTo(null);
         initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("UTC")).isNotEqualTo(TimeZone.getTimeZone("GMT"));
         initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("GMT")).isNotEqualTo(TimeZone.getTimeZone("UTC"));

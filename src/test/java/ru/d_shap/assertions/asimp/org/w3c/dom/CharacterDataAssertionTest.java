@@ -157,8 +157,8 @@ public final class CharacterDataAssertionTest extends AssertionTest {
      */
     @Test
     public void isNotEqualToTest() {
-        initialize(Raw.characterDataAssertion(), null).isNotEqualTo(createCharacterData("text2"));
-        initialize(Raw.characterDataAssertion(), createCharacterData("text1")).isNotEqualTo(null);
+        initialize(Raw.characterDataAssertion(), null).isNotEqualTo(createCharacterData("text"));
+        initialize(Raw.characterDataAssertion(), createCharacterData("text")).isNotEqualTo(null);
         initialize(Raw.characterDataAssertion(), createCharacterData("text1")).isNotEqualTo(createCharacterData("text2"));
         initialize(Raw.characterDataAssertion(), createCharacterData("<!-- comment1 -->")).isNotEqualTo(createCharacterData("<!-- comment2 -->"));
         initialize(Raw.characterDataAssertion(), createCharacterData("<![CDATA[<element>value1<element>]]>")).isNotEqualTo(createCharacterData("<![CDATA[<element>value2<element>]]>"));

@@ -144,8 +144,8 @@ public final class AttrAssertionTest extends AssertionTest {
      */
     @Test
     public void isNotEqualToTest() {
-        initialize(Raw.attrAssertion(), null).isNotEqualTo(createAttr("<element attr='val2'/>"));
-        initialize(Raw.attrAssertion(), createAttr("<element attr='val1'/>")).isNotEqualTo(null);
+        initialize(Raw.attrAssertion(), null).isNotEqualTo(createAttr("<element attr='val'/>"));
+        initialize(Raw.attrAssertion(), createAttr("<element attr='val'/>")).isNotEqualTo(null);
         initialize(Raw.attrAssertion(), createAttr("<element attr='val1'/>")).isNotEqualTo(createAttr("<element attr='val2'/>"));
         initialize(Raw.attrAssertion(), createAttr("<element attr1='val'/>")).isNotEqualTo(createAttr("<element attr2='val'/>"));
         initialize(Raw.attrAssertion(), createAttr("<element xmlns:ns1='aaa' ns1:attr='val'/>")).isNotEqualTo(createAttr("<element attr='val'/>"));

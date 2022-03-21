@@ -158,8 +158,8 @@ public final class NodeAssertionTest extends AssertionTest {
      */
     @Test
     public void isNotEqualToTest() {
-        initialize(Raw.nodeAssertion(), null).isNotEqualTo(createNode("<element2/>"));
-        initialize(Raw.nodeAssertion(), createNode("<element1/>")).isNotEqualTo(null);
+        initialize(Raw.nodeAssertion(), null).isNotEqualTo(createNode("<element/>"));
+        initialize(Raw.nodeAssertion(), createNode("<element/>")).isNotEqualTo(null);
         initialize(Raw.nodeAssertion(), createNode("<element1/>")).isNotEqualTo(createNode("<element2/>"));
         initialize(Raw.nodeAssertion(), createNode("<element/>")).isNotEqualTo(createNode("<element>content</element>"));
         initialize(Raw.nodeAssertion(), createNode("<element/>")).isNotEqualTo(createNode("<element attr='val'/>"));

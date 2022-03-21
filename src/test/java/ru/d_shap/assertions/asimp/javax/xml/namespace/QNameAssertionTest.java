@@ -147,8 +147,8 @@ public final class QNameAssertionTest extends AssertionTest {
      */
     @Test
     public void isNotEqualToTest() {
-        initialize(Raw.qnameAssertion(), null).isNotEqualTo(new QName("local2"));
-        initialize(Raw.qnameAssertion(), new QName("local1")).isNotEqualTo(null);
+        initialize(Raw.qnameAssertion(), null).isNotEqualTo(new QName("local"));
+        initialize(Raw.qnameAssertion(), new QName("local")).isNotEqualTo(null);
         initialize(Raw.qnameAssertion(), new QName("local1")).isNotEqualTo(new QName("local2"));
         initialize(Raw.qnameAssertion(), new QName("local")).isNotEqualTo(new QName("namespace", "local"));
         initialize(Raw.qnameAssertion(), new QName("namespace", "local1")).isNotEqualTo(new QName("namespace", "local2"));
