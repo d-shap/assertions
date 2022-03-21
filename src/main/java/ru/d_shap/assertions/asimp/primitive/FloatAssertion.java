@@ -125,18 +125,20 @@ public class FloatAssertion extends ReferenceAssertion<Float> {
      * @param delta    maximum delta between the actual value and the expected value.
      */
     public final void isNotEqualTo(final float expected, final float delta) {
-        checkActualIsNotNull();
         if (Float.isNaN(expected)) {
-            isNotNaN();
-        } else if (Float.isInfinite(expected)) {
-            if (expected == Float.POSITIVE_INFINITY) {
-                isNotPositiveInfinity();
+            if (getActual() != null && getActual().isNaN()) {
+                throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_NAN).build();
             }
-            if (expected == Float.NEGATIVE_INFINITY) {
-                isNotNegativeInfinity();
+        } else if (expected == Float.POSITIVE_INFINITY) {
+            if (getActual() != null && getActual() == Float.POSITIVE_INFINITY) {
+                throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_POSITIVE_INFINITY).build();
+            }
+        } else if (expected == Float.NEGATIVE_INFINITY) {
+            if (getActual() != null && getActual() == Float.NEGATIVE_INFINITY) {
+                throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_NEGATIVE_INFINITY).build();
             }
         } else {
-            if (!getActual().isNaN() && !getActual().isInfinite() && Math.abs(expected - getActual()) <= delta) {
+            if (getActual() != null && !getActual().isNaN() && !getActual().isInfinite() && Math.abs(expected - getActual()) <= delta) {
                 throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_DIFFERENT).addActual().addDelta(delta).build();
             }
         }
