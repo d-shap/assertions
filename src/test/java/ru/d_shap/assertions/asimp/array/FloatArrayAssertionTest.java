@@ -658,7 +658,7 @@ public final class FloatArrayAssertionTest extends AssertionTest {
         initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f, 3.0f, 4.0f}).containsExactly(1.0f, 2.0f, 3.0f, 4.0f);
         initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f, 3.0f, 4.0f}).containsExactly(1.0f, 3.0f, 2.0f, 4.0f);
         initialize(Raw.floatArrayAssertion(), new float[]{}).containsExactly();
-        initialize(Raw.floatArrayAssertion(), new float[]{Float.NaN, Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY, 3.0f}).containsAll(Float.NEGATIVE_INFINITY, Float.NaN, 3.0f, Float.POSITIVE_INFINITY);
+        initialize(Raw.floatArrayAssertion(), new float[]{Float.NaN, Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY, 3.0f}).containsExactly(Float.NEGATIVE_INFINITY, Float.NaN, 3.0f, Float.POSITIVE_INFINITY);
 
         try {
             Raw.floatArrayAssertion().containsExactly(1.0f);
@@ -755,7 +755,7 @@ public final class FloatArrayAssertionTest extends AssertionTest {
         initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f, 3.0f, 4.0f}).containsExactly(Arrays.asList(1.0f, 2.0f, 3.0f, 4.0f));
         initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f, 3.0f, 4.0f}).containsExactly(Arrays.asList(1.0f, 3.0f, 2.0f, 4.0f));
         initialize(Raw.floatArrayAssertion(), new float[]{}).containsExactly(new ArrayList<Float>());
-        initialize(Raw.floatArrayAssertion(), new float[]{Float.NaN, Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY, 3.0f}).containsAll(Arrays.asList(Float.NEGATIVE_INFINITY, Float.NaN, 3.0f, Float.POSITIVE_INFINITY));
+        initialize(Raw.floatArrayAssertion(), new float[]{Float.NaN, Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY, 3.0f}).containsExactly(Arrays.asList(Float.NEGATIVE_INFINITY, Float.NaN, 3.0f, Float.POSITIVE_INFINITY));
 
         try {
             Raw.floatArrayAssertion().containsExactly(new ArrayList<Float>());
