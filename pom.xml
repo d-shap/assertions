@@ -279,18 +279,14 @@
                                 <mutator>NULL_RETURNS</mutator>
                                 <mutator>PRIMITIVE_RETURNS</mutator>
                                 <mutator>REMOVE_CONDITIONALS</mutator>
-                                <mutator>EXPERIMENTAL_SWITCH</mutator>
                                 <mutator>INLINE_CONSTS</mutator>
                                 <mutator>CONSTRUCTOR_CALLS</mutator>
                                 <mutator>NON_VOID_METHOD_CALLS</mutator>
                                 <mutator>REMOVE_INCREMENTS</mutator>
-                                <mutator>ABS</mutator>
                                 <mutator>AOR</mutator>
                                 <mutator>AOD</mutator>
                                 <mutator>CRCR</mutator>
                                 <mutator>OBBN</mutator>
-                                <mutator>ROR</mutator>
-                                <mutator>UOI</mutator>
                             </mutators>
                             <failWhenNoMutations>true</failWhenNoMutations>
                             <exportLineCoverage>false</exportLineCoverage>
