@@ -285,7 +285,6 @@
                                 <mutator>REMOVE_INCREMENTS</mutator>
                                 <mutator>AOR</mutator>
                                 <mutator>AOD</mutator>
-                                <mutator>CRCR</mutator>
                                 <mutator>OBBN</mutator>
                             </mutators>
                             <failWhenNoMutations>true</failWhenNoMutations>
