@@ -45,8 +45,9 @@
         <pmd.plugin.version>3.15.0</pmd.plugin.version>
         <pmd.version>6.39.0</pmd.version>
         <pmd.file>${basedir}/checks/pmd-strict.xml</pmd.file>
-        <findbugs.plugin.version>3.0.5</findbugs.plugin.version>
-        <findbugs.file>${basedir}/checks/findbugs-strict.xml</findbugs.file>
+        <spotbugs.plugin.version>4.5.3.0</spotbugs.plugin.version>
+        <spotbugs.version>4.6.0</spotbugs.version>
+        <spotbugs.file>${basedir}/checks/spotbugs-strict.xml</spotbugs.file>
         <jacoco.plugin.version>0.8.7</jacoco.plugin.version>
         <jar.plugin.version>3.2.2</jar.plugin.version>
         <pitest.plugin.version>1.4.11</pitest.plugin.version>
@@ -146,12 +147,19 @@
                 </configuration>
             </plugin>
             <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>findbugs-maven-plugin</artifactId>
-                <version>${findbugs.plugin.version}</version>
+                <groupId>com.github.spotbugs</groupId>
+                <artifactId>spotbugs-maven-plugin</artifactId>
+                <version>${spotbugs.plugin.version}</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.github.spotbugs</groupId>
+                        <artifactId>spotbugs</artifactId>
+                        <version>${spotbugs.version}</version>
+                    </dependency>
+                </dependencies>
                 <executions>
                     <execution>
-                        <id>check-findbugs</id>
+                        <id>check-spotbugs</id>
                         <phase>process-classes</phase>
                         <goals>
                             <goal>check</goal>
@@ -159,7 +167,7 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <includeFilterFile>${findbugs.file}</includeFilterFile>
+                    <includeFilterFile>${spotbugs.file}</includeFilterFile>
                     <effort>Max</effort>
                     <threshold>Low</threshold>
                     <xmlOutput>true</xmlOutput>
