@@ -368,9 +368,9 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
     public final <W, S extends BaseAssertion<W>> S toMethodCallResult(final String methodName, final S assertion, final Class<?>[] parameterTypes, final Object[] arguments) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(methodName, "methodName");
-        checkArgumentIsNotNull(assertion, "assertion");
         checkArgumentIsNotNull(parameterTypes, "parameterTypes");
         checkArgumentIsNotNull(arguments, "arguments");
+        checkArgumentIsNotNull(assertion, "assertion");
         return toMethodCallResult(methodName, parameterTypes, arguments).as(assertion);
     }
 
@@ -388,8 +388,8 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
     public final <W, S extends BaseAssertion<W>> S toMethodCallResult(final String methodName, final S assertion, final Object... arguments) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(methodName, "methodName");
-        checkArgumentIsNotNull(assertion, "assertion");
         checkArgumentIsNotNull(arguments, "arguments");
+        checkArgumentIsNotNull(assertion, "assertion");
         return toMethodCallResult(methodName, arguments).as(assertion);
     }
 
