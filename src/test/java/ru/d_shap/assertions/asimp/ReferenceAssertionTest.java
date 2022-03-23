@@ -1855,40 +1855,16 @@ public final class ReferenceAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: methodName.");
         }
         try {
-            createReferenceAssertion(new Object()).toMethodCallResult(null, (BaseAssertion<?>) null, new Class<?>[]{}, new Object[]{});
+            createReferenceAssertion(new Object()).toMethodCallResult(null, Raw.objectAssertion(), null, new Object[]{});
             Assertions.fail("ReferenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: methodName.");
         }
         try {
-            createReferenceAssertion(new Object(), "Message").toMethodCallResult(null, (BaseAssertion<?>) null, new Class<?>[]{}, new Object[]{});
+            createReferenceAssertion(new Object(), "Message").toMethodCallResult(null, Raw.objectAssertion(), null, new Object[]{});
             Assertions.fail("ReferenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: methodName.");
-        }
-        try {
-            createReferenceAssertion(new Object()).toMethodCallResult("method", (BaseAssertion<?>) null, new Class<?>[]{}, new Object[]{});
-            Assertions.fail("ReferenceAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null: assertion.");
-        }
-        try {
-            createReferenceAssertion(new Object(), "Message").toMethodCallResult("method", (BaseAssertion<?>) null, new Class<?>[]{}, new Object[]{});
-            Assertions.fail("ReferenceAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: assertion.");
-        }
-        try {
-            createReferenceAssertion(new Object()).toMethodCallResult("method", (BaseAssertion<?>) null, null, new Object[]{});
-            Assertions.fail("ReferenceAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null: assertion.");
-        }
-        try {
-            createReferenceAssertion(new Object(), "Message").toMethodCallResult("method", (BaseAssertion<?>) null, null, new Object[]{});
-            Assertions.fail("ReferenceAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: assertion.");
         }
         try {
             createReferenceAssertion(new Object()).toMethodCallResult("method", Raw.objectAssertion(), null, new Object[]{});
@@ -1925,6 +1901,30 @@ public final class ReferenceAssertionTest extends AssertionTest {
             Assertions.fail("ReferenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: arguments.");
+        }
+        try {
+            createReferenceAssertion(new Object()).toMethodCallResult("method", (BaseAssertion<?>) null, new Class<?>[]{}, null);
+            Assertions.fail("ReferenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: arguments.");
+        }
+        try {
+            createReferenceAssertion(new Object(), "Message").toMethodCallResult("method", (BaseAssertion<?>) null, new Class<?>[]{}, null);
+            Assertions.fail("ReferenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: arguments.");
+        }
+        try {
+            createReferenceAssertion(new Object()).toMethodCallResult("method", (BaseAssertion<?>) null, new Class<?>[]{}, new Object[]{});
+            Assertions.fail("ReferenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: assertion.");
+        }
+        try {
+            createReferenceAssertion(new Object(), "Message").toMethodCallResult("method", (BaseAssertion<?>) null, new Class<?>[]{}, new Object[]{});
+            Assertions.fail("ReferenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: assertion.");
         }
         try {
             clearActual(createReferenceAssertion(new ParentClass()).toMethodCallResult("parentMethod", Raw.objectAssertion(), new Class<?>[]{}, new Object[]{})).isEqualTo("value");
@@ -2011,76 +2011,52 @@ public final class ReferenceAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
-            createReferenceAssertion(null).toMethodCallResult("method", Raw.objectAssertion());
+            createReferenceAssertion(null).toMethodCallResult("method", Raw.objectAssertion(), "arg");
             Assertions.fail("ReferenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
-            createReferenceAssertion(null, "Message").toMethodCallResult("method", Raw.objectAssertion());
+            createReferenceAssertion(null, "Message").toMethodCallResult("method", Raw.objectAssertion(), "arg");
             Assertions.fail("ReferenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            createReferenceAssertion(null).toMethodCallResult(null, Raw.objectAssertion());
+            createReferenceAssertion(null).toMethodCallResult(null, Raw.objectAssertion(), "arg");
             Assertions.fail("ReferenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
-            createReferenceAssertion(null, "Message").toMethodCallResult(null, Raw.objectAssertion());
+            createReferenceAssertion(null, "Message").toMethodCallResult(null, Raw.objectAssertion(), "arg");
             Assertions.fail("ReferenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            createReferenceAssertion(new Object()).toMethodCallResult(null, Raw.objectAssertion());
+            createReferenceAssertion(new Object()).toMethodCallResult(null, Raw.objectAssertion(), "arg");
             Assertions.fail("ReferenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: methodName.");
         }
         try {
-            createReferenceAssertion(new Object(), "Message").toMethodCallResult(null, Raw.objectAssertion());
+            createReferenceAssertion(new Object(), "Message").toMethodCallResult(null, Raw.objectAssertion(), "arg");
             Assertions.fail("ReferenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: methodName.");
         }
         try {
-            createReferenceAssertion(new Object()).toMethodCallResult(null, (BaseAssertion<?>) null);
+            createReferenceAssertion(new Object()).toMethodCallResult(null, Raw.objectAssertion(), (Object[]) null);
             Assertions.fail("ReferenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: methodName.");
         }
         try {
-            createReferenceAssertion(new Object(), "Message").toMethodCallResult(null, (BaseAssertion<?>) null);
+            createReferenceAssertion(new Object(), "Message").toMethodCallResult(null, Raw.objectAssertion(), (Object[]) null);
             Assertions.fail("ReferenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: methodName.");
-        }
-        try {
-            createReferenceAssertion(new Object()).toMethodCallResult("method", (BaseAssertion<?>) null);
-            Assertions.fail("ReferenceAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null: assertion.");
-        }
-        try {
-            createReferenceAssertion(new Object(), "Message").toMethodCallResult("method", (BaseAssertion<?>) null);
-            Assertions.fail("ReferenceAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: assertion.");
-        }
-        try {
-            createReferenceAssertion(new Object()).toMethodCallResult("method", (BaseAssertion<?>) null, (Object[]) null);
-            Assertions.fail("ReferenceAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null: assertion.");
-        }
-        try {
-            createReferenceAssertion(new Object(), "Message").toMethodCallResult("method", (BaseAssertion<?>) null, (Object[]) null);
-            Assertions.fail("ReferenceAssertion test fail");
-        } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: assertion.");
         }
         try {
             createReferenceAssertion(new Object()).toMethodCallResult("method", Raw.objectAssertion(), (Object[]) null);
@@ -2093,6 +2069,30 @@ public final class ReferenceAssertionTest extends AssertionTest {
             Assertions.fail("ReferenceAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: arguments.");
+        }
+        try {
+            createReferenceAssertion(new Object()).toMethodCallResult("method", (BaseAssertion<?>) null, (Object[]) null);
+            Assertions.fail("ReferenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: arguments.");
+        }
+        try {
+            createReferenceAssertion(new Object(), "Message").toMethodCallResult("method", (BaseAssertion<?>) null, (Object[]) null);
+            Assertions.fail("ReferenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: arguments.");
+        }
+        try {
+            createReferenceAssertion(new Object()).toMethodCallResult("method", (BaseAssertion<?>) null, "arg");
+            Assertions.fail("ReferenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: assertion.");
+        }
+        try {
+            createReferenceAssertion(new Object(), "Message").toMethodCallResult("method", (BaseAssertion<?>) null, "arg");
+            Assertions.fail("ReferenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: assertion.");
         }
         try {
             clearActual(createReferenceAssertion(new ParentClass()).toMethodCallResult("parentMethod", Raw.objectAssertion())).isEqualTo("value");
