@@ -62,10 +62,10 @@ public final class CharSequenceToDocumentValueConverter implements ValueConverte
         CharSequence castedValue = ConverterArgumentHelper.getValue(value, CharSequence.class);
         ConverterArgumentHelper.checkArgumentsLength(arguments, 0);
 
+        DocumentBuilder documentBuilder = DataHelper.createDocumentBuilder();
+        StringReader reader = new StringReader(castedValue.toString());
+        InputSource inputSource = new InputSource(reader);
         try {
-            DocumentBuilder documentBuilder = DataHelper.createDocumentBuilder();
-            StringReader reader = new StringReader(castedValue.toString());
-            InputSource inputSource = new InputSource(reader);
             return documentBuilder.parse(inputSource);
         } catch (SAXException | IOException ex) {
             throw new ConversionException(ex);
