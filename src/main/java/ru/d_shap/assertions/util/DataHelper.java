@@ -548,15 +548,15 @@ public final class DataHelper {
         @Override
         public Transformer newTransformer(final TransformerFactory transformerFactory) throws TransformerException {
             Transformer transformer = transformerFactory.newTransformer();
-            transformer.setErrorListener(new NoopTransformerErrorListener());
+            transformer.setErrorListener(new TransformerNoopErrorListener());
             return transformer;
         }
 
     }
 
-    static final class NoopTransformerErrorListener implements ErrorListener {
+    static final class TransformerNoopErrorListener implements ErrorListener {
 
-        NoopTransformerErrorListener() {
+        TransformerNoopErrorListener() {
             super();
         }
 
