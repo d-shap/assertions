@@ -24,9 +24,13 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.TimeZone;
 
+import javax.xml.XMLConstants;
 import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.TransformerFactory;
 
 /**
  * Helper class to create objects of various types.
@@ -305,22 +309,68 @@ public final class DataHelper {
     }
 
     static XMLGregorianCalendar convertToXmlCalendar(final GregorianCalendar calendar, final DatatypeFactoryCreator datatypeFactoryCreator) {
+        DatatypeFactory datatypeFactory = createDatatypeFactory();
+        return datatypeFactory.newXMLGregorianCalendar(calendar);
+    }
+
+    /**
+     * Create new XML Datatype Factory instance.
+     *
+     * @return new XML Datatype Factory instance.
+     */
+    public static DatatypeFactory createDatatypeFactory() {
+        DatatypeFactoryCreator datatypeFactoryCreator = new DatatypeFactoryCreatorImpl();
+        return createDatatypeFactory(datatypeFactoryCreator);
+    }
+
+    static DatatypeFactory createDatatypeFactory(final DatatypeFactoryCreator datatypeFactoryCreator) {
         try {
-            DatatypeFactory datatypeFactory = datatypeFactoryCreator.newDatatypeFactory();
-            return datatypeFactory.newXMLGregorianCalendar(calendar);
+            return datatypeFactoryCreator.newDatatypeFactory();
         } catch (DatatypeConfigurationException ex) {
             throw new DataException(ex);
         }
     }
 
+    /**
+     * Create new XML Document Builder Factory instance.
+     *
+     * @return new XML Document Builder Factory instance.
+     */
+    public static DocumentBuilderFactory createDocumentBuilderFactory() {
+        DocumentBuilderFactoryCreator documentBuilderFactoryCreator = new DocumentBuilderFactoryCreatorImpl();
+        return createDocumentBuilderFactory(documentBuilderFactoryCreator);
+    }
+
+    static DocumentBuilderFactory createDocumentBuilderFactory(final DocumentBuilderFactoryCreator documentBuilderFactoryCreator) {
+        try {
+            return documentBuilderFactoryCreator.newDocumentBuilderFactory();
+        } catch (ParserConfigurationException ex) {
+            throw new DataException(ex);
+        }
+    }
+
+    /**
+     * Create new XML Transformer Factory instance.
+     *
+     * @return new XML Transformer Factory instance.
+     */
+    public static TransformerFactory createTransformerFactory() {
+        TransformerFactoryCreator transformerFactoryCreator = new TransformerFactoryCreatorImpl();
+        return createTransformerFactory(transformerFactoryCreator);
+    }
+
+    static TransformerFactory createTransformerFactory(final TransformerFactoryCreator transformerFactoryCreator) {
+        return transformerFactoryCreator.newTransformerFactory();
+    }
+
     interface DatatypeFactoryCreator {
 
         /**
-         * Create new XML Datatype Factory.
+         * Create new XML Datatype Factory instance.
          *
-         * @return the created XML Datatype Factory.
+         * @return new XML Datatype Factory instance.
          *
-         * @throws DatatypeConfigurationException if XML Datatype Factory is not configured.
+         * @throws DatatypeConfigurationException is creation exception occured.
          */
         DatatypeFactory newDatatypeFactory() throws DatatypeConfigurationException;
 
@@ -335,6 +385,64 @@ public final class DataHelper {
         @Override
         public DatatypeFactory newDatatypeFactory() throws DatatypeConfigurationException {
             return DatatypeFactory.newInstance();
+        }
+
+    }
+
+    interface DocumentBuilderFactoryCreator {
+
+        /**
+         * Create new XML Document Builder Factory instance.
+         *
+         * @return new XML Document Builder Factory instance.
+         *
+         * @throws ParserConfigurationException is creation exception occured.
+         */
+        DocumentBuilderFactory newDocumentBuilderFactory() throws ParserConfigurationException;
+
+    }
+
+    static final class DocumentBuilderFactoryCreatorImpl implements DocumentBuilderFactoryCreator {
+
+        DocumentBuilderFactoryCreatorImpl() {
+            super();
+        }
+
+        @Override
+        public DocumentBuilderFactory newDocumentBuilderFactory() throws ParserConfigurationException {
+            DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
+            documentBuilderFactory.setNamespaceAware(true);
+            documentBuilderFactory.setXIncludeAware(true);
+            documentBuilderFactory.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);
+            documentBuilderFactory.setFeature("http://apache.org/xml/features/disallow-doctype-decl", true);
+            return documentBuilderFactory;
+        }
+
+    }
+
+    interface TransformerFactoryCreator {
+
+        /**
+         * Create new XML Transformer Factory instance.
+         *
+         * @return new XML Transformer Factory instance.
+         */
+        TransformerFactory newTransformerFactory();
+
+    }
+
+    static final class TransformerFactoryCreatorImpl implements TransformerFactoryCreator {
+
+        TransformerFactoryCreatorImpl() {
+            super();
+        }
+
+        @Override
+        public TransformerFactory newTransformerFactory() {
+            TransformerFactory transformerFactory = TransformerFactory.newInstance();
+            transformerFactory.setAttribute(XMLConstants.ACCESS_EXTERNAL_DTD, "");
+            transformerFactory.setAttribute(XMLConstants.ACCESS_EXTERNAL_STYLESHEET, "");
+            return transformerFactory;
         }
 
     }
