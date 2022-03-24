@@ -21,13 +21,11 @@ package ru.d_shap.assertions.asimp.org.w3c.dom;
 
 import java.io.StringWriter;
 
-import javax.xml.transform.ErrorListener;
 import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Result;
 import javax.xml.transform.Source;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerException;
-import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
@@ -36,6 +34,7 @@ import org.w3c.dom.Node;
 import ru.d_shap.assertions.converter.AsStringConverterProvider;
 import ru.d_shap.assertions.converter.ConversionException;
 import ru.d_shap.assertions.converter.ConverterArgumentHelper;
+import ru.d_shap.assertions.util.DataHelper;
 
 /**
  * Value to string converter for the node.
@@ -43,8 +42,6 @@ import ru.d_shap.assertions.converter.ConverterArgumentHelper;
  * @author Dmitry Shapovalov
  */
 public final class NodeAsStringConverter implements AsStringConverterProvider {
-
-    private static final TransformerFactory TRANSFORMER_FACTORY = TransformerFactory.newInstance();
 
     /**
      * Create new object.
@@ -71,36 +68,12 @@ public final class NodeAsStringConverter implements AsStringConverterProvider {
 
     void transform(final Source source, final Result result) {
         try {
-            Transformer transformer = TRANSFORMER_FACTORY.newTransformer();
+            Transformer transformer = DataHelper.createTransformer();
             transformer.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes");
-            transformer.setErrorListener(new NoopErrorListener());
             transformer.transform(source, result);
         } catch (TransformerException ex) {
             throw new ConversionException(ex);
         }
-    }
-
-    static final class NoopErrorListener implements ErrorListener {
-
-        NoopErrorListener() {
-            super();
-        }
-
-        @Override
-        public void warning(final TransformerException exception) {
-            // Ignore
-        }
-
-        @Override
-        public void error(final TransformerException exception) {
-            // Ignore
-        }
-
-        @Override
-        public void fatalError(final TransformerException exception) {
-            // Ignore
-        }
-
     }
 
 }
