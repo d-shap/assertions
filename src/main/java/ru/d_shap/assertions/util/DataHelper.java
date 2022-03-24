@@ -28,6 +28,7 @@ import javax.xml.XMLConstants;
 import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
+import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerFactory;
@@ -347,6 +348,25 @@ public final class DataHelper {
     }
 
     /**
+     * Create new XML Document Builder instance.
+     *
+     * @return new XML Document Builder instance.
+     */
+    public static DocumentBuilder createDocumentBuilder() {
+        DocumentBuilderCreator documentBuilderCreator = new DocumentBuilderCreatorImpl();
+        return createDocumentBuilder(documentBuilderCreator);
+    }
+
+    static DocumentBuilder createDocumentBuilder(final DocumentBuilderCreator documentBuilderCreator) {
+        try {
+            DocumentBuilderFactory documentBuilderFactory = createDocumentBuilderFactory();
+            return documentBuilderCreator.newDocumentBuilder(documentBuilderFactory);
+        } catch (ParserConfigurationException ex) {
+            throw new DataException(ex);
+        }
+    }
+
+    /**
      * Create new XML Transformer Factory instance.
      *
      * @return new XML Transformer Factory instance.
@@ -413,6 +433,27 @@ public final class DataHelper {
             documentBuilderFactory.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);
             documentBuilderFactory.setFeature("http://apache.org/xml/features/disallow-doctype-decl", true);
             return documentBuilderFactory;
+        }
+
+    }
+
+    interface DocumentBuilderCreator {
+
+        DocumentBuilder newDocumentBuilder(DocumentBuilderFactory documentBuilderFactory) throws ParserConfigurationException;
+
+    }
+
+    static final class DocumentBuilderCreatorImpl implements DocumentBuilderCreator {
+
+        DocumentBuilderCreatorImpl() {
+            super();
+        }
+
+        @Override
+        public DocumentBuilder newDocumentBuilder(final DocumentBuilderFactory documentBuilderFactory) throws ParserConfigurationException {
+            DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
+            documentBuilder.setErrorHandler(null);
+            return documentBuilder;
         }
 
     }
