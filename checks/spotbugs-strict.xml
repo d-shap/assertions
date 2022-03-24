@@ -1573,9 +1573,9 @@
     <Match>
         <Bug pattern="SQL_INJECTION_VERTX" />
     </Match>
-    <Match>
+    <!--<Match>
         <Bug pattern="SQL_INJECTION_ANDROID" />
-    </Match>
+    </Match>-->
     <Match>
         <Bug pattern="LDAP_INJECTION" />
     </Match>
@@ -1699,24 +1699,24 @@
     <Match>
         <Bug pattern="ESAPI_ENCRYPTOR" />
     </Match>
-    <Match>
+    <!--<Match>
         <Bug pattern="ANDROID_EXTERNAL_FILE_ACCESS" />
-    </Match>
-    <Match>
+    </Match>-->
+    <!--<Match>
         <Bug pattern="ANDROID_BROADCAST" />
-    </Match>
-    <Match>
+    </Match>-->
+    <!--<Match>
         <Bug pattern="ANDROID_WORLD_WRITABLE" />
-    </Match>
-    <Match>
+    </Match>-->
+    <!--<Match>
         <Bug pattern="ANDROID_GEOLOCATION" />
-    </Match>
-    <Match>
+    </Match>-->
+    <!--<Match>
         <Bug pattern="ANDROID_WEB_VIEW_JAVASCRIPT" />
-    </Match>
-    <Match>
+    </Match>-->
+    <!--<Match>
         <Bug pattern="ANDROID_WEB_VIEW_JAVASCRIPT_INTERFACE" />
-    </Match>
+    </Match>-->
     <Match>
         <Bug pattern="INSECURE_COOKIE" />
     </Match>
