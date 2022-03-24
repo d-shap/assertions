@@ -33,6 +33,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.ErrorListener;
 import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 
@@ -380,7 +381,11 @@ public final class DataHelper {
     }
 
     static TransformerFactory createTransformerFactory(final TransformerFactoryCreator transformerFactoryCreator) {
-        return transformerFactoryCreator.newTransformerFactory();
+        try {
+            return transformerFactoryCreator.newTransformerFactory();
+        } catch (TransformerConfigurationException ex) {
+            throw new DataException(ex);
+        }
     }
 
     /**
@@ -495,8 +500,10 @@ public final class DataHelper {
          * Create new XML Transformer Factory instance.
          *
          * @return new XML Transformer Factory instance.
+         *
+         * @throws TransformerConfigurationException if creation exception occured.
          */
-        TransformerFactory newTransformerFactory();
+        TransformerFactory newTransformerFactory() throws TransformerConfigurationException;
 
     }
 
@@ -507,10 +514,11 @@ public final class DataHelper {
         }
 
         @Override
-        public TransformerFactory newTransformerFactory() {
+        public TransformerFactory newTransformerFactory() throws TransformerConfigurationException {
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
             transformerFactory.setAttribute(XMLConstants.ACCESS_EXTERNAL_DTD, "");
             transformerFactory.setAttribute(XMLConstants.ACCESS_EXTERNAL_STYLESHEET, "");
+            transformerFactory.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);
             return transformerFactory;
         }
 
