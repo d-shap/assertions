@@ -232,8 +232,7 @@ public final class DataHelper {
      */
     public static XMLGregorianCalendar createXmlCalendar(final int year, final int month, final int dayOfMonth, final int hourOfDay, final int minute, final int second, final int millisecond) {
         GregorianCalendar calendar = (GregorianCalendar) createCalendar(year, month, dayOfMonth, hourOfDay, minute, second, millisecond);
-        DatatypeFactoryCreator datatypeFactoryCreator = new DatatypeFactoryCreatorImpl();
-        return convertToXmlCalendar(calendar, datatypeFactoryCreator);
+        return convertToXmlCalendar(calendar);
     }
 
     /**
@@ -269,8 +268,7 @@ public final class DataHelper {
      */
     public static XMLGregorianCalendar createXmlCalendar(final int year, final int month, final int dayOfMonth, final int hourOfDay, final int minute, final int second, final int millisecond, final String timeZoneId) {
         GregorianCalendar calendar = (GregorianCalendar) createCalendar(year, month, dayOfMonth, hourOfDay, minute, second, millisecond, timeZoneId);
-        DatatypeFactoryCreator datatypeFactoryCreator = new DatatypeFactoryCreatorImpl();
-        return convertToXmlCalendar(calendar, datatypeFactoryCreator);
+        return convertToXmlCalendar(calendar);
     }
 
     /**
@@ -304,11 +302,10 @@ public final class DataHelper {
      */
     public static XMLGregorianCalendar createUtcXmlCalendar(final int year, final int month, final int dayOfMonth, final int hourOfDay, final int minute, final int second, final int millisecond) {
         GregorianCalendar calendar = (GregorianCalendar) createUtcCalendar(year, month, dayOfMonth, hourOfDay, minute, second, millisecond);
-        DatatypeFactoryCreator datatypeFactoryCreator = new DatatypeFactoryCreatorImpl();
-        return convertToXmlCalendar(calendar, datatypeFactoryCreator);
+        return convertToXmlCalendar(calendar);
     }
 
-    static XMLGregorianCalendar convertToXmlCalendar(final GregorianCalendar calendar, final DatatypeFactoryCreator datatypeFactoryCreator) {
+    static XMLGregorianCalendar convertToXmlCalendar(final GregorianCalendar calendar) {
         DatatypeFactory datatypeFactory = createDatatypeFactory();
         return datatypeFactory.newXMLGregorianCalendar(calendar);
     }
