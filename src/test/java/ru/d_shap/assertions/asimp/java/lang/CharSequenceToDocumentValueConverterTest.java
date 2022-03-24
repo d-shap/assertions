@@ -20,11 +20,13 @@
 package ru.d_shap.assertions.asimp.java.lang;
 
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.io.PrintStream;
 import java.io.UnsupportedEncodingException;
 
 import org.junit.Test;
 import org.w3c.dom.Document;
+import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
 import ru.d_shap.assertions.AssertionTest;
@@ -91,8 +93,23 @@ public final class CharSequenceToDocumentValueConverterTest extends AssertionTes
             new CharSequenceToDocumentValueConverter().convert("<element>");
             Assertions.fail("CharSequenceToDocumentValueConverter test fail");
         } catch (ConversionException ex) {
-            Assertions.assertThat(ex).messageMatches(".*XML document structures must start and end within the same entity.");
+            Assertions.assertThat(ex).messageContains("XML document structures must start and end within the same entity.");
             Assertions.assertThat(ex).hasCause(SAXException.class);
+        }
+    }
+
+    /**
+     * {@link CharSequenceToDocumentValueConverter} class test.
+     */
+    @Test
+    public void parseErrorReaderTest() {
+        try {
+            InputSource inputSource = new InputSource(createErrorReader());
+            new CharSequenceToDocumentValueConverter().parse(inputSource);
+            Assertions.fail("CharSequenceToDocumentValueConverter test fail");
+        } catch (ConversionException ex) {
+            Assertions.assertThat(ex).messageContains("read exception");
+            Assertions.assertThat(ex).hasCause(IOException.class);
         }
     }
 
@@ -139,7 +156,7 @@ public final class CharSequenceToDocumentValueConverterTest extends AssertionTes
                     new CharSequenceToDocumentValueConverter().convert(xml);
                     Assertions.fail("CharSequenceToDocumentValueConverter test fail");
                 } catch (ConversionException ex) {
-                    Assertions.assertThat(ex).messageMatches(".*XML document structures must start and end within the same entity.");
+                    Assertions.assertThat(ex).messageContains("XML document structures must start and end within the same entity.");
                     Assertions.assertThat(ex).hasCause(SAXException.class);
                 }
                 String message = new String(byteArrayOutputStream.toByteArray(), ENCODING_UTF_8);
