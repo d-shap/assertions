@@ -23,8 +23,6 @@ import java.io.IOException;
 import java.io.StringReader;
 
 import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
 
 import org.w3c.dom.Document;
 import org.xml.sax.InputSource;
@@ -33,6 +31,7 @@ import org.xml.sax.SAXException;
 import ru.d_shap.assertions.converter.ConversionException;
 import ru.d_shap.assertions.converter.ConverterArgumentHelper;
 import ru.d_shap.assertions.converter.ValueConverterProvider;
+import ru.d_shap.assertions.util.DataHelper;
 
 /**
  * Value converter from the char sequence to the document.
@@ -40,14 +39,6 @@ import ru.d_shap.assertions.converter.ValueConverterProvider;
  * @author Dmitry Shapovalov
  */
 public final class CharSequenceToDocumentValueConverter implements ValueConverterProvider {
-
-    private static final DocumentBuilderFactory DOCUMENT_BUILDER_FACTORY;
-
-    static {
-        DOCUMENT_BUILDER_FACTORY = DocumentBuilderFactory.newInstance();
-        DOCUMENT_BUILDER_FACTORY.setNamespaceAware(true);
-        DOCUMENT_BUILDER_FACTORY.setXIncludeAware(true);
-    }
 
     /**
      * Create new object.
@@ -72,12 +63,11 @@ public final class CharSequenceToDocumentValueConverter implements ValueConverte
         ConverterArgumentHelper.checkArgumentsLength(arguments, 0);
 
         try {
-            DocumentBuilder documentBuilder = DOCUMENT_BUILDER_FACTORY.newDocumentBuilder();
-            documentBuilder.setErrorHandler(null);
+            DocumentBuilder documentBuilder = DataHelper.createDocumentBuilder();
             StringReader reader = new StringReader(castedValue.toString());
             InputSource inputSource = new InputSource(reader);
             return documentBuilder.parse(inputSource);
-        } catch (ParserConfigurationException | SAXException | IOException ex) {
+        } catch (SAXException | IOException ex) {
             throw new ConversionException(ex);
         }
     }
