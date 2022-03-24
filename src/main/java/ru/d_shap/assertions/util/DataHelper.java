@@ -31,6 +31,9 @@ import javax.xml.datatype.XMLGregorianCalendar;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.ErrorListener;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 
 /**
@@ -380,6 +383,25 @@ public final class DataHelper {
         return transformerFactoryCreator.newTransformerFactory();
     }
 
+    /**
+     * Create new XML Transformer instance.
+     *
+     * @return new XML Transformer instance.
+     */
+    public static Transformer createTransformer() {
+        TransformerCreator transformerCreator = new TransformerCreatorImpl();
+        return createTransformer(transformerCreator);
+    }
+
+    static Transformer createTransformer(final TransformerCreator transformerCreator) {
+        try {
+            TransformerFactory transformerFactory = createTransformerFactory();
+            return transformerCreator.newTransformer(transformerFactory);
+        } catch (TransformerException ex) {
+            throw new DataException(ex);
+        }
+    }
+
     interface DatatypeFactoryCreator {
 
         /**
@@ -490,6 +512,59 @@ public final class DataHelper {
             transformerFactory.setAttribute(XMLConstants.ACCESS_EXTERNAL_DTD, "");
             transformerFactory.setAttribute(XMLConstants.ACCESS_EXTERNAL_STYLESHEET, "");
             return transformerFactory;
+        }
+
+    }
+
+    interface TransformerCreator {
+
+        /**
+         * Create new XML Transformer instance.
+         *
+         * @param transformerFactory XML Transformer Factory instance.
+         *
+         * @return new XML Transformer instance.
+         *
+         * @throws TransformerException if creation exception occured.
+         */
+        Transformer newTransformer(TransformerFactory transformerFactory) throws TransformerException;
+
+    }
+
+    static final class TransformerCreatorImpl implements TransformerCreator {
+
+        TransformerCreatorImpl() {
+            super();
+        }
+
+        @Override
+        public Transformer newTransformer(final TransformerFactory transformerFactory) throws TransformerException {
+            Transformer transformer = transformerFactory.newTransformer();
+            transformer.setErrorListener(new NoopTransformerErrorListener());
+            return transformer;
+        }
+
+    }
+
+    static final class NoopTransformerErrorListener implements ErrorListener {
+
+        NoopTransformerErrorListener() {
+            super();
+        }
+
+        @Override
+        public void warning(final TransformerException exception) {
+            // Ignore
+        }
+
+        @Override
+        public void error(final TransformerException exception) {
+            // Ignore
+        }
+
+        @Override
+        public void fatalError(final TransformerException exception) {
+            // Ignore
         }
 
     }
