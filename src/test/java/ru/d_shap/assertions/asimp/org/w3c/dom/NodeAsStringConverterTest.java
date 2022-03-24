@@ -77,7 +77,7 @@ public final class NodeAsStringConverterTest extends AssertionTest {
      * {@link NodeAsStringConverter} class test.
      */
     @Test
-    public void transformExceptionTest() {
+    public void transformErrorReaderTest() {
         try {
             Source source = new StreamSource(createErrorReader());
             Result result = new StreamResult(new StringWriter());
