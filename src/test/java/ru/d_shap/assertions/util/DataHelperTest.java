@@ -20,12 +20,18 @@
 package ru.d_shap.assertions.util;
 
 import java.util.Calendar;
-import java.util.GregorianCalendar;
 import java.util.TimeZone;
 
+import javax.xml.XMLConstants;
 import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeFactory;
-import javax.xml.datatype.XMLGregorianCalendar;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerConfigurationException;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
 
 import org.junit.Test;
 
@@ -440,18 +446,98 @@ public final class DataHelperTest extends AssertionTest {
      * {@link DataHelper} class test.
      */
     @Test
-    public void convertToXmlCalendarFailTest() {
-        GregorianCalendar calendar = (GregorianCalendar) DataHelper.createCalendar(2020, Calendar.FEBRUARY, 15, 4, 12, 3);
-        XMLGregorianCalendar xmlGregorianCalendar = DataHelper.convertToXmlCalendar(calendar, new DataHelper.DatatypeFactoryCreatorImpl());
-        Assertions.assertThat(xmlGregorianCalendar).hasDateAndTime(2020, Calendar.FEBRUARY, 15, 4, 12, 3, 0);
+    public void createDatatypeFactoryTest() {
+        DatatypeFactory datatypeFactory = DataHelper.createDatatypeFactory();
+        datatypeFactory.newXMLGregorianCalendar();
 
         try {
-            DataHelper.convertToXmlCalendar(calendar, new DatatypeFactoryCreatorFailImpl());
+            DataHelper.createDatatypeFactory(new DatatypeFactoryCreatorFailImpl());
             Assertions.fail("DataHelper test fail");
         } catch (DataException ex) {
             Assertions.assertThat(ex).hasCause(DatatypeConfigurationException.class);
             Assertions.assertThat(ex).hasCauseMessage("test exception");
         }
+    }
+
+    /**
+     * {@link DataHelper} class test.
+     */
+    @Test
+    public void createDocumentBuilderFactoryTest() {
+        DocumentBuilderFactory documentBuilderFactory = DataHelper.createDocumentBuilderFactory();
+        Assertions.assertThat(documentBuilderFactory.isNamespaceAware()).isTrue();
+        Assertions.assertThat(documentBuilderFactory.isXIncludeAware()).isTrue();
+
+        try {
+            DataHelper.createDocumentBuilderFactory(new DocumentBuilderFactoryCreatorFailImpl());
+            Assertions.fail("DataHelper test fail");
+        } catch (DataException ex) {
+            Assertions.assertThat(ex).hasCause(ParserConfigurationException.class);
+            Assertions.assertThat(ex).hasCauseMessage("test exception");
+        }
+    }
+
+    /**
+     * {@link DataHelper} class test.
+     */
+    @Test
+    public void createDocumentBuilderTest() {
+        DocumentBuilder documentBuilder = DataHelper.createDocumentBuilder();
+        Assertions.assertThat(documentBuilder.isNamespaceAware()).isTrue();
+        Assertions.assertThat(documentBuilder.isXIncludeAware()).isTrue();
+
+        try {
+            DataHelper.createDocumentBuilder(new DocumentBuilderCreatorFailImpl());
+            Assertions.fail("DataHelper test fail");
+        } catch (DataException ex) {
+            Assertions.assertThat(ex).hasCause(ParserConfigurationException.class);
+            Assertions.assertThat(ex).hasCauseMessage("test exception");
+        }
+    }
+
+    /**
+     * {@link DataHelper} class test.
+     */
+    @Test
+    public void createTransformerFactoryTest() {
+        TransformerFactory transformerFactory = DataHelper.createTransformerFactory();
+        Assertions.assertThat(transformerFactory.getAttribute(XMLConstants.ACCESS_EXTERNAL_DTD)).isEqualTo("");
+        Assertions.assertThat(transformerFactory.getAttribute(XMLConstants.ACCESS_EXTERNAL_STYLESHEET)).isEqualTo("");
+
+        try {
+            DataHelper.createTransformerFactory(new TransformerFactoryCreatorFailImpl());
+            Assertions.fail("DataHelper test fail");
+        } catch (DataException ex) {
+            Assertions.assertThat(ex).hasCause(TransformerConfigurationException.class);
+            Assertions.assertThat(ex).hasCauseMessage("test exception");
+        }
+    }
+
+    /**
+     * {@link DataHelper} class test.
+     */
+    @Test
+    public void createTransformerTest() {
+        Transformer transformer = DataHelper.createTransformer();
+        Assertions.assertThat(transformer.getErrorListener()).isInstanceOf(DataHelper.TransformerNoopErrorListener.class);
+
+        try {
+            DataHelper.createTransformer(new TransformerCreatorFailImpl());
+            Assertions.fail("DataHelper test fail");
+        } catch (DataException ex) {
+            Assertions.assertThat(ex).hasCause(TransformerConfigurationException.class);
+            Assertions.assertThat(ex).hasCauseMessage("test exception");
+        }
+    }
+
+    /**
+     * {@link DataHelper} class test.
+     */
+    @Test
+    public void transformerNoopErrorListenerTest() {
+        new DataHelper.TransformerNoopErrorListener().warning(null);
+        new DataHelper.TransformerNoopErrorListener().error(null);
+        new DataHelper.TransformerNoopErrorListener().fatalError(null);
     }
 
     private static final class DatatypeFactoryCreatorFailImpl implements DataHelper.DatatypeFactoryCreator {
@@ -463,6 +549,58 @@ public final class DataHelperTest extends AssertionTest {
         @Override
         public DatatypeFactory newDatatypeFactory() throws DatatypeConfigurationException {
             throw new DatatypeConfigurationException("test exception");
+        }
+
+    }
+
+    private static final class DocumentBuilderFactoryCreatorFailImpl implements DataHelper.DocumentBuilderFactoryCreator {
+
+        DocumentBuilderFactoryCreatorFailImpl() {
+            super();
+        }
+
+        @Override
+        public DocumentBuilderFactory newDocumentBuilderFactory() throws ParserConfigurationException {
+            throw new ParserConfigurationException("test exception");
+        }
+
+    }
+
+    private static final class DocumentBuilderCreatorFailImpl implements DataHelper.DocumentBuilderCreator {
+
+        DocumentBuilderCreatorFailImpl() {
+            super();
+        }
+
+        @Override
+        public DocumentBuilder newDocumentBuilder(final DocumentBuilderFactory documentBuilderFactory) throws ParserConfigurationException {
+            throw new ParserConfigurationException("test exception");
+        }
+
+    }
+
+    private static final class TransformerFactoryCreatorFailImpl implements DataHelper.TransformerFactoryCreator {
+
+        TransformerFactoryCreatorFailImpl() {
+            super();
+        }
+
+        @Override
+        public TransformerFactory newTransformerFactory() throws TransformerConfigurationException {
+            throw new TransformerConfigurationException("test exception");
+        }
+
+    }
+
+    private static final class TransformerCreatorFailImpl implements DataHelper.TransformerCreator {
+
+        TransformerCreatorFailImpl() {
+            super();
+        }
+
+        @Override
+        public Transformer newTransformer(final TransformerFactory transformerFactory) throws TransformerException {
+            throw new TransformerConfigurationException("test exception");
         }
 
     }
