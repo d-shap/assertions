@@ -387,7 +387,7 @@ public final class DataHelper {
          *
          * @return new XML Datatype Factory instance.
          *
-         * @throws DatatypeConfigurationException is creation exception occured.
+         * @throws DatatypeConfigurationException if creation exception occured.
          */
         DatatypeFactory newDatatypeFactory() throws DatatypeConfigurationException;
 
@@ -413,7 +413,7 @@ public final class DataHelper {
          *
          * @return new XML Document Builder Factory instance.
          *
-         * @throws ParserConfigurationException is creation exception occured.
+         * @throws ParserConfigurationException if creation exception occured.
          */
         DocumentBuilderFactory newDocumentBuilderFactory() throws ParserConfigurationException;
 
@@ -439,6 +439,15 @@ public final class DataHelper {
 
     interface DocumentBuilderCreator {
 
+        /**
+         * Create new XML Document Builder instance.
+         *
+         * @param documentBuilderFactory XML Document Builder Factory instance.
+         *
+         * @return new XML Document Builder instance.
+         *
+         * @throws ParserConfigurationException if creation exception occured.
+         */
         DocumentBuilder newDocumentBuilder(DocumentBuilderFactory documentBuilderFactory) throws ParserConfigurationException;
 
     }
