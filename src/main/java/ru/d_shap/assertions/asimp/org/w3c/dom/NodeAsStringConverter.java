@@ -62,14 +62,18 @@ public final class NodeAsStringConverter implements AsStringConverterProvider {
         Source source = new DOMSource(castedValue);
         StringWriter writer = new StringWriter();
         Result result = new StreamResult(writer);
-        Transformer transformer = DataHelper.createTransformer();
-        transformer.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes");
+        transform(source, result);
+        return writer.toString();
+    }
+
+    void transform(final Source source, final Result result) {
         try {
+            Transformer transformer = DataHelper.createTransformer();
+            transformer.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes");
             transformer.transform(source, result);
         } catch (TransformerException ex) {
             throw new ConversionException(ex);
         }
-        return writer.toString();
     }
 
 }
