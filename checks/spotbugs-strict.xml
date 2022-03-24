@@ -1501,27 +1501,27 @@
     <Match>
         <Bug pattern="REDOS" />
     </Match>
-    <Match>
+    <!--<Match>
         <Bug pattern="XXE_XMLSTREAMREADER" />
-    </Match>
-    <Match>
+    </Match>-->
+    <!--<Match>
         <Bug pattern="XXE_XPATH" />
-    </Match>
-    <Match>
+    </Match>-->
+    <!--<Match>
         <Bug pattern="XXE_SAXPARSER" />
-    </Match>
-    <Match>
+    </Match>-->
+    <!--<Match>
         <Bug pattern="XXE_XMLREADER" />
-    </Match>
-    <Match>
+    </Match>-->
+    <!--<Match>
         <Bug pattern="XXE_DOCUMENT" />
-    </Match>
-    <Match>
+    </Match>-->
+    <!--<Match>
         <Bug pattern="XXE_DTD_TRANSFORM_FACTORY" />
-    </Match>
-    <Match>
+    </Match>-->
+    <!--<Match>
         <Bug pattern="XXE_XSLT_TRANSFORM_FACTORY" />
-    </Match>
+    </Match>-->
     <Match>
         <Bug pattern="XPATH_INJECTION" />
     </Match>
