@@ -77,26 +77,16 @@ public final class NodeAsStringConverterTest extends AssertionTest {
      * {@link NodeAsStringConverter} class test.
      */
     @Test
-    public void transformTest() {
+    public void transformExceptionTest() {
         try {
             Source source = new StreamSource(createErrorReader());
             Result result = new StreamResult(new StringWriter());
             new NodeAsStringConverter().transform(source, result);
             Assertions.fail("NodeAsStringConverter test fail");
         } catch (ConversionException ex) {
-            Assertions.assertThat(ex).messageMatches(".*read exception");
+            Assertions.assertThat(ex).messageContains("read exception");
             Assertions.assertThat(ex).hasCauses(TransformerException.class, IOException.class);
         }
-    }
-
-    /**
-     * {@link NodeAsStringConverter} class test.
-     */
-    @Test
-    public void noopErrorListenerTest() {
-        new NodeAsStringConverter.NoopErrorListener().warning(null);
-        new NodeAsStringConverter.NoopErrorListener().error(null);
-        new NodeAsStringConverter.NoopErrorListener().fatalError(null);
     }
 
     /**
@@ -132,7 +122,7 @@ public final class NodeAsStringConverterTest extends AssertionTest {
                     new NodeAsStringConverter().transform(source, result);
                     Assertions.fail("NodeAsStringConverter test fail");
                 } catch (ConversionException ex) {
-                    Assertions.assertThat(ex).messageMatches(".*read exception");
+                    Assertions.assertThat(ex).messageContains("read exception");
                     Assertions.assertThat(ex).hasCause(TransformerException.class);
                 }
                 String message = new String(byteArrayOutputStream.toByteArray(), ENCODING_UTF_8);
