@@ -63,9 +63,13 @@ import ru.d_shap.assertions.asimp.java.nio.ShortBufferToShortArrayValueConverter
 import ru.d_shap.assertions.asimp.java.util.DateToCalendarValueConverter;
 import ru.d_shap.assertions.asimp.java.util.IteratorToListValueConverter;
 import ru.d_shap.assertions.asimp.javax.xml.datatype.XMLGregorianCalendarToCalendarValueConverter;
+import ru.d_shap.assertions.asimp.primitive.ByteToStringValueConverter;
 import ru.d_shap.assertions.asimp.primitive.IntToByteValueConverter;
 import ru.d_shap.assertions.asimp.primitive.IntToCharValueConverter;
 import ru.d_shap.assertions.asimp.primitive.IntToShortValueConverter;
+import ru.d_shap.assertions.asimp.primitive.IntToStringValueConverter;
+import ru.d_shap.assertions.asimp.primitive.LongToStringValueConverter;
+import ru.d_shap.assertions.asimp.primitive.ShortToStringValueConverter;
 
 /**
  * Class to convert the value to the value with the target class.
@@ -79,9 +83,13 @@ public final class ValueConverter {
     static {
         CONVERTER_PROVIDERS = new LinkedList<>();
 
+        CONVERTER_PROVIDERS.add(new ByteToStringValueConverter());
         CONVERTER_PROVIDERS.add(new IntToByteValueConverter());
         CONVERTER_PROVIDERS.add(new IntToCharValueConverter());
         CONVERTER_PROVIDERS.add(new IntToShortValueConverter());
+        CONVERTER_PROVIDERS.add(new IntToStringValueConverter());
+        CONVERTER_PROVIDERS.add(new LongToStringValueConverter());
+        CONVERTER_PROVIDERS.add(new ShortToStringValueConverter());
 
         CONVERTER_PROVIDERS.add(new CharSequenceToDocumentValueConverter());
         CONVERTER_PROVIDERS.add(new CharSequenceToElementValueConverter());
