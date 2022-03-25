@@ -73,9 +73,11 @@ public final class ByteToStringValueConverter implements ValueConverterProvider 
         byte castedValue = ConverterArgumentHelper.getValue(value, Byte.class);
         ConverterArgumentHelper.checkArgumentsLength(arguments, 0);
 
-        int idx1 = castedValue >> 4 & 0xF;
-        int idx2 = castedValue & 0xF;
-        return VALUES[idx1] + VALUES[idx2];
+        byte part1 = (byte) (castedValue >> 4 & 0xF);
+        String str1 = VALUES[part1];
+        byte part2 = (byte) (castedValue & 0xF);
+        String str2 = VALUES[part2];
+        return str1 + str2;
     }
 
 }
