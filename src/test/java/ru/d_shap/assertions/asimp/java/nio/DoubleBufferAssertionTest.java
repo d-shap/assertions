@@ -359,6 +359,10 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
     public void containsTest() {
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).contains(1.0);
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).contains(2.0);
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0})).contains(Double.NaN);
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0})).contains(Double.POSITIVE_INFINITY);
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0})).contains(Double.NEGATIVE_INFINITY);
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0})).contains(3.0);
 
         try {
             Raw.doubleBufferAssertion().contains(1.0);
@@ -401,6 +405,18 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain the expected value.\n\tExpected:<3.0> but was:<[1.0, 2.0]>");
+        }
+        try {
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, Double.POSITIVE_INFINITY})).contains(Double.NEGATIVE_INFINITY);
+            Assertions.fail("DoubleBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should contain the expected value.\n\tExpected:<-Infinity> but was:<[1.0, Infinity]>");
+        }
+        try {
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, Double.POSITIVE_INFINITY}), "Message").contains(Double.NEGATIVE_INFINITY);
+            Assertions.fail("DoubleBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain the expected value.\n\tExpected:<-Infinity> but was:<[1.0, Infinity]>");
         }
     }
 
@@ -459,6 +475,8 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).doesNotContain(3.0);
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 3)).doesNotContain(2.0);
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 0, 3)).doesNotContain(5.0);
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{Double.NaN, Double.POSITIVE_INFINITY})).doesNotContain(Double.NEGATIVE_INFINITY);
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{Double.NaN, Double.POSITIVE_INFINITY})).doesNotContain(3.0);
 
         try {
             Raw.doubleBufferAssertion().doesNotContain(1.0);
@@ -495,6 +513,18 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not contain the expected value.\n\tExpected:<1.0> but was:<[1.0, 2.0]>");
+        }
+        try {
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{Double.NaN, Double.POSITIVE_INFINITY})).doesNotContain(Double.POSITIVE_INFINITY);
+            Assertions.fail("DoubleBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not contain the expected value.\n\tExpected:<Infinity> but was:<[NaN, Infinity]>");
+        }
+        try {
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{Double.NaN, Double.POSITIVE_INFINITY}), "Message").doesNotContain(Double.POSITIVE_INFINITY);
+            Assertions.fail("DoubleBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not contain the expected value.\n\tExpected:<Infinity> but was:<[NaN, Infinity]>");
         }
     }
 
@@ -558,6 +588,7 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).containsAll(1.0, 2.0);
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0})).containsAll(1.0, 3.0);
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0})).containsAll(4.0, 2.0);
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0})).containsAll(Double.NEGATIVE_INFINITY, Double.NaN);
 
         try {
             Raw.doubleBufferAssertion().containsAll(1.0);
@@ -637,6 +668,18 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values.\n\tExpected:<[2.0, 3.0]> but was:<[1.0, 2.0]>");
         }
+        try {
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{Double.NaN, Double.POSITIVE_INFINITY})).containsAll(Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY);
+            Assertions.fail("DoubleBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values.\n\tExpected:<[Infinity, -Infinity]> but was:<[NaN, Infinity]>");
+        }
+        try {
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{Double.NaN, Double.POSITIVE_INFINITY}), "Message").containsAll(Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY);
+            Assertions.fail("DoubleBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values.\n\tExpected:<[Infinity, -Infinity]> but was:<[NaN, Infinity]>");
+        }
     }
 
     /**
@@ -647,6 +690,7 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).containsAll(Arrays.asList(1.0, 2.0));
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0})).containsAll(Arrays.asList(1.0, 3.0));
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0})).containsAll(Arrays.asList(4.0, 2.0));
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0})).containsAll(Arrays.asList(Double.NEGATIVE_INFINITY, Double.NaN));
 
         try {
             Raw.doubleBufferAssertion().containsAll(new ArrayList<Double>());
@@ -725,6 +769,18 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values.\n\tExpected:<[2.0, 3.0]> but was:<[1.0, 2.0]>");
+        }
+        try {
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{Double.NaN, Double.POSITIVE_INFINITY})).containsAll(Arrays.asList(Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY));
+            Assertions.fail("DoubleBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values.\n\tExpected:<[Infinity, -Infinity]> but was:<[NaN, Infinity]>");
+        }
+        try {
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{Double.NaN, Double.POSITIVE_INFINITY}), "Message").containsAll(Arrays.asList(Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY));
+            Assertions.fail("DoubleBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values.\n\tExpected:<[Infinity, -Infinity]> but was:<[NaN, Infinity]>");
         }
     }
 
@@ -903,6 +959,7 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
     public void containsAllInOrderArrayTest() {
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).containsAllInOrder(1.0, 2.0);
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0})).containsAllInOrder(1.0, 3.0, 4.0);
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0})).containsAllInOrder(Double.NaN, Double.NEGATIVE_INFINITY, 3.0);
 
         try {
             Raw.doubleBufferAssertion().containsAllInOrder(1.0);
@@ -988,6 +1045,18 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values in the specified order.\n\tExpected:<[2.0, 1.0]> but was:<[1.0, 2.0]>");
         }
+        try {
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{Double.NaN, Double.POSITIVE_INFINITY})).containsAllInOrder(Double.POSITIVE_INFINITY, Double.NaN);
+            Assertions.fail("DoubleBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[Infinity, NaN]> but was:<[NaN, Infinity]>");
+        }
+        try {
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{Double.NaN, Double.POSITIVE_INFINITY}), "Message").containsAllInOrder(Double.POSITIVE_INFINITY, Double.NaN);
+            Assertions.fail("DoubleBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values in the specified order.\n\tExpected:<[Infinity, NaN]> but was:<[NaN, Infinity]>");
+        }
     }
 
     /**
@@ -997,6 +1066,7 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
     public void containsAllInOrderIterableTest() {
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).containsAllInOrder(Arrays.asList(1.0, 2.0));
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0})).containsAllInOrder(Arrays.asList(1.0, 3.0, 4.0));
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0})).containsAllInOrder(Arrays.asList(Double.NaN, Double.NEGATIVE_INFINITY, 3.0));
 
         try {
             Raw.doubleBufferAssertion().containsAllInOrder(new ArrayList<Double>());
@@ -1081,6 +1151,18 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values in the specified order.\n\tExpected:<[2.0, 1.0]> but was:<[1.0, 2.0]>");
+        }
+        try {
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{Double.NaN, Double.POSITIVE_INFINITY})).containsAllInOrder(Arrays.asList(Double.POSITIVE_INFINITY, Double.NaN));
+            Assertions.fail("DoubleBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[Infinity, NaN]> but was:<[NaN, Infinity]>");
+        }
+        try {
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{Double.NaN, Double.POSITIVE_INFINITY}), "Message").containsAllInOrder(Arrays.asList(Double.POSITIVE_INFINITY, Double.NaN));
+            Assertions.fail("DoubleBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values in the specified order.\n\tExpected:<[Infinity, NaN]> but was:<[NaN, Infinity]>");
         }
     }
 
@@ -1271,6 +1353,7 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0})).containsExactly(1.0, 2.0, 3.0, 4.0);
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0})).containsExactly(1.0, 3.0, 2.0, 4.0);
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{})).containsExactly();
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0})).containsExactly(Double.NEGATIVE_INFINITY, Double.NaN, 3.0, Double.POSITIVE_INFINITY);
 
         try {
             Raw.doubleBufferAssertion().containsExactly(1.0);
@@ -1356,6 +1439,18 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly.\n\tExpected:<[1.0, 1.0, 3.0, 2.0]> but was:<[1.0, 2.0, 3.0, 4.0]>");
         }
+        try {
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{Double.NaN, 3.0, Double.POSITIVE_INFINITY})).containsExactly(Double.NaN, 3.0);
+            Assertions.fail("DoubleBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[NaN, 3.0]> but was:<[NaN, 3.0, Infinity]>");
+        }
+        try {
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{Double.NaN, 3.0, Double.POSITIVE_INFINITY}), "Message").containsExactly(Double.NaN, 3.0);
+            Assertions.fail("DoubleBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly.\n\tExpected:<[NaN, 3.0]> but was:<[NaN, 3.0, Infinity]>");
+        }
     }
 
     /**
@@ -1367,6 +1462,7 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0})).containsExactly(Arrays.asList(1.0, 2.0, 3.0, 4.0));
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0})).containsExactly(Arrays.asList(1.0, 3.0, 2.0, 4.0));
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{})).containsExactly(new ArrayList<Double>());
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0})).containsExactly(Arrays.asList(Double.NEGATIVE_INFINITY, Double.NaN, 3.0, Double.POSITIVE_INFINITY));
 
         try {
             Raw.doubleBufferAssertion().containsExactly(new ArrayList<Double>());
@@ -1451,6 +1547,18 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly.\n\tExpected:<[1.0, 1.0, 3.0, 2.0]> but was:<[1.0, 2.0, 3.0, 4.0]>");
+        }
+        try {
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{Double.NaN, 3.0, Double.POSITIVE_INFINITY})).containsExactly(Arrays.asList(Double.NaN, 3.0));
+            Assertions.fail("DoubleBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[NaN, 3.0]> but was:<[NaN, 3.0, Infinity]>");
+        }
+        try {
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{Double.NaN, 3.0, Double.POSITIVE_INFINITY}), "Message").containsExactly(Arrays.asList(Double.NaN, 3.0));
+            Assertions.fail("DoubleBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly.\n\tExpected:<[NaN, 3.0]> but was:<[NaN, 3.0, Infinity]>");
         }
     }
 
@@ -1644,6 +1752,7 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).containsExactlyInOrder(1.0, 2.0);
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0})).containsExactlyInOrder(1.0, 2.0, 3.0, 4.0);
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{})).containsExactlyInOrder();
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0})).containsExactlyInOrder(Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0);
 
         try {
             Raw.doubleBufferAssertion().containsExactlyInOrder(1.0);
@@ -1735,6 +1844,18 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2.0, 3.0, 1.0, 4.0]> but was:<[1.0, 2.0, 3.0, 4.0]>");
         }
+        try {
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{Double.NaN, 3.0, Double.POSITIVE_INFINITY})).containsExactlyInOrder(Double.POSITIVE_INFINITY, Double.NaN, 3.0);
+            Assertions.fail("DoubleBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[Infinity, NaN, 3.0]> but was:<[NaN, 3.0, Infinity]>");
+        }
+        try {
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{Double.NaN, 3.0, Double.POSITIVE_INFINITY}), "Message").containsExactlyInOrder(Double.POSITIVE_INFINITY, Double.NaN, 3.0);
+            Assertions.fail("DoubleBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[Infinity, NaN, 3.0]> but was:<[NaN, 3.0, Infinity]>");
+        }
     }
 
     /**
@@ -1745,6 +1866,7 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).containsExactlyInOrder(Arrays.asList(1.0, 2.0));
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0})).containsExactlyInOrder(Arrays.asList(1.0, 2.0, 3.0, 4.0));
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{})).containsExactlyInOrder(new ArrayList<Double>());
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0})).containsExactlyInOrder(Arrays.asList(Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0));
 
         try {
             Raw.doubleBufferAssertion().containsExactlyInOrder(new ArrayList<Double>());
@@ -1835,6 +1957,18 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2.0, 3.0, 1.0, 4.0]> but was:<[1.0, 2.0, 3.0, 4.0]>");
+        }
+        try {
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{Double.NaN, 3.0, Double.POSITIVE_INFINITY})).containsExactlyInOrder(Arrays.asList(Double.POSITIVE_INFINITY, Double.NaN, 3.0));
+            Assertions.fail("DoubleBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[Infinity, NaN, 3.0]> but was:<[NaN, 3.0, Infinity]>");
+        }
+        try {
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{Double.NaN, 3.0, Double.POSITIVE_INFINITY}), "Message").containsExactlyInOrder(Arrays.asList(Double.POSITIVE_INFINITY, Double.NaN, 3.0));
+            Assertions.fail("DoubleBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[Infinity, NaN, 3.0]> but was:<[NaN, 3.0, Infinity]>");
         }
     }
 
@@ -2039,6 +2173,7 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0})).containsAny(2.0, 4.0);
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0})).containsAny(4.0, 1.0);
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0})).containsAny(5.0, 3.0);
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{Double.NaN, Double.NEGATIVE_INFINITY, 3.0})).containsAny(Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY);
 
         try {
             Raw.doubleBufferAssertion().containsAny(1.0);
@@ -2118,6 +2253,18 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain any of the expected values.\n\tExpected:<[3.0, 4.0]> but was:<[1.0, 2.0]>");
         }
+        try {
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{Double.NaN, 3.0, Double.POSITIVE_INFINITY})).containsAny(Double.NEGATIVE_INFINITY, 4.0);
+            Assertions.fail("DoubleBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should contain any of the expected values.\n\tExpected:<[-Infinity, 4.0]> but was:<[NaN, 3.0, Infinity]>");
+        }
+        try {
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{Double.NaN, 3.0, Double.POSITIVE_INFINITY}), "Message").containsAny(Double.NEGATIVE_INFINITY, 4.0);
+            Assertions.fail("DoubleBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain any of the expected values.\n\tExpected:<[-Infinity, 4.0]> but was:<[NaN, 3.0, Infinity]>");
+        }
     }
 
     /**
@@ -2129,6 +2276,7 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0})).containsAny(Arrays.asList(2.0, 4.0));
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0})).containsAny(Arrays.asList(4.0, 1.0));
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0})).containsAny(Arrays.asList(5.0, 3.0));
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{Double.NaN, Double.NEGATIVE_INFINITY, 3.0})).containsAny(Arrays.asList(Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY));
 
         try {
             Raw.doubleBufferAssertion().containsAny(new ArrayList<Double>());
@@ -2207,6 +2355,18 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain any of the expected values.\n\tExpected:<[3.0, 4.0]> but was:<[1.0, 2.0]>");
+        }
+        try {
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{Double.NaN, 3.0, Double.POSITIVE_INFINITY})).containsAny(Arrays.asList(Double.NEGATIVE_INFINITY, 4.0));
+            Assertions.fail("DoubleBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should contain any of the expected values.\n\tExpected:<[-Infinity, 4.0]> but was:<[NaN, 3.0, Infinity]>");
+        }
+        try {
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{Double.NaN, 3.0, Double.POSITIVE_INFINITY}), "Message").containsAny(Arrays.asList(Double.NEGATIVE_INFINITY, 4.0));
+            Assertions.fail("DoubleBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain any of the expected values.\n\tExpected:<[-Infinity, 4.0]> but was:<[NaN, 3.0, Infinity]>");
         }
     }
 
@@ -2389,6 +2549,7 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).containsNone(3.0, 4.0, 5.0);
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 3)).containsNone(1.0, 3.0);
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 0, 3)).containsNone(4.0, 5.0);
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{Double.NaN, Double.NEGATIVE_INFINITY, 3.0})).containsNone(Double.POSITIVE_INFINITY, 4.0);
 
         try {
             Raw.doubleBufferAssertion().containsNone(1.0);
@@ -2456,6 +2617,18 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not contain any of the expected values.\n\tExpected:<[2.0, 1.0]> but was:<[1.0, 2.0]>");
         }
+        try {
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{Double.NaN, 3.0, Double.POSITIVE_INFINITY})).containsNone(Double.NaN, 4.0);
+            Assertions.fail("DoubleBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not contain any of the expected values.\n\tExpected:<[NaN, 4.0]> but was:<[NaN, 3.0, Infinity]>");
+        }
+        try {
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{Double.NaN, 3.0, Double.POSITIVE_INFINITY}), "Message").containsNone(Double.NaN, 4.0);
+            Assertions.fail("DoubleBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not contain any of the expected values.\n\tExpected:<[NaN, 4.0]> but was:<[NaN, 3.0, Infinity]>");
+        }
     }
 
     /**
@@ -2467,6 +2640,7 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).containsNone(Arrays.asList(3.0, 4.0, 5.0));
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 3)).containsNone(Arrays.asList(1.0, 3.0));
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 0, 3)).containsNone(Arrays.asList(4.0, 5.0));
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{Double.NaN, Double.NEGATIVE_INFINITY, 3.0})).containsNone(Arrays.asList(Double.POSITIVE_INFINITY, 4.0));
 
         try {
             Raw.doubleBufferAssertion().containsNone(new ArrayList<Double>());
@@ -2533,6 +2707,18 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not contain any of the expected values.\n\tExpected:<[2.0, 1.0]> but was:<[1.0, 2.0]>");
+        }
+        try {
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{Double.NaN, 3.0, Double.POSITIVE_INFINITY})).containsNone(Arrays.asList(Double.NaN, 4.0));
+            Assertions.fail("DoubleBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not contain any of the expected values.\n\tExpected:<[NaN, 4.0]> but was:<[NaN, 3.0, Infinity]>");
+        }
+        try {
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{Double.NaN, 3.0, Double.POSITIVE_INFINITY}), "Message").containsNone(Arrays.asList(Double.NaN, 4.0));
+            Assertions.fail("DoubleBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not contain any of the expected values.\n\tExpected:<[NaN, 4.0]> but was:<[NaN, 3.0, Infinity]>");
         }
     }
 
