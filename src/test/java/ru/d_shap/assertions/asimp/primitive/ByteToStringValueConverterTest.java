@@ -60,37 +60,61 @@ public final class ByteToStringValueConverterTest extends AssertionTest {
      */
     @Test
     public void convertTest() {
-        Assertions.assertThat(new ByteToStringValueConverter().convert((byte) 0)).isInstanceOf(String.class);
-        Assertions.assertThat(new ByteToStringValueConverter().convert((byte) 0), Raw.charSequenceAssertion()).isEqualTo("00");
-        Assertions.assertThat(new ByteToStringValueConverter().convert((byte) 0)).as(Raw.charSequenceAssertion()).isEqualTo("00");
+        Assertions.assertThat(new ByteToStringValueConverter().convert((byte) 0, (Boolean) null)).isInstanceOf(String.class);
+        Assertions.assertThat(new ByteToStringValueConverter().convert((byte) 0, (Boolean) null), Raw.charSequenceAssertion()).isEqualTo("0");
+        Assertions.assertThat(new ByteToStringValueConverter().convert((byte) 0, (Boolean) null)).as(Raw.charSequenceAssertion()).isEqualTo("0");
 
-        Assertions.assertThat(new ByteToStringValueConverter().convert((byte) 1)).isInstanceOf(String.class);
-        Assertions.assertThat(new ByteToStringValueConverter().convert((byte) 1), Raw.charSequenceAssertion()).isEqualTo("01");
-        Assertions.assertThat(new ByteToStringValueConverter().convert((byte) 1)).as(Raw.charSequenceAssertion()).isEqualTo("01");
+        Assertions.assertThat(new ByteToStringValueConverter().convert((byte) 100, (Boolean) null)).isInstanceOf(String.class);
+        Assertions.assertThat(new ByteToStringValueConverter().convert((byte) 100, (Boolean) null), Raw.charSequenceAssertion()).isEqualTo("100");
+        Assertions.assertThat(new ByteToStringValueConverter().convert((byte) 100, (Boolean) null)).as(Raw.charSequenceAssertion()).isEqualTo("100");
 
-        Assertions.assertThat(new ByteToStringValueConverter().convert((byte) 31)).isInstanceOf(String.class);
-        Assertions.assertThat(new ByteToStringValueConverter().convert((byte) 31), Raw.charSequenceAssertion()).isEqualTo("1f");
-        Assertions.assertThat(new ByteToStringValueConverter().convert((byte) 31)).as(Raw.charSequenceAssertion()).isEqualTo("1f");
+        Assertions.assertThat(new ByteToStringValueConverter().convert(Byte.MAX_VALUE, (Boolean) null)).isInstanceOf(String.class);
+        Assertions.assertThat(new ByteToStringValueConverter().convert(Byte.MAX_VALUE, (Boolean) null), Raw.charSequenceAssertion()).isEqualTo("127");
+        Assertions.assertThat(new ByteToStringValueConverter().convert(Byte.MAX_VALUE, (Boolean) null)).as(Raw.charSequenceAssertion()).isEqualTo("127");
 
-        Assertions.assertThat(new ByteToStringValueConverter().convert((byte) 100)).isInstanceOf(String.class);
-        Assertions.assertThat(new ByteToStringValueConverter().convert((byte) 100), Raw.charSequenceAssertion()).isEqualTo("64");
-        Assertions.assertThat(new ByteToStringValueConverter().convert((byte) 100)).as(Raw.charSequenceAssertion()).isEqualTo("64");
+        Assertions.assertThat(new ByteToStringValueConverter().convert((byte) 0, false)).isInstanceOf(String.class);
+        Assertions.assertThat(new ByteToStringValueConverter().convert((byte) 0, false), Raw.charSequenceAssertion()).isEqualTo("0");
+        Assertions.assertThat(new ByteToStringValueConverter().convert((byte) 0, false)).as(Raw.charSequenceAssertion()).isEqualTo("0");
 
-        Assertions.assertThat(new ByteToStringValueConverter().convert(Byte.MAX_VALUE)).isInstanceOf(String.class);
-        Assertions.assertThat(new ByteToStringValueConverter().convert(Byte.MAX_VALUE), Raw.charSequenceAssertion()).isEqualTo("7f");
-        Assertions.assertThat(new ByteToStringValueConverter().convert(Byte.MAX_VALUE)).as(Raw.charSequenceAssertion()).isEqualTo("7f");
+        Assertions.assertThat(new ByteToStringValueConverter().convert((byte) 100, false)).isInstanceOf(String.class);
+        Assertions.assertThat(new ByteToStringValueConverter().convert((byte) 100, false), Raw.charSequenceAssertion()).isEqualTo("100");
+        Assertions.assertThat(new ByteToStringValueConverter().convert((byte) 100, false)).as(Raw.charSequenceAssertion()).isEqualTo("100");
 
-        Assertions.assertThat(new ByteToStringValueConverter().convert((byte) 255)).isInstanceOf(String.class);
-        Assertions.assertThat(new ByteToStringValueConverter().convert((byte) 255), Raw.charSequenceAssertion()).isEqualTo("ff");
-        Assertions.assertThat(new ByteToStringValueConverter().convert((byte) 255)).as(Raw.charSequenceAssertion()).isEqualTo("ff");
+        Assertions.assertThat(new ByteToStringValueConverter().convert(Byte.MAX_VALUE, false)).isInstanceOf(String.class);
+        Assertions.assertThat(new ByteToStringValueConverter().convert(Byte.MAX_VALUE, false), Raw.charSequenceAssertion()).isEqualTo("127");
+        Assertions.assertThat(new ByteToStringValueConverter().convert(Byte.MAX_VALUE, false)).as(Raw.charSequenceAssertion()).isEqualTo("127");
 
-        Assertions.assertThat(new ByteToStringValueConverter().convert((byte) -100)).isInstanceOf(String.class);
-        Assertions.assertThat(new ByteToStringValueConverter().convert((byte) -100), Raw.charSequenceAssertion()).isEqualTo("9c");
-        Assertions.assertThat(new ByteToStringValueConverter().convert((byte) -100)).as(Raw.charSequenceAssertion()).isEqualTo("9c");
+        Assertions.assertThat(new ByteToStringValueConverter().convert((byte) 0, true)).isInstanceOf(String.class);
+        Assertions.assertThat(new ByteToStringValueConverter().convert((byte) 0, true), Raw.charSequenceAssertion()).isEqualTo("00");
+        Assertions.assertThat(new ByteToStringValueConverter().convert((byte) 0, true)).as(Raw.charSequenceAssertion()).isEqualTo("00");
 
-        Assertions.assertThat(new ByteToStringValueConverter().convert(Byte.MIN_VALUE)).isInstanceOf(String.class);
-        Assertions.assertThat(new ByteToStringValueConverter().convert(Byte.MIN_VALUE), Raw.charSequenceAssertion()).isEqualTo("80");
-        Assertions.assertThat(new ByteToStringValueConverter().convert(Byte.MIN_VALUE)).as(Raw.charSequenceAssertion()).isEqualTo("80");
+        Assertions.assertThat(new ByteToStringValueConverter().convert((byte) 1, true)).isInstanceOf(String.class);
+        Assertions.assertThat(new ByteToStringValueConverter().convert((byte) 1, true), Raw.charSequenceAssertion()).isEqualTo("01");
+        Assertions.assertThat(new ByteToStringValueConverter().convert((byte) 1, true)).as(Raw.charSequenceAssertion()).isEqualTo("01");
+
+        Assertions.assertThat(new ByteToStringValueConverter().convert((byte) 31, true)).isInstanceOf(String.class);
+        Assertions.assertThat(new ByteToStringValueConverter().convert((byte) 31, true), Raw.charSequenceAssertion()).isEqualTo("1f");
+        Assertions.assertThat(new ByteToStringValueConverter().convert((byte) 31, true)).as(Raw.charSequenceAssertion()).isEqualTo("1f");
+
+        Assertions.assertThat(new ByteToStringValueConverter().convert((byte) 100, true)).isInstanceOf(String.class);
+        Assertions.assertThat(new ByteToStringValueConverter().convert((byte) 100, true), Raw.charSequenceAssertion()).isEqualTo("64");
+        Assertions.assertThat(new ByteToStringValueConverter().convert((byte) 100, true)).as(Raw.charSequenceAssertion()).isEqualTo("64");
+
+        Assertions.assertThat(new ByteToStringValueConverter().convert(Byte.MAX_VALUE, true)).isInstanceOf(String.class);
+        Assertions.assertThat(new ByteToStringValueConverter().convert(Byte.MAX_VALUE, true), Raw.charSequenceAssertion()).isEqualTo("7f");
+        Assertions.assertThat(new ByteToStringValueConverter().convert(Byte.MAX_VALUE, true)).as(Raw.charSequenceAssertion()).isEqualTo("7f");
+
+        Assertions.assertThat(new ByteToStringValueConverter().convert((byte) 255, true)).isInstanceOf(String.class);
+        Assertions.assertThat(new ByteToStringValueConverter().convert((byte) 255, true), Raw.charSequenceAssertion()).isEqualTo("ff");
+        Assertions.assertThat(new ByteToStringValueConverter().convert((byte) 255, true)).as(Raw.charSequenceAssertion()).isEqualTo("ff");
+
+        Assertions.assertThat(new ByteToStringValueConverter().convert((byte) -100, true)).isInstanceOf(String.class);
+        Assertions.assertThat(new ByteToStringValueConverter().convert((byte) -100, true), Raw.charSequenceAssertion()).isEqualTo("9c");
+        Assertions.assertThat(new ByteToStringValueConverter().convert((byte) -100, true)).as(Raw.charSequenceAssertion()).isEqualTo("9c");
+
+        Assertions.assertThat(new ByteToStringValueConverter().convert(Byte.MIN_VALUE, true)).isInstanceOf(String.class);
+        Assertions.assertThat(new ByteToStringValueConverter().convert(Byte.MIN_VALUE, true), Raw.charSequenceAssertion()).isEqualTo("80");
+        Assertions.assertThat(new ByteToStringValueConverter().convert(Byte.MIN_VALUE, true)).as(Raw.charSequenceAssertion()).isEqualTo("80");
     }
 
     /**
@@ -113,8 +137,16 @@ public final class ByteToStringValueConverterTest extends AssertionTest {
      * {@link ByteToStringValueConverter} class test.
      */
     @Test(expected = ArrayIndexOutOfBoundsException.class)
-    public void convertWrongArgumentCountFailTest() {
-        new ByteToStringValueConverter().convert((byte) 0, new Object());
+    public void convertWrongArgumentCount0FailTest() {
+        new ByteToStringValueConverter().convert((byte) 0);
+    }
+
+    /**
+     * {@link ByteToStringValueConverter} class test.
+     */
+    @Test(expected = ArrayIndexOutOfBoundsException.class)
+    public void convertWrongArgumentCount2FailTest() {
+        new ByteToStringValueConverter().convert((byte) 0, new Object(), new Object());
     }
 
 }
