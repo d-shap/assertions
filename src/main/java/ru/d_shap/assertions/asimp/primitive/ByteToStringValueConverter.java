@@ -71,13 +71,18 @@ public final class ByteToStringValueConverter implements ValueConverterProvider 
     @Override
     public Object convert(final Object value, final Object... arguments) {
         byte castedValue = ConverterArgumentHelper.getValue(value, Byte.class);
-        ConverterArgumentHelper.checkArgumentsLength(arguments, 0);
+        ConverterArgumentHelper.checkArgumentsLength(arguments, 1);
+        Boolean toHex = ConverterArgumentHelper.getArgument(arguments, 0, Boolean.class);
 
-        byte part1 = (byte) (castedValue >> 4 & 0xF);
-        String str1 = VALUES[part1];
-        byte part2 = (byte) (castedValue & 0xF);
-        String str2 = VALUES[part2];
-        return str1 + str2;
+        if (toHex == null || !toHex) {
+            return Byte.toString(castedValue);
+        } else {
+            byte part1 = (byte) (castedValue >> 4 & 0xF);
+            String str1 = VALUES[part1];
+            byte part2 = (byte) (castedValue & 0xF);
+            String str2 = VALUES[part2];
+            return str1 + str2;
+        }
     }
 
 }

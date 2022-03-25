@@ -50,17 +50,22 @@ public final class IntToStringValueConverter implements ValueConverterProvider {
     @Override
     public Object convert(final Object value, final Object... arguments) {
         int castedValue = ConverterArgumentHelper.getValue(value, Integer.class);
-        ConverterArgumentHelper.checkArgumentsLength(arguments, 0);
+        ConverterArgumentHelper.checkArgumentsLength(arguments, 1);
+        Boolean toHex = ConverterArgumentHelper.getArgument(arguments, 0, Boolean.class);
 
-        byte part1 = (byte) (castedValue >> 24 & 0xFF);
-        String str1 = ValueConverter.convert(part1, String.class);
-        byte part2 = (byte) (castedValue >> 16 & 0xFF);
-        String str2 = ValueConverter.convert(part2, String.class);
-        byte part3 = (byte) (castedValue >> 8 & 0xFF);
-        String str3 = ValueConverter.convert(part3, String.class);
-        byte part4 = (byte) (castedValue & 0xFF);
-        String str4 = ValueConverter.convert(part4, String.class);
-        return str1 + str2 + str3 + str4;
+        if (toHex == null || !toHex) {
+            return Integer.toString(castedValue);
+        } else {
+            byte part1 = (byte) (castedValue >> 24 & 0xFF);
+            String str1 = ValueConverter.convert(part1, String.class);
+            byte part2 = (byte) (castedValue >> 16 & 0xFF);
+            String str2 = ValueConverter.convert(part2, String.class);
+            byte part3 = (byte) (castedValue >> 8 & 0xFF);
+            String str3 = ValueConverter.convert(part3, String.class);
+            byte part4 = (byte) (castedValue & 0xFF);
+            String str4 = ValueConverter.convert(part4, String.class);
+            return str1 + str2 + str3 + str4;
+        }
     }
 
 }

@@ -50,25 +50,30 @@ public final class LongToStringValueConverter implements ValueConverterProvider 
     @Override
     public Object convert(final Object value, final Object... arguments) {
         long castedValue = ConverterArgumentHelper.getValue(value, Long.class);
-        ConverterArgumentHelper.checkArgumentsLength(arguments, 0);
+        ConverterArgumentHelper.checkArgumentsLength(arguments, 1);
+        Boolean toHex = ConverterArgumentHelper.getArgument(arguments, 0, Boolean.class);
 
-        byte part1 = (byte) (castedValue >> 56 & 0xFF);
-        String str1 = ValueConverter.convert(part1, String.class);
-        byte part2 = (byte) (castedValue >> 48 & 0xFF);
-        String str2 = ValueConverter.convert(part2, String.class);
-        byte part3 = (byte) (castedValue >> 40 & 0xFF);
-        String str3 = ValueConverter.convert(part3, String.class);
-        byte part4 = (byte) (castedValue >> 32 & 0xFF);
-        String str4 = ValueConverter.convert(part4, String.class);
-        byte part5 = (byte) (castedValue >> 24 & 0xFF);
-        String str5 = ValueConverter.convert(part5, String.class);
-        byte part6 = (byte) (castedValue >> 16 & 0xFF);
-        String str6 = ValueConverter.convert(part6, String.class);
-        byte part7 = (byte) (castedValue >> 8 & 0xFF);
-        String str7 = ValueConverter.convert(part7, String.class);
-        byte part8 = (byte) (castedValue & 0xFF);
-        String str8 = ValueConverter.convert(part8, String.class);
-        return str1 + str2 + str3 + str4 + str5 + str6 + str7 + str8;
+        if (toHex == null || !toHex) {
+            return Long.toString(castedValue);
+        } else {
+            byte part1 = (byte) (castedValue >> 56 & 0xFF);
+            String str1 = ValueConverter.convert(part1, String.class);
+            byte part2 = (byte) (castedValue >> 48 & 0xFF);
+            String str2 = ValueConverter.convert(part2, String.class);
+            byte part3 = (byte) (castedValue >> 40 & 0xFF);
+            String str3 = ValueConverter.convert(part3, String.class);
+            byte part4 = (byte) (castedValue >> 32 & 0xFF);
+            String str4 = ValueConverter.convert(part4, String.class);
+            byte part5 = (byte) (castedValue >> 24 & 0xFF);
+            String str5 = ValueConverter.convert(part5, String.class);
+            byte part6 = (byte) (castedValue >> 16 & 0xFF);
+            String str6 = ValueConverter.convert(part6, String.class);
+            byte part7 = (byte) (castedValue >> 8 & 0xFF);
+            String str7 = ValueConverter.convert(part7, String.class);
+            byte part8 = (byte) (castedValue & 0xFF);
+            String str8 = ValueConverter.convert(part8, String.class);
+            return str1 + str2 + str3 + str4 + str5 + str6 + str7 + str8;
+        }
     }
 
 }
