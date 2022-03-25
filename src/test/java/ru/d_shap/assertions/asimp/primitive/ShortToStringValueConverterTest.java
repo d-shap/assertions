@@ -60,41 +60,65 @@ public final class ShortToStringValueConverterTest extends AssertionTest {
      */
     @Test
     public void convertTest() {
-        Assertions.assertThat(new ShortToStringValueConverter().convert((short) 0)).isInstanceOf(String.class);
-        Assertions.assertThat(new ShortToStringValueConverter().convert((short) 0), Raw.charSequenceAssertion()).isEqualTo("0000");
-        Assertions.assertThat(new ShortToStringValueConverter().convert((short) 0)).as(Raw.charSequenceAssertion()).isEqualTo("0000");
+        Assertions.assertThat(new ShortToStringValueConverter().convert((short) 0, (Boolean) null)).isInstanceOf(String.class);
+        Assertions.assertThat(new ShortToStringValueConverter().convert((short) 0, (Boolean) null), Raw.charSequenceAssertion()).isEqualTo("0");
+        Assertions.assertThat(new ShortToStringValueConverter().convert((short) 0, (Boolean) null)).as(Raw.charSequenceAssertion()).isEqualTo("0");
 
-        Assertions.assertThat(new ShortToStringValueConverter().convert((short) 1)).isInstanceOf(String.class);
-        Assertions.assertThat(new ShortToStringValueConverter().convert((short) 1), Raw.charSequenceAssertion()).isEqualTo("0001");
-        Assertions.assertThat(new ShortToStringValueConverter().convert((short) 1)).as(Raw.charSequenceAssertion()).isEqualTo("0001");
+        Assertions.assertThat(new ShortToStringValueConverter().convert((short) 100, (Boolean) null)).isInstanceOf(String.class);
+        Assertions.assertThat(new ShortToStringValueConverter().convert((short) 100, (Boolean) null), Raw.charSequenceAssertion()).isEqualTo("100");
+        Assertions.assertThat(new ShortToStringValueConverter().convert((short) 100, (Boolean) null)).as(Raw.charSequenceAssertion()).isEqualTo("100");
 
-        Assertions.assertThat(new ShortToStringValueConverter().convert((short) 31)).isInstanceOf(String.class);
-        Assertions.assertThat(new ShortToStringValueConverter().convert((short) 31), Raw.charSequenceAssertion()).isEqualTo("001f");
-        Assertions.assertThat(new ShortToStringValueConverter().convert((short) 31)).as(Raw.charSequenceAssertion()).isEqualTo("001f");
+        Assertions.assertThat(new ShortToStringValueConverter().convert(Short.MAX_VALUE, (Boolean) null)).isInstanceOf(String.class);
+        Assertions.assertThat(new ShortToStringValueConverter().convert(Short.MAX_VALUE, (Boolean) null), Raw.charSequenceAssertion()).isEqualTo("32767");
+        Assertions.assertThat(new ShortToStringValueConverter().convert(Short.MAX_VALUE, (Boolean) null)).as(Raw.charSequenceAssertion()).isEqualTo("32767");
 
-        Assertions.assertThat(new ShortToStringValueConverter().convert((short) 479)).isInstanceOf(String.class);
-        Assertions.assertThat(new ShortToStringValueConverter().convert((short) 479), Raw.charSequenceAssertion()).isEqualTo("01df");
-        Assertions.assertThat(new ShortToStringValueConverter().convert((short) 479)).as(Raw.charSequenceAssertion()).isEqualTo("01df");
+        Assertions.assertThat(new ShortToStringValueConverter().convert((short) 0, false)).isInstanceOf(String.class);
+        Assertions.assertThat(new ShortToStringValueConverter().convert((short) 0, false), Raw.charSequenceAssertion()).isEqualTo("0");
+        Assertions.assertThat(new ShortToStringValueConverter().convert((short) 0, false)).as(Raw.charSequenceAssertion()).isEqualTo("0");
 
-        Assertions.assertThat(new ShortToStringValueConverter().convert((short) 7311)).isInstanceOf(String.class);
-        Assertions.assertThat(new ShortToStringValueConverter().convert((short) 7311), Raw.charSequenceAssertion()).isEqualTo("1c8f");
-        Assertions.assertThat(new ShortToStringValueConverter().convert((short) 7311)).as(Raw.charSequenceAssertion()).isEqualTo("1c8f");
+        Assertions.assertThat(new ShortToStringValueConverter().convert((short) 100, false)).isInstanceOf(String.class);
+        Assertions.assertThat(new ShortToStringValueConverter().convert((short) 100, false), Raw.charSequenceAssertion()).isEqualTo("100");
+        Assertions.assertThat(new ShortToStringValueConverter().convert((short) 100, false)).as(Raw.charSequenceAssertion()).isEqualTo("100");
 
-        Assertions.assertThat(new ShortToStringValueConverter().convert(Short.MAX_VALUE)).isInstanceOf(String.class);
-        Assertions.assertThat(new ShortToStringValueConverter().convert(Short.MAX_VALUE), Raw.charSequenceAssertion()).isEqualTo("7fff");
-        Assertions.assertThat(new ShortToStringValueConverter().convert(Short.MAX_VALUE)).as(Raw.charSequenceAssertion()).isEqualTo("7fff");
+        Assertions.assertThat(new ShortToStringValueConverter().convert(Short.MAX_VALUE, false)).isInstanceOf(String.class);
+        Assertions.assertThat(new ShortToStringValueConverter().convert(Short.MAX_VALUE, false), Raw.charSequenceAssertion()).isEqualTo("32767");
+        Assertions.assertThat(new ShortToStringValueConverter().convert(Short.MAX_VALUE, false)).as(Raw.charSequenceAssertion()).isEqualTo("32767");
 
-        Assertions.assertThat(new ShortToStringValueConverter().convert((short) 65535)).isInstanceOf(String.class);
-        Assertions.assertThat(new ShortToStringValueConverter().convert((short) 65535), Raw.charSequenceAssertion()).isEqualTo("ffff");
-        Assertions.assertThat(new ShortToStringValueConverter().convert((short) 65535)).as(Raw.charSequenceAssertion()).isEqualTo("ffff");
+        Assertions.assertThat(new ShortToStringValueConverter().convert((short) 0, true)).isInstanceOf(String.class);
+        Assertions.assertThat(new ShortToStringValueConverter().convert((short) 0, true), Raw.charSequenceAssertion()).isEqualTo("0000");
+        Assertions.assertThat(new ShortToStringValueConverter().convert((short) 0, true)).as(Raw.charSequenceAssertion()).isEqualTo("0000");
 
-        Assertions.assertThat(new ShortToStringValueConverter().convert((short) -100)).isInstanceOf(String.class);
-        Assertions.assertThat(new ShortToStringValueConverter().convert((short) -100), Raw.charSequenceAssertion()).isEqualTo("ff9c");
-        Assertions.assertThat(new ShortToStringValueConverter().convert((short) -100)).as(Raw.charSequenceAssertion()).isEqualTo("ff9c");
+        Assertions.assertThat(new ShortToStringValueConverter().convert((short) 1, true)).isInstanceOf(String.class);
+        Assertions.assertThat(new ShortToStringValueConverter().convert((short) 1, true), Raw.charSequenceAssertion()).isEqualTo("0001");
+        Assertions.assertThat(new ShortToStringValueConverter().convert((short) 1, true)).as(Raw.charSequenceAssertion()).isEqualTo("0001");
 
-        Assertions.assertThat(new ShortToStringValueConverter().convert(Short.MIN_VALUE)).isInstanceOf(String.class);
-        Assertions.assertThat(new ShortToStringValueConverter().convert(Short.MIN_VALUE), Raw.charSequenceAssertion()).isEqualTo("8000");
-        Assertions.assertThat(new ShortToStringValueConverter().convert(Short.MIN_VALUE)).as(Raw.charSequenceAssertion()).isEqualTo("8000");
+        Assertions.assertThat(new ShortToStringValueConverter().convert((short) 31, true)).isInstanceOf(String.class);
+        Assertions.assertThat(new ShortToStringValueConverter().convert((short) 31, true), Raw.charSequenceAssertion()).isEqualTo("001f");
+        Assertions.assertThat(new ShortToStringValueConverter().convert((short) 31, true)).as(Raw.charSequenceAssertion()).isEqualTo("001f");
+
+        Assertions.assertThat(new ShortToStringValueConverter().convert((short) 479, true)).isInstanceOf(String.class);
+        Assertions.assertThat(new ShortToStringValueConverter().convert((short) 479, true), Raw.charSequenceAssertion()).isEqualTo("01df");
+        Assertions.assertThat(new ShortToStringValueConverter().convert((short) 479, true)).as(Raw.charSequenceAssertion()).isEqualTo("01df");
+
+        Assertions.assertThat(new ShortToStringValueConverter().convert((short) 7311, true)).isInstanceOf(String.class);
+        Assertions.assertThat(new ShortToStringValueConverter().convert((short) 7311, true), Raw.charSequenceAssertion()).isEqualTo("1c8f");
+        Assertions.assertThat(new ShortToStringValueConverter().convert((short) 7311, true)).as(Raw.charSequenceAssertion()).isEqualTo("1c8f");
+
+        Assertions.assertThat(new ShortToStringValueConverter().convert(Short.MAX_VALUE, true)).isInstanceOf(String.class);
+        Assertions.assertThat(new ShortToStringValueConverter().convert(Short.MAX_VALUE, true), Raw.charSequenceAssertion()).isEqualTo("7fff");
+        Assertions.assertThat(new ShortToStringValueConverter().convert(Short.MAX_VALUE, true)).as(Raw.charSequenceAssertion()).isEqualTo("7fff");
+
+        Assertions.assertThat(new ShortToStringValueConverter().convert((short) 65535, true)).isInstanceOf(String.class);
+        Assertions.assertThat(new ShortToStringValueConverter().convert((short) 65535, true), Raw.charSequenceAssertion()).isEqualTo("ffff");
+        Assertions.assertThat(new ShortToStringValueConverter().convert((short) 65535, true)).as(Raw.charSequenceAssertion()).isEqualTo("ffff");
+
+        Assertions.assertThat(new ShortToStringValueConverter().convert((short) -100, true)).isInstanceOf(String.class);
+        Assertions.assertThat(new ShortToStringValueConverter().convert((short) -100, true), Raw.charSequenceAssertion()).isEqualTo("ff9c");
+        Assertions.assertThat(new ShortToStringValueConverter().convert((short) -100, true)).as(Raw.charSequenceAssertion()).isEqualTo("ff9c");
+
+        Assertions.assertThat(new ShortToStringValueConverter().convert(Short.MIN_VALUE, true)).isInstanceOf(String.class);
+        Assertions.assertThat(new ShortToStringValueConverter().convert(Short.MIN_VALUE, true), Raw.charSequenceAssertion()).isEqualTo("8000");
+        Assertions.assertThat(new ShortToStringValueConverter().convert(Short.MIN_VALUE, true)).as(Raw.charSequenceAssertion()).isEqualTo("8000");
     }
 
     /**
@@ -117,8 +141,16 @@ public final class ShortToStringValueConverterTest extends AssertionTest {
      * {@link ShortToStringValueConverter} class test.
      */
     @Test(expected = ArrayIndexOutOfBoundsException.class)
-    public void convertWrongArgumentCountFailTest() {
-        new ShortToStringValueConverter().convert((short) 0, new Object());
+    public void convertWrongArgumentCount0FailTest() {
+        new ShortToStringValueConverter().convert((short) 0);
+    }
+
+    /**
+     * {@link ShortToStringValueConverter} class test.
+     */
+    @Test(expected = ArrayIndexOutOfBoundsException.class)
+    public void convertWrongArgumentCount2FailTest() {
+        new ShortToStringValueConverter().convert((short) 0, new Object(), new Object());
     }
 
 }
