@@ -182,6 +182,8 @@ public final class SetAssertionTest extends AssertionTest {
         initialize(Raw.<String>setAssertion(), createHashSet(null, "val1", "val2")).contains(null);
         initialize(Raw.<String>setAssertion(), createHashSet("val1", null, "val2")).contains(null);
         initialize(Raw.<String>setAssertion(), createHashSet("val1", "val2", null)).contains(null);
+        initialize(Raw.<Float>setAssertion(), createHashSet(Float.NaN, Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY, 3.0f)).contains(Float.POSITIVE_INFINITY);
+        initialize(Raw.<Double>setAssertion(), createHashSet(Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0)).contains(Double.POSITIVE_INFINITY);
 
         try {
             Raw.<String>setAssertion().contains("val");
@@ -225,6 +227,18 @@ public final class SetAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain the expected value.\n\tExpected:<val3> but was:<[val1, 1(49)]>");
         }
+        try {
+            initialize(Raw.<Float>setAssertion(), createHashSet(1.0f, Float.POSITIVE_INFINITY)).contains(Float.NEGATIVE_INFINITY);
+            Assertions.fail("SetAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should contain the expected value.\n\tExpected:<-Infinity> but was:<[1.0f, Infinity]>");
+        }
+        try {
+            initialize(Raw.<Float>setAssertion(), createHashSet(1.0f, Float.POSITIVE_INFINITY), "Message").contains(Float.NEGATIVE_INFINITY);
+            Assertions.fail("SetAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain the expected value.\n\tExpected:<-Infinity> but was:<[1.0f, Infinity]>");
+        }
     }
 
     /**
@@ -235,6 +249,8 @@ public final class SetAssertionTest extends AssertionTest {
         initialize(Raw.<String>setAssertion(), createHashSet("val1", "val2")).doesNotContain("val3");
         initialize(Raw.<String>setAssertion(), createHashSet("val1", null)).doesNotContain("val3");
         initialize(Raw.<String>setAssertion(), createHashSet("val1", "val2")).doesNotContain(null);
+        initialize(Raw.<Float>setAssertion(), createHashSet(Float.NaN, Float.POSITIVE_INFINITY)).doesNotContain(3.0f);
+        initialize(Raw.<Double>setAssertion(), createHashSet(Double.NaN, Double.POSITIVE_INFINITY)).doesNotContain(3.0);
 
         try {
             Raw.<String>setAssertion().doesNotContain("val");
@@ -296,6 +312,18 @@ public final class SetAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not contain the expected value.\n\tExpected:<val1> but was:<[val1, 1(49)]>");
         }
+        try {
+            initialize(Raw.<Float>setAssertion(), createHashSet(Float.NaN, Float.POSITIVE_INFINITY)).doesNotContain(Float.POSITIVE_INFINITY);
+            Assertions.fail("SetAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not contain the expected value.\n\tExpected:<Infinity> but was:<[NaN, Infinity]>");
+        }
+        try {
+            initialize(Raw.<Float>setAssertion(), createHashSet(Float.NaN, Float.POSITIVE_INFINITY), "Message").doesNotContain(Float.POSITIVE_INFINITY);
+            Assertions.fail("SetAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not contain the expected value.\n\tExpected:<Infinity> but was:<[NaN, Infinity]>");
+        }
     }
 
     /**
@@ -311,6 +339,8 @@ public final class SetAssertionTest extends AssertionTest {
         initialize(Raw.<String>setAssertion(), createHashSet("val1", "val2", "val3", "val4", "val5")).containsAll("val3", "val1", "val4", "val5", "val2");
         initialize(Raw.<String>setAssertion(), createHashSet("val1", "val2", "val3", "val4", null)).containsAll("val3", "val1", "val4", null, "val2");
         initialize(Raw.<String>setAssertion(), createDuplicateSet("val1", "val1", "val1")).containsAll("val1", "val1", "val1");
+        initialize(Raw.<Float>setAssertion(), createHashSet(Float.NaN, Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY, 3.0f)).containsAll(Float.NEGATIVE_INFINITY, Float.NaN);
+        initialize(Raw.<Double>setAssertion(), createHashSet(Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0)).containsAll(Double.NEGATIVE_INFINITY, Double.NaN);
 
         try {
             Raw.<String>setAssertion().containsAll("val");
@@ -420,6 +450,18 @@ public final class SetAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values.\n\tExpected:<[val1, val1, val1]> but was:<[val1]>");
         }
+        try {
+            initialize(Raw.<Float>setAssertion(), createHashSet(Float.NaN, Float.POSITIVE_INFINITY)).containsAll(Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY);
+            Assertions.fail("SetAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values.\n\tExpected:<[Infinity, -Infinity]> but was:<[NaN, Infinity]>");
+        }
+        try {
+            initialize(Raw.<Float>setAssertion(), createHashSet(Float.NaN, Float.POSITIVE_INFINITY), "Message").containsAll(Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY);
+            Assertions.fail("SetAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values.\n\tExpected:<[Infinity, -Infinity]> but was:<[NaN, Infinity]>");
+        }
     }
 
     /**
@@ -434,6 +476,8 @@ public final class SetAssertionTest extends AssertionTest {
         initialize(Raw.<String>setAssertion(), createHashSet("val1", "val2", "val3", "val4", "val5")).containsAll(Arrays.asList("val3", "val5", "val4"));
         initialize(Raw.<String>setAssertion(), createHashSet("val1", "val2", "val3", "val4", "val5")).containsAll(Arrays.asList("val3", "val1", "val4", "val5", "val2"));
         initialize(Raw.<String>setAssertion(), createHashSet("val1", "val2", "val3", "val4", null)).containsAll(Arrays.asList("val3", "val1", "val4", null, "val2"));
+        initialize(Raw.<Float>setAssertion(), createHashSet(Float.NaN, Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY, 3.0f)).containsAll(Arrays.asList(Float.NEGATIVE_INFINITY, Float.NaN));
+        initialize(Raw.<Double>setAssertion(), createHashSet(Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0)).containsAll(Arrays.asList(Double.NEGATIVE_INFINITY, Double.NaN));
 
         try {
             Raw.<String>setAssertion().containsAll(new ArrayList<String>());
@@ -519,6 +563,18 @@ public final class SetAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values.\n\tExpected:<[val1, val2, val3, val4, val5, val6]> but was:<[val1, val2, val3, val4, val5]>");
         }
+        try {
+            initialize(Raw.<Float>setAssertion(), createHashSet(Float.NaN, Float.POSITIVE_INFINITY)).containsAll(Arrays.asList(Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY));
+            Assertions.fail("SetAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values.\n\tExpected:<[Infinity, -Infinity]> but was:<[NaN, Infinity]>");
+        }
+        try {
+            initialize(Raw.<Float>setAssertion(), createHashSet(Float.NaN, Float.POSITIVE_INFINITY), "Message").containsAll(Arrays.asList(Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY));
+            Assertions.fail("SetAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values.\n\tExpected:<[Infinity, -Infinity]> but was:<[NaN, Infinity]>");
+        }
     }
 
     /**
@@ -533,6 +589,8 @@ public final class SetAssertionTest extends AssertionTest {
         initialize(Raw.<String>setAssertion(), createHashSet("val1", "val2", "val3", "val4", "val5")).containsAllInOrder("val1", "val2", "val3", "val4", "val5");
         initialize(Raw.<String>setAssertion(), createHashSet("val1", "val2", "val3", "val4", null)).containsAllInOrder("val1", "val2", "val3", "val4", null);
         initialize(Raw.<String>setAssertion(), createDuplicateSet("val1", "val1", "val1")).containsAllInOrder("val1", "val1", "val1");
+        initialize(Raw.<Float>setAssertion(), createHashSet(Float.NaN, Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY, 3.0f)).containsAllInOrder(Float.NaN, Float.NEGATIVE_INFINITY, 3.0f);
+        initialize(Raw.<Double>setAssertion(), createHashSet(Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0)).containsAllInOrder(Double.NaN, Double.NEGATIVE_INFINITY, 3.0);
 
         try {
             Raw.<String>setAssertion().containsAllInOrder("val");
@@ -642,6 +700,18 @@ public final class SetAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values in the specified order.\n\tExpected:<[val1, val1, val1]> but was:<[val1]>");
         }
+        try {
+            initialize(Raw.<Float>setAssertion(), createHashSet(Float.NaN, Float.POSITIVE_INFINITY)).containsAllInOrder(Float.POSITIVE_INFINITY, Float.NaN);
+            Assertions.fail("SetAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[Infinity, NaN]> but was:<[NaN, Infinity]>");
+        }
+        try {
+            initialize(Raw.<Float>setAssertion(), createHashSet(Float.NaN, Float.POSITIVE_INFINITY), "Message").containsAllInOrder(Float.POSITIVE_INFINITY, Float.NaN);
+            Assertions.fail("SetAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values in the specified order.\n\tExpected:<[Infinity, NaN]> but was:<[NaN, Infinity]>");
+        }
     }
 
     /**
@@ -655,6 +725,8 @@ public final class SetAssertionTest extends AssertionTest {
         initialize(Raw.<String>setAssertion(), createHashSet("val1", "val2", "val3", "val4", "val5")).containsAllInOrder(Arrays.asList("val3", "val4", "val5"));
         initialize(Raw.<String>setAssertion(), createHashSet("val1", "val2", "val3", "val4", "val5")).containsAllInOrder(Arrays.asList("val1", "val2", "val3", "val4", "val5"));
         initialize(Raw.<String>setAssertion(), createHashSet("val1", "val2", "val3", "val4", null)).containsAllInOrder(Arrays.asList("val1", "val2", "val3", "val4", null));
+        initialize(Raw.<Float>setAssertion(), createHashSet(Float.NaN, Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY, 3.0f)).containsAllInOrder(Arrays.asList(Float.NaN, Float.NEGATIVE_INFINITY, 3.0f));
+        initialize(Raw.<Double>setAssertion(), createHashSet(Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0)).containsAllInOrder(Arrays.asList(Double.NaN, Double.NEGATIVE_INFINITY, 3.0));
 
         try {
             Raw.<String>setAssertion().containsAllInOrder(new ArrayList<String>());
@@ -740,6 +812,18 @@ public final class SetAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values in the specified order.\n\tExpected:<[val1, val2, val3, val4, val5, val6]> but was:<[val1, val2, val3, val4, val5]>");
         }
+        try {
+            initialize(Raw.<Float>setAssertion(), createHashSet(Float.NaN, Float.POSITIVE_INFINITY)).containsAllInOrder(Arrays.asList(Float.POSITIVE_INFINITY, Float.NaN));
+            Assertions.fail("SetAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[Infinity, NaN]> but was:<[NaN, Infinity]>");
+        }
+        try {
+            initialize(Raw.<Float>setAssertion(), createHashSet(Float.NaN, Float.POSITIVE_INFINITY), "Message").containsAllInOrder(Arrays.asList(Float.POSITIVE_INFINITY, Float.NaN));
+            Assertions.fail("SetAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values in the specified order.\n\tExpected:<[Infinity, NaN]> but was:<[NaN, Infinity]>");
+        }
     }
 
     /**
@@ -756,6 +840,8 @@ public final class SetAssertionTest extends AssertionTest {
         initialize(Raw.<String>setAssertion(), createHashSet("val1", "val2", "val3", "val4", null)).containsExactly("val2", "val4", "val1", "val3", null);
         initialize(Raw.setAssertion(), createHashSet()).containsExactly();
         initialize(Raw.<String>setAssertion(), createDuplicateSet("val1", "val1", "val1")).containsExactly("val1", "val1", "val1");
+        initialize(Raw.<Float>setAssertion(), createHashSet(Float.NaN, Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY, 3.0f)).containsExactly(Float.NEGATIVE_INFINITY, Float.NaN, 3.0f, Float.POSITIVE_INFINITY);
+        initialize(Raw.<Double>setAssertion(), createHashSet(Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0)).containsExactly(Double.NEGATIVE_INFINITY, Double.NaN, 3.0, Double.POSITIVE_INFINITY);
 
         try {
             Raw.<String>setAssertion().containsExactly("val");
@@ -865,6 +951,18 @@ public final class SetAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly.\n\tExpected:<[val1, val1, val1]> but was:<[val1]>");
         }
+        try {
+            initialize(Raw.<Float>setAssertion(), createHashSet(Float.NaN, 3.0f, Float.POSITIVE_INFINITY)).containsExactly(Float.NaN, 3.0f);
+            Assertions.fail("SetAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[NaN, 3.0f]> but was:<[NaN, 3.0f, Infinity]>");
+        }
+        try {
+            initialize(Raw.<Float>setAssertion(), createHashSet(Float.NaN, 3.0f, Float.POSITIVE_INFINITY), "Message").containsExactly(Float.NaN, 3.0f);
+            Assertions.fail("SetAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly.\n\tExpected:<[NaN, 3.0f]> but was:<[NaN, 3.0f, Infinity]>");
+        }
     }
 
     /**
@@ -880,6 +978,8 @@ public final class SetAssertionTest extends AssertionTest {
         initialize(Raw.<String>setAssertion(), createHashSet("val1", "val2", "val3", "val4", "val5")).containsExactly(Arrays.asList("val2", "val4", "val1", "val3", "val5"));
         initialize(Raw.<String>setAssertion(), createHashSet("val1", "val2", "val3", "val4", null)).containsExactly(Arrays.asList("val2", "val4", "val1", "val3", null));
         initialize(Raw.setAssertion(), createHashSet()).containsExactly(new ArrayList<>());
+        initialize(Raw.<Float>setAssertion(), createHashSet(Float.NaN, Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY, 3.0f)).containsExactly(Arrays.asList(Float.NEGATIVE_INFINITY, Float.NaN, 3.0f, Float.POSITIVE_INFINITY));
+        initialize(Raw.<Double>setAssertion(), createHashSet(Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0)).containsExactly(Arrays.asList(Double.NEGATIVE_INFINITY, Double.NaN, 3.0, Double.POSITIVE_INFINITY));
 
         try {
             Raw.<String>setAssertion().containsExactly(new ArrayList<String>());
@@ -965,6 +1065,18 @@ public final class SetAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly.\n\tExpected:<[val2, val4, val1]> but was:<[val1, val2, val3]>");
         }
+        try {
+            initialize(Raw.<Float>setAssertion(), createHashSet(Float.NaN, 3.0f, Float.POSITIVE_INFINITY)).containsExactly(Arrays.asList(Float.NaN, 3.0f));
+            Assertions.fail("SetAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[NaN, 3.0f]> but was:<[NaN, 3.0f, Infinity]>");
+        }
+        try {
+            initialize(Raw.<Float>setAssertion(), createHashSet(Float.NaN, 3.0f, Float.POSITIVE_INFINITY), "Message").containsExactly(Arrays.asList(Float.NaN, 3.0f));
+            Assertions.fail("SetAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly.\n\tExpected:<[NaN, 3.0f]> but was:<[NaN, 3.0f, Infinity]>");
+        }
     }
 
     /**
@@ -977,6 +1089,8 @@ public final class SetAssertionTest extends AssertionTest {
         initialize(Raw.<String>setAssertion(), createHashSet("val1", "val2", "val3", "val4", null)).containsExactlyInOrder("val1", "val2", "val3", "val4", null);
         initialize(Raw.setAssertion(), createHashSet()).containsExactlyInOrder();
         initialize(Raw.<String>setAssertion(), createDuplicateSet("val1", "val1", "val1")).containsExactlyInOrder("val1", "val1", "val1");
+        initialize(Raw.<Float>setAssertion(), createHashSet(Float.NaN, Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY, 3.0f)).containsExactlyInOrder(Float.NaN, Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY, 3.0f);
+        initialize(Raw.<Double>setAssertion(), createHashSet(Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0)).containsExactlyInOrder(Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0);
 
         try {
             Raw.<String>setAssertion().containsExactlyInOrder("val");
@@ -1086,6 +1200,18 @@ public final class SetAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[val1, val1, val1]> but was:<[val1]>");
         }
+        try {
+            initialize(Raw.<Float>setAssertion(), createHashSet(Float.NaN, 3.0f, Float.POSITIVE_INFINITY)).containsExactlyInOrder(Float.POSITIVE_INFINITY, Float.NaN, 3.0f);
+            Assertions.fail("SetAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[Infinity, NaN, 3.0f]> but was:<[NaN, 3.0f, Infinity]>");
+        }
+        try {
+            initialize(Raw.<Float>setAssertion(), createHashSet(Float.NaN, 3.0f, Float.POSITIVE_INFINITY), "Message").containsExactlyInOrder(Float.POSITIVE_INFINITY, Float.NaN, 3.0f);
+            Assertions.fail("SetAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[Infinity, NaN, 3.0f]> but was:<[NaN, 3.0f, Infinity]>");
+        }
     }
 
     /**
@@ -1097,6 +1223,8 @@ public final class SetAssertionTest extends AssertionTest {
         initialize(Raw.<String>setAssertion(), createHashSet("val1", "val2", "val3", "val4", "val5")).containsExactlyInOrder(Arrays.asList("val1", "val2", "val3", "val4", "val5"));
         initialize(Raw.<String>setAssertion(), createHashSet("val1", "val2", "val3", "val4", null)).containsExactlyInOrder(Arrays.asList("val1", "val2", "val3", "val4", null));
         initialize(Raw.setAssertion(), createHashSet()).containsExactlyInOrder(new ArrayList<>());
+        initialize(Raw.<Float>setAssertion(), createHashSet(Float.NaN, Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY, 3.0f)).containsExactlyInOrder(Arrays.asList(Float.NaN, Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY, 3.0f));
+        initialize(Raw.<Double>setAssertion(), createHashSet(Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0)).containsExactlyInOrder(Arrays.asList(Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0));
 
         try {
             Raw.<String>setAssertion().containsExactlyInOrder(new ArrayList<String>());
@@ -1182,6 +1310,18 @@ public final class SetAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[val3, val1, val2]> but was:<[val1, val2, val3]>");
         }
+        try {
+            initialize(Raw.<Float>setAssertion(), createHashSet(Float.NaN, 3.0f, Float.POSITIVE_INFINITY)).containsExactlyInOrder(Arrays.asList(Float.POSITIVE_INFINITY, Float.NaN, 3.0f));
+            Assertions.fail("SetAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[Infinity, NaN, 3.0f]> but was:<[NaN, 3.0f, Infinity]>");
+        }
+        try {
+            initialize(Raw.<Float>setAssertion(), createHashSet(Float.NaN, 3.0f, Float.POSITIVE_INFINITY), "Message").containsExactlyInOrder(Arrays.asList(Float.POSITIVE_INFINITY, Float.NaN, 3.0f));
+            Assertions.fail("SetAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[Infinity, NaN, 3.0f]> but was:<[NaN, 3.0f, Infinity]>");
+        }
     }
 
     /**
@@ -1196,6 +1336,8 @@ public final class SetAssertionTest extends AssertionTest {
         initialize(Raw.<String>setAssertion(), createHashSet("val1", "val2", "val3", "val4", null)).containsAny("val7", "val9", null);
         initialize(Raw.<String>setAssertion(), createDuplicateSet("val1", "val1", "val1")).containsAny("val1", "val1", "val1");
         initialize(Raw.<String>setAssertion(), createHashSet("val1", "val1", "val1")).containsAny("val1", "val1", "val1");
+        initialize(Raw.<Float>setAssertion(), createHashSet(Float.NaN, Float.NEGATIVE_INFINITY, 3.0f)).containsAny(Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY);
+        initialize(Raw.<Double>setAssertion(), createHashSet(Double.NaN, Double.NEGATIVE_INFINITY, 3.0)).containsAny(Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY);
 
         try {
             Raw.<String>setAssertion().containsAny("val");
@@ -1281,6 +1423,18 @@ public final class SetAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain any of the expected values.\n\tExpected:<[val8, val7]> but was:<[val1, val2, val3, val4, 1(49)]>");
         }
+        try {
+            initialize(Raw.<Float>setAssertion(), createHashSet(Float.NaN, 3.0f, Float.POSITIVE_INFINITY)).containsAny(Float.NEGATIVE_INFINITY, 4.0f);
+            Assertions.fail("SetAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should contain any of the expected values.\n\tExpected:<[-Infinity, 4.0f]> but was:<[NaN, 3.0f, Infinity]>");
+        }
+        try {
+            initialize(Raw.<Float>setAssertion(), createHashSet(Float.NaN, 3.0f, Float.POSITIVE_INFINITY), "Message").containsAny(Float.NEGATIVE_INFINITY, 4.0f);
+            Assertions.fail("SetAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain any of the expected values.\n\tExpected:<[-Infinity, 4.0f]> but was:<[NaN, 3.0f, Infinity]>");
+        }
     }
 
     /**
@@ -1293,6 +1447,8 @@ public final class SetAssertionTest extends AssertionTest {
         initialize(Raw.<String>setAssertion(), createHashSet("val1", "val2", "val3", "val4", "val5")).containsAny(Arrays.asList("val7", "val9", "val1", "val5", "val3"));
         initialize(Raw.<String>setAssertion(), createHashSet("val1", "val2", "val3", "val4", null)).containsAny(Arrays.asList("val7", "val9", "val1", null, "val3"));
         initialize(Raw.<String>setAssertion(), createHashSet("val1", "val2", "val3", "val4", null)).containsAny(Arrays.asList("val7", "val9", null));
+        initialize(Raw.<Float>setAssertion(), createHashSet(Float.NaN, Float.NEGATIVE_INFINITY, 3.0f)).containsAny(Arrays.asList(Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY));
+        initialize(Raw.<Double>setAssertion(), createHashSet(Double.NaN, Double.NEGATIVE_INFINITY, 3.0)).containsAny(Arrays.asList(Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY));
 
         try {
             Raw.<String>setAssertion().containsAny(new ArrayList<String>());
@@ -1366,6 +1522,18 @@ public final class SetAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain any of the expected values.\n\tExpected:<[val8, val7]> but was:<[val1, val2, val3, val4, val5]>");
         }
+        try {
+            initialize(Raw.<Float>setAssertion(), createHashSet(Float.NaN, 3.0f, Float.POSITIVE_INFINITY)).containsAny(Arrays.asList(Float.NEGATIVE_INFINITY, 4.0f));
+            Assertions.fail("SetAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should contain any of the expected values.\n\tExpected:<[-Infinity, 4.0f]> but was:<[NaN, 3.0f, Infinity]>");
+        }
+        try {
+            initialize(Raw.<Float>setAssertion(), createHashSet(Float.NaN, 3.0f, Float.POSITIVE_INFINITY), "Message").containsAny(Arrays.asList(Float.NEGATIVE_INFINITY, 4.0f));
+            Assertions.fail("SetAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain any of the expected values.\n\tExpected:<[-Infinity, 4.0f]> but was:<[NaN, 3.0f, Infinity]>");
+        }
     }
 
     /**
@@ -1378,6 +1546,8 @@ public final class SetAssertionTest extends AssertionTest {
         initialize(Raw.<String>setAssertion(), createHashSet("val1", "val2", null)).containsNone("val8", "val4");
         initialize(Raw.<String>setAssertion(), createHashSet("val1", "val2", "val3")).containsNone("val8", "val4", null);
         initialize(Raw.setAssertion(), createHashSet((Object) "val1", "val2", '1')).containsNone("val8", "val4");
+        initialize(Raw.<Float>setAssertion(), createHashSet(Float.NaN, Float.NEGATIVE_INFINITY, 3.0f)).containsNone(Float.POSITIVE_INFINITY, 4.0f);
+        initialize(Raw.<Double>setAssertion(), createHashSet(Double.NaN, Double.NEGATIVE_INFINITY, 3.0)).containsNone(Double.POSITIVE_INFINITY, 4.0);
 
         try {
             Raw.<String>setAssertion().containsNone("val");
@@ -1463,6 +1633,18 @@ public final class SetAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not contain any of the expected values.\n\tExpected:<[val5, val4, val2, val6]> but was:<[val1, val2, 1(49)]>");
         }
+        try {
+            initialize(Raw.<Float>setAssertion(), createHashSet(Float.NaN, 3.0f, Float.POSITIVE_INFINITY)).containsNone(Float.NaN, 4.0f);
+            Assertions.fail("SetAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not contain any of the expected values.\n\tExpected:<[NaN, 4.0f]> but was:<[NaN, 3.0f, Infinity]>");
+        }
+        try {
+            initialize(Raw.<Float>setAssertion(), createHashSet(Float.NaN, 3.0f, Float.POSITIVE_INFINITY), "Message").containsNone(Float.NaN, 4.0f);
+            Assertions.fail("SetAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not contain any of the expected values.\n\tExpected:<[NaN, 4.0f]> but was:<[NaN, 3.0f, Infinity]>");
+        }
     }
 
     /**
@@ -1474,6 +1656,8 @@ public final class SetAssertionTest extends AssertionTest {
         initialize(Raw.<String>setAssertion(), createHashSet("val1", "val2", "val3")).containsNone(Arrays.asList("val8", "val4"));
         initialize(Raw.<String>setAssertion(), createHashSet("val1", "val2", null)).containsNone(Arrays.asList("val8", "val4"));
         initialize(Raw.<String>setAssertion(), createHashSet("val1", "val2", "val3")).containsNone(Arrays.asList("val8", "val4", null));
+        initialize(Raw.<Float>setAssertion(), createHashSet(Float.NaN, Float.NEGATIVE_INFINITY, 3.0f)).containsNone(Arrays.asList(Float.POSITIVE_INFINITY, 4.0f));
+        initialize(Raw.<Double>setAssertion(), createHashSet(Double.NaN, Double.NEGATIVE_INFINITY, 3.0)).containsNone(Arrays.asList(Double.POSITIVE_INFINITY, 4.0));
 
         try {
             Raw.<String>setAssertion().containsNone(new ArrayList<String>());
@@ -1546,6 +1730,18 @@ public final class SetAssertionTest extends AssertionTest {
             Assertions.fail("SetAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not contain any of the expected values.\n\tExpected:<[val5, val4, val2, val6]> but was:<[val1, val2, val3]>");
+        }
+        try {
+            initialize(Raw.<Float>setAssertion(), createHashSet(Float.NaN, 3.0f, Float.POSITIVE_INFINITY)).containsNone(Arrays.asList(Float.NaN, 4.0f));
+            Assertions.fail("SetAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not contain any of the expected values.\n\tExpected:<[NaN, 4.0f]> but was:<[NaN, 3.0f, Infinity]>");
+        }
+        try {
+            initialize(Raw.<Float>setAssertion(), createHashSet(Float.NaN, 3.0f, Float.POSITIVE_INFINITY), "Message").containsNone(Arrays.asList(Float.NaN, 4.0f));
+            Assertions.fail("SetAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not contain any of the expected values.\n\tExpected:<[NaN, 4.0f]> but was:<[NaN, 3.0f, Infinity]>");
         }
     }
 
