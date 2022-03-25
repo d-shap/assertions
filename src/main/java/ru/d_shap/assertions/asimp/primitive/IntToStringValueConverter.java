@@ -57,13 +57,13 @@ public final class IntToStringValueConverter implements ValueConverterProvider {
             return Integer.toString(castedValue);
         } else {
             byte part1 = (byte) (castedValue >> 24 & 0xFF);
-            String str1 = ValueConverter.convert(part1, String.class);
+            String str1 = ValueConverter.convert(part1, String.class, true);
             byte part2 = (byte) (castedValue >> 16 & 0xFF);
-            String str2 = ValueConverter.convert(part2, String.class);
+            String str2 = ValueConverter.convert(part2, String.class, true);
             byte part3 = (byte) (castedValue >> 8 & 0xFF);
-            String str3 = ValueConverter.convert(part3, String.class);
+            String str3 = ValueConverter.convert(part3, String.class, true);
             byte part4 = (byte) (castedValue & 0xFF);
-            String str4 = ValueConverter.convert(part4, String.class);
+            String str4 = ValueConverter.convert(part4, String.class, true);
             return str1 + str2 + str3 + str4;
         }
     }

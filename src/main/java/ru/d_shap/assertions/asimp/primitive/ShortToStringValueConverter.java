@@ -57,9 +57,9 @@ public final class ShortToStringValueConverter implements ValueConverterProvider
             return Short.toString(castedValue);
         } else {
             byte part1 = (byte) (castedValue >> 8 & 0xFF);
-            String str1 = ValueConverter.convert(part1, String.class);
+            String str1 = ValueConverter.convert(part1, String.class, true);
             byte part2 = (byte) (castedValue & 0xFF);
-            String str2 = ValueConverter.convert(part2, String.class);
+            String str2 = ValueConverter.convert(part2, String.class, true);
             return str1 + str2;
         }
     }

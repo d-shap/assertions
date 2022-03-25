@@ -57,21 +57,21 @@ public final class LongToStringValueConverter implements ValueConverterProvider 
             return Long.toString(castedValue);
         } else {
             byte part1 = (byte) (castedValue >> 56 & 0xFF);
-            String str1 = ValueConverter.convert(part1, String.class);
+            String str1 = ValueConverter.convert(part1, String.class, true);
             byte part2 = (byte) (castedValue >> 48 & 0xFF);
-            String str2 = ValueConverter.convert(part2, String.class);
+            String str2 = ValueConverter.convert(part2, String.class, true);
             byte part3 = (byte) (castedValue >> 40 & 0xFF);
-            String str3 = ValueConverter.convert(part3, String.class);
+            String str3 = ValueConverter.convert(part3, String.class, true);
             byte part4 = (byte) (castedValue >> 32 & 0xFF);
-            String str4 = ValueConverter.convert(part4, String.class);
+            String str4 = ValueConverter.convert(part4, String.class, true);
             byte part5 = (byte) (castedValue >> 24 & 0xFF);
-            String str5 = ValueConverter.convert(part5, String.class);
+            String str5 = ValueConverter.convert(part5, String.class, true);
             byte part6 = (byte) (castedValue >> 16 & 0xFF);
-            String str6 = ValueConverter.convert(part6, String.class);
+            String str6 = ValueConverter.convert(part6, String.class, true);
             byte part7 = (byte) (castedValue >> 8 & 0xFF);
-            String str7 = ValueConverter.convert(part7, String.class);
+            String str7 = ValueConverter.convert(part7, String.class, true);
             byte part8 = (byte) (castedValue & 0xFF);
-            String str8 = ValueConverter.convert(part8, String.class);
+            String str8 = ValueConverter.convert(part8, String.class, true);
             return str1 + str2 + str3 + str4 + str5 + str6 + str7 + str8;
         }
     }
