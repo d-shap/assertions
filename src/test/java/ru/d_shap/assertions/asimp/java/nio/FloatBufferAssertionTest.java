@@ -359,6 +359,10 @@ public final class FloatBufferAssertionTest extends AssertionTest {
     public void containsTest() {
         initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{1.0f, 2.0f})).contains(1.0f);
         initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{1.0f, 2.0f})).contains(2.0f);
+        initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{Float.NaN, Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY, 3.0f})).contains(Float.NaN);
+        initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{Float.NaN, Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY, 3.0f})).contains(Float.POSITIVE_INFINITY);
+        initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{Float.NaN, Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY, 3.0f})).contains(Float.NEGATIVE_INFINITY);
+        initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{Float.NaN, Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY, 3.0f})).contains(3.0f);
 
         try {
             Raw.floatBufferAssertion().contains(1.0f);
@@ -401,6 +405,18 @@ public final class FloatBufferAssertionTest extends AssertionTest {
             Assertions.fail("FloatBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain the expected value.\n\tExpected:<3.0f> but was:<[1.0f, 2.0f]>");
+        }
+        try {
+            initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{1.0f, Float.POSITIVE_INFINITY})).contains(Float.NEGATIVE_INFINITY);
+            Assertions.fail("FloatBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should contain the expected value.\n\tExpected:<-Infinity> but was:<[1.0f, Infinity]>");
+        }
+        try {
+            initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{1.0f, Float.POSITIVE_INFINITY}), "Message").contains(Float.NEGATIVE_INFINITY);
+            Assertions.fail("FloatBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain the expected value.\n\tExpected:<-Infinity> but was:<[1.0f, Infinity]>");
         }
     }
 
@@ -459,6 +475,8 @@ public final class FloatBufferAssertionTest extends AssertionTest {
         initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{1.0f, 2.0f})).doesNotContain(3.0f);
         initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{1.0f, 2.0f, 3.0f, 4.0f, 5.0f}, 3)).doesNotContain(2.0f);
         initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{1.0f, 2.0f, 3.0f, 4.0f, 5.0f}, 0, 3)).doesNotContain(5.0f);
+        initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{Float.NaN, Float.POSITIVE_INFINITY})).doesNotContain(Float.NEGATIVE_INFINITY);
+        initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{Float.NaN, Float.POSITIVE_INFINITY})).doesNotContain(3.0f);
 
         try {
             Raw.floatBufferAssertion().doesNotContain(1.0f);
@@ -495,6 +513,18 @@ public final class FloatBufferAssertionTest extends AssertionTest {
             Assertions.fail("FloatBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not contain the expected value.\n\tExpected:<1.0f> but was:<[1.0f, 2.0f]>");
+        }
+        try {
+            initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{Float.NaN, Float.POSITIVE_INFINITY})).doesNotContain(Float.POSITIVE_INFINITY);
+            Assertions.fail("FloatBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not contain the expected value.\n\tExpected:<Infinity> but was:<[NaN, Infinity]>");
+        }
+        try {
+            initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{Float.NaN, Float.POSITIVE_INFINITY}), "Message").doesNotContain(Float.POSITIVE_INFINITY);
+            Assertions.fail("FloatBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not contain the expected value.\n\tExpected:<Infinity> but was:<[NaN, Infinity]>");
         }
     }
 
@@ -558,6 +588,7 @@ public final class FloatBufferAssertionTest extends AssertionTest {
         initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{1.0f, 2.0f})).containsAll(1.0f, 2.0f);
         initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{1.0f, 2.0f, 3.0f, 4.0f})).containsAll(1.0f, 3.0f);
         initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{1.0f, 2.0f, 3.0f, 4.0f})).containsAll(4.0f, 2.0f);
+        initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{Float.NaN, Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY, 3.0f})).containsAll(Float.NEGATIVE_INFINITY, Float.NaN);
 
         try {
             Raw.floatBufferAssertion().containsAll(1.0f);
@@ -637,6 +668,18 @@ public final class FloatBufferAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values.\n\tExpected:<[2.0f, 3.0f]> but was:<[1.0f, 2.0f]>");
         }
+        try {
+            initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{Float.NaN, Float.POSITIVE_INFINITY})).containsAll(Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY);
+            Assertions.fail("FloatBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values.\n\tExpected:<[Infinity, -Infinity]> but was:<[NaN, Infinity]>");
+        }
+        try {
+            initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{Float.NaN, Float.POSITIVE_INFINITY}), "Message").containsAll(Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY);
+            Assertions.fail("FloatBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values.\n\tExpected:<[Infinity, -Infinity]> but was:<[NaN, Infinity]>");
+        }
     }
 
     /**
@@ -647,6 +690,7 @@ public final class FloatBufferAssertionTest extends AssertionTest {
         initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{1.0f, 2.0f})).containsAll(Arrays.asList(1.0f, 2.0f));
         initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{1.0f, 2.0f, 3.0f, 4.0f})).containsAll(Arrays.asList(1.0f, 3.0f));
         initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{1.0f, 2.0f, 3.0f, 4.0f})).containsAll(Arrays.asList(4.0f, 2.0f));
+        initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{Float.NaN, Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY, 3.0f})).containsAll(Arrays.asList(Float.NEGATIVE_INFINITY, Float.NaN));
 
         try {
             Raw.floatBufferAssertion().containsAll(new ArrayList<Float>());
@@ -725,6 +769,18 @@ public final class FloatBufferAssertionTest extends AssertionTest {
             Assertions.fail("FloatBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values.\n\tExpected:<[2.0f, 3.0f]> but was:<[1.0f, 2.0f]>");
+        }
+        try {
+            initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{Float.NaN, Float.POSITIVE_INFINITY})).containsAll(Arrays.asList(Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY));
+            Assertions.fail("FloatBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values.\n\tExpected:<[Infinity, -Infinity]> but was:<[NaN, Infinity]>");
+        }
+        try {
+            initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{Float.NaN, Float.POSITIVE_INFINITY}), "Message").containsAll(Arrays.asList(Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY));
+            Assertions.fail("FloatBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values.\n\tExpected:<[Infinity, -Infinity]> but was:<[NaN, Infinity]>");
         }
     }
 
@@ -903,6 +959,7 @@ public final class FloatBufferAssertionTest extends AssertionTest {
     public void containsAllInOrderArrayTest() {
         initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{1.0f, 2.0f})).containsAllInOrder(1.0f, 2.0f);
         initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{1.0f, 2.0f, 3.0f, 4.0f})).containsAllInOrder(1.0f, 3.0f, 4.0f);
+        initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{Float.NaN, Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY, 3.0f})).containsAllInOrder(Float.NaN, Float.NEGATIVE_INFINITY, 3.0f);
 
         try {
             Raw.floatBufferAssertion().containsAllInOrder(1.0f);
@@ -988,6 +1045,18 @@ public final class FloatBufferAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values in the specified order.\n\tExpected:<[2.0f, 1.0f]> but was:<[1.0f, 2.0f]>");
         }
+        try {
+            initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{Float.NaN, Float.POSITIVE_INFINITY})).containsAllInOrder(Float.POSITIVE_INFINITY, Float.NaN);
+            Assertions.fail("FloatBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[Infinity, NaN]> but was:<[NaN, Infinity]>");
+        }
+        try {
+            initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{Float.NaN, Float.POSITIVE_INFINITY}), "Message").containsAllInOrder(Float.POSITIVE_INFINITY, Float.NaN);
+            Assertions.fail("FloatBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values in the specified order.\n\tExpected:<[Infinity, NaN]> but was:<[NaN, Infinity]>");
+        }
     }
 
     /**
@@ -997,6 +1066,7 @@ public final class FloatBufferAssertionTest extends AssertionTest {
     public void containsAllInOrderIterableTest() {
         initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{1.0f, 2.0f})).containsAllInOrder(Arrays.asList(1.0f, 2.0f));
         initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{1.0f, 2.0f, 3.0f, 4.0f})).containsAllInOrder(Arrays.asList(1.0f, 3.0f, 4.0f));
+        initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{Float.NaN, Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY, 3.0f})).containsAllInOrder(Arrays.asList(Float.NaN, Float.NEGATIVE_INFINITY, 3.0f));
 
         try {
             Raw.floatBufferAssertion().containsAllInOrder(new ArrayList<Float>());
@@ -1081,6 +1151,18 @@ public final class FloatBufferAssertionTest extends AssertionTest {
             Assertions.fail("FloatBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values in the specified order.\n\tExpected:<[2.0f, 1.0f]> but was:<[1.0f, 2.0f]>");
+        }
+        try {
+            initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{Float.NaN, Float.POSITIVE_INFINITY})).containsAllInOrder(Arrays.asList(Float.POSITIVE_INFINITY, Float.NaN));
+            Assertions.fail("FloatBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[Infinity, NaN]> but was:<[NaN, Infinity]>");
+        }
+        try {
+            initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{Float.NaN, Float.POSITIVE_INFINITY}), "Message").containsAllInOrder(Arrays.asList(Float.POSITIVE_INFINITY, Float.NaN));
+            Assertions.fail("FloatBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values in the specified order.\n\tExpected:<[Infinity, NaN]> but was:<[NaN, Infinity]>");
         }
     }
 
@@ -1271,6 +1353,7 @@ public final class FloatBufferAssertionTest extends AssertionTest {
         initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{1.0f, 2.0f, 3.0f, 4.0f})).containsExactly(1.0f, 2.0f, 3.0f, 4.0f);
         initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{1.0f, 2.0f, 3.0f, 4.0f})).containsExactly(1.0f, 3.0f, 2.0f, 4.0f);
         initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{})).containsExactly();
+        initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{Float.NaN, Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY, 3.0f})).containsExactly(Float.NEGATIVE_INFINITY, Float.NaN, 3.0f, Float.POSITIVE_INFINITY);
 
         try {
             Raw.floatBufferAssertion().containsExactly(1.0f);
@@ -1356,6 +1439,18 @@ public final class FloatBufferAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly.\n\tExpected:<[1.0f, 1.0f, 3.0f, 2.0f]> but was:<[1.0f, 2.0f, 3.0f, 4.0f]>");
         }
+        try {
+            initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{Float.NaN, 3.0f, Float.POSITIVE_INFINITY})).containsExactly(Float.NaN, 3.0f);
+            Assertions.fail("FloatBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[NaN, 3.0f]> but was:<[NaN, 3.0f, Infinity]>");
+        }
+        try {
+            initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{Float.NaN, 3.0f, Float.POSITIVE_INFINITY}), "Message").containsExactly(Float.NaN, 3.0f);
+            Assertions.fail("FloatBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly.\n\tExpected:<[NaN, 3.0f]> but was:<[NaN, 3.0f, Infinity]>");
+        }
     }
 
     /**
@@ -1367,6 +1462,7 @@ public final class FloatBufferAssertionTest extends AssertionTest {
         initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{1.0f, 2.0f, 3.0f, 4.0f})).containsExactly(Arrays.asList(1.0f, 2.0f, 3.0f, 4.0f));
         initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{1.0f, 2.0f, 3.0f, 4.0f})).containsExactly(Arrays.asList(1.0f, 3.0f, 2.0f, 4.0f));
         initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{})).containsExactly(new ArrayList<Float>());
+        initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{Float.NaN, Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY, 3.0f})).containsExactly(Arrays.asList(Float.NEGATIVE_INFINITY, Float.NaN, 3.0f, Float.POSITIVE_INFINITY));
 
         try {
             Raw.floatBufferAssertion().containsExactly(new ArrayList<Float>());
@@ -1451,6 +1547,18 @@ public final class FloatBufferAssertionTest extends AssertionTest {
             Assertions.fail("FloatBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly.\n\tExpected:<[1.0f, 1.0f, 3.0f, 2.0f]> but was:<[1.0f, 2.0f, 3.0f, 4.0f]>");
+        }
+        try {
+            initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{Float.NaN, 3.0f, Float.POSITIVE_INFINITY})).containsExactly(Arrays.asList(Float.NaN, 3.0f));
+            Assertions.fail("FloatBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[NaN, 3.0f]> but was:<[NaN, 3.0f, Infinity]>");
+        }
+        try {
+            initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{Float.NaN, 3.0f, Float.POSITIVE_INFINITY}), "Message").containsExactly(Arrays.asList(Float.NaN, 3.0f));
+            Assertions.fail("FloatBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly.\n\tExpected:<[NaN, 3.0f]> but was:<[NaN, 3.0f, Infinity]>");
         }
     }
 
@@ -1644,6 +1752,7 @@ public final class FloatBufferAssertionTest extends AssertionTest {
         initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{1.0f, 2.0f})).containsExactlyInOrder(1.0f, 2.0f);
         initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{1.0f, 2.0f, 3.0f, 4.0f})).containsExactlyInOrder(1.0f, 2.0f, 3.0f, 4.0f);
         initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{})).containsExactlyInOrder();
+        initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{Float.NaN, Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY, 3.0f})).containsExactlyInOrder(Float.NaN, Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY, 3.0f);
 
         try {
             Raw.floatBufferAssertion().containsExactlyInOrder(1.0f);
@@ -1735,6 +1844,18 @@ public final class FloatBufferAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2.0f, 3.0f, 1.0f, 4.0f]> but was:<[1.0f, 2.0f, 3.0f, 4.0f]>");
         }
+        try {
+            initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{Float.NaN, 3.0f, Float.POSITIVE_INFINITY})).containsExactlyInOrder(Float.POSITIVE_INFINITY, Float.NaN, 3.0f);
+            Assertions.fail("FloatBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[Infinity, NaN, 3.0f]> but was:<[NaN, 3.0f, Infinity]>");
+        }
+        try {
+            initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{Float.NaN, 3.0f, Float.POSITIVE_INFINITY}), "Message").containsExactlyInOrder(Float.POSITIVE_INFINITY, Float.NaN, 3.0f);
+            Assertions.fail("FloatBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[Infinity, NaN, 3.0f]> but was:<[NaN, 3.0f, Infinity]>");
+        }
     }
 
     /**
@@ -1745,6 +1866,7 @@ public final class FloatBufferAssertionTest extends AssertionTest {
         initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{1.0f, 2.0f})).containsExactlyInOrder(Arrays.asList(1.0f, 2.0f));
         initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{1.0f, 2.0f, 3.0f, 4.0f})).containsExactlyInOrder(Arrays.asList(1.0f, 2.0f, 3.0f, 4.0f));
         initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{})).containsExactlyInOrder(new ArrayList<Float>());
+        initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{Float.NaN, Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY, 3.0f})).containsExactlyInOrder(Arrays.asList(Float.NaN, Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY, 3.0f));
 
         try {
             Raw.floatBufferAssertion().containsExactlyInOrder(new ArrayList<Float>());
@@ -1835,6 +1957,18 @@ public final class FloatBufferAssertionTest extends AssertionTest {
             Assertions.fail("FloatBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2.0f, 3.0f, 1.0f, 4.0f]> but was:<[1.0f, 2.0f, 3.0f, 4.0f]>");
+        }
+        try {
+            initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{Float.NaN, 3.0f, Float.POSITIVE_INFINITY})).containsExactlyInOrder(Arrays.asList(Float.POSITIVE_INFINITY, Float.NaN, 3.0f));
+            Assertions.fail("FloatBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[Infinity, NaN, 3.0f]> but was:<[NaN, 3.0f, Infinity]>");
+        }
+        try {
+            initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{Float.NaN, 3.0f, Float.POSITIVE_INFINITY}), "Message").containsExactlyInOrder(Arrays.asList(Float.POSITIVE_INFINITY, Float.NaN, 3.0f));
+            Assertions.fail("FloatBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[Infinity, NaN, 3.0f]> but was:<[NaN, 3.0f, Infinity]>");
         }
     }
 
@@ -2039,6 +2173,7 @@ public final class FloatBufferAssertionTest extends AssertionTest {
         initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{1.0f, 2.0f, 3.0f, 4.0f})).containsAny(2.0f, 4.0f);
         initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{1.0f, 2.0f, 3.0f, 4.0f})).containsAny(4.0f, 1.0f);
         initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{1.0f, 2.0f, 3.0f, 4.0f})).containsAny(5.0f, 3.0f);
+        initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{Float.NaN, Float.NEGATIVE_INFINITY, 3.0f})).containsAny(Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY);
 
         try {
             Raw.floatBufferAssertion().containsAny(1.0f);
@@ -2118,6 +2253,18 @@ public final class FloatBufferAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain any of the expected values.\n\tExpected:<[3.0f, 4.0f]> but was:<[1.0f, 2.0f]>");
         }
+        try {
+            initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{Float.NaN, 3.0f, Float.POSITIVE_INFINITY})).containsAny(Float.NEGATIVE_INFINITY, 4.0f);
+            Assertions.fail("FloatBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should contain any of the expected values.\n\tExpected:<[-Infinity, 4.0f]> but was:<[NaN, 3.0f, Infinity]>");
+        }
+        try {
+            initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{Float.NaN, 3.0f, Float.POSITIVE_INFINITY}), "Message").containsAny(Float.NEGATIVE_INFINITY, 4.0f);
+            Assertions.fail("FloatBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain any of the expected values.\n\tExpected:<[-Infinity, 4.0f]> but was:<[NaN, 3.0f, Infinity]>");
+        }
     }
 
     /**
@@ -2129,6 +2276,7 @@ public final class FloatBufferAssertionTest extends AssertionTest {
         initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{1.0f, 2.0f, 3.0f, 4.0f})).containsAny(Arrays.asList(2.0f, 4.0f));
         initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{1.0f, 2.0f, 3.0f, 4.0f})).containsAny(Arrays.asList(4.0f, 1.0f));
         initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{1.0f, 2.0f, 3.0f, 4.0f})).containsAny(Arrays.asList(5.0f, 3.0f));
+        initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{Float.NaN, Float.NEGATIVE_INFINITY, 3.0f})).containsAny(Arrays.asList(Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY));
 
         try {
             Raw.floatBufferAssertion().containsAny(new ArrayList<Float>());
@@ -2207,6 +2355,18 @@ public final class FloatBufferAssertionTest extends AssertionTest {
             Assertions.fail("FloatBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain any of the expected values.\n\tExpected:<[3.0f, 4.0f]> but was:<[1.0f, 2.0f]>");
+        }
+        try {
+            initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{Float.NaN, 3.0f, Float.POSITIVE_INFINITY})).containsAny(Arrays.asList(Float.NEGATIVE_INFINITY, 4.0f));
+            Assertions.fail("FloatBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should contain any of the expected values.\n\tExpected:<[-Infinity, 4.0f]> but was:<[NaN, 3.0f, Infinity]>");
+        }
+        try {
+            initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{Float.NaN, 3.0f, Float.POSITIVE_INFINITY}), "Message").containsAny(Arrays.asList(Float.NEGATIVE_INFINITY, 4.0f));
+            Assertions.fail("FloatBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain any of the expected values.\n\tExpected:<[-Infinity, 4.0f]> but was:<[NaN, 3.0f, Infinity]>");
         }
     }
 
@@ -2389,6 +2549,7 @@ public final class FloatBufferAssertionTest extends AssertionTest {
         initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{1.0f, 2.0f})).containsNone(3.0f, 4.0f, 5.0f);
         initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{1.0f, 2.0f, 3.0f, 4.0f, 5.0f}, 3)).containsNone(1.0f, 3.0f);
         initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{1.0f, 2.0f, 3.0f, 4.0f, 5.0f}, 0, 3)).containsNone(4.0f, 5.0f);
+        initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{Float.NaN, Float.NEGATIVE_INFINITY, 3.0f})).containsNone(Float.POSITIVE_INFINITY, 4.0f);
 
         try {
             Raw.floatBufferAssertion().containsNone(1.0f);
@@ -2456,6 +2617,18 @@ public final class FloatBufferAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not contain any of the expected values.\n\tExpected:<[2.0f, 1.0f]> but was:<[1.0f, 2.0f]>");
         }
+        try {
+            initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{Float.NaN, 3.0f, Float.POSITIVE_INFINITY})).containsNone(Float.NaN, 4.0f);
+            Assertions.fail("FloatBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not contain any of the expected values.\n\tExpected:<[NaN, 4.0f]> but was:<[NaN, 3.0f, Infinity]>");
+        }
+        try {
+            initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{Float.NaN, 3.0f, Float.POSITIVE_INFINITY}), "Message").containsNone(Float.NaN, 4.0f);
+            Assertions.fail("FloatBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not contain any of the expected values.\n\tExpected:<[NaN, 4.0f]> but was:<[NaN, 3.0f, Infinity]>");
+        }
     }
 
     /**
@@ -2467,6 +2640,7 @@ public final class FloatBufferAssertionTest extends AssertionTest {
         initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{1.0f, 2.0f})).containsNone(Arrays.asList(3.0f, 4.0f, 5.0f));
         initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{1.0f, 2.0f, 3.0f, 4.0f, 5.0f}, 3)).containsNone(Arrays.asList(1.0f, 3.0f));
         initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{1.0f, 2.0f, 3.0f, 4.0f, 5.0f}, 0, 3)).containsNone(Arrays.asList(4.0f, 5.0f));
+        initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{Float.NaN, Float.NEGATIVE_INFINITY, 3.0f})).containsNone(Arrays.asList(Float.POSITIVE_INFINITY, 4.0f));
 
         try {
             Raw.floatBufferAssertion().containsNone(new ArrayList<Float>());
@@ -2533,6 +2707,18 @@ public final class FloatBufferAssertionTest extends AssertionTest {
             Assertions.fail("FloatBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not contain any of the expected values.\n\tExpected:<[2.0f, 1.0f]> but was:<[1.0f, 2.0f]>");
+        }
+        try {
+            initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{Float.NaN, 3.0f, Float.POSITIVE_INFINITY})).containsNone(Arrays.asList(Float.NaN, 4.0f));
+            Assertions.fail("FloatBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not contain any of the expected values.\n\tExpected:<[NaN, 4.0f]> but was:<[NaN, 3.0f, Infinity]>");
+        }
+        try {
+            initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{Float.NaN, 3.0f, Float.POSITIVE_INFINITY}), "Message").containsNone(Arrays.asList(Float.NaN, 4.0f));
+            Assertions.fail("FloatBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not contain any of the expected values.\n\tExpected:<[NaN, 4.0f]> but was:<[NaN, 3.0f, Infinity]>");
         }
     }
 
