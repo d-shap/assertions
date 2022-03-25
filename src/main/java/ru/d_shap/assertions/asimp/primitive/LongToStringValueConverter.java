@@ -52,21 +52,21 @@ public final class LongToStringValueConverter implements ValueConverterProvider 
         long castedValue = ConverterArgumentHelper.getValue(value, Long.class);
         ConverterArgumentHelper.checkArgumentsLength(arguments, 0);
 
-        byte part1 = (byte) (castedValue >> 28 & 0xF);
+        byte part1 = (byte) (castedValue >> 56 & 0xFF);
         String str1 = ValueConverter.convert(part1, String.class);
-        byte part2 = (byte) (castedValue >> 24 & 0xF);
+        byte part2 = (byte) (castedValue >> 48 & 0xFF);
         String str2 = ValueConverter.convert(part2, String.class);
-        byte part3 = (byte) (castedValue >> 20 & 0xF);
+        byte part3 = (byte) (castedValue >> 40 & 0xFF);
         String str3 = ValueConverter.convert(part3, String.class);
-        byte part4 = (byte) (castedValue >> 16 & 0xF);
+        byte part4 = (byte) (castedValue >> 32 & 0xFF);
         String str4 = ValueConverter.convert(part4, String.class);
-        byte part5 = (byte) (castedValue >> 12 & 0xF);
+        byte part5 = (byte) (castedValue >> 24 & 0xFF);
         String str5 = ValueConverter.convert(part5, String.class);
-        byte part6 = (byte) (castedValue >> 8 & 0xF);
+        byte part6 = (byte) (castedValue >> 16 & 0xFF);
         String str6 = ValueConverter.convert(part6, String.class);
-        byte part7 = (byte) (castedValue >> 4 & 0xF);
+        byte part7 = (byte) (castedValue >> 8 & 0xFF);
         String str7 = ValueConverter.convert(part7, String.class);
-        byte part8 = (byte) (castedValue & 0xF);
+        byte part8 = (byte) (castedValue & 0xFF);
         String str8 = ValueConverter.convert(part8, String.class);
         return str1 + str2 + str3 + str4 + str5 + str6 + str7 + str8;
     }
