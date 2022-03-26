@@ -129,8 +129,8 @@ public final class AssertionErrorBuilder {
     }
 
     /**
-     * Add the expected value range of the assertion to the assertion error.
-     * The expected value is converted to the actual value's class.
+     * Add the range of the expected values of the assertion to the assertion error.
+     * The range of the expected values are converted to the actual value's class.
      *
      * @param expectedFrom the lower bound of the expected value range of the assertion.
      * @param expectedTo   the upper bound of the expected value range of the assertion.
@@ -139,6 +139,35 @@ public final class AssertionErrorBuilder {
      */
     public AssertionErrorBuilder addExpected(final Object expectedFrom, final Object expectedTo) {
         _failDescriptionValues.addExpected(expectedFrom, expectedTo);
+        return this;
+    }
+
+    /**
+     * Add the expected value with delta of the assertion to the assertion error.
+     * The expected value and the delta are converted to the actual value's class.
+     *
+     * @param expected the expected value of the assertion.
+     * @param delta    the expected value's delta.
+     *
+     * @return current object for the chain call.
+     */
+    public AssertionErrorBuilder addExpectedWithDelta(final Object expected, final Object delta) {
+        _failDescriptionValues.addExpectedWithDelta(expected, delta);
+        return this;
+    }
+
+    /**
+     * Add the range of the expected values with delta of the assertion to the assertion error.
+     * The range of the expected values and the delta are converted to the actual value's class.
+     *
+     * @param expectedFrom the lower bound of the expected value range of the assertion.
+     * @param expectedTo   the upper bound of the expected value range of the assertion.
+     * @param delta        the expected value's delta.
+     *
+     * @return current object for the chain call.
+     */
+    public AssertionErrorBuilder addExpectedWithDelta(final Object expectedFrom, final Object expectedTo, final Object delta) {
+        _failDescriptionValues.addExpectedWithDelta(expectedFrom, expectedTo, delta);
         return this;
     }
 
@@ -157,8 +186,8 @@ public final class AssertionErrorBuilder {
     }
 
     /**
-     * Add the expected value of the assertion to the assertion error.
-     * The expected value is converted to the specified class.
+     * Add the range of the expected values of the assertion to the assertion error.
+     * The range of the expected values are converted to the specified class.
      *
      * @param expectedFrom  the lower bound of the expected value range of the assertion.
      * @param expectedTo    the upper bound of the expected value range of the assertion.
@@ -172,15 +201,33 @@ public final class AssertionErrorBuilder {
     }
 
     /**
-     * Add the actual and expected values' delta to the assertion error.
-     * The delta value is converted to the actual or expected values' class.
+     * Add the expected value with delta of the assertion to the assertion error.
+     * The expected value and the delta are converted to the specified class.
      *
-     * @param delta the actual and expected values' delta.
+     * @param expected      the expected value of the assertion.
+     * @param delta         the expected value's delta.
+     * @param expectedClass the specified class for the value conversion.
      *
      * @return current object for the chain call.
      */
-    public AssertionErrorBuilder addDelta(final Object delta) {
-        _failDescriptionValues.addDelta(delta);
+    public AssertionErrorBuilder addRawExpectedWithDelta(final Object expected, final Object delta, final Class<?> expectedClass) {
+        _failDescriptionValues.addRawExpectedWithDelta(expected, delta, expectedClass);
+        return this;
+    }
+
+    /**
+     * Add the range of the expected values with delta of the assertion to the assertion error.
+     * The range of the expected values and the delta are converted to the specified class.
+     *
+     * @param expectedFrom  the lower bound of the expected value range of the assertion.
+     * @param expectedTo    the upper bound of the expected value range of the assertion.
+     * @param delta         the expected value's delta.
+     * @param expectedClass the specified class for the value conversion.
+     *
+     * @return current object for the chain call.
+     */
+    public AssertionErrorBuilder addRawExpectedWithDelta(final Object expectedFrom, final Object expectedTo, final Object delta, final Class<?> expectedClass) {
+        _failDescriptionValues.addRawExpectedWithDelta(expectedFrom, expectedTo, delta, expectedClass);
         return this;
     }
 
