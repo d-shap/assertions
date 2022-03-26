@@ -19,8 +19,12 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.asimp.primitive;
 
+import org.hamcrest.Matcher;
+
 import ru.d_shap.assertions.Messages;
+import ru.d_shap.assertions.Raw;
 import ru.d_shap.assertions.asimp.ReferenceAssertion;
+import ru.d_shap.assertions.asimp.java.lang.CharSequenceAssertion;
 
 /**
  * Assertions for the long.
@@ -232,6 +236,40 @@ public class LongAssertion extends ReferenceAssertion<Long> {
         checkArgumentIsNotNull(expectedFrom, "expectedFrom");
         checkArgumentIsNotNull(expectedTo, "expectedTo");
         isNotInRange(expectedFrom.longValue(), expectedTo.longValue());
+    }
+
+    /**
+     * Make assertion about the actual value's hex representation.
+     *
+     * @return the assertion.
+     */
+    public CharSequenceAssertion toHexString() {
+        checkActualIsNotNull();
+        String hexString = convertValue(getActual(), null, String.class, true);
+        return initializeAssertion(Raw.charSequenceAssertion(), hexString, Messages.Check.HEX_REPRESENTATION);
+    }
+
+    /**
+     * Make assertion about the actual value's hex representation.
+     *
+     * @param matcher the hamcrest matcher.
+     */
+    public void toHexString(final Matcher<String> matcher) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(matcher, "matcher");
+        String hexString = convertValue(getActual(), null, String.class, true);
+        matcherAssertion(hexString, matcher, Messages.Check.HEX_REPRESENTATION);
+    }
+
+    /**
+     * Check if the actual value's hex representation is equal to the expected value.
+     *
+     * @param expected the expected value.
+     */
+    public void hasHexString(final String expected) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(expected, "expected");
+        toHexString().isEqualTo(expected);
     }
 
 }
