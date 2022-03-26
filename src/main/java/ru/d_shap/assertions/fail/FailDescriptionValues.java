@@ -31,6 +31,8 @@ import ru.d_shap.assertions.converter.AsStringConverter;
  */
 final class FailDescriptionValues {
 
+    private static final String DELTA_SIGN = "\u00b1";
+
     private final Class<?> _actualClass;
 
     private Class<?> _expectedClass;
@@ -77,12 +79,22 @@ final class FailDescriptionValues {
         addRawExpected(expectedFrom, expectedTo, _actualClass);
     }
 
+    void addExpectedWithDelta(final Object expected, final Object delta) {
+        addRawExpectedWithDelta(expected, delta, _actualClass);
+    }
+
+    void addExpectedWithDelta(final Object expectedFrom, final Object expectedTo, final Object delta) {
+        addRawExpectedWithDelta(expectedFrom, expectedTo, delta, _actualClass);
+    }
+
     void addRawExpected(final Object expected, final Class<?> expectedClass) {
         _expectedClass = expectedClass;
         _expected1Defined = true;
         _expected1 = expected;
         _expected2Defined = false;
         _expected2 = null;
+        _deltaDefined = false;
+        _delta = null;
     }
 
     void addRawExpected(final Object expectedFrom, final Object expectedTo, final Class<?> expectedClass) {
@@ -91,9 +103,26 @@ final class FailDescriptionValues {
         _expected1 = expectedFrom;
         _expected2Defined = true;
         _expected2 = expectedTo;
+        _deltaDefined = false;
+        _delta = null;
     }
 
-    void addDelta(final Object delta) {
+    void addRawExpectedWithDelta(final Object expected, final Object delta, final Class<?> expectedClass) {
+        _expectedClass = expectedClass;
+        _expected1Defined = true;
+        _expected1 = expected;
+        _expected2Defined = false;
+        _expected2 = null;
+        _deltaDefined = true;
+        _delta = delta;
+    }
+
+    void addRawExpectedWithDelta(final Object expectedFrom, final Object expectedTo, final Object delta, final Class<?> expectedClass) {
+        _expectedClass = expectedClass;
+        _expected1Defined = false;
+        _expected1 = expectedFrom;
+        _expected2Defined = true;
+        _expected2 = expectedTo;
         _deltaDefined = true;
         _delta = delta;
     }
@@ -110,7 +139,7 @@ final class FailDescriptionValues {
 
     private void addActualEntry(final List<FailDescriptionEntry> failDescriptionEntries) {
         if (_actualDefined && !_expected1Defined && !_expected2Defined) {
-            String actual = getActualMessage(true);
+            String actual = getActualMessage();
             FailDescriptionEntry failDescriptionEntry = new FailDescriptionEntry(Messages.Value.ACTUAL, new Object[]{actual}, false);
             failDescriptionEntries.add(failDescriptionEntry);
         }
@@ -134,7 +163,7 @@ final class FailDescriptionValues {
 
     private void addActualAndExpectedEntry(final List<FailDescriptionEntry> failDescriptionEntries) {
         if (_actualDefined && _expected1Defined) {
-            String actual = getActualMessage(false);
+            String actual = getActualMessage();
             String expected = getExpectedMessage();
             FailDescriptionEntry failDescriptionEntry = new FailDescriptionEntry(Messages.Value.ACTUAL_AND_EXPECTED, new Object[]{actual, expected}, false);
             failDescriptionEntries.add(failDescriptionEntry);
@@ -143,26 +172,22 @@ final class FailDescriptionValues {
 
     private void addActualAndExpected2Entry(final List<FailDescriptionEntry> failDescriptionEntries) {
         if (_actualDefined && _expected2Defined) {
-            String actual = getActualMessage(false);
+            String actual = getActualMessage();
             String expected = getExpected2Message();
             FailDescriptionEntry failDescriptionEntry = new FailDescriptionEntry(Messages.Value.ACTUAL_AND_EXPECTED, new Object[]{actual, expected}, false);
             failDescriptionEntries.add(failDescriptionEntry);
         }
     }
 
-    private String getActualMessage(final boolean withDelta) {
+    private String getActualMessage() {
         String objectStr = AsStringConverter.asString(_actual, _actualClass);
-        if (withDelta && _deltaDefined) {
-            objectStr += "\u00b1";
-            objectStr += AsStringConverter.asString(_delta, _actualClass);
-        }
         return "<" + objectStr + ">";
     }
 
     private String getExpectedMessage() {
         String objectStr = AsStringConverter.asString(_expected1, _expectedClass);
         if (_deltaDefined) {
-            objectStr += "\u00b1";
+            objectStr += DELTA_SIGN;
             objectStr += AsStringConverter.asString(_delta, _expectedClass);
         }
         return "<" + objectStr + ">";
@@ -173,7 +198,7 @@ final class FailDescriptionValues {
         objectStr += ":";
         objectStr += AsStringConverter.asString(_expected2, _expectedClass);
         if (_deltaDefined) {
-            objectStr += "\u00b1";
+            objectStr += DELTA_SIGN;
             objectStr += AsStringConverter.asString(_delta, _expectedClass);
         }
         return "<" + objectStr + ">";
