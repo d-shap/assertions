@@ -77,7 +77,7 @@ public class FloatAssertion extends ReferenceAssertion<Float> {
         } else {
             isFinite();
             if (Math.abs(expected - getActual()) > delta) {
-                throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_SAME).addActual().addExpected(expected).addDelta(delta).build();
+                throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_SAME).addActual().addExpectedWithDelta(expected, delta).build();
             }
         }
     }
@@ -135,7 +135,7 @@ public class FloatAssertion extends ReferenceAssertion<Float> {
             }
         } else {
             if (getActual() != null && !getActual().isNaN() && !getActual().isInfinite() && Math.abs(expected - getActual()) <= delta) {
-                throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_DIFFERENT).addActual().addDelta(delta).build();
+                throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_DIFFERENT).addActualWithDelta(delta).build();
             }
         }
     }
