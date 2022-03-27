@@ -41,6 +41,10 @@ final class FailDescriptionValues {
 
     private final Object _actual;
 
+    private boolean _actualDeltaDefined;
+
+    private Object _actualDelta;
+
     private boolean _expected1Defined;
 
     private Object _expected1;
@@ -49,9 +53,9 @@ final class FailDescriptionValues {
 
     private Object _expected2;
 
-    private boolean _deltaDefined;
+    private boolean _expectedDeltaDefined;
 
-    private Object _delta;
+    private Object _expectedDelta;
 
     FailDescriptionValues(final Class<?> actualClass, final Object actual) {
         super();
@@ -59,16 +63,26 @@ final class FailDescriptionValues {
         _expectedClass = null;
         _actualDefined = false;
         _actual = actual;
+        _actualDeltaDefined = false;
+        _actualDelta = null;
         _expected1Defined = false;
         _expected1 = null;
         _expected2Defined = false;
         _expected2 = null;
-        _deltaDefined = false;
-        _delta = null;
+        _expectedDeltaDefined = false;
+        _expectedDelta = null;
     }
 
     void addActual() {
         _actualDefined = true;
+        _actualDeltaDefined = false;
+        _actualDelta = null;
+    }
+
+    void addActualWithDelta(final Object delta) {
+        _actualDefined = true;
+        _actualDeltaDefined = true;
+        _actualDelta = delta;
     }
 
     void addExpected(final Object expected) {
@@ -93,8 +107,8 @@ final class FailDescriptionValues {
         _expected1 = expected;
         _expected2Defined = false;
         _expected2 = null;
-        _deltaDefined = false;
-        _delta = null;
+        _expectedDeltaDefined = false;
+        _expectedDelta = null;
     }
 
     void addRawExpected(final Object expectedFrom, final Object expectedTo, final Class<?> expectedClass) {
@@ -103,8 +117,8 @@ final class FailDescriptionValues {
         _expected1 = expectedFrom;
         _expected2Defined = true;
         _expected2 = expectedTo;
-        _deltaDefined = false;
-        _delta = null;
+        _expectedDeltaDefined = false;
+        _expectedDelta = null;
     }
 
     void addRawExpectedWithDelta(final Object expected, final Object delta, final Class<?> expectedClass) {
@@ -113,8 +127,8 @@ final class FailDescriptionValues {
         _expected1 = expected;
         _expected2Defined = false;
         _expected2 = null;
-        _deltaDefined = true;
-        _delta = delta;
+        _expectedDeltaDefined = true;
+        _expectedDelta = delta;
     }
 
     void addRawExpectedWithDelta(final Object expectedFrom, final Object expectedTo, final Object delta, final Class<?> expectedClass) {
@@ -123,8 +137,8 @@ final class FailDescriptionValues {
         _expected1 = expectedFrom;
         _expected2Defined = true;
         _expected2 = expectedTo;
-        _deltaDefined = true;
-        _delta = delta;
+        _expectedDeltaDefined = true;
+        _expectedDelta = delta;
     }
 
     void addFailDescriptionEntry(final List<FailDescriptionEntry> failDescriptionEntries) {
@@ -181,14 +195,18 @@ final class FailDescriptionValues {
 
     private String getActualMessage() {
         String objectStr = AsStringConverter.asString(_actual, _actualClass);
+        if (_actualDeltaDefined) {
+            objectStr += DELTA_SIGN;
+            objectStr += AsStringConverter.asString(_actualDelta, _actualClass);
+        }
         return "<" + objectStr + ">";
     }
 
     private String getExpectedMessage() {
         String objectStr = AsStringConverter.asString(_expected1, _expectedClass);
-        if (_deltaDefined) {
+        if (_expectedDeltaDefined) {
             objectStr += DELTA_SIGN;
-            objectStr += AsStringConverter.asString(_delta, _expectedClass);
+            objectStr += AsStringConverter.asString(_expectedDelta, _expectedClass);
         }
         return "<" + objectStr + ">";
     }
@@ -197,9 +215,9 @@ final class FailDescriptionValues {
         String objectStr = AsStringConverter.asString(_expected1, _expectedClass);
         objectStr += ":";
         objectStr += AsStringConverter.asString(_expected2, _expectedClass);
-        if (_deltaDefined) {
+        if (_expectedDeltaDefined) {
             objectStr += DELTA_SIGN;
-            objectStr += AsStringConverter.asString(_delta, _expectedClass);
+            objectStr += AsStringConverter.asString(_expectedDelta, _expectedClass);
         }
         return "<" + objectStr + ">";
     }
