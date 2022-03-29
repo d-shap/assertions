@@ -164,10 +164,9 @@ public abstract class BaseAssertion<T> {
      *
      * @param actual  the actual value.
      * @param matcher the hamcrest matcher.
-     * @param <W>     the generic type of the matcher's actual value.
      * @param <U>     the generic type of the actual value.
      */
-    protected final <W, U extends W> void matcherAssertion(final U actual, final Matcher<W> matcher) {
+    protected final <U> void matcherAssertion(final U actual, final Matcher<? super U> matcher) {
         checkInitialized();
         HamcrestMatcher.matcherAssertion(actual, matcher, _failDescription);
     }
@@ -179,10 +178,9 @@ public abstract class BaseAssertion<T> {
      * @param matcher   the hamcrest matcher.
      * @param message   the message.
      * @param arguments the message arguments.
-     * @param <W>       the generic type of the matcher's actual value.
      * @param <U>       the generic type of the actual value.
      */
-    protected final <W, U extends W> void matcherAssertion(final U actual, final Matcher<W> matcher, final String message, final Object... arguments) {
+    protected final <U> void matcherAssertion(final U actual, final Matcher<? super U> matcher, final String message, final Object... arguments) {
         checkInitialized();
         HamcrestMatcher.matcherAssertion(actual, matcher, _failDescription, message, arguments);
     }

@@ -353,10 +353,9 @@ public final class MessageAssertion {
      *
      * @param actual  the actual value.
      * @param matcher the hamcrest matcher.
-     * @param <W>     the generic type of the matcher's actual value.
      * @param <U>     the generic type of the actual value.
      */
-    public <W, U extends W> void that(final U actual, final Matcher<W> matcher) {
+    public <U> void that(final U actual, final Matcher<? super U> matcher) {
         HamcrestMatcher.matcherAssertion(actual, matcher, Messages.SIMPLE_MESSAGE, _message);
     }
 
