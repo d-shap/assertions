@@ -230,7 +230,7 @@ public class LongArrayAssertion extends ReferenceAssertion<long[]> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toLength(final Matcher<Integer> matcher) {
+    public final void toLength(final Matcher<? super Integer> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().length, matcher, Messages.Check.LENGTH);
