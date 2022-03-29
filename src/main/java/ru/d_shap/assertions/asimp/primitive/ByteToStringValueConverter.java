@@ -19,6 +19,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.asimp.primitive;
 
+import ru.d_shap.assertions.asimp.HexString;
 import ru.d_shap.assertions.converter.ConverterArgumentHelper;
 import ru.d_shap.assertions.converter.ValueConverterProvider;
 
@@ -28,28 +29,6 @@ import ru.d_shap.assertions.converter.ValueConverterProvider;
  * @author Dmitry Shapovalov
  */
 public final class ByteToStringValueConverter implements ValueConverterProvider {
-
-    private static final String[] VALUES;
-
-    static {
-        VALUES = new String[16];
-        VALUES[0] = "0";
-        VALUES[1] = "1";
-        VALUES[2] = "2";
-        VALUES[3] = "3";
-        VALUES[4] = "4";
-        VALUES[5] = "5";
-        VALUES[6] = "6";
-        VALUES[7] = "7";
-        VALUES[8] = "8";
-        VALUES[9] = "9";
-        VALUES[10] = "a";
-        VALUES[11] = "b";
-        VALUES[12] = "c";
-        VALUES[13] = "d";
-        VALUES[14] = "e";
-        VALUES[15] = "f";
-    }
 
     /**
      * Create new object.
@@ -77,11 +56,9 @@ public final class ByteToStringValueConverter implements ValueConverterProvider 
         if (toHex == null || !toHex) {
             return Byte.toString(castedValue);
         } else {
-            byte part1 = (byte) (castedValue >> 4 & 0xF);
-            String str1 = VALUES[part1];
-            byte part2 = (byte) (castedValue & 0xF);
-            String str2 = VALUES[part2];
-            return str1 + str2;
+            HexString hexString = new HexString();
+            hexString.addValue(castedValue);
+            return hexString.toString();
         }
     }
 

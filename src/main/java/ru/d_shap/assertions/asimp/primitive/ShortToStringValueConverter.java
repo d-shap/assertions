@@ -19,8 +19,8 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.asimp.primitive;
 
+import ru.d_shap.assertions.asimp.HexString;
 import ru.d_shap.assertions.converter.ConverterArgumentHelper;
-import ru.d_shap.assertions.converter.ValueConverter;
 import ru.d_shap.assertions.converter.ValueConverterProvider;
 
 /**
@@ -56,11 +56,9 @@ public final class ShortToStringValueConverter implements ValueConverterProvider
         if (toHex == null || !toHex) {
             return Short.toString(castedValue);
         } else {
-            byte part1 = (byte) (castedValue >> 8 & 0xFF);
-            String str1 = ValueConverter.convert(part1, String.class, true);
-            byte part2 = (byte) (castedValue & 0xFF);
-            String str2 = ValueConverter.convert(part2, String.class, true);
-            return str1 + str2;
+            HexString hexString = new HexString();
+            hexString.addValue(castedValue);
+            return hexString.toString();
         }
     }
 
