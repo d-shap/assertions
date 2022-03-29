@@ -111,7 +111,7 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toByteArray(final Matcher<Byte[]> matcher) {
+    public final void toByteArray(final Matcher<? super Byte[]> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         byte[] nextBytes = convertValue(getActual(), null, byte[].class, 0);
@@ -125,7 +125,7 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
      * @param count   the number of bytes to read from the actual.
      * @param matcher the hamcrest matcher.
      */
-    public final void toByteArray(final int count, final Matcher<Byte[]> matcher) {
+    public final void toByteArray(final int count, final Matcher<? super Byte[]> matcher) {
         checkActualIsNotNull();
         checkArgumentIsValid(count > 0, "count", Messages.Fail.Argument.IS_GREATER_THAN_ZERO);
         checkArgumentIsNotNull(matcher, "matcher");
@@ -234,7 +234,7 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toAvailable(final Matcher<Integer> matcher) {
+    public final void toAvailable(final Matcher<? super Integer> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         try {
@@ -270,7 +270,7 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toLength(final Matcher<Long> matcher) {
+    public final void toLength(final Matcher<? super Long> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         long length = getLength();

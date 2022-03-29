@@ -90,7 +90,7 @@ public class BufferedReaderAssertion extends ReferenceAssertion<BufferedReader> 
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toCharArray(final Matcher<Character[]> matcher) {
+    public final void toCharArray(final Matcher<? super Character[]> matcher) {
         createReaderAssertion().toCharArray(matcher);
     }
 
@@ -100,7 +100,7 @@ public class BufferedReaderAssertion extends ReferenceAssertion<BufferedReader> 
      * @param matcher the hamcrest matcher.
      * @param count   the number of chars to read from the actual.
      */
-    public final void toCharArray(final int count, final Matcher<Character[]> matcher) {
+    public final void toCharArray(final int count, final Matcher<? super Character[]> matcher) {
         createReaderAssertion().toCharArray(count, matcher);
     }
 
@@ -134,7 +134,7 @@ public class BufferedReaderAssertion extends ReferenceAssertion<BufferedReader> 
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toStringArray(final Matcher<String[]> matcher) {
+    public final void toStringArray(final Matcher<? super String[]> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         String[] nextStrings = convertValue(getActual(), null, String[].class, 0);
@@ -147,7 +147,7 @@ public class BufferedReaderAssertion extends ReferenceAssertion<BufferedReader> 
      * @param matcher the hamcrest matcher.
      * @param count   the number of lines to read from the actual.
      */
-    public final void toStringArray(final int count, final Matcher<String[]> matcher) {
+    public final void toStringArray(final int count, final Matcher<? super String[]> matcher) {
         checkActualIsNotNull();
         checkArgumentIsValid(count > 0, "count", Messages.Fail.Argument.IS_GREATER_THAN_ZERO);
         checkArgumentIsNotNull(matcher, "matcher");
@@ -289,7 +289,7 @@ public class BufferedReaderAssertion extends ReferenceAssertion<BufferedReader> 
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toLength(final Matcher<Long> matcher) {
+    public final void toLength(final Matcher<? super Long> matcher) {
         createReaderAssertion().toLength(matcher);
     }
 
@@ -318,7 +318,7 @@ public class BufferedReaderAssertion extends ReferenceAssertion<BufferedReader> 
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toLinesLength(final Matcher<Long> matcher) {
+    public final void toLinesLength(final Matcher<? super Long> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         long linesLength = getLinesLength();

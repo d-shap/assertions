@@ -110,7 +110,7 @@ public class ReaderAssertion extends ReferenceAssertion<Reader> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toCharArray(final Matcher<Character[]> matcher) {
+    public final void toCharArray(final Matcher<? super Character[]> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         char[] nextChars = convertValue(getActual(), null, char[].class, 0);
@@ -124,7 +124,7 @@ public class ReaderAssertion extends ReferenceAssertion<Reader> {
      * @param matcher the hamcrest matcher.
      * @param count   the number of chars to read from the actual.
      */
-    public final void toCharArray(final int count, final Matcher<Character[]> matcher) {
+    public final void toCharArray(final int count, final Matcher<? super Character[]> matcher) {
         checkActualIsNotNull();
         checkArgumentIsValid(count > 0, "count", Messages.Fail.Argument.IS_GREATER_THAN_ZERO);
         checkArgumentIsNotNull(matcher, "matcher");
@@ -229,7 +229,7 @@ public class ReaderAssertion extends ReferenceAssertion<Reader> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toLength(final Matcher<Long> matcher) {
+    public final void toLength(final Matcher<? super Long> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         long length = getLength();
