@@ -92,7 +92,7 @@ public class NodeAssertion extends ReferenceAssertion<Node> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toNamespaceURI(final Matcher<String> matcher) {
+    public final void toNamespaceURI(final Matcher<? super String> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().getNamespaceURI(), matcher, Messages.Check.NAMESPACE_URI);
@@ -124,7 +124,7 @@ public class NodeAssertion extends ReferenceAssertion<Node> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toPrefix(final Matcher<String> matcher) {
+    public final void toPrefix(final Matcher<? super String> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().getPrefix(), matcher, Messages.Check.PREFIX);
@@ -156,7 +156,7 @@ public class NodeAssertion extends ReferenceAssertion<Node> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toLocalName(final Matcher<String> matcher) {
+    public final void toLocalName(final Matcher<? super String> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().getLocalName(), matcher, Messages.Check.LOCAL_NAME);

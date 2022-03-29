@@ -120,7 +120,7 @@ public class ElementAssertion extends ReferenceAssertion<Element> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toNamespaceURI(final Matcher<String> matcher) {
+    public final void toNamespaceURI(final Matcher<? super String> matcher) {
         createNodeAssertion().toNamespaceURI(matcher);
     }
 
@@ -147,7 +147,7 @@ public class ElementAssertion extends ReferenceAssertion<Element> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toPrefix(final Matcher<String> matcher) {
+    public final void toPrefix(final Matcher<? super String> matcher) {
         createNodeAssertion().toPrefix(matcher);
     }
 
@@ -174,7 +174,7 @@ public class ElementAssertion extends ReferenceAssertion<Element> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toLocalName(final Matcher<String> matcher) {
+    public final void toLocalName(final Matcher<? super String> matcher) {
         createNodeAssertion().toLocalName(matcher);
     }
 
@@ -202,7 +202,7 @@ public class ElementAssertion extends ReferenceAssertion<Element> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toQualifiedName(final Matcher<String> matcher) {
+    public final void toQualifiedName(final Matcher<? super String> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().getTagName(), matcher, Messages.Check.QUALIFIED_NAME);
@@ -325,7 +325,7 @@ public class ElementAssertion extends ReferenceAssertion<Element> {
      * @param localName the local name of the actual value's attribute.
      * @param matcher   the hamcrest matcher.
      */
-    public final void toAttribute(final String localName, final Matcher<Attr> matcher) {
+    public final void toAttribute(final String localName, final Matcher<? super Attr> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(localName, "localName");
         checkArgumentIsNotNull(matcher, "matcher");
@@ -340,7 +340,7 @@ public class ElementAssertion extends ReferenceAssertion<Element> {
      * @param localName    the local name of the actual value's attribute.
      * @param matcher      the hamcrest matcher.
      */
-    public final void toAttribute(final String namespaceURI, final String localName, final Matcher<Attr> matcher) {
+    public final void toAttribute(final String namespaceURI, final String localName, final Matcher<? super Attr> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(namespaceURI, "namespaceURI");
         checkArgumentIsNotNull(localName, "localName");
@@ -444,7 +444,7 @@ public class ElementAssertion extends ReferenceAssertion<Element> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toChildNodesCount(final Matcher<Integer> matcher) {
+    public final void toChildNodesCount(final Matcher<? super Integer> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().getChildNodes().getLength(), matcher, Messages.Check.CHILD_NODES_COUNT);
@@ -474,7 +474,7 @@ public class ElementAssertion extends ReferenceAssertion<Element> {
      *
      * @param matcher the expected count.
      */
-    public final void toChildElementsCount(final Matcher<Integer> matcher) {
+    public final void toChildElementsCount(final Matcher<? super Integer> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getChildElementsCount(), matcher, Messages.Check.CHILD_ELEMENTS_COUNT);

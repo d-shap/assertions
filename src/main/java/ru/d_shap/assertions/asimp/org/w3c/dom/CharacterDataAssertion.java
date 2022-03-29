@@ -79,7 +79,7 @@ public class CharacterDataAssertion extends ReferenceAssertion<CharacterData> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toData(final Matcher<String> matcher) {
+    public final void toData(final Matcher<? super String> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().getData(), matcher, Messages.Check.DATA);

@@ -78,7 +78,7 @@ public class AttrAssertion extends ReferenceAssertion<Attr> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toNamespaceURI(final Matcher<String> matcher) {
+    public final void toNamespaceURI(final Matcher<? super String> matcher) {
         createNodeAssertion().toNamespaceURI(matcher);
     }
 
@@ -105,7 +105,7 @@ public class AttrAssertion extends ReferenceAssertion<Attr> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toPrefix(final Matcher<String> matcher) {
+    public final void toPrefix(final Matcher<? super String> matcher) {
         createNodeAssertion().toPrefix(matcher);
     }
 
@@ -132,7 +132,7 @@ public class AttrAssertion extends ReferenceAssertion<Attr> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toLocalName(final Matcher<String> matcher) {
+    public final void toLocalName(final Matcher<? super String> matcher) {
         createNodeAssertion().toLocalName(matcher);
     }
 
@@ -160,7 +160,7 @@ public class AttrAssertion extends ReferenceAssertion<Attr> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toQualifiedName(final Matcher<String> matcher) {
+    public final void toQualifiedName(final Matcher<? super String> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().getName(), matcher, Messages.Check.QUALIFIED_NAME);
@@ -192,7 +192,7 @@ public class AttrAssertion extends ReferenceAssertion<Attr> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toValue(final Matcher<String> matcher) {
+    public final void toValue(final Matcher<? super String> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().getValue(), matcher, Messages.Check.VALUE);

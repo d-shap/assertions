@@ -117,7 +117,7 @@ public class DocumentAssertion extends ReferenceAssertion<Document> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toNamespaceURI(final Matcher<String> matcher) {
+    public final void toNamespaceURI(final Matcher<? super String> matcher) {
         checkActualIsNotNull();
         createElementAssertion().toNamespaceURI(matcher);
     }
@@ -147,7 +147,7 @@ public class DocumentAssertion extends ReferenceAssertion<Document> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toPrefix(final Matcher<String> matcher) {
+    public final void toPrefix(final Matcher<? super String> matcher) {
         checkActualIsNotNull();
         createElementAssertion().toPrefix(matcher);
     }
@@ -177,7 +177,7 @@ public class DocumentAssertion extends ReferenceAssertion<Document> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toLocalName(final Matcher<String> matcher) {
+    public final void toLocalName(final Matcher<? super String> matcher) {
         checkActualIsNotNull();
         createElementAssertion().toLocalName(matcher);
     }
@@ -207,7 +207,7 @@ public class DocumentAssertion extends ReferenceAssertion<Document> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toQualifiedName(final Matcher<String> matcher) {
+    public final void toQualifiedName(final Matcher<? super String> matcher) {
         checkActualIsNotNull();
         createElementAssertion().toQualifiedName(matcher);
     }
@@ -316,7 +316,7 @@ public class DocumentAssertion extends ReferenceAssertion<Document> {
      * @param localName the local name of the actual value's attribute.
      * @param matcher   the hamcrest matcher.
      */
-    public final void toAttribute(final String localName, final Matcher<Attr> matcher) {
+    public final void toAttribute(final String localName, final Matcher<? super Attr> matcher) {
         checkActualIsNotNull();
         createElementAssertion().toAttribute(localName, matcher);
     }
@@ -328,7 +328,7 @@ public class DocumentAssertion extends ReferenceAssertion<Document> {
      * @param localName    the local name of the actual value's attribute.
      * @param matcher      the hamcrest matcher.
      */
-    public final void toAttribute(final String namespaceURI, final String localName, final Matcher<Attr> matcher) {
+    public final void toAttribute(final String namespaceURI, final String localName, final Matcher<? super Attr> matcher) {
         checkActualIsNotNull();
         createElementAssertion().toAttribute(namespaceURI, localName, matcher);
     }
@@ -410,7 +410,7 @@ public class DocumentAssertion extends ReferenceAssertion<Document> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toChildNodesCount(final Matcher<Integer> matcher) {
+    public final void toChildNodesCount(final Matcher<? super Integer> matcher) {
         checkActualIsNotNull();
         createElementAssertion().toChildNodesCount(matcher);
     }
@@ -440,7 +440,7 @@ public class DocumentAssertion extends ReferenceAssertion<Document> {
      *
      * @param matcher the expected count.
      */
-    public final void toChildElementsCount(final Matcher<Integer> matcher) {
+    public final void toChildElementsCount(final Matcher<? super Integer> matcher) {
         checkActualIsNotNull();
         createElementAssertion().toChildElementsCount(matcher);
     }
