@@ -140,7 +140,7 @@ public class SortedSetAssertion<E> extends ReferenceAssertion<SortedSet<E>> {
      * @param element upper element (exclusive) of the head set.
      * @param matcher the hamcrest matcher.
      */
-    public final void toHeadSet(final E element, final Matcher<Iterable<E>> matcher) {
+    public final void toHeadSet(final E element, final Matcher<? super Iterable<E>> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getHeadSet(element), matcher, Messages.Check.ELEMENTS_HEAD_ELEMENT, element);
@@ -152,7 +152,7 @@ public class SortedSetAssertion<E> extends ReferenceAssertion<SortedSet<E>> {
      * @param count   the number of elements to get from the head.
      * @param matcher the hamcrest matcher.
      */
-    public final void toHeadSet(final int count, final Matcher<Iterable<E>> matcher) {
+    public final void toHeadSet(final int count, final Matcher<? super Iterable<E>> matcher) {
         checkActualIsNotNull();
         checkArgumentIsValid(count > 0, "count", Messages.Fail.Argument.IS_GREATER_THAN_ZERO);
         checkArgumentIsNotNull(matcher, "matcher");
@@ -203,7 +203,7 @@ public class SortedSetAssertion<E> extends ReferenceAssertion<SortedSet<E>> {
      * @param element lower element (inclusive) of the tail set.
      * @param matcher the hamcrest matcher.
      */
-    public final void toTailSet(final E element, final Matcher<Iterable<E>> matcher) {
+    public final void toTailSet(final E element, final Matcher<? super Iterable<E>> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getTailSet(element), matcher, Messages.Check.ELEMENTS_TAIL_ELEMENT, element);
@@ -215,7 +215,7 @@ public class SortedSetAssertion<E> extends ReferenceAssertion<SortedSet<E>> {
      * @param count   the number of elements to get from the tail.
      * @param matcher the hamcrest matcher.
      */
-    public final void toTailSet(final int count, final Matcher<Iterable<E>> matcher) {
+    public final void toTailSet(final int count, final Matcher<? super Iterable<E>> matcher) {
         checkActualIsNotNull();
         checkArgumentIsValid(count > 0, "count", Messages.Fail.Argument.IS_GREATER_THAN_ZERO);
         checkArgumentIsNotNull(matcher, "matcher");
@@ -372,7 +372,7 @@ public class SortedSetAssertion<E> extends ReferenceAssertion<SortedSet<E>> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toSize(final Matcher<Integer> matcher) {
+    public final void toSize(final Matcher<? super Integer> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().size(), matcher, Messages.Check.SIZE);

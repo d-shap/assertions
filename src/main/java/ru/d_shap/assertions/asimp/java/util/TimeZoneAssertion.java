@@ -122,7 +122,7 @@ public class TimeZoneAssertion extends ReferenceAssertion<TimeZone> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toId(final Matcher<String> matcher) {
+    public final void toId(final Matcher<? super String> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().getID(), matcher, Messages.Check.ID);
@@ -152,7 +152,7 @@ public class TimeZoneAssertion extends ReferenceAssertion<TimeZone> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toDisplayName(final Matcher<String> matcher) {
+    public final void toDisplayName(final Matcher<? super String> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().getDisplayName(Locale.US), matcher, Messages.Check.DISPLAY_NAME);
@@ -182,7 +182,7 @@ public class TimeZoneAssertion extends ReferenceAssertion<TimeZone> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toRawOffset(final Matcher<Integer> matcher) {
+    public final void toRawOffset(final Matcher<? super Integer> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().getRawOffset(), matcher, Messages.Check.RAW_OFFSET);
@@ -212,7 +212,7 @@ public class TimeZoneAssertion extends ReferenceAssertion<TimeZone> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toUseDaylightTime(final Matcher<Boolean> matcher) {
+    public final void toUseDaylightTime(final Matcher<? super Boolean> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().useDaylightTime(), matcher, Messages.Check.USE_DAYLIGHT_TIME);
@@ -247,7 +247,7 @@ public class TimeZoneAssertion extends ReferenceAssertion<TimeZone> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toDstSavings(final Matcher<Integer> matcher) {
+    public final void toDstSavings(final Matcher<? super Integer> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().getDSTSavings(), matcher, Messages.Check.DST_SAVINGS);

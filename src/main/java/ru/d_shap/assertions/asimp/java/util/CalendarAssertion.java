@@ -177,7 +177,7 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toYear(final Matcher<Integer> matcher) {
+    public final void toYear(final Matcher<? super Integer> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().get(Calendar.YEAR), matcher, Messages.Check.YEAR);
@@ -207,7 +207,7 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toMonth(final Matcher<Integer> matcher) {
+    public final void toMonth(final Matcher<? super Integer> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().get(Calendar.MONTH), matcher, Messages.Check.MONTH);
@@ -237,7 +237,7 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toWeekOfYear(final Matcher<Integer> matcher) {
+    public final void toWeekOfYear(final Matcher<? super Integer> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().get(Calendar.WEEK_OF_YEAR), matcher, Messages.Check.WEEK_OF_YEAR);
@@ -267,7 +267,7 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toWeekOfMonth(final Matcher<Integer> matcher) {
+    public final void toWeekOfMonth(final Matcher<? super Integer> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().get(Calendar.WEEK_OF_MONTH), matcher, Messages.Check.WEEK_OF_MONTH);
@@ -297,7 +297,7 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toDayOfYear(final Matcher<Integer> matcher) {
+    public final void toDayOfYear(final Matcher<? super Integer> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().get(Calendar.DAY_OF_YEAR), matcher, Messages.Check.DAY_OF_YEAR);
@@ -327,7 +327,7 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toDayOfMonth(final Matcher<Integer> matcher) {
+    public final void toDayOfMonth(final Matcher<? super Integer> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().get(Calendar.DAY_OF_MONTH), matcher, Messages.Check.DAY_OF_MONTH);
@@ -357,7 +357,7 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toDayOfWeekInMonth(final Matcher<Integer> matcher) {
+    public final void toDayOfWeekInMonth(final Matcher<? super Integer> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().get(Calendar.DAY_OF_WEEK_IN_MONTH), matcher, Messages.Check.DAY_OF_WEEK_IN_MONTH);
@@ -387,7 +387,7 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toDayOfWeek(final Matcher<Integer> matcher) {
+    public final void toDayOfWeek(final Matcher<? super Integer> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().get(Calendar.DAY_OF_WEEK), matcher, Messages.Check.DAY_OF_WEEK);
@@ -417,7 +417,7 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toAmPm(final Matcher<Integer> matcher) {
+    public final void toAmPm(final Matcher<? super Integer> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().get(Calendar.AM_PM), matcher, Messages.Check.AM_PM);
@@ -452,7 +452,7 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toHourOfDay(final Matcher<Integer> matcher) {
+    public final void toHourOfDay(final Matcher<? super Integer> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().get(Calendar.HOUR_OF_DAY), matcher, Messages.Check.HOUR_OF_DAY);
@@ -482,7 +482,7 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toHour(final Matcher<Integer> matcher) {
+    public final void toHour(final Matcher<? super Integer> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().get(Calendar.HOUR), matcher, Messages.Check.HOUR);
@@ -512,7 +512,7 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toMinute(final Matcher<Integer> matcher) {
+    public final void toMinute(final Matcher<? super Integer> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().get(Calendar.MINUTE), matcher, Messages.Check.MINUTE);
@@ -542,7 +542,7 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toSecond(final Matcher<Integer> matcher) {
+    public final void toSecond(final Matcher<? super Integer> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().get(Calendar.SECOND), matcher, Messages.Check.SECOND);
@@ -572,7 +572,7 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toMillisecond(final Matcher<Integer> matcher) {
+    public final void toMillisecond(final Matcher<? super Integer> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().get(Calendar.MILLISECOND), matcher, Messages.Check.MILLISECOND);
@@ -602,7 +602,7 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toZoneOffset(final Matcher<Integer> matcher) {
+    public final void toZoneOffset(final Matcher<? super Integer> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().get(Calendar.ZONE_OFFSET), matcher, Messages.Check.ZONE_OFFSET);
@@ -632,7 +632,7 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toDstOffset(final Matcher<Integer> matcher) {
+    public final void toDstOffset(final Matcher<? super Integer> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().get(Calendar.DST_OFFSET), matcher, Messages.Check.DST_OFFSET);
@@ -662,7 +662,7 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toTimeZone(final Matcher<TimeZone> matcher) {
+    public final void toTimeZone(final Matcher<? super TimeZone> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().getTimeZone(), matcher, Messages.Check.TIME_ZONE);

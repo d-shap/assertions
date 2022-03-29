@@ -175,7 +175,7 @@ public class DateAssertion extends ReferenceAssertion<Date> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toYear(final Matcher<Integer> matcher) {
+    public final void toYear(final Matcher<? super Integer> matcher) {
         createCalendarAssertion().toYear(matcher);
     }
 
@@ -202,7 +202,7 @@ public class DateAssertion extends ReferenceAssertion<Date> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toMonth(final Matcher<Integer> matcher) {
+    public final void toMonth(final Matcher<? super Integer> matcher) {
         createCalendarAssertion().toMonth(matcher);
     }
 
@@ -229,7 +229,7 @@ public class DateAssertion extends ReferenceAssertion<Date> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toWeekOfYear(final Matcher<Integer> matcher) {
+    public final void toWeekOfYear(final Matcher<? super Integer> matcher) {
         createCalendarAssertion().toWeekOfYear(matcher);
     }
 
@@ -256,7 +256,7 @@ public class DateAssertion extends ReferenceAssertion<Date> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toWeekOfMonth(final Matcher<Integer> matcher) {
+    public final void toWeekOfMonth(final Matcher<? super Integer> matcher) {
         createCalendarAssertion().toWeekOfMonth(matcher);
     }
 
@@ -283,7 +283,7 @@ public class DateAssertion extends ReferenceAssertion<Date> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toDayOfYear(final Matcher<Integer> matcher) {
+    public final void toDayOfYear(final Matcher<? super Integer> matcher) {
         createCalendarAssertion().toDayOfYear(matcher);
     }
 
@@ -310,7 +310,7 @@ public class DateAssertion extends ReferenceAssertion<Date> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toDayOfMonth(final Matcher<Integer> matcher) {
+    public final void toDayOfMonth(final Matcher<? super Integer> matcher) {
         createCalendarAssertion().toDayOfMonth(matcher);
     }
 
@@ -337,7 +337,7 @@ public class DateAssertion extends ReferenceAssertion<Date> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toDayOfWeekInMonth(final Matcher<Integer> matcher) {
+    public final void toDayOfWeekInMonth(final Matcher<? super Integer> matcher) {
         createCalendarAssertion().toDayOfWeekInMonth(matcher);
     }
 
@@ -364,7 +364,7 @@ public class DateAssertion extends ReferenceAssertion<Date> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toDayOfWeek(final Matcher<Integer> matcher) {
+    public final void toDayOfWeek(final Matcher<? super Integer> matcher) {
         createCalendarAssertion().toDayOfWeek(matcher);
     }
 
@@ -391,7 +391,7 @@ public class DateAssertion extends ReferenceAssertion<Date> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toAmPm(final Matcher<Integer> matcher) {
+    public final void toAmPm(final Matcher<? super Integer> matcher) {
         createCalendarAssertion().toAmPm(matcher);
     }
 
@@ -423,7 +423,7 @@ public class DateAssertion extends ReferenceAssertion<Date> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toHourOfDay(final Matcher<Integer> matcher) {
+    public final void toHourOfDay(final Matcher<? super Integer> matcher) {
         createCalendarAssertion().toHourOfDay(matcher);
     }
 
@@ -450,7 +450,7 @@ public class DateAssertion extends ReferenceAssertion<Date> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toHour(final Matcher<Integer> matcher) {
+    public final void toHour(final Matcher<? super Integer> matcher) {
         createCalendarAssertion().toHour(matcher);
     }
 
@@ -477,7 +477,7 @@ public class DateAssertion extends ReferenceAssertion<Date> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toMinute(final Matcher<Integer> matcher) {
+    public final void toMinute(final Matcher<? super Integer> matcher) {
         createCalendarAssertion().toMinute(matcher);
     }
 
@@ -504,7 +504,7 @@ public class DateAssertion extends ReferenceAssertion<Date> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toSecond(final Matcher<Integer> matcher) {
+    public final void toSecond(final Matcher<? super Integer> matcher) {
         createCalendarAssertion().toSecond(matcher);
     }
 
@@ -531,7 +531,7 @@ public class DateAssertion extends ReferenceAssertion<Date> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toMillisecond(final Matcher<Integer> matcher) {
+    public final void toMillisecond(final Matcher<? super Integer> matcher) {
         createCalendarAssertion().toMillisecond(matcher);
     }
 

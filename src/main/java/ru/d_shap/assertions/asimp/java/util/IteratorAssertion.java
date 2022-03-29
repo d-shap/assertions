@@ -105,7 +105,7 @@ public class IteratorAssertion<E> extends ReferenceAssertion<Iterator<E>> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toList(final Matcher<Iterable<E>> matcher) {
+    public final void toList(final Matcher<? super Iterable<E>> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         List<E> list = convertValue(getActual(), null, List.class, 0);
@@ -118,7 +118,7 @@ public class IteratorAssertion<E> extends ReferenceAssertion<Iterator<E>> {
      * @param count   the number of elements to get from the iterator.
      * @param matcher the hamcrest matcher.
      */
-    public final void toList(final int count, final Matcher<Iterable<E>> matcher) {
+    public final void toList(final int count, final Matcher<? super Iterable<E>> matcher) {
         checkActualIsNotNull();
         checkArgumentIsValid(count > 0, "count", Messages.Fail.Argument.IS_GREATER_THAN_ZERO);
         checkArgumentIsNotNull(matcher, "matcher");
@@ -385,7 +385,7 @@ public class IteratorAssertion<E> extends ReferenceAssertion<Iterator<E>> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toSize(final Matcher<Integer> matcher) {
+    public final void toSize(final Matcher<? super Integer> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         toList().toSize(matcher);

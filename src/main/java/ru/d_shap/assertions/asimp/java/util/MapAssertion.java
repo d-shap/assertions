@@ -104,7 +104,7 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toKeys(final Matcher<Iterable<K>> matcher) {
+    public final void toKeys(final Matcher<? super Iterable<K>> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().keySet(), matcher, Messages.Check.KEYS);
@@ -293,7 +293,7 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toValues(final Matcher<Iterable<V>> matcher) {
+    public final void toValues(final Matcher<? super Iterable<V>> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().values(), matcher, Messages.Check.VALUES);
@@ -1023,7 +1023,7 @@ public class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toSize(final Matcher<Integer> matcher) {
+    public final void toSize(final Matcher<? super Integer> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().size(), matcher, Messages.Check.SIZE);

@@ -237,7 +237,7 @@ public class SetAssertion<E> extends ReferenceAssertion<Set<E>> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toSize(final Matcher<Integer> matcher) {
+    public final void toSize(final Matcher<? super Integer> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().size(), matcher, Messages.Check.SIZE);
