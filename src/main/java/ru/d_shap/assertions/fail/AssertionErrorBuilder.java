@@ -120,6 +120,8 @@ public final class AssertionErrorBuilder {
      * The delta is converted to the actual value's class.
      *
      * @param delta the actual value's delta.
+     *
+     * @return current object for the chain call.
      */
     public AssertionErrorBuilder addActualWithDelta(final Object delta) {
         _failDescriptionValues.addActualWithDelta(delta);
