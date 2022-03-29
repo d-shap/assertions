@@ -94,7 +94,7 @@ public class QNameAssertion extends ReferenceAssertion<QName> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toNamespaceURI(final Matcher<String> matcher) {
+    public final void toNamespaceURI(final Matcher<? super String> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().getNamespaceURI(), matcher, Messages.Check.NAMESPACE_URI);
@@ -126,7 +126,7 @@ public class QNameAssertion extends ReferenceAssertion<QName> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toPrefix(final Matcher<String> matcher) {
+    public final void toPrefix(final Matcher<? super String> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().getPrefix(), matcher, Messages.Check.PREFIX);
@@ -158,7 +158,7 @@ public class QNameAssertion extends ReferenceAssertion<QName> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toLocalPart(final Matcher<String> matcher) {
+    public final void toLocalPart(final Matcher<? super String> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().getLocalPart(), matcher, Messages.Check.LOCAL_PART);
