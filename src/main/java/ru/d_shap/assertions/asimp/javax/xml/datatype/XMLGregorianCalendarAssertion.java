@@ -188,7 +188,7 @@ public class XMLGregorianCalendarAssertion extends ReferenceAssertion<XMLGregori
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toYear(final Matcher<Integer> matcher) {
+    public final void toYear(final Matcher<? super Integer> matcher) {
         createCalendarAssertion().toYear(matcher);
     }
 
@@ -215,7 +215,7 @@ public class XMLGregorianCalendarAssertion extends ReferenceAssertion<XMLGregori
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toMonth(final Matcher<Integer> matcher) {
+    public final void toMonth(final Matcher<? super Integer> matcher) {
         createCalendarAssertion().toMonth(matcher);
     }
 
@@ -242,7 +242,7 @@ public class XMLGregorianCalendarAssertion extends ReferenceAssertion<XMLGregori
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toDayOfMonth(final Matcher<Integer> matcher) {
+    public final void toDayOfMonth(final Matcher<? super Integer> matcher) {
         createCalendarAssertion().toDayOfMonth(matcher);
     }
 
@@ -269,7 +269,7 @@ public class XMLGregorianCalendarAssertion extends ReferenceAssertion<XMLGregori
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toHourOfDay(final Matcher<Integer> matcher) {
+    public final void toHourOfDay(final Matcher<? super Integer> matcher) {
         createCalendarAssertion().toHourOfDay(matcher);
     }
 
@@ -296,7 +296,7 @@ public class XMLGregorianCalendarAssertion extends ReferenceAssertion<XMLGregori
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toMinute(final Matcher<Integer> matcher) {
+    public final void toMinute(final Matcher<? super Integer> matcher) {
         createCalendarAssertion().toMinute(matcher);
     }
 
@@ -323,7 +323,7 @@ public class XMLGregorianCalendarAssertion extends ReferenceAssertion<XMLGregori
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toSecond(final Matcher<Integer> matcher) {
+    public final void toSecond(final Matcher<? super Integer> matcher) {
         createCalendarAssertion().toSecond(matcher);
     }
 
@@ -350,7 +350,7 @@ public class XMLGregorianCalendarAssertion extends ReferenceAssertion<XMLGregori
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toMillisecond(final Matcher<Integer> matcher) {
+    public final void toMillisecond(final Matcher<? super Integer> matcher) {
         createCalendarAssertion().toMillisecond(matcher);
     }
 
@@ -377,7 +377,7 @@ public class XMLGregorianCalendarAssertion extends ReferenceAssertion<XMLGregori
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toZoneOffset(final Matcher<Integer> matcher) {
+    public final void toZoneOffset(final Matcher<? super Integer> matcher) {
         createCalendarAssertion().toZoneOffset(matcher);
     }
 
