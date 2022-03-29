@@ -360,7 +360,7 @@ public class IterableAssertion<E> extends ReferenceAssertion<Iterable<E>> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toSize(final Matcher<Integer> matcher) {
+    public final void toSize(final Matcher<? super Integer> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         List<E> list = convertValue(getActual(), null, List.class);

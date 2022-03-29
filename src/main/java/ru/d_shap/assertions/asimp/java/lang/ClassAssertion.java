@@ -214,7 +214,7 @@ public class ClassAssertion extends ReferenceAssertion<Class<?>> {
      * @param <T>     the generic type of the actual value's component type.
      */
     @SuppressWarnings("unchecked")
-    public final <T> void toComponentType(final Matcher<Class<T>> matcher) {
+    public final <T> void toComponentType(final Matcher<? super Class<T>> matcher) {
         isArray();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion((Class<T>) getActual().getComponentType(), matcher, Messages.Check.COMPONENT_TYPE);

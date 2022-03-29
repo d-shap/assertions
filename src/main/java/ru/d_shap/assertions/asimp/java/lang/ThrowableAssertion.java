@@ -59,7 +59,7 @@ public class ThrowableAssertion extends ReferenceAssertion<Throwable> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toMessage(final Matcher<String> matcher) {
+    public final void toMessage(final Matcher<? super String> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().getMessage(), matcher, Messages.Check.MESSAGE);
@@ -180,7 +180,7 @@ public class ThrowableAssertion extends ReferenceAssertion<Throwable> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toCause(final Matcher<Throwable> matcher) {
+    public final void toCause(final Matcher<? super Throwable> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().getCause(), matcher, Messages.Check.CAUSE);

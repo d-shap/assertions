@@ -64,7 +64,7 @@ public class EnumAssertion extends ClassAssertion {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toValueCount(final Matcher<Integer> matcher) {
+    public final void toValueCount(final Matcher<? super Integer> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getValueCount(), matcher, Messages.Check.VALUE_COUNT);
