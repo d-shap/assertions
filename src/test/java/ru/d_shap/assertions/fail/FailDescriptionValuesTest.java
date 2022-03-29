@@ -1402,7 +1402,7 @@ public final class FailDescriptionValuesTest extends AssertionTest {
      * {@link FailDescriptionValues} class test.
      */
     @Test(expected = NullPointerException.class)
-    public void addRawExpectedNullFailTest() {
+    public void addRawExpectedNullClassFailTest() {
         FailDescriptionValues failDescriptionValues = new FailDescriptionValues(Node.class, createNode("<element/>"));
         failDescriptionValues.addActual();
         failDescriptionValues.addRawExpected("expected", null);
@@ -1413,7 +1413,7 @@ public final class FailDescriptionValuesTest extends AssertionTest {
      * {@link FailDescriptionValues} class test.
      */
     @Test(expected = NullPointerException.class)
-    public void addRawExpected2NullFailTest() {
+    public void addRawExpected2NullClassFailTest() {
         FailDescriptionValues failDescriptionValues = new FailDescriptionValues(Node.class, createNode("<element/>"));
         failDescriptionValues.addActual();
         failDescriptionValues.addRawExpected("expected1", "expected2", null);
