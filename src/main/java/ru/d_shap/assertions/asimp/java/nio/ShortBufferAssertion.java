@@ -465,7 +465,7 @@ public class ShortBufferAssertion extends ReferenceAssertion<ShortBuffer> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toPosition(final Matcher<Integer> matcher) {
+    public final void toPosition(final Matcher<? super Integer> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().position(), matcher, Messages.Check.POSITION);
@@ -495,7 +495,7 @@ public class ShortBufferAssertion extends ReferenceAssertion<ShortBuffer> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toLimit(final Matcher<Integer> matcher) {
+    public final void toLimit(final Matcher<? super Integer> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().limit(), matcher, Messages.Check.LIMIT);
@@ -525,7 +525,7 @@ public class ShortBufferAssertion extends ReferenceAssertion<ShortBuffer> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toCapacity(final Matcher<Integer> matcher) {
+    public final void toCapacity(final Matcher<? super Integer> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().capacity(), matcher, Messages.Check.CAPACITY);
@@ -568,7 +568,7 @@ public class ShortBufferAssertion extends ReferenceAssertion<ShortBuffer> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toRemaining(final Matcher<Integer> matcher) {
+    public final void toRemaining(final Matcher<? super Integer> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().remaining(), matcher, Messages.Check.REMAINING);
