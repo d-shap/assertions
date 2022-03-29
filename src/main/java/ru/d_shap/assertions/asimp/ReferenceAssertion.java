@@ -108,7 +108,7 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toClass(final Matcher<Class<?>> matcher) {
+    public final void toClass(final Matcher<? super Class<?>> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().getClass(), matcher, Messages.Check.CLASS);
@@ -173,7 +173,7 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toToString(final Matcher<String> matcher) {
+    public final void toToString(final Matcher<? super String> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().toString(), matcher, Messages.Check.TO_STRING);
@@ -227,7 +227,7 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toHashCode(final Matcher<Integer> matcher) {
+    public final void toHashCode(final Matcher<? super Integer> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().hashCode(), matcher, Messages.Check.HASH_CODE);
@@ -521,7 +521,7 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
      * @param parameterTypes the method parameter types.
      * @param arguments      the arguments used to call the method.
      */
-    public final void toMethodCallException(final String methodName, final Matcher<Throwable> matcher, final Class<?>[] parameterTypes, final Object[] arguments) {
+    public final void toMethodCallException(final String methodName, final Matcher<? super Throwable> matcher, final Class<?>[] parameterTypes, final Object[] arguments) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(methodName, "methodName");
         checkArgumentIsNotNull(matcher, "matcher");
@@ -551,7 +551,7 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
      * @param matcher    the hamcrest matcher.
      * @param arguments  the arguments used to call the method.
      */
-    public final void toMethodCallException(final String methodName, final Matcher<Throwable> matcher, final Object... arguments) {
+    public final void toMethodCallException(final String methodName, final Matcher<? super Throwable> matcher, final Object... arguments) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(methodName, "methodName");
         checkArgumentIsNotNull(matcher, "matcher");
