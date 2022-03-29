@@ -1068,6 +1068,30 @@ public final class ByteAssertionTest extends AssertionTest {
      * {@link ByteAssertion} class test.
      */
     @Test
+    public void toHexStringTest() {
+        // TODO
+    }
+
+    /**
+     * {@link ByteAssertion} class test.
+     */
+    @Test
+    public void toHexStringMatcherTest() {
+        // TODO
+    }
+
+    /**
+     * {@link ByteAssertion} class test.
+     */
+    @Test
+    public void hasHexStringTest() {
+        // TODO
+    }
+
+    /**
+     * {@link ByteAssertion} class test.
+     */
+    @Test
     public void isNullTest() {
         initialize(Raw.byteAssertion(), null).isNull();
 
