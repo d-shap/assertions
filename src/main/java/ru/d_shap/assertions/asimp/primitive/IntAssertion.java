@@ -254,7 +254,7 @@ public class IntAssertion extends ReferenceAssertion<Integer> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public void toHexString(final Matcher<String> matcher) {
+    public void toHexString(final Matcher<? super String> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         String hexString = convertValue(getActual(), null, String.class, true);
