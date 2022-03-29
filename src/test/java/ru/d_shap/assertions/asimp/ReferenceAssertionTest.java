@@ -3323,7 +3323,7 @@ public final class ReferenceAssertionTest extends AssertionTest {
 
         private final Matcher<? super String> _matcher;
 
-        ExceptionMessageMatcher(final Matcher<String> matcher) {
+        ExceptionMessageMatcher(final Matcher<? super String> matcher) {
             super();
             _matcher = matcher;
         }
