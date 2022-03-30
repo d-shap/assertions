@@ -131,7 +131,57 @@ public final class HexStringTest extends AssertionTest {
      */
     @Test
     public void addIntegerValueTest() {
-        // TODO
+        HexString hexString01 = new HexString();
+        hexString01.addValue(0);
+        Assertions.assertThat(hexString01).hasToString("00000000");
+
+        HexString hexString02 = new HexString();
+        hexString02.addValue(1);
+        Assertions.assertThat(hexString02).hasToString("00000001");
+
+        HexString hexString03 = new HexString();
+        hexString03.addValue(31);
+        Assertions.assertThat(hexString03).hasToString("0000001f");
+
+        HexString hexString04 = new HexString();
+        hexString04.addValue(479);
+        Assertions.assertThat(hexString04).hasToString("000001df");
+
+        HexString hexString05 = new HexString();
+        hexString05.addValue(7311);
+        Assertions.assertThat(hexString05).hasToString("00001c8f");
+
+        HexString hexString06 = new HexString();
+        hexString06.addValue(102351);
+        Assertions.assertThat(hexString06).hasToString("00018fcf");
+
+        HexString hexString07 = new HexString();
+        hexString07.addValue(1300879);
+        Assertions.assertThat(hexString07).hasToString("0013d98f");
+
+        HexString hexString08 = new HexString();
+        hexString08.addValue(26461823);
+        Assertions.assertThat(hexString08).hasToString("0193c67f");
+
+        HexString hexString09 = new HexString();
+        hexString09.addValue(Integer.MAX_VALUE);
+        Assertions.assertThat(hexString09).hasToString("7fffffff");
+
+        HexString hexString10 = new HexString();
+        hexString10.addValue(-1);
+        Assertions.assertThat(hexString10).hasToString("ffffffff");
+
+        HexString hexString11 = new HexString();
+        hexString11.addValue(-100);
+        Assertions.assertThat(hexString11).hasToString("ffffff9c");
+
+        HexString hexString12 = new HexString();
+        hexString12.addValue(Integer.MIN_VALUE);
+        Assertions.assertThat(hexString12).hasToString("80000000");
+        hexString12.addValue(55023845);
+        Assertions.assertThat(hexString12).hasToString("80000000034798e5");
+        hexString12.addValue(-11038295);
+        Assertions.assertThat(hexString12).hasToString("80000000034798e5ff5791a9");
     }
 
     /**
