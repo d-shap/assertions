@@ -24,42 +24,37 @@ import ru.d_shap.assertions.converter.ConverterArgumentHelper;
 import ru.d_shap.assertions.converter.ValueConverterProvider;
 
 /**
- * Value converter from the long to the string.
+ * Value converter from the byte to the hex string.
  *
  * @author Dmitry Shapovalov
  */
-public final class LongToStringValueConverter implements ValueConverterProvider {
+public final class ByteToHexStringValueConverter implements ValueConverterProvider {
 
     /**
      * Create new object.
      */
-    public LongToStringValueConverter() {
+    public ByteToHexStringValueConverter() {
         super();
     }
 
     @Override
     public Class<?> getValueClass() {
-        return Long.class;
+        return Byte.class;
     }
 
     @Override
     public Class<?> getTargetClass() {
-        return String.class;
+        return HexString.class;
     }
 
     @Override
     public Object convert(final Object value, final Object... arguments) {
-        long castedValue = ConverterArgumentHelper.getValue(value, Long.class);
-        ConverterArgumentHelper.checkArgumentsLength(arguments, 1);
-        Boolean toHex = ConverterArgumentHelper.getArgument(arguments, 0, Boolean.class);
+        byte castedValue = ConverterArgumentHelper.getValue(value, Byte.class);
+        ConverterArgumentHelper.checkArgumentsLength(arguments, 0);
 
-        if (toHex == null || !toHex) {
-            return Long.toString(castedValue);
-        } else {
-            HexString hexString = new HexString();
-            hexString.addValue(castedValue);
-            return hexString.toString();
-        }
+        HexString hexString = new HexString();
+        hexString.addValue(castedValue);
+        return hexString;
     }
 
 }

@@ -24,42 +24,37 @@ import ru.d_shap.assertions.converter.ConverterArgumentHelper;
 import ru.d_shap.assertions.converter.ValueConverterProvider;
 
 /**
- * Value converter from the short to the string.
+ * Value converter from the int to the hex string.
  *
  * @author Dmitry Shapovalov
  */
-public final class ShortToStringValueConverter implements ValueConverterProvider {
+public final class IntToHexStringValueConverter implements ValueConverterProvider {
 
     /**
      * Create new object.
      */
-    public ShortToStringValueConverter() {
+    public IntToHexStringValueConverter() {
         super();
     }
 
     @Override
     public Class<?> getValueClass() {
-        return Short.class;
+        return Integer.class;
     }
 
     @Override
     public Class<?> getTargetClass() {
-        return String.class;
+        return HexString.class;
     }
 
     @Override
     public Object convert(final Object value, final Object... arguments) {
-        short castedValue = ConverterArgumentHelper.getValue(value, Short.class);
-        ConverterArgumentHelper.checkArgumentsLength(arguments, 1);
-        Boolean toHex = ConverterArgumentHelper.getArgument(arguments, 0, Boolean.class);
+        int castedValue = ConverterArgumentHelper.getValue(value, Integer.class);
+        ConverterArgumentHelper.checkArgumentsLength(arguments, 0);
 
-        if (toHex == null || !toHex) {
-            return Short.toString(castedValue);
-        } else {
-            HexString hexString = new HexString();
-            hexString.addValue(castedValue);
-            return hexString.toString();
-        }
+        HexString hexString = new HexString();
+        hexString.addValue(castedValue);
+        return hexString;
     }
 
 }
