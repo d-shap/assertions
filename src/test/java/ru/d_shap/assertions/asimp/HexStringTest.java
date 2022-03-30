@@ -258,4 +258,28 @@ public final class HexStringTest extends AssertionTest {
         Assertions.assertThat(hexString16).hasToString("8000000000000000024bbfec91e195a7ffd439410e98293d");
     }
 
+    /**
+     * {@link HexString} class test.
+     */
+    @Test
+    public void lengthTest() {
+        // TODO
+    }
+
+    /**
+     * {@link HexString} class test.
+     */
+    @Test
+    public void charAtTest() {
+        // TODO
+    }
+
+    /**
+     * {@link HexString} class test.
+     */
+    @Test
+    public void subSequenceTest() {
+        // TODO
+    }
+
 }
