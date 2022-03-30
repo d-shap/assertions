@@ -24,7 +24,7 @@ package ru.d_shap.assertions.asimp;
  *
  * @author Dmitry Shapovalov
  */
-public final class HexString {
+public final class HexString implements CharSequence {
 
     private static final String[] HEX_VALUES;
 
@@ -121,6 +121,21 @@ public final class HexString {
         addValue(part7);
         byte part8 = (byte) (value & 0xFF);
         addValue(part8);
+    }
+
+    @Override
+    public int length() {
+        return _value.length();
+    }
+
+    @Override
+    public char charAt(final int index) {
+        return _value.charAt(index);
+    }
+
+    @Override
+    public CharSequence subSequence(final int start, final int end) {
+        return _value.substring(start, end);
     }
 
     @Override
