@@ -23,6 +23,7 @@ import org.hamcrest.Matcher;
 
 import ru.d_shap.assertions.Messages;
 import ru.d_shap.assertions.Raw;
+import ru.d_shap.assertions.asimp.HexString;
 import ru.d_shap.assertions.asimp.ReferenceAssertion;
 import ru.d_shap.assertions.asimp.java.lang.CharSequenceAssertion;
 
@@ -245,8 +246,8 @@ public class ShortAssertion extends ReferenceAssertion<Short> {
      */
     public CharSequenceAssertion toHexString() {
         checkActualIsNotNull();
-        String hexString = convertValue(getActual(), null, String.class, true);
-        return initializeAssertion(Raw.charSequenceAssertion(), hexString, Messages.Check.HEX_REPRESENTATION);
+        HexString hexString = convertValue(getActual(), null, HexString.class);
+        return initializeAssertion(Raw.charSequenceAssertion(), hexString.toString(), Messages.Check.HEX_REPRESENTATION);
     }
 
     /**
@@ -257,8 +258,8 @@ public class ShortAssertion extends ReferenceAssertion<Short> {
     public void toHexString(final Matcher<? super String> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
-        String hexString = convertValue(getActual(), null, String.class, true);
-        matcherAssertion(hexString, matcher, Messages.Check.HEX_REPRESENTATION);
+        HexString hexString = convertValue(getActual(), null, HexString.class);
+        matcherAssertion(hexString.toString(), matcher, Messages.Check.HEX_REPRESENTATION);
     }
 
     /**
