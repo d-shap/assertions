@@ -189,7 +189,73 @@ public final class HexStringTest extends AssertionTest {
      */
     @Test
     public void addLongValueTest() {
-        // TODO
+        HexString hexString01 = new HexString();
+        hexString01.addValue(0L);
+        Assertions.assertThat(hexString01).hasToString("0000000000000000");
+
+        HexString hexString02 = new HexString();
+        hexString02.addValue(1L);
+        Assertions.assertThat(hexString02).hasToString("0000000000000001");
+
+        HexString hexString03 = new HexString();
+        hexString03.addValue(31L);
+        Assertions.assertThat(hexString03).hasToString("000000000000001f");
+
+        HexString hexString04 = new HexString();
+        hexString04.addValue(479L);
+        Assertions.assertThat(hexString04).hasToString("00000000000001df");
+
+        HexString hexString05 = new HexString();
+        hexString05.addValue(7311L);
+        Assertions.assertThat(hexString05).hasToString("0000000000001c8f");
+
+        HexString hexString06 = new HexString();
+        hexString06.addValue(102351L);
+        Assertions.assertThat(hexString06).hasToString("0000000000018fcf");
+
+        HexString hexString07 = new HexString();
+        hexString07.addValue(1300879L);
+        Assertions.assertThat(hexString07).hasToString("000000000013d98f");
+
+        HexString hexString08 = new HexString();
+        hexString08.addValue(26461823L);
+        Assertions.assertThat(hexString08).hasToString("000000000193c67f");
+
+        HexString hexString09 = new HexString();
+        hexString09.addValue(5663606399L);
+        Assertions.assertThat(hexString09).hasToString("000000015193c67f");
+
+        HexString hexString10 = new HexString();
+        hexString10.addValue(1998528431743L);
+        Assertions.assertThat(hexString10).hasToString("000001d15193c67f");
+
+        HexString hexString11 = new HexString();
+        hexString11.addValue(459395365586559L);
+        Assertions.assertThat(hexString11).hasToString("0001a1d15193c67f");
+
+        HexString hexString12 = new HexString();
+        hexString12.addValue(78149847602153087L);
+        Assertions.assertThat(hexString12).hasToString("0115a4df5193c67f");
+
+        HexString hexString13 = new HexString();
+        hexString13.addValue(Long.MAX_VALUE);
+        Assertions.assertThat(hexString13).hasToString("7fffffffffffffff");
+
+        HexString hexString14 = new HexString();
+        hexString14.addValue(-1L);
+        Assertions.assertThat(hexString14).hasToString("ffffffffffffffff");
+
+        HexString hexString15 = new HexString();
+        hexString15.addValue(-100L);
+        Assertions.assertThat(hexString15).hasToString("ffffffffffffff9c");
+
+        HexString hexString16 = new HexString();
+        hexString16.addValue(Long.MIN_VALUE);
+        Assertions.assertThat(hexString16).hasToString("8000000000000000");
+        hexString16.addValue(165436834109822375L);
+        Assertions.assertThat(hexString16).hasToString("8000000000000000024bbfec91e195a7");
+        hexString16.addValue(-12321947394758339L);
+        Assertions.assertThat(hexString16).hasToString("8000000000000000024bbfec91e195a7ffd439410e98293d");
     }
 
 }
