@@ -134,8 +134,8 @@ public final class HexString implements CharSequence {
     }
 
     @Override
-    public CharSequence subSequence(final int start, final int end) {
-        return _value.subSequence(start, end);
+    public CharSequence subSequence(final int from, final int to) {
+        return _value.subSequence(from, to);
     }
 
     @Override
