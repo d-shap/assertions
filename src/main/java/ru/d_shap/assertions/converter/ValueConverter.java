@@ -26,6 +26,7 @@ import java.util.Map;
 
 import ru.d_shap.assertions.asimp.array.BooleanArrayToListValueConverter;
 import ru.d_shap.assertions.asimp.array.BooleanArrayToObjectArrayValueConverter;
+import ru.d_shap.assertions.asimp.array.ByteArrayToHexStringValueConverter;
 import ru.d_shap.assertions.asimp.array.ByteArrayToListValueConverter;
 import ru.d_shap.assertions.asimp.array.ByteArrayToObjectArrayValueConverter;
 import ru.d_shap.assertions.asimp.array.CharArrayToListValueConverter;
@@ -36,13 +37,16 @@ import ru.d_shap.assertions.asimp.array.FloatArrayToListValueConverter;
 import ru.d_shap.assertions.asimp.array.FloatArrayToObjectArrayValueConverter;
 import ru.d_shap.assertions.asimp.array.IntArrayToByteArrayValueConverter;
 import ru.d_shap.assertions.asimp.array.IntArrayToCharArrayValueConverter;
+import ru.d_shap.assertions.asimp.array.IntArrayToHexStringValueConverter;
 import ru.d_shap.assertions.asimp.array.IntArrayToListValueConverter;
 import ru.d_shap.assertions.asimp.array.IntArrayToObjectArrayValueConverter;
 import ru.d_shap.assertions.asimp.array.IntArrayToShortArrayValueConverter;
+import ru.d_shap.assertions.asimp.array.LongArrayToHexStringValueConverter;
 import ru.d_shap.assertions.asimp.array.LongArrayToListValueConverter;
 import ru.d_shap.assertions.asimp.array.LongArrayToObjectArrayValueConverter;
 import ru.d_shap.assertions.asimp.array.ObjectArrayToClassArrayValueConverter;
 import ru.d_shap.assertions.asimp.array.ObjectArrayToListValueConverter;
+import ru.d_shap.assertions.asimp.array.ShortArrayToHexStringValueConverter;
 import ru.d_shap.assertions.asimp.array.ShortArrayToListValueConverter;
 import ru.d_shap.assertions.asimp.array.ShortArrayToObjectArrayValueConverter;
 import ru.d_shap.assertions.asimp.java.io.BufferedReaderToStringArrayValueConverter;
@@ -102,6 +106,7 @@ public final class ValueConverter {
 
         CONVERTER_PROVIDERS.add(new BooleanArrayToListValueConverter());
         CONVERTER_PROVIDERS.add(new BooleanArrayToObjectArrayValueConverter());
+        CONVERTER_PROVIDERS.add(new ByteArrayToHexStringValueConverter());
         CONVERTER_PROVIDERS.add(new ByteArrayToListValueConverter());
         CONVERTER_PROVIDERS.add(new ByteArrayToObjectArrayValueConverter());
         CONVERTER_PROVIDERS.add(new CharArrayToListValueConverter());
@@ -112,13 +117,16 @@ public final class ValueConverter {
         CONVERTER_PROVIDERS.add(new FloatArrayToObjectArrayValueConverter());
         CONVERTER_PROVIDERS.add(new IntArrayToByteArrayValueConverter());
         CONVERTER_PROVIDERS.add(new IntArrayToCharArrayValueConverter());
+        CONVERTER_PROVIDERS.add(new IntArrayToHexStringValueConverter());
         CONVERTER_PROVIDERS.add(new IntArrayToListValueConverter());
         CONVERTER_PROVIDERS.add(new IntArrayToObjectArrayValueConverter());
         CONVERTER_PROVIDERS.add(new IntArrayToShortArrayValueConverter());
+        CONVERTER_PROVIDERS.add(new LongArrayToHexStringValueConverter());
         CONVERTER_PROVIDERS.add(new LongArrayToListValueConverter());
         CONVERTER_PROVIDERS.add(new LongArrayToObjectArrayValueConverter());
         CONVERTER_PROVIDERS.add(new ObjectArrayToClassArrayValueConverter());
         CONVERTER_PROVIDERS.add(new ObjectArrayToListValueConverter());
+        CONVERTER_PROVIDERS.add(new ShortArrayToHexStringValueConverter());
         CONVERTER_PROVIDERS.add(new ShortArrayToListValueConverter());
         CONVERTER_PROVIDERS.add(new ShortArrayToObjectArrayValueConverter());
 
