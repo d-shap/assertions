@@ -263,7 +263,24 @@ public final class HexStringTest extends AssertionTest {
      */
     @Test
     public void lengthTest() {
-        // TODO
+        HexString hexString = new HexString();
+        Assertions.assertThat(hexString.length()).isEqualTo(0);
+        hexString.addValue((byte) 15);
+        Assertions.assertThat(hexString.length()).isEqualTo(2);
+        hexString.addValue((short) 15);
+        Assertions.assertThat(hexString.length()).isEqualTo(6);
+        hexString.addValue(15);
+        Assertions.assertThat(hexString.length()).isEqualTo(14);
+        hexString.addValue(15L);
+        Assertions.assertThat(hexString.length()).isEqualTo(30);
+        hexString.addValue((byte) -15);
+        Assertions.assertThat(hexString.length()).isEqualTo(32);
+        hexString.addValue((short) -15);
+        Assertions.assertThat(hexString.length()).isEqualTo(36);
+        hexString.addValue(-15);
+        Assertions.assertThat(hexString.length()).isEqualTo(44);
+        hexString.addValue(-15L);
+        Assertions.assertThat(hexString.length()).isEqualTo(60);
     }
 
     /**
@@ -271,7 +288,16 @@ public final class HexStringTest extends AssertionTest {
      */
     @Test
     public void charAtTest() {
-        // TODO
+        HexString hexString = new HexString();
+        hexString.addValue(858473948);
+        hexString.addValue(435478503);
+        hexString.addValue(-524352435);
+        Assertions.assertThat(hexString.charAt(0)).isEqualTo('3');
+        Assertions.assertThat(hexString.charAt(1)).isEqualTo('3');
+        Assertions.assertThat(hexString.charAt(7)).isEqualTo('c');
+        Assertions.assertThat(hexString.charAt(15)).isEqualTo('7');
+        Assertions.assertThat(hexString.charAt(22)).isEqualTo('4');
+        Assertions.assertThat(hexString.charAt(23)).isEqualTo('d');
     }
 
     /**
@@ -279,7 +305,14 @@ public final class HexStringTest extends AssertionTest {
      */
     @Test
     public void subSequenceTest() {
-        // TODO
+        HexString hexString = new HexString();
+        hexString.addValue(858473948);
+        hexString.addValue(435478503);
+        hexString.addValue(-524352435);
+        Assertions.assertThat(hexString.subSequence(0, 23)).isEqualTo("332b45dc19f4dfe7e0bf044");
+        Assertions.assertThat(hexString.subSequence(0, 5)).isEqualTo("332b4");
+        Assertions.assertThat(hexString.subSequence(2, 14)).isEqualTo("2b45dc19f4df");
+        Assertions.assertThat(hexString.subSequence(7, 22)).isEqualTo("c19f4dfe7e0bf04");
     }
 
 }
