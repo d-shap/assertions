@@ -25,7 +25,9 @@ import org.hamcrest.Matcher;
 
 import ru.d_shap.assertions.Messages;
 import ru.d_shap.assertions.Raw;
+import ru.d_shap.assertions.asimp.HexString;
 import ru.d_shap.assertions.asimp.ReferenceAssertion;
+import ru.d_shap.assertions.asimp.java.lang.CharSequenceAssertion;
 import ru.d_shap.assertions.asimp.java.lang.IterableAssertion;
 import ru.d_shap.assertions.asimp.primitive.IntAssertion;
 
@@ -243,6 +245,87 @@ public class LongArrayAssertion extends ReferenceAssertion<long[]> {
      */
     public final void hasLength(final int expected) {
         toLength().isEqualTo(expected);
+    }
+
+    /**
+     * Make assertion about the actual value's hex representation.
+     *
+     * @return the assertion.
+     */
+    public CharSequenceAssertion toHexString() {
+        checkActualIsNotNull();
+        HexString hexString = convertValue(getActual(), null, HexString.class, 0, getActual().length);
+        return initializeAssertion(Raw.charSequenceAssertion(), hexString.toString(), Messages.Check.HEX_REPRESENTATION);
+    }
+
+    /**
+     * Make assertion about the actual value's hex representation.
+     *
+     * @param from the index of the first array element (inclusive) for the hex representation.
+     * @param to   the index of the lest array element (exclusive) for the hex representation.
+     *
+     * @return the assertion.
+     */
+    public CharSequenceAssertion toHexString(final int from, final int to) {
+        checkActualIsNotNull();
+        checkArgumentIsValid(from >= 0, "from", Messages.Fail.Argument.IS_GREATER_THAN_OR_EQUAL_TO_ZERO);
+        checkArgumentIsValid(to < getActual().length, "to", Messages.Fail.Argument.IS_LESS_THAN_MAXIMUM_VALUE, getActual().length);
+        HexString hexString = convertValue(getActual(), null, HexString.class, from, to);
+        return initializeAssertion(Raw.charSequenceAssertion(), hexString.toString(), Messages.Check.HEX_REPRESENTATION);
+    }
+
+    /**
+     * Make assertion about the actual value's hex representation.
+     *
+     * @param matcher the hamcrest matcher.
+     */
+    public void toHexString(final Matcher<? super String> matcher) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(matcher, "matcher");
+        HexString hexString = convertValue(getActual(), null, HexString.class, 0, getActual().length);
+        matcherAssertion(hexString.toString(), matcher, Messages.Check.HEX_REPRESENTATION);
+    }
+
+    /**
+     * Make assertion about the actual value's hex representation.
+     *
+     * @param from    the index of the first array element (inclusive) for the hex representation.
+     * @param to      the index of the lest array element (exclusive) for the hex representation.
+     * @param matcher the hamcrest matcher.
+     */
+    public void toHexString(final int from, final int to, final Matcher<? super String> matcher) {
+        checkActualIsNotNull();
+        checkArgumentIsValid(from >= 0, "from", Messages.Fail.Argument.IS_GREATER_THAN_OR_EQUAL_TO_ZERO);
+        checkArgumentIsValid(to < getActual().length, "to", Messages.Fail.Argument.IS_LESS_THAN_MAXIMUM_VALUE, getActual().length);
+        checkArgumentIsNotNull(matcher, "matcher");
+        HexString hexString = convertValue(getActual(), null, HexString.class, from, to);
+        matcherAssertion(hexString.toString(), matcher, Messages.Check.HEX_REPRESENTATION);
+    }
+
+    /**
+     * Check if the actual value's hex representation is equal to the expected value.
+     *
+     * @param expected the expected value.
+     */
+    public void hasHexString(final String expected) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(expected, "expected");
+        toHexString().isEqualTo(expected);
+    }
+
+    /**
+     * Check if the actual value's hex representation is equal to the expected value.
+     *
+     * @param from     the index of the first array element (inclusive) for the hex representation.
+     * @param to       the index of the lest array element (exclusive) for the hex representation.
+     * @param expected the expected value.
+     */
+    public void hasHexString(final int from, final int to, final String expected) {
+        checkActualIsNotNull();
+        checkArgumentIsValid(from >= 0, "from", Messages.Fail.Argument.IS_GREATER_THAN_OR_EQUAL_TO_ZERO);
+        checkArgumentIsValid(to < getActual().length, "to", Messages.Fail.Argument.IS_LESS_THAN_MAXIMUM_VALUE, getActual().length);
+        checkArgumentIsNotNull(expected, "expected");
+        toHexString(from, to).isEqualTo(expected);
     }
 
     private IterableAssertion<Object> createIterableAssertion() {
