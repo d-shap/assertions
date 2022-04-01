@@ -335,7 +335,7 @@ public class ShortArrayAssertion extends ReferenceAssertion<short[]> {
     public CharSequenceAssertion toHexString(final int from, final int to) {
         checkActualIsNotNull();
         checkArgumentIsValid(from >= 0, "from", Messages.Fail.Argument.IS_GREATER_THAN_OR_EQUAL_TO_ZERO);
-        checkArgumentIsValid(to < getActual().length, "to", Messages.Fail.Argument.IS_LESS_THAN_MAXIMUM_VALUE, getActual().length);
+        checkArgumentIsValid(to <= getActual().length, "to", Messages.Fail.Argument.IS_LESS_THAN_MAXIMUM_VALUE, getActual().length);
         HexString hexString = convertValue(getActual(), null, HexString.class, from, to);
         return initializeAssertion(Raw.charSequenceAssertion(), hexString.toString(), Messages.Check.HEX_REPRESENTATION);
     }
@@ -362,7 +362,7 @@ public class ShortArrayAssertion extends ReferenceAssertion<short[]> {
     public void toHexString(final int from, final int to, final Matcher<? super String> matcher) {
         checkActualIsNotNull();
         checkArgumentIsValid(from >= 0, "from", Messages.Fail.Argument.IS_GREATER_THAN_OR_EQUAL_TO_ZERO);
-        checkArgumentIsValid(to < getActual().length, "to", Messages.Fail.Argument.IS_LESS_THAN_MAXIMUM_VALUE, getActual().length);
+        checkArgumentIsValid(to <= getActual().length, "to", Messages.Fail.Argument.IS_LESS_THAN_MAXIMUM_VALUE, getActual().length);
         checkArgumentIsNotNull(matcher, "matcher");
         HexString hexString = convertValue(getActual(), null, HexString.class, from, to);
         matcherAssertion(hexString.toString(), matcher, Messages.Check.HEX_REPRESENTATION);
@@ -389,7 +389,7 @@ public class ShortArrayAssertion extends ReferenceAssertion<short[]> {
     public void hasHexString(final int from, final int to, final String expected) {
         checkActualIsNotNull();
         checkArgumentIsValid(from >= 0, "from", Messages.Fail.Argument.IS_GREATER_THAN_OR_EQUAL_TO_ZERO);
-        checkArgumentIsValid(to < getActual().length, "to", Messages.Fail.Argument.IS_LESS_THAN_MAXIMUM_VALUE, getActual().length);
+        checkArgumentIsValid(to <= getActual().length, "to", Messages.Fail.Argument.IS_LESS_THAN_MAXIMUM_VALUE, getActual().length);
         checkArgumentIsNotNull(expected, "expected");
         toHexString(from, to).isEqualTo(expected);
     }
