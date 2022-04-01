@@ -1939,7 +1939,52 @@ public final class ByteArrayAssertionTest extends AssertionTest {
      */
     @Test
     public void toHexStringTest() {
-        // TODO
+        initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}).toHexString().isEqualTo("0102");
+        initialize(Raw.byteArrayAssertion(), new byte[]{15, -3, 7}).toHexString().isEqualTo("0ffd07");
+        initialize(Raw.byteArrayAssertion(), new byte[]{99, 5, 0, -21}).toHexString().isEqualTo("630500eb");
+
+        try {
+            Raw.byteArrayAssertion().toHexString();
+            Assertions.fail("ByteArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.byteArrayAssertion(), null).toHexString();
+            Assertions.fail("ByteArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.byteArrayAssertion(), null, "Message").toHexString();
+            Assertions.fail("ByteArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            clearActual(initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}).toHexString()).isEqualTo("0000");
+            Assertions.fail("ByteArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's hex representation.\n\tActual value should not be null.");
+        }
+        try {
+            clearActual(initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}, "Message").toHexString()).isEqualTo("0000");
+            Assertions.fail("ByteArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's hex representation.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}).toHexString().isEqualTo("0000");
+            Assertions.fail("ByteArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's hex representation.\n\tActual and expected values should be the same.\n\tExpected:<0000> but was:<0102>");
+        }
+        try {
+            initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}, "Message").toHexString().isEqualTo("0000");
+            Assertions.fail("ByteArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's hex representation.\n\tActual and expected values should be the same.\n\tExpected:<0000> but was:<0102>");
+        }
     }
 
     /**
@@ -1947,7 +1992,114 @@ public final class ByteArrayAssertionTest extends AssertionTest {
      */
     @Test
     public void toHexStringBoundsTest() {
-        // TODO
+        initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}).toHexString(0, 2).isEqualTo("0102");
+        initialize(Raw.byteArrayAssertion(), new byte[]{15, -3, 7}).toHexString(0, 3).isEqualTo("0ffd07");
+        initialize(Raw.byteArrayAssertion(), new byte[]{99, 5, 0, -21}).toHexString(0, 0).isEqualTo("");
+        initialize(Raw.byteArrayAssertion(), new byte[]{99, 5, 0, -21}).toHexString(0, 1).isEqualTo("63");
+        initialize(Raw.byteArrayAssertion(), new byte[]{99, 5, 0, -21}).toHexString(0, 2).isEqualTo("6305");
+        initialize(Raw.byteArrayAssertion(), new byte[]{99, 5, 0, -21}).toHexString(0, 3).isEqualTo("630500");
+        initialize(Raw.byteArrayAssertion(), new byte[]{99, 5, 0, -21}).toHexString(0, 4).isEqualTo("630500eb");
+        initialize(Raw.byteArrayAssertion(), new byte[]{99, 5, 0, -21}).toHexString(1, 1).isEqualTo("");
+        initialize(Raw.byteArrayAssertion(), new byte[]{99, 5, 0, -21}).toHexString(1, 2).isEqualTo("05");
+        initialize(Raw.byteArrayAssertion(), new byte[]{99, 5, 0, -21}).toHexString(1, 3).isEqualTo("0500");
+        initialize(Raw.byteArrayAssertion(), new byte[]{99, 5, 0, -21}).toHexString(1, 4).isEqualTo("0500eb");
+        initialize(Raw.byteArrayAssertion(), new byte[]{99, 5, 0, -21}).toHexString(2, 2).isEqualTo("");
+        initialize(Raw.byteArrayAssertion(), new byte[]{99, 5, 0, -21}).toHexString(2, 3).isEqualTo("00");
+        initialize(Raw.byteArrayAssertion(), new byte[]{99, 5, 0, -21}).toHexString(2, 4).isEqualTo("00eb");
+        initialize(Raw.byteArrayAssertion(), new byte[]{99, 5, 0, -21}).toHexString(3, 3).isEqualTo("");
+        initialize(Raw.byteArrayAssertion(), new byte[]{99, 5, 0, -21}).toHexString(3, 4).isEqualTo("eb");
+        initialize(Raw.byteArrayAssertion(), new byte[]{99, 5, 0, -21}).toHexString(4, 4).isEqualTo("");
+
+        try {
+            Raw.byteArrayAssertion().toHexString(0, 0);
+            Assertions.fail("ByteArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.byteArrayAssertion(), null).toHexString(0, 0);
+            Assertions.fail("ByteArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.byteArrayAssertion(), null, "Message").toHexString(0, 0);
+            Assertions.fail("ByteArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.byteArrayAssertion(), null).toHexString(-1, 0);
+            Assertions.fail("ByteArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.byteArrayAssertion(), null, "Message").toHexString(-1, 0);
+            Assertions.fail("ByteArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}).toHexString(-1, 0);
+            Assertions.fail("ByteArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should be valid: from.\n\tThe argument's value should be greater than or equal to zero.");
+        }
+        try {
+            initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}, "Message").toHexString(-1, 0);
+            Assertions.fail("ByteArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: from.\n\tThe argument's value should be greater than or equal to zero.");
+        }
+        try {
+            initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}).toHexString(-1, 3);
+            Assertions.fail("ByteArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should be valid: from.\n\tThe argument's value should be greater than or equal to zero.");
+        }
+        try {
+            initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}, "Message").toHexString(-1, 3);
+            Assertions.fail("ByteArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: from.\n\tThe argument's value should be greater than or equal to zero.");
+        }
+        try {
+            initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}).toHexString(0, 3);
+            Assertions.fail("ByteArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should be valid: to.\n\tThe argument's value should be less than the maximum value: 2.");
+        }
+        try {
+            initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}, "Message").toHexString(0, 3);
+            Assertions.fail("ByteArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: to.\n\tThe argument's value should be less than the maximum value: 2.");
+        }
+        try {
+            clearActual(initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}).toHexString(0, 0)).isEqualTo("0000");
+            Assertions.fail("ByteArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's hex representation part: 0:0.\n\tActual value should not be null.");
+        }
+        try {
+            clearActual(initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}, "Message").toHexString(0, 0)).isEqualTo("0000");
+            Assertions.fail("ByteArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's hex representation part: 0:0.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.byteArrayAssertion(), new byte[]{1, 2, 3, 4}).toHexString(1, 3).isEqualTo("0102");
+            Assertions.fail("ByteArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's hex representation part: 1:3.\n\tActual and expected values should be the same.\n\tExpected:<0102> but was:<0203>");
+        }
+        try {
+            initialize(Raw.byteArrayAssertion(), new byte[]{1, 2, 3, 4}, "Message").toHexString(1, 3).isEqualTo("0102");
+            Assertions.fail("ByteArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's hex representation part: 1:3.\n\tActual and expected values should be the same.\n\tExpected:<0102> but was:<0203>");
+        }
     }
 
     /**
