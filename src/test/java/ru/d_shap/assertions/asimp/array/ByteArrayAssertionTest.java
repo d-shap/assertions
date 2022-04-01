@@ -1991,7 +1991,7 @@ public final class ByteArrayAssertionTest extends AssertionTest {
      * {@link ByteArrayAssertion} class test.
      */
     @Test
-    public void toHexStringBoundsTest() {
+    public void toHexStringPartTest() {
         initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}).toHexString(0, 2).isEqualTo("0102");
         initialize(Raw.byteArrayAssertion(), new byte[]{15, -3, 7}).toHexString(0, 3).isEqualTo("0ffd07");
         initialize(Raw.byteArrayAssertion(), new byte[]{99, 5, 0, -21}).toHexString(0, 0).isEqualTo("");
@@ -2107,15 +2107,191 @@ public final class ByteArrayAssertionTest extends AssertionTest {
      */
     @Test
     public void toHexStringMatcherTest() {
-        // TODO
+        initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}).toHexString(Matchers.is(Matchers.equalTo("0102")));
+        initialize(Raw.byteArrayAssertion(), new byte[]{15, -3, 7}).toHexString(Matchers.is(Matchers.equalTo("0ffd07")));
+        initialize(Raw.byteArrayAssertion(), new byte[]{99, 5, 0, -21}).toHexString(Matchers.is(Matchers.equalTo("630500eb")));
+
+        try {
+            Raw.byteArrayAssertion().toHexString(Matchers.equalTo(""));
+            Assertions.fail("ByteArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.byteArrayAssertion(), null).toHexString(Matchers.equalTo(""));
+            Assertions.fail("ByteArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.byteArrayAssertion(), null, "Message").toHexString(Matchers.equalTo(""));
+            Assertions.fail("ByteArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.byteArrayAssertion(), null).toHexString(null);
+            Assertions.fail("ByteArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.byteArrayAssertion(), null, "Message").toHexString(null);
+            Assertions.fail("ByteArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}).toHexString(null);
+            Assertions.fail("ByteArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: matcher.");
+        }
+        try {
+            initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}, "Message").toHexString(null);
+            Assertions.fail("ByteArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: matcher.");
+        }
+        try {
+            initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}).toHexString(Matchers.equalTo("0000"));
+            Assertions.fail("ByteArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's hex representation.\nExpected: \"0000\"\n     but: was \"0102\"");
+        }
+        try {
+            initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}, "Message").toHexString(Matchers.equalTo("0000"));
+            Assertions.fail("ByteArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's hex representation.\nExpected: \"0000\"\n     but: was \"0102\"");
+        }
     }
 
     /**
      * {@link ByteArrayAssertion} class test.
      */
     @Test
-    public void toHexStringBoundsMatcherTest() {
-        // TODO
+    public void toHexStringPartMatcherTest() {
+        initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}).toHexString(0, 2, Matchers.is(Matchers.equalTo("0102")));
+        initialize(Raw.byteArrayAssertion(), new byte[]{15, -3, 7}).toHexString(0, 3, Matchers.is(Matchers.equalTo("0ffd07")));
+        initialize(Raw.byteArrayAssertion(), new byte[]{99, 5, 0, -21}).toHexString(0, 0, Matchers.is(Matchers.equalTo("")));
+        initialize(Raw.byteArrayAssertion(), new byte[]{99, 5, 0, -21}).toHexString(0, 1, Matchers.is(Matchers.equalTo("63")));
+        initialize(Raw.byteArrayAssertion(), new byte[]{99, 5, 0, -21}).toHexString(0, 2, Matchers.is(Matchers.equalTo("6305")));
+        initialize(Raw.byteArrayAssertion(), new byte[]{99, 5, 0, -21}).toHexString(0, 3, Matchers.is(Matchers.equalTo("630500")));
+        initialize(Raw.byteArrayAssertion(), new byte[]{99, 5, 0, -21}).toHexString(0, 4, Matchers.is(Matchers.equalTo("630500eb")));
+        initialize(Raw.byteArrayAssertion(), new byte[]{99, 5, 0, -21}).toHexString(1, 1, Matchers.is(Matchers.equalTo("")));
+        initialize(Raw.byteArrayAssertion(), new byte[]{99, 5, 0, -21}).toHexString(1, 2, Matchers.is(Matchers.equalTo("05")));
+        initialize(Raw.byteArrayAssertion(), new byte[]{99, 5, 0, -21}).toHexString(1, 3, Matchers.is(Matchers.equalTo("0500")));
+        initialize(Raw.byteArrayAssertion(), new byte[]{99, 5, 0, -21}).toHexString(1, 4, Matchers.is(Matchers.equalTo("0500eb")));
+        initialize(Raw.byteArrayAssertion(), new byte[]{99, 5, 0, -21}).toHexString(2, 2, Matchers.is(Matchers.equalTo("")));
+        initialize(Raw.byteArrayAssertion(), new byte[]{99, 5, 0, -21}).toHexString(2, 3, Matchers.is(Matchers.equalTo("00")));
+        initialize(Raw.byteArrayAssertion(), new byte[]{99, 5, 0, -21}).toHexString(2, 4, Matchers.is(Matchers.equalTo("00eb")));
+        initialize(Raw.byteArrayAssertion(), new byte[]{99, 5, 0, -21}).toHexString(3, 3, Matchers.is(Matchers.equalTo("")));
+        initialize(Raw.byteArrayAssertion(), new byte[]{99, 5, 0, -21}).toHexString(3, 4, Matchers.is(Matchers.equalTo("eb")));
+        initialize(Raw.byteArrayAssertion(), new byte[]{99, 5, 0, -21}).toHexString(4, 4, Matchers.is(Matchers.equalTo("")));
+
+        try {
+            Raw.byteArrayAssertion().toHexString(0, 0, Matchers.equalTo("00"));
+            Assertions.fail("ByteArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.byteArrayAssertion(), null).toHexString(0, 0, Matchers.equalTo("00"));
+            Assertions.fail("ByteArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.byteArrayAssertion(), null, "Message").toHexString(0, 0, Matchers.equalTo("00"));
+            Assertions.fail("ByteArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.byteArrayAssertion(), null).toHexString(-1, 0, Matchers.equalTo("00"));
+            Assertions.fail("ByteArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.byteArrayAssertion(), null, "Message").toHexString(-1, 0, Matchers.equalTo("00"));
+            Assertions.fail("ByteArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}).toHexString(-1, 0, Matchers.equalTo("00"));
+            Assertions.fail("ByteArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should be valid: from.\n\tThe argument's value should be greater than or equal to zero.");
+        }
+        try {
+            initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}, "Message").toHexString(-1, 0, Matchers.equalTo("00"));
+            Assertions.fail("ByteArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: from.\n\tThe argument's value should be greater than or equal to zero.");
+        }
+        try {
+            initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}).toHexString(-1, 3, Matchers.equalTo("00"));
+            Assertions.fail("ByteArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should be valid: from.\n\tThe argument's value should be greater than or equal to zero.");
+        }
+        try {
+            initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}, "Message").toHexString(-1, 3, Matchers.equalTo("00"));
+            Assertions.fail("ByteArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: from.\n\tThe argument's value should be greater than or equal to zero.");
+        }
+        try {
+            initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}).toHexString(0, 3, Matchers.equalTo("00"));
+            Assertions.fail("ByteArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should be valid: to.\n\tThe argument's value should be less than the maximum value: 2.");
+        }
+        try {
+            initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}, "Message").toHexString(0, 3, Matchers.equalTo("00"));
+            Assertions.fail("ByteArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: to.\n\tThe argument's value should be less than the maximum value: 2.");
+        }
+        try {
+            initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}).toHexString(0, 3, null);
+            Assertions.fail("ByteArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should be valid: to.\n\tThe argument's value should be less than the maximum value: 2.");
+        }
+        try {
+            initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}, "Message").toHexString(0, 3, null);
+            Assertions.fail("ByteArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: to.\n\tThe argument's value should be less than the maximum value: 2.");
+        }
+        try {
+            initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}).toHexString(0, 2, null);
+            Assertions.fail("ByteArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: matcher.");
+        }
+        try {
+            initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}, "Message").toHexString(0, 2, null);
+            Assertions.fail("ByteArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: matcher.");
+        }
+        try {
+            initialize(Raw.byteArrayAssertion(), new byte[]{1, 2, 3, 4}).toHexString(1, 3, Matchers.equalTo("0102"));
+            Assertions.fail("ByteArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's hex representation part: 1:3.\nExpected: \"0102\"\n     but: was \"0203\"");
+        }
+        try {
+            initialize(Raw.byteArrayAssertion(), new byte[]{1, 2, 3, 4}, "Message").toHexString(1, 3, Matchers.equalTo("0102"));
+            Assertions.fail("ByteArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's hex representation part: 1:3.\nExpected: \"0102\"\n     but: was \"0203\"");
+        }
     }
 
     /**
@@ -2130,7 +2306,7 @@ public final class ByteArrayAssertionTest extends AssertionTest {
      * {@link ByteArrayAssertion} class test.
      */
     @Test
-    public void hasHexStringBoundsTest() {
+    public void hasHexStringPartTest() {
         // TODO
     }
 
