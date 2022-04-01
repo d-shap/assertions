@@ -1391,6 +1391,54 @@ public final class IntArrayAssertionTest extends AssertionTest {
      * {@link IntArrayAssertion} class test.
      */
     @Test
+    public void toHexStringTest() {
+        // TODO
+    }
+
+    /**
+     * {@link IntArrayAssertion} class test.
+     */
+    @Test
+    public void toHexStringBoundsTest() {
+        // TODO
+    }
+
+    /**
+     * {@link IntArrayAssertion} class test.
+     */
+    @Test
+    public void toHexStringMatcherTest() {
+        // TODO
+    }
+
+    /**
+     * {@link IntArrayAssertion} class test.
+     */
+    @Test
+    public void toHexStringBoundsMatcherTest() {
+        // TODO
+    }
+
+    /**
+     * {@link IntArrayAssertion} class test.
+     */
+    @Test
+    public void hasHexStringTest() {
+        // TODO
+    }
+
+    /**
+     * {@link IntArrayAssertion} class test.
+     */
+    @Test
+    public void hasHexStringBoundsTest() {
+        // TODO
+    }
+
+    /**
+     * {@link IntArrayAssertion} class test.
+     */
+    @Test
     public void isNullTest() {
         initialize(Raw.intArrayAssertion(), null).isNull();
 

@@ -1391,6 +1391,54 @@ public final class LongArrayAssertionTest extends AssertionTest {
      * {@link LongArrayAssertion} class test.
      */
     @Test
+    public void toHexStringTest() {
+        // TODO
+    }
+
+    /**
+     * {@link LongArrayAssertion} class test.
+     */
+    @Test
+    public void toHexStringBoundsTest() {
+        // TODO
+    }
+
+    /**
+     * {@link LongArrayAssertion} class test.
+     */
+    @Test
+    public void toHexStringMatcherTest() {
+        // TODO
+    }
+
+    /**
+     * {@link LongArrayAssertion} class test.
+     */
+    @Test
+    public void toHexStringBoundsMatcherTest() {
+        // TODO
+    }
+
+    /**
+     * {@link LongArrayAssertion} class test.
+     */
+    @Test
+    public void hasHexStringTest() {
+        // TODO
+    }
+
+    /**
+     * {@link LongArrayAssertion} class test.
+     */
+    @Test
+    public void hasHexStringBoundsTest() {
+        // TODO
+    }
+
+    /**
+     * {@link LongArrayAssertion} class test.
+     */
+    @Test
     public void isNullTest() {
         initialize(Raw.longArrayAssertion(), null).isNull();
 

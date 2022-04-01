@@ -1938,6 +1938,54 @@ public final class ByteArrayAssertionTest extends AssertionTest {
      * {@link ByteArrayAssertion} class test.
      */
     @Test
+    public void toHexStringTest() {
+        // TODO
+    }
+
+    /**
+     * {@link ByteArrayAssertion} class test.
+     */
+    @Test
+    public void toHexStringBoundsTest() {
+        // TODO
+    }
+
+    /**
+     * {@link ByteArrayAssertion} class test.
+     */
+    @Test
+    public void toHexStringMatcherTest() {
+        // TODO
+    }
+
+    /**
+     * {@link ByteArrayAssertion} class test.
+     */
+    @Test
+    public void toHexStringBoundsMatcherTest() {
+        // TODO
+    }
+
+    /**
+     * {@link ByteArrayAssertion} class test.
+     */
+    @Test
+    public void hasHexStringTest() {
+        // TODO
+    }
+
+    /**
+     * {@link ByteArrayAssertion} class test.
+     */
+    @Test
+    public void hasHexStringBoundsTest() {
+        // TODO
+    }
+
+    /**
+     * {@link ByteArrayAssertion} class test.
+     */
+    @Test
     public void isNullTest() {
         initialize(Raw.byteArrayAssertion(), null).isNull();
 

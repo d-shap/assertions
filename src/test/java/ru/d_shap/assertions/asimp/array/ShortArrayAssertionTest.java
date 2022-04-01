@@ -1938,6 +1938,54 @@ public final class ShortArrayAssertionTest extends AssertionTest {
      * {@link ShortArrayAssertion} class test.
      */
     @Test
+    public void toHexStringTest() {
+        // TODO
+    }
+
+    /**
+     * {@link ShortArrayAssertion} class test.
+     */
+    @Test
+    public void toHexStringBoundsTest() {
+        // TODO
+    }
+
+    /**
+     * {@link ShortArrayAssertion} class test.
+     */
+    @Test
+    public void toHexStringMatcherTest() {
+        // TODO
+    }
+
+    /**
+     * {@link ShortArrayAssertion} class test.
+     */
+    @Test
+    public void toHexStringBoundsMatcherTest() {
+        // TODO
+    }
+
+    /**
+     * {@link ShortArrayAssertion} class test.
+     */
+    @Test
+    public void hasHexStringTest() {
+        // TODO
+    }
+
+    /**
+     * {@link ShortArrayAssertion} class test.
+     */
+    @Test
+    public void hasHexStringBoundsTest() {
+        // TODO
+    }
+
+    /**
+     * {@link ShortArrayAssertion} class test.
+     */
+    @Test
     public void isNullTest() {
         initialize(Raw.shortArrayAssertion(), null).isNull();
 
