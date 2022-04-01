@@ -65,7 +65,7 @@ public final class Messages {
 
         public static final String HEX_REPRESENTATION = "Check actual value''s hex representation.";
 
-        public static final String HEX_REPRESENTATION_PART = "Check actual value''s part hex representation: {0}:{1}.";
+        public static final String HEX_REPRESENTATION_PART = "Check actual value''s hex representation part: {0}:{1}.";
 
         public static final String ELEMENTS_ALL = "Check all actual value''s elements.";
 
