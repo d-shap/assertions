@@ -337,7 +337,7 @@ public class ByteArrayAssertion extends ReferenceAssertion<byte[]> {
         checkArgumentIsValid(from >= 0, "from", Messages.Fail.Argument.IS_GREATER_THAN_OR_EQUAL_TO_ZERO);
         checkArgumentIsValid(to <= getActual().length, "to", Messages.Fail.Argument.IS_LESS_THAN_MAXIMUM_VALUE, getActual().length);
         HexString hexString = convertValue(getActual(), null, HexString.class, from, to);
-        return initializeAssertion(Raw.charSequenceAssertion(), hexString.toString(), Messages.Check.HEX_REPRESENTATION);
+        return initializeAssertion(Raw.charSequenceAssertion(), hexString.toString(), Messages.Check.HEX_REPRESENTATION_PART, from, to);
     }
 
     /**
@@ -365,7 +365,7 @@ public class ByteArrayAssertion extends ReferenceAssertion<byte[]> {
         checkArgumentIsValid(to <= getActual().length, "to", Messages.Fail.Argument.IS_LESS_THAN_MAXIMUM_VALUE, getActual().length);
         checkArgumentIsNotNull(matcher, "matcher");
         HexString hexString = convertValue(getActual(), null, HexString.class, from, to);
-        matcherAssertion(hexString.toString(), matcher, Messages.Check.HEX_REPRESENTATION);
+        matcherAssertion(hexString.toString(), matcher, Messages.Check.HEX_REPRESENTATION_PART, from, to);
     }
 
     /**
