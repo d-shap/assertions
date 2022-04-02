@@ -203,7 +203,7 @@ public class AttrAssertion extends ReferenceAssertion<Attr> {
      *
      * @param expected the expected value.
      */
-    public void hasValue(final String expected) {
+    public final void hasValue(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         toValue().isEqualTo(expected);
@@ -215,7 +215,7 @@ public class AttrAssertion extends ReferenceAssertion<Attr> {
      * @param expectedLocalName the expected local name.
      * @param expectedValue     the expected value.
      */
-    public void hasProperties(final String expectedLocalName, final String expectedValue) {
+    public final void hasProperties(final String expectedLocalName, final String expectedValue) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expectedLocalName, "expectedLocalName");
         checkArgumentIsNotNull(expectedValue, "expectedValue");
@@ -231,7 +231,7 @@ public class AttrAssertion extends ReferenceAssertion<Attr> {
      * @param expectedLocalName    the expected local name.
      * @param expectedValue        the expected value.
      */
-    public void hasProperties(final String expectedNamespaceURI, final String expectedLocalName, final String expectedValue) {
+    public final void hasProperties(final String expectedNamespaceURI, final String expectedLocalName, final String expectedValue) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expectedNamespaceURI, "expectedNamespaceURI");
         checkArgumentIsNotNull(expectedLocalName, "expectedLocalName");
