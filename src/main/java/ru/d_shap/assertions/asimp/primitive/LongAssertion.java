@@ -244,7 +244,7 @@ public class LongAssertion extends ReferenceAssertion<Long> {
      *
      * @return the assertion.
      */
-    public CharSequenceAssertion toHexString() {
+    public final CharSequenceAssertion toHexString() {
         checkActualIsNotNull();
         HexString hexString = convertValue(getActual(), null, HexString.class);
         return initializeAssertion(Raw.charSequenceAssertion(), hexString.toString(), Messages.Check.HEX_REPRESENTATION);
@@ -255,7 +255,7 @@ public class LongAssertion extends ReferenceAssertion<Long> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public void toHexString(final Matcher<? super String> matcher) {
+    public final void toHexString(final Matcher<? super String> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         HexString hexString = convertValue(getActual(), null, HexString.class);
@@ -267,7 +267,7 @@ public class LongAssertion extends ReferenceAssertion<Long> {
      *
      * @param expected the expected value.
      */
-    public void hasHexString(final String expected) {
+    public final void hasHexString(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         toHexString().isEqualTo(expected);
