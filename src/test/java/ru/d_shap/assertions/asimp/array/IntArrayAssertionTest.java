@@ -1644,67 +1644,67 @@ public final class IntArrayAssertionTest extends AssertionTest {
         initialize(Raw.intArrayAssertion(), new int[]{99, 5, 0, -21}).toHexString(4, 4, Matchers.is(Matchers.equalTo("")));
 
         try {
-            Raw.intArrayAssertion().toHexString(0, 0, Matchers.equalTo("00"));
+            Raw.intArrayAssertion().toHexString(0, 0, Matchers.equalTo("0000000000000000"));
             Assertions.fail("IntArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
-            initialize(Raw.intArrayAssertion(), null).toHexString(0, 0, Matchers.equalTo("00"));
+            initialize(Raw.intArrayAssertion(), null).toHexString(0, 0, Matchers.equalTo("0000000000000000"));
             Assertions.fail("IntArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
-            initialize(Raw.intArrayAssertion(), null, "Message").toHexString(0, 0, Matchers.equalTo("00"));
+            initialize(Raw.intArrayAssertion(), null, "Message").toHexString(0, 0, Matchers.equalTo("0000000000000000"));
             Assertions.fail("IntArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.intArrayAssertion(), null).toHexString(-1, 0, Matchers.equalTo("00"));
+            initialize(Raw.intArrayAssertion(), null).toHexString(-1, 0, Matchers.equalTo("0000000000000000"));
             Assertions.fail("IntArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
-            initialize(Raw.intArrayAssertion(), null, "Message").toHexString(-1, 0, Matchers.equalTo("00"));
+            initialize(Raw.intArrayAssertion(), null, "Message").toHexString(-1, 0, Matchers.equalTo("0000000000000000"));
             Assertions.fail("IntArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.intArrayAssertion(), new int[]{1, 2}).toHexString(-1, 0, Matchers.equalTo("00"));
+            initialize(Raw.intArrayAssertion(), new int[]{1, 2}).toHexString(-1, 0, Matchers.equalTo("0000000000000000"));
             Assertions.fail("IntArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should be valid: from.\n\tThe argument's value should be greater than or equal to zero.");
         }
         try {
-            initialize(Raw.intArrayAssertion(), new int[]{1, 2}, "Message").toHexString(-1, 0, Matchers.equalTo("00"));
+            initialize(Raw.intArrayAssertion(), new int[]{1, 2}, "Message").toHexString(-1, 0, Matchers.equalTo("0000000000000000"));
             Assertions.fail("IntArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: from.\n\tThe argument's value should be greater than or equal to zero.");
         }
         try {
-            initialize(Raw.intArrayAssertion(), new int[]{1, 2}).toHexString(-1, 3, Matchers.equalTo("00"));
+            initialize(Raw.intArrayAssertion(), new int[]{1, 2}).toHexString(-1, 3, Matchers.equalTo("0000000000000000"));
             Assertions.fail("IntArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should be valid: from.\n\tThe argument's value should be greater than or equal to zero.");
         }
         try {
-            initialize(Raw.intArrayAssertion(), new int[]{1, 2}, "Message").toHexString(-1, 3, Matchers.equalTo("00"));
+            initialize(Raw.intArrayAssertion(), new int[]{1, 2}, "Message").toHexString(-1, 3, Matchers.equalTo("0000000000000000"));
             Assertions.fail("IntArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: from.\n\tThe argument's value should be greater than or equal to zero.");
         }
         try {
-            initialize(Raw.intArrayAssertion(), new int[]{1, 2}).toHexString(0, 3, Matchers.equalTo("00"));
+            initialize(Raw.intArrayAssertion(), new int[]{1, 2}).toHexString(0, 3, Matchers.equalTo("0000000000000000"));
             Assertions.fail("IntArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should be valid: to.\n\tThe argument's value should be less than the maximum value: 2.");
         }
         try {
-            initialize(Raw.intArrayAssertion(), new int[]{1, 2}, "Message").toHexString(0, 3, Matchers.equalTo("00"));
+            initialize(Raw.intArrayAssertion(), new int[]{1, 2}, "Message").toHexString(0, 3, Matchers.equalTo("0000000000000000"));
             Assertions.fail("IntArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: to.\n\tThe argument's value should be less than the maximum value: 2.");
