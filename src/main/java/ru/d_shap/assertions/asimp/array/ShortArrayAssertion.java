@@ -318,7 +318,7 @@ public class ShortArrayAssertion extends ReferenceAssertion<short[]> {
      *
      * @return the assertion.
      */
-    public CharSequenceAssertion toHexString() {
+    public final CharSequenceAssertion toHexString() {
         checkActualIsNotNull();
         HexString hexString = convertValue(getActual(), null, HexString.class, 0, getActual().length);
         return initializeAssertion(Raw.charSequenceAssertion(), hexString.toString(), Messages.Check.HEX_REPRESENTATION);
@@ -332,7 +332,7 @@ public class ShortArrayAssertion extends ReferenceAssertion<short[]> {
      *
      * @return the assertion.
      */
-    public CharSequenceAssertion toHexString(final int from, final int to) {
+    public final CharSequenceAssertion toHexString(final int from, final int to) {
         checkActualIsNotNull();
         checkArgumentIsValid(from >= 0, "from", Messages.Fail.Argument.IS_GREATER_THAN_OR_EQUAL_TO_ZERO);
         checkArgumentIsValid(to <= getActual().length, "to", Messages.Fail.Argument.IS_LESS_THAN_MAXIMUM_VALUE, getActual().length);
@@ -345,7 +345,7 @@ public class ShortArrayAssertion extends ReferenceAssertion<short[]> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public void toHexString(final Matcher<? super String> matcher) {
+    public final void toHexString(final Matcher<? super String> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         HexString hexString = convertValue(getActual(), null, HexString.class, 0, getActual().length);
@@ -359,7 +359,7 @@ public class ShortArrayAssertion extends ReferenceAssertion<short[]> {
      * @param to      the index of the lest array element (exclusive) for the hex representation.
      * @param matcher the hamcrest matcher.
      */
-    public void toHexString(final int from, final int to, final Matcher<? super String> matcher) {
+    public final void toHexString(final int from, final int to, final Matcher<? super String> matcher) {
         checkActualIsNotNull();
         checkArgumentIsValid(from >= 0, "from", Messages.Fail.Argument.IS_GREATER_THAN_OR_EQUAL_TO_ZERO);
         checkArgumentIsValid(to <= getActual().length, "to", Messages.Fail.Argument.IS_LESS_THAN_MAXIMUM_VALUE, getActual().length);
@@ -373,7 +373,7 @@ public class ShortArrayAssertion extends ReferenceAssertion<short[]> {
      *
      * @param expected the expected value.
      */
-    public void hasHexString(final String expected) {
+    public final void hasHexString(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         toHexString().isEqualTo(expected);
@@ -386,7 +386,7 @@ public class ShortArrayAssertion extends ReferenceAssertion<short[]> {
      * @param to       the index of the lest array element (exclusive) for the hex representation.
      * @param expected the expected value.
      */
-    public void hasHexString(final int from, final int to, final String expected) {
+    public final void hasHexString(final int from, final int to, final String expected) {
         checkActualIsNotNull();
         checkArgumentIsValid(from >= 0, "from", Messages.Fail.Argument.IS_GREATER_THAN_OR_EQUAL_TO_ZERO);
         checkArgumentIsValid(to <= getActual().length, "to", Messages.Fail.Argument.IS_LESS_THAN_MAXIMUM_VALUE, getActual().length);
