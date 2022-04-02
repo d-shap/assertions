@@ -2191,67 +2191,67 @@ public final class ShortArrayAssertionTest extends AssertionTest {
         initialize(Raw.shortArrayAssertion(), new short[]{99, 5, 0, -21}).toHexString(4, 4, Matchers.is(Matchers.equalTo("")));
 
         try {
-            Raw.shortArrayAssertion().toHexString(0, 0, Matchers.equalTo("0000"));
+            Raw.shortArrayAssertion().toHexString(0, 0, Matchers.equalTo("00000000"));
             Assertions.fail("ShortArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
-            initialize(Raw.shortArrayAssertion(), null).toHexString(0, 0, Matchers.equalTo("0000"));
+            initialize(Raw.shortArrayAssertion(), null).toHexString(0, 0, Matchers.equalTo("00000000"));
             Assertions.fail("ShortArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
-            initialize(Raw.shortArrayAssertion(), null, "Message").toHexString(0, 0, Matchers.equalTo("0000"));
+            initialize(Raw.shortArrayAssertion(), null, "Message").toHexString(0, 0, Matchers.equalTo("00000000"));
             Assertions.fail("ShortArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.shortArrayAssertion(), null).toHexString(-1, 0, Matchers.equalTo("0000"));
+            initialize(Raw.shortArrayAssertion(), null).toHexString(-1, 0, Matchers.equalTo("00000000"));
             Assertions.fail("ShortArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
-            initialize(Raw.shortArrayAssertion(), null, "Message").toHexString(-1, 0, Matchers.equalTo("0000"));
+            initialize(Raw.shortArrayAssertion(), null, "Message").toHexString(-1, 0, Matchers.equalTo("00000000"));
             Assertions.fail("ShortArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).toHexString(-1, 0, Matchers.equalTo("0000"));
+            initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).toHexString(-1, 0, Matchers.equalTo("00000000"));
             Assertions.fail("ShortArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should be valid: from.\n\tThe argument's value should be greater than or equal to zero.");
         }
         try {
-            initialize(Raw.shortArrayAssertion(), new short[]{1, 2}, "Message").toHexString(-1, 0, Matchers.equalTo("0000"));
+            initialize(Raw.shortArrayAssertion(), new short[]{1, 2}, "Message").toHexString(-1, 0, Matchers.equalTo("00000000"));
             Assertions.fail("ShortArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: from.\n\tThe argument's value should be greater than or equal to zero.");
         }
         try {
-            initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).toHexString(-1, 3, Matchers.equalTo("0000"));
+            initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).toHexString(-1, 3, Matchers.equalTo("00000000"));
             Assertions.fail("ShortArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should be valid: from.\n\tThe argument's value should be greater than or equal to zero.");
         }
         try {
-            initialize(Raw.shortArrayAssertion(), new short[]{1, 2}, "Message").toHexString(-1, 3, Matchers.equalTo("0000"));
+            initialize(Raw.shortArrayAssertion(), new short[]{1, 2}, "Message").toHexString(-1, 3, Matchers.equalTo("00000000"));
             Assertions.fail("ShortArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: from.\n\tThe argument's value should be greater than or equal to zero.");
         }
         try {
-            initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).toHexString(0, 3, Matchers.equalTo("0000"));
+            initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).toHexString(0, 3, Matchers.equalTo("00000000"));
             Assertions.fail("ShortArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should be valid: to.\n\tThe argument's value should be less than the maximum value: 2.");
         }
         try {
-            initialize(Raw.shortArrayAssertion(), new short[]{1, 2}, "Message").toHexString(0, 3, Matchers.equalTo("0000"));
+            initialize(Raw.shortArrayAssertion(), new short[]{1, 2}, "Message").toHexString(0, 3, Matchers.equalTo("00000000"));
             Assertions.fail("ShortArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: to.\n\tThe argument's value should be less than the maximum value: 2.");
