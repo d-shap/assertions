@@ -258,7 +258,7 @@ public final class InputStreamAssertionTest extends AssertionTest {
      * {@link InputStreamAssertion} class test.
      */
     @Test
-    public void toByteArrayLengthTest() {
+    public void toByteArrayCountTest() {
         initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{1, 2, 3})).toByteArray(4).containsExactlyInOrder(1, 2, 3);
         initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{1, 2, 3})).toByteArray(3).containsExactlyInOrder(1, 2, 3);
         initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{1, 2, 3})).toByteArray(2).containsExactlyInOrder(1, 2);
@@ -435,7 +435,7 @@ public final class InputStreamAssertionTest extends AssertionTest {
      * {@link InputStreamAssertion} class test.
      */
     @Test
-    public void toByteArrayLengthMatcherTest() {
+    public void toByteArrayCountMatcherTest() {
         initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{1, 2, 3})).toByteArray(4, Matchers.arrayContaining((byte) 1, (byte) 2, (byte) 3));
         initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{1, 2, 3})).toByteArray(3, Matchers.arrayContaining((byte) 1, (byte) 2, (byte) 3));
         initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{1, 2, 3})).toByteArray(2, Matchers.arrayContaining((byte) 1, (byte) 2));
@@ -1118,6 +1118,54 @@ public final class InputStreamAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck all actual value's bytes.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[0b, 0b]> but was:<[0b, 0b, 0b]>");
         }
+    }
+
+    /**
+     * {@link InputStreamAssertion} class test.
+     */
+    @Test
+    public void toHexStringTest() {
+        // TODO
+    }
+
+    /**
+     * {@link InputStreamAssertion} class test.
+     */
+    @Test
+    public void toHexStringCountTest() {
+        // TODO
+    }
+
+    /**
+     * {@link InputStreamAssertion} class test.
+     */
+    @Test
+    public void toHexStringMatcherTest() {
+        // TODO
+    }
+
+    /**
+     * {@link InputStreamAssertion} class test.
+     */
+    @Test
+    public void toHexStringCountMatcherTest() {
+        // TODO
+    }
+
+    /**
+     * {@link InputStreamAssertion} class test.
+     */
+    @Test
+    public void hasHexStringTest() {
+        // TODO
+    }
+
+    /**
+     * {@link InputStreamAssertion} class test.
+     */
+    @Test
+    public void hasHexStringCountTest() {
+        // TODO
     }
 
     /**
