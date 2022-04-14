@@ -1296,7 +1296,75 @@ public final class InputStreamAssertionTest extends AssertionTest {
      */
     @Test
     public void toHexStringMatcherTest() {
-        // TODO
+        initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{1, 2, 3})).toHexString(Matchers.is(Matchers.equalTo("010203")));
+        initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{99, -15, 23, 7, -120})).toHexString(Matchers.is(Matchers.equalTo("63f1170788")));
+
+        try {
+            Raw.inputStreamAssertion().toHexString(Matchers.equalTo(""));
+            Assertions.fail("InputStreamAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.inputStreamAssertion(), null).toHexString(Matchers.equalTo(""));
+            Assertions.fail("InputStreamAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.inputStreamAssertion(), null, "Message").toHexString(Matchers.equalTo(""));
+            Assertions.fail("InputStreamAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.inputStreamAssertion(), null).toHexString(null);
+            Assertions.fail("InputStreamAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.inputStreamAssertion(), null, "Message").toHexString(null);
+            Assertions.fail("InputStreamAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{})).toHexString(null);
+            Assertions.fail("InputStreamAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: matcher.");
+        }
+        try {
+            initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{}), "Message").toHexString(null);
+            Assertions.fail("InputStreamAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: matcher.");
+        }
+        try {
+            initialize(Raw.inputStreamAssertion(), createErrorInputStream()).toHexString(Matchers.equalTo(""));
+            Assertions.fail("InputStreamAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("java.io.IOException: read exception.");
+        }
+        try {
+            initialize(Raw.inputStreamAssertion(), createErrorInputStream(), "Message").toHexString(Matchers.equalTo(""));
+            Assertions.fail("InputStreamAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tjava.io.IOException: read exception.");
+        }
+        try {
+            initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{1, 2, 3})).toHexString(Matchers.equalTo("aaff"));
+            Assertions.fail("InputStreamAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check all actual value's bytes.\n\tCheck actual value's hex representation.\nExpected: \"aaff\"\n     but: was \"010203\"");
+        }
+        try {
+            initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{1, 2, 3}), "Message").toHexString(Matchers.equalTo("aaff"));
+            Assertions.fail("InputStreamAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck all actual value's bytes.\n\tCheck actual value's hex representation.\nExpected: \"aaff\"\n     but: was \"010203\"");
+        }
     }
 
     /**
@@ -1304,7 +1372,106 @@ public final class InputStreamAssertionTest extends AssertionTest {
      */
     @Test
     public void toHexStringCountMatcherTest() {
-        // TODO
+        initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{1, 2, 3})).toHexString(4, Matchers.is(Matchers.equalTo("010203")));
+        initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{1, 2, 3})).toHexString(3, Matchers.is(Matchers.equalTo("010203")));
+        initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{1, 2, 3})).toHexString(2, Matchers.is(Matchers.equalTo("0102")));
+        initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{1, 2, 3})).toHexString(1, Matchers.is(Matchers.equalTo("01")));
+        initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{99, -15, 23, 7, -120})).toHexString(5, Matchers.is(Matchers.equalTo("63f1170788")));
+        initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{99, -15, 23, 7, -120})).toHexString(4, Matchers.is(Matchers.equalTo("63f11707")));
+        initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{99, -15, 23, 7, -120})).toHexString(3, Matchers.is(Matchers.equalTo("63f117")));
+        initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{99, -15, 23, 7, -120})).toHexString(2, Matchers.is(Matchers.equalTo("63f1")));
+        initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{99, -15, 23, 7, -120})).toHexString(1, Matchers.is(Matchers.equalTo("63")));
+
+        try {
+            Raw.inputStreamAssertion().toHexString(1, Matchers.equalTo(""));
+            Assertions.fail("InputStreamAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.inputStreamAssertion(), null).toHexString(1, Matchers.equalTo(""));
+            Assertions.fail("InputStreamAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.inputStreamAssertion(), null, "Message").toHexString(1, Matchers.equalTo(""));
+            Assertions.fail("InputStreamAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.inputStreamAssertion(), null).toHexString(0, Matchers.equalTo(""));
+            Assertions.fail("InputStreamAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.inputStreamAssertion(), null, "Message").toHexString(0, Matchers.equalTo(""));
+            Assertions.fail("InputStreamAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{})).toHexString(0, Matchers.equalTo(""));
+            Assertions.fail("InputStreamAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should be valid: count.\n\tThe argument's value should be greater than zero.");
+        }
+        try {
+            initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{}), "Message").toHexString(0, Matchers.equalTo(""));
+            Assertions.fail("InputStreamAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: count.\n\tThe argument's value should be greater than zero.");
+        }
+        try {
+            initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{})).toHexString(0, null);
+            Assertions.fail("InputStreamAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should be valid: count.\n\tThe argument's value should be greater than zero.");
+        }
+        try {
+            initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{}), "Message").toHexString(0, null);
+            Assertions.fail("InputStreamAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: count.\n\tThe argument's value should be greater than zero.");
+        }
+        try {
+            initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{})).toHexString(3, null);
+            Assertions.fail("InputStreamAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: matcher.");
+        }
+        try {
+            initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{}), "Message").toHexString(3, null);
+            Assertions.fail("InputStreamAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: matcher.");
+        }
+        try {
+            initialize(Raw.inputStreamAssertion(), createErrorInputStream()).toHexString(3, Matchers.equalTo(""));
+            Assertions.fail("InputStreamAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("java.io.IOException: read exception.");
+        }
+        try {
+            initialize(Raw.inputStreamAssertion(), createErrorInputStream(), "Message").toHexString(3, Matchers.equalTo(""));
+            Assertions.fail("InputStreamAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tjava.io.IOException: read exception.");
+        }
+        try {
+            initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{1, 2, 3})).toHexString(4, Matchers.equalTo("aaff"));
+            Assertions.fail("InputStreamAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check next N actual value's bytes: 4.\n\tCheck actual value's hex representation.\nExpected: \"aaff\"\n     but: was \"010203\"");
+        }
+        try {
+            initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{1, 2, 3}), "Message").toHexString(4, Matchers.equalTo("aaff"));
+            Assertions.fail("InputStreamAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck next N actual value's bytes: 4.\n\tCheck actual value's hex representation.\nExpected: \"aaff\"\n     but: was \"010203\"");
+        }
     }
 
     /**
