@@ -29,6 +29,7 @@ import ru.d_shap.assertions.Messages;
 import ru.d_shap.assertions.Raw;
 import ru.d_shap.assertions.asimp.ReferenceAssertion;
 import ru.d_shap.assertions.asimp.array.ByteArrayAssertion;
+import ru.d_shap.assertions.asimp.java.lang.CharSequenceAssertion;
 import ru.d_shap.assertions.asimp.primitive.IntAssertion;
 import ru.d_shap.assertions.asimp.primitive.LongAssertion;
 
@@ -212,6 +213,74 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
         checkArgumentIsNotNull(expected, "expected");
         List<Byte> expectedList = convertValue(expected, null, List.class);
         toByteArray().containsExactlyInOrder(expectedList);
+    }
+
+    /**
+     * Make assertion about the hex representation of the bytes read from the actual from the current position.
+     *
+     * @return the assertion.
+     */
+    public final CharSequenceAssertion toHexString() {
+        return toByteArray().toHexString();
+    }
+
+    /**
+     * Make assertion about the hex representation of the bytes read from the actual from the current position.
+     *
+     * @param count the number of bytes to read from the actual.
+     *
+     * @return the assertion.
+     */
+    public final CharSequenceAssertion toHexString(final int count) {
+        return toByteArray(count).toHexString();
+    }
+
+    /**
+     * Make assertion about the hex representation of the bytes read from the actual from the current position.
+     *
+     * @param matcher the hamcrest matcher.
+     */
+    public final void toHexString(final Matcher<? super String> matcher) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(matcher, "matcher");
+        toByteArray().toHexString(matcher);
+    }
+
+    /**
+     * Make assertion about the hex representation of the bytes read from the actual from the current position.
+     *
+     * @param count   the number of bytes to read from the actual.
+     * @param matcher the hamcrest matcher.
+     */
+    public final void toHexString(final int count, final Matcher<? super String> matcher) {
+        checkActualIsNotNull();
+        checkArgumentIsValid(count > 0, "count", Messages.Fail.Argument.IS_GREATER_THAN_ZERO);
+        checkArgumentIsNotNull(matcher, "matcher");
+        toByteArray(count).toHexString(matcher);
+    }
+
+    /**
+     * Check if the hex representation of the bytes read from the actual from the current position is equal to the expected value.
+     *
+     * @param expected the expected value.
+     */
+    public final void hasHexString(final String expected) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(expected, "expected");
+        toByteArray().hasHexString(expected);
+    }
+
+    /**
+     * Check if the hex representation of the bytes read from the actual from the current position is equal to the expected value.
+     *
+     * @param count    the number of bytes to read from the actual.
+     * @param expected the expected value.
+     */
+    public final void hasHexString(final int count, final String expected) {
+        checkActualIsNotNull();
+        checkArgumentIsValid(count > 0, "count", Messages.Fail.Argument.IS_GREATER_THAN_ZERO);
+        checkArgumentIsNotNull(expected, "expected");
+        toByteArray(count).hasHexString(expected);
     }
 
     /**
