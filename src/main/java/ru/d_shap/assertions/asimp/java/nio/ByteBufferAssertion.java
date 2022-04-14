@@ -27,6 +27,7 @@ import ru.d_shap.assertions.Messages;
 import ru.d_shap.assertions.Raw;
 import ru.d_shap.assertions.asimp.ReferenceAssertion;
 import ru.d_shap.assertions.asimp.array.ByteArrayAssertion;
+import ru.d_shap.assertions.asimp.java.lang.CharSequenceAssertion;
 import ru.d_shap.assertions.asimp.primitive.IntAssertion;
 
 /**
@@ -448,6 +449,128 @@ public class ByteBufferAssertion extends ReferenceAssertion<ByteBuffer> {
      */
     public final void rewindAndContainsNone(final Iterable<Byte> expected) {
         createByteArrayAssertion(true).containsNone(expected);
+    }
+
+    /**
+     * Make assertion about the actual value's hex representation.
+     *
+     * @return the assertion.
+     */
+    public final CharSequenceAssertion toHexString() {
+        return createByteArrayAssertion(false).toHexString();
+    }
+
+    /**
+     * Make assertion about the actual value's hex representation.
+     *
+     * @param from the index of the first buffer element (inclusive) for the hex representation.
+     * @param to   the index of the last buffer element (exclusive) for the hex representation.
+     *
+     * @return the assertion.
+     */
+    public final CharSequenceAssertion toHexString(final int from, final int to) {
+        return createByteArrayAssertion(false).toHexString(from, to);
+    }
+
+    /**
+     * Make assertion about the actual value's hex representation.
+     *
+     * @param matcher the hamcrest matcher.
+     */
+    public final void toHexString(final Matcher<? super String> matcher) {
+        createByteArrayAssertion(false).toHexString(matcher);
+    }
+
+    /**
+     * Make assertion about the actual value's hex representation.
+     *
+     * @param from    the index of the first buffer element (inclusive) for the hex representation.
+     * @param to      the index of the last buffer element (exclusive) for the hex representation.
+     * @param matcher the hamcrest matcher.
+     */
+    public final void toHexString(final int from, final int to, final Matcher<? super String> matcher) {
+        createByteArrayAssertion(false).toHexString(from, to, matcher);
+    }
+
+    /**
+     * Make assertion about the actual value's hex representation.
+     *
+     * @return the assertion.
+     */
+    public final CharSequenceAssertion toRewindAndHexString() {
+        return createByteArrayAssertion(true).toHexString();
+    }
+
+    /**
+     * Make assertion about the actual value's hex representation.
+     *
+     * @param from the index of the first buffer element (inclusive) for the hex representation.
+     * @param to   the index of the last buffer element (exclusive) for the hex representation.
+     *
+     * @return the assertion.
+     */
+    public final CharSequenceAssertion toRewindAndHexString(final int from, final int to) {
+        return createByteArrayAssertion(true).toHexString(from, to);
+    }
+
+    /**
+     * Make assertion about the actual value's hex representation.
+     *
+     * @param matcher the hamcrest matcher.
+     */
+    public final void toRewindAndHexString(final Matcher<? super String> matcher) {
+        createByteArrayAssertion(true).toHexString(matcher);
+    }
+
+    /**
+     * Make assertion about the actual value's hex representation.
+     *
+     * @param from    the index of the first buffer element (inclusive) for the hex representation.
+     * @param to      the index of the last buffer element (exclusive) for the hex representation.
+     * @param matcher the hamcrest matcher.
+     */
+    public final void toRewindAndHexString(final int from, final int to, final Matcher<? super String> matcher) {
+        createByteArrayAssertion(true).toHexString(from, to, matcher);
+    }
+
+    /**
+     * Check if the actual value's hex representation is equal to the expected value.
+     *
+     * @param expected the expected value.
+     */
+    public final void hasHexString(final String expected) {
+        createByteArrayAssertion(false).hasHexString(expected);
+    }
+
+    /**
+     * Check if the actual value's hex representation is equal to the expected value.
+     *
+     * @param from     the index of the first buffer element (inclusive) for the hex representation.
+     * @param to       the index of the last buffer element (exclusive) for the hex representation.
+     * @param expected the expected value.
+     */
+    public final void hasHexString(final int from, final int to, final String expected) {
+        createByteArrayAssertion(false).hasHexString(from, to, expected);
+    }
+
+    /**
+     * Check if the actual value's hex representation is equal to the expected value.
+     *
+     * @param expected the expected value.
+     */
+    public final void hasRewindAndHexString(final String expected) {
+        createByteArrayAssertion(true).hasHexString(expected);
+    }
+
+    /**
+     * Check if the actual value's hex representation is equal to the expected value.
+     *
+     * @param from     the index of the first buffer element (inclusive) for the hex representation.
+     * @param to       the index of the last buffer element (exclusive) for the hex representation.
+     * @param expected the expected value.
+     */
+    public final void hasRewindAndHexString(final int from, final int to, final String expected) {
+        createByteArrayAssertion(true).hasHexString(from, to, expected);
     }
 
     /**
