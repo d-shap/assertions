@@ -262,7 +262,7 @@ public class LongArrayAssertion extends ReferenceAssertion<long[]> {
      * Make assertion about the actual value's hex representation.
      *
      * @param from the index of the first array element (inclusive) for the hex representation.
-     * @param to   the index of the lest array element (exclusive) for the hex representation.
+     * @param to   the index of the last array element (exclusive) for the hex representation.
      *
      * @return the assertion.
      */
@@ -290,7 +290,7 @@ public class LongArrayAssertion extends ReferenceAssertion<long[]> {
      * Make assertion about the actual value's hex representation.
      *
      * @param from    the index of the first array element (inclusive) for the hex representation.
-     * @param to      the index of the lest array element (exclusive) for the hex representation.
+     * @param to      the index of the last array element (exclusive) for the hex representation.
      * @param matcher the hamcrest matcher.
      */
     public final void toHexString(final int from, final int to, final Matcher<? super String> matcher) {
@@ -317,7 +317,7 @@ public class LongArrayAssertion extends ReferenceAssertion<long[]> {
      * Check if the actual value's hex representation is equal to the expected value.
      *
      * @param from     the index of the first array element (inclusive) for the hex representation.
-     * @param to       the index of the lest array element (exclusive) for the hex representation.
+     * @param to       the index of the last array element (exclusive) for the hex representation.
      * @param expected the expected value.
      */
     public final void hasHexString(final int from, final int to, final String expected) {
