@@ -2281,6 +2281,30 @@ public final class ByteArrayAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: to.\n\tThe argument's value should be less than or equal to the maximum value: 2.");
         }
         try {
+            initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}).toHexString(3, 3, Matchers.equalTo("00"));
+            Assertions.fail("ByteArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should be valid: from.\n\tThe argument's value should be less than or equal to the maximum value: 2.");
+        }
+        try {
+            initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}, "Message").toHexString(3, 3, Matchers.equalTo("00"));
+            Assertions.fail("ByteArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: from.\n\tThe argument's value should be less than or equal to the maximum value: 2.");
+        }
+        try {
+            initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}).toHexString(1, 0, Matchers.equalTo("00"));
+            Assertions.fail("ByteArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should be valid: to.\n\tThe argument's value should be greater than or equal to the minimum value: 1.");
+        }
+        try {
+            initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}, "Message").toHexString(1, 0, Matchers.equalTo("00"));
+            Assertions.fail("ByteArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: to.\n\tThe argument's value should be greater than or equal to the minimum value: 1.");
+        }
+        try {
             initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}).toHexString(0, 3, null);
             Assertions.fail("ByteArrayAssertion test fail");
         } catch (AssertionError ex) {
@@ -2471,6 +2495,30 @@ public final class ByteArrayAssertionTest extends AssertionTest {
             Assertions.fail("ByteArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: to.\n\tThe argument's value should be less than or equal to the maximum value: 2.");
+        }
+        try {
+            initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}).hasHexString(3, 3, "");
+            Assertions.fail("ByteArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should be valid: from.\n\tThe argument's value should be less than or equal to the maximum value: 2.");
+        }
+        try {
+            initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}, "Message").hasHexString(3, 3, "");
+            Assertions.fail("ByteArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: from.\n\tThe argument's value should be less than or equal to the maximum value: 2.");
+        }
+        try {
+            initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}).hasHexString(1, 0, "");
+            Assertions.fail("ByteArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should be valid: to.\n\tThe argument's value should be greater than or equal to the minimum value: 1.");
+        }
+        try {
+            initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}, "Message").hasHexString(1, 0, "");
+            Assertions.fail("ByteArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: to.\n\tThe argument's value should be greater than or equal to the minimum value: 1.");
         }
         try {
             initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}).hasHexString(0, 3, null);
