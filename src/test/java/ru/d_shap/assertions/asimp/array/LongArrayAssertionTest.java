@@ -1521,13 +1521,13 @@ public final class LongArrayAssertionTest extends AssertionTest {
             initialize(Raw.longArrayAssertion(), new long[]{1, 2}).toHexString(0, 3);
             Assertions.fail("LongArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should be valid: to.\n\tThe argument's value should be less than the maximum value: 2.");
+            Assertions.assertThat(ex).hasMessage("Argument should be valid: to.\n\tThe argument's value should be less than or equal to the maximum value: 2.");
         }
         try {
             initialize(Raw.longArrayAssertion(), new long[]{1, 2}, "Message").toHexString(0, 3);
             Assertions.fail("LongArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: to.\n\tThe argument's value should be less than the maximum value: 2.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: to.\n\tThe argument's value should be less than or equal to the maximum value: 2.");
         }
         try {
             clearActual(initialize(Raw.longArrayAssertion(), new long[]{1, 2}).toHexString(0, 0)).isEqualTo("00000000000000000000000000000000");
@@ -1701,25 +1701,25 @@ public final class LongArrayAssertionTest extends AssertionTest {
             initialize(Raw.longArrayAssertion(), new long[]{1, 2}).toHexString(0, 3, Matchers.equalTo("00000000000000000000000000000000"));
             Assertions.fail("LongArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should be valid: to.\n\tThe argument's value should be less than the maximum value: 2.");
+            Assertions.assertThat(ex).hasMessage("Argument should be valid: to.\n\tThe argument's value should be less than or equal to the maximum value: 2.");
         }
         try {
             initialize(Raw.longArrayAssertion(), new long[]{1, 2}, "Message").toHexString(0, 3, Matchers.equalTo("00000000000000000000000000000000"));
             Assertions.fail("LongArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: to.\n\tThe argument's value should be less than the maximum value: 2.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: to.\n\tThe argument's value should be less than or equal to the maximum value: 2.");
         }
         try {
             initialize(Raw.longArrayAssertion(), new long[]{1, 2}).toHexString(0, 3, null);
             Assertions.fail("LongArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should be valid: to.\n\tThe argument's value should be less than the maximum value: 2.");
+            Assertions.assertThat(ex).hasMessage("Argument should be valid: to.\n\tThe argument's value should be less than or equal to the maximum value: 2.");
         }
         try {
             initialize(Raw.longArrayAssertion(), new long[]{1, 2}, "Message").toHexString(0, 3, null);
             Assertions.fail("LongArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: to.\n\tThe argument's value should be less than the maximum value: 2.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: to.\n\tThe argument's value should be less than or equal to the maximum value: 2.");
         }
         try {
             initialize(Raw.longArrayAssertion(), new long[]{1, 2}).toHexString(0, 2, null);
@@ -1893,25 +1893,25 @@ public final class LongArrayAssertionTest extends AssertionTest {
             initialize(Raw.longArrayAssertion(), new long[]{1, 2}).hasHexString(0, 3, "");
             Assertions.fail("LongArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should be valid: to.\n\tThe argument's value should be less than the maximum value: 2.");
+            Assertions.assertThat(ex).hasMessage("Argument should be valid: to.\n\tThe argument's value should be less than or equal to the maximum value: 2.");
         }
         try {
             initialize(Raw.longArrayAssertion(), new long[]{1, 2}, "Message").hasHexString(0, 3, "");
             Assertions.fail("LongArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: to.\n\tThe argument's value should be less than the maximum value: 2.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: to.\n\tThe argument's value should be less than or equal to the maximum value: 2.");
         }
         try {
             initialize(Raw.longArrayAssertion(), new long[]{1, 2}).hasHexString(0, 3, null);
             Assertions.fail("LongArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should be valid: to.\n\tThe argument's value should be less than the maximum value: 2.");
+            Assertions.assertThat(ex).hasMessage("Argument should be valid: to.\n\tThe argument's value should be less than or equal to the maximum value: 2.");
         }
         try {
             initialize(Raw.longArrayAssertion(), new long[]{1, 2}, "Message").hasHexString(0, 3, null);
             Assertions.fail("LongArrayAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: to.\n\tThe argument's value should be less than the maximum value: 2.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: to.\n\tThe argument's value should be less than or equal to the maximum value: 2.");
         }
         try {
             initialize(Raw.longArrayAssertion(), new long[]{1, 2}).hasHexString(0, 2, null);
