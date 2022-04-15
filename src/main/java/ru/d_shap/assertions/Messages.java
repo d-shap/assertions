@@ -242,7 +242,9 @@ public final class Messages {
 
             public static final String IS_GREATER_THAN_OR_EQUAL_TO_ZERO = "The argument''s value should be greater than or equal to zero.";
 
-            public static final String IS_LESS_THAN_MAXIMUM_VALUE = "The argument''s value should be less than the maximum value: {0}.";
+            public static final String IS_GREATER_THAN_OR_EQUAL_TO_MINIMUM_VALUE = "The argument''s value should be greater than or equal to the minimum value: {0}.";
+
+            public static final String IS_LESS_THAN_OR_EQUAL_TO_MAXIMUM_VALUE = "The argument''s value should be less than or equal to the maximum value: {0}.";
 
             public static final String IS_VALID_XML = "The argument''s value should be the valid XML.";
 
