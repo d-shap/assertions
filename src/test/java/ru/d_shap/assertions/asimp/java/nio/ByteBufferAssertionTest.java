@@ -3782,7 +3782,64 @@ public final class ByteBufferAssertionTest extends AssertionTest {
      */
     @Test
     public void toHexStringTest() {
-        // TODO
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).toHexString().isEqualTo("0102");
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{15, -3, 7})).toHexString().isEqualTo("0ffd07");
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{99, 5, 0, -21})).toHexString().isEqualTo("630500eb");
+
+        try {
+            Raw.byteBufferAssertion().toHexString();
+            Assertions.fail("ByteBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.byteBufferAssertion(), null).toHexString();
+            Assertions.fail("ByteBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.byteBufferAssertion(), null, "Message").toHexString();
+            Assertions.fail("ByteBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            clearActual(initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3)).toHexString()).isEqualTo("0000");
+            Assertions.fail("ByteBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's hex representation.\n\tActual value should not be null.");
+        }
+        try {
+            clearActual(initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3), "Message").toHexString()).isEqualTo("0000");
+            Assertions.fail("ByteBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's hex representation.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3)).toHexString().isEqualTo("0304");
+            Assertions.fail("ByteBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's hex representation.\n\tActual and expected values should be the same.\n\tExpected:<0304> but was:<0405>");
+        }
+        try {
+            initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3), "Message").toHexString().isEqualTo("0304");
+            Assertions.fail("ByteBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's hex representation.\n\tActual and expected values should be the same.\n\tExpected:<0304> but was:<0405>");
+        }
+        try {
+            initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3)).toHexString().isEqualTo("0304");
+            Assertions.fail("ByteBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's hex representation.\n\tActual and expected values should be the same.\n\tExpected:<0304> but was:<010203>");
+        }
+        try {
+            initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3), "Message").toHexString().isEqualTo("0304");
+            Assertions.fail("ByteBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's hex representation.\n\tActual and expected values should be the same.\n\tExpected:<0304> but was:<010203>");
+        }
     }
 
     /**
