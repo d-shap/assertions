@@ -27,6 +27,7 @@ import ru.d_shap.assertions.Messages;
 import ru.d_shap.assertions.Raw;
 import ru.d_shap.assertions.asimp.ReferenceAssertion;
 import ru.d_shap.assertions.asimp.array.LongArrayAssertion;
+import ru.d_shap.assertions.asimp.java.lang.CharSequenceAssertion;
 import ru.d_shap.assertions.asimp.primitive.IntAssertion;
 
 /**
@@ -340,6 +341,128 @@ public class LongBufferAssertion extends ReferenceAssertion<LongBuffer> {
      */
     public final void rewindAndContainsNone(final Iterable<Long> expected) {
         createLongBufferAssertion(true).containsNone(expected);
+    }
+
+    /**
+     * Make assertion about the actual value's hex representation.
+     *
+     * @return the assertion.
+     */
+    public final CharSequenceAssertion toHexString() {
+        return createLongBufferAssertion(false).toHexString();
+    }
+
+    /**
+     * Make assertion about the actual value's hex representation.
+     *
+     * @param from the index of the first buffer element (inclusive) for the hex representation.
+     * @param to   the index of the last buffer element (exclusive) for the hex representation.
+     *
+     * @return the assertion.
+     */
+    public final CharSequenceAssertion toHexString(final int from, final int to) {
+        return createLongBufferAssertion(false).toHexString(from, to);
+    }
+
+    /**
+     * Make assertion about the actual value's hex representation.
+     *
+     * @param matcher the hamcrest matcher.
+     */
+    public final void toHexString(final Matcher<? super String> matcher) {
+        createLongBufferAssertion(false).toHexString(matcher);
+    }
+
+    /**
+     * Make assertion about the actual value's hex representation.
+     *
+     * @param from    the index of the first buffer element (inclusive) for the hex representation.
+     * @param to      the index of the last buffer element (exclusive) for the hex representation.
+     * @param matcher the hamcrest matcher.
+     */
+    public final void toHexString(final int from, final int to, final Matcher<? super String> matcher) {
+        createLongBufferAssertion(false).toHexString(from, to, matcher);
+    }
+
+    /**
+     * Make assertion about the actual value's hex representation.
+     *
+     * @return the assertion.
+     */
+    public final CharSequenceAssertion toRewindAndHexString() {
+        return createLongBufferAssertion(true).toHexString();
+    }
+
+    /**
+     * Make assertion about the actual value's hex representation.
+     *
+     * @param from the index of the first buffer element (inclusive) for the hex representation.
+     * @param to   the index of the last buffer element (exclusive) for the hex representation.
+     *
+     * @return the assertion.
+     */
+    public final CharSequenceAssertion toRewindAndHexString(final int from, final int to) {
+        return createLongBufferAssertion(true).toHexString(from, to);
+    }
+
+    /**
+     * Make assertion about the actual value's hex representation.
+     *
+     * @param matcher the hamcrest matcher.
+     */
+    public final void toRewindAndHexString(final Matcher<? super String> matcher) {
+        createLongBufferAssertion(true).toHexString(matcher);
+    }
+
+    /**
+     * Make assertion about the actual value's hex representation.
+     *
+     * @param from    the index of the first buffer element (inclusive) for the hex representation.
+     * @param to      the index of the last buffer element (exclusive) for the hex representation.
+     * @param matcher the hamcrest matcher.
+     */
+    public final void toRewindAndHexString(final int from, final int to, final Matcher<? super String> matcher) {
+        createLongBufferAssertion(true).toHexString(from, to, matcher);
+    }
+
+    /**
+     * Check if the actual value's hex representation is equal to the expected value.
+     *
+     * @param expected the expected value.
+     */
+    public final void hasHexString(final String expected) {
+        createLongBufferAssertion(false).hasHexString(expected);
+    }
+
+    /**
+     * Check if the actual value's hex representation is equal to the expected value.
+     *
+     * @param from     the index of the first buffer element (inclusive) for the hex representation.
+     * @param to       the index of the last buffer element (exclusive) for the hex representation.
+     * @param expected the expected value.
+     */
+    public final void hasHexString(final int from, final int to, final String expected) {
+        createLongBufferAssertion(false).hasHexString(from, to, expected);
+    }
+
+    /**
+     * Check if the actual value's hex representation is equal to the expected value.
+     *
+     * @param expected the expected value.
+     */
+    public final void hasRewindAndHexString(final String expected) {
+        createLongBufferAssertion(true).hasHexString(expected);
+    }
+
+    /**
+     * Check if the actual value's hex representation is equal to the expected value.
+     *
+     * @param from     the index of the first buffer element (inclusive) for the hex representation.
+     * @param to       the index of the last buffer element (exclusive) for the hex representation.
+     * @param expected the expected value.
+     */
+    public final void hasRewindAndHexString(final int from, final int to, final String expected) {
+        createLongBufferAssertion(true).hasHexString(from, to, expected);
     }
 
     /**
