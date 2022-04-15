@@ -85,9 +85,25 @@ public final class ShortArrayToHexStringValueConverterTest extends AssertionTest
         Assertions.assertThat(new ShortArrayToHexStringValueConverter().convert(new short[]{1, 2}, -1, 3), Raw.charSequenceAssertion()).isEqualTo("00010002");
         Assertions.assertThat(new ShortArrayToHexStringValueConverter().convert(new short[]{1, 2}, -1, 3)).as(Raw.charSequenceAssertion()).isEqualTo("00010002");
 
+        Assertions.assertThat(new ShortArrayToHexStringValueConverter().convert(new short[]{99, 120, -3, 15}, -2, 4)).isInstanceOf(HexString.class);
+        Assertions.assertThat(new ShortArrayToHexStringValueConverter().convert(new short[]{99, 120, -3, 15}, -2, 4), Raw.charSequenceAssertion()).isEqualTo("00630078fffd000f");
+        Assertions.assertThat(new ShortArrayToHexStringValueConverter().convert(new short[]{99, 120, -3, 15}, -2, 4)).as(Raw.charSequenceAssertion()).isEqualTo("00630078fffd000f");
+
         Assertions.assertThat(new ShortArrayToHexStringValueConverter().convert(new short[]{99, 120, -3, 15}, 0, 4)).isInstanceOf(HexString.class);
         Assertions.assertThat(new ShortArrayToHexStringValueConverter().convert(new short[]{99, 120, -3, 15}, 0, 4), Raw.charSequenceAssertion()).isEqualTo("00630078fffd000f");
         Assertions.assertThat(new ShortArrayToHexStringValueConverter().convert(new short[]{99, 120, -3, 15}, 0, 4)).as(Raw.charSequenceAssertion()).isEqualTo("00630078fffd000f");
+
+        Assertions.assertThat(new ShortArrayToHexStringValueConverter().convert(new short[]{99, 120, -3, 15}, 3, 4)).isInstanceOf(HexString.class);
+        Assertions.assertThat(new ShortArrayToHexStringValueConverter().convert(new short[]{99, 120, -3, 15}, 3, 4), Raw.charSequenceAssertion()).isEqualTo("000f");
+        Assertions.assertThat(new ShortArrayToHexStringValueConverter().convert(new short[]{99, 120, -3, 15}, 3, 4)).as(Raw.charSequenceAssertion()).isEqualTo("000f");
+
+        Assertions.assertThat(new ShortArrayToHexStringValueConverter().convert(new short[]{99, 120, -3, 15}, 4, 4)).isInstanceOf(HexString.class);
+        Assertions.assertThat(new ShortArrayToHexStringValueConverter().convert(new short[]{99, 120, -3, 15}, 4, 4), Raw.charSequenceAssertion()).isEqualTo("");
+        Assertions.assertThat(new ShortArrayToHexStringValueConverter().convert(new short[]{99, 120, -3, 15}, 4, 4)).as(Raw.charSequenceAssertion()).isEqualTo("");
+
+        Assertions.assertThat(new ShortArrayToHexStringValueConverter().convert(new short[]{99, 120, -3, 15}, 5, 4)).isInstanceOf(HexString.class);
+        Assertions.assertThat(new ShortArrayToHexStringValueConverter().convert(new short[]{99, 120, -3, 15}, 5, 4), Raw.charSequenceAssertion()).isEqualTo("");
+        Assertions.assertThat(new ShortArrayToHexStringValueConverter().convert(new short[]{99, 120, -3, 15}, 5, 4)).as(Raw.charSequenceAssertion()).isEqualTo("");
 
         Assertions.assertThat(new ShortArrayToHexStringValueConverter().convert(new short[]{99, 120, -3, 15}, 1, 3)).isInstanceOf(HexString.class);
         Assertions.assertThat(new ShortArrayToHexStringValueConverter().convert(new short[]{99, 120, -3, 15}, 1, 3), Raw.charSequenceAssertion()).isEqualTo("0078fffd");
@@ -97,9 +113,21 @@ public final class ShortArrayToHexStringValueConverterTest extends AssertionTest
         Assertions.assertThat(new ShortArrayToHexStringValueConverter().convert(new short[]{99, 120, -3, 15}, 2, 2), Raw.charSequenceAssertion()).isEqualTo("");
         Assertions.assertThat(new ShortArrayToHexStringValueConverter().convert(new short[]{99, 120, -3, 15}, 2, 2)).as(Raw.charSequenceAssertion()).isEqualTo("");
 
+        Assertions.assertThat(new ShortArrayToHexStringValueConverter().convert(new short[]{99, 120, -3, 15}, 3, 1)).isInstanceOf(HexString.class);
+        Assertions.assertThat(new ShortArrayToHexStringValueConverter().convert(new short[]{99, 120, -3, 15}, 3, 1), Raw.charSequenceAssertion()).isEqualTo("");
+        Assertions.assertThat(new ShortArrayToHexStringValueConverter().convert(new short[]{99, 120, -3, 15}, 3, 1)).as(Raw.charSequenceAssertion()).isEqualTo("");
+
         Assertions.assertThat(new ShortArrayToHexStringValueConverter().convert(new short[]{99, 120, -3, 15}, -2, 15)).isInstanceOf(HexString.class);
         Assertions.assertThat(new ShortArrayToHexStringValueConverter().convert(new short[]{99, 120, -3, 15}, -2, 15), Raw.charSequenceAssertion()).isEqualTo("00630078fffd000f");
         Assertions.assertThat(new ShortArrayToHexStringValueConverter().convert(new short[]{99, 120, -3, 15}, -2, 15)).as(Raw.charSequenceAssertion()).isEqualTo("00630078fffd000f");
+
+        Assertions.assertThat(new ShortArrayToHexStringValueConverter().convert(new short[]{99, 120, -3, 15}, 4, 15)).isInstanceOf(HexString.class);
+        Assertions.assertThat(new ShortArrayToHexStringValueConverter().convert(new short[]{99, 120, -3, 15}, 4, 15), Raw.charSequenceAssertion()).isEqualTo("");
+        Assertions.assertThat(new ShortArrayToHexStringValueConverter().convert(new short[]{99, 120, -3, 15}, 4, 15)).as(Raw.charSequenceAssertion()).isEqualTo("");
+
+        Assertions.assertThat(new ShortArrayToHexStringValueConverter().convert(new short[]{99, 120, -3, 15}, -2, -1)).isInstanceOf(HexString.class);
+        Assertions.assertThat(new ShortArrayToHexStringValueConverter().convert(new short[]{99, 120, -3, 15}, -2, -1), Raw.charSequenceAssertion()).isEqualTo("");
+        Assertions.assertThat(new ShortArrayToHexStringValueConverter().convert(new short[]{99, 120, -3, 15}, -2, -1)).as(Raw.charSequenceAssertion()).isEqualTo("");
     }
 
     /**

@@ -85,9 +85,25 @@ public final class ByteArrayToHexStringValueConverterTest extends AssertionTest 
         Assertions.assertThat(new ByteArrayToHexStringValueConverter().convert(new byte[]{1, 2}, -1, 3), Raw.charSequenceAssertion()).isEqualTo("0102");
         Assertions.assertThat(new ByteArrayToHexStringValueConverter().convert(new byte[]{1, 2}, -1, 3)).as(Raw.charSequenceAssertion()).isEqualTo("0102");
 
+        Assertions.assertThat(new ByteArrayToHexStringValueConverter().convert(new byte[]{99, 120, -3, 15}, -2, 4)).isInstanceOf(HexString.class);
+        Assertions.assertThat(new ByteArrayToHexStringValueConverter().convert(new byte[]{99, 120, -3, 15}, -2, 4), Raw.charSequenceAssertion()).isEqualTo("6378fd0f");
+        Assertions.assertThat(new ByteArrayToHexStringValueConverter().convert(new byte[]{99, 120, -3, 15}, -2, 4)).as(Raw.charSequenceAssertion()).isEqualTo("6378fd0f");
+
         Assertions.assertThat(new ByteArrayToHexStringValueConverter().convert(new byte[]{99, 120, -3, 15}, 0, 4)).isInstanceOf(HexString.class);
         Assertions.assertThat(new ByteArrayToHexStringValueConverter().convert(new byte[]{99, 120, -3, 15}, 0, 4), Raw.charSequenceAssertion()).isEqualTo("6378fd0f");
         Assertions.assertThat(new ByteArrayToHexStringValueConverter().convert(new byte[]{99, 120, -3, 15}, 0, 4)).as(Raw.charSequenceAssertion()).isEqualTo("6378fd0f");
+
+        Assertions.assertThat(new ByteArrayToHexStringValueConverter().convert(new byte[]{99, 120, -3, 15}, 3, 4)).isInstanceOf(HexString.class);
+        Assertions.assertThat(new ByteArrayToHexStringValueConverter().convert(new byte[]{99, 120, -3, 15}, 3, 4), Raw.charSequenceAssertion()).isEqualTo("0f");
+        Assertions.assertThat(new ByteArrayToHexStringValueConverter().convert(new byte[]{99, 120, -3, 15}, 3, 4)).as(Raw.charSequenceAssertion()).isEqualTo("0f");
+
+        Assertions.assertThat(new ByteArrayToHexStringValueConverter().convert(new byte[]{99, 120, -3, 15}, 4, 4)).isInstanceOf(HexString.class);
+        Assertions.assertThat(new ByteArrayToHexStringValueConverter().convert(new byte[]{99, 120, -3, 15}, 4, 4), Raw.charSequenceAssertion()).isEqualTo("");
+        Assertions.assertThat(new ByteArrayToHexStringValueConverter().convert(new byte[]{99, 120, -3, 15}, 4, 4)).as(Raw.charSequenceAssertion()).isEqualTo("");
+
+        Assertions.assertThat(new ByteArrayToHexStringValueConverter().convert(new byte[]{99, 120, -3, 15}, 5, 4)).isInstanceOf(HexString.class);
+        Assertions.assertThat(new ByteArrayToHexStringValueConverter().convert(new byte[]{99, 120, -3, 15}, 5, 4), Raw.charSequenceAssertion()).isEqualTo("");
+        Assertions.assertThat(new ByteArrayToHexStringValueConverter().convert(new byte[]{99, 120, -3, 15}, 5, 4)).as(Raw.charSequenceAssertion()).isEqualTo("");
 
         Assertions.assertThat(new ByteArrayToHexStringValueConverter().convert(new byte[]{99, 120, -3, 15}, 1, 3)).isInstanceOf(HexString.class);
         Assertions.assertThat(new ByteArrayToHexStringValueConverter().convert(new byte[]{99, 120, -3, 15}, 1, 3), Raw.charSequenceAssertion()).isEqualTo("78fd");
@@ -97,9 +113,21 @@ public final class ByteArrayToHexStringValueConverterTest extends AssertionTest 
         Assertions.assertThat(new ByteArrayToHexStringValueConverter().convert(new byte[]{99, 120, -3, 15}, 2, 2), Raw.charSequenceAssertion()).isEqualTo("");
         Assertions.assertThat(new ByteArrayToHexStringValueConverter().convert(new byte[]{99, 120, -3, 15}, 2, 2)).as(Raw.charSequenceAssertion()).isEqualTo("");
 
+        Assertions.assertThat(new ByteArrayToHexStringValueConverter().convert(new byte[]{99, 120, -3, 15}, 3, 1)).isInstanceOf(HexString.class);
+        Assertions.assertThat(new ByteArrayToHexStringValueConverter().convert(new byte[]{99, 120, -3, 15}, 3, 1), Raw.charSequenceAssertion()).isEqualTo("");
+        Assertions.assertThat(new ByteArrayToHexStringValueConverter().convert(new byte[]{99, 120, -3, 15}, 3, 1)).as(Raw.charSequenceAssertion()).isEqualTo("");
+
         Assertions.assertThat(new ByteArrayToHexStringValueConverter().convert(new byte[]{99, 120, -3, 15}, -2, 15)).isInstanceOf(HexString.class);
         Assertions.assertThat(new ByteArrayToHexStringValueConverter().convert(new byte[]{99, 120, -3, 15}, -2, 15), Raw.charSequenceAssertion()).isEqualTo("6378fd0f");
         Assertions.assertThat(new ByteArrayToHexStringValueConverter().convert(new byte[]{99, 120, -3, 15}, -2, 15)).as(Raw.charSequenceAssertion()).isEqualTo("6378fd0f");
+
+        Assertions.assertThat(new ByteArrayToHexStringValueConverter().convert(new byte[]{99, 120, -3, 15}, 4, 15)).isInstanceOf(HexString.class);
+        Assertions.assertThat(new ByteArrayToHexStringValueConverter().convert(new byte[]{99, 120, -3, 15}, 4, 15), Raw.charSequenceAssertion()).isEqualTo("");
+        Assertions.assertThat(new ByteArrayToHexStringValueConverter().convert(new byte[]{99, 120, -3, 15}, 4, 15)).as(Raw.charSequenceAssertion()).isEqualTo("");
+
+        Assertions.assertThat(new ByteArrayToHexStringValueConverter().convert(new byte[]{99, 120, -3, 15}, -2, -1)).isInstanceOf(HexString.class);
+        Assertions.assertThat(new ByteArrayToHexStringValueConverter().convert(new byte[]{99, 120, -3, 15}, -2, -1), Raw.charSequenceAssertion()).isEqualTo("");
+        Assertions.assertThat(new ByteArrayToHexStringValueConverter().convert(new byte[]{99, 120, -3, 15}, -2, -1)).as(Raw.charSequenceAssertion()).isEqualTo("");
     }
 
     /**
