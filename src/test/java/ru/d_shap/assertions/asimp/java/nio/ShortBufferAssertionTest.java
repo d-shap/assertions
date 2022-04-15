@@ -3782,6 +3782,102 @@ public final class ShortBufferAssertionTest extends AssertionTest {
      * {@link ShortBufferAssertion} class test.
      */
     @Test
+    public void toHexStringTest() {
+        // TODO
+    }
+
+    /**
+     * {@link ShortBufferAssertion} class test.
+     */
+    @Test
+    public void toHexStringPartTest() {
+        // TODO
+    }
+
+    /**
+     * {@link ShortBufferAssertion} class test.
+     */
+    @Test
+    public void toHexStringMatcherTest() {
+        // TODO
+    }
+
+    /**
+     * {@link ShortBufferAssertion} class test.
+     */
+    @Test
+    public void toHexStringPartMatcherTest() {
+        // TODO
+    }
+
+    /**
+     * {@link ShortBufferAssertion} class test.
+     */
+    @Test
+    public void toRewindAndHexStringTest() {
+        // TODO
+    }
+
+    /**
+     * {@link ShortBufferAssertion} class test.
+     */
+    @Test
+    public void toRewindAndHexStringPartTest() {
+        // TODO
+    }
+
+    /**
+     * {@link ShortBufferAssertion} class test.
+     */
+    @Test
+    public void toRewindAndHexStringMatcherTest() {
+        // TODO
+    }
+
+    /**
+     * {@link ShortBufferAssertion} class test.
+     */
+    @Test
+    public void toRewindAndHexStringPartMatcherTest() {
+        // TODO
+    }
+
+    /**
+     * {@link ShortBufferAssertion} class test.
+     */
+    @Test
+    public void hasHexStringTest() {
+        // TODO
+    }
+
+    /**
+     * {@link ShortBufferAssertion} class test.
+     */
+    @Test
+    public void hasHexStringPartTest() {
+        // TODO
+    }
+
+    /**
+     * {@link ShortBufferAssertion} class test.
+     */
+    @Test
+    public void hasRewindAndHexStringTest() {
+        // TODO
+    }
+
+    /**
+     * {@link ShortBufferAssertion} class test.
+     */
+    @Test
+    public void hasRewindAndHexStringPartTest() {
+        // TODO
+    }
+
+    /**
+     * {@link ShortBufferAssertion} class test.
+     */
+    @Test
     public void toPositionTest() {
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3}, 3)).toPosition().isEqualTo(3);
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3}, 3)).toPosition().isGreaterThan(2);

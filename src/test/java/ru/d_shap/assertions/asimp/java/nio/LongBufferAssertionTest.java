@@ -2706,6 +2706,102 @@ public final class LongBufferAssertionTest extends AssertionTest {
      * {@link LongBufferAssertion} class test.
      */
     @Test
+    public void toHexStringTest() {
+        // TODO
+    }
+
+    /**
+     * {@link LongBufferAssertion} class test.
+     */
+    @Test
+    public void toHexStringPartTest() {
+        // TODO
+    }
+
+    /**
+     * {@link LongBufferAssertion} class test.
+     */
+    @Test
+    public void toHexStringMatcherTest() {
+        // TODO
+    }
+
+    /**
+     * {@link LongBufferAssertion} class test.
+     */
+    @Test
+    public void toHexStringPartMatcherTest() {
+        // TODO
+    }
+
+    /**
+     * {@link LongBufferAssertion} class test.
+     */
+    @Test
+    public void toRewindAndHexStringTest() {
+        // TODO
+    }
+
+    /**
+     * {@link LongBufferAssertion} class test.
+     */
+    @Test
+    public void toRewindAndHexStringPartTest() {
+        // TODO
+    }
+
+    /**
+     * {@link LongBufferAssertion} class test.
+     */
+    @Test
+    public void toRewindAndHexStringMatcherTest() {
+        // TODO
+    }
+
+    /**
+     * {@link LongBufferAssertion} class test.
+     */
+    @Test
+    public void toRewindAndHexStringPartMatcherTest() {
+        // TODO
+    }
+
+    /**
+     * {@link LongBufferAssertion} class test.
+     */
+    @Test
+    public void hasHexStringTest() {
+        // TODO
+    }
+
+    /**
+     * {@link LongBufferAssertion} class test.
+     */
+    @Test
+    public void hasHexStringPartTest() {
+        // TODO
+    }
+
+    /**
+     * {@link LongBufferAssertion} class test.
+     */
+    @Test
+    public void hasRewindAndHexStringTest() {
+        // TODO
+    }
+
+    /**
+     * {@link LongBufferAssertion} class test.
+     */
+    @Test
+    public void hasRewindAndHexStringPartTest() {
+        // TODO
+    }
+
+    /**
+     * {@link LongBufferAssertion} class test.
+     */
+    @Test
     public void toPositionTest() {
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 3)).toPosition().isEqualTo(3);
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 3)).toPosition().isGreaterThan(2);

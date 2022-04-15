@@ -3781,6 +3781,102 @@ public final class ByteBufferAssertionTest extends AssertionTest {
      * {@link ByteBufferAssertion} class test.
      */
     @Test
+    public void toHexStringTest() {
+        // TODO
+    }
+
+    /**
+     * {@link ByteBufferAssertion} class test.
+     */
+    @Test
+    public void toHexStringPartTest() {
+        // TODO
+    }
+
+    /**
+     * {@link ByteBufferAssertion} class test.
+     */
+    @Test
+    public void toHexStringMatcherTest() {
+        // TODO
+    }
+
+    /**
+     * {@link ByteBufferAssertion} class test.
+     */
+    @Test
+    public void toHexStringPartMatcherTest() {
+        // TODO
+    }
+
+    /**
+     * {@link ByteBufferAssertion} class test.
+     */
+    @Test
+    public void toRewindAndHexStringTest() {
+        // TODO
+    }
+
+    /**
+     * {@link ByteBufferAssertion} class test.
+     */
+    @Test
+    public void toRewindAndHexStringPartTest() {
+        // TODO
+    }
+
+    /**
+     * {@link ByteBufferAssertion} class test.
+     */
+    @Test
+    public void toRewindAndHexStringMatcherTest() {
+        // TODO
+    }
+
+    /**
+     * {@link ByteBufferAssertion} class test.
+     */
+    @Test
+    public void toRewindAndHexStringPartMatcherTest() {
+        // TODO
+    }
+
+    /**
+     * {@link ByteBufferAssertion} class test.
+     */
+    @Test
+    public void hasHexStringTest() {
+        // TODO
+    }
+
+    /**
+     * {@link ByteBufferAssertion} class test.
+     */
+    @Test
+    public void hasHexStringPartTest() {
+        // TODO
+    }
+
+    /**
+     * {@link ByteBufferAssertion} class test.
+     */
+    @Test
+    public void hasRewindAndHexStringTest() {
+        // TODO
+    }
+
+    /**
+     * {@link ByteBufferAssertion} class test.
+     */
+    @Test
+    public void hasRewindAndHexStringPartTest() {
+        // TODO
+    }
+
+    /**
+     * {@link ByteBufferAssertion} class test.
+     */
+    @Test
     public void toPositionTest() {
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3}, 3)).toPosition().isEqualTo(3);
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3}, 3)).toPosition().isGreaterThan(2);

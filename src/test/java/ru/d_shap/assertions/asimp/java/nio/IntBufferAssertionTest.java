@@ -2706,6 +2706,102 @@ public final class IntBufferAssertionTest extends AssertionTest {
      * {@link IntBufferAssertion} class test.
      */
     @Test
+    public void toHexStringTest() {
+        // TODO
+    }
+
+    /**
+     * {@link IntBufferAssertion} class test.
+     */
+    @Test
+    public void toHexStringPartTest() {
+        // TODO
+    }
+
+    /**
+     * {@link IntBufferAssertion} class test.
+     */
+    @Test
+    public void toHexStringMatcherTest() {
+        // TODO
+    }
+
+    /**
+     * {@link IntBufferAssertion} class test.
+     */
+    @Test
+    public void toHexStringPartMatcherTest() {
+        // TODO
+    }
+
+    /**
+     * {@link IntBufferAssertion} class test.
+     */
+    @Test
+    public void toRewindAndHexStringTest() {
+        // TODO
+    }
+
+    /**
+     * {@link IntBufferAssertion} class test.
+     */
+    @Test
+    public void toRewindAndHexStringPartTest() {
+        // TODO
+    }
+
+    /**
+     * {@link IntBufferAssertion} class test.
+     */
+    @Test
+    public void toRewindAndHexStringMatcherTest() {
+        // TODO
+    }
+
+    /**
+     * {@link IntBufferAssertion} class test.
+     */
+    @Test
+    public void toRewindAndHexStringPartMatcherTest() {
+        // TODO
+    }
+
+    /**
+     * {@link IntBufferAssertion} class test.
+     */
+    @Test
+    public void hasHexStringTest() {
+        // TODO
+    }
+
+    /**
+     * {@link IntBufferAssertion} class test.
+     */
+    @Test
+    public void hasHexStringPartTest() {
+        // TODO
+    }
+
+    /**
+     * {@link IntBufferAssertion} class test.
+     */
+    @Test
+    public void hasRewindAndHexStringTest() {
+        // TODO
+    }
+
+    /**
+     * {@link IntBufferAssertion} class test.
+     */
+    @Test
+    public void hasRewindAndHexStringPartTest() {
+        // TODO
+    }
+
+    /**
+     * {@link IntBufferAssertion} class test.
+     */
+    @Test
     public void toPositionTest() {
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3}, 3)).toPosition().isEqualTo(3);
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3}, 3)).toPosition().isGreaterThan(2);
