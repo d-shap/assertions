@@ -1530,6 +1530,30 @@ public final class IntArrayAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: to.\n\tThe argument's value should be less than or equal to the maximum value: 2.");
         }
         try {
+            initialize(Raw.intArrayAssertion(), new int[]{1, 2}).toHexString(3, 3);
+            Assertions.fail("IntArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should be valid: from.\n\tThe argument's value should be less than or equal to the maximum value: 2.");
+        }
+        try {
+            initialize(Raw.intArrayAssertion(), new int[]{1, 2}, "Message").toHexString(3, 3);
+            Assertions.fail("IntArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: from.\n\tThe argument's value should be less than or equal to the maximum value: 2.");
+        }
+        try {
+            initialize(Raw.intArrayAssertion(), new int[]{1, 2}).toHexString(1, 0);
+            Assertions.fail("IntArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should be valid: to.\n\tThe argument's value should be greater than or equal to the minimum value: 1.");
+        }
+        try {
+            initialize(Raw.intArrayAssertion(), new int[]{1, 2}, "Message").toHexString(1, 0);
+            Assertions.fail("IntArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: to.\n\tThe argument's value should be greater than or equal to the minimum value: 1.");
+        }
+        try {
             clearActual(initialize(Raw.intArrayAssertion(), new int[]{1, 2}).toHexString(0, 0)).isEqualTo("0000000000000000");
             Assertions.fail("IntArrayAssertion test fail");
         } catch (AssertionError ex) {

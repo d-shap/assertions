@@ -2077,6 +2077,30 @@ public final class ShortArrayAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: to.\n\tThe argument's value should be less than or equal to the maximum value: 2.");
         }
         try {
+            initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).toHexString(3, 3);
+            Assertions.fail("ShortArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should be valid: from.\n\tThe argument's value should be less than or equal to the maximum value: 2.");
+        }
+        try {
+            initialize(Raw.shortArrayAssertion(), new short[]{1, 2}, "Message").toHexString(3, 3);
+            Assertions.fail("ShortArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: from.\n\tThe argument's value should be less than or equal to the maximum value: 2.");
+        }
+        try {
+            initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).toHexString(1, 0);
+            Assertions.fail("ShortArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should be valid: to.\n\tThe argument's value should be greater than or equal to the minimum value: 1.");
+        }
+        try {
+            initialize(Raw.shortArrayAssertion(), new short[]{1, 2}, "Message").toHexString(1, 0);
+            Assertions.fail("ShortArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: to.\n\tThe argument's value should be greater than or equal to the minimum value: 1.");
+        }
+        try {
             clearActual(initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).toHexString(0, 0)).isEqualTo("00000000");
             Assertions.fail("ShortArrayAssertion test fail");
         } catch (AssertionError ex) {
