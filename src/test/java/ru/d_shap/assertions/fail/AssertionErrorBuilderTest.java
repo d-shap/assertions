@@ -345,6 +345,10 @@ public final class AssertionErrorBuilderTest extends AssertionTest {
         Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), String.class, "actual").addActualWithDelta("delta").build()).isInstanceOf(AssertionError.class);
         Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), String.class, "actual").addActualWithDelta("delta").build()).hasMessage("message.\n\tActual:<actual±delta>");
         Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), String.class, "actual").addActualWithDelta("delta").build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), String.class, "actual").addActualWithDelta(true).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), String.class, "actual").addActualWithDelta(true).build()).hasMessage("message.\n\tActual:<actual±T>");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), String.class, "actual").addActualWithDelta(true).build()).causeIsNull();
     }
 
 }
