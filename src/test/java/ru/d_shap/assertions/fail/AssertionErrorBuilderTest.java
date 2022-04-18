@@ -215,4 +215,136 @@ public final class AssertionErrorBuilderTest extends AssertionTest {
         Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), String.class, "actual").addMessage(new ConversionException(new IOException("value''s"))).build()).causeIsNull();
     }
 
+    /**
+     * {@link AssertionErrorBuilder} class test.
+     */
+    @Test
+    public void buildWithActualTest() {
+        Assertions.assertThat(AssertionErrorBuilder.getInstance().addActual().build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance().addActual().build()).hasMessage("");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance().addActual().build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null).addActual().build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null).addActual().build()).hasMessage("");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null).addActual().build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, null, null).addActual().build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, null, null).addActual().build()).hasMessage("");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, null, null).addActual().build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription()).addActual().build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription()).addActual().build()).hasMessage("");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription()).addActual().build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription(), null, null).addActual().build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription(), null, null).addActual().build()).hasMessage("");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription(), null, null).addActual().build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message")).addActual().build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message")).addActual().build()).hasMessage("message.");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message")).addActual().build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), null, null).addActual().build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), null, null).addActual().build()).hasMessage("message.");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), null, null).addActual().build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, null).addActual().build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, null).addActual().build()).hasMessage("Actual:<<NULL>>");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, null).addActual().build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, "actual").addActual().build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, "actual").addActual().build()).hasMessage("Actual:<actual>");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, "actual").addActual().build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), String.class, "actual").addActual().build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), String.class, "actual").addActual().build()).hasMessage("message.\n\tActual:<actual>");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), String.class, "actual").addActual().build()).causeIsNull();
+    }
+
+    /**
+     * {@link AssertionErrorBuilder} class test.
+     */
+    @Test
+    public void buildWithActualWithDeltaTest() {
+        Assertions.assertThat(AssertionErrorBuilder.getInstance().addActualWithDelta(null).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance().addActualWithDelta(null).build()).hasMessage("");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance().addActualWithDelta(null).build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance().addActualWithDelta("delta").build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance().addActualWithDelta("delta").build()).hasMessage("");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance().addActualWithDelta("delta").build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null).addActualWithDelta(null).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null).addActualWithDelta(null).build()).hasMessage("");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null).addActualWithDelta(null).build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null).addActualWithDelta("delta").build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null).addActualWithDelta("delta").build()).hasMessage("");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null).addActualWithDelta("delta").build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, null, null).addActualWithDelta(null).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, null, null).addActualWithDelta(null).build()).hasMessage("");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, null, null).addActualWithDelta(null).build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, null, null).addActualWithDelta("delta").build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, null, null).addActualWithDelta("delta").build()).hasMessage("");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, null, null).addActualWithDelta("delta").build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription()).addActualWithDelta(null).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription()).addActualWithDelta(null).build()).hasMessage("");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription()).addActualWithDelta(null).build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription()).addActualWithDelta("delta").build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription()).addActualWithDelta("delta").build()).hasMessage("");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription()).addActualWithDelta("delta").build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription(), null, null).addActualWithDelta(null).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription(), null, null).addActualWithDelta(null).build()).hasMessage("");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription(), null, null).addActualWithDelta(null).build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription(), null, null).addActualWithDelta("delta").build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription(), null, null).addActualWithDelta("delta").build()).hasMessage("");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription(), null, null).addActualWithDelta("delta").build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message")).addActualWithDelta(null).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message")).addActualWithDelta(null).build()).hasMessage("message.");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message")).addActualWithDelta(null).build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message")).addActualWithDelta("delta").build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message")).addActualWithDelta("delta").build()).hasMessage("message.");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message")).addActualWithDelta("delta").build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), null, null).addActualWithDelta(null).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), null, null).addActualWithDelta(null).build()).hasMessage("message.");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), null, null).addActualWithDelta(null).build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), null, null).addActualWithDelta("delta").build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), null, null).addActualWithDelta("delta").build()).hasMessage("message.");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), null, null).addActualWithDelta("delta").build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, null).addActualWithDelta(null).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, null).addActualWithDelta(null).build()).hasMessage("Actual:<<NULL>±<NULL>>");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, null).addActualWithDelta(null).build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, null).addActualWithDelta("delta").build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, null).addActualWithDelta("delta").build()).hasMessage("Actual:<<NULL>±delta>");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, null).addActualWithDelta("delta").build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, "actual").addActualWithDelta(null).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, "actual").addActualWithDelta(null).build()).hasMessage("Actual:<actual±<NULL>>");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, "actual").addActualWithDelta(null).build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, "actual").addActualWithDelta("delta").build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, "actual").addActualWithDelta("delta").build()).hasMessage("Actual:<actual±delta>");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, "actual").addActualWithDelta("delta").build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), String.class, "actual").addActualWithDelta(null).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), String.class, "actual").addActualWithDelta(null).build()).hasMessage("message.\n\tActual:<actual±<NULL>>");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), String.class, "actual").addActualWithDelta(null).build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), String.class, "actual").addActualWithDelta("delta").build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), String.class, "actual").addActualWithDelta("delta").build()).hasMessage("message.\n\tActual:<actual±delta>");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), String.class, "actual").addActualWithDelta("delta").build()).causeIsNull();
+    }
+
 }
