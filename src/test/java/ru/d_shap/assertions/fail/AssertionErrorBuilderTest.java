@@ -265,7 +265,7 @@ public final class AssertionErrorBuilderTest extends AssertionTest {
      * {@link AssertionErrorBuilder} class test.
      */
     @Test
-    public void buildWithActualWithDeltaTest() {
+    public void buildWithActualDeltaTest() {
         Assertions.assertThat(AssertionErrorBuilder.getInstance().addActualWithDelta(null).build()).isInstanceOf(AssertionError.class);
         Assertions.assertThat(AssertionErrorBuilder.getInstance().addActualWithDelta(null).build()).hasMessage("");
         Assertions.assertThat(AssertionErrorBuilder.getInstance().addActualWithDelta(null).build()).causeIsNull();
@@ -349,6 +349,134 @@ public final class AssertionErrorBuilderTest extends AssertionTest {
         Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), String.class, "actual").addActualWithDelta(true).build()).isInstanceOf(AssertionError.class);
         Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), String.class, "actual").addActualWithDelta(true).build()).hasMessage("message.\n\tActual:<actual±T>");
         Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), String.class, "actual").addActualWithDelta(true).build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), Integer.class, 123).addActualWithDelta(true).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), Integer.class, 123).addActualWithDelta(true).build()).hasMessage("message.\n\tActual:<123±T>");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), Integer.class, 123).addActualWithDelta(true).build()).causeIsNull();
+    }
+
+    /**
+     * {@link AssertionErrorBuilder} class test.
+     */
+    @Test
+    public void buildWithExpectedTest() {
+        Assertions.assertThat(AssertionErrorBuilder.getInstance().addExpected(12345).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance().addExpected(12345).build()).hasMessage("");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance().addExpected(12345).build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null).addExpected(12345).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null).addExpected(12345).build()).hasMessage("");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null).addExpected(12345).build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, null, null).addExpected(12345).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, null, null).addExpected(12345).build()).hasMessage("");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, null, null).addExpected(12345).build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription()).addExpected(12345).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription()).addExpected(12345).build()).hasMessage("");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription()).addExpected(12345).build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription(), null, null).addExpected(12345).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription(), null, null).addExpected(12345).build()).hasMessage("");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription(), null, null).addExpected(12345).build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message")).addExpected(12345).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message")).addExpected(12345).build()).hasMessage("message.");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message")).addExpected(12345).build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), null, null).addExpected(12345).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), null, null).addExpected(12345).build()).hasMessage("message.");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), null, null).addExpected(12345).build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, Integer.class, null).addExpected(12345).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, Integer.class, null).addExpected(12345).build()).hasMessage("Expected:<12345>");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, Integer.class, null).addExpected(12345).build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, null).addExpected(12345).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, null).addExpected(12345).build()).hasMessage("Expected:<12345>");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, null).addExpected(12345).build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, Integer.class, null).addExpected("12345").build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, Integer.class, null).addExpected("12345").build()).hasMessage("Expected:<12345>");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, Integer.class, null).addExpected("12345").build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, null).addExpected("12345").build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, null).addExpected("12345").build()).hasMessage("Expected:<12345>");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, null).addExpected("12345").build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, Integer.class, "actual").addExpected(12345).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, Integer.class, "actual").addExpected(12345).build()).hasMessage("Expected:<12345>");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, Integer.class, "actual").addExpected(12345).build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, "actual").addExpected(12345).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, "actual").addExpected(12345).build()).hasMessage("Expected:<12345>");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, "actual").addExpected(12345).build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), String.class, "actual").addExpected(12345).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), String.class, "actual").addExpected(12345).build()).hasMessage("message.\n\tExpected:<12345>");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), String.class, "actual").addExpected(12345).build()).causeIsNull();
+    }
+
+    /**
+     * {@link AssertionErrorBuilder} class test.
+     */
+    @Test
+    public void buildWithExpected2Test() {
+        Assertions.assertThat(AssertionErrorBuilder.getInstance().addExpected(12345, 67890).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance().addExpected(12345, 67890).build()).hasMessage("");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance().addExpected(12345, 67890).build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null).addExpected(12345, 67890).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null).addExpected(12345, 67890).build()).hasMessage("");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null).addExpected(12345, 67890).build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, null, null).addExpected(12345, 67890).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, null, null).addExpected(12345, 67890).build()).hasMessage("");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, null, null).addExpected(12345, 67890).build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription()).addExpected(12345, 67890).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription()).addExpected(12345, 67890).build()).hasMessage("");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription()).addExpected(12345, 67890).build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription(), null, null).addExpected(12345, 67890).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription(), null, null).addExpected(12345, 67890).build()).hasMessage("");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription(), null, null).addExpected(12345, 67890).build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message")).addExpected(12345, 67890).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message")).addExpected(12345, 67890).build()).hasMessage("message.");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message")).addExpected(12345, 67890).build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), null, null).addExpected(12345, 67890).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), null, null).addExpected(12345, 67890).build()).hasMessage("message.");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), null, null).addExpected(12345, 67890).build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, Integer.class, null).addExpected(12345, 67890).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, Integer.class, null).addExpected(12345, 67890).build()).hasMessage("Expected:<12345:67890>");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, Integer.class, null).addExpected(12345, 67890).build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, null).addExpected(12345, 67890).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, null).addExpected(12345, 67890).build()).hasMessage("Expected:<12345:67890>");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, null).addExpected(12345, 67890).build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, Integer.class, null).addExpected("12345", "67890").build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, Integer.class, null).addExpected("12345", "67890").build()).hasMessage("Expected:<12345:67890>");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, Integer.class, null).addExpected("12345", "67890").build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, null).addExpected("12345", "67890").build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, null).addExpected("12345", "67890").build()).hasMessage("Expected:<12345:67890>");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, null).addExpected("12345", "67890").build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, Integer.class, "actual").addExpected(12345, 67890).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, Integer.class, "actual").addExpected(12345, 67890).build()).hasMessage("Expected:<12345:67890>");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, Integer.class, "actual").addExpected(12345, 67890).build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, "actual").addExpected(12345, 67890).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, "actual").addExpected(12345, 67890).build()).hasMessage("Expected:<12345:67890>");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, "actual").addExpected(12345, 67890).build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), String.class, "actual").addExpected(12345, 67890).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), String.class, "actual").addExpected(12345, 67890).build()).hasMessage("message.\n\tExpected:<12345:67890>");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), String.class, "actual").addExpected(12345, 67890).build()).causeIsNull();
     }
 
 }
