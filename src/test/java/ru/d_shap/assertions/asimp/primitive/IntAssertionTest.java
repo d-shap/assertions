@@ -1237,6 +1237,30 @@ public final class IntAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
+            initialize(Raw.intAssertion(), null).hasHexString(null);
+            Assertions.fail("IntAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.intAssertion(), null, "Message").hasHexString(null);
+            Assertions.fail("IntAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.intAssertion(), 11).hasHexString(null);
+            Assertions.fail("IntAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
+        }
+        try {
+            initialize(Raw.intAssertion(), 11, "Message").hasHexString(null);
+            Assertions.fail("IntAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
+        }
+        try {
             initialize(Raw.intAssertion(), 11).hasHexString("00000011");
             Assertions.fail("IntAssertion test fail");
         } catch (AssertionError ex) {

@@ -1240,6 +1240,30 @@ public final class ShortAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
+            initialize(Raw.shortAssertion(), null).hasHexString(null);
+            Assertions.fail("ShortAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.shortAssertion(), null, "Message").hasHexString(null);
+            Assertions.fail("ShortAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.shortAssertion(), (short) 11).hasHexString(null);
+            Assertions.fail("ShortAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
+        }
+        try {
+            initialize(Raw.shortAssertion(), (short) 11, "Message").hasHexString(null);
+            Assertions.fail("ShortAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
+        }
+        try {
             initialize(Raw.shortAssertion(), (short) 11).hasHexString("0011");
             Assertions.fail("ShortAssertion test fail");
         } catch (AssertionError ex) {

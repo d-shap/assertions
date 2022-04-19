@@ -1249,6 +1249,30 @@ public final class LongAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
+            initialize(Raw.longAssertion(), null).hasHexString(null);
+            Assertions.fail("LongAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.longAssertion(), null, "Message").hasHexString(null);
+            Assertions.fail("LongAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.longAssertion(), 11L).hasHexString(null);
+            Assertions.fail("LongAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
+        }
+        try {
+            initialize(Raw.longAssertion(), 11L, "Message").hasHexString(null);
+            Assertions.fail("LongAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
+        }
+        try {
             initialize(Raw.longAssertion(), 11L).hasHexString("0000000000000011");
             Assertions.fail("LongAssertion test fail");
         } catch (AssertionError ex) {
