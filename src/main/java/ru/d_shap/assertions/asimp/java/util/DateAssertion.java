@@ -608,7 +608,6 @@ public class DateAssertion extends ReferenceAssertion<Date> {
     }
 
     private CalendarAssertion createCalendarAssertion() {
-        checkActualIsNotNull();
         Calendar calendar = convertValue(getActual(), null, Calendar.class);
         return initializeAssertion(Raw.calendarAssertion(), calendar);
     }
