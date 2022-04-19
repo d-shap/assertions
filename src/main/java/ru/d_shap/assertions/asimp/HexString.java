@@ -77,9 +77,9 @@ public final class HexString implements CharSequence {
      * @param value the specified short value.
      */
     public void addValue(final short value) {
-        byte part1 = (byte) (value >> 8 & 0xFF);
+        byte part1 = (byte) (value >> 8);
         addValue(part1);
-        byte part2 = (byte) (value & 0xFF);
+        byte part2 = (byte) value;
         addValue(part2);
     }
 
@@ -89,13 +89,13 @@ public final class HexString implements CharSequence {
      * @param value the specified int value.
      */
     public void addValue(final int value) {
-        byte part1 = (byte) (value >> 24 & 0xFF);
+        byte part1 = (byte) (value >> 24);
         addValue(part1);
-        byte part2 = (byte) (value >> 16 & 0xFF);
+        byte part2 = (byte) (value >> 16);
         addValue(part2);
-        byte part3 = (byte) (value >> 8 & 0xFF);
+        byte part3 = (byte) (value >> 8);
         addValue(part3);
-        byte part4 = (byte) (value & 0xFF);
+        byte part4 = (byte) value;
         addValue(part4);
     }
 
@@ -105,21 +105,21 @@ public final class HexString implements CharSequence {
      * @param value the specified long value.
      */
     public void addValue(final long value) {
-        byte part1 = (byte) (value >> 56 & 0xFF);
+        byte part1 = (byte) (value >> 56);
         addValue(part1);
-        byte part2 = (byte) (value >> 48 & 0xFF);
+        byte part2 = (byte) (value >> 48);
         addValue(part2);
-        byte part3 = (byte) (value >> 40 & 0xFF);
+        byte part3 = (byte) (value >> 40);
         addValue(part3);
-        byte part4 = (byte) (value >> 32 & 0xFF);
+        byte part4 = (byte) (value >> 32);
         addValue(part4);
-        byte part5 = (byte) (value >> 24 & 0xFF);
+        byte part5 = (byte) (value >> 24);
         addValue(part5);
-        byte part6 = (byte) (value >> 16 & 0xFF);
+        byte part6 = (byte) (value >> 16);
         addValue(part6);
-        byte part7 = (byte) (value >> 8 & 0xFF);
+        byte part7 = (byte) (value >> 8);
         addValue(part7);
-        byte part8 = (byte) (value & 0xFF);
+        byte part8 = (byte) value;
         addValue(part8);
     }
 
