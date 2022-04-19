@@ -879,4 +879,344 @@ public final class AssertionErrorBuilderTest extends AssertionTest {
         Assertions.assertThat(AssertionErrorBuilder.getInstance(null, Integer.class, "actual").addActual().addExpectedWithDelta(12345, 67890, 15).build()).causeIsNull();
     }
 
+    /**
+     * {@link AssertionErrorBuilder} class test.
+     */
+    @Test
+    public void buildWithActualDeltaAndExpectedTest() {
+        Assertions.assertThat(AssertionErrorBuilder.getInstance().addActualWithDelta("delta").addExpected(12345).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance().addActualWithDelta("delta").addExpected(12345).build()).hasMessage("");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance().addActualWithDelta("delta").addExpected(12345).build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null).addActualWithDelta("delta").addExpected(12345).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null).addActualWithDelta("delta").addExpected(12345).build()).hasMessage("");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null).addActualWithDelta("delta").addExpected(12345).build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, null, null).addActualWithDelta("delta").addExpected(12345).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, null, null).addActualWithDelta("delta").addExpected(12345).build()).hasMessage("");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, null, null).addActualWithDelta("delta").addExpected(12345).build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription()).addActualWithDelta("delta").addExpected(12345).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription()).addActualWithDelta("delta").addExpected(12345).build()).hasMessage("");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription()).addActualWithDelta("delta").addExpected(12345).build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription(), null, null).addActualWithDelta("delta").addExpected(12345).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription(), null, null).addActualWithDelta("delta").addExpected(12345).build()).hasMessage("");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription(), null, null).addActualWithDelta("delta").addExpected(12345).build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message")).addActualWithDelta("delta").addExpected(12345).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message")).addActualWithDelta("delta").addExpected(12345).build()).hasMessage("message.");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message")).addActualWithDelta("delta").addExpected(12345).build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), null, null).addActualWithDelta("delta").addExpected(12345).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), null, null).addActualWithDelta("delta").addExpected(12345).build()).hasMessage("message.");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), null, null).addActualWithDelta("delta").addExpected(12345).build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, Integer.class, null).addActualWithDelta("delta").addExpected(12345).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, Integer.class, null).addActualWithDelta("delta").addExpected(12345).build()).hasMessage("Expected:<12345> but was:<<NULL>±delta>");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, Integer.class, null).addActualWithDelta("delta").addExpected(12345).build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, null).addActualWithDelta("delta").addExpected(12345).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, null).addActualWithDelta("delta").addExpected(12345).build()).hasMessage("Expected:<12345> but was:<<NULL>±delta>");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, null).addActualWithDelta("delta").addExpected(12345).build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, Integer.class, null).addActualWithDelta("delta").addExpected("12345").build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, Integer.class, null).addActualWithDelta("delta").addExpected("12345").build()).hasMessage("Expected:<12345> but was:<<NULL>±delta>");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, Integer.class, null).addActualWithDelta("delta").addExpected("12345").build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, null).addActualWithDelta("delta").addExpected("12345").build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, null).addActualWithDelta("delta").addExpected("12345").build()).hasMessage("Expected:<12345> but was:<<NULL>±delta>");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, null).addActualWithDelta("delta").addExpected("12345").build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, "actual").addActualWithDelta("delta").addExpected("12345").build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, "actual").addActualWithDelta("delta").addExpected("12345").build()).hasMessage("Expected:<12345> but was:<actual±delta>");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, "actual").addActualWithDelta("delta").addExpected("12345").build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, "actual").addActualWithDelta("delta").addExpected(12345).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, "actual").addActualWithDelta("delta").addExpected(12345).build()).hasMessage("Expected:<12345> but was:<actual±delta>");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, "actual").addActualWithDelta("delta").addExpected(12345).build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, "actual").addActualWithDelta(15).addExpected("12345").build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, "actual").addActualWithDelta(15).addExpected("12345").build()).hasMessage("Expected:<12345> but was:<actual±15>");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, "actual").addActualWithDelta(15).addExpected("12345").build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, "actual").addActualWithDelta(15).addExpected(12345).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, "actual").addActualWithDelta(15).addExpected(12345).build()).hasMessage("Expected:<12345> but was:<actual±15>");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, "actual").addActualWithDelta(15).addExpected(12345).build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, Integer.class, "actual").addActualWithDelta("delta").addExpected("12345").build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, Integer.class, "actual").addActualWithDelta("delta").addExpected("12345").build()).hasMessage("Expected:<12345> but was:<actual±delta>");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, Integer.class, "actual").addActualWithDelta("delta").addExpected("12345").build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, Integer.class, "actual").addActualWithDelta("delta").addExpected(12345).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, Integer.class, "actual").addActualWithDelta("delta").addExpected(12345).build()).hasMessage("Expected:<12345> but was:<actual±delta>");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, Integer.class, "actual").addActualWithDelta("delta").addExpected(12345).build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, Integer.class, "actual").addActualWithDelta(15).addExpected("12345").build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, Integer.class, "actual").addActualWithDelta(15).addExpected("12345").build()).hasMessage("Expected:<12345> but was:<actual±15>");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, Integer.class, "actual").addActualWithDelta(15).addExpected("12345").build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, Integer.class, "actual").addActualWithDelta(15).addExpected(12345).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, Integer.class, "actual").addActualWithDelta(15).addExpected(12345).build()).hasMessage("Expected:<12345> but was:<actual±15>");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, Integer.class, "actual").addActualWithDelta(15).addExpected(12345).build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), String.class, "actual").addActualWithDelta("delta").addExpected(12345).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), String.class, "actual").addActualWithDelta("delta").addExpected(12345).build()).hasMessage("message.\n\tExpected:<12345> but was:<actual±delta>");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), String.class, "actual").addActualWithDelta("delta").addExpected(12345).build()).causeIsNull();
+    }
+
+    /**
+     * {@link AssertionErrorBuilder} class test.
+     */
+    @Test
+    public void buildWithActualDeltaAndExpected2Test() {
+        Assertions.assertThat(AssertionErrorBuilder.getInstance().addActualWithDelta("delta").addExpected(12345, 67890).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance().addActualWithDelta("delta").addExpected(12345, 67890).build()).hasMessage("");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance().addActualWithDelta("delta").addExpected(12345, 67890).build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null).addActualWithDelta("delta").addExpected(12345, 67890).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null).addActualWithDelta("delta").addExpected(12345, 67890).build()).hasMessage("");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null).addActualWithDelta("delta").addExpected(12345, 67890).build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, null, null).addActualWithDelta("delta").addExpected(12345, 67890).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, null, null).addActualWithDelta("delta").addExpected(12345, 67890).build()).hasMessage("");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, null, null).addActualWithDelta("delta").addExpected(12345, 67890).build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription()).addActualWithDelta("delta").addExpected(12345, 67890).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription()).addActualWithDelta("delta").addExpected(12345, 67890).build()).hasMessage("");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription()).addActualWithDelta("delta").addExpected(12345, 67890).build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription(), null, null).addActualWithDelta("delta").addExpected(12345, 67890).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription(), null, null).addActualWithDelta("delta").addExpected(12345, 67890).build()).hasMessage("");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription(), null, null).addActualWithDelta("delta").addExpected(12345, 67890).build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message")).addActualWithDelta("delta").addExpected(12345, 67890).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message")).addActualWithDelta("delta").addExpected(12345, 67890).build()).hasMessage("message.");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message")).addActualWithDelta("delta").addExpected(12345, 67890).build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), null, null).addActualWithDelta("delta").addExpected(12345, 67890).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), null, null).addActualWithDelta("delta").addExpected(12345, 67890).build()).hasMessage("message.");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), null, null).addActualWithDelta("delta").addExpected(12345, 67890).build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, Integer.class, null).addActualWithDelta("delta").addExpected(12345, 67890).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, Integer.class, null).addActualWithDelta("delta").addExpected(12345, 67890).build()).hasMessage("Expected:<12345:67890> but was:<<NULL>±delta>");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, Integer.class, null).addActualWithDelta("delta").addExpected(12345, 67890).build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, null).addActualWithDelta("delta").addExpected(12345, 67890).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, null).addActualWithDelta("delta").addExpected(12345, 67890).build()).hasMessage("Expected:<12345:67890> but was:<<NULL>±delta>");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, null).addActualWithDelta("delta").addExpected(12345, 67890).build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, Integer.class, null).addActualWithDelta("delta").addExpected("12345", "67890").build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, Integer.class, null).addActualWithDelta("delta").addExpected("12345", "67890").build()).hasMessage("Expected:<12345:67890> but was:<<NULL>±delta>");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, Integer.class, null).addActualWithDelta("delta").addExpected("12345", "67890").build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, null).addActualWithDelta("delta").addExpected("12345", "67890").build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, null).addActualWithDelta("delta").addExpected("12345", "67890").build()).hasMessage("Expected:<12345:67890> but was:<<NULL>±delta>");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, null).addActualWithDelta("delta").addExpected("12345", "67890").build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, "actual").addActualWithDelta("delta").addExpected("12345", "67890").build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, "actual").addActualWithDelta("delta").addExpected("12345", "67890").build()).hasMessage("Expected:<12345:67890> but was:<actual±delta>");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, "actual").addActualWithDelta("delta").addExpected("12345", "67890").build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, "actual").addActualWithDelta("delta").addExpected(12345, 67890).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, "actual").addActualWithDelta("delta").addExpected(12345, 67890).build()).hasMessage("Expected:<12345:67890> but was:<actual±delta>");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, "actual").addActualWithDelta("delta").addExpected(12345, 67890).build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, "actual").addActualWithDelta(15).addExpected("12345", "67890").build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, "actual").addActualWithDelta(15).addExpected("12345", "67890").build()).hasMessage("Expected:<12345:67890> but was:<actual±15>");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, "actual").addActualWithDelta(15).addExpected("12345", "67890").build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, "actual").addActualWithDelta(15).addExpected(12345, 67890).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, "actual").addActualWithDelta(15).addExpected(12345, 67890).build()).hasMessage("Expected:<12345:67890> but was:<actual±15>");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, "actual").addActualWithDelta(15).addExpected(12345, 67890).build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, Integer.class, "actual").addActualWithDelta("delta").addExpected("12345", "67890").build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, Integer.class, "actual").addActualWithDelta("delta").addExpected("12345", "67890").build()).hasMessage("Expected:<12345:67890> but was:<actual±delta>");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, Integer.class, "actual").addActualWithDelta("delta").addExpected("12345", "67890").build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, Integer.class, "actual").addActualWithDelta("delta").addExpected(12345, 67890).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, Integer.class, "actual").addActualWithDelta("delta").addExpected(12345, 67890).build()).hasMessage("Expected:<12345:67890> but was:<actual±delta>");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, Integer.class, "actual").addActualWithDelta("delta").addExpected(12345, 67890).build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, Integer.class, "actual").addActualWithDelta(15).addExpected("12345", "67890").build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, Integer.class, "actual").addActualWithDelta(15).addExpected("12345", "67890").build()).hasMessage("Expected:<12345:67890> but was:<actual±15>");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, Integer.class, "actual").addActualWithDelta(15).addExpected("12345", "67890").build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, Integer.class, "actual").addActualWithDelta(15).addExpected(12345, 67890).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, Integer.class, "actual").addActualWithDelta(15).addExpected(12345, 67890).build()).hasMessage("Expected:<12345:67890> but was:<actual±15>");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, Integer.class, "actual").addActualWithDelta(15).addExpected(12345, 67890).build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), String.class, "actual").addActualWithDelta("delta").addExpected(12345, 67890).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), String.class, "actual").addActualWithDelta("delta").addExpected(12345, 67890).build()).hasMessage("message.\n\tExpected:<12345:67890> but was:<actual±delta>");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), String.class, "actual").addActualWithDelta("delta").addExpected(12345, 67890).build()).causeIsNull();
+    }
+
+    /**
+     * {@link AssertionErrorBuilder} class test.
+     */
+    @Test
+    public void buildWithActualDeltaAndExpectedDeltaTest() {
+        Assertions.assertThat(AssertionErrorBuilder.getInstance().addActualWithDelta("delta").addExpectedWithDelta(12345, 15).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance().addActualWithDelta("delta").addExpectedWithDelta(12345, 15).build()).hasMessage("");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance().addActualWithDelta("delta").addExpectedWithDelta(12345, 15).build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null).addActualWithDelta("delta").addExpectedWithDelta(12345, 15).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null).addActualWithDelta("delta").addExpectedWithDelta(12345, 15).build()).hasMessage("");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null).addActualWithDelta("delta").addExpectedWithDelta(12345, 15).build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, null, null).addActualWithDelta("delta").addExpectedWithDelta(12345, 15).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, null, null).addActualWithDelta("delta").addExpectedWithDelta(12345, 15).build()).hasMessage("");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, null, null).addActualWithDelta("delta").addExpectedWithDelta(12345, 15).build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription()).addActualWithDelta("delta").addExpectedWithDelta(12345, 15).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription()).addActualWithDelta("delta").addExpectedWithDelta(12345, 15).build()).hasMessage("");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription()).addActualWithDelta("delta").addExpectedWithDelta(12345, 15).build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription(), null, null).addActualWithDelta("delta").addExpectedWithDelta(12345, 15).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription(), null, null).addActualWithDelta("delta").addExpectedWithDelta(12345, 15).build()).hasMessage("");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription(), null, null).addActualWithDelta("delta").addExpectedWithDelta(12345, 15).build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message")).addActualWithDelta("delta").addExpectedWithDelta(12345, 15).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message")).addActualWithDelta("delta").addExpectedWithDelta(12345, 15).build()).hasMessage("message.");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message")).addActualWithDelta("delta").addExpectedWithDelta(12345, 15).build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), null, null).addActualWithDelta("delta").addExpectedWithDelta(12345, 15).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), null, null).addActualWithDelta("delta").addExpectedWithDelta(12345, 15).build()).hasMessage("message.");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), null, null).addActualWithDelta("delta").addExpectedWithDelta(12345, 15).build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, Integer.class, null).addActualWithDelta("delta").addExpectedWithDelta(12345, 15).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, Integer.class, null).addActualWithDelta("delta").addExpectedWithDelta(12345, 15).build()).hasMessage("Expected:<12345±15> but was:<<NULL>±delta>");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, Integer.class, null).addActualWithDelta("delta").addExpectedWithDelta(12345, 15).build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, null).addActualWithDelta("delta").addExpectedWithDelta(12345, 15).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, null).addActualWithDelta("delta").addExpectedWithDelta(12345, 15).build()).hasMessage("Expected:<12345±15> but was:<<NULL>±delta>");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, null).addActualWithDelta("delta").addExpectedWithDelta(12345, 15).build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, Integer.class, null).addActualWithDelta("delta").addExpectedWithDelta("12345", "15").build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, Integer.class, null).addActualWithDelta("delta").addExpectedWithDelta("12345", "15").build()).hasMessage("Expected:<12345±15> but was:<<NULL>±delta>");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, Integer.class, null).addActualWithDelta("delta").addExpectedWithDelta("12345", "15").build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, null).addActualWithDelta("delta").addExpectedWithDelta("12345", "15").build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, null).addActualWithDelta("delta").addExpectedWithDelta("12345", "15").build()).hasMessage("Expected:<12345±15> but was:<<NULL>±delta>");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, null).addActualWithDelta("delta").addExpectedWithDelta("12345", "15").build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, "actual").addActualWithDelta("delta").addExpectedWithDelta("12345", "15").build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, "actual").addActualWithDelta("delta").addExpectedWithDelta("12345", "15").build()).hasMessage("Expected:<12345±15> but was:<actual±delta>");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, "actual").addActualWithDelta("delta").addExpectedWithDelta("12345", "15").build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, "actual").addActualWithDelta("delta").addExpectedWithDelta(12345, 15).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, "actual").addActualWithDelta("delta").addExpectedWithDelta(12345, 15).build()).hasMessage("Expected:<12345±15> but was:<actual±delta>");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, "actual").addActualWithDelta("delta").addExpectedWithDelta(12345, 15).build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, "actual").addActualWithDelta(15).addExpectedWithDelta("12345", "15").build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, "actual").addActualWithDelta(15).addExpectedWithDelta("12345", "15").build()).hasMessage("Expected:<12345±15> but was:<actual±15>");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, "actual").addActualWithDelta(15).addExpectedWithDelta("12345", "15").build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, "actual").addActualWithDelta(15).addExpectedWithDelta(12345, 15).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, "actual").addActualWithDelta(15).addExpectedWithDelta(12345, 15).build()).hasMessage("Expected:<12345±15> but was:<actual±15>");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, "actual").addActualWithDelta(15).addExpectedWithDelta(12345, 15).build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, Integer.class, "actual").addActualWithDelta("delta").addExpectedWithDelta("12345", "15").build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, Integer.class, "actual").addActualWithDelta("delta").addExpectedWithDelta("12345", "15").build()).hasMessage("Expected:<12345±15> but was:<actual±delta>");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, Integer.class, "actual").addActualWithDelta("delta").addExpectedWithDelta("12345", "15").build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, Integer.class, "actual").addActualWithDelta("delta").addExpectedWithDelta(12345, 15).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, Integer.class, "actual").addActualWithDelta("delta").addExpectedWithDelta(12345, 15).build()).hasMessage("Expected:<12345±15> but was:<actual±delta>");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, Integer.class, "actual").addActualWithDelta("delta").addExpectedWithDelta(12345, 15).build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, Integer.class, "actual").addActualWithDelta(15).addExpectedWithDelta("12345", "15").build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, Integer.class, "actual").addActualWithDelta(15).addExpectedWithDelta("12345", "15").build()).hasMessage("Expected:<12345±15> but was:<actual±15>");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, Integer.class, "actual").addActualWithDelta(15).addExpectedWithDelta("12345", "15").build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, Integer.class, "actual").addActualWithDelta(15).addExpectedWithDelta(12345, 15).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, Integer.class, "actual").addActualWithDelta(15).addExpectedWithDelta(12345, 15).build()).hasMessage("Expected:<12345±15> but was:<actual±15>");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, Integer.class, "actual").addActualWithDelta(15).addExpectedWithDelta(12345, 15).build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), String.class, "actual").addActualWithDelta("delta").addExpectedWithDelta(12345, 15).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), String.class, "actual").addActualWithDelta("delta").addExpectedWithDelta(12345, 15).build()).hasMessage("message.\n\tExpected:<12345±15> but was:<actual±delta>");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), String.class, "actual").addActualWithDelta("delta").addExpectedWithDelta(12345, 15).build()).causeIsNull();
+    }
+
+    /**
+     * {@link AssertionErrorBuilder} class test.
+     */
+    @Test
+    public void buildWithActualDeltaAndExpected2DeltaTest() {
+        Assertions.assertThat(AssertionErrorBuilder.getInstance().addActualWithDelta("delta").addExpectedWithDelta(12345, 67890, 15).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance().addActualWithDelta("delta").addExpectedWithDelta(12345, 67890, 15).build()).hasMessage("");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance().addActualWithDelta("delta").addExpectedWithDelta(12345, 67890, 15).build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null).addActualWithDelta("delta").addExpectedWithDelta(12345, 67890, 15).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null).addActualWithDelta("delta").addExpectedWithDelta(12345, 67890, 15).build()).hasMessage("");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null).addActualWithDelta("delta").addExpectedWithDelta(12345, 67890, 15).build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, null, null).addActualWithDelta("delta").addExpectedWithDelta(12345, 67890, 15).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, null, null).addActualWithDelta("delta").addExpectedWithDelta(12345, 67890, 15).build()).hasMessage("");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, null, null).addActualWithDelta("delta").addExpectedWithDelta(12345, 67890, 15).build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription()).addActualWithDelta("delta").addExpectedWithDelta(12345, 67890, 15).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription()).addActualWithDelta("delta").addExpectedWithDelta(12345, 67890, 15).build()).hasMessage("");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription()).addActualWithDelta("delta").addExpectedWithDelta(12345, 67890, 15).build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription(), null, null).addActualWithDelta("delta").addExpectedWithDelta(12345, 67890, 15).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription(), null, null).addActualWithDelta("delta").addExpectedWithDelta(12345, 67890, 15).build()).hasMessage("");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription(), null, null).addActualWithDelta("delta").addExpectedWithDelta(12345, 67890, 15).build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message")).addActualWithDelta("delta").addExpectedWithDelta(12345, 67890, 15).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message")).addActualWithDelta("delta").addExpectedWithDelta(12345, 67890, 15).build()).hasMessage("message.");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message")).addActualWithDelta("delta").addExpectedWithDelta(12345, 67890, 15).build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), null, null).addActualWithDelta("delta").addExpectedWithDelta(12345, 67890, 15).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), null, null).addActualWithDelta("delta").addExpectedWithDelta(12345, 67890, 15).build()).hasMessage("message.");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), null, null).addActualWithDelta("delta").addExpectedWithDelta(12345, 67890, 15).build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, Integer.class, null).addActualWithDelta("delta").addExpectedWithDelta(12345, 67890, 15).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, Integer.class, null).addActualWithDelta("delta").addExpectedWithDelta(12345, 67890, 15).build()).hasMessage("Expected:<12345:67890±15> but was:<<NULL>±delta>");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, Integer.class, null).addActualWithDelta("delta").addExpectedWithDelta(12345, 67890, 15).build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, null).addActualWithDelta("delta").addExpectedWithDelta(12345, 67890, 15).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, null).addActualWithDelta("delta").addExpectedWithDelta(12345, 67890, 15).build()).hasMessage("Expected:<12345:67890±15> but was:<<NULL>±delta>");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, null).addActualWithDelta("delta").addExpectedWithDelta(12345, 67890, 15).build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, Integer.class, null).addActualWithDelta("delta").addExpectedWithDelta("12345", "67890", "15").build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, Integer.class, null).addActualWithDelta("delta").addExpectedWithDelta("12345", "67890", "15").build()).hasMessage("Expected:<12345:67890±15> but was:<<NULL>±delta>");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, Integer.class, null).addActualWithDelta("delta").addExpectedWithDelta("12345", "67890", "15").build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, null).addActualWithDelta("delta").addExpectedWithDelta("12345", "67890", "15").build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, null).addActualWithDelta("delta").addExpectedWithDelta("12345", "67890", "15").build()).hasMessage("Expected:<12345:67890±15> but was:<<NULL>±delta>");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, null).addActualWithDelta("delta").addExpectedWithDelta("12345", "67890", "15").build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, "actual").addActualWithDelta("delta").addExpectedWithDelta("12345", "67890", "15").build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, "actual").addActualWithDelta("delta").addExpectedWithDelta("12345", "67890", "15").build()).hasMessage("Expected:<12345:67890±15> but was:<actual±delta>");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, "actual").addActualWithDelta("delta").addExpectedWithDelta("12345", "67890", "15").build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, "actual").addActualWithDelta("delta").addExpectedWithDelta(12345, 67890, 15).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, "actual").addActualWithDelta("delta").addExpectedWithDelta(12345, 67890, 15).build()).hasMessage("Expected:<12345:67890±15> but was:<actual±delta>");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, "actual").addActualWithDelta("delta").addExpectedWithDelta(12345, 67890, 15).build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, "actual").addActualWithDelta(15).addExpectedWithDelta("12345", "67890", "15").build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, "actual").addActualWithDelta(15).addExpectedWithDelta("12345", "67890", "15").build()).hasMessage("Expected:<12345:67890±15> but was:<actual±15>");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, "actual").addActualWithDelta(15).addExpectedWithDelta("12345", "67890", "15").build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, "actual").addActualWithDelta(15).addExpectedWithDelta(12345, 67890, 15).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, "actual").addActualWithDelta(15).addExpectedWithDelta(12345, 67890, 15).build()).hasMessage("Expected:<12345:67890±15> but was:<actual±15>");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, "actual").addActualWithDelta(15).addExpectedWithDelta(12345, 67890, 15).build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, Integer.class, "actual").addActualWithDelta("delta").addExpectedWithDelta("12345", "67890", "15").build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, Integer.class, "actual").addActualWithDelta("delta").addExpectedWithDelta("12345", "67890", "15").build()).hasMessage("Expected:<12345:67890±15> but was:<actual±delta>");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, Integer.class, "actual").addActualWithDelta("delta").addExpectedWithDelta("12345", "67890", "15").build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, Integer.class, "actual").addActualWithDelta("delta").addExpectedWithDelta(12345, 67890, 15).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, Integer.class, "actual").addActualWithDelta("delta").addExpectedWithDelta(12345, 67890, 15).build()).hasMessage("Expected:<12345:67890±15> but was:<actual±delta>");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, Integer.class, "actual").addActualWithDelta("delta").addExpectedWithDelta(12345, 67890, 15).build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, Integer.class, "actual").addActualWithDelta(15).addExpectedWithDelta("12345", "67890", "15").build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, Integer.class, "actual").addActualWithDelta(15).addExpectedWithDelta("12345", "67890", "15").build()).hasMessage("Expected:<12345:67890±15> but was:<actual±15>");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, Integer.class, "actual").addActualWithDelta(15).addExpectedWithDelta("12345", "67890", "15").build()).causeIsNull();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, Integer.class, "actual").addActualWithDelta(15).addExpectedWithDelta(12345, 67890, 15).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, Integer.class, "actual").addActualWithDelta(15).addExpectedWithDelta(12345, 67890, 15).build()).hasMessage("Expected:<12345:67890±15> but was:<actual±15>");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, Integer.class, "actual").addActualWithDelta(15).addExpectedWithDelta(12345, 67890, 15).build()).causeIsNull();
+    }
+
 }
