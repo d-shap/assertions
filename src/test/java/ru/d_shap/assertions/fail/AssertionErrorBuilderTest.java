@@ -1788,9 +1788,9 @@ public final class AssertionErrorBuilderTest extends AssertionTest {
         Assertions.assertThat(AssertionErrorBuilder.getInstance(null, Integer.class, "actual").addActual().addRawExpectedWithDelta(true, false, true, Boolean.class).build()).hasMessage("Expected:<T:F±T> but was:<actual>");
         Assertions.assertThat(AssertionErrorBuilder.getInstance(null, Integer.class, "actual").addActual().addRawExpectedWithDelta(true, false, true, Boolean.class).build()).causeIsNull();
 
-        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), String.class, "actual").addRawExpectedWithDelta(12345, 67890, 15, Boolean.class).build()).isInstanceOf(AssertionError.class);
-        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), String.class, "actual").addRawExpectedWithDelta(12345, 67890, 15, Boolean.class).build()).hasMessage("message.\n\tExpected:<12345:67890±15>");
-        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), String.class, "actual").addRawExpectedWithDelta(12345, 67890, 15, Boolean.class).build()).causeIsNull();
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), String.class, "actual").addActual().addRawExpectedWithDelta(12345, 67890, 15, Boolean.class).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), String.class, "actual").addActual().addRawExpectedWithDelta(12345, 67890, 15, Boolean.class).build()).hasMessage("message.\n\tExpected:<12345:67890±15> but was:<actual>");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), String.class, "actual").addActual().addRawExpectedWithDelta(12345, 67890, 15, Boolean.class).build()).causeIsNull();
     }
 
     /**
