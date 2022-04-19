@@ -2509,6 +2509,18 @@ public final class ShortArrayAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: from.\n\tThe argument's value should be less than or equal to the maximum value: 2.");
         }
         try {
+            initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).hasHexString(3, 3, null);
+            Assertions.fail("ShortArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should be valid: from.\n\tThe argument's value should be less than or equal to the maximum value: 2.");
+        }
+        try {
+            initialize(Raw.shortArrayAssertion(), new short[]{1, 2}, "Message").hasHexString(3, 3, null);
+            Assertions.fail("ShortArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: from.\n\tThe argument's value should be less than or equal to the maximum value: 2.");
+        }
+        try {
             initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).hasHexString(1, 0, "");
             Assertions.fail("ShortArrayAssertion test fail");
         } catch (AssertionError ex) {
@@ -2516,6 +2528,18 @@ public final class ShortArrayAssertionTest extends AssertionTest {
         }
         try {
             initialize(Raw.shortArrayAssertion(), new short[]{1, 2}, "Message").hasHexString(1, 0, "");
+            Assertions.fail("ShortArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: to.\n\tThe argument's value should be greater than or equal to the minimum value: 1.");
+        }
+        try {
+            initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).hasHexString(1, 0, null);
+            Assertions.fail("ShortArrayAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should be valid: to.\n\tThe argument's value should be greater than or equal to the minimum value: 1.");
+        }
+        try {
+            initialize(Raw.shortArrayAssertion(), new short[]{1, 2}, "Message").hasHexString(1, 0, null);
             Assertions.fail("ShortArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: to.\n\tThe argument's value should be greater than or equal to the minimum value: 1.");
