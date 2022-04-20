@@ -2836,10 +2836,12 @@ public final class SortedMapAssertionTest extends AssertionTest {
      */
     @Test
     public void toHeadMapCountTest() {
-        initialize(Raw.<String, String>sortedMapAssertion(), createTreeMap("key1", "value1", "key2", "value2", "key3", "value3")).toHeadMap(1).containsExactlyInOrder(createHashMap("key1", "value1"));
-        initialize(Raw.<String, String>sortedMapAssertion(), createTreeMap("key1", "value1", "key2", "value2", "key3", "value3")).toHeadMap(2).containsExactlyInOrder(createHashMap("key1", "value1", "key2", "value2"));
-        initialize(Raw.<String, String>sortedMapAssertion(), createTreeMap("key1", "value1", "key2", "value2", "key3", "value3")).toHeadMap(3).containsExactlyInOrder(createHashMap("key1", "value1", "key2", "value2", "key3", "value3"));
-        initialize(Raw.<String, String>sortedMapAssertion(), createTreeMap("key1", "value1", "key2", "value2", "key3", "value3")).toHeadMap(4).containsExactlyInOrder(createHashMap("key1", "value1", "key2", "value2", "key3", "value3"));
+        initialize(Raw.<String, String>sortedMapAssertion(), createTreeMap("key1", "value1", "key2", "value2", "key3", "value3", "key4", "value4", "key5", "value5")).toHeadMap(1).containsExactlyInOrder(createHashMap("key1", "value1"));
+        initialize(Raw.<String, String>sortedMapAssertion(), createTreeMap("key1", "value1", "key2", "value2", "key3", "value3", "key4", "value4", "key5", "value5")).toHeadMap(2).containsExactlyInOrder(createHashMap("key1", "value1", "key2", "value2"));
+        initialize(Raw.<String, String>sortedMapAssertion(), createTreeMap("key1", "value1", "key2", "value2", "key3", "value3", "key4", "value4", "key5", "value5")).toHeadMap(3).containsExactlyInOrder(createHashMap("key1", "value1", "key2", "value2", "key3", "value3"));
+        initialize(Raw.<String, String>sortedMapAssertion(), createTreeMap("key1", "value1", "key2", "value2", "key3", "value3", "key4", "value4", "key5", "value5")).toHeadMap(4).containsExactlyInOrder(createHashMap("key1", "value1", "key2", "value2", "key3", "value3", "key4", "value4"));
+        initialize(Raw.<String, String>sortedMapAssertion(), createTreeMap("key1", "value1", "key2", "value2", "key3", "value3", "key4", "value4", "key5", "value5")).toHeadMap(5).containsExactlyInOrder(createHashMap("key1", "value1", "key2", "value2", "key3", "value3", "key4", "value4", "key5", "value5"));
+        initialize(Raw.<String, String>sortedMapAssertion(), createTreeMap("key1", "value1", "key2", "value2", "key3", "value3", "key4", "value4", "key5", "value5")).toHeadMap(6).containsExactlyInOrder(createHashMap("key1", "value1", "key2", "value2", "key3", "value3", "key4", "value4", "key5", "value5"));
 
         SortedMap<String, String> sortedMap = createTreeMap("key1", "value1", "key2", "value2", "key3", "value3");
         initialize(Raw.<String, String>sortedMapAssertion(), sortedMap).toHeadMap(2).isNotSameAs(sortedMap);
@@ -3275,10 +3277,12 @@ public final class SortedMapAssertionTest extends AssertionTest {
      */
     @Test
     public void toTailMapCountTest() {
-        initialize(Raw.<String, String>sortedMapAssertion(), createTreeMap("key1", "value1", "key2", "value2", "key3", "value3")).toTailMap(1).containsExactlyInOrder(createHashMap("key3", "value3"));
-        initialize(Raw.<String, String>sortedMapAssertion(), createTreeMap("key1", "value1", "key2", "value2", "key3", "value3")).toTailMap(2).containsExactlyInOrder(createHashMap("key2", "value2", "key3", "value3"));
-        initialize(Raw.<String, String>sortedMapAssertion(), createTreeMap("key1", "value1", "key2", "value2", "key3", "value3")).toTailMap(3).containsExactlyInOrder(createHashMap("key1", "value1", "key2", "value2", "key3", "value3"));
-        initialize(Raw.<String, String>sortedMapAssertion(), createTreeMap("key1", "value1", "key2", "value2", "key3", "value3")).toTailMap(4).containsExactlyInOrder(createHashMap("key1", "value1", "key2", "value2", "key3", "value3"));
+        initialize(Raw.<String, String>sortedMapAssertion(), createTreeMap("key1", "value1", "key2", "value2", "key3", "value3", "key4", "value4", "key5", "value5")).toTailMap(1).containsExactlyInOrder(createHashMap("key5", "value5"));
+        initialize(Raw.<String, String>sortedMapAssertion(), createTreeMap("key1", "value1", "key2", "value2", "key3", "value3", "key4", "value4", "key5", "value5")).toTailMap(2).containsExactlyInOrder(createHashMap("key4", "value4", "key5", "value5"));
+        initialize(Raw.<String, String>sortedMapAssertion(), createTreeMap("key1", "value1", "key2", "value2", "key3", "value3", "key4", "value4", "key5", "value5")).toTailMap(3).containsExactlyInOrder(createHashMap("key3", "value3", "key4", "value4", "key5", "value5"));
+        initialize(Raw.<String, String>sortedMapAssertion(), createTreeMap("key1", "value1", "key2", "value2", "key3", "value3", "key4", "value4", "key5", "value5")).toTailMap(4).containsExactlyInOrder(createHashMap("key2", "value2", "key3", "value3", "key4", "value4", "key5", "value5"));
+        initialize(Raw.<String, String>sortedMapAssertion(), createTreeMap("key1", "value1", "key2", "value2", "key3", "value3", "key4", "value4", "key5", "value5")).toTailMap(5).containsExactlyInOrder(createHashMap("key1", "value1", "key2", "value2", "key3", "value3", "key4", "value4", "key5", "value5"));
+        initialize(Raw.<String, String>sortedMapAssertion(), createTreeMap("key1", "value1", "key2", "value2", "key3", "value3", "key4", "value4", "key5", "value5")).toTailMap(6).containsExactlyInOrder(createHashMap("key1", "value1", "key2", "value2", "key3", "value3", "key4", "value4", "key5", "value5"));
 
         SortedMap<String, String> sortedMap = createTreeMap("key1", "value1", "key2", "value2", "key3", "value3");
         initialize(Raw.<String, String>sortedMapAssertion(), sortedMap).toTailMap(2).isNotSameAs(sortedMap);
