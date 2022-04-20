@@ -169,6 +169,14 @@ public final class ReflectionHelperTest extends AssertionTest {
     /**
      * {@link ReflectionHelper} class test.
      */
+    @Test(expected = NullPointerException.class)
+    public void getFieldNullClassFailTest() {
+        ReflectionHelper.getField(null, "field");
+    }
+
+    /**
+     * {@link ReflectionHelper} class test.
+     */
     @Test
     public void getFieldValueWithFieldTest() {
         ParentClass parentClass = new ParentClass();
@@ -403,6 +411,14 @@ public final class ReflectionHelperTest extends AssertionTest {
             Assertions.assertThat(ex).messageMatches(".*\\$ChildClass.wrongMethodName\\(\\)");
             Assertions.assertThat(ex).hasCause(NoSuchMethodException.class);
         }
+    }
+
+    /**
+     * {@link ReflectionHelper} class test.
+     */
+    @Test(expected = NullPointerException.class)
+    public void getMethodNullClassFailTest() {
+        ReflectionHelper.getMethod(null, "method");
     }
 
     /**
