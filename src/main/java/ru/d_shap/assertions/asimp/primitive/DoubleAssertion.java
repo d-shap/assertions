@@ -134,7 +134,7 @@ public class DoubleAssertion extends ReferenceAssertion<Double> {
                 throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_NEGATIVE_INFINITY).build();
             }
         } else {
-            if (getActual() != null && !getActual().isNaN() && !getActual().isInfinite() && Math.abs(expected - getActual()) <= delta) {
+            if (getActual() != null && Math.abs(expected - getActual()) <= delta) {
                 throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_DIFFERENT).addActualWithDelta(delta).build();
             }
         }
