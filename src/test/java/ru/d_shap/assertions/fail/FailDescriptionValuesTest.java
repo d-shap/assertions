@@ -27,6 +27,7 @@ import org.w3c.dom.Node;
 
 import ru.d_shap.assertions.AssertionTest;
 import ru.d_shap.assertions.Assertions;
+import ru.d_shap.assertions.Raw;
 
 /**
  * Tests for {@link FailDescriptionValues}.
@@ -40,6 +41,19 @@ public final class FailDescriptionValuesTest extends AssertionTest {
      */
     public FailDescriptionValuesTest() {
         super();
+    }
+
+    /**
+     * {@link FailDescriptionValues} class test.
+     */
+    @Test
+    public void initialValuesTest() {
+        FailDescriptionValues failDescriptionValues = new FailDescriptionValues(null, null);
+        Assertions.assertThat(failDescriptionValues, "_actualDefined", Raw.booleanAssertion()).isFalse();
+        Assertions.assertThat(failDescriptionValues, "_actualDeltaDefined", Raw.booleanAssertion()).isFalse();
+        Assertions.assertThat(failDescriptionValues, "_expected1Defined", Raw.booleanAssertion()).isFalse();
+        Assertions.assertThat(failDescriptionValues, "_expected2Defined", Raw.booleanAssertion()).isFalse();
+        Assertions.assertThat(failDescriptionValues, "_expectedDeltaDefined", Raw.booleanAssertion()).isFalse();
     }
 
     /**
