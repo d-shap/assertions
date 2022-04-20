@@ -585,7 +585,6 @@ public class XMLGregorianCalendarAssertion extends ReferenceAssertion<XMLGregori
     }
 
     private CalendarAssertion createCalendarAssertion() {
-        checkActualIsNotNull();
         Calendar calendar = convertValue(getActual(), null, Calendar.class, (TimeZone) null);
         return initializeAssertion(Raw.calendarAssertion(), calendar);
     }
