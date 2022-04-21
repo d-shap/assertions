@@ -100,9 +100,7 @@ public class ElementAssertion extends ReferenceAssertion<Element> {
             ConversionExceptionHolder conversionExceptionHolder = new ConversionExceptionHolder();
             Element expectedElement = convertValue(expected, conversionExceptionHolder, Element.class);
             checkArgumentIsValid(conversionExceptionHolder, "expected", Messages.Fail.Argument.IS_VALID_XML);
-            if (getActual() != null) {
-                createNodeAssertion().isNotEqualTo(expectedElement);
-            }
+            createNodeAssertion().isNotEqualTo(expectedElement);
         }
     }
 

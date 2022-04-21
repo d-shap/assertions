@@ -96,9 +96,7 @@ public class DocumentAssertion extends ReferenceAssertion<Document> {
             ConversionExceptionHolder conversionExceptionHolder = new ConversionExceptionHolder();
             Document expectedDocument = convertValue(expected, conversionExceptionHolder, Document.class);
             checkArgumentIsValid(conversionExceptionHolder, "expected", Messages.Fail.Argument.IS_VALID_XML);
-            if (getActual() != null) {
-                createNodeAssertion().isNotEqualTo(expectedDocument);
-            }
+            createNodeAssertion().isNotEqualTo(expectedDocument);
         }
     }
 
