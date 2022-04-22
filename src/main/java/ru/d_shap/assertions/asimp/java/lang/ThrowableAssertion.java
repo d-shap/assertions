@@ -226,7 +226,6 @@ public class ThrowableAssertion extends ReferenceAssertion<Throwable> {
     }
 
     private void hasCauses(final int idx, final Class<?>... expected) {
-        checkActualIsNotNull();
         if (idx < expected.length) {
             toCause().isInstanceOf(expected[idx]);
             toCause().hasCauses(idx + 1, expected);
