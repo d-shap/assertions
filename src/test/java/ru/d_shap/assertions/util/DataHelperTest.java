@@ -461,12 +461,16 @@ public final class DataHelperTest extends AssertionTest {
 
     /**
      * {@link DataHelper} class test.
+     *
+     * @throws Exception exception in test.
      */
     @Test
-    public void createDocumentBuilderFactoryTest() {
+    public void createDocumentBuilderFactoryTest() throws Exception {
         DocumentBuilderFactory documentBuilderFactory = DataHelper.createDocumentBuilderFactory();
         Assertions.assertThat(documentBuilderFactory.isNamespaceAware()).isTrue();
         Assertions.assertThat(documentBuilderFactory.isXIncludeAware()).isTrue();
+        Assertions.assertThat(documentBuilderFactory.getFeature(XMLConstants.FEATURE_SECURE_PROCESSING)).isTrue();
+        Assertions.assertThat(documentBuilderFactory.getFeature("http://apache.org/xml/features/disallow-doctype-decl")).isTrue();
 
         try {
             DataHelper.createDocumentBuilderFactory(new DocumentBuilderFactoryCreatorFailImpl());
@@ -503,6 +507,7 @@ public final class DataHelperTest extends AssertionTest {
         TransformerFactory transformerFactory = DataHelper.createTransformerFactory();
         Assertions.assertThat(transformerFactory.getAttribute(XMLConstants.ACCESS_EXTERNAL_DTD)).isEqualTo("");
         Assertions.assertThat(transformerFactory.getAttribute(XMLConstants.ACCESS_EXTERNAL_STYLESHEET)).isEqualTo("");
+        Assertions.assertThat(transformerFactory.getFeature(XMLConstants.FEATURE_SECURE_PROCESSING)).isTrue();
 
         try {
             DataHelper.createTransformerFactory(new TransformerFactoryCreatorFailImpl());
