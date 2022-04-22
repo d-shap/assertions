@@ -1243,6 +1243,18 @@ public final class ThrowableAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
+            initialize(Raw.throwableAssertion(), new Exception()).hasCauses();
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), new Exception(), "Message").hasCauses();
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
+        }
+        try {
             initialize(Raw.throwableAssertion(), new Exception()).hasCauses((Class<?>) null);
             Assertions.fail("ThrowableAssertion test fail");
         } catch (AssertionError ex) {
