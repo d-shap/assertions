@@ -19,10 +19,22 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.util;
 
+import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.SortedMap;
+import java.util.SortedSet;
 import java.util.TimeZone;
+import java.util.TreeMap;
+import java.util.TreeSet;
 
 import javax.xml.XMLConstants;
 import javax.xml.datatype.DatatypeConfigurationException;
@@ -50,6 +62,289 @@ public final class DataHelper {
 
     private DataHelper() {
         super();
+    }
+
+    /**
+     * Create iterable object.
+     *
+     * @param values the values.
+     * @param <E>    the generic type of the element.
+     *
+     * @return the created object.
+     */
+    @SafeVarargs
+    public static <E> Iterable<E> createIterable(final E... values) {
+        List<E> list = Arrays.asList(values);
+        return new IterableImpl<>(list);
+    }
+
+    /**
+     * Create iterator object.
+     *
+     * @param values the values.
+     * @param <E>    the generic type of the element.
+     *
+     * @return the created object.
+     */
+    @SafeVarargs
+    public static <E> Iterator<E> createIterator(final E... values) {
+        List<E> list = Arrays.asList(values);
+        return new IteratorImpl<>(list);
+    }
+
+    /**
+     * Create hash set object.
+     *
+     * @param values the values.
+     * @param <E>    the generic type of the element.
+     *
+     * @return the created object.
+     */
+    @SafeVarargs
+    public static <E> Set<E> createHashSet(final E... values) {
+        List<E> list = Arrays.asList(values);
+        return new LinkedHashSet<>(list);
+    }
+
+    /**
+     * Create tree set object.
+     *
+     * @param values the values.
+     * @param <E>    the generic type of the element.
+     *
+     * @return the created object.
+     */
+    @SafeVarargs
+    public static <E> SortedSet<E> createTreeSet(final E... values) {
+        SortedSet<E> sortedSet = new TreeSet<>(new NullFirstComparator<E>());
+        sortedSet.addAll(Arrays.asList(values));
+        return sortedSet;
+    }
+
+    /**
+     * Create hash map object.
+     *
+     * @param <K> the generic type of the key.
+     * @param <V> the generic type of the value.
+     *
+     * @return the created object.
+     */
+    public static <K, V> Map<K, V> createHashMap() {
+        Map<K, V> map = new LinkedHashMap<>();
+        return map;
+    }
+
+    /**
+     * Create hash map object.
+     *
+     * @param key   the key.
+     * @param value the value.
+     * @param <K>   the generic type of the key.
+     * @param <V>   the generic type of the value.
+     *
+     * @return the created object.
+     */
+    public static <K, V> Map<K, V> createHashMap(final K key, final V value) {
+        Map<K, V> map = createHashMap();
+        map.put(key, value);
+        return map;
+    }
+
+    /**
+     * Create hash map object.
+     *
+     * @param key1   the key.
+     * @param value1 the value.
+     * @param key2   the key.
+     * @param value2 the value.
+     * @param <K>    the generic type of the key.
+     * @param <V>    the generic type of the value.
+     *
+     * @return the created object.
+     */
+    public static <K, V> Map<K, V> createHashMap(final K key1, final V value1, final K key2, final V value2) {
+        Map<K, V> map = createHashMap(key1, value1);
+        map.put(key2, value2);
+        return map;
+    }
+
+    /**
+     * Create hash map object.
+     *
+     * @param key1   the key.
+     * @param value1 the value.
+     * @param key2   the key.
+     * @param value2 the value.
+     * @param key3   the key.
+     * @param value3 the value.
+     * @param <K>    the generic type of the key.
+     * @param <V>    the generic type of the value.
+     *
+     * @return the created object.
+     */
+    public static <K, V> Map<K, V> createHashMap(final K key1, final V value1, final K key2, final V value2, final K key3, final V value3) {
+        Map<K, V> map = createHashMap(key1, value1, key2, value2);
+        map.put(key3, value3);
+        return map;
+    }
+
+    /**
+     * Create hash map object.
+     *
+     * @param key1   the key.
+     * @param value1 the value.
+     * @param key2   the key.
+     * @param value2 the value.
+     * @param key3   the key.
+     * @param value3 the value.
+     * @param key4   the key.
+     * @param value4 the value.
+     * @param <K>    the generic type of the key.
+     * @param <V>    the generic type of the value.
+     *
+     * @return the created object.
+     */
+    public static <K, V> Map<K, V> createHashMap(final K key1, final V value1, final K key2, final V value2, final K key3, final V value3, final K key4, final V value4) {
+        Map<K, V> map = createHashMap(key1, value1, key2, value2, key3, value3);
+        map.put(key4, value4);
+        return map;
+    }
+
+    /**
+     * Create hash map object.
+     *
+     * @param key1   the key.
+     * @param value1 the value.
+     * @param key2   the key.
+     * @param value2 the value.
+     * @param key3   the key.
+     * @param value3 the value.
+     * @param key4   the key.
+     * @param value4 the value.
+     * @param key5   the key.
+     * @param value5 the value.
+     * @param <K>    the generic type of the key.
+     * @param <V>    the generic type of the value.
+     *
+     * @return the created object.
+     */
+    public static <K, V> Map<K, V> createHashMap(final K key1, final V value1, final K key2, final V value2, final K key3, final V value3, final K key4, final V value4, final K key5, final V value5) {
+        Map<K, V> map = createHashMap(key1, value1, key2, value2, key3, value3, key4, value4);
+        map.put(key5, value5);
+        return map;
+    }
+
+    /**
+     * Create tree map object.
+     *
+     * @param <K> the generic type of the key.
+     * @param <V> the generic type of the value.
+     *
+     * @return the created object.
+     */
+    public static <K, V> SortedMap<K, V> createTreeMap() {
+        SortedMap<K, V> sortedMap = new TreeMap<>(new NullFirstComparator<K>());
+        return sortedMap;
+    }
+
+    /**
+     * Create tree map object.
+     *
+     * @param key   the key.
+     * @param value the value.
+     * @param <K>   the generic type of the key.
+     * @param <V>   the generic type of the value.
+     *
+     * @return the created object.
+     */
+    public static <K, V> SortedMap<K, V> createTreeMap(final K key, final V value) {
+        SortedMap<K, V> sortedMap = createTreeMap();
+        sortedMap.put(key, value);
+        return sortedMap;
+    }
+
+    /**
+     * Create tree map object.
+     *
+     * @param key1   the key.
+     * @param value1 the value.
+     * @param key2   the key.
+     * @param value2 the value.
+     * @param <K>    the generic type of the key.
+     * @param <V>    the generic type of the value.
+     *
+     * @return the created object.
+     */
+    public static <K, V> SortedMap<K, V> createTreeMap(final K key1, final V value1, final K key2, final V value2) {
+        SortedMap<K, V> sortedMap = createTreeMap(key1, value1);
+        sortedMap.put(key2, value2);
+        return sortedMap;
+    }
+
+    /**
+     * Create tree map object.
+     *
+     * @param key1   the key.
+     * @param value1 the value.
+     * @param key2   the key.
+     * @param value2 the value.
+     * @param key3   the key.
+     * @param value3 the value.
+     * @param <K>    the generic type of the key.
+     * @param <V>    the generic type of the value.
+     *
+     * @return the created object.
+     */
+    public static <K, V> SortedMap<K, V> createTreeMap(final K key1, final V value1, final K key2, final V value2, final K key3, final V value3) {
+        SortedMap<K, V> sortedMap = createTreeMap(key1, value1, key2, value2);
+        sortedMap.put(key3, value3);
+        return sortedMap;
+    }
+
+    /**
+     * Create tree map object.
+     *
+     * @param key1   the key.
+     * @param value1 the value.
+     * @param key2   the key.
+     * @param value2 the value.
+     * @param key3   the key.
+     * @param value3 the value.
+     * @param key4   the key.
+     * @param value4 the value.
+     * @param <K>    the generic type of the key.
+     * @param <V>    the generic type of the value.
+     *
+     * @return the created object.
+     */
+    public static <K, V> SortedMap<K, V> createTreeMap(final K key1, final V value1, final K key2, final V value2, final K key3, final V value3, final K key4, final V value4) {
+        SortedMap<K, V> sortedMap = createTreeMap(key1, value1, key2, value2, key3, value3);
+        sortedMap.put(key4, value4);
+        return sortedMap;
+    }
+
+    /**
+     * Create tree map object.
+     *
+     * @param key1   the key.
+     * @param value1 the value.
+     * @param key2   the key.
+     * @param value2 the value.
+     * @param key3   the key.
+     * @param value3 the value.
+     * @param key4   the key.
+     * @param value4 the value.
+     * @param key5   the key.
+     * @param value5 the value.
+     * @param <K>    the generic type of the key.
+     * @param <V>    the generic type of the value.
+     *
+     * @return the created object.
+     */
+    public static <K, V> SortedMap<K, V> createTreeMap(final K key1, final V value1, final K key2, final V value2, final K key3, final V value3, final K key4, final V value4, final K key5, final V value5) {
+        SortedMap<K, V> sortedMap = createTreeMap(key1, value1, key2, value2, key3, value3, key4, value4);
+        sortedMap.put(key5, value5);
+        return sortedMap;
     }
 
     /**
@@ -316,9 +611,9 @@ public final class DataHelper {
     }
 
     /**
-     * Create new XML Datatype Factory instance.
+     * Create XML Datatype Factory instance.
      *
-     * @return new XML Datatype Factory instance.
+     * @return XML Datatype Factory instance.
      */
     public static DatatypeFactory createDatatypeFactory() {
         DatatypeFactoryCreator datatypeFactoryCreator = new DatatypeFactoryCreatorImpl();
@@ -334,9 +629,9 @@ public final class DataHelper {
     }
 
     /**
-     * Create new XML Document Builder Factory instance.
+     * Create XML Document Builder Factory instance.
      *
-     * @return new XML Document Builder Factory instance.
+     * @return XML Document Builder Factory instance.
      */
     public static DocumentBuilderFactory createDocumentBuilderFactory() {
         DocumentBuilderFactoryCreator documentBuilderFactoryCreator = new DocumentBuilderFactoryCreatorImpl();
@@ -352,9 +647,9 @@ public final class DataHelper {
     }
 
     /**
-     * Create new XML Document Builder instance.
+     * Create XML Document Builder instance.
      *
-     * @return new XML Document Builder instance.
+     * @return XML Document Builder instance.
      */
     public static DocumentBuilder createDocumentBuilder() {
         DocumentBuilderCreator documentBuilderCreator = new DocumentBuilderCreatorImpl();
@@ -371,9 +666,9 @@ public final class DataHelper {
     }
 
     /**
-     * Create new XML Transformer Factory instance.
+     * Create XML Transformer Factory instance.
      *
-     * @return new XML Transformer Factory instance.
+     * @return XML Transformer Factory instance.
      */
     public static TransformerFactory createTransformerFactory() {
         TransformerFactoryCreator transformerFactoryCreator = new TransformerFactoryCreatorImpl();
@@ -389,9 +684,9 @@ public final class DataHelper {
     }
 
     /**
-     * Create new XML Transformer instance.
+     * Create XML Transformer instance.
      *
-     * @return new XML Transformer instance.
+     * @return XML Transformer instance.
      */
     public static Transformer createTransformer() {
         TransformerCreator transformerCreator = new TransformerCreatorImpl();
@@ -407,12 +702,78 @@ public final class DataHelper {
         }
     }
 
+    private static final class IterableImpl<E> implements Iterable<E> {
+
+        private final List<E> _list;
+
+        IterableImpl(final List<E> list) {
+            super();
+            _list = list;
+        }
+
+        @Override
+        public Iterator<E> iterator() {
+            return _list.iterator();
+        }
+
+    }
+
+    private static final class IteratorImpl<E> implements Iterator<E> {
+
+        private final Iterator<E> _iterator;
+
+        IteratorImpl(final List<E> list) {
+            super();
+            _iterator = list.iterator();
+        }
+
+        @Override
+        public boolean hasNext() {
+            return _iterator.hasNext();
+        }
+
+        @Override
+        public E next() {
+            return _iterator.next();
+        }
+
+        @Override
+        public void remove() {
+            _iterator.remove();
+        }
+
+    }
+
+    private static final class NullFirstComparator<E> implements Comparator<E> {
+
+        NullFirstComparator() {
+            super();
+        }
+
+        @Override
+        @SuppressWarnings("unchecked")
+        public int compare(final E obj1, final E obj2) {
+            if (obj1 == null && obj2 == null) {
+                return 0;
+            } else if (obj1 == null && obj2 != null) {
+                return -1;
+            } else if (obj1 != null && obj2 == null) {
+                return 1;
+            } else if (obj1 instanceof Comparable) {
+                return ((Comparable<E>) obj1).compareTo(obj2);
+            } else {
+                return 0;
+            }
+        }
+
+    }
+
     interface DatatypeFactoryCreator {
 
         /**
-         * Create new XML Datatype Factory instance.
+         * Create XML Datatype Factory instance.
          *
-         * @return new XML Datatype Factory instance.
+         * @return XML Datatype Factory instance.
          *
          * @throws DatatypeConfigurationException if creation exception occured.
          */
@@ -436,9 +797,9 @@ public final class DataHelper {
     interface DocumentBuilderFactoryCreator {
 
         /**
-         * Create new XML Document Builder Factory instance.
+         * Create XML Document Builder Factory instance.
          *
-         * @return new XML Document Builder Factory instance.
+         * @return XML Document Builder Factory instance.
          *
          * @throws ParserConfigurationException if creation exception occured.
          */
@@ -467,11 +828,11 @@ public final class DataHelper {
     interface DocumentBuilderCreator {
 
         /**
-         * Create new XML Document Builder instance.
+         * Create XML Document Builder instance.
          *
          * @param documentBuilderFactory XML Document Builder Factory instance.
          *
-         * @return new XML Document Builder instance.
+         * @return XML Document Builder instance.
          *
          * @throws ParserConfigurationException if creation exception occured.
          */
@@ -497,9 +858,9 @@ public final class DataHelper {
     interface TransformerFactoryCreator {
 
         /**
-         * Create new XML Transformer Factory instance.
+         * Create XML Transformer Factory instance.
          *
-         * @return new XML Transformer Factory instance.
+         * @return XML Transformer Factory instance.
          *
          * @throws TransformerConfigurationException if creation exception occured.
          */
@@ -527,11 +888,11 @@ public final class DataHelper {
     interface TransformerCreator {
 
         /**
-         * Create new XML Transformer instance.
+         * Create XML Transformer instance.
          *
          * @param transformerFactory XML Transformer Factory instance.
          *
-         * @return new XML Transformer instance.
+         * @return XML Transformer instance.
          *
          * @throws TransformerException if creation exception occured.
          */
