@@ -1191,11 +1191,14 @@ public final class ThrowableAssertionTest extends AssertionTest {
     @Test
     public void hasCausesTest() {
         initialize(Raw.throwableAssertion(), new Exception(new RuntimeException(new Error(new IOException("value"))))).hasCauses(RuntimeException.class, Error.class, IOException.class);
+        initialize(Raw.throwableAssertion(), new Exception(new RuntimeException(new Error(new IOException("value"))))).hasCauses(Exception.class, Error.class, IOException.class);
+        initialize(Raw.throwableAssertion(), new Exception(new RuntimeException(new Error(new IOException("value"))))).hasCauses(Throwable.class, Error.class, IOException.class);
         initialize(Raw.throwableAssertion(), new Exception(new RuntimeException(new Error(new IOException("value"))))).hasCauses(RuntimeException.class, Error.class);
         initialize(Raw.throwableAssertion(), new Exception(new RuntimeException(new Error(new IOException("value"))))).hasCauses(RuntimeException.class);
         initialize(Raw.throwableAssertion(), new Exception(new RuntimeException(new Error(new IOException("value"))))).hasCauses(Exception.class, Throwable.class, Exception.class);
         initialize(Raw.throwableAssertion(), new Exception(new RuntimeException(new Error(new IOException("value"))))).hasCauses(Throwable.class, Throwable.class, Throwable.class);
         initialize(Raw.throwableAssertion(), new Exception(new RuntimeException(new Error(new IOException("value"))))).hasCauses(Throwable.class, Throwable.class);
+        initialize(Raw.throwableAssertion(), new Exception(new RuntimeException(new Error(new IOException("value"))))).hasCauses(Throwable.class);
 
         try {
             Raw.throwableAssertion().hasCauses(RuntimeException.class);
@@ -1286,6 +1289,18 @@ public final class ThrowableAssertionTest extends AssertionTest {
             Assertions.fail("ThrowableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's cause.\n\tCheck actual value's class.\n\tActual value should be the subtype of the expected value.\n\tExpected:<java.lang.RuntimeException> but was:<java.lang.Error>");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), new Exception(new Error())).hasCauses(Error.class, RuntimeException.class);
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's cause.\n\tCheck actual value's cause.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), new Exception(new Error()), "Message").hasCauses(Error.class, RuntimeException.class);
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's cause.\n\tCheck actual value's cause.\n\tActual value should not be null.");
         }
     }
 
