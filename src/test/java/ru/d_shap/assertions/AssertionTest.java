@@ -38,20 +38,15 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Collection;
-import java.util.Comparator;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.SortedMap;
 import java.util.SortedSet;
 import java.util.TimeZone;
-import java.util.TreeMap;
-import java.util.TreeSet;
 
 import javax.xml.XMLConstants;
 import javax.xml.datatype.XMLGregorianCalendar;
@@ -194,54 +189,51 @@ public class AssertionTest {
     }
 
     /**
-     * Create the iterable with the values.
+     * Create iterable object.
      *
      * @param values the values.
      * @param <E>    the generic type of the element.
      *
-     * @return the iterable.
+     * @return the created object.
      */
     @SafeVarargs
     protected final <E> Iterable<E> createIterable(final E... values) {
-        List<E> list = Arrays.asList(values);
-        return new IterableImpl<>(list);
+        return DataHelper.createIterable(values);
     }
 
     /**
-     * Create the iterator with the values.
+     * Create iterator object.
      *
      * @param values the values.
      * @param <E>    the generic type of the element.
      *
-     * @return the iterator.
+     * @return the created object.
      */
     @SafeVarargs
     protected final <E> Iterator<E> createIterator(final E... values) {
-        List<E> list = Arrays.asList(values);
-        return new IteratorImpl<>(list);
+        return DataHelper.createIterator(values);
     }
 
     /**
-     * Create the hash set with the values.
+     * Create hash set object.
      *
      * @param values the values.
      * @param <E>    the generic type of the element.
      *
-     * @return the hash set.
+     * @return the created object.
      */
     @SafeVarargs
     protected final <E> Set<E> createHashSet(final E... values) {
-        List<E> list = Arrays.asList(values);
-        return new LinkedHashSet<>(list);
+        return DataHelper.createHashSet(values);
     }
 
     /**
-     * Create the duplicate set with the values.
+     * Create duplicate set object.
      *
      * @param values the values.
      * @param <E>    the generic type of the element.
      *
-     * @return the duplicate set.
+     * @return the created object.
      */
     @SafeVarargs
     protected final <E> Set<E> createDuplicateSet(final E... values) {
@@ -252,51 +244,46 @@ public class AssertionTest {
     }
 
     /**
-     * Create the tree set with the values.
+     * Create tree set object.
      *
      * @param values the values.
      * @param <E>    the generic type of the element.
      *
-     * @return the tree set.
+     * @return the created object.
      */
     @SafeVarargs
     protected final <E> SortedSet<E> createTreeSet(final E... values) {
-        SortedSet<E> sortedSet = new TreeSet<>(new NullFirstComparator<E>());
-        sortedSet.addAll(Arrays.asList(values));
-        return sortedSet;
+        return DataHelper.createTreeSet(values);
     }
 
     /**
-     * Create the empty hash map.
+     * Create hash map object.
      *
      * @param <K> the generic type of the key.
      * @param <V> the generic type of the value.
      *
-     * @return the hash map.
+     * @return the created object.
      */
     protected final <K, V> Map<K, V> createHashMap() {
-        Map<K, V> map = new LinkedHashMap<>();
-        return map;
+        return DataHelper.createHashMap();
     }
 
     /**
-     * Create the hash map with the values.
+     * Create hash map object.
      *
      * @param key   the key.
      * @param value the value.
      * @param <K>   the generic type of the key.
      * @param <V>   the generic type of the value.
      *
-     * @return the hash map.
+     * @return the created object.
      */
     protected final <K, V> Map<K, V> createHashMap(final K key, final V value) {
-        Map<K, V> map = new LinkedHashMap<>();
-        map.put(key, value);
-        return map;
+        return DataHelper.createHashMap(key, value);
     }
 
     /**
-     * Create the hash map with the values.
+     * Create hash map object.
      *
      * @param key1   the key.
      * @param value1 the value.
@@ -305,17 +292,14 @@ public class AssertionTest {
      * @param <K>    the generic type of the key.
      * @param <V>    the generic type of the value.
      *
-     * @return the hash map.
+     * @return the created object.
      */
     protected final <K, V> Map<K, V> createHashMap(final K key1, final V value1, final K key2, final V value2) {
-        Map<K, V> map = new LinkedHashMap<>();
-        map.put(key1, value1);
-        map.put(key2, value2);
-        return map;
+        return DataHelper.createHashMap(key1, value1, key2, value2);
     }
 
     /**
-     * Create the hash map with the values.
+     * Create hash map object.
      *
      * @param key1   the key.
      * @param value1 the value.
@@ -326,18 +310,14 @@ public class AssertionTest {
      * @param <K>    the generic type of the key.
      * @param <V>    the generic type of the value.
      *
-     * @return the hash map.
+     * @return the created object.
      */
     protected final <K, V> Map<K, V> createHashMap(final K key1, final V value1, final K key2, final V value2, final K key3, final V value3) {
-        Map<K, V> map = new LinkedHashMap<>();
-        map.put(key1, value1);
-        map.put(key2, value2);
-        map.put(key3, value3);
-        return map;
+        return DataHelper.createHashMap(key1, value1, key2, value2, key3, value3);
     }
 
     /**
-     * Create the hash map with the values.
+     * Create hash map object.
      *
      * @param key1   the key.
      * @param value1 the value.
@@ -350,19 +330,14 @@ public class AssertionTest {
      * @param <K>    the generic type of the key.
      * @param <V>    the generic type of the value.
      *
-     * @return the hash map.
+     * @return the created object.
      */
     protected final <K, V> Map<K, V> createHashMap(final K key1, final V value1, final K key2, final V value2, final K key3, final V value3, final K key4, final V value4) {
-        Map<K, V> map = new LinkedHashMap<>();
-        map.put(key1, value1);
-        map.put(key2, value2);
-        map.put(key3, value3);
-        map.put(key4, value4);
-        return map;
+        return DataHelper.createHashMap(key1, value1, key2, value2, key3, value3, key4, value4);
     }
 
     /**
-     * Create the hash map with the values.
+     * Create hash map object.
      *
      * @param key1   the key.
      * @param value1 the value.
@@ -377,25 +352,19 @@ public class AssertionTest {
      * @param <K>    the generic type of the key.
      * @param <V>    the generic type of the value.
      *
-     * @return the hash map.
+     * @return the created object.
      */
     protected final <K, V> Map<K, V> createHashMap(final K key1, final V value1, final K key2, final V value2, final K key3, final V value3, final K key4, final V value4, final K key5, final V value5) {
-        Map<K, V> map = new LinkedHashMap<>();
-        map.put(key1, value1);
-        map.put(key2, value2);
-        map.put(key3, value3);
-        map.put(key4, value4);
-        map.put(key5, value5);
-        return map;
+        return DataHelper.createHashMap(key1, value1, key2, value2, key3, value3, key4, value4, key5, value5);
     }
 
     /**
-     * Create the empty duplicate map.
+     * Create duplicate map object.
      *
      * @param <K> the generic type of the key.
      * @param <V> the generic type of the value.
      *
-     * @return the duplicate map.
+     * @return the created object.
      */
     protected final <K, V> Map<K, V> createDuplicateMap() {
         Map<K, V> map = new DuplicateMap<>();
@@ -403,23 +372,23 @@ public class AssertionTest {
     }
 
     /**
-     * Create the duplicate map with the values.
+     * Create duplicate map object.
      *
      * @param key   the key.
      * @param value the value.
      * @param <K>   the generic type of the key.
      * @param <V>   the generic type of the value.
      *
-     * @return the duplicate map.
+     * @return the created object.
      */
     protected final <K, V> Map<K, V> createDuplicateMap(final K key, final V value) {
-        Map<K, V> map = new DuplicateMap<>();
+        Map<K, V> map = createDuplicateMap();
         map.put(key, value);
         return map;
     }
 
     /**
-     * Create the duplicate map with the values.
+     * Create duplicate map object.
      *
      * @param key1   the key.
      * @param value1 the value.
@@ -428,17 +397,16 @@ public class AssertionTest {
      * @param <K>    the generic type of the key.
      * @param <V>    the generic type of the value.
      *
-     * @return the duplicate map.
+     * @return the created object.
      */
     protected final <K, V> Map<K, V> createDuplicateMap(final K key1, final V value1, final K key2, final V value2) {
-        Map<K, V> map = new DuplicateMap<>();
-        map.put(key1, value1);
+        Map<K, V> map = createDuplicateMap(key1, value1);
         map.put(key2, value2);
         return map;
     }
 
     /**
-     * Create the duplicate map with the values.
+     * Create duplicate map object.
      *
      * @param key1   the key.
      * @param value1 the value.
@@ -449,18 +417,16 @@ public class AssertionTest {
      * @param <K>    the generic type of the key.
      * @param <V>    the generic type of the value.
      *
-     * @return the duplicate map.
+     * @return the created object.
      */
     protected final <K, V> Map<K, V> createDuplicateMap(final K key1, final V value1, final K key2, final V value2, final K key3, final V value3) {
-        Map<K, V> map = new DuplicateMap<>();
-        map.put(key1, value1);
-        map.put(key2, value2);
+        Map<K, V> map = createDuplicateMap(key1, value1, key2, value2);
         map.put(key3, value3);
         return map;
     }
 
     /**
-     * Create the duplicate map with the values.
+     * Create duplicate map object.
      *
      * @param key1   the key.
      * @param value1 the value.
@@ -473,19 +439,16 @@ public class AssertionTest {
      * @param <K>    the generic type of the key.
      * @param <V>    the generic type of the value.
      *
-     * @return the duplicate map.
+     * @return the created object.
      */
     protected final <K, V> Map<K, V> createDuplicateMap(final K key1, final V value1, final K key2, final V value2, final K key3, final V value3, final K key4, final V value4) {
-        Map<K, V> map = new DuplicateMap<>();
-        map.put(key1, value1);
-        map.put(key2, value2);
-        map.put(key3, value3);
+        Map<K, V> map = createDuplicateMap(key1, value1, key2, value2, key3, value3);
         map.put(key4, value4);
         return map;
     }
 
     /**
-     * Create the duplicate map with the values.
+     * Create duplicate map object.
      *
      * @param key1   the key.
      * @param value1 the value.
@@ -500,49 +463,42 @@ public class AssertionTest {
      * @param <K>    the generic type of the key.
      * @param <V>    the generic type of the value.
      *
-     * @return the duplicate map.
+     * @return the created object.
      */
     protected final <K, V> Map<K, V> createDuplicateMap(final K key1, final V value1, final K key2, final V value2, final K key3, final V value3, final K key4, final V value4, final K key5, final V value5) {
-        Map<K, V> map = new DuplicateMap<>();
-        map.put(key1, value1);
-        map.put(key2, value2);
-        map.put(key3, value3);
-        map.put(key4, value4);
+        Map<K, V> map = createDuplicateMap(key1, value1, key2, value2, key3, value3, key4, value4);
         map.put(key5, value5);
         return map;
     }
 
     /**
-     * Create the empty tree map.
+     * Create tree map object.
      *
      * @param <K> the generic type of the key.
      * @param <V> the generic type of the value.
      *
-     * @return the tree map.
+     * @return the created object.
      */
     protected final <K, V> SortedMap<K, V> createTreeMap() {
-        SortedMap<K, V> sortedMap = new TreeMap<>(new NullFirstComparator<K>());
-        return sortedMap;
+        return DataHelper.createTreeMap();
     }
 
     /**
-     * Create the tree map with the values.
+     * Create tree map object.
      *
      * @param key   the key.
      * @param value the value.
      * @param <K>   the generic type of the key.
      * @param <V>   the generic type of the value.
      *
-     * @return the tree map.
+     * @return the created object.
      */
     protected final <K, V> SortedMap<K, V> createTreeMap(final K key, final V value) {
-        SortedMap<K, V> sortedMap = new TreeMap<>(new NullFirstComparator<K>());
-        sortedMap.put(key, value);
-        return sortedMap;
+        return DataHelper.createTreeMap(key, value);
     }
 
     /**
-     * Create the tree map with the values.
+     * Create tree map object.
      *
      * @param key1   the key.
      * @param value1 the value.
@@ -551,17 +507,14 @@ public class AssertionTest {
      * @param <K>    the generic type of the key.
      * @param <V>    the generic type of the value.
      *
-     * @return the tree map.
+     * @return the created object.
      */
     protected final <K, V> SortedMap<K, V> createTreeMap(final K key1, final V value1, final K key2, final V value2) {
-        SortedMap<K, V> sortedMap = new TreeMap<>(new NullFirstComparator<K>());
-        sortedMap.put(key1, value1);
-        sortedMap.put(key2, value2);
-        return sortedMap;
+        return DataHelper.createTreeMap(key1, value1, key2, value2);
     }
 
     /**
-     * Create the tree map with the values.
+     * Create tree map object.
      *
      * @param key1   the key.
      * @param value1 the value.
@@ -572,18 +525,14 @@ public class AssertionTest {
      * @param <K>    the generic type of the key.
      * @param <V>    the generic type of the value.
      *
-     * @return the tree map.
+     * @return the created object.
      */
     protected final <K, V> SortedMap<K, V> createTreeMap(final K key1, final V value1, final K key2, final V value2, final K key3, final V value3) {
-        SortedMap<K, V> sortedMap = new TreeMap<>(new NullFirstComparator<K>());
-        sortedMap.put(key1, value1);
-        sortedMap.put(key2, value2);
-        sortedMap.put(key3, value3);
-        return sortedMap;
+        return DataHelper.createTreeMap(key1, value1, key2, value2, key3, value3);
     }
 
     /**
-     * Create the tree map with the values.
+     * Create tree map object.
      *
      * @param key1   the key.
      * @param value1 the value.
@@ -596,19 +545,14 @@ public class AssertionTest {
      * @param <K>    the generic type of the key.
      * @param <V>    the generic type of the value.
      *
-     * @return the tree map.
+     * @return the created object.
      */
     protected final <K, V> SortedMap<K, V> createTreeMap(final K key1, final V value1, final K key2, final V value2, final K key3, final V value3, final K key4, final V value4) {
-        SortedMap<K, V> sortedMap = new TreeMap<>(new NullFirstComparator<K>());
-        sortedMap.put(key1, value1);
-        sortedMap.put(key2, value2);
-        sortedMap.put(key3, value3);
-        sortedMap.put(key4, value4);
-        return sortedMap;
+        return DataHelper.createTreeMap(key1, value1, key2, value2, key3, value3, key4, value4);
     }
 
     /**
-     * Create the tree map with the values.
+     * Create tree map object.
      *
      * @param key1   the key.
      * @param value1 the value.
@@ -623,16 +567,10 @@ public class AssertionTest {
      * @param <K>    the generic type of the key.
      * @param <V>    the generic type of the value.
      *
-     * @return the tree map.
+     * @return the created object.
      */
     protected final <K, V> SortedMap<K, V> createTreeMap(final K key1, final V value1, final K key2, final V value2, final K key3, final V value3, final K key4, final V value4, final K key5, final V value5) {
-        SortedMap<K, V> sortedMap = new TreeMap<>(new NullFirstComparator<K>());
-        sortedMap.put(key1, value1);
-        sortedMap.put(key2, value2);
-        sortedMap.put(key3, value3);
-        sortedMap.put(key4, value4);
-        sortedMap.put(key5, value5);
-        return sortedMap;
+        return DataHelper.createTreeMap(key1, value1, key2, value2, key3, value3, key4, value4, key5, value5);
     }
 
     /**
@@ -1872,48 +1810,6 @@ public class AssertionTest {
 
     }
 
-    private static final class IterableImpl<E> implements Iterable<E> {
-
-        private final List<E> _list;
-
-        IterableImpl(final List<E> list) {
-            super();
-            _list = list;
-        }
-
-        @Override
-        public Iterator<E> iterator() {
-            return _list.iterator();
-        }
-
-    }
-
-    private static final class IteratorImpl<E> implements Iterator<E> {
-
-        private final Iterator<E> _iterator;
-
-        IteratorImpl(final List<E> list) {
-            super();
-            _iterator = list.iterator();
-        }
-
-        @Override
-        public boolean hasNext() {
-            return _iterator.hasNext();
-        }
-
-        @Override
-        public E next() {
-            return _iterator.next();
-        }
-
-        @Override
-        public void remove() {
-            _iterator.remove();
-        }
-
-    }
-
     private static final class DuplicateSet<E> implements Set<E> {
 
         private final List<E> _elements;
@@ -2109,30 +2005,6 @@ public class AssertionTest {
         @Override
         public V setValue(final V value) {
             return null;
-        }
-
-    }
-
-    private static final class NullFirstComparator<E> implements Comparator<E> {
-
-        NullFirstComparator() {
-            super();
-        }
-
-        @Override
-        @SuppressWarnings("unchecked")
-        public int compare(final E obj1, final E obj2) {
-            if (obj1 == null && obj2 == null) {
-                return 0;
-            } else if (obj1 == null && obj2 != null) {
-                return -1;
-            } else if (obj1 != null && obj2 == null) {
-                return 1;
-            } else if (obj1 instanceof Comparable) {
-                return ((Comparable<E>) obj1).compareTo(obj2);
-            } else {
-                return 0;
-            }
         }
 
     }
