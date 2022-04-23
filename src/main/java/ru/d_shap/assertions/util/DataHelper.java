@@ -20,6 +20,7 @@
 package ru.d_shap.assertions.util;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Comparator;
@@ -97,6 +98,7 @@ public final class DataHelper {
             return null;
         } else {
             List<E> list = Arrays.asList(values);
+            list = new ArrayList<>(list);
             return new IteratorImpl<>(list);
         }
     }
