@@ -75,8 +75,12 @@ public final class DataHelper {
      */
     @SafeVarargs
     public static <E> Iterable<E> createIterable(final E... values) {
-        List<E> list = Arrays.asList(values);
-        return new IterableImpl<>(list);
+        if (values == null) {
+            return null;
+        } else {
+            List<E> list = Arrays.asList(values);
+            return new IterableImpl<>(list);
+        }
     }
 
     /**
@@ -89,8 +93,12 @@ public final class DataHelper {
      */
     @SafeVarargs
     public static <E> Iterator<E> createIterator(final E... values) {
-        List<E> list = Arrays.asList(values);
-        return new IteratorImpl<>(list);
+        if (values == null) {
+            return null;
+        } else {
+            List<E> list = Arrays.asList(values);
+            return new IteratorImpl<>(list);
+        }
     }
 
     /**
