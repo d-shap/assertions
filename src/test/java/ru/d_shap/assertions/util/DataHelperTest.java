@@ -20,6 +20,8 @@
 package ru.d_shap.assertions.util;
 
 import java.util.Calendar;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 import java.util.TimeZone;
 
 import javax.xml.XMLConstants;
@@ -65,7 +67,10 @@ public final class DataHelperTest extends AssertionTest {
      */
     @Test
     public void createIterableTest() {
-        // TODO
+        Assertions.assertThat(DataHelper.createIterable((String[]) null)).isNullOrEmpty();
+        Assertions.assertThat(DataHelper.createIterable((String) null)).containsExactlyInOrder((String) null);
+        Assertions.assertThat(DataHelper.createIterable("a", "b", "c")).containsExactlyInOrder("a", "b", "c");
+        Assertions.assertThat(DataHelper.createIterable(1, 2, 3)).containsExactlyInOrder(1, 2, 3);
     }
 
     /**
@@ -73,7 +78,34 @@ public final class DataHelperTest extends AssertionTest {
      */
     @Test
     public void createIteratorTest() {
-        // TODO
+        Assertions.assertThat(DataHelper.createIterator((String[]) null)).isNullOrEmpty();
+        Assertions.assertThat(DataHelper.createIterator((String) null)).containsExactlyInOrder((String) null);
+        Assertions.assertThat(DataHelper.createIterator("a", "b", "c")).containsExactlyInOrder("a", "b", "c");
+        Assertions.assertThat(DataHelper.createIterator(1, 2, 3)).containsExactlyInOrder(1, 2, 3);
+
+        Iterator<Integer> iterator = DataHelper.createIterator(1, 2, 3);
+        Assertions.assertThat(iterator.hasNext()).isTrue();
+        Assertions.assertThat(iterator.next()).isEqualTo(1);
+        iterator.remove();
+        Assertions.assertThat(iterator.hasNext()).isTrue();
+        Assertions.assertThat(iterator.next()).isEqualTo(2);
+        iterator.remove();
+        Assertions.assertThat(iterator.hasNext()).isTrue();
+        Assertions.assertThat(iterator.next()).isEqualTo(3);
+        iterator.remove();
+        Assertions.assertThat(iterator.hasNext()).isFalse();
+        try {
+            iterator.next();
+            Assertions.fail("DataHelper test fail");
+        } catch (NoSuchElementException ex) {
+            Assertions.assertThat(ex).isNotNull();
+        }
+        try {
+            iterator.remove();
+            Assertions.fail("DataHelper test fail");
+        } catch (IllegalStateException ex) {
+            Assertions.assertThat(ex).isNotNull();
+        }
     }
 
     /**
