@@ -130,8 +130,7 @@ public final class DataHelper {
      * @return the created object.
      */
     public static <K, V> Map<K, V> createHashMap() {
-        Map<K, V> map = new LinkedHashMap<>();
-        return map;
+        return new LinkedHashMap<>();
     }
 
     /**
@@ -243,8 +242,7 @@ public final class DataHelper {
      * @return the created object.
      */
     public static <K, V> SortedMap<K, V> createTreeMap() {
-        SortedMap<K, V> sortedMap = new TreeMap<>(new NullFirstComparator<K>());
-        return sortedMap;
+        return new TreeMap<>(new NullFirstComparator<K>());
     }
 
     /**
