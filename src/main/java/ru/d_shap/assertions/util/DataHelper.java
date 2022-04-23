@@ -29,6 +29,7 @@ import java.util.GregorianCalendar;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -104,6 +105,42 @@ public final class DataHelper {
     }
 
     /**
+     * Create array list object.
+     *
+     * @param values the values.
+     * @param <E>    the generic type of the element.
+     *
+     * @return the created object.
+     */
+    @SafeVarargs
+    public static <E> List<E> createArrayList(final E... values) {
+        if (values == null) {
+            return null;
+        } else {
+            List<E> list = Arrays.asList(values);
+            return new ArrayList<>(list);
+        }
+    }
+
+    /**
+     * Create linked list object.
+     *
+     * @param values the values.
+     * @param <E>    the generic type of the element.
+     *
+     * @return the created object.
+     */
+    @SafeVarargs
+    public static <E> List<E> createLinkedList(final E... values) {
+        if (values == null) {
+            return null;
+        } else {
+            List<E> list = Arrays.asList(values);
+            return new LinkedList<>(list);
+        }
+    }
+
+    /**
      * Create hash set object.
      *
      * @param values the values.
@@ -113,8 +150,12 @@ public final class DataHelper {
      */
     @SafeVarargs
     public static <E> Set<E> createHashSet(final E... values) {
-        List<E> list = Arrays.asList(values);
-        return new LinkedHashSet<>(list);
+        if (values == null) {
+            return null;
+        } else {
+            List<E> list = Arrays.asList(values);
+            return new LinkedHashSet<>(list);
+        }
     }
 
     /**
@@ -127,9 +168,13 @@ public final class DataHelper {
      */
     @SafeVarargs
     public static <E> SortedSet<E> createTreeSet(final E... values) {
-        SortedSet<E> sortedSet = new TreeSet<>(new NullFirstComparator<E>());
-        sortedSet.addAll(Arrays.asList(values));
-        return sortedSet;
+        if (values == null) {
+            return null;
+        } else {
+            SortedSet<E> sortedSet = new TreeSet<>(new NullFirstComparator<E>());
+            sortedSet.addAll(Arrays.asList(values));
+            return sortedSet;
+        }
     }
 
     /**
