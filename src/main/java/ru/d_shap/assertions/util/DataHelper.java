@@ -19,6 +19,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.util;
 
+import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Comparator;
@@ -742,7 +743,9 @@ public final class DataHelper {
 
     }
 
-    private static final class NullFirstComparator<E> implements Comparator<E> {
+    private static final class NullFirstComparator<E> implements Comparator<E>, Serializable {
+
+        private static final long serialVersionUID = 1L;
 
         NullFirstComparator() {
             super();
