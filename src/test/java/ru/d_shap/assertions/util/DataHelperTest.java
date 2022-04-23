@@ -112,6 +112,22 @@ public final class DataHelperTest extends AssertionTest {
      * {@link DataHelper} class test.
      */
     @Test
+    public void createArrayListTest() {
+        // TODO
+    }
+
+    /**
+     * {@link DataHelper} class test.
+     */
+    @Test
+    public void createLinkedListTest() {
+        // TODO
+    }
+
+    /**
+     * {@link DataHelper} class test.
+     */
+    @Test
     public void createHashSetTest() {
         // TODO
     }
