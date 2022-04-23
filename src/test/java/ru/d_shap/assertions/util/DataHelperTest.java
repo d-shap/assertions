@@ -19,8 +19,10 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.util;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.NoSuchElementException;
 import java.util.TimeZone;
 
@@ -113,7 +115,11 @@ public final class DataHelperTest extends AssertionTest {
      */
     @Test
     public void createArrayListTest() {
-        // TODO
+        Assertions.assertThat(DataHelper.createArrayList((String[]) null)).isNullOrEmpty();
+        Assertions.assertThat(DataHelper.createArrayList((String) null)).containsExactlyInOrder((String) null);
+        Assertions.assertThat(DataHelper.createArrayList("a", "b", "c")).containsExactlyInOrder("a", "b", "c");
+        Assertions.assertThat(DataHelper.createArrayList(1, 2, 3)).containsExactlyInOrder(1, 2, 3);
+        Assertions.assertThat(DataHelper.createArrayList(1, 2, 3)).isInstanceOf(ArrayList.class);
     }
 
     /**
@@ -121,7 +127,11 @@ public final class DataHelperTest extends AssertionTest {
      */
     @Test
     public void createLinkedListTest() {
-        // TODO
+        Assertions.assertThat(DataHelper.createLinkedList((String[]) null)).isNullOrEmpty();
+        Assertions.assertThat(DataHelper.createLinkedList((String) null)).containsExactlyInOrder((String) null);
+        Assertions.assertThat(DataHelper.createLinkedList("a", "b", "c")).containsExactlyInOrder("a", "b", "c");
+        Assertions.assertThat(DataHelper.createLinkedList(1, 2, 3)).containsExactlyInOrder(1, 2, 3);
+        Assertions.assertThat(DataHelper.createLinkedList(1, 2, 3)).isInstanceOf(LinkedList.class);
     }
 
     /**
