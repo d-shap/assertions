@@ -811,14 +811,16 @@ public final class DataHelper {
         public int compare(final E obj1, final E obj2) {
             if (obj1 == null && obj2 == null) {
                 return 0;
-            } else if (obj1 == null && obj2 != null) {
-                return -1;
-            } else if (obj1 != null && obj2 == null) {
+            } else if (obj2 == null) {
                 return 1;
-            } else if (obj1 instanceof Comparable) {
-                return ((Comparable<E>) obj1).compareTo(obj2);
+            } else if (obj1 == null) {
+                return -1;
             } else {
-                return obj1.hashCode() - obj2.hashCode();
+                if (obj1 instanceof Comparable) {
+                    return ((Comparable<E>) obj1).compareTo(obj2);
+                } else {
+                    return obj1.hashCode() - obj2.hashCode();
+                }
             }
         }
 
