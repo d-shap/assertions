@@ -165,7 +165,18 @@ public final class DataHelperTest extends AssertionTest {
         Assertions.assertThat(DataHelper.createTreeSet(1, 2, 3)).containsExactlyInOrder(1, 2, 3);
         Assertions.assertThat(DataHelper.createTreeSet(1, 2, 3, 2, 1)).containsExactlyInOrder(1, 2, 3);
         Assertions.assertThat(DataHelper.createTreeSet("a", null, "c", null, "b", null)).containsExactlyInOrder(null, "a", "b", "c");
+        Assertions.assertThat(DataHelper.createTreeSet(null, null)).containsExactlyInOrder((String) null);
+        Assertions.assertThat(DataHelper.createTreeSet(null, "a")).containsExactlyInOrder(null, "a");
+        Assertions.assertThat(DataHelper.createTreeSet("a", null)).containsExactlyInOrder(null, "a");
+        Assertions.assertThat(DataHelper.createTreeSet("a", "b")).containsExactlyInOrder("a", "b");
         Assertions.assertThat(DataHelper.createTreeSet(1, 2, 3)).isInstanceOf(TreeSet.class);
+
+        Object object1 = new IntHolder(1);
+        Assertions.assertThat(DataHelper.createTreeSet(object1)).containsExactly(object1);
+        Object object2 = new IntHolder(2);
+        Object object3 = new IntHolder(3);
+        Assertions.assertThat(DataHelper.createTreeSet(object1, object2, object3)).containsExactly(object1, object2, object3);
+        Assertions.assertThat(DataHelper.createTreeSet(object1, null, object3, object2)).containsExactly(null, object1, object2, object3);
     }
 
     /**
@@ -667,6 +678,22 @@ public final class DataHelperTest extends AssertionTest {
         new DataHelper.TransformerNoopErrorListener().warning(null);
         new DataHelper.TransformerNoopErrorListener().error(null);
         new DataHelper.TransformerNoopErrorListener().fatalError(null);
+    }
+
+    private static final class IntHolder {
+
+        private final int _value;
+
+        IntHolder(final int value) {
+            super();
+            _value = value;
+        }
+
+        @Override
+        public int hashCode() {
+            return _value;
+        }
+
     }
 
     private static final class DatatypeFactoryCreatorFailImpl implements DataHelper.DatatypeFactoryCreator {
