@@ -22,9 +22,11 @@ package ru.d_shap.assertions.util;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Iterator;
+import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.NoSuchElementException;
 import java.util.TimeZone;
+import java.util.TreeSet;
 
 import javax.xml.XMLConstants;
 import javax.xml.datatype.DatatypeConfigurationException;
@@ -73,6 +75,7 @@ public final class DataHelperTest extends AssertionTest {
         Assertions.assertThat(DataHelper.createIterable((String) null)).containsExactlyInOrder((String) null);
         Assertions.assertThat(DataHelper.createIterable("a", "b", "c")).containsExactlyInOrder("a", "b", "c");
         Assertions.assertThat(DataHelper.createIterable(1, 2, 3)).containsExactlyInOrder(1, 2, 3);
+        Assertions.assertThat(DataHelper.createIterable(1, 2, 3, 2, 1)).containsExactlyInOrder(1, 2, 3, 2, 1);
     }
 
     /**
@@ -84,6 +87,7 @@ public final class DataHelperTest extends AssertionTest {
         Assertions.assertThat(DataHelper.createIterator((String) null)).containsExactlyInOrder((String) null);
         Assertions.assertThat(DataHelper.createIterator("a", "b", "c")).containsExactlyInOrder("a", "b", "c");
         Assertions.assertThat(DataHelper.createIterator(1, 2, 3)).containsExactlyInOrder(1, 2, 3);
+        Assertions.assertThat(DataHelper.createIterator(1, 2, 3, 2, 1)).containsExactlyInOrder(1, 2, 3, 2, 1);
 
         Iterator<Integer> iterator = DataHelper.createIterator(1, 2, 3);
         Assertions.assertThat(iterator.hasNext()).isTrue();
@@ -119,6 +123,7 @@ public final class DataHelperTest extends AssertionTest {
         Assertions.assertThat(DataHelper.createArrayList((String) null)).containsExactlyInOrder((String) null);
         Assertions.assertThat(DataHelper.createArrayList("a", "b", "c")).containsExactlyInOrder("a", "b", "c");
         Assertions.assertThat(DataHelper.createArrayList(1, 2, 3)).containsExactlyInOrder(1, 2, 3);
+        Assertions.assertThat(DataHelper.createArrayList(1, 2, 3, 2, 1)).containsExactlyInOrder(1, 2, 3, 2, 1);
         Assertions.assertThat(DataHelper.createArrayList(1, 2, 3)).isInstanceOf(ArrayList.class);
     }
 
@@ -131,6 +136,7 @@ public final class DataHelperTest extends AssertionTest {
         Assertions.assertThat(DataHelper.createLinkedList((String) null)).containsExactlyInOrder((String) null);
         Assertions.assertThat(DataHelper.createLinkedList("a", "b", "c")).containsExactlyInOrder("a", "b", "c");
         Assertions.assertThat(DataHelper.createLinkedList(1, 2, 3)).containsExactlyInOrder(1, 2, 3);
+        Assertions.assertThat(DataHelper.createLinkedList(1, 2, 3, 2, 1)).containsExactlyInOrder(1, 2, 3, 2, 1);
         Assertions.assertThat(DataHelper.createLinkedList(1, 2, 3)).isInstanceOf(LinkedList.class);
     }
 
@@ -139,7 +145,13 @@ public final class DataHelperTest extends AssertionTest {
      */
     @Test
     public void createHashSetTest() {
-        // TODO
+        Assertions.assertThat(DataHelper.createHashSet((String[]) null)).isNullOrEmpty();
+        Assertions.assertThat(DataHelper.createHashSet((String) null)).containsExactlyInOrder((String) null);
+        Assertions.assertThat(DataHelper.createHashSet("a", "b", "c")).containsExactlyInOrder("a", "b", "c");
+        Assertions.assertThat(DataHelper.createHashSet(1, 2, 3)).containsExactlyInOrder(1, 2, 3);
+        Assertions.assertThat(DataHelper.createHashSet(1, 2, 3, 2, 1)).containsExactlyInOrder(1, 2, 3);
+        Assertions.assertThat(DataHelper.createHashSet("a", null, "c", null, "b", null)).containsExactlyInOrder("a", null, "c", "b");
+        Assertions.assertThat(DataHelper.createHashSet(1, 2, 3)).isInstanceOf(LinkedHashSet.class);
     }
 
     /**
@@ -147,7 +159,13 @@ public final class DataHelperTest extends AssertionTest {
      */
     @Test
     public void createTreeSetTest() {
-        // TODO
+        Assertions.assertThat(DataHelper.createTreeSet((String[]) null)).isNullOrEmpty();
+        Assertions.assertThat(DataHelper.createTreeSet((String) null)).containsExactlyInOrder((String) null);
+        Assertions.assertThat(DataHelper.createTreeSet("a", "b", "c")).containsExactlyInOrder("a", "b", "c");
+        Assertions.assertThat(DataHelper.createTreeSet(1, 2, 3)).containsExactlyInOrder(1, 2, 3);
+        Assertions.assertThat(DataHelper.createTreeSet(1, 2, 3, 2, 1)).containsExactlyInOrder(1, 2, 3);
+        Assertions.assertThat(DataHelper.createTreeSet("a", null, "c", null, "b", null)).containsExactlyInOrder(null, "a", "b", "c");
+        Assertions.assertThat(DataHelper.createTreeSet(1, 2, 3)).isInstanceOf(TreeSet.class);
     }
 
     /**
