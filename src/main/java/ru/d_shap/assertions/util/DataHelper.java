@@ -818,7 +818,7 @@ public final class DataHelper {
             } else if (obj1 instanceof Comparable) {
                 return ((Comparable<E>) obj1).compareTo(obj2);
             } else {
-                return 0;
+                return obj1.hashCode() - obj2.hashCode();
             }
         }
 
