@@ -690,6 +690,17 @@ public final class DataHelperTest extends AssertionTest {
         }
 
         @Override
+        public boolean equals(final Object object) {
+            if (object == this) {
+                return true;
+            }
+            if (!(object instanceof IntHolder)) {
+                return false;
+            }
+            return _value == ((IntHolder) object)._value;
+        }
+
+        @Override
         public int hashCode() {
             return _value;
         }
