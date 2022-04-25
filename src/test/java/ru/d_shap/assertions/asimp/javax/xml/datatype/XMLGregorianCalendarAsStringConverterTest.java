@@ -27,6 +27,7 @@ import org.junit.Test;
 
 import ru.d_shap.assertions.AssertionTest;
 import ru.d_shap.assertions.Assertions;
+import ru.d_shap.assertions.util.DataHelper;
 
 /**
  * Tests for {@link XMLGregorianCalendarAsStringConverter}.
@@ -55,23 +56,23 @@ public final class XMLGregorianCalendarAsStringConverterTest extends AssertionTe
      */
     @Test
     public void asStringTest() {
-        Assertions.assertThat(new XMLGregorianCalendarAsStringConverter().asString(createUtcXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47))).isEqualTo("2020-07-11T15:23:47.000+0000");
-        Assertions.assertThat(new XMLGregorianCalendarAsStringConverter().asString(createUtcXmlCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47))).isEqualTo("2020-12-11T15:23:47.000+0000");
-        Assertions.assertThat(new XMLGregorianCalendarAsStringConverter().asString(createUtcXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 554))).isEqualTo("2020-07-11T15:23:47.554+0000");
-        Assertions.assertThat(new XMLGregorianCalendarAsStringConverter().asString(createUtcXmlCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47, 554))).isEqualTo("2020-12-11T15:23:47.554+0000");
-        Assertions.assertThat(new XMLGregorianCalendarAsStringConverter().asString(createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "Asia/Vientiane"))).isEqualTo("2020-07-11T15:23:47.000+0700");
-        Assertions.assertThat(new XMLGregorianCalendarAsStringConverter().asString(createXmlCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47, "Asia/Vientiane"))).isEqualTo("2020-12-11T15:23:47.000+0700");
-        Assertions.assertThat(new XMLGregorianCalendarAsStringConverter().asString(createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "Europe/Berlin"))).isEqualTo("2020-07-11T15:23:47.000+0200");
-        Assertions.assertThat(new XMLGregorianCalendarAsStringConverter().asString(createXmlCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47, "Europe/Berlin"))).isEqualTo("2020-12-11T15:23:47.000+0100");
+        Assertions.assertThat(new XMLGregorianCalendarAsStringConverter().asString(DataHelper.createUtcXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47))).isEqualTo("2020-07-11T15:23:47.000+0000");
+        Assertions.assertThat(new XMLGregorianCalendarAsStringConverter().asString(DataHelper.createUtcXmlCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47))).isEqualTo("2020-12-11T15:23:47.000+0000");
+        Assertions.assertThat(new XMLGregorianCalendarAsStringConverter().asString(DataHelper.createUtcXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 554))).isEqualTo("2020-07-11T15:23:47.554+0000");
+        Assertions.assertThat(new XMLGregorianCalendarAsStringConverter().asString(DataHelper.createUtcXmlCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47, 554))).isEqualTo("2020-12-11T15:23:47.554+0000");
+        Assertions.assertThat(new XMLGregorianCalendarAsStringConverter().asString(DataHelper.createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "Asia/Vientiane"))).isEqualTo("2020-07-11T15:23:47.000+0700");
+        Assertions.assertThat(new XMLGregorianCalendarAsStringConverter().asString(DataHelper.createXmlCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47, "Asia/Vientiane"))).isEqualTo("2020-12-11T15:23:47.000+0700");
+        Assertions.assertThat(new XMLGregorianCalendarAsStringConverter().asString(DataHelper.createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "Europe/Berlin"))).isEqualTo("2020-07-11T15:23:47.000+0200");
+        Assertions.assertThat(new XMLGregorianCalendarAsStringConverter().asString(DataHelper.createXmlCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47, "Europe/Berlin"))).isEqualTo("2020-12-11T15:23:47.000+0100");
 
-        Assertions.assertThat(new XMLGregorianCalendarAsStringConverter().asString(createUtcXmlCalendar(1324, Calendar.JULY, 11, 15, 23, 47))).isEqualTo("1324-07-11T15:23:47.000+0000");
-        Assertions.assertThat(new XMLGregorianCalendarAsStringConverter().asString(createUtcXmlCalendar(1324, Calendar.DECEMBER, 11, 15, 23, 47))).isEqualTo("1324-12-11T15:23:47.000+0000");
-        Assertions.assertThat(new XMLGregorianCalendarAsStringConverter().asString(createUtcXmlCalendar(1324, Calendar.JULY, 11, 15, 23, 47, 554))).isEqualTo("1324-07-11T15:23:47.554+0000");
-        Assertions.assertThat(new XMLGregorianCalendarAsStringConverter().asString(createUtcXmlCalendar(1324, Calendar.DECEMBER, 11, 15, 23, 47, 554))).isEqualTo("1324-12-11T15:23:47.554+0000");
-        Assertions.assertThat(new XMLGregorianCalendarAsStringConverter().asString(createXmlCalendar(1324, Calendar.JULY, 11, 15, 23, 47, "Asia/Vientiane"))).isEqualTo("1324-07-11T15:23:47.000+0700");
-        Assertions.assertThat(new XMLGregorianCalendarAsStringConverter().asString(createXmlCalendar(1324, Calendar.DECEMBER, 11, 15, 23, 47, "Asia/Vientiane"))).isEqualTo("1324-12-11T15:23:47.000+0700");
-        Assertions.assertThat(new XMLGregorianCalendarAsStringConverter().asString(createXmlCalendar(1324, Calendar.JULY, 11, 15, 23, 47, "Europe/Berlin"))).isEqualTo("1324-07-11T15:23:47.000+0100");
-        Assertions.assertThat(new XMLGregorianCalendarAsStringConverter().asString(createXmlCalendar(1324, Calendar.DECEMBER, 11, 15, 23, 47, "Europe/Berlin"))).isEqualTo("1324-12-11T15:23:47.000+0100");
+        Assertions.assertThat(new XMLGregorianCalendarAsStringConverter().asString(DataHelper.createUtcXmlCalendar(1324, Calendar.JULY, 11, 15, 23, 47))).isEqualTo("1324-07-11T15:23:47.000+0000");
+        Assertions.assertThat(new XMLGregorianCalendarAsStringConverter().asString(DataHelper.createUtcXmlCalendar(1324, Calendar.DECEMBER, 11, 15, 23, 47))).isEqualTo("1324-12-11T15:23:47.000+0000");
+        Assertions.assertThat(new XMLGregorianCalendarAsStringConverter().asString(DataHelper.createUtcXmlCalendar(1324, Calendar.JULY, 11, 15, 23, 47, 554))).isEqualTo("1324-07-11T15:23:47.554+0000");
+        Assertions.assertThat(new XMLGregorianCalendarAsStringConverter().asString(DataHelper.createUtcXmlCalendar(1324, Calendar.DECEMBER, 11, 15, 23, 47, 554))).isEqualTo("1324-12-11T15:23:47.554+0000");
+        Assertions.assertThat(new XMLGregorianCalendarAsStringConverter().asString(DataHelper.createXmlCalendar(1324, Calendar.JULY, 11, 15, 23, 47, "Asia/Vientiane"))).isEqualTo("1324-07-11T15:23:47.000+0700");
+        Assertions.assertThat(new XMLGregorianCalendarAsStringConverter().asString(DataHelper.createXmlCalendar(1324, Calendar.DECEMBER, 11, 15, 23, 47, "Asia/Vientiane"))).isEqualTo("1324-12-11T15:23:47.000+0700");
+        Assertions.assertThat(new XMLGregorianCalendarAsStringConverter().asString(DataHelper.createXmlCalendar(1324, Calendar.JULY, 11, 15, 23, 47, "Europe/Berlin"))).isEqualTo("1324-07-11T15:23:47.000+0100");
+        Assertions.assertThat(new XMLGregorianCalendarAsStringConverter().asString(DataHelper.createXmlCalendar(1324, Calendar.DECEMBER, 11, 15, 23, 47, "Europe/Berlin"))).isEqualTo("1324-12-11T15:23:47.000+0100");
     }
 
     /**

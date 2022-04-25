@@ -783,7 +783,7 @@ public final class ReflectionHelperTest extends AssertionTest {
         Assertions.assertThat(ReflectionHelper.getParameterTypes()).containsExactlyInOrder();
         Assertions.assertThat(ReflectionHelper.getParameterTypes("param")).containsExactlyInOrder(String.class);
         Assertions.assertThat(ReflectionHelper.getParameterTypes(5)).containsExactlyInOrder(Integer.class);
-        Assertions.assertThat(ReflectionHelper.getParameterTypes(createDate(2020, Calendar.SEPTEMBER, 20, 1, 1, 1), "param", 5)).containsExactlyInOrder(Date.class, String.class, Integer.class);
+        Assertions.assertThat(ReflectionHelper.getParameterTypes(DataHelper.createDate(2020, Calendar.SEPTEMBER, 20, 1, 1, 1), "param", 5)).containsExactlyInOrder(Date.class, String.class, Integer.class);
 
         Assertions.assertThat(ReflectionHelper.getParameterTypes("param", null, 5)).containsExactlyInOrder(String.class, null, Integer.class);
         Assertions.assertThat(ReflectionHelper.getParameterTypes(null, null)).containsExactlyInOrder(null, null);

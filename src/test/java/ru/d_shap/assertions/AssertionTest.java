@@ -318,140 +318,6 @@ public class AssertionTest {
     }
 
     /**
-     * Create date object.
-     *
-     * @param year       the year.
-     * @param month      the month.
-     * @param dayOfMonth the day of month.
-     * @param hourOfDay  the hour of day.
-     * @param minute     the minute.
-     * @param second     the second.
-     *
-     * @return the created object.
-     */
-    protected final Date createDate(final int year, final int month, final int dayOfMonth, final int hourOfDay, final int minute, final int second) {
-        return DataHelper.createDate(year, month, dayOfMonth, hourOfDay, minute, second);
-    }
-
-    /**
-     * Create date object.
-     *
-     * @param year        the year.
-     * @param month       the month.
-     * @param dayOfMonth  the day of month.
-     * @param hourOfDay   the hour of day.
-     * @param minute      the minute.
-     * @param second      the second.
-     * @param millisecond the millisecond.
-     *
-     * @return the created object.
-     */
-    protected final Date createDate(final int year, final int month, final int dayOfMonth, final int hourOfDay, final int minute, final int second, final int millisecond) {
-        return DataHelper.createDate(year, month, dayOfMonth, hourOfDay, minute, second, millisecond);
-    }
-
-    /**
-     * Create calendar object in the default time zone.
-     *
-     * @param year       the year.
-     * @param month      the month.
-     * @param dayOfMonth the day of month.
-     * @param hourOfDay  the hour of day.
-     * @param minute     the minute.
-     * @param second     the second.
-     *
-     * @return the created object.
-     */
-    protected final Calendar createCalendar(final int year, final int month, final int dayOfMonth, final int hourOfDay, final int minute, final int second) {
-        return DataHelper.createCalendar(year, month, dayOfMonth, hourOfDay, minute, second);
-    }
-
-    /**
-     * Create calendar object in the default time zone.
-     *
-     * @param year        the year.
-     * @param month       the month.
-     * @param dayOfMonth  the day of month.
-     * @param hourOfDay   the hour of day.
-     * @param minute      the minute.
-     * @param second      the second.
-     * @param millisecond the millisecond.
-     *
-     * @return the created object.
-     */
-    protected final Calendar createCalendar(final int year, final int month, final int dayOfMonth, final int hourOfDay, final int minute, final int second, final int millisecond) {
-        return DataHelper.createCalendar(year, month, dayOfMonth, hourOfDay, minute, second, millisecond);
-    }
-
-    /**
-     * Create calendar object in the specified time zone.
-     *
-     * @param year       the year.
-     * @param month      the month.
-     * @param dayOfMonth the day of month.
-     * @param hourOfDay  the hour of day.
-     * @param minute     the minute.
-     * @param second     the second.
-     * @param timeZoneId the time zone ID.
-     *
-     * @return the created object.
-     */
-    protected final Calendar createCalendar(final int year, final int month, final int dayOfMonth, final int hourOfDay, final int minute, final int second, final String timeZoneId) {
-        return DataHelper.createCalendar(year, month, dayOfMonth, hourOfDay, minute, second, timeZoneId);
-    }
-
-    /**
-     * Create calendar object in the specified time zone.
-     *
-     * @param year        the year.
-     * @param month       the month.
-     * @param dayOfMonth  the day of month.
-     * @param hourOfDay   the hour of day.
-     * @param minute      the minute.
-     * @param second      the second.
-     * @param millisecond the millisecond.
-     * @param timeZoneId  the time zone ID.
-     *
-     * @return the created object.
-     */
-    protected final Calendar createCalendar(final int year, final int month, final int dayOfMonth, final int hourOfDay, final int minute, final int second, final int millisecond, final String timeZoneId) {
-        return DataHelper.createCalendar(year, month, dayOfMonth, hourOfDay, minute, second, millisecond, timeZoneId);
-    }
-
-    /**
-     * Create calendar object in the UTC time zone.
-     *
-     * @param year       the year.
-     * @param month      the month.
-     * @param dayOfMonth the day of month.
-     * @param hourOfDay  the hour of day.
-     * @param minute     the minute.
-     * @param second     the second.
-     *
-     * @return the created object.
-     */
-    protected final Calendar createUtcCalendar(final int year, final int month, final int dayOfMonth, final int hourOfDay, final int minute, final int second) {
-        return DataHelper.createUtcCalendar(year, month, dayOfMonth, hourOfDay, minute, second);
-    }
-
-    /**
-     * Create calendar object in the UTC time zone.
-     *
-     * @param year        the year.
-     * @param month       the month.
-     * @param dayOfMonth  the day of month.
-     * @param hourOfDay   the hour of day.
-     * @param minute      the minute.
-     * @param second      the second.
-     * @param millisecond the millisecond.
-     *
-     * @return the created object.
-     */
-    protected final Calendar createUtcCalendar(final int year, final int month, final int dayOfMonth, final int hourOfDay, final int minute, final int second, final int millisecond) {
-        return DataHelper.createUtcCalendar(year, month, dayOfMonth, hourOfDay, minute, second, millisecond);
-    }
-
-    /**
      * Create byte buffer object.
      *
      * @param values the buffer values.
@@ -961,107 +827,6 @@ public class AssertionTest {
     }
 
     /**
-     * Create XML calendar object in the default time zone.
-     *
-     * @param year       the year.
-     * @param month      the month.
-     * @param dayOfMonth the day of month.
-     * @param hourOfDay  the hour of day.
-     * @param minute     the minute.
-     * @param second     the second.
-     *
-     * @return the created object.
-     */
-    protected final XMLGregorianCalendar createXmlCalendar(final int year, final int month, final int dayOfMonth, final int hourOfDay, final int minute, final int second) {
-        return DataHelper.createXmlCalendar(year, month, dayOfMonth, hourOfDay, minute, second);
-    }
-
-    /**
-     * Create XML calendar object in the default time zone.
-     *
-     * @param year        the year.
-     * @param month       the month.
-     * @param dayOfMonth  the day of month.
-     * @param hourOfDay   the hour of day.
-     * @param minute      the minute.
-     * @param second      the second.
-     * @param millisecond the millisecond.
-     *
-     * @return the created object.
-     */
-    protected final XMLGregorianCalendar createXmlCalendar(final int year, final int month, final int dayOfMonth, final int hourOfDay, final int minute, final int second, final int millisecond) {
-        return DataHelper.createXmlCalendar(year, month, dayOfMonth, hourOfDay, minute, second, millisecond);
-    }
-
-    /**
-     * Create XML calendar object in the specified time zone.
-     *
-     * @param year       the year.
-     * @param month      the month.
-     * @param dayOfMonth the day of month.
-     * @param hourOfDay  the hour of day.
-     * @param minute     the minute.
-     * @param second     the second.
-     * @param timeZoneId the time zone ID.
-     *
-     * @return the created object.
-     */
-    protected final XMLGregorianCalendar createXmlCalendar(final int year, final int month, final int dayOfMonth, final int hourOfDay, final int minute, final int second, final String timeZoneId) {
-        return DataHelper.createXmlCalendar(year, month, dayOfMonth, hourOfDay, minute, second, timeZoneId);
-    }
-
-    /**
-     * Create XML calendar object in the specified time zone.
-     *
-     * @param year        the year.
-     * @param month       the month.
-     * @param dayOfMonth  the day of month.
-     * @param hourOfDay   the hour of day.
-     * @param minute      the minute.
-     * @param second      the second.
-     * @param millisecond the millisecond.
-     * @param timeZoneId  the time zone ID.
-     *
-     * @return the created object.
-     */
-    protected final XMLGregorianCalendar createXmlCalendar(final int year, final int month, final int dayOfMonth, final int hourOfDay, final int minute, final int second, final int millisecond, final String timeZoneId) {
-        return DataHelper.createXmlCalendar(year, month, dayOfMonth, hourOfDay, minute, second, millisecond, timeZoneId);
-    }
-
-    /**
-     * Create XML calendar object in the UTC time zone.
-     *
-     * @param year       the year.
-     * @param month      the month.
-     * @param dayOfMonth the day of month.
-     * @param hourOfDay  the hour of day.
-     * @param minute     the minute.
-     * @param second     the second.
-     *
-     * @return the created object.
-     */
-    protected final XMLGregorianCalendar createUtcXmlCalendar(final int year, final int month, final int dayOfMonth, final int hourOfDay, final int minute, final int second) {
-        return DataHelper.createUtcXmlCalendar(year, month, dayOfMonth, hourOfDay, minute, second);
-    }
-
-    /**
-     * Create XML calendar object in the UTC time zone.
-     *
-     * @param year        the year.
-     * @param month       the month.
-     * @param dayOfMonth  the day of month.
-     * @param hourOfDay   the hour of day.
-     * @param minute      the minute.
-     * @param second      the second.
-     * @param millisecond the millisecond.
-     *
-     * @return the created object.
-     */
-    protected final XMLGregorianCalendar createUtcXmlCalendar(final int year, final int month, final int dayOfMonth, final int hourOfDay, final int minute, final int second, final int millisecond) {
-        return DataHelper.createUtcXmlCalendar(year, month, dayOfMonth, hourOfDay, minute, second, millisecond);
-    }
-
-    /**
      * Create node object.
      *
      * @param content the content.
@@ -1295,8 +1060,8 @@ public class AssertionTest {
                 _sortedSet = DataHelper.createTreeSet("1", "2", "3");
                 _map = DataHelper.createHashMap("1", "val1", "2", "val2", "3", "val3");
                 _sortedMap = DataHelper.createTreeMap("1", "val1", "2", "val2", "3", "val3");
-                _date = assertionTest.createDate(2020, Calendar.JULY, 11, 15, 23, 47);
-                _calendar = assertionTest.createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "Europe/Berlin");
+                _date = DataHelper.createDate(2020, Calendar.JULY, 11, 15, 23, 47);
+                _calendar = DataHelper.createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "Europe/Berlin");
                 _timeZone = TimeZone.getTimeZone("GMT");
                 _inputStream = new ByteArrayInputStream(new byte[]{1, 2, 3});
                 _reader = new StringReader("123");
@@ -1308,7 +1073,7 @@ public class AssertionTest {
                 _floatBuffer = assertionTest.createFloatBuffer(new float[]{1.0f, 2.0f});
                 _doubleBuffer = assertionTest.createDoubleBuffer(new double[]{1.0f, 2.0f});
                 _charBuffer = assertionTest.createCharBuffer(new char[]{'1', '2'});
-                _xmlGregorianCalendar = assertionTest.createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "Europe/Berlin");
+                _xmlGregorianCalendar = DataHelper.createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "Europe/Berlin");
                 _qname = new QName("local");
                 _node = assertionTest.createNode("<node>content</node>");
                 _element = assertionTest.createElement("<element>content</element>");

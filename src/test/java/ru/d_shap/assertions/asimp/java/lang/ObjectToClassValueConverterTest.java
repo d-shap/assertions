@@ -27,6 +27,7 @@ import org.junit.Test;
 import ru.d_shap.assertions.AssertionTest;
 import ru.d_shap.assertions.Assertions;
 import ru.d_shap.assertions.Raw;
+import ru.d_shap.assertions.util.DataHelper;
 
 /**
  * Tests for {@link ObjectToClassValueConverter}.
@@ -67,9 +68,9 @@ public final class ObjectToClassValueConverterTest extends AssertionTest {
         Assertions.assertThat(new ObjectToClassValueConverter().convert("value"), Raw.classAssertion()).isEqualTo(String.class);
         Assertions.assertThat(new ObjectToClassValueConverter().convert("value")).as(Raw.classAssertion()).isEqualTo(String.class);
 
-        Assertions.assertThat(new ObjectToClassValueConverter().convert(createDate(2020, Calendar.SEPTEMBER, 20, 1, 2, 3))).isInstanceOf(Class.class);
-        Assertions.assertThat(new ObjectToClassValueConverter().convert(createDate(2020, Calendar.SEPTEMBER, 20, 1, 2, 3)), Raw.classAssertion()).isEqualTo(Date.class);
-        Assertions.assertThat(new ObjectToClassValueConverter().convert(createDate(2020, Calendar.SEPTEMBER, 20, 1, 2, 3))).as(Raw.classAssertion()).isEqualTo(Date.class);
+        Assertions.assertThat(new ObjectToClassValueConverter().convert(DataHelper.createDate(2020, Calendar.SEPTEMBER, 20, 1, 2, 3))).isInstanceOf(Class.class);
+        Assertions.assertThat(new ObjectToClassValueConverter().convert(DataHelper.createDate(2020, Calendar.SEPTEMBER, 20, 1, 2, 3)), Raw.classAssertion()).isEqualTo(Date.class);
+        Assertions.assertThat(new ObjectToClassValueConverter().convert(DataHelper.createDate(2020, Calendar.SEPTEMBER, 20, 1, 2, 3))).as(Raw.classAssertion()).isEqualTo(Date.class);
 
         Assertions.assertThat(new ObjectToClassValueConverter().convert(5)).isInstanceOf(Class.class);
         Assertions.assertThat(new ObjectToClassValueConverter().convert(5), Raw.classAssertion()).isEqualTo(Integer.class);

@@ -27,6 +27,7 @@ import org.junit.Test;
 import ru.d_shap.assertions.AssertionTest;
 import ru.d_shap.assertions.Assertions;
 import ru.d_shap.assertions.Raw;
+import ru.d_shap.assertions.util.DataHelper;
 
 /**
  * Tests for {@link ObjectArrayToClassArrayValueConverter}.
@@ -71,9 +72,9 @@ public final class ObjectArrayToClassArrayValueConverterTest extends AssertionTe
         Assertions.assertThat(new ObjectArrayToClassArrayValueConverter().convert(new Object[]{"param"}), Raw.objectArrayAssertion()).containsExactlyInOrder(String.class);
         Assertions.assertThat(new ObjectArrayToClassArrayValueConverter().convert(new Object[]{"param"})).as(Raw.objectArrayAssertion()).containsExactlyInOrder(String.class);
 
-        Assertions.assertThat(new ObjectArrayToClassArrayValueConverter().convert(new Object[]{createDate(2020, Calendar.SEPTEMBER, 20, 1, 1, 1), 1})).isInstanceOf(Class[].class);
-        Assertions.assertThat(new ObjectArrayToClassArrayValueConverter().convert(new Object[]{createDate(2020, Calendar.SEPTEMBER, 20, 1, 1, 1), 1}), Raw.objectArrayAssertion()).containsExactlyInOrder(Date.class, Integer.class);
-        Assertions.assertThat(new ObjectArrayToClassArrayValueConverter().convert(new Object[]{createDate(2020, Calendar.SEPTEMBER, 20, 1, 1, 1), 1})).as(Raw.objectArrayAssertion()).containsExactlyInOrder(Date.class, Integer.class);
+        Assertions.assertThat(new ObjectArrayToClassArrayValueConverter().convert(new Object[]{DataHelper.createDate(2020, Calendar.SEPTEMBER, 20, 1, 1, 1), 1})).isInstanceOf(Class[].class);
+        Assertions.assertThat(new ObjectArrayToClassArrayValueConverter().convert(new Object[]{DataHelper.createDate(2020, Calendar.SEPTEMBER, 20, 1, 1, 1), 1}), Raw.objectArrayAssertion()).containsExactlyInOrder(Date.class, Integer.class);
+        Assertions.assertThat(new ObjectArrayToClassArrayValueConverter().convert(new Object[]{DataHelper.createDate(2020, Calendar.SEPTEMBER, 20, 1, 1, 1), 1})).as(Raw.objectArrayAssertion()).containsExactlyInOrder(Date.class, Integer.class);
     }
 
     /**
