@@ -31,7 +31,6 @@ import java.nio.FloatBuffer;
 import java.nio.IntBuffer;
 import java.nio.LongBuffer;
 import java.nio.ShortBuffer;
-import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Iterator;
@@ -714,10 +713,10 @@ public final class MessageAssertionTest extends AssertionTest {
         Assertions.assertWithMessage("Test message").that("", Matchers.emptyOrNullString());
         Assertions.assertWithMessage("Test message").that(new Integer[]{7, 5, 12, 16}, Matchers.arrayWithSize(4));
         Assertions.assertWithMessage("Test message").that(new Integer[]{7, 5, 12, 16}, Matchers.arrayContaining(7, 5, 12, 16));
-        Assertions.assertWithMessage("Test message").that(Arrays.asList(5, 2, 4), Matchers.hasSize(3));
-        Assertions.assertWithMessage("Test message").that(Arrays.asList(5, 2, 4), Matchers.contains(5, 2, 4));
-        Assertions.assertWithMessage("Test message").that(Arrays.asList(5, 2, 4), Matchers.containsInAnyOrder(2, 4, 5));
-        Assertions.assertWithMessage("Test message").that(Arrays.asList(5, 2, 4), Matchers.everyItem(Matchers.greaterThan(1)));
+        Assertions.assertWithMessage("Test message").that(DataHelper.createArrayList(5, 2, 4), Matchers.hasSize(3));
+        Assertions.assertWithMessage("Test message").that(DataHelper.createArrayList(5, 2, 4), Matchers.contains(5, 2, 4));
+        Assertions.assertWithMessage("Test message").that(DataHelper.createArrayList(5, 2, 4), Matchers.containsInAnyOrder(2, 4, 5));
+        Assertions.assertWithMessage("Test message").that(DataHelper.createArrayList(5, 2, 4), Matchers.everyItem(Matchers.greaterThan(1)));
         Assertions.assertWithMessage("Test message").that(createNullFieldClass(), "_field", Matchers.nullValue());
         Assertions.assertWithMessage("Test message").that(createPrivateFieldsClass(), "_object", Matchers.notNullValue());
         Assertions.assertWithMessage("Test message").that(createPrivateFieldsClass(), "_object", Matchers.not(Matchers.equalTo(new StringBuilder("value"))));
@@ -1439,33 +1438,33 @@ public final class MessageAssertionTest extends AssertionTest {
     @Test
     public void listAssertionTest() {
         Assertions.assertWithMessage("Test message").that((List<String>) null).isNull();
-        Assertions.assertWithMessage("Test message").that(Arrays.asList("1", "2", "3")).containsExactlyInOrder("1", "2", "3");
+        Assertions.assertWithMessage("Test message").that(DataHelper.createArrayList("1", "2", "3")).containsExactlyInOrder("1", "2", "3");
         Assertions.assertWithMessage("Test message").that(null, Raw.<String>listAssertion()).isNull();
-        Assertions.assertWithMessage("Test message").that(Arrays.asList("1", "2", "3"), Raw.<String>listAssertion()).containsExactlyInOrder("1", "2", "3");
+        Assertions.assertWithMessage("Test message").that(DataHelper.createArrayList("1", "2", "3"), Raw.<String>listAssertion()).containsExactlyInOrder("1", "2", "3");
         Assertions.assertWithMessage("Test message").that(createNullFieldClass(), "_field", Raw.<String>listAssertion()).isNull();
         Assertions.assertWithMessage("Test message").that(createPrivateFieldsClass(), "_list").isNotNull();
         Assertions.assertWithMessage("Test message").that(createPrivateFieldsClass(), "_list", Raw.<String>listAssertion()).containsExactlyInOrder("1", "2", "3");
 
         try {
-            Assertions.assertWithMessage(null).that(Arrays.asList("1", "2", "3")).containsExactlyInOrder("1", "2", "3", "4");
+            Assertions.assertWithMessage(null).that(DataHelper.createArrayList("1", "2", "3")).containsExactlyInOrder("1", "2", "3", "4");
             Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2, 3, 4]> but was:<[1, 2, 3]>");
         }
         try {
-            Assertions.assertWithMessage("").that(Arrays.asList("1", "2", "3")).containsExactlyInOrder("1", "2", "3", "4");
+            Assertions.assertWithMessage("").that(DataHelper.createArrayList("1", "2", "3")).containsExactlyInOrder("1", "2", "3", "4");
             Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2, 3, 4]> but was:<[1, 2, 3]>");
         }
         try {
-            Assertions.assertWithMessage("Test message").that(Arrays.asList("1", "2", "3")).containsExactlyInOrder("1", "2", "3", "4");
+            Assertions.assertWithMessage("Test message").that(DataHelper.createArrayList("1", "2", "3")).containsExactlyInOrder("1", "2", "3", "4");
             Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2, 3, 4]> but was:<[1, 2, 3]>");
         }
         try {
-            Assertions.assertWithMessage("value''s.").that(Arrays.asList("1", "2", "3")).containsExactlyInOrder("1", "2", "3", "4");
+            Assertions.assertWithMessage("value''s.").that(DataHelper.createArrayList("1", "2", "3")).containsExactlyInOrder("1", "2", "3", "4");
             Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("value''s.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2, 3, 4]> but was:<[1, 2, 3]>");

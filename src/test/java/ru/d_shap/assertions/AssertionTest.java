@@ -35,7 +35,6 @@ import java.nio.LongBuffer;
 import java.nio.ShortBuffer;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Collection;
 import java.util.Date;
@@ -199,7 +198,7 @@ public class AssertionTest {
     @SafeVarargs
     protected final <E> Set<E> createDuplicateSet(final E... values) {
         Set<E> set = new DuplicateSet<>();
-        List<E> list = Arrays.asList(values);
+        List<E> list = DataHelper.createArrayList(values);
         set.addAll(list);
         return set;
     }
@@ -1052,10 +1051,10 @@ public class AssertionTest {
                 _charSequence = new StringBuilder("test");
                 _string = "test";
                 _comparable = Integer.valueOf("5");
-                _iterable = Arrays.asList("1", "2", "3");
+                _iterable = DataHelper.createIterable("1", "2", "3");
                 _throwable = new AssertionError("error");
-                _iterator = Arrays.asList("1", "2", "3").iterator();
-                _list = Arrays.asList("1", "2", "3");
+                _iterator = DataHelper.createIterator("1", "2", "3");
+                _list = DataHelper.createArrayList("1", "2", "3");
                 _set = DataHelper.createHashSet("1", "2", "3");
                 _sortedSet = DataHelper.createTreeSet("1", "2", "3");
                 _map = DataHelper.createHashMap("1", "val1", "2", "val2", "3", "val3");
