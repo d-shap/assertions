@@ -19,7 +19,6 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.converter;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -78,7 +77,7 @@ public final class ValueConverterTest extends AssertionTest {
         Assertions.assertThat(ValueConverter.convert(DataHelper.createIterator(1, 2, 3, 4, 5), List.class, 1)).isInstanceOf(List.class);
         Assertions.assertThat(ValueConverter.convert(DataHelper.createIterator(1, 2, 3, 4, 5), List.class, 1), Raw.<Integer>listAssertion()).containsExactlyInOrder(1);
 
-        Assertions.assertThat(ValueConverter.convert(Arrays.asList(1, 2, 3, 4, 5), Map.class)).isInstanceOf(List.class);
+        Assertions.assertThat(ValueConverter.convert(DataHelper.createArrayList(1, 2, 3, 4, 5), Map.class)).isInstanceOf(List.class);
     }
 
     /**

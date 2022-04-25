@@ -19,7 +19,6 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.asimp.java.lang;
 
-import java.util.Arrays;
 import java.util.List;
 
 import org.junit.Test;
@@ -87,7 +86,7 @@ public final class IterableToListValueConverterTest extends AssertionTest {
         Iterable<String> iterable = DataHelper.createIterable("val1", "val2", "val3", "val4", "val5");
         Assertions.assertThat(new IterableToListValueConverter().convert(iterable)).isNotSameAs(iterable);
 
-        List<String> list = Arrays.asList("val1", "val2", "val3", "val4", "val5");
+        List<String> list = DataHelper.createArrayList("val1", "val2", "val3", "val4", "val5");
         Assertions.assertThat(new IterableToListValueConverter().convert(list)).isSameAs(list);
     }
 
