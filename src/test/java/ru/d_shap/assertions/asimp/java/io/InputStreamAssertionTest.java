@@ -21,7 +21,6 @@ package ru.d_shap.assertions.asimp.java.io;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
-import java.util.ArrayList;
 
 import org.hamcrest.Matchers;
 import org.junit.Test;
@@ -786,19 +785,19 @@ public final class InputStreamAssertionTest extends AssertionTest {
         initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{0, 0, 0})).isNextBytesEqualTo(DataHelper.createIterable((byte) 0, (byte) 0));
 
         try {
-            Raw.inputStreamAssertion().isNextBytesEqualTo(new ArrayList<Byte>());
+            Raw.inputStreamAssertion().isNextBytesEqualTo(DataHelper.<Byte>createIterable());
             Assertions.fail("InputStreamAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
-            initialize(Raw.inputStreamAssertion(), null).isNextBytesEqualTo(new ArrayList<Byte>());
+            initialize(Raw.inputStreamAssertion(), null).isNextBytesEqualTo(DataHelper.<Byte>createIterable());
             Assertions.fail("InputStreamAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
-            initialize(Raw.inputStreamAssertion(), null, "Message").isNextBytesEqualTo(new ArrayList<Byte>());
+            initialize(Raw.inputStreamAssertion(), null, "Message").isNextBytesEqualTo(DataHelper.<Byte>createIterable());
             Assertions.fail("InputStreamAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
@@ -828,13 +827,13 @@ public final class InputStreamAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
-            initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{})).isNextBytesEqualTo(new ArrayList<Byte>());
+            initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{})).isNextBytesEqualTo(DataHelper.<Byte>createIterable());
             Assertions.fail("InputStreamAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
-            initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{}), "Message").isNextBytesEqualTo(new ArrayList<Byte>());
+            initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{}), "Message").isNextBytesEqualTo(DataHelper.<Byte>createIterable());
             Assertions.fail("InputStreamAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
@@ -1044,22 +1043,22 @@ public final class InputStreamAssertionTest extends AssertionTest {
     public void isAllBytesEqualToIterableTest() {
         initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{1, 2, 3})).isAllBytesEqualTo(DataHelper.createIterable((byte) 1, (byte) 2, (byte) 3));
         initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{0, 0, 0})).isAllBytesEqualTo(DataHelper.createIterable((byte) 0, (byte) 0, (byte) 0));
-        initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{})).isAllBytesEqualTo(new ArrayList<Byte>());
+        initialize(Raw.inputStreamAssertion(), new ByteArrayInputStream(new byte[]{})).isAllBytesEqualTo(DataHelper.<Byte>createIterable());
 
         try {
-            Raw.inputStreamAssertion().isAllBytesEqualTo(new ArrayList<Byte>());
+            Raw.inputStreamAssertion().isAllBytesEqualTo(DataHelper.<Byte>createIterable());
             Assertions.fail("InputStreamAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
-            initialize(Raw.inputStreamAssertion(), null).isAllBytesEqualTo(new ArrayList<Byte>());
+            initialize(Raw.inputStreamAssertion(), null).isAllBytesEqualTo(DataHelper.<Byte>createIterable());
             Assertions.fail("InputStreamAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
-            initialize(Raw.inputStreamAssertion(), null, "Message").isAllBytesEqualTo(new ArrayList<Byte>());
+            initialize(Raw.inputStreamAssertion(), null, "Message").isAllBytesEqualTo(DataHelper.<Byte>createIterable());
             Assertions.fail("InputStreamAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");

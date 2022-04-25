@@ -21,7 +21,6 @@ package ru.d_shap.assertions.asimp.java.io;
 
 import java.io.Reader;
 import java.io.StringReader;
-import java.util.ArrayList;
 
 import org.hamcrest.Matchers;
 import org.junit.Test;
@@ -788,19 +787,19 @@ public final class ReaderAssertionTest extends AssertionTest {
         initialize(Raw.readerAssertion(), new StringReader("\u0000\u0000\u0000")).isNextCharsEqualTo(DataHelper.createIterable((char) 0, (char) 0));
 
         try {
-            Raw.readerAssertion().isNextCharsEqualTo(new ArrayList<Character>());
+            Raw.readerAssertion().isNextCharsEqualTo(DataHelper.<Character>createIterable());
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
-            initialize(Raw.readerAssertion(), null).isNextCharsEqualTo(new ArrayList<Character>());
+            initialize(Raw.readerAssertion(), null).isNextCharsEqualTo(DataHelper.<Character>createIterable());
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
-            initialize(Raw.readerAssertion(), null, "Message").isNextCharsEqualTo(new ArrayList<Character>());
+            initialize(Raw.readerAssertion(), null, "Message").isNextCharsEqualTo(DataHelper.<Character>createIterable());
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
@@ -830,13 +829,13 @@ public final class ReaderAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
-            initialize(Raw.readerAssertion(), new StringReader("")).isNextCharsEqualTo(new ArrayList<Character>());
+            initialize(Raw.readerAssertion(), new StringReader("")).isNextCharsEqualTo(DataHelper.<Character>createIterable());
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
-            initialize(Raw.readerAssertion(), new StringReader(""), "Message").isNextCharsEqualTo(new ArrayList<Character>());
+            initialize(Raw.readerAssertion(), new StringReader(""), "Message").isNextCharsEqualTo(DataHelper.<Character>createIterable());
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
@@ -1046,22 +1045,22 @@ public final class ReaderAssertionTest extends AssertionTest {
     public void isAllCharsEqualToIterableTest() {
         initialize(Raw.readerAssertion(), new StringReader("123")).isAllCharsEqualTo(DataHelper.createIterable('1', '2', '3'));
         initialize(Raw.readerAssertion(), new StringReader("\u0000\u0000\u0000")).isAllCharsEqualTo(DataHelper.createIterable((char) 0, (char) 0, (char) 0));
-        initialize(Raw.readerAssertion(), new StringReader("")).isAllCharsEqualTo(new ArrayList<Character>());
+        initialize(Raw.readerAssertion(), new StringReader("")).isAllCharsEqualTo(DataHelper.<Character>createIterable());
 
         try {
-            Raw.readerAssertion().isAllCharsEqualTo(new ArrayList<Character>());
+            Raw.readerAssertion().isAllCharsEqualTo(DataHelper.<Character>createIterable());
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
-            initialize(Raw.readerAssertion(), null).isAllCharsEqualTo(new ArrayList<Character>());
+            initialize(Raw.readerAssertion(), null).isAllCharsEqualTo(DataHelper.<Character>createIterable());
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
-            initialize(Raw.readerAssertion(), null, "Message").isAllCharsEqualTo(new ArrayList<Character>());
+            initialize(Raw.readerAssertion(), null, "Message").isAllCharsEqualTo(DataHelper.<Character>createIterable());
             Assertions.fail("ReaderAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
