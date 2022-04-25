@@ -22,10 +22,12 @@ package ru.d_shap.assertions.util;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.NoSuchElementException;
 import java.util.TimeZone;
+import java.util.TreeMap;
 import java.util.TreeSet;
 
 import javax.xml.XMLConstants;
@@ -184,7 +186,16 @@ public final class DataHelperTest extends AssertionTest {
      */
     @Test
     public void createHashMapTest() {
-        // TODO
+        Assertions.assertThat(DataHelper.createHashMap()).containsExactlyInOrder();
+        Assertions.assertThat(DataHelper.createHashMap("key1", "value1")).containsExactlyInOrder("key1", "value1");
+        Assertions.assertThat(DataHelper.createHashMap("key1", "value1", "key2", "value2")).containsExactlyInOrder("key1", "value1", "key2", "value2");
+        Assertions.assertThat(DataHelper.createHashMap("key1", "value1", "key2", "value2", "key3", "value3")).containsExactlyInOrder("key1", "value1", "key2", "value2", "key3", "value3");
+        Assertions.assertThat(DataHelper.createHashMap("key1", "value1", "key2", "value2", "key3", "value3", "key4", "value4")).containsExactlyInOrder("key1", "value1", "key2", "value2", "key3", "value3", "key4", "value4");
+        Assertions.assertThat(DataHelper.createHashMap("key1", "value1", "key2", "value2", "key3", "value3", "key4", "value4", "key5", "value5")).containsExactlyInOrder("key1", "value1", "key2", "value2", "key3", "value3", "key4", "value4", "key5", "value5");
+        Assertions.assertThat(DataHelper.createHashMap("key1", "value1")).isInstanceOf(LinkedHashMap.class);
+
+        Assertions.assertThat(DataHelper.createHashMap("key1", "value1", "key2", "value2", "key1", "value3", "key4", "value4", "key2", "value5")).containsExactlyInOrder("key1", "value3", "key2", "value5", "key4", "value4");
+        Assertions.assertThat(DataHelper.createHashMap(null, "value1", "key2", "value2", null, "value3", "key4", "value4", "key5", "value5")).containsExactlyInOrder(null, "value3", "key2", "value2", "key4", "value4", "key5", "value5");
     }
 
     /**
@@ -192,7 +203,17 @@ public final class DataHelperTest extends AssertionTest {
      */
     @Test
     public void createTreeMapTest() {
-        // TODO
+        Assertions.assertThat(DataHelper.createTreeMap()).containsExactlyInOrder();
+        Assertions.assertThat(DataHelper.createTreeMap("key1", "value1")).containsExactlyInOrder("key1", "value1");
+        Assertions.assertThat(DataHelper.createTreeMap("key1", "value1", "key2", "value2")).containsExactlyInOrder("key1", "value1", "key2", "value2");
+        Assertions.assertThat(DataHelper.createTreeMap("key1", "value1", "key2", "value2", "key3", "value3")).containsExactlyInOrder("key1", "value1", "key2", "value2", "key3", "value3");
+        Assertions.assertThat(DataHelper.createTreeMap("key1", "value1", "key2", "value2", "key3", "value3", "key4", "value4")).containsExactlyInOrder("key1", "value1", "key2", "value2", "key3", "value3", "key4", "value4");
+        Assertions.assertThat(DataHelper.createTreeMap("key1", "value1", "key2", "value2", "key3", "value3", "key4", "value4", "key5", "value5")).containsExactlyInOrder("key1", "value1", "key2", "value2", "key3", "value3", "key4", "value4", "key5", "value5");
+        Assertions.assertThat(DataHelper.createTreeMap("key3", "value3", "key5", "value5", "key1", "value1", "key4", "value4", "key2", "value2")).containsExactlyInOrder("key1", "value1", "key2", "value2", "key3", "value3", "key4", "value4", "key5", "value5");
+        Assertions.assertThat(DataHelper.createTreeMap("key1", "value1")).isInstanceOf(TreeMap.class);
+
+        Assertions.assertThat(DataHelper.createTreeMap("key1", "value1", "key2", "value2", "key1", "value3", "key4", "value4", "key2", "value5")).containsExactlyInOrder("key1", "value3", "key2", "value5", "key4", "value4");
+        Assertions.assertThat(DataHelper.createTreeMap(null, "value1", "key2", "value2", null, "value3", "key4", "value4", "key5", "value5")).containsExactlyInOrder(null, "value3", "key2", "value2", "key4", "value4", "key5", "value5");
     }
 
     /**
