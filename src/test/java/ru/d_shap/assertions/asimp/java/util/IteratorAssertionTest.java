@@ -21,7 +21,6 @@ package ru.d_shap.assertions.asimp.java.util;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.Iterator;
 
 import org.hamcrest.Matchers;
@@ -30,6 +29,7 @@ import org.junit.Test;
 import ru.d_shap.assertions.AssertionTest;
 import ru.d_shap.assertions.Assertions;
 import ru.d_shap.assertions.Raw;
+import ru.d_shap.assertions.util.DataHelper;
 
 /**
  * Tests for {@link IteratorAssertion}.
@@ -50,7 +50,7 @@ public final class IteratorAssertionTest extends AssertionTest {
      */
     @Test
     public void actualValueValidatorTest() {
-        initialize(Raw.<String>iteratorAssertion(), Collections.<String>emptyIterator());
+        initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator());
 
         try {
             initializeWithRawActual(Raw.<String>iteratorAssertion(), new Object());
@@ -71,8 +71,8 @@ public final class IteratorAssertionTest extends AssertionTest {
      */
     @Test
     public void isCompletedTest() {
-        initialize(Raw.<String>iteratorAssertion(), Collections.<String>emptyIterator()).isCompleted();
-        Iterator<String> iterator = Arrays.asList("val1", "val2", "val3").iterator();
+        initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator()).isCompleted();
+        Iterator<String> iterator = DataHelper.createIterator("val1", "val2", "val3");
         Assertions.assertThat(iterator.next()).isEqualTo("val1");
         Assertions.assertThat(iterator.next()).isEqualTo("val2");
         Assertions.assertThat(iterator.next()).isEqualTo("val3");
@@ -115,7 +115,7 @@ public final class IteratorAssertionTest extends AssertionTest {
      */
     @Test
     public void isNotCompletedTest() {
-        Iterator<String> iterator = Arrays.asList("val1", "val2", "val3").iterator();
+        Iterator<String> iterator = DataHelper.createIterator("val1", "val2", "val3");
         initialize(Raw.<String>iteratorAssertion(), iterator).isNotCompleted();
         initialize(Raw.<String>iteratorAssertion(), iterator).isNotCompleted();
         initialize(Raw.<String>iteratorAssertion(), iterator).isNotCompleted();
@@ -147,13 +147,13 @@ public final class IteratorAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), Collections.<String>emptyIterator()).isNotCompleted();
+            initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator()).isNotCompleted();
             Assertions.fail("IteratorAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be completed.");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), Collections.<String>emptyIterator(), "Message").isNotCompleted();
+            initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator(), "Message").isNotCompleted();
             Assertions.fail("IteratorAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be completed.");
@@ -253,25 +253,25 @@ public final class IteratorAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), Collections.<String>emptyIterator()).toList(0);
+            initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator()).toList(0);
             Assertions.fail("IteratorAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should be valid: count.\n\tThe argument's value should be greater than zero.");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), Collections.<String>emptyIterator(), "Message").toList(0);
+            initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator(), "Message").toList(0);
             Assertions.fail("IteratorAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: count.\n\tThe argument's value should be greater than zero.");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), Collections.<String>emptyIterator()).toList(-1);
+            initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator()).toList(-1);
             Assertions.fail("IteratorAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should be valid: count.\n\tThe argument's value should be greater than zero.");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), Collections.<String>emptyIterator(), "Message").toList(-1);
+            initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator(), "Message").toList(-1);
             Assertions.fail("IteratorAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: count.\n\tThe argument's value should be greater than zero.");
@@ -340,13 +340,13 @@ public final class IteratorAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), Collections.<String>emptyIterator()).toList(null);
+            initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator()).toList(null);
             Assertions.fail("IteratorAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: matcher.");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), Collections.<String>emptyIterator(), "Message").toList(null);
+            initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator(), "Message").toList(null);
             Assertions.fail("IteratorAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: matcher.");
@@ -407,49 +407,49 @@ public final class IteratorAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), Collections.<String>emptyIterator()).toList(0, Matchers.hasItems(""));
+            initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator()).toList(0, Matchers.hasItems(""));
             Assertions.fail("IteratorAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should be valid: count.\n\tThe argument's value should be greater than zero.");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), Collections.<String>emptyIterator(), "Message").toList(0, Matchers.hasItems(""));
+            initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator(), "Message").toList(0, Matchers.hasItems(""));
             Assertions.fail("IteratorAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: count.\n\tThe argument's value should be greater than zero.");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), Collections.<String>emptyIterator()).toList(-1, Matchers.hasItems(""));
+            initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator()).toList(-1, Matchers.hasItems(""));
             Assertions.fail("IteratorAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should be valid: count.\n\tThe argument's value should be greater than zero.");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), Collections.<String>emptyIterator(), "Message").toList(-1, Matchers.hasItems(""));
+            initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator(), "Message").toList(-1, Matchers.hasItems(""));
             Assertions.fail("IteratorAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: count.\n\tThe argument's value should be greater than zero.");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), Collections.<String>emptyIterator()).toList(0, null);
+            initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator()).toList(0, null);
             Assertions.fail("IteratorAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should be valid: count.\n\tThe argument's value should be greater than zero.");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), Collections.<String>emptyIterator(), "Message").toList(0, null);
+            initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator(), "Message").toList(0, null);
             Assertions.fail("IteratorAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: count.\n\tThe argument's value should be greater than zero.");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), Collections.<String>emptyIterator()).toList(1, null);
+            initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator()).toList(1, null);
             Assertions.fail("IteratorAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: matcher.");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), Collections.<String>emptyIterator(), "Message").toList(1, null);
+            initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator(), "Message").toList(1, null);
             Assertions.fail("IteratorAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: matcher.");
@@ -473,7 +473,7 @@ public final class IteratorAssertionTest extends AssertionTest {
      */
     @Test
     public void isEmptyTest() {
-        initialize(Raw.<String>iteratorAssertion(), Collections.<String>emptyIterator()).isEmpty();
+        initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator()).isEmpty();
         initialize(Raw.iteratorAssertion(), createHashSet().iterator()).isEmpty();
         initialize(Raw.iteratorAssertion(), createTreeSet().iterator()).isEmpty();
 
@@ -514,7 +514,7 @@ public final class IteratorAssertionTest extends AssertionTest {
      */
     @Test
     public void isNullOrEmptyTest() {
-        initialize(Raw.<String>iteratorAssertion(), Collections.<String>emptyIterator()).isNullOrEmpty();
+        initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator()).isNullOrEmpty();
         initialize(Raw.iteratorAssertion(), createHashSet().iterator()).isNullOrEmpty();
         initialize(Raw.iteratorAssertion(), createTreeSet().iterator()).isNullOrEmpty();
         initialize(Raw.<String>iteratorAssertion(), null).isNullOrEmpty();
@@ -566,13 +566,13 @@ public final class IteratorAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), Collections.<String>emptyIterator()).isNotEmpty();
+            initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator()).isNotEmpty();
             Assertions.fail("IteratorAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check all actual value's elements.\n\tActual value should not be empty.");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), Collections.<String>emptyIterator(), "Message").isNotEmpty();
+            initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator(), "Message").isNotEmpty();
             Assertions.fail("IteratorAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck all actual value's elements.\n\tActual value should not be empty.");
@@ -709,25 +709,25 @@ public final class IteratorAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), Collections.<String>emptyIterator()).isNextElementsEqualTo((String[]) null);
+            initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator()).isNextElementsEqualTo((String[]) null);
             Assertions.fail("IteratorAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), Collections.<String>emptyIterator(), "Message").isNextElementsEqualTo((String[]) null);
+            initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator(), "Message").isNextElementsEqualTo((String[]) null);
             Assertions.fail("IteratorAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), Collections.<String>emptyIterator()).isNextElementsEqualTo();
+            initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator()).isNextElementsEqualTo();
             Assertions.fail("IteratorAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), Collections.<String>emptyIterator(), "Message").isNextElementsEqualTo();
+            initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator(), "Message").isNextElementsEqualTo();
             Assertions.fail("IteratorAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
@@ -805,25 +805,25 @@ public final class IteratorAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), Collections.<String>emptyIterator()).isNextElementsEqualTo((Iterable<String>) null);
+            initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator()).isNextElementsEqualTo((Iterable<String>) null);
             Assertions.fail("IteratorAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), Collections.<String>emptyIterator(), "Message").isNextElementsEqualTo((Iterable<String>) null);
+            initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator(), "Message").isNextElementsEqualTo((Iterable<String>) null);
             Assertions.fail("IteratorAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), Collections.<String>emptyIterator()).isNextElementsEqualTo(new ArrayList<String>());
+            initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator()).isNextElementsEqualTo(new ArrayList<String>());
             Assertions.fail("IteratorAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), Collections.<String>emptyIterator(), "Message").isNextElementsEqualTo(new ArrayList<String>());
+            initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator(), "Message").isNextElementsEqualTo(new ArrayList<String>());
             Assertions.fail("IteratorAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
@@ -856,7 +856,7 @@ public final class IteratorAssertionTest extends AssertionTest {
         initialize(Raw.<String>iteratorAssertion(), Arrays.asList("val1", "val2", "val3").iterator()).isAllElementsEqualTo("val1", "val2", "val3");
         initialize(Raw.<String>iteratorAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5").iterator()).isAllElementsEqualTo("val1", "val2", "val3", "val4", "val5");
         initialize(Raw.<String>iteratorAssertion(), Arrays.asList("val1", "val2", "val3", "val4", null).iterator()).isAllElementsEqualTo("val1", "val2", "val3", "val4", null);
-        initialize(Raw.<String>iteratorAssertion(), Collections.<String>emptyIterator()).isAllElementsEqualTo();
+        initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator()).isAllElementsEqualTo();
 
         try {
             Raw.<String>iteratorAssertion().isAllElementsEqualTo("val");
@@ -889,13 +889,13 @@ public final class IteratorAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), Collections.<String>emptyIterator()).isAllElementsEqualTo((String[]) null);
+            initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator()).isAllElementsEqualTo((String[]) null);
             Assertions.fail("IteratorAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), Collections.<String>emptyIterator(), "Message").isAllElementsEqualTo((String[]) null);
+            initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator(), "Message").isAllElementsEqualTo((String[]) null);
             Assertions.fail("IteratorAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
@@ -964,7 +964,7 @@ public final class IteratorAssertionTest extends AssertionTest {
         initialize(Raw.<String>iteratorAssertion(), Arrays.asList("val1", "val2", "val3").iterator()).isAllElementsEqualTo(Arrays.asList("val1", "val2", "val3"));
         initialize(Raw.<String>iteratorAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5").iterator()).isAllElementsEqualTo(Arrays.asList("val1", "val2", "val3", "val4", "val5"));
         initialize(Raw.<String>iteratorAssertion(), Arrays.asList("val1", "val2", "val3", "val4", null).iterator()).isAllElementsEqualTo(Arrays.asList("val1", "val2", "val3", "val4", null));
-        initialize(Raw.<String>iteratorAssertion(), Collections.<String>emptyIterator()).isAllElementsEqualTo(new ArrayList<String>());
+        initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator()).isAllElementsEqualTo(new ArrayList<String>());
 
         try {
             Raw.<String>iteratorAssertion().isAllElementsEqualTo(new ArrayList<String>());
@@ -997,13 +997,13 @@ public final class IteratorAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), Collections.<String>emptyIterator()).isAllElementsEqualTo((Iterable<String>) null);
+            initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator()).isAllElementsEqualTo((Iterable<String>) null);
             Assertions.fail("IteratorAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), Collections.<String>emptyIterator(), "Message").isAllElementsEqualTo((Iterable<String>) null);
+            initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator(), "Message").isAllElementsEqualTo((Iterable<String>) null);
             Assertions.fail("IteratorAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
@@ -1222,25 +1222,25 @@ public final class IteratorAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), Collections.<String>emptyIterator()).containsAll((String[]) null);
+            initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator()).containsAll((String[]) null);
             Assertions.fail("IteratorAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), Collections.<String>emptyIterator(), "Message").containsAll((String[]) null);
+            initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator(), "Message").containsAll((String[]) null);
             Assertions.fail("IteratorAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), Collections.<String>emptyIterator()).containsAll();
+            initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator()).containsAll();
             Assertions.fail("IteratorAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), Collections.<String>emptyIterator(), "Message").containsAll();
+            initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator(), "Message").containsAll();
             Assertions.fail("IteratorAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
@@ -1333,25 +1333,25 @@ public final class IteratorAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), Collections.<String>emptyIterator()).containsAll((Iterable<String>) null);
+            initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator()).containsAll((Iterable<String>) null);
             Assertions.fail("IteratorAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), Collections.<String>emptyIterator(), "Message").containsAll((Iterable<String>) null);
+            initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator(), "Message").containsAll((Iterable<String>) null);
             Assertions.fail("IteratorAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), Collections.<String>emptyIterator()).containsAll(new ArrayList<String>());
+            initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator()).containsAll(new ArrayList<String>());
             Assertions.fail("IteratorAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), Collections.<String>emptyIterator(), "Message").containsAll(new ArrayList<String>());
+            initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator(), "Message").containsAll(new ArrayList<String>());
             Assertions.fail("IteratorAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
@@ -1432,25 +1432,25 @@ public final class IteratorAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), Collections.<String>emptyIterator()).containsAllInOrder((String[]) null);
+            initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator()).containsAllInOrder((String[]) null);
             Assertions.fail("IteratorAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), Collections.<String>emptyIterator(), "Message").containsAllInOrder((String[]) null);
+            initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator(), "Message").containsAllInOrder((String[]) null);
             Assertions.fail("IteratorAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), Collections.<String>emptyIterator()).containsAllInOrder();
+            initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator()).containsAllInOrder();
             Assertions.fail("IteratorAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), Collections.<String>emptyIterator(), "Message").containsAllInOrder();
+            initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator(), "Message").containsAllInOrder();
             Assertions.fail("IteratorAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
@@ -1543,25 +1543,25 @@ public final class IteratorAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), Collections.<String>emptyIterator()).containsAllInOrder((Iterable<String>) null);
+            initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator()).containsAllInOrder((Iterable<String>) null);
             Assertions.fail("IteratorAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), Collections.<String>emptyIterator(), "Message").containsAllInOrder((Iterable<String>) null);
+            initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator(), "Message").containsAllInOrder((Iterable<String>) null);
             Assertions.fail("IteratorAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), Collections.<String>emptyIterator()).containsAllInOrder(new ArrayList<String>());
+            initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator()).containsAllInOrder(new ArrayList<String>());
             Assertions.fail("IteratorAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), Collections.<String>emptyIterator(), "Message").containsAllInOrder(new ArrayList<String>());
+            initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator(), "Message").containsAllInOrder(new ArrayList<String>());
             Assertions.fail("IteratorAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
@@ -1610,7 +1610,7 @@ public final class IteratorAssertionTest extends AssertionTest {
         initialize(Raw.<String>iteratorAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5").iterator()).containsExactly("val1", "val2", "val3", "val4", "val5");
         initialize(Raw.<String>iteratorAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5").iterator()).containsExactly("val2", "val4", "val1", "val3", "val5");
         initialize(Raw.<String>iteratorAssertion(), Arrays.asList("val1", "val2", "val3", "val4", null).iterator()).containsExactly("val2", "val4", "val1", "val3", null);
-        initialize(Raw.<String>iteratorAssertion(), Collections.<String>emptyIterator()).containsExactly();
+        initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator()).containsExactly();
 
         try {
             Raw.<String>iteratorAssertion().containsExactly("val");
@@ -1643,13 +1643,13 @@ public final class IteratorAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), Collections.<String>emptyIterator()).containsExactly((String[]) null);
+            initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator()).containsExactly((String[]) null);
             Assertions.fail("IteratorAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), Collections.<String>emptyIterator(), "Message").containsExactly((String[]) null);
+            initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator(), "Message").containsExactly((String[]) null);
             Assertions.fail("IteratorAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
@@ -1722,7 +1722,7 @@ public final class IteratorAssertionTest extends AssertionTest {
         initialize(Raw.<String>iteratorAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5").iterator()).containsExactly(Arrays.asList("val1", "val2", "val3", "val4", "val5"));
         initialize(Raw.<String>iteratorAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5").iterator()).containsExactly(Arrays.asList("val2", "val4", "val1", "val3", "val5"));
         initialize(Raw.<String>iteratorAssertion(), Arrays.asList("val1", "val2", "val3", "val4", null).iterator()).containsExactly(Arrays.asList("val2", "val4", "val1", "val3", null));
-        initialize(Raw.<String>iteratorAssertion(), Collections.<String>emptyIterator()).containsExactly(new ArrayList<String>());
+        initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator()).containsExactly(new ArrayList<String>());
 
         try {
             Raw.<String>iteratorAssertion().containsExactly(new ArrayList<String>());
@@ -1755,13 +1755,13 @@ public final class IteratorAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), Collections.<String>emptyIterator()).containsExactly((Iterable<String>) null);
+            initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator()).containsExactly((Iterable<String>) null);
             Assertions.fail("IteratorAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), Collections.<String>emptyIterator(), "Message").containsExactly((Iterable<String>) null);
+            initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator(), "Message").containsExactly((Iterable<String>) null);
             Assertions.fail("IteratorAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
@@ -1818,7 +1818,7 @@ public final class IteratorAssertionTest extends AssertionTest {
         initialize(Raw.<String>iteratorAssertion(), Arrays.asList("val1", "val2", "val3").iterator()).containsExactlyInOrder("val1", "val2", "val3");
         initialize(Raw.<String>iteratorAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5").iterator()).containsExactlyInOrder("val1", "val2", "val3", "val4", "val5");
         initialize(Raw.<String>iteratorAssertion(), Arrays.asList("val1", "val2", "val3", "val4", null).iterator()).containsExactlyInOrder("val1", "val2", "val3", "val4", null);
-        initialize(Raw.<String>iteratorAssertion(), Collections.<String>emptyIterator()).containsExactlyInOrder();
+        initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator()).containsExactlyInOrder();
 
         try {
             Raw.<String>iteratorAssertion().containsExactlyInOrder("val");
@@ -1851,13 +1851,13 @@ public final class IteratorAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), Collections.<String>emptyIterator()).containsExactlyInOrder((String[]) null);
+            initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator()).containsExactlyInOrder((String[]) null);
             Assertions.fail("IteratorAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), Collections.<String>emptyIterator(), "Message").containsExactlyInOrder((String[]) null);
+            initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator(), "Message").containsExactlyInOrder((String[]) null);
             Assertions.fail("IteratorAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
@@ -1926,7 +1926,7 @@ public final class IteratorAssertionTest extends AssertionTest {
         initialize(Raw.<String>iteratorAssertion(), Arrays.asList("val1", "val2", "val3").iterator()).containsExactlyInOrder(Arrays.asList("val1", "val2", "val3"));
         initialize(Raw.<String>iteratorAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5").iterator()).containsExactlyInOrder(Arrays.asList("val1", "val2", "val3", "val4", "val5"));
         initialize(Raw.<String>iteratorAssertion(), Arrays.asList("val1", "val2", "val3", "val4", null).iterator()).containsExactlyInOrder(Arrays.asList("val1", "val2", "val3", "val4", null));
-        initialize(Raw.<String>iteratorAssertion(), Collections.<String>emptyIterator()).containsExactlyInOrder(new ArrayList<String>());
+        initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator()).containsExactlyInOrder(new ArrayList<String>());
 
         try {
             Raw.<String>iteratorAssertion().containsExactlyInOrder(new ArrayList<String>());
@@ -1959,13 +1959,13 @@ public final class IteratorAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), Collections.<String>emptyIterator()).containsExactlyInOrder((Iterable<String>) null);
+            initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator()).containsExactlyInOrder((Iterable<String>) null);
             Assertions.fail("IteratorAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), Collections.<String>emptyIterator(), "Message").containsExactlyInOrder((Iterable<String>) null);
+            initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator(), "Message").containsExactlyInOrder((Iterable<String>) null);
             Assertions.fail("IteratorAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
@@ -2056,25 +2056,25 @@ public final class IteratorAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), Collections.<String>emptyIterator()).containsAny((String[]) null);
+            initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator()).containsAny((String[]) null);
             Assertions.fail("IteratorAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), Collections.<String>emptyIterator(), "Message").containsAny((String[]) null);
+            initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator(), "Message").containsAny((String[]) null);
             Assertions.fail("IteratorAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), Collections.<String>emptyIterator()).containsAny();
+            initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator()).containsAny();
             Assertions.fail("IteratorAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always false.");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), Collections.<String>emptyIterator(), "Message").containsAny();
+            initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator(), "Message").containsAny();
             Assertions.fail("IteratorAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always false.");
@@ -2153,25 +2153,25 @@ public final class IteratorAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), Collections.<String>emptyIterator()).containsAny((Iterable<String>) null);
+            initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator()).containsAny((Iterable<String>) null);
             Assertions.fail("IteratorAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), Collections.<String>emptyIterator(), "Message").containsAny((Iterable<String>) null);
+            initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator(), "Message").containsAny((Iterable<String>) null);
             Assertions.fail("IteratorAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), Collections.<String>emptyIterator()).containsAny(new ArrayList<String>());
+            initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator()).containsAny(new ArrayList<String>());
             Assertions.fail("IteratorAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always false.");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), Collections.<String>emptyIterator(), "Message").containsAny(new ArrayList<String>());
+            initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator(), "Message").containsAny(new ArrayList<String>());
             Assertions.fail("IteratorAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always false.");
@@ -2238,25 +2238,25 @@ public final class IteratorAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), Collections.<String>emptyIterator()).containsNone((String[]) null);
+            initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator()).containsNone((String[]) null);
             Assertions.fail("IteratorAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), Collections.<String>emptyIterator(), "Message").containsNone((String[]) null);
+            initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator(), "Message").containsNone((String[]) null);
             Assertions.fail("IteratorAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), Collections.<String>emptyIterator()).containsNone();
+            initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator()).containsNone();
             Assertions.fail("IteratorAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), Collections.<String>emptyIterator(), "Message").containsNone();
+            initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator(), "Message").containsNone();
             Assertions.fail("IteratorAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
@@ -2334,25 +2334,25 @@ public final class IteratorAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), Collections.<String>emptyIterator()).containsNone((Iterable<String>) null);
+            initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator()).containsNone((Iterable<String>) null);
             Assertions.fail("IteratorAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), Collections.<String>emptyIterator(), "Message").containsNone((Iterable<String>) null);
+            initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator(), "Message").containsNone((Iterable<String>) null);
             Assertions.fail("IteratorAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), Collections.<String>emptyIterator()).containsNone(new ArrayList<String>());
+            initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator()).containsNone(new ArrayList<String>());
             Assertions.fail("IteratorAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), Collections.<String>emptyIterator(), "Message").containsNone(new ArrayList<String>());
+            initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator(), "Message").containsNone(new ArrayList<String>());
             Assertions.fail("IteratorAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
@@ -2478,13 +2478,13 @@ public final class IteratorAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), Collections.<String>emptyIterator()).toSize(null);
+            initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator()).toSize(null);
             Assertions.fail("IteratorAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: matcher.");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), Collections.<String>emptyIterator(), "Message").toSize(null);
+            initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator(), "Message").toSize(null);
             Assertions.fail("IteratorAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: matcher.");
