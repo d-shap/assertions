@@ -20,7 +20,6 @@
 package ru.d_shap.assertions.asimp.array;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 import org.hamcrest.Matchers;
 import org.junit.Test;
@@ -28,6 +27,7 @@ import org.junit.Test;
 import ru.d_shap.assertions.AssertionTest;
 import ru.d_shap.assertions.Assertions;
 import ru.d_shap.assertions.Raw;
+import ru.d_shap.assertions.util.DataHelper;
 
 /**
  * Tests for {@link ShortArrayAssertion}.
@@ -420,9 +420,9 @@ public final class ShortArrayAssertionTest extends AssertionTest {
      */
     @Test
     public void containsAllIterableTest() {
-        initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).containsAll(Arrays.asList((short) 1, (short) 2));
-        initialize(Raw.shortArrayAssertion(), new short[]{1, 2, 3, 4}).containsAll(Arrays.asList((short) 1, (short) 3));
-        initialize(Raw.shortArrayAssertion(), new short[]{1, 2, 3, 4}).containsAll(Arrays.asList((short) 4, (short) 2));
+        initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).containsAll(DataHelper.createIterable((short) 1, (short) 2));
+        initialize(Raw.shortArrayAssertion(), new short[]{1, 2, 3, 4}).containsAll(DataHelper.createIterable((short) 1, (short) 3));
+        initialize(Raw.shortArrayAssertion(), new short[]{1, 2, 3, 4}).containsAll(DataHelper.createIterable((short) 4, (short) 2));
 
         try {
             Raw.shortArrayAssertion().containsAll(new ArrayList<Short>());
@@ -479,13 +479,13 @@ public final class ShortArrayAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
-            initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).containsAll(Arrays.asList((short) 2, (short) 3));
+            initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).containsAll(DataHelper.createIterable((short) 2, (short) 3));
             Assertions.fail("ShortArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values.\n\tExpected:<[2s, 3s]> but was:<[1s, 2s]>");
         }
         try {
-            initialize(Raw.shortArrayAssertion(), new short[]{1, 2}, "Message").containsAll(Arrays.asList((short) 2, (short) 3));
+            initialize(Raw.shortArrayAssertion(), new short[]{1, 2}, "Message").containsAll(DataHelper.createIterable((short) 2, (short) 3));
             Assertions.fail("ShortArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values.\n\tExpected:<[2s, 3s]> but was:<[1s, 2s]>");
@@ -673,8 +673,8 @@ public final class ShortArrayAssertionTest extends AssertionTest {
      */
     @Test
     public void containsAllInOrderIterableTest() {
-        initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).containsAllInOrder(Arrays.asList((short) 1, (short) 2));
-        initialize(Raw.shortArrayAssertion(), new short[]{1, 2, 3, 4}).containsAllInOrder(Arrays.asList((short) 1, (short) 3, (short) 4));
+        initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).containsAllInOrder(DataHelper.createIterable((short) 1, (short) 2));
+        initialize(Raw.shortArrayAssertion(), new short[]{1, 2, 3, 4}).containsAllInOrder(DataHelper.createIterable((short) 1, (short) 3, (short) 4));
 
         try {
             Raw.shortArrayAssertion().containsAllInOrder(new ArrayList<Short>());
@@ -731,19 +731,19 @@ public final class ShortArrayAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
-            initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).containsAllInOrder(Arrays.asList((short) 2, (short) 3));
+            initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).containsAllInOrder(DataHelper.createIterable((short) 2, (short) 3));
             Assertions.fail("ShortArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[2s, 3s]> but was:<[1s, 2s]>");
         }
         try {
-            initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).containsAllInOrder(Arrays.asList((short) 2, (short) 1));
+            initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).containsAllInOrder(DataHelper.createIterable((short) 2, (short) 1));
             Assertions.fail("ShortArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[2s, 1s]> but was:<[1s, 2s]>");
         }
         try {
-            initialize(Raw.shortArrayAssertion(), new short[]{1, 2}, "Message").containsAllInOrder(Arrays.asList((short) 2, (short) 1));
+            initialize(Raw.shortArrayAssertion(), new short[]{1, 2}, "Message").containsAllInOrder(DataHelper.createIterable((short) 2, (short) 1));
             Assertions.fail("ShortArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values in the specified order.\n\tExpected:<[2s, 1s]> but was:<[1s, 2s]>");
@@ -935,9 +935,9 @@ public final class ShortArrayAssertionTest extends AssertionTest {
      */
     @Test
     public void containsExactlyIterableTest() {
-        initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).containsExactly(Arrays.asList((short) 1, (short) 2));
-        initialize(Raw.shortArrayAssertion(), new short[]{1, 2, 3, 4}).containsExactly(Arrays.asList((short) 1, (short) 2, (short) 3, (short) 4));
-        initialize(Raw.shortArrayAssertion(), new short[]{1, 2, 3, 4}).containsExactly(Arrays.asList((short) 1, (short) 3, (short) 2, (short) 4));
+        initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).containsExactly(DataHelper.createIterable((short) 1, (short) 2));
+        initialize(Raw.shortArrayAssertion(), new short[]{1, 2, 3, 4}).containsExactly(DataHelper.createIterable((short) 1, (short) 2, (short) 3, (short) 4));
+        initialize(Raw.shortArrayAssertion(), new short[]{1, 2, 3, 4}).containsExactly(DataHelper.createIterable((short) 1, (short) 3, (short) 2, (short) 4));
         initialize(Raw.shortArrayAssertion(), new short[]{}).containsExactly(new ArrayList<Short>());
 
         try {
@@ -983,13 +983,13 @@ public final class ShortArrayAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
-            initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).containsExactly(Arrays.asList((short) 2, (short) 3));
+            initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).containsExactly(DataHelper.createIterable((short) 2, (short) 3));
             Assertions.fail("ShortArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[2s, 3s]> but was:<[1s, 2s]>");
         }
         try {
-            initialize(Raw.shortArrayAssertion(), new short[]{1, 2, 3, 4}).containsExactly(Arrays.asList((short) 1, (short) 2, (short) 3, (short) 4, (short) 5));
+            initialize(Raw.shortArrayAssertion(), new short[]{1, 2, 3, 4}).containsExactly(DataHelper.createIterable((short) 1, (short) 2, (short) 3, (short) 4, (short) 5));
             Assertions.fail("ShortArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[1s, 2s, 3s, 4s, 5s]> but was:<[1s, 2s, 3s, 4s]>");
@@ -1001,13 +1001,13 @@ public final class ShortArrayAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<<EMPTY>> but was:<[1s, 2s]>");
         }
         try {
-            initialize(Raw.shortArrayAssertion(), new short[]{1, 2, 3, 4}).containsExactly(Arrays.asList((short) 1, (short) 1, (short) 3, (short) 2));
+            initialize(Raw.shortArrayAssertion(), new short[]{1, 2, 3, 4}).containsExactly(DataHelper.createIterable((short) 1, (short) 1, (short) 3, (short) 2));
             Assertions.fail("ShortArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[1s, 1s, 3s, 2s]> but was:<[1s, 2s, 3s, 4s]>");
         }
         try {
-            initialize(Raw.shortArrayAssertion(), new short[]{1, 2, 3, 4}, "Message").containsExactly(Arrays.asList((short) 1, (short) 1, (short) 3, (short) 2));
+            initialize(Raw.shortArrayAssertion(), new short[]{1, 2, 3, 4}, "Message").containsExactly(DataHelper.createIterable((short) 1, (short) 1, (short) 3, (short) 2));
             Assertions.fail("ShortArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly.\n\tExpected:<[1s, 1s, 3s, 2s]> but was:<[1s, 2s, 3s, 4s]>");
@@ -1209,8 +1209,8 @@ public final class ShortArrayAssertionTest extends AssertionTest {
      */
     @Test
     public void containsExactlyInOrderIterableTest() {
-        initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).containsExactlyInOrder(Arrays.asList((short) 1, (short) 2));
-        initialize(Raw.shortArrayAssertion(), new short[]{1, 2, 3, 4}).containsExactlyInOrder(Arrays.asList((short) 1, (short) 2, (short) 3, (short) 4));
+        initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).containsExactlyInOrder(DataHelper.createIterable((short) 1, (short) 2));
+        initialize(Raw.shortArrayAssertion(), new short[]{1, 2, 3, 4}).containsExactlyInOrder(DataHelper.createIterable((short) 1, (short) 2, (short) 3, (short) 4));
         initialize(Raw.shortArrayAssertion(), new short[]{}).containsExactlyInOrder(new ArrayList<Short>());
 
         try {
@@ -1256,19 +1256,19 @@ public final class ShortArrayAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
-            initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).containsExactlyInOrder(Arrays.asList((short) 2, (short) 1));
+            initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).containsExactlyInOrder(DataHelper.createIterable((short) 2, (short) 1));
             Assertions.fail("ShortArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2s, 1s]> but was:<[1s, 2s]>");
         }
         try {
-            initialize(Raw.shortArrayAssertion(), new short[]{1, 2, 3, 4}).containsExactlyInOrder(Arrays.asList((short) 1, (short) 2, (short) 3));
+            initialize(Raw.shortArrayAssertion(), new short[]{1, 2, 3, 4}).containsExactlyInOrder(DataHelper.createIterable((short) 1, (short) 2, (short) 3));
             Assertions.fail("ShortArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1s, 2s, 3s]> but was:<[1s, 2s, 3s, 4s]>");
         }
         try {
-            initialize(Raw.shortArrayAssertion(), new short[]{1, 2, 3, 4}).containsExactlyInOrder(Arrays.asList((short) 1, (short) 2, (short) 3, (short) 4, (short) 5));
+            initialize(Raw.shortArrayAssertion(), new short[]{1, 2, 3, 4}).containsExactlyInOrder(DataHelper.createIterable((short) 1, (short) 2, (short) 3, (short) 4, (short) 5));
             Assertions.fail("ShortArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1s, 2s, 3s, 4s, 5s]> but was:<[1s, 2s, 3s, 4s]>");
@@ -1280,13 +1280,13 @@ public final class ShortArrayAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<<EMPTY>> but was:<[1s, 2s]>");
         }
         try {
-            initialize(Raw.shortArrayAssertion(), new short[]{1, 2, 3, 4}).containsExactlyInOrder(Arrays.asList((short) 2, (short) 3, (short) 1, (short) 4));
+            initialize(Raw.shortArrayAssertion(), new short[]{1, 2, 3, 4}).containsExactlyInOrder(DataHelper.createIterable((short) 2, (short) 3, (short) 1, (short) 4));
             Assertions.fail("ShortArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2s, 3s, 1s, 4s]> but was:<[1s, 2s, 3s, 4s]>");
         }
         try {
-            initialize(Raw.shortArrayAssertion(), new short[]{1, 2, 3, 4}, "Message").containsExactlyInOrder(Arrays.asList((short) 2, (short) 3, (short) 1, (short) 4));
+            initialize(Raw.shortArrayAssertion(), new short[]{1, 2, 3, 4}, "Message").containsExactlyInOrder(DataHelper.createIterable((short) 2, (short) 3, (short) 1, (short) 4));
             Assertions.fail("ShortArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2s, 3s, 1s, 4s]> but was:<[1s, 2s, 3s, 4s]>");
@@ -1466,10 +1466,10 @@ public final class ShortArrayAssertionTest extends AssertionTest {
      */
     @Test
     public void containsAnyIterableTest() {
-        initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).containsAny(Arrays.asList((short) 2, (short) 3));
-        initialize(Raw.shortArrayAssertion(), new short[]{1, 2, 3, 4}).containsAny(Arrays.asList((short) 2, (short) 3));
-        initialize(Raw.shortArrayAssertion(), new short[]{1, 2, 3, 4}).containsAny(Arrays.asList((short) 4, (short) 1));
-        initialize(Raw.shortArrayAssertion(), new short[]{1, 2, 3, 4}).containsAny(Arrays.asList((short) 5, (short) 3));
+        initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).containsAny(DataHelper.createIterable((short) 2, (short) 3));
+        initialize(Raw.shortArrayAssertion(), new short[]{1, 2, 3, 4}).containsAny(DataHelper.createIterable((short) 2, (short) 3));
+        initialize(Raw.shortArrayAssertion(), new short[]{1, 2, 3, 4}).containsAny(DataHelper.createIterable((short) 4, (short) 1));
+        initialize(Raw.shortArrayAssertion(), new short[]{1, 2, 3, 4}).containsAny(DataHelper.createIterable((short) 5, (short) 3));
 
         try {
             Raw.shortArrayAssertion().containsAny(new ArrayList<Short>());
@@ -1526,13 +1526,13 @@ public final class ShortArrayAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always false.");
         }
         try {
-            initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).containsAny(Arrays.asList((short) 3, (short) 4));
+            initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).containsAny(DataHelper.createIterable((short) 3, (short) 4));
             Assertions.fail("ShortArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain any of the expected values.\n\tExpected:<[3s, 4s]> but was:<[1s, 2s]>");
         }
         try {
-            initialize(Raw.shortArrayAssertion(), new short[]{1, 2}, "Message").containsAny(Arrays.asList((short) 3, (short) 4));
+            initialize(Raw.shortArrayAssertion(), new short[]{1, 2}, "Message").containsAny(DataHelper.createIterable((short) 3, (short) 4));
             Assertions.fail("ShortArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain any of the expected values.\n\tExpected:<[3s, 4s]> but was:<[1s, 2s]>");
@@ -1697,8 +1697,8 @@ public final class ShortArrayAssertionTest extends AssertionTest {
      */
     @Test
     public void containsNoneIterableTest() {
-        initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).containsNone(Arrays.asList((short) 3, (short) 7));
-        initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).containsNone(Arrays.asList((short) 3, (short) 4, (short) 5));
+        initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).containsNone(DataHelper.createIterable((short) 3, (short) 7));
+        initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).containsNone(DataHelper.createIterable((short) 3, (short) 4, (short) 5));
 
         try {
             Raw.shortArrayAssertion().containsNone(new ArrayList<Short>());
@@ -1755,13 +1755,13 @@ public final class ShortArrayAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
-            initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).containsNone(Arrays.asList((short) 2, (short) 1));
+            initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).containsNone(DataHelper.createIterable((short) 2, (short) 1));
             Assertions.fail("ShortArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not contain any of the expected values.\n\tExpected:<[2s, 1s]> but was:<[1s, 2s]>");
         }
         try {
-            initialize(Raw.shortArrayAssertion(), new short[]{1, 2}, "Message").containsNone(Arrays.asList((short) 2, (short) 1));
+            initialize(Raw.shortArrayAssertion(), new short[]{1, 2}, "Message").containsNone(DataHelper.createIterable((short) 2, (short) 1));
             Assertions.fail("ShortArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not contain any of the expected values.\n\tExpected:<[2s, 1s]> but was:<[1s, 2s]>");

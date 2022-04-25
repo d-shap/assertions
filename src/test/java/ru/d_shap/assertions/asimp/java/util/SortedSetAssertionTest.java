@@ -20,7 +20,6 @@
 package ru.d_shap.assertions.asimp.java.util;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.SortedSet;
 
 import org.hamcrest.Matchers;
@@ -1269,13 +1268,13 @@ public final class SortedSetAssertionTest extends AssertionTest {
      */
     @Test
     public void containsAllIterableTest() {
-        initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", "val5")).containsAll(Arrays.asList("val1", "val2"));
-        initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", "val5")).containsAll(Arrays.asList("val1", "val3"));
-        initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", "val5")).containsAll(Arrays.asList("val3", "val1"));
-        initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", "val5")).containsAll(Arrays.asList("val5", "val1", "val3"));
-        initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", "val5")).containsAll(Arrays.asList("val3", "val5", "val4"));
-        initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", "val5")).containsAll(Arrays.asList("val3", "val1", "val4", "val5", "val2"));
-        initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", null)).containsAll(Arrays.asList("val3", "val1", "val4", null, "val2"));
+        initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", "val5")).containsAll(DataHelper.createIterable("val1", "val2"));
+        initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", "val5")).containsAll(DataHelper.createIterable("val1", "val3"));
+        initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", "val5")).containsAll(DataHelper.createIterable("val3", "val1"));
+        initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", "val5")).containsAll(DataHelper.createIterable("val5", "val1", "val3"));
+        initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", "val5")).containsAll(DataHelper.createIterable("val3", "val5", "val4"));
+        initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", "val5")).containsAll(DataHelper.createIterable("val3", "val1", "val4", "val5", "val2"));
+        initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", null)).containsAll(DataHelper.createIterable("val3", "val1", "val4", null, "val2"));
 
         try {
             Raw.<String>sortedSetAssertion().containsAll(new ArrayList<String>());
@@ -1332,31 +1331,31 @@ public final class SortedSetAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
-            initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", "val5")).containsAll(Arrays.asList("val1", "val6"));
+            initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", "val5")).containsAll(DataHelper.createIterable("val1", "val6"));
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values.\n\tExpected:<[val1, val6]> but was:<[val1, val2, val3, val4, val5]>");
         }
         try {
-            initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", "val5")).containsAll(Arrays.asList("val0", "val1"));
+            initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", "val5")).containsAll(DataHelper.createIterable("val0", "val1"));
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values.\n\tExpected:<[val0, val1]> but was:<[val1, val2, val3, val4, val5]>");
         }
         try {
-            initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", "val5")).containsAll(Arrays.asList("val1", "val1", "val2"));
+            initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", "val5")).containsAll(DataHelper.createIterable("val1", "val1", "val2"));
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values.\n\tExpected:<[val1, val1, val2]> but was:<[val1, val2, val3, val4, val5]>");
         }
         try {
-            initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", "val5")).containsAll(Arrays.asList("val1", "val2", "val3", "val4", "val5", "val6"));
+            initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", "val5")).containsAll(DataHelper.createIterable("val1", "val2", "val3", "val4", "val5", "val6"));
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values.\n\tExpected:<[val1, val2, val3, val4, val5, val6]> but was:<[val1, val2, val3, val4, val5]>");
         }
         try {
-            initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", "val5"), "Message").containsAll(Arrays.asList("val1", "val2", "val3", "val4", "val5", "val6"));
+            initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", "val5"), "Message").containsAll(DataHelper.createIterable("val1", "val2", "val3", "val4", "val5", "val6"));
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values.\n\tExpected:<[val1, val2, val3, val4, val5, val6]> but was:<[val1, val2, val3, val4, val5]>");
@@ -1478,12 +1477,12 @@ public final class SortedSetAssertionTest extends AssertionTest {
      */
     @Test
     public void containsAllInOrderIterableTest() {
-        initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", "val5")).containsAllInOrder(Arrays.asList("val1", "val2"));
-        initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", "val5")).containsAllInOrder(Arrays.asList("val1", "val3"));
-        initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", "val5")).containsAllInOrder(Arrays.asList("val1", "val3", "val5"));
-        initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", "val5")).containsAllInOrder(Arrays.asList("val3", "val4", "val5"));
-        initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", "val5")).containsAllInOrder(Arrays.asList("val1", "val2", "val3", "val4", "val5"));
-        initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", null)).containsAllInOrder(Arrays.asList(null, "val1", "val2", "val3", "val4"));
+        initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", "val5")).containsAllInOrder(DataHelper.createIterable("val1", "val2"));
+        initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", "val5")).containsAllInOrder(DataHelper.createIterable("val1", "val3"));
+        initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", "val5")).containsAllInOrder(DataHelper.createIterable("val1", "val3", "val5"));
+        initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", "val5")).containsAllInOrder(DataHelper.createIterable("val3", "val4", "val5"));
+        initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", "val5")).containsAllInOrder(DataHelper.createIterable("val1", "val2", "val3", "val4", "val5"));
+        initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", null)).containsAllInOrder(DataHelper.createIterable(null, "val1", "val2", "val3", "val4"));
 
         try {
             Raw.<String>sortedSetAssertion().containsAllInOrder(new ArrayList<String>());
@@ -1540,31 +1539,31 @@ public final class SortedSetAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
-            initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", "val5")).containsAllInOrder(Arrays.asList("val1", "val6"));
+            initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", "val5")).containsAllInOrder(DataHelper.createIterable("val1", "val6"));
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[val1, val6]> but was:<[val1, val2, val3, val4, val5]>");
         }
         try {
-            initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", "val5")).containsAllInOrder(Arrays.asList("val3", "val1"));
+            initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", "val5")).containsAllInOrder(DataHelper.createIterable("val3", "val1"));
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[val3, val1]> but was:<[val1, val2, val3, val4, val5]>");
         }
         try {
-            initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val1", "val1")).containsAllInOrder(Arrays.asList("val1", "val1", "val1", "val1"));
+            initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val1", "val1")).containsAllInOrder(DataHelper.createIterable("val1", "val1", "val1", "val1"));
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[val1, val1, val1, val1]> but was:<[val1]>");
         }
         try {
-            initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", "val5")).containsAllInOrder(Arrays.asList("val1", "val2", "val3", "val4", "val5", "val6"));
+            initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", "val5")).containsAllInOrder(DataHelper.createIterable("val1", "val2", "val3", "val4", "val5", "val6"));
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[val1, val2, val3, val4, val5, val6]> but was:<[val1, val2, val3, val4, val5]>");
         }
         try {
-            initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", "val5"), "Message").containsAllInOrder(Arrays.asList("val1", "val2", "val3", "val4", "val5", "val6"));
+            initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", "val5"), "Message").containsAllInOrder(DataHelper.createIterable("val1", "val2", "val3", "val4", "val5", "val6"));
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values in the specified order.\n\tExpected:<[val1, val2, val3, val4, val5, val6]> but was:<[val1, val2, val3, val4, val5]>");
@@ -1688,13 +1687,13 @@ public final class SortedSetAssertionTest extends AssertionTest {
      */
     @Test
     public void containsExactlyIterableTest() {
-        initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3")).containsExactly(Arrays.asList("val1", "val2", "val3"));
-        initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3")).containsExactly(Arrays.asList("val2", "val1", "val3"));
-        initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3")).containsExactly(Arrays.asList("val2", "val3", "val1"));
-        initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3")).containsExactly(Arrays.asList("val3", "val2", "val1"));
-        initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", "val5")).containsExactly(Arrays.asList("val1", "val2", "val3", "val4", "val5"));
-        initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", "val5")).containsExactly(Arrays.asList("val2", "val4", "val1", "val3", "val5"));
-        initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", null)).containsExactly(Arrays.asList("val2", "val4", "val1", "val3", null));
+        initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3")).containsExactly(DataHelper.createIterable("val1", "val2", "val3"));
+        initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3")).containsExactly(DataHelper.createIterable("val2", "val1", "val3"));
+        initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3")).containsExactly(DataHelper.createIterable("val2", "val3", "val1"));
+        initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3")).containsExactly(DataHelper.createIterable("val3", "val2", "val1"));
+        initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", "val5")).containsExactly(DataHelper.createIterable("val1", "val2", "val3", "val4", "val5"));
+        initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", "val5")).containsExactly(DataHelper.createIterable("val2", "val4", "val1", "val3", "val5"));
+        initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", null)).containsExactly(DataHelper.createIterable("val2", "val4", "val1", "val3", null));
         initialize(Raw.sortedSetAssertion(), DataHelper.createTreeSet()).containsExactly(new ArrayList<>());
 
         try {
@@ -1740,25 +1739,25 @@ public final class SortedSetAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
-            initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3")).containsExactly(Arrays.asList("val1", "val2", "val3", "val4"));
+            initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3")).containsExactly(DataHelper.createIterable("val1", "val2", "val3", "val4"));
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[val1, val2, val3, val4]> but was:<[val1, val2, val3]>");
         }
         try {
-            initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3")).containsExactly(Arrays.asList("val3", "val2", "val1", "val4"));
+            initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3")).containsExactly(DataHelper.createIterable("val3", "val2", "val1", "val4"));
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[val3, val2, val1, val4]> but was:<[val1, val2, val3]>");
         }
         try {
-            initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3")).containsExactly(Arrays.asList("val1", "val2"));
+            initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3")).containsExactly(DataHelper.createIterable("val1", "val2"));
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[val1, val2]> but was:<[val1, val2, val3]>");
         }
         try {
-            initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3")).containsExactly(Arrays.asList("val2", "val1"));
+            initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3")).containsExactly(DataHelper.createIterable("val2", "val1"));
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[val2, val1]> but was:<[val1, val2, val3]>");
@@ -1770,13 +1769,13 @@ public final class SortedSetAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<<EMPTY>> but was:<[val1, val2, val3]>");
         }
         try {
-            initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3")).containsExactly(Arrays.asList("val2", "val4", "val1"));
+            initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3")).containsExactly(DataHelper.createIterable("val2", "val4", "val1"));
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[val2, val4, val1]> but was:<[val1, val2, val3]>");
         }
         try {
-            initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3"), "Message").containsExactly(Arrays.asList("val2", "val4", "val1"));
+            initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3"), "Message").containsExactly(DataHelper.createIterable("val2", "val4", "val1"));
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly.\n\tExpected:<[val2, val4, val1]> but was:<[val1, val2, val3]>");
@@ -1896,9 +1895,9 @@ public final class SortedSetAssertionTest extends AssertionTest {
      */
     @Test
     public void containsExactlyInOrderIterableTest() {
-        initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3")).containsExactlyInOrder(Arrays.asList("val1", "val2", "val3"));
-        initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", "val5")).containsExactlyInOrder(Arrays.asList("val1", "val2", "val3", "val4", "val5"));
-        initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", null)).containsExactlyInOrder(Arrays.asList(null, "val1", "val2", "val3", "val4"));
+        initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3")).containsExactlyInOrder(DataHelper.createIterable("val1", "val2", "val3"));
+        initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", "val5")).containsExactlyInOrder(DataHelper.createIterable("val1", "val2", "val3", "val4", "val5"));
+        initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", null)).containsExactlyInOrder(DataHelper.createIterable(null, "val1", "val2", "val3", "val4"));
         initialize(Raw.sortedSetAssertion(), DataHelper.createTreeSet()).containsExactlyInOrder(new ArrayList<>());
 
         try {
@@ -1944,25 +1943,25 @@ public final class SortedSetAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
-            initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3")).containsExactlyInOrder(Arrays.asList("val1", "val2"));
+            initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3")).containsExactlyInOrder(DataHelper.createIterable("val1", "val2"));
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[val1, val2]> but was:<[val1, val2, val3]>");
         }
         try {
-            initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3")).containsExactlyInOrder(Arrays.asList("val2", "val3"));
+            initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3")).containsExactlyInOrder(DataHelper.createIterable("val2", "val3"));
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[val2, val3]> but was:<[val1, val2, val3]>");
         }
         try {
-            initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3")).containsExactlyInOrder(Arrays.asList("val1", "val2", "val4"));
+            initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3")).containsExactlyInOrder(DataHelper.createIterable("val1", "val2", "val4"));
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[val1, val2, val4]> but was:<[val1, val2, val3]>");
         }
         try {
-            initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3")).containsExactlyInOrder(Arrays.asList("val1", "val2", "val3", "val4"));
+            initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3")).containsExactlyInOrder(DataHelper.createIterable("val1", "val2", "val3", "val4"));
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[val1, val2, val3, val4]> but was:<[val1, val2, val3]>");
@@ -1974,13 +1973,13 @@ public final class SortedSetAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<<EMPTY>> but was:<[val1, val2, val3]>");
         }
         try {
-            initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3")).containsExactlyInOrder(Arrays.asList("val3", "val1", "val2"));
+            initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3")).containsExactlyInOrder(DataHelper.createIterable("val3", "val1", "val2"));
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[val3, val1, val2]> but was:<[val1, val2, val3]>");
         }
         try {
-            initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3"), "Message").containsExactlyInOrder(Arrays.asList("val3", "val1", "val2"));
+            initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3"), "Message").containsExactlyInOrder(DataHelper.createIterable("val3", "val1", "val2"));
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[val3, val1, val2]> but was:<[val1, val2, val3]>");
@@ -2089,11 +2088,11 @@ public final class SortedSetAssertionTest extends AssertionTest {
      */
     @Test
     public void containsAnyIterableTest() {
-        initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3")).containsAny(Arrays.asList("val1", "val3", "val5"));
-        initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3")).containsAny(Arrays.asList("val6", "val2", "val4"));
-        initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", "val5")).containsAny(Arrays.asList("val7", "val9", "val1", "val5", "val3"));
-        initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", null)).containsAny(Arrays.asList("val7", "val9", "val1", null, "val3"));
-        initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", null)).containsAny(Arrays.asList("val7", "val9", null));
+        initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3")).containsAny(DataHelper.createIterable("val1", "val3", "val5"));
+        initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3")).containsAny(DataHelper.createIterable("val6", "val2", "val4"));
+        initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", "val5")).containsAny(DataHelper.createIterable("val7", "val9", "val1", "val5", "val3"));
+        initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", null)).containsAny(DataHelper.createIterable("val7", "val9", "val1", null, "val3"));
+        initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", null)).containsAny(DataHelper.createIterable("val7", "val9", null));
 
         try {
             Raw.<String>sortedSetAssertion().containsAny(new ArrayList<String>());
@@ -2150,19 +2149,19 @@ public final class SortedSetAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always false.");
         }
         try {
-            initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3")).containsAny(Arrays.asList("val4", "val5", "val6"));
+            initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3")).containsAny(DataHelper.createIterable("val4", "val5", "val6"));
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain any of the expected values.\n\tExpected:<[val4, val5, val6]> but was:<[val1, val2, val3]>");
         }
         try {
-            initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", "val5")).containsAny(Arrays.asList("val8", "val7"));
+            initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", "val5")).containsAny(DataHelper.createIterable("val8", "val7"));
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain any of the expected values.\n\tExpected:<[val8, val7]> but was:<[val1, val2, val3, val4, val5]>");
         }
         try {
-            initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", "val5"), "Message").containsAny(Arrays.asList("val8", "val7"));
+            initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", "val5"), "Message").containsAny(DataHelper.createIterable("val8", "val7"));
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain any of the expected values.\n\tExpected:<[val8, val7]> but was:<[val1, val2, val3, val4, val5]>");
@@ -2270,10 +2269,10 @@ public final class SortedSetAssertionTest extends AssertionTest {
      */
     @Test
     public void containsNoneIterableTest() {
-        initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3")).containsNone(Arrays.asList("val4", "val5", "val6"));
-        initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3")).containsNone(Arrays.asList("val8", "val4"));
-        initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", null)).containsNone(Arrays.asList("val8", "val4"));
-        initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3")).containsNone(Arrays.asList("val8", "val4", null));
+        initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3")).containsNone(DataHelper.createIterable("val4", "val5", "val6"));
+        initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3")).containsNone(DataHelper.createIterable("val8", "val4"));
+        initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", null)).containsNone(DataHelper.createIterable("val8", "val4"));
+        initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3")).containsNone(DataHelper.createIterable("val8", "val4", null));
 
         try {
             Raw.<String>sortedSetAssertion().containsNone(new ArrayList<String>());
@@ -2330,19 +2329,19 @@ public final class SortedSetAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
-            initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3")).containsNone(Arrays.asList("val4", "val2"));
+            initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3")).containsNone(DataHelper.createIterable("val4", "val2"));
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not contain any of the expected values.\n\tExpected:<[val4, val2]> but was:<[val1, val2, val3]>");
         }
         try {
-            initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3")).containsNone(Arrays.asList("val5", "val4", "val2", "val6"));
+            initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3")).containsNone(DataHelper.createIterable("val5", "val4", "val2", "val6"));
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not contain any of the expected values.\n\tExpected:<[val5, val4, val2, val6]> but was:<[val1, val2, val3]>");
         }
         try {
-            initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3"), "Message").containsNone(Arrays.asList("val5", "val4", "val2", "val6"));
+            initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3"), "Message").containsNone(DataHelper.createIterable("val5", "val4", "val2", "val6"));
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not contain any of the expected values.\n\tExpected:<[val5, val4, val2, val6]> but was:<[val1, val2, val3]>");

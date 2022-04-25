@@ -20,7 +20,6 @@
 package ru.d_shap.assertions.asimp.array;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 import org.hamcrest.Matchers;
 import org.junit.Test;
@@ -28,6 +27,7 @@ import org.junit.Test;
 import ru.d_shap.assertions.AssertionTest;
 import ru.d_shap.assertions.Assertions;
 import ru.d_shap.assertions.Raw;
+import ru.d_shap.assertions.util.DataHelper;
 
 /**
  * Tests for {@link DoubleArrayAssertion}.
@@ -374,10 +374,10 @@ public final class DoubleArrayAssertionTest extends AssertionTest {
      */
     @Test
     public void containsAllIterableTest() {
-        initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}).containsAll(Arrays.asList(1.0, 2.0));
-        initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0, 3.0, 4.0}).containsAll(Arrays.asList(1.0, 3.0));
-        initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0, 3.0, 4.0}).containsAll(Arrays.asList(4.0, 2.0));
-        initialize(Raw.doubleArrayAssertion(), new double[]{Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0}).containsAll(Arrays.asList(Double.NEGATIVE_INFINITY, Double.NaN));
+        initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}).containsAll(DataHelper.createIterable(1.0, 2.0));
+        initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0, 3.0, 4.0}).containsAll(DataHelper.createIterable(1.0, 3.0));
+        initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0, 3.0, 4.0}).containsAll(DataHelper.createIterable(4.0, 2.0));
+        initialize(Raw.doubleArrayAssertion(), new double[]{Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0}).containsAll(DataHelper.createIterable(Double.NEGATIVE_INFINITY, Double.NaN));
 
         try {
             Raw.doubleArrayAssertion().containsAll(new ArrayList<Double>());
@@ -434,25 +434,25 @@ public final class DoubleArrayAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
-            initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}).containsAll(Arrays.asList(2.0, 3.0));
+            initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}).containsAll(DataHelper.createIterable(2.0, 3.0));
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values.\n\tExpected:<[2.0, 3.0]> but was:<[1.0, 2.0]>");
         }
         try {
-            initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}, "Message").containsAll(Arrays.asList(2.0, 3.0));
+            initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}, "Message").containsAll(DataHelper.createIterable(2.0, 3.0));
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values.\n\tExpected:<[2.0, 3.0]> but was:<[1.0, 2.0]>");
         }
         try {
-            initialize(Raw.doubleArrayAssertion(), new double[]{Double.NaN, Double.POSITIVE_INFINITY}).containsAll(Arrays.asList(Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY));
+            initialize(Raw.doubleArrayAssertion(), new double[]{Double.NaN, Double.POSITIVE_INFINITY}).containsAll(DataHelper.createIterable(Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY));
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values.\n\tExpected:<[Infinity, -Infinity]> but was:<[NaN, Infinity]>");
         }
         try {
-            initialize(Raw.doubleArrayAssertion(), new double[]{Double.NaN, Double.POSITIVE_INFINITY}, "Message").containsAll(Arrays.asList(Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY));
+            initialize(Raw.doubleArrayAssertion(), new double[]{Double.NaN, Double.POSITIVE_INFINITY}, "Message").containsAll(DataHelper.createIterable(Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY));
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values.\n\tExpected:<[Infinity, -Infinity]> but was:<[NaN, Infinity]>");
@@ -559,9 +559,9 @@ public final class DoubleArrayAssertionTest extends AssertionTest {
      */
     @Test
     public void containsAllInOrderIterableTest() {
-        initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}).containsAllInOrder(Arrays.asList(1.0, 2.0));
-        initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0, 3.0, 4.0}).containsAllInOrder(Arrays.asList(1.0, 3.0, 4.0));
-        initialize(Raw.doubleArrayAssertion(), new double[]{Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0}).containsAllInOrder(Arrays.asList(Double.NaN, Double.NEGATIVE_INFINITY, 3.0));
+        initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}).containsAllInOrder(DataHelper.createIterable(1.0, 2.0));
+        initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0, 3.0, 4.0}).containsAllInOrder(DataHelper.createIterable(1.0, 3.0, 4.0));
+        initialize(Raw.doubleArrayAssertion(), new double[]{Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0}).containsAllInOrder(DataHelper.createIterable(Double.NaN, Double.NEGATIVE_INFINITY, 3.0));
 
         try {
             Raw.doubleArrayAssertion().containsAllInOrder(new ArrayList<Double>());
@@ -618,31 +618,31 @@ public final class DoubleArrayAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
-            initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}).containsAllInOrder(Arrays.asList(2.0, 3.0));
+            initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}).containsAllInOrder(DataHelper.createIterable(2.0, 3.0));
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[2.0, 3.0]> but was:<[1.0, 2.0]>");
         }
         try {
-            initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}).containsAllInOrder(Arrays.asList(2.0, 1.0));
+            initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}).containsAllInOrder(DataHelper.createIterable(2.0, 1.0));
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[2.0, 1.0]> but was:<[1.0, 2.0]>");
         }
         try {
-            initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}, "Message").containsAllInOrder(Arrays.asList(2.0, 1.0));
+            initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}, "Message").containsAllInOrder(DataHelper.createIterable(2.0, 1.0));
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values in the specified order.\n\tExpected:<[2.0, 1.0]> but was:<[1.0, 2.0]>");
         }
         try {
-            initialize(Raw.doubleArrayAssertion(), new double[]{Double.NaN, Double.POSITIVE_INFINITY}).containsAllInOrder(Arrays.asList(Double.POSITIVE_INFINITY, Double.NaN));
+            initialize(Raw.doubleArrayAssertion(), new double[]{Double.NaN, Double.POSITIVE_INFINITY}).containsAllInOrder(DataHelper.createIterable(Double.POSITIVE_INFINITY, Double.NaN));
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[Infinity, NaN]> but was:<[NaN, Infinity]>");
         }
         try {
-            initialize(Raw.doubleArrayAssertion(), new double[]{Double.NaN, Double.POSITIVE_INFINITY}, "Message").containsAllInOrder(Arrays.asList(Double.POSITIVE_INFINITY, Double.NaN));
+            initialize(Raw.doubleArrayAssertion(), new double[]{Double.NaN, Double.POSITIVE_INFINITY}, "Message").containsAllInOrder(DataHelper.createIterable(Double.POSITIVE_INFINITY, Double.NaN));
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values in the specified order.\n\tExpected:<[Infinity, NaN]> but was:<[NaN, Infinity]>");
@@ -751,11 +751,11 @@ public final class DoubleArrayAssertionTest extends AssertionTest {
      */
     @Test
     public void containsExactlyIterableTest() {
-        initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}).containsExactly(Arrays.asList(1.0, 2.0));
-        initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0, 3.0, 4.0}).containsExactly(Arrays.asList(1.0, 2.0, 3.0, 4.0));
-        initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0, 3.0, 4.0}).containsExactly(Arrays.asList(1.0, 3.0, 2.0, 4.0));
+        initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}).containsExactly(DataHelper.createIterable(1.0, 2.0));
+        initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0, 3.0, 4.0}).containsExactly(DataHelper.createIterable(1.0, 2.0, 3.0, 4.0));
+        initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0, 3.0, 4.0}).containsExactly(DataHelper.createIterable(1.0, 3.0, 2.0, 4.0));
         initialize(Raw.doubleArrayAssertion(), new double[]{}).containsExactly(new ArrayList<Double>());
-        initialize(Raw.doubleArrayAssertion(), new double[]{Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0}).containsExactly(Arrays.asList(Double.NEGATIVE_INFINITY, Double.NaN, 3.0, Double.POSITIVE_INFINITY));
+        initialize(Raw.doubleArrayAssertion(), new double[]{Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0}).containsExactly(DataHelper.createIterable(Double.NEGATIVE_INFINITY, Double.NaN, 3.0, Double.POSITIVE_INFINITY));
 
         try {
             Raw.doubleArrayAssertion().containsExactly(new ArrayList<Double>());
@@ -800,13 +800,13 @@ public final class DoubleArrayAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
-            initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}).containsExactly(Arrays.asList(2.0, 3.0));
+            initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}).containsExactly(DataHelper.createIterable(2.0, 3.0));
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[2.0, 3.0]> but was:<[1.0, 2.0]>");
         }
         try {
-            initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0, 3.0, 4.0}).containsExactly(Arrays.asList(1.0, 2.0, 3.0, 4.0, 5.0));
+            initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0, 3.0, 4.0}).containsExactly(DataHelper.createIterable(1.0, 2.0, 3.0, 4.0, 5.0));
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[1.0, 2.0, 3.0, 4.0, 5.0]> but was:<[1.0, 2.0, 3.0, 4.0]>");
@@ -818,25 +818,25 @@ public final class DoubleArrayAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<<EMPTY>> but was:<[1.0, 2.0]>");
         }
         try {
-            initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0, 3.0, 4.0}).containsExactly(Arrays.asList(1.0, 1.0, 3.0, 2.0));
+            initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0, 3.0, 4.0}).containsExactly(DataHelper.createIterable(1.0, 1.0, 3.0, 2.0));
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[1.0, 1.0, 3.0, 2.0]> but was:<[1.0, 2.0, 3.0, 4.0]>");
         }
         try {
-            initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0, 3.0, 4.0}, "Message").containsExactly(Arrays.asList(1.0, 1.0, 3.0, 2.0));
+            initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0, 3.0, 4.0}, "Message").containsExactly(DataHelper.createIterable(1.0, 1.0, 3.0, 2.0));
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly.\n\tExpected:<[1.0, 1.0, 3.0, 2.0]> but was:<[1.0, 2.0, 3.0, 4.0]>");
         }
         try {
-            initialize(Raw.doubleArrayAssertion(), new double[]{Double.NaN, 3.0, Double.POSITIVE_INFINITY}).containsExactly(Arrays.asList(Double.NaN, 3.0));
+            initialize(Raw.doubleArrayAssertion(), new double[]{Double.NaN, 3.0, Double.POSITIVE_INFINITY}).containsExactly(DataHelper.createIterable(Double.NaN, 3.0));
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[NaN, 3.0]> but was:<[NaN, 3.0, Infinity]>");
         }
         try {
-            initialize(Raw.doubleArrayAssertion(), new double[]{Double.NaN, 3.0, Double.POSITIVE_INFINITY}, "Message").containsExactly(Arrays.asList(Double.NaN, 3.0));
+            initialize(Raw.doubleArrayAssertion(), new double[]{Double.NaN, 3.0, Double.POSITIVE_INFINITY}, "Message").containsExactly(DataHelper.createIterable(Double.NaN, 3.0));
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly.\n\tExpected:<[NaN, 3.0]> but was:<[NaN, 3.0, Infinity]>");
@@ -950,10 +950,10 @@ public final class DoubleArrayAssertionTest extends AssertionTest {
      */
     @Test
     public void containsExactlyInOrderIterableTest() {
-        initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}).containsExactlyInOrder(Arrays.asList(1.0, 2.0));
-        initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0, 3.0, 4.0}).containsExactlyInOrder(Arrays.asList(1.0, 2.0, 3.0, 4.0));
+        initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}).containsExactlyInOrder(DataHelper.createIterable(1.0, 2.0));
+        initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0, 3.0, 4.0}).containsExactlyInOrder(DataHelper.createIterable(1.0, 2.0, 3.0, 4.0));
         initialize(Raw.doubleArrayAssertion(), new double[]{}).containsExactlyInOrder(new ArrayList<Double>());
-        initialize(Raw.doubleArrayAssertion(), new double[]{Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0}).containsExactlyInOrder(Arrays.asList(Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0));
+        initialize(Raw.doubleArrayAssertion(), new double[]{Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0}).containsExactlyInOrder(DataHelper.createIterable(Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0));
 
         try {
             Raw.doubleArrayAssertion().containsExactlyInOrder(new ArrayList<Double>());
@@ -998,19 +998,19 @@ public final class DoubleArrayAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
-            initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}).containsExactlyInOrder(Arrays.asList(2.0, 1.0));
+            initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}).containsExactlyInOrder(DataHelper.createIterable(2.0, 1.0));
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2.0, 1.0]> but was:<[1.0, 2.0]>");
         }
         try {
-            initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0, 3.0, 4.0}).containsExactlyInOrder(Arrays.asList(1.0, 2.0, 3.0));
+            initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0, 3.0, 4.0}).containsExactlyInOrder(DataHelper.createIterable(1.0, 2.0, 3.0));
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1.0, 2.0, 3.0]> but was:<[1.0, 2.0, 3.0, 4.0]>");
         }
         try {
-            initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0, 3.0, 4.0}).containsExactlyInOrder(Arrays.asList(1.0, 2.0, 3.0, 4.0, 5.0));
+            initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0, 3.0, 4.0}).containsExactlyInOrder(DataHelper.createIterable(1.0, 2.0, 3.0, 4.0, 5.0));
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1.0, 2.0, 3.0, 4.0, 5.0]> but was:<[1.0, 2.0, 3.0, 4.0]>");
@@ -1022,25 +1022,25 @@ public final class DoubleArrayAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<<EMPTY>> but was:<[1.0, 2.0]>");
         }
         try {
-            initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0, 3.0, 4.0}).containsExactlyInOrder(Arrays.asList(2.0, 3.0, 1.0, 4.0));
+            initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0, 3.0, 4.0}).containsExactlyInOrder(DataHelper.createIterable(2.0, 3.0, 1.0, 4.0));
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2.0, 3.0, 1.0, 4.0]> but was:<[1.0, 2.0, 3.0, 4.0]>");
         }
         try {
-            initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0, 3.0, 4.0}, "Message").containsExactlyInOrder(Arrays.asList(2.0, 3.0, 1.0, 4.0));
+            initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0, 3.0, 4.0}, "Message").containsExactlyInOrder(DataHelper.createIterable(2.0, 3.0, 1.0, 4.0));
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2.0, 3.0, 1.0, 4.0]> but was:<[1.0, 2.0, 3.0, 4.0]>");
         }
         try {
-            initialize(Raw.doubleArrayAssertion(), new double[]{Double.NaN, 3.0, Double.POSITIVE_INFINITY}).containsExactlyInOrder(Arrays.asList(Double.POSITIVE_INFINITY, Double.NaN, 3.0));
+            initialize(Raw.doubleArrayAssertion(), new double[]{Double.NaN, 3.0, Double.POSITIVE_INFINITY}).containsExactlyInOrder(DataHelper.createIterable(Double.POSITIVE_INFINITY, Double.NaN, 3.0));
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[Infinity, NaN, 3.0]> but was:<[NaN, 3.0, Infinity]>");
         }
         try {
-            initialize(Raw.doubleArrayAssertion(), new double[]{Double.NaN, 3.0, Double.POSITIVE_INFINITY}, "Message").containsExactlyInOrder(Arrays.asList(Double.POSITIVE_INFINITY, Double.NaN, 3.0));
+            initialize(Raw.doubleArrayAssertion(), new double[]{Double.NaN, 3.0, Double.POSITIVE_INFINITY}, "Message").containsExactlyInOrder(DataHelper.createIterable(Double.POSITIVE_INFINITY, Double.NaN, 3.0));
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[Infinity, NaN, 3.0]> but was:<[NaN, 3.0, Infinity]>");
@@ -1143,11 +1143,11 @@ public final class DoubleArrayAssertionTest extends AssertionTest {
      */
     @Test
     public void containsAnyIterableTest() {
-        initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}).containsAny(Arrays.asList(2.0, 3.0));
-        initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0, 3.0, 4.0}).containsAny(Arrays.asList(2.0, 4.0));
-        initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0, 3.0, 4.0}).containsAny(Arrays.asList(4.0, 1.0));
-        initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0, 3.0, 4.0}).containsAny(Arrays.asList(5.0, 3.0));
-        initialize(Raw.doubleArrayAssertion(), new double[]{Double.NaN, Double.NEGATIVE_INFINITY, 3.0}).containsAny(Arrays.asList(Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY));
+        initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}).containsAny(DataHelper.createIterable(2.0, 3.0));
+        initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0, 3.0, 4.0}).containsAny(DataHelper.createIterable(2.0, 4.0));
+        initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0, 3.0, 4.0}).containsAny(DataHelper.createIterable(4.0, 1.0));
+        initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0, 3.0, 4.0}).containsAny(DataHelper.createIterable(5.0, 3.0));
+        initialize(Raw.doubleArrayAssertion(), new double[]{Double.NaN, Double.NEGATIVE_INFINITY, 3.0}).containsAny(DataHelper.createIterable(Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY));
 
         try {
             Raw.doubleArrayAssertion().containsAny(new ArrayList<Double>());
@@ -1204,25 +1204,25 @@ public final class DoubleArrayAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always false.");
         }
         try {
-            initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}).containsAny(Arrays.asList(3.0, 4.0));
+            initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}).containsAny(DataHelper.createIterable(3.0, 4.0));
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain any of the expected values.\n\tExpected:<[3.0, 4.0]> but was:<[1.0, 2.0]>");
         }
         try {
-            initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}, "Message").containsAny(Arrays.asList(3.0, 4.0));
+            initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}, "Message").containsAny(DataHelper.createIterable(3.0, 4.0));
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain any of the expected values.\n\tExpected:<[3.0, 4.0]> but was:<[1.0, 2.0]>");
         }
         try {
-            initialize(Raw.doubleArrayAssertion(), new double[]{Double.NaN, 3.0, Double.POSITIVE_INFINITY}).containsAny(Arrays.asList(Double.NEGATIVE_INFINITY, 4.0));
+            initialize(Raw.doubleArrayAssertion(), new double[]{Double.NaN, 3.0, Double.POSITIVE_INFINITY}).containsAny(DataHelper.createIterable(Double.NEGATIVE_INFINITY, 4.0));
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain any of the expected values.\n\tExpected:<[-Infinity, 4.0]> but was:<[NaN, 3.0, Infinity]>");
         }
         try {
-            initialize(Raw.doubleArrayAssertion(), new double[]{Double.NaN, 3.0, Double.POSITIVE_INFINITY}, "Message").containsAny(Arrays.asList(Double.NEGATIVE_INFINITY, 4.0));
+            initialize(Raw.doubleArrayAssertion(), new double[]{Double.NaN, 3.0, Double.POSITIVE_INFINITY}, "Message").containsAny(DataHelper.createIterable(Double.NEGATIVE_INFINITY, 4.0));
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain any of the expected values.\n\tExpected:<[-Infinity, 4.0]> but was:<[NaN, 3.0, Infinity]>");
@@ -1323,9 +1323,9 @@ public final class DoubleArrayAssertionTest extends AssertionTest {
      */
     @Test
     public void containsNoneIterableTest() {
-        initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}).containsNone(Arrays.asList(3.0, 7.0));
-        initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}).containsNone(Arrays.asList(3.0, 4.0, 5.0));
-        initialize(Raw.doubleArrayAssertion(), new double[]{Double.NaN, Double.NEGATIVE_INFINITY, 3.0}).containsNone(Arrays.asList(Double.POSITIVE_INFINITY, 4.0));
+        initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}).containsNone(DataHelper.createIterable(3.0, 7.0));
+        initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}).containsNone(DataHelper.createIterable(3.0, 4.0, 5.0));
+        initialize(Raw.doubleArrayAssertion(), new double[]{Double.NaN, Double.NEGATIVE_INFINITY, 3.0}).containsNone(DataHelper.createIterable(Double.POSITIVE_INFINITY, 4.0));
 
         try {
             Raw.doubleArrayAssertion().containsNone(new ArrayList<Double>());
@@ -1382,25 +1382,25 @@ public final class DoubleArrayAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
-            initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}).containsNone(Arrays.asList(2.0, 1.0));
+            initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}).containsNone(DataHelper.createIterable(2.0, 1.0));
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not contain any of the expected values.\n\tExpected:<[2.0, 1.0]> but was:<[1.0, 2.0]>");
         }
         try {
-            initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}, "Message").containsNone(Arrays.asList(2.0, 1.0));
+            initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}, "Message").containsNone(DataHelper.createIterable(2.0, 1.0));
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not contain any of the expected values.\n\tExpected:<[2.0, 1.0]> but was:<[1.0, 2.0]>");
         }
         try {
-            initialize(Raw.doubleArrayAssertion(), new double[]{Double.NaN, 3.0, Double.POSITIVE_INFINITY}).containsNone(Arrays.asList(Double.NaN, 4.0));
+            initialize(Raw.doubleArrayAssertion(), new double[]{Double.NaN, 3.0, Double.POSITIVE_INFINITY}).containsNone(DataHelper.createIterable(Double.NaN, 4.0));
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not contain any of the expected values.\n\tExpected:<[NaN, 4.0]> but was:<[NaN, 3.0, Infinity]>");
         }
         try {
-            initialize(Raw.doubleArrayAssertion(), new double[]{Double.NaN, 3.0, Double.POSITIVE_INFINITY}, "Message").containsNone(Arrays.asList(Double.NaN, 4.0));
+            initialize(Raw.doubleArrayAssertion(), new double[]{Double.NaN, 3.0, Double.POSITIVE_INFINITY}, "Message").containsNone(DataHelper.createIterable(Double.NaN, 4.0));
             Assertions.fail("DoubleArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not contain any of the expected values.\n\tExpected:<[NaN, 4.0]> but was:<[NaN, 3.0, Infinity]>");

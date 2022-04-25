@@ -20,7 +20,6 @@
 package ru.d_shap.assertions.asimp.array;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 import org.hamcrest.Matchers;
 import org.junit.Test;
@@ -28,6 +27,7 @@ import org.junit.Test;
 import ru.d_shap.assertions.AssertionTest;
 import ru.d_shap.assertions.Assertions;
 import ru.d_shap.assertions.Raw;
+import ru.d_shap.assertions.util.DataHelper;
 
 /**
  * Tests for {@link FloatArrayAssertion}.
@@ -374,10 +374,10 @@ public final class FloatArrayAssertionTest extends AssertionTest {
      */
     @Test
     public void containsAllIterableTest() {
-        initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f}).containsAll(Arrays.asList(1.0f, 2.0f));
-        initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f, 3.0f, 4.0f}).containsAll(Arrays.asList(1.0f, 3.0f));
-        initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f, 3.0f, 4.0f}).containsAll(Arrays.asList(4.0f, 2.0f));
-        initialize(Raw.floatArrayAssertion(), new float[]{Float.NaN, Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY, 3.0f}).containsAll(Arrays.asList(Float.NEGATIVE_INFINITY, Float.NaN));
+        initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f}).containsAll(DataHelper.createIterable(1.0f, 2.0f));
+        initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f, 3.0f, 4.0f}).containsAll(DataHelper.createIterable(1.0f, 3.0f));
+        initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f, 3.0f, 4.0f}).containsAll(DataHelper.createIterable(4.0f, 2.0f));
+        initialize(Raw.floatArrayAssertion(), new float[]{Float.NaN, Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY, 3.0f}).containsAll(DataHelper.createIterable(Float.NEGATIVE_INFINITY, Float.NaN));
 
         try {
             Raw.floatArrayAssertion().containsAll(new ArrayList<Float>());
@@ -434,25 +434,25 @@ public final class FloatArrayAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
-            initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f}).containsAll(Arrays.asList(2.0f, 3.0f));
+            initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f}).containsAll(DataHelper.createIterable(2.0f, 3.0f));
             Assertions.fail("FloatArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values.\n\tExpected:<[2.0f, 3.0f]> but was:<[1.0f, 2.0f]>");
         }
         try {
-            initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f}, "Message").containsAll(Arrays.asList(2.0f, 3.0f));
+            initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f}, "Message").containsAll(DataHelper.createIterable(2.0f, 3.0f));
             Assertions.fail("FloatArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values.\n\tExpected:<[2.0f, 3.0f]> but was:<[1.0f, 2.0f]>");
         }
         try {
-            initialize(Raw.floatArrayAssertion(), new float[]{Float.NaN, Float.POSITIVE_INFINITY}).containsAll(Arrays.asList(Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY));
+            initialize(Raw.floatArrayAssertion(), new float[]{Float.NaN, Float.POSITIVE_INFINITY}).containsAll(DataHelper.createIterable(Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY));
             Assertions.fail("FloatArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values.\n\tExpected:<[Infinity, -Infinity]> but was:<[NaN, Infinity]>");
         }
         try {
-            initialize(Raw.floatArrayAssertion(), new float[]{Float.NaN, Float.POSITIVE_INFINITY}, "Message").containsAll(Arrays.asList(Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY));
+            initialize(Raw.floatArrayAssertion(), new float[]{Float.NaN, Float.POSITIVE_INFINITY}, "Message").containsAll(DataHelper.createIterable(Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY));
             Assertions.fail("FloatArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values.\n\tExpected:<[Infinity, -Infinity]> but was:<[NaN, Infinity]>");
@@ -559,9 +559,9 @@ public final class FloatArrayAssertionTest extends AssertionTest {
      */
     @Test
     public void containsAllInOrderIterableTest() {
-        initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f}).containsAllInOrder(Arrays.asList(1.0f, 2.0f));
-        initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f, 3.0f, 4.0f}).containsAllInOrder(Arrays.asList(1.0f, 3.0f, 4.0f));
-        initialize(Raw.floatArrayAssertion(), new float[]{Float.NaN, Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY, 3.0f}).containsAllInOrder(Arrays.asList(Float.NaN, Float.NEGATIVE_INFINITY, 3.0f));
+        initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f}).containsAllInOrder(DataHelper.createIterable(1.0f, 2.0f));
+        initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f, 3.0f, 4.0f}).containsAllInOrder(DataHelper.createIterable(1.0f, 3.0f, 4.0f));
+        initialize(Raw.floatArrayAssertion(), new float[]{Float.NaN, Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY, 3.0f}).containsAllInOrder(DataHelper.createIterable(Float.NaN, Float.NEGATIVE_INFINITY, 3.0f));
 
         try {
             Raw.floatArrayAssertion().containsAllInOrder(new ArrayList<Float>());
@@ -618,31 +618,31 @@ public final class FloatArrayAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
-            initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f}).containsAllInOrder(Arrays.asList(2.0f, 3.0f));
+            initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f}).containsAllInOrder(DataHelper.createIterable(2.0f, 3.0f));
             Assertions.fail("FloatArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[2.0f, 3.0f]> but was:<[1.0f, 2.0f]>");
         }
         try {
-            initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f}).containsAllInOrder(Arrays.asList(2.0f, 1.0f));
+            initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f}).containsAllInOrder(DataHelper.createIterable(2.0f, 1.0f));
             Assertions.fail("FloatArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[2.0f, 1.0f]> but was:<[1.0f, 2.0f]>");
         }
         try {
-            initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f}, "Message").containsAllInOrder(Arrays.asList(2.0f, 1.0f));
+            initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f}, "Message").containsAllInOrder(DataHelper.createIterable(2.0f, 1.0f));
             Assertions.fail("FloatArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values in the specified order.\n\tExpected:<[2.0f, 1.0f]> but was:<[1.0f, 2.0f]>");
         }
         try {
-            initialize(Raw.floatArrayAssertion(), new float[]{Float.NaN, Float.POSITIVE_INFINITY}).containsAllInOrder(Arrays.asList(Float.POSITIVE_INFINITY, Float.NaN));
+            initialize(Raw.floatArrayAssertion(), new float[]{Float.NaN, Float.POSITIVE_INFINITY}).containsAllInOrder(DataHelper.createIterable(Float.POSITIVE_INFINITY, Float.NaN));
             Assertions.fail("FloatArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[Infinity, NaN]> but was:<[NaN, Infinity]>");
         }
         try {
-            initialize(Raw.floatArrayAssertion(), new float[]{Float.NaN, Float.POSITIVE_INFINITY}, "Message").containsAllInOrder(Arrays.asList(Float.POSITIVE_INFINITY, Float.NaN));
+            initialize(Raw.floatArrayAssertion(), new float[]{Float.NaN, Float.POSITIVE_INFINITY}, "Message").containsAllInOrder(DataHelper.createIterable(Float.POSITIVE_INFINITY, Float.NaN));
             Assertions.fail("FloatArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values in the specified order.\n\tExpected:<[Infinity, NaN]> but was:<[NaN, Infinity]>");
@@ -751,11 +751,11 @@ public final class FloatArrayAssertionTest extends AssertionTest {
      */
     @Test
     public void containsExactlyIterableTest() {
-        initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f}).containsExactly(Arrays.asList(1.0f, 2.0f));
-        initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f, 3.0f, 4.0f}).containsExactly(Arrays.asList(1.0f, 2.0f, 3.0f, 4.0f));
-        initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f, 3.0f, 4.0f}).containsExactly(Arrays.asList(1.0f, 3.0f, 2.0f, 4.0f));
+        initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f}).containsExactly(DataHelper.createIterable(1.0f, 2.0f));
+        initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f, 3.0f, 4.0f}).containsExactly(DataHelper.createIterable(1.0f, 2.0f, 3.0f, 4.0f));
+        initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f, 3.0f, 4.0f}).containsExactly(DataHelper.createIterable(1.0f, 3.0f, 2.0f, 4.0f));
         initialize(Raw.floatArrayAssertion(), new float[]{}).containsExactly(new ArrayList<Float>());
-        initialize(Raw.floatArrayAssertion(), new float[]{Float.NaN, Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY, 3.0f}).containsExactly(Arrays.asList(Float.NEGATIVE_INFINITY, Float.NaN, 3.0f, Float.POSITIVE_INFINITY));
+        initialize(Raw.floatArrayAssertion(), new float[]{Float.NaN, Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY, 3.0f}).containsExactly(DataHelper.createIterable(Float.NEGATIVE_INFINITY, Float.NaN, 3.0f, Float.POSITIVE_INFINITY));
 
         try {
             Raw.floatArrayAssertion().containsExactly(new ArrayList<Float>());
@@ -800,13 +800,13 @@ public final class FloatArrayAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
-            initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f}).containsExactly(Arrays.asList(2.0f, 3.0f));
+            initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f}).containsExactly(DataHelper.createIterable(2.0f, 3.0f));
             Assertions.fail("FloatArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[2.0f, 3.0f]> but was:<[1.0f, 2.0f]>");
         }
         try {
-            initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f, 3.0f, 4.0f}).containsExactly(Arrays.asList(1.0f, 2.0f, 3.0f, 4.0f, 5.0f));
+            initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f, 3.0f, 4.0f}).containsExactly(DataHelper.createIterable(1.0f, 2.0f, 3.0f, 4.0f, 5.0f));
             Assertions.fail("FloatArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[1.0f, 2.0f, 3.0f, 4.0f, 5.0f]> but was:<[1.0f, 2.0f, 3.0f, 4.0f]>");
@@ -818,25 +818,25 @@ public final class FloatArrayAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<<EMPTY>> but was:<[1.0f, 2.0f]>");
         }
         try {
-            initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f, 3.0f, 4.0f}).containsExactly(Arrays.asList(1.0f, 1.0f, 3.0f, 2.0f));
+            initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f, 3.0f, 4.0f}).containsExactly(DataHelper.createIterable(1.0f, 1.0f, 3.0f, 2.0f));
             Assertions.fail("FloatArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[1.0f, 1.0f, 3.0f, 2.0f]> but was:<[1.0f, 2.0f, 3.0f, 4.0f]>");
         }
         try {
-            initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f, 3.0f, 4.0f}, "Message").containsExactly(Arrays.asList(1.0f, 1.0f, 3.0f, 2.0f));
+            initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f, 3.0f, 4.0f}, "Message").containsExactly(DataHelper.createIterable(1.0f, 1.0f, 3.0f, 2.0f));
             Assertions.fail("FloatArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly.\n\tExpected:<[1.0f, 1.0f, 3.0f, 2.0f]> but was:<[1.0f, 2.0f, 3.0f, 4.0f]>");
         }
         try {
-            initialize(Raw.floatArrayAssertion(), new float[]{Float.NaN, 3.0f, Float.POSITIVE_INFINITY}).containsExactly(Arrays.asList(Float.NaN, 3.0f));
+            initialize(Raw.floatArrayAssertion(), new float[]{Float.NaN, 3.0f, Float.POSITIVE_INFINITY}).containsExactly(DataHelper.createIterable(Float.NaN, 3.0f));
             Assertions.fail("FloatArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[NaN, 3.0f]> but was:<[NaN, 3.0f, Infinity]>");
         }
         try {
-            initialize(Raw.floatArrayAssertion(), new float[]{Float.NaN, 3.0f, Float.POSITIVE_INFINITY}, "Message").containsExactly(Arrays.asList(Float.NaN, 3.0f));
+            initialize(Raw.floatArrayAssertion(), new float[]{Float.NaN, 3.0f, Float.POSITIVE_INFINITY}, "Message").containsExactly(DataHelper.createIterable(Float.NaN, 3.0f));
             Assertions.fail("FloatArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly.\n\tExpected:<[NaN, 3.0f]> but was:<[NaN, 3.0f, Infinity]>");
@@ -950,10 +950,10 @@ public final class FloatArrayAssertionTest extends AssertionTest {
      */
     @Test
     public void containsExactlyInOrderIterableTest() {
-        initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f}).containsExactlyInOrder(Arrays.asList(1.0f, 2.0f));
-        initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f, 3.0f, 4.0f}).containsExactlyInOrder(Arrays.asList(1.0f, 2.0f, 3.0f, 4.0f));
+        initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f}).containsExactlyInOrder(DataHelper.createIterable(1.0f, 2.0f));
+        initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f, 3.0f, 4.0f}).containsExactlyInOrder(DataHelper.createIterable(1.0f, 2.0f, 3.0f, 4.0f));
         initialize(Raw.floatArrayAssertion(), new float[]{}).containsExactlyInOrder(new ArrayList<Float>());
-        initialize(Raw.floatArrayAssertion(), new float[]{Float.NaN, Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY, 3.0f}).containsExactlyInOrder(Arrays.asList(Float.NaN, Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY, 3.0f));
+        initialize(Raw.floatArrayAssertion(), new float[]{Float.NaN, Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY, 3.0f}).containsExactlyInOrder(DataHelper.createIterable(Float.NaN, Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY, 3.0f));
 
         try {
             Raw.floatArrayAssertion().containsExactlyInOrder(new ArrayList<Float>());
@@ -998,19 +998,19 @@ public final class FloatArrayAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
-            initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f}).containsExactlyInOrder(Arrays.asList(2.0f, 1.0f));
+            initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f}).containsExactlyInOrder(DataHelper.createIterable(2.0f, 1.0f));
             Assertions.fail("FloatArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2.0f, 1.0f]> but was:<[1.0f, 2.0f]>");
         }
         try {
-            initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f, 3.0f, 4.0f}).containsExactlyInOrder(Arrays.asList(1.0f, 2.0f, 3.0f));
+            initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f, 3.0f, 4.0f}).containsExactlyInOrder(DataHelper.createIterable(1.0f, 2.0f, 3.0f));
             Assertions.fail("FloatArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1.0f, 2.0f, 3.0f]> but was:<[1.0f, 2.0f, 3.0f, 4.0f]>");
         }
         try {
-            initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f, 3.0f, 4.0f}).containsExactlyInOrder(Arrays.asList(1.0f, 2.0f, 3.0f, 4.0f, 5.0f));
+            initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f, 3.0f, 4.0f}).containsExactlyInOrder(DataHelper.createIterable(1.0f, 2.0f, 3.0f, 4.0f, 5.0f));
             Assertions.fail("FloatArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1.0f, 2.0f, 3.0f, 4.0f, 5.0f]> but was:<[1.0f, 2.0f, 3.0f, 4.0f]>");
@@ -1022,25 +1022,25 @@ public final class FloatArrayAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<<EMPTY>> but was:<[1.0f, 2.0f]>");
         }
         try {
-            initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f, 3.0f, 4.0f}).containsExactlyInOrder(Arrays.asList(2.0f, 3.0f, 1.0f, 4.0f));
+            initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f, 3.0f, 4.0f}).containsExactlyInOrder(DataHelper.createIterable(2.0f, 3.0f, 1.0f, 4.0f));
             Assertions.fail("FloatArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2.0f, 3.0f, 1.0f, 4.0f]> but was:<[1.0f, 2.0f, 3.0f, 4.0f]>");
         }
         try {
-            initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f, 3.0f, 4.0f}, "Message").containsExactlyInOrder(Arrays.asList(2.0f, 3.0f, 1.0f, 4.0f));
+            initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f, 3.0f, 4.0f}, "Message").containsExactlyInOrder(DataHelper.createIterable(2.0f, 3.0f, 1.0f, 4.0f));
             Assertions.fail("FloatArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2.0f, 3.0f, 1.0f, 4.0f]> but was:<[1.0f, 2.0f, 3.0f, 4.0f]>");
         }
         try {
-            initialize(Raw.floatArrayAssertion(), new float[]{Float.NaN, 3.0f, Float.POSITIVE_INFINITY}).containsExactlyInOrder(Arrays.asList(Float.POSITIVE_INFINITY, Float.NaN, 3.0f));
+            initialize(Raw.floatArrayAssertion(), new float[]{Float.NaN, 3.0f, Float.POSITIVE_INFINITY}).containsExactlyInOrder(DataHelper.createIterable(Float.POSITIVE_INFINITY, Float.NaN, 3.0f));
             Assertions.fail("FloatArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[Infinity, NaN, 3.0f]> but was:<[NaN, 3.0f, Infinity]>");
         }
         try {
-            initialize(Raw.floatArrayAssertion(), new float[]{Float.NaN, 3.0f, Float.POSITIVE_INFINITY}, "Message").containsExactlyInOrder(Arrays.asList(Float.POSITIVE_INFINITY, Float.NaN, 3.0f));
+            initialize(Raw.floatArrayAssertion(), new float[]{Float.NaN, 3.0f, Float.POSITIVE_INFINITY}, "Message").containsExactlyInOrder(DataHelper.createIterable(Float.POSITIVE_INFINITY, Float.NaN, 3.0f));
             Assertions.fail("FloatArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[Infinity, NaN, 3.0f]> but was:<[NaN, 3.0f, Infinity]>");
@@ -1143,11 +1143,11 @@ public final class FloatArrayAssertionTest extends AssertionTest {
      */
     @Test
     public void containsAnyIterableTest() {
-        initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f}).containsAny(Arrays.asList(2.0f, 3.0f));
-        initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f, 3.0f, 4.0f}).containsAny(Arrays.asList(2.0f, 4.0f));
-        initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f, 3.0f, 4.0f}).containsAny(Arrays.asList(4.0f, 1.0f));
-        initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f, 3.0f, 4.0f}).containsAny(Arrays.asList(5.0f, 3.0f));
-        initialize(Raw.floatArrayAssertion(), new float[]{Float.NaN, Float.NEGATIVE_INFINITY, 3.0f}).containsAny(Arrays.asList(Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY));
+        initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f}).containsAny(DataHelper.createIterable(2.0f, 3.0f));
+        initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f, 3.0f, 4.0f}).containsAny(DataHelper.createIterable(2.0f, 4.0f));
+        initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f, 3.0f, 4.0f}).containsAny(DataHelper.createIterable(4.0f, 1.0f));
+        initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f, 3.0f, 4.0f}).containsAny(DataHelper.createIterable(5.0f, 3.0f));
+        initialize(Raw.floatArrayAssertion(), new float[]{Float.NaN, Float.NEGATIVE_INFINITY, 3.0f}).containsAny(DataHelper.createIterable(Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY));
 
         try {
             Raw.floatArrayAssertion().containsAny(new ArrayList<Float>());
@@ -1204,25 +1204,25 @@ public final class FloatArrayAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always false.");
         }
         try {
-            initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f}).containsAny(Arrays.asList(3.0f, 4.0f));
+            initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f}).containsAny(DataHelper.createIterable(3.0f, 4.0f));
             Assertions.fail("FloatArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain any of the expected values.\n\tExpected:<[3.0f, 4.0f]> but was:<[1.0f, 2.0f]>");
         }
         try {
-            initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f}, "Message").containsAny(Arrays.asList(3.0f, 4.0f));
+            initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f}, "Message").containsAny(DataHelper.createIterable(3.0f, 4.0f));
             Assertions.fail("FloatArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain any of the expected values.\n\tExpected:<[3.0f, 4.0f]> but was:<[1.0f, 2.0f]>");
         }
         try {
-            initialize(Raw.floatArrayAssertion(), new float[]{Float.NaN, 3.0f, Float.POSITIVE_INFINITY}).containsAny(Arrays.asList(Float.NEGATIVE_INFINITY, 4.0f));
+            initialize(Raw.floatArrayAssertion(), new float[]{Float.NaN, 3.0f, Float.POSITIVE_INFINITY}).containsAny(DataHelper.createIterable(Float.NEGATIVE_INFINITY, 4.0f));
             Assertions.fail("FloatArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain any of the expected values.\n\tExpected:<[-Infinity, 4.0f]> but was:<[NaN, 3.0f, Infinity]>");
         }
         try {
-            initialize(Raw.floatArrayAssertion(), new float[]{Float.NaN, 3.0f, Float.POSITIVE_INFINITY}, "Message").containsAny(Arrays.asList(Float.NEGATIVE_INFINITY, 4.0f));
+            initialize(Raw.floatArrayAssertion(), new float[]{Float.NaN, 3.0f, Float.POSITIVE_INFINITY}, "Message").containsAny(DataHelper.createIterable(Float.NEGATIVE_INFINITY, 4.0f));
             Assertions.fail("FloatArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain any of the expected values.\n\tExpected:<[-Infinity, 4.0f]> but was:<[NaN, 3.0f, Infinity]>");
@@ -1323,9 +1323,9 @@ public final class FloatArrayAssertionTest extends AssertionTest {
      */
     @Test
     public void containsNoneIterableTest() {
-        initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f}).containsNone(Arrays.asList(3.0f, 7.0f));
-        initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f}).containsNone(Arrays.asList(3.0f, 4.0f, 5.0f));
-        initialize(Raw.floatArrayAssertion(), new float[]{Float.NaN, Float.NEGATIVE_INFINITY, 3.0f}).containsNone(Arrays.asList(Float.POSITIVE_INFINITY, 4.0f));
+        initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f}).containsNone(DataHelper.createIterable(3.0f, 7.0f));
+        initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f}).containsNone(DataHelper.createIterable(3.0f, 4.0f, 5.0f));
+        initialize(Raw.floatArrayAssertion(), new float[]{Float.NaN, Float.NEGATIVE_INFINITY, 3.0f}).containsNone(DataHelper.createIterable(Float.POSITIVE_INFINITY, 4.0f));
 
         try {
             Raw.floatArrayAssertion().containsNone(new ArrayList<Float>());
@@ -1382,25 +1382,25 @@ public final class FloatArrayAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
-            initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f}).containsNone(Arrays.asList(2.0f, 1.0f));
+            initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f}).containsNone(DataHelper.createIterable(2.0f, 1.0f));
             Assertions.fail("FloatArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not contain any of the expected values.\n\tExpected:<[2.0f, 1.0f]> but was:<[1.0f, 2.0f]>");
         }
         try {
-            initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f}, "Message").containsNone(Arrays.asList(2.0f, 1.0f));
+            initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f}, "Message").containsNone(DataHelper.createIterable(2.0f, 1.0f));
             Assertions.fail("FloatArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not contain any of the expected values.\n\tExpected:<[2.0f, 1.0f]> but was:<[1.0f, 2.0f]>");
         }
         try {
-            initialize(Raw.floatArrayAssertion(), new float[]{Float.NaN, 3.0f, Float.POSITIVE_INFINITY}).containsNone(Arrays.asList(Float.NaN, 4.0f));
+            initialize(Raw.floatArrayAssertion(), new float[]{Float.NaN, 3.0f, Float.POSITIVE_INFINITY}).containsNone(DataHelper.createIterable(Float.NaN, 4.0f));
             Assertions.fail("FloatArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not contain any of the expected values.\n\tExpected:<[NaN, 4.0f]> but was:<[NaN, 3.0f, Infinity]>");
         }
         try {
-            initialize(Raw.floatArrayAssertion(), new float[]{Float.NaN, 3.0f, Float.POSITIVE_INFINITY}, "Message").containsNone(Arrays.asList(Float.NaN, 4.0f));
+            initialize(Raw.floatArrayAssertion(), new float[]{Float.NaN, 3.0f, Float.POSITIVE_INFINITY}, "Message").containsNone(DataHelper.createIterable(Float.NaN, 4.0f));
             Assertions.fail("FloatArrayAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not contain any of the expected values.\n\tExpected:<[NaN, 4.0f]> but was:<[NaN, 3.0f, Infinity]>");
