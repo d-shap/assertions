@@ -20,7 +20,6 @@
 package ru.d_shap.assertions.asimp.java.util;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -93,13 +92,13 @@ public final class ListAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2")).isEmpty();
+            initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2")).isEmpty();
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be empty.\n\tActual:<[val1, val2]>");
         }
         try {
-            initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2"), "Message").isEmpty();
+            initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2"), "Message").isEmpty();
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be empty.\n\tActual:<[val1, val2]>");
@@ -121,13 +120,13 @@ public final class ListAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
-            initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2")).isNullOrEmpty();
+            initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2")).isNullOrEmpty();
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be null or empty.\n\tActual:<[val1, val2]>");
         }
         try {
-            initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2"), "Message").isNullOrEmpty();
+            initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2"), "Message").isNullOrEmpty();
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be null or empty.\n\tActual:<[val1, val2]>");
@@ -139,8 +138,8 @@ public final class ListAssertionTest extends AssertionTest {
      */
     @Test
     public void isNotEmptyTest() {
-        initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2")).isNotEmpty();
-        initialize(Raw.<String>listAssertion(), Arrays.asList("test1", "test2")).isNotEmpty();
+        initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2")).isNotEmpty();
+        initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("test1", "test2")).isNotEmpty();
 
         try {
             Raw.<String>listAssertion().isNotEmpty();
@@ -257,13 +256,13 @@ public final class ListAssertionTest extends AssertionTest {
      */
     @Test
     public void containsTest() {
-        initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2")).contains("val1");
-        initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2")).contains("val2");
-        initialize(Raw.<String>listAssertion(), Arrays.asList(null, "val1", "val2")).contains(null);
-        initialize(Raw.<String>listAssertion(), Arrays.asList("val1", null, "val2")).contains(null);
-        initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", null)).contains(null);
-        initialize(Raw.<Float>listAssertion(), Arrays.asList(Float.NaN, Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY, 3.0f)).contains(Float.POSITIVE_INFINITY);
-        initialize(Raw.<Double>listAssertion(), Arrays.asList(Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0)).contains(Double.POSITIVE_INFINITY);
+        initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2")).contains("val1");
+        initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2")).contains("val2");
+        initialize(Raw.<String>listAssertion(), DataHelper.createArrayList(null, "val1", "val2")).contains(null);
+        initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", null, "val2")).contains(null);
+        initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", null)).contains(null);
+        initialize(Raw.<Float>listAssertion(), DataHelper.createArrayList(Float.NaN, Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY, 3.0f)).contains(Float.POSITIVE_INFINITY);
+        initialize(Raw.<Double>listAssertion(), DataHelper.createArrayList(Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0)).contains(Double.POSITIVE_INFINITY);
 
         try {
             Raw.<String>listAssertion().contains("val");
@@ -284,37 +283,37 @@ public final class ListAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2")).contains("val3");
+            initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2")).contains("val3");
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain the expected value.\n\tExpected:<val3> but was:<[val1, val2]>");
         }
         try {
-            initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2"), "Message").contains("val3");
+            initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2"), "Message").contains("val3");
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain the expected value.\n\tExpected:<val3> but was:<[val1, val2]>");
         }
         try {
-            initialize(Raw.listAssertion(), Arrays.asList((Object) "val1", '1')).contains("val3");
+            initialize(Raw.listAssertion(), DataHelper.createArrayList((Object) "val1", '1')).contains("val3");
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain the expected value.\n\tExpected:<val3> but was:<[val1, 1(49)]>");
         }
         try {
-            initialize(Raw.listAssertion(), Arrays.asList((Object) "val1", '1'), "Message").contains("val3");
+            initialize(Raw.listAssertion(), DataHelper.createArrayList((Object) "val1", '1'), "Message").contains("val3");
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain the expected value.\n\tExpected:<val3> but was:<[val1, 1(49)]>");
         }
         try {
-            initialize(Raw.<Float>listAssertion(), Arrays.asList(1.0f, Float.POSITIVE_INFINITY)).contains(Float.NEGATIVE_INFINITY);
+            initialize(Raw.<Float>listAssertion(), DataHelper.createArrayList(1.0f, Float.POSITIVE_INFINITY)).contains(Float.NEGATIVE_INFINITY);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain the expected value.\n\tExpected:<-Infinity> but was:<[1.0f, Infinity]>");
         }
         try {
-            initialize(Raw.<Float>listAssertion(), Arrays.asList(1.0f, Float.POSITIVE_INFINITY), "Message").contains(Float.NEGATIVE_INFINITY);
+            initialize(Raw.<Float>listAssertion(), DataHelper.createArrayList(1.0f, Float.POSITIVE_INFINITY), "Message").contains(Float.NEGATIVE_INFINITY);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain the expected value.\n\tExpected:<-Infinity> but was:<[1.0f, Infinity]>");
@@ -326,11 +325,11 @@ public final class ListAssertionTest extends AssertionTest {
      */
     @Test
     public void doesNotContainTest() {
-        initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2")).doesNotContain("val3");
-        initialize(Raw.<String>listAssertion(), Arrays.asList("val1", null)).doesNotContain("val3");
-        initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2")).doesNotContain(null);
-        initialize(Raw.<Float>listAssertion(), Arrays.asList(Float.NaN, Float.POSITIVE_INFINITY)).doesNotContain(3.0f);
-        initialize(Raw.<Double>listAssertion(), Arrays.asList(Double.NaN, Double.POSITIVE_INFINITY)).doesNotContain(3.0);
+        initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2")).doesNotContain("val3");
+        initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", null)).doesNotContain("val3");
+        initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2")).doesNotContain(null);
+        initialize(Raw.<Float>listAssertion(), DataHelper.createArrayList(Float.NaN, Float.POSITIVE_INFINITY)).doesNotContain(3.0f);
+        initialize(Raw.<Double>listAssertion(), DataHelper.createArrayList(Double.NaN, Double.POSITIVE_INFINITY)).doesNotContain(3.0);
 
         try {
             Raw.<String>listAssertion().doesNotContain("val");
@@ -351,61 +350,61 @@ public final class ListAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2")).doesNotContain("val1");
+            initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2")).doesNotContain("val1");
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not contain the expected value.\n\tExpected:<val1> but was:<[val1, val2]>");
         }
         try {
-            initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2"), "Message").doesNotContain("val1");
+            initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2"), "Message").doesNotContain("val1");
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not contain the expected value.\n\tExpected:<val1> but was:<[val1, val2]>");
         }
         try {
-            initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2")).doesNotContain("val2");
+            initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2")).doesNotContain("val2");
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not contain the expected value.\n\tExpected:<val2> but was:<[val1, val2]>");
         }
         try {
-            initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2"), "Message").doesNotContain("val2");
+            initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2"), "Message").doesNotContain("val2");
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not contain the expected value.\n\tExpected:<val2> but was:<[val1, val2]>");
         }
         try {
-            initialize(Raw.<String>listAssertion(), Arrays.asList("val1", null, "val2")).doesNotContain(null);
+            initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", null, "val2")).doesNotContain(null);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not contain the expected value.\n\tExpected:<<NULL>> but was:<[val1, <NULL>, val2]>");
         }
         try {
-            initialize(Raw.<String>listAssertion(), Arrays.asList("val1", null, "val2"), "Message").doesNotContain(null);
+            initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", null, "val2"), "Message").doesNotContain(null);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not contain the expected value.\n\tExpected:<<NULL>> but was:<[val1, <NULL>, val2]>");
         }
         try {
-            initialize(Raw.listAssertion(), Arrays.asList((Object) "val1", '1')).doesNotContain("val1");
+            initialize(Raw.listAssertion(), DataHelper.createArrayList((Object) "val1", '1')).doesNotContain("val1");
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not contain the expected value.\n\tExpected:<val1> but was:<[val1, 1(49)]>");
         }
         try {
-            initialize(Raw.listAssertion(), Arrays.asList((Object) "val1", '1'), "Message").doesNotContain("val1");
+            initialize(Raw.listAssertion(), DataHelper.createArrayList((Object) "val1", '1'), "Message").doesNotContain("val1");
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not contain the expected value.\n\tExpected:<val1> but was:<[val1, 1(49)]>");
         }
         try {
-            initialize(Raw.<Float>listAssertion(), Arrays.asList(Float.NaN, Float.POSITIVE_INFINITY)).doesNotContain(Float.POSITIVE_INFINITY);
+            initialize(Raw.<Float>listAssertion(), DataHelper.createArrayList(Float.NaN, Float.POSITIVE_INFINITY)).doesNotContain(Float.POSITIVE_INFINITY);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not contain the expected value.\n\tExpected:<Infinity> but was:<[NaN, Infinity]>");
         }
         try {
-            initialize(Raw.<Float>listAssertion(), Arrays.asList(Float.NaN, Float.POSITIVE_INFINITY), "Message").doesNotContain(Float.POSITIVE_INFINITY);
+            initialize(Raw.<Float>listAssertion(), DataHelper.createArrayList(Float.NaN, Float.POSITIVE_INFINITY), "Message").doesNotContain(Float.POSITIVE_INFINITY);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not contain the expected value.\n\tExpected:<Infinity> but was:<[NaN, Infinity]>");
@@ -417,15 +416,15 @@ public final class ListAssertionTest extends AssertionTest {
      */
     @Test
     public void containsAllArrayTest() {
-        initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).containsAll("val1", "val2");
-        initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).containsAll("val1", "val3");
-        initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).containsAll("val3", "val1");
-        initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).containsAll("val5", "val1", "val3");
-        initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).containsAll("val3", "val5", "val4");
-        initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).containsAll("val3", "val1", "val4", "val5", "val2");
-        initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3", "val4", null)).containsAll("val3", "val1", "val4", null, "val2");
-        initialize(Raw.<Float>listAssertion(), Arrays.asList(Float.NaN, Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY, 3.0f)).containsAll(Float.NEGATIVE_INFINITY, Float.NaN);
-        initialize(Raw.<Double>listAssertion(), Arrays.asList(Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0)).containsAll(Double.NEGATIVE_INFINITY, Double.NaN);
+        initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3", "val4", "val5")).containsAll("val1", "val2");
+        initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3", "val4", "val5")).containsAll("val1", "val3");
+        initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3", "val4", "val5")).containsAll("val3", "val1");
+        initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3", "val4", "val5")).containsAll("val5", "val1", "val3");
+        initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3", "val4", "val5")).containsAll("val3", "val5", "val4");
+        initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3", "val4", "val5")).containsAll("val3", "val1", "val4", "val5", "val2");
+        initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3", "val4", null)).containsAll("val3", "val1", "val4", null, "val2");
+        initialize(Raw.<Float>listAssertion(), DataHelper.createArrayList(Float.NaN, Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY, 3.0f)).containsAll(Float.NEGATIVE_INFINITY, Float.NaN);
+        initialize(Raw.<Double>listAssertion(), DataHelper.createArrayList(Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0)).containsAll(Double.NEGATIVE_INFINITY, Double.NaN);
 
         try {
             Raw.<String>listAssertion().containsAll("val");
@@ -482,55 +481,55 @@ public final class ListAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
-            initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).containsAll("val1", "val6");
+            initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3", "val4", "val5")).containsAll("val1", "val6");
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values.\n\tExpected:<[val1, val6]> but was:<[val1, val2, val3, val4, val5]>");
         }
         try {
-            initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).containsAll("val0", "val1");
+            initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3", "val4", "val5")).containsAll("val0", "val1");
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values.\n\tExpected:<[val0, val1]> but was:<[val1, val2, val3, val4, val5]>");
         }
         try {
-            initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).containsAll("val1", "val1", "val2");
+            initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3", "val4", "val5")).containsAll("val1", "val1", "val2");
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values.\n\tExpected:<[val1, val1, val2]> but was:<[val1, val2, val3, val4, val5]>");
         }
         try {
-            initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).containsAll("val1", "val2", "val3", "val4", "val5", "val6");
+            initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3", "val4", "val5")).containsAll("val1", "val2", "val3", "val4", "val5", "val6");
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values.\n\tExpected:<[val1, val2, val3, val4, val5, val6]> but was:<[val1, val2, val3, val4, val5]>");
         }
         try {
-            initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5"), "Message").containsAll("val1", "val2", "val3", "val4", "val5", "val6");
+            initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3", "val4", "val5"), "Message").containsAll("val1", "val2", "val3", "val4", "val5", "val6");
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values.\n\tExpected:<[val1, val2, val3, val4, val5, val6]> but was:<[val1, val2, val3, val4, val5]>");
         }
         try {
-            initialize(Raw.listAssertion(), Arrays.asList((Object) "val1", "val2", "val3", "val4", '1')).containsAll("val1", "val2", "val3", "val4", "val5", "val6");
+            initialize(Raw.listAssertion(), DataHelper.createArrayList((Object) "val1", "val2", "val3", "val4", '1')).containsAll("val1", "val2", "val3", "val4", "val5", "val6");
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values.\n\tExpected:<[val1, val2, val3, val4, val5, val6]> but was:<[val1, val2, val3, val4, 1(49)]>");
         }
         try {
-            initialize(Raw.listAssertion(), Arrays.asList((Object) "val1", "val2", "val3", "val4", '1'), "Message").containsAll("val1", "val2", "val3", "val4", "val5", "val6");
+            initialize(Raw.listAssertion(), DataHelper.createArrayList((Object) "val1", "val2", "val3", "val4", '1'), "Message").containsAll("val1", "val2", "val3", "val4", "val5", "val6");
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values.\n\tExpected:<[val1, val2, val3, val4, val5, val6]> but was:<[val1, val2, val3, val4, 1(49)]>");
         }
         try {
-            initialize(Raw.<Float>listAssertion(), Arrays.asList(Float.NaN, Float.POSITIVE_INFINITY)).containsAll(Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY);
+            initialize(Raw.<Float>listAssertion(), DataHelper.createArrayList(Float.NaN, Float.POSITIVE_INFINITY)).containsAll(Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values.\n\tExpected:<[Infinity, -Infinity]> but was:<[NaN, Infinity]>");
         }
         try {
-            initialize(Raw.<Float>listAssertion(), Arrays.asList(Float.NaN, Float.POSITIVE_INFINITY), "Message").containsAll(Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY);
+            initialize(Raw.<Float>listAssertion(), DataHelper.createArrayList(Float.NaN, Float.POSITIVE_INFINITY), "Message").containsAll(Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values.\n\tExpected:<[Infinity, -Infinity]> but was:<[NaN, Infinity]>");
@@ -542,15 +541,15 @@ public final class ListAssertionTest extends AssertionTest {
      */
     @Test
     public void containsAllIterableTest() {
-        initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).containsAll(DataHelper.createIterable("val1", "val2"));
-        initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).containsAll(DataHelper.createIterable("val1", "val3"));
-        initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).containsAll(DataHelper.createIterable("val3", "val1"));
-        initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).containsAll(DataHelper.createIterable("val5", "val1", "val3"));
-        initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).containsAll(DataHelper.createIterable("val3", "val5", "val4"));
-        initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).containsAll(DataHelper.createIterable("val3", "val1", "val4", "val5", "val2"));
-        initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3", "val4", null)).containsAll(DataHelper.createIterable("val3", "val1", "val4", null, "val2"));
-        initialize(Raw.<Float>listAssertion(), Arrays.asList(Float.NaN, Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY, 3.0f)).containsAll(DataHelper.createIterable(Float.NEGATIVE_INFINITY, Float.NaN));
-        initialize(Raw.<Double>listAssertion(), Arrays.asList(Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0)).containsAll(DataHelper.createIterable(Double.NEGATIVE_INFINITY, Double.NaN));
+        initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3", "val4", "val5")).containsAll(DataHelper.createIterable("val1", "val2"));
+        initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3", "val4", "val5")).containsAll(DataHelper.createIterable("val1", "val3"));
+        initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3", "val4", "val5")).containsAll(DataHelper.createIterable("val3", "val1"));
+        initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3", "val4", "val5")).containsAll(DataHelper.createIterable("val5", "val1", "val3"));
+        initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3", "val4", "val5")).containsAll(DataHelper.createIterable("val3", "val5", "val4"));
+        initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3", "val4", "val5")).containsAll(DataHelper.createIterable("val3", "val1", "val4", "val5", "val2"));
+        initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3", "val4", null)).containsAll(DataHelper.createIterable("val3", "val1", "val4", null, "val2"));
+        initialize(Raw.<Float>listAssertion(), DataHelper.createArrayList(Float.NaN, Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY, 3.0f)).containsAll(DataHelper.createIterable(Float.NEGATIVE_INFINITY, Float.NaN));
+        initialize(Raw.<Double>listAssertion(), DataHelper.createArrayList(Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0)).containsAll(DataHelper.createIterable(Double.NEGATIVE_INFINITY, Double.NaN));
 
         try {
             Raw.<String>listAssertion().containsAll(new ArrayList<String>());
@@ -607,43 +606,43 @@ public final class ListAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
-            initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).containsAll(DataHelper.createIterable("val1", "val6"));
+            initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3", "val4", "val5")).containsAll(DataHelper.createIterable("val1", "val6"));
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values.\n\tExpected:<[val1, val6]> but was:<[val1, val2, val3, val4, val5]>");
         }
         try {
-            initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).containsAll(DataHelper.createIterable("val0", "val1"));
+            initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3", "val4", "val5")).containsAll(DataHelper.createIterable("val0", "val1"));
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values.\n\tExpected:<[val0, val1]> but was:<[val1, val2, val3, val4, val5]>");
         }
         try {
-            initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).containsAll(DataHelper.createIterable("val1", "val1", "val2"));
+            initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3", "val4", "val5")).containsAll(DataHelper.createIterable("val1", "val1", "val2"));
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values.\n\tExpected:<[val1, val1, val2]> but was:<[val1, val2, val3, val4, val5]>");
         }
         try {
-            initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).containsAll(DataHelper.createIterable("val1", "val2", "val3", "val4", "val5", "val6"));
+            initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3", "val4", "val5")).containsAll(DataHelper.createIterable("val1", "val2", "val3", "val4", "val5", "val6"));
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values.\n\tExpected:<[val1, val2, val3, val4, val5, val6]> but was:<[val1, val2, val3, val4, val5]>");
         }
         try {
-            initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5"), "Message").containsAll(DataHelper.createIterable("val1", "val2", "val3", "val4", "val5", "val6"));
+            initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3", "val4", "val5"), "Message").containsAll(DataHelper.createIterable("val1", "val2", "val3", "val4", "val5", "val6"));
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values.\n\tExpected:<[val1, val2, val3, val4, val5, val6]> but was:<[val1, val2, val3, val4, val5]>");
         }
         try {
-            initialize(Raw.<Float>listAssertion(), Arrays.asList(Float.NaN, Float.POSITIVE_INFINITY)).containsAll(DataHelper.createIterable(Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY));
+            initialize(Raw.<Float>listAssertion(), DataHelper.createArrayList(Float.NaN, Float.POSITIVE_INFINITY)).containsAll(DataHelper.createIterable(Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY));
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values.\n\tExpected:<[Infinity, -Infinity]> but was:<[NaN, Infinity]>");
         }
         try {
-            initialize(Raw.<Float>listAssertion(), Arrays.asList(Float.NaN, Float.POSITIVE_INFINITY), "Message").containsAll(DataHelper.createIterable(Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY));
+            initialize(Raw.<Float>listAssertion(), DataHelper.createArrayList(Float.NaN, Float.POSITIVE_INFINITY), "Message").containsAll(DataHelper.createIterable(Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY));
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values.\n\tExpected:<[Infinity, -Infinity]> but was:<[NaN, Infinity]>");
@@ -655,15 +654,15 @@ public final class ListAssertionTest extends AssertionTest {
      */
     @Test
     public void containsAllInOrderArrayTest() {
-        initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).containsAllInOrder("val1", "val2");
-        initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).containsAllInOrder("val1", "val3");
-        initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).containsAllInOrder("val1", "val3", "val5");
-        initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).containsAllInOrder("val3", "val4", "val5");
-        initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val1", "val1", "val2", "val2")).containsAllInOrder("val1", "val1", "val1", "val2", "val2");
-        initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).containsAllInOrder("val1", "val2", "val3", "val4", "val5");
-        initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3", "val4", null)).containsAllInOrder("val1", "val2", "val3", "val4", null);
-        initialize(Raw.<Float>listAssertion(), Arrays.asList(Float.NaN, Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY, 3.0f)).containsAllInOrder(Float.NaN, Float.NEGATIVE_INFINITY, 3.0f);
-        initialize(Raw.<Double>listAssertion(), Arrays.asList(Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0)).containsAllInOrder(Double.NaN, Double.NEGATIVE_INFINITY, 3.0);
+        initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3", "val4", "val5")).containsAllInOrder("val1", "val2");
+        initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3", "val4", "val5")).containsAllInOrder("val1", "val3");
+        initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3", "val4", "val5")).containsAllInOrder("val1", "val3", "val5");
+        initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3", "val4", "val5")).containsAllInOrder("val3", "val4", "val5");
+        initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val1", "val1", "val2", "val2")).containsAllInOrder("val1", "val1", "val1", "val2", "val2");
+        initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3", "val4", "val5")).containsAllInOrder("val1", "val2", "val3", "val4", "val5");
+        initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3", "val4", null)).containsAllInOrder("val1", "val2", "val3", "val4", null);
+        initialize(Raw.<Float>listAssertion(), DataHelper.createArrayList(Float.NaN, Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY, 3.0f)).containsAllInOrder(Float.NaN, Float.NEGATIVE_INFINITY, 3.0f);
+        initialize(Raw.<Double>listAssertion(), DataHelper.createArrayList(Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0)).containsAllInOrder(Double.NaN, Double.NEGATIVE_INFINITY, 3.0);
 
         try {
             Raw.<String>listAssertion().containsAllInOrder("val");
@@ -720,55 +719,55 @@ public final class ListAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
-            initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).containsAllInOrder("val1", "val6");
+            initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3", "val4", "val5")).containsAllInOrder("val1", "val6");
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[val1, val6]> but was:<[val1, val2, val3, val4, val5]>");
         }
         try {
-            initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).containsAllInOrder("val3", "val1");
+            initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3", "val4", "val5")).containsAllInOrder("val3", "val1");
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[val3, val1]> but was:<[val1, val2, val3, val4, val5]>");
         }
         try {
-            initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val1", "val1")).containsAllInOrder("val1", "val1", "val1", "val1");
+            initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val1", "val1")).containsAllInOrder("val1", "val1", "val1", "val1");
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[val1, val1, val1, val1]> but was:<[val1, val1, val1]>");
         }
         try {
-            initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).containsAllInOrder("val1", "val2", "val3", "val4", "val5", "val6");
+            initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3", "val4", "val5")).containsAllInOrder("val1", "val2", "val3", "val4", "val5", "val6");
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[val1, val2, val3, val4, val5, val6]> but was:<[val1, val2, val3, val4, val5]>");
         }
         try {
-            initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5"), "Message").containsAllInOrder("val1", "val2", "val3", "val4", "val5", "val6");
+            initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3", "val4", "val5"), "Message").containsAllInOrder("val1", "val2", "val3", "val4", "val5", "val6");
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values in the specified order.\n\tExpected:<[val1, val2, val3, val4, val5, val6]> but was:<[val1, val2, val3, val4, val5]>");
         }
         try {
-            initialize(Raw.listAssertion(), Arrays.asList((Object) "val1", "val2", "val3", "val4", '1')).containsAllInOrder("val1", "val2", "val3", "val4", "val5", "val6");
+            initialize(Raw.listAssertion(), DataHelper.createArrayList((Object) "val1", "val2", "val3", "val4", '1')).containsAllInOrder("val1", "val2", "val3", "val4", "val5", "val6");
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[val1, val2, val3, val4, val5, val6]> but was:<[val1, val2, val3, val4, 1(49)]>");
         }
         try {
-            initialize(Raw.listAssertion(), Arrays.asList((Object) "val1", "val2", "val3", "val4", '1'), "Message").containsAllInOrder("val1", "val2", "val3", "val4", "val5", "val6");
+            initialize(Raw.listAssertion(), DataHelper.createArrayList((Object) "val1", "val2", "val3", "val4", '1'), "Message").containsAllInOrder("val1", "val2", "val3", "val4", "val5", "val6");
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values in the specified order.\n\tExpected:<[val1, val2, val3, val4, val5, val6]> but was:<[val1, val2, val3, val4, 1(49)]>");
         }
         try {
-            initialize(Raw.<Float>listAssertion(), Arrays.asList(Float.NaN, Float.POSITIVE_INFINITY)).containsAllInOrder(Float.POSITIVE_INFINITY, Float.NaN);
+            initialize(Raw.<Float>listAssertion(), DataHelper.createArrayList(Float.NaN, Float.POSITIVE_INFINITY)).containsAllInOrder(Float.POSITIVE_INFINITY, Float.NaN);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[Infinity, NaN]> but was:<[NaN, Infinity]>");
         }
         try {
-            initialize(Raw.<Float>listAssertion(), Arrays.asList(Float.NaN, Float.POSITIVE_INFINITY), "Message").containsAllInOrder(Float.POSITIVE_INFINITY, Float.NaN);
+            initialize(Raw.<Float>listAssertion(), DataHelper.createArrayList(Float.NaN, Float.POSITIVE_INFINITY), "Message").containsAllInOrder(Float.POSITIVE_INFINITY, Float.NaN);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values in the specified order.\n\tExpected:<[Infinity, NaN]> but was:<[NaN, Infinity]>");
@@ -780,15 +779,15 @@ public final class ListAssertionTest extends AssertionTest {
      */
     @Test
     public void containsAllInOrderIterableTest() {
-        initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).containsAllInOrder(DataHelper.createIterable("val1", "val2"));
-        initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).containsAllInOrder(DataHelper.createIterable("val1", "val3"));
-        initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).containsAllInOrder(DataHelper.createIterable("val1", "val3", "val5"));
-        initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).containsAllInOrder(DataHelper.createIterable("val3", "val4", "val5"));
-        initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val1", "val1", "val2", "val2")).containsAllInOrder(DataHelper.createIterable("val1", "val1", "val1", "val2", "val2"));
-        initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).containsAllInOrder(DataHelper.createIterable("val1", "val2", "val3", "val4", "val5"));
-        initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3", "val4", null)).containsAllInOrder(DataHelper.createIterable("val1", "val2", "val3", "val4", null));
-        initialize(Raw.<Float>listAssertion(), Arrays.asList(Float.NaN, Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY, 3.0f)).containsAllInOrder(DataHelper.createIterable(Float.NaN, Float.NEGATIVE_INFINITY, 3.0f));
-        initialize(Raw.<Double>listAssertion(), Arrays.asList(Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0)).containsAllInOrder(DataHelper.createIterable(Double.NaN, Double.NEGATIVE_INFINITY, 3.0));
+        initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3", "val4", "val5")).containsAllInOrder(DataHelper.createIterable("val1", "val2"));
+        initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3", "val4", "val5")).containsAllInOrder(DataHelper.createIterable("val1", "val3"));
+        initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3", "val4", "val5")).containsAllInOrder(DataHelper.createIterable("val1", "val3", "val5"));
+        initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3", "val4", "val5")).containsAllInOrder(DataHelper.createIterable("val3", "val4", "val5"));
+        initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val1", "val1", "val2", "val2")).containsAllInOrder(DataHelper.createIterable("val1", "val1", "val1", "val2", "val2"));
+        initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3", "val4", "val5")).containsAllInOrder(DataHelper.createIterable("val1", "val2", "val3", "val4", "val5"));
+        initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3", "val4", null)).containsAllInOrder(DataHelper.createIterable("val1", "val2", "val3", "val4", null));
+        initialize(Raw.<Float>listAssertion(), DataHelper.createArrayList(Float.NaN, Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY, 3.0f)).containsAllInOrder(DataHelper.createIterable(Float.NaN, Float.NEGATIVE_INFINITY, 3.0f));
+        initialize(Raw.<Double>listAssertion(), DataHelper.createArrayList(Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0)).containsAllInOrder(DataHelper.createIterable(Double.NaN, Double.NEGATIVE_INFINITY, 3.0));
 
         try {
             Raw.<String>listAssertion().containsAllInOrder(new ArrayList<String>());
@@ -845,43 +844,43 @@ public final class ListAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
-            initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).containsAllInOrder(DataHelper.createIterable("val1", "val6"));
+            initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3", "val4", "val5")).containsAllInOrder(DataHelper.createIterable("val1", "val6"));
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[val1, val6]> but was:<[val1, val2, val3, val4, val5]>");
         }
         try {
-            initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).containsAllInOrder(DataHelper.createIterable("val3", "val1"));
+            initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3", "val4", "val5")).containsAllInOrder(DataHelper.createIterable("val3", "val1"));
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[val3, val1]> but was:<[val1, val2, val3, val4, val5]>");
         }
         try {
-            initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val1", "val1")).containsAllInOrder(DataHelper.createIterable("val1", "val1", "val1", "val1"));
+            initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val1", "val1")).containsAllInOrder(DataHelper.createIterable("val1", "val1", "val1", "val1"));
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[val1, val1, val1, val1]> but was:<[val1, val1, val1]>");
         }
         try {
-            initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).containsAllInOrder(DataHelper.createIterable("val1", "val2", "val3", "val4", "val5", "val6"));
+            initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3", "val4", "val5")).containsAllInOrder(DataHelper.createIterable("val1", "val2", "val3", "val4", "val5", "val6"));
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[val1, val2, val3, val4, val5, val6]> but was:<[val1, val2, val3, val4, val5]>");
         }
         try {
-            initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5"), "Message").containsAllInOrder(DataHelper.createIterable("val1", "val2", "val3", "val4", "val5", "val6"));
+            initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3", "val4", "val5"), "Message").containsAllInOrder(DataHelper.createIterable("val1", "val2", "val3", "val4", "val5", "val6"));
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values in the specified order.\n\tExpected:<[val1, val2, val3, val4, val5, val6]> but was:<[val1, val2, val3, val4, val5]>");
         }
         try {
-            initialize(Raw.<Float>listAssertion(), Arrays.asList(Float.NaN, Float.POSITIVE_INFINITY)).containsAllInOrder(DataHelper.createIterable(Float.POSITIVE_INFINITY, Float.NaN));
+            initialize(Raw.<Float>listAssertion(), DataHelper.createArrayList(Float.NaN, Float.POSITIVE_INFINITY)).containsAllInOrder(DataHelper.createIterable(Float.POSITIVE_INFINITY, Float.NaN));
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[Infinity, NaN]> but was:<[NaN, Infinity]>");
         }
         try {
-            initialize(Raw.<Float>listAssertion(), Arrays.asList(Float.NaN, Float.POSITIVE_INFINITY), "Message").containsAllInOrder(DataHelper.createIterable(Float.POSITIVE_INFINITY, Float.NaN));
+            initialize(Raw.<Float>listAssertion(), DataHelper.createArrayList(Float.NaN, Float.POSITIVE_INFINITY), "Message").containsAllInOrder(DataHelper.createIterable(Float.POSITIVE_INFINITY, Float.NaN));
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values in the specified order.\n\tExpected:<[Infinity, NaN]> but was:<[NaN, Infinity]>");
@@ -893,16 +892,16 @@ public final class ListAssertionTest extends AssertionTest {
      */
     @Test
     public void containsExactlyArrayTest() {
-        initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).containsExactly("val1", "val2", "val3");
-        initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).containsExactly("val2", "val1", "val3");
-        initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).containsExactly("val2", "val3", "val1");
-        initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).containsExactly("val3", "val2", "val1");
-        initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).containsExactly("val1", "val2", "val3", "val4", "val5");
-        initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).containsExactly("val2", "val4", "val1", "val3", "val5");
-        initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3", "val4", null)).containsExactly("val2", "val4", "val1", "val3", null);
+        initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3")).containsExactly("val1", "val2", "val3");
+        initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3")).containsExactly("val2", "val1", "val3");
+        initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3")).containsExactly("val2", "val3", "val1");
+        initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3")).containsExactly("val3", "val2", "val1");
+        initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3", "val4", "val5")).containsExactly("val1", "val2", "val3", "val4", "val5");
+        initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3", "val4", "val5")).containsExactly("val2", "val4", "val1", "val3", "val5");
+        initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3", "val4", null)).containsExactly("val2", "val4", "val1", "val3", null);
         initialize(Raw.<String>listAssertion(), new ArrayList<String>()).containsExactly();
-        initialize(Raw.<Float>listAssertion(), Arrays.asList(Float.NaN, Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY, 3.0f)).containsExactly(Float.NEGATIVE_INFINITY, Float.NaN, 3.0f, Float.POSITIVE_INFINITY);
-        initialize(Raw.<Double>listAssertion(), Arrays.asList(Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0)).containsExactly(Double.NEGATIVE_INFINITY, Double.NaN, 3.0, Double.POSITIVE_INFINITY);
+        initialize(Raw.<Float>listAssertion(), DataHelper.createArrayList(Float.NaN, Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY, 3.0f)).containsExactly(Float.NEGATIVE_INFINITY, Float.NaN, 3.0f, Float.POSITIVE_INFINITY);
+        initialize(Raw.<Double>listAssertion(), DataHelper.createArrayList(Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0)).containsExactly(Double.NEGATIVE_INFINITY, Double.NaN, 3.0, Double.POSITIVE_INFINITY);
 
         try {
             Raw.<String>listAssertion().containsExactly("val");
@@ -947,67 +946,67 @@ public final class ListAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
-            initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).containsExactly("val1", "val2", "val3", "val4");
+            initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3")).containsExactly("val1", "val2", "val3", "val4");
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[val1, val2, val3, val4]> but was:<[val1, val2, val3]>");
         }
         try {
-            initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).containsExactly("val3", "val2", "val1", "val4");
+            initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3")).containsExactly("val3", "val2", "val1", "val4");
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[val3, val2, val1, val4]> but was:<[val1, val2, val3]>");
         }
         try {
-            initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).containsExactly("val1", "val2");
+            initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3")).containsExactly("val1", "val2");
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[val1, val2]> but was:<[val1, val2, val3]>");
         }
         try {
-            initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).containsExactly("val2", "val1");
+            initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3")).containsExactly("val2", "val1");
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[val2, val1]> but was:<[val1, val2, val3]>");
         }
         try {
-            initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).containsExactly();
+            initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3")).containsExactly();
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<<EMPTY>> but was:<[val1, val2, val3]>");
         }
         try {
-            initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).containsExactly("val2", "val4", "val1");
+            initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3")).containsExactly("val2", "val4", "val1");
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[val2, val4, val1]> but was:<[val1, val2, val3]>");
         }
         try {
-            initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3"), "Message").containsExactly("val2", "val4", "val1");
+            initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3"), "Message").containsExactly("val2", "val4", "val1");
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly.\n\tExpected:<[val2, val4, val1]> but was:<[val1, val2, val3]>");
         }
         try {
-            initialize(Raw.listAssertion(), Arrays.asList((Object) "val1", "val2", '1')).containsExactly("val2", "val4", "val1");
+            initialize(Raw.listAssertion(), DataHelper.createArrayList((Object) "val1", "val2", '1')).containsExactly("val2", "val4", "val1");
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[val2, val4, val1]> but was:<[val1, val2, 1(49)]>");
         }
         try {
-            initialize(Raw.listAssertion(), Arrays.asList((Object) "val1", "val2", '1'), "Message").containsExactly("val2", "val4", "val1");
+            initialize(Raw.listAssertion(), DataHelper.createArrayList((Object) "val1", "val2", '1'), "Message").containsExactly("val2", "val4", "val1");
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly.\n\tExpected:<[val2, val4, val1]> but was:<[val1, val2, 1(49)]>");
         }
         try {
-            initialize(Raw.<Float>listAssertion(), Arrays.asList(Float.NaN, 3.0f, Float.POSITIVE_INFINITY)).containsExactly(Float.NaN, 3.0f);
+            initialize(Raw.<Float>listAssertion(), DataHelper.createArrayList(Float.NaN, 3.0f, Float.POSITIVE_INFINITY)).containsExactly(Float.NaN, 3.0f);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[NaN, 3.0f]> but was:<[NaN, 3.0f, Infinity]>");
         }
         try {
-            initialize(Raw.<Float>listAssertion(), Arrays.asList(Float.NaN, 3.0f, Float.POSITIVE_INFINITY), "Message").containsExactly(Float.NaN, 3.0f);
+            initialize(Raw.<Float>listAssertion(), DataHelper.createArrayList(Float.NaN, 3.0f, Float.POSITIVE_INFINITY), "Message").containsExactly(Float.NaN, 3.0f);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly.\n\tExpected:<[NaN, 3.0f]> but was:<[NaN, 3.0f, Infinity]>");
@@ -1019,16 +1018,16 @@ public final class ListAssertionTest extends AssertionTest {
      */
     @Test
     public void containsExactlyIterableTest() {
-        initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).containsExactly(DataHelper.createIterable("val1", "val2", "val3"));
-        initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).containsExactly(DataHelper.createIterable("val2", "val1", "val3"));
-        initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).containsExactly(DataHelper.createIterable("val2", "val3", "val1"));
-        initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).containsExactly(DataHelper.createIterable("val3", "val2", "val1"));
-        initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).containsExactly(DataHelper.createIterable("val1", "val2", "val3", "val4", "val5"));
-        initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).containsExactly(DataHelper.createIterable("val2", "val4", "val1", "val3", "val5"));
-        initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3", "val4", null)).containsExactly(DataHelper.createIterable("val2", "val4", "val1", "val3", null));
+        initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3")).containsExactly(DataHelper.createIterable("val1", "val2", "val3"));
+        initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3")).containsExactly(DataHelper.createIterable("val2", "val1", "val3"));
+        initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3")).containsExactly(DataHelper.createIterable("val2", "val3", "val1"));
+        initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3")).containsExactly(DataHelper.createIterable("val3", "val2", "val1"));
+        initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3", "val4", "val5")).containsExactly(DataHelper.createIterable("val1", "val2", "val3", "val4", "val5"));
+        initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3", "val4", "val5")).containsExactly(DataHelper.createIterable("val2", "val4", "val1", "val3", "val5"));
+        initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3", "val4", null)).containsExactly(DataHelper.createIterable("val2", "val4", "val1", "val3", null));
         initialize(Raw.<String>listAssertion(), new ArrayList<String>()).containsExactly(new ArrayList<String>());
-        initialize(Raw.<Float>listAssertion(), Arrays.asList(Float.NaN, Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY, 3.0f)).containsExactly(DataHelper.createIterable(Float.NEGATIVE_INFINITY, Float.NaN, 3.0f, Float.POSITIVE_INFINITY));
-        initialize(Raw.<Double>listAssertion(), Arrays.asList(Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0)).containsExactly(DataHelper.createIterable(Double.NEGATIVE_INFINITY, Double.NaN, 3.0, Double.POSITIVE_INFINITY));
+        initialize(Raw.<Float>listAssertion(), DataHelper.createArrayList(Float.NaN, Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY, 3.0f)).containsExactly(DataHelper.createIterable(Float.NEGATIVE_INFINITY, Float.NaN, 3.0f, Float.POSITIVE_INFINITY));
+        initialize(Raw.<Double>listAssertion(), DataHelper.createArrayList(Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0)).containsExactly(DataHelper.createIterable(Double.NEGATIVE_INFINITY, Double.NaN, 3.0, Double.POSITIVE_INFINITY));
 
         try {
             Raw.<String>listAssertion().containsExactly(new ArrayList<String>());
@@ -1073,55 +1072,55 @@ public final class ListAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
-            initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).containsExactly(DataHelper.createIterable("val1", "val2", "val3", "val4"));
+            initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3")).containsExactly(DataHelper.createIterable("val1", "val2", "val3", "val4"));
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[val1, val2, val3, val4]> but was:<[val1, val2, val3]>");
         }
         try {
-            initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).containsExactly(DataHelper.createIterable("val3", "val2", "val1", "val4"));
+            initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3")).containsExactly(DataHelper.createIterable("val3", "val2", "val1", "val4"));
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[val3, val2, val1, val4]> but was:<[val1, val2, val3]>");
         }
         try {
-            initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).containsExactly(DataHelper.createIterable("val1", "val2"));
+            initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3")).containsExactly(DataHelper.createIterable("val1", "val2"));
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[val1, val2]> but was:<[val1, val2, val3]>");
         }
         try {
-            initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).containsExactly(DataHelper.createIterable("val2", "val1"));
+            initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3")).containsExactly(DataHelper.createIterable("val2", "val1"));
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[val2, val1]> but was:<[val1, val2, val3]>");
         }
         try {
-            initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).containsExactly(new ArrayList<String>());
+            initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3")).containsExactly(new ArrayList<String>());
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<<EMPTY>> but was:<[val1, val2, val3]>");
         }
         try {
-            initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).containsExactly(DataHelper.createIterable("val2", "val4", "val1"));
+            initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3")).containsExactly(DataHelper.createIterable("val2", "val4", "val1"));
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[val2, val4, val1]> but was:<[val1, val2, val3]>");
         }
         try {
-            initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3"), "Message").containsExactly(DataHelper.createIterable("val2", "val4", "val1"));
+            initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3"), "Message").containsExactly(DataHelper.createIterable("val2", "val4", "val1"));
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly.\n\tExpected:<[val2, val4, val1]> but was:<[val1, val2, val3]>");
         }
         try {
-            initialize(Raw.<Float>listAssertion(), Arrays.asList(Float.NaN, 3.0f, Float.POSITIVE_INFINITY)).containsExactly(DataHelper.createIterable(Float.NaN, 3.0f));
+            initialize(Raw.<Float>listAssertion(), DataHelper.createArrayList(Float.NaN, 3.0f, Float.POSITIVE_INFINITY)).containsExactly(DataHelper.createIterable(Float.NaN, 3.0f));
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[NaN, 3.0f]> but was:<[NaN, 3.0f, Infinity]>");
         }
         try {
-            initialize(Raw.<Float>listAssertion(), Arrays.asList(Float.NaN, 3.0f, Float.POSITIVE_INFINITY), "Message").containsExactly(DataHelper.createIterable(Float.NaN, 3.0f));
+            initialize(Raw.<Float>listAssertion(), DataHelper.createArrayList(Float.NaN, 3.0f, Float.POSITIVE_INFINITY), "Message").containsExactly(DataHelper.createIterable(Float.NaN, 3.0f));
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly.\n\tExpected:<[NaN, 3.0f]> but was:<[NaN, 3.0f, Infinity]>");
@@ -1133,12 +1132,12 @@ public final class ListAssertionTest extends AssertionTest {
      */
     @Test
     public void containsExactlyInOrderArrayTest() {
-        initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).containsExactlyInOrder("val1", "val2", "val3");
-        initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).containsExactlyInOrder("val1", "val2", "val3", "val4", "val5");
-        initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3", "val4", null)).containsExactlyInOrder("val1", "val2", "val3", "val4", null);
+        initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3")).containsExactlyInOrder("val1", "val2", "val3");
+        initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3", "val4", "val5")).containsExactlyInOrder("val1", "val2", "val3", "val4", "val5");
+        initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3", "val4", null)).containsExactlyInOrder("val1", "val2", "val3", "val4", null);
         initialize(Raw.<String>listAssertion(), new ArrayList<String>()).containsExactlyInOrder();
-        initialize(Raw.<Float>listAssertion(), Arrays.asList(Float.NaN, Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY, 3.0f)).containsExactlyInOrder(Float.NaN, Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY, 3.0f);
-        initialize(Raw.<Double>listAssertion(), Arrays.asList(Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0)).containsExactlyInOrder(Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0);
+        initialize(Raw.<Float>listAssertion(), DataHelper.createArrayList(Float.NaN, Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY, 3.0f)).containsExactlyInOrder(Float.NaN, Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY, 3.0f);
+        initialize(Raw.<Double>listAssertion(), DataHelper.createArrayList(Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0)).containsExactlyInOrder(Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0);
 
         try {
             Raw.<String>listAssertion().containsExactlyInOrder("val");
@@ -1183,67 +1182,67 @@ public final class ListAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
-            initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).containsExactlyInOrder("val1", "val2");
+            initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3")).containsExactlyInOrder("val1", "val2");
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[val1, val2]> but was:<[val1, val2, val3]>");
         }
         try {
-            initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).containsExactlyInOrder("val2", "val3");
+            initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3")).containsExactlyInOrder("val2", "val3");
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[val2, val3]> but was:<[val1, val2, val3]>");
         }
         try {
-            initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).containsExactlyInOrder("val1", "val2", "val4");
+            initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3")).containsExactlyInOrder("val1", "val2", "val4");
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[val1, val2, val4]> but was:<[val1, val2, val3]>");
         }
         try {
-            initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).containsExactlyInOrder("val1", "val2", "val3", "val4");
+            initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3")).containsExactlyInOrder("val1", "val2", "val3", "val4");
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[val1, val2, val3, val4]> but was:<[val1, val2, val3]>");
         }
         try {
-            initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).containsExactlyInOrder();
+            initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3")).containsExactlyInOrder();
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<<EMPTY>> but was:<[val1, val2, val3]>");
         }
         try {
-            initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).containsExactlyInOrder("val3", "val1", "val2");
+            initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3")).containsExactlyInOrder("val3", "val1", "val2");
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[val3, val1, val2]> but was:<[val1, val2, val3]>");
         }
         try {
-            initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3"), "Message").containsExactlyInOrder("val3", "val1", "val2");
+            initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3"), "Message").containsExactlyInOrder("val3", "val1", "val2");
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[val3, val1, val2]> but was:<[val1, val2, val3]>");
         }
         try {
-            initialize(Raw.listAssertion(), Arrays.asList((Object) "val1", "val2", '1')).containsExactlyInOrder("val3", "val1", "val2");
+            initialize(Raw.listAssertion(), DataHelper.createArrayList((Object) "val1", "val2", '1')).containsExactlyInOrder("val3", "val1", "val2");
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[val3, val1, val2]> but was:<[val1, val2, 1(49)]>");
         }
         try {
-            initialize(Raw.listAssertion(), Arrays.asList((Object) "val1", "val2", '1'), "Message").containsExactlyInOrder("val3", "val1", "val2");
+            initialize(Raw.listAssertion(), DataHelper.createArrayList((Object) "val1", "val2", '1'), "Message").containsExactlyInOrder("val3", "val1", "val2");
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[val3, val1, val2]> but was:<[val1, val2, 1(49)]>");
         }
         try {
-            initialize(Raw.<Float>listAssertion(), Arrays.asList(Float.NaN, 3.0f, Float.POSITIVE_INFINITY)).containsExactlyInOrder(Float.POSITIVE_INFINITY, Float.NaN, 3.0f);
+            initialize(Raw.<Float>listAssertion(), DataHelper.createArrayList(Float.NaN, 3.0f, Float.POSITIVE_INFINITY)).containsExactlyInOrder(Float.POSITIVE_INFINITY, Float.NaN, 3.0f);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[Infinity, NaN, 3.0f]> but was:<[NaN, 3.0f, Infinity]>");
         }
         try {
-            initialize(Raw.<Float>listAssertion(), Arrays.asList(Float.NaN, 3.0f, Float.POSITIVE_INFINITY), "Message").containsExactlyInOrder(Float.POSITIVE_INFINITY, Float.NaN, 3.0f);
+            initialize(Raw.<Float>listAssertion(), DataHelper.createArrayList(Float.NaN, 3.0f, Float.POSITIVE_INFINITY), "Message").containsExactlyInOrder(Float.POSITIVE_INFINITY, Float.NaN, 3.0f);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[Infinity, NaN, 3.0f]> but was:<[NaN, 3.0f, Infinity]>");
@@ -1255,12 +1254,12 @@ public final class ListAssertionTest extends AssertionTest {
      */
     @Test
     public void containsExactlyInOrderIterableTest() {
-        initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).containsExactlyInOrder(DataHelper.createIterable("val1", "val2", "val3"));
-        initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).containsExactlyInOrder(DataHelper.createIterable("val1", "val2", "val3", "val4", "val5"));
-        initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3", "val4", null)).containsExactlyInOrder(DataHelper.createIterable("val1", "val2", "val3", "val4", null));
+        initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3")).containsExactlyInOrder(DataHelper.createIterable("val1", "val2", "val3"));
+        initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3", "val4", "val5")).containsExactlyInOrder(DataHelper.createIterable("val1", "val2", "val3", "val4", "val5"));
+        initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3", "val4", null)).containsExactlyInOrder(DataHelper.createIterable("val1", "val2", "val3", "val4", null));
         initialize(Raw.<String>listAssertion(), new ArrayList<String>()).containsExactlyInOrder(new ArrayList<String>());
-        initialize(Raw.<Float>listAssertion(), Arrays.asList(Float.NaN, Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY, 3.0f)).containsExactlyInOrder(DataHelper.createIterable(Float.NaN, Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY, 3.0f));
-        initialize(Raw.<Double>listAssertion(), Arrays.asList(Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0)).containsExactlyInOrder(DataHelper.createIterable(Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0));
+        initialize(Raw.<Float>listAssertion(), DataHelper.createArrayList(Float.NaN, Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY, 3.0f)).containsExactlyInOrder(DataHelper.createIterable(Float.NaN, Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY, 3.0f));
+        initialize(Raw.<Double>listAssertion(), DataHelper.createArrayList(Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0)).containsExactlyInOrder(DataHelper.createIterable(Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0));
 
         try {
             Raw.<String>listAssertion().containsExactlyInOrder(new ArrayList<String>());
@@ -1305,55 +1304,55 @@ public final class ListAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
-            initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).containsExactlyInOrder(DataHelper.createIterable("val1", "val2"));
+            initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3")).containsExactlyInOrder(DataHelper.createIterable("val1", "val2"));
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[val1, val2]> but was:<[val1, val2, val3]>");
         }
         try {
-            initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).containsExactlyInOrder(DataHelper.createIterable("val2", "val3"));
+            initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3")).containsExactlyInOrder(DataHelper.createIterable("val2", "val3"));
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[val2, val3]> but was:<[val1, val2, val3]>");
         }
         try {
-            initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).containsExactlyInOrder(DataHelper.createIterable("val1", "val2", "val4"));
+            initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3")).containsExactlyInOrder(DataHelper.createIterable("val1", "val2", "val4"));
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[val1, val2, val4]> but was:<[val1, val2, val3]>");
         }
         try {
-            initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).containsExactlyInOrder(DataHelper.createIterable("val1", "val2", "val3", "val4"));
+            initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3")).containsExactlyInOrder(DataHelper.createIterable("val1", "val2", "val3", "val4"));
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[val1, val2, val3, val4]> but was:<[val1, val2, val3]>");
         }
         try {
-            initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).containsExactlyInOrder(new ArrayList<String>());
+            initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3")).containsExactlyInOrder(new ArrayList<String>());
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<<EMPTY>> but was:<[val1, val2, val3]>");
         }
         try {
-            initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).containsExactlyInOrder(DataHelper.createIterable("val3", "val1", "val2"));
+            initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3")).containsExactlyInOrder(DataHelper.createIterable("val3", "val1", "val2"));
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[val3, val1, val2]> but was:<[val1, val2, val3]>");
         }
         try {
-            initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3"), "Message").containsExactlyInOrder(DataHelper.createIterable("val3", "val1", "val2"));
+            initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3"), "Message").containsExactlyInOrder(DataHelper.createIterable("val3", "val1", "val2"));
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[val3, val1, val2]> but was:<[val1, val2, val3]>");
         }
         try {
-            initialize(Raw.<Float>listAssertion(), Arrays.asList(Float.NaN, 3.0f, Float.POSITIVE_INFINITY)).containsExactlyInOrder(DataHelper.createIterable(Float.POSITIVE_INFINITY, Float.NaN, 3.0f));
+            initialize(Raw.<Float>listAssertion(), DataHelper.createArrayList(Float.NaN, 3.0f, Float.POSITIVE_INFINITY)).containsExactlyInOrder(DataHelper.createIterable(Float.POSITIVE_INFINITY, Float.NaN, 3.0f));
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[Infinity, NaN, 3.0f]> but was:<[NaN, 3.0f, Infinity]>");
         }
         try {
-            initialize(Raw.<Float>listAssertion(), Arrays.asList(Float.NaN, 3.0f, Float.POSITIVE_INFINITY), "Message").containsExactlyInOrder(DataHelper.createIterable(Float.POSITIVE_INFINITY, Float.NaN, 3.0f));
+            initialize(Raw.<Float>listAssertion(), DataHelper.createArrayList(Float.NaN, 3.0f, Float.POSITIVE_INFINITY), "Message").containsExactlyInOrder(DataHelper.createIterable(Float.POSITIVE_INFINITY, Float.NaN, 3.0f));
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[Infinity, NaN, 3.0f]> but was:<[NaN, 3.0f, Infinity]>");
@@ -1365,13 +1364,13 @@ public final class ListAssertionTest extends AssertionTest {
      */
     @Test
     public void containsAnyArrayTest() {
-        initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).containsAny("val1", "val3", "val5");
-        initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).containsAny("val6", "val2", "val4");
-        initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).containsAny("val7", "val9", "val1", "val5", "val3");
-        initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3", "val4", null)).containsAny("val7", "val9", "val1", null, "val3");
-        initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3", "val4", null)).containsAny("val7", "val9", null);
-        initialize(Raw.<Float>listAssertion(), Arrays.asList(Float.NaN, Float.NEGATIVE_INFINITY, 3.0f)).containsAny(Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY);
-        initialize(Raw.<Double>listAssertion(), Arrays.asList(Double.NaN, Double.NEGATIVE_INFINITY, 3.0)).containsAny(Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY);
+        initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3")).containsAny("val1", "val3", "val5");
+        initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3")).containsAny("val6", "val2", "val4");
+        initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3", "val4", "val5")).containsAny("val7", "val9", "val1", "val5", "val3");
+        initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3", "val4", null)).containsAny("val7", "val9", "val1", null, "val3");
+        initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3", "val4", null)).containsAny("val7", "val9", null);
+        initialize(Raw.<Float>listAssertion(), DataHelper.createArrayList(Float.NaN, Float.NEGATIVE_INFINITY, 3.0f)).containsAny(Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY);
+        initialize(Raw.<Double>listAssertion(), DataHelper.createArrayList(Double.NaN, Double.NEGATIVE_INFINITY, 3.0)).containsAny(Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY);
 
         try {
             Raw.<String>listAssertion().containsAny("val");
@@ -1428,43 +1427,43 @@ public final class ListAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always false.");
         }
         try {
-            initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).containsAny("val4", "val5", "val6");
+            initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3")).containsAny("val4", "val5", "val6");
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain any of the expected values.\n\tExpected:<[val4, val5, val6]> but was:<[val1, val2, val3]>");
         }
         try {
-            initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).containsAny("val8", "val7");
+            initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3", "val4", "val5")).containsAny("val8", "val7");
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain any of the expected values.\n\tExpected:<[val8, val7]> but was:<[val1, val2, val3, val4, val5]>");
         }
         try {
-            initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5"), "Message").containsAny("val8", "val7");
+            initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3", "val4", "val5"), "Message").containsAny("val8", "val7");
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain any of the expected values.\n\tExpected:<[val8, val7]> but was:<[val1, val2, val3, val4, val5]>");
         }
         try {
-            initialize(Raw.listAssertion(), Arrays.asList((Object) "val1", "val2", "val3", "val4", '1')).containsAny("val8", "val7");
+            initialize(Raw.listAssertion(), DataHelper.createArrayList((Object) "val1", "val2", "val3", "val4", '1')).containsAny("val8", "val7");
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain any of the expected values.\n\tExpected:<[val8, val7]> but was:<[val1, val2, val3, val4, 1(49)]>");
         }
         try {
-            initialize(Raw.listAssertion(), Arrays.asList((Object) "val1", "val2", "val3", "val4", '1'), "Message").containsAny("val8", "val7");
+            initialize(Raw.listAssertion(), DataHelper.createArrayList((Object) "val1", "val2", "val3", "val4", '1'), "Message").containsAny("val8", "val7");
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain any of the expected values.\n\tExpected:<[val8, val7]> but was:<[val1, val2, val3, val4, 1(49)]>");
         }
         try {
-            initialize(Raw.<Float>listAssertion(), Arrays.asList(Float.NaN, 3.0f, Float.POSITIVE_INFINITY)).containsAny(Float.NEGATIVE_INFINITY, 4.0f);
+            initialize(Raw.<Float>listAssertion(), DataHelper.createArrayList(Float.NaN, 3.0f, Float.POSITIVE_INFINITY)).containsAny(Float.NEGATIVE_INFINITY, 4.0f);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain any of the expected values.\n\tExpected:<[-Infinity, 4.0f]> but was:<[NaN, 3.0f, Infinity]>");
         }
         try {
-            initialize(Raw.<Float>listAssertion(), Arrays.asList(Float.NaN, 3.0f, Float.POSITIVE_INFINITY), "Message").containsAny(Float.NEGATIVE_INFINITY, 4.0f);
+            initialize(Raw.<Float>listAssertion(), DataHelper.createArrayList(Float.NaN, 3.0f, Float.POSITIVE_INFINITY), "Message").containsAny(Float.NEGATIVE_INFINITY, 4.0f);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain any of the expected values.\n\tExpected:<[-Infinity, 4.0f]> but was:<[NaN, 3.0f, Infinity]>");
@@ -1476,13 +1475,13 @@ public final class ListAssertionTest extends AssertionTest {
      */
     @Test
     public void containsAnyIterableTest() {
-        initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).containsAny(DataHelper.createIterable("val1", "val3", "val5"));
-        initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).containsAny(DataHelper.createIterable("val6", "val2", "val4"));
-        initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).containsAny(DataHelper.createIterable("val7", "val9", "val1", "val5", "val3"));
-        initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3", "val4", null)).containsAny(DataHelper.createIterable("val7", "val9", "val1", null, "val3"));
-        initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3", "val4", null)).containsAny(DataHelper.createIterable("val7", "val9", null));
-        initialize(Raw.<Float>listAssertion(), Arrays.asList(Float.NaN, Float.NEGATIVE_INFINITY, 3.0f)).containsAny(DataHelper.createIterable(Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY));
-        initialize(Raw.<Double>listAssertion(), Arrays.asList(Double.NaN, Double.NEGATIVE_INFINITY, 3.0)).containsAny(DataHelper.createIterable(Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY));
+        initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3")).containsAny(DataHelper.createIterable("val1", "val3", "val5"));
+        initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3")).containsAny(DataHelper.createIterable("val6", "val2", "val4"));
+        initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3", "val4", "val5")).containsAny(DataHelper.createIterable("val7", "val9", "val1", "val5", "val3"));
+        initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3", "val4", null)).containsAny(DataHelper.createIterable("val7", "val9", "val1", null, "val3"));
+        initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3", "val4", null)).containsAny(DataHelper.createIterable("val7", "val9", null));
+        initialize(Raw.<Float>listAssertion(), DataHelper.createArrayList(Float.NaN, Float.NEGATIVE_INFINITY, 3.0f)).containsAny(DataHelper.createIterable(Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY));
+        initialize(Raw.<Double>listAssertion(), DataHelper.createArrayList(Double.NaN, Double.NEGATIVE_INFINITY, 3.0)).containsAny(DataHelper.createIterable(Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY));
 
         try {
             Raw.<String>listAssertion().containsAny(new ArrayList<String>());
@@ -1539,31 +1538,31 @@ public final class ListAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always false.");
         }
         try {
-            initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).containsAny(DataHelper.createIterable("val4", "val5", "val6"));
+            initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3")).containsAny(DataHelper.createIterable("val4", "val5", "val6"));
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain any of the expected values.\n\tExpected:<[val4, val5, val6]> but was:<[val1, val2, val3]>");
         }
         try {
-            initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).containsAny(DataHelper.createIterable("val8", "val7"));
+            initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3", "val4", "val5")).containsAny(DataHelper.createIterable("val8", "val7"));
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain any of the expected values.\n\tExpected:<[val8, val7]> but was:<[val1, val2, val3, val4, val5]>");
         }
         try {
-            initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5"), "Message").containsAny(DataHelper.createIterable("val8", "val7"));
+            initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3", "val4", "val5"), "Message").containsAny(DataHelper.createIterable("val8", "val7"));
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain any of the expected values.\n\tExpected:<[val8, val7]> but was:<[val1, val2, val3, val4, val5]>");
         }
         try {
-            initialize(Raw.<Float>listAssertion(), Arrays.asList(Float.NaN, 3.0f, Float.POSITIVE_INFINITY)).containsAny(DataHelper.createIterable(Float.NEGATIVE_INFINITY, 4.0f));
+            initialize(Raw.<Float>listAssertion(), DataHelper.createArrayList(Float.NaN, 3.0f, Float.POSITIVE_INFINITY)).containsAny(DataHelper.createIterable(Float.NEGATIVE_INFINITY, 4.0f));
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain any of the expected values.\n\tExpected:<[-Infinity, 4.0f]> but was:<[NaN, 3.0f, Infinity]>");
         }
         try {
-            initialize(Raw.<Float>listAssertion(), Arrays.asList(Float.NaN, 3.0f, Float.POSITIVE_INFINITY), "Message").containsAny(DataHelper.createIterable(Float.NEGATIVE_INFINITY, 4.0f));
+            initialize(Raw.<Float>listAssertion(), DataHelper.createArrayList(Float.NaN, 3.0f, Float.POSITIVE_INFINITY), "Message").containsAny(DataHelper.createIterable(Float.NEGATIVE_INFINITY, 4.0f));
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain any of the expected values.\n\tExpected:<[-Infinity, 4.0f]> but was:<[NaN, 3.0f, Infinity]>");
@@ -1575,13 +1574,13 @@ public final class ListAssertionTest extends AssertionTest {
      */
     @Test
     public void containsNoneArrayTest() {
-        initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).containsNone("val4", "val5", "val6");
-        initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).containsNone("val8", "val4");
-        initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", null)).containsNone("val8", "val4");
-        initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).containsNone("val8", "val4", null);
-        initialize(Raw.listAssertion(), Arrays.asList((Object) "val1", "val2", '1')).containsNone("val8", "val4");
-        initialize(Raw.<Float>listAssertion(), Arrays.asList(Float.NaN, Float.NEGATIVE_INFINITY, 3.0f)).containsNone(Float.POSITIVE_INFINITY, 4.0f);
-        initialize(Raw.<Double>listAssertion(), Arrays.asList(Double.NaN, Double.NEGATIVE_INFINITY, 3.0)).containsNone(Double.POSITIVE_INFINITY, 4.0);
+        initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3")).containsNone("val4", "val5", "val6");
+        initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3")).containsNone("val8", "val4");
+        initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", null)).containsNone("val8", "val4");
+        initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3")).containsNone("val8", "val4", null);
+        initialize(Raw.listAssertion(), DataHelper.createArrayList((Object) "val1", "val2", '1')).containsNone("val8", "val4");
+        initialize(Raw.<Float>listAssertion(), DataHelper.createArrayList(Float.NaN, Float.NEGATIVE_INFINITY, 3.0f)).containsNone(Float.POSITIVE_INFINITY, 4.0f);
+        initialize(Raw.<Double>listAssertion(), DataHelper.createArrayList(Double.NaN, Double.NEGATIVE_INFINITY, 3.0)).containsNone(Double.POSITIVE_INFINITY, 4.0);
 
         try {
             Raw.<String>listAssertion().containsNone("val");
@@ -1638,43 +1637,43 @@ public final class ListAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
-            initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).containsNone("val4", "val2");
+            initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3")).containsNone("val4", "val2");
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not contain any of the expected values.\n\tExpected:<[val4, val2]> but was:<[val1, val2, val3]>");
         }
         try {
-            initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).containsNone("val5", "val4", "val2", "val6");
+            initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3")).containsNone("val5", "val4", "val2", "val6");
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not contain any of the expected values.\n\tExpected:<[val5, val4, val2, val6]> but was:<[val1, val2, val3]>");
         }
         try {
-            initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3"), "Message").containsNone("val5", "val4", "val2", "val6");
+            initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3"), "Message").containsNone("val5", "val4", "val2", "val6");
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not contain any of the expected values.\n\tExpected:<[val5, val4, val2, val6]> but was:<[val1, val2, val3]>");
         }
         try {
-            initialize(Raw.listAssertion(), Arrays.asList((Object) "val1", "val2", '1')).containsNone("val5", "val4", "val2", "val6");
+            initialize(Raw.listAssertion(), DataHelper.createArrayList((Object) "val1", "val2", '1')).containsNone("val5", "val4", "val2", "val6");
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not contain any of the expected values.\n\tExpected:<[val5, val4, val2, val6]> but was:<[val1, val2, 1(49)]>");
         }
         try {
-            initialize(Raw.listAssertion(), Arrays.asList((Object) "val1", "val2", '1'), "Message").containsNone("val5", "val4", "val2", "val6");
+            initialize(Raw.listAssertion(), DataHelper.createArrayList((Object) "val1", "val2", '1'), "Message").containsNone("val5", "val4", "val2", "val6");
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not contain any of the expected values.\n\tExpected:<[val5, val4, val2, val6]> but was:<[val1, val2, 1(49)]>");
         }
         try {
-            initialize(Raw.<Float>listAssertion(), Arrays.asList(Float.NaN, 3.0f, Float.POSITIVE_INFINITY)).containsNone(Float.NaN, 4.0f);
+            initialize(Raw.<Float>listAssertion(), DataHelper.createArrayList(Float.NaN, 3.0f, Float.POSITIVE_INFINITY)).containsNone(Float.NaN, 4.0f);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not contain any of the expected values.\n\tExpected:<[NaN, 4.0f]> but was:<[NaN, 3.0f, Infinity]>");
         }
         try {
-            initialize(Raw.<Float>listAssertion(), Arrays.asList(Float.NaN, 3.0f, Float.POSITIVE_INFINITY), "Message").containsNone(Float.NaN, 4.0f);
+            initialize(Raw.<Float>listAssertion(), DataHelper.createArrayList(Float.NaN, 3.0f, Float.POSITIVE_INFINITY), "Message").containsNone(Float.NaN, 4.0f);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not contain any of the expected values.\n\tExpected:<[NaN, 4.0f]> but was:<[NaN, 3.0f, Infinity]>");
@@ -1686,12 +1685,12 @@ public final class ListAssertionTest extends AssertionTest {
      */
     @Test
     public void containsNoneIterableTest() {
-        initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).containsNone(DataHelper.createIterable("val4", "val5", "val6"));
-        initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).containsNone(DataHelper.createIterable("val8", "val4"));
-        initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", null)).containsNone(DataHelper.createIterable("val8", "val4"));
-        initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).containsNone(DataHelper.createIterable("val8", "val4", null));
-        initialize(Raw.<Float>listAssertion(), Arrays.asList(Float.NaN, Float.NEGATIVE_INFINITY, 3.0f)).containsNone(DataHelper.createIterable(Float.POSITIVE_INFINITY, 4.0f));
-        initialize(Raw.<Double>listAssertion(), Arrays.asList(Double.NaN, Double.NEGATIVE_INFINITY, 3.0)).containsNone(DataHelper.createIterable(Double.POSITIVE_INFINITY, 4.0));
+        initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3")).containsNone(DataHelper.createIterable("val4", "val5", "val6"));
+        initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3")).containsNone(DataHelper.createIterable("val8", "val4"));
+        initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", null)).containsNone(DataHelper.createIterable("val8", "val4"));
+        initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3")).containsNone(DataHelper.createIterable("val8", "val4", null));
+        initialize(Raw.<Float>listAssertion(), DataHelper.createArrayList(Float.NaN, Float.NEGATIVE_INFINITY, 3.0f)).containsNone(DataHelper.createIterable(Float.POSITIVE_INFINITY, 4.0f));
+        initialize(Raw.<Double>listAssertion(), DataHelper.createArrayList(Double.NaN, Double.NEGATIVE_INFINITY, 3.0)).containsNone(DataHelper.createIterable(Double.POSITIVE_INFINITY, 4.0));
 
         try {
             Raw.<String>listAssertion().containsNone(new ArrayList<String>());
@@ -1748,31 +1747,31 @@ public final class ListAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
-            initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).containsNone(DataHelper.createIterable("val4", "val2"));
+            initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3")).containsNone(DataHelper.createIterable("val4", "val2"));
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not contain any of the expected values.\n\tExpected:<[val4, val2]> but was:<[val1, val2, val3]>");
         }
         try {
-            initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).containsNone(DataHelper.createIterable("val5", "val4", "val2", "val6"));
+            initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3")).containsNone(DataHelper.createIterable("val5", "val4", "val2", "val6"));
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not contain any of the expected values.\n\tExpected:<[val5, val4, val2, val6]> but was:<[val1, val2, val3]>");
         }
         try {
-            initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3"), "Message").containsNone(DataHelper.createIterable("val5", "val4", "val2", "val6"));
+            initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3"), "Message").containsNone(DataHelper.createIterable("val5", "val4", "val2", "val6"));
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not contain any of the expected values.\n\tExpected:<[val5, val4, val2, val6]> but was:<[val1, val2, val3]>");
         }
         try {
-            initialize(Raw.<Float>listAssertion(), Arrays.asList(Float.NaN, 3.0f, Float.POSITIVE_INFINITY)).containsNone(DataHelper.createIterable(Float.NaN, 4.0f));
+            initialize(Raw.<Float>listAssertion(), DataHelper.createArrayList(Float.NaN, 3.0f, Float.POSITIVE_INFINITY)).containsNone(DataHelper.createIterable(Float.NaN, 4.0f));
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not contain any of the expected values.\n\tExpected:<[NaN, 4.0f]> but was:<[NaN, 3.0f, Infinity]>");
         }
         try {
-            initialize(Raw.<Float>listAssertion(), Arrays.asList(Float.NaN, 3.0f, Float.POSITIVE_INFINITY), "Message").containsNone(DataHelper.createIterable(Float.NaN, 4.0f));
+            initialize(Raw.<Float>listAssertion(), DataHelper.createArrayList(Float.NaN, 3.0f, Float.POSITIVE_INFINITY), "Message").containsNone(DataHelper.createIterable(Float.NaN, 4.0f));
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not contain any of the expected values.\n\tExpected:<[NaN, 4.0f]> but was:<[NaN, 3.0f, Infinity]>");
@@ -1784,13 +1783,13 @@ public final class ListAssertionTest extends AssertionTest {
      */
     @Test
     public void toSizeTest() {
-        initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).toSize().isEqualTo(3);
-        initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).toSize().isGreaterThan(2);
-        initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).toSize().isLessThan(6);
+        initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3")).toSize().isEqualTo(3);
+        initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3")).toSize().isGreaterThan(2);
+        initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3")).toSize().isLessThan(6);
 
-        initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).toSize().isEqualTo(5);
-        initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).toSize().isGreaterThan(1);
-        initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).toSize().isLessThan(9);
+        initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3", "val4", "val5")).toSize().isEqualTo(5);
+        initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3", "val4", "val5")).toSize().isGreaterThan(1);
+        initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3", "val4", "val5")).toSize().isLessThan(9);
 
         try {
             Raw.<String>listAssertion().toSize();
@@ -1811,25 +1810,25 @@ public final class ListAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            clearActual(initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).toSize()).isEqualTo(1);
+            clearActual(initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3")).toSize()).isEqualTo(1);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's size.\n\tActual value should not be null.");
         }
         try {
-            clearActual(initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3"), "Message").toSize()).isEqualTo(1);
+            clearActual(initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3"), "Message").toSize()).isEqualTo(1);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's size.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).toSize().isEqualTo(4);
+            initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3")).toSize().isEqualTo(4);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's size.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
         }
         try {
-            initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3"), "Message").toSize().isEqualTo(4);
+            initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3"), "Message").toSize().isEqualTo(4);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's size.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
@@ -1841,13 +1840,13 @@ public final class ListAssertionTest extends AssertionTest {
      */
     @Test
     public void toSizeMatcherTest() {
-        initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).toSize(Matchers.is(Matchers.equalTo(3)));
-        initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).toSize(Matchers.is(Matchers.greaterThan(2)));
-        initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).toSize(Matchers.is(Matchers.lessThan(4)));
+        initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3")).toSize(Matchers.is(Matchers.equalTo(3)));
+        initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3")).toSize(Matchers.is(Matchers.greaterThan(2)));
+        initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3")).toSize(Matchers.is(Matchers.lessThan(4)));
 
-        initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).toSize(Matchers.equalTo(5));
-        initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).toSize(Matchers.greaterThan(4));
-        initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).toSize(Matchers.lessThan(6));
+        initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3", "val4", "val5")).toSize(Matchers.equalTo(5));
+        initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3", "val4", "val5")).toSize(Matchers.greaterThan(4));
+        initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3", "val4", "val5")).toSize(Matchers.lessThan(6));
 
         try {
             Raw.<String>listAssertion().toSize(Matchers.equalTo(0));
@@ -1892,13 +1891,13 @@ public final class ListAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: matcher.");
         }
         try {
-            initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).toSize(Matchers.equalTo(4));
+            initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3")).toSize(Matchers.equalTo(4));
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's size.\nExpected: <4>\n     but: was <3>");
         }
         try {
-            initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3"), "Message").toSize(Matchers.equalTo(4));
+            initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3"), "Message").toSize(Matchers.equalTo(4));
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's size.\nExpected: <4>\n     but: was <3>");
@@ -1910,8 +1909,8 @@ public final class ListAssertionTest extends AssertionTest {
      */
     @Test
     public void hasSizeTest() {
-        initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).hasSize(3);
-        initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3", "val4", "val5")).hasSize(5);
+        initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3")).hasSize(3);
+        initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3", "val4", "val5")).hasSize(5);
 
         try {
             Raw.<String>listAssertion().hasSize(1);
@@ -1932,13 +1931,13 @@ public final class ListAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).hasSize(4);
+            initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3")).hasSize(4);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's size.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
         }
         try {
-            initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3"), "Message").hasSize(4);
+            initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3"), "Message").hasSize(4);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's size.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
@@ -1953,13 +1952,13 @@ public final class ListAssertionTest extends AssertionTest {
         initialize(Raw.<String>listAssertion(), null).isNull();
 
         try {
-            initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3")).isNull();
+            initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3")).isNull();
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be null.\n\tActual:<[val1, val2, val3]>");
         }
         try {
-            initialize(Raw.<String>listAssertion(), Arrays.asList("val1", "val2", "val3"), "Message").isNull();
+            initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3"), "Message").isNull();
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be null.\n\tActual:<[val1, val2, val3]>");
@@ -1971,17 +1970,17 @@ public final class ListAssertionTest extends AssertionTest {
      */
     @Test
     public void isSameAsTest() {
-        List<String> value = Arrays.asList("val1", "val2", "val3");
+        List<String> value = DataHelper.createArrayList("val1", "val2", "val3");
         initialize(Raw.<String>listAssertion(), value).isSameAs(value);
 
         try {
-            initialize(Raw.<String>listAssertion(), value).isSameAs(Arrays.asList("val1", "val2", "val3"));
+            initialize(Raw.<String>listAssertion(), value).isSameAs(DataHelper.createArrayList("val1", "val2", "val3"));
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual and expected values should point to the same object.\n\tExpected:<[val1, val2, val3]> but was:<[val1, val2, val3]>");
         }
         try {
-            initialize(Raw.<String>listAssertion(), value, "Message").isSameAs(Arrays.asList("val1", "val2", "val3"));
+            initialize(Raw.<String>listAssertion(), value, "Message").isSameAs(DataHelper.createArrayList("val1", "val2", "val3"));
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should point to the same object.\n\tExpected:<[val1, val2, val3]> but was:<[val1, val2, val3]>");
@@ -1993,8 +1992,8 @@ public final class ListAssertionTest extends AssertionTest {
      */
     @Test
     public void isNotSameAsTest() {
-        List<String> value = Arrays.asList("val1", "val2", "val3");
-        initialize(Raw.<String>listAssertion(), value).isNotSameAs(Arrays.asList("val1", "val2", "val3"));
+        List<String> value = DataHelper.createArrayList("val1", "val2", "val3");
+        initialize(Raw.<String>listAssertion(), value).isNotSameAs(DataHelper.createArrayList("val1", "val2", "val3"));
 
         try {
             initialize(Raw.<String>listAssertion(), value).isNotSameAs(value);
