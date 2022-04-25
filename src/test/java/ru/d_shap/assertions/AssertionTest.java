@@ -189,19 +189,6 @@ public class AssertionTest {
     }
 
     /**
-     * Create hash set object.
-     *
-     * @param values the values.
-     * @param <E>    the generic type of the element.
-     *
-     * @return the created object.
-     */
-    @SafeVarargs
-    protected final <E> Set<E> createHashSet(final E... values) {
-        return DataHelper.createHashSet(values);
-    }
-
-    /**
      * Create duplicate set object.
      *
      * @param values the values.
@@ -215,19 +202,6 @@ public class AssertionTest {
         List<E> list = Arrays.asList(values);
         set.addAll(list);
         return set;
-    }
-
-    /**
-     * Create tree set object.
-     *
-     * @param values the values.
-     * @param <E>    the generic type of the element.
-     *
-     * @return the created object.
-     */
-    @SafeVarargs
-    protected final <E> SortedSet<E> createTreeSet(final E... values) {
-        return DataHelper.createTreeSet(values);
     }
 
     /**
@@ -1521,8 +1495,8 @@ public class AssertionTest {
                 _throwable = new AssertionError("error");
                 _iterator = Arrays.asList("1", "2", "3").iterator();
                 _list = Arrays.asList("1", "2", "3");
-                _set = assertionTest.createHashSet("1", "2", "3");
-                _sortedSet = assertionTest.createTreeSet("1", "2", "3");
+                _set = DataHelper.createHashSet("1", "2", "3");
+                _sortedSet = DataHelper.createTreeSet("1", "2", "3");
                 _map = assertionTest.createHashMap("1", "val1", "2", "val2", "3", "val3");
                 _sortedMap = assertionTest.createTreeMap("1", "val1", "2", "val2", "3", "val3");
                 _date = assertionTest.createDate(2020, Calendar.JULY, 11, 15, 23, 47);

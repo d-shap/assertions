@@ -64,7 +64,7 @@ public final class AsStringConverterTest extends AssertionTest {
         Assertions.assertThat(AsStringConverter.asString(true)).isEqualTo("T");
         Assertions.assertThat(AsStringConverter.asString("value")).isEqualTo("value");
         Assertions.assertThat(AsStringConverter.asString(Arrays.asList("value1", "value2", "value3"))).isEqualTo("[value1, value2, value3]");
-        Assertions.assertThat(AsStringConverter.asString(createHashSet(String.class, Object.class))).isEqualTo("[java.lang.String, java.lang.Object]");
+        Assertions.assertThat(AsStringConverter.asString(DataHelper.createHashSet(String.class, Object.class))).isEqualTo("[java.lang.String, java.lang.Object]");
         Assertions.assertThat(AsStringConverter.asString(createHashMap('1', Arrays.asList('1', '2', '3'), '2', Arrays.asList("val1", "val2", "val3")))).isEqualTo("{1(49)=[1(49), 2(50), 3(51)], 2(50)=[val1, val2, val3]}");
     }
 

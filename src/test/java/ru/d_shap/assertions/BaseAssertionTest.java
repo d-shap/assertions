@@ -34,6 +34,7 @@ import ru.d_shap.assertions.asimp.java.util.SetAssertion;
 import ru.d_shap.assertions.asimp.java.util.SortedSetAssertion;
 import ru.d_shap.assertions.converter.ConversionException;
 import ru.d_shap.assertions.converter.ConversionExceptionHolder;
+import ru.d_shap.assertions.util.DataHelper;
 
 /**
  * Tests for {@link BaseAssertion}.
@@ -1760,9 +1761,9 @@ public final class BaseAssertionTest extends AssertionTest {
         Assertions.assertThat(initialize(Raw.<String>iterableAssertion(), new ArrayList<String>()).as(Raw.<String>listAssertion())).hasClass(ListAssertion.class);
         initialize(Raw.<String>iterableAssertion(), new ArrayList<String>()).as(Raw.<String>listAssertion()).isEmpty();
 
-        createBaseAssertionObject(createHashSet()).as(Raw.setAssertion()).isEmpty();
-        Assertions.assertThat(initialize(Raw.setAssertion(), createHashSet()).as(Raw.setAssertion())).hasClass(SetAssertion.class);
-        initialize(Raw.setAssertion(), createHashSet()).as(Raw.setAssertion()).isEmpty();
+        createBaseAssertionObject(DataHelper.createHashSet()).as(Raw.setAssertion()).isEmpty();
+        Assertions.assertThat(initialize(Raw.setAssertion(), DataHelper.createHashSet()).as(Raw.setAssertion())).hasClass(SetAssertion.class);
+        initialize(Raw.setAssertion(), DataHelper.createHashSet()).as(Raw.setAssertion()).isEmpty();
         try {
             createBaseAssertionObject(new Object()).as(Raw.setAssertion());
             Assertions.fail("BaseAssertion test fail");
@@ -1770,13 +1771,13 @@ public final class BaseAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Actual value should match the assertion.\n\tActual value should be the instance of the expected class.\n\tExpected:<java.util.Set> but was:<java.lang.Object>");
         }
 
-        createBaseAssertionObject(createHashSet()).as(Raw.iterableAssertion()).isEmpty();
-        Assertions.assertThat(initialize(Raw.iterableAssertion(), createHashSet()).as(Raw.setAssertion())).hasClass(SetAssertion.class);
-        initialize(Raw.iterableAssertion(), createHashSet()).as(Raw.setAssertion()).isEmpty();
+        createBaseAssertionObject(DataHelper.createHashSet()).as(Raw.iterableAssertion()).isEmpty();
+        Assertions.assertThat(initialize(Raw.iterableAssertion(), DataHelper.createHashSet()).as(Raw.setAssertion())).hasClass(SetAssertion.class);
+        initialize(Raw.iterableAssertion(), DataHelper.createHashSet()).as(Raw.setAssertion()).isEmpty();
 
-        createBaseAssertionObject(createTreeSet()).as(Raw.sortedSetAssertion()).isEmpty();
-        Assertions.assertThat(initialize(Raw.sortedSetAssertion(), createTreeSet()).as(Raw.sortedSetAssertion())).hasClass(SortedSetAssertion.class);
-        initialize(Raw.sortedSetAssertion(), createTreeSet()).as(Raw.sortedSetAssertion()).isEmpty();
+        createBaseAssertionObject(DataHelper.createTreeSet()).as(Raw.sortedSetAssertion()).isEmpty();
+        Assertions.assertThat(initialize(Raw.sortedSetAssertion(), DataHelper.createTreeSet()).as(Raw.sortedSetAssertion())).hasClass(SortedSetAssertion.class);
+        initialize(Raw.sortedSetAssertion(), DataHelper.createTreeSet()).as(Raw.sortedSetAssertion()).isEmpty();
         try {
             createBaseAssertionObject(new Object()).as(Raw.sortedSetAssertion());
             Assertions.fail("BaseAssertion test fail");
@@ -1784,9 +1785,9 @@ public final class BaseAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Actual value should match the assertion.\n\tActual value should be the instance of the expected class.\n\tExpected:<java.util.SortedSet> but was:<java.lang.Object>");
         }
 
-        createBaseAssertionObject(createTreeSet()).as(Raw.iterableAssertion()).isEmpty();
-        Assertions.assertThat(initialize(Raw.iterableAssertion(), createTreeSet()).as(Raw.sortedSetAssertion())).hasClass(SortedSetAssertion.class);
-        initialize(Raw.iterableAssertion(), createTreeSet()).as(Raw.sortedSetAssertion()).isEmpty();
+        createBaseAssertionObject(DataHelper.createTreeSet()).as(Raw.iterableAssertion()).isEmpty();
+        Assertions.assertThat(initialize(Raw.iterableAssertion(), DataHelper.createTreeSet()).as(Raw.sortedSetAssertion())).hasClass(SortedSetAssertion.class);
+        initialize(Raw.iterableAssertion(), DataHelper.createTreeSet()).as(Raw.sortedSetAssertion()).isEmpty();
     }
 
     /**
@@ -1794,26 +1795,26 @@ public final class BaseAssertionTest extends AssertionTest {
      */
     @Test
     public void convertValueTest() {
-        Assertions.assertThat(createBaseAssertionObject(null).convertValue(createHashSet("value1", "value2"), null, List.class)).isInstanceOf(List.class);
-        Assertions.assertThat(createBaseAssertionObject(null).convertValue(createHashSet("value1", "value2"), null, List.class)).isNotInstanceOf(Set.class);
+        Assertions.assertThat(createBaseAssertionObject(null).convertValue(DataHelper.createHashSet("value1", "value2"), null, List.class)).isInstanceOf(List.class);
+        Assertions.assertThat(createBaseAssertionObject(null).convertValue(DataHelper.createHashSet("value1", "value2"), null, List.class)).isNotInstanceOf(Set.class);
 
-        Assertions.assertThat(createBaseAssertionObject(null).convertValue(createHashSet("value1", "value2"), new ConversionExceptionHolder(), List.class)).isInstanceOf(List.class);
-        Assertions.assertThat(createBaseAssertionObject(null).convertValue(createHashSet("value1", "value2"), new ConversionExceptionHolder(), List.class)).isNotInstanceOf(Set.class);
+        Assertions.assertThat(createBaseAssertionObject(null).convertValue(DataHelper.createHashSet("value1", "value2"), new ConversionExceptionHolder(), List.class)).isInstanceOf(List.class);
+        Assertions.assertThat(createBaseAssertionObject(null).convertValue(DataHelper.createHashSet("value1", "value2"), new ConversionExceptionHolder(), List.class)).isNotInstanceOf(Set.class);
 
-        Assertions.assertThat(createBaseAssertionObject(null).convertValue(createHashSet("value1", "value2"), null, Map.class)).isInstanceOf(Set.class);
-        Assertions.assertThat(createBaseAssertionObject(null).convertValue(createHashSet("value1", "value2"), null, Map.class)).isNotInstanceOf(Map.class);
+        Assertions.assertThat(createBaseAssertionObject(null).convertValue(DataHelper.createHashSet("value1", "value2"), null, Map.class)).isInstanceOf(Set.class);
+        Assertions.assertThat(createBaseAssertionObject(null).convertValue(DataHelper.createHashSet("value1", "value2"), null, Map.class)).isNotInstanceOf(Map.class);
 
-        Assertions.assertThat(createBaseAssertionObject(null).convertValue(createHashSet("value1", "value2"), new ConversionExceptionHolder(), Map.class)).isInstanceOf(Set.class);
-        Assertions.assertThat(createBaseAssertionObject(null).convertValue(createHashSet("value1", "value2"), new ConversionExceptionHolder(), Map.class)).isNotInstanceOf(Map.class);
+        Assertions.assertThat(createBaseAssertionObject(null).convertValue(DataHelper.createHashSet("value1", "value2"), new ConversionExceptionHolder(), Map.class)).isInstanceOf(Set.class);
+        Assertions.assertThat(createBaseAssertionObject(null).convertValue(DataHelper.createHashSet("value1", "value2"), new ConversionExceptionHolder(), Map.class)).isNotInstanceOf(Map.class);
 
         try {
-            createBaseAssertionObject().convertValue(createHashSet("value1", "value2"), null, List.class);
+            createBaseAssertionObject().convertValue(DataHelper.createHashSet("value1", "value2"), null, List.class);
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
-            createBaseAssertionObject().convertValue(createHashSet("value1", "value2"), new ConversionExceptionHolder(), List.class);
+            createBaseAssertionObject().convertValue(DataHelper.createHashSet("value1", "value2"), new ConversionExceptionHolder(), List.class);
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");

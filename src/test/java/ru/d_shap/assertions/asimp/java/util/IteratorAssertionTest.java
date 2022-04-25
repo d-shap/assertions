@@ -474,8 +474,8 @@ public final class IteratorAssertionTest extends AssertionTest {
     @Test
     public void isEmptyTest() {
         initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator()).isEmpty();
-        initialize(Raw.iteratorAssertion(), createHashSet().iterator()).isEmpty();
-        initialize(Raw.iteratorAssertion(), createTreeSet().iterator()).isEmpty();
+        initialize(Raw.iteratorAssertion(), DataHelper.createHashSet().iterator()).isEmpty();
+        initialize(Raw.iteratorAssertion(), DataHelper.createTreeSet().iterator()).isEmpty();
 
         try {
             Raw.<String>iteratorAssertion().isEmpty();
@@ -515,8 +515,8 @@ public final class IteratorAssertionTest extends AssertionTest {
     @Test
     public void isNullOrEmptyTest() {
         initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator()).isNullOrEmpty();
-        initialize(Raw.iteratorAssertion(), createHashSet().iterator()).isNullOrEmpty();
-        initialize(Raw.iteratorAssertion(), createTreeSet().iterator()).isNullOrEmpty();
+        initialize(Raw.iteratorAssertion(), DataHelper.createHashSet().iterator()).isNullOrEmpty();
+        initialize(Raw.iteratorAssertion(), DataHelper.createTreeSet().iterator()).isNullOrEmpty();
         initialize(Raw.<String>iteratorAssertion(), null).isNullOrEmpty();
 
         try {
@@ -578,25 +578,25 @@ public final class IteratorAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck all actual value's elements.\n\tActual value should not be empty.");
         }
         try {
-            initialize(Raw.iteratorAssertion(), createHashSet().iterator()).isNotEmpty();
+            initialize(Raw.iteratorAssertion(), DataHelper.createHashSet().iterator()).isNotEmpty();
             Assertions.fail("IteratorAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check all actual value's elements.\n\tActual value should not be empty.");
         }
         try {
-            initialize(Raw.iteratorAssertion(), createHashSet().iterator(), "Message").isNotEmpty();
+            initialize(Raw.iteratorAssertion(), DataHelper.createHashSet().iterator(), "Message").isNotEmpty();
             Assertions.fail("IteratorAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck all actual value's elements.\n\tActual value should not be empty.");
         }
         try {
-            initialize(Raw.iteratorAssertion(), createTreeSet().iterator()).isNotEmpty();
+            initialize(Raw.iteratorAssertion(), DataHelper.createTreeSet().iterator()).isNotEmpty();
             Assertions.fail("IteratorAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check all actual value's elements.\n\tActual value should not be empty.");
         }
         try {
-            initialize(Raw.iteratorAssertion(), createTreeSet().iterator(), "Message").isNotEmpty();
+            initialize(Raw.iteratorAssertion(), DataHelper.createTreeSet().iterator(), "Message").isNotEmpty();
             Assertions.fail("IteratorAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck all actual value's elements.\n\tActual value should not be empty.");

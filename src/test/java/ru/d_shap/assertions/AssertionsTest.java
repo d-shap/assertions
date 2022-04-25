@@ -830,15 +830,15 @@ public final class AssertionsTest extends AssertionTest {
     @Test
     public void setAssertionTest() {
         Assertions.assertThat((Set<String>) null).isNull();
-        Assertions.assertThat(createHashSet("1", "2", "3")).containsExactly("1", "2", "3");
+        Assertions.assertThat(DataHelper.createHashSet("1", "2", "3")).containsExactly("1", "2", "3");
         Assertions.assertThat(null, Raw.<String>setAssertion()).isNull();
-        Assertions.assertThat(createHashSet("1", "2", "3"), Raw.<String>setAssertion()).containsExactly("1", "2", "3");
+        Assertions.assertThat(DataHelper.createHashSet("1", "2", "3"), Raw.<String>setAssertion()).containsExactly("1", "2", "3");
         Assertions.assertThat(createNullFieldClass(), "_field", Raw.<String>setAssertion()).isNull();
         Assertions.assertThat(createPrivateFieldsClass(), "_set").isNotNull();
         Assertions.assertThat(createPrivateFieldsClass(), "_set", Raw.<String>setAssertion()).containsExactly("1", "2", "3");
 
         try {
-            Assertions.assertThat(createHashSet("1", "2", "3")).containsExactly("1", "2", "3", "4");
+            Assertions.assertThat(DataHelper.createHashSet("1", "2", "3")).containsExactly("1", "2", "3", "4");
             Assertions.fail("Assertions test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[1, 2, 3, 4]> but was:<[1, 2, 3]>");
@@ -851,15 +851,15 @@ public final class AssertionsTest extends AssertionTest {
     @Test
     public void sortedSetAssertionTest() {
         Assertions.assertThat((SortedSet<String>) null).isNull();
-        Assertions.assertThat(createTreeSet("1", "2", "3")).containsExactly("1", "2", "3");
+        Assertions.assertThat(DataHelper.createTreeSet("1", "2", "3")).containsExactly("1", "2", "3");
         Assertions.assertThat(null, Raw.<String>sortedSetAssertion()).isNull();
-        Assertions.assertThat(createTreeSet("1", "2", "3"), Raw.<String>sortedSetAssertion()).containsExactly("1", "2", "3");
+        Assertions.assertThat(DataHelper.createTreeSet("1", "2", "3"), Raw.<String>sortedSetAssertion()).containsExactly("1", "2", "3");
         Assertions.assertThat(createNullFieldClass(), "_field", Raw.<String>sortedSetAssertion()).isNull();
         Assertions.assertThat(createPrivateFieldsClass(), "_sortedSet").isNotNull();
         Assertions.assertThat(createPrivateFieldsClass(), "_sortedSet", Raw.<String>sortedSetAssertion()).containsExactly("1", "2", "3");
 
         try {
-            Assertions.assertThat(createTreeSet("1", "2", "3")).containsExactly("1", "2", "3", "4");
+            Assertions.assertThat(DataHelper.createTreeSet("1", "2", "3")).containsExactly("1", "2", "3", "4");
             Assertions.fail("Assertions test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[1, 2, 3, 4]> but was:<[1, 2, 3]>");

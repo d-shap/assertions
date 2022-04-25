@@ -28,6 +28,7 @@ import org.junit.Test;
 import ru.d_shap.assertions.AssertionTest;
 import ru.d_shap.assertions.Assertions;
 import ru.d_shap.assertions.Raw;
+import ru.d_shap.assertions.util.DataHelper;
 
 /**
  * Tests for {@link IterableAssertion}.
@@ -70,8 +71,8 @@ public final class IterableAssertionTest extends AssertionTest {
     @Test
     public void isEmptyTest() {
         initialize(Raw.<String>iterableAssertion(), new ArrayList<String>()).isEmpty();
-        initialize(Raw.iterableAssertion(), createHashSet()).isEmpty();
-        initialize(Raw.iterableAssertion(), createTreeSet()).isEmpty();
+        initialize(Raw.iterableAssertion(), DataHelper.createHashSet()).isEmpty();
+        initialize(Raw.iterableAssertion(), DataHelper.createTreeSet()).isEmpty();
 
         try {
             Raw.<String>iterableAssertion().isEmpty();
@@ -111,8 +112,8 @@ public final class IterableAssertionTest extends AssertionTest {
     @Test
     public void isNullOrEmptyTest() {
         initialize(Raw.<String>iterableAssertion(), new ArrayList<String>()).isNullOrEmpty();
-        initialize(Raw.iterableAssertion(), createHashSet()).isNullOrEmpty();
-        initialize(Raw.iterableAssertion(), createTreeSet()).isNullOrEmpty();
+        initialize(Raw.iterableAssertion(), DataHelper.createHashSet()).isNullOrEmpty();
+        initialize(Raw.iterableAssertion(), DataHelper.createTreeSet()).isNullOrEmpty();
         initialize(Raw.<String>iterableAssertion(), null).isNullOrEmpty();
 
         try {
@@ -174,25 +175,25 @@ public final class IterableAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be empty.");
         }
         try {
-            initialize(Raw.iterableAssertion(), createHashSet()).isNotEmpty();
+            initialize(Raw.iterableAssertion(), DataHelper.createHashSet()).isNotEmpty();
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be empty.");
         }
         try {
-            initialize(Raw.iterableAssertion(), createHashSet(), "Message").isNotEmpty();
+            initialize(Raw.iterableAssertion(), DataHelper.createHashSet(), "Message").isNotEmpty();
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be empty.");
         }
         try {
-            initialize(Raw.iterableAssertion(), createTreeSet()).isNotEmpty();
+            initialize(Raw.iterableAssertion(), DataHelper.createTreeSet()).isNotEmpty();
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be empty.");
         }
         try {
-            initialize(Raw.iterableAssertion(), createTreeSet(), "Message").isNotEmpty();
+            initialize(Raw.iterableAssertion(), DataHelper.createTreeSet(), "Message").isNotEmpty();
             Assertions.fail("IterableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be empty.");

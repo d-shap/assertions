@@ -1478,33 +1478,33 @@ public final class MessageAssertionTest extends AssertionTest {
     @Test
     public void setAssertionTest() {
         Assertions.assertWithMessage("Test message").that((Set<String>) null).isNull();
-        Assertions.assertWithMessage("Test message").that(createHashSet("1", "2", "3")).containsExactly("1", "2", "3");
+        Assertions.assertWithMessage("Test message").that(DataHelper.createHashSet("1", "2", "3")).containsExactly("1", "2", "3");
         Assertions.assertWithMessage("Test message").that(null, Raw.<String>setAssertion()).isNull();
-        Assertions.assertWithMessage("Test message").that(createHashSet("1", "2", "3"), Raw.<String>setAssertion()).containsExactly("1", "2", "3");
+        Assertions.assertWithMessage("Test message").that(DataHelper.createHashSet("1", "2", "3"), Raw.<String>setAssertion()).containsExactly("1", "2", "3");
         Assertions.assertWithMessage("Test message").that(createNullFieldClass(), "_field", Raw.<String>setAssertion()).isNull();
         Assertions.assertWithMessage("Test message").that(createPrivateFieldsClass(), "_set").isNotNull();
         Assertions.assertWithMessage("Test message").that(createPrivateFieldsClass(), "_set", Raw.<String>setAssertion()).containsExactly("1", "2", "3");
 
         try {
-            Assertions.assertWithMessage(null).that(createHashSet("1", "2", "3")).containsExactly("1", "2", "3", "4");
+            Assertions.assertWithMessage(null).that(DataHelper.createHashSet("1", "2", "3")).containsExactly("1", "2", "3", "4");
             Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[1, 2, 3, 4]> but was:<[1, 2, 3]>");
         }
         try {
-            Assertions.assertWithMessage("").that(createHashSet("1", "2", "3")).containsExactly("1", "2", "3", "4");
+            Assertions.assertWithMessage("").that(DataHelper.createHashSet("1", "2", "3")).containsExactly("1", "2", "3", "4");
             Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[1, 2, 3, 4]> but was:<[1, 2, 3]>");
         }
         try {
-            Assertions.assertWithMessage("Test message").that(createHashSet("1", "2", "3")).containsExactly("1", "2", "3", "4");
+            Assertions.assertWithMessage("Test message").that(DataHelper.createHashSet("1", "2", "3")).containsExactly("1", "2", "3", "4");
             Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message.\n\tActual value should contain all of the expected values exactly.\n\tExpected:<[1, 2, 3, 4]> but was:<[1, 2, 3]>");
         }
         try {
-            Assertions.assertWithMessage("value''s.").that(createHashSet("1", "2", "3")).containsExactly("1", "2", "3", "4");
+            Assertions.assertWithMessage("value''s.").that(DataHelper.createHashSet("1", "2", "3")).containsExactly("1", "2", "3", "4");
             Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("value''s.\n\tActual value should contain all of the expected values exactly.\n\tExpected:<[1, 2, 3, 4]> but was:<[1, 2, 3]>");
@@ -1517,33 +1517,33 @@ public final class MessageAssertionTest extends AssertionTest {
     @Test
     public void sortedSetAssertionTest() {
         Assertions.assertWithMessage("Test message").that((SortedSet<String>) null).isNull();
-        Assertions.assertWithMessage("Test message").that(createTreeSet("1", "2", "3")).containsExactly("1", "2", "3");
+        Assertions.assertWithMessage("Test message").that(DataHelper.createTreeSet("1", "2", "3")).containsExactly("1", "2", "3");
         Assertions.assertWithMessage("Test message").that(null, Raw.<String>sortedSetAssertion()).isNull();
-        Assertions.assertWithMessage("Test message").that(createTreeSet("1", "2", "3"), Raw.<String>sortedSetAssertion()).containsExactly("1", "2", "3");
+        Assertions.assertWithMessage("Test message").that(DataHelper.createTreeSet("1", "2", "3"), Raw.<String>sortedSetAssertion()).containsExactly("1", "2", "3");
         Assertions.assertWithMessage("Test message").that(createNullFieldClass(), "_field", Raw.<String>sortedSetAssertion()).isNull();
         Assertions.assertWithMessage("Test message").that(createPrivateFieldsClass(), "_sortedSet").isNotNull();
         Assertions.assertWithMessage("Test message").that(createPrivateFieldsClass(), "_sortedSet", Raw.<String>sortedSetAssertion()).containsExactly("1", "2", "3");
 
         try {
-            Assertions.assertWithMessage(null).that(createTreeSet("1", "2", "3")).containsExactly("1", "2", "3", "4");
+            Assertions.assertWithMessage(null).that(DataHelper.createTreeSet("1", "2", "3")).containsExactly("1", "2", "3", "4");
             Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[1, 2, 3, 4]> but was:<[1, 2, 3]>");
         }
         try {
-            Assertions.assertWithMessage("").that(createTreeSet("1", "2", "3")).containsExactly("1", "2", "3", "4");
+            Assertions.assertWithMessage("").that(DataHelper.createTreeSet("1", "2", "3")).containsExactly("1", "2", "3", "4");
             Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[1, 2, 3, 4]> but was:<[1, 2, 3]>");
         }
         try {
-            Assertions.assertWithMessage("Test message").that(createTreeSet("1", "2", "3")).containsExactly("1", "2", "3", "4");
+            Assertions.assertWithMessage("Test message").that(DataHelper.createTreeSet("1", "2", "3")).containsExactly("1", "2", "3", "4");
             Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message.\n\tActual value should contain all of the expected values exactly.\n\tExpected:<[1, 2, 3, 4]> but was:<[1, 2, 3]>");
         }
         try {
-            Assertions.assertWithMessage("value''s.").that(createTreeSet("1", "2", "3")).containsExactly("1", "2", "3", "4");
+            Assertions.assertWithMessage("value''s.").that(DataHelper.createTreeSet("1", "2", "3")).containsExactly("1", "2", "3", "4");
             Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("value''s.\n\tActual value should contain all of the expected values exactly.\n\tExpected:<[1, 2, 3, 4]> but was:<[1, 2, 3]>");
