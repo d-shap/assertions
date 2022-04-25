@@ -1556,33 +1556,33 @@ public final class MessageAssertionTest extends AssertionTest {
     @Test
     public void mapAssertionTest() {
         Assertions.assertWithMessage("Test message").that((Map<String, String>) null).isNull();
-        Assertions.assertWithMessage("Test message").that(createHashMap("1", "val1", "2", "val2", "3", "val3")).hasSize(3);
+        Assertions.assertWithMessage("Test message").that(DataHelper.createHashMap("1", "val1", "2", "val2", "3", "val3")).hasSize(3);
         Assertions.assertWithMessage("Test message").that(null, Raw.<String, String>mapAssertion()).isNull();
-        Assertions.assertWithMessage("Test message").that(createHashMap("1", "val1", "2", "val2", "3", "val3"), Raw.<String, String>mapAssertion()).hasSize(3);
+        Assertions.assertWithMessage("Test message").that(DataHelper.createHashMap("1", "val1", "2", "val2", "3", "val3"), Raw.<String, String>mapAssertion()).hasSize(3);
         Assertions.assertWithMessage("Test message").that(createNullFieldClass(), "_field", Raw.<String, String>mapAssertion()).isNull();
         Assertions.assertWithMessage("Test message").that(createPrivateFieldsClass(), "_map").isNotNull();
         Assertions.assertWithMessage("Test message").that(createPrivateFieldsClass(), "_map", Raw.<String, String>mapAssertion()).hasSize(3);
 
         try {
-            Assertions.assertWithMessage(null).that(createHashMap("1", "val1", "2", "val2", "3", "val3")).hasSize(4);
+            Assertions.assertWithMessage(null).that(DataHelper.createHashMap("1", "val1", "2", "val2", "3", "val3")).hasSize(4);
             Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's size.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
         }
         try {
-            Assertions.assertWithMessage("").that(createHashMap("1", "val1", "2", "val2", "3", "val3")).hasSize(4);
+            Assertions.assertWithMessage("").that(DataHelper.createHashMap("1", "val1", "2", "val2", "3", "val3")).hasSize(4);
             Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's size.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
         }
         try {
-            Assertions.assertWithMessage("Test message").that(createHashMap("1", "val1", "2", "val2", "3", "val3")).hasSize(4);
+            Assertions.assertWithMessage("Test message").that(DataHelper.createHashMap("1", "val1", "2", "val2", "3", "val3")).hasSize(4);
             Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message.\n\tCheck actual value's size.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
         }
         try {
-            Assertions.assertWithMessage("value''s.").that(createHashMap("1", "val1", "2", "val2", "3", "val3")).hasSize(4);
+            Assertions.assertWithMessage("value''s.").that(DataHelper.createHashMap("1", "val1", "2", "val2", "3", "val3")).hasSize(4);
             Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("value''s.\n\tCheck actual value's size.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
@@ -1595,33 +1595,33 @@ public final class MessageAssertionTest extends AssertionTest {
     @Test
     public void sortedMapAssertionTest() {
         Assertions.assertWithMessage("Test message").that((SortedMap<String, String>) null).isNull();
-        Assertions.assertWithMessage("Test message").that(createTreeMap("1", "val1", "2", "val2", "3", "val3")).hasSize(3);
+        Assertions.assertWithMessage("Test message").that(DataHelper.createTreeMap("1", "val1", "2", "val2", "3", "val3")).hasSize(3);
         Assertions.assertWithMessage("Test message").that(null, Raw.<String, String>sortedMapAssertion()).isNull();
-        Assertions.assertWithMessage("Test message").that(createTreeMap("1", "val1", "2", "val2", "3", "val3"), Raw.<String, String>sortedMapAssertion()).hasSize(3);
+        Assertions.assertWithMessage("Test message").that(DataHelper.createTreeMap("1", "val1", "2", "val2", "3", "val3"), Raw.<String, String>sortedMapAssertion()).hasSize(3);
         Assertions.assertWithMessage("Test message").that(createNullFieldClass(), "_field", Raw.<String, String>sortedMapAssertion()).isNull();
         Assertions.assertWithMessage("Test message").that(createPrivateFieldsClass(), "_sortedMap").isNotNull();
         Assertions.assertWithMessage("Test message").that(createPrivateFieldsClass(), "_sortedMap", Raw.<String, String>sortedMapAssertion()).hasSize(3);
 
         try {
-            Assertions.assertWithMessage(null).that(createTreeMap("1", "val1", "2", "val2", "3", "val3")).hasSize(4);
+            Assertions.assertWithMessage(null).that(DataHelper.createTreeMap("1", "val1", "2", "val2", "3", "val3")).hasSize(4);
             Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's size.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
         }
         try {
-            Assertions.assertWithMessage("").that(createTreeMap("1", "val1", "2", "val2", "3", "val3")).hasSize(4);
+            Assertions.assertWithMessage("").that(DataHelper.createTreeMap("1", "val1", "2", "val2", "3", "val3")).hasSize(4);
             Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's size.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
         }
         try {
-            Assertions.assertWithMessage("Test message").that(createTreeMap("1", "val1", "2", "val2", "3", "val3")).hasSize(4);
+            Assertions.assertWithMessage("Test message").that(DataHelper.createTreeMap("1", "val1", "2", "val2", "3", "val3")).hasSize(4);
             Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message.\n\tCheck actual value's size.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
         }
         try {
-            Assertions.assertWithMessage("value''s.").that(createTreeMap("1", "val1", "2", "val2", "3", "val3")).hasSize(4);
+            Assertions.assertWithMessage("value''s.").that(DataHelper.createTreeMap("1", "val1", "2", "val2", "3", "val3")).hasSize(4);
             Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("value''s.\n\tCheck actual value's size.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");

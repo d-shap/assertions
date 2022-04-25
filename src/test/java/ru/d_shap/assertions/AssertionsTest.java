@@ -872,15 +872,15 @@ public final class AssertionsTest extends AssertionTest {
     @Test
     public void mapAssertionTest() {
         Assertions.assertThat((Map<String, String>) null).isNull();
-        Assertions.assertThat(createHashMap("1", "val1", "2", "val2", "3", "val3")).hasSize(3);
+        Assertions.assertThat(DataHelper.createHashMap("1", "val1", "2", "val2", "3", "val3")).hasSize(3);
         Assertions.assertThat(null, Raw.<String, String>mapAssertion()).isNull();
-        Assertions.assertThat(createHashMap("1", "val1", "2", "val2", "3", "val3"), Raw.<String, String>mapAssertion()).hasSize(3);
+        Assertions.assertThat(DataHelper.createHashMap("1", "val1", "2", "val2", "3", "val3"), Raw.<String, String>mapAssertion()).hasSize(3);
         Assertions.assertThat(createNullFieldClass(), "_field", Raw.<String, String>mapAssertion()).isNull();
         Assertions.assertThat(createPrivateFieldsClass(), "_map").isNotNull();
         Assertions.assertThat(createPrivateFieldsClass(), "_map", Raw.<String, String>mapAssertion()).hasSize(3);
 
         try {
-            Assertions.assertThat(createHashMap("1", "val1", "2", "val2", "3", "val3")).hasSize(4);
+            Assertions.assertThat(DataHelper.createHashMap("1", "val1", "2", "val2", "3", "val3")).hasSize(4);
             Assertions.fail("Assertions test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's size.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
@@ -893,15 +893,15 @@ public final class AssertionsTest extends AssertionTest {
     @Test
     public void sortedMapAssertionTest() {
         Assertions.assertThat((SortedMap<String, String>) null).isNull();
-        Assertions.assertThat(createTreeMap("1", "val1", "2", "val2", "3", "val3")).hasSize(3);
+        Assertions.assertThat(DataHelper.createTreeMap("1", "val1", "2", "val2", "3", "val3")).hasSize(3);
         Assertions.assertThat(null, Raw.<String, String>sortedMapAssertion()).isNull();
-        Assertions.assertThat(createTreeMap("1", "val1", "2", "val2", "3", "val3"), Raw.<String, String>sortedMapAssertion()).hasSize(3);
+        Assertions.assertThat(DataHelper.createTreeMap("1", "val1", "2", "val2", "3", "val3"), Raw.<String, String>sortedMapAssertion()).hasSize(3);
         Assertions.assertThat(createNullFieldClass(), "_field", Raw.<String, String>sortedMapAssertion()).isNull();
         Assertions.assertThat(createPrivateFieldsClass(), "_sortedMap").isNotNull();
         Assertions.assertThat(createPrivateFieldsClass(), "_sortedMap", Raw.<String, String>sortedMapAssertion()).hasSize(3);
 
         try {
-            Assertions.assertThat(createTreeMap("1", "val1", "2", "val2", "3", "val3")).hasSize(4);
+            Assertions.assertThat(DataHelper.createTreeMap("1", "val1", "2", "val2", "3", "val3")).hasSize(4);
             Assertions.fail("Assertions test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's size.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");

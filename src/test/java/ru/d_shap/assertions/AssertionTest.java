@@ -205,108 +205,6 @@ public class AssertionTest {
     }
 
     /**
-     * Create hash map object.
-     *
-     * @param <K> the generic type of the key.
-     * @param <V> the generic type of the value.
-     *
-     * @return the created object.
-     */
-    protected final <K, V> Map<K, V> createHashMap() {
-        return DataHelper.createHashMap();
-    }
-
-    /**
-     * Create hash map object.
-     *
-     * @param key   the key.
-     * @param value the value.
-     * @param <K>   the generic type of the key.
-     * @param <V>   the generic type of the value.
-     *
-     * @return the created object.
-     */
-    protected final <K, V> Map<K, V> createHashMap(final K key, final V value) {
-        return DataHelper.createHashMap(key, value);
-    }
-
-    /**
-     * Create hash map object.
-     *
-     * @param key1   the key.
-     * @param value1 the value.
-     * @param key2   the key.
-     * @param value2 the value.
-     * @param <K>    the generic type of the key.
-     * @param <V>    the generic type of the value.
-     *
-     * @return the created object.
-     */
-    protected final <K, V> Map<K, V> createHashMap(final K key1, final V value1, final K key2, final V value2) {
-        return DataHelper.createHashMap(key1, value1, key2, value2);
-    }
-
-    /**
-     * Create hash map object.
-     *
-     * @param key1   the key.
-     * @param value1 the value.
-     * @param key2   the key.
-     * @param value2 the value.
-     * @param key3   the key.
-     * @param value3 the value.
-     * @param <K>    the generic type of the key.
-     * @param <V>    the generic type of the value.
-     *
-     * @return the created object.
-     */
-    protected final <K, V> Map<K, V> createHashMap(final K key1, final V value1, final K key2, final V value2, final K key3, final V value3) {
-        return DataHelper.createHashMap(key1, value1, key2, value2, key3, value3);
-    }
-
-    /**
-     * Create hash map object.
-     *
-     * @param key1   the key.
-     * @param value1 the value.
-     * @param key2   the key.
-     * @param value2 the value.
-     * @param key3   the key.
-     * @param value3 the value.
-     * @param key4   the key.
-     * @param value4 the value.
-     * @param <K>    the generic type of the key.
-     * @param <V>    the generic type of the value.
-     *
-     * @return the created object.
-     */
-    protected final <K, V> Map<K, V> createHashMap(final K key1, final V value1, final K key2, final V value2, final K key3, final V value3, final K key4, final V value4) {
-        return DataHelper.createHashMap(key1, value1, key2, value2, key3, value3, key4, value4);
-    }
-
-    /**
-     * Create hash map object.
-     *
-     * @param key1   the key.
-     * @param value1 the value.
-     * @param key2   the key.
-     * @param value2 the value.
-     * @param key3   the key.
-     * @param value3 the value.
-     * @param key4   the key.
-     * @param value4 the value.
-     * @param key5   the key.
-     * @param value5 the value.
-     * @param <K>    the generic type of the key.
-     * @param <V>    the generic type of the value.
-     *
-     * @return the created object.
-     */
-    protected final <K, V> Map<K, V> createHashMap(final K key1, final V value1, final K key2, final V value2, final K key3, final V value3, final K key4, final V value4, final K key5, final V value5) {
-        return DataHelper.createHashMap(key1, value1, key2, value2, key3, value3, key4, value4, key5, value5);
-    }
-
-    /**
      * Create duplicate map object.
      *
      * @param <K> the generic type of the key.
@@ -417,108 +315,6 @@ public class AssertionTest {
         Map<K, V> map = createDuplicateMap(key1, value1, key2, value2, key3, value3, key4, value4);
         map.put(key5, value5);
         return map;
-    }
-
-    /**
-     * Create tree map object.
-     *
-     * @param <K> the generic type of the key.
-     * @param <V> the generic type of the value.
-     *
-     * @return the created object.
-     */
-    protected final <K, V> SortedMap<K, V> createTreeMap() {
-        return DataHelper.createTreeMap();
-    }
-
-    /**
-     * Create tree map object.
-     *
-     * @param key   the key.
-     * @param value the value.
-     * @param <K>   the generic type of the key.
-     * @param <V>   the generic type of the value.
-     *
-     * @return the created object.
-     */
-    protected final <K, V> SortedMap<K, V> createTreeMap(final K key, final V value) {
-        return DataHelper.createTreeMap(key, value);
-    }
-
-    /**
-     * Create tree map object.
-     *
-     * @param key1   the key.
-     * @param value1 the value.
-     * @param key2   the key.
-     * @param value2 the value.
-     * @param <K>    the generic type of the key.
-     * @param <V>    the generic type of the value.
-     *
-     * @return the created object.
-     */
-    protected final <K, V> SortedMap<K, V> createTreeMap(final K key1, final V value1, final K key2, final V value2) {
-        return DataHelper.createTreeMap(key1, value1, key2, value2);
-    }
-
-    /**
-     * Create tree map object.
-     *
-     * @param key1   the key.
-     * @param value1 the value.
-     * @param key2   the key.
-     * @param value2 the value.
-     * @param key3   the key.
-     * @param value3 the value.
-     * @param <K>    the generic type of the key.
-     * @param <V>    the generic type of the value.
-     *
-     * @return the created object.
-     */
-    protected final <K, V> SortedMap<K, V> createTreeMap(final K key1, final V value1, final K key2, final V value2, final K key3, final V value3) {
-        return DataHelper.createTreeMap(key1, value1, key2, value2, key3, value3);
-    }
-
-    /**
-     * Create tree map object.
-     *
-     * @param key1   the key.
-     * @param value1 the value.
-     * @param key2   the key.
-     * @param value2 the value.
-     * @param key3   the key.
-     * @param value3 the value.
-     * @param key4   the key.
-     * @param value4 the value.
-     * @param <K>    the generic type of the key.
-     * @param <V>    the generic type of the value.
-     *
-     * @return the created object.
-     */
-    protected final <K, V> SortedMap<K, V> createTreeMap(final K key1, final V value1, final K key2, final V value2, final K key3, final V value3, final K key4, final V value4) {
-        return DataHelper.createTreeMap(key1, value1, key2, value2, key3, value3, key4, value4);
-    }
-
-    /**
-     * Create tree map object.
-     *
-     * @param key1   the key.
-     * @param value1 the value.
-     * @param key2   the key.
-     * @param value2 the value.
-     * @param key3   the key.
-     * @param value3 the value.
-     * @param key4   the key.
-     * @param value4 the value.
-     * @param key5   the key.
-     * @param value5 the value.
-     * @param <K>    the generic type of the key.
-     * @param <V>    the generic type of the value.
-     *
-     * @return the created object.
-     */
-    protected final <K, V> SortedMap<K, V> createTreeMap(final K key1, final V value1, final K key2, final V value2, final K key3, final V value3, final K key4, final V value4, final K key5, final V value5) {
-        return DataHelper.createTreeMap(key1, value1, key2, value2, key3, value3, key4, value4, key5, value5);
     }
 
     /**
@@ -1497,8 +1293,8 @@ public class AssertionTest {
                 _list = Arrays.asList("1", "2", "3");
                 _set = DataHelper.createHashSet("1", "2", "3");
                 _sortedSet = DataHelper.createTreeSet("1", "2", "3");
-                _map = assertionTest.createHashMap("1", "val1", "2", "val2", "3", "val3");
-                _sortedMap = assertionTest.createTreeMap("1", "val1", "2", "val2", "3", "val3");
+                _map = DataHelper.createHashMap("1", "val1", "2", "val2", "3", "val3");
+                _sortedMap = DataHelper.createTreeMap("1", "val1", "2", "val2", "3", "val3");
                 _date = assertionTest.createDate(2020, Calendar.JULY, 11, 15, 23, 47);
                 _calendar = assertionTest.createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "Europe/Berlin");
                 _timeZone = TimeZone.getTimeZone("GMT");
