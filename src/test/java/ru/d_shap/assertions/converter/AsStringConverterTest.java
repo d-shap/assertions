@@ -19,7 +19,6 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.converter;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -63,9 +62,9 @@ public final class AsStringConverterTest extends AssertionTest {
         Assertions.assertThat(AsStringConverter.asString('1')).isEqualTo("1(49)");
         Assertions.assertThat(AsStringConverter.asString(true)).isEqualTo("T");
         Assertions.assertThat(AsStringConverter.asString("value")).isEqualTo("value");
-        Assertions.assertThat(AsStringConverter.asString(Arrays.asList("value1", "value2", "value3"))).isEqualTo("[value1, value2, value3]");
+        Assertions.assertThat(AsStringConverter.asString(DataHelper.createArrayList("value1", "value2", "value3"))).isEqualTo("[value1, value2, value3]");
         Assertions.assertThat(AsStringConverter.asString(DataHelper.createHashSet(String.class, Object.class))).isEqualTo("[java.lang.String, java.lang.Object]");
-        Assertions.assertThat(AsStringConverter.asString(DataHelper.createHashMap('1', Arrays.asList('1', '2', '3'), '2', Arrays.asList("val1", "val2", "val3")))).isEqualTo("{1(49)=[1(49), 2(50), 3(51)], 2(50)=[val1, val2, val3]}");
+        Assertions.assertThat(AsStringConverter.asString(DataHelper.createHashMap('1', DataHelper.createArrayList('1', '2', '3'), '2', DataHelper.createArrayList("val1", "val2", "val3")))).isEqualTo("{1(49)=[1(49), 2(50), 3(51)], 2(50)=[val1, val2, val3]}");
     }
 
     /**
@@ -86,7 +85,7 @@ public final class AsStringConverterTest extends AssertionTest {
         Assertions.assertThat(AsStringConverter.asString(DataHelper.createIterator(1, 2, 3, 4, 5), List.class, 2)).isEqualTo("[1, 2]");
         Assertions.assertThat(AsStringConverter.asString(DataHelper.createIterator(1, 2, 3, 4, 5), List.class, 1)).isEqualTo("[1]");
 
-        Assertions.assertThat(AsStringConverter.asString(Arrays.asList(1, 2, 3, 4, 5), Map.class)).isEqualTo("[1, 2, 3, 4, 5]");
+        Assertions.assertThat(AsStringConverter.asString(DataHelper.createArrayList(1, 2, 3, 4, 5), Map.class)).isEqualTo("[1, 2, 3, 4, 5]");
     }
 
     /**
