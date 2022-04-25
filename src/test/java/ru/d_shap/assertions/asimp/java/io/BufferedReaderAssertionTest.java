@@ -259,7 +259,7 @@ public final class BufferedReaderAssertionTest extends AssertionTest {
      * {@link BufferedReaderAssertion} class test.
      */
     @Test
-    public void toCharArrayLengthTest() {
+    public void toCharArrayCountTest() {
         initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("123"))).toCharArray(4).containsExactlyInOrder('1', '2', '3');
         initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("123"))).toCharArray(3).containsExactlyInOrder('1', '2', '3');
         initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("123"))).toCharArray(2).containsExactlyInOrder('1', '2');
@@ -436,7 +436,7 @@ public final class BufferedReaderAssertionTest extends AssertionTest {
      * {@link BufferedReaderAssertion} class test.
      */
     @Test
-    public void toCharArrayLengthMatcherTest() {
+    public void toCharArrayCountMatcherTest() {
         initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("123"))).toCharArray(4, Matchers.arrayContaining('1', '2', '3'));
         initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("123"))).toCharArray(3, Matchers.arrayContaining('1', '2', '3'));
         initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("123"))).toCharArray(2, Matchers.arrayContaining('1', '2'));
@@ -614,7 +614,7 @@ public final class BufferedReaderAssertionTest extends AssertionTest {
      * {@link BufferedReaderAssertion} class test.
      */
     @Test
-    public void toStringArrayLengthTest() {
+    public void toStringArrayCountTest() {
         initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("1\n2\n3\n"))).toStringArray(4).containsExactlyInOrder("1", "2", "3");
         initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("1\n2\n3\n"))).toStringArray(3).containsExactlyInOrder("1", "2", "3");
         initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("1\n2\n3\n"))).toStringArray(2).containsExactlyInOrder("1", "2");
@@ -797,7 +797,7 @@ public final class BufferedReaderAssertionTest extends AssertionTest {
      * {@link BufferedReaderAssertion} class test.
      */
     @Test
-    public void toStringArrayLengthMatcherTest() {
+    public void toStringArrayCountMatcherTest() {
         initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("1\n2\n3\n"))).toStringArray(4, Matchers.arrayContaining("1", "2", "3"));
         initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("1\n2\n3\n"))).toStringArray(3, Matchers.arrayContaining("1", "2", "3"));
         initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("1\n2\n3\n"))).toStringArray(2, Matchers.arrayContaining("1", "2"));

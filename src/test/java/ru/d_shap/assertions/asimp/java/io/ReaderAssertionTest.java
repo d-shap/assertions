@@ -259,7 +259,7 @@ public final class ReaderAssertionTest extends AssertionTest {
      * {@link ReaderAssertion} class test.
      */
     @Test
-    public void toCharArrayLengthTest() {
+    public void toCharArrayCountTest() {
         initialize(Raw.readerAssertion(), new StringReader("123")).toCharArray(4).containsExactlyInOrder('1', '2', '3');
         initialize(Raw.readerAssertion(), new StringReader("123")).toCharArray(3).containsExactlyInOrder('1', '2', '3');
         initialize(Raw.readerAssertion(), new StringReader("123")).toCharArray(2).containsExactlyInOrder('1', '2');
@@ -436,7 +436,7 @@ public final class ReaderAssertionTest extends AssertionTest {
      * {@link ReaderAssertion} class test.
      */
     @Test
-    public void toCharArrayLengthMatcherTest() {
+    public void toCharArrayCountMatcherTest() {
         initialize(Raw.readerAssertion(), new StringReader("123")).toCharArray(4, Matchers.arrayContaining('1', '2', '3'));
         initialize(Raw.readerAssertion(), new StringReader("123")).toCharArray(3, Matchers.arrayContaining('1', '2', '3'));
         initialize(Raw.readerAssertion(), new StringReader("123")).toCharArray(2, Matchers.arrayContaining('1', '2'));
