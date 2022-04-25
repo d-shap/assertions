@@ -189,32 +189,6 @@ public class AssertionTest {
     }
 
     /**
-     * Create iterable object.
-     *
-     * @param values the values.
-     * @param <E>    the generic type of the element.
-     *
-     * @return the created object.
-     */
-    @SafeVarargs
-    protected final <E> Iterable<E> createIterable(final E... values) {
-        return DataHelper.createIterable(values);
-    }
-
-    /**
-     * Create iterator object.
-     *
-     * @param values the values.
-     * @param <E>    the generic type of the element.
-     *
-     * @return the created object.
-     */
-    @SafeVarargs
-    protected final <E> Iterator<E> createIterator(final E... values) {
-        return DataHelper.createIterator(values);
-    }
-
-    /**
      * Create hash set object.
      *
      * @param values the values.

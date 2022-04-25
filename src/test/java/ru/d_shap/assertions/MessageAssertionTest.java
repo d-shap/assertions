@@ -53,6 +53,8 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 
+import ru.d_shap.assertions.util.DataHelper;
+
 /**
  * Tests for {@link MessageAssertion}.
  *
@@ -1320,33 +1322,33 @@ public final class MessageAssertionTest extends AssertionTest {
     @Test
     public void iterableAssertionTest() {
         Assertions.assertWithMessage("Test message").that((Iterable<String>) null).isNull();
-        Assertions.assertWithMessage("Test message").that(createIterable("1", "2", "3")).hasSize(3);
+        Assertions.assertWithMessage("Test message").that(DataHelper.createIterable("1", "2", "3")).hasSize(3);
         Assertions.assertWithMessage("Test message").that(null, Raw.<String>iterableAssertion()).isNull();
-        Assertions.assertWithMessage("Test message").that(createIterable("1", "2", "3"), Raw.<String>iterableAssertion()).hasSize(3);
+        Assertions.assertWithMessage("Test message").that(DataHelper.createIterable("1", "2", "3"), Raw.<String>iterableAssertion()).hasSize(3);
         Assertions.assertWithMessage("Test message").that(createNullFieldClass(), "_field", Raw.<String>iterableAssertion()).isNull();
         Assertions.assertWithMessage("Test message").that(createPrivateFieldsClass(), "_iterable").isNotNull();
         Assertions.assertWithMessage("Test message").that(createPrivateFieldsClass(), "_iterable", Raw.<String>iterableAssertion()).hasSize(3);
 
         try {
-            Assertions.assertWithMessage(null).that(createIterable("1", "2", "3")).hasSize(4);
+            Assertions.assertWithMessage(null).that(DataHelper.createIterable("1", "2", "3")).hasSize(4);
             Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's size.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
         }
         try {
-            Assertions.assertWithMessage("").that(createIterable("1", "2", "3")).hasSize(4);
+            Assertions.assertWithMessage("").that(DataHelper.createIterable("1", "2", "3")).hasSize(4);
             Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's size.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
         }
         try {
-            Assertions.assertWithMessage("Test message").that(createIterable("1", "2", "3")).hasSize(4);
+            Assertions.assertWithMessage("Test message").that(DataHelper.createIterable("1", "2", "3")).hasSize(4);
             Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message.\n\tCheck actual value's size.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
         }
         try {
-            Assertions.assertWithMessage("value''s.").that(createIterable("1", "2", "3")).hasSize(4);
+            Assertions.assertWithMessage("value''s.").that(DataHelper.createIterable("1", "2", "3")).hasSize(4);
             Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("value''s.\n\tCheck actual value's size.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
@@ -1398,33 +1400,33 @@ public final class MessageAssertionTest extends AssertionTest {
     @Test
     public void iteratorAssertionTest() {
         Assertions.assertWithMessage("Test message").that((Iterator<String>) null).isNull();
-        Assertions.assertWithMessage("Test message").that(createIterator("1", "2", "3")).containsExactlyInOrder("1", "2", "3");
+        Assertions.assertWithMessage("Test message").that(DataHelper.createIterator("1", "2", "3")).containsExactlyInOrder("1", "2", "3");
         Assertions.assertWithMessage("Test message").that(null, Raw.<String>iteratorAssertion()).isNull();
-        Assertions.assertWithMessage("Test message").that(createIterator("1", "2", "3"), Raw.<String>iteratorAssertion()).containsExactlyInOrder("1", "2", "3");
+        Assertions.assertWithMessage("Test message").that(DataHelper.createIterator("1", "2", "3"), Raw.<String>iteratorAssertion()).containsExactlyInOrder("1", "2", "3");
         Assertions.assertWithMessage("Test message").that(createNullFieldClass(), "_field", Raw.<String>iteratorAssertion()).isNull();
         Assertions.assertWithMessage("Test message").that(createPrivateFieldsClass(), "_iterator").isNotNull();
         Assertions.assertWithMessage("Test message").that(createPrivateFieldsClass(), "_iterator", Raw.<String>iteratorAssertion()).containsExactlyInOrder("1", "2", "3");
 
         try {
-            Assertions.assertWithMessage(null).that(createIterator("1", "2", "3")).containsExactlyInOrder("1", "2", "3", "4");
+            Assertions.assertWithMessage(null).that(DataHelper.createIterator("1", "2", "3")).containsExactlyInOrder("1", "2", "3", "4");
             Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check all actual value's elements.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2, 3, 4]> but was:<[1, 2, 3]>");
         }
         try {
-            Assertions.assertWithMessage("").that(createIterator("1", "2", "3")).containsExactlyInOrder("1", "2", "3", "4");
+            Assertions.assertWithMessage("").that(DataHelper.createIterator("1", "2", "3")).containsExactlyInOrder("1", "2", "3", "4");
             Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check all actual value's elements.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2, 3, 4]> but was:<[1, 2, 3]>");
         }
         try {
-            Assertions.assertWithMessage("Test message").that(createIterator("1", "2", "3")).containsExactlyInOrder("1", "2", "3", "4");
+            Assertions.assertWithMessage("Test message").that(DataHelper.createIterator("1", "2", "3")).containsExactlyInOrder("1", "2", "3", "4");
             Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message.\n\tCheck all actual value's elements.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2, 3, 4]> but was:<[1, 2, 3]>");
         }
         try {
-            Assertions.assertWithMessage("value''s.").that(createIterator("1", "2", "3")).containsExactlyInOrder("1", "2", "3", "4");
+            Assertions.assertWithMessage("value''s.").that(DataHelper.createIterator("1", "2", "3")).containsExactlyInOrder("1", "2", "3", "4");
             Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("value''s.\n\tCheck all actual value's elements.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2, 3, 4]> but was:<[1, 2, 3]>");

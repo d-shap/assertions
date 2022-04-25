@@ -23,6 +23,7 @@ import org.junit.Test;
 
 import ru.d_shap.assertions.AssertionTest;
 import ru.d_shap.assertions.Assertions;
+import ru.d_shap.assertions.util.DataHelper;
 
 /**
  * Tests for {@link IterableAsStringConverter}.
@@ -51,11 +52,11 @@ public final class IterableAsStringConverterTest extends AssertionTest {
      */
     @Test
     public void asStringTest() {
-        Assertions.assertThat(new IterableAsStringConverter().asString(createIterable())).isEqualTo("<EMPTY>");
-        Assertions.assertThat(new IterableAsStringConverter().asString(createIterable(""))).isEqualTo("[]");
-        Assertions.assertThat(new IterableAsStringConverter().asString(createIterable("val1"))).isEqualTo("[val1]");
-        Assertions.assertThat(new IterableAsStringConverter().asString(createIterable("val1", "val2", "val3"))).isEqualTo("[val1, val2, val3]");
-        Assertions.assertThat(new IterableAsStringConverter().asString(createIterable("val1", "val2", "val3", "val4", "val5"))).isEqualTo("[val1, val2, val3, val4, val5]");
+        Assertions.assertThat(new IterableAsStringConverter().asString(DataHelper.createIterable())).isEqualTo("<EMPTY>");
+        Assertions.assertThat(new IterableAsStringConverter().asString(DataHelper.createIterable(""))).isEqualTo("[]");
+        Assertions.assertThat(new IterableAsStringConverter().asString(DataHelper.createIterable("val1"))).isEqualTo("[val1]");
+        Assertions.assertThat(new IterableAsStringConverter().asString(DataHelper.createIterable("val1", "val2", "val3"))).isEqualTo("[val1, val2, val3]");
+        Assertions.assertThat(new IterableAsStringConverter().asString(DataHelper.createIterable("val1", "val2", "val3", "val4", "val5"))).isEqualTo("[val1, val2, val3, val4, val5]");
     }
 
     /**

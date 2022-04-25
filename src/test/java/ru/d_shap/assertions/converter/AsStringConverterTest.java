@@ -27,6 +27,7 @@ import org.junit.Test;
 
 import ru.d_shap.assertions.AssertionTest;
 import ru.d_shap.assertions.Assertions;
+import ru.d_shap.assertions.util.DataHelper;
 import ru.d_shap.assertions.util.ReflectionHelper;
 
 /**
@@ -79,11 +80,11 @@ public final class AsStringConverterTest extends AssertionTest {
         Assertions.assertThat(AsStringConverter.asString(100000, Character.class)).isEqualTo("100000");
         Assertions.assertThat(AsStringConverter.asString(100000, Integer.class)).isEqualTo("100000");
 
-        Assertions.assertThat(AsStringConverter.asString(createIterator(1, 2, 3, 4, 5), List.class, 5)).isEqualTo("[1, 2, 3, 4, 5]");
-        Assertions.assertThat(AsStringConverter.asString(createIterator(1, 2, 3, 4, 5), List.class, 4)).isEqualTo("[1, 2, 3, 4]");
-        Assertions.assertThat(AsStringConverter.asString(createIterator(1, 2, 3, 4, 5), List.class, 3)).isEqualTo("[1, 2, 3]");
-        Assertions.assertThat(AsStringConverter.asString(createIterator(1, 2, 3, 4, 5), List.class, 2)).isEqualTo("[1, 2]");
-        Assertions.assertThat(AsStringConverter.asString(createIterator(1, 2, 3, 4, 5), List.class, 1)).isEqualTo("[1]");
+        Assertions.assertThat(AsStringConverter.asString(DataHelper.createIterator(1, 2, 3, 4, 5), List.class, 5)).isEqualTo("[1, 2, 3, 4, 5]");
+        Assertions.assertThat(AsStringConverter.asString(DataHelper.createIterator(1, 2, 3, 4, 5), List.class, 4)).isEqualTo("[1, 2, 3, 4]");
+        Assertions.assertThat(AsStringConverter.asString(DataHelper.createIterator(1, 2, 3, 4, 5), List.class, 3)).isEqualTo("[1, 2, 3]");
+        Assertions.assertThat(AsStringConverter.asString(DataHelper.createIterator(1, 2, 3, 4, 5), List.class, 2)).isEqualTo("[1, 2]");
+        Assertions.assertThat(AsStringConverter.asString(DataHelper.createIterator(1, 2, 3, 4, 5), List.class, 1)).isEqualTo("[1]");
 
         Assertions.assertThat(AsStringConverter.asString(Arrays.asList(1, 2, 3, 4, 5), Map.class)).isEqualTo("[1, 2, 3, 4, 5]");
     }
