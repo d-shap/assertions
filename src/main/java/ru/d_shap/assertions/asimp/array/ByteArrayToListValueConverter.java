@@ -19,11 +19,11 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.asimp.array;
 
-import java.util.Arrays;
 import java.util.List;
 
 import ru.d_shap.assertions.converter.ConverterArgumentHelper;
 import ru.d_shap.assertions.converter.ValueConverterProvider;
+import ru.d_shap.assertions.util.DataHelper;
 
 /**
  * Value converter from the byte array to the list.
@@ -55,7 +55,7 @@ public final class ByteArrayToListValueConverter implements ValueConverterProvid
         ConverterArgumentHelper.checkArgumentsLength(arguments, 0);
 
         Byte[] objectArray = ConverterArgumentHelper.toObjectArray(castedValue);
-        return Arrays.asList(objectArray);
+        return DataHelper.createArrayList(objectArray);
     }
 
 }

@@ -19,11 +19,11 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.asimp.array;
 
-import java.util.Arrays;
 import java.util.List;
 
 import ru.d_shap.assertions.converter.ConverterArgumentHelper;
 import ru.d_shap.assertions.converter.ValueConverterProvider;
+import ru.d_shap.assertions.util.DataHelper;
 
 /**
  * Value converter from the object array to the list.
@@ -54,7 +54,7 @@ public final class ObjectArrayToListValueConverter implements ValueConverterProv
         Object[] castedValue = ConverterArgumentHelper.getValue(value, Object[].class);
         ConverterArgumentHelper.checkArgumentsLength(arguments, 0);
 
-        return Arrays.asList(castedValue);
+        return DataHelper.createArrayList(castedValue);
     }
 
 }
