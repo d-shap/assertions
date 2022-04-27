@@ -1148,7 +1148,7 @@ public final class MapAssertionTest extends AssertionTest {
     public void containsKeysExactlyInOrderIterableTest() {
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("key1", "value1", "key2", "value2")).containsKeysExactlyInOrder(DataHelper.createIterable("key1", "key2"));
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("key1", "value1", null, "value2")).containsKeysExactlyInOrder(DataHelper.createIterable("key1", null));
-        initialize(Raw.mapAssertion(), DataHelper.createHashMap()).containsKeysExactlyInOrder(DataHelper.<String>createIterable());
+        initialize(Raw.<String, String>mapAssertion(), DataHelper.<String, String>createHashMap()).containsKeysExactlyInOrder(DataHelper.<String>createIterable());
 
         try {
             Raw.<String, String>mapAssertion().containsKeysExactlyInOrder(DataHelper.<String>createIterable());
