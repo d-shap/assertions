@@ -21,7 +21,6 @@ package ru.d_shap.assertions.asimp.java.nio;
 
 import java.nio.ByteBuffer;
 import java.nio.DoubleBuffer;
-import java.util.ArrayList;
 
 import org.hamcrest.Matchers;
 import org.junit.Test;
@@ -693,19 +692,19 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0})).containsAll(DataHelper.createIterable(Double.NEGATIVE_INFINITY, Double.NaN));
 
         try {
-            Raw.doubleBufferAssertion().containsAll(new ArrayList<Double>());
+            Raw.doubleBufferAssertion().containsAll(DataHelper.<Double>createIterable());
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
-            initialize(Raw.doubleBufferAssertion(), null).containsAll(new ArrayList<Double>());
+            initialize(Raw.doubleBufferAssertion(), null).containsAll(DataHelper.<Double>createIterable());
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
-            initialize(Raw.doubleBufferAssertion(), null, "Message").containsAll(new ArrayList<Double>());
+            initialize(Raw.doubleBufferAssertion(), null, "Message").containsAll(DataHelper.<Double>createIterable());
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
@@ -735,13 +734,13 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
-            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{})).containsAll(new ArrayList<Double>());
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{})).containsAll(DataHelper.<Double>createIterable());
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
-            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{}), "Message").containsAll(new ArrayList<Double>());
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{}), "Message").containsAll(DataHelper.<Double>createIterable());
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
@@ -879,19 +878,19 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 3)).rewindAndContainsAll(DataHelper.createIterable(1.0, 2.0));
 
         try {
-            Raw.doubleBufferAssertion().rewindAndContainsAll(new ArrayList<Double>());
+            Raw.doubleBufferAssertion().rewindAndContainsAll(DataHelper.<Double>createIterable());
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
-            initialize(Raw.doubleBufferAssertion(), null).rewindAndContainsAll(new ArrayList<Double>());
+            initialize(Raw.doubleBufferAssertion(), null).rewindAndContainsAll(DataHelper.<Double>createIterable());
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
-            initialize(Raw.doubleBufferAssertion(), null, "Message").rewindAndContainsAll(new ArrayList<Double>());
+            initialize(Raw.doubleBufferAssertion(), null, "Message").rewindAndContainsAll(DataHelper.<Double>createIterable());
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
@@ -921,13 +920,13 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
-            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{})).rewindAndContainsAll(new ArrayList<Double>());
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{})).rewindAndContainsAll(DataHelper.<Double>createIterable());
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
-            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{}), "Message").rewindAndContainsAll(new ArrayList<Double>());
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{}), "Message").rewindAndContainsAll(DataHelper.<Double>createIterable());
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
@@ -1069,19 +1068,19 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0})).containsAllInOrder(DataHelper.createIterable(Double.NaN, Double.NEGATIVE_INFINITY, 3.0));
 
         try {
-            Raw.doubleBufferAssertion().containsAllInOrder(new ArrayList<Double>());
+            Raw.doubleBufferAssertion().containsAllInOrder(DataHelper.<Double>createIterable());
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
-            initialize(Raw.doubleBufferAssertion(), null).containsAllInOrder(new ArrayList<Double>());
+            initialize(Raw.doubleBufferAssertion(), null).containsAllInOrder(DataHelper.<Double>createIterable());
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
-            initialize(Raw.doubleBufferAssertion(), null, "Message").containsAllInOrder(new ArrayList<Double>());
+            initialize(Raw.doubleBufferAssertion(), null, "Message").containsAllInOrder(DataHelper.<Double>createIterable());
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
@@ -1111,13 +1110,13 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
-            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{})).containsAllInOrder(new ArrayList<Double>());
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{})).containsAllInOrder(DataHelper.<Double>createIterable());
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
-            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{}), "Message").containsAllInOrder(new ArrayList<Double>());
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{}), "Message").containsAllInOrder(DataHelper.<Double>createIterable());
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
@@ -1265,19 +1264,19 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 3)).rewindAndContainsAllInOrder(DataHelper.createIterable(1.0, 2.0));
 
         try {
-            Raw.doubleBufferAssertion().rewindAndContainsAllInOrder(new ArrayList<Double>());
+            Raw.doubleBufferAssertion().rewindAndContainsAllInOrder(DataHelper.<Double>createIterable());
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
-            initialize(Raw.doubleBufferAssertion(), null).rewindAndContainsAllInOrder(new ArrayList<Double>());
+            initialize(Raw.doubleBufferAssertion(), null).rewindAndContainsAllInOrder(DataHelper.<Double>createIterable());
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
-            initialize(Raw.doubleBufferAssertion(), null, "Message").rewindAndContainsAllInOrder(new ArrayList<Double>());
+            initialize(Raw.doubleBufferAssertion(), null, "Message").rewindAndContainsAllInOrder(DataHelper.<Double>createIterable());
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
@@ -1307,13 +1306,13 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
-            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{})).rewindAndContainsAllInOrder(new ArrayList<Double>());
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{})).rewindAndContainsAllInOrder(DataHelper.<Double>createIterable());
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
-            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{}), "Message").rewindAndContainsAllInOrder(new ArrayList<Double>());
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{}), "Message").rewindAndContainsAllInOrder(DataHelper.<Double>createIterable());
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
@@ -1461,23 +1460,23 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).containsExactly(DataHelper.createIterable(1.0, 2.0));
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0})).containsExactly(DataHelper.createIterable(1.0, 2.0, 3.0, 4.0));
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0})).containsExactly(DataHelper.createIterable(1.0, 3.0, 2.0, 4.0));
-        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{})).containsExactly(new ArrayList<Double>());
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{})).containsExactly(DataHelper.<Double>createIterable());
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0})).containsExactly(DataHelper.createIterable(Double.NEGATIVE_INFINITY, Double.NaN, 3.0, Double.POSITIVE_INFINITY));
 
         try {
-            Raw.doubleBufferAssertion().containsExactly(new ArrayList<Double>());
+            Raw.doubleBufferAssertion().containsExactly(DataHelper.<Double>createIterable());
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
-            initialize(Raw.doubleBufferAssertion(), null).containsExactly(new ArrayList<Double>());
+            initialize(Raw.doubleBufferAssertion(), null).containsExactly(DataHelper.<Double>createIterable());
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
-            initialize(Raw.doubleBufferAssertion(), null, "Message").containsExactly(new ArrayList<Double>());
+            initialize(Raw.doubleBufferAssertion(), null, "Message").containsExactly(DataHelper.<Double>createIterable());
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
@@ -1519,7 +1518,7 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[1.0, 2.0, 3.0, 4.0, 5.0]> but was:<[1.0, 2.0, 3.0, 4.0]>");
         }
         try {
-            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).containsExactly(new ArrayList<Double>());
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).containsExactly(DataHelper.<Double>createIterable());
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<<EMPTY>> but was:<[1.0, 2.0]>");
@@ -1661,23 +1660,23 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).rewindAndContainsExactly(DataHelper.createIterable(1.0, 2.0));
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0})).rewindAndContainsExactly(DataHelper.createIterable(1.0, 2.0, 3.0, 4.0));
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0})).rewindAndContainsExactly(DataHelper.createIterable(1.0, 3.0, 2.0, 4.0));
-        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{})).rewindAndContainsExactly(new ArrayList<Double>());
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{})).rewindAndContainsExactly(DataHelper.<Double>createIterable());
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 3)).rewindAndContainsExactly(DataHelper.createIterable(1.0, 2.0, 3.0, 4.0, 5.0));
 
         try {
-            Raw.doubleBufferAssertion().rewindAndContainsExactly(new ArrayList<Double>());
+            Raw.doubleBufferAssertion().rewindAndContainsExactly(DataHelper.<Double>createIterable());
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
-            initialize(Raw.doubleBufferAssertion(), null).rewindAndContainsExactly(new ArrayList<Double>());
+            initialize(Raw.doubleBufferAssertion(), null).rewindAndContainsExactly(DataHelper.<Double>createIterable());
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
-            initialize(Raw.doubleBufferAssertion(), null, "Message").rewindAndContainsExactly(new ArrayList<Double>());
+            initialize(Raw.doubleBufferAssertion(), null, "Message").rewindAndContainsExactly(DataHelper.<Double>createIterable());
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
@@ -1719,7 +1718,7 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[1.0, 2.0, 3.0, 4.0, 5.0]> but was:<[1.0, 2.0, 3.0, 4.0]>");
         }
         try {
-            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).rewindAndContainsExactly(new ArrayList<Double>());
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).rewindAndContainsExactly(DataHelper.<Double>createIterable());
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<<EMPTY>> but was:<[1.0, 2.0]>");
@@ -1865,23 +1864,23 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
     public void containsExactlyInOrderIterableTest() {
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).containsExactlyInOrder(DataHelper.createIterable(1.0, 2.0));
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0})).containsExactlyInOrder(DataHelper.createIterable(1.0, 2.0, 3.0, 4.0));
-        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{})).containsExactlyInOrder(new ArrayList<Double>());
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{})).containsExactlyInOrder(DataHelper.<Double>createIterable());
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0})).containsExactlyInOrder(DataHelper.createIterable(Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0));
 
         try {
-            Raw.doubleBufferAssertion().containsExactlyInOrder(new ArrayList<Double>());
+            Raw.doubleBufferAssertion().containsExactlyInOrder(DataHelper.<Double>createIterable());
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
-            initialize(Raw.doubleBufferAssertion(), null).containsExactlyInOrder(new ArrayList<Double>());
+            initialize(Raw.doubleBufferAssertion(), null).containsExactlyInOrder(DataHelper.<Double>createIterable());
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
-            initialize(Raw.doubleBufferAssertion(), null, "Message").containsExactlyInOrder(new ArrayList<Double>());
+            initialize(Raw.doubleBufferAssertion(), null, "Message").containsExactlyInOrder(DataHelper.<Double>createIterable());
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
@@ -1929,7 +1928,7 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1.0, 2.0, 3.0, 4.0, 5.0]> but was:<[1.0, 2.0, 3.0, 4.0]>");
         }
         try {
-            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).containsExactlyInOrder(new ArrayList<Double>());
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).containsExactlyInOrder(DataHelper.<Double>createIterable());
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<<EMPTY>> but was:<[1.0, 2.0]>");
@@ -2075,23 +2074,23 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
     public void rewindAndContainsExactlyInOrderIterableTest() {
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).rewindAndContainsExactlyInOrder(DataHelper.createIterable(1.0, 2.0));
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0})).rewindAndContainsExactlyInOrder(DataHelper.createIterable(1.0, 2.0, 3.0, 4.0));
-        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{})).rewindAndContainsExactlyInOrder(new ArrayList<Double>());
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{})).rewindAndContainsExactlyInOrder(DataHelper.<Double>createIterable());
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 3)).rewindAndContainsExactlyInOrder(DataHelper.createIterable(1.0, 2.0, 3.0, 4.0, 5.0));
 
         try {
-            Raw.doubleBufferAssertion().rewindAndContainsExactlyInOrder(new ArrayList<Double>());
+            Raw.doubleBufferAssertion().rewindAndContainsExactlyInOrder(DataHelper.<Double>createIterable());
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
-            initialize(Raw.doubleBufferAssertion(), null).rewindAndContainsExactlyInOrder(new ArrayList<Double>());
+            initialize(Raw.doubleBufferAssertion(), null).rewindAndContainsExactlyInOrder(DataHelper.<Double>createIterable());
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
-            initialize(Raw.doubleBufferAssertion(), null, "Message").rewindAndContainsExactlyInOrder(new ArrayList<Double>());
+            initialize(Raw.doubleBufferAssertion(), null, "Message").rewindAndContainsExactlyInOrder(DataHelper.<Double>createIterable());
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
@@ -2139,7 +2138,7 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1.0, 2.0, 3.0, 4.0, 5.0]> but was:<[1.0, 2.0, 3.0, 4.0]>");
         }
         try {
-            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).rewindAndContainsExactlyInOrder(new ArrayList<Double>());
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).rewindAndContainsExactlyInOrder(DataHelper.<Double>createIterable());
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<<EMPTY>> but was:<[1.0, 2.0]>");
@@ -2279,19 +2278,19 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{Double.NaN, Double.NEGATIVE_INFINITY, 3.0})).containsAny(DataHelper.createIterable(Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY));
 
         try {
-            Raw.doubleBufferAssertion().containsAny(new ArrayList<Double>());
+            Raw.doubleBufferAssertion().containsAny(DataHelper.<Double>createIterable());
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
-            initialize(Raw.doubleBufferAssertion(), null).containsAny(new ArrayList<Double>());
+            initialize(Raw.doubleBufferAssertion(), null).containsAny(DataHelper.<Double>createIterable());
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
-            initialize(Raw.doubleBufferAssertion(), null, "Message").containsAny(new ArrayList<Double>());
+            initialize(Raw.doubleBufferAssertion(), null, "Message").containsAny(DataHelper.<Double>createIterable());
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
@@ -2321,13 +2320,13 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
-            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{})).containsAny(new ArrayList<Double>());
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{})).containsAny(DataHelper.<Double>createIterable());
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always false.");
         }
         try {
-            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{}), "Message").containsAny(new ArrayList<Double>());
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{}), "Message").containsAny(DataHelper.<Double>createIterable());
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always false.");
@@ -2467,19 +2466,19 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 3)).rewindAndContainsAny(DataHelper.createIterable(1.0, 3.0));
 
         try {
-            Raw.doubleBufferAssertion().rewindAndContainsAny(new ArrayList<Double>());
+            Raw.doubleBufferAssertion().rewindAndContainsAny(DataHelper.<Double>createIterable());
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
-            initialize(Raw.doubleBufferAssertion(), null).rewindAndContainsAny(new ArrayList<Double>());
+            initialize(Raw.doubleBufferAssertion(), null).rewindAndContainsAny(DataHelper.<Double>createIterable());
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
-            initialize(Raw.doubleBufferAssertion(), null, "Message").rewindAndContainsAny(new ArrayList<Double>());
+            initialize(Raw.doubleBufferAssertion(), null, "Message").rewindAndContainsAny(DataHelper.<Double>createIterable());
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
@@ -2509,13 +2508,13 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
-            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{})).rewindAndContainsAny(new ArrayList<Double>());
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{})).rewindAndContainsAny(DataHelper.<Double>createIterable());
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always false.");
         }
         try {
-            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{}), "Message").rewindAndContainsAny(new ArrayList<Double>());
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{}), "Message").rewindAndContainsAny(DataHelper.<Double>createIterable());
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always false.");
@@ -2643,19 +2642,19 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{Double.NaN, Double.NEGATIVE_INFINITY, 3.0})).containsNone(DataHelper.createIterable(Double.POSITIVE_INFINITY, 4.0));
 
         try {
-            Raw.doubleBufferAssertion().containsNone(new ArrayList<Double>());
+            Raw.doubleBufferAssertion().containsNone(DataHelper.<Double>createIterable());
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
-            initialize(Raw.doubleBufferAssertion(), null).containsNone(new ArrayList<Double>());
+            initialize(Raw.doubleBufferAssertion(), null).containsNone(DataHelper.<Double>createIterable());
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
-            initialize(Raw.doubleBufferAssertion(), null, "Message").containsNone(new ArrayList<Double>());
+            initialize(Raw.doubleBufferAssertion(), null, "Message").containsNone(DataHelper.<Double>createIterable());
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
@@ -2685,13 +2684,13 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
-            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{})).containsNone(new ArrayList<Double>());
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{})).containsNone(DataHelper.<Double>createIterable());
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
-            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{}), "Message").containsNone(new ArrayList<Double>());
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{}), "Message").containsNone(DataHelper.<Double>createIterable());
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
@@ -2815,19 +2814,19 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 0, 3)).rewindAndContainsNone(DataHelper.createIterable(4.0, 5.0));
 
         try {
-            Raw.doubleBufferAssertion().rewindAndContainsNone(new ArrayList<Double>());
+            Raw.doubleBufferAssertion().rewindAndContainsNone(DataHelper.<Double>createIterable());
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
-            initialize(Raw.doubleBufferAssertion(), null).rewindAndContainsNone(new ArrayList<Double>());
+            initialize(Raw.doubleBufferAssertion(), null).rewindAndContainsNone(DataHelper.<Double>createIterable());
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
-            initialize(Raw.doubleBufferAssertion(), null, "Message").rewindAndContainsNone(new ArrayList<Double>());
+            initialize(Raw.doubleBufferAssertion(), null, "Message").rewindAndContainsNone(DataHelper.<Double>createIterable());
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
@@ -2857,13 +2856,13 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
-            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{})).rewindAndContainsNone(new ArrayList<Double>());
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{})).rewindAndContainsNone(DataHelper.<Double>createIterable());
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
-            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{}), "Message").rewindAndContainsNone(new ArrayList<Double>());
+            initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{}), "Message").rewindAndContainsNone(DataHelper.<Double>createIterable());
             Assertions.fail("DoubleBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");

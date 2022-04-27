@@ -21,7 +21,6 @@ package ru.d_shap.assertions.asimp.java.nio;
 
 import java.nio.ByteBuffer;
 import java.nio.IntBuffer;
-import java.util.ArrayList;
 
 import org.hamcrest.Matchers;
 import org.junit.Test;
@@ -649,19 +648,19 @@ public final class IntBufferAssertionTest extends AssertionTest {
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3, 4})).containsAll(DataHelper.createIterable(4, 2));
 
         try {
-            Raw.intBufferAssertion().containsAll(new ArrayList<Integer>());
+            Raw.intBufferAssertion().containsAll(DataHelper.<Integer>createIterable());
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
-            initialize(Raw.intBufferAssertion(), null).containsAll(new ArrayList<Integer>());
+            initialize(Raw.intBufferAssertion(), null).containsAll(DataHelper.<Integer>createIterable());
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
-            initialize(Raw.intBufferAssertion(), null, "Message").containsAll(new ArrayList<Integer>());
+            initialize(Raw.intBufferAssertion(), null, "Message").containsAll(DataHelper.<Integer>createIterable());
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
@@ -691,13 +690,13 @@ public final class IntBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
-            initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{})).containsAll(new ArrayList<Integer>());
+            initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{})).containsAll(DataHelper.<Integer>createIterable());
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
-            initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{}), "Message").containsAll(new ArrayList<Integer>());
+            initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{}), "Message").containsAll(DataHelper.<Integer>createIterable());
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
@@ -823,19 +822,19 @@ public final class IntBufferAssertionTest extends AssertionTest {
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3, 4, 5}, 3)).rewindAndContainsAll(DataHelper.createIterable(1, 2));
 
         try {
-            Raw.intBufferAssertion().rewindAndContainsAll(new ArrayList<Integer>());
+            Raw.intBufferAssertion().rewindAndContainsAll(DataHelper.<Integer>createIterable());
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
-            initialize(Raw.intBufferAssertion(), null).rewindAndContainsAll(new ArrayList<Integer>());
+            initialize(Raw.intBufferAssertion(), null).rewindAndContainsAll(DataHelper.<Integer>createIterable());
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
-            initialize(Raw.intBufferAssertion(), null, "Message").rewindAndContainsAll(new ArrayList<Integer>());
+            initialize(Raw.intBufferAssertion(), null, "Message").rewindAndContainsAll(DataHelper.<Integer>createIterable());
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
@@ -865,13 +864,13 @@ public final class IntBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
-            initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{})).rewindAndContainsAll(new ArrayList<Integer>());
+            initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{})).rewindAndContainsAll(DataHelper.<Integer>createIterable());
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
-            initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{}), "Message").rewindAndContainsAll(new ArrayList<Integer>());
+            initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{}), "Message").rewindAndContainsAll(DataHelper.<Integer>createIterable());
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
@@ -999,19 +998,19 @@ public final class IntBufferAssertionTest extends AssertionTest {
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3, 4})).containsAllInOrder(DataHelper.createIterable(1, 3, 4));
 
         try {
-            Raw.intBufferAssertion().containsAllInOrder(new ArrayList<Integer>());
+            Raw.intBufferAssertion().containsAllInOrder(DataHelper.<Integer>createIterable());
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
-            initialize(Raw.intBufferAssertion(), null).containsAllInOrder(new ArrayList<Integer>());
+            initialize(Raw.intBufferAssertion(), null).containsAllInOrder(DataHelper.<Integer>createIterable());
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
-            initialize(Raw.intBufferAssertion(), null, "Message").containsAllInOrder(new ArrayList<Integer>());
+            initialize(Raw.intBufferAssertion(), null, "Message").containsAllInOrder(DataHelper.<Integer>createIterable());
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
@@ -1041,13 +1040,13 @@ public final class IntBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
-            initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{})).containsAllInOrder(new ArrayList<Integer>());
+            initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{})).containsAllInOrder(DataHelper.<Integer>createIterable());
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
-            initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{}), "Message").containsAllInOrder(new ArrayList<Integer>());
+            initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{}), "Message").containsAllInOrder(DataHelper.<Integer>createIterable());
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
@@ -1183,19 +1182,19 @@ public final class IntBufferAssertionTest extends AssertionTest {
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3, 4, 5}, 3)).rewindAndContainsAllInOrder(DataHelper.createIterable(1, 2));
 
         try {
-            Raw.intBufferAssertion().rewindAndContainsAllInOrder(new ArrayList<Integer>());
+            Raw.intBufferAssertion().rewindAndContainsAllInOrder(DataHelper.<Integer>createIterable());
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
-            initialize(Raw.intBufferAssertion(), null).rewindAndContainsAllInOrder(new ArrayList<Integer>());
+            initialize(Raw.intBufferAssertion(), null).rewindAndContainsAllInOrder(DataHelper.<Integer>createIterable());
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
-            initialize(Raw.intBufferAssertion(), null, "Message").rewindAndContainsAllInOrder(new ArrayList<Integer>());
+            initialize(Raw.intBufferAssertion(), null, "Message").rewindAndContainsAllInOrder(DataHelper.<Integer>createIterable());
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
@@ -1225,13 +1224,13 @@ public final class IntBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
-            initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{})).rewindAndContainsAllInOrder(new ArrayList<Integer>());
+            initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{})).rewindAndContainsAllInOrder(DataHelper.<Integer>createIterable());
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
-            initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{}), "Message").rewindAndContainsAllInOrder(new ArrayList<Integer>());
+            initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{}), "Message").rewindAndContainsAllInOrder(DataHelper.<Integer>createIterable());
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
@@ -1366,22 +1365,22 @@ public final class IntBufferAssertionTest extends AssertionTest {
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2})).containsExactly(DataHelper.createIterable(1, 2));
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3, 4})).containsExactly(DataHelper.createIterable(1, 2, 3, 4));
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3, 4})).containsExactly(DataHelper.createIterable(1, 3, 2, 4));
-        initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{})).containsExactly(new ArrayList<Integer>());
+        initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{})).containsExactly(DataHelper.<Integer>createIterable());
 
         try {
-            Raw.intBufferAssertion().containsExactly(new ArrayList<Integer>());
+            Raw.intBufferAssertion().containsExactly(DataHelper.<Integer>createIterable());
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
-            initialize(Raw.intBufferAssertion(), null).containsExactly(new ArrayList<Integer>());
+            initialize(Raw.intBufferAssertion(), null).containsExactly(DataHelper.<Integer>createIterable());
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
-            initialize(Raw.intBufferAssertion(), null, "Message").containsExactly(new ArrayList<Integer>());
+            initialize(Raw.intBufferAssertion(), null, "Message").containsExactly(DataHelper.<Integer>createIterable());
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
@@ -1423,7 +1422,7 @@ public final class IntBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3, 4]>");
         }
         try {
-            initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2})).containsExactly(new ArrayList<Integer>());
+            initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2})).containsExactly(DataHelper.<Integer>createIterable());
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<<EMPTY>> but was:<[1, 2]>");
@@ -1553,23 +1552,23 @@ public final class IntBufferAssertionTest extends AssertionTest {
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2})).rewindAndContainsExactly(DataHelper.createIterable(1, 2));
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3, 4})).rewindAndContainsExactly(DataHelper.createIterable(1, 2, 3, 4));
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3, 4})).rewindAndContainsExactly(DataHelper.createIterable(1, 3, 2, 4));
-        initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{})).rewindAndContainsExactly(new ArrayList<Integer>());
+        initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{})).rewindAndContainsExactly(DataHelper.<Integer>createIterable());
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3, 4, 5}, 3)).rewindAndContainsExactly(DataHelper.createIterable(1, 2, 3, 4, 5));
 
         try {
-            Raw.intBufferAssertion().rewindAndContainsExactly(new ArrayList<Integer>());
+            Raw.intBufferAssertion().rewindAndContainsExactly(DataHelper.<Integer>createIterable());
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
-            initialize(Raw.intBufferAssertion(), null).rewindAndContainsExactly(new ArrayList<Integer>());
+            initialize(Raw.intBufferAssertion(), null).rewindAndContainsExactly(DataHelper.<Integer>createIterable());
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
-            initialize(Raw.intBufferAssertion(), null, "Message").rewindAndContainsExactly(new ArrayList<Integer>());
+            initialize(Raw.intBufferAssertion(), null, "Message").rewindAndContainsExactly(DataHelper.<Integer>createIterable());
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
@@ -1611,7 +1610,7 @@ public final class IntBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3, 4]>");
         }
         try {
-            initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2})).rewindAndContainsExactly(new ArrayList<Integer>());
+            initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2})).rewindAndContainsExactly(DataHelper.<Integer>createIterable());
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<<EMPTY>> but was:<[1, 2]>");
@@ -1744,22 +1743,22 @@ public final class IntBufferAssertionTest extends AssertionTest {
     public void containsExactlyInOrderIterableTest() {
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2})).containsExactlyInOrder(DataHelper.createIterable(1, 2));
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3, 4})).containsExactlyInOrder(DataHelper.createIterable(1, 2, 3, 4));
-        initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{})).containsExactlyInOrder(new ArrayList<Integer>());
+        initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{})).containsExactlyInOrder(DataHelper.<Integer>createIterable());
 
         try {
-            Raw.intBufferAssertion().containsExactlyInOrder(new ArrayList<Integer>());
+            Raw.intBufferAssertion().containsExactlyInOrder(DataHelper.<Integer>createIterable());
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
-            initialize(Raw.intBufferAssertion(), null).containsExactlyInOrder(new ArrayList<Integer>());
+            initialize(Raw.intBufferAssertion(), null).containsExactlyInOrder(DataHelper.<Integer>createIterable());
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
-            initialize(Raw.intBufferAssertion(), null, "Message").containsExactlyInOrder(new ArrayList<Integer>());
+            initialize(Raw.intBufferAssertion(), null, "Message").containsExactlyInOrder(DataHelper.<Integer>createIterable());
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
@@ -1807,7 +1806,7 @@ public final class IntBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3, 4]>");
         }
         try {
-            initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2})).containsExactlyInOrder(new ArrayList<Integer>());
+            initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2})).containsExactlyInOrder(DataHelper.<Integer>createIterable());
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<<EMPTY>> but was:<[1, 2]>");
@@ -1941,23 +1940,23 @@ public final class IntBufferAssertionTest extends AssertionTest {
     public void rewindAndContainsExactlyInOrderIterableTest() {
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2})).rewindAndContainsExactlyInOrder(DataHelper.createIterable(1, 2));
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3, 4})).rewindAndContainsExactlyInOrder(DataHelper.createIterable(1, 2, 3, 4));
-        initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{})).rewindAndContainsExactlyInOrder(new ArrayList<Integer>());
+        initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{})).rewindAndContainsExactlyInOrder(DataHelper.<Integer>createIterable());
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3, 4, 5}, 3)).rewindAndContainsExactlyInOrder(DataHelper.createIterable(1, 2, 3, 4, 5));
 
         try {
-            Raw.intBufferAssertion().rewindAndContainsExactlyInOrder(new ArrayList<Integer>());
+            Raw.intBufferAssertion().rewindAndContainsExactlyInOrder(DataHelper.<Integer>createIterable());
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
-            initialize(Raw.intBufferAssertion(), null).rewindAndContainsExactlyInOrder(new ArrayList<Integer>());
+            initialize(Raw.intBufferAssertion(), null).rewindAndContainsExactlyInOrder(DataHelper.<Integer>createIterable());
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
-            initialize(Raw.intBufferAssertion(), null, "Message").rewindAndContainsExactlyInOrder(new ArrayList<Integer>());
+            initialize(Raw.intBufferAssertion(), null, "Message").rewindAndContainsExactlyInOrder(DataHelper.<Integer>createIterable());
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
@@ -2005,7 +2004,7 @@ public final class IntBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2, 3, 4, 5]> but was:<[1, 2, 3, 4]>");
         }
         try {
-            initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2})).rewindAndContainsExactlyInOrder(new ArrayList<Integer>());
+            initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2})).rewindAndContainsExactlyInOrder(DataHelper.<Integer>createIterable());
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<<EMPTY>> but was:<[1, 2]>");
@@ -2131,19 +2130,19 @@ public final class IntBufferAssertionTest extends AssertionTest {
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3, 4})).containsAny(DataHelper.createIterable(5, 3));
 
         try {
-            Raw.intBufferAssertion().containsAny(new ArrayList<Integer>());
+            Raw.intBufferAssertion().containsAny(DataHelper.<Integer>createIterable());
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
-            initialize(Raw.intBufferAssertion(), null).containsAny(new ArrayList<Integer>());
+            initialize(Raw.intBufferAssertion(), null).containsAny(DataHelper.<Integer>createIterable());
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
-            initialize(Raw.intBufferAssertion(), null, "Message").containsAny(new ArrayList<Integer>());
+            initialize(Raw.intBufferAssertion(), null, "Message").containsAny(DataHelper.<Integer>createIterable());
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
@@ -2173,13 +2172,13 @@ public final class IntBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
-            initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{})).containsAny(new ArrayList<Integer>());
+            initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{})).containsAny(DataHelper.<Integer>createIterable());
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always false.");
         }
         try {
-            initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{}), "Message").containsAny(new ArrayList<Integer>());
+            initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{}), "Message").containsAny(DataHelper.<Integer>createIterable());
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always false.");
@@ -2307,19 +2306,19 @@ public final class IntBufferAssertionTest extends AssertionTest {
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3, 4, 5}, 3)).rewindAndContainsAny(DataHelper.createIterable(1, 3));
 
         try {
-            Raw.intBufferAssertion().rewindAndContainsAny(new ArrayList<Integer>());
+            Raw.intBufferAssertion().rewindAndContainsAny(DataHelper.<Integer>createIterable());
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
-            initialize(Raw.intBufferAssertion(), null).rewindAndContainsAny(new ArrayList<Integer>());
+            initialize(Raw.intBufferAssertion(), null).rewindAndContainsAny(DataHelper.<Integer>createIterable());
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
-            initialize(Raw.intBufferAssertion(), null, "Message").rewindAndContainsAny(new ArrayList<Integer>());
+            initialize(Raw.intBufferAssertion(), null, "Message").rewindAndContainsAny(DataHelper.<Integer>createIterable());
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
@@ -2349,13 +2348,13 @@ public final class IntBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
-            initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{})).rewindAndContainsAny(new ArrayList<Integer>());
+            initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{})).rewindAndContainsAny(DataHelper.<Integer>createIterable());
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always false.");
         }
         try {
-            initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{}), "Message").rewindAndContainsAny(new ArrayList<Integer>());
+            initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{}), "Message").rewindAndContainsAny(DataHelper.<Integer>createIterable());
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always false.");
@@ -2469,19 +2468,19 @@ public final class IntBufferAssertionTest extends AssertionTest {
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3, 4, 5}, 0, 3)).containsNone(DataHelper.createIterable(4, 5));
 
         try {
-            Raw.intBufferAssertion().containsNone(new ArrayList<Integer>());
+            Raw.intBufferAssertion().containsNone(DataHelper.<Integer>createIterable());
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
-            initialize(Raw.intBufferAssertion(), null).containsNone(new ArrayList<Integer>());
+            initialize(Raw.intBufferAssertion(), null).containsNone(DataHelper.<Integer>createIterable());
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
-            initialize(Raw.intBufferAssertion(), null, "Message").containsNone(new ArrayList<Integer>());
+            initialize(Raw.intBufferAssertion(), null, "Message").containsNone(DataHelper.<Integer>createIterable());
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
@@ -2511,13 +2510,13 @@ public final class IntBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
-            initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{})).containsNone(new ArrayList<Integer>());
+            initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{})).containsNone(DataHelper.<Integer>createIterable());
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
-            initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{}), "Message").containsNone(new ArrayList<Integer>());
+            initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{}), "Message").containsNone(DataHelper.<Integer>createIterable());
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
@@ -2629,19 +2628,19 @@ public final class IntBufferAssertionTest extends AssertionTest {
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3, 4, 5}, 0, 3)).rewindAndContainsNone(DataHelper.createIterable(4, 5));
 
         try {
-            Raw.intBufferAssertion().rewindAndContainsNone(new ArrayList<Integer>());
+            Raw.intBufferAssertion().rewindAndContainsNone(DataHelper.<Integer>createIterable());
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
-            initialize(Raw.intBufferAssertion(), null).rewindAndContainsNone(new ArrayList<Integer>());
+            initialize(Raw.intBufferAssertion(), null).rewindAndContainsNone(DataHelper.<Integer>createIterable());
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
-            initialize(Raw.intBufferAssertion(), null, "Message").rewindAndContainsNone(new ArrayList<Integer>());
+            initialize(Raw.intBufferAssertion(), null, "Message").rewindAndContainsNone(DataHelper.<Integer>createIterable());
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
@@ -2671,13 +2670,13 @@ public final class IntBufferAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
-            initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{})).rewindAndContainsNone(new ArrayList<Integer>());
+            initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{})).rewindAndContainsNone(DataHelper.<Integer>createIterable());
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
-            initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{}), "Message").rewindAndContainsNone(new ArrayList<Integer>());
+            initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{}), "Message").rewindAndContainsNone(DataHelper.<Integer>createIterable());
             Assertions.fail("IntBufferAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
