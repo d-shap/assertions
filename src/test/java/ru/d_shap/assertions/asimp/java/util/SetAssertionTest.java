@@ -19,7 +19,6 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.asimp.java.util;
 
-import java.util.ArrayList;
 import java.util.Set;
 
 import org.hamcrest.Matchers;
@@ -480,19 +479,19 @@ public final class SetAssertionTest extends AssertionTest {
         initialize(Raw.<Double>setAssertion(), DataHelper.createHashSet(Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0)).containsAll(DataHelper.createIterable(Double.NEGATIVE_INFINITY, Double.NaN));
 
         try {
-            Raw.<String>setAssertion().containsAll(new ArrayList<String>());
+            Raw.<String>setAssertion().containsAll(DataHelper.<String>createIterable());
             Assertions.fail("SetAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
-            initialize(Raw.<String>setAssertion(), null).containsAll(new ArrayList<String>());
+            initialize(Raw.<String>setAssertion(), null).containsAll(DataHelper.<String>createIterable());
             Assertions.fail("SetAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
-            initialize(Raw.<String>setAssertion(), null, "Message").containsAll(new ArrayList<String>());
+            initialize(Raw.<String>setAssertion(), null, "Message").containsAll(DataHelper.<String>createIterable());
             Assertions.fail("SetAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
@@ -522,13 +521,13 @@ public final class SetAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
-            initialize(Raw.<String>setAssertion(), DataHelper.createHashSet("")).containsAll(new ArrayList<String>());
+            initialize(Raw.<String>setAssertion(), DataHelper.createHashSet("")).containsAll(DataHelper.<String>createIterable());
             Assertions.fail("SetAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
-            initialize(Raw.<String>setAssertion(), DataHelper.createHashSet(""), "Message").containsAll(new ArrayList<String>());
+            initialize(Raw.<String>setAssertion(), DataHelper.createHashSet(""), "Message").containsAll(DataHelper.<String>createIterable());
             Assertions.fail("SetAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
@@ -729,19 +728,19 @@ public final class SetAssertionTest extends AssertionTest {
         initialize(Raw.<Double>setAssertion(), DataHelper.createHashSet(Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0)).containsAllInOrder(DataHelper.createIterable(Double.NaN, Double.NEGATIVE_INFINITY, 3.0));
 
         try {
-            Raw.<String>setAssertion().containsAllInOrder(new ArrayList<String>());
+            Raw.<String>setAssertion().containsAllInOrder(DataHelper.<String>createIterable());
             Assertions.fail("SetAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
-            initialize(Raw.<String>setAssertion(), null).containsAllInOrder(new ArrayList<String>());
+            initialize(Raw.<String>setAssertion(), null).containsAllInOrder(DataHelper.<String>createIterable());
             Assertions.fail("SetAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
-            initialize(Raw.<String>setAssertion(), null, "Message").containsAllInOrder(new ArrayList<String>());
+            initialize(Raw.<String>setAssertion(), null, "Message").containsAllInOrder(DataHelper.<String>createIterable());
             Assertions.fail("SetAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
@@ -771,13 +770,13 @@ public final class SetAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
-            initialize(Raw.<String>setAssertion(), DataHelper.createHashSet("")).containsAllInOrder(new ArrayList<String>());
+            initialize(Raw.<String>setAssertion(), DataHelper.createHashSet("")).containsAllInOrder(DataHelper.<String>createIterable());
             Assertions.fail("SetAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
-            initialize(Raw.<String>setAssertion(), DataHelper.createHashSet(""), "Message").containsAllInOrder(new ArrayList<String>());
+            initialize(Raw.<String>setAssertion(), DataHelper.createHashSet(""), "Message").containsAllInOrder(DataHelper.<String>createIterable());
             Assertions.fail("SetAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
@@ -977,24 +976,24 @@ public final class SetAssertionTest extends AssertionTest {
         initialize(Raw.<String>setAssertion(), DataHelper.createHashSet("val1", "val2", "val3", "val4", "val5")).containsExactly(DataHelper.createIterable("val1", "val2", "val3", "val4", "val5"));
         initialize(Raw.<String>setAssertion(), DataHelper.createHashSet("val1", "val2", "val3", "val4", "val5")).containsExactly(DataHelper.createIterable("val2", "val4", "val1", "val3", "val5"));
         initialize(Raw.<String>setAssertion(), DataHelper.createHashSet("val1", "val2", "val3", "val4", null)).containsExactly(DataHelper.createIterable("val2", "val4", "val1", "val3", null));
-        initialize(Raw.setAssertion(), DataHelper.createHashSet()).containsExactly(new ArrayList<>());
+        initialize(Raw.<String>setAssertion(), DataHelper.<String>createHashSet()).containsExactly(DataHelper.<String>createIterable());
         initialize(Raw.<Float>setAssertion(), DataHelper.createHashSet(Float.NaN, Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY, 3.0f)).containsExactly(DataHelper.createIterable(Float.NEGATIVE_INFINITY, Float.NaN, 3.0f, Float.POSITIVE_INFINITY));
         initialize(Raw.<Double>setAssertion(), DataHelper.createHashSet(Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0)).containsExactly(DataHelper.createIterable(Double.NEGATIVE_INFINITY, Double.NaN, 3.0, Double.POSITIVE_INFINITY));
 
         try {
-            Raw.<String>setAssertion().containsExactly(new ArrayList<String>());
+            Raw.<String>setAssertion().containsExactly(DataHelper.<String>createIterable());
             Assertions.fail("SetAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
-            initialize(Raw.<String>setAssertion(), null).containsExactly(new ArrayList<String>());
+            initialize(Raw.<String>setAssertion(), null).containsExactly(DataHelper.<String>createIterable());
             Assertions.fail("SetAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
-            initialize(Raw.<String>setAssertion(), null, "Message").containsExactly(new ArrayList<String>());
+            initialize(Raw.<String>setAssertion(), null, "Message").containsExactly(DataHelper.<String>createIterable());
             Assertions.fail("SetAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
@@ -1048,7 +1047,7 @@ public final class SetAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[val2, val1]> but was:<[val1, val2, val3]>");
         }
         try {
-            initialize(Raw.<String>setAssertion(), DataHelper.createHashSet("val1", "val2", "val3")).containsExactly(new ArrayList<String>());
+            initialize(Raw.<String>setAssertion(), DataHelper.createHashSet("val1", "val2", "val3")).containsExactly(DataHelper.<String>createIterable());
             Assertions.fail("SetAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<<EMPTY>> but was:<[val1, val2, val3]>");
@@ -1222,24 +1221,24 @@ public final class SetAssertionTest extends AssertionTest {
         initialize(Raw.<String>setAssertion(), DataHelper.createHashSet("val1", "val2", "val3")).containsExactlyInOrder(DataHelper.createIterable("val1", "val2", "val3"));
         initialize(Raw.<String>setAssertion(), DataHelper.createHashSet("val1", "val2", "val3", "val4", "val5")).containsExactlyInOrder(DataHelper.createIterable("val1", "val2", "val3", "val4", "val5"));
         initialize(Raw.<String>setAssertion(), DataHelper.createHashSet("val1", "val2", "val3", "val4", null)).containsExactlyInOrder(DataHelper.createIterable("val1", "val2", "val3", "val4", null));
-        initialize(Raw.setAssertion(), DataHelper.createHashSet()).containsExactlyInOrder(new ArrayList<>());
+        initialize(Raw.<String>setAssertion(), DataHelper.<String>createHashSet()).containsExactlyInOrder(DataHelper.<String>createIterable());
         initialize(Raw.<Float>setAssertion(), DataHelper.createHashSet(Float.NaN, Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY, 3.0f)).containsExactlyInOrder(DataHelper.createIterable(Float.NaN, Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY, 3.0f));
         initialize(Raw.<Double>setAssertion(), DataHelper.createHashSet(Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0)).containsExactlyInOrder(DataHelper.createIterable(Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0));
 
         try {
-            Raw.<String>setAssertion().containsExactlyInOrder(new ArrayList<String>());
+            Raw.<String>setAssertion().containsExactlyInOrder(DataHelper.<String>createIterable());
             Assertions.fail("SetAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
-            initialize(Raw.<String>setAssertion(), null).containsExactlyInOrder(new ArrayList<String>());
+            initialize(Raw.<String>setAssertion(), null).containsExactlyInOrder(DataHelper.<String>createIterable());
             Assertions.fail("SetAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
-            initialize(Raw.<String>setAssertion(), null, "Message").containsExactlyInOrder(new ArrayList<String>());
+            initialize(Raw.<String>setAssertion(), null, "Message").containsExactlyInOrder(DataHelper.<String>createIterable());
             Assertions.fail("SetAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
@@ -1293,7 +1292,7 @@ public final class SetAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[val1, val2, val3, val4]> but was:<[val1, val2, val3]>");
         }
         try {
-            initialize(Raw.<String>setAssertion(), DataHelper.createHashSet("val1", "val2", "val3")).containsExactlyInOrder(new ArrayList<String>());
+            initialize(Raw.<String>setAssertion(), DataHelper.createHashSet("val1", "val2", "val3")).containsExactlyInOrder(DataHelper.<String>createIterable());
             Assertions.fail("SetAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<<EMPTY>> but was:<[val1, val2, val3]>");
@@ -1451,19 +1450,19 @@ public final class SetAssertionTest extends AssertionTest {
         initialize(Raw.<Double>setAssertion(), DataHelper.createHashSet(Double.NaN, Double.NEGATIVE_INFINITY, 3.0)).containsAny(DataHelper.createIterable(Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY));
 
         try {
-            Raw.<String>setAssertion().containsAny(new ArrayList<String>());
+            Raw.<String>setAssertion().containsAny(DataHelper.<String>createIterable());
             Assertions.fail("SetAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
-            initialize(Raw.<String>setAssertion(), null).containsAny(new ArrayList<String>());
+            initialize(Raw.<String>setAssertion(), null).containsAny(DataHelper.<String>createIterable());
             Assertions.fail("SetAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
-            initialize(Raw.<String>setAssertion(), null, "Message").containsAny(new ArrayList<String>());
+            initialize(Raw.<String>setAssertion(), null, "Message").containsAny(DataHelper.<String>createIterable());
             Assertions.fail("SetAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
@@ -1493,13 +1492,13 @@ public final class SetAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
-            initialize(Raw.<String>setAssertion(), DataHelper.createHashSet("")).containsAny(new ArrayList<String>());
+            initialize(Raw.<String>setAssertion(), DataHelper.createHashSet("")).containsAny(DataHelper.<String>createIterable());
             Assertions.fail("SetAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always false.");
         }
         try {
-            initialize(Raw.<String>setAssertion(), DataHelper.createHashSet(""), "Message").containsAny(new ArrayList<String>());
+            initialize(Raw.<String>setAssertion(), DataHelper.createHashSet(""), "Message").containsAny(DataHelper.<String>createIterable());
             Assertions.fail("SetAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always false.");
@@ -1660,19 +1659,19 @@ public final class SetAssertionTest extends AssertionTest {
         initialize(Raw.<Double>setAssertion(), DataHelper.createHashSet(Double.NaN, Double.NEGATIVE_INFINITY, 3.0)).containsNone(DataHelper.createIterable(Double.POSITIVE_INFINITY, 4.0));
 
         try {
-            Raw.<String>setAssertion().containsNone(new ArrayList<String>());
+            Raw.<String>setAssertion().containsNone(DataHelper.<String>createIterable());
             Assertions.fail("SetAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
-            initialize(Raw.<String>setAssertion(), null).containsNone(new ArrayList<String>());
+            initialize(Raw.<String>setAssertion(), null).containsNone(DataHelper.<String>createIterable());
             Assertions.fail("SetAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
-            initialize(Raw.<String>setAssertion(), null, "Message").containsNone(new ArrayList<String>());
+            initialize(Raw.<String>setAssertion(), null, "Message").containsNone(DataHelper.<String>createIterable());
             Assertions.fail("SetAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
@@ -1702,13 +1701,13 @@ public final class SetAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
-            initialize(Raw.<String>setAssertion(), DataHelper.createHashSet("")).containsNone(new ArrayList<String>());
+            initialize(Raw.<String>setAssertion(), DataHelper.createHashSet("")).containsNone(DataHelper.<String>createIterable());
             Assertions.fail("SetAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
-            initialize(Raw.<String>setAssertion(), DataHelper.createHashSet(""), "Message").containsNone(new ArrayList<String>());
+            initialize(Raw.<String>setAssertion(), DataHelper.createHashSet(""), "Message").containsNone(DataHelper.<String>createIterable());
             Assertions.fail("SetAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");

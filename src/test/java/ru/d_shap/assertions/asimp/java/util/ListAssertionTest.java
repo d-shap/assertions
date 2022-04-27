@@ -19,7 +19,6 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.asimp.java.util;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -50,7 +49,7 @@ public final class ListAssertionTest extends AssertionTest {
      */
     @Test
     public void actualValueValidatorTest() {
-        initialize(Raw.<String>listAssertion(), new ArrayList<String>());
+        initialize(Raw.<String>listAssertion(), DataHelper.<String>createArrayList());
 
         try {
             initializeWithRawActual(Raw.<String>listAssertion(), new Object());
@@ -71,7 +70,7 @@ public final class ListAssertionTest extends AssertionTest {
      */
     @Test
     public void isEmptyTest() {
-        initialize(Raw.<String>listAssertion(), new ArrayList<String>()).isEmpty();
+        initialize(Raw.<String>listAssertion(), DataHelper.<String>createArrayList()).isEmpty();
 
         try {
             Raw.<String>listAssertion().isEmpty();
@@ -110,7 +109,7 @@ public final class ListAssertionTest extends AssertionTest {
      */
     @Test
     public void isNullOrEmptyTest() {
-        initialize(Raw.<String>listAssertion(), new ArrayList<String>()).isNullOrEmpty();
+        initialize(Raw.<String>listAssertion(), DataHelper.<String>createArrayList()).isNullOrEmpty();
         initialize(Raw.<String>listAssertion(), null).isNullOrEmpty();
 
         try {
@@ -160,13 +159,13 @@ public final class ListAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.<String>listAssertion(), new ArrayList<String>()).isNotEmpty();
+            initialize(Raw.<String>listAssertion(), DataHelper.<String>createArrayList()).isNotEmpty();
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be empty.");
         }
         try {
-            initialize(Raw.<String>listAssertion(), new ArrayList<String>(), "Message").isNotEmpty();
+            initialize(Raw.<String>listAssertion(), DataHelper.<String>createArrayList(), "Message").isNotEmpty();
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be empty.");
@@ -178,7 +177,7 @@ public final class ListAssertionTest extends AssertionTest {
      */
     @Test
     public void isRandomAccessTest() {
-        initialize(Raw.<String>listAssertion(), new ArrayList<String>()).isRandomAccess();
+        initialize(Raw.<String>listAssertion(), DataHelper.<String>createArrayList()).isRandomAccess();
 
         try {
             Raw.<String>listAssertion().isRandomAccess();
@@ -238,13 +237,13 @@ public final class ListAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.<String>listAssertion(), new ArrayList<String>()).isNotRandomAccess();
+            initialize(Raw.<String>listAssertion(), DataHelper.<String>createArrayList()).isNotRandomAccess();
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's class.\n\tActual value should not be the subtype of the expected value.\n\tExpected:<java.util.RandomAccess> but was:<java.util.ArrayList>");
         }
         try {
-            initialize(Raw.<String>listAssertion(), new ArrayList<String>(), "Message").isNotRandomAccess();
+            initialize(Raw.<String>listAssertion(), DataHelper.<String>createArrayList(), "Message").isNotRandomAccess();
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's class.\n\tActual value should not be the subtype of the expected value.\n\tExpected:<java.util.RandomAccess> but was:<java.util.ArrayList>");
@@ -457,25 +456,25 @@ public final class ListAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.<String>listAssertion(), new ArrayList<String>()).containsAll((String[]) null);
+            initialize(Raw.<String>listAssertion(), DataHelper.<String>createArrayList()).containsAll((String[]) null);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
-            initialize(Raw.<String>listAssertion(), new ArrayList<String>(), "Message").containsAll((String[]) null);
+            initialize(Raw.<String>listAssertion(), DataHelper.<String>createArrayList(), "Message").containsAll((String[]) null);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
-            initialize(Raw.<String>listAssertion(), new ArrayList<String>()).containsAll();
+            initialize(Raw.<String>listAssertion(), DataHelper.<String>createArrayList()).containsAll();
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
-            initialize(Raw.<String>listAssertion(), new ArrayList<String>(), "Message").containsAll();
+            initialize(Raw.<String>listAssertion(), DataHelper.<String>createArrayList(), "Message").containsAll();
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
@@ -552,19 +551,19 @@ public final class ListAssertionTest extends AssertionTest {
         initialize(Raw.<Double>listAssertion(), DataHelper.createArrayList(Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0)).containsAll(DataHelper.createIterable(Double.NEGATIVE_INFINITY, Double.NaN));
 
         try {
-            Raw.<String>listAssertion().containsAll(new ArrayList<String>());
+            Raw.<String>listAssertion().containsAll(DataHelper.<String>createIterable());
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
-            initialize(Raw.<String>listAssertion(), null).containsAll(new ArrayList<String>());
+            initialize(Raw.<String>listAssertion(), null).containsAll(DataHelper.<String>createIterable());
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
-            initialize(Raw.<String>listAssertion(), null, "Message").containsAll(new ArrayList<String>());
+            initialize(Raw.<String>listAssertion(), null, "Message").containsAll(DataHelper.<String>createIterable());
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
@@ -582,25 +581,25 @@ public final class ListAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.<String>listAssertion(), new ArrayList<String>()).containsAll((Iterable<String>) null);
+            initialize(Raw.<String>listAssertion(), DataHelper.<String>createArrayList()).containsAll((Iterable<String>) null);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
-            initialize(Raw.<String>listAssertion(), new ArrayList<String>(), "Message").containsAll((Iterable<String>) null);
+            initialize(Raw.<String>listAssertion(), DataHelper.<String>createArrayList(), "Message").containsAll((Iterable<String>) null);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
-            initialize(Raw.<String>listAssertion(), new ArrayList<String>()).containsAll(new ArrayList<String>());
+            initialize(Raw.<String>listAssertion(), DataHelper.<String>createArrayList()).containsAll(DataHelper.<String>createIterable());
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
-            initialize(Raw.<String>listAssertion(), new ArrayList<String>(), "Message").containsAll(new ArrayList<String>());
+            initialize(Raw.<String>listAssertion(), DataHelper.<String>createArrayList(), "Message").containsAll(DataHelper.<String>createIterable());
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
@@ -695,25 +694,25 @@ public final class ListAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.<String>listAssertion(), new ArrayList<String>()).containsAllInOrder((String[]) null);
+            initialize(Raw.<String>listAssertion(), DataHelper.<String>createArrayList()).containsAllInOrder((String[]) null);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
-            initialize(Raw.<String>listAssertion(), new ArrayList<String>(), "Message").containsAllInOrder((String[]) null);
+            initialize(Raw.<String>listAssertion(), DataHelper.<String>createArrayList(), "Message").containsAllInOrder((String[]) null);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
-            initialize(Raw.<String>listAssertion(), new ArrayList<String>()).containsAllInOrder();
+            initialize(Raw.<String>listAssertion(), DataHelper.<String>createArrayList()).containsAllInOrder();
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
-            initialize(Raw.<String>listAssertion(), new ArrayList<String>(), "Message").containsAllInOrder();
+            initialize(Raw.<String>listAssertion(), DataHelper.<String>createArrayList(), "Message").containsAllInOrder();
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
@@ -790,19 +789,19 @@ public final class ListAssertionTest extends AssertionTest {
         initialize(Raw.<Double>listAssertion(), DataHelper.createArrayList(Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0)).containsAllInOrder(DataHelper.createIterable(Double.NaN, Double.NEGATIVE_INFINITY, 3.0));
 
         try {
-            Raw.<String>listAssertion().containsAllInOrder(new ArrayList<String>());
+            Raw.<String>listAssertion().containsAllInOrder(DataHelper.<String>createIterable());
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
-            initialize(Raw.<String>listAssertion(), null).containsAllInOrder(new ArrayList<String>());
+            initialize(Raw.<String>listAssertion(), null).containsAllInOrder(DataHelper.<String>createIterable());
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
-            initialize(Raw.<String>listAssertion(), null, "Message").containsAllInOrder(new ArrayList<String>());
+            initialize(Raw.<String>listAssertion(), null, "Message").containsAllInOrder(DataHelper.<String>createIterable());
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
@@ -820,25 +819,25 @@ public final class ListAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.<String>listAssertion(), new ArrayList<String>()).containsAllInOrder((Iterable<String>) null);
+            initialize(Raw.<String>listAssertion(), DataHelper.<String>createArrayList()).containsAllInOrder((Iterable<String>) null);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
-            initialize(Raw.<String>listAssertion(), new ArrayList<String>(), "Message").containsAllInOrder((Iterable<String>) null);
+            initialize(Raw.<String>listAssertion(), DataHelper.<String>createArrayList(), "Message").containsAllInOrder((Iterable<String>) null);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
-            initialize(Raw.<String>listAssertion(), new ArrayList<String>()).containsAllInOrder(new ArrayList<String>());
+            initialize(Raw.<String>listAssertion(), DataHelper.<String>createArrayList()).containsAllInOrder(DataHelper.<String>createIterable());
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
-            initialize(Raw.<String>listAssertion(), new ArrayList<String>(), "Message").containsAllInOrder(new ArrayList<String>());
+            initialize(Raw.<String>listAssertion(), DataHelper.<String>createArrayList(), "Message").containsAllInOrder(DataHelper.<String>createIterable());
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
@@ -899,7 +898,7 @@ public final class ListAssertionTest extends AssertionTest {
         initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3", "val4", "val5")).containsExactly("val1", "val2", "val3", "val4", "val5");
         initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3", "val4", "val5")).containsExactly("val2", "val4", "val1", "val3", "val5");
         initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3", "val4", null)).containsExactly("val2", "val4", "val1", "val3", null);
-        initialize(Raw.<String>listAssertion(), new ArrayList<String>()).containsExactly();
+        initialize(Raw.<String>listAssertion(), DataHelper.<String>createArrayList()).containsExactly();
         initialize(Raw.<Float>listAssertion(), DataHelper.createArrayList(Float.NaN, Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY, 3.0f)).containsExactly(Float.NEGATIVE_INFINITY, Float.NaN, 3.0f, Float.POSITIVE_INFINITY);
         initialize(Raw.<Double>listAssertion(), DataHelper.createArrayList(Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0)).containsExactly(Double.NEGATIVE_INFINITY, Double.NaN, 3.0, Double.POSITIVE_INFINITY);
 
@@ -934,13 +933,13 @@ public final class ListAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.<String>listAssertion(), new ArrayList<String>()).containsExactly((String[]) null);
+            initialize(Raw.<String>listAssertion(), DataHelper.<String>createArrayList()).containsExactly((String[]) null);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
-            initialize(Raw.<String>listAssertion(), new ArrayList<String>(), "Message").containsExactly((String[]) null);
+            initialize(Raw.<String>listAssertion(), DataHelper.<String>createArrayList(), "Message").containsExactly((String[]) null);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
@@ -1025,24 +1024,24 @@ public final class ListAssertionTest extends AssertionTest {
         initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3", "val4", "val5")).containsExactly(DataHelper.createIterable("val1", "val2", "val3", "val4", "val5"));
         initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3", "val4", "val5")).containsExactly(DataHelper.createIterable("val2", "val4", "val1", "val3", "val5"));
         initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3", "val4", null)).containsExactly(DataHelper.createIterable("val2", "val4", "val1", "val3", null));
-        initialize(Raw.<String>listAssertion(), new ArrayList<String>()).containsExactly(new ArrayList<String>());
+        initialize(Raw.<String>listAssertion(), DataHelper.<String>createArrayList()).containsExactly(DataHelper.<String>createIterable());
         initialize(Raw.<Float>listAssertion(), DataHelper.createArrayList(Float.NaN, Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY, 3.0f)).containsExactly(DataHelper.createIterable(Float.NEGATIVE_INFINITY, Float.NaN, 3.0f, Float.POSITIVE_INFINITY));
         initialize(Raw.<Double>listAssertion(), DataHelper.createArrayList(Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0)).containsExactly(DataHelper.createIterable(Double.NEGATIVE_INFINITY, Double.NaN, 3.0, Double.POSITIVE_INFINITY));
 
         try {
-            Raw.<String>listAssertion().containsExactly(new ArrayList<String>());
+            Raw.<String>listAssertion().containsExactly(DataHelper.<String>createIterable());
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
-            initialize(Raw.<String>listAssertion(), null).containsExactly(new ArrayList<String>());
+            initialize(Raw.<String>listAssertion(), null).containsExactly(DataHelper.<String>createIterable());
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
-            initialize(Raw.<String>listAssertion(), null, "Message").containsExactly(new ArrayList<String>());
+            initialize(Raw.<String>listAssertion(), null, "Message").containsExactly(DataHelper.<String>createIterable());
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
@@ -1060,13 +1059,13 @@ public final class ListAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.<String>listAssertion(), new ArrayList<String>()).containsExactly((Iterable<String>) null);
+            initialize(Raw.<String>listAssertion(), DataHelper.<String>createArrayList()).containsExactly((Iterable<String>) null);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
-            initialize(Raw.<String>listAssertion(), new ArrayList<String>(), "Message").containsExactly((Iterable<String>) null);
+            initialize(Raw.<String>listAssertion(), DataHelper.<String>createArrayList(), "Message").containsExactly((Iterable<String>) null);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
@@ -1096,7 +1095,7 @@ public final class ListAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[val2, val1]> but was:<[val1, val2, val3]>");
         }
         try {
-            initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3")).containsExactly(new ArrayList<String>());
+            initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3")).containsExactly(DataHelper.<String>createIterable());
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<<EMPTY>> but was:<[val1, val2, val3]>");
@@ -1135,7 +1134,7 @@ public final class ListAssertionTest extends AssertionTest {
         initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3")).containsExactlyInOrder("val1", "val2", "val3");
         initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3", "val4", "val5")).containsExactlyInOrder("val1", "val2", "val3", "val4", "val5");
         initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3", "val4", null)).containsExactlyInOrder("val1", "val2", "val3", "val4", null);
-        initialize(Raw.<String>listAssertion(), new ArrayList<String>()).containsExactlyInOrder();
+        initialize(Raw.<String>listAssertion(), DataHelper.<String>createArrayList()).containsExactlyInOrder();
         initialize(Raw.<Float>listAssertion(), DataHelper.createArrayList(Float.NaN, Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY, 3.0f)).containsExactlyInOrder(Float.NaN, Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY, 3.0f);
         initialize(Raw.<Double>listAssertion(), DataHelper.createArrayList(Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0)).containsExactlyInOrder(Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0);
 
@@ -1170,13 +1169,13 @@ public final class ListAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.<String>listAssertion(), new ArrayList<String>()).containsExactlyInOrder((String[]) null);
+            initialize(Raw.<String>listAssertion(), DataHelper.<String>createArrayList()).containsExactlyInOrder((String[]) null);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
-            initialize(Raw.<String>listAssertion(), new ArrayList<String>(), "Message").containsExactlyInOrder((String[]) null);
+            initialize(Raw.<String>listAssertion(), DataHelper.<String>createArrayList(), "Message").containsExactlyInOrder((String[]) null);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
@@ -1257,24 +1256,24 @@ public final class ListAssertionTest extends AssertionTest {
         initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3")).containsExactlyInOrder(DataHelper.createIterable("val1", "val2", "val3"));
         initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3", "val4", "val5")).containsExactlyInOrder(DataHelper.createIterable("val1", "val2", "val3", "val4", "val5"));
         initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3", "val4", null)).containsExactlyInOrder(DataHelper.createIterable("val1", "val2", "val3", "val4", null));
-        initialize(Raw.<String>listAssertion(), new ArrayList<String>()).containsExactlyInOrder(new ArrayList<String>());
+        initialize(Raw.<String>listAssertion(), DataHelper.<String>createArrayList()).containsExactlyInOrder(DataHelper.<String>createIterable());
         initialize(Raw.<Float>listAssertion(), DataHelper.createArrayList(Float.NaN, Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY, 3.0f)).containsExactlyInOrder(DataHelper.createIterable(Float.NaN, Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY, 3.0f));
         initialize(Raw.<Double>listAssertion(), DataHelper.createArrayList(Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0)).containsExactlyInOrder(DataHelper.createIterable(Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0));
 
         try {
-            Raw.<String>listAssertion().containsExactlyInOrder(new ArrayList<String>());
+            Raw.<String>listAssertion().containsExactlyInOrder(DataHelper.<String>createIterable());
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
-            initialize(Raw.<String>listAssertion(), null).containsExactlyInOrder(new ArrayList<String>());
+            initialize(Raw.<String>listAssertion(), null).containsExactlyInOrder(DataHelper.<String>createIterable());
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
-            initialize(Raw.<String>listAssertion(), null, "Message").containsExactlyInOrder(new ArrayList<String>());
+            initialize(Raw.<String>listAssertion(), null, "Message").containsExactlyInOrder(DataHelper.<String>createIterable());
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
@@ -1292,13 +1291,13 @@ public final class ListAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.<String>listAssertion(), new ArrayList<String>()).containsExactlyInOrder((Iterable<String>) null);
+            initialize(Raw.<String>listAssertion(), DataHelper.<String>createArrayList()).containsExactlyInOrder((Iterable<String>) null);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
-            initialize(Raw.<String>listAssertion(), new ArrayList<String>(), "Message").containsExactlyInOrder((Iterable<String>) null);
+            initialize(Raw.<String>listAssertion(), DataHelper.<String>createArrayList(), "Message").containsExactlyInOrder((Iterable<String>) null);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
@@ -1328,7 +1327,7 @@ public final class ListAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[val1, val2, val3, val4]> but was:<[val1, val2, val3]>");
         }
         try {
-            initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3")).containsExactlyInOrder(new ArrayList<String>());
+            initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3")).containsExactlyInOrder(DataHelper.<String>createIterable());
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<<EMPTY>> but was:<[val1, val2, val3]>");
@@ -1403,25 +1402,25 @@ public final class ListAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.<String>listAssertion(), new ArrayList<String>()).containsAny((String[]) null);
+            initialize(Raw.<String>listAssertion(), DataHelper.<String>createArrayList()).containsAny((String[]) null);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
-            initialize(Raw.<String>listAssertion(), new ArrayList<String>(), "Message").containsAny((String[]) null);
+            initialize(Raw.<String>listAssertion(), DataHelper.<String>createArrayList(), "Message").containsAny((String[]) null);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
-            initialize(Raw.<String>listAssertion(), new ArrayList<String>()).containsAny();
+            initialize(Raw.<String>listAssertion(), DataHelper.<String>createArrayList()).containsAny();
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always false.");
         }
         try {
-            initialize(Raw.<String>listAssertion(), new ArrayList<String>(), "Message").containsAny();
+            initialize(Raw.<String>listAssertion(), DataHelper.<String>createArrayList(), "Message").containsAny();
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always false.");
@@ -1484,19 +1483,19 @@ public final class ListAssertionTest extends AssertionTest {
         initialize(Raw.<Double>listAssertion(), DataHelper.createArrayList(Double.NaN, Double.NEGATIVE_INFINITY, 3.0)).containsAny(DataHelper.createIterable(Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY));
 
         try {
-            Raw.<String>listAssertion().containsAny(new ArrayList<String>());
+            Raw.<String>listAssertion().containsAny(DataHelper.<String>createIterable());
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
-            initialize(Raw.<String>listAssertion(), null).containsAny(new ArrayList<String>());
+            initialize(Raw.<String>listAssertion(), null).containsAny(DataHelper.<String>createIterable());
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
-            initialize(Raw.<String>listAssertion(), null, "Message").containsAny(new ArrayList<String>());
+            initialize(Raw.<String>listAssertion(), null, "Message").containsAny(DataHelper.<String>createIterable());
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
@@ -1514,25 +1513,25 @@ public final class ListAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.<String>listAssertion(), new ArrayList<String>()).containsAny((Iterable<String>) null);
+            initialize(Raw.<String>listAssertion(), DataHelper.<String>createArrayList()).containsAny((Iterable<String>) null);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
-            initialize(Raw.<String>listAssertion(), new ArrayList<String>(), "Message").containsAny((Iterable<String>) null);
+            initialize(Raw.<String>listAssertion(), DataHelper.<String>createArrayList(), "Message").containsAny((Iterable<String>) null);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
-            initialize(Raw.<String>listAssertion(), new ArrayList<String>()).containsAny(new ArrayList<String>());
+            initialize(Raw.<String>listAssertion(), DataHelper.<String>createArrayList()).containsAny(DataHelper.<String>createIterable());
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always false.");
         }
         try {
-            initialize(Raw.<String>listAssertion(), new ArrayList<String>(), "Message").containsAny(new ArrayList<String>());
+            initialize(Raw.<String>listAssertion(), DataHelper.<String>createArrayList(), "Message").containsAny(DataHelper.<String>createIterable());
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always false.");
@@ -1613,25 +1612,25 @@ public final class ListAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.<String>listAssertion(), new ArrayList<String>()).containsNone((String[]) null);
+            initialize(Raw.<String>listAssertion(), DataHelper.<String>createArrayList()).containsNone((String[]) null);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
-            initialize(Raw.<String>listAssertion(), new ArrayList<String>(), "Message").containsNone((String[]) null);
+            initialize(Raw.<String>listAssertion(), DataHelper.<String>createArrayList(), "Message").containsNone((String[]) null);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
-            initialize(Raw.<String>listAssertion(), new ArrayList<String>()).containsNone();
+            initialize(Raw.<String>listAssertion(), DataHelper.<String>createArrayList()).containsNone();
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
-            initialize(Raw.<String>listAssertion(), new ArrayList<String>(), "Message").containsNone();
+            initialize(Raw.<String>listAssertion(), DataHelper.<String>createArrayList(), "Message").containsNone();
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
@@ -1693,19 +1692,19 @@ public final class ListAssertionTest extends AssertionTest {
         initialize(Raw.<Double>listAssertion(), DataHelper.createArrayList(Double.NaN, Double.NEGATIVE_INFINITY, 3.0)).containsNone(DataHelper.createIterable(Double.POSITIVE_INFINITY, 4.0));
 
         try {
-            Raw.<String>listAssertion().containsNone(new ArrayList<String>());
+            Raw.<String>listAssertion().containsNone(DataHelper.<String>createIterable());
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
-            initialize(Raw.<String>listAssertion(), null).containsNone(new ArrayList<String>());
+            initialize(Raw.<String>listAssertion(), null).containsNone(DataHelper.<String>createIterable());
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
-            initialize(Raw.<String>listAssertion(), null, "Message").containsNone(new ArrayList<String>());
+            initialize(Raw.<String>listAssertion(), null, "Message").containsNone(DataHelper.<String>createIterable());
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
@@ -1723,25 +1722,25 @@ public final class ListAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.<String>listAssertion(), new ArrayList<String>()).containsNone((Iterable<String>) null);
+            initialize(Raw.<String>listAssertion(), DataHelper.<String>createArrayList()).containsNone((Iterable<String>) null);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
-            initialize(Raw.<String>listAssertion(), new ArrayList<String>(), "Message").containsNone((Iterable<String>) null);
+            initialize(Raw.<String>listAssertion(), DataHelper.<String>createArrayList(), "Message").containsNone((Iterable<String>) null);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
-            initialize(Raw.<String>listAssertion(), new ArrayList<String>()).containsNone(new ArrayList<String>());
+            initialize(Raw.<String>listAssertion(), DataHelper.<String>createArrayList()).containsNone(DataHelper.<String>createIterable());
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
-            initialize(Raw.<String>listAssertion(), new ArrayList<String>(), "Message").containsNone(new ArrayList<String>());
+            initialize(Raw.<String>listAssertion(), DataHelper.<String>createArrayList(), "Message").containsNone(DataHelper.<String>createIterable());
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
@@ -1879,13 +1878,13 @@ public final class ListAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.<String>listAssertion(), new ArrayList<String>()).toSize(null);
+            initialize(Raw.<String>listAssertion(), DataHelper.<String>createArrayList()).toSize(null);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: matcher.");
         }
         try {
-            initialize(Raw.<String>listAssertion(), new ArrayList<String>(), "Message").toSize(null);
+            initialize(Raw.<String>listAssertion(), DataHelper.<String>createArrayList(), "Message").toSize(null);
             Assertions.fail("ListAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: matcher.");
