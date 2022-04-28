@@ -48,7 +48,7 @@ public final class SetAssertionTest extends AssertionTest {
      */
     @Test
     public void actualValueValidatorTest() {
-        initialize(Raw.setAssertion(), DataHelper.createHashSet());
+        initialize(Raw.<String>setAssertion(), DataHelper.<String>createHashSet());
 
         try {
             initializeWithRawActual(Raw.<String>setAssertion(), new Object());
@@ -69,7 +69,7 @@ public final class SetAssertionTest extends AssertionTest {
      */
     @Test
     public void isEmptyTest() {
-        initialize(Raw.setAssertion(), DataHelper.createHashSet()).isEmpty();
+        initialize(Raw.<String>setAssertion(), DataHelper.<String>createHashSet()).isEmpty();
 
         try {
             Raw.<String>setAssertion().isEmpty();
@@ -108,7 +108,7 @@ public final class SetAssertionTest extends AssertionTest {
      */
     @Test
     public void isNullOrEmptyTest() {
-        initialize(Raw.setAssertion(), DataHelper.createHashSet()).isNullOrEmpty();
+        initialize(Raw.<String>setAssertion(), DataHelper.<String>createHashSet()).isNullOrEmpty();
         initialize(Raw.<String>setAssertion(), null).isNullOrEmpty();
 
         try {
@@ -158,13 +158,13 @@ public final class SetAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.setAssertion(), DataHelper.createHashSet()).isNotEmpty();
+            initialize(Raw.<String>setAssertion(), DataHelper.<String>createHashSet()).isNotEmpty();
             Assertions.fail("SetAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be empty.");
         }
         try {
-            initialize(Raw.setAssertion(), DataHelper.createHashSet(), "Message").isNotEmpty();
+            initialize(Raw.<String>setAssertion(), DataHelper.<String>createHashSet(), "Message").isNotEmpty();
             Assertions.fail("SetAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be empty.");
@@ -837,7 +837,7 @@ public final class SetAssertionTest extends AssertionTest {
         initialize(Raw.<String>setAssertion(), DataHelper.createHashSet("val1", "val2", "val3", "val4", "val5")).containsExactly("val1", "val2", "val3", "val4", "val5");
         initialize(Raw.<String>setAssertion(), DataHelper.createHashSet("val1", "val2", "val3", "val4", "val5")).containsExactly("val2", "val4", "val1", "val3", "val5");
         initialize(Raw.<String>setAssertion(), DataHelper.createHashSet("val1", "val2", "val3", "val4", null)).containsExactly("val2", "val4", "val1", "val3", null);
-        initialize(Raw.setAssertion(), DataHelper.createHashSet()).containsExactly();
+        initialize(Raw.<String>setAssertion(), DataHelper.<String>createHashSet()).containsExactly();
         initialize(Raw.<String>setAssertion(), createDuplicateSet("val1", "val1", "val1")).containsExactly("val1", "val1", "val1");
         initialize(Raw.<Float>setAssertion(), DataHelper.createHashSet(Float.NaN, Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY, 3.0f)).containsExactly(Float.NEGATIVE_INFINITY, Float.NaN, 3.0f, Float.POSITIVE_INFINITY);
         initialize(Raw.<Double>setAssertion(), DataHelper.createHashSet(Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0)).containsExactly(Double.NEGATIVE_INFINITY, Double.NaN, 3.0, Double.POSITIVE_INFINITY);
@@ -1086,7 +1086,7 @@ public final class SetAssertionTest extends AssertionTest {
         initialize(Raw.<String>setAssertion(), DataHelper.createHashSet("val1", "val2", "val3")).containsExactlyInOrder("val1", "val2", "val3");
         initialize(Raw.<String>setAssertion(), DataHelper.createHashSet("val1", "val2", "val3", "val4", "val5")).containsExactlyInOrder("val1", "val2", "val3", "val4", "val5");
         initialize(Raw.<String>setAssertion(), DataHelper.createHashSet("val1", "val2", "val3", "val4", null)).containsExactlyInOrder("val1", "val2", "val3", "val4", null);
-        initialize(Raw.setAssertion(), DataHelper.createHashSet()).containsExactlyInOrder();
+        initialize(Raw.<String>setAssertion(), DataHelper.<String>createHashSet()).containsExactlyInOrder();
         initialize(Raw.<String>setAssertion(), createDuplicateSet("val1", "val1", "val1")).containsExactlyInOrder("val1", "val1", "val1");
         initialize(Raw.<Float>setAssertion(), DataHelper.createHashSet(Float.NaN, Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY, 3.0f)).containsExactlyInOrder(Float.NaN, Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY, 3.0f);
         initialize(Raw.<Double>setAssertion(), DataHelper.createHashSet(Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0)).containsExactlyInOrder(Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0);

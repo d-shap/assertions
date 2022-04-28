@@ -48,7 +48,7 @@ public final class SortedSetAssertionTest extends AssertionTest {
      */
     @Test
     public void actualValueValidatorTest() {
-        initialize(Raw.sortedSetAssertion(), DataHelper.createTreeSet());
+        initialize(Raw.<String>sortedSetAssertion(), DataHelper.<String>createTreeSet());
 
         try {
             initializeWithRawActual(Raw.<String>sortedSetAssertion(), new Object());
@@ -69,7 +69,7 @@ public final class SortedSetAssertionTest extends AssertionTest {
      */
     @Test
     public void isEmptyTest() {
-        initialize(Raw.sortedSetAssertion(), DataHelper.createTreeSet()).isEmpty();
+        initialize(Raw.<String>sortedSetAssertion(), DataHelper.<String>createTreeSet()).isEmpty();
 
         try {
             Raw.<String>sortedSetAssertion().isEmpty();
@@ -108,7 +108,7 @@ public final class SortedSetAssertionTest extends AssertionTest {
      */
     @Test
     public void isNullOrEmptyTest() {
-        initialize(Raw.sortedSetAssertion(), DataHelper.createTreeSet()).isNullOrEmpty();
+        initialize(Raw.<String>sortedSetAssertion(), DataHelper.<String>createTreeSet()).isNullOrEmpty();
         initialize(Raw.<String>sortedSetAssertion(), null).isNullOrEmpty();
 
         try {
@@ -158,13 +158,13 @@ public final class SortedSetAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.sortedSetAssertion(), DataHelper.createTreeSet()).isNotEmpty();
+            initialize(Raw.<String>sortedSetAssertion(), DataHelper.<String>createTreeSet()).isNotEmpty();
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be empty.");
         }
         try {
-            initialize(Raw.sortedSetAssertion(), DataHelper.createTreeSet(), "Message").isNotEmpty();
+            initialize(Raw.<String>sortedSetAssertion(), DataHelper.<String>createTreeSet(), "Message").isNotEmpty();
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be empty.");
@@ -331,25 +331,25 @@ public final class SortedSetAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            clearActual(initialize(Raw.sortedSetAssertion(), DataHelper.createTreeSet()).toHeadSet("val")).containsExactlyInOrder("val");
+            clearActual(initialize(Raw.<String>sortedSetAssertion(), DataHelper.<String>createTreeSet()).toHeadSet("val")).containsExactlyInOrder("val");
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's head elements up to element: val.\n\tActual value should not be null.");
         }
         try {
-            clearActual(initialize(Raw.sortedSetAssertion(), DataHelper.createTreeSet(), "Message").toHeadSet("val")).containsExactlyInOrder("val");
+            clearActual(initialize(Raw.<String>sortedSetAssertion(), DataHelper.<String>createTreeSet(), "Message").toHeadSet("val")).containsExactlyInOrder("val");
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's head elements up to element: val.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.sortedSetAssertion(), DataHelper.createTreeSet()).toHeadSet("val3").containsExactlyInOrder("val4", "val5");
+            initialize(Raw.<String>sortedSetAssertion(), DataHelper.<String>createTreeSet()).toHeadSet("val3").containsExactlyInOrder("val4", "val5");
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's head elements up to element: val3.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[val4, val5]> but was:<<EMPTY>>");
         }
         try {
-            initialize(Raw.sortedSetAssertion(), DataHelper.createTreeSet(), "Message").toHeadSet("val3").containsExactlyInOrder("val4", "val5");
+            initialize(Raw.<String>sortedSetAssertion(), DataHelper.<String>createTreeSet(), "Message").toHeadSet("val3").containsExactlyInOrder("val4", "val5");
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's head elements up to element: val3.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[val4, val5]> but was:<<EMPTY>>");
@@ -452,25 +452,25 @@ public final class SortedSetAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: count.\n\tThe argument's value should be greater than zero.");
         }
         try {
-            clearActual(initialize(Raw.sortedSetAssertion(), DataHelper.createTreeSet()).toHeadSet(1)).containsExactlyInOrder("val");
+            clearActual(initialize(Raw.<String>sortedSetAssertion(), DataHelper.<String>createTreeSet()).toHeadSet(1)).containsExactlyInOrder("val");
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's N head elements: 1.\n\tActual value should not be null.");
         }
         try {
-            clearActual(initialize(Raw.sortedSetAssertion(), DataHelper.createTreeSet(), "Message").toHeadSet(1)).containsExactlyInOrder("val");
+            clearActual(initialize(Raw.<String>sortedSetAssertion(), DataHelper.<String>createTreeSet(), "Message").toHeadSet(1)).containsExactlyInOrder("val");
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's N head elements: 1.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.sortedSetAssertion(), DataHelper.createTreeSet()).toHeadSet(3).containsExactlyInOrder("val4", "val5");
+            initialize(Raw.<String>sortedSetAssertion(), DataHelper.<String>createTreeSet()).toHeadSet(3).containsExactlyInOrder("val4", "val5");
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's N head elements: 3.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[val4, val5]> but was:<<EMPTY>>");
         }
         try {
-            initialize(Raw.sortedSetAssertion(), DataHelper.createTreeSet(), "Message").toHeadSet(3).containsExactlyInOrder("val4", "val5");
+            initialize(Raw.<String>sortedSetAssertion(), DataHelper.<String>createTreeSet(), "Message").toHeadSet(3).containsExactlyInOrder("val4", "val5");
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's N head elements: 3.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[val4, val5]> but was:<<EMPTY>>");
@@ -758,25 +758,25 @@ public final class SortedSetAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            clearActual(initialize(Raw.sortedSetAssertion(), DataHelper.createTreeSet()).toTailSet("val")).containsExactlyInOrder("val");
+            clearActual(initialize(Raw.<String>sortedSetAssertion(), DataHelper.<String>createTreeSet()).toTailSet("val")).containsExactlyInOrder("val");
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's tail elements from element: val.\n\tActual value should not be null.");
         }
         try {
-            clearActual(initialize(Raw.sortedSetAssertion(), DataHelper.createTreeSet(), "Message").toTailSet("val")).containsExactlyInOrder("val");
+            clearActual(initialize(Raw.<String>sortedSetAssertion(), DataHelper.<String>createTreeSet(), "Message").toTailSet("val")).containsExactlyInOrder("val");
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's tail elements from element: val.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.sortedSetAssertion(), DataHelper.createTreeSet()).toTailSet("val3").containsExactlyInOrder("val4", "val5");
+            initialize(Raw.<String>sortedSetAssertion(), DataHelper.<String>createTreeSet()).toTailSet("val3").containsExactlyInOrder("val4", "val5");
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's tail elements from element: val3.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[val4, val5]> but was:<<EMPTY>>");
         }
         try {
-            initialize(Raw.sortedSetAssertion(), DataHelper.createTreeSet(), "Message").toTailSet("val3").containsExactlyInOrder("val4", "val5");
+            initialize(Raw.<String>sortedSetAssertion(), DataHelper.<String>createTreeSet(), "Message").toTailSet("val3").containsExactlyInOrder("val4", "val5");
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's tail elements from element: val3.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[val4, val5]> but was:<<EMPTY>>");
@@ -879,25 +879,25 @@ public final class SortedSetAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: count.\n\tThe argument's value should be greater than zero.");
         }
         try {
-            clearActual(initialize(Raw.sortedSetAssertion(), DataHelper.createTreeSet()).toTailSet(1)).containsExactlyInOrder("val");
+            clearActual(initialize(Raw.<String>sortedSetAssertion(), DataHelper.<String>createTreeSet()).toTailSet(1)).containsExactlyInOrder("val");
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's N tail elements: 1.\n\tActual value should not be null.");
         }
         try {
-            clearActual(initialize(Raw.sortedSetAssertion(), DataHelper.createTreeSet(), "Message").toTailSet(1)).containsExactlyInOrder("val");
+            clearActual(initialize(Raw.<String>sortedSetAssertion(), DataHelper.<String>createTreeSet(), "Message").toTailSet(1)).containsExactlyInOrder("val");
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's N tail elements: 1.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.sortedSetAssertion(), DataHelper.createTreeSet()).toTailSet(3).containsExactlyInOrder("val4", "val5");
+            initialize(Raw.<String>sortedSetAssertion(), DataHelper.<String>createTreeSet()).toTailSet(3).containsExactlyInOrder("val4", "val5");
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's N tail elements: 3.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[val4, val5]> but was:<<EMPTY>>");
         }
         try {
-            initialize(Raw.sortedSetAssertion(), DataHelper.createTreeSet(), "Message").toTailSet(3).containsExactlyInOrder("val4", "val5");
+            initialize(Raw.<String>sortedSetAssertion(), DataHelper.<String>createTreeSet(), "Message").toTailSet(3).containsExactlyInOrder("val4", "val5");
             Assertions.fail("SortedSetAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's N tail elements: 3.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[val4, val5]> but was:<<EMPTY>>");
@@ -1581,7 +1581,7 @@ public final class SortedSetAssertionTest extends AssertionTest {
         initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", "val5")).containsExactly("val1", "val2", "val3", "val4", "val5");
         initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", "val5")).containsExactly("val2", "val4", "val1", "val3", "val5");
         initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", null)).containsExactly("val2", "val4", "val1", "val3", null);
-        initialize(Raw.sortedSetAssertion(), DataHelper.createTreeSet()).containsExactly();
+        initialize(Raw.<String>sortedSetAssertion(), DataHelper.<String>createTreeSet()).containsExactly();
 
         try {
             Raw.<String>sortedSetAssertion().containsExactly("val");
@@ -1789,7 +1789,7 @@ public final class SortedSetAssertionTest extends AssertionTest {
         initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3")).containsExactlyInOrder("val1", "val2", "val3");
         initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", "val5")).containsExactlyInOrder("val1", "val2", "val3", "val4", "val5");
         initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", null)).containsExactlyInOrder(null, "val1", "val2", "val3", "val4");
-        initialize(Raw.sortedSetAssertion(), DataHelper.createTreeSet()).containsExactlyInOrder();
+        initialize(Raw.<String>sortedSetAssertion(), DataHelper.<String>createTreeSet()).containsExactlyInOrder();
 
         try {
             Raw.<String>sortedSetAssertion().containsExactlyInOrder("val");
