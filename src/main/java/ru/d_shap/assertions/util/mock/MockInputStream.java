@@ -39,6 +39,8 @@ public final class MockInputStream extends InputStream implements IsCloseable {
 
     private final IOException _readException;
 
+    private final IOException _skipException;
+
     private final IOException _closeException;
 
     private boolean _isClosed;
@@ -49,14 +51,16 @@ public final class MockInputStream extends InputStream implements IsCloseable {
      * @param content            the content to read from stream.
      * @param availableException exception to throw when available byte count is checked.
      * @param readException      exception to throw when bytes are read.
+     * @param skipException      exception to throw when bytes are skipped.
      * @param closeException     exception to throw when stream is closed.
      */
-    public MockInputStream(final byte[] content, final IOException availableException, final IOException readException, final IOException closeException) {
+    public MockInputStream(final byte[] content, final IOException availableException, final IOException readException, final IOException skipException, final IOException closeException) {
         super();
         _content = content;
         _position = 0;
         _availableException = availableException;
         _readException = readException;
+        _skipException = skipException;
         _closeException = closeException;
         _isClosed = false;
     }
@@ -91,6 +95,20 @@ public final class MockInputStream extends InputStream implements IsCloseable {
             return length;
         } else {
             return -1;
+        }
+    }
+
+    @Override
+    public long skip(final long count) throws IOException {
+        checkAndThrowException(_skipException);
+        int length = (int) count;
+        int available = _content.length - _position;
+        if (length > available) {
+            _position = _content.length;
+            return available;
+        } else {
+            _position += length;
+            return length;
         }
     }
 

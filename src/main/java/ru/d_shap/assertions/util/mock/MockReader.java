@@ -37,6 +37,8 @@ public final class MockReader extends Reader implements IsCloseable {
 
     private final IOException _readException;
 
+    private final IOException _skipException;
+
     private final IOException _closeException;
 
     private boolean _isClosed;
@@ -45,14 +47,16 @@ public final class MockReader extends Reader implements IsCloseable {
      * Create new object.
      *
      * @param content        the content to read from stream.
-     * @param readException  exception to throw when chars are read.
+     * @param readException  exception to throw when bytes are read.
+     * @param skipException  exception to throw when bytes are skipped.
      * @param closeException exception to throw when stream is closed.
      */
-    public MockReader(final char[] content, final IOException readException, final IOException closeException) {
+    public MockReader(final char[] content, final IOException readException, final IOException skipException, final IOException closeException) {
         super();
         _content = content;
         _position = 0;
         _readException = readException;
+        _skipException = skipException;
         _closeException = closeException;
         _isClosed = false;
     }
@@ -81,6 +85,20 @@ public final class MockReader extends Reader implements IsCloseable {
             return length;
         } else {
             return -1;
+        }
+    }
+
+    @Override
+    public long skip(final long count) throws IOException {
+        checkAndThrowException(_skipException);
+        int length = (int) count;
+        int available = _content.length - _position;
+        if (length > available) {
+            _position = _content.length;
+            return available;
+        } else {
+            _position += length;
+            return length;
         }
     }
 
