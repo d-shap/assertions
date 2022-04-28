@@ -19,6 +19,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.fail;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Test;
@@ -27,7 +28,6 @@ import org.w3c.dom.Node;
 import ru.d_shap.assertions.AssertionTest;
 import ru.d_shap.assertions.Assertions;
 import ru.d_shap.assertions.Raw;
-import ru.d_shap.assertions.util.DataHelper;
 
 /**
  * Tests for {@link FailDescriptionValues}.
@@ -1435,9 +1435,9 @@ public final class FailDescriptionValuesTest extends AssertionTest {
     }
 
     private List<String> getFormattedMessages(final FailDescriptionValues failDescriptionValues) {
-        List<FailDescriptionEntry> failDescriptionEntries = DataHelper.createArrayList();
+        List<FailDescriptionEntry> failDescriptionEntries = new ArrayList<>();
         failDescriptionValues.addFailDescriptionEntry(failDescriptionEntries);
-        List<String> formattedMessages = DataHelper.createArrayList();
+        List<String> formattedMessages = new ArrayList<>();
         if (!failDescriptionEntries.isEmpty()) {
             FailDescriptionEntry failDescriptionEntry = failDescriptionEntries.get(0);
             failDescriptionEntry.addFormattedMessage(formattedMessages);

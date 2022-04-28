@@ -19,13 +19,13 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.fail;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Test;
 
 import ru.d_shap.assertions.AssertionTest;
 import ru.d_shap.assertions.Assertions;
-import ru.d_shap.assertions.util.DataHelper;
 
 /**
  * Tests for {@link FailDescriptionEntry}.
@@ -143,7 +143,7 @@ public final class FailDescriptionEntryTest extends AssertionTest {
 
     private List<String> getFormattedMessages(final String message, final Object[] arguments, final boolean checkLastSymbol) {
         FailDescriptionEntry failDescriptionEntry = new FailDescriptionEntry(message, arguments, checkLastSymbol);
-        List<String> formattedMessages = DataHelper.createArrayList();
+        List<String> formattedMessages = new ArrayList<>();
         failDescriptionEntry.addFormattedMessage(formattedMessages);
         return formattedMessages;
     }

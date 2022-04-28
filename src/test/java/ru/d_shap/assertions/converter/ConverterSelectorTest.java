@@ -37,7 +37,6 @@ import org.junit.Test;
 
 import ru.d_shap.assertions.AssertionTest;
 import ru.d_shap.assertions.Assertions;
-import ru.d_shap.assertions.util.DataHelper;
 
 /**
  * Tests for {@link ConverterSelector}.
@@ -303,7 +302,7 @@ public final class ConverterSelectorTest extends AssertionTest {
     }
 
     private static List<ClassHolder> createClassHolders(final Class<?>... clazzes) {
-        List<ClassHolder> result = DataHelper.createArrayList();
+        List<ClassHolder> result = new ArrayList<>();
         for (Class<?> clazz : clazzes) {
             ClassHolder classHolder = new ClassHolder(clazz);
             result.add(classHolder);
