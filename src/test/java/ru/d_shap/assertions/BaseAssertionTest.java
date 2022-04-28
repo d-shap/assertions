@@ -20,7 +20,6 @@
 package ru.d_shap.assertions;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -1747,9 +1746,9 @@ public final class BaseAssertionTest extends AssertionTest {
      */
     @Test
     public void asCollectionAssertionTest() {
-        createBaseAssertionObject(new ArrayList<String>()).as(Raw.<String>listAssertion()).isEmpty();
-        Assertions.assertThat(initialize(Raw.<String>listAssertion(), new ArrayList<String>()).as(Raw.<String>listAssertion())).hasClass(ListAssertion.class);
-        initialize(Raw.<String>listAssertion(), new ArrayList<String>()).as(Raw.<String>listAssertion()).isEmpty();
+        createBaseAssertionObject(DataHelper.<String>createArrayList()).as(Raw.<String>listAssertion()).isEmpty();
+        Assertions.assertThat(initialize(Raw.<String>listAssertion(), DataHelper.<String>createArrayList()).as(Raw.<String>listAssertion())).hasClass(ListAssertion.class);
+        initialize(Raw.<String>listAssertion(), DataHelper.<String>createArrayList()).as(Raw.<String>listAssertion()).isEmpty();
         try {
             createBaseAssertionObject(new Object()).as(Raw.<String>listAssertion());
             Assertions.fail("BaseAssertion test fail");
@@ -1757,9 +1756,9 @@ public final class BaseAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Actual value should match the assertion.\n\tActual value should be the instance of the expected class.\n\tExpected:<java.util.List> but was:<java.lang.Object>");
         }
 
-        createBaseAssertionObject(new ArrayList<String>()).as(Raw.<String>iterableAssertion()).isEmpty();
-        Assertions.assertThat(initialize(Raw.<String>iterableAssertion(), new ArrayList<String>()).as(Raw.<String>listAssertion())).hasClass(ListAssertion.class);
-        initialize(Raw.<String>iterableAssertion(), new ArrayList<String>()).as(Raw.<String>listAssertion()).isEmpty();
+        createBaseAssertionObject(DataHelper.<String>createArrayList()).as(Raw.<String>iterableAssertion()).isEmpty();
+        Assertions.assertThat(initialize(Raw.<String>iterableAssertion(), DataHelper.<String>createArrayList()).as(Raw.<String>listAssertion())).hasClass(ListAssertion.class);
+        initialize(Raw.<String>iterableAssertion(), DataHelper.<String>createArrayList()).as(Raw.<String>listAssertion()).isEmpty();
 
         createBaseAssertionObject(DataHelper.createHashSet()).as(Raw.setAssertion()).isEmpty();
         Assertions.assertThat(initialize(Raw.setAssertion(), DataHelper.createHashSet()).as(Raw.setAssertion())).hasClass(SetAssertion.class);
