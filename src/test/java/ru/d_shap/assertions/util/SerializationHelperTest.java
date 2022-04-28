@@ -20,7 +20,6 @@
 package ru.d_shap.assertions.util;
 
 import java.io.NotSerializableException;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Test;
@@ -60,10 +59,7 @@ public final class SerializationHelperTest extends AssertionTest {
         Assertions.assertThat(dValue1).isNotSameAs(value1);
         Assertions.assertThat(dValue1).isEqualTo(value1);
 
-        List<String> value2 = new ArrayList<>();
-        value2.add("val1");
-        value2.add("val2");
-        value2.add("val3");
+        List<String> value2 = DataHelper.createArrayList("val1", "val2", "val3");
         List<String> dValue2 = SerializationHelper.serializeAndDeserialize(value2);
         Assertions.assertThat(dValue2).isNotSameAs(value2);
         Assertions.assertThat(dValue2).containsExactlyInOrder("val1", "val2", "val3");
@@ -78,11 +74,7 @@ public final class SerializationHelperTest extends AssertionTest {
         }
 
         try {
-            List<Object> value = new ArrayList<>();
-            value.add("str");
-            value.add(5);
-            value.add(new Object[]{new Object()});
-            value.add(5);
+            List<Object> value = DataHelper.createArrayList((Object) "str", 5, new Object[]{new Object()}, 5);
             SerializationHelper.serializeAndDeserialize(value);
             Assertions.fail("SerializationHelper test fail");
         } catch (SerializationException ex) {
