@@ -29,6 +29,7 @@ import ru.d_shap.assertions.AssertionTest;
 import ru.d_shap.assertions.Assertions;
 import ru.d_shap.assertions.Raw;
 import ru.d_shap.assertions.converter.ConversionException;
+import ru.d_shap.assertions.util.DataHelper;
 
 /**
  * Tests for {@link ReaderToCharArrayValueConverter}.
@@ -113,16 +114,16 @@ public final class ReaderToCharArrayValueConverterTest extends AssertionTest {
         Assertions.assertThat(new ReaderToCharArrayValueConverter().convert(new StringReader("1234"), 2), Raw.charArrayAssertion()).containsExactlyInOrder('1', '2');
         Assertions.assertThat(new ReaderToCharArrayValueConverter().convert(new StringReader("1234"), 2)).as(Raw.charArrayAssertion()).containsExactlyInOrder('1', '2');
 
-        new ReaderToCharArrayValueConverter().convert(createErrorReader(), -1);
+        new ReaderToCharArrayValueConverter().convert(DataHelper.createReaderBuilder().setReadException("read exception").buildReader(), -1);
         try {
-            new ReaderToCharArrayValueConverter().convert(createErrorReader(), 0);
+            new ReaderToCharArrayValueConverter().convert(DataHelper.createReaderBuilder().setReadException("read exception").buildReader(), 0);
             Assertions.fail("ReaderToCharArrayValueConverter test fail");
         } catch (ConversionException ex) {
             Assertions.assertThat(ex).hasMessage("read exception");
             Assertions.assertThat(ex).hasCause(IOException.class);
         }
         try {
-            new ReaderToCharArrayValueConverter().convert(createErrorReader(), 2);
+            new ReaderToCharArrayValueConverter().convert(DataHelper.createReaderBuilder().setReadException("read exception").buildReader(), 2);
             Assertions.fail("ReaderToCharArrayValueConverter test fail");
         } catch (ConversionException ex) {
             Assertions.assertThat(ex).hasMessage("read exception");

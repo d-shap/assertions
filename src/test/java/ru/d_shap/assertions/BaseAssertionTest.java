@@ -1820,25 +1820,25 @@ public final class BaseAssertionTest extends AssertionTest {
         }
 
         try {
-            createBaseAssertionObject(null, null).convertValue(createErrorInputStream(), null, byte[].class, 1);
+            createBaseAssertionObject(null, null).convertValue(DataHelper.createInputStreamBuilder().setReadException("read exception").buildInputStream(), null, byte[].class, 1);
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("java.io.IOException: read exception.");
         }
         try {
-            createBaseAssertionObject(null, "Message").convertValue(createErrorInputStream(), null, byte[].class, 1);
+            createBaseAssertionObject(null, "Message").convertValue(DataHelper.createInputStreamBuilder().setReadException("read exception").buildInputStream(), null, byte[].class, 1);
             Assertions.fail("BaseAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tjava.io.IOException: read exception.");
         }
 
         ConversionExceptionHolder conversionExceptionHolder1 = new ConversionExceptionHolder();
-        Assertions.assertThat(createBaseAssertionObject(null, null).convertValue(createErrorInputStream(), conversionExceptionHolder1, byte[].class, 1)).isNull();
+        Assertions.assertThat(createBaseAssertionObject(null, null).convertValue(DataHelper.createInputStreamBuilder().setReadException("read exception").buildInputStream(), conversionExceptionHolder1, byte[].class, 1)).isNull();
         Assertions.assertThat(conversionExceptionHolder1.getConversionException()).hasCause(IOException.class);
         Assertions.assertThat(conversionExceptionHolder1.getConversionException()).hasCauseMessage("read exception");
 
         ConversionExceptionHolder conversionExceptionHolder2 = new ConversionExceptionHolder();
-        Assertions.assertThat(createBaseAssertionObject(null, "Message").convertValue(createErrorInputStream(), conversionExceptionHolder2, byte[].class, 1)).isNull();
+        Assertions.assertThat(createBaseAssertionObject(null, "Message").convertValue(DataHelper.createInputStreamBuilder().setReadException("read exception").buildInputStream(), conversionExceptionHolder2, byte[].class, 1)).isNull();
         Assertions.assertThat(conversionExceptionHolder2.getConversionException()).hasCause(IOException.class);
         Assertions.assertThat(conversionExceptionHolder2.getConversionException()).hasCauseMessage("read exception");
     }

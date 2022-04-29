@@ -29,6 +29,7 @@ import ru.d_shap.assertions.AssertionTest;
 import ru.d_shap.assertions.Assertions;
 import ru.d_shap.assertions.Raw;
 import ru.d_shap.assertions.converter.ConversionException;
+import ru.d_shap.assertions.util.DataHelper;
 
 /**
  * Tests for {@link BufferedReaderToStringArrayValueConverter}.
@@ -125,16 +126,16 @@ public final class BufferedReaderToStringArrayValueConverterTest extends Asserti
         Assertions.assertThat(new BufferedReaderToStringArrayValueConverter().convert(new BufferedReader(new StringReader("1\n2\n3\n4\n")), 2), Raw.objectArrayAssertion()).containsExactlyInOrder("1", "2");
         Assertions.assertThat(new BufferedReaderToStringArrayValueConverter().convert(new BufferedReader(new StringReader("1\n2\n3\n4\n")), 2)).as(Raw.objectArrayAssertion()).containsExactlyInOrder("1", "2");
 
-        new BufferedReaderToStringArrayValueConverter().convert(new BufferedReader(createErrorReader()), -1);
+        new BufferedReaderToStringArrayValueConverter().convert(new BufferedReader(DataHelper.createReaderBuilder().setReadException("read exception").buildBufferedReader()), -1);
         try {
-            new BufferedReaderToStringArrayValueConverter().convert(new BufferedReader(createErrorReader()), 0);
+            new BufferedReaderToStringArrayValueConverter().convert(new BufferedReader(DataHelper.createReaderBuilder().setReadException("read exception").buildBufferedReader()), 0);
             Assertions.fail("BufferedReaderToStringArrayValueConverter test fail");
         } catch (ConversionException ex) {
             Assertions.assertThat(ex).hasMessage("read exception");
             Assertions.assertThat(ex).hasCause(IOException.class);
         }
         try {
-            new BufferedReaderToStringArrayValueConverter().convert(new BufferedReader(createErrorReader()), 2);
+            new BufferedReaderToStringArrayValueConverter().convert(new BufferedReader(DataHelper.createReaderBuilder().setReadException("read exception").buildBufferedReader()), 2);
             Assertions.fail("BufferedReaderToStringArrayValueConverter test fail");
         } catch (ConversionException ex) {
             Assertions.assertThat(ex).hasMessage("read exception");

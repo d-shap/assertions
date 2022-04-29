@@ -33,6 +33,7 @@ import ru.d_shap.assertions.AssertionTest;
 import ru.d_shap.assertions.Assertions;
 import ru.d_shap.assertions.Raw;
 import ru.d_shap.assertions.converter.ConversionException;
+import ru.d_shap.assertions.util.DataHelper;
 
 /**
  * Tests for {@link CharSequenceToDocumentValueConverter}.
@@ -104,7 +105,7 @@ public final class CharSequenceToDocumentValueConverterTest extends AssertionTes
     @Test
     public void parseErrorReaderTest() {
         try {
-            InputSource inputSource = new InputSource(createErrorReader());
+            InputSource inputSource = new InputSource(DataHelper.createReaderBuilder().setReadException("read exception").buildReader());
             new CharSequenceToDocumentValueConverter().parse(inputSource);
             Assertions.fail("CharSequenceToDocumentValueConverter test fail");
         } catch (ConversionException ex) {

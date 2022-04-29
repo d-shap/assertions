@@ -37,6 +37,7 @@ import org.w3c.dom.Node;
 import ru.d_shap.assertions.AssertionTest;
 import ru.d_shap.assertions.Assertions;
 import ru.d_shap.assertions.converter.ConversionException;
+import ru.d_shap.assertions.util.DataHelper;
 
 /**
  * Tests for {@link NodeAsStringConverter}.
@@ -79,7 +80,7 @@ public final class NodeAsStringConverterTest extends AssertionTest {
     @Test
     public void transformErrorReaderTest() {
         try {
-            Source source = new StreamSource(createErrorReader());
+            Source source = new StreamSource(DataHelper.createReaderBuilder().setReadException("read exception").buildReader());
             Result result = new StreamResult(new StringWriter());
             new NodeAsStringConverter().transform(source, result);
             Assertions.fail("NodeAsStringConverter test fail");
@@ -117,7 +118,7 @@ public final class NodeAsStringConverterTest extends AssertionTest {
                 PrintStream printStream = new PrintStream(byteArrayOutputStream, true, ENCODING_UTF_8);
                 System.setErr(printStream);
                 try {
-                    Source source = new StreamSource(createErrorReader());
+                    Source source = new StreamSource(DataHelper.createReaderBuilder().setReadException("read exception").buildReader());
                     Result result = new StreamResult(new StringWriter());
                     new NodeAsStringConverter().transform(source, result);
                     Assertions.fail("NodeAsStringConverter test fail");

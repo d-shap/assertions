@@ -29,6 +29,7 @@ import ru.d_shap.assertions.AssertionTest;
 import ru.d_shap.assertions.Assertions;
 import ru.d_shap.assertions.Raw;
 import ru.d_shap.assertions.converter.ConversionException;
+import ru.d_shap.assertions.util.DataHelper;
 
 /**
  * Tests for {@link InputStreamToByteArrayValueConverter}.
@@ -113,16 +114,16 @@ public final class InputStreamToByteArrayValueConverterTest extends AssertionTes
         Assertions.assertThat(new InputStreamToByteArrayValueConverter().convert(new ByteArrayInputStream(new byte[]{1, 2, 3, 4}), 2), Raw.byteArrayAssertion()).containsExactlyInOrder(1, 2);
         Assertions.assertThat(new InputStreamToByteArrayValueConverter().convert(new ByteArrayInputStream(new byte[]{1, 2, 3, 4}), 2)).as(Raw.byteArrayAssertion()).containsExactlyInOrder(1, 2);
 
-        new InputStreamToByteArrayValueConverter().convert(createErrorInputStream(), -1);
+        new InputStreamToByteArrayValueConverter().convert(DataHelper.createInputStreamBuilder().setReadException("read exception").buildInputStream(), -1);
         try {
-            new InputStreamToByteArrayValueConverter().convert(createErrorInputStream(), 0);
+            new InputStreamToByteArrayValueConverter().convert(DataHelper.createInputStreamBuilder().setReadException("read exception").buildInputStream(), 0);
             Assertions.fail("InputStreamToByteArrayValueConverter test fail");
         } catch (ConversionException ex) {
             Assertions.assertThat(ex).hasMessage("read exception");
             Assertions.assertThat(ex).hasCause(IOException.class);
         }
         try {
-            new InputStreamToByteArrayValueConverter().convert(createErrorInputStream(), 2);
+            new InputStreamToByteArrayValueConverter().convert(DataHelper.createInputStreamBuilder().setReadException("read exception").buildInputStream(), 2);
             Assertions.fail("InputStreamToByteArrayValueConverter test fail");
         } catch (ConversionException ex) {
             Assertions.assertThat(ex).hasMessage("read exception");
