@@ -67,7 +67,11 @@ public final class MockReader extends Reader implements IsCloseable {
 
     @Override
     public int read() throws IOException {
-        checkAndThrowException(_readException);
+        return doRead(_readException);
+    }
+
+    private int doRead(final IOException exception) throws IOException {
+        checkAndThrowException(exception);
         if (_position < _content.length) {
             char result = _content[_position];
             _position++;
@@ -79,31 +83,31 @@ public final class MockReader extends Reader implements IsCloseable {
 
     @Override
     public int read(final char[] buffer, final int from, final int to) throws IOException {
-        checkAndThrowException(_readException);
-        if (_position < _content.length) {
-            int length = to - from;
-            int available = _content.length - _position;
-            length = Math.min(length, available);
-            System.arraycopy(_content, _position, buffer, from, length);
-            _position += length;
-            return length;
-        } else {
-            return -1;
+        int count = 0;
+        int read;
+        for (int i = from; i < to; i++) {
+            read = doRead(_readException);
+            if (read < 0) {
+                break;
+            }
+            buffer[i] = (char) read;
+            count++;
         }
+        return count;
     }
 
     @Override
     public long skip(final long count) throws IOException {
-        checkAndThrowException(_skipException);
-        int length = (int) count;
-        int available = _content.length - _position;
-        if (length > available) {
-            _position = _content.length;
-            return available;
-        } else {
-            _position += length;
-            return length;
+        long skipped = 0;
+        int read;
+        for (long i = 0; i < count; i++) {
+            read = doRead(_skipException);
+            if (read < 0) {
+                break;
+            }
+            skipped++;
         }
+        return skipped;
     }
 
     @Override
