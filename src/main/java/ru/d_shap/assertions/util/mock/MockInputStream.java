@@ -269,7 +269,7 @@ public final class MockInputStream extends InputStream implements IsCloseable {
          *
          * @return the created mock object.
          */
-        public InputStream build() {
+        public InputStream buildInputStream() {
             return new MockInputStream(_content, _availableException, _readException, _skipException, _closeException);
         }
 

@@ -19,6 +19,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.util.mock;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.Reader;
 
@@ -233,8 +234,18 @@ public final class MockReader extends Reader implements IsCloseable {
          *
          * @return the created mock object.
          */
-        public Reader build() {
+        public Reader buildReader() {
             return new MockReader(_content, _readException, _skipException, _closeException);
+        }
+
+        /**
+         * Build new mock object.
+         *
+         * @return the created mock object.
+         */
+        public Reader buildBufferedReader() {
+            Reader reader = buildReader();
+            return new BufferedReader(reader);
         }
 
     }
