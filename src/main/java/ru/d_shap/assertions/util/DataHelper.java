@@ -52,6 +52,9 @@ import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 
+import ru.d_shap.assertions.util.mock.MockInputStream;
+import ru.d_shap.assertions.util.mock.MockReader;
+
 /**
  * Helper class to create objects of various types.
  *
@@ -662,6 +665,24 @@ public final class DataHelper {
     static XMLGregorianCalendar convertToXmlCalendar(final GregorianCalendar calendar) {
         DatatypeFactory datatypeFactory = createDatatypeFactory();
         return datatypeFactory.newXMLGregorianCalendar(calendar);
+    }
+
+    /**
+     * Create builder for the input stream mock.
+     *
+     * @return the created object.
+     */
+    public static MockInputStream.Builder createInputStreamBuilder() {
+        return MockInputStream.builder();
+    }
+
+    /**
+     * Create builder for the reader mock.
+     *
+     * @return the created object.
+     */
+    public static MockReader.Builder createReaderBuilder() {
+        return MockReader.builder();
     }
 
     /**
