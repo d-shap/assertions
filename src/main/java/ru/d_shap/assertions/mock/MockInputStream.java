@@ -45,7 +45,11 @@ public final class MockInputStream extends InputStream implements IsCloseable {
 
     MockInputStream(final byte[] content, final IOException availableException, final IOException readException, final IOException skipException, final IOException closeException) {
         super();
-        _content = content;
+        if (content == null) {
+            _content = new byte[0];
+        } else {
+            _content = content;
+        }
         _position = 0;
         _availableException = availableException;
         _readException = readException;
@@ -120,7 +124,7 @@ public final class MockInputStream extends InputStream implements IsCloseable {
         if (exception == null) {
             return;
         }
-        if (_content == null || _content.length == _position) {
+        if (_content.length == _position) {
             throw exception;
         }
     }

@@ -44,7 +44,11 @@ public final class MockReader extends Reader implements IsCloseable {
 
     MockReader(final char[] content, final IOException readException, final IOException skipException, final IOException closeException) {
         super();
-        _content = content;
+        if (content == null) {
+            _content = new char[0];
+        } else {
+            _content = content;
+        }
         _position = 0;
         _readException = readException;
         _skipException = skipException;
@@ -112,7 +116,7 @@ public final class MockReader extends Reader implements IsCloseable {
         if (exception == null) {
             return;
         }
-        if (_content == null || _content.length == _position) {
+        if (_content.length == _position) {
             throw exception;
         }
     }
