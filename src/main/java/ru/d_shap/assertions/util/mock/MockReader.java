@@ -158,6 +158,18 @@ public final class MockReader extends Reader implements IsCloseable {
         }
 
         /**
+         * Set content.
+         *
+         * @param content content.
+         *
+         * @return current object for the chain call.
+         */
+        public Builder setContent(final String content) {
+            _content = content.toCharArray();
+            return this;
+        }
+
+        /**
          * Set exception for read call.
          *
          * @param exception exception for read call.
