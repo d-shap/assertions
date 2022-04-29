@@ -19,6 +19,8 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.mock;
 
+import java.io.IOException;
+
 import org.junit.Test;
 
 import ru.d_shap.assertions.AssertionTest;
@@ -39,41 +41,51 @@ public final class MockReaderTest extends AssertionTest {
 
     /**
      * {@link MockInputStream} class test.
+     *
+     * @throws IOException exception in test.
      */
     @Test
-    public void readByteTest() {
+    public void readByteTest() throws IOException {
         // TODO
     }
 
     /**
      * {@link MockInputStream} class test.
+     *
+     * @throws IOException exception in test.
      */
     @Test
-    public void readByteArrayTest() {
+    public void readByteArrayTest() throws IOException {
         // TODO
     }
 
     /**
      * {@link MockInputStream} class test.
+     *
+     * @throws IOException exception in test.
      */
     @Test
-    public void skipTest() {
+    public void skipTest() throws IOException {
         // TODO
     }
 
     /**
      * {@link MockInputStream} class test.
+     *
+     * @throws IOException exception in test.
      */
     @Test
-    public void closeTest() {
+    public void closeTest() throws IOException {
         // TODO
     }
 
     /**
      * {@link MockInputStream} class test.
+     *
+     * @throws IOException exception in test.
      */
     @Test
-    public void isClosedTest() {
+    public void isClosedTest() throws IOException {
         // TODO
     }
 
