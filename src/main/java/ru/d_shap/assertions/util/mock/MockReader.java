@@ -243,7 +243,7 @@ public final class MockReader extends Reader implements IsCloseable {
          *
          * @return the created mock object.
          */
-        public Reader buildBufferedReader() {
+        public BufferedReader buildBufferedReader() {
             Reader reader = buildReader();
             return new BufferedReader(reader);
         }
