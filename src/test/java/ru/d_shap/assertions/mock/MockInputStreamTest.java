@@ -54,6 +54,9 @@ public final class MockInputStreamTest extends AssertionTest {
         Assertions.assertThat(DataHelper.createInputStreamBuilder().setContent(new byte[]{1}).buildInputStream().available()).isEqualTo(1);
         Assertions.assertThat(DataHelper.createInputStreamBuilder().setContent(new byte[]{1, 2}).buildInputStream().available()).isEqualTo(2);
         Assertions.assertThat(DataHelper.createInputStreamBuilder().setContent(new byte[]{1, 2, 3}).buildInputStream().available()).isEqualTo(3);
+        Assertions.assertThat(DataHelper.createInputStreamBuilder().setContent(new byte[]{1, 2, 3}).setReadException("ex").buildInputStream().available()).isEqualTo(3);
+        Assertions.assertThat(DataHelper.createInputStreamBuilder().setContent(new byte[]{1, 2, 3}).setSkipException("ex").buildInputStream().available()).isEqualTo(3);
+        Assertions.assertThat(DataHelper.createInputStreamBuilder().setContent(new byte[]{1, 2, 3}).setCloseException("ex").buildInputStream().available()).isEqualTo(3);
 
         InputStream inputStream1 = DataHelper.createInputStreamBuilder().setContent(new byte[]{1, 2, 3, 4, 5}).buildInputStream();
         Assertions.assertThat(inputStream1.available()).isEqualTo(5);
