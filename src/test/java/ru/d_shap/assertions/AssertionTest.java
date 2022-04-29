@@ -21,7 +21,6 @@ package ru.d_shap.assertions;
 
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.Reader;
 import java.io.StringReader;
@@ -799,33 +798,6 @@ public class AssertionTest {
     }
 
     /**
-     * Create input stream object.
-     *
-     * @return the created object.
-     */
-    protected final InputStream createErrorInputStream() {
-        return new ErrorInputStream();
-    }
-
-    /**
-     * Create reader object.
-     *
-     * @return the created object.
-     */
-    protected final Reader createErrorReader() {
-        return new ErrorReader();
-    }
-
-    /**
-     * Create buffered reader object.
-     *
-     * @return the created object.
-     */
-    protected final BufferedReader createErrorBufferedReader() {
-        return new BufferedReader(createErrorReader());
-    }
-
-    /**
      * Create node object.
      *
      * @param content the content.
@@ -1525,47 +1497,6 @@ public class AssertionTest {
     public enum Values {
 
         VALUE_1, VALUE_2, VALUE_3
-
-    }
-
-    private static final class ErrorInputStream extends InputStream {
-
-        ErrorInputStream() {
-            super();
-        }
-
-        @Override
-        public int available() throws IOException {
-            throw new IOException("available exception");
-        }
-
-        @Override
-        public int read() throws IOException {
-            throw new IOException("read exception");
-        }
-
-    }
-
-    private static final class ErrorReader extends Reader {
-
-        ErrorReader() {
-            super();
-        }
-
-        @Override
-        public int read() throws IOException {
-            throw new IOException("read exception");
-        }
-
-        @Override
-        public int read(final char[] buffer, final int from, final int to) throws IOException {
-            throw new IOException("read exception");
-        }
-
-        @Override
-        public void close() {
-            // Ignore
-        }
 
     }
 
