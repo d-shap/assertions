@@ -52,8 +52,8 @@ import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 
-import ru.d_shap.assertions.util.mock.MockInputStream;
-import ru.d_shap.assertions.util.mock.MockReader;
+import ru.d_shap.assertions.mock.MockInputStream;
+import ru.d_shap.assertions.mock.MockReader;
 
 /**
  * Helper class to create objects of various types.

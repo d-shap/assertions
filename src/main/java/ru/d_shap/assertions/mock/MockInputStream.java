@@ -17,12 +17,10 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-package ru.d_shap.assertions.util.mock;
+package ru.d_shap.assertions.mock;
 
 import java.io.IOException;
 import java.io.InputStream;
-
-import ru.d_shap.assertions.util.IsCloseable;
 
 /**
  * The input stream mock.

@@ -17,20 +17,12 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-package ru.d_shap.assertions.util;
-
 /**
- * Interface to check if resource is closed.
- *
- * @author Dmitry Shapovalov
+ * <p>
+ * Package contains mock objects.
+ * </p>
+ * <p>
+ * This mocks can be used in tests to provide specific behaviour.
+ * </p>
  */
-public interface IsCloseable {
-
-    /**
-     * Check if resource is closed.
-     *
-     * @return true, if resource is closed.
-     */
-    boolean isClosed();
-
-}
+package ru.d_shap.assertions.mock;
