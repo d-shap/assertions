@@ -90,10 +90,19 @@ public final class MockInputStream extends InputStream implements IsCloseable {
     }
 
     @Override
-    public int read(final byte[] buffer, final int from, final int to) throws IOException {
+    public int read(final byte[] buffer, final int offset, final int length) throws IOException {
+        if (buffer == null) {
+            throw new NullPointerException();
+        } else if (offset < 0 || length < 0 || length > buffer.length - offset) {
+            throw new IndexOutOfBoundsException();
+        } else if (length == 0) {
+            return 0;
+        }
+
         int count = 0;
         int read;
-        for (int i = from; i < to; i++) {
+        int to = offset + length;
+        for (int i = offset; i < to; i++) {
             read = doRead(_readException);
             if (read < 0) {
                 break;
