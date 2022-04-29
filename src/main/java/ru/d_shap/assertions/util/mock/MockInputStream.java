@@ -45,7 +45,7 @@ public final class MockInputStream extends InputStream implements IsCloseable {
 
     private boolean _isClosed;
 
-    private MockInputStream(final byte[] content, final IOException availableException, final IOException readException, final IOException skipException, final IOException closeException) {
+    MockInputStream(final byte[] content, final IOException availableException, final IOException readException, final IOException skipException, final IOException closeException) {
         super();
         _content = content;
         _position = 0;
@@ -54,6 +54,15 @@ public final class MockInputStream extends InputStream implements IsCloseable {
         _skipException = skipException;
         _closeException = closeException;
         _isClosed = false;
+    }
+
+    /**
+     * Create new builder for mock object.
+     *
+     * @return new builder for mock object.
+     */
+    public static Builder builder() {
+        return new Builder();
     }
 
     @Override
@@ -138,22 +147,13 @@ public final class MockInputStream extends InputStream implements IsCloseable {
 
         private IOException _closeException;
 
-        private Builder() {
+        Builder() {
             super();
             _content = null;
             _availableException = null;
             _readException = null;
             _skipException = null;
             _closeException = null;
-        }
-
-        /**
-         * Create new builder instance.
-         *
-         * @return new builder instance.
-         */
-        public Builder newInstance() {
-            return new Builder();
         }
 
         /**
