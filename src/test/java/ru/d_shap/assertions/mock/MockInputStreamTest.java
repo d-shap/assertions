@@ -109,7 +109,55 @@ public final class MockInputStreamTest extends AssertionTest {
      */
     @Test
     public void readByteTest() throws IOException {
-        // TODO
+        InputStream inputStream1 = DataHelper.createInputStreamBuilder().setContent(new byte[]{1, 2, 3, 4, 5}).buildInputStream();
+        Assertions.assertThat(inputStream1.read()).isEqualTo(1);
+        Assertions.assertThat(inputStream1.read()).isEqualTo(2);
+        Assertions.assertThat(inputStream1.read()).isEqualTo(3);
+        Assertions.assertThat(inputStream1.read()).isEqualTo(4);
+        Assertions.assertThat(inputStream1.read()).isEqualTo(5);
+        Assertions.assertThat(inputStream1.read()).isEqualTo(-1);
+        Assertions.assertThat(inputStream1.read()).isEqualTo(-1);
+
+        InputStream inputStream2 = DataHelper.createInputStreamBuilder().setContent(new byte[]{}).buildInputStream();
+        Assertions.assertThat(inputStream2.read()).isEqualTo(-1);
+
+        InputStream inputStream3 = DataHelper.createInputStreamBuilder().setContent(new byte[]{1}).setAvailableException("ex").buildInputStream();
+        Assertions.assertThat(inputStream3.read()).isEqualTo(1);
+        Assertions.assertThat(inputStream3.read()).isEqualTo(-1);
+
+        InputStream inputStream4 = DataHelper.createInputStreamBuilder().setContent(new byte[]{1}).setSkipException("ex").buildInputStream();
+        Assertions.assertThat(inputStream4.read()).isEqualTo(1);
+        Assertions.assertThat(inputStream4.read()).isEqualTo(-1);
+
+        InputStream inputStream5 = DataHelper.createInputStreamBuilder().setContent(new byte[]{1}).setCloseException("ex").buildInputStream();
+        Assertions.assertThat(inputStream5.read()).isEqualTo(1);
+        Assertions.assertThat(inputStream5.read()).isEqualTo(-1);
+
+        try {
+            DataHelper.createInputStreamBuilder().setReadException(new IOException("fail")).buildInputStream().read();
+            Assertions.fail("MockInputStream test fail");
+        } catch (IOException ex) {
+            Assertions.assertThat(ex).hasMessage("fail");
+        }
+        try {
+            DataHelper.createInputStreamBuilder().setReadException("fail").buildInputStream().read();
+            Assertions.fail("MockInputStream test fail");
+        } catch (IOException ex) {
+            Assertions.assertThat(ex).hasMessage("fail");
+        }
+
+        InputStream inputStream6 = DataHelper.createInputStreamBuilder().setContent(new byte[]{1, 2, 3, 4, 5}).setReadException("fail").buildInputStream();
+        inputStream6.read();
+        inputStream6.read();
+        inputStream6.read();
+        Assertions.assertThat(inputStream6.read()).isEqualTo(4);
+        inputStream6.read();
+        try {
+            inputStream6.read();
+            Assertions.fail("MockInputStream test fail");
+        } catch (IOException ex) {
+            Assertions.assertThat(ex).hasMessage("fail");
+        }
     }
 
     /**
