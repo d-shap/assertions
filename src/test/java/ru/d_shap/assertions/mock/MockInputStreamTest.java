@@ -205,6 +205,34 @@ public final class MockInputStreamTest extends AssertionTest {
         Assertions.assertThat(buff5).containsExactlyInOrder(1, 2, 3, 4, 5, 0, 0, 0, 0, 0);
         Assertions.assertThat(inputStream5.read(buff5, 0, 10)).isEqualTo(0);
         Assertions.assertThat(buff5).containsExactlyInOrder(1, 2, 3, 4, 5, 0, 0, 0, 0, 0);
+
+        InputStream inputStream6 = DataHelper.createInputStreamBuilder().setContent(new byte[]{}).buildInputStream();
+        byte[] buff6 = new byte[10];
+        Assertions.assertThat(inputStream6.read(buff6, 0, 10)).isEqualTo(0);
+        Assertions.assertThat(buff6).containsExactlyInOrder(0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+        Assertions.assertThat(inputStream6.read(buff6, 0, 10)).isEqualTo(0);
+        Assertions.assertThat(buff6).containsExactlyInOrder(0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+
+        InputStream inputStream7 = DataHelper.createInputStreamBuilder().setContent(new byte[]{1, 2, 3, 4, 5}).setAvailableException("ex").buildInputStream();
+        byte[] buff7 = new byte[10];
+        Assertions.assertThat(inputStream7.read(buff7, 0, 10)).isEqualTo(5);
+        Assertions.assertThat(buff7).containsExactlyInOrder(1, 2, 3, 4, 5, 0, 0, 0, 0, 0);
+        Assertions.assertThat(inputStream7.read(buff7, 0, 10)).isEqualTo(0);
+        Assertions.assertThat(buff7).containsExactlyInOrder(1, 2, 3, 4, 5, 0, 0, 0, 0, 0);
+
+        InputStream inputStream8 = DataHelper.createInputStreamBuilder().setContent(new byte[]{1, 2, 3, 4, 5}).setSkipException("ex").buildInputStream();
+        byte[] buff8 = new byte[10];
+        Assertions.assertThat(inputStream8.read(buff8, 0, 10)).isEqualTo(5);
+        Assertions.assertThat(buff8).containsExactlyInOrder(1, 2, 3, 4, 5, 0, 0, 0, 0, 0);
+        Assertions.assertThat(inputStream8.read(buff8, 0, 10)).isEqualTo(0);
+        Assertions.assertThat(buff8).containsExactlyInOrder(1, 2, 3, 4, 5, 0, 0, 0, 0, 0);
+
+        InputStream inputStream9 = DataHelper.createInputStreamBuilder().setContent(new byte[]{1, 2, 3, 4, 5}).setCloseException("ex").buildInputStream();
+        byte[] buff9 = new byte[10];
+        Assertions.assertThat(inputStream9.read(buff9, 0, 10)).isEqualTo(5);
+        Assertions.assertThat(buff9).containsExactlyInOrder(1, 2, 3, 4, 5, 0, 0, 0, 0, 0);
+        Assertions.assertThat(inputStream9.read(buff9, 0, 10)).isEqualTo(0);
+        Assertions.assertThat(buff9).containsExactlyInOrder(1, 2, 3, 4, 5, 0, 0, 0, 0, 0);
     }
 
     /**
