@@ -396,6 +396,12 @@ public final class MockInputStreamTest extends AssertionTest {
         } catch (IOException ex) {
             Assertions.assertThat(ex).hasMessage("fail");
         }
+        try {
+            DataHelper.createInputStreamBuilder().setContent(new byte[]{1, 2, 3, 4, 5}).setCloseException("fail").buildInputStream().close();
+            Assertions.fail("MockInputStream test fail");
+        } catch (IOException ex) {
+            Assertions.assertThat(ex).hasMessage("fail");
+        }
 
         try (InputStream inputStream = DataHelper.createInputStreamBuilder().setContent(new byte[]{1}).setCloseException("fail").buildInputStream()) {
             Assertions.assertThat(inputStream.read()).isEqualTo(1);
@@ -419,7 +425,32 @@ public final class MockInputStreamTest extends AssertionTest {
      */
     @Test
     public void isClosedTest() throws IOException {
-        // TODO
+        InputStream inputStream01 = DataHelper.createInputStreamBuilder().setContent(new byte[]{1, 2, 3, 4, 5}).buildInputStream();
+        Assertions.assertThat(((IsCloseable) inputStream01).isClosed()).isFalse();
+        Assertions.assertThat(inputStream01.read()).isEqualTo(1);
+        Assertions.assertThat(((IsCloseable) inputStream01).isClosed()).isFalse();
+        Assertions.assertThat(inputStream01.read()).isEqualTo(2);
+        Assertions.assertThat(((IsCloseable) inputStream01).isClosed()).isFalse();
+        Assertions.assertThat(inputStream01.read()).isEqualTo(3);
+        Assertions.assertThat(((IsCloseable) inputStream01).isClosed()).isFalse();
+        Assertions.assertThat(inputStream01.read()).isEqualTo(4);
+        Assertions.assertThat(((IsCloseable) inputStream01).isClosed()).isFalse();
+        Assertions.assertThat(inputStream01.read()).isEqualTo(5);
+        Assertions.assertThat(((IsCloseable) inputStream01).isClosed()).isFalse();
+        Assertions.assertThat(inputStream01.read()).isEqualTo(-1);
+        Assertions.assertThat(((IsCloseable) inputStream01).isClosed()).isFalse();
+        inputStream01.close();
+        Assertions.assertThat(((IsCloseable) inputStream01).isClosed()).isTrue();
+
+        InputStream inputStream02 = DataHelper.createInputStreamBuilder().setContent(new byte[]{1, 2, 3, 4, 5}).setCloseException("fail").buildInputStream();
+        Assertions.assertThat(((IsCloseable) inputStream02).isClosed()).isFalse();
+        try {
+            inputStream02.close();
+            Assertions.fail("MockInputStream test fail");
+        } catch (IOException ex) {
+            Assertions.assertThat(ex).hasMessage("fail");
+        }
+        Assertions.assertThat(((IsCloseable) inputStream02).isClosed()).isTrue();
     }
 
 }
