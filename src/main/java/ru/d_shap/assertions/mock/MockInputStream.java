@@ -78,17 +78,6 @@ public final class MockInputStream extends InputStream implements IsCloseable {
         return doRead(_readException);
     }
 
-    private int doRead(final IOException exception) throws IOException {
-        checkAndThrowException(exception);
-        if (_position < _content.length) {
-            byte result = _content[_position];
-            _position++;
-            return result;
-        } else {
-            return -1;
-        }
-    }
-
     @Override
     public int read(final byte[] buffer, final int offset, final int length) throws IOException {
         if (buffer == null) {
@@ -110,6 +99,17 @@ public final class MockInputStream extends InputStream implements IsCloseable {
             count++;
         }
         return count;
+    }
+
+    private int doRead(final IOException exception) throws IOException {
+        checkAndThrowException(exception);
+        if (_position < _content.length) {
+            byte result = _content[_position];
+            _position++;
+            return result;
+        } else {
+            return -1;
+        }
     }
 
     @Override
