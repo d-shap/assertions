@@ -69,7 +69,7 @@ public final class MockInputStream extends InputStream implements IsCloseable {
 
     @Override
     public int available() throws IOException {
-        checkAndThrowException(_availableException);
+        checkAndThrowException(_availableException, true);
         return _content.length - _position;
     }
 
@@ -102,7 +102,7 @@ public final class MockInputStream extends InputStream implements IsCloseable {
     }
 
     private int doRead(final IOException exception) throws IOException {
-        checkAndThrowException(exception);
+        checkAndThrowException(exception, true);
         if (_position < _content.length) {
             byte result = _content[_position];
             _position++;
@@ -129,14 +129,14 @@ public final class MockInputStream extends InputStream implements IsCloseable {
     @Override
     public void close() throws IOException {
         _isClosed = true;
-        checkAndThrowException(_closeException);
+        checkAndThrowException(_closeException, false);
     }
 
-    private void checkAndThrowException(final IOException exception) throws IOException {
+    private void checkAndThrowException(final IOException exception, final boolean afterFullRead) throws IOException {
         if (exception == null) {
             return;
         }
-        if (_content.length == _position) {
+        if (!afterFullRead || _content.length == _position) {
             throw exception;
         }
     }

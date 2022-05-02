@@ -94,7 +94,7 @@ public final class MockReader extends Reader implements IsCloseable {
     }
 
     private int doRead(final IOException exception) throws IOException {
-        checkAndThrowException(exception);
+        checkAndThrowException(exception, true);
         if (_position < _content.length) {
             char result = _content[_position];
             _position++;
@@ -121,14 +121,14 @@ public final class MockReader extends Reader implements IsCloseable {
     @Override
     public void close() throws IOException {
         _isClosed = true;
-        checkAndThrowException(_closeException);
+        checkAndThrowException(_closeException, false);
     }
 
-    private void checkAndThrowException(final IOException exception) throws IOException {
+    private void checkAndThrowException(final IOException exception, final boolean afterFullRead) throws IOException {
         if (exception == null) {
             return;
         }
-        if (_content.length == _position) {
+        if (!afterFullRead || _content.length == _position) {
             throw exception;
         }
     }
