@@ -45,7 +45,7 @@ public final class MockReaderTest extends AssertionTest {
      * @throws IOException exception in test.
      */
     @Test
-    public void readByteTest() throws IOException {
+    public void readCharTest() throws IOException {
         // TODO
     }
 
@@ -55,7 +55,7 @@ public final class MockReaderTest extends AssertionTest {
      * @throws IOException exception in test.
      */
     @Test
-    public void readByteArrayTest() throws IOException {
+    public void readCharArrayTest() throws IOException {
         // TODO
     }
 
