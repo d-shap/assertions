@@ -377,7 +377,39 @@ public final class MockInputStreamTest extends AssertionTest {
      */
     @Test
     public void closeTest() throws IOException {
-        // TODO
+        DataHelper.createInputStreamBuilder().buildInputStream().close();
+        DataHelper.createInputStreamBuilder().setContent(new byte[]{}).buildInputStream().close();
+        DataHelper.createInputStreamBuilder().setContent(new byte[]{1}).buildInputStream().close();
+        DataHelper.createInputStreamBuilder().setContent(new byte[]{1}).setAvailableException("ex").buildInputStream().close();
+        DataHelper.createInputStreamBuilder().setContent(new byte[]{1}).setReadException("ex").buildInputStream().close();
+        DataHelper.createInputStreamBuilder().setContent(new byte[]{1}).setSkipException("ex").buildInputStream().close();
+
+        try {
+            DataHelper.createInputStreamBuilder().setCloseException(new IOException("fail")).buildInputStream().close();
+            Assertions.fail("MockInputStream test fail");
+        } catch (IOException ex) {
+            Assertions.assertThat(ex).hasMessage("fail");
+        }
+        try {
+            DataHelper.createInputStreamBuilder().setCloseException("fail").buildInputStream().close();
+            Assertions.fail("MockInputStream test fail");
+        } catch (IOException ex) {
+            Assertions.assertThat(ex).hasMessage("fail");
+        }
+
+        try (InputStream inputStream = DataHelper.createInputStreamBuilder().setContent(new byte[]{1}).setCloseException("fail").buildInputStream()) {
+            Assertions.assertThat(inputStream.read()).isEqualTo(1);
+            Assertions.assertThat(inputStream.read()).isEqualTo(-1);
+        } catch (IOException ex) {
+            Assertions.assertThat(ex).hasMessage("fail");
+        }
+        try (InputStream inputStream = DataHelper.createInputStreamBuilder().setContent(new byte[]{1}).setReadException("fail 1").setCloseException("fail 2").buildInputStream()) {
+            Assertions.assertThat(inputStream.read()).isEqualTo(1);
+            inputStream.read();
+        } catch (IOException ex) {
+            Assertions.assertThat(ex).hasMessage("fail 1");
+            Assertions.assertThat(ex.getSuppressed()[0]).hasMessage("fail 2");
+        }
     }
 
     /**
