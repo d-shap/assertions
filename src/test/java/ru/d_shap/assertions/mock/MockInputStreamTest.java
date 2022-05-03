@@ -229,6 +229,8 @@ public final class MockInputStreamTest extends AssertionTest {
 
         InputStream inputStream09 = DataHelper.createInputStreamBuilder().setContent(new byte[]{1, 2, 3, 4, 5}).setCloseException("ex").buildInputStream();
         byte[] buff09 = new byte[10];
+        Assertions.assertThat(inputStream09.read(buff09, 0, 0)).isEqualTo(0);
+        Assertions.assertThat(buff09).containsExactlyInOrder(0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
         Assertions.assertThat(inputStream09.read(buff09, 0, 10)).isEqualTo(5);
         Assertions.assertThat(buff09).containsExactlyInOrder(1, 2, 3, 4, 5, 0, 0, 0, 0, 0);
         Assertions.assertThat(inputStream09.read(buff09, 0, 10)).isEqualTo(-1);

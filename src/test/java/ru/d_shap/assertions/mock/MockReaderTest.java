@@ -159,6 +159,8 @@ public final class MockReaderTest extends AssertionTest {
 
         Reader reader08 = DataHelper.createReaderBuilder().setContent(new char[]{'1', '2', '3', '4', '5'}).setCloseException("ex").buildReader();
         char[] buff08 = new char[10];
+        Assertions.assertThat(reader08.read(buff08, 0, 0)).isEqualTo(0);
+        Assertions.assertThat(buff08).containsExactlyInOrder(0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
         Assertions.assertThat(reader08.read(buff08, 0, 10)).isEqualTo(5);
         Assertions.assertThat(buff08).containsExactlyInOrder('1', '2', '3', '4', '5', 0, 0, 0, 0, 0);
         Assertions.assertThat(reader08.read(buff08, 0, 10)).isEqualTo(-1);
