@@ -600,6 +600,29 @@ public final class DataHelperTest extends AssertionTest {
 
     /**
      * {@link DataHelper} class test.
+     *
+     * @throws Exception exception in test.
+     */
+    @Test
+    public void createInputStreamBuilderTest() throws Exception {
+        Assertions.assertThat(DataHelper.createInputStreamBuilder().setContent(new byte[]{1, 2, 3}).buildInputStream().skip(10)).isEqualTo(3);
+        Assertions.assertThat(DataHelper.createInputStreamBuilder().setContent(new byte[]{1, 2, 3}).buildInputStream().read()).isEqualTo(1);
+    }
+
+    /**
+     * {@link DataHelper} class test.
+     *
+     * @throws Exception exception in test.
+     */
+    @Test
+    public void createReaderBuilderTest() throws Exception {
+        Assertions.assertThat(DataHelper.createReaderBuilder().setContent(new char[]{'1', '2', '3'}).buildReader().skip(10)).isEqualTo(3);
+        Assertions.assertThat(DataHelper.createReaderBuilder().setContent(new char[]{'1', '2', '3'}).buildReader().read()).isEqualTo('1');
+        Assertions.assertThat(DataHelper.createReaderBuilder().setContent("row1\nrow2").buildBufferedReader().readLine()).isEqualTo("row1");
+    }
+
+    /**
+     * {@link DataHelper} class test.
      */
     @Test
     public void createDatatypeFactoryTest() {
