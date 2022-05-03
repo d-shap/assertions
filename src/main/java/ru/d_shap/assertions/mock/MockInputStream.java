@@ -86,6 +86,9 @@ public final class MockInputStream extends InputStream implements IsCloseable {
         if (offset < 0 || length < 0 || length > buffer.length - offset) {
             throw new IndexOutOfBoundsException();
         }
+        if (length == 0) {
+            return 0;
+        }
 
         int count = 0;
         int read;
