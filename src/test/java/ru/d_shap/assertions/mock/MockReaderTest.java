@@ -19,6 +19,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.mock;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.Reader;
 
@@ -132,35 +133,35 @@ public final class MockReaderTest extends AssertionTest {
         char[] buff04 = new char[5];
         Assertions.assertThat(reader04.read(buff04, 0, 5)).isEqualTo(5);
         Assertions.assertThat(buff04).containsExactlyInOrder('1', '2', '3', '4', '5');
-        Assertions.assertThat(reader04.read(buff04, 0, 5)).isEqualTo(0);
+        Assertions.assertThat(reader04.read(buff04, 0, 5)).isEqualTo(-1);
         Assertions.assertThat(buff04).containsExactlyInOrder('1', '2', '3', '4', '5');
 
         Reader reader05 = DataHelper.createReaderBuilder().setContent(new char[]{'1', '2', '3', '4', '5'}).buildReader();
         char[] buff05 = new char[10];
         Assertions.assertThat(reader05.read(buff05, 0, 10)).isEqualTo(5);
         Assertions.assertThat(buff05).containsExactlyInOrder('1', '2', '3', '4', '5', 0, 0, 0, 0, 0);
-        Assertions.assertThat(reader05.read(buff05, 0, 10)).isEqualTo(0);
+        Assertions.assertThat(reader05.read(buff05, 0, 10)).isEqualTo(-1);
         Assertions.assertThat(buff05).containsExactlyInOrder('1', '2', '3', '4', '5', 0, 0, 0, 0, 0);
 
         Reader reader06 = DataHelper.createReaderBuilder().setContent(new char[]{}).buildReader();
         char[] buff06 = new char[10];
-        Assertions.assertThat(reader06.read(buff06, 0, 10)).isEqualTo(0);
+        Assertions.assertThat(reader06.read(buff06, 0, 10)).isEqualTo(-1);
         Assertions.assertThat(buff06).containsExactlyInOrder(0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-        Assertions.assertThat(reader06.read(buff06, 0, 10)).isEqualTo(0);
+        Assertions.assertThat(reader06.read(buff06, 0, 10)).isEqualTo(-1);
         Assertions.assertThat(buff06).containsExactlyInOrder(0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 
         Reader reader07 = DataHelper.createReaderBuilder().setContent(new char[]{'1', '2', '3', '4', '5'}).setSkipException("ex").buildReader();
         char[] buff07 = new char[10];
         Assertions.assertThat(reader07.read(buff07, 0, 10)).isEqualTo(5);
         Assertions.assertThat(buff07).containsExactlyInOrder('1', '2', '3', '4', '5', 0, 0, 0, 0, 0);
-        Assertions.assertThat(reader07.read(buff07, 0, 10)).isEqualTo(0);
+        Assertions.assertThat(reader07.read(buff07, 0, 10)).isEqualTo(-1);
         Assertions.assertThat(buff07).containsExactlyInOrder('1', '2', '3', '4', '5', 0, 0, 0, 0, 0);
 
         Reader reader08 = DataHelper.createReaderBuilder().setContent(new char[]{'1', '2', '3', '4', '5'}).setCloseException("ex").buildReader();
         char[] buff08 = new char[10];
         Assertions.assertThat(reader08.read(buff08, 0, 10)).isEqualTo(5);
         Assertions.assertThat(buff08).containsExactlyInOrder('1', '2', '3', '4', '5', 0, 0, 0, 0, 0);
-        Assertions.assertThat(reader08.read(buff08, 0, 10)).isEqualTo(0);
+        Assertions.assertThat(reader08.read(buff08, 0, 10)).isEqualTo(-1);
         Assertions.assertThat(buff08).containsExactlyInOrder('1', '2', '3', '4', '5', 0, 0, 0, 0, 0);
 
         try {
@@ -375,6 +376,38 @@ public final class MockReaderTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("fail");
         }
         Assertions.assertThat(((IsCloseable) reader02).isClosed()).isTrue();
+    }
+
+    /**
+     * {@link MockReader} class test.
+     *
+     * @throws IOException exception in test.
+     */
+    @Test
+    public void bufferedReaderTest() throws IOException {
+        BufferedReader reader01 = DataHelper.createReaderBuilder().setContent("row1\r\nrow2\r\nrow3\r\n").buildBufferedReader();
+        Assertions.assertThat(reader01.readLine()).isEqualTo("row1");
+        Assertions.assertThat(reader01.readLine()).isEqualTo("row2");
+        Assertions.assertThat(reader01.readLine()).isEqualTo("row3");
+        Assertions.assertThat(reader01.readLine()).isNull();
+
+        BufferedReader reader02 = DataHelper.createReaderBuilder().setContent("row1\nrow2\nrow3\n").buildBufferedReader();
+        Assertions.assertThat(reader02.readLine()).isEqualTo("row1");
+        Assertions.assertThat(reader02.readLine()).isEqualTo("row2");
+        Assertions.assertThat(reader02.readLine()).isEqualTo("row3");
+        Assertions.assertThat(reader02.readLine()).isNull();
+
+        BufferedReader reader03 = DataHelper.createReaderBuilder().setContent("row1\rrow2\rrow3\r").buildBufferedReader();
+        Assertions.assertThat(reader03.readLine()).isEqualTo("row1");
+        Assertions.assertThat(reader03.readLine()).isEqualTo("row2");
+        Assertions.assertThat(reader03.readLine()).isEqualTo("row3");
+        Assertions.assertThat(reader03.readLine()).isNull();
+
+        BufferedReader reader04 = DataHelper.createReaderBuilder().setContent("row1\r\nrow2\r\nrow3").buildBufferedReader();
+        Assertions.assertThat(reader04.readLine()).isEqualTo("row1");
+        Assertions.assertThat(reader04.readLine()).isEqualTo("row2");
+        Assertions.assertThat(reader04.readLine()).isEqualTo("row3");
+        Assertions.assertThat(reader04.readLine()).isNull();
     }
 
 }
