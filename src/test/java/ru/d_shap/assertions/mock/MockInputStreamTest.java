@@ -109,12 +109,14 @@ public final class MockInputStreamTest extends AssertionTest {
      */
     @Test
     public void readByteTest() throws IOException {
-        InputStream inputStream01 = DataHelper.createInputStreamBuilder().setContent(new byte[]{1, 2, 3, 4, 5}).buildInputStream();
+        InputStream inputStream01 = DataHelper.createInputStreamBuilder().setContent(new byte[]{1, 2, 3, 4, 5, 0, 6}).buildInputStream();
         Assertions.assertThat(inputStream01.read()).isEqualTo(1);
         Assertions.assertThat(inputStream01.read()).isEqualTo(2);
         Assertions.assertThat(inputStream01.read()).isEqualTo(3);
         Assertions.assertThat(inputStream01.read()).isEqualTo(4);
         Assertions.assertThat(inputStream01.read()).isEqualTo(5);
+        Assertions.assertThat(inputStream01.read()).isEqualTo(0);
+        Assertions.assertThat(inputStream01.read()).isEqualTo(6);
         Assertions.assertThat(inputStream01.read()).isEqualTo(-1);
         Assertions.assertThat(inputStream01.read()).isEqualTo(-1);
 

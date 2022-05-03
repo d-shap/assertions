@@ -50,12 +50,14 @@ public final class MockReaderTest extends AssertionTest {
      */
     @Test
     public void readCharTest() throws IOException {
-        Reader reader01 = DataHelper.createReaderBuilder().setContent(new char[]{'1', '2', '3', '4', '5'}).buildReader();
+        Reader reader01 = DataHelper.createReaderBuilder().setContent(new char[]{'1', '2', '3', '4', '5', 0, '6'}).buildReader();
         Assertions.assertThat(reader01.read()).isEqualTo('1');
         Assertions.assertThat(reader01.read()).isEqualTo('2');
         Assertions.assertThat(reader01.read()).isEqualTo('3');
         Assertions.assertThat(reader01.read()).isEqualTo('4');
         Assertions.assertThat(reader01.read()).isEqualTo('5');
+        Assertions.assertThat(reader01.read()).isEqualTo(0);
+        Assertions.assertThat(reader01.read()).isEqualTo('6');
         Assertions.assertThat(reader01.read()).isEqualTo(-1);
         Assertions.assertThat(reader01.read()).isEqualTo(-1);
 
