@@ -201,12 +201,12 @@ public final class MockInputStreamTest extends AssertionTest {
         Assertions.assertThat(inputStream04.read(buff04, 0, 5)).isEqualTo(-1);
         Assertions.assertThat(buff04).containsExactlyInOrder(1, 2, 3, 4, 5);
 
-        InputStream inputStream05 = DataHelper.createInputStreamBuilder().setContent(new byte[]{1, 2, 3, 4, 5}).buildInputStream();
+        InputStream inputStream05 = DataHelper.createInputStreamBuilder().setContent(new byte[]{1, 2, 3, 4, 5, 0, 6}).buildInputStream();
         byte[] buff05 = new byte[10];
-        Assertions.assertThat(inputStream05.read(buff05, 0, 10)).isEqualTo(5);
-        Assertions.assertThat(buff05).containsExactlyInOrder(1, 2, 3, 4, 5, 0, 0, 0, 0, 0);
+        Assertions.assertThat(inputStream05.read(buff05, 0, 10)).isEqualTo(7);
+        Assertions.assertThat(buff05).containsExactlyInOrder(1, 2, 3, 4, 5, 0, 6, 0, 0, 0);
         Assertions.assertThat(inputStream05.read(buff05, 0, 10)).isEqualTo(-1);
-        Assertions.assertThat(buff05).containsExactlyInOrder(1, 2, 3, 4, 5, 0, 0, 0, 0, 0);
+        Assertions.assertThat(buff05).containsExactlyInOrder(1, 2, 3, 4, 5, 0, 6, 0, 0, 0);
 
         InputStream inputStream06 = DataHelper.createInputStreamBuilder().setContent(new byte[]{}).buildInputStream();
         byte[] buff06 = new byte[10];
@@ -323,8 +323,8 @@ public final class MockInputStreamTest extends AssertionTest {
         Assertions.assertThat(inputStream03.skip(5)).isEqualTo(0);
         Assertions.assertThat(inputStream03.skip(5)).isEqualTo(0);
 
-        InputStream inputStream04 = DataHelper.createInputStreamBuilder().setContent(new byte[]{1, 2, 3, 4, 5}).buildInputStream();
-        Assertions.assertThat(inputStream04.skip(10)).isEqualTo(5);
+        InputStream inputStream04 = DataHelper.createInputStreamBuilder().setContent(new byte[]{1, 2, 3, 4, 5, 0, 6}).buildInputStream();
+        Assertions.assertThat(inputStream04.skip(10)).isEqualTo(7);
         Assertions.assertThat(inputStream04.skip(10)).isEqualTo(0);
         Assertions.assertThat(inputStream04.skip(10)).isEqualTo(0);
 

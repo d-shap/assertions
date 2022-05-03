@@ -138,12 +138,12 @@ public final class MockReaderTest extends AssertionTest {
         Assertions.assertThat(reader04.read(buff04, 0, 5)).isEqualTo(-1);
         Assertions.assertThat(buff04).containsExactlyInOrder('1', '2', '3', '4', '5');
 
-        Reader reader05 = DataHelper.createReaderBuilder().setContent(new char[]{'1', '2', '3', '4', '5'}).buildReader();
+        Reader reader05 = DataHelper.createReaderBuilder().setContent(new char[]{'1', '2', '3', '4', '5', 0, '6'}).buildReader();
         char[] buff05 = new char[10];
-        Assertions.assertThat(reader05.read(buff05, 0, 10)).isEqualTo(5);
-        Assertions.assertThat(buff05).containsExactlyInOrder('1', '2', '3', '4', '5', 0, 0, 0, 0, 0);
+        Assertions.assertThat(reader05.read(buff05, 0, 10)).isEqualTo(7);
+        Assertions.assertThat(buff05).containsExactlyInOrder('1', '2', '3', '4', '5', 0, '6', 0, 0, 0);
         Assertions.assertThat(reader05.read(buff05, 0, 10)).isEqualTo(-1);
-        Assertions.assertThat(buff05).containsExactlyInOrder('1', '2', '3', '4', '5', 0, 0, 0, 0, 0);
+        Assertions.assertThat(buff05).containsExactlyInOrder('1', '2', '3', '4', '5', 0, '6', 0, 0, 0);
 
         Reader reader06 = DataHelper.createReaderBuilder().setContent(new char[]{}).buildReader();
         char[] buff06 = new char[10];
@@ -253,8 +253,8 @@ public final class MockReaderTest extends AssertionTest {
         Assertions.assertThat(reader03.skip(5)).isEqualTo(0);
         Assertions.assertThat(reader03.skip(5)).isEqualTo(0);
 
-        Reader reader04 = DataHelper.createReaderBuilder().setContent(new char[]{'1', '2', '3', '4', '5'}).buildReader();
-        Assertions.assertThat(reader04.skip(10)).isEqualTo(5);
+        Reader reader04 = DataHelper.createReaderBuilder().setContent(new char[]{'1', '2', '3', '4', '5', 0, '6'}).buildReader();
+        Assertions.assertThat(reader04.skip(10)).isEqualTo(7);
         Assertions.assertThat(reader04.skip(10)).isEqualTo(0);
         Assertions.assertThat(reader04.skip(10)).isEqualTo(0);
 
