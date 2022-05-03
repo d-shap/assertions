@@ -98,7 +98,11 @@ public final class MockInputStream extends InputStream implements IsCloseable {
             buffer[i] = (byte) read;
             count++;
         }
-        return count;
+        if (count == 0) {
+            return -1;
+        } else {
+            return count;
+        }
     }
 
     private int doRead(final IOException exception) throws IOException {
