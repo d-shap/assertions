@@ -184,6 +184,16 @@ public final class DataHelperTest extends AssertionTest {
         Object object22 = new IntHolder(2, -1);
         Assertions.assertThat(DataHelper.createTreeSet(object21, object22)).containsExactly(object21, object22);
         Assertions.assertThat(DataHelper.createTreeSet(object22, object21)).containsExactly(object21, object22);
+
+        Object object31 = new StringHolder("a");
+        Object object32 = new StringHolder("aaa");
+        Object object33 = new StringHolder("aa");
+        Assertions.assertThat(DataHelper.createTreeSet(object31, object32)).containsExactly(object31, object32);
+        Assertions.assertThat(DataHelper.createTreeSet(object32, object31)).containsExactly(object31, object32);
+        Assertions.assertThat(DataHelper.createTreeSet(object31, object33)).containsExactly(object31, object33);
+        Assertions.assertThat(DataHelper.createTreeSet(object33, object31)).containsExactly(object31, object33);
+        Assertions.assertThat(DataHelper.createTreeSet(object32, object33)).containsExactly(object33, object32);
+        Assertions.assertThat(DataHelper.createTreeSet(object33, object32)).containsExactly(object33, object32);
     }
 
     /**
@@ -755,6 +765,38 @@ public final class DataHelperTest extends AssertionTest {
         @Override
         public int hashCode() {
             return _hashCode;
+        }
+
+    }
+
+    private static final class StringHolder implements Comparable<StringHolder> {
+
+        private final String _value;
+
+        StringHolder(final String value) {
+            super();
+            _value = value;
+        }
+
+        @Override
+        public boolean equals(final Object object) {
+            if (object == this) {
+                return true;
+            }
+            if (!(object instanceof StringHolder)) {
+                return false;
+            }
+            return _value.equals(((StringHolder) object)._value);
+        }
+
+        @Override
+        public int hashCode() {
+            return 0;
+        }
+
+        @Override
+        public int compareTo(final StringHolder stringHolder) {
+            return _value.length() - stringHolder._value.length();
         }
 
     }
