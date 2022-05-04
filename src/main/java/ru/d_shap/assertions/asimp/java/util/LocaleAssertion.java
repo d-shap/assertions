@@ -138,4 +138,64 @@ public class LocaleAssertion extends ReferenceAssertion<Locale> {
         toDisplayLanguage().isEqualTo(expected);
     }
 
+    /**
+     * Make assertion about the actual value's country.
+     *
+     * @return the assertion.
+     */
+    public final CharSequenceAssertion toCountry() {
+        checkActualIsNotNull();
+        return initializeAssertion(Raw.charSequenceAssertion(), getActual().getCountry(), Messages.Check.COUNTRY);
+    }
+
+    /**
+     * Make assertion about the actual value's country.
+     *
+     * @param matcher the hamcrest matcher.
+     */
+    public final void toCountry(final Matcher<? super String> matcher) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(matcher, "matcher");
+        matcherAssertion(getActual().getCountry(), matcher, Messages.Check.COUNTRY);
+    }
+
+    /**
+     * Check if the actual value's country is equal to the expected country.
+     *
+     * @param expected the expected value.
+     */
+    public final void hasCountry(final String expected) {
+        toCountry().isEqualTo(expected);
+    }
+
+    /**
+     * Make assertion about the actual value's display country.
+     *
+     * @return the assertion.
+     */
+    public final CharSequenceAssertion toDisplayCountry() {
+        checkActualIsNotNull();
+        return initializeAssertion(Raw.charSequenceAssertion(), getActual().getDisplayCountry(), Messages.Check.DISPLAY_COUNTRY);
+    }
+
+    /**
+     * Make assertion about the actual value's display country.
+     *
+     * @param matcher the hamcrest matcher.
+     */
+    public final void toDisplayCountry(final Matcher<? super String> matcher) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(matcher, "matcher");
+        matcherAssertion(getActual().getDisplayCountry(), matcher, Messages.Check.DISPLAY_COUNTRY);
+    }
+
+    /**
+     * Check if the actual value's display country is equal to the expected display country.
+     *
+     * @param expected the expected value.
+     */
+    public final void hasDisplayCountry(final String expected) {
+        toDisplayCountry().isEqualTo(expected);
+    }
+
 }
