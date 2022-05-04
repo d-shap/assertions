@@ -73,10 +73,13 @@ public final class MockReader extends Reader implements IsCloseable {
     @Override
     public int read(final char[] buffer, final int offset, final int length) throws IOException {
         if (buffer == null) {
-            throw new NullPointerException();
+            throw new NullPointerException("buffer is null");
         }
-        if (offset < 0 || length < 0 || length > buffer.length - offset) {
-            throw new IndexOutOfBoundsException();
+        if (offset < 0 || offset >= buffer.length) {
+            throw new IndexOutOfBoundsException("offset is out of bounds");
+        }
+        if (length < 0 || offset + length > buffer.length) {
+            throw new IndexOutOfBoundsException("length is out of bounds");
         }
         if (length == 0) {
             return 0;
