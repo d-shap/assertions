@@ -173,12 +173,17 @@ public final class DataHelperTest extends AssertionTest {
         Assertions.assertThat(DataHelper.createTreeSet("a", "b")).containsExactlyInOrder("a", "b");
         Assertions.assertThat(DataHelper.createTreeSet(1, 2, 3)).isInstanceOf(TreeSet.class);
 
-        Object object1 = new IntHolder(1);
-        Assertions.assertThat(DataHelper.createTreeSet(object1)).containsExactly(object1);
-        Object object2 = new IntHolder(2);
-        Object object3 = new IntHolder(3);
-        Assertions.assertThat(DataHelper.createTreeSet(object1, object2, object3)).containsExactly(object1, object2, object3);
-        Assertions.assertThat(DataHelper.createTreeSet(object1, null, object3, object2)).containsExactly(null, object1, object2, object3);
+        Object object11 = new IntHolder(1, 1);
+        Assertions.assertThat(DataHelper.createTreeSet(object11)).containsExactly(object11);
+        Object object12 = new IntHolder(2, 2);
+        Object object13 = new IntHolder(3, 3);
+        Assertions.assertThat(DataHelper.createTreeSet(object11, object12, object13)).containsExactly(object11, object12, object13);
+        Assertions.assertThat(DataHelper.createTreeSet(object11, null, object13, object12)).containsExactly(null, object11, object12, object13);
+
+        Object object21 = new IntHolder(1, 1);
+        Object object22 = new IntHolder(2, -1);
+        Assertions.assertThat(DataHelper.createTreeSet(object21, object22)).containsExactly(object21, object22);
+        Assertions.assertThat(DataHelper.createTreeSet(object22, object21)).containsExactly(object21, object22);
     }
 
     /**
@@ -728,9 +733,12 @@ public final class DataHelperTest extends AssertionTest {
 
         private final int _value;
 
-        IntHolder(final int value) {
+        private final int _hashCode;
+
+        IntHolder(final int value, final int hashCode) {
             super();
             _value = value;
+            _hashCode = hashCode;
         }
 
         @Override
@@ -746,7 +754,7 @@ public final class DataHelperTest extends AssertionTest {
 
         @Override
         public int hashCode() {
-            return _value;
+            return _hashCode;
         }
 
     }
