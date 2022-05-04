@@ -94,14 +94,10 @@ public class ElementAssertion extends ReferenceAssertion<Element> {
      * @param expected the expected value.
      */
     public final void isNotEqualTo(final String expected) {
-        if (expected == null) {
-            isNotNull();
-        } else {
-            ConversionExceptionHolder conversionExceptionHolder = new ConversionExceptionHolder();
-            Element expectedElement = convertValue(expected, conversionExceptionHolder, Element.class);
-            checkArgumentIsValid(conversionExceptionHolder, "expected", Messages.Fail.Argument.IS_VALID_XML);
-            createNodeAssertion().isNotEqualTo(expectedElement);
-        }
+        ConversionExceptionHolder conversionExceptionHolder = new ConversionExceptionHolder();
+        Element expectedElement = convertValue(expected, conversionExceptionHolder, Element.class);
+        checkArgumentIsValid(conversionExceptionHolder, "expected", Messages.Fail.Argument.IS_VALID_XML);
+        createNodeAssertion().isNotEqualTo(expectedElement);
     }
 
     /**

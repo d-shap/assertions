@@ -90,14 +90,10 @@ public class DocumentAssertion extends ReferenceAssertion<Document> {
      * @param expected the expected value.
      */
     public final void isNotEqualTo(final String expected) {
-        if (expected == null) {
-            isNotNull();
-        } else {
-            ConversionExceptionHolder conversionExceptionHolder = new ConversionExceptionHolder();
-            Document expectedDocument = convertValue(expected, conversionExceptionHolder, Document.class);
-            checkArgumentIsValid(conversionExceptionHolder, "expected", Messages.Fail.Argument.IS_VALID_XML);
-            createNodeAssertion().isNotEqualTo(expectedDocument);
-        }
+        ConversionExceptionHolder conversionExceptionHolder = new ConversionExceptionHolder();
+        Document expectedDocument = convertValue(expected, conversionExceptionHolder, Document.class);
+        checkArgumentIsValid(conversionExceptionHolder, "expected", Messages.Fail.Argument.IS_VALID_XML);
+        createNodeAssertion().isNotEqualTo(expectedDocument);
     }
 
     /**
