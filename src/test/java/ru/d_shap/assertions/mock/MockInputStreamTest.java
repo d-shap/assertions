@@ -242,31 +242,43 @@ public final class MockInputStreamTest extends AssertionTest {
             DataHelper.createInputStreamBuilder().setContent(new byte[]{1, 2, 3, 4, 5}).buildInputStream().read(null, 0, 10);
             Assertions.fail("MockInputStream test fail");
         } catch (NullPointerException ex) {
-            Assertions.assertThat(ex).isNotNull();
+            Assertions.assertThat(ex).hasMessage("buffer is null");
         }
         try {
             DataHelper.createInputStreamBuilder().setContent(new byte[]{1, 2, 3, 4, 5}).buildInputStream().read(null, -1, 10);
             Assertions.fail("MockInputStream test fail");
         } catch (NullPointerException ex) {
-            Assertions.assertThat(ex).isNotNull();
+            Assertions.assertThat(ex).hasMessage("buffer is null");
         }
         try {
             DataHelper.createInputStreamBuilder().setContent(new byte[]{1, 2, 3, 4, 5}).buildInputStream().read(new byte[5], -1, 10);
             Assertions.fail("MockInputStream test fail");
         } catch (IndexOutOfBoundsException ex) {
-            Assertions.assertThat(ex).isNotNull();
+            Assertions.assertThat(ex).hasMessage("offset is out of bounds");
+        }
+        try {
+            DataHelper.createInputStreamBuilder().setContent(new byte[]{1, 2, 3, 4, 5}).buildInputStream().read(new byte[5], 5, 10);
+            Assertions.fail("MockInputStream test fail");
+        } catch (IndexOutOfBoundsException ex) {
+            Assertions.assertThat(ex).hasMessage("offset is out of bounds");
         }
         try {
             DataHelper.createInputStreamBuilder().setContent(new byte[]{1, 2, 3, 4, 5}).buildInputStream().read(new byte[5], 0, -1);
             Assertions.fail("MockInputStream test fail");
         } catch (IndexOutOfBoundsException ex) {
-            Assertions.assertThat(ex).isNotNull();
+            Assertions.assertThat(ex).hasMessage("length is out of bounds");
         }
         try {
             DataHelper.createInputStreamBuilder().setContent(new byte[]{1, 2, 3, 4, 5}).buildInputStream().read(new byte[5], 0, 6);
             Assertions.fail("MockInputStream test fail");
         } catch (IndexOutOfBoundsException ex) {
-            Assertions.assertThat(ex).isNotNull();
+            Assertions.assertThat(ex).hasMessage("length is out of bounds");
+        }
+        try {
+            DataHelper.createInputStreamBuilder().setContent(new byte[]{1, 2, 3, 4, 5}).buildInputStream().read(new byte[5], 4, 2);
+            Assertions.fail("MockInputStream test fail");
+        } catch (IndexOutOfBoundsException ex) {
+            Assertions.assertThat(ex).hasMessage("length is out of bounds");
         }
         try {
             InputStream inputStream = DataHelper.createInputStreamBuilder().setContent(new byte[]{1, 2, 3, 4, 5}).setReadException(new IOException("fail")).buildInputStream();

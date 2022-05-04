@@ -172,31 +172,43 @@ public final class MockReaderTest extends AssertionTest {
             DataHelper.createReaderBuilder().setContent(new char[]{'1', '2', '3', '4', '5'}).buildReader().read(null, 0, 10);
             Assertions.fail("MockReader test fail");
         } catch (NullPointerException ex) {
-            Assertions.assertThat(ex).isNotNull();
+            Assertions.assertThat(ex).hasMessage("buffer is null");
         }
         try {
             DataHelper.createReaderBuilder().setContent(new char[]{'1', '2', '3', '4', '5'}).buildReader().read(null, -1, 10);
             Assertions.fail("MockReader test fail");
         } catch (NullPointerException ex) {
-            Assertions.assertThat(ex).isNotNull();
+            Assertions.assertThat(ex).hasMessage("buffer is null");
         }
         try {
             DataHelper.createReaderBuilder().setContent(new char[]{'1', '2', '3', '4', '5'}).buildReader().read(new char[5], -1, 10);
             Assertions.fail("MockReader test fail");
         } catch (IndexOutOfBoundsException ex) {
-            Assertions.assertThat(ex).isNotNull();
+            Assertions.assertThat(ex).hasMessage("offset is out of bounds");
+        }
+        try {
+            DataHelper.createReaderBuilder().setContent(new char[]{'1', '2', '3', '4', '5'}).buildReader().read(new char[5], 5, 10);
+            Assertions.fail("MockReader test fail");
+        } catch (IndexOutOfBoundsException ex) {
+            Assertions.assertThat(ex).hasMessage("offset is out of bounds");
         }
         try {
             DataHelper.createReaderBuilder().setContent(new char[]{'1', '2', '3', '4', '5'}).buildReader().read(new char[5], 0, -1);
             Assertions.fail("MockReader test fail");
         } catch (IndexOutOfBoundsException ex) {
-            Assertions.assertThat(ex).isNotNull();
+            Assertions.assertThat(ex).hasMessage("length is out of bounds");
         }
         try {
             DataHelper.createReaderBuilder().setContent(new char[]{'1', '2', '3', '4', '5'}).buildReader().read(new char[5], 0, 6);
             Assertions.fail("MockReader test fail");
         } catch (IndexOutOfBoundsException ex) {
-            Assertions.assertThat(ex).isNotNull();
+            Assertions.assertThat(ex).hasMessage("length is out of bounds");
+        }
+        try {
+            DataHelper.createReaderBuilder().setContent(new char[]{'1', '2', '3', '4', '5'}).buildReader().read(new char[5], 4, 2);
+            Assertions.fail("MockReader test fail");
+        } catch (IndexOutOfBoundsException ex) {
+            Assertions.assertThat(ex).hasMessage("length is out of bounds");
         }
         try {
             Reader reader = DataHelper.createReaderBuilder().setContent(new char[]{'1', '2', '3', '4', '5'}).setReadException(new IOException("fail")).buildReader();
