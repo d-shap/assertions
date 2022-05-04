@@ -139,6 +139,18 @@ public final class Messages {
 
         public static final String TIME_ZONE_DATE = "Check actual value''s date in time zone: {0}.";
 
+        public static final String LANGUAGE = "Check actual value''s language.";
+
+        public static final String DISPLAY_LANGUAGE = "Check actual value''s display language.";
+
+        public static final String COUNTRY = "Check actual value''s country.";
+
+        public static final String DISPLAY_COUNTRY = "Check actual value''s display country.";
+
+        public static final String VARIANT = "Check actual value''s variant.";
+
+        public static final String DISPLAY_VARIANT = "Check actual value''s display variant.";
+
         public static final String BYTES_ALL = "Check all actual value''s bytes.";
 
         public static final String BYTES_COUNT = "Check next N actual value''s bytes: {0}.";
