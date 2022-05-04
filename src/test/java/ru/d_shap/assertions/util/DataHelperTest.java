@@ -121,7 +121,7 @@ public final class DataHelperTest extends AssertionTest {
      */
     @Test
     public void createArrayListTest() {
-        Assertions.assertThat(DataHelper.createArrayList((String[]) null)).isNullOrEmpty();
+        Assertions.assertThat(DataHelper.createArrayList((String[]) null)).isNull();
         Assertions.assertThat(DataHelper.createArrayList((String) null)).containsExactlyInOrder((String) null);
         Assertions.assertThat(DataHelper.createArrayList("a", "b", "c")).containsExactlyInOrder("a", "b", "c");
         Assertions.assertThat(DataHelper.createArrayList(1, 2, 3)).containsExactlyInOrder(1, 2, 3);
@@ -134,7 +134,7 @@ public final class DataHelperTest extends AssertionTest {
      */
     @Test
     public void createLinkedListTest() {
-        Assertions.assertThat(DataHelper.createLinkedList((String[]) null)).isNullOrEmpty();
+        Assertions.assertThat(DataHelper.createLinkedList((String[]) null)).isNull();
         Assertions.assertThat(DataHelper.createLinkedList((String) null)).containsExactlyInOrder((String) null);
         Assertions.assertThat(DataHelper.createLinkedList("a", "b", "c")).containsExactlyInOrder("a", "b", "c");
         Assertions.assertThat(DataHelper.createLinkedList(1, 2, 3)).containsExactlyInOrder(1, 2, 3);
@@ -147,7 +147,7 @@ public final class DataHelperTest extends AssertionTest {
      */
     @Test
     public void createHashSetTest() {
-        Assertions.assertThat(DataHelper.createHashSet((String[]) null)).isNullOrEmpty();
+        Assertions.assertThat(DataHelper.createHashSet((String[]) null)).isNull();
         Assertions.assertThat(DataHelper.createHashSet((String) null)).containsExactlyInOrder((String) null);
         Assertions.assertThat(DataHelper.createHashSet("a", "b", "c")).containsExactlyInOrder("a", "b", "c");
         Assertions.assertThat(DataHelper.createHashSet(1, 2, 3)).containsExactlyInOrder(1, 2, 3);
