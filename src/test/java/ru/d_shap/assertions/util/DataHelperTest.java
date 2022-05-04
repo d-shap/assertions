@@ -173,27 +173,43 @@ public final class DataHelperTest extends AssertionTest {
         Assertions.assertThat(DataHelper.createTreeSet("a", "b")).containsExactlyInOrder("a", "b");
         Assertions.assertThat(DataHelper.createTreeSet(1, 2, 3)).isInstanceOf(TreeSet.class);
 
-        Object object11 = new IntHolder(1, 1);
-        Assertions.assertThat(DataHelper.createTreeSet(object11)).containsExactly(object11);
-        Object object12 = new IntHolder(2, 2);
-        Object object13 = new IntHolder(3, 3);
-        Assertions.assertThat(DataHelper.createTreeSet(object11, object12, object13)).containsExactly(object11, object12, object13);
-        Assertions.assertThat(DataHelper.createTreeSet(object11, null, object13, object12)).containsExactly(null, object11, object12, object13);
+        Object object11 = new IntHolder(1);
+        Assertions.assertThat(DataHelper.createTreeSet(object11)).containsExactlyInOrder(object11);
+        Object object12 = new IntHolder(2);
+        Object object13 = new IntHolder(3);
+        Assertions.assertThat(DataHelper.createTreeSet(object11, object12, object13)).containsExactlyInOrder(object11, object12, object13);
+        Assertions.assertThat(DataHelper.createTreeSet(object11, null, object13, object12)).containsExactlyInOrder(null, object11, object12, object13);
 
-        Object object21 = new IntHolder(1, 1);
-        Object object22 = new IntHolder(2, -1);
-        Assertions.assertThat(DataHelper.createTreeSet(object21, object22)).containsExactly(object21, object22);
-        Assertions.assertThat(DataHelper.createTreeSet(object22, object21)).containsExactly(object21, object22);
+        Object object21 = new IntHolder(-2);
+        Object object22 = new IntHolder(-1);
+        Object object23 = new IntHolder(1);
+        Object object24 = new IntHolder(2);
+        Assertions.assertThat(DataHelper.createTreeSet(object21, object22)).containsExactlyInOrder(object21, object22);
+        Assertions.assertThat(DataHelper.createTreeSet(object22, object21)).containsExactlyInOrder(object21, object22);
+        Assertions.assertThat(DataHelper.createTreeSet(object21, object23)).containsExactlyInOrder(object21, object23);
+        Assertions.assertThat(DataHelper.createTreeSet(object23, object21)).containsExactlyInOrder(object21, object23);
+        Assertions.assertThat(DataHelper.createTreeSet(object21, object24)).containsExactlyInOrder(object21, object24);
+        Assertions.assertThat(DataHelper.createTreeSet(object24, object21)).containsExactlyInOrder(object21, object24);
+        Assertions.assertThat(DataHelper.createTreeSet(object22, object23)).containsExactlyInOrder(object22, object23);
+        Assertions.assertThat(DataHelper.createTreeSet(object23, object22)).containsExactlyInOrder(object22, object23);
+        Assertions.assertThat(DataHelper.createTreeSet(object22, object24)).containsExactlyInOrder(object22, object24);
+        Assertions.assertThat(DataHelper.createTreeSet(object24, object22)).containsExactlyInOrder(object22, object24);
+        Assertions.assertThat(DataHelper.createTreeSet(object23, object24)).containsExactlyInOrder(object23, object24);
+        Assertions.assertThat(DataHelper.createTreeSet(object24, object23)).containsExactlyInOrder(object23, object24);
+        Assertions.assertThat(DataHelper.createTreeSet(object21, object22, object23, object24)).containsExactlyInOrder(object21, object22, object23, object24);
+        Assertions.assertThat(DataHelper.createTreeSet(object21, object23, object22, object24)).containsExactlyInOrder(object21, object22, object23, object24);
+        Assertions.assertThat(DataHelper.createTreeSet(object21, object24, object23, object22)).containsExactlyInOrder(object21, object22, object23, object24);
+        Assertions.assertThat(DataHelper.createTreeSet(object21, object23, object24, object22)).containsExactlyInOrder(object21, object22, object23, object24);
 
         Object object31 = new StringHolder("a");
         Object object32 = new StringHolder("aaa");
         Object object33 = new StringHolder("aa");
-        Assertions.assertThat(DataHelper.createTreeSet(object31, object32)).containsExactly(object31, object32);
-        Assertions.assertThat(DataHelper.createTreeSet(object32, object31)).containsExactly(object31, object32);
-        Assertions.assertThat(DataHelper.createTreeSet(object31, object33)).containsExactly(object31, object33);
-        Assertions.assertThat(DataHelper.createTreeSet(object33, object31)).containsExactly(object31, object33);
-        Assertions.assertThat(DataHelper.createTreeSet(object32, object33)).containsExactly(object33, object32);
-        Assertions.assertThat(DataHelper.createTreeSet(object33, object32)).containsExactly(object33, object32);
+        Assertions.assertThat(DataHelper.createTreeSet(object31, object32)).containsExactlyInOrder(object31, object32);
+        Assertions.assertThat(DataHelper.createTreeSet(object32, object31)).containsExactlyInOrder(object31, object32);
+        Assertions.assertThat(DataHelper.createTreeSet(object31, object33)).containsExactlyInOrder(object31, object33);
+        Assertions.assertThat(DataHelper.createTreeSet(object33, object31)).containsExactlyInOrder(object31, object33);
+        Assertions.assertThat(DataHelper.createTreeSet(object32, object33)).containsExactlyInOrder(object33, object32);
+        Assertions.assertThat(DataHelper.createTreeSet(object33, object32)).containsExactlyInOrder(object33, object32);
     }
 
     /**
@@ -743,12 +759,9 @@ public final class DataHelperTest extends AssertionTest {
 
         private final int _value;
 
-        private final int _hashCode;
-
-        IntHolder(final int value, final int hashCode) {
+        IntHolder(final int value) {
             super();
             _value = value;
-            _hashCode = hashCode;
         }
 
         @Override
@@ -764,7 +777,12 @@ public final class DataHelperTest extends AssertionTest {
 
         @Override
         public int hashCode() {
-            return _hashCode;
+            return _value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(_value);
         }
 
     }
@@ -797,6 +815,11 @@ public final class DataHelperTest extends AssertionTest {
         @Override
         public int compareTo(final StringHolder stringHolder) {
             return _value.length() - stringHolder._value.length();
+        }
+
+        @Override
+        public String toString() {
+            return _value;
         }
 
     }
