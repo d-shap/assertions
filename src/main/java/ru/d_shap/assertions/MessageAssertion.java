@@ -33,6 +33,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 import java.util.SortedMap;
@@ -78,6 +79,7 @@ import ru.d_shap.assertions.asimp.java.util.CalendarAssertion;
 import ru.d_shap.assertions.asimp.java.util.DateAssertion;
 import ru.d_shap.assertions.asimp.java.util.IteratorAssertion;
 import ru.d_shap.assertions.asimp.java.util.ListAssertion;
+import ru.d_shap.assertions.asimp.java.util.LocaleAssertion;
 import ru.d_shap.assertions.asimp.java.util.MapAssertion;
 import ru.d_shap.assertions.asimp.java.util.SetAssertion;
 import ru.d_shap.assertions.asimp.java.util.SortedMapAssertion;
@@ -719,6 +721,19 @@ public final class MessageAssertion {
     public TimeZoneAssertion that(final TimeZone actual) {
         TimeZoneAssertion assertion = Raw.timeZoneAssertion();
         ((BaseAssertion<TimeZone>) assertion).initialize(actual, Messages.SIMPLE_MESSAGE, _message);
+        return assertion;
+    }
+
+    /**
+     * Make assertion about the locale.
+     *
+     * @param actual the actual value.
+     *
+     * @return the assertion.
+     */
+    public LocaleAssertion that(final Locale actual) {
+        LocaleAssertion assertion = Raw.localeAssertion();
+        ((BaseAssertion<Locale>) assertion).initialize(actual, Messages.SIMPLE_MESSAGE, _message);
         return assertion;
     }
 
