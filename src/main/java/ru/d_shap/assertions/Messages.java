@@ -143,6 +143,10 @@ public final class Messages {
 
         public static final String DISPLAY_LANGUAGE = "Check actual value''s display language.";
 
+        public static final String SCRIPT = "Check actual value''s script.";
+
+        public static final String DISPLAY_SCRIPT = "Check actual value''s display script.";
+
         public static final String COUNTRY = "Check actual value''s country.";
 
         public static final String DISPLAY_COUNTRY = "Check actual value''s display country.";
