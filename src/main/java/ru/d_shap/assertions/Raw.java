@@ -49,6 +49,7 @@ import ru.d_shap.assertions.asimp.java.util.CalendarAssertion;
 import ru.d_shap.assertions.asimp.java.util.DateAssertion;
 import ru.d_shap.assertions.asimp.java.util.IteratorAssertion;
 import ru.d_shap.assertions.asimp.java.util.ListAssertion;
+import ru.d_shap.assertions.asimp.java.util.LocaleAssertion;
 import ru.d_shap.assertions.asimp.java.util.MapAssertion;
 import ru.d_shap.assertions.asimp.java.util.SetAssertion;
 import ru.d_shap.assertions.asimp.java.util.SortedMapAssertion;
@@ -396,6 +397,15 @@ public final class Raw {
      */
     public static TimeZoneAssertion timeZoneAssertion() {
         return new TimeZoneAssertion();
+    }
+
+    /**
+     * Create uninitialized assertion about the locale.
+     *
+     * @return the assertion.
+     */
+    public static LocaleAssertion localeAssertion() {
+        return new LocaleAssertion();
     }
 
     /**
