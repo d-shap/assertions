@@ -139,6 +139,66 @@ public class LocaleAssertion extends ReferenceAssertion<Locale> {
     }
 
     /**
+     * Make assertion about the actual value's script.
+     *
+     * @return the assertion.
+     */
+    public final CharSequenceAssertion toScript() {
+        checkActualIsNotNull();
+        return initializeAssertion(Raw.charSequenceAssertion(), getActual().getScript(), Messages.Check.SCRIPT);
+    }
+
+    /**
+     * Make assertion about the actual value's script.
+     *
+     * @param matcher the hamcrest matcher.
+     */
+    public final void toScript(final Matcher<? super String> matcher) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(matcher, "matcher");
+        matcherAssertion(getActual().getScript(), matcher, Messages.Check.SCRIPT);
+    }
+
+    /**
+     * Check if the actual value's script is equal to the expected script.
+     *
+     * @param expected the expected value.
+     */
+    public final void hasScript(final String expected) {
+        toScript().isEqualTo(expected);
+    }
+
+    /**
+     * Make assertion about the actual value's display script.
+     *
+     * @return the assertion.
+     */
+    public final CharSequenceAssertion toDisplayScript() {
+        checkActualIsNotNull();
+        return initializeAssertion(Raw.charSequenceAssertion(), getActual().getDisplayScript(), Messages.Check.DISPLAY_SCRIPT);
+    }
+
+    /**
+     * Make assertion about the actual value's display script.
+     *
+     * @param matcher the hamcrest matcher.
+     */
+    public final void toDisplayScript(final Matcher<? super String> matcher) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(matcher, "matcher");
+        matcherAssertion(getActual().getDisplayScript(), matcher, Messages.Check.DISPLAY_SCRIPT);
+    }
+
+    /**
+     * Check if the actual value's display script is equal to the expected display script.
+     *
+     * @param expected the expected value.
+     */
+    public final void hasDisplayScript(final String expected) {
+        toDisplayScript().isEqualTo(expected);
+    }
+
+    /**
      * Make assertion about the actual value's country.
      *
      * @return the assertion.
