@@ -67,7 +67,77 @@ public final class LocaleAssertionTest extends AssertionTest {
      */
     @Test
     public void isEqualToTest() {
-        // TODO
+        initialize(Raw.localeAssertion(), null).isEqualTo(null);
+        initialize(Raw.localeAssertion(), new Locale("en")).isEqualTo(new Locale("en"));
+        initialize(Raw.localeAssertion(), new Locale("en", "US")).isEqualTo(new Locale("en", "US"));
+        initialize(Raw.localeAssertion(), new Locale("en", "US", "var")).isEqualTo(new Locale("en", "US", "var"));
+
+        try {
+            Raw.localeAssertion().isEqualTo(new Locale("en"));
+            Assertions.fail("LocaleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.localeAssertion(), null).isEqualTo(new Locale("en"));
+            Assertions.fail("LocaleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.localeAssertion(), null, "Message").isEqualTo(new Locale("en"));
+            Assertions.fail("LocaleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.localeAssertion(), new Locale("en")).isEqualTo(null);
+            Assertions.fail("LocaleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should be null.\n\tActual:<en>");
+        }
+        try {
+            initialize(Raw.localeAssertion(), new Locale("en"), "Message").isEqualTo(null);
+            Assertions.fail("LocaleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be null.\n\tActual:<en>");
+        }
+        try {
+            initialize(Raw.localeAssertion(), new Locale("en")).isEqualTo(new Locale("fr"));
+            Assertions.fail("LocaleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<fr> but was:<en>");
+        }
+        try {
+            initialize(Raw.localeAssertion(), new Locale("en"), "Message").isEqualTo(new Locale("fr"));
+            Assertions.fail("LocaleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be the same.\n\tExpected:<fr> but was:<en>");
+        }
+        try {
+            initialize(Raw.localeAssertion(), new Locale("en")).isEqualTo(new Locale("en", "US"));
+            Assertions.fail("LocaleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<en_US> but was:<en>");
+        }
+        try {
+            initialize(Raw.localeAssertion(), new Locale("en"), "Message").isEqualTo(new Locale("en", "US"));
+            Assertions.fail("LocaleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be the same.\n\tExpected:<en_US> but was:<en>");
+        }
+        try {
+            initialize(Raw.localeAssertion(), new Locale("en", "GB")).isEqualTo(new Locale("en", "US"));
+            Assertions.fail("LocaleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<en_US> but was:<en_GB>");
+        }
+        try {
+            initialize(Raw.localeAssertion(), new Locale("en", "GB"), "Message").isEqualTo(new Locale("en", "US"));
+            Assertions.fail("LocaleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be the same.\n\tExpected:<en_US> but was:<en_GB>");
+        }
     }
 
     /**
@@ -75,7 +145,68 @@ public final class LocaleAssertionTest extends AssertionTest {
      */
     @Test
     public void isNotEqualToTest() {
-        // TODO
+        initialize(Raw.localeAssertion(), null).isNotEqualTo(new Locale("en"));
+        initialize(Raw.localeAssertion(), new Locale("en")).isNotEqualTo(null);
+        initialize(Raw.localeAssertion(), new Locale("en")).isNotEqualTo(new Locale("fr"));
+        initialize(Raw.localeAssertion(), new Locale("en")).isNotEqualTo(new Locale("en", "US"));
+        initialize(Raw.localeAssertion(), new Locale("en", "US")).isNotEqualTo(new Locale("en"));
+        initialize(Raw.localeAssertion(), new Locale("en", "GB")).isNotEqualTo(new Locale("en", "US"));
+        initialize(Raw.localeAssertion(), new Locale("en", "US")).isNotEqualTo(new Locale("en", "GB"));
+
+        try {
+            Raw.localeAssertion().isNotEqualTo(new Locale("en"));
+            Assertions.fail("LocaleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.localeAssertion(), null).isNotEqualTo(null);
+            Assertions.fail("LocaleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.localeAssertion(), null, "Message").isNotEqualTo(null);
+            Assertions.fail("LocaleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.localeAssertion(), new Locale("en")).isNotEqualTo(new Locale("en"));
+            Assertions.fail("LocaleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be different.\n\tActual:<en>");
+        }
+        try {
+            initialize(Raw.localeAssertion(), new Locale("en"), "Message").isNotEqualTo(new Locale("en"));
+            Assertions.fail("LocaleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be different.\n\tActual:<en>");
+        }
+        try {
+            initialize(Raw.localeAssertion(), new Locale("en", "US")).isNotEqualTo(new Locale("en", "US"));
+            Assertions.fail("LocaleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be different.\n\tActual:<en_US>");
+        }
+        try {
+            initialize(Raw.localeAssertion(), new Locale("en", "US"), "Message").isNotEqualTo(new Locale("en", "US"));
+            Assertions.fail("LocaleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be different.\n\tActual:<en_US>");
+        }
+        try {
+            initialize(Raw.localeAssertion(), new Locale("en", "US", "var")).isNotEqualTo(new Locale("en", "US", "var"));
+            Assertions.fail("LocaleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be different.\n\tActual:<en_US_var>");
+        }
+        try {
+            initialize(Raw.localeAssertion(), new Locale("en", "US", "var"), "Message").isNotEqualTo(new Locale("en", "US", "var"));
+            Assertions.fail("LocaleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be different.\n\tActual:<en_US_var>");
+        }
     }
 
     /**
