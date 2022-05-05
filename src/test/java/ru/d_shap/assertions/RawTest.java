@@ -509,6 +509,20 @@ public final class RawTest extends AssertionTest {
      * {@link Raw} class test.
      */
     @Test
+    public void localeAssertionTest() {
+        initialize(Raw.localeAssertion(), null).isNull();
+        try {
+            Raw.localeAssertion().isNull();
+            Assertions.fail("Raw test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+    }
+
+    /**
+     * {@link Raw} class test.
+     */
+    @Test
     public void inputStreamAssertionTest() {
         initialize(Raw.inputStreamAssertion(), null).isNull();
         try {
