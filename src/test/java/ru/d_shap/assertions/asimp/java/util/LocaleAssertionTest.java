@@ -62,4 +62,212 @@ public final class LocaleAssertionTest extends AssertionTest {
         }
     }
 
+    /**
+     * {@link LocaleAssertion} class test.
+     */
+    @Test
+    public void isEqualToTest() {
+        // TODO
+    }
+
+    /**
+     * {@link LocaleAssertion} class test.
+     */
+    @Test
+    public void isNotEqualToTest() {
+        // TODO
+    }
+
+    /**
+     * {@link LocaleAssertion} class test.
+     */
+    @Test
+    public void toLanguageTest() {
+        // TODO
+    }
+
+    /**
+     * {@link LocaleAssertion} class test.
+     */
+    @Test
+    public void toLanguageMatcherTest() {
+        // TODO
+    }
+
+    /**
+     * {@link LocaleAssertion} class test.
+     */
+    @Test
+    public void hasLanguageTest() {
+        // TODO
+    }
+
+    /**
+     * {@link LocaleAssertion} class test.
+     */
+    @Test
+    public void toDisplayLanguageTest() {
+        // TODO
+    }
+
+    /**
+     * {@link LocaleAssertion} class test.
+     */
+    @Test
+    public void toDisplayLanguageMatcherTest() {
+        // TODO
+    }
+
+    /**
+     * {@link LocaleAssertion} class test.
+     */
+    @Test
+    public void hasDisplayLanguageTest() {
+        // TODO
+    }
+
+    /**
+     * {@link LocaleAssertion} class test.
+     */
+    @Test
+    public void toScriptTest() {
+        // TODO
+    }
+
+    /**
+     * {@link LocaleAssertion} class test.
+     */
+    @Test
+    public void toScriptMatcherTest() {
+        // TODO
+    }
+
+    /**
+     * {@link LocaleAssertion} class test.
+     */
+    @Test
+    public void hasScriptTest() {
+        // TODO
+    }
+
+    /**
+     * {@link LocaleAssertion} class test.
+     */
+    @Test
+    public void toDisplayScriptTest() {
+        // TODO
+    }
+
+    /**
+     * {@link LocaleAssertion} class test.
+     */
+    @Test
+    public void toDisplayScriptMatcherTest() {
+        // TODO
+    }
+
+    /**
+     * {@link LocaleAssertion} class test.
+     */
+    @Test
+    public void hasDisplayScriptTest() {
+        // TODO
+    }
+
+    /**
+     * {@link LocaleAssertion} class test.
+     */
+    @Test
+    public void toCountryTest() {
+        // TODO
+    }
+
+    /**
+     * {@link LocaleAssertion} class test.
+     */
+    @Test
+    public void toCountryMatcherTest() {
+        // TODO
+    }
+
+    /**
+     * {@link LocaleAssertion} class test.
+     */
+    @Test
+    public void hasCountryTest() {
+        // TODO
+    }
+
+    /**
+     * {@link LocaleAssertion} class test.
+     */
+    @Test
+    public void toDisplayCountryTest() {
+        // TODO
+    }
+
+    /**
+     * {@link LocaleAssertion} class test.
+     */
+    @Test
+    public void toDisplayCountryMatcherTest() {
+        // TODO
+    }
+
+    /**
+     * {@link LocaleAssertion} class test.
+     */
+    @Test
+    public void hasDisplayCountryTest() {
+        // TODO
+    }
+
+    /**
+     * {@link LocaleAssertion} class test.
+     */
+    @Test
+    public void toVariantTest() {
+        // TODO
+    }
+
+    /**
+     * {@link LocaleAssertion} class test.
+     */
+    @Test
+    public void toVariantMatcherTest() {
+        // TODO
+    }
+
+    /**
+     * {@link LocaleAssertion} class test.
+     */
+    @Test
+    public void hasVariantTest() {
+        // TODO
+    }
+
+    /**
+     * {@link LocaleAssertion} class test.
+     */
+    @Test
+    public void toDisplayVariantTest() {
+        // TODO
+    }
+
+    /**
+     * {@link LocaleAssertion} class test.
+     */
+    @Test
+    public void toDisplayVariantMatcherTest() {
+        // TODO
+    }
+
+    /**
+     * {@link LocaleAssertion} class test.
+     */
+    @Test
+    public void hasDisplayVariantTest() {
+        // TODO
+    }
+
 }
