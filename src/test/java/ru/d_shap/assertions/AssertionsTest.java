@@ -36,6 +36,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 import java.util.SortedMap;
@@ -967,6 +968,27 @@ public final class AssertionsTest extends AssertionTest {
             Assertions.fail("Assertions test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's display name.\n\tActual and expected values should be the same.\n\tExpected:<Greenwich Mean Time> but was:<Coordinated Universal Time>");
+        }
+    }
+
+    /**
+     * {@link Assertions} class test.
+     */
+    @Test
+    public void localeAssertionTest() {
+        Assertions.assertThat((Locale) null).isNull();
+        Assertions.assertThat(Locale.UK).hasCountry("GB");
+        Assertions.assertThat(null, Raw.localeAssertion()).isNull();
+        Assertions.assertThat(Locale.UK, Raw.localeAssertion()).hasCountry("GB");
+        Assertions.assertThat(createNullFieldClass(), "_field", Raw.localeAssertion()).isNull();
+        Assertions.assertThat(createPrivateFieldsClass(), "_locale").isNotNull();
+        Assertions.assertThat(createPrivateFieldsClass(), "_locale", Raw.localeAssertion()).hasCountry("GB");
+
+        try {
+            Assertions.assertThat(Locale.UK).hasCountry("US");
+            Assertions.fail("Assertions test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's country.\n\tActual and expected values should be the same.\n\tExpected:<US> but was:<GB>");
         }
     }
 
