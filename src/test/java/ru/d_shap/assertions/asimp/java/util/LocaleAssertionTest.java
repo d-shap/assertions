@@ -270,4 +270,52 @@ public final class LocaleAssertionTest extends AssertionTest {
         // TODO
     }
 
+    /**
+     * {@link LocaleAssertion} class test.
+     */
+    @Test
+    public void hasPropertiesLanguageTest() {
+        // TODO
+    }
+
+    /**
+     * {@link LocaleAssertion} class test.
+     */
+    @Test
+    public void hasPropertiesLanguageAndCountryTest() {
+        // TODO
+    }
+
+    /**
+     * {@link LocaleAssertion} class test.
+     */
+    @Test
+    public void hasPropertiesLanguageAndCountryAndVariantTest() {
+        // TODO
+    }
+
+    /**
+     * {@link LocaleAssertion} class test.
+     */
+    @Test
+    public void isNullTest() {
+        // TODO
+    }
+
+    /**
+     * {@link LocaleAssertion} class test.
+     */
+    @Test
+    public void isSameAsTest() {
+        // TODO
+    }
+
+    /**
+     * {@link LocaleAssertion} class test.
+     */
+    @Test
+    public void isNotSameAsTest() {
+        // TODO
+    }
+
 }
