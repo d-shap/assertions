@@ -198,4 +198,64 @@ public class LocaleAssertion extends ReferenceAssertion<Locale> {
         toDisplayCountry().isEqualTo(expected);
     }
 
+    /**
+     * Make assertion about the actual value's variant.
+     *
+     * @return the assertion.
+     */
+    public final CharSequenceAssertion toVariant() {
+        checkActualIsNotNull();
+        return initializeAssertion(Raw.charSequenceAssertion(), getActual().getVariant(), Messages.Check.VARIANT);
+    }
+
+    /**
+     * Make assertion about the actual value's variant.
+     *
+     * @param matcher the hamcrest matcher.
+     */
+    public final void toVariant(final Matcher<? super String> matcher) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(matcher, "matcher");
+        matcherAssertion(getActual().getVariant(), matcher, Messages.Check.VARIANT);
+    }
+
+    /**
+     * Check if the actual value's variant is equal to the expected variant.
+     *
+     * @param expected the expected value.
+     */
+    public final void hasVariant(final String expected) {
+        toVariant().isEqualTo(expected);
+    }
+
+    /**
+     * Make assertion about the actual value's display variant.
+     *
+     * @return the assertion.
+     */
+    public final CharSequenceAssertion toDisplayVariant() {
+        checkActualIsNotNull();
+        return initializeAssertion(Raw.charSequenceAssertion(), getActual().getDisplayVariant(), Messages.Check.DISPLAY_VARIANT);
+    }
+
+    /**
+     * Make assertion about the actual value's display variant.
+     *
+     * @param matcher the hamcrest matcher.
+     */
+    public final void toDisplayVariant(final Matcher<? super String> matcher) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(matcher, "matcher");
+        matcherAssertion(getActual().getDisplayVariant(), matcher, Messages.Check.DISPLAY_VARIANT);
+    }
+
+    /**
+     * Check if the actual value's display variant is equal to the expected display variant.
+     *
+     * @param expected the expected value.
+     */
+    public final void hasDisplayVariant(final String expected) {
+        toDisplayVariant().isEqualTo(expected);
+    }
+
 }
