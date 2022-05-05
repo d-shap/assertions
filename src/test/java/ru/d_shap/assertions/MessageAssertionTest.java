@@ -35,6 +35,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 import java.util.SortedMap;
@@ -1741,6 +1742,45 @@ public final class MessageAssertionTest extends AssertionTest {
             Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("value''s.\n\tCheck actual value's display name.\n\tActual and expected values should be the same.\n\tExpected:<Greenwich Mean Time> but was:<Coordinated Universal Time>");
+        }
+    }
+
+    /**
+     * {@link MessageAssertion} class test.
+     */
+    @Test
+    public void localeAssertionTest() {
+        Assertions.assertWithMessage("Test message").that((Locale) null).isNull();
+        Assertions.assertWithMessage("Test message").that(Locale.UK).hasCountry("GB");
+        Assertions.assertWithMessage("Test message").that(null, Raw.localeAssertion()).isNull();
+        Assertions.assertWithMessage("Test message").that(Locale.UK, Raw.localeAssertion()).hasCountry("GB");
+        Assertions.assertWithMessage("Test message").that(createNullFieldClass(), "_field", Raw.localeAssertion()).isNull();
+        Assertions.assertWithMessage("Test message").that(createPrivateFieldsClass(), "_locale").isNotNull();
+        Assertions.assertWithMessage("Test message").that(createPrivateFieldsClass(), "_locale", Raw.localeAssertion()).hasCountry("GB");
+
+        try {
+            Assertions.assertWithMessage(null).that(Locale.UK).hasCountry("US");
+            Assertions.fail("MessageAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's country.\n\tActual and expected values should be the same.\n\tExpected:<US> but was:<GB>");
+        }
+        try {
+            Assertions.assertWithMessage("").that(Locale.UK).hasCountry("US");
+            Assertions.fail("MessageAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's country.\n\tActual and expected values should be the same.\n\tExpected:<US> but was:<GB>");
+        }
+        try {
+            Assertions.assertWithMessage("Test message").that(Locale.UK).hasCountry("US");
+            Assertions.fail("MessageAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Test message.\n\tCheck actual value's country.\n\tActual and expected values should be the same.\n\tExpected:<US> but was:<GB>");
+        }
+        try {
+            Assertions.assertWithMessage("value''s.").that(Locale.UK).hasCountry("US");
+            Assertions.fail("MessageAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("value''s.\n\tCheck actual value's country.\n\tActual and expected values should be the same.\n\tExpected:<US> but was:<GB>");
         }
     }
 
