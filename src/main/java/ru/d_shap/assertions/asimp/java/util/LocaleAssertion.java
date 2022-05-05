@@ -318,4 +318,46 @@ public class LocaleAssertion extends ReferenceAssertion<Locale> {
         toDisplayVariant().isEqualTo(expected);
     }
 
+    /**
+     * Check if the actual value's properties are equal to the expected properties.
+     *
+     * @param expectedLanguage the expected language.
+     */
+    public final void hasProperties(final String expectedLanguage) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(expectedLanguage, "expectedLanguage");
+        hasLanguage(expectedLanguage);
+    }
+
+    /**
+     * Check if the actual value's properties are equal to the expected properties.
+     *
+     * @param expectedLanguage the expected language.
+     * @param expectedCountry  the expected country.
+     */
+    public final void hasProperties(final String expectedLanguage, final String expectedCountry) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(expectedLanguage, "expectedLanguage");
+        checkArgumentIsNotNull(expectedCountry, "expectedCountry");
+        hasLanguage(expectedLanguage);
+        hasCountry(expectedCountry);
+    }
+
+    /**
+     * Check if the actual value's properties are equal to the expected properties.
+     *
+     * @param expectedLanguage the expected language.
+     * @param expectedCountry  the expected country.
+     * @param expectedVariant  the expected variant.
+     */
+    public final void hasProperties(final String expectedLanguage, final String expectedCountry, final String expectedVariant) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(expectedLanguage, "expectedLanguage");
+        checkArgumentIsNotNull(expectedCountry, "expectedCountry");
+        checkArgumentIsNotNull(expectedVariant, "expectedVariant");
+        hasLanguage(expectedLanguage);
+        hasCountry(expectedCountry);
+        hasVariant(expectedVariant);
+    }
+
 }
