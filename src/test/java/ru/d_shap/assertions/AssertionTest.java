@@ -40,6 +40,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 import java.util.SortedMap;
@@ -956,6 +957,8 @@ public class AssertionTest {
 
         private final TimeZone _timeZone;
 
+        private final Locale _locale;
+
         private final InputStream _inputStream;
 
         private final Reader _reader;
@@ -1034,6 +1037,7 @@ public class AssertionTest {
                 _date = DataHelper.createDate(2020, Calendar.JULY, 11, 15, 23, 47);
                 _calendar = DataHelper.createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "Europe/Berlin");
                 _timeZone = TimeZone.getTimeZone("GMT");
+                _locale = Locale.UK;
                 _inputStream = new ByteArrayInputStream(new byte[]{1, 2, 3});
                 _reader = new StringReader("123");
                 _bufferedReader = new BufferedReader(new StringReader("1\n2\n3"));
@@ -1218,6 +1222,10 @@ public class AssertionTest {
 
         TimeZone getTimeZone() {
             return _timeZone;
+        }
+
+        Locale getLocale() {
+            return _locale;
         }
 
         InputStream getInputStream() {
