@@ -1955,7 +1955,20 @@ public final class LocaleAssertionTest extends AssertionTest {
      */
     @Test
     public void isNullTest() {
-        // TODO
+        initialize(Raw.localeAssertion(), null).isNull();
+
+        try {
+            initialize(Raw.localeAssertion(), new Locale("en", "US", "polyton")).isNull();
+            Assertions.fail("LocaleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should be null.\n\tActual:<en_US_polyton>");
+        }
+        try {
+            initialize(Raw.localeAssertion(), new Locale("en", "US", "polyton"), "Message").isNull();
+            Assertions.fail("LocaleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be null.\n\tActual:<en_US_polyton>");
+        }
     }
 
     /**
@@ -1963,7 +1976,21 @@ public final class LocaleAssertionTest extends AssertionTest {
      */
     @Test
     public void isSameAsTest() {
-        // TODO
+        Locale value = new Locale("en", "US", "polyton");
+        initialize(Raw.localeAssertion(), value).isSameAs(value);
+
+        try {
+            initialize(Raw.localeAssertion(), value).isSameAs(new Locale("en", "US", "polyton"));
+            Assertions.fail("LocaleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should point to the same object.\n\tExpected:<en_US_polyton> but was:<en_US_polyton>");
+        }
+        try {
+            initialize(Raw.localeAssertion(), value, "Message").isSameAs(new Locale("en", "US", "polyton"));
+            Assertions.fail("LocaleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should point to the same object.\n\tExpected:<en_US_polyton> but was:<en_US_polyton>");
+        }
     }
 
     /**
@@ -1971,7 +1998,21 @@ public final class LocaleAssertionTest extends AssertionTest {
      */
     @Test
     public void isNotSameAsTest() {
-        // TODO
+        Locale value = new Locale("en", "US", "polyton");
+        initialize(Raw.localeAssertion(), value).isNotSameAs(new Locale("en", "US", "polyton"));
+
+        try {
+            initialize(Raw.localeAssertion(), value).isNotSameAs(value);
+            Assertions.fail("LocaleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should point to the different objects.\n\tActual:<en_US_polyton>");
+        }
+        try {
+            initialize(Raw.localeAssertion(), value, "Message").isNotSameAs(value);
+            Assertions.fail("LocaleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should point to the different objects.\n\tActual:<en_US_polyton>");
+        }
     }
 
 }
