@@ -1193,7 +1193,61 @@ public final class LocaleAssertionTest extends AssertionTest {
      */
     @Test
     public void toDisplayCountryTest() {
-        // TODO
+        Locale locale = Locale.getDefault();
+
+        try {
+            Locale.setDefault(Locale.ENGLISH);
+
+            initialize(Raw.localeAssertion(), new Locale("en")).toDisplayCountry().isEqualTo("");
+            initialize(Raw.localeAssertion(), new Locale("en", "US")).toDisplayCountry().isEqualTo("United States");
+            initialize(Raw.localeAssertion(), new Locale("en", "US", "polyton")).toDisplayCountry().isEqualTo("United States");
+            initialize(Raw.localeAssertion(), new Locale("fr", "FR", "POSIX")).toDisplayCountry().isEqualTo("France");
+
+            try {
+                Raw.localeAssertion().toDisplayCountry();
+                Assertions.fail("LocaleAssertion test fail");
+            } catch (AssertionError ex) {
+                Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+            }
+            try {
+                initialize(Raw.localeAssertion(), null).toDisplayCountry();
+                Assertions.fail("LocaleAssertion test fail");
+            } catch (AssertionError ex) {
+                Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+            }
+            try {
+                initialize(Raw.localeAssertion(), null, "Message").toDisplayCountry();
+                Assertions.fail("LocaleAssertion test fail");
+            } catch (AssertionError ex) {
+                Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+            }
+            try {
+                clearActual(initialize(Raw.localeAssertion(), new Locale("en", "US", "polyton")).toDisplayCountry()).isEqualTo("");
+                Assertions.fail("LocaleAssertion test fail");
+            } catch (AssertionError ex) {
+                Assertions.assertThat(ex).hasMessage("Check actual value's display country.\n\tActual value should not be null.");
+            }
+            try {
+                clearActual(initialize(Raw.localeAssertion(), new Locale("en", "US", "polyton"), "Message").toDisplayCountry()).isEqualTo("");
+                Assertions.fail("LocaleAssertion test fail");
+            } catch (AssertionError ex) {
+                Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's display country.\n\tActual value should not be null.");
+            }
+            try {
+                initialize(Raw.localeAssertion(), new Locale("en", "US", "polyton")).toDisplayCountry().isEqualTo("France");
+                Assertions.fail("LocaleAssertion test fail");
+            } catch (AssertionError ex) {
+                Assertions.assertThat(ex).hasMessage("Check actual value's display country.\n\tActual and expected values should be the same.\n\tExpected:<France> but was:<United States>");
+            }
+            try {
+                initialize(Raw.localeAssertion(), new Locale("en", "US", "polyton"), "Message").toDisplayCountry().isEqualTo("France");
+                Assertions.fail("LocaleAssertion test fail");
+            } catch (AssertionError ex) {
+                Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's display country.\n\tActual and expected values should be the same.\n\tExpected:<France> but was:<United States>");
+            }
+        } finally {
+            Locale.setDefault(locale);
+        }
     }
 
     /**
@@ -1201,7 +1255,73 @@ public final class LocaleAssertionTest extends AssertionTest {
      */
     @Test
     public void toDisplayCountryMatcherTest() {
-        // TODO
+        Locale locale = Locale.getDefault();
+
+        try {
+            Locale.setDefault(Locale.ENGLISH);
+
+            initialize(Raw.localeAssertion(), new Locale("en")).toDisplayCountry(Matchers.is(Matchers.equalTo("")));
+            initialize(Raw.localeAssertion(), new Locale("en", "US")).toDisplayCountry(Matchers.is(Matchers.equalTo("United States")));
+            initialize(Raw.localeAssertion(), new Locale("en", "US", "polyton")).toDisplayCountry(Matchers.is(Matchers.equalTo("United States")));
+            initialize(Raw.localeAssertion(), new Locale("fr", "FR", "POSIX")).toDisplayCountry(Matchers.is(Matchers.equalTo("France")));
+
+            try {
+                Raw.localeAssertion().toDisplayCountry(Matchers.equalTo(""));
+                Assertions.fail("LocaleAssertion test fail");
+            } catch (AssertionError ex) {
+                Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+            }
+            try {
+                initialize(Raw.localeAssertion(), null).toDisplayCountry(Matchers.equalTo(""));
+                Assertions.fail("LocaleAssertion test fail");
+            } catch (AssertionError ex) {
+                Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+            }
+            try {
+                initialize(Raw.localeAssertion(), null, "Message").toDisplayCountry(Matchers.equalTo(""));
+                Assertions.fail("LocaleAssertion test fail");
+            } catch (AssertionError ex) {
+                Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+            }
+            try {
+                initialize(Raw.localeAssertion(), null).toDisplayCountry(null);
+                Assertions.fail("LocaleAssertion test fail");
+            } catch (AssertionError ex) {
+                Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+            }
+            try {
+                initialize(Raw.localeAssertion(), null, "Message").toDisplayCountry(null);
+                Assertions.fail("LocaleAssertion test fail");
+            } catch (AssertionError ex) {
+                Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+            }
+            try {
+                initialize(Raw.localeAssertion(), new Locale("en")).toDisplayCountry(null);
+                Assertions.fail("LocaleAssertion test fail");
+            } catch (AssertionError ex) {
+                Assertions.assertThat(ex).hasMessage("Argument should not be null: matcher.");
+            }
+            try {
+                initialize(Raw.localeAssertion(), new Locale("en"), "Message").toDisplayCountry(null);
+                Assertions.fail("LocaleAssertion test fail");
+            } catch (AssertionError ex) {
+                Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: matcher.");
+            }
+            try {
+                initialize(Raw.localeAssertion(), new Locale("en", "US", "polyton")).toDisplayCountry(Matchers.equalTo("France"));
+                Assertions.fail("LocaleAssertion test fail");
+            } catch (AssertionError ex) {
+                Assertions.assertThat(ex).hasMessage("Check actual value's display country.\nExpected: \"France\"\n     but: was \"United States\"");
+            }
+            try {
+                initialize(Raw.localeAssertion(), new Locale("en", "US", "polyton"), "Message").toDisplayCountry(Matchers.equalTo("France"));
+                Assertions.fail("LocaleAssertion test fail");
+            } catch (AssertionError ex) {
+                Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's display country.\nExpected: \"France\"\n     but: was \"United States\"");
+            }
+        } finally {
+            Locale.setDefault(locale);
+        }
     }
 
     /**
@@ -1209,7 +1329,73 @@ public final class LocaleAssertionTest extends AssertionTest {
      */
     @Test
     public void hasDisplayCountryTest() {
-        // TODO
+        Locale locale = Locale.getDefault();
+
+        try {
+            Locale.setDefault(Locale.ENGLISH);
+
+            initialize(Raw.localeAssertion(), new Locale("en")).hasDisplayCountry("");
+            initialize(Raw.localeAssertion(), new Locale("en", "US")).hasDisplayCountry("United States");
+            initialize(Raw.localeAssertion(), new Locale("en", "US", "polyton")).hasDisplayCountry("United States");
+            initialize(Raw.localeAssertion(), new Locale("fr", "FR", "POSIX")).hasDisplayCountry("France");
+
+            try {
+                Raw.localeAssertion().hasDisplayCountry("");
+                Assertions.fail("LocaleAssertion test fail");
+            } catch (AssertionError ex) {
+                Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+            }
+            try {
+                initialize(Raw.localeAssertion(), null).hasDisplayCountry("");
+                Assertions.fail("LocaleAssertion test fail");
+            } catch (AssertionError ex) {
+                Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+            }
+            try {
+                initialize(Raw.localeAssertion(), null, "Message").hasDisplayCountry("");
+                Assertions.fail("LocaleAssertion test fail");
+            } catch (AssertionError ex) {
+                Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+            }
+            try {
+                initialize(Raw.localeAssertion(), null).hasDisplayCountry(null);
+                Assertions.fail("LocaleAssertion test fail");
+            } catch (AssertionError ex) {
+                Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+            }
+            try {
+                initialize(Raw.localeAssertion(), null, "Message").hasDisplayCountry(null);
+                Assertions.fail("LocaleAssertion test fail");
+            } catch (AssertionError ex) {
+                Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+            }
+            try {
+                initialize(Raw.localeAssertion(), new Locale("en")).hasDisplayCountry(null);
+                Assertions.fail("LocaleAssertion test fail");
+            } catch (AssertionError ex) {
+                Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
+            }
+            try {
+                initialize(Raw.localeAssertion(), new Locale("en"), "Message").hasDisplayCountry(null);
+                Assertions.fail("LocaleAssertion test fail");
+            } catch (AssertionError ex) {
+                Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
+            }
+            try {
+                initialize(Raw.localeAssertion(), new Locale("en", "US", "polyton")).hasDisplayCountry("France");
+                Assertions.fail("LocaleAssertion test fail");
+            } catch (AssertionError ex) {
+                Assertions.assertThat(ex).hasMessage("Check actual value's display country.\n\tActual and expected values should be the same.\n\tExpected:<France> but was:<United States>");
+            }
+            try {
+                initialize(Raw.localeAssertion(), new Locale("en", "US", "polyton"), "Message").hasDisplayCountry("France");
+                Assertions.fail("LocaleAssertion test fail");
+            } catch (AssertionError ex) {
+                Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's display country.\n\tActual and expected values should be the same.\n\tExpected:<France> but was:<United States>");
+            }
+        } finally {
+            Locale.setDefault(locale);
+        }
     }
 
     /**
