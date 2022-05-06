@@ -1821,6 +1821,30 @@ public final class LocaleAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
+            initialize(Raw.localeAssertion(), null).hasProperties(null);
+            Assertions.fail("LocaleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.localeAssertion(), null, "Message").hasProperties(null);
+            Assertions.fail("LocaleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.localeAssertion(), new Locale("en", "US", "polyton")).hasProperties(null);
+            Assertions.fail("LocaleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expectedLanguage.");
+        }
+        try {
+            initialize(Raw.localeAssertion(), new Locale("en", "US", "polyton"), "Message").hasProperties(null);
+            Assertions.fail("LocaleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expectedLanguage.");
+        }
+        try {
             initialize(Raw.localeAssertion(), new Locale("en", "US", "polyton")).hasProperties("fr");
             Assertions.fail("LocaleAssertion test fail");
         } catch (AssertionError ex) {
@@ -1859,6 +1883,54 @@ public final class LocaleAssertionTest extends AssertionTest {
             Assertions.fail("LocaleAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.localeAssertion(), null).hasProperties(null, "");
+            Assertions.fail("LocaleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.localeAssertion(), null, "Message").hasProperties(null, "");
+            Assertions.fail("LocaleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.localeAssertion(), new Locale("en", "US", "polyton")).hasProperties(null, "");
+            Assertions.fail("LocaleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expectedLanguage.");
+        }
+        try {
+            initialize(Raw.localeAssertion(), new Locale("en", "US", "polyton"), "Message").hasProperties(null, "");
+            Assertions.fail("LocaleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expectedLanguage.");
+        }
+        try {
+            initialize(Raw.localeAssertion(), new Locale("en", "US", "polyton")).hasProperties(null, null);
+            Assertions.fail("LocaleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expectedLanguage.");
+        }
+        try {
+            initialize(Raw.localeAssertion(), new Locale("en", "US", "polyton"), "Message").hasProperties(null, null);
+            Assertions.fail("LocaleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expectedLanguage.");
+        }
+        try {
+            initialize(Raw.localeAssertion(), new Locale("en", "US", "polyton")).hasProperties("", null);
+            Assertions.fail("LocaleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expectedCountry.");
+        }
+        try {
+            initialize(Raw.localeAssertion(), new Locale("en", "US", "polyton"), "Message").hasProperties("", null);
+            Assertions.fail("LocaleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expectedCountry.");
         }
         try {
             initialize(Raw.localeAssertion(), new Locale("en", "US", "polyton")).hasProperties("fr", "FR");
@@ -1911,6 +1983,78 @@ public final class LocaleAssertionTest extends AssertionTest {
             Assertions.fail("LocaleAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.localeAssertion(), null).hasProperties(null, "", "");
+            Assertions.fail("LocaleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.localeAssertion(), null, "Message").hasProperties(null, "", "");
+            Assertions.fail("LocaleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.localeAssertion(), new Locale("en", "US", "polyton")).hasProperties(null, "", "");
+            Assertions.fail("LocaleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expectedLanguage.");
+        }
+        try {
+            initialize(Raw.localeAssertion(), new Locale("en", "US", "polyton"), "Message").hasProperties(null, "", "");
+            Assertions.fail("LocaleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expectedLanguage.");
+        }
+        try {
+            initialize(Raw.localeAssertion(), new Locale("en", "US", "polyton")).hasProperties(null, null, "");
+            Assertions.fail("LocaleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expectedLanguage.");
+        }
+        try {
+            initialize(Raw.localeAssertion(), new Locale("en", "US", "polyton"), "Message").hasProperties(null, null, "");
+            Assertions.fail("LocaleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expectedLanguage.");
+        }
+        try {
+            initialize(Raw.localeAssertion(), new Locale("en", "US", "polyton")).hasProperties("", null, "");
+            Assertions.fail("LocaleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expectedCountry.");
+        }
+        try {
+            initialize(Raw.localeAssertion(), new Locale("en", "US", "polyton"), "Message").hasProperties("", null, "");
+            Assertions.fail("LocaleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expectedCountry.");
+        }
+        try {
+            initialize(Raw.localeAssertion(), new Locale("en", "US", "polyton")).hasProperties("", null, null);
+            Assertions.fail("LocaleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expectedCountry.");
+        }
+        try {
+            initialize(Raw.localeAssertion(), new Locale("en", "US", "polyton"), "Message").hasProperties("", null, null);
+            Assertions.fail("LocaleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expectedCountry.");
+        }
+        try {
+            initialize(Raw.localeAssertion(), new Locale("en", "US", "polyton")).hasProperties("", "", null);
+            Assertions.fail("LocaleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: expectedVariant.");
+        }
+        try {
+            initialize(Raw.localeAssertion(), new Locale("en", "US", "polyton"), "Message").hasProperties("", "", null);
+            Assertions.fail("LocaleAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expectedVariant.");
         }
         try {
             initialize(Raw.localeAssertion(), new Locale("en", "US", "polyton")).hasProperties("fr", "FR", "POSIX");
