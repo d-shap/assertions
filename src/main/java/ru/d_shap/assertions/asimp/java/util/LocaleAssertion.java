@@ -105,6 +105,8 @@ public class LocaleAssertion extends ReferenceAssertion<Locale> {
      * @param expected the expected value.
      */
     public final void hasLanguage(final String expected) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(expected, "expected");
         toLanguage().isEqualTo(expected);
     }
 
@@ -135,6 +137,8 @@ public class LocaleAssertion extends ReferenceAssertion<Locale> {
      * @param expected the expected value.
      */
     public final void hasDisplayLanguage(final String expected) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(expected, "expected");
         toDisplayLanguage().isEqualTo(expected);
     }
 
@@ -165,6 +169,8 @@ public class LocaleAssertion extends ReferenceAssertion<Locale> {
      * @param expected the expected value.
      */
     public final void hasScript(final String expected) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(expected, "expected");
         toScript().isEqualTo(expected);
     }
 
@@ -195,6 +201,8 @@ public class LocaleAssertion extends ReferenceAssertion<Locale> {
      * @param expected the expected value.
      */
     public final void hasDisplayScript(final String expected) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(expected, "expected");
         toDisplayScript().isEqualTo(expected);
     }
 
@@ -225,6 +233,8 @@ public class LocaleAssertion extends ReferenceAssertion<Locale> {
      * @param expected the expected value.
      */
     public final void hasCountry(final String expected) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(expected, "expected");
         toCountry().isEqualTo(expected);
     }
 
@@ -255,6 +265,8 @@ public class LocaleAssertion extends ReferenceAssertion<Locale> {
      * @param expected the expected value.
      */
     public final void hasDisplayCountry(final String expected) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(expected, "expected");
         toDisplayCountry().isEqualTo(expected);
     }
 
@@ -285,6 +297,8 @@ public class LocaleAssertion extends ReferenceAssertion<Locale> {
      * @param expected the expected value.
      */
     public final void hasVariant(final String expected) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(expected, "expected");
         toVariant().isEqualTo(expected);
     }
 
@@ -315,6 +329,8 @@ public class LocaleAssertion extends ReferenceAssertion<Locale> {
      * @param expected the expected value.
      */
     public final void hasDisplayVariant(final String expected) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(expected, "expected");
         toDisplayVariant().isEqualTo(expected);
     }
 
