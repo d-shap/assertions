@@ -53,7 +53,9 @@ import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 
 import ru.d_shap.assertions.mock.MockInputStream;
+import ru.d_shap.assertions.mock.MockOutputStream;
 import ru.d_shap.assertions.mock.MockReader;
+import ru.d_shap.assertions.mock.MockWriter;
 
 /**
  * Helper class to create objects of various types.
@@ -677,12 +679,30 @@ public final class DataHelper {
     }
 
     /**
+     * Create builder for the output stream mock.
+     *
+     * @return the created object.
+     */
+    public static MockOutputStream.Builder createOutputStreamBuilder() {
+        return MockOutputStream.builder();
+    }
+
+    /**
      * Create builder for the reader mock.
      *
      * @return the created object.
      */
     public static MockReader.Builder createReaderBuilder() {
         return MockReader.builder();
+    }
+
+    /**
+     * Create builder for writer mock.
+     *
+     * @return the created object.
+     */
+    public static MockWriter.Builder createWriterBuilder() {
+        return MockWriter.builder();
     }
 
     /**
