@@ -85,16 +85,6 @@ public final class MockWriterTest extends AssertionTest {
      * @throws IOException exception in test.
      */
     @Test
-    public void getContentTest() throws IOException {
-        // TODO
-    }
-
-    /**
-     * {@link MockWriter} class test.
-     *
-     * @throws IOException exception in test.
-     */
-    @Test
     public void isClosedTest() throws IOException {
         // TODO
     }
