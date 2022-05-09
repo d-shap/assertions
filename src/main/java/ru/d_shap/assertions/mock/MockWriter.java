@@ -107,11 +107,11 @@ public final class MockWriter extends Writer implements IsCloseable {
 
     @Override
     public void close() throws IOException {
-        if (!_isClosed) {
-            _isClosed = true;
+        boolean isClosed = _isClosed;
+        _isClosed = true;
+        if (!isClosed) {
             flush();
         }
-        _isClosed = true;
         checkAndThrowException(_closeException, false);
     }
 
