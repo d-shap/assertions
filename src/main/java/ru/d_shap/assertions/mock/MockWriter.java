@@ -43,7 +43,11 @@ public final class MockWriter extends Writer implements IsCloseable {
 
     MockWriter(final int contentSize, final IOException writeException, final IOException flushException, final IOException closeException) {
         super();
-        _content = new char[contentSize];
+        if (contentSize <= 0) {
+            _content = new char[0];
+        } else {
+            _content = new char[contentSize];
+        }
         _position = 0;
         _writeException = writeException;
         _flushException = flushException;

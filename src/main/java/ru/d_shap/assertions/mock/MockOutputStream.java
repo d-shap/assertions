@@ -43,7 +43,11 @@ public final class MockOutputStream extends OutputStream implements IsCloseable 
 
     MockOutputStream(final int contentSize, final IOException writeException, final IOException flushException, final IOException closeException) {
         super();
-        _content = new byte[contentSize];
+        if (contentSize <= 0) {
+            _content = new byte[0];
+        } else {
+            _content = new byte[contentSize];
+        }
         _position = 0;
         _writeException = writeException;
         _flushException = flushException;
