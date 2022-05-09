@@ -89,6 +89,22 @@ public final class MockWriter extends Writer implements IsCloseable {
         }
     }
 
+    @Override
+    public void write(final String value) throws IOException {
+        if (value == null) {
+            throw new NullPointerException("value is null");
+        }
+        write(value.toCharArray(), 0, value.length());
+    }
+
+    @Override
+    public void write(final String value, final int offset, final int length) throws IOException {
+        if (value == null) {
+            throw new NullPointerException("value is null");
+        }
+        write(value.toCharArray(), offset, length);
+    }
+
     private void doWrite(final int value) throws IOException {
         checkAndThrowException(_writeException, true);
         if (_position < _content.length) {
