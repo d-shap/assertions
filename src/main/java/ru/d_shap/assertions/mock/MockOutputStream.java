@@ -80,9 +80,6 @@ public final class MockOutputStream extends OutputStream implements IsCloseable 
         if (length < 0 || offset + length > buffer.length) {
             throw new IndexOutOfBoundsException("length is out of bounds");
         }
-        if (length == 0) {
-            return;
-        }
 
         int value;
         int to = offset + length;
