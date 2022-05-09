@@ -165,10 +165,12 @@ public final class MockOutputStreamTest extends AssertionTest {
         Assertions.assertThat(((MockOutputStream) outputStream02).getContent()).containsExactlyInOrder(11, 12, 13);
         outputStream02.write(new byte[]{21, 22, 23}, 1, 2);
         Assertions.assertThat(((MockOutputStream) outputStream02).getContent()).containsExactlyInOrder(11, 12, 13, 22, 23);
-        outputStream02.write(new byte[]{31, 32, 33}, 0, 2);
-        Assertions.assertThat(((MockOutputStream) outputStream02).getContent()).containsExactlyInOrder(11, 12, 13, 22, 23, 31);
-        outputStream02.write(new byte[]{41, 0, 43}, 1, 1);
-        Assertions.assertThat(((MockOutputStream) outputStream02).getContent()).containsExactlyInOrder(11, 12, 13, 22, 23, 31);
+        outputStream02.write(new byte[]{31, 32, 33}, 1, 0);
+        Assertions.assertThat(((MockOutputStream) outputStream02).getContent()).containsExactlyInOrder(11, 12, 13, 22, 23);
+        outputStream02.write(new byte[]{41, 42, 43}, 0, 2);
+        Assertions.assertThat(((MockOutputStream) outputStream02).getContent()).containsExactlyInOrder(11, 12, 13, 22, 23, 41);
+        outputStream02.write(new byte[]{51, 0, 52}, 1, 1);
+        Assertions.assertThat(((MockOutputStream) outputStream02).getContent()).containsExactlyInOrder(11, 12, 13, 22, 23, 41);
 
         OutputStream outputStream03 = DataHelper.createOutputStreamBuilder().setContentSize(0).buildOutputStream();
         outputStream03.write(new byte[]{11, 12, 13}, 0, 3);
