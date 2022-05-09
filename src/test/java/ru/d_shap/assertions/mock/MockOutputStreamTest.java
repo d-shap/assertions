@@ -357,6 +357,12 @@ public final class MockOutputStreamTest extends AssertionTest {
         } catch (IOException ex) {
             Assertions.assertThat(ex).hasMessage("fail");
         }
+        try {
+            DataHelper.createOutputStreamBuilder().setContentSize(5).setCloseException("fail").buildOutputStream().close();
+            Assertions.fail("MockOutputStream test fail");
+        } catch (IOException ex) {
+            Assertions.assertThat(ex).hasMessage("fail");
+        }
 
         OutputStream outputStream05 = DataHelper.createOutputStreamBuilder().setContentSize(5).setFlushException("fail").buildOutputStream();
         outputStream05.write(1);

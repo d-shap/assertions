@@ -571,6 +571,12 @@ public final class MockWriterTest extends AssertionTest {
         } catch (IOException ex) {
             Assertions.assertThat(ex).hasMessage("fail");
         }
+        try {
+            DataHelper.createWriterBuilder().setContentSize(5).setCloseException("fail").buildWriter().close();
+            Assertions.fail("MockWriter test fail");
+        } catch (IOException ex) {
+            Assertions.assertThat(ex).hasMessage("fail");
+        }
 
         Writer writer05 = DataHelper.createWriterBuilder().setContentSize(5).setFlushException("fail").buildWriter();
         writer05.write('1');
