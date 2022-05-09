@@ -108,6 +108,7 @@ public final class MockOutputStream extends OutputStream implements IsCloseable 
     @Override
     public void close() throws IOException {
         if (!_isClosed) {
+            _isClosed = true;
             flush();
         }
         _isClosed = true;
