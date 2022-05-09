@@ -247,7 +247,7 @@ public final class MockWriter extends Writer implements IsCloseable {
          *
          * @return the created mock object.
          */
-        public MockWriter buildWriter() {
+        public Writer buildWriter() {
             return new MockWriter(_contentSize, _writeException, _flushException, _closeException);
         }
 
