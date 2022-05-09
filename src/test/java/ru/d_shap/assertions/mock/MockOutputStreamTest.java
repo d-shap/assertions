@@ -322,7 +322,63 @@ public final class MockOutputStreamTest extends AssertionTest {
      */
     @Test
     public void closeTest() throws IOException {
-        // TODO
+        OutputStream outputStream01 = DataHelper.createOutputStreamBuilder().setContentSize(5).buildOutputStream();
+        outputStream01.close();
+
+        OutputStream outputStream02 = DataHelper.createOutputStreamBuilder().setContentSize(5).buildOutputStream();
+        outputStream02.write(new byte[]{1, 2, 3, 4, 5, 6, 7, 8, 9}, 0, 9);
+        outputStream02.close();
+
+        OutputStream outputStream03 = DataHelper.createOutputStreamBuilder().setWriteException("ex").buildOutputStream();
+        outputStream03.close();
+
+        OutputStream outputStream04 = DataHelper.createOutputStreamBuilder().setContentSize(5).setFlushException("ex").buildOutputStream();
+        outputStream04.close();
+
+        try {
+            DataHelper.createOutputStreamBuilder().setCloseException(new IOException("fail")).buildOutputStream().close();
+            Assertions.fail("MockOutputStream test fail");
+        } catch (IOException ex) {
+            Assertions.assertThat(ex).hasMessage("fail");
+        }
+        try {
+            DataHelper.createOutputStreamBuilder().setCloseException("fail").buildOutputStream().close();
+            Assertions.fail("MockOutputStream test fail");
+        } catch (IOException ex) {
+            Assertions.assertThat(ex).hasMessage("fail");
+        }
+
+        OutputStream outputStream05 = DataHelper.createOutputStreamBuilder().setContentSize(5).setFlushException("fail").buildOutputStream();
+        outputStream05.write(1);
+        outputStream05.write(2);
+        outputStream05.write(3);
+        outputStream05.write(4);
+        outputStream05.write(5);
+        try {
+            outputStream05.close();
+            Assertions.fail("MockOutputStream test fail");
+        } catch (IOException ex) {
+            Assertions.assertThat(ex).hasMessage("fail");
+        }
+
+        OutputStream outputStream06 = DataHelper.createOutputStreamBuilder().setContentSize(5).setFlushException("fail 1").setCloseException("fail 2").buildOutputStream();
+        outputStream06.write(1);
+        outputStream06.write(2);
+        outputStream06.write(3);
+        outputStream06.write(4);
+        outputStream06.write(5);
+        try {
+            outputStream06.close();
+            Assertions.fail("MockOutputStream test fail");
+        } catch (IOException ex) {
+            Assertions.assertThat(ex).hasMessage("fail 1");
+        }
+        try {
+            outputStream06.close();
+            Assertions.fail("MockOutputStream test fail");
+        } catch (IOException ex) {
+            Assertions.assertThat(ex).hasMessage("fail 2");
+        }
     }
 
     /**
