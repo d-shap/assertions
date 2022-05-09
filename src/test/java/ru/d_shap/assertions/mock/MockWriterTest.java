@@ -269,6 +269,26 @@ public final class MockWriterTest extends AssertionTest {
      * @throws IOException exception in test.
      */
     @Test
+    public void writeStringTest() throws IOException {
+        // TODO
+    }
+
+    /**
+     * {@link MockWriter} class test.
+     *
+     * @throws IOException exception in test.
+     */
+    @Test
+    public void writeStringArrayTest() throws IOException {
+        // TODO
+    }
+
+    /**
+     * {@link MockWriter} class test.
+     *
+     * @throws IOException exception in test.
+     */
+    @Test
     public void flushTest() throws IOException {
         Writer writer01 = DataHelper.createWriterBuilder().setContentSize(5).buildWriter();
         writer01.flush();
