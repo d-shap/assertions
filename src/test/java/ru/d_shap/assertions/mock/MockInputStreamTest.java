@@ -457,6 +457,8 @@ public final class MockInputStreamTest extends AssertionTest {
         Assertions.assertThat(((IsCloseable) inputStream01).isClosed()).isFalse();
         inputStream01.close();
         Assertions.assertThat(((IsCloseable) inputStream01).isClosed()).isTrue();
+        inputStream01.close();
+        Assertions.assertThat(((IsCloseable) inputStream01).isClosed()).isTrue();
 
         InputStream inputStream02 = DataHelper.createInputStreamBuilder().setContent(new byte[]{1, 2, 3, 4, 5}).setCloseException("fail").buildInputStream();
         Assertions.assertThat(((IsCloseable) inputStream02).isClosed()).isFalse();

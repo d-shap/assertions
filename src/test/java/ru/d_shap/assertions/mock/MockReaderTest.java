@@ -382,6 +382,8 @@ public final class MockReaderTest extends AssertionTest {
         Assertions.assertThat(((IsCloseable) reader01).isClosed()).isFalse();
         reader01.close();
         Assertions.assertThat(((IsCloseable) reader01).isClosed()).isTrue();
+        reader01.close();
+        Assertions.assertThat(((IsCloseable) reader01).isClosed()).isTrue();
 
         Reader reader02 = DataHelper.createReaderBuilder().setContent(new char[]{'1', '2', '3', '4', '5'}).setCloseException("fail").buildReader();
         Assertions.assertThat(((IsCloseable) reader02).isClosed()).isFalse();
