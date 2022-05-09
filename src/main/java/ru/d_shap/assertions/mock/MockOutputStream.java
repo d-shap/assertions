@@ -94,8 +94,10 @@ public final class MockOutputStream extends OutputStream implements IsCloseable 
 
     private void doWrite(final int value) throws IOException {
         checkAndThrowException(_writeException, true);
-        _content[_position] = (byte) value;
-        _position++;
+        if (_position < _content.length) {
+            _content[_position] = (byte) value;
+            _position++;
+        }
     }
 
     @Override

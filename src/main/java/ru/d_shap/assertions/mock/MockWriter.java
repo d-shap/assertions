@@ -94,8 +94,10 @@ public final class MockWriter extends Writer implements IsCloseable {
 
     private void doWrite(final int value) throws IOException {
         checkAndThrowException(_writeException, true);
-        _content[_position] = (char) value;
-        _position++;
+        if (_position < _content.length) {
+            _content[_position] = (char) value;
+            _position++;
+        }
     }
 
     @Override
