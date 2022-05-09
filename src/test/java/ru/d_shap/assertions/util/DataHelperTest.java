@@ -45,6 +45,8 @@ import org.junit.Test;
 
 import ru.d_shap.assertions.AssertionTest;
 import ru.d_shap.assertions.Assertions;
+import ru.d_shap.assertions.mock.MockOutputStream;
+import ru.d_shap.assertions.mock.MockWriter;
 
 /**
  * Tests for {@link DataHelper}.
@@ -646,10 +648,42 @@ public final class DataHelperTest extends AssertionTest {
      * @throws Exception exception in test.
      */
     @Test
+    public void createOutputStreamBuilderTest() throws Exception {
+        MockOutputStream outputStream = (MockOutputStream) DataHelper.createOutputStreamBuilder().setContentSize(10).buildOutputStream();
+        outputStream.write(1);
+        outputStream.write(2);
+        outputStream.write(3);
+        outputStream.write(4);
+        outputStream.write(5);
+        Assertions.assertThat(outputStream.getContent()).containsExactlyInOrder(1, 2, 3, 4, 5);
+    }
+
+    /**
+     * {@link DataHelper} class test.
+     *
+     * @throws Exception exception in test.
+     */
+    @Test
     public void createReaderBuilderTest() throws Exception {
         Assertions.assertThat(DataHelper.createReaderBuilder().setContent(new char[]{'1', '2', '3'}).buildReader().skip(10)).isEqualTo(3);
         Assertions.assertThat(DataHelper.createReaderBuilder().setContent(new char[]{'1', '2', '3'}).buildReader().read()).isEqualTo('1');
         Assertions.assertThat(DataHelper.createReaderBuilder().setContent("row1\nrow2").buildBufferedReader().readLine()).isEqualTo("row1");
+    }
+
+    /**
+     * {@link DataHelper} class test.
+     *
+     * @throws Exception exception in test.
+     */
+    @Test
+    public void createWriterBuilderTest() throws Exception {
+        MockWriter writer = (MockWriter) DataHelper.createWriterBuilder().setContentSize(10).buildWriter();
+        writer.write('1');
+        writer.write('2');
+        writer.write('3');
+        writer.write('4');
+        writer.write('5');
+        Assertions.assertThat(writer.getContent()).containsExactlyInOrder('1', '2', '3', '4', '5');
     }
 
     /**
