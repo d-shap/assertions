@@ -41,14 +41,23 @@ public final class MockWriter extends Writer implements IsCloseable {
 
     private boolean _isClosed;
 
-    MockWriter(final int size, final IOException writeException, final IOException flushException, final IOException closeException) {
+    MockWriter(final int contentSize, final IOException writeException, final IOException flushException, final IOException closeException) {
         super();
-        _content = new char[size];
+        _content = new char[contentSize];
         _position = 0;
         _writeException = writeException;
         _flushException = flushException;
         _closeException = closeException;
         _isClosed = false;
+    }
+
+    /**
+     * Create new builder for mock object.
+     *
+     * @return new builder for mock object.
+     */
+    public static Builder builder() {
+        return new Builder();
     }
 
     @Override
@@ -122,6 +131,122 @@ public final class MockWriter extends Writer implements IsCloseable {
     @Override
     public boolean isClosed() {
         return _isClosed;
+    }
+
+    /**
+     * Builder for writer mock.
+     */
+    public static final class Builder {
+
+        private int _contentSize;
+
+        private IOException _writeException;
+
+        private IOException _flushException;
+
+        private IOException _closeException;
+
+        Builder() {
+            super();
+            _contentSize = 0;
+            _writeException = null;
+            _flushException = null;
+            _closeException = null;
+        }
+
+        /**
+         * Set content size.
+         *
+         * @param contentSize content size.
+         *
+         * @return current object for the chain call.
+         */
+        public Builder setContentSize(final int contentSize) {
+            _contentSize = contentSize;
+            return this;
+        }
+
+        /**
+         * Set exception for write call.
+         *
+         * @param exception exception for write call.
+         *
+         * @return current object for the chain call.
+         */
+        public Builder setWriteException(final IOException exception) {
+            _writeException = exception;
+            return this;
+        }
+
+        /**
+         * Set exception for write call.
+         *
+         * @param exceptionMessage exception message for write call.
+         *
+         * @return current object for the chain call.
+         */
+        public Builder setWriteException(final String exceptionMessage) {
+            _writeException = new IOException(exceptionMessage);
+            return this;
+        }
+
+        /**
+         * Set exception for flush call.
+         *
+         * @param exception exception for flush call.
+         *
+         * @return current object for the chain call.
+         */
+        public Builder setFlushException(final IOException exception) {
+            _flushException = exception;
+            return this;
+        }
+
+        /**
+         * Set exception for flush call.
+         *
+         * @param exceptionMessage exception message for flush call.
+         *
+         * @return current object for the chain call.
+         */
+        public Builder setFlushException(final String exceptionMessage) {
+            _flushException = new IOException(exceptionMessage);
+            return this;
+        }
+
+        /**
+         * Set exception for close call.
+         *
+         * @param exception exception for close call.
+         *
+         * @return current object for the chain call.
+         */
+        public Builder setCloseException(final IOException exception) {
+            _closeException = exception;
+            return this;
+        }
+
+        /**
+         * Set exception for close call.
+         *
+         * @param exceptionMessage exception message for close call.
+         *
+         * @return current object for the chain call.
+         */
+        public Builder setCloseException(final String exceptionMessage) {
+            _closeException = new IOException(exceptionMessage);
+            return this;
+        }
+
+        /**
+         * Build new mock object.
+         *
+         * @return the created mock object.
+         */
+        public MockWriter buildInputStream() {
+            return new MockWriter(_contentSize, _writeException, _flushException, _closeException);
+        }
+
     }
 
 }
