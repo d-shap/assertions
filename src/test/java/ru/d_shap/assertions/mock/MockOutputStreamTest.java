@@ -248,6 +248,17 @@ public final class MockOutputStreamTest extends AssertionTest {
         } catch (IOException ex) {
             Assertions.assertThat(ex).hasMessage("fail");
         }
+
+        OutputStream outputStream07 = DataHelper.createOutputStreamBuilder().setContentSize(5).setWriteException("fail").buildOutputStream();
+        outputStream07.write(new byte[]{11, 12, 13}, 0, 3);
+        Assertions.assertThat(((MockOutputStream) outputStream07).getContent()).containsExactlyInOrder(11, 12, 13);
+        try {
+            outputStream07.write(new byte[]{21, 22, 23}, 0, 3);
+            Assertions.fail("MockOutputStream test fail");
+        } catch (IOException ex) {
+            Assertions.assertThat(ex).hasMessage("fail");
+        }
+        Assertions.assertThat(((MockOutputStream) outputStream07).getContent()).containsExactlyInOrder(11, 12, 13, 21, 22);
     }
 
     /**
