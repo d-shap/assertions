@@ -153,6 +153,8 @@ public final class MockWriterTest extends AssertionTest {
         Writer writer01 = DataHelper.createWriterBuilder().setContentSize(10).buildWriter();
         writer01.write(new char[]{'1', '2', '3'}, 0, 3);
         Assertions.assertThat(((MockWriter) writer01).getContent()).containsExactlyInOrder('1', '2', '3');
+        writer01.write(new char[]{}, 0, 0);
+        Assertions.assertThat(((MockWriter) writer01).getContent()).containsExactlyInOrder('1', '2', '3');
         writer01.write(new char[]{'4', '5', '6'}, 1, 2);
         Assertions.assertThat(((MockWriter) writer01).getContent()).containsExactlyInOrder('1', '2', '3', '5', '6');
         writer01.write(new char[]{'7', '8', '9'}, 0, 2);
@@ -239,6 +241,12 @@ public final class MockWriterTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("length is out of bounds");
         }
         try {
+            DataHelper.createWriterBuilder().buildWriter().write(new char[]{}, 1, 0);
+            Assertions.fail("MockWriter test fail");
+        } catch (IndexOutOfBoundsException ex) {
+            Assertions.assertThat(ex).hasMessage("offset is out of bounds");
+        }
+        try {
             DataHelper.createWriterBuilder().setWriteException(new IOException("fail")).buildWriter().write(new char[]{'1'}, 0, 1);
             Assertions.fail("MockWriter test fail");
         } catch (IOException ex) {
@@ -272,6 +280,8 @@ public final class MockWriterTest extends AssertionTest {
     public void writeStringTest() throws IOException {
         Writer writer01 = DataHelper.createWriterBuilder().setContentSize(10).buildWriter();
         writer01.write("123");
+        Assertions.assertThat(((MockWriter) writer01).getContent()).containsExactlyInOrder('1', '2', '3');
+        writer01.write("");
         Assertions.assertThat(((MockWriter) writer01).getContent()).containsExactlyInOrder('1', '2', '3');
         writer01.write("56");
         Assertions.assertThat(((MockWriter) writer01).getContent()).containsExactlyInOrder('1', '2', '3', '5', '6');
@@ -357,6 +367,8 @@ public final class MockWriterTest extends AssertionTest {
         Writer writer01 = DataHelper.createWriterBuilder().setContentSize(10).buildWriter();
         writer01.write("123", 0, 3);
         Assertions.assertThat(((MockWriter) writer01).getContent()).containsExactlyInOrder('1', '2', '3');
+        writer01.write("123", 0, 0);
+        Assertions.assertThat(((MockWriter) writer01).getContent()).containsExactlyInOrder('1', '2', '3');
         writer01.write("456", 1, 2);
         Assertions.assertThat(((MockWriter) writer01).getContent()).containsExactlyInOrder('1', '2', '3', '5', '6');
         writer01.write("789", 0, 2);
@@ -441,6 +453,12 @@ public final class MockWriterTest extends AssertionTest {
             Assertions.fail("MockWriter test fail");
         } catch (IndexOutOfBoundsException ex) {
             Assertions.assertThat(ex).hasMessage("length is out of bounds");
+        }
+        try {
+            DataHelper.createWriterBuilder().buildWriter().write("12345", 1, 0);
+            Assertions.fail("MockWriter test fail");
+        } catch (IndexOutOfBoundsException ex) {
+            Assertions.assertThat(ex).hasMessage("offset is out of bounds");
         }
         try {
             DataHelper.createWriterBuilder().setWriteException(new IOException("fail")).buildWriter().write("1", 0, 1);

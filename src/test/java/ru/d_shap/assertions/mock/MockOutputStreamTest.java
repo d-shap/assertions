@@ -153,6 +153,8 @@ public final class MockOutputStreamTest extends AssertionTest {
         OutputStream outputStream01 = DataHelper.createOutputStreamBuilder().setContentSize(10).buildOutputStream();
         outputStream01.write(new byte[]{11, 12, 13}, 0, 3);
         Assertions.assertThat(((MockOutputStream) outputStream01).getContent()).containsExactlyInOrder(11, 12, 13);
+        outputStream01.write(new byte[]{}, 0, 0);
+        Assertions.assertThat(((MockOutputStream) outputStream01).getContent()).containsExactlyInOrder(11, 12, 13);
         outputStream01.write(new byte[]{21, 22, 23}, 1, 2);
         Assertions.assertThat(((MockOutputStream) outputStream01).getContent()).containsExactlyInOrder(11, 12, 13, 22, 23);
         outputStream01.write(new byte[]{31, 32, 33}, 0, 2);
@@ -237,6 +239,12 @@ public final class MockOutputStreamTest extends AssertionTest {
             Assertions.fail("MockOutputStream test fail");
         } catch (IndexOutOfBoundsException ex) {
             Assertions.assertThat(ex).hasMessage("length is out of bounds");
+        }
+        try {
+            DataHelper.createOutputStreamBuilder().buildOutputStream().write(new byte[]{}, 1, 0);
+            Assertions.fail("MockOutputStream test fail");
+        } catch (IndexOutOfBoundsException ex) {
+            Assertions.assertThat(ex).hasMessage("offset is out of bounds");
         }
         try {
             DataHelper.createOutputStreamBuilder().setWriteException(new IOException("fail")).buildOutputStream().write(new byte[]{1}, 0, 1);
