@@ -388,7 +388,43 @@ public final class MockOutputStreamTest extends AssertionTest {
      */
     @Test
     public void isClosedTest() throws IOException {
-        // TODO
+        OutputStream outputStream01 = DataHelper.createOutputStreamBuilder().setContentSize(5).buildOutputStream();
+        Assertions.assertThat(((IsCloseable) outputStream01).isClosed()).isFalse();
+        outputStream01.write(1);
+        Assertions.assertThat(((IsCloseable) outputStream01).isClosed()).isFalse();
+        outputStream01.write(2);
+        Assertions.assertThat(((IsCloseable) outputStream01).isClosed()).isFalse();
+        outputStream01.close();
+        Assertions.assertThat(((IsCloseable) outputStream01).isClosed()).isTrue();
+        outputStream01.close();
+        Assertions.assertThat(((IsCloseable) outputStream01).isClosed()).isTrue();
+
+        OutputStream outputStream02 = DataHelper.createOutputStreamBuilder().setCloseException("fail").buildOutputStream();
+        Assertions.assertThat(((IsCloseable) outputStream02).isClosed()).isFalse();
+        try {
+            outputStream02.close();
+            Assertions.fail("MockOutputStream test fail");
+        } catch (IOException ex) {
+            Assertions.assertThat(ex).hasMessage("fail");
+        }
+        Assertions.assertThat(((IsCloseable) outputStream02).isClosed()).isTrue();
+
+        OutputStream outputStream03 = DataHelper.createOutputStreamBuilder().setFlushException("fail 1").setCloseException("fail 2").buildOutputStream();
+        Assertions.assertThat(((IsCloseable) outputStream03).isClosed()).isFalse();
+        try {
+            outputStream03.close();
+            Assertions.fail("MockOutputStream test fail");
+        } catch (IOException ex) {
+            Assertions.assertThat(ex).hasMessage("fail 1");
+        }
+        Assertions.assertThat(((IsCloseable) outputStream03).isClosed()).isTrue();
+        try {
+            outputStream03.close();
+            Assertions.fail("MockOutputStream test fail");
+        } catch (IOException ex) {
+            Assertions.assertThat(ex).hasMessage("fail 2");
+        }
+        Assertions.assertThat(((IsCloseable) outputStream03).isClosed()).isTrue();
     }
 
 }
