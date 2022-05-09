@@ -107,11 +107,14 @@ public final class MockReaderTest extends AssertionTest {
     @Test
     public void readCharArrayTest() throws IOException {
         Reader reader01 = DataHelper.createReaderBuilder().setContent(new char[]{'1', '2', '3', '4', '5'}).buildReader();
-        char[] buff01 = new char[3];
-        Assertions.assertThat(reader01.read(buff01, 0, 3)).isEqualTo(3);
-        Assertions.assertThat(buff01).containsExactlyInOrder('1', '2', '3');
-        Assertions.assertThat(reader01.read(buff01, 0, 3)).isEqualTo(2);
-        Assertions.assertThat(buff01).containsExactlyInOrder('4', '5', '3');
+        char[] buff011 = new char[0];
+        char[] buff012 = new char[3];
+        Assertions.assertThat(reader01.read(buff011, 0, 0)).isEqualTo(0);
+        Assertions.assertThat(buff011).containsExactlyInOrder();
+        Assertions.assertThat(reader01.read(buff012, 0, 3)).isEqualTo(3);
+        Assertions.assertThat(buff012).containsExactlyInOrder('1', '2', '3');
+        Assertions.assertThat(reader01.read(buff012, 0, 3)).isEqualTo(2);
+        Assertions.assertThat(buff012).containsExactlyInOrder('4', '5', '3');
 
         Reader reader02 = DataHelper.createReaderBuilder().setContent(new char[]{'1', '2', '3', '4', '5'}).buildReader();
         char[] buff02 = new char[3];
@@ -209,6 +212,12 @@ public final class MockReaderTest extends AssertionTest {
             Assertions.fail("MockReader test fail");
         } catch (IndexOutOfBoundsException ex) {
             Assertions.assertThat(ex).hasMessage("length is out of bounds");
+        }
+        try {
+            DataHelper.createReaderBuilder().setContent(new char[]{'1', '2', '3', '4', '5'}).buildReader().read(new char[0], 1, 0);
+            Assertions.fail("MockReader test fail");
+        } catch (IndexOutOfBoundsException ex) {
+            Assertions.assertThat(ex).hasMessage("offset is out of bounds");
         }
         try {
             Reader reader = DataHelper.createReaderBuilder().setContent(new char[]{'1', '2', '3', '4', '5'}).setReadException(new IOException("fail")).buildReader();

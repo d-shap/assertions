@@ -170,11 +170,14 @@ public final class MockInputStreamTest extends AssertionTest {
     @Test
     public void readByteArrayTest() throws IOException {
         InputStream inputStream01 = DataHelper.createInputStreamBuilder().setContent(new byte[]{1, 2, 3, 4, 5}).buildInputStream();
-        byte[] buff01 = new byte[3];
-        Assertions.assertThat(inputStream01.read(buff01, 0, 3)).isEqualTo(3);
-        Assertions.assertThat(buff01).containsExactlyInOrder(1, 2, 3);
-        Assertions.assertThat(inputStream01.read(buff01, 0, 3)).isEqualTo(2);
-        Assertions.assertThat(buff01).containsExactlyInOrder(4, 5, 3);
+        byte[] buff011 = new byte[0];
+        byte[] buff012 = new byte[3];
+        Assertions.assertThat(inputStream01.read(buff011, 0, 0)).isEqualTo(0);
+        Assertions.assertThat(buff011).containsExactlyInOrder();
+        Assertions.assertThat(inputStream01.read(buff012, 0, 3)).isEqualTo(3);
+        Assertions.assertThat(buff012).containsExactlyInOrder(1, 2, 3);
+        Assertions.assertThat(inputStream01.read(buff012, 0, 3)).isEqualTo(2);
+        Assertions.assertThat(buff012).containsExactlyInOrder(4, 5, 3);
 
         InputStream inputStream02 = DataHelper.createInputStreamBuilder().setContent(new byte[]{1, 2, 3, 4, 5}).buildInputStream();
         byte[] buff02 = new byte[3];
@@ -279,6 +282,12 @@ public final class MockInputStreamTest extends AssertionTest {
             Assertions.fail("MockInputStream test fail");
         } catch (IndexOutOfBoundsException ex) {
             Assertions.assertThat(ex).hasMessage("length is out of bounds");
+        }
+        try {
+            DataHelper.createInputStreamBuilder().setContent(new byte[]{1, 2, 3, 4, 5}).buildInputStream().read(new byte[0], 1, 0);
+            Assertions.fail("MockInputStream test fail");
+        } catch (IndexOutOfBoundsException ex) {
+            Assertions.assertThat(ex).hasMessage("offset is out of bounds");
         }
         try {
             InputStream inputStream = DataHelper.createInputStreamBuilder().setContent(new byte[]{1, 2, 3, 4, 5}).setReadException(new IOException("fail")).buildInputStream();
