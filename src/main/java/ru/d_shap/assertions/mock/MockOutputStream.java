@@ -74,7 +74,7 @@ public final class MockOutputStream extends OutputStream implements IsCloseable 
         if (buffer == null) {
             throw new NullPointerException("buffer is null");
         }
-        if (offset < 0 || length == 0 && offset > buffer.length || length > 0 && offset >= buffer.length) {
+        if (offset < 0 || offset > buffer.length || length > 0 && offset == buffer.length) {
             throw new IndexOutOfBoundsException("offset is out of bounds");
         }
         if (length < 0 || offset + length > buffer.length) {
