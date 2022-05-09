@@ -455,7 +455,7 @@ public final class MockWriterTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("length is out of bounds");
         }
         try {
-            DataHelper.createWriterBuilder().buildWriter().write("12345", 1, 0);
+            DataHelper.createWriterBuilder().buildWriter().write("", 1, 0);
             Assertions.fail("MockWriter test fail");
         } catch (IndexOutOfBoundsException ex) {
             Assertions.assertThat(ex).hasMessage("offset is out of bounds");
