@@ -45,141 +45,177 @@ public final class CharAssertion extends ReferenceAssertion<Character> {
      * Check if the actual value is equal to the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void isEqualTo(final int expected) {
+    public CharAssertion isEqualTo(final int expected) {
         checkActualIsNotNull();
         if (getActual() != expected) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_SAME).addActual().addExpected(expected).build();
         }
+        return this;
     }
 
     /**
      * Check if the actual value is equal to the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void isEqualTo(final Character expected) {
+    public CharAssertion isEqualTo(final Character expected) {
         if (expected == null) {
             isNull();
         } else {
             isEqualTo(expected.charValue());
         }
+        return this;
     }
 
     /**
      * Check if the actual value is NOT equal to the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void isNotEqualTo(final int expected) {
+    public CharAssertion isNotEqualTo(final int expected) {
         if (getActual() != null && getActual() == expected) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_DIFFERENT).addActual().build();
         }
+        return this;
     }
 
     /**
      * Check if the actual value is NOT equal to the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void isNotEqualTo(final Character expected) {
+    public CharAssertion isNotEqualTo(final Character expected) {
         if (expected == null) {
             isNotNull();
         } else {
             isNotEqualTo(expected.charValue());
         }
+        return this;
     }
 
     /**
      * Check if the actual value is greater than the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void isGreaterThan(final int expected) {
+    public CharAssertion isGreaterThan(final int expected) {
         checkActualIsNotNull();
         if (getActual() <= expected) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_GREATER).addActual().addExpected(expected).build();
         }
+        return this;
     }
 
     /**
      * Check if the actual value is greater than the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void isGreaterThan(final Character expected) {
+    public CharAssertion isGreaterThan(final Character expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         isGreaterThan(expected.charValue());
+        return this;
     }
 
     /**
      * Check if the actual value is greater than or equal to the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void isGreaterThanOrEqualTo(final int expected) {
+    public CharAssertion isGreaterThanOrEqualTo(final int expected) {
         checkActualIsNotNull();
         if (getActual() < expected) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_GREATER_OR_EQUAL).addActual().addExpected(expected).build();
         }
+        return this;
     }
 
     /**
      * Check if the actual value is greater than or equal to the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void isGreaterThanOrEqualTo(final Character expected) {
+    public CharAssertion isGreaterThanOrEqualTo(final Character expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         isGreaterThanOrEqualTo(expected.charValue());
+        return this;
     }
 
     /**
      * Check if the actual value is less than the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void isLessThan(final int expected) {
+    public CharAssertion isLessThan(final int expected) {
         checkActualIsNotNull();
         if (getActual() >= expected) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_LESS).addActual().addExpected(expected).build();
         }
+        return this;
     }
 
     /**
      * Check if the actual value is less than the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void isLessThan(final Character expected) {
+    public CharAssertion isLessThan(final Character expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         isLessThan(expected.charValue());
+        return this;
     }
 
     /**
      * Check if the actual value is less than or equal to the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void isLessThanOrEqualTo(final int expected) {
+    public CharAssertion isLessThanOrEqualTo(final int expected) {
         checkActualIsNotNull();
         if (getActual() > expected) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_LESS_OR_EQUAL).addActual().addExpected(expected).build();
         }
+        return this;
     }
 
     /**
      * Check if the actual value is less than or equal to the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void isLessThanOrEqualTo(final Character expected) {
+    public CharAssertion isLessThanOrEqualTo(final Character expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         isLessThanOrEqualTo(expected.charValue());
+        return this;
     }
 
     /**
@@ -187,12 +223,15 @@ public final class CharAssertion extends ReferenceAssertion<Character> {
      *
      * @param expectedFrom the expected lower (inclusive) bound of the range.
      * @param expectedTo   the expected upper (exclusive) bound of the range.
+     *
+     * @return current object for the chain call.
      */
-    public void isInRange(final int expectedFrom, final int expectedTo) {
+    public CharAssertion isInRange(final int expectedFrom, final int expectedTo) {
         checkActualIsNotNull();
         if (getActual() < expectedFrom || getActual() >= expectedTo) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_IN_RANGE).addActual().addExpected(expectedFrom, expectedTo).build();
         }
+        return this;
     }
 
     /**
@@ -200,12 +239,15 @@ public final class CharAssertion extends ReferenceAssertion<Character> {
      *
      * @param expectedFrom the expected lower (inclusive) bound of the range.
      * @param expectedTo   the expected upper (exclusive) bound of the range.
+     *
+     * @return current object for the chain call.
      */
-    public void isInRange(final Character expectedFrom, final Character expectedTo) {
+    public CharAssertion isInRange(final Character expectedFrom, final Character expectedTo) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expectedFrom, "expectedFrom");
         checkArgumentIsNotNull(expectedTo, "expectedTo");
         isInRange(expectedFrom.charValue(), expectedTo.charValue());
+        return this;
     }
 
     /**
@@ -213,12 +255,15 @@ public final class CharAssertion extends ReferenceAssertion<Character> {
      *
      * @param expectedFrom the expected lower (inclusive) bound of the range.
      * @param expectedTo   the expected upper (exclusive) bound of the range.
+     *
+     * @return current object for the chain call.
      */
-    public void isNotInRange(final int expectedFrom, final int expectedTo) {
+    public CharAssertion isNotInRange(final int expectedFrom, final int expectedTo) {
         checkActualIsNotNull();
         if (getActual() >= expectedFrom && getActual() < expectedTo) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_IN_RANGE).addActual().addExpected(expectedFrom, expectedTo).build();
         }
+        return this;
     }
 
     /**
@@ -226,172 +271,223 @@ public final class CharAssertion extends ReferenceAssertion<Character> {
      *
      * @param expectedFrom the expected lower (inclusive) bound of the range.
      * @param expectedTo   the expected upper (exclusive) bound of the range.
+     *
+     * @return current object for the chain call.
      */
-    public void isNotInRange(final Character expectedFrom, final Character expectedTo) {
+    public CharAssertion isNotInRange(final Character expectedFrom, final Character expectedTo) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expectedFrom, "expectedFrom");
         checkArgumentIsNotNull(expectedTo, "expectedTo");
         isNotInRange(expectedFrom.charValue(), expectedTo.charValue());
+        return this;
     }
 
     /**
      * Check if the actual value is the alphabetic symbol.
+     *
+     * @return current object for the chain call.
      */
-    public void isAlphabetic() {
+    public CharAssertion isAlphabetic() {
         checkActualIsNotNull();
         if (!Character.isAlphabetic(getActual())) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_ALPHABETIC).addActual().build();
         }
+        return this;
     }
 
     /**
      * Check if the actual value is NOT the alphabetic symbol.
+     *
+     * @return current object for the chain call.
      */
-    public void isNotAlphabetic() {
+    public CharAssertion isNotAlphabetic() {
         checkActualIsNotNull();
         if (Character.isAlphabetic(getActual())) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_ALPHABETIC).addActual().build();
         }
+        return this;
     }
 
     /**
      * Check if the actual value is the letter.
+     *
+     * @return current object for the chain call.
      */
-    public void isLetter() {
+    public CharAssertion isLetter() {
         checkActualIsNotNull();
         if (!Character.isLetter(getActual())) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_LETTER).addActual().build();
         }
+        return this;
     }
 
     /**
      * Check if the actual value is NOT the letter.
+     *
+     * @return current object for the chain call.
      */
-    public void isNotLetter() {
+    public CharAssertion isNotLetter() {
         checkActualIsNotNull();
         if (Character.isLetter(getActual())) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_LETTER).addActual().build();
         }
+        return this;
     }
 
     /**
      * Check if the actual value is the digit.
+     *
+     * @return current object for the chain call.
      */
-    public void isDigit() {
+    public CharAssertion isDigit() {
         checkActualIsNotNull();
         if (!Character.isDigit(getActual())) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_DIGIT).addActual().build();
         }
+        return this;
     }
 
     /**
      * Check if the actual value is NOT the digit.
+     *
+     * @return current object for the chain call.
      */
-    public void isNotDigit() {
+    public CharAssertion isNotDigit() {
         checkActualIsNotNull();
         if (Character.isDigit(getActual())) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_DIGIT).addActual().build();
         }
+        return this;
     }
 
     /**
      * Check if the actual value is the whitespace symbol.
+     *
+     * @return current object for the chain call.
      */
-    public void isWhitespace() {
+    public CharAssertion isWhitespace() {
         checkActualIsNotNull();
         if (!Character.isWhitespace(getActual())) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_WHITESPACE).addActual().build();
         }
+        return this;
     }
 
     /**
      * Check if the actual value is NOT the whitespace symbol.
+     *
+     * @return current object for the chain call.
      */
-    public void isNotWhitespace() {
+    public CharAssertion isNotWhitespace() {
         checkActualIsNotNull();
         if (Character.isWhitespace(getActual())) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_WHITESPACE).addActual().build();
         }
+        return this;
     }
 
     /**
      * Check if the actual value is the letter or the digit.
+     *
+     * @return current object for the chain call.
      */
-    public void isLetterOrDigit() {
+    public CharAssertion isLetterOrDigit() {
         checkActualIsNotNull();
         if (!Character.isLetter(getActual()) && !Character.isDigit(getActual())) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_LETTER_OR_DIGIT).addActual().build();
         }
+        return this;
     }
 
     /**
      * Check if the actual value is the letter or the whitespace symbol.
+     *
+     * @return current object for the chain call.
      */
-    public void isLetterOrWhitespace() {
+    public CharAssertion isLetterOrWhitespace() {
         checkActualIsNotNull();
         if (!Character.isLetter(getActual()) && !Character.isWhitespace(getActual())) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_LETTER_OR_WHITESPACE).addActual().build();
         }
+        return this;
     }
 
     /**
      * Check if the actual value is the control symbol.
+     *
+     * @return current object for the chain call.
      */
-    public void isControl() {
+    public CharAssertion isControl() {
         checkActualIsNotNull();
         if (!Character.isISOControl(getActual())) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_CONTROL_SYMBOL).addActual().build();
         }
+        return this;
     }
 
     /**
      * Check if the actual value is NOT the control symbol.
+     *
+     * @return current object for the chain call.
      */
-    public void isNotControl() {
+    public CharAssertion isNotControl() {
         checkActualIsNotNull();
         if (Character.isISOControl(getActual())) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_CONTROL_SYMBOL).addActual().build();
         }
+        return this;
     }
 
     /**
      * Check if the actual value is the lower case symbol.
+     *
+     * @return current object for the chain call.
      */
-    public void isLowerCase() {
+    public CharAssertion isLowerCase() {
         checkActualIsNotNull();
         if (!Character.isLowerCase(getActual())) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_LOWER_CASE).addActual().build();
         }
+        return this;
     }
 
     /**
      * Check if the actual value is NOT the lower case symbol.
+     *
+     * @return current object for the chain call.
      */
-    public void isNotLowerCase() {
+    public CharAssertion isNotLowerCase() {
         checkActualIsNotNull();
         if (Character.isLowerCase(getActual())) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_LOWER_CASE).addActual().build();
         }
+        return this;
     }
 
     /**
      * Check if the actual value is the upper case symbol.
+     *
+     * @return current object for the chain call.
      */
-    public void isUpperCase() {
+    public CharAssertion isUpperCase() {
         checkActualIsNotNull();
         if (!Character.isUpperCase(getActual())) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_UPPER_CASE).addActual().build();
         }
+        return this;
     }
 
     /**
      * Check if the actual value is NOT the upper case symbol.
+     *
+     * @return current object for the chain call.
      */
-    public void isNotUpperCase() {
+    public CharAssertion isNotUpperCase() {
         checkActualIsNotNull();
         if (Character.isUpperCase(getActual())) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_UPPER_CASE).addActual().build();
         }
+        return this;
     }
 
 }

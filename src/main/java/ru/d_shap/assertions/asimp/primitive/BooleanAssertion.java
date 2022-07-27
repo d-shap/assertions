@@ -43,22 +43,28 @@ public final class BooleanAssertion extends ReferenceAssertion<Boolean> {
 
     /**
      * Check if the actual value is true.
+     *
+     * @return current object for the chain call.
      */
-    public void isTrue() {
+    public BooleanAssertion isTrue() {
         checkActualIsNotNull();
         if (!getActual()) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_TRUE).build();
         }
+        return this;
     }
 
     /**
      * Check if the actual value is false.
+     *
+     * @return current object for the chain call.
      */
-    public void isFalse() {
+    public BooleanAssertion isFalse() {
         checkActualIsNotNull();
         if (getActual()) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_FALSE).build();
         }
+        return this;
     }
 
 }

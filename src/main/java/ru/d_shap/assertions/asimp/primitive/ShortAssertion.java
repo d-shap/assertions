@@ -50,141 +50,177 @@ public final class ShortAssertion extends ReferenceAssertion<Short> {
      * Check if the actual value is equal to the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void isEqualTo(final int expected) {
+    public ShortAssertion isEqualTo(final int expected) {
         checkActualIsNotNull();
         if (getActual() != expected) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_SAME).addActual().addExpected(expected).build();
         }
+        return this;
     }
 
     /**
      * Check if the actual value is equal to the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void isEqualTo(final Short expected) {
+    public ShortAssertion isEqualTo(final Short expected) {
         if (expected == null) {
             isNull();
         } else {
             isEqualTo(expected.shortValue());
         }
+        return this;
     }
 
     /**
      * Check if the actual value is NOT equal to the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void isNotEqualTo(final int expected) {
+    public ShortAssertion isNotEqualTo(final int expected) {
         if (getActual() != null && getActual() == expected) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_DIFFERENT).addActual().build();
         }
+        return this;
     }
 
     /**
      * Check if the actual value is NOT equal to the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void isNotEqualTo(final Short expected) {
+    public ShortAssertion isNotEqualTo(final Short expected) {
         if (expected == null) {
             isNotNull();
         } else {
             isNotEqualTo(expected.shortValue());
         }
+        return this;
     }
 
     /**
      * Check if the actual value is greater than the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void isGreaterThan(final int expected) {
+    public ShortAssertion isGreaterThan(final int expected) {
         checkActualIsNotNull();
         if (getActual() <= expected) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_GREATER).addActual().addExpected(expected).build();
         }
+        return this;
     }
 
     /**
      * Check if the actual value is greater than the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void isGreaterThan(final Short expected) {
+    public ShortAssertion isGreaterThan(final Short expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         isGreaterThan(expected.shortValue());
+        return this;
     }
 
     /**
      * Check if the actual value is greater than or equal to the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void isGreaterThanOrEqualTo(final int expected) {
+    public ShortAssertion isGreaterThanOrEqualTo(final int expected) {
         checkActualIsNotNull();
         if (getActual() < expected) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_GREATER_OR_EQUAL).addActual().addExpected(expected).build();
         }
+        return this;
     }
 
     /**
      * Check if the actual value is greater than or equal to the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void isGreaterThanOrEqualTo(final Short expected) {
+    public ShortAssertion isGreaterThanOrEqualTo(final Short expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         isGreaterThanOrEqualTo(expected.shortValue());
+        return this;
     }
 
     /**
      * Check if the actual value is less than the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void isLessThan(final int expected) {
+    public ShortAssertion isLessThan(final int expected) {
         checkActualIsNotNull();
         if (getActual() >= expected) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_LESS).addActual().addExpected(expected).build();
         }
+        return this;
     }
 
     /**
      * Check if the actual value is less than the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void isLessThan(final Short expected) {
+    public ShortAssertion isLessThan(final Short expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         isLessThan(expected.shortValue());
+        return this;
     }
 
     /**
      * Check if the actual value is less than or equal to the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void isLessThanOrEqualTo(final int expected) {
+    public ShortAssertion isLessThanOrEqualTo(final int expected) {
         checkActualIsNotNull();
         if (getActual() > expected) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_LESS_OR_EQUAL).addActual().addExpected(expected).build();
         }
+        return this;
     }
 
     /**
      * Check if the actual value is less than or equal to the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void isLessThanOrEqualTo(final Short expected) {
+    public ShortAssertion isLessThanOrEqualTo(final Short expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         isLessThanOrEqualTo(expected.shortValue());
+        return this;
     }
 
     /**
@@ -192,12 +228,15 @@ public final class ShortAssertion extends ReferenceAssertion<Short> {
      *
      * @param expectedFrom the expected lower (inclusive) bound of the range.
      * @param expectedTo   the expected upper (exclusive) bound of the range.
+     *
+     * @return current object for the chain call.
      */
-    public void isInRange(final int expectedFrom, final int expectedTo) {
+    public ShortAssertion isInRange(final int expectedFrom, final int expectedTo) {
         checkActualIsNotNull();
         if (getActual() < expectedFrom || getActual() >= expectedTo) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_IN_RANGE).addActual().addExpected(expectedFrom, expectedTo).build();
         }
+        return this;
     }
 
     /**
@@ -205,12 +244,15 @@ public final class ShortAssertion extends ReferenceAssertion<Short> {
      *
      * @param expectedFrom the expected lower (inclusive) bound of the range.
      * @param expectedTo   the expected upper (exclusive) bound of the range.
+     *
+     * @return current object for the chain call.
      */
-    public void isInRange(final Short expectedFrom, final Short expectedTo) {
+    public ShortAssertion isInRange(final Short expectedFrom, final Short expectedTo) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expectedFrom, "expectedFrom");
         checkArgumentIsNotNull(expectedTo, "expectedTo");
         isInRange(expectedFrom.shortValue(), expectedTo.shortValue());
+        return this;
     }
 
     /**
@@ -218,12 +260,15 @@ public final class ShortAssertion extends ReferenceAssertion<Short> {
      *
      * @param expectedFrom the expected lower (inclusive) bound of the range.
      * @param expectedTo   the expected upper (exclusive) bound of the range.
+     *
+     * @return current object for the chain call.
      */
-    public void isNotInRange(final int expectedFrom, final int expectedTo) {
+    public ShortAssertion isNotInRange(final int expectedFrom, final int expectedTo) {
         checkActualIsNotNull();
         if (getActual() >= expectedFrom && getActual() < expectedTo) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_IN_RANGE).addActual().addExpected(expectedFrom, expectedTo).build();
         }
+        return this;
     }
 
     /**
@@ -231,12 +276,15 @@ public final class ShortAssertion extends ReferenceAssertion<Short> {
      *
      * @param expectedFrom the expected lower (inclusive) bound of the range.
      * @param expectedTo   the expected upper (exclusive) bound of the range.
+     *
+     * @return current object for the chain call.
      */
-    public void isNotInRange(final Short expectedFrom, final Short expectedTo) {
+    public ShortAssertion isNotInRange(final Short expectedFrom, final Short expectedTo) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expectedFrom, "expectedFrom");
         checkArgumentIsNotNull(expectedTo, "expectedTo");
         isNotInRange(expectedFrom.shortValue(), expectedTo.shortValue());
+        return this;
     }
 
     /**
@@ -254,23 +302,29 @@ public final class ShortAssertion extends ReferenceAssertion<Short> {
      * Make assertion about the actual value's hex representation.
      *
      * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
      */
-    public void toHexString(final Matcher<? super String> matcher) {
+    public ShortAssertion toHexString(final Matcher<? super String> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         HexString hexString = convertValue(getActual(), null, HexString.class);
         matcherAssertion(hexString.toString(), matcher, Messages.Check.HEX_REPRESENTATION);
+        return this;
     }
 
     /**
      * Check if the actual value's hex representation is equal to the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void hasHexString(final String expected) {
+    public ShortAssertion hasHexString(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         toHexString().isEqualTo(expected);
+        return this;
     }
 
 }
