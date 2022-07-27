@@ -35,7 +35,7 @@ import ru.d_shap.assertions.converter.ConversionExceptionHolder;
  *
  * @author Dmitry Shapovalov
  */
-public final class DocumentAssertion extends ReferenceAssertion<Document> {
+public final class DocumentAssertion extends ReferenceAssertion<DocumentAssertion, Document> {
 
     /**
      * Create new object.

@@ -32,7 +32,7 @@ import ru.d_shap.assertions.asimp.java.lang.CharSequenceAssertion;
  *
  * @author Dmitry Shapovalov
  */
-public final class ByteAssertion extends ReferenceAssertion<Byte> {
+public final class ByteAssertion extends ReferenceAssertion<ByteAssertion, Byte> {
 
     /**
      * Create new object.

@@ -34,7 +34,7 @@ import ru.d_shap.assertions.asimp.primitive.IntAssertion;
  *
  * @author Dmitry Shapovalov
  */
-public final class BooleanArrayAssertion extends ReferenceAssertion<boolean[]> {
+public final class BooleanArrayAssertion extends ReferenceAssertion<BooleanArrayAssertion, boolean[]> {
 
     /**
      * Create new object.

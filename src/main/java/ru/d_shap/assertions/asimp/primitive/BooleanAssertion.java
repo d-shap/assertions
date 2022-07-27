@@ -27,7 +27,7 @@ import ru.d_shap.assertions.asimp.ReferenceAssertion;
  *
  * @author Dmitry Shapovalov
  */
-public final class BooleanAssertion extends ReferenceAssertion<Boolean> {
+public final class BooleanAssertion extends ReferenceAssertion<BooleanAssertion, Boolean> {
 
     /**
      * Create new object.

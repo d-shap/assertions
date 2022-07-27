@@ -39,7 +39,7 @@ import ru.d_shap.assertions.converter.ConversionExceptionHolder;
  *
  * @author Dmitry Shapovalov
  */
-public final class ElementAssertion extends ReferenceAssertion<Element> {
+public final class ElementAssertion extends ReferenceAssertion<ElementAssertion, Element> {
 
     /**
      * Create new object.

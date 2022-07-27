@@ -37,7 +37,7 @@ import ru.d_shap.assertions.asimp.primitive.IntAssertion;
  *
  * @author Dmitry Shapovalov
  */
-public final class ListAssertion<E> extends ReferenceAssertion<List<E>> {
+public final class ListAssertion<E> extends ReferenceAssertion<ListAssertion<E>, List<E>> {
 
     /**
      * Create new object.

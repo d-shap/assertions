@@ -34,7 +34,7 @@ import ru.d_shap.assertions.asimp.primitive.IntAssertion;
  *
  * @author Dmitry Shapovalov
  */
-public final class DateAssertion extends ReferenceAssertion<Date> {
+public final class DateAssertion extends ReferenceAssertion<DateAssertion, Date> {
 
     /**
      * Create new object.

@@ -36,7 +36,7 @@ import ru.d_shap.assertions.asimp.primitive.IntAssertion;
  *
  * @author Dmitry Shapovalov
  */
-public final class IntArrayAssertion extends ReferenceAssertion<int[]> {
+public final class IntArrayAssertion extends ReferenceAssertion<IntArrayAssertion, int[]> {
 
     /**
      * Create new object.

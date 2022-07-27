@@ -27,7 +27,7 @@ import ru.d_shap.assertions.asimp.ReferenceAssertion;
  *
  * @author Dmitry Shapovalov
  */
-public final class DoubleAssertion extends ReferenceAssertion<Double> {
+public final class DoubleAssertion extends ReferenceAssertion<DoubleAssertion, Double> {
 
     private static final double DEFAULT_DELTA = 1.0e-11f;
 

@@ -37,7 +37,7 @@ import ru.d_shap.assertions.asimp.primitive.LongAssertion;
  *
  * @author Dmitry Shapovalov
  */
-public final class BufferedReaderAssertion extends ReferenceAssertion<BufferedReader> {
+public final class BufferedReaderAssertion extends ReferenceAssertion<BufferedReaderAssertion, BufferedReader> {
 
     /**
      * Create new object.

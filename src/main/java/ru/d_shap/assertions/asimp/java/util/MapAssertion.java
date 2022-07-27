@@ -41,7 +41,7 @@ import ru.d_shap.assertions.asimp.primitive.IntAssertion;
  *
  * @author Dmitry Shapovalov
  */
-public final class MapAssertion<K, V> extends ReferenceAssertion<Map<K, V>> {
+public final class MapAssertion<K, V> extends ReferenceAssertion<MapAssertion<K, V>, Map<K, V>> {
 
     /**
      * Create new object.

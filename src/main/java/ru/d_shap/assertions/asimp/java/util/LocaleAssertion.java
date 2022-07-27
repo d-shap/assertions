@@ -33,7 +33,7 @@ import ru.d_shap.assertions.asimp.java.lang.CharSequenceAssertion;
  *
  * @author Dmitry Shapovalov
  */
-public final class LocaleAssertion extends ReferenceAssertion<Locale> {
+public final class LocaleAssertion extends ReferenceAssertion<LocaleAssertion, Locale> {
 
     /**
      * Create new object.

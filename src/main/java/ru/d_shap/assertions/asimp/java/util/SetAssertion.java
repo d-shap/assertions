@@ -36,7 +36,7 @@ import ru.d_shap.assertions.asimp.primitive.IntAssertion;
  *
  * @author Dmitry Shapovalov
  */
-public final class SetAssertion<E> extends ReferenceAssertion<Set<E>> {
+public final class SetAssertion<E> extends ReferenceAssertion<SetAssertion<E>, Set<E>> {
 
     /**
      * Create new object.

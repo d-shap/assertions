@@ -36,7 +36,7 @@ import ru.d_shap.assertions.asimp.primitive.IntAssertion;
  *
  * @author Dmitry Shapovalov
  */
-public final class CharSequenceAssertion extends ReferenceAssertion<CharSequence> {
+public final class CharSequenceAssertion extends ReferenceAssertion<CharSequenceAssertion, CharSequence> {
 
     private static final int PATTERN_FLAGS = Pattern.LITERAL | Pattern.CASE_INSENSITIVE | Pattern.UNICODE_CASE;
 

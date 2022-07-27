@@ -30,7 +30,7 @@ import ru.d_shap.assertions.asimp.ReferenceAssertion;
  *
  * @author Dmitry Shapovalov
  */
-public final class ThrowableAssertion extends ReferenceAssertion<Throwable> {
+public final class ThrowableAssertion extends ReferenceAssertion<ThrowableAssertion, Throwable> {
 
     /**
      * Create new object.

@@ -29,7 +29,7 @@ import ru.d_shap.assertions.asimp.ReferenceAssertion;
  *
  * @author Dmitry Shapovalov
  */
-public final class ComparableAssertion<E> extends ReferenceAssertion<Comparable<E>> {
+public final class ComparableAssertion<E> extends ReferenceAssertion<ComparableAssertion<E>, Comparable<E>> {
 
     /**
      * Create new object.

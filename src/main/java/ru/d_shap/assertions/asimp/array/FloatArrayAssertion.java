@@ -34,7 +34,7 @@ import ru.d_shap.assertions.asimp.primitive.IntAssertion;
  *
  * @author Dmitry Shapovalov
  */
-public final class FloatArrayAssertion extends ReferenceAssertion<float[]> {
+public final class FloatArrayAssertion extends ReferenceAssertion<FloatArrayAssertion, float[]> {
 
     /**
      * Create new object.

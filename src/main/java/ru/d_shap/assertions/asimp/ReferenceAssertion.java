@@ -38,11 +38,12 @@ import ru.d_shap.assertions.util.ReflectionHelper;
 /**
  * Base class for all reference type assertions.
  *
+ * @param <R> the generic type of the assertion class.
  * @param <T> the generic type of the actual value.
  *
  * @author Dmitry Shapovalov
  */
-public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
+public abstract class ReferenceAssertion<R extends ReferenceAssertion<R, T>, T> extends BaseAssertion<T> {
 
     /**
      * Create new object.
@@ -53,44 +54,60 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
 
     /**
      * Check if the actual value is null.
+     *
+     * @return current object for the chain call.
      */
-    public final void isNull() {
+    @SuppressWarnings("unchecked")
+    public final R isNull() {
         if (getActual() != null) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NULL).addActual().build();
         }
+        return (R) this;
     }
 
     /**
      * Check if the actual value is NOT null.
+     *
+     * @return current object for the chain call.
      */
-    public final void isNotNull() {
+    @SuppressWarnings("unchecked")
+    public final R isNotNull() {
         checkActualIsNotNull();
+        return (R) this;
     }
 
     /**
      * Check if the actual value is the same as the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public final void isSameAs(final T expected) {
+    @SuppressWarnings("unchecked")
+    public final R isSameAs(final T expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         if (getActual() != expected) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_SAME_REFERENCE).addActual().addExpected(expected).build();
         }
+        return (R) this;
     }
 
     /**
      * Check if the actual value is NOT the same as the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public final void isNotSameAs(final T expected) {
+    @SuppressWarnings("unchecked")
+    public final R isNotSameAs(final T expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         if (getActual() == expected) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_DIFFERENT_REFERENCE).addActual().build();
         }
+        return (R) this;
     }
 
     /**
@@ -107,55 +124,75 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
      * Make assertion about the actual value's class.
      *
      * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
      */
-    public final void toClass(final Matcher<? super Class<?>> matcher) {
+    @SuppressWarnings("unchecked")
+    public final R toClass(final Matcher<? super Class<?>> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().getClass(), matcher, Messages.Check.CLASS);
+        return (R) this;
     }
 
     /**
      * Check if the actual value has the expected class.
      *
      * @param expected the expected class.
+     *
+     * @return current object for the chain call.
      */
-    public final void hasClass(final Class<?> expected) {
+    @SuppressWarnings("unchecked")
+    public final R hasClass(final Class<?> expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         toClass().isEqualTo(expected);
+        return (R) this;
     }
 
     /**
      * Check if the actual value has NOT the expected class.
      *
      * @param expected the expected class.
+     *
+     * @return current object for the chain call.
      */
-    public final void hasNotClass(final Class<?> expected) {
+    @SuppressWarnings("unchecked")
+    public final R hasNotClass(final Class<?> expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         toClass().isNotEqualTo(expected);
+        return (R) this;
     }
 
     /**
      * Check if the actual value is the instance of the expected class.
      *
      * @param expected the expected class.
+     *
+     * @return current object for the chain call.
      */
-    public final void isInstanceOf(final Class<?> expected) {
+    @SuppressWarnings("unchecked")
+    public final R isInstanceOf(final Class<?> expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         toClass().isSubtypeOf(expected);
+        return (R) this;
     }
 
     /**
      * Check if the actual value is NOT the instance of the expected class.
      *
      * @param expected the expected class.
+     *
+     * @return current object for the chain call.
      */
-    public final void isNotInstanceOf(final Class<?> expected) {
+    @SuppressWarnings("unchecked")
+    public final R isNotInstanceOf(final Class<?> expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         toClass().isNotSubtypeOf(expected);
+        return (R) this;
     }
 
     /**
@@ -172,44 +209,60 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
      * Make assertion about the actual value's string representation.
      *
      * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
      */
-    public final void toToString(final Matcher<? super String> matcher) {
+    @SuppressWarnings("unchecked")
+    public final R toToString(final Matcher<? super String> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().toString(), matcher, Messages.Check.TO_STRING);
+        return (R) this;
     }
 
     /**
      * Check if the string representation of the actual value is equal to the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public final void hasToString(final String expected) {
+    @SuppressWarnings("unchecked")
+    public final R hasToString(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         toToString().isEqualTo(expected);
+        return (R) this;
     }
 
     /**
      * Check if the string representation of the actual value contains the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public final void toStringContains(final String expected) {
+    @SuppressWarnings("unchecked")
+    public final R toStringContains(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         toToString().contains(expected);
+        return (R) this;
     }
 
     /**
      * Check if the string representation of the actual value matches the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public final void toStringMatches(final String expected) {
+    @SuppressWarnings("unchecked")
+    public final R toStringMatches(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         toToString().matches(expected);
+        return (R) this;
     }
 
     /**
@@ -226,20 +279,28 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
      * Make assertion about the actual value's hash code.
      *
      * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
      */
-    public final void toHashCode(final Matcher<? super Integer> matcher) {
+    @SuppressWarnings("unchecked")
+    public final R toHashCode(final Matcher<? super Integer> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().hashCode(), matcher, Messages.Check.HASH_CODE);
+        return (R) this;
     }
 
     /**
      * Check if the actual value's hash code is equal to the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public final void hasHashCode(final int expected) {
+    @SuppressWarnings("unchecked")
+    public final R hasHashCode(final int expected) {
         toHashCode().isEqualTo(expected);
+        return (R) this;
     }
 
     /**
@@ -282,9 +343,11 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
      *
      * @param fieldName the field name.
      * @param matcher   the hamcrest matcher.
+     *
+     * @return current object for the chain call.
      */
     @SuppressWarnings("unchecked")
-    public final void toField(final String fieldName, final Matcher<?> matcher) {
+    public final R toField(final String fieldName, final Matcher<?> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(fieldName, "fieldName");
         checkArgumentIsNotNull(matcher, "matcher");
@@ -294,6 +357,7 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
         } catch (ReflectionException ex) {
             throw getAssertionErrorBuilder().addThrowable(ex).addMessage(Messages.Fail.Actual.CONTAINS_FIELD).addExpected(fieldName).build();
         }
+        return (R) this;
     }
 
     /**
@@ -400,9 +464,11 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
      * @param matcher        the hamcrest matcher.
      * @param parameterTypes the method parameter types.
      * @param arguments      the arguments used to call the method.
+     *
+     * @return current object for the chain call.
      */
     @SuppressWarnings("unchecked")
-    public final void toMethodCallResult(final String methodName, final Matcher<?> matcher, final Class<?>[] parameterTypes, final Object[] arguments) {
+    public final R toMethodCallResult(final String methodName, final Matcher<?> matcher, final Class<?>[] parameterTypes, final Object[] arguments) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(methodName, "methodName");
         checkArgumentIsNotNull(matcher, "matcher");
@@ -421,6 +487,7 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
         } catch (ReflectionException ex) {
             throw getAssertionErrorBuilder().addThrowable(ex).addMessage(Messages.Fail.Actual.CALL_METHOD_RESULT).addExpected(executableDescription).build();
         }
+        return (R) this;
     }
 
     /**
@@ -429,9 +496,11 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
      * @param methodName the method name.
      * @param matcher    the hamcrest matcher.
      * @param arguments  the arguments used to call the method.
+     *
+     * @return current object for the chain call.
      */
     @SuppressWarnings("unchecked")
-    public final void toMethodCallResult(final String methodName, final Matcher<?> matcher, final Object... arguments) {
+    public final R toMethodCallResult(final String methodName, final Matcher<?> matcher, final Object... arguments) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(methodName, "methodName");
         checkArgumentIsNotNull(matcher, "matcher");
@@ -450,6 +519,7 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
         } catch (ReflectionException ex) {
             throw getAssertionErrorBuilder().addThrowable(ex).addMessage(Messages.Fail.Actual.CALL_METHOD_RESULT).addExpected(executableDescription).build();
         }
+        return (R) this;
     }
 
     /**
@@ -520,8 +590,11 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
      * @param matcher        the hamcrest matcher.
      * @param parameterTypes the method parameter types.
      * @param arguments      the arguments used to call the method.
+     *
+     * @return current object for the chain call.
      */
-    public final void toMethodCallException(final String methodName, final Matcher<? super Throwable> matcher, final Class<?>[] parameterTypes, final Object[] arguments) {
+    @SuppressWarnings("unchecked")
+    public final R toMethodCallException(final String methodName, final Matcher<? super Throwable> matcher, final Class<?>[] parameterTypes, final Object[] arguments) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(methodName, "methodName");
         checkArgumentIsNotNull(matcher, "matcher");
@@ -542,6 +615,7 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
             Throwable cause = reflectiveOperationException.getCause();
             matcherAssertion(cause, matcher, Messages.Check.CALL_METHOD_RESULT, executableDescription);
         }
+        return (R) this;
     }
 
     /**
@@ -550,8 +624,11 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
      * @param methodName the method name.
      * @param matcher    the hamcrest matcher.
      * @param arguments  the arguments used to call the method.
+     *
+     * @return current object for the chain call.
      */
-    public final void toMethodCallException(final String methodName, final Matcher<? super Throwable> matcher, final Object... arguments) {
+    @SuppressWarnings("unchecked")
+    public final R toMethodCallException(final String methodName, final Matcher<? super Throwable> matcher, final Object... arguments) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(methodName, "methodName");
         checkArgumentIsNotNull(matcher, "matcher");
@@ -572,6 +649,7 @@ public abstract class ReferenceAssertion<T> extends BaseAssertion<T> {
             Throwable cause = reflectiveOperationException.getCause();
             matcherAssertion(cause, matcher, Messages.Check.CALL_METHOD_RESULT, executableDescription);
         }
+        return (R) this;
     }
 
     /**

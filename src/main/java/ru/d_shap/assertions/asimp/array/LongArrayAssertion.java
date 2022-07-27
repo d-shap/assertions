@@ -36,7 +36,7 @@ import ru.d_shap.assertions.asimp.primitive.IntAssertion;
  *
  * @author Dmitry Shapovalov
  */
-public final class LongArrayAssertion extends ReferenceAssertion<long[]> {
+public final class LongArrayAssertion extends ReferenceAssertion<LongArrayAssertion, long[]> {
 
     /**
      * Create new object.

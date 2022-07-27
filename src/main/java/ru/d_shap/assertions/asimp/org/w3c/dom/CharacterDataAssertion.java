@@ -32,7 +32,7 @@ import ru.d_shap.assertions.asimp.java.lang.CharSequenceAssertion;
  *
  * @author Dmitry Shapovalov
  */
-public final class CharacterDataAssertion extends ReferenceAssertion<CharacterData> {
+public final class CharacterDataAssertion extends ReferenceAssertion<CharacterDataAssertion, CharacterData> {
 
     /**
      * Create new object.

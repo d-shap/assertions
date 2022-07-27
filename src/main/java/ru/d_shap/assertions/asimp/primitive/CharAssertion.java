@@ -27,7 +27,7 @@ import ru.d_shap.assertions.asimp.ReferenceAssertion;
  *
  * @author Dmitry Shapovalov
  */
-public final class CharAssertion extends ReferenceAssertion<Character> {
+public final class CharAssertion extends ReferenceAssertion<CharAssertion, Character> {
 
     /**
      * Create new object.

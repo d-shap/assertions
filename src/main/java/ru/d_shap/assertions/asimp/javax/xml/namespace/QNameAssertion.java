@@ -34,7 +34,7 @@ import ru.d_shap.assertions.asimp.java.lang.CharSequenceAssertion;
  *
  * @author Dmitry Shapovalov
  */
-public final class QNameAssertion extends ReferenceAssertion<QName> {
+public final class QNameAssertion extends ReferenceAssertion<QNameAssertion, QName> {
 
     /**
      * Create new object.

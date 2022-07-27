@@ -42,7 +42,7 @@ import ru.d_shap.assertions.asimp.primitive.IntAssertion;
  *
  * @author Dmitry Shapovalov
  */
-public final class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>> {
+public final class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMapAssertion<K, V>, SortedMap<K, V>> {
 
     /**
      * Create new object.

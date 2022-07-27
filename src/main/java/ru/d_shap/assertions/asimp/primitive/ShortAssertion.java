@@ -32,7 +32,7 @@ import ru.d_shap.assertions.asimp.java.lang.CharSequenceAssertion;
  *
  * @author Dmitry Shapovalov
  */
-public final class ShortAssertion extends ReferenceAssertion<Short> {
+public final class ShortAssertion extends ReferenceAssertion<ShortAssertion, Short> {
 
     /**
      * Create new object.

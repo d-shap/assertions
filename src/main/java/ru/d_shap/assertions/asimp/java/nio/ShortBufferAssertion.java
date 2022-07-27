@@ -35,7 +35,7 @@ import ru.d_shap.assertions.asimp.primitive.IntAssertion;
  *
  * @author Dmitry Shapovalov
  */
-public final class ShortBufferAssertion extends ReferenceAssertion<ShortBuffer> {
+public final class ShortBufferAssertion extends ReferenceAssertion<ShortBufferAssertion, ShortBuffer> {
 
     /**
      * Create new object.

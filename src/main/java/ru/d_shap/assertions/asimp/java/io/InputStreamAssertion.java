@@ -38,7 +38,7 @@ import ru.d_shap.assertions.asimp.primitive.LongAssertion;
  *
  * @author Dmitry Shapovalov
  */
-public final class InputStreamAssertion extends ReferenceAssertion<InputStream> {
+public final class InputStreamAssertion extends ReferenceAssertion<InputStreamAssertion, InputStream> {
 
     /**
      * Create new object.

@@ -39,7 +39,7 @@ import ru.d_shap.assertions.util.DataHelper;
  *
  * @author Dmitry Shapovalov
  */
-public final class XMLGregorianCalendarAssertion extends ReferenceAssertion<XMLGregorianCalendar> {
+public final class XMLGregorianCalendarAssertion extends ReferenceAssertion<XMLGregorianCalendarAssertion, XMLGregorianCalendar> {
 
     /**
      * Create new object.

@@ -36,7 +36,7 @@ import ru.d_shap.assertions.asimp.primitive.IntAssertion;
  *
  * @author Dmitry Shapovalov
  */
-public final class TimeZoneAssertion extends ReferenceAssertion<TimeZone> {
+public final class TimeZoneAssertion extends ReferenceAssertion<TimeZoneAssertion, TimeZone> {
 
     /**
      * Create new object.

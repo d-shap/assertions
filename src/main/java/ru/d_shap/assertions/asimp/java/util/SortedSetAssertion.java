@@ -37,7 +37,7 @@ import ru.d_shap.assertions.asimp.primitive.IntAssertion;
  *
  * @author Dmitry Shapovalov
  */
-public final class SortedSetAssertion<E> extends ReferenceAssertion<SortedSet<E>> {
+public final class SortedSetAssertion<E> extends ReferenceAssertion<SortedSetAssertion<E>, SortedSet<E>> {
 
     /**
      * Create new object.

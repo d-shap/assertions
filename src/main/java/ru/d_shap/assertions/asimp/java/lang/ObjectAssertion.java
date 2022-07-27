@@ -27,7 +27,7 @@ import ru.d_shap.assertions.asimp.ReferenceAssertion;
  *
  * @author Dmitry Shapovalov
  */
-public final class ObjectAssertion extends ReferenceAssertion<Object> {
+public final class ObjectAssertion extends ReferenceAssertion<ObjectAssertion, Object> {
 
     /**
      * Create new object.

@@ -35,7 +35,7 @@ import ru.d_shap.assertions.util.ReflectionHelper;
  *
  * @author Dmitry Shapovalov
  */
-public final class ClassAssertion extends ReferenceAssertion<Class<?>> {
+public final class ClassAssertion extends ReferenceAssertion<ClassAssertion, Class<?>> {
 
     /**
      * Create new object.

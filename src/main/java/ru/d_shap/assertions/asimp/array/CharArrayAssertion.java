@@ -34,7 +34,7 @@ import ru.d_shap.assertions.asimp.primitive.IntAssertion;
  *
  * @author Dmitry Shapovalov
  */
-public final class CharArrayAssertion extends ReferenceAssertion<char[]> {
+public final class CharArrayAssertion extends ReferenceAssertion<CharArrayAssertion, char[]> {
 
     /**
      * Create new object.

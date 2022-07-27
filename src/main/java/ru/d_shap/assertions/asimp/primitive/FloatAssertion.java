@@ -27,7 +27,7 @@ import ru.d_shap.assertions.asimp.ReferenceAssertion;
  *
  * @author Dmitry Shapovalov
  */
-public final class FloatAssertion extends ReferenceAssertion<Float> {
+public final class FloatAssertion extends ReferenceAssertion<FloatAssertion, Float> {
 
     private static final float DEFAULT_DELTA = 1.0e-5f;
 

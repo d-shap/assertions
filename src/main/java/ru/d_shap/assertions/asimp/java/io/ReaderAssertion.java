@@ -36,7 +36,7 @@ import ru.d_shap.assertions.asimp.primitive.LongAssertion;
  *
  * @author Dmitry Shapovalov
  */
-public final class ReaderAssertion extends ReferenceAssertion<Reader> {
+public final class ReaderAssertion extends ReferenceAssertion<ReaderAssertion, Reader> {
 
     /**
      * Create new object.

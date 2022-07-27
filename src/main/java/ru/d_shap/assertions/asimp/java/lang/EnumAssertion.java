@@ -34,7 +34,7 @@ import ru.d_shap.assertions.util.ReflectionHelper;
  *
  * @author Dmitry Shapovalov
  */
-public final class EnumAssertion extends ReferenceAssertion<Class<?>> {
+public final class EnumAssertion extends ReferenceAssertion<EnumAssertion, Class<?>> {
 
     private static final String VALUES_METHOD_NAME = "values";
 

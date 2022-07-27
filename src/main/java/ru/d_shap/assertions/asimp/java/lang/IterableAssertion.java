@@ -36,7 +36,7 @@ import ru.d_shap.assertions.asimp.primitive.IntAssertion;
  *
  * @author Dmitry Shapovalov
  */
-public final class IterableAssertion<E> extends ReferenceAssertion<Iterable<E>> {
+public final class IterableAssertion<E> extends ReferenceAssertion<IterableAssertion<E>, Iterable<E>> {
 
     /**
      * Create new object.

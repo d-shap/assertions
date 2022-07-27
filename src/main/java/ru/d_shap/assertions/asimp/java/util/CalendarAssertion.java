@@ -35,7 +35,7 @@ import ru.d_shap.assertions.util.DataHelper;
  *
  * @author Dmitry Shapovalov
  */
-public final class CalendarAssertion extends ReferenceAssertion<Calendar> {
+public final class CalendarAssertion extends ReferenceAssertion<CalendarAssertion, Calendar> {
 
     /**
      * Create new object.

@@ -34,7 +34,7 @@ import ru.d_shap.assertions.asimp.primitive.IntAssertion;
  *
  * @author Dmitry Shapovalov
  */
-public final class FloatBufferAssertion extends ReferenceAssertion<FloatBuffer> {
+public final class FloatBufferAssertion extends ReferenceAssertion<FloatBufferAssertion, FloatBuffer> {
 
     /**
      * Create new object.

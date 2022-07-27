@@ -32,7 +32,7 @@ import ru.d_shap.assertions.asimp.java.lang.CharSequenceAssertion;
  *
  * @author Dmitry Shapovalov
  */
-public final class LongAssertion extends ReferenceAssertion<Long> {
+public final class LongAssertion extends ReferenceAssertion<LongAssertion, Long> {
 
     /**
      * Create new object.

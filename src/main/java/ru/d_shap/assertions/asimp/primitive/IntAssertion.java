@@ -32,7 +32,7 @@ import ru.d_shap.assertions.asimp.java.lang.CharSequenceAssertion;
  *
  * @author Dmitry Shapovalov
  */
-public final class IntAssertion extends ReferenceAssertion<Integer> {
+public final class IntAssertion extends ReferenceAssertion<IntAssertion, Integer> {
 
     /**
      * Create new object.

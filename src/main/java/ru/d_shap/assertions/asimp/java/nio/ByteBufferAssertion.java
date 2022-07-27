@@ -35,7 +35,7 @@ import ru.d_shap.assertions.asimp.primitive.IntAssertion;
  *
  * @author Dmitry Shapovalov
  */
-public final class ByteBufferAssertion extends ReferenceAssertion<ByteBuffer> {
+public final class ByteBufferAssertion extends ReferenceAssertion<ByteBufferAssertion, ByteBuffer> {
 
     /**
      * Create new object.

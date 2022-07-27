@@ -32,7 +32,7 @@ import ru.d_shap.assertions.asimp.java.lang.CharSequenceAssertion;
  *
  * @author Dmitry Shapovalov
  */
-public final class NodeAssertion extends ReferenceAssertion<Node> {
+public final class NodeAssertion extends ReferenceAssertion<NodeAssertion, Node> {
 
     /**
      * Create new object.
