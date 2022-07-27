@@ -3225,15 +3225,15 @@ public final class ReferenceAssertionTest extends AssertionTest {
         Assertions.assertThat(value).isEqualTo("childField");
     }
 
-    private ReferenceAssertion<Object> createReferenceAssertion() {
+    private ReferenceAssertionImpl createReferenceAssertion() {
         return new ReferenceAssertionImpl();
     }
 
-    private ReferenceAssertion<Object> createReferenceAssertion(final Object actual) {
+    private ReferenceAssertionImpl createReferenceAssertion(final Object actual) {
         return initialize(createReferenceAssertion(), actual);
     }
 
-    private ReferenceAssertion<Object> createReferenceAssertion(final Object actual, final String message) {
+    private ReferenceAssertionImpl createReferenceAssertion(final Object actual, final String message) {
         return initialize(createReferenceAssertion(), actual, message);
     }
 
@@ -3241,7 +3241,7 @@ public final class ReferenceAssertionTest extends AssertionTest {
         return new ExceptionMessageMatcher<>(Matchers.is(message));
     }
 
-    private static final class ReferenceAssertionImpl extends ReferenceAssertion<Object> {
+    private static final class ReferenceAssertionImpl extends ReferenceAssertion<ReferenceAssertionImpl, Object> {
 
         ReferenceAssertionImpl() {
             super();
