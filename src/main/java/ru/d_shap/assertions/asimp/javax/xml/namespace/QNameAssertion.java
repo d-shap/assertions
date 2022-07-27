@@ -52,8 +52,10 @@ public final class QNameAssertion extends ReferenceAssertion<QName> {
      * Check if the actual value is equal to the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void isEqualTo(final QName expected) {
+    public QNameAssertion isEqualTo(final QName expected) {
         if (expected == null) {
             isNull();
         } else {
@@ -62,14 +64,17 @@ public final class QNameAssertion extends ReferenceAssertion<QName> {
                 throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_SAME).addActual().addExpected(expected).build();
             }
         }
+        return this;
     }
 
     /**
      * Check if the actual value is NOT equal to the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void isNotEqualTo(final QName expected) {
+    public QNameAssertion isNotEqualTo(final QName expected) {
         if (expected == null) {
             isNotNull();
         } else {
@@ -77,6 +82,7 @@ public final class QNameAssertion extends ReferenceAssertion<QName> {
                 throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_DIFFERENT).addActual().build();
             }
         }
+        return this;
     }
 
     /**
@@ -93,22 +99,28 @@ public final class QNameAssertion extends ReferenceAssertion<QName> {
      * Make assertion about the actual value's namespace URI.
      *
      * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
      */
-    public void toNamespaceURI(final Matcher<? super String> matcher) {
+    public QNameAssertion toNamespaceURI(final Matcher<? super String> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().getNamespaceURI(), matcher, Messages.Check.NAMESPACE_URI);
+        return this;
     }
 
     /**
      * Check if the actual value's namespace URI is equal to the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void hasNamespaceURI(final String expected) {
+    public QNameAssertion hasNamespaceURI(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         toNamespaceURI().isEqualTo(expected);
+        return this;
     }
 
     /**
@@ -125,22 +137,28 @@ public final class QNameAssertion extends ReferenceAssertion<QName> {
      * Make assertion about the actual value's prefix.
      *
      * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
      */
-    public void toPrefix(final Matcher<? super String> matcher) {
+    public QNameAssertion toPrefix(final Matcher<? super String> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().getPrefix(), matcher, Messages.Check.PREFIX);
+        return this;
     }
 
     /**
      * Check if the actual value's prefix is equal to the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void hasPrefix(final String expected) {
+    public QNameAssertion hasPrefix(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         toPrefix().isEqualTo(expected);
+        return this;
     }
 
     /**
@@ -157,34 +175,43 @@ public final class QNameAssertion extends ReferenceAssertion<QName> {
      * Make assertion about the actual value's local part.
      *
      * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
      */
-    public void toLocalPart(final Matcher<? super String> matcher) {
+    public QNameAssertion toLocalPart(final Matcher<? super String> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().getLocalPart(), matcher, Messages.Check.LOCAL_PART);
+        return this;
     }
 
     /**
      * Check if the actual value's local part is equal to the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void hasLocalPart(final String expected) {
+    public QNameAssertion hasLocalPart(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         toLocalPart().isEqualTo(expected);
+        return this;
     }
 
     /**
      * Check if the actual value's properties are equal to the expected properties.
      *
      * @param expectedLocalPart the expected local part.
+     *
+     * @return current object for the chain call.
      */
-    public void hasProperties(final String expectedLocalPart) {
+    public QNameAssertion hasProperties(final String expectedLocalPart) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expectedLocalPart, "expectedLocalPart");
         hasNamespaceURI(XMLConstants.NULL_NS_URI);
         hasLocalPart(expectedLocalPart);
+        return this;
     }
 
     /**
@@ -192,13 +219,16 @@ public final class QNameAssertion extends ReferenceAssertion<QName> {
      *
      * @param expectedNamespaceURI the expected namespace URI.
      * @param expectedLocalPart    the expected local part.
+     *
+     * @return current object for the chain call.
      */
-    public void hasProperties(final String expectedNamespaceURI, final String expectedLocalPart) {
+    public QNameAssertion hasProperties(final String expectedNamespaceURI, final String expectedLocalPart) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expectedNamespaceURI, "expectedNamespaceURI");
         checkArgumentIsNotNull(expectedLocalPart, "expectedLocalPart");
         hasNamespaceURI(expectedNamespaceURI);
         hasLocalPart(expectedLocalPart);
+        return this;
     }
 
 }
