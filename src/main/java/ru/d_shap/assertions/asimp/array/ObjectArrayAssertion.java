@@ -57,175 +57,226 @@ public final class ObjectArrayAssertion<E> extends ReferenceAssertion<E[]> {
 
     /**
      * Check if the actual value is empty.
+     *
+     * @return current object for the chain call.
      */
-    public void isEmpty() {
+    public ObjectArrayAssertion<E> isEmpty() {
         checkActualIsNotNull();
         if (getActual().length != 0) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_EMPTY).addActual().build();
         }
+        return this;
     }
 
     /**
      * Check if the actual value is null or empty.
+     *
+     * @return current object for the chain call.
      */
-    public void isNullOrEmpty() {
+    public ObjectArrayAssertion<E> isNullOrEmpty() {
         if (getActual() != null && getActual().length != 0) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NULL_OR_EMPTY).addActual().build();
         }
+        return this;
     }
 
     /**
      * Check if the actual value is NOT empty.
+     *
+     * @return current object for the chain call.
      */
-    public void isNotEmpty() {
+    public ObjectArrayAssertion<E> isNotEmpty() {
         checkActualIsNotNull();
         if (getActual().length == 0) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_EMPTY).build();
         }
+        return this;
     }
 
     /**
      * Check if the actual value contains the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void contains(final E expected) {
+    public ObjectArrayAssertion<E> contains(final E expected) {
         createIterableAssertion().contains(expected);
+        return this;
     }
 
     /**
      * Check if the actual value does NOT contain the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void doesNotContain(final E expected) {
+    public ObjectArrayAssertion<E> doesNotContain(final E expected) {
         createIterableAssertion().doesNotContain(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
     @SafeVarargs
-    public final void containsAll(final E... expected) {
+    public final ObjectArrayAssertion<E> containsAll(final E... expected) {
         List<Object> expectedList = convertValue(expected, null, List.class);
         createIterableAssertion().containsAll(expectedList);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsAll(final Iterable<E> expected) {
+    public ObjectArrayAssertion<E> containsAll(final Iterable<E> expected) {
         List<Object> expectedList = convertValue(expected, null, List.class);
         createIterableAssertion().containsAll(expectedList);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values in the specified order.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
     @SafeVarargs
-    public final void containsAllInOrder(final E... expected) {
+    public final ObjectArrayAssertion<E> containsAllInOrder(final E... expected) {
         List<Object> expectedList = convertValue(expected, null, List.class);
         createIterableAssertion().containsAllInOrder(expectedList);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values in the specified order.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsAllInOrder(final Iterable<E> expected) {
+    public ObjectArrayAssertion<E> containsAllInOrder(final Iterable<E> expected) {
         List<Object> expectedList = convertValue(expected, null, List.class);
         createIterableAssertion().containsAllInOrder(expectedList);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values exactly.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
     @SafeVarargs
-    public final void containsExactly(final E... expected) {
+    public final ObjectArrayAssertion<E> containsExactly(final E... expected) {
         List<Object> expectedList = convertValue(expected, null, List.class);
         createIterableAssertion().containsExactly(expectedList);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values exactly.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsExactly(final Iterable<E> expected) {
+    public ObjectArrayAssertion<E> containsExactly(final Iterable<E> expected) {
         List<Object> expectedList = convertValue(expected, null, List.class);
         createIterableAssertion().containsExactly(expectedList);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values exactly in the specified order.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
     @SafeVarargs
-    public final void containsExactlyInOrder(final E... expected) {
+    public final ObjectArrayAssertion<E> containsExactlyInOrder(final E... expected) {
         List<Object> expectedList = convertValue(expected, null, List.class);
         createIterableAssertion().containsExactlyInOrder(expectedList);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values exactly in the specified order.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsExactlyInOrder(final Iterable<E> expected) {
+    public ObjectArrayAssertion<E> containsExactlyInOrder(final Iterable<E> expected) {
         List<Object> expectedList = convertValue(expected, null, List.class);
         createIterableAssertion().containsExactlyInOrder(expectedList);
+        return this;
     }
 
     /**
      * Check if the actual value contains any of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
     @SafeVarargs
-    public final void containsAny(final E... expected) {
+    public final ObjectArrayAssertion<E> containsAny(final E... expected) {
         List<Object> expectedList = convertValue(expected, null, List.class);
         createIterableAssertion().containsAny(expectedList);
+        return this;
     }
 
     /**
      * Check if the actual value contains any of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsAny(final Iterable<E> expected) {
+    public ObjectArrayAssertion<E> containsAny(final Iterable<E> expected) {
         List<Object> expectedList = convertValue(expected, null, List.class);
         createIterableAssertion().containsAny(expectedList);
+        return this;
     }
 
     /**
      * Check if the actual value does NOT contain any of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
     @SafeVarargs
-    public final void containsNone(final E... expected) {
+    public final ObjectArrayAssertion<E> containsNone(final E... expected) {
         List<Object> expectedList = convertValue(expected, null, List.class);
         createIterableAssertion().containsNone(expectedList);
+        return this;
     }
 
     /**
      * Check if the actual value does NOT contain any of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsNone(final Iterable<E> expected) {
+    public ObjectArrayAssertion<E> containsNone(final Iterable<E> expected) {
         List<Object> expectedList = convertValue(expected, null, List.class);
         createIterableAssertion().containsNone(expectedList);
+        return this;
     }
 
     /**
@@ -242,20 +293,26 @@ public final class ObjectArrayAssertion<E> extends ReferenceAssertion<E[]> {
      * Make assertion about the actual value's length.
      *
      * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
      */
-    public void toLength(final Matcher<? super Integer> matcher) {
+    public ObjectArrayAssertion<E> toLength(final Matcher<? super Integer> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().length, matcher, Messages.Check.LENGTH);
+        return this;
     }
 
     /**
      * Check if the actual value's length is equal to the expected length.
      *
      * @param expected the expected length.
+     *
+     * @return current object for the chain call.
      */
-    public void hasLength(final int expected) {
+    public ObjectArrayAssertion<E> hasLength(final int expected) {
         toLength().isEqualTo(expected);
+        return this;
     }
 
     private IterableAssertion<Object> createIterableAssertion() {

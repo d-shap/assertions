@@ -52,235 +52,304 @@ public final class ShortArrayAssertion extends ReferenceAssertion<short[]> {
 
     /**
      * Check if the actual value is empty.
+     *
+     * @return current object for the chain call.
      */
-    public void isEmpty() {
+    public ShortArrayAssertion isEmpty() {
         checkActualIsNotNull();
         if (getActual().length != 0) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_EMPTY).addActual().build();
         }
+        return this;
     }
 
     /**
      * Check if the actual value is null or empty.
+     *
+     * @return current object for the chain call.
      */
-    public void isNullOrEmpty() {
+    public ShortArrayAssertion isNullOrEmpty() {
         if (getActual() != null && getActual().length != 0) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NULL_OR_EMPTY).addActual().build();
         }
+        return this;
     }
 
     /**
      * Check if the actual value is NOT empty.
+     *
+     * @return current object for the chain call.
      */
-    public void isNotEmpty() {
+    public ShortArrayAssertion isNotEmpty() {
         checkActualIsNotNull();
         if (getActual().length == 0) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_EMPTY).build();
         }
+        return this;
     }
 
     /**
      * Check if the actual value contains the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void contains(final int expected) {
+    public ShortArrayAssertion contains(final int expected) {
         createIterableAssertion().contains((short) expected);
+        return this;
     }
 
     /**
      * Check if the actual value does NOT contain the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void doesNotContain(final int expected) {
+    public ShortArrayAssertion doesNotContain(final int expected) {
         createIterableAssertion().doesNotContain((short) expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsAll(final short... expected) {
+    public ShortArrayAssertion containsAll(final short... expected) {
         List<Object> expectedList = convertValue(expected, null, List.class);
         createIterableAssertion().containsAll(expectedList);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsAll(final int... expected) {
+    public ShortArrayAssertion containsAll(final int... expected) {
         Object expectedShorts = convertValue(expected, null, short[].class);
         List<Object> expectedList = convertValue(expectedShorts, null, List.class);
         createIterableAssertion().containsAll(expectedList);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsAll(final Iterable<Short> expected) {
+    public ShortArrayAssertion containsAll(final Iterable<Short> expected) {
         List<Object> expectedList = convertValue(expected, null, List.class);
         createIterableAssertion().containsAll(expectedList);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values in the specified order.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsAllInOrder(final short... expected) {
+    public ShortArrayAssertion containsAllInOrder(final short... expected) {
         List<Object> expectedList = convertValue(expected, null, List.class);
         createIterableAssertion().containsAllInOrder(expectedList);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values in the specified order.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsAllInOrder(final int... expected) {
+    public ShortArrayAssertion containsAllInOrder(final int... expected) {
         Object expectedShorts = convertValue(expected, null, short[].class);
         List<Object> expectedList = convertValue(expectedShorts, null, List.class);
         createIterableAssertion().containsAllInOrder(expectedList);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values in the specified order.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsAllInOrder(final Iterable<Short> expected) {
+    public ShortArrayAssertion containsAllInOrder(final Iterable<Short> expected) {
         List<Object> expectedList = convertValue(expected, null, List.class);
         createIterableAssertion().containsAllInOrder(expectedList);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values exactly.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsExactly(final short... expected) {
+    public ShortArrayAssertion containsExactly(final short... expected) {
         List<Object> expectedList = convertValue(expected, null, List.class);
         createIterableAssertion().containsExactly(expectedList);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values exactly.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsExactly(final int... expected) {
+    public ShortArrayAssertion containsExactly(final int... expected) {
         Object expectedShorts = convertValue(expected, null, short[].class);
         List<Object> expectedList = convertValue(expectedShorts, null, List.class);
         createIterableAssertion().containsExactly(expectedList);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values exactly.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsExactly(final Iterable<Short> expected) {
+    public ShortArrayAssertion containsExactly(final Iterable<Short> expected) {
         List<Object> expectedList = convertValue(expected, null, List.class);
         createIterableAssertion().containsExactly(expectedList);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values exactly in the specified order.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsExactlyInOrder(final short... expected) {
+    public ShortArrayAssertion containsExactlyInOrder(final short... expected) {
         List<Object> expectedList = convertValue(expected, null, List.class);
         createIterableAssertion().containsExactlyInOrder(expectedList);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values exactly in the specified order.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsExactlyInOrder(final int... expected) {
+    public ShortArrayAssertion containsExactlyInOrder(final int... expected) {
         Object expectedShorts = convertValue(expected, null, short[].class);
         List<Object> expectedList = convertValue(expectedShorts, null, List.class);
         createIterableAssertion().containsExactlyInOrder(expectedList);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values exactly in the specified order.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsExactlyInOrder(final Iterable<Short> expected) {
+    public ShortArrayAssertion containsExactlyInOrder(final Iterable<Short> expected) {
         List<Object> expectedList = convertValue(expected, null, List.class);
         createIterableAssertion().containsExactlyInOrder(expectedList);
+        return this;
     }
 
     /**
      * Check if the actual value contains any of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsAny(final short... expected) {
+    public ShortArrayAssertion containsAny(final short... expected) {
         List<Object> expectedList = convertValue(expected, null, List.class);
         createIterableAssertion().containsAny(expectedList);
+        return this;
     }
 
     /**
      * Check if the actual value contains any of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsAny(final int... expected) {
+    public ShortArrayAssertion containsAny(final int... expected) {
         Object expectedShorts = convertValue(expected, null, short[].class);
         List<Object> expectedList = convertValue(expectedShorts, null, List.class);
         createIterableAssertion().containsAny(expectedList);
+        return this;
     }
 
     /**
      * Check if the actual value contains any of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsAny(final Iterable<Short> expected) {
+    public ShortArrayAssertion containsAny(final Iterable<Short> expected) {
         List<Object> expectedList = convertValue(expected, null, List.class);
         createIterableAssertion().containsAny(expectedList);
+        return this;
     }
 
     /**
      * Check if the actual value does NOT contain any of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsNone(final short... expected) {
+    public ShortArrayAssertion containsNone(final short... expected) {
         List<Object> expectedList = convertValue(expected, null, List.class);
         createIterableAssertion().containsNone(expectedList);
+        return this;
     }
 
     /**
      * Check if the actual value does NOT contain any of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsNone(final int... expected) {
+    public ShortArrayAssertion containsNone(final int... expected) {
         Object expectedShorts = convertValue(expected, null, short[].class);
         List<Object> expectedList = convertValue(expectedShorts, null, List.class);
         createIterableAssertion().containsNone(expectedList);
+        return this;
     }
 
     /**
      * Check if the actual value does NOT contain any of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsNone(final Iterable<Short> expected) {
+    public ShortArrayAssertion containsNone(final Iterable<Short> expected) {
         List<Object> expectedList = convertValue(expected, null, List.class);
         createIterableAssertion().containsNone(expectedList);
+        return this;
     }
 
     /**
@@ -297,20 +366,26 @@ public final class ShortArrayAssertion extends ReferenceAssertion<short[]> {
      * Make assertion about the actual value's length.
      *
      * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
      */
-    public void toLength(final Matcher<? super Integer> matcher) {
+    public ShortArrayAssertion toLength(final Matcher<? super Integer> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().length, matcher, Messages.Check.LENGTH);
+        return this;
     }
 
     /**
      * Check if the actual value's length is equal to the expected length.
      *
      * @param expected the expected length.
+     *
+     * @return current object for the chain call.
      */
-    public void hasLength(final int expected) {
+    public ShortArrayAssertion hasLength(final int expected) {
         toLength().isEqualTo(expected);
+        return this;
     }
 
     /**
@@ -346,12 +421,15 @@ public final class ShortArrayAssertion extends ReferenceAssertion<short[]> {
      * Make assertion about the actual value's hex representation.
      *
      * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
      */
-    public void toHexString(final Matcher<? super String> matcher) {
+    public ShortArrayAssertion toHexString(final Matcher<? super String> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         HexString hexString = convertValue(getActual(), null, HexString.class, 0, getActual().length);
         matcherAssertion(hexString.toString(), matcher, Messages.Check.HEX_REPRESENTATION);
+        return this;
     }
 
     /**
@@ -360,8 +438,10 @@ public final class ShortArrayAssertion extends ReferenceAssertion<short[]> {
      * @param from    the index of the first array element (inclusive) for the hex representation.
      * @param to      the index of the last array element (exclusive) for the hex representation.
      * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
      */
-    public void toHexString(final int from, final int to, final Matcher<? super String> matcher) {
+    public ShortArrayAssertion toHexString(final int from, final int to, final Matcher<? super String> matcher) {
         checkActualIsNotNull();
         checkArgumentIsValid(from >= 0, "from", Messages.Fail.Argument.IS_GREATER_THAN_OR_EQUAL_TO_ZERO);
         checkArgumentIsValid(from <= getActual().length, "from", Messages.Fail.Argument.IS_LESS_THAN_OR_EQUAL_TO_MAXIMUM_VALUE, getActual().length);
@@ -370,17 +450,21 @@ public final class ShortArrayAssertion extends ReferenceAssertion<short[]> {
         checkArgumentIsNotNull(matcher, "matcher");
         HexString hexString = convertValue(getActual(), null, HexString.class, from, to);
         matcherAssertion(hexString.toString(), matcher, Messages.Check.HEX_REPRESENTATION_PART, from, to);
+        return this;
     }
 
     /**
      * Check if the actual value's hex representation is equal to the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void hasHexString(final String expected) {
+    public ShortArrayAssertion hasHexString(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         toHexString().isEqualTo(expected);
+        return this;
     }
 
     /**
@@ -389,8 +473,10 @@ public final class ShortArrayAssertion extends ReferenceAssertion<short[]> {
      * @param from     the index of the first array element (inclusive) for the hex representation.
      * @param to       the index of the last array element (exclusive) for the hex representation.
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void hasHexString(final int from, final int to, final String expected) {
+    public ShortArrayAssertion hasHexString(final int from, final int to, final String expected) {
         checkActualIsNotNull();
         checkArgumentIsValid(from >= 0, "from", Messages.Fail.Argument.IS_GREATER_THAN_OR_EQUAL_TO_ZERO);
         checkArgumentIsValid(from <= getActual().length, "from", Messages.Fail.Argument.IS_LESS_THAN_OR_EQUAL_TO_MAXIMUM_VALUE, getActual().length);
@@ -398,6 +484,7 @@ public final class ShortArrayAssertion extends ReferenceAssertion<short[]> {
         checkArgumentIsValid(to <= getActual().length, "to", Messages.Fail.Argument.IS_LESS_THAN_OR_EQUAL_TO_MAXIMUM_VALUE, getActual().length);
         checkArgumentIsNotNull(expected, "expected");
         toHexString(from, to).isEqualTo(expected);
+        return this;
     }
 
     private IterableAssertion<Object> createIterableAssertion() {

@@ -52,169 +52,220 @@ public final class LongArrayAssertion extends ReferenceAssertion<long[]> {
 
     /**
      * Check if the actual value is empty.
+     *
+     * @return current object for the chain call.
      */
-    public void isEmpty() {
+    public LongArrayAssertion isEmpty() {
         checkActualIsNotNull();
         if (getActual().length != 0) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_EMPTY).addActual().build();
         }
+        return this;
     }
 
     /**
      * Check if the actual value is null or empty.
+     *
+     * @return current object for the chain call.
      */
-    public void isNullOrEmpty() {
+    public LongArrayAssertion isNullOrEmpty() {
         if (getActual() != null && getActual().length != 0) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NULL_OR_EMPTY).addActual().build();
         }
+        return this;
     }
 
     /**
      * Check if the actual value is NOT empty.
+     *
+     * @return current object for the chain call.
      */
-    public void isNotEmpty() {
+    public LongArrayAssertion isNotEmpty() {
         checkActualIsNotNull();
         if (getActual().length == 0) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_EMPTY).build();
         }
+        return this;
     }
 
     /**
      * Check if the actual value contains the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void contains(final long expected) {
+    public LongArrayAssertion contains(final long expected) {
         createIterableAssertion().contains(expected);
+        return this;
     }
 
     /**
      * Check if the actual value does NOT contain the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void doesNotContain(final long expected) {
+    public LongArrayAssertion doesNotContain(final long expected) {
         createIterableAssertion().doesNotContain(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsAll(final long... expected) {
+    public LongArrayAssertion containsAll(final long... expected) {
         List<Object> expectedList = convertValue(expected, null, List.class);
         createIterableAssertion().containsAll(expectedList);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsAll(final Iterable<Long> expected) {
+    public LongArrayAssertion containsAll(final Iterable<Long> expected) {
         List<Object> expectedList = convertValue(expected, null, List.class);
         createIterableAssertion().containsAll(expectedList);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values in the specified order.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsAllInOrder(final long... expected) {
+    public LongArrayAssertion containsAllInOrder(final long... expected) {
         List<Object> expectedList = convertValue(expected, null, List.class);
         createIterableAssertion().containsAllInOrder(expectedList);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values in the specified order.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsAllInOrder(final Iterable<Long> expected) {
+    public LongArrayAssertion containsAllInOrder(final Iterable<Long> expected) {
         List<Object> expectedList = convertValue(expected, null, List.class);
         createIterableAssertion().containsAllInOrder(expectedList);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values exactly.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsExactly(final long... expected) {
+    public LongArrayAssertion containsExactly(final long... expected) {
         List<Object> expectedList = convertValue(expected, null, List.class);
         createIterableAssertion().containsExactly(expectedList);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values exactly.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsExactly(final Iterable<Long> expected) {
+    public LongArrayAssertion containsExactly(final Iterable<Long> expected) {
         List<Object> expectedList = convertValue(expected, null, List.class);
         createIterableAssertion().containsExactly(expectedList);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values exactly in the specified order.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsExactlyInOrder(final long... expected) {
+    public LongArrayAssertion containsExactlyInOrder(final long... expected) {
         List<Object> expectedList = convertValue(expected, null, List.class);
         createIterableAssertion().containsExactlyInOrder(expectedList);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values exactly in the specified order.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsExactlyInOrder(final Iterable<Long> expected) {
+    public LongArrayAssertion containsExactlyInOrder(final Iterable<Long> expected) {
         List<Object> expectedList = convertValue(expected, null, List.class);
         createIterableAssertion().containsExactlyInOrder(expectedList);
+        return this;
     }
 
     /**
      * Check if the actual value contains any of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsAny(final long... expected) {
+    public LongArrayAssertion containsAny(final long... expected) {
         List<Object> expectedList = convertValue(expected, null, List.class);
         createIterableAssertion().containsAny(expectedList);
+        return this;
     }
 
     /**
      * Check if the actual value contains any of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsAny(final Iterable<Long> expected) {
+    public LongArrayAssertion containsAny(final Iterable<Long> expected) {
         List<Object> expectedList = convertValue(expected, null, List.class);
         createIterableAssertion().containsAny(expectedList);
+        return this;
     }
 
     /**
      * Check if the actual value does NOT contain any of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsNone(final long... expected) {
+    public LongArrayAssertion containsNone(final long... expected) {
         List<Object> expectedList = convertValue(expected, null, List.class);
         createIterableAssertion().containsNone(expectedList);
+        return this;
     }
 
     /**
      * Check if the actual value does NOT contain any of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsNone(final Iterable<Long> expected) {
+    public LongArrayAssertion containsNone(final Iterable<Long> expected) {
         List<Object> expectedList = convertValue(expected, null, List.class);
         createIterableAssertion().containsNone(expectedList);
+        return this;
     }
 
     /**
@@ -231,20 +282,26 @@ public final class LongArrayAssertion extends ReferenceAssertion<long[]> {
      * Make assertion about the actual value's length.
      *
      * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
      */
-    public void toLength(final Matcher<? super Integer> matcher) {
+    public LongArrayAssertion toLength(final Matcher<? super Integer> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().length, matcher, Messages.Check.LENGTH);
+        return this;
     }
 
     /**
      * Check if the actual value's length is equal to the expected length.
      *
      * @param expected the expected length.
+     *
+     * @return current object for the chain call.
      */
-    public void hasLength(final int expected) {
+    public LongArrayAssertion hasLength(final int expected) {
         toLength().isEqualTo(expected);
+        return this;
     }
 
     /**
@@ -280,12 +337,15 @@ public final class LongArrayAssertion extends ReferenceAssertion<long[]> {
      * Make assertion about the actual value's hex representation.
      *
      * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
      */
-    public void toHexString(final Matcher<? super String> matcher) {
+    public LongArrayAssertion toHexString(final Matcher<? super String> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         HexString hexString = convertValue(getActual(), null, HexString.class, 0, getActual().length);
         matcherAssertion(hexString.toString(), matcher, Messages.Check.HEX_REPRESENTATION);
+        return this;
     }
 
     /**
@@ -294,8 +354,10 @@ public final class LongArrayAssertion extends ReferenceAssertion<long[]> {
      * @param from    the index of the first array element (inclusive) for the hex representation.
      * @param to      the index of the last array element (exclusive) for the hex representation.
      * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
      */
-    public void toHexString(final int from, final int to, final Matcher<? super String> matcher) {
+    public LongArrayAssertion toHexString(final int from, final int to, final Matcher<? super String> matcher) {
         checkActualIsNotNull();
         checkArgumentIsValid(from >= 0, "from", Messages.Fail.Argument.IS_GREATER_THAN_OR_EQUAL_TO_ZERO);
         checkArgumentIsValid(from <= getActual().length, "from", Messages.Fail.Argument.IS_LESS_THAN_OR_EQUAL_TO_MAXIMUM_VALUE, getActual().length);
@@ -304,17 +366,21 @@ public final class LongArrayAssertion extends ReferenceAssertion<long[]> {
         checkArgumentIsNotNull(matcher, "matcher");
         HexString hexString = convertValue(getActual(), null, HexString.class, from, to);
         matcherAssertion(hexString.toString(), matcher, Messages.Check.HEX_REPRESENTATION_PART, from, to);
+        return this;
     }
 
     /**
      * Check if the actual value's hex representation is equal to the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void hasHexString(final String expected) {
+    public LongArrayAssertion hasHexString(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         toHexString().isEqualTo(expected);
+        return this;
     }
 
     /**
@@ -323,8 +389,10 @@ public final class LongArrayAssertion extends ReferenceAssertion<long[]> {
      * @param from     the index of the first array element (inclusive) for the hex representation.
      * @param to       the index of the last array element (exclusive) for the hex representation.
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void hasHexString(final int from, final int to, final String expected) {
+    public LongArrayAssertion hasHexString(final int from, final int to, final String expected) {
         checkActualIsNotNull();
         checkArgumentIsValid(from >= 0, "from", Messages.Fail.Argument.IS_GREATER_THAN_OR_EQUAL_TO_ZERO);
         checkArgumentIsValid(from <= getActual().length, "from", Messages.Fail.Argument.IS_LESS_THAN_OR_EQUAL_TO_MAXIMUM_VALUE, getActual().length);
@@ -332,6 +400,7 @@ public final class LongArrayAssertion extends ReferenceAssertion<long[]> {
         checkArgumentIsValid(to <= getActual().length, "to", Messages.Fail.Argument.IS_LESS_THAN_OR_EQUAL_TO_MAXIMUM_VALUE, getActual().length);
         checkArgumentIsNotNull(expected, "expected");
         toHexString(from, to).isEqualTo(expected);
+        return this;
     }
 
     private IterableAssertion<Object> createIterableAssertion() {

@@ -52,235 +52,304 @@ public final class ByteArrayAssertion extends ReferenceAssertion<byte[]> {
 
     /**
      * Check if the actual value is empty.
+     *
+     * @return current object for the chain call.
      */
-    public void isEmpty() {
+    public ByteArrayAssertion isEmpty() {
         checkActualIsNotNull();
         if (getActual().length != 0) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_EMPTY).addActual().build();
         }
+        return this;
     }
 
     /**
      * Check if the actual value is null or empty.
+     *
+     * @return current object for the chain call.
      */
-    public void isNullOrEmpty() {
+    public ByteArrayAssertion isNullOrEmpty() {
         if (getActual() != null && getActual().length != 0) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NULL_OR_EMPTY).addActual().build();
         }
+        return this;
     }
 
     /**
      * Check if the actual value is NOT empty.
+     *
+     * @return current object for the chain call.
      */
-    public void isNotEmpty() {
+    public ByteArrayAssertion isNotEmpty() {
         checkActualIsNotNull();
         if (getActual().length == 0) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_EMPTY).build();
         }
+        return this;
     }
 
     /**
      * Check if the actual value contains the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void contains(final int expected) {
+    public ByteArrayAssertion contains(final int expected) {
         createIterableAssertion().contains((byte) expected);
+        return this;
     }
 
     /**
      * Check if the actual value does NOT contain the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void doesNotContain(final int expected) {
+    public ByteArrayAssertion doesNotContain(final int expected) {
         createIterableAssertion().doesNotContain((byte) expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsAll(final byte... expected) {
+    public ByteArrayAssertion containsAll(final byte... expected) {
         List<Object> expectedList = convertValue(expected, null, List.class);
         createIterableAssertion().containsAll(expectedList);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsAll(final int... expected) {
+    public ByteArrayAssertion containsAll(final int... expected) {
         Object expectedBytes = convertValue(expected, null, byte[].class);
         List<Object> expectedList = convertValue(expectedBytes, null, List.class);
         createIterableAssertion().containsAll(expectedList);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsAll(final Iterable<Byte> expected) {
+    public ByteArrayAssertion containsAll(final Iterable<Byte> expected) {
         List<Object> expectedList = convertValue(expected, null, List.class);
         createIterableAssertion().containsAll(expectedList);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values in the specified order.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsAllInOrder(final byte... expected) {
+    public ByteArrayAssertion containsAllInOrder(final byte... expected) {
         List<Object> expectedList = convertValue(expected, null, List.class);
         createIterableAssertion().containsAllInOrder(expectedList);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values in the specified order.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsAllInOrder(final int... expected) {
+    public ByteArrayAssertion containsAllInOrder(final int... expected) {
         Object expectedBytes = convertValue(expected, null, byte[].class);
         List<Object> expectedList = convertValue(expectedBytes, null, List.class);
         createIterableAssertion().containsAllInOrder(expectedList);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values in the specified order.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsAllInOrder(final Iterable<Byte> expected) {
+    public ByteArrayAssertion containsAllInOrder(final Iterable<Byte> expected) {
         List<Object> expectedList = convertValue(expected, null, List.class);
         createIterableAssertion().containsAllInOrder(expectedList);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values exactly.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsExactly(final byte... expected) {
+    public ByteArrayAssertion containsExactly(final byte... expected) {
         List<Object> expectedList = convertValue(expected, null, List.class);
         createIterableAssertion().containsExactly(expectedList);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values exactly.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsExactly(final int... expected) {
+    public ByteArrayAssertion containsExactly(final int... expected) {
         Object expectedBytes = convertValue(expected, null, byte[].class);
         List<Object> expectedList = convertValue(expectedBytes, null, List.class);
         createIterableAssertion().containsExactly(expectedList);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values exactly.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsExactly(final Iterable<Byte> expected) {
+    public ByteArrayAssertion containsExactly(final Iterable<Byte> expected) {
         List<Object> expectedList = convertValue(expected, null, List.class);
         createIterableAssertion().containsExactly(expectedList);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values exactly in the specified order.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsExactlyInOrder(final byte... expected) {
+    public ByteArrayAssertion containsExactlyInOrder(final byte... expected) {
         List<Object> expectedList = convertValue(expected, null, List.class);
         createIterableAssertion().containsExactlyInOrder(expectedList);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values exactly in the specified order.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsExactlyInOrder(final int... expected) {
+    public ByteArrayAssertion containsExactlyInOrder(final int... expected) {
         Object expectedBytes = convertValue(expected, null, byte[].class);
         List<Object> expectedList = convertValue(expectedBytes, null, List.class);
         createIterableAssertion().containsExactlyInOrder(expectedList);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values exactly in the specified order.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsExactlyInOrder(final Iterable<Byte> expected) {
+    public ByteArrayAssertion containsExactlyInOrder(final Iterable<Byte> expected) {
         List<Object> expectedList = convertValue(expected, null, List.class);
         createIterableAssertion().containsExactlyInOrder(expectedList);
+        return this;
     }
 
     /**
      * Check if the actual value contains any of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsAny(final byte... expected) {
+    public ByteArrayAssertion containsAny(final byte... expected) {
         List<Object> expectedList = convertValue(expected, null, List.class);
         createIterableAssertion().containsAny(expectedList);
+        return this;
     }
 
     /**
      * Check if the actual value contains any of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsAny(final int... expected) {
+    public ByteArrayAssertion containsAny(final int... expected) {
         Object expectedBytes = convertValue(expected, null, byte[].class);
         List<Object> expectedList = convertValue(expectedBytes, null, List.class);
         createIterableAssertion().containsAny(expectedList);
+        return this;
     }
 
     /**
      * Check if the actual value contains any of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsAny(final Iterable<Byte> expected) {
+    public ByteArrayAssertion containsAny(final Iterable<Byte> expected) {
         List<Object> expectedList = convertValue(expected, null, List.class);
         createIterableAssertion().containsAny(expectedList);
+        return this;
     }
 
     /**
      * Check if the actual value does NOT contain any of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsNone(final byte... expected) {
+    public ByteArrayAssertion containsNone(final byte... expected) {
         List<Object> expectedList = convertValue(expected, null, List.class);
         createIterableAssertion().containsNone(expectedList);
+        return this;
     }
 
     /**
      * Check if the actual value does NOT contain any of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsNone(final int... expected) {
+    public ByteArrayAssertion containsNone(final int... expected) {
         Object expectedBytes = convertValue(expected, null, byte[].class);
         List<Object> expectedList = convertValue(expectedBytes, null, List.class);
         createIterableAssertion().containsNone(expectedList);
+        return this;
     }
 
     /**
      * Check if the actual value does NOT contain any of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsNone(final Iterable<Byte> expected) {
+    public ByteArrayAssertion containsNone(final Iterable<Byte> expected) {
         List<Object> expectedList = convertValue(expected, null, List.class);
         createIterableAssertion().containsNone(expectedList);
+        return this;
     }
 
     /**
@@ -297,20 +366,26 @@ public final class ByteArrayAssertion extends ReferenceAssertion<byte[]> {
      * Make assertion about the actual value's length.
      *
      * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
      */
-    public void toLength(final Matcher<? super Integer> matcher) {
+    public ByteArrayAssertion toLength(final Matcher<? super Integer> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().length, matcher, Messages.Check.LENGTH);
+        return this;
     }
 
     /**
      * Check if the actual value's length is equal to the expected length.
      *
      * @param expected the expected length.
+     *
+     * @return current object for the chain call.
      */
-    public void hasLength(final int expected) {
+    public ByteArrayAssertion hasLength(final int expected) {
         toLength().isEqualTo(expected);
+        return this;
     }
 
     /**
@@ -346,12 +421,15 @@ public final class ByteArrayAssertion extends ReferenceAssertion<byte[]> {
      * Make assertion about the actual value's hex representation.
      *
      * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
      */
-    public void toHexString(final Matcher<? super String> matcher) {
+    public ByteArrayAssertion toHexString(final Matcher<? super String> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         HexString hexString = convertValue(getActual(), null, HexString.class, 0, getActual().length);
         matcherAssertion(hexString.toString(), matcher, Messages.Check.HEX_REPRESENTATION);
+        return this;
     }
 
     /**
@@ -360,8 +438,10 @@ public final class ByteArrayAssertion extends ReferenceAssertion<byte[]> {
      * @param from    the index of the first array element (inclusive) for the hex representation.
      * @param to      the index of the last array element (exclusive) for the hex representation.
      * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
      */
-    public void toHexString(final int from, final int to, final Matcher<? super String> matcher) {
+    public ByteArrayAssertion toHexString(final int from, final int to, final Matcher<? super String> matcher) {
         checkActualIsNotNull();
         checkArgumentIsValid(from >= 0, "from", Messages.Fail.Argument.IS_GREATER_THAN_OR_EQUAL_TO_ZERO);
         checkArgumentIsValid(from <= getActual().length, "from", Messages.Fail.Argument.IS_LESS_THAN_OR_EQUAL_TO_MAXIMUM_VALUE, getActual().length);
@@ -370,17 +450,21 @@ public final class ByteArrayAssertion extends ReferenceAssertion<byte[]> {
         checkArgumentIsNotNull(matcher, "matcher");
         HexString hexString = convertValue(getActual(), null, HexString.class, from, to);
         matcherAssertion(hexString.toString(), matcher, Messages.Check.HEX_REPRESENTATION_PART, from, to);
+        return this;
     }
 
     /**
      * Check if the actual value's hex representation is equal to the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void hasHexString(final String expected) {
+    public ByteArrayAssertion hasHexString(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         toHexString().isEqualTo(expected);
+        return this;
     }
 
     /**
@@ -389,8 +473,10 @@ public final class ByteArrayAssertion extends ReferenceAssertion<byte[]> {
      * @param from     the index of the first array element (inclusive) for the hex representation.
      * @param to       the index of the last array element (exclusive) for the hex representation.
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void hasHexString(final int from, final int to, final String expected) {
+    public ByteArrayAssertion hasHexString(final int from, final int to, final String expected) {
         checkActualIsNotNull();
         checkArgumentIsValid(from >= 0, "from", Messages.Fail.Argument.IS_GREATER_THAN_OR_EQUAL_TO_ZERO);
         checkArgumentIsValid(from <= getActual().length, "from", Messages.Fail.Argument.IS_LESS_THAN_OR_EQUAL_TO_MAXIMUM_VALUE, getActual().length);
@@ -398,6 +484,7 @@ public final class ByteArrayAssertion extends ReferenceAssertion<byte[]> {
         checkArgumentIsValid(to <= getActual().length, "to", Messages.Fail.Argument.IS_LESS_THAN_OR_EQUAL_TO_MAXIMUM_VALUE, getActual().length);
         checkArgumentIsNotNull(expected, "expected");
         toHexString(from, to).isEqualTo(expected);
+        return this;
     }
 
     private IterableAssertion<Object> createIterableAssertion() {
