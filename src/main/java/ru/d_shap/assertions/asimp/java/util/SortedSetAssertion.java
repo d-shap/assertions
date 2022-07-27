@@ -58,55 +58,70 @@ public final class SortedSetAssertion<E> extends ReferenceAssertion<SortedSet<E>
 
     /**
      * Check if the actual value is empty.
+     *
+     * @return current object for the chain call.
      */
-    public void isEmpty() {
+    public SortedSetAssertion<E> isEmpty() {
         checkActualIsNotNull();
         if (!getActual().isEmpty()) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_EMPTY).addActual().build();
         }
+        return this;
     }
 
     /**
      * Check if the actual value is null or empty.
+     *
+     * @return current object for the chain call.
      */
-    public void isNullOrEmpty() {
+    public SortedSetAssertion<E> isNullOrEmpty() {
         if (getActual() != null && !getActual().isEmpty()) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NULL_OR_EMPTY).addActual().build();
         }
+        return this;
     }
 
     /**
      * Check if the actual value is NOT empty.
+     *
+     * @return current object for the chain call.
      */
-    public void isNotEmpty() {
+    public SortedSetAssertion<E> isNotEmpty() {
         checkActualIsNotNull();
         if (getActual().isEmpty()) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_EMPTY).build();
         }
+        return this;
     }
 
     /**
      * Check if the actual value contains the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void contains(final E expected) {
+    public SortedSetAssertion<E> contains(final E expected) {
         checkActualIsNotNull();
         if (!getActual().contains(expected)) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.CONTAINS).addActual().addExpected(expected).build();
         }
+        return this;
     }
 
     /**
      * Check if the actual value does NOT contain the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void doesNotContain(final E expected) {
+    public SortedSetAssertion<E> doesNotContain(final E expected) {
         checkActualIsNotNull();
         if (getActual().contains(expected)) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.DOES_NOT_CONTAIN).addActual().addExpected(expected).build();
         }
+        return this;
     }
 
     /**
@@ -139,11 +154,14 @@ public final class SortedSetAssertion<E> extends ReferenceAssertion<SortedSet<E>
      *
      * @param element upper element (exclusive) of the head set.
      * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
      */
-    public void toHeadSet(final E element, final Matcher<? super Iterable<E>> matcher) {
+    public SortedSetAssertion<E> toHeadSet(final E element, final Matcher<? super Iterable<E>> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getHeadSet(element), matcher, Messages.Check.ELEMENTS_HEAD_ELEMENT, element);
+        return this;
     }
 
     /**
@@ -151,12 +169,15 @@ public final class SortedSetAssertion<E> extends ReferenceAssertion<SortedSet<E>
      *
      * @param count   the number of elements to get from the head.
      * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
      */
-    public void toHeadSet(final int count, final Matcher<? super Iterable<E>> matcher) {
+    public SortedSetAssertion<E> toHeadSet(final int count, final Matcher<? super Iterable<E>> matcher) {
         checkActualIsNotNull();
         checkArgumentIsValid(count > 0, "count", Messages.Fail.Argument.IS_GREATER_THAN_ZERO);
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getHeadSet(count), matcher, Messages.Check.ELEMENTS_HEAD_COUNT, count);
+        return this;
     }
 
     private SortedSet<E> getHeadSet(final E element) {
@@ -202,11 +223,14 @@ public final class SortedSetAssertion<E> extends ReferenceAssertion<SortedSet<E>
      *
      * @param element lower element (inclusive) of the tail set.
      * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
      */
-    public void toTailSet(final E element, final Matcher<? super Iterable<E>> matcher) {
+    public SortedSetAssertion<E> toTailSet(final E element, final Matcher<? super Iterable<E>> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getTailSet(element), matcher, Messages.Check.ELEMENTS_TAIL_ELEMENT, element);
+        return this;
     }
 
     /**
@@ -214,12 +238,15 @@ public final class SortedSetAssertion<E> extends ReferenceAssertion<SortedSet<E>
      *
      * @param count   the number of elements to get from the tail.
      * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
      */
-    public void toTailSet(final int count, final Matcher<? super Iterable<E>> matcher) {
+    public SortedSetAssertion<E> toTailSet(final int count, final Matcher<? super Iterable<E>> matcher) {
         checkActualIsNotNull();
         checkArgumentIsValid(count > 0, "count", Messages.Fail.Argument.IS_GREATER_THAN_ZERO);
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getTailSet(count), matcher, Messages.Check.ELEMENTS_TAIL_COUNT, count);
+        return this;
     }
 
     private SortedSet<E> getTailSet(final E element) {
@@ -247,114 +274,150 @@ public final class SortedSetAssertion<E> extends ReferenceAssertion<SortedSet<E>
      * Check if the actual value contains all of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
     @SafeVarargs
-    public final void containsAll(final E... expected) {
+    public final SortedSetAssertion<E> containsAll(final E... expected) {
         createIterableAssertion().containsAll(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsAll(final Iterable<E> expected) {
+    public SortedSetAssertion<E> containsAll(final Iterable<E> expected) {
         createIterableAssertion().containsAll(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values in the specified order.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
     @SafeVarargs
-    public final void containsAllInOrder(final E... expected) {
+    public final SortedSetAssertion<E> containsAllInOrder(final E... expected) {
         createIterableAssertion().containsAllInOrder(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values in the specified order.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsAllInOrder(final Iterable<E> expected) {
+    public SortedSetAssertion<E> containsAllInOrder(final Iterable<E> expected) {
         createIterableAssertion().containsAllInOrder(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values exactly.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
     @SafeVarargs
-    public final void containsExactly(final E... expected) {
+    public final SortedSetAssertion<E> containsExactly(final E... expected) {
         createIterableAssertion().containsExactly(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values exactly.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsExactly(final Iterable<E> expected) {
+    public SortedSetAssertion<E> containsExactly(final Iterable<E> expected) {
         createIterableAssertion().containsExactly(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values exactly in the specified order.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
     @SafeVarargs
-    public final void containsExactlyInOrder(final E... expected) {
+    public final SortedSetAssertion<E> containsExactlyInOrder(final E... expected) {
         createIterableAssertion().containsExactlyInOrder(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values exactly in the specified order.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsExactlyInOrder(final Iterable<E> expected) {
+    public SortedSetAssertion<E> containsExactlyInOrder(final Iterable<E> expected) {
         createIterableAssertion().containsExactlyInOrder(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains any of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
     @SafeVarargs
-    public final void containsAny(final E... expected) {
+    public final SortedSetAssertion<E> containsAny(final E... expected) {
         createIterableAssertion().containsAny(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains any of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsAny(final Iterable<E> expected) {
+    public SortedSetAssertion<E> containsAny(final Iterable<E> expected) {
         createIterableAssertion().containsAny(expected);
+        return this;
     }
 
     /**
      * Check if the actual value does NOT contain any of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
     @SafeVarargs
-    public final void containsNone(final E... expected) {
+    public final SortedSetAssertion<E> containsNone(final E... expected) {
         createIterableAssertion().containsNone(expected);
+        return this;
     }
 
     /**
      * Check if the actual value does NOT contain any of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsNone(final Iterable<E> expected) {
+    public SortedSetAssertion<E> containsNone(final Iterable<E> expected) {
         createIterableAssertion().containsNone(expected);
+        return this;
     }
 
     /**
@@ -371,20 +434,26 @@ public final class SortedSetAssertion<E> extends ReferenceAssertion<SortedSet<E>
      * Make assertion about the actual value's size.
      *
      * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
      */
-    public void toSize(final Matcher<? super Integer> matcher) {
+    public SortedSetAssertion<E> toSize(final Matcher<? super Integer> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().size(), matcher, Messages.Check.SIZE);
+        return this;
     }
 
     /**
      * Check if the actual value's size is equal to the expected size.
      *
      * @param expected the expected size.
+     *
+     * @return current object for the chain call.
      */
-    public void hasSize(final int expected) {
+    public SortedSetAssertion<E> hasSize(final int expected) {
         toSize().isEqualTo(expected);
+        return this;
     }
 
     private IterableAssertion<E> createIterableAssertion() {

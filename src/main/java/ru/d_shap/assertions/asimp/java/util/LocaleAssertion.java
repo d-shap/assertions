@@ -51,8 +51,10 @@ public final class LocaleAssertion extends ReferenceAssertion<Locale> {
      * Check if the actual value is equal to the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void isEqualTo(final Locale expected) {
+    public LocaleAssertion isEqualTo(final Locale expected) {
         if (expected == null) {
             isNull();
         } else {
@@ -61,14 +63,17 @@ public final class LocaleAssertion extends ReferenceAssertion<Locale> {
                 throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_SAME).addActual().addExpected(expected).build();
             }
         }
+        return this;
     }
 
     /**
      * Check if the actual value is NOT equal to the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void isNotEqualTo(final Locale expected) {
+    public LocaleAssertion isNotEqualTo(final Locale expected) {
         if (expected == null) {
             isNotNull();
         } else {
@@ -76,6 +81,7 @@ public final class LocaleAssertion extends ReferenceAssertion<Locale> {
                 throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_DIFFERENT).addActual().build();
             }
         }
+        return this;
     }
 
     /**
@@ -92,22 +98,28 @@ public final class LocaleAssertion extends ReferenceAssertion<Locale> {
      * Make assertion about the actual value's language.
      *
      * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
      */
-    public void toLanguage(final Matcher<? super String> matcher) {
+    public LocaleAssertion toLanguage(final Matcher<? super String> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().getLanguage(), matcher, Messages.Check.LANGUAGE);
+        return this;
     }
 
     /**
      * Check if the actual value's language is equal to the expected language.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void hasLanguage(final String expected) {
+    public LocaleAssertion hasLanguage(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         toLanguage().isEqualTo(expected);
+        return this;
     }
 
     /**
@@ -124,22 +136,28 @@ public final class LocaleAssertion extends ReferenceAssertion<Locale> {
      * Make assertion about the actual value's display language.
      *
      * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
      */
-    public void toDisplayLanguage(final Matcher<? super String> matcher) {
+    public LocaleAssertion toDisplayLanguage(final Matcher<? super String> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().getDisplayLanguage(), matcher, Messages.Check.DISPLAY_LANGUAGE);
+        return this;
     }
 
     /**
      * Check if the actual value's display language is equal to the expected display language.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void hasDisplayLanguage(final String expected) {
+    public LocaleAssertion hasDisplayLanguage(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         toDisplayLanguage().isEqualTo(expected);
+        return this;
     }
 
     /**
@@ -156,22 +174,28 @@ public final class LocaleAssertion extends ReferenceAssertion<Locale> {
      * Make assertion about the actual value's script.
      *
      * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
      */
-    public void toScript(final Matcher<? super String> matcher) {
+    public LocaleAssertion toScript(final Matcher<? super String> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().getScript(), matcher, Messages.Check.SCRIPT);
+        return this;
     }
 
     /**
      * Check if the actual value's script is equal to the expected script.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void hasScript(final String expected) {
+    public LocaleAssertion hasScript(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         toScript().isEqualTo(expected);
+        return this;
     }
 
     /**
@@ -188,22 +212,28 @@ public final class LocaleAssertion extends ReferenceAssertion<Locale> {
      * Make assertion about the actual value's display script.
      *
      * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
      */
-    public void toDisplayScript(final Matcher<? super String> matcher) {
+    public LocaleAssertion toDisplayScript(final Matcher<? super String> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().getDisplayScript(), matcher, Messages.Check.DISPLAY_SCRIPT);
+        return this;
     }
 
     /**
      * Check if the actual value's display script is equal to the expected display script.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void hasDisplayScript(final String expected) {
+    public LocaleAssertion hasDisplayScript(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         toDisplayScript().isEqualTo(expected);
+        return this;
     }
 
     /**
@@ -220,22 +250,28 @@ public final class LocaleAssertion extends ReferenceAssertion<Locale> {
      * Make assertion about the actual value's country.
      *
      * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
      */
-    public void toCountry(final Matcher<? super String> matcher) {
+    public LocaleAssertion toCountry(final Matcher<? super String> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().getCountry(), matcher, Messages.Check.COUNTRY);
+        return this;
     }
 
     /**
      * Check if the actual value's country is equal to the expected country.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void hasCountry(final String expected) {
+    public LocaleAssertion hasCountry(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         toCountry().isEqualTo(expected);
+        return this;
     }
 
     /**
@@ -252,22 +288,28 @@ public final class LocaleAssertion extends ReferenceAssertion<Locale> {
      * Make assertion about the actual value's display country.
      *
      * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
      */
-    public void toDisplayCountry(final Matcher<? super String> matcher) {
+    public LocaleAssertion toDisplayCountry(final Matcher<? super String> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().getDisplayCountry(), matcher, Messages.Check.DISPLAY_COUNTRY);
+        return this;
     }
 
     /**
      * Check if the actual value's display country is equal to the expected display country.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void hasDisplayCountry(final String expected) {
+    public LocaleAssertion hasDisplayCountry(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         toDisplayCountry().isEqualTo(expected);
+        return this;
     }
 
     /**
@@ -284,22 +326,28 @@ public final class LocaleAssertion extends ReferenceAssertion<Locale> {
      * Make assertion about the actual value's variant.
      *
      * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
      */
-    public void toVariant(final Matcher<? super String> matcher) {
+    public LocaleAssertion toVariant(final Matcher<? super String> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().getVariant(), matcher, Messages.Check.VARIANT);
+        return this;
     }
 
     /**
      * Check if the actual value's variant is equal to the expected variant.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void hasVariant(final String expected) {
+    public LocaleAssertion hasVariant(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         toVariant().isEqualTo(expected);
+        return this;
     }
 
     /**
@@ -316,33 +364,42 @@ public final class LocaleAssertion extends ReferenceAssertion<Locale> {
      * Make assertion about the actual value's display variant.
      *
      * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
      */
-    public void toDisplayVariant(final Matcher<? super String> matcher) {
+    public LocaleAssertion toDisplayVariant(final Matcher<? super String> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().getDisplayVariant(), matcher, Messages.Check.DISPLAY_VARIANT);
+        return this;
     }
 
     /**
      * Check if the actual value's display variant is equal to the expected display variant.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void hasDisplayVariant(final String expected) {
+    public LocaleAssertion hasDisplayVariant(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         toDisplayVariant().isEqualTo(expected);
+        return this;
     }
 
     /**
      * Check if the actual value's properties are equal to the expected properties.
      *
      * @param expectedLanguage the expected language.
+     *
+     * @return current object for the chain call.
      */
-    public void hasProperties(final String expectedLanguage) {
+    public LocaleAssertion hasProperties(final String expectedLanguage) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expectedLanguage, "expectedLanguage");
         hasLanguage(expectedLanguage);
+        return this;
     }
 
     /**
@@ -350,13 +407,16 @@ public final class LocaleAssertion extends ReferenceAssertion<Locale> {
      *
      * @param expectedLanguage the expected language.
      * @param expectedCountry  the expected country.
+     *
+     * @return current object for the chain call.
      */
-    public void hasProperties(final String expectedLanguage, final String expectedCountry) {
+    public LocaleAssertion hasProperties(final String expectedLanguage, final String expectedCountry) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expectedLanguage, "expectedLanguage");
         checkArgumentIsNotNull(expectedCountry, "expectedCountry");
         hasLanguage(expectedLanguage);
         hasCountry(expectedCountry);
+        return this;
     }
 
     /**
@@ -365,8 +425,10 @@ public final class LocaleAssertion extends ReferenceAssertion<Locale> {
      * @param expectedLanguage the expected language.
      * @param expectedCountry  the expected country.
      * @param expectedVariant  the expected variant.
+     *
+     * @return current object for the chain call.
      */
-    public void hasProperties(final String expectedLanguage, final String expectedCountry, final String expectedVariant) {
+    public LocaleAssertion hasProperties(final String expectedLanguage, final String expectedCountry, final String expectedVariant) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expectedLanguage, "expectedLanguage");
         checkArgumentIsNotNull(expectedCountry, "expectedCountry");
@@ -374,6 +436,7 @@ public final class LocaleAssertion extends ReferenceAssertion<Locale> {
         hasLanguage(expectedLanguage);
         hasCountry(expectedCountry);
         hasVariant(expectedVariant);
+        return this;
     }
 
 }
