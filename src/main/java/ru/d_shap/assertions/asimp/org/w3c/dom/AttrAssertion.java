@@ -50,18 +50,24 @@ public final class AttrAssertion extends ReferenceAssertion<Attr> {
      * Check if the actual value is equal to the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void isEqualTo(final Attr expected) {
+    public AttrAssertion isEqualTo(final Attr expected) {
         createNodeAssertion().isEqualTo(expected);
+        return this;
     }
 
     /**
      * Check if the actual value is NOT equal to the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void isNotEqualTo(final Attr expected) {
+    public AttrAssertion isNotEqualTo(final Attr expected) {
         createNodeAssertion().isNotEqualTo(expected);
+        return this;
     }
 
     /**
@@ -77,18 +83,24 @@ public final class AttrAssertion extends ReferenceAssertion<Attr> {
      * Make assertion about the actual value's namespace URI.
      *
      * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
      */
-    public void toNamespaceURI(final Matcher<? super String> matcher) {
+    public AttrAssertion toNamespaceURI(final Matcher<? super String> matcher) {
         createNodeAssertion().toNamespaceURI(matcher);
+        return this;
     }
 
     /**
      * Check if the actual value's namespace URI is equal to the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void hasNamespaceURI(final String expected) {
+    public AttrAssertion hasNamespaceURI(final String expected) {
         createNodeAssertion().hasNamespaceURI(expected);
+        return this;
     }
 
     /**
@@ -104,18 +116,24 @@ public final class AttrAssertion extends ReferenceAssertion<Attr> {
      * Make assertion about the actual value's prefix.
      *
      * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
      */
-    public void toPrefix(final Matcher<? super String> matcher) {
+    public AttrAssertion toPrefix(final Matcher<? super String> matcher) {
         createNodeAssertion().toPrefix(matcher);
+        return this;
     }
 
     /**
      * Check if the actual value's prefix is equal to the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void hasPrefix(final String expected) {
+    public AttrAssertion hasPrefix(final String expected) {
         createNodeAssertion().hasPrefix(expected);
+        return this;
     }
 
     /**
@@ -131,18 +149,24 @@ public final class AttrAssertion extends ReferenceAssertion<Attr> {
      * Make assertion about the actual value's local name.
      *
      * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
      */
-    public void toLocalName(final Matcher<? super String> matcher) {
+    public AttrAssertion toLocalName(final Matcher<? super String> matcher) {
         createNodeAssertion().toLocalName(matcher);
+        return this;
     }
 
     /**
      * Check if the actual value's local name is equal to the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void hasLocalName(final String expected) {
+    public AttrAssertion hasLocalName(final String expected) {
         createNodeAssertion().hasLocalName(expected);
+        return this;
     }
 
     /**
@@ -159,22 +183,28 @@ public final class AttrAssertion extends ReferenceAssertion<Attr> {
      * Make assertion about the actual value's qualified name.
      *
      * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
      */
-    public void toQualifiedName(final Matcher<? super String> matcher) {
+    public AttrAssertion toQualifiedName(final Matcher<? super String> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().getName(), matcher, Messages.Check.QUALIFIED_NAME);
+        return this;
     }
 
     /**
      * Check if the actual value's qualified name is equal to the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void hasQualifiedName(final String expected) {
+    public AttrAssertion hasQualifiedName(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         toQualifiedName().isEqualTo(expected);
+        return this;
     }
 
     /**
@@ -191,22 +221,28 @@ public final class AttrAssertion extends ReferenceAssertion<Attr> {
      * Make assertion about the actual value's value.
      *
      * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
      */
-    public void toValue(final Matcher<? super String> matcher) {
+    public AttrAssertion toValue(final Matcher<? super String> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().getValue(), matcher, Messages.Check.VALUE);
+        return this;
     }
 
     /**
      * Check if the actual value's value is equal to the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void hasValue(final String expected) {
+    public AttrAssertion hasValue(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         toValue().isEqualTo(expected);
+        return this;
     }
 
     /**
@@ -214,14 +250,17 @@ public final class AttrAssertion extends ReferenceAssertion<Attr> {
      *
      * @param expectedLocalName the expected local name.
      * @param expectedValue     the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void hasProperties(final String expectedLocalName, final String expectedValue) {
+    public AttrAssertion hasProperties(final String expectedLocalName, final String expectedValue) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expectedLocalName, "expectedLocalName");
         checkArgumentIsNotNull(expectedValue, "expectedValue");
         toNamespaceURI().isNull();
         hasLocalName(expectedLocalName);
         hasValue(expectedValue);
+        return this;
     }
 
     /**
@@ -230,8 +269,10 @@ public final class AttrAssertion extends ReferenceAssertion<Attr> {
      * @param expectedNamespaceURI the expected namespace URI.
      * @param expectedLocalName    the expected local name.
      * @param expectedValue        the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void hasProperties(final String expectedNamespaceURI, final String expectedLocalName, final String expectedValue) {
+    public AttrAssertion hasProperties(final String expectedNamespaceURI, final String expectedLocalName, final String expectedValue) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expectedNamespaceURI, "expectedNamespaceURI");
         checkArgumentIsNotNull(expectedLocalName, "expectedLocalName");
@@ -239,6 +280,7 @@ public final class AttrAssertion extends ReferenceAssertion<Attr> {
         hasNamespaceURI(expectedNamespaceURI);
         hasLocalName(expectedLocalName);
         hasValue(expectedValue);
+        return this;
     }
 
     private NodeAssertion createNodeAssertion() {

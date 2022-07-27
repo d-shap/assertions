@@ -50,18 +50,24 @@ public final class CharacterDataAssertion extends ReferenceAssertion<CharacterDa
      * Check if the actual value is equal to the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void isEqualTo(final CharacterData expected) {
+    public CharacterDataAssertion isEqualTo(final CharacterData expected) {
         createNodeAssertion().isEqualTo(expected);
+        return this;
     }
 
     /**
      * Check if the actual value is NOT equal to the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void isNotEqualTo(final CharacterData expected) {
+    public CharacterDataAssertion isNotEqualTo(final CharacterData expected) {
         createNodeAssertion().isNotEqualTo(expected);
+        return this;
     }
 
     /**
@@ -78,22 +84,28 @@ public final class CharacterDataAssertion extends ReferenceAssertion<CharacterDa
      * Make assertion about the actual value's data.
      *
      * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
      */
-    public void toData(final Matcher<? super String> matcher) {
+    public CharacterDataAssertion toData(final Matcher<? super String> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().getData(), matcher, Messages.Check.DATA);
+        return this;
     }
 
     /**
      * Check if the actual value's data is equal to the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void hasData(final String expected) {
+    public CharacterDataAssertion hasData(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         toData().isEqualTo(expected);
+        return this;
     }
 
     private NodeAssertion createNodeAssertion() {

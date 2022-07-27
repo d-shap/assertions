@@ -50,8 +50,10 @@ public final class NodeAssertion extends ReferenceAssertion<Node> {
      * Check if the actual value is equal to the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void isEqualTo(final Node expected) {
+    public NodeAssertion isEqualTo(final Node expected) {
         if (expected == null) {
             isNull();
         } else {
@@ -60,14 +62,17 @@ public final class NodeAssertion extends ReferenceAssertion<Node> {
                 throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_SAME).addActual().addExpected(expected).build();
             }
         }
+        return this;
     }
 
     /**
      * Check if the actual value is NOT equal to the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void isNotEqualTo(final Node expected) {
+    public NodeAssertion isNotEqualTo(final Node expected) {
         if (expected == null) {
             isNotNull();
         } else {
@@ -75,6 +80,7 @@ public final class NodeAssertion extends ReferenceAssertion<Node> {
                 throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_DIFFERENT).addActual().build();
             }
         }
+        return this;
     }
 
     /**
@@ -91,22 +97,28 @@ public final class NodeAssertion extends ReferenceAssertion<Node> {
      * Make assertion about the actual value's namespace URI.
      *
      * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
      */
-    public void toNamespaceURI(final Matcher<? super String> matcher) {
+    public NodeAssertion toNamespaceURI(final Matcher<? super String> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().getNamespaceURI(), matcher, Messages.Check.NAMESPACE_URI);
+        return this;
     }
 
     /**
      * Check if the actual value's namespace URI is equal to the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void hasNamespaceURI(final String expected) {
+    public NodeAssertion hasNamespaceURI(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         toNamespaceURI().isEqualTo(expected);
+        return this;
     }
 
     /**
@@ -123,22 +135,28 @@ public final class NodeAssertion extends ReferenceAssertion<Node> {
      * Make assertion about the actual value's prefix.
      *
      * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
      */
-    public void toPrefix(final Matcher<? super String> matcher) {
+    public NodeAssertion toPrefix(final Matcher<? super String> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().getPrefix(), matcher, Messages.Check.PREFIX);
+        return this;
     }
 
     /**
      * Check if the actual value's prefix is equal to the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void hasPrefix(final String expected) {
+    public NodeAssertion hasPrefix(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         toPrefix().isEqualTo(expected);
+        return this;
     }
 
     /**
@@ -155,34 +173,43 @@ public final class NodeAssertion extends ReferenceAssertion<Node> {
      * Make assertion about the actual value's local name.
      *
      * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
      */
-    public void toLocalName(final Matcher<? super String> matcher) {
+    public NodeAssertion toLocalName(final Matcher<? super String> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().getLocalName(), matcher, Messages.Check.LOCAL_NAME);
+        return this;
     }
 
     /**
      * Check if the actual value's local name is equal to the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void hasLocalName(final String expected) {
+    public NodeAssertion hasLocalName(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         toLocalName().isEqualTo(expected);
+        return this;
     }
 
     /**
      * Check if the actual value's properties are equal to the expected properties.
      *
      * @param expectedLocalName the expected local name.
+     *
+     * @return current object for the chain call.
      */
-    public void hasProperties(final String expectedLocalName) {
+    public NodeAssertion hasProperties(final String expectedLocalName) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expectedLocalName, "expectedLocalName");
         toNamespaceURI().isNull();
         hasLocalName(expectedLocalName);
+        return this;
     }
 
     /**
@@ -190,13 +217,16 @@ public final class NodeAssertion extends ReferenceAssertion<Node> {
      *
      * @param expectedNamespaceURI the expected namespace URI.
      * @param expectedLocalName    the expected local name.
+     *
+     * @return current object for the chain call.
      */
-    public void hasProperties(final String expectedNamespaceURI, final String expectedLocalName) {
+    public NodeAssertion hasProperties(final String expectedNamespaceURI, final String expectedLocalName) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expectedNamespaceURI, "expectedNamespaceURI");
         checkArgumentIsNotNull(expectedLocalName, "expectedLocalName");
         hasNamespaceURI(expectedNamespaceURI);
         hasLocalName(expectedLocalName);
+        return this;
     }
 
 }
