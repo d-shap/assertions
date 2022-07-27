@@ -53,16 +53,22 @@ public final class BufferedReaderAssertion extends ReferenceAssertion<BufferedRe
 
     /**
      * Check if the actual value does not contain any more chars.
+     *
+     * @return current object for the chain call.
      */
-    public void isCompleted() {
+    public BufferedReaderAssertion isCompleted() {
         createReaderAssertion().isCompleted();
+        return this;
     }
 
     /**
      * Check if the actual value contains more chars.
+     *
+     * @return current object for the chain call.
      */
-    public void isNotCompleted() {
+    public BufferedReaderAssertion isNotCompleted() {
         createReaderAssertion().isNotCompleted();
+        return this;
     }
 
     /**
@@ -89,9 +95,12 @@ public final class BufferedReaderAssertion extends ReferenceAssertion<BufferedRe
      * Make assertion about the chars read from the actual from the current position.
      *
      * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
      */
-    public void toCharArray(final Matcher<? super Character[]> matcher) {
+    public BufferedReaderAssertion toCharArray(final Matcher<? super Character[]> matcher) {
         createReaderAssertion().toCharArray(matcher);
+        return this;
     }
 
     /**
@@ -99,9 +108,12 @@ public final class BufferedReaderAssertion extends ReferenceAssertion<BufferedRe
      *
      * @param matcher the hamcrest matcher.
      * @param count   the number of chars to read from the actual.
+     *
+     * @return current object for the chain call.
      */
-    public void toCharArray(final int count, final Matcher<? super Character[]> matcher) {
+    public BufferedReaderAssertion toCharArray(final int count, final Matcher<? super Character[]> matcher) {
         createReaderAssertion().toCharArray(count, matcher);
+        return this;
     }
 
     /**
@@ -133,12 +145,15 @@ public final class BufferedReaderAssertion extends ReferenceAssertion<BufferedRe
      * Make assertion about the lines read from the actual from the current position.
      *
      * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
      */
-    public void toStringArray(final Matcher<? super String[]> matcher) {
+    public BufferedReaderAssertion toStringArray(final Matcher<? super String[]> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         String[] nextStrings = convertValue(getActual(), null, String[].class, 0);
         matcherAssertion(nextStrings, matcher, Messages.Check.LINES_ALL);
+        return this;
     }
 
     /**
@@ -146,133 +161,172 @@ public final class BufferedReaderAssertion extends ReferenceAssertion<BufferedRe
      *
      * @param matcher the hamcrest matcher.
      * @param count   the number of lines to read from the actual.
+     *
+     * @return current object for the chain call.
      */
-    public void toStringArray(final int count, final Matcher<? super String[]> matcher) {
+    public BufferedReaderAssertion toStringArray(final int count, final Matcher<? super String[]> matcher) {
         checkActualIsNotNull();
         checkArgumentIsValid(count > 0, "count", Messages.Fail.Argument.IS_GREATER_THAN_ZERO);
         checkArgumentIsNotNull(matcher, "matcher");
         String[] nextStrings = convertValue(getActual(), null, String[].class, count);
         matcherAssertion(nextStrings, matcher, Messages.Check.LINES_COUNT, count);
+        return this;
     }
 
     /**
      * Check if the actual value's next char is equal to the expected char from the current position.
      *
      * @param expected the expected char.
+     *
+     * @return current object for the chain call.
      */
-    public void isNextCharEqualTo(final int expected) {
+    public BufferedReaderAssertion isNextCharEqualTo(final int expected) {
         createReaderAssertion().isNextCharEqualTo(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains the expected chars from the current position.
      *
      * @param expected the expected chars.
+     *
+     * @return current object for the chain call.
      */
-    public void isNextCharsEqualTo(final char... expected) {
+    public BufferedReaderAssertion isNextCharsEqualTo(final char... expected) {
         createReaderAssertion().isNextCharsEqualTo(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains the expected chars from the current position.
      *
      * @param expected the expected chars.
+     *
+     * @return current object for the chain call.
      */
-    public void isNextCharsEqualTo(final int... expected) {
+    public BufferedReaderAssertion isNextCharsEqualTo(final int... expected) {
         createReaderAssertion().isNextCharsEqualTo(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains the expected chars from the current position.
      *
      * @param expected the expected chars.
+     *
+     * @return current object for the chain call.
      */
-    public void isNextCharsEqualTo(final Iterable<Character> expected) {
+    public BufferedReaderAssertion isNextCharsEqualTo(final Iterable<Character> expected) {
         createReaderAssertion().isNextCharsEqualTo(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains the expected chars from the current position and does not contain any more chars.
      *
      * @param expected the expected chars.
+     *
+     * @return current object for the chain call.
      */
-    public void isAllCharsEqualTo(final char... expected) {
+    public BufferedReaderAssertion isAllCharsEqualTo(final char... expected) {
         createReaderAssertion().isAllCharsEqualTo(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains the expected chars from the current position and does not contain any more chars.
      *
      * @param expected the expected chars.
+     *
+     * @return current object for the chain call.
      */
-    public void isAllCharsEqualTo(final int... expected) {
+    public BufferedReaderAssertion isAllCharsEqualTo(final int... expected) {
         createReaderAssertion().isAllCharsEqualTo(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains the expected chars from the current position and does not contain any more chars.
      *
      * @param expected the expected chars.
+     *
+     * @return current object for the chain call.
      */
-    public void isAllCharsEqualTo(final Iterable<Character> expected) {
+    public BufferedReaderAssertion isAllCharsEqualTo(final Iterable<Character> expected) {
         createReaderAssertion().isAllCharsEqualTo(expected);
+        return this;
     }
 
     /**
      * Check if the actual value's next line is equal to the expected string from the current position.
      *
      * @param expected the expected string.
+     *
+     * @return current object for the chain call.
      */
-    public void isNextLineEqualTo(final String expected) {
+    public BufferedReaderAssertion isNextLineEqualTo(final String expected) {
         isNextLinesEqualTo(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains the expected strings from the current position.
      *
      * @param expected the expected strings.
+     *
+     * @return current object for the chain call.
      */
-    public void isNextLinesEqualTo(final String... expected) {
+    public BufferedReaderAssertion isNextLinesEqualTo(final String... expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         checkArgumentIsNotEmpty(expected.length == 0, "expected", true);
         toStringArray(expected.length).containsExactlyInOrder(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains the expected strings from the current position.
      *
      * @param expected the expected strings.
+     *
+     * @return current object for the chain call.
      */
-    public void isNextLinesEqualTo(final Iterable<String> expected) {
+    public BufferedReaderAssertion isNextLinesEqualTo(final Iterable<String> expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         List<String> expectedList = convertValue(expected, null, List.class);
         checkArgumentIsNotEmpty(expectedList.isEmpty(), "expected", true);
         toStringArray(expectedList.size()).containsExactlyInOrder(expectedList);
+        return this;
     }
 
     /**
      * Check if the actual value contains the expected strings from the current position and does not contain any more strings.
      *
      * @param expected the expected strings.
+     *
+     * @return current object for the chain call.
      */
-    public void isAllLinesEqualTo(final String... expected) {
+    public BufferedReaderAssertion isAllLinesEqualTo(final String... expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         toStringArray().containsExactlyInOrder(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains the expected strings from the current position and does not contain any more strings.
      *
      * @param expected the expected strings.
+     *
+     * @return current object for the chain call.
      */
-    public void isAllLinesEqualTo(final Iterable<String> expected) {
+    public BufferedReaderAssertion isAllLinesEqualTo(final Iterable<String> expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         List<String> expectedList = convertValue(expected, null, List.class);
         toStringArray().containsExactlyInOrder(expectedList);
+        return this;
     }
 
     /**
@@ -288,18 +342,24 @@ public final class BufferedReaderAssertion extends ReferenceAssertion<BufferedRe
      * Make assertion about the actual value's length.
      *
      * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
      */
-    public void toLength(final Matcher<? super Long> matcher) {
+    public BufferedReaderAssertion toLength(final Matcher<? super Long> matcher) {
         createReaderAssertion().toLength(matcher);
+        return this;
     }
 
     /**
      * Check if the actual value's length is equal to the expected length.
      *
      * @param expected the expected length.
+     *
+     * @return current object for the chain call.
      */
-    public void hasLength(final long expected) {
+    public BufferedReaderAssertion hasLength(final long expected) {
         createReaderAssertion().hasLength(expected);
+        return this;
     }
 
     /**
@@ -317,12 +377,15 @@ public final class BufferedReaderAssertion extends ReferenceAssertion<BufferedRe
      * Make assertion about the actual value's lines length.
      *
      * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
      */
-    public void toLinesLength(final Matcher<? super Long> matcher) {
+    public BufferedReaderAssertion toLinesLength(final Matcher<? super Long> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         long linesLength = getLinesLength();
         matcherAssertion(linesLength, matcher, Messages.Check.LINES_LENGTH);
+        return this;
     }
 
     private long getLinesLength() {
@@ -346,9 +409,12 @@ public final class BufferedReaderAssertion extends ReferenceAssertion<BufferedRe
      * Check if the actual value's lines length is equal to the expected lines length.
      *
      * @param expected the expected lines length.
+     *
+     * @return current object for the chain call.
      */
-    public void hasLinesLength(final long expected) {
+    public BufferedReaderAssertion hasLinesLength(final long expected) {
         toLinesLength().isEqualTo(expected);
+        return this;
     }
 
     private ReaderAssertion createReaderAssertion() {

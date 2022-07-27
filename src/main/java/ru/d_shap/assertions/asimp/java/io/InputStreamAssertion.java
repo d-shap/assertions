@@ -54,8 +54,10 @@ public final class InputStreamAssertion extends ReferenceAssertion<InputStream> 
 
     /**
      * Check if the actual value does not contain any more bytes.
+     *
+     * @return current object for the chain call.
      */
-    public void isCompleted() {
+    public InputStreamAssertion isCompleted() {
         checkActualIsNotNull();
         try {
             int nextByte = getActual().read();
@@ -65,12 +67,15 @@ public final class InputStreamAssertion extends ReferenceAssertion<InputStream> 
         } catch (IOException ex) {
             throw createWrapperAssertionError(ex);
         }
+        return this;
     }
 
     /**
      * Check if the actual value contains more bytes.
+     *
+     * @return current object for the chain call.
      */
-    public void isNotCompleted() {
+    public InputStreamAssertion isNotCompleted() {
         checkActualIsNotNull();
         try {
             int nextByte = getActual().read();
@@ -80,6 +85,7 @@ public final class InputStreamAssertion extends ReferenceAssertion<InputStream> 
         } catch (IOException ex) {
             throw createWrapperAssertionError(ex);
         }
+        return this;
     }
 
     /**
@@ -111,13 +117,16 @@ public final class InputStreamAssertion extends ReferenceAssertion<InputStream> 
      * Make assertion about the bytes read from the actual from the current position.
      *
      * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
      */
-    public void toByteArray(final Matcher<? super Byte[]> matcher) {
+    public InputStreamAssertion toByteArray(final Matcher<? super Byte[]> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         byte[] nextBytes = convertValue(getActual(), null, byte[].class, 0);
         Byte[] nextObjects = convertValue(nextBytes, null, Byte[].class);
         matcherAssertion(nextObjects, matcher, Messages.Check.BYTES_ALL);
+        return this;
     }
 
     /**
@@ -125,94 +134,118 @@ public final class InputStreamAssertion extends ReferenceAssertion<InputStream> 
      *
      * @param count   the number of bytes to read from the actual.
      * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
      */
-    public void toByteArray(final int count, final Matcher<? super Byte[]> matcher) {
+    public InputStreamAssertion toByteArray(final int count, final Matcher<? super Byte[]> matcher) {
         checkActualIsNotNull();
         checkArgumentIsValid(count > 0, "count", Messages.Fail.Argument.IS_GREATER_THAN_ZERO);
         checkArgumentIsNotNull(matcher, "matcher");
         byte[] nextBytes = convertValue(getActual(), null, byte[].class, count);
         Byte[] nextObjects = convertValue(nextBytes, null, Byte[].class);
         matcherAssertion(nextObjects, matcher, Messages.Check.BYTES_COUNT, count);
+        return this;
     }
 
     /**
      * Check if the actual value's next byte is equal to the expected byte from the current position.
      *
      * @param expected the expected byte.
+     *
+     * @return current object for the chain call.
      */
-    public void isNextByteEqualTo(final int expected) {
+    public InputStreamAssertion isNextByteEqualTo(final int expected) {
         isNextBytesEqualTo(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains the expected bytes from the current position.
      *
      * @param expected the expected bytes.
+     *
+     * @return current object for the chain call.
      */
-    public void isNextBytesEqualTo(final byte... expected) {
+    public InputStreamAssertion isNextBytesEqualTo(final byte... expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         checkArgumentIsNotEmpty(expected.length == 0, "expected", true);
         toByteArray(expected.length).containsExactlyInOrder(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains the expected bytes from the current position.
      *
      * @param expected the expected bytes.
+     *
+     * @return current object for the chain call.
      */
-    public void isNextBytesEqualTo(final int... expected) {
+    public InputStreamAssertion isNextBytesEqualTo(final int... expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         checkArgumentIsNotEmpty(expected.length == 0, "expected", true);
         toByteArray(expected.length).containsExactlyInOrder(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains the expected bytes from the current position.
      *
      * @param expected the expected bytes.
+     *
+     * @return current object for the chain call.
      */
-    public void isNextBytesEqualTo(final Iterable<Byte> expected) {
+    public InputStreamAssertion isNextBytesEqualTo(final Iterable<Byte> expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         List<Byte> expectedList = convertValue(expected, null, List.class);
         checkArgumentIsNotEmpty(expectedList.isEmpty(), "expected", true);
         toByteArray(expectedList.size()).containsExactlyInOrder(expectedList);
+        return this;
     }
 
     /**
      * Check if the actual value contains the expected bytes from the current position and does not contain any more bytes.
      *
      * @param expected the expected bytes.
+     *
+     * @return current object for the chain call.
      */
-    public void isAllBytesEqualTo(final byte... expected) {
+    public InputStreamAssertion isAllBytesEqualTo(final byte... expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         toByteArray().containsExactlyInOrder(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains the expected bytes from the current position and does not contain any more bytes.
      *
      * @param expected the expected bytes.
+     *
+     * @return current object for the chain call.
      */
-    public void isAllBytesEqualTo(final int... expected) {
+    public InputStreamAssertion isAllBytesEqualTo(final int... expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         toByteArray().containsExactlyInOrder(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains the expected bytes from the current position and does not contain any more bytes.
      *
      * @param expected the expected bytes.
+     *
+     * @return current object for the chain call.
      */
-    public void isAllBytesEqualTo(final Iterable<Byte> expected) {
+    public InputStreamAssertion isAllBytesEqualTo(final Iterable<Byte> expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         List<Byte> expectedList = convertValue(expected, null, List.class);
         toByteArray().containsExactlyInOrder(expectedList);
+        return this;
     }
 
     /**
@@ -239,11 +272,14 @@ public final class InputStreamAssertion extends ReferenceAssertion<InputStream> 
      * Make assertion about the hex representation of the bytes read from the actual from the current position.
      *
      * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
      */
-    public void toHexString(final Matcher<? super String> matcher) {
+    public InputStreamAssertion toHexString(final Matcher<? super String> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         toByteArray().toHexString(matcher);
+        return this;
     }
 
     /**
@@ -251,23 +287,29 @@ public final class InputStreamAssertion extends ReferenceAssertion<InputStream> 
      *
      * @param count   the number of bytes to read from the actual.
      * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
      */
-    public void toHexString(final int count, final Matcher<? super String> matcher) {
+    public InputStreamAssertion toHexString(final int count, final Matcher<? super String> matcher) {
         checkActualIsNotNull();
         checkArgumentIsValid(count > 0, "count", Messages.Fail.Argument.IS_GREATER_THAN_ZERO);
         checkArgumentIsNotNull(matcher, "matcher");
         toByteArray(count).toHexString(matcher);
+        return this;
     }
 
     /**
      * Check if the hex representation of the bytes read from the actual from the current position is equal to the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void hasHexString(final String expected) {
+    public InputStreamAssertion hasHexString(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         toByteArray().hasHexString(expected);
+        return this;
     }
 
     /**
@@ -275,12 +317,15 @@ public final class InputStreamAssertion extends ReferenceAssertion<InputStream> 
      *
      * @param count    the number of bytes to read from the actual.
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void hasHexString(final int count, final String expected) {
+    public InputStreamAssertion hasHexString(final int count, final String expected) {
         checkActualIsNotNull();
         checkArgumentIsValid(count > 0, "count", Messages.Fail.Argument.IS_GREATER_THAN_ZERO);
         checkArgumentIsNotNull(expected, "expected");
         toByteArray(count).hasHexString(expected);
+        return this;
     }
 
     /**
@@ -302,8 +347,10 @@ public final class InputStreamAssertion extends ReferenceAssertion<InputStream> 
      * Make assertion about the actual value's available.
      *
      * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
      */
-    public void toAvailable(final Matcher<? super Integer> matcher) {
+    public InputStreamAssertion toAvailable(final Matcher<? super Integer> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         try {
@@ -312,15 +359,19 @@ public final class InputStreamAssertion extends ReferenceAssertion<InputStream> 
         } catch (IOException ex) {
             throw createWrapperAssertionError(ex);
         }
+        return this;
     }
 
     /**
      * Check if the actual value's available is equal to the expected available.
      *
      * @param expected the expected available.
+     *
+     * @return current object for the chain call.
      */
-    public void hasAvailable(final int expected) {
+    public InputStreamAssertion hasAvailable(final int expected) {
         toAvailable().isEqualTo(expected);
+        return this;
     }
 
     /**
@@ -338,12 +389,15 @@ public final class InputStreamAssertion extends ReferenceAssertion<InputStream> 
      * Make assertion about the actual value's length.
      *
      * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
      */
-    public void toLength(final Matcher<? super Long> matcher) {
+    public InputStreamAssertion toLength(final Matcher<? super Long> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         long length = getLength();
         matcherAssertion(length, matcher, Messages.Check.LENGTH);
+        return this;
     }
 
     private long getLength() {
@@ -367,9 +421,12 @@ public final class InputStreamAssertion extends ReferenceAssertion<InputStream> 
      * Check if the actual value's length is equal to the expected length.
      *
      * @param expected the expected length.
+     *
+     * @return current object for the chain call.
      */
-    public void hasLength(final long expected) {
+    public InputStreamAssertion hasLength(final long expected) {
         toLength().isEqualTo(expected);
+        return this;
     }
 
 }

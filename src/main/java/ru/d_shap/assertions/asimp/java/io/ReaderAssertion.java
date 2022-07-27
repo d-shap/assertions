@@ -52,8 +52,10 @@ public final class ReaderAssertion extends ReferenceAssertion<Reader> {
 
     /**
      * Check if the actual value does not contain any more chars.
+     *
+     * @return current object for the chain call.
      */
-    public void isCompleted() {
+    public ReaderAssertion isCompleted() {
         checkActualIsNotNull();
         try {
             int nextChar = getActual().read();
@@ -63,12 +65,15 @@ public final class ReaderAssertion extends ReferenceAssertion<Reader> {
         } catch (IOException ex) {
             throw createWrapperAssertionError(ex);
         }
+        return this;
     }
 
     /**
      * Check if the actual value contains more chars.
+     *
+     * @return current object for the chain call.
      */
-    public void isNotCompleted() {
+    public ReaderAssertion isNotCompleted() {
         checkActualIsNotNull();
         try {
             int nextChar = getActual().read();
@@ -78,6 +83,7 @@ public final class ReaderAssertion extends ReferenceAssertion<Reader> {
         } catch (IOException ex) {
             throw createWrapperAssertionError(ex);
         }
+        return this;
     }
 
     /**
@@ -109,13 +115,16 @@ public final class ReaderAssertion extends ReferenceAssertion<Reader> {
      * Make assertion about the chars read from the actual from the current position.
      *
      * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
      */
-    public void toCharArray(final Matcher<? super Character[]> matcher) {
+    public ReaderAssertion toCharArray(final Matcher<? super Character[]> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         char[] nextChars = convertValue(getActual(), null, char[].class, 0);
         Character[] nextObjects = convertValue(nextChars, null, Character[].class);
         matcherAssertion(nextObjects, matcher, Messages.Check.CHARS_ALL);
+        return this;
     }
 
     /**
@@ -123,94 +132,118 @@ public final class ReaderAssertion extends ReferenceAssertion<Reader> {
      *
      * @param matcher the hamcrest matcher.
      * @param count   the number of chars to read from the actual.
+     *
+     * @return current object for the chain call.
      */
-    public void toCharArray(final int count, final Matcher<? super Character[]> matcher) {
+    public ReaderAssertion toCharArray(final int count, final Matcher<? super Character[]> matcher) {
         checkActualIsNotNull();
         checkArgumentIsValid(count > 0, "count", Messages.Fail.Argument.IS_GREATER_THAN_ZERO);
         checkArgumentIsNotNull(matcher, "matcher");
         char[] nextChars = convertValue(getActual(), null, char[].class, count);
         Character[] nextObjects = convertValue(nextChars, null, Character[].class);
         matcherAssertion(nextObjects, matcher, Messages.Check.CHARS_COUNT, count);
+        return this;
     }
 
     /**
      * Check if the actual value's next char is equal to the expected char from the current position.
      *
      * @param expected the expected char.
+     *
+     * @return current object for the chain call.
      */
-    public void isNextCharEqualTo(final int expected) {
+    public ReaderAssertion isNextCharEqualTo(final int expected) {
         isNextCharsEqualTo(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains the expected chars from the current position.
      *
      * @param expected the expected chars.
+     *
+     * @return current object for the chain call.
      */
-    public void isNextCharsEqualTo(final char... expected) {
+    public ReaderAssertion isNextCharsEqualTo(final char... expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         checkArgumentIsNotEmpty(expected.length == 0, "expected", true);
         toCharArray(expected.length).containsExactlyInOrder(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains the expected chars from the current position.
      *
      * @param expected the expected chars.
+     *
+     * @return current object for the chain call.
      */
-    public void isNextCharsEqualTo(final int... expected) {
+    public ReaderAssertion isNextCharsEqualTo(final int... expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         checkArgumentIsNotEmpty(expected.length == 0, "expected", true);
         toCharArray(expected.length).containsExactlyInOrder(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains the expected chars from the current position.
      *
      * @param expected the expected chars.
+     *
+     * @return current object for the chain call.
      */
-    public void isNextCharsEqualTo(final Iterable<Character> expected) {
+    public ReaderAssertion isNextCharsEqualTo(final Iterable<Character> expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         List<Character> expectedList = convertValue(expected, null, List.class);
         checkArgumentIsNotEmpty(expectedList.isEmpty(), "expected", true);
         toCharArray(expectedList.size()).containsExactlyInOrder(expectedList);
+        return this;
     }
 
     /**
      * Check if the actual value contains the expected chars from the current position and does not contain any more chars.
      *
      * @param expected the expected chars.
+     *
+     * @return current object for the chain call.
      */
-    public void isAllCharsEqualTo(final char... expected) {
+    public ReaderAssertion isAllCharsEqualTo(final char... expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         toCharArray().containsExactlyInOrder(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains the expected chars from the current position and does not contain any more chars.
      *
      * @param expected the expected chars.
+     *
+     * @return current object for the chain call.
      */
-    public void isAllCharsEqualTo(final int... expected) {
+    public ReaderAssertion isAllCharsEqualTo(final int... expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         toCharArray().containsExactlyInOrder(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains the expected chars from the current position and does not contain any more chars.
      *
      * @param expected the expected chars.
+     *
+     * @return current object for the chain call.
      */
-    public void isAllCharsEqualTo(final Iterable<Character> expected) {
+    public ReaderAssertion isAllCharsEqualTo(final Iterable<Character> expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         List<Character> expectedList = convertValue(expected, null, List.class);
         toCharArray().containsExactlyInOrder(expectedList);
+        return this;
     }
 
     /**
@@ -228,12 +261,15 @@ public final class ReaderAssertion extends ReferenceAssertion<Reader> {
      * Make assertion about the actual value's length.
      *
      * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
      */
-    public void toLength(final Matcher<? super Long> matcher) {
+    public ReaderAssertion toLength(final Matcher<? super Long> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         long length = getLength();
         matcherAssertion(length, matcher, Messages.Check.LENGTH);
+        return this;
     }
 
     private long getLength() {
@@ -257,9 +293,12 @@ public final class ReaderAssertion extends ReferenceAssertion<Reader> {
      * Check if the actual value's length is equal to the expected length.
      *
      * @param expected the expected length.
+     *
+     * @return current object for the chain call.
      */
-    public void hasLength(final long expected) {
+    public ReaderAssertion hasLength(final long expected) {
         toLength().isEqualTo(expected);
+        return this;
     }
 
 }
