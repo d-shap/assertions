@@ -51,404 +51,542 @@ public final class ShortBufferAssertion extends ReferenceAssertion<ShortBuffer> 
 
     /**
      * Check if the actual value is empty.
+     *
+     * @return current object for the chain call.
      */
-    public void isEmpty() {
+    public ShortBufferAssertion isEmpty() {
         createShortBufferAssertion(false).isEmpty();
+        return this;
     }
 
     /**
      * Check if the actual value is empty.
+     *
+     * @return current object for the chain call.
      */
-    public void isRewindAndEmpty() {
+    public ShortBufferAssertion isRewindAndEmpty() {
         createShortBufferAssertion(true).isEmpty();
+        return this;
     }
 
     /**
      * Check if the actual value is null or empty.
+     *
+     * @return current object for the chain call.
      */
-    public void isNullOrEmpty() {
+    public ShortBufferAssertion isNullOrEmpty() {
         createShortBufferAssertion(false).isNullOrEmpty();
+        return this;
     }
 
     /**
      * Check if the actual value is null or empty.
+     *
+     * @return current object for the chain call.
      */
-    public void isRewindAndNullOrEmpty() {
+    public ShortBufferAssertion isRewindAndNullOrEmpty() {
         createShortBufferAssertion(true).isNullOrEmpty();
+        return this;
     }
 
     /**
      * Check if the actual value is NOT empty.
+     *
+     * @return current object for the chain call.
      */
-    public void isNotEmpty() {
+    public ShortBufferAssertion isNotEmpty() {
         createShortBufferAssertion(false).isNotEmpty();
+        return this;
     }
 
     /**
      * Check if the actual value is NOT empty.
+     *
+     * @return current object for the chain call.
      */
-    public void isRewindAndNotEmpty() {
+    public ShortBufferAssertion isRewindAndNotEmpty() {
         createShortBufferAssertion(true).isNotEmpty();
+        return this;
     }
 
     /**
      * Check if the actual value contains the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void contains(final int expected) {
+    public ShortBufferAssertion contains(final int expected) {
         createShortBufferAssertion(false).contains((short) expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void rewindAndContains(final int expected) {
+    public ShortBufferAssertion rewindAndContains(final int expected) {
         createShortBufferAssertion(true).contains((short) expected);
+        return this;
     }
 
     /**
      * Check if the actual value does NOT contain the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void doesNotContain(final int expected) {
+    public ShortBufferAssertion doesNotContain(final int expected) {
         createShortBufferAssertion(false).doesNotContain((short) expected);
+        return this;
     }
 
     /**
      * Check if the actual value does NOT contain the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void rewindAndDoesNotContain(final int expected) {
+    public ShortBufferAssertion rewindAndDoesNotContain(final int expected) {
         createShortBufferAssertion(true).doesNotContain((short) expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsAll(final short... expected) {
+    public ShortBufferAssertion containsAll(final short... expected) {
         createShortBufferAssertion(false).containsAll(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsAll(final int... expected) {
+    public ShortBufferAssertion containsAll(final int... expected) {
         createShortBufferAssertion(false).containsAll(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsAll(final Iterable<Short> expected) {
+    public ShortBufferAssertion containsAll(final Iterable<Short> expected) {
         createShortBufferAssertion(false).containsAll(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void rewindAndContainsAll(final short... expected) {
+    public ShortBufferAssertion rewindAndContainsAll(final short... expected) {
         createShortBufferAssertion(true).containsAll(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void rewindAndContainsAll(final int... expected) {
+    public ShortBufferAssertion rewindAndContainsAll(final int... expected) {
         createShortBufferAssertion(true).containsAll(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void rewindAndContainsAll(final Iterable<Short> expected) {
+    public ShortBufferAssertion rewindAndContainsAll(final Iterable<Short> expected) {
         createShortBufferAssertion(true).containsAll(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values in the specified order.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsAllInOrder(final short... expected) {
+    public ShortBufferAssertion containsAllInOrder(final short... expected) {
         createShortBufferAssertion(false).containsAllInOrder(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values in the specified order.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsAllInOrder(final int... expected) {
+    public ShortBufferAssertion containsAllInOrder(final int... expected) {
         createShortBufferAssertion(false).containsAllInOrder(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values in the specified order.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsAllInOrder(final Iterable<Short> expected) {
+    public ShortBufferAssertion containsAllInOrder(final Iterable<Short> expected) {
         createShortBufferAssertion(false).containsAllInOrder(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values in the specified order.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void rewindAndContainsAllInOrder(final short... expected) {
+    public ShortBufferAssertion rewindAndContainsAllInOrder(final short... expected) {
         createShortBufferAssertion(true).containsAllInOrder(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values in the specified order.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void rewindAndContainsAllInOrder(final int... expected) {
+    public ShortBufferAssertion rewindAndContainsAllInOrder(final int... expected) {
         createShortBufferAssertion(true).containsAllInOrder(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values in the specified order.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void rewindAndContainsAllInOrder(final Iterable<Short> expected) {
+    public ShortBufferAssertion rewindAndContainsAllInOrder(final Iterable<Short> expected) {
         createShortBufferAssertion(true).containsAllInOrder(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values exactly.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsExactly(final short... expected) {
+    public ShortBufferAssertion containsExactly(final short... expected) {
         createShortBufferAssertion(false).containsExactly(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values exactly.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsExactly(final int... expected) {
+    public ShortBufferAssertion containsExactly(final int... expected) {
         createShortBufferAssertion(false).containsExactly(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values exactly.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsExactly(final Iterable<Short> expected) {
+    public ShortBufferAssertion containsExactly(final Iterable<Short> expected) {
         createShortBufferAssertion(false).containsExactly(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values exactly.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void rewindAndContainsExactly(final short... expected) {
+    public ShortBufferAssertion rewindAndContainsExactly(final short... expected) {
         createShortBufferAssertion(true).containsExactly(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values exactly.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void rewindAndContainsExactly(final int... expected) {
+    public ShortBufferAssertion rewindAndContainsExactly(final int... expected) {
         createShortBufferAssertion(true).containsExactly(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values exactly.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void rewindAndContainsExactly(final Iterable<Short> expected) {
+    public ShortBufferAssertion rewindAndContainsExactly(final Iterable<Short> expected) {
         createShortBufferAssertion(true).containsExactly(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values exactly in the specified order.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsExactlyInOrder(final short... expected) {
+    public ShortBufferAssertion containsExactlyInOrder(final short... expected) {
         createShortBufferAssertion(false).containsExactlyInOrder(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values exactly in the specified order.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsExactlyInOrder(final int... expected) {
+    public ShortBufferAssertion containsExactlyInOrder(final int... expected) {
         createShortBufferAssertion(false).containsExactlyInOrder(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values exactly in the specified order.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsExactlyInOrder(final Iterable<Short> expected) {
+    public ShortBufferAssertion containsExactlyInOrder(final Iterable<Short> expected) {
         createShortBufferAssertion(false).containsExactlyInOrder(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values exactly in the specified order.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void rewindAndContainsExactlyInOrder(final short... expected) {
+    public ShortBufferAssertion rewindAndContainsExactlyInOrder(final short... expected) {
         createShortBufferAssertion(true).containsExactlyInOrder(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values exactly in the specified order.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void rewindAndContainsExactlyInOrder(final int... expected) {
+    public ShortBufferAssertion rewindAndContainsExactlyInOrder(final int... expected) {
         createShortBufferAssertion(true).containsExactlyInOrder(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values exactly in the specified order.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void rewindAndContainsExactlyInOrder(final Iterable<Short> expected) {
+    public ShortBufferAssertion rewindAndContainsExactlyInOrder(final Iterable<Short> expected) {
         createShortBufferAssertion(true).containsExactlyInOrder(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains any of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsAny(final short... expected) {
+    public ShortBufferAssertion containsAny(final short... expected) {
         createShortBufferAssertion(false).containsAny(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains any of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsAny(final int... expected) {
+    public ShortBufferAssertion containsAny(final int... expected) {
         createShortBufferAssertion(false).containsAny(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains any of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsAny(final Iterable<Short> expected) {
+    public ShortBufferAssertion containsAny(final Iterable<Short> expected) {
         createShortBufferAssertion(false).containsAny(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains any of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void rewindAndContainsAny(final short... expected) {
+    public ShortBufferAssertion rewindAndContainsAny(final short... expected) {
         createShortBufferAssertion(true).containsAny(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains any of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void rewindAndContainsAny(final int... expected) {
+    public ShortBufferAssertion rewindAndContainsAny(final int... expected) {
         createShortBufferAssertion(true).containsAny(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains any of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void rewindAndContainsAny(final Iterable<Short> expected) {
+    public ShortBufferAssertion rewindAndContainsAny(final Iterable<Short> expected) {
         createShortBufferAssertion(true).containsAny(expected);
+        return this;
     }
 
     /**
      * Check if the actual value does NOT contain any of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsNone(final short... expected) {
+    public ShortBufferAssertion containsNone(final short... expected) {
         createShortBufferAssertion(false).containsNone(expected);
+        return this;
     }
 
     /**
      * Check if the actual value does NOT contain any of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsNone(final int... expected) {
+    public ShortBufferAssertion containsNone(final int... expected) {
         createShortBufferAssertion(false).containsNone(expected);
+        return this;
     }
 
     /**
      * Check if the actual value does NOT contain any of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsNone(final Iterable<Short> expected) {
+    public ShortBufferAssertion containsNone(final Iterable<Short> expected) {
         createShortBufferAssertion(false).containsNone(expected);
+        return this;
     }
 
     /**
      * Check if the actual value does NOT contain any of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void rewindAndContainsNone(final short... expected) {
+    public ShortBufferAssertion rewindAndContainsNone(final short... expected) {
         createShortBufferAssertion(true).containsNone(expected);
+        return this;
     }
 
     /**
      * Check if the actual value does NOT contain any of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void rewindAndContainsNone(final int... expected) {
+    public ShortBufferAssertion rewindAndContainsNone(final int... expected) {
         createShortBufferAssertion(true).containsNone(expected);
+        return this;
     }
 
     /**
      * Check if the actual value does NOT contain any of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void rewindAndContainsNone(final Iterable<Short> expected) {
+    public ShortBufferAssertion rewindAndContainsNone(final Iterable<Short> expected) {
         createShortBufferAssertion(true).containsNone(expected);
+        return this;
     }
 
     /**
@@ -476,9 +614,12 @@ public final class ShortBufferAssertion extends ReferenceAssertion<ShortBuffer> 
      * Make assertion about the actual value's hex representation.
      *
      * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
      */
-    public void toHexString(final Matcher<? super String> matcher) {
+    public ShortBufferAssertion toHexString(final Matcher<? super String> matcher) {
         createShortBufferAssertion(false).toHexString(matcher);
+        return this;
     }
 
     /**
@@ -487,9 +628,12 @@ public final class ShortBufferAssertion extends ReferenceAssertion<ShortBuffer> 
      * @param from    the index of the first buffer element (inclusive) for the hex representation.
      * @param to      the index of the last buffer element (exclusive) for the hex representation.
      * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
      */
-    public void toHexString(final int from, final int to, final Matcher<? super String> matcher) {
+    public ShortBufferAssertion toHexString(final int from, final int to, final Matcher<? super String> matcher) {
         createShortBufferAssertion(false).toHexString(from, to, matcher);
+        return this;
     }
 
     /**
@@ -517,9 +661,12 @@ public final class ShortBufferAssertion extends ReferenceAssertion<ShortBuffer> 
      * Make assertion about the actual value's hex representation.
      *
      * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
      */
-    public void toRewindAndHexString(final Matcher<? super String> matcher) {
+    public ShortBufferAssertion toRewindAndHexString(final Matcher<? super String> matcher) {
         createShortBufferAssertion(true).toHexString(matcher);
+        return this;
     }
 
     /**
@@ -528,18 +675,24 @@ public final class ShortBufferAssertion extends ReferenceAssertion<ShortBuffer> 
      * @param from    the index of the first buffer element (inclusive) for the hex representation.
      * @param to      the index of the last buffer element (exclusive) for the hex representation.
      * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
      */
-    public void toRewindAndHexString(final int from, final int to, final Matcher<? super String> matcher) {
+    public ShortBufferAssertion toRewindAndHexString(final int from, final int to, final Matcher<? super String> matcher) {
         createShortBufferAssertion(true).toHexString(from, to, matcher);
+        return this;
     }
 
     /**
      * Check if the actual value's hex representation is equal to the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void hasHexString(final String expected) {
+    public ShortBufferAssertion hasHexString(final String expected) {
         createShortBufferAssertion(false).hasHexString(expected);
+        return this;
     }
 
     /**
@@ -548,18 +701,24 @@ public final class ShortBufferAssertion extends ReferenceAssertion<ShortBuffer> 
      * @param from     the index of the first buffer element (inclusive) for the hex representation.
      * @param to       the index of the last buffer element (exclusive) for the hex representation.
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void hasHexString(final int from, final int to, final String expected) {
+    public ShortBufferAssertion hasHexString(final int from, final int to, final String expected) {
         createShortBufferAssertion(false).hasHexString(from, to, expected);
+        return this;
     }
 
     /**
      * Check if the actual value's hex representation is equal to the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void hasRewindAndHexString(final String expected) {
+    public ShortBufferAssertion hasRewindAndHexString(final String expected) {
         createShortBufferAssertion(true).hasHexString(expected);
+        return this;
     }
 
     /**
@@ -568,9 +727,12 @@ public final class ShortBufferAssertion extends ReferenceAssertion<ShortBuffer> 
      * @param from     the index of the first buffer element (inclusive) for the hex representation.
      * @param to       the index of the last buffer element (exclusive) for the hex representation.
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void hasRewindAndHexString(final int from, final int to, final String expected) {
+    public ShortBufferAssertion hasRewindAndHexString(final int from, final int to, final String expected) {
         createShortBufferAssertion(true).hasHexString(from, to, expected);
+        return this;
     }
 
     /**
@@ -587,20 +749,26 @@ public final class ShortBufferAssertion extends ReferenceAssertion<ShortBuffer> 
      * Make assertion about the actual value's position.
      *
      * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
      */
-    public void toPosition(final Matcher<? super Integer> matcher) {
+    public ShortBufferAssertion toPosition(final Matcher<? super Integer> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().position(), matcher, Messages.Check.POSITION);
+        return this;
     }
 
     /**
      * Check if the actual value's position is equal to the expected position.
      *
      * @param expected the expected position.
+     *
+     * @return current object for the chain call.
      */
-    public void hasPosition(final int expected) {
+    public ShortBufferAssertion hasPosition(final int expected) {
         toPosition().isEqualTo(expected);
+        return this;
     }
 
     /**
@@ -617,20 +785,26 @@ public final class ShortBufferAssertion extends ReferenceAssertion<ShortBuffer> 
      * Make assertion about the actual value's limit.
      *
      * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
      */
-    public void toLimit(final Matcher<? super Integer> matcher) {
+    public ShortBufferAssertion toLimit(final Matcher<? super Integer> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().limit(), matcher, Messages.Check.LIMIT);
+        return this;
     }
 
     /**
      * Check if the actual value's limit is equal to the expected limit.
      *
      * @param expected the expected limit.
+     *
+     * @return current object for the chain call.
      */
-    public void hasLimit(final int expected) {
+    public ShortBufferAssertion hasLimit(final int expected) {
         toLimit().isEqualTo(expected);
+        return this;
     }
 
     /**
@@ -647,20 +821,26 @@ public final class ShortBufferAssertion extends ReferenceAssertion<ShortBuffer> 
      * Make assertion about the actual value's capacity.
      *
      * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
      */
-    public void toCapacity(final Matcher<? super Integer> matcher) {
+    public ShortBufferAssertion toCapacity(final Matcher<? super Integer> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().capacity(), matcher, Messages.Check.CAPACITY);
+        return this;
     }
 
     /**
      * Check if the actual value's capacity is equal to the expected capacity.
      *
      * @param expected the expected capacity.
+     *
+     * @return current object for the chain call.
      */
-    public void hasCapacity(final int expected) {
+    public ShortBufferAssertion hasCapacity(final int expected) {
         toCapacity().isEqualTo(expected);
+        return this;
     }
 
     /**
@@ -669,11 +849,14 @@ public final class ShortBufferAssertion extends ReferenceAssertion<ShortBuffer> 
      * @param expectedPosition the expected position.
      * @param expectedLimit    the expected limit.
      * @param expectedCapacity the expected capacity.
+     *
+     * @return current object for the chain call.
      */
-    public void hasProperties(final int expectedPosition, final int expectedLimit, final int expectedCapacity) {
+    public ShortBufferAssertion hasProperties(final int expectedPosition, final int expectedLimit, final int expectedCapacity) {
         hasPosition(expectedPosition);
         hasLimit(expectedLimit);
         hasCapacity(expectedCapacity);
+        return this;
     }
 
     /**
@@ -690,60 +873,78 @@ public final class ShortBufferAssertion extends ReferenceAssertion<ShortBuffer> 
      * Make assertion about the actual value's remaining.
      *
      * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
      */
-    public void toRemaining(final Matcher<? super Integer> matcher) {
+    public ShortBufferAssertion toRemaining(final Matcher<? super Integer> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().remaining(), matcher, Messages.Check.REMAINING);
+        return this;
     }
 
     /**
      * Check if the actual value's remaining is equal to the expected remaining.
      *
      * @param expected the expected remaining.
+     *
+     * @return current object for the chain call.
      */
-    public void hasRemaining(final int expected) {
+    public ShortBufferAssertion hasRemaining(final int expected) {
         toRemaining().isEqualTo(expected);
+        return this;
     }
 
     /**
      * Check if the actual value is direct.
+     *
+     * @return current object for the chain call.
      */
-    public void isDirect() {
+    public ShortBufferAssertion isDirect() {
         checkActualIsNotNull();
         if (!getActual().isDirect()) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_DIRECT).build();
         }
+        return this;
     }
 
     /**
      * Check if the actual value is NOT direct.
+     *
+     * @return current object for the chain call.
      */
-    public void isNotDirect() {
+    public ShortBufferAssertion isNotDirect() {
         checkActualIsNotNull();
         if (getActual().isDirect()) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_DIRECT).build();
         }
+        return this;
     }
 
     /**
      * Check if the actual value is read only.
+     *
+     * @return current object for the chain call.
      */
-    public void isReadOnly() {
+    public ShortBufferAssertion isReadOnly() {
         checkActualIsNotNull();
         if (!getActual().isReadOnly()) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_READ_ONLY).build();
         }
+        return this;
     }
 
     /**
      * Check if the actual value is NOT read only.
+     *
+     * @return current object for the chain call.
      */
-    public void isNotReadOnly() {
+    public ShortBufferAssertion isNotReadOnly() {
         checkActualIsNotNull();
         if (getActual().isReadOnly()) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_READ_ONLY).build();
         }
+        return this;
     }
 
     private ShortArrayAssertion createShortBufferAssertion(final boolean rewind) {

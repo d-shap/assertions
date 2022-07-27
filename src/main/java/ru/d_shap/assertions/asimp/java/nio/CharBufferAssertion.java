@@ -50,404 +50,542 @@ public final class CharBufferAssertion extends ReferenceAssertion<CharBuffer> {
 
     /**
      * Check if the actual value is empty.
+     *
+     * @return current object for the chain call.
      */
-    public void isEmpty() {
+    public CharBufferAssertion isEmpty() {
         createCharArrayAssertion(false).isEmpty();
+        return this;
     }
 
     /**
      * Check if the actual value is empty.
+     *
+     * @return current object for the chain call.
      */
-    public void isRewindAndEmpty() {
+    public CharBufferAssertion isRewindAndEmpty() {
         createCharArrayAssertion(true).isEmpty();
+        return this;
     }
 
     /**
      * Check if the actual value is null or empty.
+     *
+     * @return current object for the chain call.
      */
-    public void isNullOrEmpty() {
+    public CharBufferAssertion isNullOrEmpty() {
         createCharArrayAssertion(false).isNullOrEmpty();
+        return this;
     }
 
     /**
      * Check if the actual value is null or empty.
+     *
+     * @return current object for the chain call.
      */
-    public void isRewindAndNullOrEmpty() {
+    public CharBufferAssertion isRewindAndNullOrEmpty() {
         createCharArrayAssertion(true).isNullOrEmpty();
+        return this;
     }
 
     /**
      * Check if the actual value is NOT empty.
+     *
+     * @return current object for the chain call.
      */
-    public void isNotEmpty() {
+    public CharBufferAssertion isNotEmpty() {
         createCharArrayAssertion(false).isNotEmpty();
+        return this;
     }
 
     /**
      * Check if the actual value is NOT empty.
+     *
+     * @return current object for the chain call.
      */
-    public void isRewindAndNotEmpty() {
+    public CharBufferAssertion isRewindAndNotEmpty() {
         createCharArrayAssertion(true).isNotEmpty();
+        return this;
     }
 
     /**
      * Check if the actual value contains the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void contains(final int expected) {
+    public CharBufferAssertion contains(final int expected) {
         createCharArrayAssertion(false).contains((char) expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void rewindAndContains(final int expected) {
+    public CharBufferAssertion rewindAndContains(final int expected) {
         createCharArrayAssertion(true).contains((char) expected);
+        return this;
     }
 
     /**
      * Check if the actual value does NOT contain the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void doesNotContain(final int expected) {
+    public CharBufferAssertion doesNotContain(final int expected) {
         createCharArrayAssertion(false).doesNotContain((char) expected);
+        return this;
     }
 
     /**
      * Check if the actual value does NOT contain the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void rewindAndDoesNotContain(final int expected) {
+    public CharBufferAssertion rewindAndDoesNotContain(final int expected) {
         createCharArrayAssertion(true).doesNotContain((char) expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsAll(final char... expected) {
+    public CharBufferAssertion containsAll(final char... expected) {
         createCharArrayAssertion(false).containsAll(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsAll(final int... expected) {
+    public CharBufferAssertion containsAll(final int... expected) {
         createCharArrayAssertion(false).containsAll(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsAll(final Iterable<Character> expected) {
+    public CharBufferAssertion containsAll(final Iterable<Character> expected) {
         createCharArrayAssertion(false).containsAll(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void rewindAndContainsAll(final char... expected) {
+    public CharBufferAssertion rewindAndContainsAll(final char... expected) {
         createCharArrayAssertion(true).containsAll(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void rewindAndContainsAll(final int... expected) {
+    public CharBufferAssertion rewindAndContainsAll(final int... expected) {
         createCharArrayAssertion(true).containsAll(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void rewindAndContainsAll(final Iterable<Character> expected) {
+    public CharBufferAssertion rewindAndContainsAll(final Iterable<Character> expected) {
         createCharArrayAssertion(true).containsAll(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values in the specified order.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsAllInOrder(final char... expected) {
+    public CharBufferAssertion containsAllInOrder(final char... expected) {
         createCharArrayAssertion(false).containsAllInOrder(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values in the specified order.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsAllInOrder(final int... expected) {
+    public CharBufferAssertion containsAllInOrder(final int... expected) {
         createCharArrayAssertion(false).containsAllInOrder(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values in the specified order.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsAllInOrder(final Iterable<Character> expected) {
+    public CharBufferAssertion containsAllInOrder(final Iterable<Character> expected) {
         createCharArrayAssertion(false).containsAllInOrder(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values in the specified order.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void rewindAndContainsAllInOrder(final char... expected) {
+    public CharBufferAssertion rewindAndContainsAllInOrder(final char... expected) {
         createCharArrayAssertion(true).containsAllInOrder(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values in the specified order.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void rewindAndContainsAllInOrder(final int... expected) {
+    public CharBufferAssertion rewindAndContainsAllInOrder(final int... expected) {
         createCharArrayAssertion(true).containsAllInOrder(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values in the specified order.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void rewindAndContainsAllInOrder(final Iterable<Character> expected) {
+    public CharBufferAssertion rewindAndContainsAllInOrder(final Iterable<Character> expected) {
         createCharArrayAssertion(true).containsAllInOrder(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values exactly.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsExactly(final char... expected) {
+    public CharBufferAssertion containsExactly(final char... expected) {
         createCharArrayAssertion(false).containsExactly(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values exactly.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsExactly(final int... expected) {
+    public CharBufferAssertion containsExactly(final int... expected) {
         createCharArrayAssertion(false).containsExactly(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values exactly.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsExactly(final Iterable<Character> expected) {
+    public CharBufferAssertion containsExactly(final Iterable<Character> expected) {
         createCharArrayAssertion(false).containsExactly(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values exactly.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void rewindAndContainsExactly(final char... expected) {
+    public CharBufferAssertion rewindAndContainsExactly(final char... expected) {
         createCharArrayAssertion(true).containsExactly(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values exactly.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void rewindAndContainsExactly(final int... expected) {
+    public CharBufferAssertion rewindAndContainsExactly(final int... expected) {
         createCharArrayAssertion(true).containsExactly(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values exactly.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void rewindAndContainsExactly(final Iterable<Character> expected) {
+    public CharBufferAssertion rewindAndContainsExactly(final Iterable<Character> expected) {
         createCharArrayAssertion(true).containsExactly(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values exactly in the specified order.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsExactlyInOrder(final char... expected) {
+    public CharBufferAssertion containsExactlyInOrder(final char... expected) {
         createCharArrayAssertion(false).containsExactlyInOrder(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values exactly in the specified order.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsExactlyInOrder(final int... expected) {
+    public CharBufferAssertion containsExactlyInOrder(final int... expected) {
         createCharArrayAssertion(false).containsExactlyInOrder(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values exactly in the specified order.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsExactlyInOrder(final Iterable<Character> expected) {
+    public CharBufferAssertion containsExactlyInOrder(final Iterable<Character> expected) {
         createCharArrayAssertion(false).containsExactlyInOrder(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values exactly in the specified order.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void rewindAndContainsExactlyInOrder(final char... expected) {
+    public CharBufferAssertion rewindAndContainsExactlyInOrder(final char... expected) {
         createCharArrayAssertion(true).containsExactlyInOrder(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values exactly in the specified order.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void rewindAndContainsExactlyInOrder(final int... expected) {
+    public CharBufferAssertion rewindAndContainsExactlyInOrder(final int... expected) {
         createCharArrayAssertion(true).containsExactlyInOrder(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values exactly in the specified order.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void rewindAndContainsExactlyInOrder(final Iterable<Character> expected) {
+    public CharBufferAssertion rewindAndContainsExactlyInOrder(final Iterable<Character> expected) {
         createCharArrayAssertion(true).containsExactlyInOrder(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains any of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsAny(final char... expected) {
+    public CharBufferAssertion containsAny(final char... expected) {
         createCharArrayAssertion(false).containsAny(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains any of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsAny(final int... expected) {
+    public CharBufferAssertion containsAny(final int... expected) {
         createCharArrayAssertion(false).containsAny(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains any of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsAny(final Iterable<Character> expected) {
+    public CharBufferAssertion containsAny(final Iterable<Character> expected) {
         createCharArrayAssertion(false).containsAny(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains any of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void rewindAndContainsAny(final char... expected) {
+    public CharBufferAssertion rewindAndContainsAny(final char... expected) {
         createCharArrayAssertion(true).containsAny(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains any of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void rewindAndContainsAny(final int... expected) {
+    public CharBufferAssertion rewindAndContainsAny(final int... expected) {
         createCharArrayAssertion(true).containsAny(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains any of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void rewindAndContainsAny(final Iterable<Character> expected) {
+    public CharBufferAssertion rewindAndContainsAny(final Iterable<Character> expected) {
         createCharArrayAssertion(true).containsAny(expected);
+        return this;
     }
 
     /**
      * Check if the actual value does NOT contain any of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsNone(final char... expected) {
+    public CharBufferAssertion containsNone(final char... expected) {
         createCharArrayAssertion(false).containsNone(expected);
+        return this;
     }
 
     /**
      * Check if the actual value does NOT contain any of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsNone(final int... expected) {
+    public CharBufferAssertion containsNone(final int... expected) {
         createCharArrayAssertion(false).containsNone(expected);
+        return this;
     }
 
     /**
      * Check if the actual value does NOT contain any of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsNone(final Iterable<Character> expected) {
+    public CharBufferAssertion containsNone(final Iterable<Character> expected) {
         createCharArrayAssertion(false).containsNone(expected);
+        return this;
     }
 
     /**
      * Check if the actual value does NOT contain any of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void rewindAndContainsNone(final char... expected) {
+    public CharBufferAssertion rewindAndContainsNone(final char... expected) {
         createCharArrayAssertion(true).containsNone(expected);
+        return this;
     }
 
     /**
      * Check if the actual value does NOT contain any of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void rewindAndContainsNone(final int... expected) {
+    public CharBufferAssertion rewindAndContainsNone(final int... expected) {
         createCharArrayAssertion(true).containsNone(expected);
+        return this;
     }
 
     /**
      * Check if the actual value does NOT contain any of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void rewindAndContainsNone(final Iterable<Character> expected) {
+    public CharBufferAssertion rewindAndContainsNone(final Iterable<Character> expected) {
         createCharArrayAssertion(true).containsNone(expected);
+        return this;
     }
 
     /**
@@ -464,20 +602,26 @@ public final class CharBufferAssertion extends ReferenceAssertion<CharBuffer> {
      * Make assertion about the actual value's position.
      *
      * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
      */
-    public void toPosition(final Matcher<? super Integer> matcher) {
+    public CharBufferAssertion toPosition(final Matcher<? super Integer> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().position(), matcher, Messages.Check.POSITION);
+        return this;
     }
 
     /**
      * Check if the actual value's position is equal to the expected position.
      *
      * @param expected the expected position.
+     *
+     * @return current object for the chain call.
      */
-    public void hasPosition(final int expected) {
+    public CharBufferAssertion hasPosition(final int expected) {
         toPosition().isEqualTo(expected);
+        return this;
     }
 
     /**
@@ -494,20 +638,26 @@ public final class CharBufferAssertion extends ReferenceAssertion<CharBuffer> {
      * Make assertion about the actual value's limit.
      *
      * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
      */
-    public void toLimit(final Matcher<? super Integer> matcher) {
+    public CharBufferAssertion toLimit(final Matcher<? super Integer> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().limit(), matcher, Messages.Check.LIMIT);
+        return this;
     }
 
     /**
      * Check if the actual value's limit is equal to the expected limit.
      *
      * @param expected the expected limit.
+     *
+     * @return current object for the chain call.
      */
-    public void hasLimit(final int expected) {
+    public CharBufferAssertion hasLimit(final int expected) {
         toLimit().isEqualTo(expected);
+        return this;
     }
 
     /**
@@ -524,20 +674,26 @@ public final class CharBufferAssertion extends ReferenceAssertion<CharBuffer> {
      * Make assertion about the actual value's capacity.
      *
      * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
      */
-    public void toCapacity(final Matcher<? super Integer> matcher) {
+    public CharBufferAssertion toCapacity(final Matcher<? super Integer> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().capacity(), matcher, Messages.Check.CAPACITY);
+        return this;
     }
 
     /**
      * Check if the actual value's capacity is equal to the expected capacity.
      *
      * @param expected the expected capacity.
+     *
+     * @return current object for the chain call.
      */
-    public void hasCapacity(final int expected) {
+    public CharBufferAssertion hasCapacity(final int expected) {
         toCapacity().isEqualTo(expected);
+        return this;
     }
 
     /**
@@ -546,11 +702,14 @@ public final class CharBufferAssertion extends ReferenceAssertion<CharBuffer> {
      * @param expectedPosition the expected position.
      * @param expectedLimit    the expected limit.
      * @param expectedCapacity the expected capacity.
+     *
+     * @return current object for the chain call.
      */
-    public void hasProperties(final int expectedPosition, final int expectedLimit, final int expectedCapacity) {
+    public CharBufferAssertion hasProperties(final int expectedPosition, final int expectedLimit, final int expectedCapacity) {
         hasPosition(expectedPosition);
         hasLimit(expectedLimit);
         hasCapacity(expectedCapacity);
+        return this;
     }
 
     /**
@@ -567,60 +726,78 @@ public final class CharBufferAssertion extends ReferenceAssertion<CharBuffer> {
      * Make assertion about the actual value's remaining.
      *
      * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
      */
-    public void toRemaining(final Matcher<? super Integer> matcher) {
+    public CharBufferAssertion toRemaining(final Matcher<? super Integer> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().remaining(), matcher, Messages.Check.REMAINING);
+        return this;
     }
 
     /**
      * Check if the actual value's remaining is equal to the expected remaining.
      *
      * @param expected the expected remaining.
+     *
+     * @return current object for the chain call.
      */
-    public void hasRemaining(final int expected) {
+    public CharBufferAssertion hasRemaining(final int expected) {
         toRemaining().isEqualTo(expected);
+        return this;
     }
 
     /**
      * Check if the actual value is direct.
+     *
+     * @return current object for the chain call.
      */
-    public void isDirect() {
+    public CharBufferAssertion isDirect() {
         checkActualIsNotNull();
         if (!getActual().isDirect()) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_DIRECT).build();
         }
+        return this;
     }
 
     /**
      * Check if the actual value is NOT direct.
+     *
+     * @return current object for the chain call.
      */
-    public void isNotDirect() {
+    public CharBufferAssertion isNotDirect() {
         checkActualIsNotNull();
         if (getActual().isDirect()) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_DIRECT).build();
         }
+        return this;
     }
 
     /**
      * Check if the actual value is read only.
+     *
+     * @return current object for the chain call.
      */
-    public void isReadOnly() {
+    public CharBufferAssertion isReadOnly() {
         checkActualIsNotNull();
         if (!getActual().isReadOnly()) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_READ_ONLY).build();
         }
+        return this;
     }
 
     /**
      * Check if the actual value is NOT read only.
+     *
+     * @return current object for the chain call.
      */
-    public void isNotReadOnly() {
+    public CharBufferAssertion isNotReadOnly() {
         checkActualIsNotNull();
         if (getActual().isReadOnly()) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_READ_ONLY).build();
         }
+        return this;
     }
 
     private CharArrayAssertion createCharArrayAssertion(final boolean rewind) {

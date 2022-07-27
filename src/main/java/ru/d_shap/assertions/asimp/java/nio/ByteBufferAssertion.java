@@ -51,404 +51,542 @@ public final class ByteBufferAssertion extends ReferenceAssertion<ByteBuffer> {
 
     /**
      * Check if the actual value is empty.
+     *
+     * @return current object for the chain call.
      */
-    public void isEmpty() {
+    public ByteBufferAssertion isEmpty() {
         createByteArrayAssertion(false).isEmpty();
+        return this;
     }
 
     /**
      * Check if the actual value is empty.
+     *
+     * @return current object for the chain call.
      */
-    public void isRewindAndEmpty() {
+    public ByteBufferAssertion isRewindAndEmpty() {
         createByteArrayAssertion(true).isEmpty();
+        return this;
     }
 
     /**
      * Check if the actual value is null or empty.
+     *
+     * @return current object for the chain call.
      */
-    public void isNullOrEmpty() {
+    public ByteBufferAssertion isNullOrEmpty() {
         createByteArrayAssertion(false).isNullOrEmpty();
+        return this;
     }
 
     /**
      * Check if the actual value is null or empty.
+     *
+     * @return current object for the chain call.
      */
-    public void isRewindAndNullOrEmpty() {
+    public ByteBufferAssertion isRewindAndNullOrEmpty() {
         createByteArrayAssertion(true).isNullOrEmpty();
+        return this;
     }
 
     /**
      * Check if the actual value is NOT empty.
+     *
+     * @return current object for the chain call.
      */
-    public void isNotEmpty() {
+    public ByteBufferAssertion isNotEmpty() {
         createByteArrayAssertion(false).isNotEmpty();
+        return this;
     }
 
     /**
      * Check if the actual value is NOT empty.
+     *
+     * @return current object for the chain call.
      */
-    public void isRewindAndNotEmpty() {
+    public ByteBufferAssertion isRewindAndNotEmpty() {
         createByteArrayAssertion(true).isNotEmpty();
+        return this;
     }
 
     /**
      * Check if the actual value contains the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void contains(final int expected) {
+    public ByteBufferAssertion contains(final int expected) {
         createByteArrayAssertion(false).contains((byte) expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void rewindAndContains(final int expected) {
+    public ByteBufferAssertion rewindAndContains(final int expected) {
         createByteArrayAssertion(true).contains((byte) expected);
+        return this;
     }
 
     /**
      * Check if the actual value does NOT contain the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void doesNotContain(final int expected) {
+    public ByteBufferAssertion doesNotContain(final int expected) {
         createByteArrayAssertion(false).doesNotContain((byte) expected);
+        return this;
     }
 
     /**
      * Check if the actual value does NOT contain the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void rewindAndDoesNotContain(final int expected) {
+    public ByteBufferAssertion rewindAndDoesNotContain(final int expected) {
         createByteArrayAssertion(true).doesNotContain((byte) expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsAll(final byte... expected) {
+    public ByteBufferAssertion containsAll(final byte... expected) {
         createByteArrayAssertion(false).containsAll(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsAll(final int... expected) {
+    public ByteBufferAssertion containsAll(final int... expected) {
         createByteArrayAssertion(false).containsAll(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsAll(final Iterable<Byte> expected) {
+    public ByteBufferAssertion containsAll(final Iterable<Byte> expected) {
         createByteArrayAssertion(false).containsAll(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void rewindAndContainsAll(final byte... expected) {
+    public ByteBufferAssertion rewindAndContainsAll(final byte... expected) {
         createByteArrayAssertion(true).containsAll(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void rewindAndContainsAll(final int... expected) {
+    public ByteBufferAssertion rewindAndContainsAll(final int... expected) {
         createByteArrayAssertion(true).containsAll(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void rewindAndContainsAll(final Iterable<Byte> expected) {
+    public ByteBufferAssertion rewindAndContainsAll(final Iterable<Byte> expected) {
         createByteArrayAssertion(true).containsAll(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values in the specified order.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsAllInOrder(final byte... expected) {
+    public ByteBufferAssertion containsAllInOrder(final byte... expected) {
         createByteArrayAssertion(false).containsAllInOrder(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values in the specified order.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsAllInOrder(final int... expected) {
+    public ByteBufferAssertion containsAllInOrder(final int... expected) {
         createByteArrayAssertion(false).containsAllInOrder(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values in the specified order.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsAllInOrder(final Iterable<Byte> expected) {
+    public ByteBufferAssertion containsAllInOrder(final Iterable<Byte> expected) {
         createByteArrayAssertion(false).containsAllInOrder(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values in the specified order.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void rewindAndContainsAllInOrder(final byte... expected) {
+    public ByteBufferAssertion rewindAndContainsAllInOrder(final byte... expected) {
         createByteArrayAssertion(true).containsAllInOrder(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values in the specified order.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void rewindAndContainsAllInOrder(final int... expected) {
+    public ByteBufferAssertion rewindAndContainsAllInOrder(final int... expected) {
         createByteArrayAssertion(true).containsAllInOrder(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values in the specified order.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void rewindAndContainsAllInOrder(final Iterable<Byte> expected) {
+    public ByteBufferAssertion rewindAndContainsAllInOrder(final Iterable<Byte> expected) {
         createByteArrayAssertion(true).containsAllInOrder(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values exactly.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsExactly(final byte... expected) {
+    public ByteBufferAssertion containsExactly(final byte... expected) {
         createByteArrayAssertion(false).containsExactly(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values exactly.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsExactly(final int... expected) {
+    public ByteBufferAssertion containsExactly(final int... expected) {
         createByteArrayAssertion(false).containsExactly(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values exactly.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsExactly(final Iterable<Byte> expected) {
+    public ByteBufferAssertion containsExactly(final Iterable<Byte> expected) {
         createByteArrayAssertion(false).containsExactly(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values exactly.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void rewindAndContainsExactly(final byte... expected) {
+    public ByteBufferAssertion rewindAndContainsExactly(final byte... expected) {
         createByteArrayAssertion(true).containsExactly(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values exactly.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void rewindAndContainsExactly(final int... expected) {
+    public ByteBufferAssertion rewindAndContainsExactly(final int... expected) {
         createByteArrayAssertion(true).containsExactly(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values exactly.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void rewindAndContainsExactly(final Iterable<Byte> expected) {
+    public ByteBufferAssertion rewindAndContainsExactly(final Iterable<Byte> expected) {
         createByteArrayAssertion(true).containsExactly(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values exactly in the specified order.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsExactlyInOrder(final byte... expected) {
+    public ByteBufferAssertion containsExactlyInOrder(final byte... expected) {
         createByteArrayAssertion(false).containsExactlyInOrder(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values exactly in the specified order.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsExactlyInOrder(final int... expected) {
+    public ByteBufferAssertion containsExactlyInOrder(final int... expected) {
         createByteArrayAssertion(false).containsExactlyInOrder(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values exactly in the specified order.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsExactlyInOrder(final Iterable<Byte> expected) {
+    public ByteBufferAssertion containsExactlyInOrder(final Iterable<Byte> expected) {
         createByteArrayAssertion(false).containsExactlyInOrder(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values exactly in the specified order.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void rewindAndContainsExactlyInOrder(final byte... expected) {
+    public ByteBufferAssertion rewindAndContainsExactlyInOrder(final byte... expected) {
         createByteArrayAssertion(true).containsExactlyInOrder(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values exactly in the specified order.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void rewindAndContainsExactlyInOrder(final int... expected) {
+    public ByteBufferAssertion rewindAndContainsExactlyInOrder(final int... expected) {
         createByteArrayAssertion(true).containsExactlyInOrder(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values exactly in the specified order.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void rewindAndContainsExactlyInOrder(final Iterable<Byte> expected) {
+    public ByteBufferAssertion rewindAndContainsExactlyInOrder(final Iterable<Byte> expected) {
         createByteArrayAssertion(true).containsExactlyInOrder(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains any of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsAny(final byte... expected) {
+    public ByteBufferAssertion containsAny(final byte... expected) {
         createByteArrayAssertion(false).containsAny(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains any of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsAny(final int... expected) {
+    public ByteBufferAssertion containsAny(final int... expected) {
         createByteArrayAssertion(false).containsAny(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains any of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsAny(final Iterable<Byte> expected) {
+    public ByteBufferAssertion containsAny(final Iterable<Byte> expected) {
         createByteArrayAssertion(false).containsAny(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains any of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void rewindAndContainsAny(final byte... expected) {
+    public ByteBufferAssertion rewindAndContainsAny(final byte... expected) {
         createByteArrayAssertion(true).containsAny(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains any of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void rewindAndContainsAny(final int... expected) {
+    public ByteBufferAssertion rewindAndContainsAny(final int... expected) {
         createByteArrayAssertion(true).containsAny(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains any of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void rewindAndContainsAny(final Iterable<Byte> expected) {
+    public ByteBufferAssertion rewindAndContainsAny(final Iterable<Byte> expected) {
         createByteArrayAssertion(true).containsAny(expected);
+        return this;
     }
 
     /**
      * Check if the actual value does NOT contain any of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsNone(final byte... expected) {
+    public ByteBufferAssertion containsNone(final byte... expected) {
         createByteArrayAssertion(false).containsNone(expected);
+        return this;
     }
 
     /**
      * Check if the actual value does NOT contain any of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsNone(final int... expected) {
+    public ByteBufferAssertion containsNone(final int... expected) {
         createByteArrayAssertion(false).containsNone(expected);
+        return this;
     }
 
     /**
      * Check if the actual value does NOT contain any of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsNone(final Iterable<Byte> expected) {
+    public ByteBufferAssertion containsNone(final Iterable<Byte> expected) {
         createByteArrayAssertion(false).containsNone(expected);
+        return this;
     }
 
     /**
      * Check if the actual value does NOT contain any of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void rewindAndContainsNone(final byte... expected) {
+    public ByteBufferAssertion rewindAndContainsNone(final byte... expected) {
         createByteArrayAssertion(true).containsNone(expected);
+        return this;
     }
 
     /**
      * Check if the actual value does NOT contain any of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void rewindAndContainsNone(final int... expected) {
+    public ByteBufferAssertion rewindAndContainsNone(final int... expected) {
         createByteArrayAssertion(true).containsNone(expected);
+        return this;
     }
 
     /**
      * Check if the actual value does NOT contain any of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void rewindAndContainsNone(final Iterable<Byte> expected) {
+    public ByteBufferAssertion rewindAndContainsNone(final Iterable<Byte> expected) {
         createByteArrayAssertion(true).containsNone(expected);
+        return this;
     }
 
     /**
@@ -476,9 +614,12 @@ public final class ByteBufferAssertion extends ReferenceAssertion<ByteBuffer> {
      * Make assertion about the actual value's hex representation.
      *
      * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
      */
-    public void toHexString(final Matcher<? super String> matcher) {
+    public ByteBufferAssertion toHexString(final Matcher<? super String> matcher) {
         createByteArrayAssertion(false).toHexString(matcher);
+        return this;
     }
 
     /**
@@ -487,9 +628,12 @@ public final class ByteBufferAssertion extends ReferenceAssertion<ByteBuffer> {
      * @param from    the index of the first buffer element (inclusive) for the hex representation.
      * @param to      the index of the last buffer element (exclusive) for the hex representation.
      * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
      */
-    public void toHexString(final int from, final int to, final Matcher<? super String> matcher) {
+    public ByteBufferAssertion toHexString(final int from, final int to, final Matcher<? super String> matcher) {
         createByteArrayAssertion(false).toHexString(from, to, matcher);
+        return this;
     }
 
     /**
@@ -517,9 +661,12 @@ public final class ByteBufferAssertion extends ReferenceAssertion<ByteBuffer> {
      * Make assertion about the actual value's hex representation.
      *
      * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
      */
-    public void toRewindAndHexString(final Matcher<? super String> matcher) {
+    public ByteBufferAssertion toRewindAndHexString(final Matcher<? super String> matcher) {
         createByteArrayAssertion(true).toHexString(matcher);
+        return this;
     }
 
     /**
@@ -528,18 +675,24 @@ public final class ByteBufferAssertion extends ReferenceAssertion<ByteBuffer> {
      * @param from    the index of the first buffer element (inclusive) for the hex representation.
      * @param to      the index of the last buffer element (exclusive) for the hex representation.
      * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
      */
-    public void toRewindAndHexString(final int from, final int to, final Matcher<? super String> matcher) {
+    public ByteBufferAssertion toRewindAndHexString(final int from, final int to, final Matcher<? super String> matcher) {
         createByteArrayAssertion(true).toHexString(from, to, matcher);
+        return this;
     }
 
     /**
      * Check if the actual value's hex representation is equal to the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void hasHexString(final String expected) {
+    public ByteBufferAssertion hasHexString(final String expected) {
         createByteArrayAssertion(false).hasHexString(expected);
+        return this;
     }
 
     /**
@@ -548,18 +701,24 @@ public final class ByteBufferAssertion extends ReferenceAssertion<ByteBuffer> {
      * @param from     the index of the first buffer element (inclusive) for the hex representation.
      * @param to       the index of the last buffer element (exclusive) for the hex representation.
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void hasHexString(final int from, final int to, final String expected) {
+    public ByteBufferAssertion hasHexString(final int from, final int to, final String expected) {
         createByteArrayAssertion(false).hasHexString(from, to, expected);
+        return this;
     }
 
     /**
      * Check if the actual value's hex representation is equal to the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void hasRewindAndHexString(final String expected) {
+    public ByteBufferAssertion hasRewindAndHexString(final String expected) {
         createByteArrayAssertion(true).hasHexString(expected);
+        return this;
     }
 
     /**
@@ -568,9 +727,12 @@ public final class ByteBufferAssertion extends ReferenceAssertion<ByteBuffer> {
      * @param from     the index of the first buffer element (inclusive) for the hex representation.
      * @param to       the index of the last buffer element (exclusive) for the hex representation.
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void hasRewindAndHexString(final int from, final int to, final String expected) {
+    public ByteBufferAssertion hasRewindAndHexString(final int from, final int to, final String expected) {
         createByteArrayAssertion(true).hasHexString(from, to, expected);
+        return this;
     }
 
     /**
@@ -587,20 +749,26 @@ public final class ByteBufferAssertion extends ReferenceAssertion<ByteBuffer> {
      * Make assertion about the actual value's position.
      *
      * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
      */
-    public void toPosition(final Matcher<? super Integer> matcher) {
+    public ByteBufferAssertion toPosition(final Matcher<? super Integer> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().position(), matcher, Messages.Check.POSITION);
+        return this;
     }
 
     /**
      * Check if the actual value's position is equal to the expected position.
      *
      * @param expected the expected position.
+     *
+     * @return current object for the chain call.
      */
-    public void hasPosition(final int expected) {
+    public ByteBufferAssertion hasPosition(final int expected) {
         toPosition().isEqualTo(expected);
+        return this;
     }
 
     /**
@@ -617,20 +785,26 @@ public final class ByteBufferAssertion extends ReferenceAssertion<ByteBuffer> {
      * Make assertion about the actual value's limit.
      *
      * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
      */
-    public void toLimit(final Matcher<? super Integer> matcher) {
+    public ByteBufferAssertion toLimit(final Matcher<? super Integer> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().limit(), matcher, Messages.Check.LIMIT);
+        return this;
     }
 
     /**
      * Check if the actual value's limit is equal to the expected limit.
      *
      * @param expected the expected limit.
+     *
+     * @return current object for the chain call.
      */
-    public void hasLimit(final int expected) {
+    public ByteBufferAssertion hasLimit(final int expected) {
         toLimit().isEqualTo(expected);
+        return this;
     }
 
     /**
@@ -647,20 +821,26 @@ public final class ByteBufferAssertion extends ReferenceAssertion<ByteBuffer> {
      * Make assertion about the actual value's capacity.
      *
      * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
      */
-    public void toCapacity(final Matcher<? super Integer> matcher) {
+    public ByteBufferAssertion toCapacity(final Matcher<? super Integer> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().capacity(), matcher, Messages.Check.CAPACITY);
+        return this;
     }
 
     /**
      * Check if the actual value's capacity is equal to the expected capacity.
      *
      * @param expected the expected capacity.
+     *
+     * @return current object for the chain call.
      */
-    public void hasCapacity(final int expected) {
+    public ByteBufferAssertion hasCapacity(final int expected) {
         toCapacity().isEqualTo(expected);
+        return this;
     }
 
     /**
@@ -669,11 +849,14 @@ public final class ByteBufferAssertion extends ReferenceAssertion<ByteBuffer> {
      * @param expectedPosition the expected position.
      * @param expectedLimit    the expected limit.
      * @param expectedCapacity the expected capacity.
+     *
+     * @return current object for the chain call.
      */
-    public void hasProperties(final int expectedPosition, final int expectedLimit, final int expectedCapacity) {
+    public ByteBufferAssertion hasProperties(final int expectedPosition, final int expectedLimit, final int expectedCapacity) {
         hasPosition(expectedPosition);
         hasLimit(expectedLimit);
         hasCapacity(expectedCapacity);
+        return this;
     }
 
     /**
@@ -690,60 +873,78 @@ public final class ByteBufferAssertion extends ReferenceAssertion<ByteBuffer> {
      * Make assertion about the actual value's remaining.
      *
      * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
      */
-    public void toRemaining(final Matcher<? super Integer> matcher) {
+    public ByteBufferAssertion toRemaining(final Matcher<? super Integer> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().remaining(), matcher, Messages.Check.REMAINING);
+        return this;
     }
 
     /**
      * Check if the actual value's remaining is equal to the expected remaining.
      *
      * @param expected the expected remaining.
+     *
+     * @return current object for the chain call.
      */
-    public void hasRemaining(final int expected) {
+    public ByteBufferAssertion hasRemaining(final int expected) {
         toRemaining().isEqualTo(expected);
+        return this;
     }
 
     /**
      * Check if the actual value is direct.
+     *
+     * @return current object for the chain call.
      */
-    public void isDirect() {
+    public ByteBufferAssertion isDirect() {
         checkActualIsNotNull();
         if (!getActual().isDirect()) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_DIRECT).build();
         }
+        return this;
     }
 
     /**
      * Check if the actual value is NOT direct.
+     *
+     * @return current object for the chain call.
      */
-    public void isNotDirect() {
+    public ByteBufferAssertion isNotDirect() {
         checkActualIsNotNull();
         if (getActual().isDirect()) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_DIRECT).build();
         }
+        return this;
     }
 
     /**
      * Check if the actual value is read only.
+     *
+     * @return current object for the chain call.
      */
-    public void isReadOnly() {
+    public ByteBufferAssertion isReadOnly() {
         checkActualIsNotNull();
         if (!getActual().isReadOnly()) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_READ_ONLY).build();
         }
+        return this;
     }
 
     /**
      * Check if the actual value is NOT read only.
+     *
+     * @return current object for the chain call.
      */
-    public void isNotReadOnly() {
+    public ByteBufferAssertion isNotReadOnly() {
         checkActualIsNotNull();
         if (getActual().isReadOnly()) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_READ_ONLY).build();
         }
+        return this;
     }
 
     private ByteArrayAssertion createByteArrayAssertion(final boolean rewind) {

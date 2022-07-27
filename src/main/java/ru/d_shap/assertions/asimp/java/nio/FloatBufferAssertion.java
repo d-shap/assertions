@@ -50,296 +50,398 @@ public final class FloatBufferAssertion extends ReferenceAssertion<FloatBuffer> 
 
     /**
      * Check if the actual value is empty.
+     *
+     * @return current object for the chain call.
      */
-    public void isEmpty() {
+    public FloatBufferAssertion isEmpty() {
         createFloatArrayAssertion(false).isEmpty();
+        return this;
     }
 
     /**
      * Check if the actual value is empty.
+     *
+     * @return current object for the chain call.
      */
-    public void isRewindAndEmpty() {
+    public FloatBufferAssertion isRewindAndEmpty() {
         createFloatArrayAssertion(true).isEmpty();
+        return this;
     }
 
     /**
      * Check if the actual value is null or empty.
+     *
+     * @return current object for the chain call.
      */
-    public void isNullOrEmpty() {
+    public FloatBufferAssertion isNullOrEmpty() {
         createFloatArrayAssertion(false).isNullOrEmpty();
+        return this;
     }
 
     /**
      * Check if the actual value is null or empty.
+     *
+     * @return current object for the chain call.
      */
-    public void isRewindAndNullOrEmpty() {
+    public FloatBufferAssertion isRewindAndNullOrEmpty() {
         createFloatArrayAssertion(true).isNullOrEmpty();
+        return this;
     }
 
     /**
      * Check if the actual value is NOT empty.
+     *
+     * @return current object for the chain call.
      */
-    public void isNotEmpty() {
+    public FloatBufferAssertion isNotEmpty() {
         createFloatArrayAssertion(false).isNotEmpty();
+        return this;
     }
 
     /**
      * Check if the actual value is NOT empty.
+     *
+     * @return current object for the chain call.
      */
-    public void isRewindAndNotEmpty() {
+    public FloatBufferAssertion isRewindAndNotEmpty() {
         createFloatArrayAssertion(true).isNotEmpty();
+        return this;
     }
 
     /**
      * Check if the actual value contains the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void contains(final float expected) {
+    public FloatBufferAssertion contains(final float expected) {
         createFloatArrayAssertion(false).contains(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void rewindAndContains(final float expected) {
+    public FloatBufferAssertion rewindAndContains(final float expected) {
         createFloatArrayAssertion(true).contains(expected);
+        return this;
     }
 
     /**
      * Check if the actual value does NOT contain the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void doesNotContain(final float expected) {
+    public FloatBufferAssertion doesNotContain(final float expected) {
         createFloatArrayAssertion(false).doesNotContain(expected);
+        return this;
     }
 
     /**
      * Check if the actual value does NOT contain the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void rewindAndDoesNotContain(final float expected) {
+    public FloatBufferAssertion rewindAndDoesNotContain(final float expected) {
         createFloatArrayAssertion(true).doesNotContain(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsAll(final float... expected) {
+    public FloatBufferAssertion containsAll(final float... expected) {
         createFloatArrayAssertion(false).containsAll(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsAll(final Iterable<Float> expected) {
+    public FloatBufferAssertion containsAll(final Iterable<Float> expected) {
         createFloatArrayAssertion(false).containsAll(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void rewindAndContainsAll(final float... expected) {
+    public FloatBufferAssertion rewindAndContainsAll(final float... expected) {
         createFloatArrayAssertion(true).containsAll(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void rewindAndContainsAll(final Iterable<Float> expected) {
+    public FloatBufferAssertion rewindAndContainsAll(final Iterable<Float> expected) {
         createFloatArrayAssertion(true).containsAll(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values in the specified order.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsAllInOrder(final float... expected) {
+    public FloatBufferAssertion containsAllInOrder(final float... expected) {
         createFloatArrayAssertion(false).containsAllInOrder(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values in the specified order.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsAllInOrder(final Iterable<Float> expected) {
+    public FloatBufferAssertion containsAllInOrder(final Iterable<Float> expected) {
         createFloatArrayAssertion(false).containsAllInOrder(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values in the specified order.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void rewindAndContainsAllInOrder(final float... expected) {
+    public FloatBufferAssertion rewindAndContainsAllInOrder(final float... expected) {
         createFloatArrayAssertion(true).containsAllInOrder(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values in the specified order.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void rewindAndContainsAllInOrder(final Iterable<Float> expected) {
+    public FloatBufferAssertion rewindAndContainsAllInOrder(final Iterable<Float> expected) {
         createFloatArrayAssertion(true).containsAllInOrder(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values exactly.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsExactly(final float... expected) {
+    public FloatBufferAssertion containsExactly(final float... expected) {
         createFloatArrayAssertion(false).containsExactly(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values exactly.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsExactly(final Iterable<Float> expected) {
+    public FloatBufferAssertion containsExactly(final Iterable<Float> expected) {
         createFloatArrayAssertion(false).containsExactly(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values exactly.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void rewindAndContainsExactly(final float... expected) {
+    public FloatBufferAssertion rewindAndContainsExactly(final float... expected) {
         createFloatArrayAssertion(true).containsExactly(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values exactly.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void rewindAndContainsExactly(final Iterable<Float> expected) {
+    public FloatBufferAssertion rewindAndContainsExactly(final Iterable<Float> expected) {
         createFloatArrayAssertion(true).containsExactly(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values exactly in the specified order.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsExactlyInOrder(final float... expected) {
+    public FloatBufferAssertion containsExactlyInOrder(final float... expected) {
         createFloatArrayAssertion(false).containsExactlyInOrder(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values exactly in the specified order.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsExactlyInOrder(final Iterable<Float> expected) {
+    public FloatBufferAssertion containsExactlyInOrder(final Iterable<Float> expected) {
         createFloatArrayAssertion(false).containsExactlyInOrder(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values exactly in the specified order.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void rewindAndContainsExactlyInOrder(final float... expected) {
+    public FloatBufferAssertion rewindAndContainsExactlyInOrder(final float... expected) {
         createFloatArrayAssertion(true).containsExactlyInOrder(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values exactly in the specified order.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void rewindAndContainsExactlyInOrder(final Iterable<Float> expected) {
+    public FloatBufferAssertion rewindAndContainsExactlyInOrder(final Iterable<Float> expected) {
         createFloatArrayAssertion(true).containsExactlyInOrder(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains any of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsAny(final float... expected) {
+    public FloatBufferAssertion containsAny(final float... expected) {
         createFloatArrayAssertion(false).containsAny(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains any of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsAny(final Iterable<Float> expected) {
+    public FloatBufferAssertion containsAny(final Iterable<Float> expected) {
         createFloatArrayAssertion(false).containsAny(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains any of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void rewindAndContainsAny(final float... expected) {
+    public FloatBufferAssertion rewindAndContainsAny(final float... expected) {
         createFloatArrayAssertion(true).containsAny(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains any of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void rewindAndContainsAny(final Iterable<Float> expected) {
+    public FloatBufferAssertion rewindAndContainsAny(final Iterable<Float> expected) {
         createFloatArrayAssertion(true).containsAny(expected);
+        return this;
     }
 
     /**
      * Check if the actual value does NOT contain any of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsNone(final float... expected) {
+    public FloatBufferAssertion containsNone(final float... expected) {
         createFloatArrayAssertion(false).containsNone(expected);
+        return this;
     }
 
     /**
      * Check if the actual value does NOT contain any of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsNone(final Iterable<Float> expected) {
+    public FloatBufferAssertion containsNone(final Iterable<Float> expected) {
         createFloatArrayAssertion(false).containsNone(expected);
+        return this;
     }
 
     /**
      * Check if the actual value does NOT contain any of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void rewindAndContainsNone(final float... expected) {
+    public FloatBufferAssertion rewindAndContainsNone(final float... expected) {
         createFloatArrayAssertion(true).containsNone(expected);
+        return this;
     }
 
     /**
      * Check if the actual value does NOT contain any of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void rewindAndContainsNone(final Iterable<Float> expected) {
+    public FloatBufferAssertion rewindAndContainsNone(final Iterable<Float> expected) {
         createFloatArrayAssertion(true).containsNone(expected);
+        return this;
     }
 
     /**
@@ -356,20 +458,26 @@ public final class FloatBufferAssertion extends ReferenceAssertion<FloatBuffer> 
      * Make assertion about the actual value's position.
      *
      * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
      */
-    public void toPosition(final Matcher<? super Integer> matcher) {
+    public FloatBufferAssertion toPosition(final Matcher<? super Integer> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().position(), matcher, Messages.Check.POSITION);
+        return this;
     }
 
     /**
      * Check if the actual value's position is equal to the expected position.
      *
      * @param expected the expected position.
+     *
+     * @return current object for the chain call.
      */
-    public void hasPosition(final int expected) {
+    public FloatBufferAssertion hasPosition(final int expected) {
         toPosition().isEqualTo(expected);
+        return this;
     }
 
     /**
@@ -386,20 +494,26 @@ public final class FloatBufferAssertion extends ReferenceAssertion<FloatBuffer> 
      * Make assertion about the actual value's limit.
      *
      * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
      */
-    public void toLimit(final Matcher<? super Integer> matcher) {
+    public FloatBufferAssertion toLimit(final Matcher<? super Integer> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().limit(), matcher, Messages.Check.LIMIT);
+        return this;
     }
 
     /**
      * Check if the actual value's limit is equal to the expected limit.
      *
      * @param expected the expected limit.
+     *
+     * @return current object for the chain call.
      */
-    public void hasLimit(final int expected) {
+    public FloatBufferAssertion hasLimit(final int expected) {
         toLimit().isEqualTo(expected);
+        return this;
     }
 
     /**
@@ -416,20 +530,26 @@ public final class FloatBufferAssertion extends ReferenceAssertion<FloatBuffer> 
      * Make assertion about the actual value's capacity.
      *
      * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
      */
-    public void toCapacity(final Matcher<? super Integer> matcher) {
+    public FloatBufferAssertion toCapacity(final Matcher<? super Integer> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().capacity(), matcher, Messages.Check.CAPACITY);
+        return this;
     }
 
     /**
      * Check if the actual value's capacity is equal to the expected capacity.
      *
      * @param expected the expected capacity.
+     *
+     * @return current object for the chain call.
      */
-    public void hasCapacity(final int expected) {
+    public FloatBufferAssertion hasCapacity(final int expected) {
         toCapacity().isEqualTo(expected);
+        return this;
     }
 
     /**
@@ -438,11 +558,14 @@ public final class FloatBufferAssertion extends ReferenceAssertion<FloatBuffer> 
      * @param expectedPosition the expected position.
      * @param expectedLimit    the expected limit.
      * @param expectedCapacity the expected capacity.
+     *
+     * @return current object for the chain call.
      */
-    public void hasProperties(final int expectedPosition, final int expectedLimit, final int expectedCapacity) {
+    public FloatBufferAssertion hasProperties(final int expectedPosition, final int expectedLimit, final int expectedCapacity) {
         hasPosition(expectedPosition);
         hasLimit(expectedLimit);
         hasCapacity(expectedCapacity);
+        return this;
     }
 
     /**
@@ -459,60 +582,78 @@ public final class FloatBufferAssertion extends ReferenceAssertion<FloatBuffer> 
      * Make assertion about the actual value's remaining.
      *
      * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
      */
-    public void toRemaining(final Matcher<? super Integer> matcher) {
+    public FloatBufferAssertion toRemaining(final Matcher<? super Integer> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().remaining(), matcher, Messages.Check.REMAINING);
+        return this;
     }
 
     /**
      * Check if the actual value's remaining is equal to the expected remaining.
      *
      * @param expected the expected remaining.
+     *
+     * @return current object for the chain call.
      */
-    public void hasRemaining(final int expected) {
+    public FloatBufferAssertion hasRemaining(final int expected) {
         toRemaining().isEqualTo(expected);
+        return this;
     }
 
     /**
      * Check if the actual value is direct.
+     *
+     * @return current object for the chain call.
      */
-    public void isDirect() {
+    public FloatBufferAssertion isDirect() {
         checkActualIsNotNull();
         if (!getActual().isDirect()) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_DIRECT).build();
         }
+        return this;
     }
 
     /**
      * Check if the actual value is NOT direct.
+     *
+     * @return current object for the chain call.
      */
-    public void isNotDirect() {
+    public FloatBufferAssertion isNotDirect() {
         checkActualIsNotNull();
         if (getActual().isDirect()) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_DIRECT).build();
         }
+        return this;
     }
 
     /**
      * Check if the actual value is read only.
+     *
+     * @return current object for the chain call.
      */
-    public void isReadOnly() {
+    public FloatBufferAssertion isReadOnly() {
         checkActualIsNotNull();
         if (!getActual().isReadOnly()) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_READ_ONLY).build();
         }
+        return this;
     }
 
     /**
      * Check if the actual value is NOT read only.
+     *
+     * @return current object for the chain call.
      */
-    public void isNotReadOnly() {
+    public FloatBufferAssertion isNotReadOnly() {
         checkActualIsNotNull();
         if (getActual().isReadOnly()) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_READ_ONLY).build();
         }
+        return this;
     }
 
     private FloatArrayAssertion createFloatArrayAssertion(final boolean rewind) {

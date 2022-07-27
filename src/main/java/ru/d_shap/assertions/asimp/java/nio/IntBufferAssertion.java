@@ -51,296 +51,398 @@ public final class IntBufferAssertion extends ReferenceAssertion<IntBuffer> {
 
     /**
      * Check if the actual value is empty.
+     *
+     * @return current object for the chain call.
      */
-    public void isEmpty() {
+    public IntBufferAssertion isEmpty() {
         createIntArrayAssertion(false).isEmpty();
+        return this;
     }
 
     /**
      * Check if the actual value is empty.
+     *
+     * @return current object for the chain call.
      */
-    public void isRewindAndEmpty() {
+    public IntBufferAssertion isRewindAndEmpty() {
         createIntArrayAssertion(true).isEmpty();
+        return this;
     }
 
     /**
      * Check if the actual value is null or empty.
+     *
+     * @return current object for the chain call.
      */
-    public void isNullOrEmpty() {
+    public IntBufferAssertion isNullOrEmpty() {
         createIntArrayAssertion(false).isNullOrEmpty();
+        return this;
     }
 
     /**
      * Check if the actual value is null or empty.
+     *
+     * @return current object for the chain call.
      */
-    public void isRewindAndNullOrEmpty() {
+    public IntBufferAssertion isRewindAndNullOrEmpty() {
         createIntArrayAssertion(true).isNullOrEmpty();
+        return this;
     }
 
     /**
      * Check if the actual value is NOT empty.
+     *
+     * @return current object for the chain call.
      */
-    public void isNotEmpty() {
+    public IntBufferAssertion isNotEmpty() {
         createIntArrayAssertion(false).isNotEmpty();
+        return this;
     }
 
     /**
      * Check if the actual value is NOT empty.
+     *
+     * @return current object for the chain call.
      */
-    public void isRewindAndNotEmpty() {
+    public IntBufferAssertion isRewindAndNotEmpty() {
         createIntArrayAssertion(true).isNotEmpty();
+        return this;
     }
 
     /**
      * Check if the actual value contains the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void contains(final int expected) {
+    public IntBufferAssertion contains(final int expected) {
         createIntArrayAssertion(false).contains(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void rewindAndContains(final int expected) {
+    public IntBufferAssertion rewindAndContains(final int expected) {
         createIntArrayAssertion(true).contains(expected);
+        return this;
     }
 
     /**
      * Check if the actual value does NOT contain the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void doesNotContain(final int expected) {
+    public IntBufferAssertion doesNotContain(final int expected) {
         createIntArrayAssertion(false).doesNotContain(expected);
+        return this;
     }
 
     /**
      * Check if the actual value does NOT contain the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void rewindAndDoesNotContain(final int expected) {
+    public IntBufferAssertion rewindAndDoesNotContain(final int expected) {
         createIntArrayAssertion(true).doesNotContain(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsAll(final int... expected) {
+    public IntBufferAssertion containsAll(final int... expected) {
         createIntArrayAssertion(false).containsAll(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsAll(final Iterable<Integer> expected) {
+    public IntBufferAssertion containsAll(final Iterable<Integer> expected) {
         createIntArrayAssertion(false).containsAll(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void rewindAndContainsAll(final int... expected) {
+    public IntBufferAssertion rewindAndContainsAll(final int... expected) {
         createIntArrayAssertion(true).containsAll(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void rewindAndContainsAll(final Iterable<Integer> expected) {
+    public IntBufferAssertion rewindAndContainsAll(final Iterable<Integer> expected) {
         createIntArrayAssertion(true).containsAll(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values in the specified order.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsAllInOrder(final int... expected) {
+    public IntBufferAssertion containsAllInOrder(final int... expected) {
         createIntArrayAssertion(false).containsAllInOrder(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values in the specified order.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsAllInOrder(final Iterable<Integer> expected) {
+    public IntBufferAssertion containsAllInOrder(final Iterable<Integer> expected) {
         createIntArrayAssertion(false).containsAllInOrder(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values in the specified order.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void rewindAndContainsAllInOrder(final int... expected) {
+    public IntBufferAssertion rewindAndContainsAllInOrder(final int... expected) {
         createIntArrayAssertion(true).containsAllInOrder(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values in the specified order.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void rewindAndContainsAllInOrder(final Iterable<Integer> expected) {
+    public IntBufferAssertion rewindAndContainsAllInOrder(final Iterable<Integer> expected) {
         createIntArrayAssertion(true).containsAllInOrder(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values exactly.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsExactly(final int... expected) {
+    public IntBufferAssertion containsExactly(final int... expected) {
         createIntArrayAssertion(false).containsExactly(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values exactly.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsExactly(final Iterable<Integer> expected) {
+    public IntBufferAssertion containsExactly(final Iterable<Integer> expected) {
         createIntArrayAssertion(false).containsExactly(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values exactly.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void rewindAndContainsExactly(final int... expected) {
+    public IntBufferAssertion rewindAndContainsExactly(final int... expected) {
         createIntArrayAssertion(true).containsExactly(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values exactly.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void rewindAndContainsExactly(final Iterable<Integer> expected) {
+    public IntBufferAssertion rewindAndContainsExactly(final Iterable<Integer> expected) {
         createIntArrayAssertion(true).containsExactly(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values exactly in the specified order.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsExactlyInOrder(final int... expected) {
+    public IntBufferAssertion containsExactlyInOrder(final int... expected) {
         createIntArrayAssertion(false).containsExactlyInOrder(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values exactly in the specified order.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsExactlyInOrder(final Iterable<Integer> expected) {
+    public IntBufferAssertion containsExactlyInOrder(final Iterable<Integer> expected) {
         createIntArrayAssertion(false).containsExactlyInOrder(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values exactly in the specified order.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void rewindAndContainsExactlyInOrder(final int... expected) {
+    public IntBufferAssertion rewindAndContainsExactlyInOrder(final int... expected) {
         createIntArrayAssertion(true).containsExactlyInOrder(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values exactly in the specified order.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void rewindAndContainsExactlyInOrder(final Iterable<Integer> expected) {
+    public IntBufferAssertion rewindAndContainsExactlyInOrder(final Iterable<Integer> expected) {
         createIntArrayAssertion(true).containsExactlyInOrder(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains any of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsAny(final int... expected) {
+    public IntBufferAssertion containsAny(final int... expected) {
         createIntArrayAssertion(false).containsAny(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains any of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsAny(final Iterable<Integer> expected) {
+    public IntBufferAssertion containsAny(final Iterable<Integer> expected) {
         createIntArrayAssertion(false).containsAny(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains any of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void rewindAndContainsAny(final int... expected) {
+    public IntBufferAssertion rewindAndContainsAny(final int... expected) {
         createIntArrayAssertion(true).containsAny(expected);
+        return this;
     }
 
     /**
      * Check if the actual value contains any of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void rewindAndContainsAny(final Iterable<Integer> expected) {
+    public IntBufferAssertion rewindAndContainsAny(final Iterable<Integer> expected) {
         createIntArrayAssertion(true).containsAny(expected);
+        return this;
     }
 
     /**
      * Check if the actual value does NOT contain any of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsNone(final int... expected) {
+    public IntBufferAssertion containsNone(final int... expected) {
         createIntArrayAssertion(false).containsNone(expected);
+        return this;
     }
 
     /**
      * Check if the actual value does NOT contain any of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsNone(final Iterable<Integer> expected) {
+    public IntBufferAssertion containsNone(final Iterable<Integer> expected) {
         createIntArrayAssertion(false).containsNone(expected);
+        return this;
     }
 
     /**
      * Check if the actual value does NOT contain any of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void rewindAndContainsNone(final int... expected) {
+    public IntBufferAssertion rewindAndContainsNone(final int... expected) {
         createIntArrayAssertion(true).containsNone(expected);
+        return this;
     }
 
     /**
      * Check if the actual value does NOT contain any of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void rewindAndContainsNone(final Iterable<Integer> expected) {
+    public IntBufferAssertion rewindAndContainsNone(final Iterable<Integer> expected) {
         createIntArrayAssertion(true).containsNone(expected);
+        return this;
     }
 
     /**
@@ -368,9 +470,12 @@ public final class IntBufferAssertion extends ReferenceAssertion<IntBuffer> {
      * Make assertion about the actual value's hex representation.
      *
      * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
      */
-    public void toHexString(final Matcher<? super String> matcher) {
+    public IntBufferAssertion toHexString(final Matcher<? super String> matcher) {
         createIntArrayAssertion(false).toHexString(matcher);
+        return this;
     }
 
     /**
@@ -379,9 +484,12 @@ public final class IntBufferAssertion extends ReferenceAssertion<IntBuffer> {
      * @param from    the index of the first buffer element (inclusive) for the hex representation.
      * @param to      the index of the last buffer element (exclusive) for the hex representation.
      * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
      */
-    public void toHexString(final int from, final int to, final Matcher<? super String> matcher) {
+    public IntBufferAssertion toHexString(final int from, final int to, final Matcher<? super String> matcher) {
         createIntArrayAssertion(false).toHexString(from, to, matcher);
+        return this;
     }
 
     /**
@@ -409,9 +517,12 @@ public final class IntBufferAssertion extends ReferenceAssertion<IntBuffer> {
      * Make assertion about the actual value's hex representation.
      *
      * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
      */
-    public void toRewindAndHexString(final Matcher<? super String> matcher) {
+    public IntBufferAssertion toRewindAndHexString(final Matcher<? super String> matcher) {
         createIntArrayAssertion(true).toHexString(matcher);
+        return this;
     }
 
     /**
@@ -420,18 +531,24 @@ public final class IntBufferAssertion extends ReferenceAssertion<IntBuffer> {
      * @param from    the index of the first buffer element (inclusive) for the hex representation.
      * @param to      the index of the last buffer element (exclusive) for the hex representation.
      * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
      */
-    public void toRewindAndHexString(final int from, final int to, final Matcher<? super String> matcher) {
+    public IntBufferAssertion toRewindAndHexString(final int from, final int to, final Matcher<? super String> matcher) {
         createIntArrayAssertion(true).toHexString(from, to, matcher);
+        return this;
     }
 
     /**
      * Check if the actual value's hex representation is equal to the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void hasHexString(final String expected) {
+    public IntBufferAssertion hasHexString(final String expected) {
         createIntArrayAssertion(false).hasHexString(expected);
+        return this;
     }
 
     /**
@@ -440,18 +557,24 @@ public final class IntBufferAssertion extends ReferenceAssertion<IntBuffer> {
      * @param from     the index of the first buffer element (inclusive) for the hex representation.
      * @param to       the index of the last buffer element (exclusive) for the hex representation.
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void hasHexString(final int from, final int to, final String expected) {
+    public IntBufferAssertion hasHexString(final int from, final int to, final String expected) {
         createIntArrayAssertion(false).hasHexString(from, to, expected);
+        return this;
     }
 
     /**
      * Check if the actual value's hex representation is equal to the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void hasRewindAndHexString(final String expected) {
+    public IntBufferAssertion hasRewindAndHexString(final String expected) {
         createIntArrayAssertion(true).hasHexString(expected);
+        return this;
     }
 
     /**
@@ -460,9 +583,12 @@ public final class IntBufferAssertion extends ReferenceAssertion<IntBuffer> {
      * @param from     the index of the first buffer element (inclusive) for the hex representation.
      * @param to       the index of the last buffer element (exclusive) for the hex representation.
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void hasRewindAndHexString(final int from, final int to, final String expected) {
+    public IntBufferAssertion hasRewindAndHexString(final int from, final int to, final String expected) {
         createIntArrayAssertion(true).hasHexString(from, to, expected);
+        return this;
     }
 
     /**
@@ -479,20 +605,26 @@ public final class IntBufferAssertion extends ReferenceAssertion<IntBuffer> {
      * Make assertion about the actual value's position.
      *
      * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
      */
-    public void toPosition(final Matcher<? super Integer> matcher) {
+    public IntBufferAssertion toPosition(final Matcher<? super Integer> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().position(), matcher, Messages.Check.POSITION);
+        return this;
     }
 
     /**
      * Check if the actual value's position is equal to the expected position.
      *
      * @param expected the expected position.
+     *
+     * @return current object for the chain call.
      */
-    public void hasPosition(final int expected) {
+    public IntBufferAssertion hasPosition(final int expected) {
         toPosition().isEqualTo(expected);
+        return this;
     }
 
     /**
@@ -509,20 +641,26 @@ public final class IntBufferAssertion extends ReferenceAssertion<IntBuffer> {
      * Make assertion about the actual value's limit.
      *
      * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
      */
-    public void toLimit(final Matcher<? super Integer> matcher) {
+    public IntBufferAssertion toLimit(final Matcher<? super Integer> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().limit(), matcher, Messages.Check.LIMIT);
+        return this;
     }
 
     /**
      * Check if the actual value's limit is equal to the expected limit.
      *
      * @param expected the expected limit.
+     *
+     * @return current object for the chain call.
      */
-    public void hasLimit(final int expected) {
+    public IntBufferAssertion hasLimit(final int expected) {
         toLimit().isEqualTo(expected);
+        return this;
     }
 
     /**
@@ -539,20 +677,26 @@ public final class IntBufferAssertion extends ReferenceAssertion<IntBuffer> {
      * Make assertion about the actual value's capacity.
      *
      * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
      */
-    public void toCapacity(final Matcher<? super Integer> matcher) {
+    public IntBufferAssertion toCapacity(final Matcher<? super Integer> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().capacity(), matcher, Messages.Check.CAPACITY);
+        return this;
     }
 
     /**
      * Check if the actual value's capacity is equal to the expected capacity.
      *
      * @param expected the expected capacity.
+     *
+     * @return current object for the chain call.
      */
-    public void hasCapacity(final int expected) {
+    public IntBufferAssertion hasCapacity(final int expected) {
         toCapacity().isEqualTo(expected);
+        return this;
     }
 
     /**
@@ -561,11 +705,14 @@ public final class IntBufferAssertion extends ReferenceAssertion<IntBuffer> {
      * @param expectedPosition the expected position.
      * @param expectedLimit    the expected limit.
      * @param expectedCapacity the expected capacity.
+     *
+     * @return current object for the chain call.
      */
-    public void hasProperties(final int expectedPosition, final int expectedLimit, final int expectedCapacity) {
+    public IntBufferAssertion hasProperties(final int expectedPosition, final int expectedLimit, final int expectedCapacity) {
         hasPosition(expectedPosition);
         hasLimit(expectedLimit);
         hasCapacity(expectedCapacity);
+        return this;
     }
 
     /**
@@ -582,60 +729,78 @@ public final class IntBufferAssertion extends ReferenceAssertion<IntBuffer> {
      * Make assertion about the actual value's remaining.
      *
      * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
      */
-    public void toRemaining(final Matcher<? super Integer> matcher) {
+    public IntBufferAssertion toRemaining(final Matcher<? super Integer> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().remaining(), matcher, Messages.Check.REMAINING);
+        return this;
     }
 
     /**
      * Check if the actual value's remaining is equal to the expected remaining.
      *
      * @param expected the expected remaining.
+     *
+     * @return current object for the chain call.
      */
-    public void hasRemaining(final int expected) {
+    public IntBufferAssertion hasRemaining(final int expected) {
         toRemaining().isEqualTo(expected);
+        return this;
     }
 
     /**
      * Check if the actual value is direct.
+     *
+     * @return current object for the chain call.
      */
-    public void isDirect() {
+    public IntBufferAssertion isDirect() {
         checkActualIsNotNull();
         if (!getActual().isDirect()) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_DIRECT).build();
         }
+        return this;
     }
 
     /**
      * Check if the actual value is NOT direct.
+     *
+     * @return current object for the chain call.
      */
-    public void isNotDirect() {
+    public IntBufferAssertion isNotDirect() {
         checkActualIsNotNull();
         if (getActual().isDirect()) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_DIRECT).build();
         }
+        return this;
     }
 
     /**
      * Check if the actual value is read only.
+     *
+     * @return current object for the chain call.
      */
-    public void isReadOnly() {
+    public IntBufferAssertion isReadOnly() {
         checkActualIsNotNull();
         if (!getActual().isReadOnly()) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_READ_ONLY).build();
         }
+        return this;
     }
 
     /**
      * Check if the actual value is NOT read only.
+     *
+     * @return current object for the chain call.
      */
-    public void isNotReadOnly() {
+    public IntBufferAssertion isNotReadOnly() {
         checkActualIsNotNull();
         if (getActual().isReadOnly()) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_READ_ONLY).build();
         }
+        return this;
     }
 
     private IntArrayAssertion createIntArrayAssertion(final boolean rewind) {
