@@ -27,7 +27,7 @@ import ru.d_shap.assertions.asimp.ReferenceAssertion;
  *
  * @author Dmitry Shapovalov
  */
-public class ObjectAssertion extends ReferenceAssertion<Object> {
+public final class ObjectAssertion extends ReferenceAssertion<Object> {
 
     /**
      * Create new object.
@@ -37,7 +37,7 @@ public class ObjectAssertion extends ReferenceAssertion<Object> {
     }
 
     @Override
-    protected final Class<Object> getActualValueClass() {
+    protected Class<Object> getActualValueClass() {
         return Object.class;
     }
 
@@ -46,7 +46,7 @@ public class ObjectAssertion extends ReferenceAssertion<Object> {
      *
      * @param expected the expected value.
      */
-    public final void isEqualTo(final Object expected) {
+    public void isEqualTo(final Object expected) {
         if (expected == null) {
             isNull();
         } else {
@@ -62,7 +62,7 @@ public class ObjectAssertion extends ReferenceAssertion<Object> {
      *
      * @param expected the expected value.
      */
-    public final void isNotEqualTo(final Object expected) {
+    public void isNotEqualTo(final Object expected) {
         if (expected == null) {
             isNotNull();
         } else {

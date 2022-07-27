@@ -32,7 +32,7 @@ import ru.d_shap.assertions.asimp.java.lang.CharSequenceAssertion;
  *
  * @author Dmitry Shapovalov
  */
-public class AttrAssertion extends ReferenceAssertion<Attr> {
+public final class AttrAssertion extends ReferenceAssertion<Attr> {
 
     /**
      * Create new object.
@@ -42,7 +42,7 @@ public class AttrAssertion extends ReferenceAssertion<Attr> {
     }
 
     @Override
-    protected final Class<Attr> getActualValueClass() {
+    protected Class<Attr> getActualValueClass() {
         return Attr.class;
     }
 
@@ -51,7 +51,7 @@ public class AttrAssertion extends ReferenceAssertion<Attr> {
      *
      * @param expected the expected value.
      */
-    public final void isEqualTo(final Attr expected) {
+    public void isEqualTo(final Attr expected) {
         createNodeAssertion().isEqualTo(expected);
     }
 
@@ -60,7 +60,7 @@ public class AttrAssertion extends ReferenceAssertion<Attr> {
      *
      * @param expected the expected value.
      */
-    public final void isNotEqualTo(final Attr expected) {
+    public void isNotEqualTo(final Attr expected) {
         createNodeAssertion().isNotEqualTo(expected);
     }
 
@@ -69,7 +69,7 @@ public class AttrAssertion extends ReferenceAssertion<Attr> {
      *
      * @return the assertion.
      */
-    public final CharSequenceAssertion toNamespaceURI() {
+    public CharSequenceAssertion toNamespaceURI() {
         return createNodeAssertion().toNamespaceURI();
     }
 
@@ -78,7 +78,7 @@ public class AttrAssertion extends ReferenceAssertion<Attr> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toNamespaceURI(final Matcher<? super String> matcher) {
+    public void toNamespaceURI(final Matcher<? super String> matcher) {
         createNodeAssertion().toNamespaceURI(matcher);
     }
 
@@ -87,7 +87,7 @@ public class AttrAssertion extends ReferenceAssertion<Attr> {
      *
      * @param expected the expected value.
      */
-    public final void hasNamespaceURI(final String expected) {
+    public void hasNamespaceURI(final String expected) {
         createNodeAssertion().hasNamespaceURI(expected);
     }
 
@@ -96,7 +96,7 @@ public class AttrAssertion extends ReferenceAssertion<Attr> {
      *
      * @return the assertion.
      */
-    public final CharSequenceAssertion toPrefix() {
+    public CharSequenceAssertion toPrefix() {
         return createNodeAssertion().toPrefix();
     }
 
@@ -105,7 +105,7 @@ public class AttrAssertion extends ReferenceAssertion<Attr> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toPrefix(final Matcher<? super String> matcher) {
+    public void toPrefix(final Matcher<? super String> matcher) {
         createNodeAssertion().toPrefix(matcher);
     }
 
@@ -114,7 +114,7 @@ public class AttrAssertion extends ReferenceAssertion<Attr> {
      *
      * @param expected the expected value.
      */
-    public final void hasPrefix(final String expected) {
+    public void hasPrefix(final String expected) {
         createNodeAssertion().hasPrefix(expected);
     }
 
@@ -123,7 +123,7 @@ public class AttrAssertion extends ReferenceAssertion<Attr> {
      *
      * @return the assertion.
      */
-    public final CharSequenceAssertion toLocalName() {
+    public CharSequenceAssertion toLocalName() {
         return createNodeAssertion().toLocalName();
     }
 
@@ -132,7 +132,7 @@ public class AttrAssertion extends ReferenceAssertion<Attr> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toLocalName(final Matcher<? super String> matcher) {
+    public void toLocalName(final Matcher<? super String> matcher) {
         createNodeAssertion().toLocalName(matcher);
     }
 
@@ -141,7 +141,7 @@ public class AttrAssertion extends ReferenceAssertion<Attr> {
      *
      * @param expected the expected value.
      */
-    public final void hasLocalName(final String expected) {
+    public void hasLocalName(final String expected) {
         createNodeAssertion().hasLocalName(expected);
     }
 
@@ -150,7 +150,7 @@ public class AttrAssertion extends ReferenceAssertion<Attr> {
      *
      * @return the assertion.
      */
-    public final CharSequenceAssertion toQualifiedName() {
+    public CharSequenceAssertion toQualifiedName() {
         checkActualIsNotNull();
         return initializeAssertion(Raw.charSequenceAssertion(), getActual().getName(), Messages.Check.QUALIFIED_NAME);
     }
@@ -160,7 +160,7 @@ public class AttrAssertion extends ReferenceAssertion<Attr> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toQualifiedName(final Matcher<? super String> matcher) {
+    public void toQualifiedName(final Matcher<? super String> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().getName(), matcher, Messages.Check.QUALIFIED_NAME);
@@ -171,7 +171,7 @@ public class AttrAssertion extends ReferenceAssertion<Attr> {
      *
      * @param expected the expected value.
      */
-    public final void hasQualifiedName(final String expected) {
+    public void hasQualifiedName(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         toQualifiedName().isEqualTo(expected);
@@ -182,7 +182,7 @@ public class AttrAssertion extends ReferenceAssertion<Attr> {
      *
      * @return the assertion.
      */
-    public final CharSequenceAssertion toValue() {
+    public CharSequenceAssertion toValue() {
         checkActualIsNotNull();
         return initializeAssertion(Raw.charSequenceAssertion(), getActual().getValue(), Messages.Check.VALUE);
     }
@@ -192,7 +192,7 @@ public class AttrAssertion extends ReferenceAssertion<Attr> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toValue(final Matcher<? super String> matcher) {
+    public void toValue(final Matcher<? super String> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().getValue(), matcher, Messages.Check.VALUE);
@@ -203,7 +203,7 @@ public class AttrAssertion extends ReferenceAssertion<Attr> {
      *
      * @param expected the expected value.
      */
-    public final void hasValue(final String expected) {
+    public void hasValue(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         toValue().isEqualTo(expected);
@@ -215,7 +215,7 @@ public class AttrAssertion extends ReferenceAssertion<Attr> {
      * @param expectedLocalName the expected local name.
      * @param expectedValue     the expected value.
      */
-    public final void hasProperties(final String expectedLocalName, final String expectedValue) {
+    public void hasProperties(final String expectedLocalName, final String expectedValue) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expectedLocalName, "expectedLocalName");
         checkArgumentIsNotNull(expectedValue, "expectedValue");
@@ -231,7 +231,7 @@ public class AttrAssertion extends ReferenceAssertion<Attr> {
      * @param expectedLocalName    the expected local name.
      * @param expectedValue        the expected value.
      */
-    public final void hasProperties(final String expectedNamespaceURI, final String expectedLocalName, final String expectedValue) {
+    public void hasProperties(final String expectedNamespaceURI, final String expectedLocalName, final String expectedValue) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expectedNamespaceURI, "expectedNamespaceURI");
         checkArgumentIsNotNull(expectedLocalName, "expectedLocalName");

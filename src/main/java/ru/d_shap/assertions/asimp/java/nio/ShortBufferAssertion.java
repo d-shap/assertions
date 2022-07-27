@@ -35,7 +35,7 @@ import ru.d_shap.assertions.asimp.primitive.IntAssertion;
  *
  * @author Dmitry Shapovalov
  */
-public class ShortBufferAssertion extends ReferenceAssertion<ShortBuffer> {
+public final class ShortBufferAssertion extends ReferenceAssertion<ShortBuffer> {
 
     /**
      * Create new object.
@@ -45,49 +45,49 @@ public class ShortBufferAssertion extends ReferenceAssertion<ShortBuffer> {
     }
 
     @Override
-    protected final Class<ShortBuffer> getActualValueClass() {
+    protected Class<ShortBuffer> getActualValueClass() {
         return ShortBuffer.class;
     }
 
     /**
      * Check if the actual value is empty.
      */
-    public final void isEmpty() {
+    public void isEmpty() {
         createShortBufferAssertion(false).isEmpty();
     }
 
     /**
      * Check if the actual value is empty.
      */
-    public final void isRewindAndEmpty() {
+    public void isRewindAndEmpty() {
         createShortBufferAssertion(true).isEmpty();
     }
 
     /**
      * Check if the actual value is null or empty.
      */
-    public final void isNullOrEmpty() {
+    public void isNullOrEmpty() {
         createShortBufferAssertion(false).isNullOrEmpty();
     }
 
     /**
      * Check if the actual value is null or empty.
      */
-    public final void isRewindAndNullOrEmpty() {
+    public void isRewindAndNullOrEmpty() {
         createShortBufferAssertion(true).isNullOrEmpty();
     }
 
     /**
      * Check if the actual value is NOT empty.
      */
-    public final void isNotEmpty() {
+    public void isNotEmpty() {
         createShortBufferAssertion(false).isNotEmpty();
     }
 
     /**
      * Check if the actual value is NOT empty.
      */
-    public final void isRewindAndNotEmpty() {
+    public void isRewindAndNotEmpty() {
         createShortBufferAssertion(true).isNotEmpty();
     }
 
@@ -96,7 +96,7 @@ public class ShortBufferAssertion extends ReferenceAssertion<ShortBuffer> {
      *
      * @param expected the expected value.
      */
-    public final void contains(final int expected) {
+    public void contains(final int expected) {
         createShortBufferAssertion(false).contains((short) expected);
     }
 
@@ -105,7 +105,7 @@ public class ShortBufferAssertion extends ReferenceAssertion<ShortBuffer> {
      *
      * @param expected the expected value.
      */
-    public final void rewindAndContains(final int expected) {
+    public void rewindAndContains(final int expected) {
         createShortBufferAssertion(true).contains((short) expected);
     }
 
@@ -114,7 +114,7 @@ public class ShortBufferAssertion extends ReferenceAssertion<ShortBuffer> {
      *
      * @param expected the expected value.
      */
-    public final void doesNotContain(final int expected) {
+    public void doesNotContain(final int expected) {
         createShortBufferAssertion(false).doesNotContain((short) expected);
     }
 
@@ -123,7 +123,7 @@ public class ShortBufferAssertion extends ReferenceAssertion<ShortBuffer> {
      *
      * @param expected the expected value.
      */
-    public final void rewindAndDoesNotContain(final int expected) {
+    public void rewindAndDoesNotContain(final int expected) {
         createShortBufferAssertion(true).doesNotContain((short) expected);
     }
 
@@ -132,7 +132,7 @@ public class ShortBufferAssertion extends ReferenceAssertion<ShortBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void containsAll(final short... expected) {
+    public void containsAll(final short... expected) {
         createShortBufferAssertion(false).containsAll(expected);
     }
 
@@ -141,7 +141,7 @@ public class ShortBufferAssertion extends ReferenceAssertion<ShortBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void containsAll(final int... expected) {
+    public void containsAll(final int... expected) {
         createShortBufferAssertion(false).containsAll(expected);
     }
 
@@ -150,7 +150,7 @@ public class ShortBufferAssertion extends ReferenceAssertion<ShortBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void containsAll(final Iterable<Short> expected) {
+    public void containsAll(final Iterable<Short> expected) {
         createShortBufferAssertion(false).containsAll(expected);
     }
 
@@ -159,7 +159,7 @@ public class ShortBufferAssertion extends ReferenceAssertion<ShortBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void rewindAndContainsAll(final short... expected) {
+    public void rewindAndContainsAll(final short... expected) {
         createShortBufferAssertion(true).containsAll(expected);
     }
 
@@ -168,7 +168,7 @@ public class ShortBufferAssertion extends ReferenceAssertion<ShortBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void rewindAndContainsAll(final int... expected) {
+    public void rewindAndContainsAll(final int... expected) {
         createShortBufferAssertion(true).containsAll(expected);
     }
 
@@ -177,7 +177,7 @@ public class ShortBufferAssertion extends ReferenceAssertion<ShortBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void rewindAndContainsAll(final Iterable<Short> expected) {
+    public void rewindAndContainsAll(final Iterable<Short> expected) {
         createShortBufferAssertion(true).containsAll(expected);
     }
 
@@ -186,7 +186,7 @@ public class ShortBufferAssertion extends ReferenceAssertion<ShortBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void containsAllInOrder(final short... expected) {
+    public void containsAllInOrder(final short... expected) {
         createShortBufferAssertion(false).containsAllInOrder(expected);
     }
 
@@ -195,7 +195,7 @@ public class ShortBufferAssertion extends ReferenceAssertion<ShortBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void containsAllInOrder(final int... expected) {
+    public void containsAllInOrder(final int... expected) {
         createShortBufferAssertion(false).containsAllInOrder(expected);
     }
 
@@ -204,7 +204,7 @@ public class ShortBufferAssertion extends ReferenceAssertion<ShortBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void containsAllInOrder(final Iterable<Short> expected) {
+    public void containsAllInOrder(final Iterable<Short> expected) {
         createShortBufferAssertion(false).containsAllInOrder(expected);
     }
 
@@ -213,7 +213,7 @@ public class ShortBufferAssertion extends ReferenceAssertion<ShortBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void rewindAndContainsAllInOrder(final short... expected) {
+    public void rewindAndContainsAllInOrder(final short... expected) {
         createShortBufferAssertion(true).containsAllInOrder(expected);
     }
 
@@ -222,7 +222,7 @@ public class ShortBufferAssertion extends ReferenceAssertion<ShortBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void rewindAndContainsAllInOrder(final int... expected) {
+    public void rewindAndContainsAllInOrder(final int... expected) {
         createShortBufferAssertion(true).containsAllInOrder(expected);
     }
 
@@ -231,7 +231,7 @@ public class ShortBufferAssertion extends ReferenceAssertion<ShortBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void rewindAndContainsAllInOrder(final Iterable<Short> expected) {
+    public void rewindAndContainsAllInOrder(final Iterable<Short> expected) {
         createShortBufferAssertion(true).containsAllInOrder(expected);
     }
 
@@ -240,7 +240,7 @@ public class ShortBufferAssertion extends ReferenceAssertion<ShortBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void containsExactly(final short... expected) {
+    public void containsExactly(final short... expected) {
         createShortBufferAssertion(false).containsExactly(expected);
     }
 
@@ -249,7 +249,7 @@ public class ShortBufferAssertion extends ReferenceAssertion<ShortBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void containsExactly(final int... expected) {
+    public void containsExactly(final int... expected) {
         createShortBufferAssertion(false).containsExactly(expected);
     }
 
@@ -258,7 +258,7 @@ public class ShortBufferAssertion extends ReferenceAssertion<ShortBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void containsExactly(final Iterable<Short> expected) {
+    public void containsExactly(final Iterable<Short> expected) {
         createShortBufferAssertion(false).containsExactly(expected);
     }
 
@@ -267,7 +267,7 @@ public class ShortBufferAssertion extends ReferenceAssertion<ShortBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void rewindAndContainsExactly(final short... expected) {
+    public void rewindAndContainsExactly(final short... expected) {
         createShortBufferAssertion(true).containsExactly(expected);
     }
 
@@ -276,7 +276,7 @@ public class ShortBufferAssertion extends ReferenceAssertion<ShortBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void rewindAndContainsExactly(final int... expected) {
+    public void rewindAndContainsExactly(final int... expected) {
         createShortBufferAssertion(true).containsExactly(expected);
     }
 
@@ -285,7 +285,7 @@ public class ShortBufferAssertion extends ReferenceAssertion<ShortBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void rewindAndContainsExactly(final Iterable<Short> expected) {
+    public void rewindAndContainsExactly(final Iterable<Short> expected) {
         createShortBufferAssertion(true).containsExactly(expected);
     }
 
@@ -294,7 +294,7 @@ public class ShortBufferAssertion extends ReferenceAssertion<ShortBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void containsExactlyInOrder(final short... expected) {
+    public void containsExactlyInOrder(final short... expected) {
         createShortBufferAssertion(false).containsExactlyInOrder(expected);
     }
 
@@ -303,7 +303,7 @@ public class ShortBufferAssertion extends ReferenceAssertion<ShortBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void containsExactlyInOrder(final int... expected) {
+    public void containsExactlyInOrder(final int... expected) {
         createShortBufferAssertion(false).containsExactlyInOrder(expected);
     }
 
@@ -312,7 +312,7 @@ public class ShortBufferAssertion extends ReferenceAssertion<ShortBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void containsExactlyInOrder(final Iterable<Short> expected) {
+    public void containsExactlyInOrder(final Iterable<Short> expected) {
         createShortBufferAssertion(false).containsExactlyInOrder(expected);
     }
 
@@ -321,7 +321,7 @@ public class ShortBufferAssertion extends ReferenceAssertion<ShortBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void rewindAndContainsExactlyInOrder(final short... expected) {
+    public void rewindAndContainsExactlyInOrder(final short... expected) {
         createShortBufferAssertion(true).containsExactlyInOrder(expected);
     }
 
@@ -330,7 +330,7 @@ public class ShortBufferAssertion extends ReferenceAssertion<ShortBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void rewindAndContainsExactlyInOrder(final int... expected) {
+    public void rewindAndContainsExactlyInOrder(final int... expected) {
         createShortBufferAssertion(true).containsExactlyInOrder(expected);
     }
 
@@ -339,7 +339,7 @@ public class ShortBufferAssertion extends ReferenceAssertion<ShortBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void rewindAndContainsExactlyInOrder(final Iterable<Short> expected) {
+    public void rewindAndContainsExactlyInOrder(final Iterable<Short> expected) {
         createShortBufferAssertion(true).containsExactlyInOrder(expected);
     }
 
@@ -348,7 +348,7 @@ public class ShortBufferAssertion extends ReferenceAssertion<ShortBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void containsAny(final short... expected) {
+    public void containsAny(final short... expected) {
         createShortBufferAssertion(false).containsAny(expected);
     }
 
@@ -357,7 +357,7 @@ public class ShortBufferAssertion extends ReferenceAssertion<ShortBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void containsAny(final int... expected) {
+    public void containsAny(final int... expected) {
         createShortBufferAssertion(false).containsAny(expected);
     }
 
@@ -366,7 +366,7 @@ public class ShortBufferAssertion extends ReferenceAssertion<ShortBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void containsAny(final Iterable<Short> expected) {
+    public void containsAny(final Iterable<Short> expected) {
         createShortBufferAssertion(false).containsAny(expected);
     }
 
@@ -375,7 +375,7 @@ public class ShortBufferAssertion extends ReferenceAssertion<ShortBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void rewindAndContainsAny(final short... expected) {
+    public void rewindAndContainsAny(final short... expected) {
         createShortBufferAssertion(true).containsAny(expected);
     }
 
@@ -384,7 +384,7 @@ public class ShortBufferAssertion extends ReferenceAssertion<ShortBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void rewindAndContainsAny(final int... expected) {
+    public void rewindAndContainsAny(final int... expected) {
         createShortBufferAssertion(true).containsAny(expected);
     }
 
@@ -393,7 +393,7 @@ public class ShortBufferAssertion extends ReferenceAssertion<ShortBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void rewindAndContainsAny(final Iterable<Short> expected) {
+    public void rewindAndContainsAny(final Iterable<Short> expected) {
         createShortBufferAssertion(true).containsAny(expected);
     }
 
@@ -402,7 +402,7 @@ public class ShortBufferAssertion extends ReferenceAssertion<ShortBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void containsNone(final short... expected) {
+    public void containsNone(final short... expected) {
         createShortBufferAssertion(false).containsNone(expected);
     }
 
@@ -411,7 +411,7 @@ public class ShortBufferAssertion extends ReferenceAssertion<ShortBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void containsNone(final int... expected) {
+    public void containsNone(final int... expected) {
         createShortBufferAssertion(false).containsNone(expected);
     }
 
@@ -420,7 +420,7 @@ public class ShortBufferAssertion extends ReferenceAssertion<ShortBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void containsNone(final Iterable<Short> expected) {
+    public void containsNone(final Iterable<Short> expected) {
         createShortBufferAssertion(false).containsNone(expected);
     }
 
@@ -429,7 +429,7 @@ public class ShortBufferAssertion extends ReferenceAssertion<ShortBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void rewindAndContainsNone(final short... expected) {
+    public void rewindAndContainsNone(final short... expected) {
         createShortBufferAssertion(true).containsNone(expected);
     }
 
@@ -438,7 +438,7 @@ public class ShortBufferAssertion extends ReferenceAssertion<ShortBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void rewindAndContainsNone(final int... expected) {
+    public void rewindAndContainsNone(final int... expected) {
         createShortBufferAssertion(true).containsNone(expected);
     }
 
@@ -447,7 +447,7 @@ public class ShortBufferAssertion extends ReferenceAssertion<ShortBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void rewindAndContainsNone(final Iterable<Short> expected) {
+    public void rewindAndContainsNone(final Iterable<Short> expected) {
         createShortBufferAssertion(true).containsNone(expected);
     }
 
@@ -456,7 +456,7 @@ public class ShortBufferAssertion extends ReferenceAssertion<ShortBuffer> {
      *
      * @return the assertion.
      */
-    public final CharSequenceAssertion toHexString() {
+    public CharSequenceAssertion toHexString() {
         return createShortBufferAssertion(false).toHexString();
     }
 
@@ -468,7 +468,7 @@ public class ShortBufferAssertion extends ReferenceAssertion<ShortBuffer> {
      *
      * @return the assertion.
      */
-    public final CharSequenceAssertion toHexString(final int from, final int to) {
+    public CharSequenceAssertion toHexString(final int from, final int to) {
         return createShortBufferAssertion(false).toHexString(from, to);
     }
 
@@ -477,7 +477,7 @@ public class ShortBufferAssertion extends ReferenceAssertion<ShortBuffer> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toHexString(final Matcher<? super String> matcher) {
+    public void toHexString(final Matcher<? super String> matcher) {
         createShortBufferAssertion(false).toHexString(matcher);
     }
 
@@ -488,7 +488,7 @@ public class ShortBufferAssertion extends ReferenceAssertion<ShortBuffer> {
      * @param to      the index of the last buffer element (exclusive) for the hex representation.
      * @param matcher the hamcrest matcher.
      */
-    public final void toHexString(final int from, final int to, final Matcher<? super String> matcher) {
+    public void toHexString(final int from, final int to, final Matcher<? super String> matcher) {
         createShortBufferAssertion(false).toHexString(from, to, matcher);
     }
 
@@ -497,7 +497,7 @@ public class ShortBufferAssertion extends ReferenceAssertion<ShortBuffer> {
      *
      * @return the assertion.
      */
-    public final CharSequenceAssertion toRewindAndHexString() {
+    public CharSequenceAssertion toRewindAndHexString() {
         return createShortBufferAssertion(true).toHexString();
     }
 
@@ -509,7 +509,7 @@ public class ShortBufferAssertion extends ReferenceAssertion<ShortBuffer> {
      *
      * @return the assertion.
      */
-    public final CharSequenceAssertion toRewindAndHexString(final int from, final int to) {
+    public CharSequenceAssertion toRewindAndHexString(final int from, final int to) {
         return createShortBufferAssertion(true).toHexString(from, to);
     }
 
@@ -518,7 +518,7 @@ public class ShortBufferAssertion extends ReferenceAssertion<ShortBuffer> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toRewindAndHexString(final Matcher<? super String> matcher) {
+    public void toRewindAndHexString(final Matcher<? super String> matcher) {
         createShortBufferAssertion(true).toHexString(matcher);
     }
 
@@ -529,7 +529,7 @@ public class ShortBufferAssertion extends ReferenceAssertion<ShortBuffer> {
      * @param to      the index of the last buffer element (exclusive) for the hex representation.
      * @param matcher the hamcrest matcher.
      */
-    public final void toRewindAndHexString(final int from, final int to, final Matcher<? super String> matcher) {
+    public void toRewindAndHexString(final int from, final int to, final Matcher<? super String> matcher) {
         createShortBufferAssertion(true).toHexString(from, to, matcher);
     }
 
@@ -538,7 +538,7 @@ public class ShortBufferAssertion extends ReferenceAssertion<ShortBuffer> {
      *
      * @param expected the expected value.
      */
-    public final void hasHexString(final String expected) {
+    public void hasHexString(final String expected) {
         createShortBufferAssertion(false).hasHexString(expected);
     }
 
@@ -549,7 +549,7 @@ public class ShortBufferAssertion extends ReferenceAssertion<ShortBuffer> {
      * @param to       the index of the last buffer element (exclusive) for the hex representation.
      * @param expected the expected value.
      */
-    public final void hasHexString(final int from, final int to, final String expected) {
+    public void hasHexString(final int from, final int to, final String expected) {
         createShortBufferAssertion(false).hasHexString(from, to, expected);
     }
 
@@ -558,7 +558,7 @@ public class ShortBufferAssertion extends ReferenceAssertion<ShortBuffer> {
      *
      * @param expected the expected value.
      */
-    public final void hasRewindAndHexString(final String expected) {
+    public void hasRewindAndHexString(final String expected) {
         createShortBufferAssertion(true).hasHexString(expected);
     }
 
@@ -569,7 +569,7 @@ public class ShortBufferAssertion extends ReferenceAssertion<ShortBuffer> {
      * @param to       the index of the last buffer element (exclusive) for the hex representation.
      * @param expected the expected value.
      */
-    public final void hasRewindAndHexString(final int from, final int to, final String expected) {
+    public void hasRewindAndHexString(final int from, final int to, final String expected) {
         createShortBufferAssertion(true).hasHexString(from, to, expected);
     }
 
@@ -578,7 +578,7 @@ public class ShortBufferAssertion extends ReferenceAssertion<ShortBuffer> {
      *
      * @return the assertion.
      */
-    public final IntAssertion toPosition() {
+    public IntAssertion toPosition() {
         checkActualIsNotNull();
         return initializeAssertion(Raw.intAssertion(), getActual().position(), Messages.Check.POSITION);
     }
@@ -588,7 +588,7 @@ public class ShortBufferAssertion extends ReferenceAssertion<ShortBuffer> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toPosition(final Matcher<? super Integer> matcher) {
+    public void toPosition(final Matcher<? super Integer> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().position(), matcher, Messages.Check.POSITION);
@@ -599,7 +599,7 @@ public class ShortBufferAssertion extends ReferenceAssertion<ShortBuffer> {
      *
      * @param expected the expected position.
      */
-    public final void hasPosition(final int expected) {
+    public void hasPosition(final int expected) {
         toPosition().isEqualTo(expected);
     }
 
@@ -608,7 +608,7 @@ public class ShortBufferAssertion extends ReferenceAssertion<ShortBuffer> {
      *
      * @return the assertion.
      */
-    public final IntAssertion toLimit() {
+    public IntAssertion toLimit() {
         checkActualIsNotNull();
         return initializeAssertion(Raw.intAssertion(), getActual().limit(), Messages.Check.LIMIT);
     }
@@ -618,7 +618,7 @@ public class ShortBufferAssertion extends ReferenceAssertion<ShortBuffer> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toLimit(final Matcher<? super Integer> matcher) {
+    public void toLimit(final Matcher<? super Integer> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().limit(), matcher, Messages.Check.LIMIT);
@@ -629,7 +629,7 @@ public class ShortBufferAssertion extends ReferenceAssertion<ShortBuffer> {
      *
      * @param expected the expected limit.
      */
-    public final void hasLimit(final int expected) {
+    public void hasLimit(final int expected) {
         toLimit().isEqualTo(expected);
     }
 
@@ -638,7 +638,7 @@ public class ShortBufferAssertion extends ReferenceAssertion<ShortBuffer> {
      *
      * @return the assertion.
      */
-    public final IntAssertion toCapacity() {
+    public IntAssertion toCapacity() {
         checkActualIsNotNull();
         return initializeAssertion(Raw.intAssertion(), getActual().capacity(), Messages.Check.CAPACITY);
     }
@@ -648,7 +648,7 @@ public class ShortBufferAssertion extends ReferenceAssertion<ShortBuffer> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toCapacity(final Matcher<? super Integer> matcher) {
+    public void toCapacity(final Matcher<? super Integer> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().capacity(), matcher, Messages.Check.CAPACITY);
@@ -659,7 +659,7 @@ public class ShortBufferAssertion extends ReferenceAssertion<ShortBuffer> {
      *
      * @param expected the expected capacity.
      */
-    public final void hasCapacity(final int expected) {
+    public void hasCapacity(final int expected) {
         toCapacity().isEqualTo(expected);
     }
 
@@ -670,7 +670,7 @@ public class ShortBufferAssertion extends ReferenceAssertion<ShortBuffer> {
      * @param expectedLimit    the expected limit.
      * @param expectedCapacity the expected capacity.
      */
-    public final void hasProperties(final int expectedPosition, final int expectedLimit, final int expectedCapacity) {
+    public void hasProperties(final int expectedPosition, final int expectedLimit, final int expectedCapacity) {
         hasPosition(expectedPosition);
         hasLimit(expectedLimit);
         hasCapacity(expectedCapacity);
@@ -681,7 +681,7 @@ public class ShortBufferAssertion extends ReferenceAssertion<ShortBuffer> {
      *
      * @return the assertion.
      */
-    public final IntAssertion toRemaining() {
+    public IntAssertion toRemaining() {
         checkActualIsNotNull();
         return initializeAssertion(Raw.intAssertion(), getActual().remaining(), Messages.Check.REMAINING);
     }
@@ -691,7 +691,7 @@ public class ShortBufferAssertion extends ReferenceAssertion<ShortBuffer> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toRemaining(final Matcher<? super Integer> matcher) {
+    public void toRemaining(final Matcher<? super Integer> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().remaining(), matcher, Messages.Check.REMAINING);
@@ -702,14 +702,14 @@ public class ShortBufferAssertion extends ReferenceAssertion<ShortBuffer> {
      *
      * @param expected the expected remaining.
      */
-    public final void hasRemaining(final int expected) {
+    public void hasRemaining(final int expected) {
         toRemaining().isEqualTo(expected);
     }
 
     /**
      * Check if the actual value is direct.
      */
-    public final void isDirect() {
+    public void isDirect() {
         checkActualIsNotNull();
         if (!getActual().isDirect()) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_DIRECT).build();
@@ -719,7 +719,7 @@ public class ShortBufferAssertion extends ReferenceAssertion<ShortBuffer> {
     /**
      * Check if the actual value is NOT direct.
      */
-    public final void isNotDirect() {
+    public void isNotDirect() {
         checkActualIsNotNull();
         if (getActual().isDirect()) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_DIRECT).build();
@@ -729,7 +729,7 @@ public class ShortBufferAssertion extends ReferenceAssertion<ShortBuffer> {
     /**
      * Check if the actual value is read only.
      */
-    public final void isReadOnly() {
+    public void isReadOnly() {
         checkActualIsNotNull();
         if (!getActual().isReadOnly()) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_READ_ONLY).build();
@@ -739,7 +739,7 @@ public class ShortBufferAssertion extends ReferenceAssertion<ShortBuffer> {
     /**
      * Check if the actual value is NOT read only.
      */
-    public final void isNotReadOnly() {
+    public void isNotReadOnly() {
         checkActualIsNotNull();
         if (getActual().isReadOnly()) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_READ_ONLY).build();

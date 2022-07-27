@@ -34,7 +34,7 @@ import ru.d_shap.assertions.asimp.primitive.IntAssertion;
  *
  * @author Dmitry Shapovalov
  */
-public class DateAssertion extends ReferenceAssertion<Date> {
+public final class DateAssertion extends ReferenceAssertion<Date> {
 
     /**
      * Create new object.
@@ -44,7 +44,7 @@ public class DateAssertion extends ReferenceAssertion<Date> {
     }
 
     @Override
-    protected final Class<Date> getActualValueClass() {
+    protected Class<Date> getActualValueClass() {
         return Date.class;
     }
 
@@ -53,7 +53,7 @@ public class DateAssertion extends ReferenceAssertion<Date> {
      *
      * @param expected the expected value.
      */
-    public final void isEqualTo(final Date expected) {
+    public void isEqualTo(final Date expected) {
         if (expected == null) {
             isNull();
         } else {
@@ -69,7 +69,7 @@ public class DateAssertion extends ReferenceAssertion<Date> {
      *
      * @param expected the expected value.
      */
-    public final void isNotEqualTo(final Date expected) {
+    public void isNotEqualTo(final Date expected) {
         if (expected == null) {
             isNotNull();
         } else {
@@ -84,7 +84,7 @@ public class DateAssertion extends ReferenceAssertion<Date> {
      *
      * @param expected the expected value.
      */
-    public final void isGreaterThan(final Date expected) {
+    public void isGreaterThan(final Date expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         if (getActual().compareTo(expected) <= 0) {
@@ -97,7 +97,7 @@ public class DateAssertion extends ReferenceAssertion<Date> {
      *
      * @param expected the expected value.
      */
-    public final void isGreaterThanOrEqualTo(final Date expected) {
+    public void isGreaterThanOrEqualTo(final Date expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         if (getActual().compareTo(expected) < 0) {
@@ -110,7 +110,7 @@ public class DateAssertion extends ReferenceAssertion<Date> {
      *
      * @param expected the expected value.
      */
-    public final void isLessThan(final Date expected) {
+    public void isLessThan(final Date expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         if (getActual().compareTo(expected) >= 0) {
@@ -123,7 +123,7 @@ public class DateAssertion extends ReferenceAssertion<Date> {
      *
      * @param expected the expected value.
      */
-    public final void isLessThanOrEqualTo(final Date expected) {
+    public void isLessThanOrEqualTo(final Date expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         if (getActual().compareTo(expected) > 0) {
@@ -137,7 +137,7 @@ public class DateAssertion extends ReferenceAssertion<Date> {
      * @param expectedFrom the expected lower (inclusive) bound of the range.
      * @param expectedTo   the expected upper (exclusive) bound of the range.
      */
-    public final void isInRange(final Date expectedFrom, final Date expectedTo) {
+    public void isInRange(final Date expectedFrom, final Date expectedTo) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expectedFrom, "expectedFrom");
         checkArgumentIsNotNull(expectedTo, "expectedTo");
@@ -152,7 +152,7 @@ public class DateAssertion extends ReferenceAssertion<Date> {
      * @param expectedFrom the expected lower (inclusive) bound of the range.
      * @param expectedTo   the expected upper (exclusive) bound of the range.
      */
-    public final void isNotInRange(final Date expectedFrom, final Date expectedTo) {
+    public void isNotInRange(final Date expectedFrom, final Date expectedTo) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expectedFrom, "expectedFrom");
         checkArgumentIsNotNull(expectedTo, "expectedTo");
@@ -166,7 +166,7 @@ public class DateAssertion extends ReferenceAssertion<Date> {
      *
      * @return the assertion.
      */
-    public final IntAssertion toYear() {
+    public IntAssertion toYear() {
         return createCalendarAssertion().toYear();
     }
 
@@ -175,7 +175,7 @@ public class DateAssertion extends ReferenceAssertion<Date> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toYear(final Matcher<? super Integer> matcher) {
+    public void toYear(final Matcher<? super Integer> matcher) {
         createCalendarAssertion().toYear(matcher);
     }
 
@@ -184,7 +184,7 @@ public class DateAssertion extends ReferenceAssertion<Date> {
      *
      * @param expected the expected value.
      */
-    public final void hasYear(final int expected) {
+    public void hasYear(final int expected) {
         createCalendarAssertion().hasYear(expected);
     }
 
@@ -193,7 +193,7 @@ public class DateAssertion extends ReferenceAssertion<Date> {
      *
      * @return the assertion.
      */
-    public final IntAssertion toMonth() {
+    public IntAssertion toMonth() {
         return createCalendarAssertion().toMonth();
     }
 
@@ -202,7 +202,7 @@ public class DateAssertion extends ReferenceAssertion<Date> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toMonth(final Matcher<? super Integer> matcher) {
+    public void toMonth(final Matcher<? super Integer> matcher) {
         createCalendarAssertion().toMonth(matcher);
     }
 
@@ -211,7 +211,7 @@ public class DateAssertion extends ReferenceAssertion<Date> {
      *
      * @param expected the expected value.
      */
-    public final void hasMonth(final int expected) {
+    public void hasMonth(final int expected) {
         createCalendarAssertion().hasMonth(expected);
     }
 
@@ -220,7 +220,7 @@ public class DateAssertion extends ReferenceAssertion<Date> {
      *
      * @return the assertion.
      */
-    public final IntAssertion toWeekOfYear() {
+    public IntAssertion toWeekOfYear() {
         return createCalendarAssertion().toWeekOfYear();
     }
 
@@ -229,7 +229,7 @@ public class DateAssertion extends ReferenceAssertion<Date> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toWeekOfYear(final Matcher<? super Integer> matcher) {
+    public void toWeekOfYear(final Matcher<? super Integer> matcher) {
         createCalendarAssertion().toWeekOfYear(matcher);
     }
 
@@ -238,7 +238,7 @@ public class DateAssertion extends ReferenceAssertion<Date> {
      *
      * @param expected the expected value.
      */
-    public final void hasWeekOfYear(final int expected) {
+    public void hasWeekOfYear(final int expected) {
         createCalendarAssertion().hasWeekOfYear(expected);
     }
 
@@ -247,7 +247,7 @@ public class DateAssertion extends ReferenceAssertion<Date> {
      *
      * @return the assertion.
      */
-    public final IntAssertion toWeekOfMonth() {
+    public IntAssertion toWeekOfMonth() {
         return createCalendarAssertion().toWeekOfMonth();
     }
 
@@ -256,7 +256,7 @@ public class DateAssertion extends ReferenceAssertion<Date> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toWeekOfMonth(final Matcher<? super Integer> matcher) {
+    public void toWeekOfMonth(final Matcher<? super Integer> matcher) {
         createCalendarAssertion().toWeekOfMonth(matcher);
     }
 
@@ -265,7 +265,7 @@ public class DateAssertion extends ReferenceAssertion<Date> {
      *
      * @param expected the expected value.
      */
-    public final void hasWeekOfMonth(final int expected) {
+    public void hasWeekOfMonth(final int expected) {
         createCalendarAssertion().hasWeekOfMonth(expected);
     }
 
@@ -274,7 +274,7 @@ public class DateAssertion extends ReferenceAssertion<Date> {
      *
      * @return the assertion.
      */
-    public final IntAssertion toDayOfYear() {
+    public IntAssertion toDayOfYear() {
         return createCalendarAssertion().toDayOfYear();
     }
 
@@ -283,7 +283,7 @@ public class DateAssertion extends ReferenceAssertion<Date> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toDayOfYear(final Matcher<? super Integer> matcher) {
+    public void toDayOfYear(final Matcher<? super Integer> matcher) {
         createCalendarAssertion().toDayOfYear(matcher);
     }
 
@@ -292,7 +292,7 @@ public class DateAssertion extends ReferenceAssertion<Date> {
      *
      * @param expected the expected value.
      */
-    public final void hasDayOfYear(final int expected) {
+    public void hasDayOfYear(final int expected) {
         createCalendarAssertion().hasDayOfYear(expected);
     }
 
@@ -301,7 +301,7 @@ public class DateAssertion extends ReferenceAssertion<Date> {
      *
      * @return the assertion.
      */
-    public final IntAssertion toDayOfMonth() {
+    public IntAssertion toDayOfMonth() {
         return createCalendarAssertion().toDayOfMonth();
     }
 
@@ -310,7 +310,7 @@ public class DateAssertion extends ReferenceAssertion<Date> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toDayOfMonth(final Matcher<? super Integer> matcher) {
+    public void toDayOfMonth(final Matcher<? super Integer> matcher) {
         createCalendarAssertion().toDayOfMonth(matcher);
     }
 
@@ -319,7 +319,7 @@ public class DateAssertion extends ReferenceAssertion<Date> {
      *
      * @param expected the expected value.
      */
-    public final void hasDayOfMonth(final int expected) {
+    public void hasDayOfMonth(final int expected) {
         createCalendarAssertion().hasDayOfMonth(expected);
     }
 
@@ -328,7 +328,7 @@ public class DateAssertion extends ReferenceAssertion<Date> {
      *
      * @return the assertion.
      */
-    public final IntAssertion toDayOfWeekInMonth() {
+    public IntAssertion toDayOfWeekInMonth() {
         return createCalendarAssertion().toDayOfWeekInMonth();
     }
 
@@ -337,7 +337,7 @@ public class DateAssertion extends ReferenceAssertion<Date> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toDayOfWeekInMonth(final Matcher<? super Integer> matcher) {
+    public void toDayOfWeekInMonth(final Matcher<? super Integer> matcher) {
         createCalendarAssertion().toDayOfWeekInMonth(matcher);
     }
 
@@ -346,7 +346,7 @@ public class DateAssertion extends ReferenceAssertion<Date> {
      *
      * @param expected the expected value.
      */
-    public final void hasDayOfWeekInMonth(final int expected) {
+    public void hasDayOfWeekInMonth(final int expected) {
         createCalendarAssertion().hasDayOfWeekInMonth(expected);
     }
 
@@ -355,7 +355,7 @@ public class DateAssertion extends ReferenceAssertion<Date> {
      *
      * @return the assertion.
      */
-    public final IntAssertion toDayOfWeek() {
+    public IntAssertion toDayOfWeek() {
         return createCalendarAssertion().toDayOfWeek();
     }
 
@@ -364,7 +364,7 @@ public class DateAssertion extends ReferenceAssertion<Date> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toDayOfWeek(final Matcher<? super Integer> matcher) {
+    public void toDayOfWeek(final Matcher<? super Integer> matcher) {
         createCalendarAssertion().toDayOfWeek(matcher);
     }
 
@@ -373,7 +373,7 @@ public class DateAssertion extends ReferenceAssertion<Date> {
      *
      * @param expected the expected value.
      */
-    public final void hasDayOfWeek(final int expected) {
+    public void hasDayOfWeek(final int expected) {
         createCalendarAssertion().hasDayOfWeek(expected);
     }
 
@@ -382,7 +382,7 @@ public class DateAssertion extends ReferenceAssertion<Date> {
      *
      * @return the assertion.
      */
-    public final IntAssertion toAmPm() {
+    public IntAssertion toAmPm() {
         return createCalendarAssertion().toAmPm();
     }
 
@@ -391,21 +391,21 @@ public class DateAssertion extends ReferenceAssertion<Date> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toAmPm(final Matcher<? super Integer> matcher) {
+    public void toAmPm(final Matcher<? super Integer> matcher) {
         createCalendarAssertion().toAmPm(matcher);
     }
 
     /**
      * Check if the actual value's AM/PM is equal to AM.
      */
-    public final void isAm() {
+    public void isAm() {
         createCalendarAssertion().isAm();
     }
 
     /**
      * Check if the actual value's AM/PM is equal to PM.
      */
-    public final void isPm() {
+    public void isPm() {
         createCalendarAssertion().isPm();
     }
 
@@ -414,7 +414,7 @@ public class DateAssertion extends ReferenceAssertion<Date> {
      *
      * @return the assertion.
      */
-    public final IntAssertion toHourOfDay() {
+    public IntAssertion toHourOfDay() {
         return createCalendarAssertion().toHourOfDay();
     }
 
@@ -423,7 +423,7 @@ public class DateAssertion extends ReferenceAssertion<Date> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toHourOfDay(final Matcher<? super Integer> matcher) {
+    public void toHourOfDay(final Matcher<? super Integer> matcher) {
         createCalendarAssertion().toHourOfDay(matcher);
     }
 
@@ -432,7 +432,7 @@ public class DateAssertion extends ReferenceAssertion<Date> {
      *
      * @param expected the expected value.
      */
-    public final void hasHourOfDay(final int expected) {
+    public void hasHourOfDay(final int expected) {
         createCalendarAssertion().hasHourOfDay(expected);
     }
 
@@ -441,7 +441,7 @@ public class DateAssertion extends ReferenceAssertion<Date> {
      *
      * @return the assertion.
      */
-    public final IntAssertion toHour() {
+    public IntAssertion toHour() {
         return createCalendarAssertion().toHour();
     }
 
@@ -450,7 +450,7 @@ public class DateAssertion extends ReferenceAssertion<Date> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toHour(final Matcher<? super Integer> matcher) {
+    public void toHour(final Matcher<? super Integer> matcher) {
         createCalendarAssertion().toHour(matcher);
     }
 
@@ -459,7 +459,7 @@ public class DateAssertion extends ReferenceAssertion<Date> {
      *
      * @param expected the expected value.
      */
-    public final void hasHour(final int expected) {
+    public void hasHour(final int expected) {
         createCalendarAssertion().hasHour(expected);
     }
 
@@ -468,7 +468,7 @@ public class DateAssertion extends ReferenceAssertion<Date> {
      *
      * @return the assertion.
      */
-    public final IntAssertion toMinute() {
+    public IntAssertion toMinute() {
         return createCalendarAssertion().toMinute();
     }
 
@@ -477,7 +477,7 @@ public class DateAssertion extends ReferenceAssertion<Date> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toMinute(final Matcher<? super Integer> matcher) {
+    public void toMinute(final Matcher<? super Integer> matcher) {
         createCalendarAssertion().toMinute(matcher);
     }
 
@@ -486,7 +486,7 @@ public class DateAssertion extends ReferenceAssertion<Date> {
      *
      * @param expected the expected value.
      */
-    public final void hasMinute(final int expected) {
+    public void hasMinute(final int expected) {
         createCalendarAssertion().hasMinute(expected);
     }
 
@@ -495,7 +495,7 @@ public class DateAssertion extends ReferenceAssertion<Date> {
      *
      * @return the assertion.
      */
-    public final IntAssertion toSecond() {
+    public IntAssertion toSecond() {
         return createCalendarAssertion().toSecond();
     }
 
@@ -504,7 +504,7 @@ public class DateAssertion extends ReferenceAssertion<Date> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toSecond(final Matcher<? super Integer> matcher) {
+    public void toSecond(final Matcher<? super Integer> matcher) {
         createCalendarAssertion().toSecond(matcher);
     }
 
@@ -513,7 +513,7 @@ public class DateAssertion extends ReferenceAssertion<Date> {
      *
      * @param expected the expected value.
      */
-    public final void hasSecond(final int expected) {
+    public void hasSecond(final int expected) {
         createCalendarAssertion().hasSecond(expected);
     }
 
@@ -522,7 +522,7 @@ public class DateAssertion extends ReferenceAssertion<Date> {
      *
      * @return the assertion.
      */
-    public final IntAssertion toMillisecond() {
+    public IntAssertion toMillisecond() {
         return createCalendarAssertion().toMillisecond();
     }
 
@@ -531,7 +531,7 @@ public class DateAssertion extends ReferenceAssertion<Date> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toMillisecond(final Matcher<? super Integer> matcher) {
+    public void toMillisecond(final Matcher<? super Integer> matcher) {
         createCalendarAssertion().toMillisecond(matcher);
     }
 
@@ -540,7 +540,7 @@ public class DateAssertion extends ReferenceAssertion<Date> {
      *
      * @param expected the expected value.
      */
-    public final void hasMillisecond(final int expected) {
+    public void hasMillisecond(final int expected) {
         createCalendarAssertion().hasMillisecond(expected);
     }
 
@@ -551,7 +551,7 @@ public class DateAssertion extends ReferenceAssertion<Date> {
      * @param month      the expected month.
      * @param dayOfMonth the expected day of month.
      */
-    public final void hasDate(final int year, final int month, final int dayOfMonth) {
+    public void hasDate(final int year, final int month, final int dayOfMonth) {
         createCalendarAssertion().hasDate(year, month, dayOfMonth);
     }
 
@@ -562,7 +562,7 @@ public class DateAssertion extends ReferenceAssertion<Date> {
      * @param minute    the expected minute.
      * @param second    the expected second.
      */
-    public final void hasTime(final int hourOfDay, final int minute, final int second) {
+    public void hasTime(final int hourOfDay, final int minute, final int second) {
         createCalendarAssertion().hasTime(hourOfDay, minute, second);
     }
 
@@ -574,7 +574,7 @@ public class DateAssertion extends ReferenceAssertion<Date> {
      * @param second      the expected second.
      * @param millisecond the expected millisecond.
      */
-    public final void hasTime(final int hourOfDay, final int minute, final int second, final int millisecond) {
+    public void hasTime(final int hourOfDay, final int minute, final int second, final int millisecond) {
         createCalendarAssertion().hasTime(hourOfDay, minute, second, millisecond);
     }
 
@@ -588,7 +588,7 @@ public class DateAssertion extends ReferenceAssertion<Date> {
      * @param minute     the expected minute.
      * @param second     the expected second.
      */
-    public final void hasDateAndTime(final int year, final int month, final int dayOfMonth, final int hourOfDay, final int minute, final int second) {
+    public void hasDateAndTime(final int year, final int month, final int dayOfMonth, final int hourOfDay, final int minute, final int second) {
         createCalendarAssertion().hasDateAndTime(year, month, dayOfMonth, hourOfDay, minute, second);
     }
 
@@ -603,7 +603,7 @@ public class DateAssertion extends ReferenceAssertion<Date> {
      * @param second      the expected second.
      * @param millisecond the expected millisecond.
      */
-    public final void hasDateAndTime(final int year, final int month, final int dayOfMonth, final int hourOfDay, final int minute, final int second, final int millisecond) {
+    public void hasDateAndTime(final int year, final int month, final int dayOfMonth, final int hourOfDay, final int minute, final int second, final int millisecond) {
         createCalendarAssertion().hasDateAndTime(year, month, dayOfMonth, hourOfDay, minute, second, millisecond);
     }
 

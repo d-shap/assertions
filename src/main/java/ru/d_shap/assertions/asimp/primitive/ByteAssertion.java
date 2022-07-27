@@ -32,7 +32,7 @@ import ru.d_shap.assertions.asimp.java.lang.CharSequenceAssertion;
  *
  * @author Dmitry Shapovalov
  */
-public class ByteAssertion extends ReferenceAssertion<Byte> {
+public final class ByteAssertion extends ReferenceAssertion<Byte> {
 
     /**
      * Create new object.
@@ -42,7 +42,7 @@ public class ByteAssertion extends ReferenceAssertion<Byte> {
     }
 
     @Override
-    protected final Class<Byte> getActualValueClass() {
+    protected Class<Byte> getActualValueClass() {
         return Byte.class;
     }
 
@@ -51,7 +51,7 @@ public class ByteAssertion extends ReferenceAssertion<Byte> {
      *
      * @param expected the expected value.
      */
-    public final void isEqualTo(final int expected) {
+    public void isEqualTo(final int expected) {
         checkActualIsNotNull();
         if (getActual() != expected) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_SAME).addActual().addExpected(expected).build();
@@ -63,7 +63,7 @@ public class ByteAssertion extends ReferenceAssertion<Byte> {
      *
      * @param expected the expected value.
      */
-    public final void isEqualTo(final Byte expected) {
+    public void isEqualTo(final Byte expected) {
         if (expected == null) {
             isNull();
         } else {
@@ -76,7 +76,7 @@ public class ByteAssertion extends ReferenceAssertion<Byte> {
      *
      * @param expected the expected value.
      */
-    public final void isNotEqualTo(final int expected) {
+    public void isNotEqualTo(final int expected) {
         if (getActual() != null && getActual() == expected) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_DIFFERENT).addActual().build();
         }
@@ -87,7 +87,7 @@ public class ByteAssertion extends ReferenceAssertion<Byte> {
      *
      * @param expected the expected value.
      */
-    public final void isNotEqualTo(final Byte expected) {
+    public void isNotEqualTo(final Byte expected) {
         if (expected == null) {
             isNotNull();
         } else {
@@ -100,7 +100,7 @@ public class ByteAssertion extends ReferenceAssertion<Byte> {
      *
      * @param expected the expected value.
      */
-    public final void isGreaterThan(final int expected) {
+    public void isGreaterThan(final int expected) {
         checkActualIsNotNull();
         if (getActual() <= expected) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_GREATER).addActual().addExpected(expected).build();
@@ -112,7 +112,7 @@ public class ByteAssertion extends ReferenceAssertion<Byte> {
      *
      * @param expected the expected value.
      */
-    public final void isGreaterThan(final Byte expected) {
+    public void isGreaterThan(final Byte expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         isGreaterThan(expected.byteValue());
@@ -123,7 +123,7 @@ public class ByteAssertion extends ReferenceAssertion<Byte> {
      *
      * @param expected the expected value.
      */
-    public final void isGreaterThanOrEqualTo(final int expected) {
+    public void isGreaterThanOrEqualTo(final int expected) {
         checkActualIsNotNull();
         if (getActual() < expected) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_GREATER_OR_EQUAL).addActual().addExpected(expected).build();
@@ -135,7 +135,7 @@ public class ByteAssertion extends ReferenceAssertion<Byte> {
      *
      * @param expected the expected value.
      */
-    public final void isGreaterThanOrEqualTo(final Byte expected) {
+    public void isGreaterThanOrEqualTo(final Byte expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         isGreaterThanOrEqualTo(expected.byteValue());
@@ -146,7 +146,7 @@ public class ByteAssertion extends ReferenceAssertion<Byte> {
      *
      * @param expected the expected value.
      */
-    public final void isLessThan(final int expected) {
+    public void isLessThan(final int expected) {
         checkActualIsNotNull();
         if (getActual() >= expected) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_LESS).addActual().addExpected(expected).build();
@@ -158,7 +158,7 @@ public class ByteAssertion extends ReferenceAssertion<Byte> {
      *
      * @param expected the expected value.
      */
-    public final void isLessThan(final Byte expected) {
+    public void isLessThan(final Byte expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         isLessThan(expected.byteValue());
@@ -169,7 +169,7 @@ public class ByteAssertion extends ReferenceAssertion<Byte> {
      *
      * @param expected the expected value.
      */
-    public final void isLessThanOrEqualTo(final int expected) {
+    public void isLessThanOrEqualTo(final int expected) {
         checkActualIsNotNull();
         if (getActual() > expected) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_LESS_OR_EQUAL).addActual().addExpected(expected).build();
@@ -181,7 +181,7 @@ public class ByteAssertion extends ReferenceAssertion<Byte> {
      *
      * @param expected the expected value.
      */
-    public final void isLessThanOrEqualTo(final Byte expected) {
+    public void isLessThanOrEqualTo(final Byte expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         isLessThanOrEqualTo(expected.byteValue());
@@ -193,7 +193,7 @@ public class ByteAssertion extends ReferenceAssertion<Byte> {
      * @param expectedFrom the expected lower (inclusive) bound of the range.
      * @param expectedTo   the expected upper (exclusive) bound of the range.
      */
-    public final void isInRange(final int expectedFrom, final int expectedTo) {
+    public void isInRange(final int expectedFrom, final int expectedTo) {
         checkActualIsNotNull();
         if (getActual() < expectedFrom || getActual() >= expectedTo) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_IN_RANGE).addActual().addExpected(expectedFrom, expectedTo).build();
@@ -206,7 +206,7 @@ public class ByteAssertion extends ReferenceAssertion<Byte> {
      * @param expectedFrom the expected lower (inclusive) bound of the range.
      * @param expectedTo   the expected upper (exclusive) bound of the range.
      */
-    public final void isInRange(final Byte expectedFrom, final Byte expectedTo) {
+    public void isInRange(final Byte expectedFrom, final Byte expectedTo) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expectedFrom, "expectedFrom");
         checkArgumentIsNotNull(expectedTo, "expectedTo");
@@ -219,7 +219,7 @@ public class ByteAssertion extends ReferenceAssertion<Byte> {
      * @param expectedFrom the expected lower (inclusive) bound of the range.
      * @param expectedTo   the expected upper (exclusive) bound of the range.
      */
-    public final void isNotInRange(final int expectedFrom, final int expectedTo) {
+    public void isNotInRange(final int expectedFrom, final int expectedTo) {
         checkActualIsNotNull();
         if (getActual() >= expectedFrom && getActual() < expectedTo) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_IN_RANGE).addActual().addExpected(expectedFrom, expectedTo).build();
@@ -232,7 +232,7 @@ public class ByteAssertion extends ReferenceAssertion<Byte> {
      * @param expectedFrom the expected lower (inclusive) bound of the range.
      * @param expectedTo   the expected upper (exclusive) bound of the range.
      */
-    public final void isNotInRange(final Byte expectedFrom, final Byte expectedTo) {
+    public void isNotInRange(final Byte expectedFrom, final Byte expectedTo) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expectedFrom, "expectedFrom");
         checkArgumentIsNotNull(expectedTo, "expectedTo");
@@ -244,7 +244,7 @@ public class ByteAssertion extends ReferenceAssertion<Byte> {
      *
      * @return the assertion.
      */
-    public final CharSequenceAssertion toHexString() {
+    public CharSequenceAssertion toHexString() {
         checkActualIsNotNull();
         HexString hexString = convertValue(getActual(), null, HexString.class);
         return initializeAssertion(Raw.charSequenceAssertion(), hexString.toString(), Messages.Check.HEX_REPRESENTATION);
@@ -255,7 +255,7 @@ public class ByteAssertion extends ReferenceAssertion<Byte> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toHexString(final Matcher<? super String> matcher) {
+    public void toHexString(final Matcher<? super String> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         HexString hexString = convertValue(getActual(), null, HexString.class);
@@ -267,7 +267,7 @@ public class ByteAssertion extends ReferenceAssertion<Byte> {
      *
      * @param expected the expected value.
      */
-    public final void hasHexString(final String expected) {
+    public void hasHexString(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         toHexString().isEqualTo(expected);

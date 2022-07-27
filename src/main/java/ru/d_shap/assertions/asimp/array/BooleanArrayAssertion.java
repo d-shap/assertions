@@ -34,7 +34,7 @@ import ru.d_shap.assertions.asimp.primitive.IntAssertion;
  *
  * @author Dmitry Shapovalov
  */
-public class BooleanArrayAssertion extends ReferenceAssertion<boolean[]> {
+public final class BooleanArrayAssertion extends ReferenceAssertion<boolean[]> {
 
     /**
      * Create new object.
@@ -44,14 +44,14 @@ public class BooleanArrayAssertion extends ReferenceAssertion<boolean[]> {
     }
 
     @Override
-    protected final Class<boolean[]> getActualValueClass() {
+    protected Class<boolean[]> getActualValueClass() {
         return boolean[].class;
     }
 
     /**
      * Check if the actual value is empty.
      */
-    public final void isEmpty() {
+    public void isEmpty() {
         checkActualIsNotNull();
         if (getActual().length != 0) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_EMPTY).addActual().build();
@@ -61,7 +61,7 @@ public class BooleanArrayAssertion extends ReferenceAssertion<boolean[]> {
     /**
      * Check if the actual value is null or empty.
      */
-    public final void isNullOrEmpty() {
+    public void isNullOrEmpty() {
         if (getActual() != null && getActual().length != 0) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NULL_OR_EMPTY).addActual().build();
         }
@@ -70,7 +70,7 @@ public class BooleanArrayAssertion extends ReferenceAssertion<boolean[]> {
     /**
      * Check if the actual value is NOT empty.
      */
-    public final void isNotEmpty() {
+    public void isNotEmpty() {
         checkActualIsNotNull();
         if (getActual().length == 0) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_EMPTY).build();
@@ -82,7 +82,7 @@ public class BooleanArrayAssertion extends ReferenceAssertion<boolean[]> {
      *
      * @param expected the expected value.
      */
-    public final void contains(final boolean expected) {
+    public void contains(final boolean expected) {
         createIterableAssertion().contains(expected);
     }
 
@@ -91,7 +91,7 @@ public class BooleanArrayAssertion extends ReferenceAssertion<boolean[]> {
      *
      * @param expected the expected value.
      */
-    public final void doesNotContain(final boolean expected) {
+    public void doesNotContain(final boolean expected) {
         createIterableAssertion().doesNotContain(expected);
     }
 
@@ -100,7 +100,7 @@ public class BooleanArrayAssertion extends ReferenceAssertion<boolean[]> {
      *
      * @param expected the expected values.
      */
-    public final void containsAll(final boolean... expected) {
+    public void containsAll(final boolean... expected) {
         List<Object> expectedList = convertValue(expected, null, List.class);
         createIterableAssertion().containsAll(expectedList);
     }
@@ -110,7 +110,7 @@ public class BooleanArrayAssertion extends ReferenceAssertion<boolean[]> {
      *
      * @param expected the expected values.
      */
-    public final void containsAll(final Iterable<Boolean> expected) {
+    public void containsAll(final Iterable<Boolean> expected) {
         List<Object> expectedList = convertValue(expected, null, List.class);
         createIterableAssertion().containsAll(expectedList);
     }
@@ -120,7 +120,7 @@ public class BooleanArrayAssertion extends ReferenceAssertion<boolean[]> {
      *
      * @param expected the expected values.
      */
-    public final void containsAllInOrder(final boolean... expected) {
+    public void containsAllInOrder(final boolean... expected) {
         List<Object> expectedList = convertValue(expected, null, List.class);
         createIterableAssertion().containsAllInOrder(expectedList);
     }
@@ -130,7 +130,7 @@ public class BooleanArrayAssertion extends ReferenceAssertion<boolean[]> {
      *
      * @param expected the expected values.
      */
-    public final void containsAllInOrder(final Iterable<Boolean> expected) {
+    public void containsAllInOrder(final Iterable<Boolean> expected) {
         List<Object> expectedList = convertValue(expected, null, List.class);
         createIterableAssertion().containsAllInOrder(expectedList);
     }
@@ -140,7 +140,7 @@ public class BooleanArrayAssertion extends ReferenceAssertion<boolean[]> {
      *
      * @param expected the expected values.
      */
-    public final void containsExactly(final boolean... expected) {
+    public void containsExactly(final boolean... expected) {
         List<Object> expectedList = convertValue(expected, null, List.class);
         createIterableAssertion().containsExactly(expectedList);
     }
@@ -150,7 +150,7 @@ public class BooleanArrayAssertion extends ReferenceAssertion<boolean[]> {
      *
      * @param expected the expected values.
      */
-    public final void containsExactly(final Iterable<Boolean> expected) {
+    public void containsExactly(final Iterable<Boolean> expected) {
         List<Object> expectedList = convertValue(expected, null, List.class);
         createIterableAssertion().containsExactly(expectedList);
     }
@@ -160,7 +160,7 @@ public class BooleanArrayAssertion extends ReferenceAssertion<boolean[]> {
      *
      * @param expected the expected values.
      */
-    public final void containsExactlyInOrder(final boolean... expected) {
+    public void containsExactlyInOrder(final boolean... expected) {
         List<Object> expectedList = convertValue(expected, null, List.class);
         createIterableAssertion().containsExactlyInOrder(expectedList);
     }
@@ -170,7 +170,7 @@ public class BooleanArrayAssertion extends ReferenceAssertion<boolean[]> {
      *
      * @param expected the expected values.
      */
-    public final void containsExactlyInOrder(final Iterable<Boolean> expected) {
+    public void containsExactlyInOrder(final Iterable<Boolean> expected) {
         List<Object> expectedList = convertValue(expected, null, List.class);
         createIterableAssertion().containsExactlyInOrder(expectedList);
     }
@@ -180,7 +180,7 @@ public class BooleanArrayAssertion extends ReferenceAssertion<boolean[]> {
      *
      * @param expected the expected values.
      */
-    public final void containsAny(final boolean... expected) {
+    public void containsAny(final boolean... expected) {
         List<Object> expectedList = convertValue(expected, null, List.class);
         createIterableAssertion().containsAny(expectedList);
     }
@@ -190,7 +190,7 @@ public class BooleanArrayAssertion extends ReferenceAssertion<boolean[]> {
      *
      * @param expected the expected values.
      */
-    public final void containsAny(final Iterable<Boolean> expected) {
+    public void containsAny(final Iterable<Boolean> expected) {
         List<Object> expectedList = convertValue(expected, null, List.class);
         createIterableAssertion().containsAny(expectedList);
     }
@@ -200,7 +200,7 @@ public class BooleanArrayAssertion extends ReferenceAssertion<boolean[]> {
      *
      * @param expected the expected values.
      */
-    public final void containsNone(final boolean... expected) {
+    public void containsNone(final boolean... expected) {
         List<Object> expectedList = convertValue(expected, null, List.class);
         createIterableAssertion().containsNone(expectedList);
     }
@@ -210,7 +210,7 @@ public class BooleanArrayAssertion extends ReferenceAssertion<boolean[]> {
      *
      * @param expected the expected values.
      */
-    public final void containsNone(final Iterable<Boolean> expected) {
+    public void containsNone(final Iterable<Boolean> expected) {
         List<Object> expectedList = convertValue(expected, null, List.class);
         createIterableAssertion().containsNone(expectedList);
     }
@@ -220,7 +220,7 @@ public class BooleanArrayAssertion extends ReferenceAssertion<boolean[]> {
      *
      * @return the assertion.
      */
-    public final IntAssertion toLength() {
+    public IntAssertion toLength() {
         checkActualIsNotNull();
         return initializeAssertion(Raw.intAssertion(), getActual().length, Messages.Check.LENGTH);
     }
@@ -230,7 +230,7 @@ public class BooleanArrayAssertion extends ReferenceAssertion<boolean[]> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toLength(final Matcher<? super Integer> matcher) {
+    public void toLength(final Matcher<? super Integer> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().length, matcher, Messages.Check.LENGTH);
@@ -241,7 +241,7 @@ public class BooleanArrayAssertion extends ReferenceAssertion<boolean[]> {
      *
      * @param expected the expected length.
      */
-    public final void hasLength(final int expected) {
+    public void hasLength(final int expected) {
         toLength().isEqualTo(expected);
     }
 

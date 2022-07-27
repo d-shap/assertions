@@ -27,7 +27,7 @@ import ru.d_shap.assertions.asimp.ReferenceAssertion;
  *
  * @author Dmitry Shapovalov
  */
-public class BooleanAssertion extends ReferenceAssertion<Boolean> {
+public final class BooleanAssertion extends ReferenceAssertion<Boolean> {
 
     /**
      * Create new object.
@@ -37,14 +37,14 @@ public class BooleanAssertion extends ReferenceAssertion<Boolean> {
     }
 
     @Override
-    protected final Class<Boolean> getActualValueClass() {
+    protected Class<Boolean> getActualValueClass() {
         return Boolean.class;
     }
 
     /**
      * Check if the actual value is true.
      */
-    public final void isTrue() {
+    public void isTrue() {
         checkActualIsNotNull();
         if (!getActual()) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_TRUE).build();
@@ -54,7 +54,7 @@ public class BooleanAssertion extends ReferenceAssertion<Boolean> {
     /**
      * Check if the actual value is false.
      */
-    public final void isFalse() {
+    public void isFalse() {
         checkActualIsNotNull();
         if (getActual()) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_FALSE).build();

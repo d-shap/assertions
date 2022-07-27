@@ -34,7 +34,7 @@ import ru.d_shap.assertions.asimp.java.lang.CharSequenceAssertion;
  *
  * @author Dmitry Shapovalov
  */
-public class QNameAssertion extends ReferenceAssertion<QName> {
+public final class QNameAssertion extends ReferenceAssertion<QName> {
 
     /**
      * Create new object.
@@ -44,7 +44,7 @@ public class QNameAssertion extends ReferenceAssertion<QName> {
     }
 
     @Override
-    protected final Class<QName> getActualValueClass() {
+    protected Class<QName> getActualValueClass() {
         return QName.class;
     }
 
@@ -53,7 +53,7 @@ public class QNameAssertion extends ReferenceAssertion<QName> {
      *
      * @param expected the expected value.
      */
-    public final void isEqualTo(final QName expected) {
+    public void isEqualTo(final QName expected) {
         if (expected == null) {
             isNull();
         } else {
@@ -69,7 +69,7 @@ public class QNameAssertion extends ReferenceAssertion<QName> {
      *
      * @param expected the expected value.
      */
-    public final void isNotEqualTo(final QName expected) {
+    public void isNotEqualTo(final QName expected) {
         if (expected == null) {
             isNotNull();
         } else {
@@ -84,7 +84,7 @@ public class QNameAssertion extends ReferenceAssertion<QName> {
      *
      * @return the assertion.
      */
-    public final CharSequenceAssertion toNamespaceURI() {
+    public CharSequenceAssertion toNamespaceURI() {
         checkActualIsNotNull();
         return initializeAssertion(Raw.charSequenceAssertion(), getActual().getNamespaceURI(), Messages.Check.NAMESPACE_URI);
     }
@@ -94,7 +94,7 @@ public class QNameAssertion extends ReferenceAssertion<QName> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toNamespaceURI(final Matcher<? super String> matcher) {
+    public void toNamespaceURI(final Matcher<? super String> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().getNamespaceURI(), matcher, Messages.Check.NAMESPACE_URI);
@@ -105,7 +105,7 @@ public class QNameAssertion extends ReferenceAssertion<QName> {
      *
      * @param expected the expected value.
      */
-    public final void hasNamespaceURI(final String expected) {
+    public void hasNamespaceURI(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         toNamespaceURI().isEqualTo(expected);
@@ -116,7 +116,7 @@ public class QNameAssertion extends ReferenceAssertion<QName> {
      *
      * @return the assertion.
      */
-    public final CharSequenceAssertion toPrefix() {
+    public CharSequenceAssertion toPrefix() {
         checkActualIsNotNull();
         return initializeAssertion(Raw.charSequenceAssertion(), getActual().getPrefix(), Messages.Check.PREFIX);
     }
@@ -126,7 +126,7 @@ public class QNameAssertion extends ReferenceAssertion<QName> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toPrefix(final Matcher<? super String> matcher) {
+    public void toPrefix(final Matcher<? super String> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().getPrefix(), matcher, Messages.Check.PREFIX);
@@ -137,7 +137,7 @@ public class QNameAssertion extends ReferenceAssertion<QName> {
      *
      * @param expected the expected value.
      */
-    public final void hasPrefix(final String expected) {
+    public void hasPrefix(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         toPrefix().isEqualTo(expected);
@@ -148,7 +148,7 @@ public class QNameAssertion extends ReferenceAssertion<QName> {
      *
      * @return the assertion.
      */
-    public final CharSequenceAssertion toLocalPart() {
+    public CharSequenceAssertion toLocalPart() {
         checkActualIsNotNull();
         return initializeAssertion(Raw.charSequenceAssertion(), getActual().getLocalPart(), Messages.Check.LOCAL_PART);
     }
@@ -158,7 +158,7 @@ public class QNameAssertion extends ReferenceAssertion<QName> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toLocalPart(final Matcher<? super String> matcher) {
+    public void toLocalPart(final Matcher<? super String> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().getLocalPart(), matcher, Messages.Check.LOCAL_PART);
@@ -169,7 +169,7 @@ public class QNameAssertion extends ReferenceAssertion<QName> {
      *
      * @param expected the expected value.
      */
-    public final void hasLocalPart(final String expected) {
+    public void hasLocalPart(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         toLocalPart().isEqualTo(expected);
@@ -180,7 +180,7 @@ public class QNameAssertion extends ReferenceAssertion<QName> {
      *
      * @param expectedLocalPart the expected local part.
      */
-    public final void hasProperties(final String expectedLocalPart) {
+    public void hasProperties(final String expectedLocalPart) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expectedLocalPart, "expectedLocalPart");
         hasNamespaceURI(XMLConstants.NULL_NS_URI);
@@ -193,7 +193,7 @@ public class QNameAssertion extends ReferenceAssertion<QName> {
      * @param expectedNamespaceURI the expected namespace URI.
      * @param expectedLocalPart    the expected local part.
      */
-    public final void hasProperties(final String expectedNamespaceURI, final String expectedLocalPart) {
+    public void hasProperties(final String expectedNamespaceURI, final String expectedLocalPart) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expectedNamespaceURI, "expectedNamespaceURI");
         checkArgumentIsNotNull(expectedLocalPart, "expectedLocalPart");

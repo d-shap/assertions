@@ -30,7 +30,7 @@ import ru.d_shap.assertions.asimp.ReferenceAssertion;
  *
  * @author Dmitry Shapovalov
  */
-public class ThrowableAssertion extends ReferenceAssertion<Throwable> {
+public final class ThrowableAssertion extends ReferenceAssertion<Throwable> {
 
     /**
      * Create new object.
@@ -40,7 +40,7 @@ public class ThrowableAssertion extends ReferenceAssertion<Throwable> {
     }
 
     @Override
-    protected final Class<Throwable> getActualValueClass() {
+    protected Class<Throwable> getActualValueClass() {
         return Throwable.class;
     }
 
@@ -49,7 +49,7 @@ public class ThrowableAssertion extends ReferenceAssertion<Throwable> {
      *
      * @return the assertion.
      */
-    public final CharSequenceAssertion toMessage() {
+    public CharSequenceAssertion toMessage() {
         checkActualIsNotNull();
         return initializeAssertion(Raw.charSequenceAssertion(), getActual().getMessage(), Messages.Check.MESSAGE);
     }
@@ -59,7 +59,7 @@ public class ThrowableAssertion extends ReferenceAssertion<Throwable> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toMessage(final Matcher<? super String> matcher) {
+    public void toMessage(final Matcher<? super String> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().getMessage(), matcher, Messages.Check.MESSAGE);
@@ -68,56 +68,56 @@ public class ThrowableAssertion extends ReferenceAssertion<Throwable> {
     /**
      * Check if the message of the throwable is null.
      */
-    public final void messageIsNull() {
+    public void messageIsNull() {
         toMessage().isNull();
     }
 
     /**
      * Check if the message of the throwable is NOT null.
      */
-    public final void messageIsNotNull() {
+    public void messageIsNotNull() {
         toMessage().isNotNull();
     }
 
     /**
      * Check if the message of the throwable is empty.
      */
-    public final void messageIsEmpty() {
+    public void messageIsEmpty() {
         toMessage().isEmpty();
     }
 
     /**
      * Check if the message of the throwable is null or empty.
      */
-    public final void messageIsNullOrEmpty() {
+    public void messageIsNullOrEmpty() {
         toMessage().isNullOrEmpty();
     }
 
     /**
      * Check if the message of the throwable is NOT empty.
      */
-    public final void messageIsNotEmpty() {
+    public void messageIsNotEmpty() {
         toMessage().isNotEmpty();
     }
 
     /**
      * Check if the message of the throwable is blank.
      */
-    public final void messageIsBlank() {
+    public void messageIsBlank() {
         toMessage().isBlank();
     }
 
     /**
      * Check if the message of the throwable is null or blank.
      */
-    public final void messageIsNullOrBlank() {
+    public void messageIsNullOrBlank() {
         toMessage().isNullOrBlank();
     }
 
     /**
      * Check if the message of the throwable is NOT blank.
      */
-    public final void messageIsNotBlank() {
+    public void messageIsNotBlank() {
         toMessage().isNotBlank();
     }
 
@@ -126,7 +126,7 @@ public class ThrowableAssertion extends ReferenceAssertion<Throwable> {
      *
      * @param expected the expected value.
      */
-    public final void hasMessage(final String expected) {
+    public void hasMessage(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         toMessage().isEqualTo(expected);
@@ -137,7 +137,7 @@ public class ThrowableAssertion extends ReferenceAssertion<Throwable> {
      *
      * @param expected the expected value.
      */
-    public final void messageContains(final String expected) {
+    public void messageContains(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         toMessage().contains(expected);
@@ -148,7 +148,7 @@ public class ThrowableAssertion extends ReferenceAssertion<Throwable> {
      *
      * @param expected the expected value.
      */
-    public final void messageContainsIgnoreCase(final String expected) {
+    public void messageContainsIgnoreCase(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         toMessage().containsIgnoreCase(expected);
@@ -159,7 +159,7 @@ public class ThrowableAssertion extends ReferenceAssertion<Throwable> {
      *
      * @param expected the expected value.
      */
-    public final void messageMatches(final String expected) {
+    public void messageMatches(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         toMessage().matches(expected);
@@ -170,7 +170,7 @@ public class ThrowableAssertion extends ReferenceAssertion<Throwable> {
      *
      * @return the assertion.
      */
-    public final ThrowableAssertion toCause() {
+    public ThrowableAssertion toCause() {
         checkActualIsNotNull();
         return initializeAssertion(Raw.throwableAssertion(), getActual().getCause(), Messages.Check.CAUSE);
     }
@@ -180,7 +180,7 @@ public class ThrowableAssertion extends ReferenceAssertion<Throwable> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toCause(final Matcher<? super Throwable> matcher) {
+    public void toCause(final Matcher<? super Throwable> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().getCause(), matcher, Messages.Check.CAUSE);
@@ -189,14 +189,14 @@ public class ThrowableAssertion extends ReferenceAssertion<Throwable> {
     /**
      * Check if the cause of the throwable is null.
      */
-    public final void causeIsNull() {
+    public void causeIsNull() {
         toCause().isNull();
     }
 
     /**
      * Check if the cause of the throwable is NOT null.
      */
-    public final void causeIsNotNull() {
+    public void causeIsNotNull() {
         toCause().isNotNull();
     }
 
@@ -205,7 +205,7 @@ public class ThrowableAssertion extends ReferenceAssertion<Throwable> {
      *
      * @param expected the expected class.
      */
-    public final void hasCause(final Class<?> expected) {
+    public void hasCause(final Class<?> expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         toCause().isInstanceOf(expected);
@@ -216,7 +216,7 @@ public class ThrowableAssertion extends ReferenceAssertion<Throwable> {
      *
      * @param expected the expected classes.
      */
-    public final void hasCauses(final Class<?>... expected) {
+    public void hasCauses(final Class<?>... expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         checkArgumentIsNotEmpty(expected.length == 0, "expected", true);
@@ -236,56 +236,56 @@ public class ThrowableAssertion extends ReferenceAssertion<Throwable> {
     /**
      * Check if the message of the cause of the throwable is null.
      */
-    public final void causeMessageIsNull() {
+    public void causeMessageIsNull() {
         toCause().messageIsNull();
     }
 
     /**
      * Check if the message of the cause of the throwable is NOT null.
      */
-    public final void causeMessageIsNotNull() {
+    public void causeMessageIsNotNull() {
         toCause().messageIsNotNull();
     }
 
     /**
      * Check if the message of the cause of the throwable is empty.
      */
-    public final void causeMessageIsEmpty() {
+    public void causeMessageIsEmpty() {
         toCause().messageIsEmpty();
     }
 
     /**
      * Check if the message of the cause of the throwable is null or empty.
      */
-    public final void causeMessageIsNullOrEmpty() {
+    public void causeMessageIsNullOrEmpty() {
         toCause().messageIsNullOrEmpty();
     }
 
     /**
      * Check if the message of the cause of the throwable is NOT empty.
      */
-    public final void causeMessageIsNotEmpty() {
+    public void causeMessageIsNotEmpty() {
         toCause().messageIsNotEmpty();
     }
 
     /**
      * Check if the message of the cause of the throwable is blank.
      */
-    public final void causeMessageIsBlank() {
+    public void causeMessageIsBlank() {
         toCause().messageIsBlank();
     }
 
     /**
      * Check if the message of the cause of the throwable is null or blank.
      */
-    public final void causeMessageIsNullOrBlank() {
+    public void causeMessageIsNullOrBlank() {
         toCause().messageIsNullOrBlank();
     }
 
     /**
      * Check if the message of the cause of the throwable is NOT blank.
      */
-    public final void causeMessageIsNotBlank() {
+    public void causeMessageIsNotBlank() {
         toCause().messageIsNotBlank();
     }
 
@@ -294,7 +294,7 @@ public class ThrowableAssertion extends ReferenceAssertion<Throwable> {
      *
      * @param expected the expected value.
      */
-    public final void hasCauseMessage(final String expected) {
+    public void hasCauseMessage(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         toCause().hasMessage(expected);
@@ -305,7 +305,7 @@ public class ThrowableAssertion extends ReferenceAssertion<Throwable> {
      *
      * @param expected the expected value.
      */
-    public final void causeMessageContains(final String expected) {
+    public void causeMessageContains(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         toCause().messageContains(expected);
@@ -316,7 +316,7 @@ public class ThrowableAssertion extends ReferenceAssertion<Throwable> {
      *
      * @param expected the expected value.
      */
-    public final void causeMessageContainsIgnoreCase(final String expected) {
+    public void causeMessageContainsIgnoreCase(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         toCause().messageContainsIgnoreCase(expected);
@@ -327,7 +327,7 @@ public class ThrowableAssertion extends ReferenceAssertion<Throwable> {
      *
      * @param expected the expected value.
      */
-    public final void causeMessageMatches(final String expected) {
+    public void causeMessageMatches(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         toCause().messageMatches(expected);

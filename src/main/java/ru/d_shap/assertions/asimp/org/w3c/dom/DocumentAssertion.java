@@ -35,7 +35,7 @@ import ru.d_shap.assertions.converter.ConversionExceptionHolder;
  *
  * @author Dmitry Shapovalov
  */
-public class DocumentAssertion extends ReferenceAssertion<Document> {
+public final class DocumentAssertion extends ReferenceAssertion<Document> {
 
     /**
      * Create new object.
@@ -45,7 +45,7 @@ public class DocumentAssertion extends ReferenceAssertion<Document> {
     }
 
     @Override
-    protected final Class<Document> getActualValueClass() {
+    protected Class<Document> getActualValueClass() {
         return Document.class;
     }
 
@@ -54,7 +54,7 @@ public class DocumentAssertion extends ReferenceAssertion<Document> {
      *
      * @param expected the expected value.
      */
-    public final void isEqualTo(final Document expected) {
+    public void isEqualTo(final Document expected) {
         createNodeAssertion().isEqualTo(expected);
     }
 
@@ -63,7 +63,7 @@ public class DocumentAssertion extends ReferenceAssertion<Document> {
      *
      * @param expected the expected value.
      */
-    public final void isEqualTo(final String expected) {
+    public void isEqualTo(final String expected) {
         if (expected == null) {
             isNull();
         } else {
@@ -80,7 +80,7 @@ public class DocumentAssertion extends ReferenceAssertion<Document> {
      *
      * @param expected the expected value.
      */
-    public final void isNotEqualTo(final Document expected) {
+    public void isNotEqualTo(final Document expected) {
         createNodeAssertion().isNotEqualTo(expected);
     }
 
@@ -89,7 +89,7 @@ public class DocumentAssertion extends ReferenceAssertion<Document> {
      *
      * @param expected the expected value.
      */
-    public final void isNotEqualTo(final String expected) {
+    public void isNotEqualTo(final String expected) {
         ConversionExceptionHolder conversionExceptionHolder = new ConversionExceptionHolder();
         Document expectedDocument = convertValue(expected, conversionExceptionHolder, Document.class);
         checkArgumentIsValid(conversionExceptionHolder, "expected", Messages.Fail.Argument.IS_VALID_XML);
@@ -101,7 +101,7 @@ public class DocumentAssertion extends ReferenceAssertion<Document> {
      *
      * @return the assertion.
      */
-    public final CharSequenceAssertion toNamespaceURI() {
+    public CharSequenceAssertion toNamespaceURI() {
         checkActualIsNotNull();
         return createElementAssertion().toNamespaceURI();
     }
@@ -111,7 +111,7 @@ public class DocumentAssertion extends ReferenceAssertion<Document> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toNamespaceURI(final Matcher<? super String> matcher) {
+    public void toNamespaceURI(final Matcher<? super String> matcher) {
         checkActualIsNotNull();
         createElementAssertion().toNamespaceURI(matcher);
     }
@@ -121,7 +121,7 @@ public class DocumentAssertion extends ReferenceAssertion<Document> {
      *
      * @param expected the expected value.
      */
-    public final void hasNamespaceURI(final String expected) {
+    public void hasNamespaceURI(final String expected) {
         checkActualIsNotNull();
         createElementAssertion().hasNamespaceURI(expected);
     }
@@ -131,7 +131,7 @@ public class DocumentAssertion extends ReferenceAssertion<Document> {
      *
      * @return the assertion.
      */
-    public final CharSequenceAssertion toPrefix() {
+    public CharSequenceAssertion toPrefix() {
         checkActualIsNotNull();
         return createElementAssertion().toPrefix();
     }
@@ -141,7 +141,7 @@ public class DocumentAssertion extends ReferenceAssertion<Document> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toPrefix(final Matcher<? super String> matcher) {
+    public void toPrefix(final Matcher<? super String> matcher) {
         checkActualIsNotNull();
         createElementAssertion().toPrefix(matcher);
     }
@@ -151,7 +151,7 @@ public class DocumentAssertion extends ReferenceAssertion<Document> {
      *
      * @param expected the expected value.
      */
-    public final void hasPrefix(final String expected) {
+    public void hasPrefix(final String expected) {
         checkActualIsNotNull();
         createElementAssertion().hasPrefix(expected);
     }
@@ -161,7 +161,7 @@ public class DocumentAssertion extends ReferenceAssertion<Document> {
      *
      * @return the assertion.
      */
-    public final CharSequenceAssertion toLocalName() {
+    public CharSequenceAssertion toLocalName() {
         checkActualIsNotNull();
         return createElementAssertion().toLocalName();
     }
@@ -171,7 +171,7 @@ public class DocumentAssertion extends ReferenceAssertion<Document> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toLocalName(final Matcher<? super String> matcher) {
+    public void toLocalName(final Matcher<? super String> matcher) {
         checkActualIsNotNull();
         createElementAssertion().toLocalName(matcher);
     }
@@ -181,7 +181,7 @@ public class DocumentAssertion extends ReferenceAssertion<Document> {
      *
      * @param expected the expected value.
      */
-    public final void hasLocalName(final String expected) {
+    public void hasLocalName(final String expected) {
         checkActualIsNotNull();
         createElementAssertion().hasLocalName(expected);
     }
@@ -191,7 +191,7 @@ public class DocumentAssertion extends ReferenceAssertion<Document> {
      *
      * @return the assertion.
      */
-    public final CharSequenceAssertion toQualifiedName() {
+    public CharSequenceAssertion toQualifiedName() {
         checkActualIsNotNull();
         return createElementAssertion().toQualifiedName();
     }
@@ -201,7 +201,7 @@ public class DocumentAssertion extends ReferenceAssertion<Document> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toQualifiedName(final Matcher<? super String> matcher) {
+    public void toQualifiedName(final Matcher<? super String> matcher) {
         checkActualIsNotNull();
         createElementAssertion().toQualifiedName(matcher);
     }
@@ -211,7 +211,7 @@ public class DocumentAssertion extends ReferenceAssertion<Document> {
      *
      * @param expected the expected value.
      */
-    public final void hasQualifiedName(final String expected) {
+    public void hasQualifiedName(final String expected) {
         checkActualIsNotNull();
         createElementAssertion().hasQualifiedName(expected);
     }
@@ -221,7 +221,7 @@ public class DocumentAssertion extends ReferenceAssertion<Document> {
      *
      * @param expectedLocalName the expected local name.
      */
-    public final void hasProperties(final String expectedLocalName) {
+    public void hasProperties(final String expectedLocalName) {
         checkActualIsNotNull();
         createElementAssertion().hasProperties(expectedLocalName);
     }
@@ -232,7 +232,7 @@ public class DocumentAssertion extends ReferenceAssertion<Document> {
      * @param expectedNamespaceURI the expected namespace URI.
      * @param expectedLocalName    the expected local name.
      */
-    public final void hasProperties(final String expectedNamespaceURI, final String expectedLocalName) {
+    public void hasProperties(final String expectedNamespaceURI, final String expectedLocalName) {
         checkActualIsNotNull();
         createElementAssertion().hasProperties(expectedNamespaceURI, expectedLocalName);
     }
@@ -242,7 +242,7 @@ public class DocumentAssertion extends ReferenceAssertion<Document> {
      *
      * @param localName the specified local name.
      */
-    public final void hasAttribute(final String localName) {
+    public void hasAttribute(final String localName) {
         checkActualIsNotNull();
         createElementAssertion().hasAttribute(localName);
     }
@@ -253,7 +253,7 @@ public class DocumentAssertion extends ReferenceAssertion<Document> {
      * @param namespaceURI the specified namespace URI.
      * @param localName    the specified local name.
      */
-    public final void hasAttribute(final String namespaceURI, final String localName) {
+    public void hasAttribute(final String namespaceURI, final String localName) {
         checkActualIsNotNull();
         createElementAssertion().hasAttribute(namespaceURI, localName);
     }
@@ -263,7 +263,7 @@ public class DocumentAssertion extends ReferenceAssertion<Document> {
      *
      * @param localName the specified local name.
      */
-    public final void hasNotAttribute(final String localName) {
+    public void hasNotAttribute(final String localName) {
         checkActualIsNotNull();
         createElementAssertion().hasNotAttribute(localName);
     }
@@ -274,7 +274,7 @@ public class DocumentAssertion extends ReferenceAssertion<Document> {
      * @param namespaceURI the specified namespace URI.
      * @param localName    the specified local name.
      */
-    public final void hasNotAttribute(final String namespaceURI, final String localName) {
+    public void hasNotAttribute(final String namespaceURI, final String localName) {
         checkActualIsNotNull();
         createElementAssertion().hasNotAttribute(namespaceURI, localName);
     }
@@ -286,7 +286,7 @@ public class DocumentAssertion extends ReferenceAssertion<Document> {
      *
      * @return the assertion.
      */
-    public final AttrAssertion toAttribute(final String localName) {
+    public AttrAssertion toAttribute(final String localName) {
         checkActualIsNotNull();
         return createElementAssertion().toAttribute(localName);
     }
@@ -299,7 +299,7 @@ public class DocumentAssertion extends ReferenceAssertion<Document> {
      *
      * @return the assertion.
      */
-    public final AttrAssertion toAttribute(final String namespaceURI, final String localName) {
+    public AttrAssertion toAttribute(final String namespaceURI, final String localName) {
         checkActualIsNotNull();
         return createElementAssertion().toAttribute(namespaceURI, localName);
     }
@@ -310,7 +310,7 @@ public class DocumentAssertion extends ReferenceAssertion<Document> {
      * @param localName the local name of the actual value's attribute.
      * @param matcher   the hamcrest matcher.
      */
-    public final void toAttribute(final String localName, final Matcher<? super Attr> matcher) {
+    public void toAttribute(final String localName, final Matcher<? super Attr> matcher) {
         checkActualIsNotNull();
         createElementAssertion().toAttribute(localName, matcher);
     }
@@ -322,7 +322,7 @@ public class DocumentAssertion extends ReferenceAssertion<Document> {
      * @param localName    the local name of the actual value's attribute.
      * @param matcher      the hamcrest matcher.
      */
-    public final void toAttribute(final String namespaceURI, final String localName, final Matcher<? super Attr> matcher) {
+    public void toAttribute(final String namespaceURI, final String localName, final Matcher<? super Attr> matcher) {
         checkActualIsNotNull();
         createElementAssertion().toAttribute(namespaceURI, localName, matcher);
     }
@@ -333,7 +333,7 @@ public class DocumentAssertion extends ReferenceAssertion<Document> {
      * @param localName the local name of the actual value's attribute.
      * @param value     the value of the actual value's attribute.
      */
-    public final void hasAttributeValue(final String localName, final String value) {
+    public void hasAttributeValue(final String localName, final String value) {
         checkActualIsNotNull();
         createElementAssertion().hasAttributeValue(localName, value);
     }
@@ -345,7 +345,7 @@ public class DocumentAssertion extends ReferenceAssertion<Document> {
      * @param localName    the local name of the actual value's attribute.
      * @param value        the value of the actual value's attribute.
      */
-    public final void hasAttributeValue(final String namespaceURI, final String localName, final String value) {
+    public void hasAttributeValue(final String namespaceURI, final String localName, final String value) {
         checkActualIsNotNull();
         createElementAssertion().hasAttributeValue(namespaceURI, localName, value);
     }
@@ -356,7 +356,7 @@ public class DocumentAssertion extends ReferenceAssertion<Document> {
      * @param localName the local name of the actual value's attribute.
      * @param value     the value of the actual value's attribute.
      */
-    public final void hasNotAttributeValue(final String localName, final String value) {
+    public void hasNotAttributeValue(final String localName, final String value) {
         checkActualIsNotNull();
         createElementAssertion().hasNotAttributeValue(localName, value);
     }
@@ -368,7 +368,7 @@ public class DocumentAssertion extends ReferenceAssertion<Document> {
      * @param localName    the local name of the actual value's attribute.
      * @param value        the value of the actual value's attribute.
      */
-    public final void hasNotAttributeValue(final String namespaceURI, final String localName, final String value) {
+    public void hasNotAttributeValue(final String namespaceURI, final String localName, final String value) {
         checkActualIsNotNull();
         createElementAssertion().hasNotAttributeValue(namespaceURI, localName, value);
     }
@@ -376,7 +376,7 @@ public class DocumentAssertion extends ReferenceAssertion<Document> {
     /**
      * Check if the actual value has child nodes.
      */
-    public final void hasChildNodes() {
+    public void hasChildNodes() {
         checkActualIsNotNull();
         createElementAssertion().hasChildNodes();
     }
@@ -384,7 +384,7 @@ public class DocumentAssertion extends ReferenceAssertion<Document> {
     /**
      * Check if the actual value has NOT child nodes.
      */
-    public final void hasNotChildNodes() {
+    public void hasNotChildNodes() {
         checkActualIsNotNull();
         createElementAssertion().hasNotChildNodes();
     }
@@ -394,7 +394,7 @@ public class DocumentAssertion extends ReferenceAssertion<Document> {
      *
      * @return the assertion.
      */
-    public final IntAssertion toChildNodesCount() {
+    public IntAssertion toChildNodesCount() {
         checkActualIsNotNull();
         return createElementAssertion().toChildNodesCount();
     }
@@ -404,7 +404,7 @@ public class DocumentAssertion extends ReferenceAssertion<Document> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toChildNodesCount(final Matcher<? super Integer> matcher) {
+    public void toChildNodesCount(final Matcher<? super Integer> matcher) {
         checkActualIsNotNull();
         createElementAssertion().toChildNodesCount(matcher);
     }
@@ -414,7 +414,7 @@ public class DocumentAssertion extends ReferenceAssertion<Document> {
      *
      * @param expected the expected count.
      */
-    public final void hasChildNodesCount(final int expected) {
+    public void hasChildNodesCount(final int expected) {
         checkActualIsNotNull();
         createElementAssertion().hasChildNodesCount(expected);
     }
@@ -424,7 +424,7 @@ public class DocumentAssertion extends ReferenceAssertion<Document> {
      *
      * @return the assertion.
      */
-    public final IntAssertion toChildElementsCount() {
+    public IntAssertion toChildElementsCount() {
         checkActualIsNotNull();
         return createElementAssertion().toChildElementsCount();
     }
@@ -434,7 +434,7 @@ public class DocumentAssertion extends ReferenceAssertion<Document> {
      *
      * @param matcher the expected count.
      */
-    public final void toChildElementsCount(final Matcher<? super Integer> matcher) {
+    public void toChildElementsCount(final Matcher<? super Integer> matcher) {
         checkActualIsNotNull();
         createElementAssertion().toChildElementsCount(matcher);
     }
@@ -444,7 +444,7 @@ public class DocumentAssertion extends ReferenceAssertion<Document> {
      *
      * @param expected the expected count.
      */
-    public final void hasChildElementsCount(final int expected) {
+    public void hasChildElementsCount(final int expected) {
         checkActualIsNotNull();
         createElementAssertion().hasChildElementsCount(expected);
     }

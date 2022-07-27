@@ -32,7 +32,7 @@ import ru.d_shap.assertions.asimp.java.lang.CharSequenceAssertion;
  *
  * @author Dmitry Shapovalov
  */
-public class LongAssertion extends ReferenceAssertion<Long> {
+public final class LongAssertion extends ReferenceAssertion<Long> {
 
     /**
      * Create new object.
@@ -42,7 +42,7 @@ public class LongAssertion extends ReferenceAssertion<Long> {
     }
 
     @Override
-    protected final Class<Long> getActualValueClass() {
+    protected Class<Long> getActualValueClass() {
         return Long.class;
     }
 
@@ -51,7 +51,7 @@ public class LongAssertion extends ReferenceAssertion<Long> {
      *
      * @param expected the expected value.
      */
-    public final void isEqualTo(final long expected) {
+    public void isEqualTo(final long expected) {
         checkActualIsNotNull();
         if (getActual() != expected) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_SAME).addActual().addExpected(expected).build();
@@ -63,7 +63,7 @@ public class LongAssertion extends ReferenceAssertion<Long> {
      *
      * @param expected the expected value.
      */
-    public final void isEqualTo(final Long expected) {
+    public void isEqualTo(final Long expected) {
         if (expected == null) {
             isNull();
         } else {
@@ -76,7 +76,7 @@ public class LongAssertion extends ReferenceAssertion<Long> {
      *
      * @param expected the expected value.
      */
-    public final void isNotEqualTo(final long expected) {
+    public void isNotEqualTo(final long expected) {
         if (getActual() != null && getActual() == expected) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_DIFFERENT).addActual().build();
         }
@@ -87,7 +87,7 @@ public class LongAssertion extends ReferenceAssertion<Long> {
      *
      * @param expected the expected value.
      */
-    public final void isNotEqualTo(final Long expected) {
+    public void isNotEqualTo(final Long expected) {
         if (expected == null) {
             isNotNull();
         } else {
@@ -100,7 +100,7 @@ public class LongAssertion extends ReferenceAssertion<Long> {
      *
      * @param expected the expected value.
      */
-    public final void isGreaterThan(final long expected) {
+    public void isGreaterThan(final long expected) {
         checkActualIsNotNull();
         if (getActual() <= expected) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_GREATER).addActual().addExpected(expected).build();
@@ -112,7 +112,7 @@ public class LongAssertion extends ReferenceAssertion<Long> {
      *
      * @param expected the expected value.
      */
-    public final void isGreaterThan(final Long expected) {
+    public void isGreaterThan(final Long expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         isGreaterThan(expected.longValue());
@@ -123,7 +123,7 @@ public class LongAssertion extends ReferenceAssertion<Long> {
      *
      * @param expected the expected value.
      */
-    public final void isGreaterThanOrEqualTo(final long expected) {
+    public void isGreaterThanOrEqualTo(final long expected) {
         checkActualIsNotNull();
         if (getActual() < expected) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_GREATER_OR_EQUAL).addActual().addExpected(expected).build();
@@ -135,7 +135,7 @@ public class LongAssertion extends ReferenceAssertion<Long> {
      *
      * @param expected the expected value.
      */
-    public final void isGreaterThanOrEqualTo(final Long expected) {
+    public void isGreaterThanOrEqualTo(final Long expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         isGreaterThanOrEqualTo(expected.longValue());
@@ -146,7 +146,7 @@ public class LongAssertion extends ReferenceAssertion<Long> {
      *
      * @param expected the expected value.
      */
-    public final void isLessThan(final long expected) {
+    public void isLessThan(final long expected) {
         checkActualIsNotNull();
         if (getActual() >= expected) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_LESS).addActual().addExpected(expected).build();
@@ -158,7 +158,7 @@ public class LongAssertion extends ReferenceAssertion<Long> {
      *
      * @param expected the expected value.
      */
-    public final void isLessThan(final Long expected) {
+    public void isLessThan(final Long expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         isLessThan(expected.longValue());
@@ -169,7 +169,7 @@ public class LongAssertion extends ReferenceAssertion<Long> {
      *
      * @param expected the expected value.
      */
-    public final void isLessThanOrEqualTo(final long expected) {
+    public void isLessThanOrEqualTo(final long expected) {
         checkActualIsNotNull();
         if (getActual() > expected) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_LESS_OR_EQUAL).addActual().addExpected(expected).build();
@@ -181,7 +181,7 @@ public class LongAssertion extends ReferenceAssertion<Long> {
      *
      * @param expected the expected value.
      */
-    public final void isLessThanOrEqualTo(final Long expected) {
+    public void isLessThanOrEqualTo(final Long expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         isLessThanOrEqualTo(expected.longValue());
@@ -193,7 +193,7 @@ public class LongAssertion extends ReferenceAssertion<Long> {
      * @param expectedFrom the expected lower (inclusive) bound of the range.
      * @param expectedTo   the expected upper (exclusive) bound of the range.
      */
-    public final void isInRange(final long expectedFrom, final long expectedTo) {
+    public void isInRange(final long expectedFrom, final long expectedTo) {
         checkActualIsNotNull();
         if (getActual() < expectedFrom || getActual() >= expectedTo) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_IN_RANGE).addActual().addExpected(expectedFrom, expectedTo).build();
@@ -206,7 +206,7 @@ public class LongAssertion extends ReferenceAssertion<Long> {
      * @param expectedFrom the expected lower (inclusive) bound of the range.
      * @param expectedTo   the expected upper (exclusive) bound of the range.
      */
-    public final void isInRange(final Long expectedFrom, final Long expectedTo) {
+    public void isInRange(final Long expectedFrom, final Long expectedTo) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expectedFrom, "expectedFrom");
         checkArgumentIsNotNull(expectedTo, "expectedTo");
@@ -219,7 +219,7 @@ public class LongAssertion extends ReferenceAssertion<Long> {
      * @param expectedFrom the expected lower (inclusive) bound of the range.
      * @param expectedTo   the expected upper (exclusive) bound of the range.
      */
-    public final void isNotInRange(final long expectedFrom, final long expectedTo) {
+    public void isNotInRange(final long expectedFrom, final long expectedTo) {
         checkActualIsNotNull();
         if (getActual() >= expectedFrom && getActual() < expectedTo) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_IN_RANGE).addActual().addExpected(expectedFrom, expectedTo).build();
@@ -232,7 +232,7 @@ public class LongAssertion extends ReferenceAssertion<Long> {
      * @param expectedFrom the expected lower (inclusive) bound of the range.
      * @param expectedTo   the expected upper (exclusive) bound of the range.
      */
-    public final void isNotInRange(final Long expectedFrom, final Long expectedTo) {
+    public void isNotInRange(final Long expectedFrom, final Long expectedTo) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expectedFrom, "expectedFrom");
         checkArgumentIsNotNull(expectedTo, "expectedTo");
@@ -244,7 +244,7 @@ public class LongAssertion extends ReferenceAssertion<Long> {
      *
      * @return the assertion.
      */
-    public final CharSequenceAssertion toHexString() {
+    public CharSequenceAssertion toHexString() {
         checkActualIsNotNull();
         HexString hexString = convertValue(getActual(), null, HexString.class);
         return initializeAssertion(Raw.charSequenceAssertion(), hexString.toString(), Messages.Check.HEX_REPRESENTATION);
@@ -255,7 +255,7 @@ public class LongAssertion extends ReferenceAssertion<Long> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toHexString(final Matcher<? super String> matcher) {
+    public void toHexString(final Matcher<? super String> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         HexString hexString = convertValue(getActual(), null, HexString.class);
@@ -267,7 +267,7 @@ public class LongAssertion extends ReferenceAssertion<Long> {
      *
      * @param expected the expected value.
      */
-    public final void hasHexString(final String expected) {
+    public void hasHexString(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         toHexString().isEqualTo(expected);

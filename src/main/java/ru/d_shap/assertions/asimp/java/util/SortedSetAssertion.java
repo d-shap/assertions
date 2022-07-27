@@ -37,7 +37,7 @@ import ru.d_shap.assertions.asimp.primitive.IntAssertion;
  *
  * @author Dmitry Shapovalov
  */
-public class SortedSetAssertion<E> extends ReferenceAssertion<SortedSet<E>> {
+public final class SortedSetAssertion<E> extends ReferenceAssertion<SortedSet<E>> {
 
     /**
      * Create new object.
@@ -48,7 +48,7 @@ public class SortedSetAssertion<E> extends ReferenceAssertion<SortedSet<E>> {
 
     @Override
     @SuppressWarnings("unchecked")
-    protected final Class<SortedSet<E>> getActualValueClass() {
+    protected Class<SortedSet<E>> getActualValueClass() {
         return (Class<SortedSet<E>>) getRawActualValueClass();
     }
 
@@ -59,7 +59,7 @@ public class SortedSetAssertion<E> extends ReferenceAssertion<SortedSet<E>> {
     /**
      * Check if the actual value is empty.
      */
-    public final void isEmpty() {
+    public void isEmpty() {
         checkActualIsNotNull();
         if (!getActual().isEmpty()) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_EMPTY).addActual().build();
@@ -69,7 +69,7 @@ public class SortedSetAssertion<E> extends ReferenceAssertion<SortedSet<E>> {
     /**
      * Check if the actual value is null or empty.
      */
-    public final void isNullOrEmpty() {
+    public void isNullOrEmpty() {
         if (getActual() != null && !getActual().isEmpty()) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NULL_OR_EMPTY).addActual().build();
         }
@@ -78,7 +78,7 @@ public class SortedSetAssertion<E> extends ReferenceAssertion<SortedSet<E>> {
     /**
      * Check if the actual value is NOT empty.
      */
-    public final void isNotEmpty() {
+    public void isNotEmpty() {
         checkActualIsNotNull();
         if (getActual().isEmpty()) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_EMPTY).build();
@@ -90,7 +90,7 @@ public class SortedSetAssertion<E> extends ReferenceAssertion<SortedSet<E>> {
      *
      * @param expected the expected value.
      */
-    public final void contains(final E expected) {
+    public void contains(final E expected) {
         checkActualIsNotNull();
         if (!getActual().contains(expected)) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.CONTAINS).addActual().addExpected(expected).build();
@@ -102,7 +102,7 @@ public class SortedSetAssertion<E> extends ReferenceAssertion<SortedSet<E>> {
      *
      * @param expected the expected value.
      */
-    public final void doesNotContain(final E expected) {
+    public void doesNotContain(final E expected) {
         checkActualIsNotNull();
         if (getActual().contains(expected)) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.DOES_NOT_CONTAIN).addActual().addExpected(expected).build();
@@ -116,7 +116,7 @@ public class SortedSetAssertion<E> extends ReferenceAssertion<SortedSet<E>> {
      *
      * @return the assertion.
      */
-    public final SortedSetAssertion<E> toHeadSet(final E element) {
+    public SortedSetAssertion<E> toHeadSet(final E element) {
         checkActualIsNotNull();
         return initializeAssertion(Raw.<E>sortedSetAssertion(), getHeadSet(element), Messages.Check.ELEMENTS_HEAD_ELEMENT, element);
     }
@@ -128,7 +128,7 @@ public class SortedSetAssertion<E> extends ReferenceAssertion<SortedSet<E>> {
      *
      * @return the assertion.
      */
-    public final SortedSetAssertion<E> toHeadSet(final int count) {
+    public SortedSetAssertion<E> toHeadSet(final int count) {
         checkActualIsNotNull();
         checkArgumentIsValid(count > 0, "count", Messages.Fail.Argument.IS_GREATER_THAN_ZERO);
         return initializeAssertion(Raw.<E>sortedSetAssertion(), getHeadSet(count), Messages.Check.ELEMENTS_HEAD_COUNT, count);
@@ -140,7 +140,7 @@ public class SortedSetAssertion<E> extends ReferenceAssertion<SortedSet<E>> {
      * @param element upper element (exclusive) of the head set.
      * @param matcher the hamcrest matcher.
      */
-    public final void toHeadSet(final E element, final Matcher<? super Iterable<E>> matcher) {
+    public void toHeadSet(final E element, final Matcher<? super Iterable<E>> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getHeadSet(element), matcher, Messages.Check.ELEMENTS_HEAD_ELEMENT, element);
@@ -152,7 +152,7 @@ public class SortedSetAssertion<E> extends ReferenceAssertion<SortedSet<E>> {
      * @param count   the number of elements to get from the head.
      * @param matcher the hamcrest matcher.
      */
-    public final void toHeadSet(final int count, final Matcher<? super Iterable<E>> matcher) {
+    public void toHeadSet(final int count, final Matcher<? super Iterable<E>> matcher) {
         checkActualIsNotNull();
         checkArgumentIsValid(count > 0, "count", Messages.Fail.Argument.IS_GREATER_THAN_ZERO);
         checkArgumentIsNotNull(matcher, "matcher");
@@ -179,7 +179,7 @@ public class SortedSetAssertion<E> extends ReferenceAssertion<SortedSet<E>> {
      *
      * @return the assertion.
      */
-    public final SortedSetAssertion<E> toTailSet(final E element) {
+    public SortedSetAssertion<E> toTailSet(final E element) {
         checkActualIsNotNull();
         return initializeAssertion(Raw.<E>sortedSetAssertion(), getTailSet(element), Messages.Check.ELEMENTS_TAIL_ELEMENT, element);
     }
@@ -191,7 +191,7 @@ public class SortedSetAssertion<E> extends ReferenceAssertion<SortedSet<E>> {
      *
      * @return the assertion.
      */
-    public final SortedSetAssertion<E> toTailSet(final int count) {
+    public SortedSetAssertion<E> toTailSet(final int count) {
         checkActualIsNotNull();
         checkArgumentIsValid(count > 0, "count", Messages.Fail.Argument.IS_GREATER_THAN_ZERO);
         return initializeAssertion(Raw.<E>sortedSetAssertion(), getTailSet(count), Messages.Check.ELEMENTS_TAIL_COUNT, count);
@@ -203,7 +203,7 @@ public class SortedSetAssertion<E> extends ReferenceAssertion<SortedSet<E>> {
      * @param element lower element (inclusive) of the tail set.
      * @param matcher the hamcrest matcher.
      */
-    public final void toTailSet(final E element, final Matcher<? super Iterable<E>> matcher) {
+    public void toTailSet(final E element, final Matcher<? super Iterable<E>> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getTailSet(element), matcher, Messages.Check.ELEMENTS_TAIL_ELEMENT, element);
@@ -215,7 +215,7 @@ public class SortedSetAssertion<E> extends ReferenceAssertion<SortedSet<E>> {
      * @param count   the number of elements to get from the tail.
      * @param matcher the hamcrest matcher.
      */
-    public final void toTailSet(final int count, final Matcher<? super Iterable<E>> matcher) {
+    public void toTailSet(final int count, final Matcher<? super Iterable<E>> matcher) {
         checkActualIsNotNull();
         checkArgumentIsValid(count > 0, "count", Messages.Fail.Argument.IS_GREATER_THAN_ZERO);
         checkArgumentIsNotNull(matcher, "matcher");
@@ -258,7 +258,7 @@ public class SortedSetAssertion<E> extends ReferenceAssertion<SortedSet<E>> {
      *
      * @param expected the expected values.
      */
-    public final void containsAll(final Iterable<E> expected) {
+    public void containsAll(final Iterable<E> expected) {
         createIterableAssertion().containsAll(expected);
     }
 
@@ -277,7 +277,7 @@ public class SortedSetAssertion<E> extends ReferenceAssertion<SortedSet<E>> {
      *
      * @param expected the expected values.
      */
-    public final void containsAllInOrder(final Iterable<E> expected) {
+    public void containsAllInOrder(final Iterable<E> expected) {
         createIterableAssertion().containsAllInOrder(expected);
     }
 
@@ -296,7 +296,7 @@ public class SortedSetAssertion<E> extends ReferenceAssertion<SortedSet<E>> {
      *
      * @param expected the expected values.
      */
-    public final void containsExactly(final Iterable<E> expected) {
+    public void containsExactly(final Iterable<E> expected) {
         createIterableAssertion().containsExactly(expected);
     }
 
@@ -315,7 +315,7 @@ public class SortedSetAssertion<E> extends ReferenceAssertion<SortedSet<E>> {
      *
      * @param expected the expected values.
      */
-    public final void containsExactlyInOrder(final Iterable<E> expected) {
+    public void containsExactlyInOrder(final Iterable<E> expected) {
         createIterableAssertion().containsExactlyInOrder(expected);
     }
 
@@ -334,7 +334,7 @@ public class SortedSetAssertion<E> extends ReferenceAssertion<SortedSet<E>> {
      *
      * @param expected the expected values.
      */
-    public final void containsAny(final Iterable<E> expected) {
+    public void containsAny(final Iterable<E> expected) {
         createIterableAssertion().containsAny(expected);
     }
 
@@ -353,7 +353,7 @@ public class SortedSetAssertion<E> extends ReferenceAssertion<SortedSet<E>> {
      *
      * @param expected the expected values.
      */
-    public final void containsNone(final Iterable<E> expected) {
+    public void containsNone(final Iterable<E> expected) {
         createIterableAssertion().containsNone(expected);
     }
 
@@ -362,7 +362,7 @@ public class SortedSetAssertion<E> extends ReferenceAssertion<SortedSet<E>> {
      *
      * @return the assertion.
      */
-    public final IntAssertion toSize() {
+    public IntAssertion toSize() {
         checkActualIsNotNull();
         return initializeAssertion(Raw.intAssertion(), getActual().size(), Messages.Check.SIZE);
     }
@@ -372,7 +372,7 @@ public class SortedSetAssertion<E> extends ReferenceAssertion<SortedSet<E>> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toSize(final Matcher<? super Integer> matcher) {
+    public void toSize(final Matcher<? super Integer> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().size(), matcher, Messages.Check.SIZE);
@@ -383,7 +383,7 @@ public class SortedSetAssertion<E> extends ReferenceAssertion<SortedSet<E>> {
      *
      * @param expected the expected size.
      */
-    public final void hasSize(final int expected) {
+    public void hasSize(final int expected) {
         toSize().isEqualTo(expected);
     }
 

@@ -36,7 +36,7 @@ import ru.d_shap.assertions.asimp.primitive.IntAssertion;
  *
  * @author Dmitry Shapovalov
  */
-public class IntArrayAssertion extends ReferenceAssertion<int[]> {
+public final class IntArrayAssertion extends ReferenceAssertion<int[]> {
 
     /**
      * Create new object.
@@ -46,14 +46,14 @@ public class IntArrayAssertion extends ReferenceAssertion<int[]> {
     }
 
     @Override
-    protected final Class<int[]> getActualValueClass() {
+    protected Class<int[]> getActualValueClass() {
         return int[].class;
     }
 
     /**
      * Check if the actual value is empty.
      */
-    public final void isEmpty() {
+    public void isEmpty() {
         checkActualIsNotNull();
         if (getActual().length != 0) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_EMPTY).addActual().build();
@@ -63,7 +63,7 @@ public class IntArrayAssertion extends ReferenceAssertion<int[]> {
     /**
      * Check if the actual value is null or empty.
      */
-    public final void isNullOrEmpty() {
+    public void isNullOrEmpty() {
         if (getActual() != null && getActual().length != 0) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NULL_OR_EMPTY).addActual().build();
         }
@@ -72,7 +72,7 @@ public class IntArrayAssertion extends ReferenceAssertion<int[]> {
     /**
      * Check if the actual value is NOT empty.
      */
-    public final void isNotEmpty() {
+    public void isNotEmpty() {
         checkActualIsNotNull();
         if (getActual().length == 0) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_EMPTY).build();
@@ -84,7 +84,7 @@ public class IntArrayAssertion extends ReferenceAssertion<int[]> {
      *
      * @param expected the expected value.
      */
-    public final void contains(final int expected) {
+    public void contains(final int expected) {
         createIterableAssertion().contains(expected);
     }
 
@@ -93,7 +93,7 @@ public class IntArrayAssertion extends ReferenceAssertion<int[]> {
      *
      * @param expected the expected value.
      */
-    public final void doesNotContain(final int expected) {
+    public void doesNotContain(final int expected) {
         createIterableAssertion().doesNotContain(expected);
     }
 
@@ -102,7 +102,7 @@ public class IntArrayAssertion extends ReferenceAssertion<int[]> {
      *
      * @param expected the expected values.
      */
-    public final void containsAll(final int... expected) {
+    public void containsAll(final int... expected) {
         List<Object> expectedList = convertValue(expected, null, List.class);
         createIterableAssertion().containsAll(expectedList);
     }
@@ -112,7 +112,7 @@ public class IntArrayAssertion extends ReferenceAssertion<int[]> {
      *
      * @param expected the expected values.
      */
-    public final void containsAll(final Iterable<Integer> expected) {
+    public void containsAll(final Iterable<Integer> expected) {
         List<Object> expectedList = convertValue(expected, null, List.class);
         createIterableAssertion().containsAll(expectedList);
     }
@@ -122,7 +122,7 @@ public class IntArrayAssertion extends ReferenceAssertion<int[]> {
      *
      * @param expected the expected values.
      */
-    public final void containsAllInOrder(final int... expected) {
+    public void containsAllInOrder(final int... expected) {
         List<Object> expectedList = convertValue(expected, null, List.class);
         createIterableAssertion().containsAllInOrder(expectedList);
     }
@@ -132,7 +132,7 @@ public class IntArrayAssertion extends ReferenceAssertion<int[]> {
      *
      * @param expected the expected values.
      */
-    public final void containsAllInOrder(final Iterable<Integer> expected) {
+    public void containsAllInOrder(final Iterable<Integer> expected) {
         List<Object> expectedList = convertValue(expected, null, List.class);
         createIterableAssertion().containsAllInOrder(expectedList);
     }
@@ -142,7 +142,7 @@ public class IntArrayAssertion extends ReferenceAssertion<int[]> {
      *
      * @param expected the expected values.
      */
-    public final void containsExactly(final int... expected) {
+    public void containsExactly(final int... expected) {
         List<Object> expectedList = convertValue(expected, null, List.class);
         createIterableAssertion().containsExactly(expectedList);
     }
@@ -152,7 +152,7 @@ public class IntArrayAssertion extends ReferenceAssertion<int[]> {
      *
      * @param expected the expected values.
      */
-    public final void containsExactly(final Iterable<Integer> expected) {
+    public void containsExactly(final Iterable<Integer> expected) {
         List<Object> expectedList = convertValue(expected, null, List.class);
         createIterableAssertion().containsExactly(expectedList);
     }
@@ -162,7 +162,7 @@ public class IntArrayAssertion extends ReferenceAssertion<int[]> {
      *
      * @param expected the expected values.
      */
-    public final void containsExactlyInOrder(final int... expected) {
+    public void containsExactlyInOrder(final int... expected) {
         List<Object> expectedList = convertValue(expected, null, List.class);
         createIterableAssertion().containsExactlyInOrder(expectedList);
     }
@@ -172,7 +172,7 @@ public class IntArrayAssertion extends ReferenceAssertion<int[]> {
      *
      * @param expected the expected values.
      */
-    public final void containsExactlyInOrder(final Iterable<Integer> expected) {
+    public void containsExactlyInOrder(final Iterable<Integer> expected) {
         List<Object> expectedList = convertValue(expected, null, List.class);
         createIterableAssertion().containsExactlyInOrder(expectedList);
     }
@@ -182,7 +182,7 @@ public class IntArrayAssertion extends ReferenceAssertion<int[]> {
      *
      * @param expected the expected values.
      */
-    public final void containsAny(final int... expected) {
+    public void containsAny(final int... expected) {
         List<Object> expectedList = convertValue(expected, null, List.class);
         createIterableAssertion().containsAny(expectedList);
     }
@@ -192,7 +192,7 @@ public class IntArrayAssertion extends ReferenceAssertion<int[]> {
      *
      * @param expected the expected values.
      */
-    public final void containsAny(final Iterable<Integer> expected) {
+    public void containsAny(final Iterable<Integer> expected) {
         List<Object> expectedList = convertValue(expected, null, List.class);
         createIterableAssertion().containsAny(expectedList);
     }
@@ -202,7 +202,7 @@ public class IntArrayAssertion extends ReferenceAssertion<int[]> {
      *
      * @param expected the expected values.
      */
-    public final void containsNone(final int... expected) {
+    public void containsNone(final int... expected) {
         List<Object> expectedList = convertValue(expected, null, List.class);
         createIterableAssertion().containsNone(expectedList);
     }
@@ -212,7 +212,7 @@ public class IntArrayAssertion extends ReferenceAssertion<int[]> {
      *
      * @param expected the expected values.
      */
-    public final void containsNone(final Iterable<Integer> expected) {
+    public void containsNone(final Iterable<Integer> expected) {
         List<Object> expectedList = convertValue(expected, null, List.class);
         createIterableAssertion().containsNone(expectedList);
     }
@@ -222,7 +222,7 @@ public class IntArrayAssertion extends ReferenceAssertion<int[]> {
      *
      * @return the assertion.
      */
-    public final IntAssertion toLength() {
+    public IntAssertion toLength() {
         checkActualIsNotNull();
         return initializeAssertion(Raw.intAssertion(), getActual().length, Messages.Check.LENGTH);
     }
@@ -232,7 +232,7 @@ public class IntArrayAssertion extends ReferenceAssertion<int[]> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toLength(final Matcher<? super Integer> matcher) {
+    public void toLength(final Matcher<? super Integer> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().length, matcher, Messages.Check.LENGTH);
@@ -243,7 +243,7 @@ public class IntArrayAssertion extends ReferenceAssertion<int[]> {
      *
      * @param expected the expected length.
      */
-    public final void hasLength(final int expected) {
+    public void hasLength(final int expected) {
         toLength().isEqualTo(expected);
     }
 
@@ -252,7 +252,7 @@ public class IntArrayAssertion extends ReferenceAssertion<int[]> {
      *
      * @return the assertion.
      */
-    public final CharSequenceAssertion toHexString() {
+    public CharSequenceAssertion toHexString() {
         checkActualIsNotNull();
         HexString hexString = convertValue(getActual(), null, HexString.class, 0, getActual().length);
         return initializeAssertion(Raw.charSequenceAssertion(), hexString.toString(), Messages.Check.HEX_REPRESENTATION);
@@ -266,7 +266,7 @@ public class IntArrayAssertion extends ReferenceAssertion<int[]> {
      *
      * @return the assertion.
      */
-    public final CharSequenceAssertion toHexString(final int from, final int to) {
+    public CharSequenceAssertion toHexString(final int from, final int to) {
         checkActualIsNotNull();
         checkArgumentIsValid(from >= 0, "from", Messages.Fail.Argument.IS_GREATER_THAN_OR_EQUAL_TO_ZERO);
         checkArgumentIsValid(from <= getActual().length, "from", Messages.Fail.Argument.IS_LESS_THAN_OR_EQUAL_TO_MAXIMUM_VALUE, getActual().length);
@@ -281,7 +281,7 @@ public class IntArrayAssertion extends ReferenceAssertion<int[]> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toHexString(final Matcher<? super String> matcher) {
+    public void toHexString(final Matcher<? super String> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         HexString hexString = convertValue(getActual(), null, HexString.class, 0, getActual().length);
@@ -295,7 +295,7 @@ public class IntArrayAssertion extends ReferenceAssertion<int[]> {
      * @param to      the index of the last array element (exclusive) for the hex representation.
      * @param matcher the hamcrest matcher.
      */
-    public final void toHexString(final int from, final int to, final Matcher<? super String> matcher) {
+    public void toHexString(final int from, final int to, final Matcher<? super String> matcher) {
         checkActualIsNotNull();
         checkArgumentIsValid(from >= 0, "from", Messages.Fail.Argument.IS_GREATER_THAN_OR_EQUAL_TO_ZERO);
         checkArgumentIsValid(from <= getActual().length, "from", Messages.Fail.Argument.IS_LESS_THAN_OR_EQUAL_TO_MAXIMUM_VALUE, getActual().length);
@@ -311,7 +311,7 @@ public class IntArrayAssertion extends ReferenceAssertion<int[]> {
      *
      * @param expected the expected value.
      */
-    public final void hasHexString(final String expected) {
+    public void hasHexString(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         toHexString().isEqualTo(expected);
@@ -324,7 +324,7 @@ public class IntArrayAssertion extends ReferenceAssertion<int[]> {
      * @param to       the index of the last array element (exclusive) for the hex representation.
      * @param expected the expected value.
      */
-    public final void hasHexString(final int from, final int to, final String expected) {
+    public void hasHexString(final int from, final int to, final String expected) {
         checkActualIsNotNull();
         checkArgumentIsValid(from >= 0, "from", Messages.Fail.Argument.IS_GREATER_THAN_OR_EQUAL_TO_ZERO);
         checkArgumentIsValid(from <= getActual().length, "from", Messages.Fail.Argument.IS_LESS_THAN_OR_EQUAL_TO_MAXIMUM_VALUE, getActual().length);

@@ -36,7 +36,7 @@ import ru.d_shap.assertions.asimp.primitive.IntAssertion;
  *
  * @author Dmitry Shapovalov
  */
-public class TimeZoneAssertion extends ReferenceAssertion<TimeZone> {
+public final class TimeZoneAssertion extends ReferenceAssertion<TimeZone> {
 
     /**
      * Create new object.
@@ -46,7 +46,7 @@ public class TimeZoneAssertion extends ReferenceAssertion<TimeZone> {
     }
 
     @Override
-    protected final Class<TimeZone> getActualValueClass() {
+    protected Class<TimeZone> getActualValueClass() {
         return TimeZone.class;
     }
 
@@ -55,7 +55,7 @@ public class TimeZoneAssertion extends ReferenceAssertion<TimeZone> {
      *
      * @param expected the expected value.
      */
-    public final void isEqualTo(final TimeZone expected) {
+    public void isEqualTo(final TimeZone expected) {
         if (expected == null) {
             isNull();
         } else {
@@ -71,7 +71,7 @@ public class TimeZoneAssertion extends ReferenceAssertion<TimeZone> {
      *
      * @param expected the expected value.
      */
-    public final void isNotEqualTo(final TimeZone expected) {
+    public void isNotEqualTo(final TimeZone expected) {
         if (expected == null) {
             isNotNull();
         } else {
@@ -86,7 +86,7 @@ public class TimeZoneAssertion extends ReferenceAssertion<TimeZone> {
      *
      * @param expected the expected value.
      */
-    public final void hasSameRules(final TimeZone expected) {
+    public void hasSameRules(final TimeZone expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         if (!getActual().hasSameRules(expected)) {
@@ -99,7 +99,7 @@ public class TimeZoneAssertion extends ReferenceAssertion<TimeZone> {
      *
      * @param expected the expected value.
      */
-    public final void doesNotHaveSameRules(final TimeZone expected) {
+    public void doesNotHaveSameRules(final TimeZone expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         if (getActual().hasSameRules(expected)) {
@@ -112,7 +112,7 @@ public class TimeZoneAssertion extends ReferenceAssertion<TimeZone> {
      *
      * @return the assertion.
      */
-    public final CharSequenceAssertion toId() {
+    public CharSequenceAssertion toId() {
         checkActualIsNotNull();
         return initializeAssertion(Raw.charSequenceAssertion(), getActual().getID(), Messages.Check.ID);
     }
@@ -122,7 +122,7 @@ public class TimeZoneAssertion extends ReferenceAssertion<TimeZone> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toId(final Matcher<? super String> matcher) {
+    public void toId(final Matcher<? super String> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().getID(), matcher, Messages.Check.ID);
@@ -133,7 +133,7 @@ public class TimeZoneAssertion extends ReferenceAssertion<TimeZone> {
      *
      * @param expected the expected value.
      */
-    public final void hasId(final String expected) {
+    public void hasId(final String expected) {
         toId().isEqualTo(expected);
     }
 
@@ -142,7 +142,7 @@ public class TimeZoneAssertion extends ReferenceAssertion<TimeZone> {
      *
      * @return the assertion.
      */
-    public final CharSequenceAssertion toDisplayName() {
+    public CharSequenceAssertion toDisplayName() {
         checkActualIsNotNull();
         return initializeAssertion(Raw.charSequenceAssertion(), getActual().getDisplayName(Locale.US), Messages.Check.DISPLAY_NAME);
     }
@@ -152,7 +152,7 @@ public class TimeZoneAssertion extends ReferenceAssertion<TimeZone> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toDisplayName(final Matcher<? super String> matcher) {
+    public void toDisplayName(final Matcher<? super String> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().getDisplayName(Locale.US), matcher, Messages.Check.DISPLAY_NAME);
@@ -163,7 +163,7 @@ public class TimeZoneAssertion extends ReferenceAssertion<TimeZone> {
      *
      * @param expected the expected value.
      */
-    public final void hasDisplayName(final String expected) {
+    public void hasDisplayName(final String expected) {
         toDisplayName().isEqualTo(expected);
     }
 
@@ -172,7 +172,7 @@ public class TimeZoneAssertion extends ReferenceAssertion<TimeZone> {
      *
      * @return the assertion.
      */
-    public final IntAssertion toRawOffset() {
+    public IntAssertion toRawOffset() {
         checkActualIsNotNull();
         return initializeAssertion(Raw.intAssertion(), getActual().getRawOffset(), Messages.Check.RAW_OFFSET);
     }
@@ -182,7 +182,7 @@ public class TimeZoneAssertion extends ReferenceAssertion<TimeZone> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toRawOffset(final Matcher<? super Integer> matcher) {
+    public void toRawOffset(final Matcher<? super Integer> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().getRawOffset(), matcher, Messages.Check.RAW_OFFSET);
@@ -193,7 +193,7 @@ public class TimeZoneAssertion extends ReferenceAssertion<TimeZone> {
      *
      * @param expected the expected value.
      */
-    public final void hasRawOffset(final int expected) {
+    public void hasRawOffset(final int expected) {
         toRawOffset().isEqualTo(expected);
     }
 
@@ -202,7 +202,7 @@ public class TimeZoneAssertion extends ReferenceAssertion<TimeZone> {
      *
      * @return the assertion.
      */
-    public final BooleanAssertion toUseDaylightTime() {
+    public BooleanAssertion toUseDaylightTime() {
         checkActualIsNotNull();
         return initializeAssertion(Raw.booleanAssertion(), getActual().useDaylightTime(), Messages.Check.USE_DAYLIGHT_TIME);
     }
@@ -212,7 +212,7 @@ public class TimeZoneAssertion extends ReferenceAssertion<TimeZone> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toUseDaylightTime(final Matcher<? super Boolean> matcher) {
+    public void toUseDaylightTime(final Matcher<? super Boolean> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().useDaylightTime(), matcher, Messages.Check.USE_DAYLIGHT_TIME);
@@ -221,14 +221,14 @@ public class TimeZoneAssertion extends ReferenceAssertion<TimeZone> {
     /**
      * Check if the actual value's use daylight time is true.
      */
-    public final void useDaylightTime() {
+    public void useDaylightTime() {
         toUseDaylightTime().isTrue();
     }
 
     /**
      * Check if the actual value's use daylight time is false.
      */
-    public final void doesNotUseDaylightTime() {
+    public void doesNotUseDaylightTime() {
         toUseDaylightTime().isFalse();
     }
 
@@ -237,7 +237,7 @@ public class TimeZoneAssertion extends ReferenceAssertion<TimeZone> {
      *
      * @return the assertion.
      */
-    public final IntAssertion toDstSavings() {
+    public IntAssertion toDstSavings() {
         checkActualIsNotNull();
         return initializeAssertion(Raw.intAssertion(), getActual().getDSTSavings(), Messages.Check.DST_SAVINGS);
     }
@@ -247,7 +247,7 @@ public class TimeZoneAssertion extends ReferenceAssertion<TimeZone> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toDstSavings(final Matcher<? super Integer> matcher) {
+    public void toDstSavings(final Matcher<? super Integer> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().getDSTSavings(), matcher, Messages.Check.DST_SAVINGS);
@@ -258,7 +258,7 @@ public class TimeZoneAssertion extends ReferenceAssertion<TimeZone> {
      *
      * @param expected the expected value.
      */
-    public final void hasDstSavings(final int expected) {
+    public void hasDstSavings(final int expected) {
         toDstSavings().isEqualTo(expected);
     }
 

@@ -42,7 +42,7 @@ import ru.d_shap.assertions.asimp.primitive.IntAssertion;
  *
  * @author Dmitry Shapovalov
  */
-public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>> {
+public final class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>> {
 
     /**
      * Create new object.
@@ -53,7 +53,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
 
     @Override
     @SuppressWarnings("unchecked")
-    protected final Class<SortedMap<K, V>> getActualValueClass() {
+    protected Class<SortedMap<K, V>> getActualValueClass() {
         return (Class<SortedMap<K, V>>) getRawActualValueClass();
     }
 
@@ -64,7 +64,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
     /**
      * Check if the actual value is empty.
      */
-    public final void isEmpty() {
+    public void isEmpty() {
         checkActualIsNotNull();
         if (!getActual().isEmpty()) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_EMPTY).addActual().build();
@@ -74,7 +74,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
     /**
      * Check if the actual value is null or empty.
      */
-    public final void isNullOrEmpty() {
+    public void isNullOrEmpty() {
         if (getActual() != null && !getActual().isEmpty()) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NULL_OR_EMPTY).addActual().build();
         }
@@ -83,7 +83,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
     /**
      * Check if the actual value is NOT empty.
      */
-    public final void isNotEmpty() {
+    public void isNotEmpty() {
         checkActualIsNotNull();
         if (getActual().isEmpty()) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_EMPTY).build();
@@ -95,7 +95,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      *
      * @return the assertion.
      */
-    public final SortedSetAssertion<K> toKeys() {
+    public SortedSetAssertion<K> toKeys() {
         checkActualIsNotNull();
         return initializeAssertion(Raw.<K>sortedSetAssertion(), (SortedSet<K>) getActual().keySet(), Messages.Check.KEYS);
     }
@@ -105,7 +105,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toKeys(final Matcher<? super Iterable<K>> matcher) {
+    public void toKeys(final Matcher<? super Iterable<K>> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().keySet(), matcher, Messages.Check.KEYS);
@@ -116,7 +116,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      *
      * @param expected the expected key.
      */
-    public final void containsKey(final K expected) {
+    public void containsKey(final K expected) {
         toKeys().contains(expected);
     }
 
@@ -125,7 +125,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      *
      * @param expected the expected key.
      */
-    public final void doesNotContainKey(final K expected) {
+    public void doesNotContainKey(final K expected) {
         toKeys().doesNotContain(expected);
     }
 
@@ -136,7 +136,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      *
      * @return the assertion.
      */
-    public final SortedSetAssertion<K> toHeadKeys(final K key) {
+    public SortedSetAssertion<K> toHeadKeys(final K key) {
         return toKeys().toHeadSet(key);
     }
 
@@ -147,7 +147,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      *
      * @return the assertion.
      */
-    public final SortedSetAssertion<K> toHeadKeys(final int count) {
+    public SortedSetAssertion<K> toHeadKeys(final int count) {
         checkActualIsNotNull();
         checkArgumentIsValid(count > 0, "count", Messages.Fail.Argument.IS_GREATER_THAN_ZERO);
         return toKeys().toHeadSet(count);
@@ -159,7 +159,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      * @param key     upper key (exclusive) of the head key set.
      * @param matcher the hamcrest matcher.
      */
-    public final void toHeadKeys(final K key, final Matcher<? super Iterable<K>> matcher) {
+    public void toHeadKeys(final K key, final Matcher<? super Iterable<K>> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         toKeys().toHeadSet(key, matcher);
@@ -171,7 +171,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      * @param count   the number of keys to get from the head key set.
      * @param matcher the hamcrest matcher.
      */
-    public final void toHeadKeys(final int count, final Matcher<? super Iterable<K>> matcher) {
+    public void toHeadKeys(final int count, final Matcher<? super Iterable<K>> matcher) {
         checkActualIsNotNull();
         checkArgumentIsValid(count > 0, "count", Messages.Fail.Argument.IS_GREATER_THAN_ZERO);
         checkArgumentIsNotNull(matcher, "matcher");
@@ -185,7 +185,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      *
      * @return the assertion.
      */
-    public final SortedSetAssertion<K> toTailKeys(final K key) {
+    public SortedSetAssertion<K> toTailKeys(final K key) {
         return toKeys().toTailSet(key);
     }
 
@@ -196,7 +196,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      *
      * @return the assertion.
      */
-    public final SortedSetAssertion<K> toTailKeys(final int count) {
+    public SortedSetAssertion<K> toTailKeys(final int count) {
         checkActualIsNotNull();
         checkArgumentIsValid(count > 0, "count", Messages.Fail.Argument.IS_GREATER_THAN_ZERO);
         return toKeys().toTailSet(count);
@@ -208,7 +208,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      * @param key     lower key (inclusive) of the tail key set.
      * @param matcher the hamcrest matcher.
      */
-    public final void toTailKeys(final K key, final Matcher<? super Iterable<K>> matcher) {
+    public void toTailKeys(final K key, final Matcher<? super Iterable<K>> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         toKeys().toTailSet(key, matcher);
@@ -220,7 +220,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      * @param count   the number of keys to get from the tail key set.
      * @param matcher the hamcrest matcher.
      */
-    public final void toTailKeys(final int count, final Matcher<? super Iterable<K>> matcher) {
+    public void toTailKeys(final int count, final Matcher<? super Iterable<K>> matcher) {
         checkActualIsNotNull();
         checkArgumentIsValid(count > 0, "count", Messages.Fail.Argument.IS_GREATER_THAN_ZERO);
         checkArgumentIsNotNull(matcher, "matcher");
@@ -245,7 +245,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      *
      * @param expected the expected keys.
      */
-    public final void containsAllKeys(final Iterable<K> expected) {
+    public void containsAllKeys(final Iterable<K> expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         List<K> expectedList = convertValue(expected, null, List.class);
@@ -271,7 +271,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      *
      * @param expected the expected keys.
      */
-    public final void containsAllKeysInOrder(final Iterable<K> expected) {
+    public void containsAllKeysInOrder(final Iterable<K> expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         List<K> expectedList = convertValue(expected, null, List.class);
@@ -296,7 +296,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      *
      * @param expected the expected keys.
      */
-    public final void containsKeysExactly(final Iterable<K> expected) {
+    public void containsKeysExactly(final Iterable<K> expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         toKeys().containsExactly(expected);
@@ -319,7 +319,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      *
      * @param expected the expected values.
      */
-    public final void containsKeysExactlyInOrder(final Iterable<K> expected) {
+    public void containsKeysExactlyInOrder(final Iterable<K> expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         toKeys().containsExactlyInOrder(expected);
@@ -343,7 +343,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      *
      * @param expected the expected keys.
      */
-    public final void containsAnyKey(final Iterable<K> expected) {
+    public void containsAnyKey(final Iterable<K> expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         List<K> expectedList = convertValue(expected, null, List.class);
@@ -369,7 +369,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      *
      * @param expected the expected keys.
      */
-    public final void containsNoKey(final Iterable<K> expected) {
+    public void containsNoKey(final Iterable<K> expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         List<K> expectedList = convertValue(expected, null, List.class);
@@ -382,7 +382,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      *
      * @return the assertion.
      */
-    public final IterableAssertion<V> toValues() {
+    public IterableAssertion<V> toValues() {
         checkActualIsNotNull();
         return initializeAssertion(Raw.<V>iterableAssertion(), getActual().values(), Messages.Check.VALUES);
     }
@@ -392,7 +392,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toValues(final Matcher<? super Iterable<V>> matcher) {
+    public void toValues(final Matcher<? super Iterable<V>> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().values(), matcher, Messages.Check.VALUES);
@@ -404,7 +404,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      * @param expectedKey   the key of the expected entry.
      * @param expectedValue the value of the expected entry.
      */
-    public final void containsEntry(final K expectedKey, final V expectedValue) {
+    public void containsEntry(final K expectedKey, final V expectedValue) {
         Map<K, V> expected = new LinkedHashMap<>();
         expected.put(expectedKey, expectedValue);
         containsAll(expected);
@@ -416,7 +416,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      * @param expectedKey   the key of the expected entry.
      * @param expectedValue the value of the expected entry.
      */
-    public final void doesNotContainEntry(final K expectedKey, final V expectedValue) {
+    public void doesNotContainEntry(final K expectedKey, final V expectedValue) {
         Map<K, V> expected = new LinkedHashMap<>();
         expected.put(expectedKey, expectedValue);
         containsNone(expected);
@@ -429,7 +429,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      *
      * @return the assertion.
      */
-    public final SortedMapAssertion<K, V> toHeadMap(final K key) {
+    public SortedMapAssertion<K, V> toHeadMap(final K key) {
         checkActualIsNotNull();
         return initializeAssertion(Raw.<K, V>sortedMapAssertion(), getHeadMap(key), Messages.Check.ELEMENTS_HEAD_ELEMENT, key);
     }
@@ -441,7 +441,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      *
      * @return the assertion.
      */
-    public final SortedMapAssertion<K, V> toHeadMap(final int count) {
+    public SortedMapAssertion<K, V> toHeadMap(final int count) {
         checkActualIsNotNull();
         checkArgumentIsValid(count > 0, "count", Messages.Fail.Argument.IS_GREATER_THAN_ZERO);
         return initializeAssertion(Raw.<K, V>sortedMapAssertion(), getHeadMap(count), Messages.Check.ELEMENTS_HEAD_COUNT, count);
@@ -453,7 +453,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      * @param key     upper key (exclusive) of the head map.
      * @param matcher the hamcrest matcher.
      */
-    public final void toHeadMap(final K key, final Matcher<? super Map<? extends K, ? extends V>> matcher) {
+    public void toHeadMap(final K key, final Matcher<? super Map<? extends K, ? extends V>> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getHeadMap(key), matcher, Messages.Check.ELEMENTS_HEAD_ELEMENT, key);
@@ -465,7 +465,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      * @param count   the number of elements to get from the head map.
      * @param matcher the hamcrest matcher.
      */
-    public final void toHeadMap(final int count, final Matcher<? super Map<? extends K, ? extends V>> matcher) {
+    public void toHeadMap(final int count, final Matcher<? super Map<? extends K, ? extends V>> matcher) {
         checkActualIsNotNull();
         checkArgumentIsValid(count > 0, "count", Messages.Fail.Argument.IS_GREATER_THAN_ZERO);
         checkArgumentIsNotNull(matcher, "matcher");
@@ -492,7 +492,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      *
      * @return the assertion.
      */
-    public final SortedMapAssertion<K, V> toTailMap(final K key) {
+    public SortedMapAssertion<K, V> toTailMap(final K key) {
         checkActualIsNotNull();
         return initializeAssertion(Raw.<K, V>sortedMapAssertion(), getTailMap(key), Messages.Check.ELEMENTS_TAIL_ELEMENT, key);
     }
@@ -504,7 +504,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      *
      * @return the assertion.
      */
-    public final SortedMapAssertion<K, V> toTailMap(final int count) {
+    public SortedMapAssertion<K, V> toTailMap(final int count) {
         checkActualIsNotNull();
         checkArgumentIsValid(count > 0, "count", Messages.Fail.Argument.IS_GREATER_THAN_ZERO);
         return initializeAssertion(Raw.<K, V>sortedMapAssertion(), getTailMap(count), Messages.Check.ELEMENTS_TAIL_COUNT, count);
@@ -516,7 +516,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      * @param key     lower key (inclusive) of the tail map.
      * @param matcher the hamcrest matcher.
      */
-    public final void toTailMap(final K key, final Matcher<? super Map<? extends K, ? extends V>> matcher) {
+    public void toTailMap(final K key, final Matcher<? super Map<? extends K, ? extends V>> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getTailMap(key), matcher, Messages.Check.ELEMENTS_TAIL_ELEMENT, key);
@@ -528,7 +528,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      * @param count   the number of elements to get from the tail map.
      * @param matcher the hamcrest matcher.
      */
-    public final void toTailMap(final int count, final Matcher<? super Map<? extends K, ? extends V>> matcher) {
+    public void toTailMap(final int count, final Matcher<? super Map<? extends K, ? extends V>> matcher) {
         checkActualIsNotNull();
         checkArgumentIsValid(count > 0, "count", Messages.Fail.Argument.IS_GREATER_THAN_ZERO);
         checkArgumentIsNotNull(matcher, "matcher");
@@ -562,7 +562,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      * @param expectedKey1   the key of the expected entry.
      * @param expectedValue1 the value of the expected entry.
      */
-    public final void containsAll(final K expectedKey1, final V expectedValue1) {
+    public void containsAll(final K expectedKey1, final V expectedValue1) {
         Map<K, V> expected = new LinkedHashMap<>();
         expected.put(expectedKey1, expectedValue1);
         containsAll(expected);
@@ -576,7 +576,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      * @param expectedKey2   the key of the expected entry.
      * @param expectedValue2 the value of the expected entry.
      */
-    public final void containsAll(final K expectedKey1, final V expectedValue1, final K expectedKey2, final V expectedValue2) {
+    public void containsAll(final K expectedKey1, final V expectedValue1, final K expectedKey2, final V expectedValue2) {
         Map<K, V> expected = new LinkedHashMap<>();
         expected.put(expectedKey1, expectedValue1);
         expected.put(expectedKey2, expectedValue2);
@@ -593,7 +593,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      * @param expectedKey3   the key of the expected entry.
      * @param expectedValue3 the value of the expected entry.
      */
-    public final void containsAll(final K expectedKey1, final V expectedValue1, final K expectedKey2, final V expectedValue2, final K expectedKey3, final V expectedValue3) {
+    public void containsAll(final K expectedKey1, final V expectedValue1, final K expectedKey2, final V expectedValue2, final K expectedKey3, final V expectedValue3) {
         Map<K, V> expected = new LinkedHashMap<>();
         expected.put(expectedKey1, expectedValue1);
         expected.put(expectedKey2, expectedValue2);
@@ -613,7 +613,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      * @param expectedKey4   the key of the expected entry.
      * @param expectedValue4 the value of the expected entry.
      */
-    public final void containsAll(final K expectedKey1, final V expectedValue1, final K expectedKey2, final V expectedValue2, final K expectedKey3, final V expectedValue3, final K expectedKey4, final V expectedValue4) {
+    public void containsAll(final K expectedKey1, final V expectedValue1, final K expectedKey2, final V expectedValue2, final K expectedKey3, final V expectedValue3, final K expectedKey4, final V expectedValue4) {
         Map<K, V> expected = new LinkedHashMap<>();
         expected.put(expectedKey1, expectedValue1);
         expected.put(expectedKey2, expectedValue2);
@@ -636,7 +636,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      * @param expectedKey5   the key of the expected entry.
      * @param expectedValue5 the value of the expected entry.
      */
-    public final void containsAll(final K expectedKey1, final V expectedValue1, final K expectedKey2, final V expectedValue2, final K expectedKey3, final V expectedValue3, final K expectedKey4, final V expectedValue4, final K expectedKey5, final V expectedValue5) {
+    public void containsAll(final K expectedKey1, final V expectedValue1, final K expectedKey2, final V expectedValue2, final K expectedKey3, final V expectedValue3, final K expectedKey4, final V expectedValue4, final K expectedKey5, final V expectedValue5) {
         Map<K, V> expected = new LinkedHashMap<>();
         expected.put(expectedKey1, expectedValue1);
         expected.put(expectedKey2, expectedValue2);
@@ -651,7 +651,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      *
      * @param expected the expected values.
      */
-    public final void containsAll(final Map<K, V> expected) {
+    public void containsAll(final Map<K, V> expected) {
         createMapAssertion().containsAll(expected);
     }
 
@@ -661,7 +661,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      * @param expectedKey1   the key of the expected entry.
      * @param expectedValue1 the value of the expected entry.
      */
-    public final void containsAllInOrder(final K expectedKey1, final V expectedValue1) {
+    public void containsAllInOrder(final K expectedKey1, final V expectedValue1) {
         Map<K, V> expected = new LinkedHashMap<>();
         expected.put(expectedKey1, expectedValue1);
         containsAllInOrder(expected);
@@ -675,7 +675,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      * @param expectedKey2   the key of the expected entry.
      * @param expectedValue2 the value of the expected entry.
      */
-    public final void containsAllInOrder(final K expectedKey1, final V expectedValue1, final K expectedKey2, final V expectedValue2) {
+    public void containsAllInOrder(final K expectedKey1, final V expectedValue1, final K expectedKey2, final V expectedValue2) {
         Map<K, V> expected = new LinkedHashMap<>();
         expected.put(expectedKey1, expectedValue1);
         expected.put(expectedKey2, expectedValue2);
@@ -692,7 +692,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      * @param expectedKey3   the key of the expected entry.
      * @param expectedValue3 the value of the expected entry.
      */
-    public final void containsAllInOrder(final K expectedKey1, final V expectedValue1, final K expectedKey2, final V expectedValue2, final K expectedKey3, final V expectedValue3) {
+    public void containsAllInOrder(final K expectedKey1, final V expectedValue1, final K expectedKey2, final V expectedValue2, final K expectedKey3, final V expectedValue3) {
         Map<K, V> expected = new LinkedHashMap<>();
         expected.put(expectedKey1, expectedValue1);
         expected.put(expectedKey2, expectedValue2);
@@ -712,7 +712,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      * @param expectedKey4   the key of the expected entry.
      * @param expectedValue4 the value of the expected entry.
      */
-    public final void containsAllInOrder(final K expectedKey1, final V expectedValue1, final K expectedKey2, final V expectedValue2, final K expectedKey3, final V expectedValue3, final K expectedKey4, final V expectedValue4) {
+    public void containsAllInOrder(final K expectedKey1, final V expectedValue1, final K expectedKey2, final V expectedValue2, final K expectedKey3, final V expectedValue3, final K expectedKey4, final V expectedValue4) {
         Map<K, V> expected = new LinkedHashMap<>();
         expected.put(expectedKey1, expectedValue1);
         expected.put(expectedKey2, expectedValue2);
@@ -735,7 +735,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      * @param expectedKey5   the key of the expected entry.
      * @param expectedValue5 the value of the expected entry.
      */
-    public final void containsAllInOrder(final K expectedKey1, final V expectedValue1, final K expectedKey2, final V expectedValue2, final K expectedKey3, final V expectedValue3, final K expectedKey4, final V expectedValue4, final K expectedKey5, final V expectedValue5) {
+    public void containsAllInOrder(final K expectedKey1, final V expectedValue1, final K expectedKey2, final V expectedValue2, final K expectedKey3, final V expectedValue3, final K expectedKey4, final V expectedValue4, final K expectedKey5, final V expectedValue5) {
         Map<K, V> expected = new LinkedHashMap<>();
         expected.put(expectedKey1, expectedValue1);
         expected.put(expectedKey2, expectedValue2);
@@ -750,14 +750,14 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      *
      * @param expected the expected values.
      */
-    public final void containsAllInOrder(final Map<K, V> expected) {
+    public void containsAllInOrder(final Map<K, V> expected) {
         createMapAssertion().containsAllInOrder(expected);
     }
 
     /**
      * Check if the actual value contains all of the expected values exactly.
      */
-    public final void containsExactly() {
+    public void containsExactly() {
         Map<K, V> expected = new LinkedHashMap<>();
         containsExactly(expected);
     }
@@ -768,7 +768,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      * @param expectedKey1   the key of the expected entry.
      * @param expectedValue1 the value of the expected entry.
      */
-    public final void containsExactly(final K expectedKey1, final V expectedValue1) {
+    public void containsExactly(final K expectedKey1, final V expectedValue1) {
         Map<K, V> expected = new LinkedHashMap<>();
         expected.put(expectedKey1, expectedValue1);
         containsExactly(expected);
@@ -782,7 +782,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      * @param expectedKey2   the key of the expected entry.
      * @param expectedValue2 the value of the expected entry.
      */
-    public final void containsExactly(final K expectedKey1, final V expectedValue1, final K expectedKey2, final V expectedValue2) {
+    public void containsExactly(final K expectedKey1, final V expectedValue1, final K expectedKey2, final V expectedValue2) {
         Map<K, V> expected = new LinkedHashMap<>();
         expected.put(expectedKey1, expectedValue1);
         expected.put(expectedKey2, expectedValue2);
@@ -799,7 +799,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      * @param expectedKey3   the key of the expected entry.
      * @param expectedValue3 the value of the expected entry.
      */
-    public final void containsExactly(final K expectedKey1, final V expectedValue1, final K expectedKey2, final V expectedValue2, final K expectedKey3, final V expectedValue3) {
+    public void containsExactly(final K expectedKey1, final V expectedValue1, final K expectedKey2, final V expectedValue2, final K expectedKey3, final V expectedValue3) {
         Map<K, V> expected = new LinkedHashMap<>();
         expected.put(expectedKey1, expectedValue1);
         expected.put(expectedKey2, expectedValue2);
@@ -819,7 +819,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      * @param expectedKey4   the key of the expected entry.
      * @param expectedValue4 the value of the expected entry.
      */
-    public final void containsExactly(final K expectedKey1, final V expectedValue1, final K expectedKey2, final V expectedValue2, final K expectedKey3, final V expectedValue3, final K expectedKey4, final V expectedValue4) {
+    public void containsExactly(final K expectedKey1, final V expectedValue1, final K expectedKey2, final V expectedValue2, final K expectedKey3, final V expectedValue3, final K expectedKey4, final V expectedValue4) {
         Map<K, V> expected = new LinkedHashMap<>();
         expected.put(expectedKey1, expectedValue1);
         expected.put(expectedKey2, expectedValue2);
@@ -842,7 +842,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      * @param expectedKey5   the key of the expected entry.
      * @param expectedValue5 the value of the expected entry.
      */
-    public final void containsExactly(final K expectedKey1, final V expectedValue1, final K expectedKey2, final V expectedValue2, final K expectedKey3, final V expectedValue3, final K expectedKey4, final V expectedValue4, final K expectedKey5, final V expectedValue5) {
+    public void containsExactly(final K expectedKey1, final V expectedValue1, final K expectedKey2, final V expectedValue2, final K expectedKey3, final V expectedValue3, final K expectedKey4, final V expectedValue4, final K expectedKey5, final V expectedValue5) {
         Map<K, V> expected = new LinkedHashMap<>();
         expected.put(expectedKey1, expectedValue1);
         expected.put(expectedKey2, expectedValue2);
@@ -857,14 +857,14 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      *
      * @param expected the expected values.
      */
-    public final void containsExactly(final Map<K, V> expected) {
+    public void containsExactly(final Map<K, V> expected) {
         createMapAssertion().containsExactly(expected);
     }
 
     /**
      * Check if the actual value contains all of the expected values exactly in the specified order.
      */
-    public final void containsExactlyInOrder() {
+    public void containsExactlyInOrder() {
         Map<K, V> expected = new LinkedHashMap<>();
         containsExactlyInOrder(expected);
     }
@@ -875,7 +875,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      * @param expectedKey1   the key of the expected entry.
      * @param expectedValue1 the value of the expected entry.
      */
-    public final void containsExactlyInOrder(final K expectedKey1, final V expectedValue1) {
+    public void containsExactlyInOrder(final K expectedKey1, final V expectedValue1) {
         Map<K, V> expected = new LinkedHashMap<>();
         expected.put(expectedKey1, expectedValue1);
         containsExactlyInOrder(expected);
@@ -889,7 +889,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      * @param expectedKey2   the key of the expected entry.
      * @param expectedValue2 the value of the expected entry.
      */
-    public final void containsExactlyInOrder(final K expectedKey1, final V expectedValue1, final K expectedKey2, final V expectedValue2) {
+    public void containsExactlyInOrder(final K expectedKey1, final V expectedValue1, final K expectedKey2, final V expectedValue2) {
         Map<K, V> expected = new LinkedHashMap<>();
         expected.put(expectedKey1, expectedValue1);
         expected.put(expectedKey2, expectedValue2);
@@ -906,7 +906,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      * @param expectedKey3   the key of the expected entry.
      * @param expectedValue3 the value of the expected entry.
      */
-    public final void containsExactlyInOrder(final K expectedKey1, final V expectedValue1, final K expectedKey2, final V expectedValue2, final K expectedKey3, final V expectedValue3) {
+    public void containsExactlyInOrder(final K expectedKey1, final V expectedValue1, final K expectedKey2, final V expectedValue2, final K expectedKey3, final V expectedValue3) {
         Map<K, V> expected = new LinkedHashMap<>();
         expected.put(expectedKey1, expectedValue1);
         expected.put(expectedKey2, expectedValue2);
@@ -926,7 +926,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      * @param expectedKey4   the key of the expected entry.
      * @param expectedValue4 the value of the expected entry.
      */
-    public final void containsExactlyInOrder(final K expectedKey1, final V expectedValue1, final K expectedKey2, final V expectedValue2, final K expectedKey3, final V expectedValue3, final K expectedKey4, final V expectedValue4) {
+    public void containsExactlyInOrder(final K expectedKey1, final V expectedValue1, final K expectedKey2, final V expectedValue2, final K expectedKey3, final V expectedValue3, final K expectedKey4, final V expectedValue4) {
         Map<K, V> expected = new LinkedHashMap<>();
         expected.put(expectedKey1, expectedValue1);
         expected.put(expectedKey2, expectedValue2);
@@ -949,7 +949,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      * @param expectedKey5   the key of the expected entry.
      * @param expectedValue5 the value of the expected entry.
      */
-    public final void containsExactlyInOrder(final K expectedKey1, final V expectedValue1, final K expectedKey2, final V expectedValue2, final K expectedKey3, final V expectedValue3, final K expectedKey4, final V expectedValue4, final K expectedKey5, final V expectedValue5) {
+    public void containsExactlyInOrder(final K expectedKey1, final V expectedValue1, final K expectedKey2, final V expectedValue2, final K expectedKey3, final V expectedValue3, final K expectedKey4, final V expectedValue4, final K expectedKey5, final V expectedValue5) {
         Map<K, V> expected = new LinkedHashMap<>();
         expected.put(expectedKey1, expectedValue1);
         expected.put(expectedKey2, expectedValue2);
@@ -964,7 +964,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      *
      * @param expected the expected values.
      */
-    public final void containsExactlyInOrder(final Map<K, V> expected) {
+    public void containsExactlyInOrder(final Map<K, V> expected) {
         createMapAssertion().containsExactlyInOrder(expected);
     }
 
@@ -974,7 +974,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      * @param expectedKey1   the key of the expected entry.
      * @param expectedValue1 the value of the expected entry.
      */
-    public final void containsAny(final K expectedKey1, final V expectedValue1) {
+    public void containsAny(final K expectedKey1, final V expectedValue1) {
         Map<K, V> expected = new LinkedHashMap<>();
         expected.put(expectedKey1, expectedValue1);
         containsAny(expected);
@@ -988,7 +988,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      * @param expectedKey2   the key of the expected entry.
      * @param expectedValue2 the value of the expected entry.
      */
-    public final void containsAny(final K expectedKey1, final V expectedValue1, final K expectedKey2, final V expectedValue2) {
+    public void containsAny(final K expectedKey1, final V expectedValue1, final K expectedKey2, final V expectedValue2) {
         Map<K, V> expected = new LinkedHashMap<>();
         expected.put(expectedKey1, expectedValue1);
         expected.put(expectedKey2, expectedValue2);
@@ -1005,7 +1005,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      * @param expectedKey3   the key of the expected entry.
      * @param expectedValue3 the value of the expected entry.
      */
-    public final void containsAny(final K expectedKey1, final V expectedValue1, final K expectedKey2, final V expectedValue2, final K expectedKey3, final V expectedValue3) {
+    public void containsAny(final K expectedKey1, final V expectedValue1, final K expectedKey2, final V expectedValue2, final K expectedKey3, final V expectedValue3) {
         Map<K, V> expected = new LinkedHashMap<>();
         expected.put(expectedKey1, expectedValue1);
         expected.put(expectedKey2, expectedValue2);
@@ -1025,7 +1025,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      * @param expectedKey4   the key of the expected entry.
      * @param expectedValue4 the value of the expected entry.
      */
-    public final void containsAny(final K expectedKey1, final V expectedValue1, final K expectedKey2, final V expectedValue2, final K expectedKey3, final V expectedValue3, final K expectedKey4, final V expectedValue4) {
+    public void containsAny(final K expectedKey1, final V expectedValue1, final K expectedKey2, final V expectedValue2, final K expectedKey3, final V expectedValue3, final K expectedKey4, final V expectedValue4) {
         Map<K, V> expected = new LinkedHashMap<>();
         expected.put(expectedKey1, expectedValue1);
         expected.put(expectedKey2, expectedValue2);
@@ -1048,7 +1048,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      * @param expectedKey5   the key of the expected entry.
      * @param expectedValue5 the value of the expected entry.
      */
-    public final void containsAny(final K expectedKey1, final V expectedValue1, final K expectedKey2, final V expectedValue2, final K expectedKey3, final V expectedValue3, final K expectedKey4, final V expectedValue4, final K expectedKey5, final V expectedValue5) {
+    public void containsAny(final K expectedKey1, final V expectedValue1, final K expectedKey2, final V expectedValue2, final K expectedKey3, final V expectedValue3, final K expectedKey4, final V expectedValue4, final K expectedKey5, final V expectedValue5) {
         Map<K, V> expected = new LinkedHashMap<>();
         expected.put(expectedKey1, expectedValue1);
         expected.put(expectedKey2, expectedValue2);
@@ -1063,7 +1063,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      *
      * @param expected the expected values.
      */
-    public final void containsAny(final Map<K, V> expected) {
+    public void containsAny(final Map<K, V> expected) {
         createMapAssertion().containsAny(expected);
     }
 
@@ -1073,7 +1073,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      * @param expectedKey1   the key of the expected entry.
      * @param expectedValue1 the value of the expected entry.
      */
-    public final void containsNone(final K expectedKey1, final V expectedValue1) {
+    public void containsNone(final K expectedKey1, final V expectedValue1) {
         Map<K, V> expected = new LinkedHashMap<>();
         expected.put(expectedKey1, expectedValue1);
         containsNone(expected);
@@ -1087,7 +1087,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      * @param expectedKey2   the key of the expected entry.
      * @param expectedValue2 the value of the expected entry.
      */
-    public final void containsNone(final K expectedKey1, final V expectedValue1, final K expectedKey2, final V expectedValue2) {
+    public void containsNone(final K expectedKey1, final V expectedValue1, final K expectedKey2, final V expectedValue2) {
         Map<K, V> expected = new LinkedHashMap<>();
         expected.put(expectedKey1, expectedValue1);
         expected.put(expectedKey2, expectedValue2);
@@ -1104,7 +1104,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      * @param expectedKey3   the key of the expected entry.
      * @param expectedValue3 the value of the expected entry.
      */
-    public final void containsNone(final K expectedKey1, final V expectedValue1, final K expectedKey2, final V expectedValue2, final K expectedKey3, final V expectedValue3) {
+    public void containsNone(final K expectedKey1, final V expectedValue1, final K expectedKey2, final V expectedValue2, final K expectedKey3, final V expectedValue3) {
         Map<K, V> expected = new LinkedHashMap<>();
         expected.put(expectedKey1, expectedValue1);
         expected.put(expectedKey2, expectedValue2);
@@ -1124,7 +1124,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      * @param expectedKey4   the key of the expected entry.
      * @param expectedValue4 the value of the expected entry.
      */
-    public final void containsNone(final K expectedKey1, final V expectedValue1, final K expectedKey2, final V expectedValue2, final K expectedKey3, final V expectedValue3, final K expectedKey4, final V expectedValue4) {
+    public void containsNone(final K expectedKey1, final V expectedValue1, final K expectedKey2, final V expectedValue2, final K expectedKey3, final V expectedValue3, final K expectedKey4, final V expectedValue4) {
         Map<K, V> expected = new LinkedHashMap<>();
         expected.put(expectedKey1, expectedValue1);
         expected.put(expectedKey2, expectedValue2);
@@ -1147,7 +1147,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      * @param expectedKey5   the key of the expected entry.
      * @param expectedValue5 the value of the expected entry.
      */
-    public final void containsNone(final K expectedKey1, final V expectedValue1, final K expectedKey2, final V expectedValue2, final K expectedKey3, final V expectedValue3, final K expectedKey4, final V expectedValue4, final K expectedKey5, final V expectedValue5) {
+    public void containsNone(final K expectedKey1, final V expectedValue1, final K expectedKey2, final V expectedValue2, final K expectedKey3, final V expectedValue3, final K expectedKey4, final V expectedValue4, final K expectedKey5, final V expectedValue5) {
         Map<K, V> expected = new LinkedHashMap<>();
         expected.put(expectedKey1, expectedValue1);
         expected.put(expectedKey2, expectedValue2);
@@ -1162,7 +1162,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      *
      * @param expected the expected values.
      */
-    public final void containsNone(final Map<K, V> expected) {
+    public void containsNone(final Map<K, V> expected) {
         createMapAssertion().containsNone(expected);
     }
 
@@ -1171,7 +1171,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      *
      * @return the assertion.
      */
-    public final IntAssertion toSize() {
+    public IntAssertion toSize() {
         checkActualIsNotNull();
         return initializeAssertion(Raw.intAssertion(), getActual().size(), Messages.Check.SIZE);
     }
@@ -1181,7 +1181,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toSize(final Matcher<? super Integer> matcher) {
+    public void toSize(final Matcher<? super Integer> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().size(), matcher, Messages.Check.SIZE);
@@ -1192,7 +1192,7 @@ public class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap<K, V>
      *
      * @param expected the expected size.
      */
-    public final void hasSize(final int expected) {
+    public void hasSize(final int expected) {
         toSize().isEqualTo(expected);
     }
 

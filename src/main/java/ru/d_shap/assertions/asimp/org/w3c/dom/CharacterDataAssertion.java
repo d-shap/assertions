@@ -32,7 +32,7 @@ import ru.d_shap.assertions.asimp.java.lang.CharSequenceAssertion;
  *
  * @author Dmitry Shapovalov
  */
-public class CharacterDataAssertion extends ReferenceAssertion<CharacterData> {
+public final class CharacterDataAssertion extends ReferenceAssertion<CharacterData> {
 
     /**
      * Create new object.
@@ -42,7 +42,7 @@ public class CharacterDataAssertion extends ReferenceAssertion<CharacterData> {
     }
 
     @Override
-    protected final Class<CharacterData> getActualValueClass() {
+    protected Class<CharacterData> getActualValueClass() {
         return CharacterData.class;
     }
 
@@ -51,7 +51,7 @@ public class CharacterDataAssertion extends ReferenceAssertion<CharacterData> {
      *
      * @param expected the expected value.
      */
-    public final void isEqualTo(final CharacterData expected) {
+    public void isEqualTo(final CharacterData expected) {
         createNodeAssertion().isEqualTo(expected);
     }
 
@@ -60,7 +60,7 @@ public class CharacterDataAssertion extends ReferenceAssertion<CharacterData> {
      *
      * @param expected the expected value.
      */
-    public final void isNotEqualTo(final CharacterData expected) {
+    public void isNotEqualTo(final CharacterData expected) {
         createNodeAssertion().isNotEqualTo(expected);
     }
 
@@ -69,7 +69,7 @@ public class CharacterDataAssertion extends ReferenceAssertion<CharacterData> {
      *
      * @return the assertion.
      */
-    public final CharSequenceAssertion toData() {
+    public CharSequenceAssertion toData() {
         checkActualIsNotNull();
         return initializeAssertion(Raw.charSequenceAssertion(), getActual().getData(), Messages.Check.DATA);
     }
@@ -79,7 +79,7 @@ public class CharacterDataAssertion extends ReferenceAssertion<CharacterData> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toData(final Matcher<? super String> matcher) {
+    public void toData(final Matcher<? super String> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().getData(), matcher, Messages.Check.DATA);
@@ -90,7 +90,7 @@ public class CharacterDataAssertion extends ReferenceAssertion<CharacterData> {
      *
      * @param expected the expected value.
      */
-    public final void hasData(final String expected) {
+    public void hasData(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         toData().isEqualTo(expected);

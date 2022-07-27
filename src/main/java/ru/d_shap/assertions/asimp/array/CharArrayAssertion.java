@@ -34,7 +34,7 @@ import ru.d_shap.assertions.asimp.primitive.IntAssertion;
  *
  * @author Dmitry Shapovalov
  */
-public class CharArrayAssertion extends ReferenceAssertion<char[]> {
+public final class CharArrayAssertion extends ReferenceAssertion<char[]> {
 
     /**
      * Create new object.
@@ -44,14 +44,14 @@ public class CharArrayAssertion extends ReferenceAssertion<char[]> {
     }
 
     @Override
-    protected final Class<char[]> getActualValueClass() {
+    protected Class<char[]> getActualValueClass() {
         return char[].class;
     }
 
     /**
      * Check if the actual value is empty.
      */
-    public final void isEmpty() {
+    public void isEmpty() {
         checkActualIsNotNull();
         if (getActual().length != 0) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_EMPTY).addActual().build();
@@ -61,7 +61,7 @@ public class CharArrayAssertion extends ReferenceAssertion<char[]> {
     /**
      * Check if the actual value is null or empty.
      */
-    public final void isNullOrEmpty() {
+    public void isNullOrEmpty() {
         if (getActual() != null && getActual().length != 0) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NULL_OR_EMPTY).addActual().build();
         }
@@ -70,7 +70,7 @@ public class CharArrayAssertion extends ReferenceAssertion<char[]> {
     /**
      * Check if the actual value is NOT empty.
      */
-    public final void isNotEmpty() {
+    public void isNotEmpty() {
         checkActualIsNotNull();
         if (getActual().length == 0) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_EMPTY).build();
@@ -82,7 +82,7 @@ public class CharArrayAssertion extends ReferenceAssertion<char[]> {
      *
      * @param expected the expected value.
      */
-    public final void contains(final int expected) {
+    public void contains(final int expected) {
         createIterableAssertion().contains((char) expected);
     }
 
@@ -91,7 +91,7 @@ public class CharArrayAssertion extends ReferenceAssertion<char[]> {
      *
      * @param expected the expected value.
      */
-    public final void doesNotContain(final int expected) {
+    public void doesNotContain(final int expected) {
         createIterableAssertion().doesNotContain((char) expected);
     }
 
@@ -100,7 +100,7 @@ public class CharArrayAssertion extends ReferenceAssertion<char[]> {
      *
      * @param expected the expected values.
      */
-    public final void containsAll(final char... expected) {
+    public void containsAll(final char... expected) {
         List<Object> expectedList = convertValue(expected, null, List.class);
         createIterableAssertion().containsAll(expectedList);
     }
@@ -110,7 +110,7 @@ public class CharArrayAssertion extends ReferenceAssertion<char[]> {
      *
      * @param expected the expected values.
      */
-    public final void containsAll(final int... expected) {
+    public void containsAll(final int... expected) {
         Object expectedChars = convertValue(expected, null, char[].class);
         List<Object> expectedList = convertValue(expectedChars, null, List.class);
         createIterableAssertion().containsAll(expectedList);
@@ -121,7 +121,7 @@ public class CharArrayAssertion extends ReferenceAssertion<char[]> {
      *
      * @param expected the expected values.
      */
-    public final void containsAll(final Iterable<Character> expected) {
+    public void containsAll(final Iterable<Character> expected) {
         List<Object> expectedList = convertValue(expected, null, List.class);
         createIterableAssertion().containsAll(expectedList);
     }
@@ -131,7 +131,7 @@ public class CharArrayAssertion extends ReferenceAssertion<char[]> {
      *
      * @param expected the expected values.
      */
-    public final void containsAllInOrder(final char... expected) {
+    public void containsAllInOrder(final char... expected) {
         List<Object> expectedList = convertValue(expected, null, List.class);
         createIterableAssertion().containsAllInOrder(expectedList);
     }
@@ -141,7 +141,7 @@ public class CharArrayAssertion extends ReferenceAssertion<char[]> {
      *
      * @param expected the expected values.
      */
-    public final void containsAllInOrder(final int... expected) {
+    public void containsAllInOrder(final int... expected) {
         Object expectedChars = convertValue(expected, null, char[].class);
         List<Object> expectedList = convertValue(expectedChars, null, List.class);
         createIterableAssertion().containsAllInOrder(expectedList);
@@ -152,7 +152,7 @@ public class CharArrayAssertion extends ReferenceAssertion<char[]> {
      *
      * @param expected the expected values.
      */
-    public final void containsAllInOrder(final Iterable<Character> expected) {
+    public void containsAllInOrder(final Iterable<Character> expected) {
         List<Object> expectedList = convertValue(expected, null, List.class);
         createIterableAssertion().containsAllInOrder(expectedList);
     }
@@ -162,7 +162,7 @@ public class CharArrayAssertion extends ReferenceAssertion<char[]> {
      *
      * @param expected the expected values.
      */
-    public final void containsExactly(final char... expected) {
+    public void containsExactly(final char... expected) {
         List<Object> expectedList = convertValue(expected, null, List.class);
         createIterableAssertion().containsExactly(expectedList);
     }
@@ -172,7 +172,7 @@ public class CharArrayAssertion extends ReferenceAssertion<char[]> {
      *
      * @param expected the expected values.
      */
-    public final void containsExactly(final int... expected) {
+    public void containsExactly(final int... expected) {
         Object expectedChars = convertValue(expected, null, char[].class);
         List<Object> expectedList = convertValue(expectedChars, null, List.class);
         createIterableAssertion().containsExactly(expectedList);
@@ -183,7 +183,7 @@ public class CharArrayAssertion extends ReferenceAssertion<char[]> {
      *
      * @param expected the expected values.
      */
-    public final void containsExactly(final Iterable<Character> expected) {
+    public void containsExactly(final Iterable<Character> expected) {
         List<Object> expectedList = convertValue(expected, null, List.class);
         createIterableAssertion().containsExactly(expectedList);
     }
@@ -193,7 +193,7 @@ public class CharArrayAssertion extends ReferenceAssertion<char[]> {
      *
      * @param expected the expected values.
      */
-    public final void containsExactlyInOrder(final char... expected) {
+    public void containsExactlyInOrder(final char... expected) {
         List<Object> expectedList = convertValue(expected, null, List.class);
         createIterableAssertion().containsExactlyInOrder(expectedList);
     }
@@ -203,7 +203,7 @@ public class CharArrayAssertion extends ReferenceAssertion<char[]> {
      *
      * @param expected the expected values.
      */
-    public final void containsExactlyInOrder(final int... expected) {
+    public void containsExactlyInOrder(final int... expected) {
         Object expectedChars = convertValue(expected, null, char[].class);
         List<Object> expectedList = convertValue(expectedChars, null, List.class);
         createIterableAssertion().containsExactlyInOrder(expectedList);
@@ -214,7 +214,7 @@ public class CharArrayAssertion extends ReferenceAssertion<char[]> {
      *
      * @param expected the expected values.
      */
-    public final void containsExactlyInOrder(final Iterable<Character> expected) {
+    public void containsExactlyInOrder(final Iterable<Character> expected) {
         List<Object> expectedList = convertValue(expected, null, List.class);
         createIterableAssertion().containsExactlyInOrder(expectedList);
     }
@@ -224,7 +224,7 @@ public class CharArrayAssertion extends ReferenceAssertion<char[]> {
      *
      * @param expected the expected values.
      */
-    public final void containsAny(final char... expected) {
+    public void containsAny(final char... expected) {
         List<Object> expectedList = convertValue(expected, null, List.class);
         createIterableAssertion().containsAny(expectedList);
     }
@@ -234,7 +234,7 @@ public class CharArrayAssertion extends ReferenceAssertion<char[]> {
      *
      * @param expected the expected values.
      */
-    public final void containsAny(final int... expected) {
+    public void containsAny(final int... expected) {
         Object expectedChars = convertValue(expected, null, char[].class);
         List<Object> expectedList = convertValue(expectedChars, null, List.class);
         createIterableAssertion().containsAny(expectedList);
@@ -245,7 +245,7 @@ public class CharArrayAssertion extends ReferenceAssertion<char[]> {
      *
      * @param expected the expected values.
      */
-    public final void containsAny(final Iterable<Character> expected) {
+    public void containsAny(final Iterable<Character> expected) {
         List<Object> expectedList = convertValue(expected, null, List.class);
         createIterableAssertion().containsAny(expectedList);
     }
@@ -255,7 +255,7 @@ public class CharArrayAssertion extends ReferenceAssertion<char[]> {
      *
      * @param expected the expected values.
      */
-    public final void containsNone(final char... expected) {
+    public void containsNone(final char... expected) {
         List<Object> expectedList = convertValue(expected, null, List.class);
         createIterableAssertion().containsNone(expectedList);
     }
@@ -265,7 +265,7 @@ public class CharArrayAssertion extends ReferenceAssertion<char[]> {
      *
      * @param expected the expected values.
      */
-    public final void containsNone(final int... expected) {
+    public void containsNone(final int... expected) {
         Object expectedChars = convertValue(expected, null, char[].class);
         List<Object> expectedList = convertValue(expectedChars, null, List.class);
         createIterableAssertion().containsNone(expectedList);
@@ -276,7 +276,7 @@ public class CharArrayAssertion extends ReferenceAssertion<char[]> {
      *
      * @param expected the expected values.
      */
-    public final void containsNone(final Iterable<Character> expected) {
+    public void containsNone(final Iterable<Character> expected) {
         List<Object> expectedList = convertValue(expected, null, List.class);
         createIterableAssertion().containsNone(expectedList);
     }
@@ -286,7 +286,7 @@ public class CharArrayAssertion extends ReferenceAssertion<char[]> {
      *
      * @return the assertion.
      */
-    public final IntAssertion toLength() {
+    public IntAssertion toLength() {
         checkActualIsNotNull();
         return initializeAssertion(Raw.intAssertion(), getActual().length, Messages.Check.LENGTH);
     }
@@ -296,7 +296,7 @@ public class CharArrayAssertion extends ReferenceAssertion<char[]> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toLength(final Matcher<? super Integer> matcher) {
+    public void toLength(final Matcher<? super Integer> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().length, matcher, Messages.Check.LENGTH);
@@ -307,7 +307,7 @@ public class CharArrayAssertion extends ReferenceAssertion<char[]> {
      *
      * @param expected the expected length.
      */
-    public final void hasLength(final int expected) {
+    public void hasLength(final int expected) {
         toLength().isEqualTo(expected);
     }
 

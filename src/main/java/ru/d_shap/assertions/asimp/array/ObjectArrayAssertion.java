@@ -36,7 +36,7 @@ import ru.d_shap.assertions.asimp.primitive.IntAssertion;
  *
  * @author Dmitry Shapovalov
  */
-public class ObjectArrayAssertion<E> extends ReferenceAssertion<E[]> {
+public final class ObjectArrayAssertion<E> extends ReferenceAssertion<E[]> {
 
     /**
      * Create new object.
@@ -47,7 +47,7 @@ public class ObjectArrayAssertion<E> extends ReferenceAssertion<E[]> {
 
     @Override
     @SuppressWarnings("unchecked")
-    protected final Class<E[]> getActualValueClass() {
+    protected Class<E[]> getActualValueClass() {
         return (Class<E[]>) getRawActualValueClass();
     }
 
@@ -58,7 +58,7 @@ public class ObjectArrayAssertion<E> extends ReferenceAssertion<E[]> {
     /**
      * Check if the actual value is empty.
      */
-    public final void isEmpty() {
+    public void isEmpty() {
         checkActualIsNotNull();
         if (getActual().length != 0) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_EMPTY).addActual().build();
@@ -68,7 +68,7 @@ public class ObjectArrayAssertion<E> extends ReferenceAssertion<E[]> {
     /**
      * Check if the actual value is null or empty.
      */
-    public final void isNullOrEmpty() {
+    public void isNullOrEmpty() {
         if (getActual() != null && getActual().length != 0) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NULL_OR_EMPTY).addActual().build();
         }
@@ -77,7 +77,7 @@ public class ObjectArrayAssertion<E> extends ReferenceAssertion<E[]> {
     /**
      * Check if the actual value is NOT empty.
      */
-    public final void isNotEmpty() {
+    public void isNotEmpty() {
         checkActualIsNotNull();
         if (getActual().length == 0) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_EMPTY).build();
@@ -89,7 +89,7 @@ public class ObjectArrayAssertion<E> extends ReferenceAssertion<E[]> {
      *
      * @param expected the expected value.
      */
-    public final void contains(final E expected) {
+    public void contains(final E expected) {
         createIterableAssertion().contains(expected);
     }
 
@@ -98,7 +98,7 @@ public class ObjectArrayAssertion<E> extends ReferenceAssertion<E[]> {
      *
      * @param expected the expected value.
      */
-    public final void doesNotContain(final E expected) {
+    public void doesNotContain(final E expected) {
         createIterableAssertion().doesNotContain(expected);
     }
 
@@ -118,7 +118,7 @@ public class ObjectArrayAssertion<E> extends ReferenceAssertion<E[]> {
      *
      * @param expected the expected values.
      */
-    public final void containsAll(final Iterable<E> expected) {
+    public void containsAll(final Iterable<E> expected) {
         List<Object> expectedList = convertValue(expected, null, List.class);
         createIterableAssertion().containsAll(expectedList);
     }
@@ -139,7 +139,7 @@ public class ObjectArrayAssertion<E> extends ReferenceAssertion<E[]> {
      *
      * @param expected the expected values.
      */
-    public final void containsAllInOrder(final Iterable<E> expected) {
+    public void containsAllInOrder(final Iterable<E> expected) {
         List<Object> expectedList = convertValue(expected, null, List.class);
         createIterableAssertion().containsAllInOrder(expectedList);
     }
@@ -160,7 +160,7 @@ public class ObjectArrayAssertion<E> extends ReferenceAssertion<E[]> {
      *
      * @param expected the expected values.
      */
-    public final void containsExactly(final Iterable<E> expected) {
+    public void containsExactly(final Iterable<E> expected) {
         List<Object> expectedList = convertValue(expected, null, List.class);
         createIterableAssertion().containsExactly(expectedList);
     }
@@ -181,7 +181,7 @@ public class ObjectArrayAssertion<E> extends ReferenceAssertion<E[]> {
      *
      * @param expected the expected values.
      */
-    public final void containsExactlyInOrder(final Iterable<E> expected) {
+    public void containsExactlyInOrder(final Iterable<E> expected) {
         List<Object> expectedList = convertValue(expected, null, List.class);
         createIterableAssertion().containsExactlyInOrder(expectedList);
     }
@@ -202,7 +202,7 @@ public class ObjectArrayAssertion<E> extends ReferenceAssertion<E[]> {
      *
      * @param expected the expected values.
      */
-    public final void containsAny(final Iterable<E> expected) {
+    public void containsAny(final Iterable<E> expected) {
         List<Object> expectedList = convertValue(expected, null, List.class);
         createIterableAssertion().containsAny(expectedList);
     }
@@ -223,7 +223,7 @@ public class ObjectArrayAssertion<E> extends ReferenceAssertion<E[]> {
      *
      * @param expected the expected values.
      */
-    public final void containsNone(final Iterable<E> expected) {
+    public void containsNone(final Iterable<E> expected) {
         List<Object> expectedList = convertValue(expected, null, List.class);
         createIterableAssertion().containsNone(expectedList);
     }
@@ -233,7 +233,7 @@ public class ObjectArrayAssertion<E> extends ReferenceAssertion<E[]> {
      *
      * @return the assertion.
      */
-    public final IntAssertion toLength() {
+    public IntAssertion toLength() {
         checkActualIsNotNull();
         return initializeAssertion(Raw.intAssertion(), getActual().length, Messages.Check.LENGTH);
     }
@@ -243,7 +243,7 @@ public class ObjectArrayAssertion<E> extends ReferenceAssertion<E[]> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toLength(final Matcher<? super Integer> matcher) {
+    public void toLength(final Matcher<? super Integer> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().length, matcher, Messages.Check.LENGTH);
@@ -254,7 +254,7 @@ public class ObjectArrayAssertion<E> extends ReferenceAssertion<E[]> {
      *
      * @param expected the expected length.
      */
-    public final void hasLength(final int expected) {
+    public void hasLength(final int expected) {
         toLength().isEqualTo(expected);
     }
 

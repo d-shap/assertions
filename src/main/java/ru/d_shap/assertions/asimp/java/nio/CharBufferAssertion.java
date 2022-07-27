@@ -34,7 +34,7 @@ import ru.d_shap.assertions.asimp.primitive.IntAssertion;
  *
  * @author Dmitry Shapovalov
  */
-public class CharBufferAssertion extends ReferenceAssertion<CharBuffer> {
+public final class CharBufferAssertion extends ReferenceAssertion<CharBuffer> {
 
     /**
      * Create new object.
@@ -44,49 +44,49 @@ public class CharBufferAssertion extends ReferenceAssertion<CharBuffer> {
     }
 
     @Override
-    protected final Class<CharBuffer> getActualValueClass() {
+    protected Class<CharBuffer> getActualValueClass() {
         return CharBuffer.class;
     }
 
     /**
      * Check if the actual value is empty.
      */
-    public final void isEmpty() {
+    public void isEmpty() {
         createCharArrayAssertion(false).isEmpty();
     }
 
     /**
      * Check if the actual value is empty.
      */
-    public final void isRewindAndEmpty() {
+    public void isRewindAndEmpty() {
         createCharArrayAssertion(true).isEmpty();
     }
 
     /**
      * Check if the actual value is null or empty.
      */
-    public final void isNullOrEmpty() {
+    public void isNullOrEmpty() {
         createCharArrayAssertion(false).isNullOrEmpty();
     }
 
     /**
      * Check if the actual value is null or empty.
      */
-    public final void isRewindAndNullOrEmpty() {
+    public void isRewindAndNullOrEmpty() {
         createCharArrayAssertion(true).isNullOrEmpty();
     }
 
     /**
      * Check if the actual value is NOT empty.
      */
-    public final void isNotEmpty() {
+    public void isNotEmpty() {
         createCharArrayAssertion(false).isNotEmpty();
     }
 
     /**
      * Check if the actual value is NOT empty.
      */
-    public final void isRewindAndNotEmpty() {
+    public void isRewindAndNotEmpty() {
         createCharArrayAssertion(true).isNotEmpty();
     }
 
@@ -95,7 +95,7 @@ public class CharBufferAssertion extends ReferenceAssertion<CharBuffer> {
      *
      * @param expected the expected value.
      */
-    public final void contains(final int expected) {
+    public void contains(final int expected) {
         createCharArrayAssertion(false).contains((char) expected);
     }
 
@@ -104,7 +104,7 @@ public class CharBufferAssertion extends ReferenceAssertion<CharBuffer> {
      *
      * @param expected the expected value.
      */
-    public final void rewindAndContains(final int expected) {
+    public void rewindAndContains(final int expected) {
         createCharArrayAssertion(true).contains((char) expected);
     }
 
@@ -113,7 +113,7 @@ public class CharBufferAssertion extends ReferenceAssertion<CharBuffer> {
      *
      * @param expected the expected value.
      */
-    public final void doesNotContain(final int expected) {
+    public void doesNotContain(final int expected) {
         createCharArrayAssertion(false).doesNotContain((char) expected);
     }
 
@@ -122,7 +122,7 @@ public class CharBufferAssertion extends ReferenceAssertion<CharBuffer> {
      *
      * @param expected the expected value.
      */
-    public final void rewindAndDoesNotContain(final int expected) {
+    public void rewindAndDoesNotContain(final int expected) {
         createCharArrayAssertion(true).doesNotContain((char) expected);
     }
 
@@ -131,7 +131,7 @@ public class CharBufferAssertion extends ReferenceAssertion<CharBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void containsAll(final char... expected) {
+    public void containsAll(final char... expected) {
         createCharArrayAssertion(false).containsAll(expected);
     }
 
@@ -140,7 +140,7 @@ public class CharBufferAssertion extends ReferenceAssertion<CharBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void containsAll(final int... expected) {
+    public void containsAll(final int... expected) {
         createCharArrayAssertion(false).containsAll(expected);
     }
 
@@ -149,7 +149,7 @@ public class CharBufferAssertion extends ReferenceAssertion<CharBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void containsAll(final Iterable<Character> expected) {
+    public void containsAll(final Iterable<Character> expected) {
         createCharArrayAssertion(false).containsAll(expected);
     }
 
@@ -158,7 +158,7 @@ public class CharBufferAssertion extends ReferenceAssertion<CharBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void rewindAndContainsAll(final char... expected) {
+    public void rewindAndContainsAll(final char... expected) {
         createCharArrayAssertion(true).containsAll(expected);
     }
 
@@ -167,7 +167,7 @@ public class CharBufferAssertion extends ReferenceAssertion<CharBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void rewindAndContainsAll(final int... expected) {
+    public void rewindAndContainsAll(final int... expected) {
         createCharArrayAssertion(true).containsAll(expected);
     }
 
@@ -176,7 +176,7 @@ public class CharBufferAssertion extends ReferenceAssertion<CharBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void rewindAndContainsAll(final Iterable<Character> expected) {
+    public void rewindAndContainsAll(final Iterable<Character> expected) {
         createCharArrayAssertion(true).containsAll(expected);
     }
 
@@ -185,7 +185,7 @@ public class CharBufferAssertion extends ReferenceAssertion<CharBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void containsAllInOrder(final char... expected) {
+    public void containsAllInOrder(final char... expected) {
         createCharArrayAssertion(false).containsAllInOrder(expected);
     }
 
@@ -194,7 +194,7 @@ public class CharBufferAssertion extends ReferenceAssertion<CharBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void containsAllInOrder(final int... expected) {
+    public void containsAllInOrder(final int... expected) {
         createCharArrayAssertion(false).containsAllInOrder(expected);
     }
 
@@ -203,7 +203,7 @@ public class CharBufferAssertion extends ReferenceAssertion<CharBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void containsAllInOrder(final Iterable<Character> expected) {
+    public void containsAllInOrder(final Iterable<Character> expected) {
         createCharArrayAssertion(false).containsAllInOrder(expected);
     }
 
@@ -212,7 +212,7 @@ public class CharBufferAssertion extends ReferenceAssertion<CharBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void rewindAndContainsAllInOrder(final char... expected) {
+    public void rewindAndContainsAllInOrder(final char... expected) {
         createCharArrayAssertion(true).containsAllInOrder(expected);
     }
 
@@ -221,7 +221,7 @@ public class CharBufferAssertion extends ReferenceAssertion<CharBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void rewindAndContainsAllInOrder(final int... expected) {
+    public void rewindAndContainsAllInOrder(final int... expected) {
         createCharArrayAssertion(true).containsAllInOrder(expected);
     }
 
@@ -230,7 +230,7 @@ public class CharBufferAssertion extends ReferenceAssertion<CharBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void rewindAndContainsAllInOrder(final Iterable<Character> expected) {
+    public void rewindAndContainsAllInOrder(final Iterable<Character> expected) {
         createCharArrayAssertion(true).containsAllInOrder(expected);
     }
 
@@ -239,7 +239,7 @@ public class CharBufferAssertion extends ReferenceAssertion<CharBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void containsExactly(final char... expected) {
+    public void containsExactly(final char... expected) {
         createCharArrayAssertion(false).containsExactly(expected);
     }
 
@@ -248,7 +248,7 @@ public class CharBufferAssertion extends ReferenceAssertion<CharBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void containsExactly(final int... expected) {
+    public void containsExactly(final int... expected) {
         createCharArrayAssertion(false).containsExactly(expected);
     }
 
@@ -257,7 +257,7 @@ public class CharBufferAssertion extends ReferenceAssertion<CharBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void containsExactly(final Iterable<Character> expected) {
+    public void containsExactly(final Iterable<Character> expected) {
         createCharArrayAssertion(false).containsExactly(expected);
     }
 
@@ -266,7 +266,7 @@ public class CharBufferAssertion extends ReferenceAssertion<CharBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void rewindAndContainsExactly(final char... expected) {
+    public void rewindAndContainsExactly(final char... expected) {
         createCharArrayAssertion(true).containsExactly(expected);
     }
 
@@ -275,7 +275,7 @@ public class CharBufferAssertion extends ReferenceAssertion<CharBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void rewindAndContainsExactly(final int... expected) {
+    public void rewindAndContainsExactly(final int... expected) {
         createCharArrayAssertion(true).containsExactly(expected);
     }
 
@@ -284,7 +284,7 @@ public class CharBufferAssertion extends ReferenceAssertion<CharBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void rewindAndContainsExactly(final Iterable<Character> expected) {
+    public void rewindAndContainsExactly(final Iterable<Character> expected) {
         createCharArrayAssertion(true).containsExactly(expected);
     }
 
@@ -293,7 +293,7 @@ public class CharBufferAssertion extends ReferenceAssertion<CharBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void containsExactlyInOrder(final char... expected) {
+    public void containsExactlyInOrder(final char... expected) {
         createCharArrayAssertion(false).containsExactlyInOrder(expected);
     }
 
@@ -302,7 +302,7 @@ public class CharBufferAssertion extends ReferenceAssertion<CharBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void containsExactlyInOrder(final int... expected) {
+    public void containsExactlyInOrder(final int... expected) {
         createCharArrayAssertion(false).containsExactlyInOrder(expected);
     }
 
@@ -311,7 +311,7 @@ public class CharBufferAssertion extends ReferenceAssertion<CharBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void containsExactlyInOrder(final Iterable<Character> expected) {
+    public void containsExactlyInOrder(final Iterable<Character> expected) {
         createCharArrayAssertion(false).containsExactlyInOrder(expected);
     }
 
@@ -320,7 +320,7 @@ public class CharBufferAssertion extends ReferenceAssertion<CharBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void rewindAndContainsExactlyInOrder(final char... expected) {
+    public void rewindAndContainsExactlyInOrder(final char... expected) {
         createCharArrayAssertion(true).containsExactlyInOrder(expected);
     }
 
@@ -329,7 +329,7 @@ public class CharBufferAssertion extends ReferenceAssertion<CharBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void rewindAndContainsExactlyInOrder(final int... expected) {
+    public void rewindAndContainsExactlyInOrder(final int... expected) {
         createCharArrayAssertion(true).containsExactlyInOrder(expected);
     }
 
@@ -338,7 +338,7 @@ public class CharBufferAssertion extends ReferenceAssertion<CharBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void rewindAndContainsExactlyInOrder(final Iterable<Character> expected) {
+    public void rewindAndContainsExactlyInOrder(final Iterable<Character> expected) {
         createCharArrayAssertion(true).containsExactlyInOrder(expected);
     }
 
@@ -347,7 +347,7 @@ public class CharBufferAssertion extends ReferenceAssertion<CharBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void containsAny(final char... expected) {
+    public void containsAny(final char... expected) {
         createCharArrayAssertion(false).containsAny(expected);
     }
 
@@ -356,7 +356,7 @@ public class CharBufferAssertion extends ReferenceAssertion<CharBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void containsAny(final int... expected) {
+    public void containsAny(final int... expected) {
         createCharArrayAssertion(false).containsAny(expected);
     }
 
@@ -365,7 +365,7 @@ public class CharBufferAssertion extends ReferenceAssertion<CharBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void containsAny(final Iterable<Character> expected) {
+    public void containsAny(final Iterable<Character> expected) {
         createCharArrayAssertion(false).containsAny(expected);
     }
 
@@ -374,7 +374,7 @@ public class CharBufferAssertion extends ReferenceAssertion<CharBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void rewindAndContainsAny(final char... expected) {
+    public void rewindAndContainsAny(final char... expected) {
         createCharArrayAssertion(true).containsAny(expected);
     }
 
@@ -383,7 +383,7 @@ public class CharBufferAssertion extends ReferenceAssertion<CharBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void rewindAndContainsAny(final int... expected) {
+    public void rewindAndContainsAny(final int... expected) {
         createCharArrayAssertion(true).containsAny(expected);
     }
 
@@ -392,7 +392,7 @@ public class CharBufferAssertion extends ReferenceAssertion<CharBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void rewindAndContainsAny(final Iterable<Character> expected) {
+    public void rewindAndContainsAny(final Iterable<Character> expected) {
         createCharArrayAssertion(true).containsAny(expected);
     }
 
@@ -401,7 +401,7 @@ public class CharBufferAssertion extends ReferenceAssertion<CharBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void containsNone(final char... expected) {
+    public void containsNone(final char... expected) {
         createCharArrayAssertion(false).containsNone(expected);
     }
 
@@ -410,7 +410,7 @@ public class CharBufferAssertion extends ReferenceAssertion<CharBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void containsNone(final int... expected) {
+    public void containsNone(final int... expected) {
         createCharArrayAssertion(false).containsNone(expected);
     }
 
@@ -419,7 +419,7 @@ public class CharBufferAssertion extends ReferenceAssertion<CharBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void containsNone(final Iterable<Character> expected) {
+    public void containsNone(final Iterable<Character> expected) {
         createCharArrayAssertion(false).containsNone(expected);
     }
 
@@ -428,7 +428,7 @@ public class CharBufferAssertion extends ReferenceAssertion<CharBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void rewindAndContainsNone(final char... expected) {
+    public void rewindAndContainsNone(final char... expected) {
         createCharArrayAssertion(true).containsNone(expected);
     }
 
@@ -437,7 +437,7 @@ public class CharBufferAssertion extends ReferenceAssertion<CharBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void rewindAndContainsNone(final int... expected) {
+    public void rewindAndContainsNone(final int... expected) {
         createCharArrayAssertion(true).containsNone(expected);
     }
 
@@ -446,7 +446,7 @@ public class CharBufferAssertion extends ReferenceAssertion<CharBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void rewindAndContainsNone(final Iterable<Character> expected) {
+    public void rewindAndContainsNone(final Iterable<Character> expected) {
         createCharArrayAssertion(true).containsNone(expected);
     }
 
@@ -455,7 +455,7 @@ public class CharBufferAssertion extends ReferenceAssertion<CharBuffer> {
      *
      * @return the assertion.
      */
-    public final IntAssertion toPosition() {
+    public IntAssertion toPosition() {
         checkActualIsNotNull();
         return initializeAssertion(Raw.intAssertion(), getActual().position(), Messages.Check.POSITION);
     }
@@ -465,7 +465,7 @@ public class CharBufferAssertion extends ReferenceAssertion<CharBuffer> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toPosition(final Matcher<? super Integer> matcher) {
+    public void toPosition(final Matcher<? super Integer> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().position(), matcher, Messages.Check.POSITION);
@@ -476,7 +476,7 @@ public class CharBufferAssertion extends ReferenceAssertion<CharBuffer> {
      *
      * @param expected the expected position.
      */
-    public final void hasPosition(final int expected) {
+    public void hasPosition(final int expected) {
         toPosition().isEqualTo(expected);
     }
 
@@ -485,7 +485,7 @@ public class CharBufferAssertion extends ReferenceAssertion<CharBuffer> {
      *
      * @return the assertion.
      */
-    public final IntAssertion toLimit() {
+    public IntAssertion toLimit() {
         checkActualIsNotNull();
         return initializeAssertion(Raw.intAssertion(), getActual().limit(), Messages.Check.LIMIT);
     }
@@ -495,7 +495,7 @@ public class CharBufferAssertion extends ReferenceAssertion<CharBuffer> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toLimit(final Matcher<? super Integer> matcher) {
+    public void toLimit(final Matcher<? super Integer> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().limit(), matcher, Messages.Check.LIMIT);
@@ -506,7 +506,7 @@ public class CharBufferAssertion extends ReferenceAssertion<CharBuffer> {
      *
      * @param expected the expected limit.
      */
-    public final void hasLimit(final int expected) {
+    public void hasLimit(final int expected) {
         toLimit().isEqualTo(expected);
     }
 
@@ -515,7 +515,7 @@ public class CharBufferAssertion extends ReferenceAssertion<CharBuffer> {
      *
      * @return the assertion.
      */
-    public final IntAssertion toCapacity() {
+    public IntAssertion toCapacity() {
         checkActualIsNotNull();
         return initializeAssertion(Raw.intAssertion(), getActual().capacity(), Messages.Check.CAPACITY);
     }
@@ -525,7 +525,7 @@ public class CharBufferAssertion extends ReferenceAssertion<CharBuffer> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toCapacity(final Matcher<? super Integer> matcher) {
+    public void toCapacity(final Matcher<? super Integer> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().capacity(), matcher, Messages.Check.CAPACITY);
@@ -536,7 +536,7 @@ public class CharBufferAssertion extends ReferenceAssertion<CharBuffer> {
      *
      * @param expected the expected capacity.
      */
-    public final void hasCapacity(final int expected) {
+    public void hasCapacity(final int expected) {
         toCapacity().isEqualTo(expected);
     }
 
@@ -547,7 +547,7 @@ public class CharBufferAssertion extends ReferenceAssertion<CharBuffer> {
      * @param expectedLimit    the expected limit.
      * @param expectedCapacity the expected capacity.
      */
-    public final void hasProperties(final int expectedPosition, final int expectedLimit, final int expectedCapacity) {
+    public void hasProperties(final int expectedPosition, final int expectedLimit, final int expectedCapacity) {
         hasPosition(expectedPosition);
         hasLimit(expectedLimit);
         hasCapacity(expectedCapacity);
@@ -558,7 +558,7 @@ public class CharBufferAssertion extends ReferenceAssertion<CharBuffer> {
      *
      * @return the assertion.
      */
-    public final IntAssertion toRemaining() {
+    public IntAssertion toRemaining() {
         checkActualIsNotNull();
         return initializeAssertion(Raw.intAssertion(), getActual().remaining(), Messages.Check.REMAINING);
     }
@@ -568,7 +568,7 @@ public class CharBufferAssertion extends ReferenceAssertion<CharBuffer> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toRemaining(final Matcher<? super Integer> matcher) {
+    public void toRemaining(final Matcher<? super Integer> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().remaining(), matcher, Messages.Check.REMAINING);
@@ -579,14 +579,14 @@ public class CharBufferAssertion extends ReferenceAssertion<CharBuffer> {
      *
      * @param expected the expected remaining.
      */
-    public final void hasRemaining(final int expected) {
+    public void hasRemaining(final int expected) {
         toRemaining().isEqualTo(expected);
     }
 
     /**
      * Check if the actual value is direct.
      */
-    public final void isDirect() {
+    public void isDirect() {
         checkActualIsNotNull();
         if (!getActual().isDirect()) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_DIRECT).build();
@@ -596,7 +596,7 @@ public class CharBufferAssertion extends ReferenceAssertion<CharBuffer> {
     /**
      * Check if the actual value is NOT direct.
      */
-    public final void isNotDirect() {
+    public void isNotDirect() {
         checkActualIsNotNull();
         if (getActual().isDirect()) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_DIRECT).build();
@@ -606,7 +606,7 @@ public class CharBufferAssertion extends ReferenceAssertion<CharBuffer> {
     /**
      * Check if the actual value is read only.
      */
-    public final void isReadOnly() {
+    public void isReadOnly() {
         checkActualIsNotNull();
         if (!getActual().isReadOnly()) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_READ_ONLY).build();
@@ -616,7 +616,7 @@ public class CharBufferAssertion extends ReferenceAssertion<CharBuffer> {
     /**
      * Check if the actual value is NOT read only.
      */
-    public final void isNotReadOnly() {
+    public void isNotReadOnly() {
         checkActualIsNotNull();
         if (getActual().isReadOnly()) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_READ_ONLY).build();

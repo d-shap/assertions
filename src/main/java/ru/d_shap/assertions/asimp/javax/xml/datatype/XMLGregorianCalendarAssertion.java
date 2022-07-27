@@ -39,7 +39,7 @@ import ru.d_shap.assertions.util.DataHelper;
  *
  * @author Dmitry Shapovalov
  */
-public class XMLGregorianCalendarAssertion extends ReferenceAssertion<XMLGregorianCalendar> {
+public final class XMLGregorianCalendarAssertion extends ReferenceAssertion<XMLGregorianCalendar> {
 
     /**
      * Create new object.
@@ -49,7 +49,7 @@ public class XMLGregorianCalendarAssertion extends ReferenceAssertion<XMLGregori
     }
 
     @Override
-    protected final Class<XMLGregorianCalendar> getActualValueClass() {
+    protected Class<XMLGregorianCalendar> getActualValueClass() {
         return XMLGregorianCalendar.class;
     }
 
@@ -58,7 +58,7 @@ public class XMLGregorianCalendarAssertion extends ReferenceAssertion<XMLGregori
      *
      * @param expected the expected value.
      */
-    public final void isEqualTo(final XMLGregorianCalendar expected) {
+    public void isEqualTo(final XMLGregorianCalendar expected) {
         if (expected == null) {
             isNull();
         } else {
@@ -74,7 +74,7 @@ public class XMLGregorianCalendarAssertion extends ReferenceAssertion<XMLGregori
      *
      * @param expected the expected value.
      */
-    public final void isNotEqualTo(final XMLGregorianCalendar expected) {
+    public void isNotEqualTo(final XMLGregorianCalendar expected) {
         if (expected == null) {
             isNotNull();
         } else {
@@ -89,7 +89,7 @@ public class XMLGregorianCalendarAssertion extends ReferenceAssertion<XMLGregori
      *
      * @param expected the expected value.
      */
-    public final void isGreaterThan(final XMLGregorianCalendar expected) {
+    public void isGreaterThan(final XMLGregorianCalendar expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         int compare = getActual().compare(expected);
@@ -103,7 +103,7 @@ public class XMLGregorianCalendarAssertion extends ReferenceAssertion<XMLGregori
      *
      * @param expected the expected value.
      */
-    public final void isGreaterThanOrEqualTo(final XMLGregorianCalendar expected) {
+    public void isGreaterThanOrEqualTo(final XMLGregorianCalendar expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         int compare = getActual().compare(expected);
@@ -117,7 +117,7 @@ public class XMLGregorianCalendarAssertion extends ReferenceAssertion<XMLGregori
      *
      * @param expected the expected value.
      */
-    public final void isLessThan(final XMLGregorianCalendar expected) {
+    public void isLessThan(final XMLGregorianCalendar expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         int compare = getActual().compare(expected);
@@ -131,7 +131,7 @@ public class XMLGregorianCalendarAssertion extends ReferenceAssertion<XMLGregori
      *
      * @param expected the expected value.
      */
-    public final void isLessThanOrEqualTo(final XMLGregorianCalendar expected) {
+    public void isLessThanOrEqualTo(final XMLGregorianCalendar expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         int compare = getActual().compare(expected);
@@ -146,7 +146,7 @@ public class XMLGregorianCalendarAssertion extends ReferenceAssertion<XMLGregori
      * @param expectedFrom the expected lower (inclusive) bound of the range.
      * @param expectedTo   the expected upper (exclusive) bound of the range.
      */
-    public final void isInRange(final XMLGregorianCalendar expectedFrom, final XMLGregorianCalendar expectedTo) {
+    public void isInRange(final XMLGregorianCalendar expectedFrom, final XMLGregorianCalendar expectedTo) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expectedFrom, "expectedFrom");
         checkArgumentIsNotNull(expectedTo, "expectedTo");
@@ -163,7 +163,7 @@ public class XMLGregorianCalendarAssertion extends ReferenceAssertion<XMLGregori
      * @param expectedFrom the expected lower (inclusive) bound of the range.
      * @param expectedTo   the expected upper (exclusive) bound of the range.
      */
-    public final void isNotInRange(final XMLGregorianCalendar expectedFrom, final XMLGregorianCalendar expectedTo) {
+    public void isNotInRange(final XMLGregorianCalendar expectedFrom, final XMLGregorianCalendar expectedTo) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expectedFrom, "expectedFrom");
         checkArgumentIsNotNull(expectedTo, "expectedTo");
@@ -179,7 +179,7 @@ public class XMLGregorianCalendarAssertion extends ReferenceAssertion<XMLGregori
      *
      * @return the assertion.
      */
-    public final IntAssertion toYear() {
+    public IntAssertion toYear() {
         return createCalendarAssertion().toYear();
     }
 
@@ -188,7 +188,7 @@ public class XMLGregorianCalendarAssertion extends ReferenceAssertion<XMLGregori
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toYear(final Matcher<? super Integer> matcher) {
+    public void toYear(final Matcher<? super Integer> matcher) {
         createCalendarAssertion().toYear(matcher);
     }
 
@@ -197,7 +197,7 @@ public class XMLGregorianCalendarAssertion extends ReferenceAssertion<XMLGregori
      *
      * @param expected the expected value.
      */
-    public final void hasYear(final int expected) {
+    public void hasYear(final int expected) {
         createCalendarAssertion().hasYear(expected);
     }
 
@@ -206,7 +206,7 @@ public class XMLGregorianCalendarAssertion extends ReferenceAssertion<XMLGregori
      *
      * @return the assertion.
      */
-    public final IntAssertion toMonth() {
+    public IntAssertion toMonth() {
         return createCalendarAssertion().toMonth();
     }
 
@@ -215,7 +215,7 @@ public class XMLGregorianCalendarAssertion extends ReferenceAssertion<XMLGregori
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toMonth(final Matcher<? super Integer> matcher) {
+    public void toMonth(final Matcher<? super Integer> matcher) {
         createCalendarAssertion().toMonth(matcher);
     }
 
@@ -224,7 +224,7 @@ public class XMLGregorianCalendarAssertion extends ReferenceAssertion<XMLGregori
      *
      * @param expected the expected value.
      */
-    public final void hasMonth(final int expected) {
+    public void hasMonth(final int expected) {
         createCalendarAssertion().hasMonth(expected);
     }
 
@@ -233,7 +233,7 @@ public class XMLGregorianCalendarAssertion extends ReferenceAssertion<XMLGregori
      *
      * @return the assertion.
      */
-    public final IntAssertion toDayOfMonth() {
+    public IntAssertion toDayOfMonth() {
         return createCalendarAssertion().toDayOfMonth();
     }
 
@@ -242,7 +242,7 @@ public class XMLGregorianCalendarAssertion extends ReferenceAssertion<XMLGregori
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toDayOfMonth(final Matcher<? super Integer> matcher) {
+    public void toDayOfMonth(final Matcher<? super Integer> matcher) {
         createCalendarAssertion().toDayOfMonth(matcher);
     }
 
@@ -251,7 +251,7 @@ public class XMLGregorianCalendarAssertion extends ReferenceAssertion<XMLGregori
      *
      * @param expected the expected value.
      */
-    public final void hasDayOfMonth(final int expected) {
+    public void hasDayOfMonth(final int expected) {
         createCalendarAssertion().hasDayOfMonth(expected);
     }
 
@@ -260,7 +260,7 @@ public class XMLGregorianCalendarAssertion extends ReferenceAssertion<XMLGregori
      *
      * @return the assertion.
      */
-    public final IntAssertion toHourOfDay() {
+    public IntAssertion toHourOfDay() {
         return createCalendarAssertion().toHourOfDay();
     }
 
@@ -269,7 +269,7 @@ public class XMLGregorianCalendarAssertion extends ReferenceAssertion<XMLGregori
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toHourOfDay(final Matcher<? super Integer> matcher) {
+    public void toHourOfDay(final Matcher<? super Integer> matcher) {
         createCalendarAssertion().toHourOfDay(matcher);
     }
 
@@ -278,7 +278,7 @@ public class XMLGregorianCalendarAssertion extends ReferenceAssertion<XMLGregori
      *
      * @param expected the expected value.
      */
-    public final void hasHourOfDay(final int expected) {
+    public void hasHourOfDay(final int expected) {
         createCalendarAssertion().hasHourOfDay(expected);
     }
 
@@ -287,7 +287,7 @@ public class XMLGregorianCalendarAssertion extends ReferenceAssertion<XMLGregori
      *
      * @return the assertion.
      */
-    public final IntAssertion toMinute() {
+    public IntAssertion toMinute() {
         return createCalendarAssertion().toMinute();
     }
 
@@ -296,7 +296,7 @@ public class XMLGregorianCalendarAssertion extends ReferenceAssertion<XMLGregori
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toMinute(final Matcher<? super Integer> matcher) {
+    public void toMinute(final Matcher<? super Integer> matcher) {
         createCalendarAssertion().toMinute(matcher);
     }
 
@@ -305,7 +305,7 @@ public class XMLGregorianCalendarAssertion extends ReferenceAssertion<XMLGregori
      *
      * @param expected the expected value.
      */
-    public final void hasMinute(final int expected) {
+    public void hasMinute(final int expected) {
         createCalendarAssertion().hasMinute(expected);
     }
 
@@ -314,7 +314,7 @@ public class XMLGregorianCalendarAssertion extends ReferenceAssertion<XMLGregori
      *
      * @return the assertion.
      */
-    public final IntAssertion toSecond() {
+    public IntAssertion toSecond() {
         return createCalendarAssertion().toSecond();
     }
 
@@ -323,7 +323,7 @@ public class XMLGregorianCalendarAssertion extends ReferenceAssertion<XMLGregori
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toSecond(final Matcher<? super Integer> matcher) {
+    public void toSecond(final Matcher<? super Integer> matcher) {
         createCalendarAssertion().toSecond(matcher);
     }
 
@@ -332,7 +332,7 @@ public class XMLGregorianCalendarAssertion extends ReferenceAssertion<XMLGregori
      *
      * @param expected the expected value.
      */
-    public final void hasSecond(final int expected) {
+    public void hasSecond(final int expected) {
         createCalendarAssertion().hasSecond(expected);
     }
 
@@ -341,7 +341,7 @@ public class XMLGregorianCalendarAssertion extends ReferenceAssertion<XMLGregori
      *
      * @return the assertion.
      */
-    public final IntAssertion toMillisecond() {
+    public IntAssertion toMillisecond() {
         return createCalendarAssertion().toMillisecond();
     }
 
@@ -350,7 +350,7 @@ public class XMLGregorianCalendarAssertion extends ReferenceAssertion<XMLGregori
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toMillisecond(final Matcher<? super Integer> matcher) {
+    public void toMillisecond(final Matcher<? super Integer> matcher) {
         createCalendarAssertion().toMillisecond(matcher);
     }
 
@@ -359,7 +359,7 @@ public class XMLGregorianCalendarAssertion extends ReferenceAssertion<XMLGregori
      *
      * @param expected the expected value.
      */
-    public final void hasMillisecond(final int expected) {
+    public void hasMillisecond(final int expected) {
         createCalendarAssertion().hasMillisecond(expected);
     }
 
@@ -368,7 +368,7 @@ public class XMLGregorianCalendarAssertion extends ReferenceAssertion<XMLGregori
      *
      * @return the assertion.
      */
-    public final IntAssertion toZoneOffset() {
+    public IntAssertion toZoneOffset() {
         return createCalendarAssertion().toZoneOffset();
     }
 
@@ -377,7 +377,7 @@ public class XMLGregorianCalendarAssertion extends ReferenceAssertion<XMLGregori
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toZoneOffset(final Matcher<? super Integer> matcher) {
+    public void toZoneOffset(final Matcher<? super Integer> matcher) {
         createCalendarAssertion().toZoneOffset(matcher);
     }
 
@@ -386,7 +386,7 @@ public class XMLGregorianCalendarAssertion extends ReferenceAssertion<XMLGregori
      *
      * @param expected the expected value.
      */
-    public final void hasZoneOffset(final int expected) {
+    public void hasZoneOffset(final int expected) {
         createCalendarAssertion().hasZoneOffset(expected);
     }
 
@@ -397,7 +397,7 @@ public class XMLGregorianCalendarAssertion extends ReferenceAssertion<XMLGregori
      * @param month      the expected month.
      * @param dayOfMonth the expected day of month.
      */
-    public final void hasDate(final int year, final int month, final int dayOfMonth) {
+    public void hasDate(final int year, final int month, final int dayOfMonth) {
         createCalendarAssertion().hasDate(year, month, dayOfMonth);
     }
 
@@ -409,7 +409,7 @@ public class XMLGregorianCalendarAssertion extends ReferenceAssertion<XMLGregori
      * @param dayOfMonth the expected day of month.
      * @param zoneOffset the expected zone offset.
      */
-    public final void hasTimeZoneDate(final int year, final int month, final int dayOfMonth, final int zoneOffset) {
+    public void hasTimeZoneDate(final int year, final int month, final int dayOfMonth, final int zoneOffset) {
         createCalendarAssertion().hasTimeZoneDate(year, month, dayOfMonth, zoneOffset);
     }
 
@@ -420,7 +420,7 @@ public class XMLGregorianCalendarAssertion extends ReferenceAssertion<XMLGregori
      * @param month      the expected month.
      * @param dayOfMonth the expected day of month.
      */
-    public final void hasUtcDate(final int year, final int month, final int dayOfMonth) {
+    public void hasUtcDate(final int year, final int month, final int dayOfMonth) {
         createCalendarAssertion().hasUtcDate(year, month, dayOfMonth);
     }
 
@@ -431,7 +431,7 @@ public class XMLGregorianCalendarAssertion extends ReferenceAssertion<XMLGregori
      * @param minute    the expected minute.
      * @param second    the expected second.
      */
-    public final void hasTime(final int hourOfDay, final int minute, final int second) {
+    public void hasTime(final int hourOfDay, final int minute, final int second) {
         createCalendarAssertion().hasTime(hourOfDay, minute, second);
     }
 
@@ -443,7 +443,7 @@ public class XMLGregorianCalendarAssertion extends ReferenceAssertion<XMLGregori
      * @param second      the expected second.
      * @param millisecond the expected millisecond.
      */
-    public final void hasTime(final int hourOfDay, final int minute, final int second, final int millisecond) {
+    public void hasTime(final int hourOfDay, final int minute, final int second, final int millisecond) {
         createCalendarAssertion().hasTime(hourOfDay, minute, second, millisecond);
     }
 
@@ -455,7 +455,7 @@ public class XMLGregorianCalendarAssertion extends ReferenceAssertion<XMLGregori
      * @param second     the expected second.
      * @param zoneOffset the expected zone offset.
      */
-    public final void hasTimeZoneTime(final int hourOfDay, final int minute, final int second, final int zoneOffset) {
+    public void hasTimeZoneTime(final int hourOfDay, final int minute, final int second, final int zoneOffset) {
         createCalendarAssertion().hasTimeZoneTime(hourOfDay, minute, second, zoneOffset);
     }
 
@@ -468,7 +468,7 @@ public class XMLGregorianCalendarAssertion extends ReferenceAssertion<XMLGregori
      * @param millisecond the expected millisecond.
      * @param zoneOffset  the expected zone offset.
      */
-    public final void hasTimeZoneTime(final int hourOfDay, final int minute, final int second, final int millisecond, final int zoneOffset) {
+    public void hasTimeZoneTime(final int hourOfDay, final int minute, final int second, final int millisecond, final int zoneOffset) {
         createCalendarAssertion().hasTimeZoneTime(hourOfDay, minute, second, millisecond, zoneOffset);
     }
 
@@ -479,7 +479,7 @@ public class XMLGregorianCalendarAssertion extends ReferenceAssertion<XMLGregori
      * @param minute    the expected minute.
      * @param second    the expected second.
      */
-    public final void hasUtcTime(final int hourOfDay, final int minute, final int second) {
+    public void hasUtcTime(final int hourOfDay, final int minute, final int second) {
         createCalendarAssertion().hasUtcTime(hourOfDay, minute, second);
     }
 
@@ -491,7 +491,7 @@ public class XMLGregorianCalendarAssertion extends ReferenceAssertion<XMLGregori
      * @param second      the expected second.
      * @param millisecond the expected millisecond.
      */
-    public final void hasUtcTime(final int hourOfDay, final int minute, final int second, final int millisecond) {
+    public void hasUtcTime(final int hourOfDay, final int minute, final int second, final int millisecond) {
         createCalendarAssertion().hasUtcTime(hourOfDay, minute, second, millisecond);
     }
 
@@ -505,7 +505,7 @@ public class XMLGregorianCalendarAssertion extends ReferenceAssertion<XMLGregori
      * @param minute     the expected minute.
      * @param second     the expected second.
      */
-    public final void hasDateAndTime(final int year, final int month, final int dayOfMonth, final int hourOfDay, final int minute, final int second) {
+    public void hasDateAndTime(final int year, final int month, final int dayOfMonth, final int hourOfDay, final int minute, final int second) {
         createCalendarAssertion().hasDateAndTime(year, month, dayOfMonth, hourOfDay, minute, second);
     }
 
@@ -520,7 +520,7 @@ public class XMLGregorianCalendarAssertion extends ReferenceAssertion<XMLGregori
      * @param second      the expected second.
      * @param millisecond the expected millisecond.
      */
-    public final void hasDateAndTime(final int year, final int month, final int dayOfMonth, final int hourOfDay, final int minute, final int second, final int millisecond) {
+    public void hasDateAndTime(final int year, final int month, final int dayOfMonth, final int hourOfDay, final int minute, final int second, final int millisecond) {
         createCalendarAssertion().hasDateAndTime(year, month, dayOfMonth, hourOfDay, minute, second, millisecond);
     }
 
@@ -535,7 +535,7 @@ public class XMLGregorianCalendarAssertion extends ReferenceAssertion<XMLGregori
      * @param second     the expected second.
      * @param zoneOffset the expected zone offset.
      */
-    public final void hasTimeZoneDateAndTime(final int year, final int month, final int dayOfMonth, final int hourOfDay, final int minute, final int second, final int zoneOffset) {
+    public void hasTimeZoneDateAndTime(final int year, final int month, final int dayOfMonth, final int hourOfDay, final int minute, final int second, final int zoneOffset) {
         createCalendarAssertion().hasTimeZoneDateAndTime(year, month, dayOfMonth, hourOfDay, minute, second, zoneOffset);
     }
 
@@ -551,7 +551,7 @@ public class XMLGregorianCalendarAssertion extends ReferenceAssertion<XMLGregori
      * @param millisecond the expected millisecond.
      * @param zoneOffset  the expected zone offset.
      */
-    public final void hasTimeZoneDateAndTime(final int year, final int month, final int dayOfMonth, final int hourOfDay, final int minute, final int second, final int millisecond, final int zoneOffset) {
+    public void hasTimeZoneDateAndTime(final int year, final int month, final int dayOfMonth, final int hourOfDay, final int minute, final int second, final int millisecond, final int zoneOffset) {
         createCalendarAssertion().hasTimeZoneDateAndTime(year, month, dayOfMonth, hourOfDay, minute, second, millisecond, zoneOffset);
     }
 
@@ -565,7 +565,7 @@ public class XMLGregorianCalendarAssertion extends ReferenceAssertion<XMLGregori
      * @param minute     the expected minute.
      * @param second     the expected second.
      */
-    public final void hasUtcDateAndTime(final int year, final int month, final int dayOfMonth, final int hourOfDay, final int minute, final int second) {
+    public void hasUtcDateAndTime(final int year, final int month, final int dayOfMonth, final int hourOfDay, final int minute, final int second) {
         createCalendarAssertion().hasUtcDateAndTime(year, month, dayOfMonth, hourOfDay, minute, second);
     }
 
@@ -580,7 +580,7 @@ public class XMLGregorianCalendarAssertion extends ReferenceAssertion<XMLGregori
      * @param second      the expected second.
      * @param millisecond the expected millisecond.
      */
-    public final void hasUtcDateAndTime(final int year, final int month, final int dayOfMonth, final int hourOfDay, final int minute, final int second, final int millisecond) {
+    public void hasUtcDateAndTime(final int year, final int month, final int dayOfMonth, final int hourOfDay, final int minute, final int second, final int millisecond) {
         createCalendarAssertion().hasUtcDateAndTime(year, month, dayOfMonth, hourOfDay, minute, second, millisecond);
     }
 
@@ -596,7 +596,7 @@ public class XMLGregorianCalendarAssertion extends ReferenceAssertion<XMLGregori
      *
      * @return the assertion.
      */
-    public final CalendarAssertion toTimeZoneCalendar(final TimeZone timeZone) {
+    public CalendarAssertion toTimeZoneCalendar(final TimeZone timeZone) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(timeZone, "timeZone");
         Calendar calendar = convertValue(getActual(), null, Calendar.class, timeZone);
@@ -610,7 +610,7 @@ public class XMLGregorianCalendarAssertion extends ReferenceAssertion<XMLGregori
      *
      * @return the assertion.
      */
-    public final CalendarAssertion toTimeZoneCalendar(final String timeZoneId) {
+    public CalendarAssertion toTimeZoneCalendar(final String timeZoneId) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(timeZoneId, "timeZoneId");
         TimeZone timeZone = TimeZone.getTimeZone(timeZoneId);
@@ -622,7 +622,7 @@ public class XMLGregorianCalendarAssertion extends ReferenceAssertion<XMLGregori
      *
      * @return the assertion.
      */
-    public final CalendarAssertion toUtcTimeZoneCalendar() {
+    public CalendarAssertion toUtcTimeZoneCalendar() {
         return toTimeZoneCalendar(DataHelper.TIMEZONE_UTC);
     }
 

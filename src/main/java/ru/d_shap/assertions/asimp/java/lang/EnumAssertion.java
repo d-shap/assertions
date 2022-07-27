@@ -25,6 +25,7 @@ import org.hamcrest.Matcher;
 
 import ru.d_shap.assertions.Messages;
 import ru.d_shap.assertions.Raw;
+import ru.d_shap.assertions.asimp.ReferenceAssertion;
 import ru.d_shap.assertions.asimp.primitive.IntAssertion;
 import ru.d_shap.assertions.util.ReflectionHelper;
 
@@ -33,7 +34,7 @@ import ru.d_shap.assertions.util.ReflectionHelper;
  *
  * @author Dmitry Shapovalov
  */
-public class EnumAssertion extends ClassAssertion {
+public final class EnumAssertion extends ReferenceAssertion<Class<?>> {
 
     private static final String VALUES_METHOD_NAME = "values";
 
@@ -47,13 +48,23 @@ public class EnumAssertion extends ClassAssertion {
         addActualValueValidator(new EnumActualValueValidator());
     }
 
+    @Override
+    @SuppressWarnings("unchecked")
+    protected Class<Class<?>> getActualValueClass() {
+        return (Class<Class<?>>) getRawActualValueClass();
+    }
+
+    private Class<?> getRawActualValueClass() {
+        return Class.class;
+    }
+
     /**
      * Make assertion about the actual enum value count.
      * Side-effect: invokes the methods "values" and "valueOf" for the code coverage.
      *
      * @return the assertion.
      */
-    public final IntAssertion toValueCount() {
+    public IntAssertion toValueCount() {
         checkActualIsNotNull();
         return initializeAssertion(Raw.intAssertion(), getValueCount(), Messages.Check.VALUE_COUNT);
     }
@@ -64,7 +75,7 @@ public class EnumAssertion extends ClassAssertion {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toValueCount(final Matcher<? super Integer> matcher) {
+    public void toValueCount(final Matcher<? super Integer> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getValueCount(), matcher, Messages.Check.VALUE_COUNT);
@@ -88,7 +99,7 @@ public class EnumAssertion extends ClassAssertion {
      *
      * @param expected the expected value count.
      */
-    public final void hasValueCount(final int expected) {
+    public void hasValueCount(final int expected) {
         toValueCount().isEqualTo(expected);
     }
 

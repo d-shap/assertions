@@ -35,7 +35,7 @@ import ru.d_shap.assertions.util.ReflectionHelper;
  *
  * @author Dmitry Shapovalov
  */
-public class ClassAssertion extends ReferenceAssertion<Class<?>> {
+public final class ClassAssertion extends ReferenceAssertion<Class<?>> {
 
     /**
      * Create new object.
@@ -46,7 +46,7 @@ public class ClassAssertion extends ReferenceAssertion<Class<?>> {
 
     @Override
     @SuppressWarnings("unchecked")
-    protected final Class<Class<?>> getActualValueClass() {
+    protected Class<Class<?>> getActualValueClass() {
         return (Class<Class<?>>) getRawActualValueClass();
     }
 
@@ -59,7 +59,7 @@ public class ClassAssertion extends ReferenceAssertion<Class<?>> {
      *
      * @param expected the expected value.
      */
-    public final void isEqualTo(final Class<?> expected) {
+    public void isEqualTo(final Class<?> expected) {
         if (expected == null) {
             isNull();
         } else {
@@ -75,7 +75,7 @@ public class ClassAssertion extends ReferenceAssertion<Class<?>> {
      *
      * @param expected the expected value.
      */
-    public final void isNotEqualTo(final Class<?> expected) {
+    public void isNotEqualTo(final Class<?> expected) {
         if (expected == null) {
             isNotNull();
         } else {
@@ -90,7 +90,7 @@ public class ClassAssertion extends ReferenceAssertion<Class<?>> {
      *
      * @param expected the expected class.
      */
-    public final void isSubtypeOf(final Class<?> expected) {
+    public void isSubtypeOf(final Class<?> expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         if (!expected.isAssignableFrom(getActual())) {
@@ -103,7 +103,7 @@ public class ClassAssertion extends ReferenceAssertion<Class<?>> {
      *
      * @param expected the expected class.
      */
-    public final void isNotSubtypeOf(final Class<?> expected) {
+    public void isNotSubtypeOf(final Class<?> expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         if (expected.isAssignableFrom(getActual())) {
@@ -116,7 +116,7 @@ public class ClassAssertion extends ReferenceAssertion<Class<?>> {
      *
      * @param expected the expected class.
      */
-    public final void isSupertypeOf(final Class<?> expected) {
+    public void isSupertypeOf(final Class<?> expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         if (!getActual().isAssignableFrom(expected)) {
@@ -129,7 +129,7 @@ public class ClassAssertion extends ReferenceAssertion<Class<?>> {
      *
      * @param expected the expected class.
      */
-    public final void isNotSupertypeOf(final Class<?> expected) {
+    public void isNotSupertypeOf(final Class<?> expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         if (getActual().isAssignableFrom(expected)) {
@@ -140,7 +140,7 @@ public class ClassAssertion extends ReferenceAssertion<Class<?>> {
     /**
      * Check if the actual value is the interface type.
      */
-    public final void isInterface() {
+    public void isInterface() {
         checkActualIsNotNull();
         if (!getActual().isInterface()) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_INTERCACE_TYPE).addActual().build();
@@ -150,7 +150,7 @@ public class ClassAssertion extends ReferenceAssertion<Class<?>> {
     /**
      * Check if the actual value is NOT the interface type.
      */
-    public final void isNotInterface() {
+    public void isNotInterface() {
         checkActualIsNotNull();
         if (getActual().isInterface()) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_INTERCACE_TYPE).addActual().build();
@@ -160,7 +160,7 @@ public class ClassAssertion extends ReferenceAssertion<Class<?>> {
     /**
      * Check if the actual value is the array type.
      */
-    public final void isArray() {
+    public void isArray() {
         checkActualIsNotNull();
         if (!getActual().isArray()) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_ARRAY_TYPE).addActual().build();
@@ -170,7 +170,7 @@ public class ClassAssertion extends ReferenceAssertion<Class<?>> {
     /**
      * Check if the actual value is NOT the array type.
      */
-    public final void isNotArray() {
+    public void isNotArray() {
         checkActualIsNotNull();
         if (getActual().isArray()) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_ARRAY_TYPE).addActual().build();
@@ -180,7 +180,7 @@ public class ClassAssertion extends ReferenceAssertion<Class<?>> {
     /**
      * Check if the actual value is the enum type.
      */
-    public final void isEnum() {
+    public void isEnum() {
         checkActualIsNotNull();
         if (!getActual().isEnum()) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_ENUM_TYPE).addActual().build();
@@ -190,7 +190,7 @@ public class ClassAssertion extends ReferenceAssertion<Class<?>> {
     /**
      * Check if the actual value is NOT the enum type.
      */
-    public final void isNotEnum() {
+    public void isNotEnum() {
         checkActualIsNotNull();
         if (getActual().isEnum()) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_ENUM_TYPE).addActual().build();
@@ -202,7 +202,7 @@ public class ClassAssertion extends ReferenceAssertion<Class<?>> {
      *
      * @return the assertion.
      */
-    public final ClassAssertion toComponentType() {
+    public ClassAssertion toComponentType() {
         isArray();
         return initializeAssertion(Raw.classAssertion(), getActual().getComponentType(), Messages.Check.COMPONENT_TYPE);
     }
@@ -214,7 +214,7 @@ public class ClassAssertion extends ReferenceAssertion<Class<?>> {
      * @param <T>     the generic type of the actual value's component type.
      */
     @SuppressWarnings("unchecked")
-    public final <T> void toComponentType(final Matcher<? super Class<T>> matcher) {
+    public <T> void toComponentType(final Matcher<? super Class<T>> matcher) {
         isArray();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion((Class<T>) getActual().getComponentType(), matcher, Messages.Check.COMPONENT_TYPE);
@@ -225,7 +225,7 @@ public class ClassAssertion extends ReferenceAssertion<Class<?>> {
      *
      * @param expected the expected value.
      */
-    public final void hasComponentType(final Class<?> expected) {
+    public void hasComponentType(final Class<?> expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         toComponentType().isEqualTo(expected);
@@ -235,7 +235,7 @@ public class ClassAssertion extends ReferenceAssertion<Class<?>> {
      * Check if the actual value has one private no-arg constructor (utility class constructor).
      * Side-effect: invokes the private constractor for the code coverage.
      */
-    public final void hasOnePrivateConstructor() {
+    public void hasOnePrivateConstructor() {
         checkActualIsNotNull();
         Constructor<?>[] constructors = ReflectionHelper.getConstructors(getActual());
         if (constructors.length != 1) {
@@ -261,7 +261,7 @@ public class ClassAssertion extends ReferenceAssertion<Class<?>> {
      *
      * @return the assertion.
      */
-    public final EnumAssertion asEnum() {
+    public EnumAssertion asEnum() {
         if (getActual() != null) {
             isEnum();
         }

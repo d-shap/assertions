@@ -34,7 +34,7 @@ import ru.d_shap.assertions.asimp.primitive.IntAssertion;
  *
  * @author Dmitry Shapovalov
  */
-public class FloatBufferAssertion extends ReferenceAssertion<FloatBuffer> {
+public final class FloatBufferAssertion extends ReferenceAssertion<FloatBuffer> {
 
     /**
      * Create new object.
@@ -44,49 +44,49 @@ public class FloatBufferAssertion extends ReferenceAssertion<FloatBuffer> {
     }
 
     @Override
-    protected final Class<FloatBuffer> getActualValueClass() {
+    protected Class<FloatBuffer> getActualValueClass() {
         return FloatBuffer.class;
     }
 
     /**
      * Check if the actual value is empty.
      */
-    public final void isEmpty() {
+    public void isEmpty() {
         createFloatArrayAssertion(false).isEmpty();
     }
 
     /**
      * Check if the actual value is empty.
      */
-    public final void isRewindAndEmpty() {
+    public void isRewindAndEmpty() {
         createFloatArrayAssertion(true).isEmpty();
     }
 
     /**
      * Check if the actual value is null or empty.
      */
-    public final void isNullOrEmpty() {
+    public void isNullOrEmpty() {
         createFloatArrayAssertion(false).isNullOrEmpty();
     }
 
     /**
      * Check if the actual value is null or empty.
      */
-    public final void isRewindAndNullOrEmpty() {
+    public void isRewindAndNullOrEmpty() {
         createFloatArrayAssertion(true).isNullOrEmpty();
     }
 
     /**
      * Check if the actual value is NOT empty.
      */
-    public final void isNotEmpty() {
+    public void isNotEmpty() {
         createFloatArrayAssertion(false).isNotEmpty();
     }
 
     /**
      * Check if the actual value is NOT empty.
      */
-    public final void isRewindAndNotEmpty() {
+    public void isRewindAndNotEmpty() {
         createFloatArrayAssertion(true).isNotEmpty();
     }
 
@@ -95,7 +95,7 @@ public class FloatBufferAssertion extends ReferenceAssertion<FloatBuffer> {
      *
      * @param expected the expected value.
      */
-    public final void contains(final float expected) {
+    public void contains(final float expected) {
         createFloatArrayAssertion(false).contains(expected);
     }
 
@@ -104,7 +104,7 @@ public class FloatBufferAssertion extends ReferenceAssertion<FloatBuffer> {
      *
      * @param expected the expected value.
      */
-    public final void rewindAndContains(final float expected) {
+    public void rewindAndContains(final float expected) {
         createFloatArrayAssertion(true).contains(expected);
     }
 
@@ -113,7 +113,7 @@ public class FloatBufferAssertion extends ReferenceAssertion<FloatBuffer> {
      *
      * @param expected the expected value.
      */
-    public final void doesNotContain(final float expected) {
+    public void doesNotContain(final float expected) {
         createFloatArrayAssertion(false).doesNotContain(expected);
     }
 
@@ -122,7 +122,7 @@ public class FloatBufferAssertion extends ReferenceAssertion<FloatBuffer> {
      *
      * @param expected the expected value.
      */
-    public final void rewindAndDoesNotContain(final float expected) {
+    public void rewindAndDoesNotContain(final float expected) {
         createFloatArrayAssertion(true).doesNotContain(expected);
     }
 
@@ -131,7 +131,7 @@ public class FloatBufferAssertion extends ReferenceAssertion<FloatBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void containsAll(final float... expected) {
+    public void containsAll(final float... expected) {
         createFloatArrayAssertion(false).containsAll(expected);
     }
 
@@ -140,7 +140,7 @@ public class FloatBufferAssertion extends ReferenceAssertion<FloatBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void containsAll(final Iterable<Float> expected) {
+    public void containsAll(final Iterable<Float> expected) {
         createFloatArrayAssertion(false).containsAll(expected);
     }
 
@@ -149,7 +149,7 @@ public class FloatBufferAssertion extends ReferenceAssertion<FloatBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void rewindAndContainsAll(final float... expected) {
+    public void rewindAndContainsAll(final float... expected) {
         createFloatArrayAssertion(true).containsAll(expected);
     }
 
@@ -158,7 +158,7 @@ public class FloatBufferAssertion extends ReferenceAssertion<FloatBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void rewindAndContainsAll(final Iterable<Float> expected) {
+    public void rewindAndContainsAll(final Iterable<Float> expected) {
         createFloatArrayAssertion(true).containsAll(expected);
     }
 
@@ -167,7 +167,7 @@ public class FloatBufferAssertion extends ReferenceAssertion<FloatBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void containsAllInOrder(final float... expected) {
+    public void containsAllInOrder(final float... expected) {
         createFloatArrayAssertion(false).containsAllInOrder(expected);
     }
 
@@ -176,7 +176,7 @@ public class FloatBufferAssertion extends ReferenceAssertion<FloatBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void containsAllInOrder(final Iterable<Float> expected) {
+    public void containsAllInOrder(final Iterable<Float> expected) {
         createFloatArrayAssertion(false).containsAllInOrder(expected);
     }
 
@@ -185,7 +185,7 @@ public class FloatBufferAssertion extends ReferenceAssertion<FloatBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void rewindAndContainsAllInOrder(final float... expected) {
+    public void rewindAndContainsAllInOrder(final float... expected) {
         createFloatArrayAssertion(true).containsAllInOrder(expected);
     }
 
@@ -194,7 +194,7 @@ public class FloatBufferAssertion extends ReferenceAssertion<FloatBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void rewindAndContainsAllInOrder(final Iterable<Float> expected) {
+    public void rewindAndContainsAllInOrder(final Iterable<Float> expected) {
         createFloatArrayAssertion(true).containsAllInOrder(expected);
     }
 
@@ -203,7 +203,7 @@ public class FloatBufferAssertion extends ReferenceAssertion<FloatBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void containsExactly(final float... expected) {
+    public void containsExactly(final float... expected) {
         createFloatArrayAssertion(false).containsExactly(expected);
     }
 
@@ -212,7 +212,7 @@ public class FloatBufferAssertion extends ReferenceAssertion<FloatBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void containsExactly(final Iterable<Float> expected) {
+    public void containsExactly(final Iterable<Float> expected) {
         createFloatArrayAssertion(false).containsExactly(expected);
     }
 
@@ -221,7 +221,7 @@ public class FloatBufferAssertion extends ReferenceAssertion<FloatBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void rewindAndContainsExactly(final float... expected) {
+    public void rewindAndContainsExactly(final float... expected) {
         createFloatArrayAssertion(true).containsExactly(expected);
     }
 
@@ -230,7 +230,7 @@ public class FloatBufferAssertion extends ReferenceAssertion<FloatBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void rewindAndContainsExactly(final Iterable<Float> expected) {
+    public void rewindAndContainsExactly(final Iterable<Float> expected) {
         createFloatArrayAssertion(true).containsExactly(expected);
     }
 
@@ -239,7 +239,7 @@ public class FloatBufferAssertion extends ReferenceAssertion<FloatBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void containsExactlyInOrder(final float... expected) {
+    public void containsExactlyInOrder(final float... expected) {
         createFloatArrayAssertion(false).containsExactlyInOrder(expected);
     }
 
@@ -248,7 +248,7 @@ public class FloatBufferAssertion extends ReferenceAssertion<FloatBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void containsExactlyInOrder(final Iterable<Float> expected) {
+    public void containsExactlyInOrder(final Iterable<Float> expected) {
         createFloatArrayAssertion(false).containsExactlyInOrder(expected);
     }
 
@@ -257,7 +257,7 @@ public class FloatBufferAssertion extends ReferenceAssertion<FloatBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void rewindAndContainsExactlyInOrder(final float... expected) {
+    public void rewindAndContainsExactlyInOrder(final float... expected) {
         createFloatArrayAssertion(true).containsExactlyInOrder(expected);
     }
 
@@ -266,7 +266,7 @@ public class FloatBufferAssertion extends ReferenceAssertion<FloatBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void rewindAndContainsExactlyInOrder(final Iterable<Float> expected) {
+    public void rewindAndContainsExactlyInOrder(final Iterable<Float> expected) {
         createFloatArrayAssertion(true).containsExactlyInOrder(expected);
     }
 
@@ -275,7 +275,7 @@ public class FloatBufferAssertion extends ReferenceAssertion<FloatBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void containsAny(final float... expected) {
+    public void containsAny(final float... expected) {
         createFloatArrayAssertion(false).containsAny(expected);
     }
 
@@ -284,7 +284,7 @@ public class FloatBufferAssertion extends ReferenceAssertion<FloatBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void containsAny(final Iterable<Float> expected) {
+    public void containsAny(final Iterable<Float> expected) {
         createFloatArrayAssertion(false).containsAny(expected);
     }
 
@@ -293,7 +293,7 @@ public class FloatBufferAssertion extends ReferenceAssertion<FloatBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void rewindAndContainsAny(final float... expected) {
+    public void rewindAndContainsAny(final float... expected) {
         createFloatArrayAssertion(true).containsAny(expected);
     }
 
@@ -302,7 +302,7 @@ public class FloatBufferAssertion extends ReferenceAssertion<FloatBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void rewindAndContainsAny(final Iterable<Float> expected) {
+    public void rewindAndContainsAny(final Iterable<Float> expected) {
         createFloatArrayAssertion(true).containsAny(expected);
     }
 
@@ -311,7 +311,7 @@ public class FloatBufferAssertion extends ReferenceAssertion<FloatBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void containsNone(final float... expected) {
+    public void containsNone(final float... expected) {
         createFloatArrayAssertion(false).containsNone(expected);
     }
 
@@ -320,7 +320,7 @@ public class FloatBufferAssertion extends ReferenceAssertion<FloatBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void containsNone(final Iterable<Float> expected) {
+    public void containsNone(final Iterable<Float> expected) {
         createFloatArrayAssertion(false).containsNone(expected);
     }
 
@@ -329,7 +329,7 @@ public class FloatBufferAssertion extends ReferenceAssertion<FloatBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void rewindAndContainsNone(final float... expected) {
+    public void rewindAndContainsNone(final float... expected) {
         createFloatArrayAssertion(true).containsNone(expected);
     }
 
@@ -338,7 +338,7 @@ public class FloatBufferAssertion extends ReferenceAssertion<FloatBuffer> {
      *
      * @param expected the expected values.
      */
-    public final void rewindAndContainsNone(final Iterable<Float> expected) {
+    public void rewindAndContainsNone(final Iterable<Float> expected) {
         createFloatArrayAssertion(true).containsNone(expected);
     }
 
@@ -347,7 +347,7 @@ public class FloatBufferAssertion extends ReferenceAssertion<FloatBuffer> {
      *
      * @return the assertion.
      */
-    public final IntAssertion toPosition() {
+    public IntAssertion toPosition() {
         checkActualIsNotNull();
         return initializeAssertion(Raw.intAssertion(), getActual().position(), Messages.Check.POSITION);
     }
@@ -357,7 +357,7 @@ public class FloatBufferAssertion extends ReferenceAssertion<FloatBuffer> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toPosition(final Matcher<? super Integer> matcher) {
+    public void toPosition(final Matcher<? super Integer> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().position(), matcher, Messages.Check.POSITION);
@@ -368,7 +368,7 @@ public class FloatBufferAssertion extends ReferenceAssertion<FloatBuffer> {
      *
      * @param expected the expected position.
      */
-    public final void hasPosition(final int expected) {
+    public void hasPosition(final int expected) {
         toPosition().isEqualTo(expected);
     }
 
@@ -377,7 +377,7 @@ public class FloatBufferAssertion extends ReferenceAssertion<FloatBuffer> {
      *
      * @return the assertion.
      */
-    public final IntAssertion toLimit() {
+    public IntAssertion toLimit() {
         checkActualIsNotNull();
         return initializeAssertion(Raw.intAssertion(), getActual().limit(), Messages.Check.LIMIT);
     }
@@ -387,7 +387,7 @@ public class FloatBufferAssertion extends ReferenceAssertion<FloatBuffer> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toLimit(final Matcher<? super Integer> matcher) {
+    public void toLimit(final Matcher<? super Integer> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().limit(), matcher, Messages.Check.LIMIT);
@@ -398,7 +398,7 @@ public class FloatBufferAssertion extends ReferenceAssertion<FloatBuffer> {
      *
      * @param expected the expected limit.
      */
-    public final void hasLimit(final int expected) {
+    public void hasLimit(final int expected) {
         toLimit().isEqualTo(expected);
     }
 
@@ -407,7 +407,7 @@ public class FloatBufferAssertion extends ReferenceAssertion<FloatBuffer> {
      *
      * @return the assertion.
      */
-    public final IntAssertion toCapacity() {
+    public IntAssertion toCapacity() {
         checkActualIsNotNull();
         return initializeAssertion(Raw.intAssertion(), getActual().capacity(), Messages.Check.CAPACITY);
     }
@@ -417,7 +417,7 @@ public class FloatBufferAssertion extends ReferenceAssertion<FloatBuffer> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toCapacity(final Matcher<? super Integer> matcher) {
+    public void toCapacity(final Matcher<? super Integer> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().capacity(), matcher, Messages.Check.CAPACITY);
@@ -428,7 +428,7 @@ public class FloatBufferAssertion extends ReferenceAssertion<FloatBuffer> {
      *
      * @param expected the expected capacity.
      */
-    public final void hasCapacity(final int expected) {
+    public void hasCapacity(final int expected) {
         toCapacity().isEqualTo(expected);
     }
 
@@ -439,7 +439,7 @@ public class FloatBufferAssertion extends ReferenceAssertion<FloatBuffer> {
      * @param expectedLimit    the expected limit.
      * @param expectedCapacity the expected capacity.
      */
-    public final void hasProperties(final int expectedPosition, final int expectedLimit, final int expectedCapacity) {
+    public void hasProperties(final int expectedPosition, final int expectedLimit, final int expectedCapacity) {
         hasPosition(expectedPosition);
         hasLimit(expectedLimit);
         hasCapacity(expectedCapacity);
@@ -450,7 +450,7 @@ public class FloatBufferAssertion extends ReferenceAssertion<FloatBuffer> {
      *
      * @return the assertion.
      */
-    public final IntAssertion toRemaining() {
+    public IntAssertion toRemaining() {
         checkActualIsNotNull();
         return initializeAssertion(Raw.intAssertion(), getActual().remaining(), Messages.Check.REMAINING);
     }
@@ -460,7 +460,7 @@ public class FloatBufferAssertion extends ReferenceAssertion<FloatBuffer> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toRemaining(final Matcher<? super Integer> matcher) {
+    public void toRemaining(final Matcher<? super Integer> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().remaining(), matcher, Messages.Check.REMAINING);
@@ -471,14 +471,14 @@ public class FloatBufferAssertion extends ReferenceAssertion<FloatBuffer> {
      *
      * @param expected the expected remaining.
      */
-    public final void hasRemaining(final int expected) {
+    public void hasRemaining(final int expected) {
         toRemaining().isEqualTo(expected);
     }
 
     /**
      * Check if the actual value is direct.
      */
-    public final void isDirect() {
+    public void isDirect() {
         checkActualIsNotNull();
         if (!getActual().isDirect()) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_DIRECT).build();
@@ -488,7 +488,7 @@ public class FloatBufferAssertion extends ReferenceAssertion<FloatBuffer> {
     /**
      * Check if the actual value is NOT direct.
      */
-    public final void isNotDirect() {
+    public void isNotDirect() {
         checkActualIsNotNull();
         if (getActual().isDirect()) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_DIRECT).build();
@@ -498,7 +498,7 @@ public class FloatBufferAssertion extends ReferenceAssertion<FloatBuffer> {
     /**
      * Check if the actual value is read only.
      */
-    public final void isReadOnly() {
+    public void isReadOnly() {
         checkActualIsNotNull();
         if (!getActual().isReadOnly()) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_READ_ONLY).build();
@@ -508,7 +508,7 @@ public class FloatBufferAssertion extends ReferenceAssertion<FloatBuffer> {
     /**
      * Check if the actual value is NOT read only.
      */
-    public final void isNotReadOnly() {
+    public void isNotReadOnly() {
         checkActualIsNotNull();
         if (getActual().isReadOnly()) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_READ_ONLY).build();

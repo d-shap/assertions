@@ -34,7 +34,7 @@ import ru.d_shap.assertions.asimp.primitive.IntAssertion;
  *
  * @author Dmitry Shapovalov
  */
-public class DoubleArrayAssertion extends ReferenceAssertion<double[]> {
+public final class DoubleArrayAssertion extends ReferenceAssertion<double[]> {
 
     /**
      * Create new object.
@@ -44,14 +44,14 @@ public class DoubleArrayAssertion extends ReferenceAssertion<double[]> {
     }
 
     @Override
-    protected final Class<double[]> getActualValueClass() {
+    protected Class<double[]> getActualValueClass() {
         return double[].class;
     }
 
     /**
      * Check if the actual value is empty.
      */
-    public final void isEmpty() {
+    public void isEmpty() {
         checkActualIsNotNull();
         if (getActual().length != 0) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_EMPTY).addActual().build();
@@ -61,7 +61,7 @@ public class DoubleArrayAssertion extends ReferenceAssertion<double[]> {
     /**
      * Check if the actual value is null or empty.
      */
-    public final void isNullOrEmpty() {
+    public void isNullOrEmpty() {
         if (getActual() != null && getActual().length != 0) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NULL_OR_EMPTY).addActual().build();
         }
@@ -70,7 +70,7 @@ public class DoubleArrayAssertion extends ReferenceAssertion<double[]> {
     /**
      * Check if the actual value is NOT empty.
      */
-    public final void isNotEmpty() {
+    public void isNotEmpty() {
         checkActualIsNotNull();
         if (getActual().length == 0) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_EMPTY).build();
@@ -82,7 +82,7 @@ public class DoubleArrayAssertion extends ReferenceAssertion<double[]> {
      *
      * @param expected the expected value.
      */
-    public final void contains(final double expected) {
+    public void contains(final double expected) {
         createIterableAssertion().contains(expected);
     }
 
@@ -91,7 +91,7 @@ public class DoubleArrayAssertion extends ReferenceAssertion<double[]> {
      *
      * @param expected the expected value.
      */
-    public final void doesNotContain(final double expected) {
+    public void doesNotContain(final double expected) {
         createIterableAssertion().doesNotContain(expected);
     }
 
@@ -100,7 +100,7 @@ public class DoubleArrayAssertion extends ReferenceAssertion<double[]> {
      *
      * @param expected the expected values.
      */
-    public final void containsAll(final double... expected) {
+    public void containsAll(final double... expected) {
         List<Object> expectedList = convertValue(expected, null, List.class);
         createIterableAssertion().containsAll(expectedList);
     }
@@ -110,7 +110,7 @@ public class DoubleArrayAssertion extends ReferenceAssertion<double[]> {
      *
      * @param expected the expected values.
      */
-    public final void containsAll(final Iterable<Double> expected) {
+    public void containsAll(final Iterable<Double> expected) {
         List<Object> expectedList = convertValue(expected, null, List.class);
         createIterableAssertion().containsAll(expectedList);
     }
@@ -120,7 +120,7 @@ public class DoubleArrayAssertion extends ReferenceAssertion<double[]> {
      *
      * @param expected the expected values.
      */
-    public final void containsAllInOrder(final double... expected) {
+    public void containsAllInOrder(final double... expected) {
         List<Object> expectedList = convertValue(expected, null, List.class);
         createIterableAssertion().containsAllInOrder(expectedList);
     }
@@ -130,7 +130,7 @@ public class DoubleArrayAssertion extends ReferenceAssertion<double[]> {
      *
      * @param expected the expected values.
      */
-    public final void containsAllInOrder(final Iterable<Double> expected) {
+    public void containsAllInOrder(final Iterable<Double> expected) {
         List<Object> expectedList = convertValue(expected, null, List.class);
         createIterableAssertion().containsAllInOrder(expectedList);
     }
@@ -140,7 +140,7 @@ public class DoubleArrayAssertion extends ReferenceAssertion<double[]> {
      *
      * @param expected the expected values.
      */
-    public final void containsExactly(final double... expected) {
+    public void containsExactly(final double... expected) {
         List<Object> expectedList = convertValue(expected, null, List.class);
         createIterableAssertion().containsExactly(expectedList);
     }
@@ -150,7 +150,7 @@ public class DoubleArrayAssertion extends ReferenceAssertion<double[]> {
      *
      * @param expected the expected values.
      */
-    public final void containsExactly(final Iterable<Double> expected) {
+    public void containsExactly(final Iterable<Double> expected) {
         List<Object> expectedList = convertValue(expected, null, List.class);
         createIterableAssertion().containsExactly(expectedList);
     }
@@ -160,7 +160,7 @@ public class DoubleArrayAssertion extends ReferenceAssertion<double[]> {
      *
      * @param expected the expected values.
      */
-    public final void containsExactlyInOrder(final double... expected) {
+    public void containsExactlyInOrder(final double... expected) {
         List<Object> expectedList = convertValue(expected, null, List.class);
         createIterableAssertion().containsExactlyInOrder(expectedList);
     }
@@ -170,7 +170,7 @@ public class DoubleArrayAssertion extends ReferenceAssertion<double[]> {
      *
      * @param expected the expected values.
      */
-    public final void containsExactlyInOrder(final Iterable<Double> expected) {
+    public void containsExactlyInOrder(final Iterable<Double> expected) {
         List<Object> expectedList = convertValue(expected, null, List.class);
         createIterableAssertion().containsExactlyInOrder(expectedList);
     }
@@ -180,7 +180,7 @@ public class DoubleArrayAssertion extends ReferenceAssertion<double[]> {
      *
      * @param expected the expected values.
      */
-    public final void containsAny(final double... expected) {
+    public void containsAny(final double... expected) {
         List<Object> expectedList = convertValue(expected, null, List.class);
         createIterableAssertion().containsAny(expectedList);
     }
@@ -190,7 +190,7 @@ public class DoubleArrayAssertion extends ReferenceAssertion<double[]> {
      *
      * @param expected the expected values.
      */
-    public final void containsAny(final Iterable<Double> expected) {
+    public void containsAny(final Iterable<Double> expected) {
         List<Object> expectedList = convertValue(expected, null, List.class);
         createIterableAssertion().containsAny(expectedList);
     }
@@ -200,7 +200,7 @@ public class DoubleArrayAssertion extends ReferenceAssertion<double[]> {
      *
      * @param expected the expected values.
      */
-    public final void containsNone(final double... expected) {
+    public void containsNone(final double... expected) {
         List<Object> expectedList = convertValue(expected, null, List.class);
         createIterableAssertion().containsNone(expectedList);
     }
@@ -210,7 +210,7 @@ public class DoubleArrayAssertion extends ReferenceAssertion<double[]> {
      *
      * @param expected the expected values.
      */
-    public final void containsNone(final Iterable<Double> expected) {
+    public void containsNone(final Iterable<Double> expected) {
         List<Object> expectedList = convertValue(expected, null, List.class);
         createIterableAssertion().containsNone(expectedList);
     }
@@ -220,7 +220,7 @@ public class DoubleArrayAssertion extends ReferenceAssertion<double[]> {
      *
      * @return the assertion.
      */
-    public final IntAssertion toLength() {
+    public IntAssertion toLength() {
         checkActualIsNotNull();
         return initializeAssertion(Raw.intAssertion(), getActual().length, Messages.Check.LENGTH);
     }
@@ -230,7 +230,7 @@ public class DoubleArrayAssertion extends ReferenceAssertion<double[]> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toLength(final Matcher<? super Integer> matcher) {
+    public void toLength(final Matcher<? super Integer> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().length, matcher, Messages.Check.LENGTH);
@@ -241,7 +241,7 @@ public class DoubleArrayAssertion extends ReferenceAssertion<double[]> {
      *
      * @param expected the expected length.
      */
-    public final void hasLength(final int expected) {
+    public void hasLength(final int expected) {
         toLength().isEqualTo(expected);
     }
 

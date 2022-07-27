@@ -38,7 +38,7 @@ import ru.d_shap.assertions.asimp.primitive.LongAssertion;
  *
  * @author Dmitry Shapovalov
  */
-public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
+public final class InputStreamAssertion extends ReferenceAssertion<InputStream> {
 
     /**
      * Create new object.
@@ -48,14 +48,14 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
     }
 
     @Override
-    protected final Class<InputStream> getActualValueClass() {
+    protected Class<InputStream> getActualValueClass() {
         return InputStream.class;
     }
 
     /**
      * Check if the actual value does not contain any more bytes.
      */
-    public final void isCompleted() {
+    public void isCompleted() {
         checkActualIsNotNull();
         try {
             int nextByte = getActual().read();
@@ -70,7 +70,7 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
     /**
      * Check if the actual value contains more bytes.
      */
-    public final void isNotCompleted() {
+    public void isNotCompleted() {
         checkActualIsNotNull();
         try {
             int nextByte = getActual().read();
@@ -87,7 +87,7 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
      *
      * @return the assertion.
      */
-    public final ByteArrayAssertion toByteArray() {
+    public ByteArrayAssertion toByteArray() {
         checkActualIsNotNull();
         byte[] nextBytes = convertValue(getActual(), null, byte[].class, 0);
         return initializeAssertion(Raw.byteArrayAssertion(), nextBytes, Messages.Check.BYTES_ALL);
@@ -100,7 +100,7 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
      *
      * @return the assertion.
      */
-    public final ByteArrayAssertion toByteArray(final int count) {
+    public ByteArrayAssertion toByteArray(final int count) {
         checkActualIsNotNull();
         checkArgumentIsValid(count > 0, "count", Messages.Fail.Argument.IS_GREATER_THAN_ZERO);
         byte[] nextBytes = convertValue(getActual(), null, byte[].class, count);
@@ -112,7 +112,7 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toByteArray(final Matcher<? super Byte[]> matcher) {
+    public void toByteArray(final Matcher<? super Byte[]> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         byte[] nextBytes = convertValue(getActual(), null, byte[].class, 0);
@@ -126,7 +126,7 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
      * @param count   the number of bytes to read from the actual.
      * @param matcher the hamcrest matcher.
      */
-    public final void toByteArray(final int count, final Matcher<? super Byte[]> matcher) {
+    public void toByteArray(final int count, final Matcher<? super Byte[]> matcher) {
         checkActualIsNotNull();
         checkArgumentIsValid(count > 0, "count", Messages.Fail.Argument.IS_GREATER_THAN_ZERO);
         checkArgumentIsNotNull(matcher, "matcher");
@@ -140,7 +140,7 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
      *
      * @param expected the expected byte.
      */
-    public final void isNextByteEqualTo(final int expected) {
+    public void isNextByteEqualTo(final int expected) {
         isNextBytesEqualTo(expected);
     }
 
@@ -149,7 +149,7 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
      *
      * @param expected the expected bytes.
      */
-    public final void isNextBytesEqualTo(final byte... expected) {
+    public void isNextBytesEqualTo(final byte... expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         checkArgumentIsNotEmpty(expected.length == 0, "expected", true);
@@ -161,7 +161,7 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
      *
      * @param expected the expected bytes.
      */
-    public final void isNextBytesEqualTo(final int... expected) {
+    public void isNextBytesEqualTo(final int... expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         checkArgumentIsNotEmpty(expected.length == 0, "expected", true);
@@ -173,7 +173,7 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
      *
      * @param expected the expected bytes.
      */
-    public final void isNextBytesEqualTo(final Iterable<Byte> expected) {
+    public void isNextBytesEqualTo(final Iterable<Byte> expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         List<Byte> expectedList = convertValue(expected, null, List.class);
@@ -186,7 +186,7 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
      *
      * @param expected the expected bytes.
      */
-    public final void isAllBytesEqualTo(final byte... expected) {
+    public void isAllBytesEqualTo(final byte... expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         toByteArray().containsExactlyInOrder(expected);
@@ -197,7 +197,7 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
      *
      * @param expected the expected bytes.
      */
-    public final void isAllBytesEqualTo(final int... expected) {
+    public void isAllBytesEqualTo(final int... expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         toByteArray().containsExactlyInOrder(expected);
@@ -208,7 +208,7 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
      *
      * @param expected the expected bytes.
      */
-    public final void isAllBytesEqualTo(final Iterable<Byte> expected) {
+    public void isAllBytesEqualTo(final Iterable<Byte> expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         List<Byte> expectedList = convertValue(expected, null, List.class);
@@ -220,7 +220,7 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
      *
      * @return the assertion.
      */
-    public final CharSequenceAssertion toHexString() {
+    public CharSequenceAssertion toHexString() {
         return toByteArray().toHexString();
     }
 
@@ -231,7 +231,7 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
      *
      * @return the assertion.
      */
-    public final CharSequenceAssertion toHexString(final int count) {
+    public CharSequenceAssertion toHexString(final int count) {
         return toByteArray(count).toHexString();
     }
 
@@ -240,7 +240,7 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toHexString(final Matcher<? super String> matcher) {
+    public void toHexString(final Matcher<? super String> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         toByteArray().toHexString(matcher);
@@ -252,7 +252,7 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
      * @param count   the number of bytes to read from the actual.
      * @param matcher the hamcrest matcher.
      */
-    public final void toHexString(final int count, final Matcher<? super String> matcher) {
+    public void toHexString(final int count, final Matcher<? super String> matcher) {
         checkActualIsNotNull();
         checkArgumentIsValid(count > 0, "count", Messages.Fail.Argument.IS_GREATER_THAN_ZERO);
         checkArgumentIsNotNull(matcher, "matcher");
@@ -264,7 +264,7 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
      *
      * @param expected the expected value.
      */
-    public final void hasHexString(final String expected) {
+    public void hasHexString(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         toByteArray().hasHexString(expected);
@@ -276,7 +276,7 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
      * @param count    the number of bytes to read from the actual.
      * @param expected the expected value.
      */
-    public final void hasHexString(final int count, final String expected) {
+    public void hasHexString(final int count, final String expected) {
         checkActualIsNotNull();
         checkArgumentIsValid(count > 0, "count", Messages.Fail.Argument.IS_GREATER_THAN_ZERO);
         checkArgumentIsNotNull(expected, "expected");
@@ -288,7 +288,7 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
      *
      * @return the assertion.
      */
-    public final IntAssertion toAvailable() {
+    public IntAssertion toAvailable() {
         checkActualIsNotNull();
         try {
             int available = getActual().available();
@@ -303,7 +303,7 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toAvailable(final Matcher<? super Integer> matcher) {
+    public void toAvailable(final Matcher<? super Integer> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         try {
@@ -319,7 +319,7 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
      *
      * @param expected the expected available.
      */
-    public final void hasAvailable(final int expected) {
+    public void hasAvailable(final int expected) {
         toAvailable().isEqualTo(expected);
     }
 
@@ -328,7 +328,7 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
      *
      * @return the assertion.
      */
-    public final LongAssertion toLength() {
+    public LongAssertion toLength() {
         checkActualIsNotNull();
         long length = getLength();
         return initializeAssertion(Raw.longAssertion(), length, Messages.Check.LENGTH);
@@ -339,7 +339,7 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toLength(final Matcher<? super Long> matcher) {
+    public void toLength(final Matcher<? super Long> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         long length = getLength();
@@ -368,7 +368,7 @@ public class InputStreamAssertion extends ReferenceAssertion<InputStream> {
      *
      * @param expected the expected length.
      */
-    public final void hasLength(final long expected) {
+    public void hasLength(final long expected) {
         toLength().isEqualTo(expected);
     }
 

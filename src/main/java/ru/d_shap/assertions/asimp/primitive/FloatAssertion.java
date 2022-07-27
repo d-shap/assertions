@@ -27,7 +27,7 @@ import ru.d_shap.assertions.asimp.ReferenceAssertion;
  *
  * @author Dmitry Shapovalov
  */
-public class FloatAssertion extends ReferenceAssertion<Float> {
+public final class FloatAssertion extends ReferenceAssertion<Float> {
 
     private static final float DEFAULT_DELTA = 1.0e-5f;
 
@@ -39,7 +39,7 @@ public class FloatAssertion extends ReferenceAssertion<Float> {
     }
 
     @Override
-    protected final Class<Float> getActualValueClass() {
+    protected Class<Float> getActualValueClass() {
         return Float.class;
     }
 
@@ -48,7 +48,7 @@ public class FloatAssertion extends ReferenceAssertion<Float> {
      *
      * @param expected the expected value.
      */
-    public final void isEqualTo(final float expected) {
+    public void isEqualTo(final float expected) {
         isEqualTo(expected, DEFAULT_DELTA);
     }
 
@@ -57,7 +57,7 @@ public class FloatAssertion extends ReferenceAssertion<Float> {
      *
      * @param expected the expected value.
      */
-    public final void isEqualTo(final Float expected) {
+    public void isEqualTo(final Float expected) {
         isEqualTo(expected, DEFAULT_DELTA);
     }
 
@@ -67,7 +67,7 @@ public class FloatAssertion extends ReferenceAssertion<Float> {
      * @param expected the expected value.
      * @param delta    maximum delta between the actual value and the expected value.
      */
-    public final void isEqualTo(final float expected, final float delta) {
+    public void isEqualTo(final float expected, final float delta) {
         if (Float.isNaN(expected)) {
             isNaN();
         } else if (expected == Float.POSITIVE_INFINITY) {
@@ -88,7 +88,7 @@ public class FloatAssertion extends ReferenceAssertion<Float> {
      * @param expected the expected value.
      * @param delta    maximum delta between the actual value and the expected value.
      */
-    public final void isEqualTo(final Float expected, final float delta) {
+    public void isEqualTo(final Float expected, final float delta) {
         if (expected == null) {
             isNull();
         } else {
@@ -101,7 +101,7 @@ public class FloatAssertion extends ReferenceAssertion<Float> {
      *
      * @param expected the expected value.
      */
-    public final void isNotEqualTo(final float expected) {
+    public void isNotEqualTo(final float expected) {
         isNotEqualTo(expected, DEFAULT_DELTA);
     }
 
@@ -110,7 +110,7 @@ public class FloatAssertion extends ReferenceAssertion<Float> {
      *
      * @param expected the expected value.
      */
-    public final void isNotEqualTo(final Float expected) {
+    public void isNotEqualTo(final Float expected) {
         isNotEqualTo(expected, DEFAULT_DELTA);
     }
 
@@ -120,7 +120,7 @@ public class FloatAssertion extends ReferenceAssertion<Float> {
      * @param expected the expected value.
      * @param delta    maximum delta between the actual value and the expected value.
      */
-    public final void isNotEqualTo(final float expected, final float delta) {
+    public void isNotEqualTo(final float expected, final float delta) {
         if (Float.isNaN(expected)) {
             if (getActual() != null && getActual().isNaN()) {
                 throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_NAN).build();
@@ -146,7 +146,7 @@ public class FloatAssertion extends ReferenceAssertion<Float> {
      * @param expected the expected value.
      * @param delta    maximum delta between the actual value and the expected value.
      */
-    public final void isNotEqualTo(final Float expected, final float delta) {
+    public void isNotEqualTo(final Float expected, final float delta) {
         if (expected == null) {
             isNotNull();
         } else {
@@ -159,7 +159,7 @@ public class FloatAssertion extends ReferenceAssertion<Float> {
      *
      * @param expected the expected value.
      */
-    public final void isGreaterThan(final float expected) {
+    public void isGreaterThan(final float expected) {
         isFinite();
         checkArgumentIsFinite(expected, "expected");
         if (getActual() <= expected) {
@@ -172,7 +172,7 @@ public class FloatAssertion extends ReferenceAssertion<Float> {
      *
      * @param expected the expected value.
      */
-    public final void isGreaterThan(final Float expected) {
+    public void isGreaterThan(final Float expected) {
         isFinite();
         checkArgumentIsFinite(expected, "expected");
         isGreaterThan(expected.floatValue());
@@ -183,7 +183,7 @@ public class FloatAssertion extends ReferenceAssertion<Float> {
      *
      * @param expected the expected value.
      */
-    public final void isGreaterThanOrEqualTo(final float expected) {
+    public void isGreaterThanOrEqualTo(final float expected) {
         isFinite();
         checkArgumentIsFinite(expected, "expected");
         if (getActual() < expected) {
@@ -196,7 +196,7 @@ public class FloatAssertion extends ReferenceAssertion<Float> {
      *
      * @param expected the expected value.
      */
-    public final void isGreaterThanOrEqualTo(final Float expected) {
+    public void isGreaterThanOrEqualTo(final Float expected) {
         isFinite();
         checkArgumentIsFinite(expected, "expected");
         isGreaterThanOrEqualTo(expected.floatValue());
@@ -207,7 +207,7 @@ public class FloatAssertion extends ReferenceAssertion<Float> {
      *
      * @param expected the expected value.
      */
-    public final void isLessThan(final float expected) {
+    public void isLessThan(final float expected) {
         isFinite();
         checkArgumentIsFinite(expected, "expected");
         if (getActual() >= expected) {
@@ -220,7 +220,7 @@ public class FloatAssertion extends ReferenceAssertion<Float> {
      *
      * @param expected the expected value.
      */
-    public final void isLessThan(final Float expected) {
+    public void isLessThan(final Float expected) {
         isFinite();
         checkArgumentIsFinite(expected, "expected");
         isLessThan(expected.floatValue());
@@ -231,7 +231,7 @@ public class FloatAssertion extends ReferenceAssertion<Float> {
      *
      * @param expected the expected value.
      */
-    public final void isLessThanOrEqualTo(final float expected) {
+    public void isLessThanOrEqualTo(final float expected) {
         isFinite();
         checkArgumentIsFinite(expected, "expected");
         if (getActual() > expected) {
@@ -244,7 +244,7 @@ public class FloatAssertion extends ReferenceAssertion<Float> {
      *
      * @param expected the expected value.
      */
-    public final void isLessThanOrEqualTo(final Float expected) {
+    public void isLessThanOrEqualTo(final Float expected) {
         isFinite();
         checkArgumentIsFinite(expected, "expected");
         isLessThanOrEqualTo(expected.floatValue());
@@ -256,7 +256,7 @@ public class FloatAssertion extends ReferenceAssertion<Float> {
      * @param expectedFrom the expected lower (inclusive) bound of the range.
      * @param expectedTo   the expected upper (exclusive) bound of the range.
      */
-    public final void isInRange(final float expectedFrom, final float expectedTo) {
+    public void isInRange(final float expectedFrom, final float expectedTo) {
         isFinite();
         checkArgumentIsFinite(expectedFrom, "expectedFrom");
         checkArgumentIsFinite(expectedTo, "expectedTo");
@@ -271,7 +271,7 @@ public class FloatAssertion extends ReferenceAssertion<Float> {
      * @param expectedFrom the expected lower (inclusive) bound of the range.
      * @param expectedTo   the expected upper (exclusive) bound of the range.
      */
-    public final void isInRange(final Float expectedFrom, final Float expectedTo) {
+    public void isInRange(final Float expectedFrom, final Float expectedTo) {
         isFinite();
         checkArgumentIsFinite(expectedFrom, "expectedFrom");
         checkArgumentIsFinite(expectedTo, "expectedTo");
@@ -284,7 +284,7 @@ public class FloatAssertion extends ReferenceAssertion<Float> {
      * @param expectedFrom the expected lower (inclusive) bound of the range.
      * @param expectedTo   the expected upper (exclusive) bound of the range.
      */
-    public final void isNotInRange(final float expectedFrom, final float expectedTo) {
+    public void isNotInRange(final float expectedFrom, final float expectedTo) {
         isFinite();
         checkArgumentIsFinite(expectedFrom, "expectedFrom");
         checkArgumentIsFinite(expectedTo, "expectedTo");
@@ -299,7 +299,7 @@ public class FloatAssertion extends ReferenceAssertion<Float> {
      * @param expectedFrom the expected lower (inclusive) bound of the range.
      * @param expectedTo   the expected upper (exclusive) bound of the range.
      */
-    public final void isNotInRange(final Float expectedFrom, final Float expectedTo) {
+    public void isNotInRange(final Float expectedFrom, final Float expectedTo) {
         isFinite();
         checkArgumentIsFinite(expectedFrom, "expectedFrom");
         checkArgumentIsFinite(expectedTo, "expectedTo");
@@ -309,7 +309,7 @@ public class FloatAssertion extends ReferenceAssertion<Float> {
     /**
      * Check if the actual value is zero.
      */
-    public final void isZero() {
+    public void isZero() {
         checkActualIsNotNull();
         if (getActual() != 0.0f) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_ZERO).addActual().build();
@@ -319,7 +319,7 @@ public class FloatAssertion extends ReferenceAssertion<Float> {
     /**
      * Check if the actual value is NOT zero.
      */
-    public final void isNotZero() {
+    public void isNotZero() {
         checkActualIsNotNull();
         if (getActual() == 0.0f) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_ZERO).build();
@@ -329,7 +329,7 @@ public class FloatAssertion extends ReferenceAssertion<Float> {
     /**
      * Check if the actual value is positive infinity.
      */
-    public final void isPositiveInfinity() {
+    public void isPositiveInfinity() {
         checkActualIsNotNull();
         if (getActual() != Float.POSITIVE_INFINITY) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_POSITIVE_INFINITY).addActual().build();
@@ -339,7 +339,7 @@ public class FloatAssertion extends ReferenceAssertion<Float> {
     /**
      * Check if the actual value is NOT positive infinity.
      */
-    public final void isNotPositiveInfinity() {
+    public void isNotPositiveInfinity() {
         checkActualIsNotNull();
         if (getActual() == Float.POSITIVE_INFINITY) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_POSITIVE_INFINITY).build();
@@ -349,7 +349,7 @@ public class FloatAssertion extends ReferenceAssertion<Float> {
     /**
      * Check if the actual value is negative infinity.
      */
-    public final void isNegativeInfinity() {
+    public void isNegativeInfinity() {
         checkActualIsNotNull();
         if (getActual() != Float.NEGATIVE_INFINITY) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NEGATIVE_INFINITY).addActual().build();
@@ -359,7 +359,7 @@ public class FloatAssertion extends ReferenceAssertion<Float> {
     /**
      * Check if the actual value is NOT negative infinity.
      */
-    public final void isNotNegativeInfinity() {
+    public void isNotNegativeInfinity() {
         checkActualIsNotNull();
         if (getActual() == Float.NEGATIVE_INFINITY) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_NEGATIVE_INFINITY).build();
@@ -369,7 +369,7 @@ public class FloatAssertion extends ReferenceAssertion<Float> {
     /**
      * Check if the actual value is infinity.
      */
-    public final void isInfinity() {
+    public void isInfinity() {
         checkActualIsNotNull();
         if (!getActual().isInfinite()) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_INFINITY).addActual().build();
@@ -379,7 +379,7 @@ public class FloatAssertion extends ReferenceAssertion<Float> {
     /**
      * Check if the actual value is NOT infinity.
      */
-    public final void isNotInfinity() {
+    public void isNotInfinity() {
         checkActualIsNotNull();
         if (getActual().isInfinite()) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_INFINITY).addActual().build();
@@ -389,7 +389,7 @@ public class FloatAssertion extends ReferenceAssertion<Float> {
     /**
      * Check if the actual value is NaN.
      */
-    public final void isNaN() {
+    public void isNaN() {
         checkActualIsNotNull();
         if (!getActual().isNaN()) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NAN).addActual().build();
@@ -399,7 +399,7 @@ public class FloatAssertion extends ReferenceAssertion<Float> {
     /**
      * Check if the actual value is NOT NaN.
      */
-    public final void isNotNaN() {
+    public void isNotNaN() {
         checkActualIsNotNull();
         if (getActual().isNaN()) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_NAN).build();
@@ -409,7 +409,7 @@ public class FloatAssertion extends ReferenceAssertion<Float> {
     /**
      * Check if the actual value is finite.
      */
-    public final void isFinite() {
+    public void isFinite() {
         checkActualIsNotNull();
         if (getActual().isNaN() || getActual().isInfinite()) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_FINITE).addActual().build();
@@ -419,7 +419,7 @@ public class FloatAssertion extends ReferenceAssertion<Float> {
     /**
      * Check if the actual value is NOT finite.
      */
-    public final void isNotFinite() {
+    public void isNotFinite() {
         checkActualIsNotNull();
         if (!getActual().isNaN() && !getActual().isInfinite()) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_FINITE).addActual().build();

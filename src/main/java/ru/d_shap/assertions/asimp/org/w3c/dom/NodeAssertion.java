@@ -32,7 +32,7 @@ import ru.d_shap.assertions.asimp.java.lang.CharSequenceAssertion;
  *
  * @author Dmitry Shapovalov
  */
-public class NodeAssertion extends ReferenceAssertion<Node> {
+public final class NodeAssertion extends ReferenceAssertion<Node> {
 
     /**
      * Create new object.
@@ -42,7 +42,7 @@ public class NodeAssertion extends ReferenceAssertion<Node> {
     }
 
     @Override
-    protected final Class<Node> getActualValueClass() {
+    protected Class<Node> getActualValueClass() {
         return Node.class;
     }
 
@@ -51,7 +51,7 @@ public class NodeAssertion extends ReferenceAssertion<Node> {
      *
      * @param expected the expected value.
      */
-    public final void isEqualTo(final Node expected) {
+    public void isEqualTo(final Node expected) {
         if (expected == null) {
             isNull();
         } else {
@@ -67,7 +67,7 @@ public class NodeAssertion extends ReferenceAssertion<Node> {
      *
      * @param expected the expected value.
      */
-    public final void isNotEqualTo(final Node expected) {
+    public void isNotEqualTo(final Node expected) {
         if (expected == null) {
             isNotNull();
         } else {
@@ -82,7 +82,7 @@ public class NodeAssertion extends ReferenceAssertion<Node> {
      *
      * @return the assertion.
      */
-    public final CharSequenceAssertion toNamespaceURI() {
+    public CharSequenceAssertion toNamespaceURI() {
         checkActualIsNotNull();
         return initializeAssertion(Raw.charSequenceAssertion(), getActual().getNamespaceURI(), Messages.Check.NAMESPACE_URI);
     }
@@ -92,7 +92,7 @@ public class NodeAssertion extends ReferenceAssertion<Node> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toNamespaceURI(final Matcher<? super String> matcher) {
+    public void toNamespaceURI(final Matcher<? super String> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().getNamespaceURI(), matcher, Messages.Check.NAMESPACE_URI);
@@ -103,7 +103,7 @@ public class NodeAssertion extends ReferenceAssertion<Node> {
      *
      * @param expected the expected value.
      */
-    public final void hasNamespaceURI(final String expected) {
+    public void hasNamespaceURI(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         toNamespaceURI().isEqualTo(expected);
@@ -114,7 +114,7 @@ public class NodeAssertion extends ReferenceAssertion<Node> {
      *
      * @return the assertion.
      */
-    public final CharSequenceAssertion toPrefix() {
+    public CharSequenceAssertion toPrefix() {
         checkActualIsNotNull();
         return initializeAssertion(Raw.charSequenceAssertion(), getActual().getPrefix(), Messages.Check.PREFIX);
     }
@@ -124,7 +124,7 @@ public class NodeAssertion extends ReferenceAssertion<Node> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toPrefix(final Matcher<? super String> matcher) {
+    public void toPrefix(final Matcher<? super String> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().getPrefix(), matcher, Messages.Check.PREFIX);
@@ -135,7 +135,7 @@ public class NodeAssertion extends ReferenceAssertion<Node> {
      *
      * @param expected the expected value.
      */
-    public final void hasPrefix(final String expected) {
+    public void hasPrefix(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         toPrefix().isEqualTo(expected);
@@ -146,7 +146,7 @@ public class NodeAssertion extends ReferenceAssertion<Node> {
      *
      * @return the assertion.
      */
-    public final CharSequenceAssertion toLocalName() {
+    public CharSequenceAssertion toLocalName() {
         checkActualIsNotNull();
         return initializeAssertion(Raw.charSequenceAssertion(), getActual().getLocalName(), Messages.Check.LOCAL_NAME);
     }
@@ -156,7 +156,7 @@ public class NodeAssertion extends ReferenceAssertion<Node> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toLocalName(final Matcher<? super String> matcher) {
+    public void toLocalName(final Matcher<? super String> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().getLocalName(), matcher, Messages.Check.LOCAL_NAME);
@@ -167,7 +167,7 @@ public class NodeAssertion extends ReferenceAssertion<Node> {
      *
      * @param expected the expected value.
      */
-    public final void hasLocalName(final String expected) {
+    public void hasLocalName(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         toLocalName().isEqualTo(expected);
@@ -178,7 +178,7 @@ public class NodeAssertion extends ReferenceAssertion<Node> {
      *
      * @param expectedLocalName the expected local name.
      */
-    public final void hasProperties(final String expectedLocalName) {
+    public void hasProperties(final String expectedLocalName) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expectedLocalName, "expectedLocalName");
         toNamespaceURI().isNull();
@@ -191,7 +191,7 @@ public class NodeAssertion extends ReferenceAssertion<Node> {
      * @param expectedNamespaceURI the expected namespace URI.
      * @param expectedLocalName    the expected local name.
      */
-    public final void hasProperties(final String expectedNamespaceURI, final String expectedLocalName) {
+    public void hasProperties(final String expectedNamespaceURI, final String expectedLocalName) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expectedNamespaceURI, "expectedNamespaceURI");
         checkArgumentIsNotNull(expectedLocalName, "expectedLocalName");

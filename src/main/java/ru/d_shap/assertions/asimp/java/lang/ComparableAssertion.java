@@ -29,7 +29,7 @@ import ru.d_shap.assertions.asimp.ReferenceAssertion;
  *
  * @author Dmitry Shapovalov
  */
-public class ComparableAssertion<E> extends ReferenceAssertion<Comparable<E>> {
+public final class ComparableAssertion<E> extends ReferenceAssertion<Comparable<E>> {
 
     /**
      * Create new object.
@@ -40,7 +40,7 @@ public class ComparableAssertion<E> extends ReferenceAssertion<Comparable<E>> {
 
     @Override
     @SuppressWarnings("unchecked")
-    protected final Class<Comparable<E>> getActualValueClass() {
+    protected Class<Comparable<E>> getActualValueClass() {
         return (Class<Comparable<E>>) getRawActualValueClass();
     }
 
@@ -53,7 +53,7 @@ public class ComparableAssertion<E> extends ReferenceAssertion<Comparable<E>> {
      *
      * @param expected the expected value.
      */
-    public final void isEqualTo(final E expected) {
+    public void isEqualTo(final E expected) {
         if (expected == null) {
             isNull();
         } else {
@@ -69,7 +69,7 @@ public class ComparableAssertion<E> extends ReferenceAssertion<Comparable<E>> {
      *
      * @param expected the expected value.
      */
-    public final void isNotEqualTo(final E expected) {
+    public void isNotEqualTo(final E expected) {
         if (expected == null) {
             isNotNull();
         } else {
@@ -84,7 +84,7 @@ public class ComparableAssertion<E> extends ReferenceAssertion<Comparable<E>> {
      *
      * @param expected the expected value.
      */
-    public final void isGreaterThan(final E expected) {
+    public void isGreaterThan(final E expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         if (getActual().compareTo(expected) <= 0) {
@@ -97,7 +97,7 @@ public class ComparableAssertion<E> extends ReferenceAssertion<Comparable<E>> {
      *
      * @param expected the expected value.
      */
-    public final void isGreaterThanOrEqualTo(final E expected) {
+    public void isGreaterThanOrEqualTo(final E expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         if (getActual().compareTo(expected) < 0) {
@@ -110,7 +110,7 @@ public class ComparableAssertion<E> extends ReferenceAssertion<Comparable<E>> {
      *
      * @param expected the expected value.
      */
-    public final void isLessThan(final E expected) {
+    public void isLessThan(final E expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         if (getActual().compareTo(expected) >= 0) {
@@ -123,7 +123,7 @@ public class ComparableAssertion<E> extends ReferenceAssertion<Comparable<E>> {
      *
      * @param expected the expected value.
      */
-    public final void isLessThanOrEqualTo(final E expected) {
+    public void isLessThanOrEqualTo(final E expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         if (getActual().compareTo(expected) > 0) {
@@ -137,7 +137,7 @@ public class ComparableAssertion<E> extends ReferenceAssertion<Comparable<E>> {
      * @param expectedFrom the expected lower (inclusive) bound of the range.
      * @param expectedTo   the expected upper (exclusive) bound of the range.
      */
-    public final void isInRange(final E expectedFrom, final E expectedTo) {
+    public void isInRange(final E expectedFrom, final E expectedTo) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expectedFrom, "expectedFrom");
         checkArgumentIsNotNull(expectedTo, "expectedTo");
@@ -152,7 +152,7 @@ public class ComparableAssertion<E> extends ReferenceAssertion<Comparable<E>> {
      * @param expectedFrom the expected lower (inclusive) bound of the range.
      * @param expectedTo   the expected upper (exclusive) bound of the range.
      */
-    public final void isNotInRange(final E expectedFrom, final E expectedTo) {
+    public void isNotInRange(final E expectedFrom, final E expectedTo) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expectedFrom, "expectedFrom");
         checkArgumentIsNotNull(expectedTo, "expectedTo");

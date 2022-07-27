@@ -27,7 +27,7 @@ import ru.d_shap.assertions.asimp.ReferenceAssertion;
  *
  * @author Dmitry Shapovalov
  */
-public class CharAssertion extends ReferenceAssertion<Character> {
+public final class CharAssertion extends ReferenceAssertion<Character> {
 
     /**
      * Create new object.
@@ -37,7 +37,7 @@ public class CharAssertion extends ReferenceAssertion<Character> {
     }
 
     @Override
-    protected final Class<Character> getActualValueClass() {
+    protected Class<Character> getActualValueClass() {
         return Character.class;
     }
 
@@ -46,7 +46,7 @@ public class CharAssertion extends ReferenceAssertion<Character> {
      *
      * @param expected the expected value.
      */
-    public final void isEqualTo(final int expected) {
+    public void isEqualTo(final int expected) {
         checkActualIsNotNull();
         if (getActual() != expected) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_SAME).addActual().addExpected(expected).build();
@@ -58,7 +58,7 @@ public class CharAssertion extends ReferenceAssertion<Character> {
      *
      * @param expected the expected value.
      */
-    public final void isEqualTo(final Character expected) {
+    public void isEqualTo(final Character expected) {
         if (expected == null) {
             isNull();
         } else {
@@ -71,7 +71,7 @@ public class CharAssertion extends ReferenceAssertion<Character> {
      *
      * @param expected the expected value.
      */
-    public final void isNotEqualTo(final int expected) {
+    public void isNotEqualTo(final int expected) {
         if (getActual() != null && getActual() == expected) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_DIFFERENT).addActual().build();
         }
@@ -82,7 +82,7 @@ public class CharAssertion extends ReferenceAssertion<Character> {
      *
      * @param expected the expected value.
      */
-    public final void isNotEqualTo(final Character expected) {
+    public void isNotEqualTo(final Character expected) {
         if (expected == null) {
             isNotNull();
         } else {
@@ -95,7 +95,7 @@ public class CharAssertion extends ReferenceAssertion<Character> {
      *
      * @param expected the expected value.
      */
-    public final void isGreaterThan(final int expected) {
+    public void isGreaterThan(final int expected) {
         checkActualIsNotNull();
         if (getActual() <= expected) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_GREATER).addActual().addExpected(expected).build();
@@ -107,7 +107,7 @@ public class CharAssertion extends ReferenceAssertion<Character> {
      *
      * @param expected the expected value.
      */
-    public final void isGreaterThan(final Character expected) {
+    public void isGreaterThan(final Character expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         isGreaterThan(expected.charValue());
@@ -118,7 +118,7 @@ public class CharAssertion extends ReferenceAssertion<Character> {
      *
      * @param expected the expected value.
      */
-    public final void isGreaterThanOrEqualTo(final int expected) {
+    public void isGreaterThanOrEqualTo(final int expected) {
         checkActualIsNotNull();
         if (getActual() < expected) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_GREATER_OR_EQUAL).addActual().addExpected(expected).build();
@@ -130,7 +130,7 @@ public class CharAssertion extends ReferenceAssertion<Character> {
      *
      * @param expected the expected value.
      */
-    public final void isGreaterThanOrEqualTo(final Character expected) {
+    public void isGreaterThanOrEqualTo(final Character expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         isGreaterThanOrEqualTo(expected.charValue());
@@ -141,7 +141,7 @@ public class CharAssertion extends ReferenceAssertion<Character> {
      *
      * @param expected the expected value.
      */
-    public final void isLessThan(final int expected) {
+    public void isLessThan(final int expected) {
         checkActualIsNotNull();
         if (getActual() >= expected) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_LESS).addActual().addExpected(expected).build();
@@ -153,7 +153,7 @@ public class CharAssertion extends ReferenceAssertion<Character> {
      *
      * @param expected the expected value.
      */
-    public final void isLessThan(final Character expected) {
+    public void isLessThan(final Character expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         isLessThan(expected.charValue());
@@ -164,7 +164,7 @@ public class CharAssertion extends ReferenceAssertion<Character> {
      *
      * @param expected the expected value.
      */
-    public final void isLessThanOrEqualTo(final int expected) {
+    public void isLessThanOrEqualTo(final int expected) {
         checkActualIsNotNull();
         if (getActual() > expected) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_LESS_OR_EQUAL).addActual().addExpected(expected).build();
@@ -176,7 +176,7 @@ public class CharAssertion extends ReferenceAssertion<Character> {
      *
      * @param expected the expected value.
      */
-    public final void isLessThanOrEqualTo(final Character expected) {
+    public void isLessThanOrEqualTo(final Character expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         isLessThanOrEqualTo(expected.charValue());
@@ -188,7 +188,7 @@ public class CharAssertion extends ReferenceAssertion<Character> {
      * @param expectedFrom the expected lower (inclusive) bound of the range.
      * @param expectedTo   the expected upper (exclusive) bound of the range.
      */
-    public final void isInRange(final int expectedFrom, final int expectedTo) {
+    public void isInRange(final int expectedFrom, final int expectedTo) {
         checkActualIsNotNull();
         if (getActual() < expectedFrom || getActual() >= expectedTo) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_IN_RANGE).addActual().addExpected(expectedFrom, expectedTo).build();
@@ -201,7 +201,7 @@ public class CharAssertion extends ReferenceAssertion<Character> {
      * @param expectedFrom the expected lower (inclusive) bound of the range.
      * @param expectedTo   the expected upper (exclusive) bound of the range.
      */
-    public final void isInRange(final Character expectedFrom, final Character expectedTo) {
+    public void isInRange(final Character expectedFrom, final Character expectedTo) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expectedFrom, "expectedFrom");
         checkArgumentIsNotNull(expectedTo, "expectedTo");
@@ -214,7 +214,7 @@ public class CharAssertion extends ReferenceAssertion<Character> {
      * @param expectedFrom the expected lower (inclusive) bound of the range.
      * @param expectedTo   the expected upper (exclusive) bound of the range.
      */
-    public final void isNotInRange(final int expectedFrom, final int expectedTo) {
+    public void isNotInRange(final int expectedFrom, final int expectedTo) {
         checkActualIsNotNull();
         if (getActual() >= expectedFrom && getActual() < expectedTo) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_IN_RANGE).addActual().addExpected(expectedFrom, expectedTo).build();
@@ -227,7 +227,7 @@ public class CharAssertion extends ReferenceAssertion<Character> {
      * @param expectedFrom the expected lower (inclusive) bound of the range.
      * @param expectedTo   the expected upper (exclusive) bound of the range.
      */
-    public final void isNotInRange(final Character expectedFrom, final Character expectedTo) {
+    public void isNotInRange(final Character expectedFrom, final Character expectedTo) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expectedFrom, "expectedFrom");
         checkArgumentIsNotNull(expectedTo, "expectedTo");
@@ -237,7 +237,7 @@ public class CharAssertion extends ReferenceAssertion<Character> {
     /**
      * Check if the actual value is the alphabetic symbol.
      */
-    public final void isAlphabetic() {
+    public void isAlphabetic() {
         checkActualIsNotNull();
         if (!Character.isAlphabetic(getActual())) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_ALPHABETIC).addActual().build();
@@ -247,7 +247,7 @@ public class CharAssertion extends ReferenceAssertion<Character> {
     /**
      * Check if the actual value is NOT the alphabetic symbol.
      */
-    public final void isNotAlphabetic() {
+    public void isNotAlphabetic() {
         checkActualIsNotNull();
         if (Character.isAlphabetic(getActual())) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_ALPHABETIC).addActual().build();
@@ -257,7 +257,7 @@ public class CharAssertion extends ReferenceAssertion<Character> {
     /**
      * Check if the actual value is the letter.
      */
-    public final void isLetter() {
+    public void isLetter() {
         checkActualIsNotNull();
         if (!Character.isLetter(getActual())) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_LETTER).addActual().build();
@@ -267,7 +267,7 @@ public class CharAssertion extends ReferenceAssertion<Character> {
     /**
      * Check if the actual value is NOT the letter.
      */
-    public final void isNotLetter() {
+    public void isNotLetter() {
         checkActualIsNotNull();
         if (Character.isLetter(getActual())) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_LETTER).addActual().build();
@@ -277,7 +277,7 @@ public class CharAssertion extends ReferenceAssertion<Character> {
     /**
      * Check if the actual value is the digit.
      */
-    public final void isDigit() {
+    public void isDigit() {
         checkActualIsNotNull();
         if (!Character.isDigit(getActual())) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_DIGIT).addActual().build();
@@ -287,7 +287,7 @@ public class CharAssertion extends ReferenceAssertion<Character> {
     /**
      * Check if the actual value is NOT the digit.
      */
-    public final void isNotDigit() {
+    public void isNotDigit() {
         checkActualIsNotNull();
         if (Character.isDigit(getActual())) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_DIGIT).addActual().build();
@@ -297,7 +297,7 @@ public class CharAssertion extends ReferenceAssertion<Character> {
     /**
      * Check if the actual value is the whitespace symbol.
      */
-    public final void isWhitespace() {
+    public void isWhitespace() {
         checkActualIsNotNull();
         if (!Character.isWhitespace(getActual())) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_WHITESPACE).addActual().build();
@@ -307,7 +307,7 @@ public class CharAssertion extends ReferenceAssertion<Character> {
     /**
      * Check if the actual value is NOT the whitespace symbol.
      */
-    public final void isNotWhitespace() {
+    public void isNotWhitespace() {
         checkActualIsNotNull();
         if (Character.isWhitespace(getActual())) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_WHITESPACE).addActual().build();
@@ -317,7 +317,7 @@ public class CharAssertion extends ReferenceAssertion<Character> {
     /**
      * Check if the actual value is the letter or the digit.
      */
-    public final void isLetterOrDigit() {
+    public void isLetterOrDigit() {
         checkActualIsNotNull();
         if (!Character.isLetter(getActual()) && !Character.isDigit(getActual())) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_LETTER_OR_DIGIT).addActual().build();
@@ -327,7 +327,7 @@ public class CharAssertion extends ReferenceAssertion<Character> {
     /**
      * Check if the actual value is the letter or the whitespace symbol.
      */
-    public final void isLetterOrWhitespace() {
+    public void isLetterOrWhitespace() {
         checkActualIsNotNull();
         if (!Character.isLetter(getActual()) && !Character.isWhitespace(getActual())) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_LETTER_OR_WHITESPACE).addActual().build();
@@ -337,7 +337,7 @@ public class CharAssertion extends ReferenceAssertion<Character> {
     /**
      * Check if the actual value is the control symbol.
      */
-    public final void isControl() {
+    public void isControl() {
         checkActualIsNotNull();
         if (!Character.isISOControl(getActual())) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_CONTROL_SYMBOL).addActual().build();
@@ -347,7 +347,7 @@ public class CharAssertion extends ReferenceAssertion<Character> {
     /**
      * Check if the actual value is NOT the control symbol.
      */
-    public final void isNotControl() {
+    public void isNotControl() {
         checkActualIsNotNull();
         if (Character.isISOControl(getActual())) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_CONTROL_SYMBOL).addActual().build();
@@ -357,7 +357,7 @@ public class CharAssertion extends ReferenceAssertion<Character> {
     /**
      * Check if the actual value is the lower case symbol.
      */
-    public final void isLowerCase() {
+    public void isLowerCase() {
         checkActualIsNotNull();
         if (!Character.isLowerCase(getActual())) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_LOWER_CASE).addActual().build();
@@ -367,7 +367,7 @@ public class CharAssertion extends ReferenceAssertion<Character> {
     /**
      * Check if the actual value is NOT the lower case symbol.
      */
-    public final void isNotLowerCase() {
+    public void isNotLowerCase() {
         checkActualIsNotNull();
         if (Character.isLowerCase(getActual())) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_LOWER_CASE).addActual().build();
@@ -377,7 +377,7 @@ public class CharAssertion extends ReferenceAssertion<Character> {
     /**
      * Check if the actual value is the upper case symbol.
      */
-    public final void isUpperCase() {
+    public void isUpperCase() {
         checkActualIsNotNull();
         if (!Character.isUpperCase(getActual())) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_UPPER_CASE).addActual().build();
@@ -387,7 +387,7 @@ public class CharAssertion extends ReferenceAssertion<Character> {
     /**
      * Check if the actual value is NOT the upper case symbol.
      */
-    public final void isNotUpperCase() {
+    public void isNotUpperCase() {
         checkActualIsNotNull();
         if (Character.isUpperCase(getActual())) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_UPPER_CASE).addActual().build();

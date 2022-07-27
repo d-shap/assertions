@@ -35,7 +35,7 @@ import ru.d_shap.assertions.util.DataHelper;
  *
  * @author Dmitry Shapovalov
  */
-public class CalendarAssertion extends ReferenceAssertion<Calendar> {
+public final class CalendarAssertion extends ReferenceAssertion<Calendar> {
 
     /**
      * Create new object.
@@ -45,7 +45,7 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
     }
 
     @Override
-    protected final Class<Calendar> getActualValueClass() {
+    protected Class<Calendar> getActualValueClass() {
         return Calendar.class;
     }
 
@@ -54,7 +54,7 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
      *
      * @param expected the expected value.
      */
-    public final void isEqualTo(final Calendar expected) {
+    public void isEqualTo(final Calendar expected) {
         if (expected == null) {
             isNull();
         } else {
@@ -70,7 +70,7 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
      *
      * @param expected the expected value.
      */
-    public final void isNotEqualTo(final Calendar expected) {
+    public void isNotEqualTo(final Calendar expected) {
         if (expected == null) {
             isNotNull();
         } else {
@@ -85,7 +85,7 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
      *
      * @param expected the expected value.
      */
-    public final void isGreaterThan(final Calendar expected) {
+    public void isGreaterThan(final Calendar expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         if (getActual().compareTo(expected) <= 0) {
@@ -98,7 +98,7 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
      *
      * @param expected the expected value.
      */
-    public final void isGreaterThanOrEqualTo(final Calendar expected) {
+    public void isGreaterThanOrEqualTo(final Calendar expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         if (getActual().compareTo(expected) < 0) {
@@ -111,7 +111,7 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
      *
      * @param expected the expected value.
      */
-    public final void isLessThan(final Calendar expected) {
+    public void isLessThan(final Calendar expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         if (getActual().compareTo(expected) >= 0) {
@@ -124,7 +124,7 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
      *
      * @param expected the expected value.
      */
-    public final void isLessThanOrEqualTo(final Calendar expected) {
+    public void isLessThanOrEqualTo(final Calendar expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         if (getActual().compareTo(expected) > 0) {
@@ -138,7 +138,7 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
      * @param expectedFrom the expected lower (inclusive) bound of the range.
      * @param expectedTo   the expected upper (exclusive) bound of the range.
      */
-    public final void isInRange(final Calendar expectedFrom, final Calendar expectedTo) {
+    public void isInRange(final Calendar expectedFrom, final Calendar expectedTo) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expectedFrom, "expectedFrom");
         checkArgumentIsNotNull(expectedTo, "expectedTo");
@@ -153,7 +153,7 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
      * @param expectedFrom the expected lower (inclusive) bound of the range.
      * @param expectedTo   the expected upper (exclusive) bound of the range.
      */
-    public final void isNotInRange(final Calendar expectedFrom, final Calendar expectedTo) {
+    public void isNotInRange(final Calendar expectedFrom, final Calendar expectedTo) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expectedFrom, "expectedFrom");
         checkArgumentIsNotNull(expectedTo, "expectedTo");
@@ -167,7 +167,7 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
      *
      * @return the assertion.
      */
-    public final IntAssertion toYear() {
+    public IntAssertion toYear() {
         checkActualIsNotNull();
         return initializeAssertion(Raw.intAssertion(), getActual().get(Calendar.YEAR), Messages.Check.YEAR);
     }
@@ -177,7 +177,7 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toYear(final Matcher<? super Integer> matcher) {
+    public void toYear(final Matcher<? super Integer> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().get(Calendar.YEAR), matcher, Messages.Check.YEAR);
@@ -188,7 +188,7 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
      *
      * @param expected the expected value.
      */
-    public final void hasYear(final int expected) {
+    public void hasYear(final int expected) {
         toYear().isEqualTo(expected);
     }
 
@@ -197,7 +197,7 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
      *
      * @return the assertion.
      */
-    public final IntAssertion toMonth() {
+    public IntAssertion toMonth() {
         checkActualIsNotNull();
         return initializeAssertion(Raw.intAssertion(), getActual().get(Calendar.MONTH), Messages.Check.MONTH);
     }
@@ -207,7 +207,7 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toMonth(final Matcher<? super Integer> matcher) {
+    public void toMonth(final Matcher<? super Integer> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().get(Calendar.MONTH), matcher, Messages.Check.MONTH);
@@ -218,7 +218,7 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
      *
      * @param expected the expected value.
      */
-    public final void hasMonth(final int expected) {
+    public void hasMonth(final int expected) {
         toMonth().isEqualTo(expected);
     }
 
@@ -227,7 +227,7 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
      *
      * @return the assertion.
      */
-    public final IntAssertion toWeekOfYear() {
+    public IntAssertion toWeekOfYear() {
         checkActualIsNotNull();
         return initializeAssertion(Raw.intAssertion(), getActual().get(Calendar.WEEK_OF_YEAR), Messages.Check.WEEK_OF_YEAR);
     }
@@ -237,7 +237,7 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toWeekOfYear(final Matcher<? super Integer> matcher) {
+    public void toWeekOfYear(final Matcher<? super Integer> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().get(Calendar.WEEK_OF_YEAR), matcher, Messages.Check.WEEK_OF_YEAR);
@@ -248,7 +248,7 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
      *
      * @param expected the expected value.
      */
-    public final void hasWeekOfYear(final int expected) {
+    public void hasWeekOfYear(final int expected) {
         toWeekOfYear().isEqualTo(expected);
     }
 
@@ -257,7 +257,7 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
      *
      * @return the assertion.
      */
-    public final IntAssertion toWeekOfMonth() {
+    public IntAssertion toWeekOfMonth() {
         checkActualIsNotNull();
         return initializeAssertion(Raw.intAssertion(), getActual().get(Calendar.WEEK_OF_MONTH), Messages.Check.WEEK_OF_MONTH);
     }
@@ -267,7 +267,7 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toWeekOfMonth(final Matcher<? super Integer> matcher) {
+    public void toWeekOfMonth(final Matcher<? super Integer> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().get(Calendar.WEEK_OF_MONTH), matcher, Messages.Check.WEEK_OF_MONTH);
@@ -278,7 +278,7 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
      *
      * @param expected the expected value.
      */
-    public final void hasWeekOfMonth(final int expected) {
+    public void hasWeekOfMonth(final int expected) {
         toWeekOfMonth().isEqualTo(expected);
     }
 
@@ -287,7 +287,7 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
      *
      * @return the assertion.
      */
-    public final IntAssertion toDayOfYear() {
+    public IntAssertion toDayOfYear() {
         checkActualIsNotNull();
         return initializeAssertion(Raw.intAssertion(), getActual().get(Calendar.DAY_OF_YEAR), Messages.Check.DAY_OF_YEAR);
     }
@@ -297,7 +297,7 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toDayOfYear(final Matcher<? super Integer> matcher) {
+    public void toDayOfYear(final Matcher<? super Integer> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().get(Calendar.DAY_OF_YEAR), matcher, Messages.Check.DAY_OF_YEAR);
@@ -308,7 +308,7 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
      *
      * @param expected the expected value.
      */
-    public final void hasDayOfYear(final int expected) {
+    public void hasDayOfYear(final int expected) {
         toDayOfYear().isEqualTo(expected);
     }
 
@@ -317,7 +317,7 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
      *
      * @return the assertion.
      */
-    public final IntAssertion toDayOfMonth() {
+    public IntAssertion toDayOfMonth() {
         checkActualIsNotNull();
         return initializeAssertion(Raw.intAssertion(), getActual().get(Calendar.DAY_OF_MONTH), Messages.Check.DAY_OF_MONTH);
     }
@@ -327,7 +327,7 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toDayOfMonth(final Matcher<? super Integer> matcher) {
+    public void toDayOfMonth(final Matcher<? super Integer> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().get(Calendar.DAY_OF_MONTH), matcher, Messages.Check.DAY_OF_MONTH);
@@ -338,7 +338,7 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
      *
      * @param expected the expected value.
      */
-    public final void hasDayOfMonth(final int expected) {
+    public void hasDayOfMonth(final int expected) {
         toDayOfMonth().isEqualTo(expected);
     }
 
@@ -347,7 +347,7 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
      *
      * @return the assertion.
      */
-    public final IntAssertion toDayOfWeekInMonth() {
+    public IntAssertion toDayOfWeekInMonth() {
         checkActualIsNotNull();
         return initializeAssertion(Raw.intAssertion(), getActual().get(Calendar.DAY_OF_WEEK_IN_MONTH), Messages.Check.DAY_OF_WEEK_IN_MONTH);
     }
@@ -357,7 +357,7 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toDayOfWeekInMonth(final Matcher<? super Integer> matcher) {
+    public void toDayOfWeekInMonth(final Matcher<? super Integer> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().get(Calendar.DAY_OF_WEEK_IN_MONTH), matcher, Messages.Check.DAY_OF_WEEK_IN_MONTH);
@@ -368,7 +368,7 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
      *
      * @param expected the expected value.
      */
-    public final void hasDayOfWeekInMonth(final int expected) {
+    public void hasDayOfWeekInMonth(final int expected) {
         toDayOfWeekInMonth().isEqualTo(expected);
     }
 
@@ -377,7 +377,7 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
      *
      * @return the assertion.
      */
-    public final IntAssertion toDayOfWeek() {
+    public IntAssertion toDayOfWeek() {
         checkActualIsNotNull();
         return initializeAssertion(Raw.intAssertion(), getActual().get(Calendar.DAY_OF_WEEK), Messages.Check.DAY_OF_WEEK);
     }
@@ -387,7 +387,7 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toDayOfWeek(final Matcher<? super Integer> matcher) {
+    public void toDayOfWeek(final Matcher<? super Integer> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().get(Calendar.DAY_OF_WEEK), matcher, Messages.Check.DAY_OF_WEEK);
@@ -398,7 +398,7 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
      *
      * @param expected the expected value.
      */
-    public final void hasDayOfWeek(final int expected) {
+    public void hasDayOfWeek(final int expected) {
         toDayOfWeek().isEqualTo(expected);
     }
 
@@ -407,7 +407,7 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
      *
      * @return the assertion.
      */
-    public final IntAssertion toAmPm() {
+    public IntAssertion toAmPm() {
         checkActualIsNotNull();
         return initializeAssertion(Raw.intAssertion(), getActual().get(Calendar.AM_PM), Messages.Check.AM_PM);
     }
@@ -417,7 +417,7 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toAmPm(final Matcher<? super Integer> matcher) {
+    public void toAmPm(final Matcher<? super Integer> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().get(Calendar.AM_PM), matcher, Messages.Check.AM_PM);
@@ -426,14 +426,14 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
     /**
      * Check if the actual value's AM/PM is equal to AM.
      */
-    public final void isAm() {
+    public void isAm() {
         toAmPm().isEqualTo(Calendar.AM);
     }
 
     /**
      * Check if the actual value's AM/PM is equal to PM.
      */
-    public final void isPm() {
+    public void isPm() {
         toAmPm().isEqualTo(Calendar.PM);
     }
 
@@ -442,7 +442,7 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
      *
      * @return the assertion.
      */
-    public final IntAssertion toHourOfDay() {
+    public IntAssertion toHourOfDay() {
         checkActualIsNotNull();
         return initializeAssertion(Raw.intAssertion(), getActual().get(Calendar.HOUR_OF_DAY), Messages.Check.HOUR_OF_DAY);
     }
@@ -452,7 +452,7 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toHourOfDay(final Matcher<? super Integer> matcher) {
+    public void toHourOfDay(final Matcher<? super Integer> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().get(Calendar.HOUR_OF_DAY), matcher, Messages.Check.HOUR_OF_DAY);
@@ -463,7 +463,7 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
      *
      * @param expected the expected value.
      */
-    public final void hasHourOfDay(final int expected) {
+    public void hasHourOfDay(final int expected) {
         toHourOfDay().isEqualTo(expected);
     }
 
@@ -472,7 +472,7 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
      *
      * @return the assertion.
      */
-    public final IntAssertion toHour() {
+    public IntAssertion toHour() {
         checkActualIsNotNull();
         return initializeAssertion(Raw.intAssertion(), getActual().get(Calendar.HOUR), Messages.Check.HOUR);
     }
@@ -482,7 +482,7 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toHour(final Matcher<? super Integer> matcher) {
+    public void toHour(final Matcher<? super Integer> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().get(Calendar.HOUR), matcher, Messages.Check.HOUR);
@@ -493,7 +493,7 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
      *
      * @param expected the expected value.
      */
-    public final void hasHour(final int expected) {
+    public void hasHour(final int expected) {
         toHour().isEqualTo(expected);
     }
 
@@ -502,7 +502,7 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
      *
      * @return the assertion.
      */
-    public final IntAssertion toMinute() {
+    public IntAssertion toMinute() {
         checkActualIsNotNull();
         return initializeAssertion(Raw.intAssertion(), getActual().get(Calendar.MINUTE), Messages.Check.MINUTE);
     }
@@ -512,7 +512,7 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toMinute(final Matcher<? super Integer> matcher) {
+    public void toMinute(final Matcher<? super Integer> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().get(Calendar.MINUTE), matcher, Messages.Check.MINUTE);
@@ -523,7 +523,7 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
      *
      * @param expected the expected value.
      */
-    public final void hasMinute(final int expected) {
+    public void hasMinute(final int expected) {
         toMinute().isEqualTo(expected);
     }
 
@@ -532,7 +532,7 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
      *
      * @return the assertion.
      */
-    public final IntAssertion toSecond() {
+    public IntAssertion toSecond() {
         checkActualIsNotNull();
         return initializeAssertion(Raw.intAssertion(), getActual().get(Calendar.SECOND), Messages.Check.SECOND);
     }
@@ -542,7 +542,7 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toSecond(final Matcher<? super Integer> matcher) {
+    public void toSecond(final Matcher<? super Integer> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().get(Calendar.SECOND), matcher, Messages.Check.SECOND);
@@ -553,7 +553,7 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
      *
      * @param expected the expected value.
      */
-    public final void hasSecond(final int expected) {
+    public void hasSecond(final int expected) {
         toSecond().isEqualTo(expected);
     }
 
@@ -562,7 +562,7 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
      *
      * @return the assertion.
      */
-    public final IntAssertion toMillisecond() {
+    public IntAssertion toMillisecond() {
         checkActualIsNotNull();
         return initializeAssertion(Raw.intAssertion(), getActual().get(Calendar.MILLISECOND), Messages.Check.MILLISECOND);
     }
@@ -572,7 +572,7 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toMillisecond(final Matcher<? super Integer> matcher) {
+    public void toMillisecond(final Matcher<? super Integer> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().get(Calendar.MILLISECOND), matcher, Messages.Check.MILLISECOND);
@@ -583,7 +583,7 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
      *
      * @param expected the expected value.
      */
-    public final void hasMillisecond(final int expected) {
+    public void hasMillisecond(final int expected) {
         toMillisecond().isEqualTo(expected);
     }
 
@@ -592,7 +592,7 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
      *
      * @return the assertion.
      */
-    public final IntAssertion toZoneOffset() {
+    public IntAssertion toZoneOffset() {
         checkActualIsNotNull();
         return initializeAssertion(Raw.intAssertion(), getActual().get(Calendar.ZONE_OFFSET), Messages.Check.ZONE_OFFSET);
     }
@@ -602,7 +602,7 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toZoneOffset(final Matcher<? super Integer> matcher) {
+    public void toZoneOffset(final Matcher<? super Integer> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().get(Calendar.ZONE_OFFSET), matcher, Messages.Check.ZONE_OFFSET);
@@ -613,7 +613,7 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
      *
      * @param expected the expected value.
      */
-    public final void hasZoneOffset(final int expected) {
+    public void hasZoneOffset(final int expected) {
         toZoneOffset().isEqualTo(expected);
     }
 
@@ -622,7 +622,7 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
      *
      * @return the assertion.
      */
-    public final IntAssertion toDstOffset() {
+    public IntAssertion toDstOffset() {
         checkActualIsNotNull();
         return initializeAssertion(Raw.intAssertion(), getActual().get(Calendar.DST_OFFSET), Messages.Check.DST_OFFSET);
     }
@@ -632,7 +632,7 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toDstOffset(final Matcher<? super Integer> matcher) {
+    public void toDstOffset(final Matcher<? super Integer> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().get(Calendar.DST_OFFSET), matcher, Messages.Check.DST_OFFSET);
@@ -643,7 +643,7 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
      *
      * @param expected the expected value.
      */
-    public final void hasDstOffset(final int expected) {
+    public void hasDstOffset(final int expected) {
         toDstOffset().isEqualTo(expected);
     }
 
@@ -652,7 +652,7 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
      *
      * @return the assertion.
      */
-    public final TimeZoneAssertion toTimeZone() {
+    public TimeZoneAssertion toTimeZone() {
         checkActualIsNotNull();
         return initializeAssertion(Raw.timeZoneAssertion(), getActual().getTimeZone(), Messages.Check.TIME_ZONE);
     }
@@ -662,7 +662,7 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
      *
      * @param matcher the hamcrest matcher.
      */
-    public final void toTimeZone(final Matcher<? super TimeZone> matcher) {
+    public void toTimeZone(final Matcher<? super TimeZone> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().getTimeZone(), matcher, Messages.Check.TIME_ZONE);
@@ -673,7 +673,7 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
      *
      * @param expected the expected value.
      */
-    public final void hasTimeZone(final TimeZone expected) {
+    public void hasTimeZone(final TimeZone expected) {
         toTimeZone().isEqualTo(expected);
     }
 
@@ -682,7 +682,7 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
      *
      * @param expected the expected value.
      */
-    public final void hasTimeZoneId(final String expected) {
+    public void hasTimeZoneId(final String expected) {
         toTimeZone().hasId(expected);
     }
 
@@ -693,7 +693,7 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
      * @param month      the expected month.
      * @param dayOfMonth the expected day of month.
      */
-    public final void hasDate(final int year, final int month, final int dayOfMonth) {
+    public void hasDate(final int year, final int month, final int dayOfMonth) {
         hasYear(year);
         hasMonth(month);
         hasDayOfMonth(dayOfMonth);
@@ -707,7 +707,7 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
      * @param dayOfMonth the expected day of month.
      * @param timeZoneId the expected time zone ID.
      */
-    public final void hasTimeZoneDate(final int year, final int month, final int dayOfMonth, final String timeZoneId) {
+    public void hasTimeZoneDate(final int year, final int month, final int dayOfMonth, final String timeZoneId) {
         hasYear(year);
         hasMonth(month);
         hasDayOfMonth(dayOfMonth);
@@ -722,7 +722,7 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
      * @param dayOfMonth the expected day of month.
      * @param zoneOffset the expected zone offset.
      */
-    public final void hasTimeZoneDate(final int year, final int month, final int dayOfMonth, final int zoneOffset) {
+    public void hasTimeZoneDate(final int year, final int month, final int dayOfMonth, final int zoneOffset) {
         hasYear(year);
         hasMonth(month);
         hasDayOfMonth(dayOfMonth);
@@ -736,7 +736,7 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
      * @param month      the expected month.
      * @param dayOfMonth the expected day of month.
      */
-    public final void hasUtcDate(final int year, final int month, final int dayOfMonth) {
+    public void hasUtcDate(final int year, final int month, final int dayOfMonth) {
         toUtcTimeZoneCalendar().hasDate(year, month, dayOfMonth);
     }
 
@@ -747,7 +747,7 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
      * @param minute    the expected minute.
      * @param second    the expected second.
      */
-    public final void hasTime(final int hourOfDay, final int minute, final int second) {
+    public void hasTime(final int hourOfDay, final int minute, final int second) {
         hasHourOfDay(hourOfDay);
         hasMinute(minute);
         hasSecond(second);
@@ -761,7 +761,7 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
      * @param second      the expected second.
      * @param millisecond the expected millisecond.
      */
-    public final void hasTime(final int hourOfDay, final int minute, final int second, final int millisecond) {
+    public void hasTime(final int hourOfDay, final int minute, final int second, final int millisecond) {
         hasHourOfDay(hourOfDay);
         hasMinute(minute);
         hasSecond(second);
@@ -776,7 +776,7 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
      * @param second     the expected second.
      * @param timeZoneId the expected time zone ID.
      */
-    public final void hasTimeZoneTime(final int hourOfDay, final int minute, final int second, final String timeZoneId) {
+    public void hasTimeZoneTime(final int hourOfDay, final int minute, final int second, final String timeZoneId) {
         hasHourOfDay(hourOfDay);
         hasMinute(minute);
         hasSecond(second);
@@ -791,7 +791,7 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
      * @param second     the expected second.
      * @param zoneOffset the expected zone offset.
      */
-    public final void hasTimeZoneTime(final int hourOfDay, final int minute, final int second, final int zoneOffset) {
+    public void hasTimeZoneTime(final int hourOfDay, final int minute, final int second, final int zoneOffset) {
         hasHourOfDay(hourOfDay);
         hasMinute(minute);
         hasSecond(second);
@@ -807,7 +807,7 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
      * @param millisecond the expected millisecond.
      * @param timeZoneId  the expected time zone ID.
      */
-    public final void hasTimeZoneTime(final int hourOfDay, final int minute, final int second, final int millisecond, final String timeZoneId) {
+    public void hasTimeZoneTime(final int hourOfDay, final int minute, final int second, final int millisecond, final String timeZoneId) {
         hasHourOfDay(hourOfDay);
         hasMinute(minute);
         hasSecond(second);
@@ -824,7 +824,7 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
      * @param millisecond the expected millisecond.
      * @param zoneOffset  the expected zone offset.
      */
-    public final void hasTimeZoneTime(final int hourOfDay, final int minute, final int second, final int millisecond, final int zoneOffset) {
+    public void hasTimeZoneTime(final int hourOfDay, final int minute, final int second, final int millisecond, final int zoneOffset) {
         hasHourOfDay(hourOfDay);
         hasMinute(minute);
         hasSecond(second);
@@ -839,7 +839,7 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
      * @param minute    the expected minute.
      * @param second    the expected second.
      */
-    public final void hasUtcTime(final int hourOfDay, final int minute, final int second) {
+    public void hasUtcTime(final int hourOfDay, final int minute, final int second) {
         toUtcTimeZoneCalendar().hasTime(hourOfDay, minute, second);
     }
 
@@ -851,7 +851,7 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
      * @param second      the expected second.
      * @param millisecond the expected millisecond.
      */
-    public final void hasUtcTime(final int hourOfDay, final int minute, final int second, final int millisecond) {
+    public void hasUtcTime(final int hourOfDay, final int minute, final int second, final int millisecond) {
         toUtcTimeZoneCalendar().hasTime(hourOfDay, minute, second, millisecond);
     }
 
@@ -865,7 +865,7 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
      * @param minute     the expected minute.
      * @param second     the expected second.
      */
-    public final void hasDateAndTime(final int year, final int month, final int dayOfMonth, final int hourOfDay, final int minute, final int second) {
+    public void hasDateAndTime(final int year, final int month, final int dayOfMonth, final int hourOfDay, final int minute, final int second) {
         hasYear(year);
         hasMonth(month);
         hasDayOfMonth(dayOfMonth);
@@ -885,7 +885,7 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
      * @param second      the expected second.
      * @param millisecond the expected millisecond.
      */
-    public final void hasDateAndTime(final int year, final int month, final int dayOfMonth, final int hourOfDay, final int minute, final int second, final int millisecond) {
+    public void hasDateAndTime(final int year, final int month, final int dayOfMonth, final int hourOfDay, final int minute, final int second, final int millisecond) {
         hasYear(year);
         hasMonth(month);
         hasDayOfMonth(dayOfMonth);
@@ -906,7 +906,7 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
      * @param second     the expected second.
      * @param timeZoneId the expected time zone ID.
      */
-    public final void hasTimeZoneDateAndTime(final int year, final int month, final int dayOfMonth, final int hourOfDay, final int minute, final int second, final String timeZoneId) {
+    public void hasTimeZoneDateAndTime(final int year, final int month, final int dayOfMonth, final int hourOfDay, final int minute, final int second, final String timeZoneId) {
         hasYear(year);
         hasMonth(month);
         hasDayOfMonth(dayOfMonth);
@@ -927,7 +927,7 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
      * @param second     the expected second.
      * @param zoneOffset the expected zone offset.
      */
-    public final void hasTimeZoneDateAndTime(final int year, final int month, final int dayOfMonth, final int hourOfDay, final int minute, final int second, final int zoneOffset) {
+    public void hasTimeZoneDateAndTime(final int year, final int month, final int dayOfMonth, final int hourOfDay, final int minute, final int second, final int zoneOffset) {
         hasYear(year);
         hasMonth(month);
         hasDayOfMonth(dayOfMonth);
@@ -949,7 +949,7 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
      * @param millisecond the expected millisecond.
      * @param timeZoneId  the expected time zone ID.
      */
-    public final void hasTimeZoneDateAndTime(final int year, final int month, final int dayOfMonth, final int hourOfDay, final int minute, final int second, final int millisecond, final String timeZoneId) {
+    public void hasTimeZoneDateAndTime(final int year, final int month, final int dayOfMonth, final int hourOfDay, final int minute, final int second, final int millisecond, final String timeZoneId) {
         hasYear(year);
         hasMonth(month);
         hasDayOfMonth(dayOfMonth);
@@ -972,7 +972,7 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
      * @param millisecond the expected millisecond.
      * @param zoneOffset  the expected zone offset.
      */
-    public final void hasTimeZoneDateAndTime(final int year, final int month, final int dayOfMonth, final int hourOfDay, final int minute, final int second, final int millisecond, final int zoneOffset) {
+    public void hasTimeZoneDateAndTime(final int year, final int month, final int dayOfMonth, final int hourOfDay, final int minute, final int second, final int millisecond, final int zoneOffset) {
         hasYear(year);
         hasMonth(month);
         hasDayOfMonth(dayOfMonth);
@@ -993,7 +993,7 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
      * @param minute     the expected minute.
      * @param second     the expected second.
      */
-    public final void hasUtcDateAndTime(final int year, final int month, final int dayOfMonth, final int hourOfDay, final int minute, final int second) {
+    public void hasUtcDateAndTime(final int year, final int month, final int dayOfMonth, final int hourOfDay, final int minute, final int second) {
         toUtcTimeZoneCalendar().hasDateAndTime(year, month, dayOfMonth, hourOfDay, minute, second);
     }
 
@@ -1008,7 +1008,7 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
      * @param second      the expected second.
      * @param millisecond the expected millisecond.
      */
-    public final void hasUtcDateAndTime(final int year, final int month, final int dayOfMonth, final int hourOfDay, final int minute, final int second, final int millisecond) {
+    public void hasUtcDateAndTime(final int year, final int month, final int dayOfMonth, final int hourOfDay, final int minute, final int second, final int millisecond) {
         toUtcTimeZoneCalendar().hasDateAndTime(year, month, dayOfMonth, hourOfDay, minute, second, millisecond);
     }
 
@@ -1019,7 +1019,7 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
      *
      * @return the assertion.
      */
-    public final CalendarAssertion toTimeZoneCalendar(final TimeZone timeZone) {
+    public CalendarAssertion toTimeZoneCalendar(final TimeZone timeZone) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(timeZone, "timeZone");
         Calendar calendar = getActual();
@@ -1036,7 +1036,7 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
      *
      * @return the assertion.
      */
-    public final CalendarAssertion toTimeZoneCalendar(final String timeZoneId) {
+    public CalendarAssertion toTimeZoneCalendar(final String timeZoneId) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(timeZoneId, "timeZoneId");
         TimeZone timeZone = TimeZone.getTimeZone(timeZoneId);
@@ -1048,7 +1048,7 @@ public class CalendarAssertion extends ReferenceAssertion<Calendar> {
      *
      * @return the assertion.
      */
-    public final CalendarAssertion toUtcTimeZoneCalendar() {
+    public CalendarAssertion toUtcTimeZoneCalendar() {
         return toTimeZoneCalendar(DataHelper.TIMEZONE_UTC);
     }
 
