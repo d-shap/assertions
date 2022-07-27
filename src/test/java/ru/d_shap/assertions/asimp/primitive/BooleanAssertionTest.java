@@ -66,6 +66,7 @@ public final class BooleanAssertionTest extends AssertionTest {
     @Test
     public void isTrueTest() {
         initialize(Raw.booleanAssertion(), true).isTrue();
+        initialize(Raw.booleanAssertion(), true).isNotNull().isTrue().isInstanceOf(Boolean.class).isNotInstanceOf(boolean.class);
 
         try {
             Raw.booleanAssertion().isTrue();
@@ -105,6 +106,7 @@ public final class BooleanAssertionTest extends AssertionTest {
     @Test
     public void isFalseTest() {
         initialize(Raw.booleanAssertion(), false).isFalse();
+        initialize(Raw.booleanAssertion(), false).isNotNull().isFalse().isInstanceOf(Boolean.class).isNotInstanceOf(boolean.class);
 
         try {
             Raw.booleanAssertion().isFalse();

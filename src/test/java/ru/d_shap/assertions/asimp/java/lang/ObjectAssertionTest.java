@@ -46,6 +46,7 @@ public final class ObjectAssertionTest extends AssertionTest {
     public void isEqualToTest() {
         initialize(Raw.objectAssertion(), null).isEqualTo(null);
         initialize(Raw.objectAssertion(), "value").isEqualTo("value");
+        initialize(Raw.objectAssertion(), "value").isNotNull().isEqualTo("value").isInstanceOf(String.class);
 
         try {
             Raw.objectAssertion().isEqualTo("value");
@@ -100,6 +101,7 @@ public final class ObjectAssertionTest extends AssertionTest {
         initialize(Raw.objectAssertion(), "value").isNotEqualTo(null);
         initialize(Raw.objectAssertion(), "value1").isNotEqualTo("value2");
         initialize(Raw.objectAssertion(), "value2").isNotEqualTo("value1");
+        initialize(Raw.objectAssertion(), "value2").isNotNull().isNotEqualTo("value1").isInstanceOf(String.class);
 
         try {
             Raw.objectAssertion().isNotEqualTo("value");
