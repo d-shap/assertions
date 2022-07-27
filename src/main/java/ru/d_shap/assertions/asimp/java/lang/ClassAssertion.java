@@ -58,8 +58,10 @@ public final class ClassAssertion extends ReferenceAssertion<Class<?>> {
      * Check if the actual value is equal to the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void isEqualTo(final Class<?> expected) {
+    public ClassAssertion isEqualTo(final Class<?> expected) {
         if (expected == null) {
             isNull();
         } else {
@@ -68,14 +70,17 @@ public final class ClassAssertion extends ReferenceAssertion<Class<?>> {
                 throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_SAME).addActual().addExpected(expected).build();
             }
         }
+        return this;
     }
 
     /**
      * Check if the actual value is NOT equal to the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void isNotEqualTo(final Class<?> expected) {
+    public ClassAssertion isNotEqualTo(final Class<?> expected) {
         if (expected == null) {
             isNotNull();
         } else {
@@ -83,118 +88,149 @@ public final class ClassAssertion extends ReferenceAssertion<Class<?>> {
                 throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_DIFFERENT).addActual().build();
             }
         }
+        return this;
     }
 
     /**
      * Check if the actual value is the subtype of the expected class.
      *
      * @param expected the expected class.
+     *
+     * @return current object for the chain call.
      */
-    public void isSubtypeOf(final Class<?> expected) {
+    public ClassAssertion isSubtypeOf(final Class<?> expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         if (!expected.isAssignableFrom(getActual())) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_SUBTYPE_OF).addActual().addExpected(expected).build();
         }
+        return this;
     }
 
     /**
      * Check if the actual value is NOT the subtype of the expected class.
      *
      * @param expected the expected class.
+     *
+     * @return current object for the chain call.
      */
-    public void isNotSubtypeOf(final Class<?> expected) {
+    public ClassAssertion isNotSubtypeOf(final Class<?> expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         if (expected.isAssignableFrom(getActual())) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_SUBTYPE_OF).addActual().addExpected(expected).build();
         }
+        return this;
     }
 
     /**
      * Check if the actual value is the supertype of the expected class.
      *
      * @param expected the expected class.
+     *
+     * @return current object for the chain call.
      */
-    public void isSupertypeOf(final Class<?> expected) {
+    public ClassAssertion isSupertypeOf(final Class<?> expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         if (!getActual().isAssignableFrom(expected)) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_SUPERTYPE_OF).addActual().addExpected(expected).build();
         }
+        return this;
     }
 
     /**
      * Check if the actual value is NOT the supertype of the expected class.
      *
      * @param expected the expected class.
+     *
+     * @return current object for the chain call.
      */
-    public void isNotSupertypeOf(final Class<?> expected) {
+    public ClassAssertion isNotSupertypeOf(final Class<?> expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         if (getActual().isAssignableFrom(expected)) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_SUPERTYPE_OF).addActual().addExpected(expected).build();
         }
+        return this;
     }
 
     /**
      * Check if the actual value is the interface type.
+     *
+     * @return current object for the chain call.
      */
-    public void isInterface() {
+    public ClassAssertion isInterface() {
         checkActualIsNotNull();
         if (!getActual().isInterface()) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_INTERCACE_TYPE).addActual().build();
         }
+        return this;
     }
 
     /**
      * Check if the actual value is NOT the interface type.
+     *
+     * @return current object for the chain call.
      */
-    public void isNotInterface() {
+    public ClassAssertion isNotInterface() {
         checkActualIsNotNull();
         if (getActual().isInterface()) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_INTERCACE_TYPE).addActual().build();
         }
+        return this;
     }
 
     /**
      * Check if the actual value is the array type.
+     *
+     * @return current object for the chain call.
      */
-    public void isArray() {
+    public ClassAssertion isArray() {
         checkActualIsNotNull();
         if (!getActual().isArray()) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_ARRAY_TYPE).addActual().build();
         }
+        return this;
     }
 
     /**
      * Check if the actual value is NOT the array type.
+     *
+     * @return current object for the chain call.
      */
-    public void isNotArray() {
+    public ClassAssertion isNotArray() {
         checkActualIsNotNull();
         if (getActual().isArray()) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_ARRAY_TYPE).addActual().build();
         }
+        return this;
     }
 
     /**
      * Check if the actual value is the enum type.
+     *
+     * @return current object for the chain call.
      */
-    public void isEnum() {
+    public ClassAssertion isEnum() {
         checkActualIsNotNull();
         if (!getActual().isEnum()) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_ENUM_TYPE).addActual().build();
         }
+        return this;
     }
 
     /**
      * Check if the actual value is NOT the enum type.
+     *
+     * @return current object for the chain call.
      */
-    public void isNotEnum() {
+    public ClassAssertion isNotEnum() {
         checkActualIsNotNull();
         if (getActual().isEnum()) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_ENUM_TYPE).addActual().build();
         }
+        return this;
     }
 
     /**
@@ -212,30 +248,38 @@ public final class ClassAssertion extends ReferenceAssertion<Class<?>> {
      *
      * @param matcher the hamcrest matcher.
      * @param <T>     the generic type of the actual value's component type.
+     *
+     * @return current object for the chain call.
      */
     @SuppressWarnings("unchecked")
-    public <T> void toComponentType(final Matcher<? super Class<T>> matcher) {
+    public <T> ClassAssertion toComponentType(final Matcher<? super Class<T>> matcher) {
         isArray();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion((Class<T>) getActual().getComponentType(), matcher, Messages.Check.COMPONENT_TYPE);
+        return this;
     }
 
     /**
      * Check if the actual value's component type is equal to the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void hasComponentType(final Class<?> expected) {
+    public ClassAssertion hasComponentType(final Class<?> expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         toComponentType().isEqualTo(expected);
+        return this;
     }
 
     /**
      * Check if the actual value has one private no-arg constructor (utility class constructor).
      * Side-effect: invokes the private constractor for the code coverage.
+     *
+     * @return current object for the chain call.
      */
-    public void hasOnePrivateConstructor() {
+    public ClassAssertion hasOnePrivateConstructor() {
         checkActualIsNotNull();
         Constructor<?>[] constructors = ReflectionHelper.getConstructors(getActual());
         if (constructors.length != 1) {
@@ -254,6 +298,7 @@ public final class ClassAssertion extends ReferenceAssertion<Class<?>> {
         } catch (ReflectionException ex) {
             throw getAssertionErrorBuilder().addThrowable(ex).addMessage(Messages.Fail.Actual.CONSTRUCTOR_CALLABLE).addActual().build();
         }
+        return this;
     }
 
     /**

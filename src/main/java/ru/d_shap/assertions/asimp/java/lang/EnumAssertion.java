@@ -74,11 +74,14 @@ public final class EnumAssertion extends ReferenceAssertion<Class<?>> {
      * Side-effect: invokes the methods "values" and "valueOf" for the code coverage.
      *
      * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
      */
-    public void toValueCount(final Matcher<? super Integer> matcher) {
+    public EnumAssertion toValueCount(final Matcher<? super Integer> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getValueCount(), matcher, Messages.Check.VALUE_COUNT);
+        return this;
     }
 
     private int getValueCount() {
@@ -98,9 +101,12 @@ public final class EnumAssertion extends ReferenceAssertion<Class<?>> {
      * Check if the actual enum value count is equal to the expected value count.
      *
      * @param expected the expected value count.
+     *
+     * @return current object for the chain call.
      */
-    public void hasValueCount(final int expected) {
+    public EnumAssertion hasValueCount(final int expected) {
         toValueCount().isEqualTo(expected);
+        return this;
     }
 
 }

@@ -57,83 +57,104 @@ public final class IterableAssertion<E> extends ReferenceAssertion<Iterable<E>> 
 
     /**
      * Check if the actual value is empty.
+     *
+     * @return current object for the chain call.
      */
-    public void isEmpty() {
+    public IterableAssertion<E> isEmpty() {
         checkActualIsNotNull();
         List<E> list = convertValue(getActual(), null, List.class);
         if (!list.isEmpty()) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_EMPTY).addActual().build();
         }
+        return this;
     }
 
     /**
      * Check if the actual value is null or empty.
+     *
+     * @return current object for the chain call.
      */
-    public void isNullOrEmpty() {
+    public IterableAssertion<E> isNullOrEmpty() {
         List<E> list = convertValue(getActual(), null, List.class);
         if (list != null && !list.isEmpty()) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NULL_OR_EMPTY).addActual().build();
         }
+        return this;
     }
 
     /**
      * Check if the actual value is NOT empty.
+     *
+     * @return current object for the chain call.
      */
-    public void isNotEmpty() {
+    public IterableAssertion<E> isNotEmpty() {
         checkActualIsNotNull();
         List<E> list = convertValue(getActual(), null, List.class);
         if (list.isEmpty()) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_EMPTY).build();
         }
+        return this;
     }
 
     /**
      * Check if the actual value contains the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void contains(final E expected) {
+    public IterableAssertion<E> contains(final E expected) {
         checkActualIsNotNull();
         List<E> list = convertValue(getActual(), null, List.class);
         if (!list.contains(expected)) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.CONTAINS).addActual().addExpected(expected).build();
         }
+        return this;
     }
 
     /**
      * Check if the actual value does NOT contain the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void doesNotContain(final E expected) {
+    public IterableAssertion<E> doesNotContain(final E expected) {
         checkActualIsNotNull();
         List<E> list = convertValue(getActual(), null, List.class);
         if (list.contains(expected)) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.DOES_NOT_CONTAIN).addActual().addExpected(expected).build();
         }
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
     @SafeVarargs
-    public final void containsAll(final E... expected) {
+    public final IterableAssertion<E> containsAll(final E... expected) {
         checkActualIsNotNull();
         List<?> expectedList = convertValue(expected, null, List.class);
         containsAll(expectedList);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsAll(final Iterable<E> expected) {
+    public IterableAssertion<E> containsAll(final Iterable<E> expected) {
         checkActualIsNotNull();
         List<?> expectedList = convertValue(expected, null, List.class);
         containsAll(expectedList);
+        return this;
     }
 
     private void containsAll(final List<?> expected) {
@@ -155,23 +176,29 @@ public final class IterableAssertion<E> extends ReferenceAssertion<Iterable<E>> 
      * Check if the actual value contains all of the expected values in the specified order.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
     @SafeVarargs
-    public final void containsAllInOrder(final E... expected) {
+    public final IterableAssertion<E> containsAllInOrder(final E... expected) {
         checkActualIsNotNull();
         List<?> expectedList = convertValue(expected, null, List.class);
         containsAllInOrder(expectedList);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values in the specified order.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsAllInOrder(final Iterable<E> expected) {
+    public IterableAssertion<E> containsAllInOrder(final Iterable<E> expected) {
         checkActualIsNotNull();
         List<?> expectedList = convertValue(expected, null, List.class);
         containsAllInOrder(expectedList);
+        return this;
     }
 
     private void containsAllInOrder(final List<?> expected) {
@@ -193,23 +220,29 @@ public final class IterableAssertion<E> extends ReferenceAssertion<Iterable<E>> 
      * Check if the actual value contains all of the expected values exactly.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
     @SafeVarargs
-    public final void containsExactly(final E... expected) {
+    public final IterableAssertion<E> containsExactly(final E... expected) {
         checkActualIsNotNull();
         List<?> expectedList = convertValue(expected, null, List.class);
         containsExactly(expectedList);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values exactly.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsExactly(final Iterable<E> expected) {
+    public IterableAssertion<E> containsExactly(final Iterable<E> expected) {
         checkActualIsNotNull();
         List<?> expectedList = convertValue(expected, null, List.class);
         containsExactly(expectedList);
+        return this;
     }
 
     private void containsExactly(final List<?> expected) {
@@ -233,23 +266,29 @@ public final class IterableAssertion<E> extends ReferenceAssertion<Iterable<E>> 
      * Check if the actual value contains all of the expected values exactly in the specified order.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
     @SafeVarargs
-    public final void containsExactlyInOrder(final E... expected) {
+    public final IterableAssertion<E> containsExactlyInOrder(final E... expected) {
         checkActualIsNotNull();
         List<?> expectedList = convertValue(expected, null, List.class);
         containsExactlyInOrder(expectedList);
+        return this;
     }
 
     /**
      * Check if the actual value contains all of the expected values exactly in the specified order.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsExactlyInOrder(final Iterable<E> expected) {
+    public IterableAssertion<E> containsExactlyInOrder(final Iterable<E> expected) {
         checkActualIsNotNull();
         List<?> expectedList = convertValue(expected, null, List.class);
         containsExactlyInOrder(expectedList);
+        return this;
     }
 
     private void containsExactlyInOrder(final List<?> expected) {
@@ -273,23 +312,29 @@ public final class IterableAssertion<E> extends ReferenceAssertion<Iterable<E>> 
      * Check if the actual value contains any of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
     @SafeVarargs
-    public final void containsAny(final E... expected) {
+    public final IterableAssertion<E> containsAny(final E... expected) {
         checkActualIsNotNull();
         List<?> expectedList = convertValue(expected, null, List.class);
         containsAny(expectedList);
+        return this;
     }
 
     /**
      * Check if the actual value contains any of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsAny(final Iterable<E> expected) {
+    public IterableAssertion<E> containsAny(final Iterable<E> expected) {
         checkActualIsNotNull();
         List<?> expectedList = convertValue(expected, null, List.class);
         containsAny(expectedList);
+        return this;
     }
 
     private void containsAny(final List<?> expected) {
@@ -313,23 +358,29 @@ public final class IterableAssertion<E> extends ReferenceAssertion<Iterable<E>> 
      * Check if the actual value does NOT contain any of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
     @SafeVarargs
-    public final void containsNone(final E... expected) {
+    public final IterableAssertion<E> containsNone(final E... expected) {
         checkActualIsNotNull();
         List<?> expectedList = convertValue(expected, null, List.class);
         containsNone(expectedList);
+        return this;
     }
 
     /**
      * Check if the actual value does NOT contain any of the expected values.
      *
      * @param expected the expected values.
+     *
+     * @return current object for the chain call.
      */
-    public void containsNone(final Iterable<E> expected) {
+    public IterableAssertion<E> containsNone(final Iterable<E> expected) {
         checkActualIsNotNull();
         List<?> expectedList = convertValue(expected, null, List.class);
         containsNone(expectedList);
+        return this;
     }
 
     private void containsNone(final List<?> expected) {
@@ -359,21 +410,27 @@ public final class IterableAssertion<E> extends ReferenceAssertion<Iterable<E>> 
      * Make assertion about the actual value's size.
      *
      * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
      */
-    public void toSize(final Matcher<? super Integer> matcher) {
+    public IterableAssertion<E> toSize(final Matcher<? super Integer> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         List<E> list = convertValue(getActual(), null, List.class);
         matcherAssertion(list.size(), matcher, Messages.Check.SIZE);
+        return this;
     }
 
     /**
      * Check if the actual value's size is equal to the expected size.
      *
      * @param expected the expected size.
+     *
+     * @return current object for the chain call.
      */
-    public void hasSize(final int expected) {
+    public IterableAssertion<E> hasSize(final int expected) {
         toSize().isEqualTo(expected);
+        return this;
     }
 
 }

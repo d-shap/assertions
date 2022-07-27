@@ -58,111 +58,150 @@ public final class ThrowableAssertion extends ReferenceAssertion<Throwable> {
      * Make assertion about the actual throwable message.
      *
      * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
      */
-    public void toMessage(final Matcher<? super String> matcher) {
+    public ThrowableAssertion toMessage(final Matcher<? super String> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().getMessage(), matcher, Messages.Check.MESSAGE);
+        return this;
     }
 
     /**
      * Check if the message of the throwable is null.
+     *
+     * @return current object for the chain call.
      */
-    public void messageIsNull() {
+    public ThrowableAssertion messageIsNull() {
         toMessage().isNull();
+        return this;
     }
 
     /**
      * Check if the message of the throwable is NOT null.
+     *
+     * @return current object for the chain call.
      */
-    public void messageIsNotNull() {
+    public ThrowableAssertion messageIsNotNull() {
         toMessage().isNotNull();
+        return this;
     }
 
     /**
      * Check if the message of the throwable is empty.
+     *
+     * @return current object for the chain call.
      */
-    public void messageIsEmpty() {
+    public ThrowableAssertion messageIsEmpty() {
         toMessage().isEmpty();
+        return this;
     }
 
     /**
      * Check if the message of the throwable is null or empty.
+     *
+     * @return current object for the chain call.
      */
-    public void messageIsNullOrEmpty() {
+    public ThrowableAssertion messageIsNullOrEmpty() {
         toMessage().isNullOrEmpty();
+        return this;
     }
 
     /**
      * Check if the message of the throwable is NOT empty.
+     *
+     * @return current object for the chain call.
      */
-    public void messageIsNotEmpty() {
+    public ThrowableAssertion messageIsNotEmpty() {
         toMessage().isNotEmpty();
+        return this;
     }
 
     /**
      * Check if the message of the throwable is blank.
+     *
+     * @return current object for the chain call.
      */
-    public void messageIsBlank() {
+    public ThrowableAssertion messageIsBlank() {
         toMessage().isBlank();
+        return this;
     }
 
     /**
      * Check if the message of the throwable is null or blank.
+     *
+     * @return current object for the chain call.
      */
-    public void messageIsNullOrBlank() {
+    public ThrowableAssertion messageIsNullOrBlank() {
         toMessage().isNullOrBlank();
+        return this;
     }
 
     /**
      * Check if the message of the throwable is NOT blank.
+     *
+     * @return current object for the chain call.
      */
-    public void messageIsNotBlank() {
+    public ThrowableAssertion messageIsNotBlank() {
         toMessage().isNotBlank();
+        return this;
     }
 
     /**
      * Check if the message of the throwable has the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void hasMessage(final String expected) {
+    public ThrowableAssertion hasMessage(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         toMessage().isEqualTo(expected);
+        return this;
     }
 
     /**
      * Check if the message of the throwable contains the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void messageContains(final String expected) {
+    public ThrowableAssertion messageContains(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         toMessage().contains(expected);
+        return this;
     }
 
     /**
      * Check if the message of the throwable contains the expected value ignoring case.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void messageContainsIgnoreCase(final String expected) {
+    public ThrowableAssertion messageContainsIgnoreCase(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         toMessage().containsIgnoreCase(expected);
+        return this;
     }
 
     /**
      * Check if the message of the throwable matches the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void messageMatches(final String expected) {
+    public ThrowableAssertion messageMatches(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         toMessage().matches(expected);
+        return this;
     }
 
     /**
@@ -179,44 +218,58 @@ public final class ThrowableAssertion extends ReferenceAssertion<Throwable> {
      * Make assertion about the actual throwable cause.
      *
      * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
      */
-    public void toCause(final Matcher<? super Throwable> matcher) {
+    public ThrowableAssertion toCause(final Matcher<? super Throwable> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().getCause(), matcher, Messages.Check.CAUSE);
+        return this;
     }
 
     /**
      * Check if the cause of the throwable is null.
+     *
+     * @return current object for the chain call.
      */
-    public void causeIsNull() {
+    public ThrowableAssertion causeIsNull() {
         toCause().isNull();
+        return this;
     }
 
     /**
      * Check if the cause of the throwable is NOT null.
+     *
+     * @return current object for the chain call.
      */
-    public void causeIsNotNull() {
+    public ThrowableAssertion causeIsNotNull() {
         toCause().isNotNull();
+        return this;
     }
 
     /**
      * Check if the cause of the throwable is instance of the expected class.
      *
      * @param expected the expected class.
+     *
+     * @return current object for the chain call.
      */
-    public void hasCause(final Class<?> expected) {
+    public ThrowableAssertion hasCause(final Class<?> expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         toCause().isInstanceOf(expected);
+        return this;
     }
 
     /**
      * Check if the causes of the throwable is instance of the expected classes.
      *
      * @param expected the expected classes.
+     *
+     * @return current object for the chain call.
      */
-    public void hasCauses(final Class<?>... expected) {
+    public ThrowableAssertion hasCauses(final Class<?>... expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         checkArgumentIsNotEmpty(expected.length == 0, "expected", true);
@@ -224,6 +277,7 @@ public final class ThrowableAssertion extends ReferenceAssertion<Throwable> {
             checkArgumentIsNotNull(clazz, "expected");
         }
         hasCauses(0, expected);
+        return this;
     }
 
     private void hasCauses(final int idx, final Class<?>... expected) {
@@ -235,102 +289,138 @@ public final class ThrowableAssertion extends ReferenceAssertion<Throwable> {
 
     /**
      * Check if the message of the cause of the throwable is null.
+     *
+     * @return current object for the chain call.
      */
-    public void causeMessageIsNull() {
+    public ThrowableAssertion causeMessageIsNull() {
         toCause().messageIsNull();
+        return this;
     }
 
     /**
      * Check if the message of the cause of the throwable is NOT null.
+     *
+     * @return current object for the chain call.
      */
-    public void causeMessageIsNotNull() {
+    public ThrowableAssertion causeMessageIsNotNull() {
         toCause().messageIsNotNull();
+        return this;
     }
 
     /**
      * Check if the message of the cause of the throwable is empty.
+     *
+     * @return current object for the chain call.
      */
-    public void causeMessageIsEmpty() {
+    public ThrowableAssertion causeMessageIsEmpty() {
         toCause().messageIsEmpty();
+        return this;
     }
 
     /**
      * Check if the message of the cause of the throwable is null or empty.
+     *
+     * @return current object for the chain call.
      */
-    public void causeMessageIsNullOrEmpty() {
+    public ThrowableAssertion causeMessageIsNullOrEmpty() {
         toCause().messageIsNullOrEmpty();
+        return this;
     }
 
     /**
      * Check if the message of the cause of the throwable is NOT empty.
+     *
+     * @return current object for the chain call.
      */
-    public void causeMessageIsNotEmpty() {
+    public ThrowableAssertion causeMessageIsNotEmpty() {
         toCause().messageIsNotEmpty();
+        return this;
     }
 
     /**
      * Check if the message of the cause of the throwable is blank.
+     *
+     * @return current object for the chain call.
      */
-    public void causeMessageIsBlank() {
+    public ThrowableAssertion causeMessageIsBlank() {
         toCause().messageIsBlank();
+        return this;
     }
 
     /**
      * Check if the message of the cause of the throwable is null or blank.
+     *
+     * @return current object for the chain call.
      */
-    public void causeMessageIsNullOrBlank() {
+    public ThrowableAssertion causeMessageIsNullOrBlank() {
         toCause().messageIsNullOrBlank();
+        return this;
     }
 
     /**
      * Check if the message of the cause of the throwable is NOT blank.
+     *
+     * @return current object for the chain call.
      */
-    public void causeMessageIsNotBlank() {
+    public ThrowableAssertion causeMessageIsNotBlank() {
         toCause().messageIsNotBlank();
+        return this;
     }
 
     /**
      * Check if the message of the cause of the throwable has the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void hasCauseMessage(final String expected) {
+    public ThrowableAssertion hasCauseMessage(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         toCause().hasMessage(expected);
+        return this;
     }
 
     /**
      * Check if the message of the cause of the throwable contains the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void causeMessageContains(final String expected) {
+    public ThrowableAssertion causeMessageContains(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         toCause().messageContains(expected);
+        return this;
     }
 
     /**
      * Check if the message of the cause of the throwable contains the expected value ignoring case.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void causeMessageContainsIgnoreCase(final String expected) {
+    public ThrowableAssertion causeMessageContainsIgnoreCase(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         toCause().messageContainsIgnoreCase(expected);
+        return this;
     }
 
     /**
      * Check if the message of the cause of the throwable matches the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void causeMessageMatches(final String expected) {
+    public ThrowableAssertion causeMessageMatches(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         toCause().messageMatches(expected);
+        return this;
     }
 
 }

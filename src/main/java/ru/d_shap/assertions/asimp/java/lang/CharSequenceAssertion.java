@@ -54,49 +54,63 @@ public final class CharSequenceAssertion extends ReferenceAssertion<CharSequence
 
     /**
      * Check if the actual value is empty.
+     *
+     * @return current object for the chain call.
      */
-    public void isEmpty() {
+    public CharSequenceAssertion isEmpty() {
         checkActualIsNotNull();
         if (!"".equals(getActual().toString())) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_EMPTY).addActual().build();
         }
+        return this;
     }
 
     /**
      * Check if the actual value is null or empty.
+     *
+     * @return current object for the chain call.
      */
-    public void isNullOrEmpty() {
+    public CharSequenceAssertion isNullOrEmpty() {
         if (getActual() != null && !"".equals(getActual().toString())) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NULL_OR_EMPTY).addActual().build();
         }
+        return this;
     }
 
     /**
      * Check if the actual value is NOT empty.
+     *
+     * @return current object for the chain call.
      */
-    public void isNotEmpty() {
+    public CharSequenceAssertion isNotEmpty() {
         checkActualIsNotNull();
         if ("".equals(getActual().toString())) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_EMPTY).build();
         }
+        return this;
     }
 
     /**
      * Check if the actual value is blank.
+     *
+     * @return current object for the chain call.
      */
-    public void isBlank() {
+    public CharSequenceAssertion isBlank() {
         checkActualIsNotNull();
         for (int i = 0; i < getActual().length(); i++) {
             if (!Character.isWhitespace(getActual().charAt(i))) {
                 throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_BLANK).addActual().build();
             }
         }
+        return this;
     }
 
     /**
      * Check if the actual value is null or blank.
+     *
+     * @return current object for the chain call.
      */
-    public void isNullOrBlank() {
+    public CharSequenceAssertion isNullOrBlank() {
         if (getActual() != null) {
             for (int i = 0; i < getActual().length(); i++) {
                 if (!Character.isWhitespace(getActual().charAt(i))) {
@@ -104,12 +118,15 @@ public final class CharSequenceAssertion extends ReferenceAssertion<CharSequence
                 }
             }
         }
+        return this;
     }
 
     /**
      * Check if the actual value is NOT blank.
+     *
+     * @return current object for the chain call.
      */
-    public void isNotBlank() {
+    public CharSequenceAssertion isNotBlank() {
         checkActualIsNotNull();
         boolean blank = true;
         for (int i = 0; i < getActual().length(); i++) {
@@ -121,14 +138,17 @@ public final class CharSequenceAssertion extends ReferenceAssertion<CharSequence
         if (blank) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_BLANK).build();
         }
+        return this;
     }
 
     /**
      * Check if the actual value is equal to the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void isEqualTo(final String expected) {
+    public CharSequenceAssertion isEqualTo(final String expected) {
         if (expected == null) {
             isNull();
         } else {
@@ -137,14 +157,17 @@ public final class CharSequenceAssertion extends ReferenceAssertion<CharSequence
                 throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_SAME).addActual().addExpected(expected).build();
             }
         }
+        return this;
     }
 
     /**
      * Check if the actual value is equal to the expected value ignoring case.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void isEqualToIgnoreCase(final String expected) {
+    public CharSequenceAssertion isEqualToIgnoreCase(final String expected) {
         if (expected == null) {
             isNull();
         } else {
@@ -153,14 +176,17 @@ public final class CharSequenceAssertion extends ReferenceAssertion<CharSequence
                 throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_SAME_IGNORE_CASE).addActual().addExpected(expected).build();
             }
         }
+        return this;
     }
 
     /**
      * Check if the actual value is NOT equal to the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void isNotEqualTo(final String expected) {
+    public CharSequenceAssertion isNotEqualTo(final String expected) {
         if (expected == null) {
             isNotNull();
         } else {
@@ -168,14 +194,17 @@ public final class CharSequenceAssertion extends ReferenceAssertion<CharSequence
                 throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_DIFFERENT).addActual().build();
             }
         }
+        return this;
     }
 
     /**
      * Check if the actual value is NOT equal to the expected value ignoring case.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void isNotEqualToIgnoreCase(final String expected) {
+    public CharSequenceAssertion isNotEqualToIgnoreCase(final String expected) {
         if (expected == null) {
             isNotNull();
         } else {
@@ -183,114 +212,139 @@ public final class CharSequenceAssertion extends ReferenceAssertion<CharSequence
                 throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_DIFFERENT_IGNORE_CASE).addActual().build();
             }
         }
+        return this;
     }
 
     /**
      * Check if the actual value is greater than the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void isGreaterThan(final String expected) {
+    public CharSequenceAssertion isGreaterThan(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         checkArgumentIsNotEmpty("".equals(expected), "expected", true);
         if (getActual().toString().compareTo(expected) <= 0) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_GREATER).addActual().addExpected(expected).build();
         }
+        return this;
     }
 
     /**
      * Check if the actual value is greater than the expected value ignoring case.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void isGreaterThanIgnoreCase(final String expected) {
+    public CharSequenceAssertion isGreaterThanIgnoreCase(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         checkArgumentIsNotEmpty("".equals(expected), "expected", true);
         if (getActual().toString().compareToIgnoreCase(expected) <= 0) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_GREATER_IGNORE_CASE).addActual().addExpected(expected).build();
         }
+        return this;
     }
 
     /**
      * Check if the actual value is greater than or equal to the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void isGreaterThanOrEqualTo(final String expected) {
+    public CharSequenceAssertion isGreaterThanOrEqualTo(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         if (getActual().toString().compareTo(expected) < 0) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_GREATER_OR_EQUAL).addActual().addExpected(expected).build();
         }
+        return this;
     }
 
     /**
      * Check if the actual value is greater than or equal to the expected value ignoring case.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void isGreaterThanOrEqualToIgnoreCase(final String expected) {
+    public CharSequenceAssertion isGreaterThanOrEqualToIgnoreCase(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         if (getActual().toString().compareToIgnoreCase(expected) < 0) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_GREATER_OR_EQUAL_IGNORE_CASE).addActual().addExpected(expected).build();
         }
+        return this;
     }
 
     /**
      * Check if the actual value is less than the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void isLessThan(final String expected) {
+    public CharSequenceAssertion isLessThan(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         checkArgumentIsNotEmpty("".equals(expected), "expected", false);
         if (getActual().toString().compareTo(expected) >= 0) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_LESS).addActual().addExpected(expected).build();
         }
+        return this;
     }
 
     /**
      * Check if the actual value is less than the expected value ignoring case.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void isLessThanIgnoreCase(final String expected) {
+    public CharSequenceAssertion isLessThanIgnoreCase(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         checkArgumentIsNotEmpty("".equals(expected), "expected", false);
         if (getActual().toString().compareToIgnoreCase(expected) >= 0) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_LESS_IGNORE_CASE).addActual().addExpected(expected).build();
         }
+        return this;
     }
 
     /**
      * Check if the actual value is less than or equal to the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void isLessThanOrEqualTo(final String expected) {
+    public CharSequenceAssertion isLessThanOrEqualTo(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         if (getActual().toString().compareTo(expected) > 0) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_LESS_OR_EQUAL).addActual().addExpected(expected).build();
         }
+        return this;
     }
 
     /**
      * Check if the actual value is less than or equal to the expected value ignoring case.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void isLessThanOrEqualToIgnoreCase(final String expected) {
+    public CharSequenceAssertion isLessThanOrEqualToIgnoreCase(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         if (getActual().toString().compareToIgnoreCase(expected) > 0) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_LESS_OR_EQUAL_IGNORE_CASE).addActual().addExpected(expected).build();
         }
+        return this;
     }
 
     /**
@@ -298,8 +352,10 @@ public final class CharSequenceAssertion extends ReferenceAssertion<CharSequence
      *
      * @param expectedFrom the expected lower (inclusive) bound of the range.
      * @param expectedTo   the expected upper (exclusive) bound of the range.
+     *
+     * @return current object for the chain call.
      */
-    public void isInRange(final String expectedFrom, final String expectedTo) {
+    public CharSequenceAssertion isInRange(final String expectedFrom, final String expectedTo) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expectedFrom, "expectedFrom");
         checkArgumentIsNotNull(expectedTo, "expectedTo");
@@ -307,6 +363,7 @@ public final class CharSequenceAssertion extends ReferenceAssertion<CharSequence
         if (getActual().toString().compareTo(expectedFrom) < 0 || getActual().toString().compareTo(expectedTo) >= 0) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_IN_RANGE).addActual().addExpected(expectedFrom, expectedTo).build();
         }
+        return this;
     }
 
     /**
@@ -314,8 +371,10 @@ public final class CharSequenceAssertion extends ReferenceAssertion<CharSequence
      *
      * @param expectedFrom the expected lower (inclusive) bound of the range.
      * @param expectedTo   the expected upper (exclusive) bound of the range.
+     *
+     * @return current object for the chain call.
      */
-    public void isInRangeIgnoreCase(final String expectedFrom, final String expectedTo) {
+    public CharSequenceAssertion isInRangeIgnoreCase(final String expectedFrom, final String expectedTo) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expectedFrom, "expectedFrom");
         checkArgumentIsNotNull(expectedTo, "expectedTo");
@@ -323,6 +382,7 @@ public final class CharSequenceAssertion extends ReferenceAssertion<CharSequence
         if (getActual().toString().compareToIgnoreCase(expectedFrom) < 0 || getActual().toString().compareToIgnoreCase(expectedTo) >= 0) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_IN_RANGE_IGNORE_CASE).addActual().addExpected(expectedFrom, expectedTo).build();
         }
+        return this;
     }
 
     /**
@@ -330,8 +390,10 @@ public final class CharSequenceAssertion extends ReferenceAssertion<CharSequence
      *
      * @param expectedFrom the expected lower (inclusive) bound of the range.
      * @param expectedTo   the expected upper (exclusive) bound of the range.
+     *
+     * @return current object for the chain call.
      */
-    public void isNotInRange(final String expectedFrom, final String expectedTo) {
+    public CharSequenceAssertion isNotInRange(final String expectedFrom, final String expectedTo) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expectedFrom, "expectedFrom");
         checkArgumentIsNotNull(expectedTo, "expectedTo");
@@ -339,6 +401,7 @@ public final class CharSequenceAssertion extends ReferenceAssertion<CharSequence
         if (getActual().toString().compareTo(expectedFrom) >= 0 && getActual().toString().compareTo(expectedTo) < 0) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_IN_RANGE).addActual().addExpected(expectedFrom, expectedTo).build();
         }
+        return this;
     }
 
     /**
@@ -346,8 +409,10 @@ public final class CharSequenceAssertion extends ReferenceAssertion<CharSequence
      *
      * @param expectedFrom the expected lower (inclusive) bound of the range.
      * @param expectedTo   the expected upper (exclusive) bound of the range.
+     *
+     * @return current object for the chain call.
      */
-    public void isNotInRangeIgnoreCase(final String expectedFrom, final String expectedTo) {
+    public CharSequenceAssertion isNotInRangeIgnoreCase(final String expectedFrom, final String expectedTo) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expectedFrom, "expectedFrom");
         checkArgumentIsNotNull(expectedTo, "expectedTo");
@@ -355,28 +420,34 @@ public final class CharSequenceAssertion extends ReferenceAssertion<CharSequence
         if (getActual().toString().compareToIgnoreCase(expectedFrom) >= 0 && getActual().toString().compareToIgnoreCase(expectedTo) < 0) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_IN_RANGE_IGNORE_CASE).addActual().addExpected(expectedFrom, expectedTo).build();
         }
+        return this;
     }
 
     /**
      * Check if the actual value contains the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void contains(final String expected) {
+    public CharSequenceAssertion contains(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         checkArgumentIsNotEmpty("".equals(expected), "expected", true);
         if (!getActual().toString().contains(expected)) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.CONTAINS).addActual().addExpected(expected).build();
         }
+        return this;
     }
 
     /**
      * Check if the actual value contains the expected value ignoring case.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void containsIgnoreCase(final String expected) {
+    public CharSequenceAssertion containsIgnoreCase(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         checkArgumentIsNotEmpty("".equals(expected), "expected", true);
@@ -384,28 +455,34 @@ public final class CharSequenceAssertion extends ReferenceAssertion<CharSequence
         if (!matcher.find()) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.CONTAINS_IGNORE_CASE).addActual().addExpected(expected).build();
         }
+        return this;
     }
 
     /**
      * Check if the actual value does NOT contain the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void doesNotContain(final String expected) {
+    public CharSequenceAssertion doesNotContain(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         checkArgumentIsNotEmpty("".equals(expected), "expected", false);
         if (getActual().toString().contains(expected)) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.DOES_NOT_CONTAIN).addActual().addExpected(expected).build();
         }
+        return this;
     }
 
     /**
      * Check if the actual value does NOT contain the expected value ignoring case.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void doesNotContainIgnoreCase(final String expected) {
+    public CharSequenceAssertion doesNotContainIgnoreCase(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         checkArgumentIsNotEmpty("".equals(expected), "expected", false);
@@ -413,108 +490,132 @@ public final class CharSequenceAssertion extends ReferenceAssertion<CharSequence
         if (matcher.find()) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.DOES_NOT_CONTAIN_IGNORE_CASE).addActual().addExpected(expected).build();
         }
+        return this;
     }
 
     /**
      * Check if the actual value is part of the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void isPartOf(final String expected) {
+    public CharSequenceAssertion isPartOf(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         if (!expected.contains(getActual().toString())) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_PART_OF).addActual().addExpected(expected).build();
         }
+        return this;
     }
 
     /**
      * Check if the actual value is part of the expected value ignoring case.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void isPartOfIgnoreCase(final String expected) {
+    public CharSequenceAssertion isPartOfIgnoreCase(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         Matcher matcher = Pattern.compile(getActual().toString(), PATTERN_FLAGS).matcher(expected);
         if (!matcher.find()) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_PART_OF_IGNORE_CASE).addActual().addExpected(expected).build();
         }
+        return this;
     }
 
     /**
      * Check if the actual value is NOT part of the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void isNotPartOf(final String expected) {
+    public CharSequenceAssertion isNotPartOf(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         if (expected.contains(getActual().toString())) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_PART_OF).addActual().addExpected(expected).build();
         }
+        return this;
     }
 
     /**
      * Check if the actual value is NOT part of the expected value ignoring case.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void isNotPartOfIgnoreCase(final String expected) {
+    public CharSequenceAssertion isNotPartOfIgnoreCase(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         Matcher matcher = Pattern.compile(getActual().toString(), PATTERN_FLAGS).matcher(expected);
         if (matcher.find()) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_PART_OF_IGNORE_CASE).addActual().addExpected(expected).build();
         }
+        return this;
     }
 
     /**
      * Check if the actual value matches the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void matches(final String expected) {
+    public CharSequenceAssertion matches(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         if (!getActual().toString().matches(expected)) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.MATCHES).addActual().addExpected(expected).build();
         }
+        return this;
     }
 
     /**
      * Check if the actual value does NOT match the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void doesNotMatch(final String expected) {
+    public CharSequenceAssertion doesNotMatch(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         if (getActual().toString().matches(expected)) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.DOES_NOT_MATCH).addActual().addExpected(expected).build();
         }
+        return this;
     }
 
     /**
      * Check if the actual value starts with the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void startsWith(final String expected) {
+    public CharSequenceAssertion startsWith(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         checkArgumentIsNotEmpty("".equals(expected), "expected", true);
         if (!getActual().toString().startsWith(expected)) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.STARTS_WITH).addActual().addExpected(expected).build();
         }
+        return this;
     }
 
     /**
      * Check if the actual value starts with the expected value ignoring case.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void startsWithIgnoreCase(final String expected) {
+    public CharSequenceAssertion startsWithIgnoreCase(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         checkArgumentIsNotEmpty("".equals(expected), "expected", true);
@@ -522,28 +623,34 @@ public final class CharSequenceAssertion extends ReferenceAssertion<CharSequence
         if (!matcher.find() || matcher.start() != 0) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.STARTS_WITH_IGNORE_CASE).addActual().addExpected(expected).build();
         }
+        return this;
     }
 
     /**
      * Check if the actual value does NOT start with the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void doesNotStartWith(final String expected) {
+    public CharSequenceAssertion doesNotStartWith(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         checkArgumentIsNotEmpty("".equals(expected), "expected", false);
         if (getActual().toString().startsWith(expected)) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.DOES_NOT_START_WITH).addActual().addExpected(expected).build();
         }
+        return this;
     }
 
     /**
      * Check if the actual value does NOT start with the expected value ignoring case.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void doesNotStartWithIgnoreCase(final String expected) {
+    public CharSequenceAssertion doesNotStartWithIgnoreCase(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         checkArgumentIsNotEmpty("".equals(expected), "expected", false);
@@ -551,28 +658,34 @@ public final class CharSequenceAssertion extends ReferenceAssertion<CharSequence
         if (matcher.find() && matcher.start() == 0) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.DOES_NOT_START_WITH_IGNORE_CASE).addActual().addExpected(expected).build();
         }
+        return this;
     }
 
     /**
      * Check if the actual value ends with the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void endsWith(final String expected) {
+    public CharSequenceAssertion endsWith(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         checkArgumentIsNotEmpty("".equals(expected), "expected", true);
         if (!getActual().toString().endsWith(expected)) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.ENDS_WITH).addActual().addExpected(expected).build();
         }
+        return this;
     }
 
     /**
      * Check if the actual value ends with the expected value ignoring case.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void endsWithIgnoreCase(final String expected) {
+    public CharSequenceAssertion endsWithIgnoreCase(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         checkArgumentIsNotEmpty("".equals(expected), "expected", true);
@@ -586,28 +699,34 @@ public final class CharSequenceAssertion extends ReferenceAssertion<CharSequence
         if (lastIndexEnd != getActual().length()) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.ENDS_WITH_IGNORE_CASE).addActual().addExpected(expected).build();
         }
+        return this;
     }
 
     /**
      * Check if the actual value does NOT end with the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void doesNotEndWith(final String expected) {
+    public CharSequenceAssertion doesNotEndWith(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         checkArgumentIsNotEmpty("".equals(expected), "expected", false);
         if (getActual().toString().endsWith(expected)) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.DOES_NOT_END_WITH).addActual().addExpected(expected).build();
         }
+        return this;
     }
 
     /**
      * Check if the actual value does NOT end with the expected value ignoring case.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void doesNotEndWithIgnoreCase(final String expected) {
+    public CharSequenceAssertion doesNotEndWithIgnoreCase(final String expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         checkArgumentIsNotEmpty("".equals(expected), "expected", false);
@@ -621,6 +740,7 @@ public final class CharSequenceAssertion extends ReferenceAssertion<CharSequence
         if (lastIndexEnd == getActual().length()) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.DOES_NOT_END_WITH_IGNORE_CASE).addActual().addExpected(expected).build();
         }
+        return this;
     }
 
     /**
@@ -637,20 +757,26 @@ public final class CharSequenceAssertion extends ReferenceAssertion<CharSequence
      * Make assertion about the actual value's length.
      *
      * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
      */
-    public void toLength(final org.hamcrest.Matcher<Integer> matcher) {
+    public CharSequenceAssertion toLength(final org.hamcrest.Matcher<Integer> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().length(), matcher, Messages.Check.LENGTH);
+        return this;
     }
 
     /**
      * Check if the actual value's length is equal to the expected length.
      *
      * @param expected the expected length.
+     *
+     * @return current object for the chain call.
      */
-    public void hasLength(final int expected) {
+    public CharSequenceAssertion hasLength(final int expected) {
         toLength().isEqualTo(expected);
+        return this;
     }
 
     /**
@@ -697,12 +823,15 @@ public final class CharSequenceAssertion extends ReferenceAssertion<CharSequence
      * Make assertion about the actual value's tokens.
      *
      * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
      */
-    public void toTokens(final org.hamcrest.Matcher<Iterable<String>> matcher) {
+    public CharSequenceAssertion toTokens(final org.hamcrest.Matcher<Iterable<String>> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
         StringTokenizer stringTokenizer = new StringTokenizer(getActual().toString());
         matcherAssertion(getTokens(stringTokenizer), matcher, Messages.Check.TOKENS);
+        return this;
     }
 
     /**
@@ -710,13 +839,16 @@ public final class CharSequenceAssertion extends ReferenceAssertion<CharSequence
      *
      * @param delimiters the delimiters.
      * @param matcher    the hamcrest matcher.
+     *
+     * @return current object for the chain call.
      */
-    public void toTokens(final String delimiters, final org.hamcrest.Matcher<Iterable<String>> matcher) {
+    public CharSequenceAssertion toTokens(final String delimiters, final org.hamcrest.Matcher<Iterable<String>> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(delimiters, "delimiters");
         checkArgumentIsNotNull(matcher, "matcher");
         StringTokenizer stringTokenizer = new StringTokenizer(getActual().toString(), delimiters);
         matcherAssertion(getTokens(stringTokenizer), matcher, Messages.Check.TOKENS);
+        return this;
     }
 
     /**
@@ -725,13 +857,16 @@ public final class CharSequenceAssertion extends ReferenceAssertion<CharSequence
      * @param delimiters       the delimiters.
      * @param returnDelimiters whether to return the delimiters as tokens.
      * @param matcher          the hamcrest matcher.
+     *
+     * @return current object for the chain call.
      */
-    public void toTokens(final String delimiters, final boolean returnDelimiters, final org.hamcrest.Matcher<Iterable<String>> matcher) {
+    public CharSequenceAssertion toTokens(final String delimiters, final boolean returnDelimiters, final org.hamcrest.Matcher<Iterable<String>> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(delimiters, "delimiters");
         checkArgumentIsNotNull(matcher, "matcher");
         StringTokenizer stringTokenizer = new StringTokenizer(getActual().toString(), delimiters, returnDelimiters);
         matcherAssertion(getTokens(stringTokenizer), matcher, Messages.Check.TOKENS);
+        return this;
     }
 
     private List<String> getTokens(final StringTokenizer stringTokenizer) {

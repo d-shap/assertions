@@ -52,8 +52,10 @@ public final class ComparableAssertion<E> extends ReferenceAssertion<Comparable<
      * Check if the actual value is equal to the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void isEqualTo(final E expected) {
+    public ComparableAssertion<E> isEqualTo(final E expected) {
         if (expected == null) {
             isNull();
         } else {
@@ -62,14 +64,17 @@ public final class ComparableAssertion<E> extends ReferenceAssertion<Comparable<
                 throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_SAME).addActual().addExpected(expected).build();
             }
         }
+        return this;
     }
 
     /**
      * Check if the actual value is NOT equal to the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void isNotEqualTo(final E expected) {
+    public ComparableAssertion<E> isNotEqualTo(final E expected) {
         if (expected == null) {
             isNotNull();
         } else {
@@ -77,58 +82,71 @@ public final class ComparableAssertion<E> extends ReferenceAssertion<Comparable<
                 throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_DIFFERENT).addActual().build();
             }
         }
+        return this;
     }
 
     /**
      * Check if the actual value is greater than the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void isGreaterThan(final E expected) {
+    public ComparableAssertion<E> isGreaterThan(final E expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         if (getActual().compareTo(expected) <= 0) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_GREATER).addActual().addExpected(expected).build();
         }
+        return this;
     }
 
     /**
      * Check if the actual value is greater than or equal to the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void isGreaterThanOrEqualTo(final E expected) {
+    public ComparableAssertion<E> isGreaterThanOrEqualTo(final E expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         if (getActual().compareTo(expected) < 0) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_GREATER_OR_EQUAL).addActual().addExpected(expected).build();
         }
+        return this;
     }
 
     /**
      * Check if the actual value is less than the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void isLessThan(final E expected) {
+    public ComparableAssertion<E> isLessThan(final E expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         if (getActual().compareTo(expected) >= 0) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_LESS).addActual().addExpected(expected).build();
         }
+        return this;
     }
 
     /**
      * Check if the actual value is less than or equal to the expected value.
      *
      * @param expected the expected value.
+     *
+     * @return current object for the chain call.
      */
-    public void isLessThanOrEqualTo(final E expected) {
+    public ComparableAssertion<E> isLessThanOrEqualTo(final E expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         if (getActual().compareTo(expected) > 0) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_LESS_OR_EQUAL).addActual().addExpected(expected).build();
         }
+        return this;
     }
 
     /**
@@ -136,14 +154,17 @@ public final class ComparableAssertion<E> extends ReferenceAssertion<Comparable<
      *
      * @param expectedFrom the expected lower (inclusive) bound of the range.
      * @param expectedTo   the expected upper (exclusive) bound of the range.
+     *
+     * @return current object for the chain call.
      */
-    public void isInRange(final E expectedFrom, final E expectedTo) {
+    public ComparableAssertion<E> isInRange(final E expectedFrom, final E expectedTo) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expectedFrom, "expectedFrom");
         checkArgumentIsNotNull(expectedTo, "expectedTo");
         if (getActual().compareTo(expectedFrom) < 0 || getActual().compareTo(expectedTo) >= 0) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_IN_RANGE).addActual().addExpected(expectedFrom, expectedTo).build();
         }
+        return this;
     }
 
     /**
@@ -151,14 +172,17 @@ public final class ComparableAssertion<E> extends ReferenceAssertion<Comparable<
      *
      * @param expectedFrom the expected lower (inclusive) bound of the range.
      * @param expectedTo   the expected upper (exclusive) bound of the range.
+     *
+     * @return current object for the chain call.
      */
-    public void isNotInRange(final E expectedFrom, final E expectedTo) {
+    public ComparableAssertion<E> isNotInRange(final E expectedFrom, final E expectedTo) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expectedFrom, "expectedFrom");
         checkArgumentIsNotNull(expectedTo, "expectedTo");
         if (getActual().compareTo(expectedFrom) >= 0 && getActual().compareTo(expectedTo) < 0) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_IN_RANGE).addActual().addExpected(expectedFrom, expectedTo).build();
         }
+        return this;
     }
 
 }
