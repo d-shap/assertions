@@ -20,6 +20,7 @@
 package ru.d_shap.assertions.asimp.java.io;
 
 import java.io.BufferedReader;
+import java.io.Reader;
 import java.io.StringReader;
 
 import org.hamcrest.Matchers;
@@ -73,6 +74,7 @@ public final class BufferedReaderAssertionTest extends AssertionTest {
     @Test
     public void isCompletedTest() throws Exception {
         initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader(""))).isCompleted();
+        initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader(""))).isNotNull().isCompleted().isInstanceOf(Reader.class);
         BufferedReader reader = new BufferedReader(new StringReader("123"));
         Assertions.assertThat(reader.read()).isEqualTo(49);
         Assertions.assertThat(reader.read()).isEqualTo(50);
@@ -147,6 +149,7 @@ public final class BufferedReaderAssertionTest extends AssertionTest {
         initialize(Raw.bufferedReaderAssertion(), reader).isNotCompleted();
         initialize(Raw.bufferedReaderAssertion(), reader).isNotCompleted();
         initialize(Raw.bufferedReaderAssertion(), reader).isCompleted();
+        initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("123"))).isNotNull().isNotCompleted().isInstanceOf(Reader.class);
 
         try {
             Raw.bufferedReaderAssertion().isNotCompleted();
@@ -198,6 +201,7 @@ public final class BufferedReaderAssertionTest extends AssertionTest {
     @Test
     public void toCharArrayTest() {
         initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("123"))).toCharArray().containsExactlyInOrder('1', '2', '3');
+        initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("123"))).isNotNull().toCharArray().containsExactlyInOrder('1', '2', '3');
 
         try {
             Raw.bufferedReaderAssertion().toCharArray();
@@ -264,6 +268,7 @@ public final class BufferedReaderAssertionTest extends AssertionTest {
         initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("123"))).toCharArray(3).containsExactlyInOrder('1', '2', '3');
         initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("123"))).toCharArray(2).containsExactlyInOrder('1', '2');
         initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("123"))).toCharArray(1).containsExactlyInOrder('1');
+        initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("123"))).isNotNull().toCharArray(1).containsExactlyInOrder('1');
 
         try {
             Raw.bufferedReaderAssertion().toCharArray(1);
@@ -363,6 +368,7 @@ public final class BufferedReaderAssertionTest extends AssertionTest {
     @Test
     public void toCharArrayMatcherTest() {
         initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("123"))).toCharArray(Matchers.arrayContaining('1', '2', '3'));
+        initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("123"))).isNotNull().toCharArray(Matchers.arrayContaining('1', '2', '3')).isInstanceOf(Reader.class);
 
         try {
             Raw.bufferedReaderAssertion().toCharArray(Matchers.arrayContaining((char) 0));
@@ -441,6 +447,7 @@ public final class BufferedReaderAssertionTest extends AssertionTest {
         initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("123"))).toCharArray(3, Matchers.arrayContaining('1', '2', '3'));
         initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("123"))).toCharArray(2, Matchers.arrayContaining('1', '2'));
         initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("123"))).toCharArray(1, Matchers.arrayContaining('1'));
+        initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("123"))).isNotNull().toCharArray(1, Matchers.arrayContaining('1')).isInstanceOf(Reader.class);
 
         try {
             Raw.bufferedReaderAssertion().toCharArray(1, Matchers.arrayContaining((char) 0));
@@ -553,6 +560,7 @@ public final class BufferedReaderAssertionTest extends AssertionTest {
     public void toStringArrayTest() {
         initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("1\n2\n3\n"))).toStringArray().containsExactlyInOrder("1", "2", "3");
         initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("1\n2\n3"))).toStringArray().containsExactlyInOrder("1", "2", "3");
+        initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("1\n2\n3"))).isNotNull().toStringArray().containsExactlyInOrder("1", "2", "3");
 
         try {
             Raw.bufferedReaderAssertion().toStringArray();
@@ -619,11 +627,13 @@ public final class BufferedReaderAssertionTest extends AssertionTest {
         initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("1\n2\n3\n"))).toStringArray(3).containsExactlyInOrder("1", "2", "3");
         initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("1\n2\n3\n"))).toStringArray(2).containsExactlyInOrder("1", "2");
         initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("1\n2\n3\n"))).toStringArray(1).containsExactlyInOrder("1");
+        initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("1\n2\n3\n"))).isNotNull().toStringArray(1).containsExactlyInOrder("1");
 
         initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("1\n2\n3"))).toStringArray(4).containsExactlyInOrder("1", "2", "3");
         initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("1\n2\n3"))).toStringArray(3).containsExactlyInOrder("1", "2", "3");
         initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("1\n2\n3"))).toStringArray(2).containsExactlyInOrder("1", "2");
         initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("1\n2\n3"))).toStringArray(1).containsExactlyInOrder("1");
+        initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("1\n2\n3"))).isNotNull().toStringArray(1).containsExactlyInOrder("1");
 
         try {
             Raw.bufferedReaderAssertion().toStringArray(1);
@@ -724,6 +734,7 @@ public final class BufferedReaderAssertionTest extends AssertionTest {
     public void toStringArrayMatcherTest() {
         initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("1\n2\n3\n"))).toStringArray(Matchers.arrayContaining("1", "2", "3"));
         initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("1\n2\n3"))).toStringArray(Matchers.arrayContaining("1", "2", "3"));
+        initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("1\n2\n3"))).isNotNull().toStringArray(Matchers.arrayContaining("1", "2", "3")).isInstanceOf(Reader.class);
 
         try {
             Raw.bufferedReaderAssertion().toStringArray(Matchers.arrayContaining(""));
@@ -802,11 +813,13 @@ public final class BufferedReaderAssertionTest extends AssertionTest {
         initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("1\n2\n3\n"))).toStringArray(3, Matchers.arrayContaining("1", "2", "3"));
         initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("1\n2\n3\n"))).toStringArray(2, Matchers.arrayContaining("1", "2"));
         initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("1\n2\n3\n"))).toStringArray(1, Matchers.arrayContaining("1"));
+        initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("1\n2\n3\n"))).isNotNull().toStringArray(1, Matchers.arrayContaining("1")).isInstanceOf(Reader.class);
 
         initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("1\n2\n3"))).toStringArray(4, Matchers.arrayContaining("1", "2", "3"));
         initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("1\n2\n3"))).toStringArray(3, Matchers.arrayContaining("1", "2", "3"));
         initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("1\n2\n3"))).toStringArray(2, Matchers.arrayContaining("1", "2"));
         initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("1\n2\n3"))).toStringArray(1, Matchers.arrayContaining("1"));
+        initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("1\n2\n3"))).isNotNull().toStringArray(1, Matchers.arrayContaining("1")).isInstanceOf(Reader.class);
 
         try {
             Raw.bufferedReaderAssertion().toStringArray(1, Matchers.arrayContaining(""));
@@ -920,6 +933,7 @@ public final class BufferedReaderAssertionTest extends AssertionTest {
         initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("123"))).isNextCharEqualTo('1');
         initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("234"))).isNextCharEqualTo('2');
         initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("\u0000\u0000\u0000"))).isNextCharEqualTo(0);
+        initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("234"))).isNotNull().isNextCharEqualTo('2').isInstanceOf(Reader.class);
 
         try {
             Raw.bufferedReaderAssertion().isNextCharEqualTo('1');
@@ -961,6 +975,7 @@ public final class BufferedReaderAssertionTest extends AssertionTest {
         initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("123"))).isNextCharsEqualTo('1', '2');
         initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("123"))).isNextCharsEqualTo('1', '2', '3');
         initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("\u0000\u0000\u0000"))).isNextCharsEqualTo((char) 0, (char) 0);
+        initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("123"))).isNotNull().isNextCharsEqualTo('1', '2', '3').isInstanceOf(Reader.class);
 
         try {
             Raw.bufferedReaderAssertion().isNextCharsEqualTo('1');
@@ -1056,6 +1071,7 @@ public final class BufferedReaderAssertionTest extends AssertionTest {
         initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("123"))).isNextCharsEqualTo(49, 50);
         initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("123"))).isNextCharsEqualTo(49, 50, 51);
         initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("\u0000\u0000\u0000"))).isNextCharsEqualTo(0, 0);
+        initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("123"))).isNotNull().isNextCharsEqualTo(49, 50, 51).isInstanceOf(Reader.class);
 
         try {
             Raw.bufferedReaderAssertion().isNextCharsEqualTo(49);
@@ -1151,6 +1167,7 @@ public final class BufferedReaderAssertionTest extends AssertionTest {
         initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("123"))).isNextCharsEqualTo(DataHelper.createIterable('1', '2'));
         initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("123"))).isNextCharsEqualTo(DataHelper.createIterable('1', '2', '3'));
         initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("\u0000\u0000\u0000"))).isNextCharsEqualTo(DataHelper.createIterable((char) 0, (char) 0));
+        initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("123"))).isNotNull().isNextCharsEqualTo(DataHelper.createIterable('1', '2', '3')).isInstanceOf(Reader.class);
 
         try {
             Raw.bufferedReaderAssertion().isNextCharsEqualTo(DataHelper.<Character>createIterable());
@@ -1246,6 +1263,7 @@ public final class BufferedReaderAssertionTest extends AssertionTest {
         initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("123"))).isAllCharsEqualTo('1', '2', '3');
         initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("\u0000\u0000\u0000"))).isAllCharsEqualTo((char) 0, (char) 0, (char) 0);
         initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader(""))).isAllCharsEqualTo();
+        initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("123"))).isNotNull().isAllCharsEqualTo('1', '2', '3').isInstanceOf(Reader.class);
 
         try {
             Raw.bufferedReaderAssertion().isAllCharsEqualTo('1');
@@ -1329,6 +1347,7 @@ public final class BufferedReaderAssertionTest extends AssertionTest {
         initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("123"))).isAllCharsEqualTo(49, 50, 51);
         initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("\u0000\u0000\u0000"))).isAllCharsEqualTo(0, 0, 0);
         initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader(""))).isAllCharsEqualTo(new int[]{});
+        initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("123"))).isNotNull().isAllCharsEqualTo(49, 50, 51).isInstanceOf(Reader.class);
 
         try {
             Raw.bufferedReaderAssertion().isAllCharsEqualTo(49);
@@ -1412,6 +1431,7 @@ public final class BufferedReaderAssertionTest extends AssertionTest {
         initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("123"))).isAllCharsEqualTo(DataHelper.createIterable('1', '2', '3'));
         initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("\u0000\u0000\u0000"))).isAllCharsEqualTo(DataHelper.createIterable((char) 0, (char) 0, (char) 0));
         initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader(""))).isAllCharsEqualTo(DataHelper.<Character>createIterable());
+        initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("123"))).isNotNull().isAllCharsEqualTo(DataHelper.createIterable('1', '2', '3')).isInstanceOf(Reader.class);
 
         try {
             Raw.bufferedReaderAssertion().isAllCharsEqualTo(DataHelper.<Character>createIterable());
@@ -1495,6 +1515,7 @@ public final class BufferedReaderAssertionTest extends AssertionTest {
         initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("1\n2\n3"))).isNextLineEqualTo("1");
         initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("2\n3\n4"))).isNextLineEqualTo("2");
         initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("\u0000\n\u0000\n\u0000"))).isNextLineEqualTo("\u0000");
+        initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("2\n3\n4"))).isNotNull().isNextLineEqualTo("2").isInstanceOf(Reader.class);
 
         try {
             Raw.bufferedReaderAssertion().isNextLineEqualTo("");
@@ -1537,6 +1558,7 @@ public final class BufferedReaderAssertionTest extends AssertionTest {
         initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("1\n2\n3"))).isNextLinesEqualTo("1", "2", "3");
         initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("1\n2\n3\n"))).isNextLinesEqualTo("1", "2", "3");
         initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("\u0000\n\u0000\n\u0000"))).isNextLinesEqualTo("\u0000", "\u0000");
+        initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("1\n2\n3"))).isNotNull().isNextLinesEqualTo("1", "2", "3").isInstanceOf(Reader.class);
 
         try {
             Raw.bufferedReaderAssertion().isNextLinesEqualTo("");
@@ -1633,6 +1655,7 @@ public final class BufferedReaderAssertionTest extends AssertionTest {
         initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("1\n2\n3"))).isNextLinesEqualTo(DataHelper.createIterable("1", "2", "3"));
         initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("1\n2\n3\n"))).isNextLinesEqualTo(DataHelper.createIterable("1", "2", "3"));
         initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("\u0000\n\u0000\n\u0000"))).isNextLinesEqualTo(DataHelper.createIterable("\u0000", "\u0000"));
+        initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("1\n2\n3"))).isNotNull().isNextLinesEqualTo(DataHelper.createIterable("1", "2", "3")).isInstanceOf(Reader.class);
 
         try {
             Raw.bufferedReaderAssertion().isNextLinesEqualTo(DataHelper.<String>createIterable());
@@ -1729,6 +1752,7 @@ public final class BufferedReaderAssertionTest extends AssertionTest {
         initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("1\n2\n3\n"))).isAllLinesEqualTo("1", "2", "3");
         initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("\u0000\n\u0000\n\u0000"))).isAllLinesEqualTo("\u0000", "\u0000", "\u0000");
         initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader(""))).isAllLinesEqualTo();
+        initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("1\n2\n3\n"))).isNotNull().isAllLinesEqualTo("1", "2", "3").isInstanceOf(Reader.class);
 
         try {
             Raw.bufferedReaderAssertion().isAllLinesEqualTo("");
@@ -1813,6 +1837,7 @@ public final class BufferedReaderAssertionTest extends AssertionTest {
         initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("1\n2\n3\n"))).isAllLinesEqualTo(DataHelper.createIterable("1", "2", "3"));
         initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("\u0000\n\u0000\n\u0000"))).isAllLinesEqualTo(DataHelper.createIterable("\u0000", "\u0000", "\u0000"));
         initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader(""))).isAllLinesEqualTo(DataHelper.<String>createIterable());
+        initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("1\n2\n3\n"))).isNotNull().isAllLinesEqualTo(DataHelper.createIterable("1", "2", "3")).isInstanceOf(Reader.class);
 
         try {
             Raw.bufferedReaderAssertion().isAllLinesEqualTo(DataHelper.<String>createIterable());
@@ -1898,6 +1923,7 @@ public final class BufferedReaderAssertionTest extends AssertionTest {
         initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("12"))).toLength().isEqualTo(2L);
         initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("\u0000\u0000\u0000\u0000\u0000"))).toLength().isEqualTo(5L);
         initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader(""))).toLength().isEqualTo(0L);
+        initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("12"))).isNotNull().toLength().isEqualTo(2L);
 
         BufferedReader reader1 = new BufferedReader(new StringReader("123"));
         initialize(Raw.bufferedReaderAssertion(), reader1).toLength().isEqualTo(3L);
@@ -1988,6 +2014,7 @@ public final class BufferedReaderAssertionTest extends AssertionTest {
         initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("12"))).toLength(Matchers.is(Matchers.equalTo(2L)));
         initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("\u0000\u0000\u0000\u0000\u0000"))).toLength(Matchers.equalTo(5L));
         initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader(""))).toLength(Matchers.equalTo(0L));
+        initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("12"))).isNotNull().toLength(Matchers.is(Matchers.equalTo(2L))).isInstanceOf(Reader.class);
 
         BufferedReader reader1 = new BufferedReader(new StringReader("123"));
         initialize(Raw.bufferedReaderAssertion(), reader1).toLength(Matchers.equalTo(3L));
@@ -2102,6 +2129,7 @@ public final class BufferedReaderAssertionTest extends AssertionTest {
         initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("12"))).hasLength(2L);
         initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("\u0000\u0000\u0000\u0000\u0000"))).hasLength(5L);
         initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader(""))).hasLength(0L);
+        initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("12"))).isNotNull().hasLength(2L).isInstanceOf(Reader.class);
 
         BufferedReader reader1 = new BufferedReader(new StringReader("123"));
         initialize(Raw.bufferedReaderAssertion(), reader1).hasLength(3L);
@@ -2193,6 +2221,7 @@ public final class BufferedReaderAssertionTest extends AssertionTest {
         initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("1\n2\n"))).toLinesLength().isEqualTo(2L);
         initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("\u0000\n\u0000\n\u0000\n\u0000\n\u0000"))).toLinesLength().isEqualTo(5L);
         initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader(""))).toLinesLength().isEqualTo(0L);
+        initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("1\n2\n"))).isNotNull().toLinesLength().isEqualTo(2L);
 
         BufferedReader reader1 = new BufferedReader(new StringReader("1\n2\n3"));
         initialize(Raw.bufferedReaderAssertion(), reader1).toLinesLength().isEqualTo(3L);
@@ -2284,6 +2313,7 @@ public final class BufferedReaderAssertionTest extends AssertionTest {
         initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("1\n2\n"))).toLinesLength(Matchers.is(Matchers.equalTo(2L)));
         initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("\u0000\n\u0000\n\u0000\n\u0000\n\u0000"))).toLinesLength(Matchers.equalTo(5L));
         initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader(""))).toLinesLength(Matchers.equalTo(0L));
+        initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("1\n2\n"))).isNotNull().toLinesLength(Matchers.is(Matchers.equalTo(2L))).isInstanceOf(Reader.class);
 
         BufferedReader reader1 = new BufferedReader(new StringReader("1\n2\n3"));
         initialize(Raw.bufferedReaderAssertion(), reader1).toLinesLength(Matchers.equalTo(3L));
@@ -2399,6 +2429,7 @@ public final class BufferedReaderAssertionTest extends AssertionTest {
         initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("1\n2\n"))).hasLinesLength(2L);
         initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("\u0000\n\u0000\n\u0000\n\u0000\n\u0000"))).hasLinesLength(5L);
         initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader(""))).hasLinesLength(0L);
+        initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("1\n2\n"))).isNotNull().hasLinesLength(2L).isInstanceOf(Reader.class);
 
         BufferedReader reader1 = new BufferedReader(new StringReader("1\n2\n3"));
         initialize(Raw.bufferedReaderAssertion(), reader1).hasLinesLength(3L);
