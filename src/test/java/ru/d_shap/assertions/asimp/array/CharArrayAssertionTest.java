@@ -68,6 +68,7 @@ public final class CharArrayAssertionTest extends AssertionTest {
     @Test
     public void isEmptyTest() {
         initialize(Raw.charArrayAssertion(), new char[]{}).isEmpty();
+        initialize(Raw.charArrayAssertion(), new char[]{}).isNotNull().isEmpty().isInstanceOf(char[].class);
 
         try {
             Raw.charArrayAssertion().isEmpty();
@@ -108,6 +109,7 @@ public final class CharArrayAssertionTest extends AssertionTest {
     public void isNullOrEmptyTest() {
         initialize(Raw.charArrayAssertion(), null).isNullOrEmpty();
         initialize(Raw.charArrayAssertion(), new char[]{}).isNullOrEmpty();
+        initialize(Raw.charArrayAssertion(), new char[]{}).isNotNull().isNullOrEmpty().isInstanceOf(char[].class);
 
         try {
             Raw.charArrayAssertion().isNullOrEmpty();
@@ -135,6 +137,7 @@ public final class CharArrayAssertionTest extends AssertionTest {
     @Test
     public void isNotEmptyTest() {
         initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).isNotEmpty();
+        initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).isNotNull().isNotEmpty().isInstanceOf(char[].class);
 
         try {
             Raw.charArrayAssertion().isNotEmpty();
@@ -175,6 +178,7 @@ public final class CharArrayAssertionTest extends AssertionTest {
     public void containsTest() {
         initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).contains('1');
         initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).contains('2');
+        initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).isNotNull().contains('2').isInstanceOf(char[].class);
 
         try {
             Raw.charArrayAssertion().contains('1');
@@ -214,6 +218,7 @@ public final class CharArrayAssertionTest extends AssertionTest {
     @Test
     public void doesNotContainTest() {
         initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).doesNotContain('3');
+        initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).isNotNull().doesNotContain('3').isInstanceOf(char[].class);
 
         try {
             Raw.charArrayAssertion().doesNotContain('1');
@@ -255,6 +260,7 @@ public final class CharArrayAssertionTest extends AssertionTest {
         initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).containsAll('1', '2');
         initialize(Raw.charArrayAssertion(), new char[]{'1', '2', '3', '4'}).containsAll('1', '3');
         initialize(Raw.charArrayAssertion(), new char[]{'1', '2', '3', '4'}).containsAll('4', '2');
+        initialize(Raw.charArrayAssertion(), new char[]{'1', '2', '3', '4'}).isNotNull().containsAll('4', '2').isInstanceOf(char[].class);
 
         try {
             Raw.charArrayAssertion().containsAll('1');
@@ -332,6 +338,7 @@ public final class CharArrayAssertionTest extends AssertionTest {
         initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).containsAll(49, 50);
         initialize(Raw.charArrayAssertion(), new char[]{'1', '2', '3', '4'}).containsAll(49, 51);
         initialize(Raw.charArrayAssertion(), new char[]{'1', '2', '3', '4'}).containsAll(52, 50);
+        initialize(Raw.charArrayAssertion(), new char[]{'1', '2', '3', '4'}).isNotNull().containsAll(52, 50).isInstanceOf(char[].class);
 
         try {
             Raw.charArrayAssertion().containsAll(49);
@@ -421,6 +428,7 @@ public final class CharArrayAssertionTest extends AssertionTest {
         initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).containsAll(DataHelper.createIterable('1', '2'));
         initialize(Raw.charArrayAssertion(), new char[]{'1', '2', '3', '4'}).containsAll(DataHelper.createIterable('1', '3'));
         initialize(Raw.charArrayAssertion(), new char[]{'1', '2', '3', '4'}).containsAll(DataHelper.createIterable('4', '2'));
+        initialize(Raw.charArrayAssertion(), new char[]{'1', '2', '3', '4'}).isNotNull().containsAll(DataHelper.createIterable('4', '2')).isInstanceOf(char[].class);
 
         try {
             Raw.charArrayAssertion().containsAll(DataHelper.<Character>createIterable());
@@ -497,6 +505,7 @@ public final class CharArrayAssertionTest extends AssertionTest {
     public void containsAllInOrderArrayCharTest() {
         initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).containsAllInOrder('1', '2');
         initialize(Raw.charArrayAssertion(), new char[]{'1', '2', '3', '4'}).containsAllInOrder('1', '3', '4');
+        initialize(Raw.charArrayAssertion(), new char[]{'1', '2', '3', '4'}).isNotNull().containsAllInOrder('1', '3', '4').isInstanceOf(char[].class);
 
         try {
             Raw.charArrayAssertion().containsAllInOrder('1');
@@ -579,6 +588,7 @@ public final class CharArrayAssertionTest extends AssertionTest {
     public void containsAllInOrderArrayIntTest() {
         initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).containsAllInOrder(49, 50);
         initialize(Raw.charArrayAssertion(), new char[]{'1', '2', '3', '4'}).containsAllInOrder(49, 51, 52);
+        initialize(Raw.charArrayAssertion(), new char[]{'1', '2', '3', '4'}).isNotNull().containsAllInOrder(49, 51, 52).isInstanceOf(char[].class);
 
         try {
             Raw.charArrayAssertion().containsAllInOrder(49);
@@ -673,6 +683,7 @@ public final class CharArrayAssertionTest extends AssertionTest {
     public void containsAllInOrderIterableTest() {
         initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).containsAllInOrder(DataHelper.createIterable('1', '2'));
         initialize(Raw.charArrayAssertion(), new char[]{'1', '2', '3', '4'}).containsAllInOrder(DataHelper.createIterable('1', '3', '4'));
+        initialize(Raw.charArrayAssertion(), new char[]{'1', '2', '3', '4'}).isNotNull().containsAllInOrder(DataHelper.createIterable('1', '3', '4')).isInstanceOf(char[].class);
 
         try {
             Raw.charArrayAssertion().containsAllInOrder(DataHelper.<Character>createIterable());
@@ -757,6 +768,7 @@ public final class CharArrayAssertionTest extends AssertionTest {
         initialize(Raw.charArrayAssertion(), new char[]{'1', '2', '3', '4'}).containsExactly('1', '2', '3', '4');
         initialize(Raw.charArrayAssertion(), new char[]{'1', '2', '3', '4'}).containsExactly('1', '3', '2', '4');
         initialize(Raw.charArrayAssertion(), new char[]{}).containsExactly();
+        initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).isNotNull().containsExactly('1', '2').isInstanceOf(char[].class);
 
         try {
             Raw.charArrayAssertion().containsExactly('1');
@@ -841,6 +853,7 @@ public final class CharArrayAssertionTest extends AssertionTest {
         initialize(Raw.charArrayAssertion(), new char[]{'1', '2', '3', '4'}).containsExactly(49, 50, 51, 52);
         initialize(Raw.charArrayAssertion(), new char[]{'1', '2', '3', '4'}).containsExactly(49, 51, 50, 52);
         initialize(Raw.charArrayAssertion(), new char[]{}).containsExactly(new int[]{});
+        initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).isNotNull().containsExactly(49, 50).isInstanceOf(char[].class);
 
         try {
             Raw.charArrayAssertion().containsExactly(49);
@@ -937,6 +950,7 @@ public final class CharArrayAssertionTest extends AssertionTest {
         initialize(Raw.charArrayAssertion(), new char[]{'1', '2', '3', '4'}).containsExactly(DataHelper.createIterable('1', '2', '3', '4'));
         initialize(Raw.charArrayAssertion(), new char[]{'1', '2', '3', '4'}).containsExactly(DataHelper.createIterable('1', '3', '2', '4'));
         initialize(Raw.charArrayAssertion(), new char[]{}).containsExactly(DataHelper.<Character>createIterable());
+        initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).isNotNull().containsExactly(DataHelper.createIterable('1', '2')).isInstanceOf(char[].class);
 
         try {
             Raw.charArrayAssertion().containsExactly(DataHelper.<Character>createIterable());
@@ -1020,6 +1034,7 @@ public final class CharArrayAssertionTest extends AssertionTest {
         initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).containsExactlyInOrder('1', '2');
         initialize(Raw.charArrayAssertion(), new char[]{'1', '2', '3', '4'}).containsExactlyInOrder('1', '2', '3', '4');
         initialize(Raw.charArrayAssertion(), new char[]{}).containsExactlyInOrder();
+        initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).isNotNull().containsExactlyInOrder('1', '2').isInstanceOf(char[].class);
 
         try {
             Raw.charArrayAssertion().containsExactlyInOrder('1');
@@ -1109,6 +1124,7 @@ public final class CharArrayAssertionTest extends AssertionTest {
         initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).containsExactlyInOrder(49, 50);
         initialize(Raw.charArrayAssertion(), new char[]{'1', '2', '3', '4'}).containsExactlyInOrder(49, 50, 51, 52);
         initialize(Raw.charArrayAssertion(), new char[]{}).containsExactlyInOrder(new int[]{});
+        initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).isNotNull().containsExactlyInOrder(49, 50).isInstanceOf(char[].class);
 
         try {
             Raw.charArrayAssertion().containsExactlyInOrder(49);
@@ -1210,6 +1226,7 @@ public final class CharArrayAssertionTest extends AssertionTest {
         initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).containsExactlyInOrder(DataHelper.createIterable('1', '2'));
         initialize(Raw.charArrayAssertion(), new char[]{'1', '2', '3', '4'}).containsExactlyInOrder(DataHelper.createIterable('1', '2', '3', '4'));
         initialize(Raw.charArrayAssertion(), new char[]{}).containsExactlyInOrder(DataHelper.<Character>createIterable());
+        initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).isNotNull().containsExactlyInOrder(DataHelper.createIterable('1', '2')).isInstanceOf(char[].class);
 
         try {
             Raw.charArrayAssertion().containsExactlyInOrder(DataHelper.<Character>createIterable());
@@ -1300,6 +1317,7 @@ public final class CharArrayAssertionTest extends AssertionTest {
         initialize(Raw.charArrayAssertion(), new char[]{'1', '2', '3', '4'}).containsAny('2', '1');
         initialize(Raw.charArrayAssertion(), new char[]{'1', '2', '3', '4'}).containsAny('4', '2');
         initialize(Raw.charArrayAssertion(), new char[]{'1', '2', '3', '4'}).containsAny('5', '3');
+        initialize(Raw.charArrayAssertion(), new char[]{'1', '2', '3', '4'}).isNotNull().containsAny('5', '3').isInstanceOf(char[].class);
 
         try {
             Raw.charArrayAssertion().containsAny('1');
@@ -1378,6 +1396,7 @@ public final class CharArrayAssertionTest extends AssertionTest {
         initialize(Raw.charArrayAssertion(), new char[]{'1', '2', '3', '4'}).containsAny(50, 49);
         initialize(Raw.charArrayAssertion(), new char[]{'1', '2', '3', '4'}).containsAny(52, 50);
         initialize(Raw.charArrayAssertion(), new char[]{'1', '2', '3', '4'}).containsAny(53, 51);
+        initialize(Raw.charArrayAssertion(), new char[]{'1', '2', '3', '4'}).isNotNull().containsAny(53, 51).isInstanceOf(char[].class);
 
         try {
             Raw.charArrayAssertion().containsAny(49);
@@ -1468,6 +1487,7 @@ public final class CharArrayAssertionTest extends AssertionTest {
         initialize(Raw.charArrayAssertion(), new char[]{'1', '2', '3', '4'}).containsAny(DataHelper.createIterable('2', '1'));
         initialize(Raw.charArrayAssertion(), new char[]{'1', '2', '3', '4'}).containsAny(DataHelper.createIterable('4', '2'));
         initialize(Raw.charArrayAssertion(), new char[]{'1', '2', '3', '4'}).containsAny(DataHelper.createIterable('5', '3'));
+        initialize(Raw.charArrayAssertion(), new char[]{'1', '2', '3', '4'}).isNotNull().containsAny(DataHelper.createIterable('5', '3')).isInstanceOf(char[].class);
 
         try {
             Raw.charArrayAssertion().containsAny(DataHelper.<Character>createIterable());
@@ -1544,6 +1564,7 @@ public final class CharArrayAssertionTest extends AssertionTest {
     public void containsNoneArrayCharTest() {
         initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).containsNone('3', '7');
         initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).containsNone('3', '4', '5');
+        initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).isNotNull().containsNone('3', '4', '5').isInstanceOf(char[].class);
 
         try {
             Raw.charArrayAssertion().containsNone('1');
@@ -1621,6 +1642,7 @@ public final class CharArrayAssertionTest extends AssertionTest {
         initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).containsNone(51, 55);
         initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).containsNone(51, 52, 53);
         initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).containsNone(100000, 100001);
+        initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).isNotNull().containsNone(100000, 100001).isInstanceOf(char[].class);
 
         try {
             Raw.charArrayAssertion().containsNone(49);
@@ -1697,6 +1719,7 @@ public final class CharArrayAssertionTest extends AssertionTest {
     public void containsNoneIterableTest() {
         initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).containsNone(DataHelper.createIterable('3', '7'));
         initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).containsNone(DataHelper.createIterable('3', '4', '5'));
+        initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).isNotNull().containsNone(DataHelper.createIterable('3', '4', '5')).isInstanceOf(char[].class);
 
         try {
             Raw.charArrayAssertion().containsNone(DataHelper.<Character>createIterable());
@@ -1779,6 +1802,8 @@ public final class CharArrayAssertionTest extends AssertionTest {
         initialize(Raw.charArrayAssertion(), new char[]{'1', '2', '3', '4'}).toLength().isGreaterThan(3);
         initialize(Raw.charArrayAssertion(), new char[]{'1', '2', '3', '4'}).toLength().isLessThan(5);
 
+        initialize(Raw.charArrayAssertion(), new char[]{'1', '2', '3', '4'}).isNotNull().toLength().isEqualTo(4);
+
         try {
             Raw.charArrayAssertion().toLength();
             Assertions.fail("CharArrayAssertion test fail");
@@ -1835,6 +1860,8 @@ public final class CharArrayAssertionTest extends AssertionTest {
         initialize(Raw.charArrayAssertion(), new char[]{'1', '2', '3', '4'}).toLength(Matchers.equalTo(4));
         initialize(Raw.charArrayAssertion(), new char[]{'1', '2', '3', '4'}).toLength(Matchers.greaterThan(3));
         initialize(Raw.charArrayAssertion(), new char[]{'1', '2', '3', '4'}).toLength(Matchers.lessThan(5));
+
+        initialize(Raw.charArrayAssertion(), new char[]{'1', '2', '3', '4'}).isNotNull().toLength(Matchers.equalTo(4)).isInstanceOf(char[].class);
 
         try {
             Raw.charArrayAssertion().toLength(Matchers.equalTo(0));
@@ -1899,6 +1926,7 @@ public final class CharArrayAssertionTest extends AssertionTest {
     public void hasLengthTest() {
         initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).hasLength(2);
         initialize(Raw.charArrayAssertion(), new char[]{'1', '2', '3', '4'}).hasLength(4);
+        initialize(Raw.charArrayAssertion(), new char[]{'1', '2', '3', '4'}).isNotNull().hasLength(4).isInstanceOf(char[].class);
 
         try {
             Raw.charArrayAssertion().hasLength(0);

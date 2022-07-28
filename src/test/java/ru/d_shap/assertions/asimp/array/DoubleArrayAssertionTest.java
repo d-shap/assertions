@@ -68,6 +68,7 @@ public final class DoubleArrayAssertionTest extends AssertionTest {
     @Test
     public void isEmptyTest() {
         initialize(Raw.doubleArrayAssertion(), new double[]{}).isEmpty();
+        initialize(Raw.doubleArrayAssertion(), new double[]{}).isNotNull().isEmpty().isInstanceOf(double[].class);
 
         try {
             Raw.doubleArrayAssertion().isEmpty();
@@ -108,6 +109,7 @@ public final class DoubleArrayAssertionTest extends AssertionTest {
     public void isNullOrEmptyTest() {
         initialize(Raw.doubleArrayAssertion(), null).isNullOrEmpty();
         initialize(Raw.doubleArrayAssertion(), new double[]{}).isNullOrEmpty();
+        initialize(Raw.doubleArrayAssertion(), new double[]{}).isNotNull().isNullOrEmpty().isInstanceOf(double[].class);
 
         try {
             Raw.doubleArrayAssertion().isNullOrEmpty();
@@ -135,6 +137,7 @@ public final class DoubleArrayAssertionTest extends AssertionTest {
     @Test
     public void isNotEmptyTest() {
         initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}).isNotEmpty();
+        initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}).isNotNull().isNotEmpty().isInstanceOf(double[].class);
 
         try {
             Raw.doubleArrayAssertion().isNotEmpty();
@@ -179,6 +182,7 @@ public final class DoubleArrayAssertionTest extends AssertionTest {
         initialize(Raw.doubleArrayAssertion(), new double[]{Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0}).contains(Double.POSITIVE_INFINITY);
         initialize(Raw.doubleArrayAssertion(), new double[]{Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0}).contains(Double.NEGATIVE_INFINITY);
         initialize(Raw.doubleArrayAssertion(), new double[]{Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0}).contains(3.0);
+        initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}).isNotNull().contains(2.0).isInstanceOf(double[].class);
 
         try {
             Raw.doubleArrayAssertion().contains(1.0);
@@ -232,6 +236,7 @@ public final class DoubleArrayAssertionTest extends AssertionTest {
         initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}).doesNotContain(3.0);
         initialize(Raw.doubleArrayAssertion(), new double[]{Double.NaN, Double.POSITIVE_INFINITY}).doesNotContain(Double.NEGATIVE_INFINITY);
         initialize(Raw.doubleArrayAssertion(), new double[]{Double.NaN, Double.POSITIVE_INFINITY}).doesNotContain(3.0);
+        initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}).isNotNull().doesNotContain(3.0).isInstanceOf(double[].class);
 
         try {
             Raw.doubleArrayAssertion().doesNotContain(1.0);
@@ -286,6 +291,7 @@ public final class DoubleArrayAssertionTest extends AssertionTest {
         initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0, 3.0, 4.0}).containsAll(1.0, 3.0);
         initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0, 3.0, 4.0}).containsAll(4.0, 2.0);
         initialize(Raw.doubleArrayAssertion(), new double[]{Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0}).containsAll(Double.NEGATIVE_INFINITY, Double.NaN);
+        initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0, 3.0, 4.0}).isNotNull().containsAll(4.0, 2.0).isInstanceOf(double[].class);
 
         try {
             Raw.doubleArrayAssertion().containsAll(1.0);
@@ -376,6 +382,7 @@ public final class DoubleArrayAssertionTest extends AssertionTest {
         initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0, 3.0, 4.0}).containsAll(DataHelper.createIterable(1.0, 3.0));
         initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0, 3.0, 4.0}).containsAll(DataHelper.createIterable(4.0, 2.0));
         initialize(Raw.doubleArrayAssertion(), new double[]{Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0}).containsAll(DataHelper.createIterable(Double.NEGATIVE_INFINITY, Double.NaN));
+        initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0, 3.0, 4.0}).isNotNull().containsAll(DataHelper.createIterable(4.0, 2.0)).isInstanceOf(double[].class);
 
         try {
             Raw.doubleArrayAssertion().containsAll(DataHelper.<Double>createIterable());
@@ -465,6 +472,7 @@ public final class DoubleArrayAssertionTest extends AssertionTest {
         initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}).containsAllInOrder(1.0, 2.0);
         initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0, 3.0, 4.0}).containsAllInOrder(1.0, 3.0, 4.0);
         initialize(Raw.doubleArrayAssertion(), new double[]{Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0}).containsAllInOrder(Double.NaN, Double.NEGATIVE_INFINITY, 3.0);
+        initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0, 3.0, 4.0}).isNotNull().containsAllInOrder(1.0, 3.0, 4.0).isInstanceOf(double[].class);
 
         try {
             Raw.doubleArrayAssertion().containsAllInOrder(1.0);
@@ -560,6 +568,7 @@ public final class DoubleArrayAssertionTest extends AssertionTest {
         initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}).containsAllInOrder(DataHelper.createIterable(1.0, 2.0));
         initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0, 3.0, 4.0}).containsAllInOrder(DataHelper.createIterable(1.0, 3.0, 4.0));
         initialize(Raw.doubleArrayAssertion(), new double[]{Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0}).containsAllInOrder(DataHelper.createIterable(Double.NaN, Double.NEGATIVE_INFINITY, 3.0));
+        initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0, 3.0, 4.0}).isNotNull().containsAllInOrder(DataHelper.createIterable(1.0, 3.0, 4.0)).isInstanceOf(double[].class);
 
         try {
             Raw.doubleArrayAssertion().containsAllInOrder(DataHelper.<Double>createIterable());
@@ -657,6 +666,7 @@ public final class DoubleArrayAssertionTest extends AssertionTest {
         initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0, 3.0, 4.0}).containsExactly(1.0, 3.0, 2.0, 4.0);
         initialize(Raw.doubleArrayAssertion(), new double[]{}).containsExactly();
         initialize(Raw.doubleArrayAssertion(), new double[]{Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0}).containsExactly(Double.NEGATIVE_INFINITY, Double.NaN, 3.0, Double.POSITIVE_INFINITY);
+        initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}).isNotNull().containsExactly(1.0, 2.0).isInstanceOf(double[].class);
 
         try {
             Raw.doubleArrayAssertion().containsExactly(1.0);
@@ -754,6 +764,7 @@ public final class DoubleArrayAssertionTest extends AssertionTest {
         initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0, 3.0, 4.0}).containsExactly(DataHelper.createIterable(1.0, 3.0, 2.0, 4.0));
         initialize(Raw.doubleArrayAssertion(), new double[]{}).containsExactly(DataHelper.<Double>createIterable());
         initialize(Raw.doubleArrayAssertion(), new double[]{Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0}).containsExactly(DataHelper.createIterable(Double.NEGATIVE_INFINITY, Double.NaN, 3.0, Double.POSITIVE_INFINITY));
+        initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}).isNotNull().containsExactly(DataHelper.createIterable(1.0, 2.0)).isInstanceOf(double[].class);
 
         try {
             Raw.doubleArrayAssertion().containsExactly(DataHelper.<Double>createIterable());
@@ -850,6 +861,7 @@ public final class DoubleArrayAssertionTest extends AssertionTest {
         initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0, 3.0, 4.0}).containsExactlyInOrder(1.0, 2.0, 3.0, 4.0);
         initialize(Raw.doubleArrayAssertion(), new double[]{}).containsExactlyInOrder();
         initialize(Raw.doubleArrayAssertion(), new double[]{Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0}).containsExactlyInOrder(Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0);
+        initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}).isNotNull().containsExactlyInOrder(1.0, 2.0).isInstanceOf(double[].class);
 
         try {
             Raw.doubleArrayAssertion().containsExactlyInOrder(1.0);
@@ -952,6 +964,7 @@ public final class DoubleArrayAssertionTest extends AssertionTest {
         initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0, 3.0, 4.0}).containsExactlyInOrder(DataHelper.createIterable(1.0, 2.0, 3.0, 4.0));
         initialize(Raw.doubleArrayAssertion(), new double[]{}).containsExactlyInOrder(DataHelper.<Double>createIterable());
         initialize(Raw.doubleArrayAssertion(), new double[]{Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0}).containsExactlyInOrder(DataHelper.createIterable(Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0));
+        initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}).isNotNull().containsExactlyInOrder(DataHelper.createIterable(1.0, 2.0)).isInstanceOf(double[].class);
 
         try {
             Raw.doubleArrayAssertion().containsExactlyInOrder(DataHelper.<Double>createIterable());
@@ -1055,6 +1068,7 @@ public final class DoubleArrayAssertionTest extends AssertionTest {
         initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0, 3.0, 4.0}).containsAny(4.0, 1.0);
         initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0, 3.0, 4.0}).containsAny(5.0, 3.0);
         initialize(Raw.doubleArrayAssertion(), new double[]{Double.NaN, Double.NEGATIVE_INFINITY, 3.0}).containsAny(Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY);
+        initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0, 3.0, 4.0}).isNotNull().containsAny(5.0, 3.0).isInstanceOf(double[].class);
 
         try {
             Raw.doubleArrayAssertion().containsAny(1.0);
@@ -1146,6 +1160,7 @@ public final class DoubleArrayAssertionTest extends AssertionTest {
         initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0, 3.0, 4.0}).containsAny(DataHelper.createIterable(4.0, 1.0));
         initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0, 3.0, 4.0}).containsAny(DataHelper.createIterable(5.0, 3.0));
         initialize(Raw.doubleArrayAssertion(), new double[]{Double.NaN, Double.NEGATIVE_INFINITY, 3.0}).containsAny(DataHelper.createIterable(Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY));
+        initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0, 3.0, 4.0}).isNotNull().containsAny(DataHelper.createIterable(5.0, 3.0)).isInstanceOf(double[].class);
 
         try {
             Raw.doubleArrayAssertion().containsAny(DataHelper.<Double>createIterable());
@@ -1235,6 +1250,7 @@ public final class DoubleArrayAssertionTest extends AssertionTest {
         initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}).containsNone(3.0, 7.0);
         initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}).containsNone(3.0, 4.0, 5.0);
         initialize(Raw.doubleArrayAssertion(), new double[]{Double.NaN, Double.NEGATIVE_INFINITY, 3.0}).containsNone(Double.POSITIVE_INFINITY, 4.0);
+        initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}).isNotNull().containsNone(3.0, 4.0, 5.0).isInstanceOf(double[].class);
 
         try {
             Raw.doubleArrayAssertion().containsNone(1.0);
@@ -1324,6 +1340,7 @@ public final class DoubleArrayAssertionTest extends AssertionTest {
         initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}).containsNone(DataHelper.createIterable(3.0, 7.0));
         initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}).containsNone(DataHelper.createIterable(3.0, 4.0, 5.0));
         initialize(Raw.doubleArrayAssertion(), new double[]{Double.NaN, Double.NEGATIVE_INFINITY, 3.0}).containsNone(DataHelper.createIterable(Double.POSITIVE_INFINITY, 4.0));
+        initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}).isNotNull().containsNone(DataHelper.createIterable(3.0, 4.0, 5.0)).isInstanceOf(double[].class);
 
         try {
             Raw.doubleArrayAssertion().containsNone(DataHelper.<Double>createIterable());
@@ -1418,6 +1435,8 @@ public final class DoubleArrayAssertionTest extends AssertionTest {
         initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0, 3.0, 4.0}).toLength().isGreaterThan(3);
         initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0, 3.0, 4.0}).toLength().isLessThan(5);
 
+        initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0, 3.0, 4.0}).isNotNull().toLength().isEqualTo(4);
+
         try {
             Raw.doubleArrayAssertion().toLength();
             Assertions.fail("DoubleArrayAssertion test fail");
@@ -1474,6 +1493,8 @@ public final class DoubleArrayAssertionTest extends AssertionTest {
         initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0, 3.0, 4.0}).toLength(Matchers.equalTo(4));
         initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0, 3.0, 4.0}).toLength(Matchers.greaterThan(3));
         initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0, 3.0, 4.0}).toLength(Matchers.lessThan(5));
+
+        initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0, 3.0, 4.0}).isNotNull().toLength(Matchers.equalTo(4)).isInstanceOf(double[].class);
 
         try {
             Raw.doubleArrayAssertion().toLength(Matchers.equalTo(0));
@@ -1538,6 +1559,7 @@ public final class DoubleArrayAssertionTest extends AssertionTest {
     public void hasLengthTest() {
         initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}).hasLength(2);
         initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0, 3.0, 4.0}).hasLength(4);
+        initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0, 3.0, 4.0}).isNotNull().hasLength(4).isInstanceOf(double[].class);
 
         try {
             Raw.doubleArrayAssertion().hasLength(0);

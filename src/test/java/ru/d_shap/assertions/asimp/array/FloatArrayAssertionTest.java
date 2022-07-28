@@ -68,6 +68,7 @@ public final class FloatArrayAssertionTest extends AssertionTest {
     @Test
     public void isEmptyTest() {
         initialize(Raw.floatArrayAssertion(), new float[]{}).isEmpty();
+        initialize(Raw.floatArrayAssertion(), new float[]{}).isNotNull().isEmpty().isInstanceOf(float[].class);
 
         try {
             Raw.floatArrayAssertion().isEmpty();
@@ -108,6 +109,7 @@ public final class FloatArrayAssertionTest extends AssertionTest {
     public void isNullOrEmptyTest() {
         initialize(Raw.floatArrayAssertion(), null).isNullOrEmpty();
         initialize(Raw.floatArrayAssertion(), new float[]{}).isNullOrEmpty();
+        initialize(Raw.floatArrayAssertion(), new float[]{}).isNotNull().isNullOrEmpty().isInstanceOf(float[].class);
 
         try {
             Raw.floatArrayAssertion().isNullOrEmpty();
@@ -135,6 +137,7 @@ public final class FloatArrayAssertionTest extends AssertionTest {
     @Test
     public void isNotEmptyTest() {
         initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f}).isNotEmpty();
+        initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f}).isNotNull().isNotEmpty().isInstanceOf(float[].class);
 
         try {
             Raw.floatArrayAssertion().isNotEmpty();
@@ -179,6 +182,7 @@ public final class FloatArrayAssertionTest extends AssertionTest {
         initialize(Raw.floatArrayAssertion(), new float[]{Float.NaN, Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY, 3.0f}).contains(Float.POSITIVE_INFINITY);
         initialize(Raw.floatArrayAssertion(), new float[]{Float.NaN, Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY, 3.0f}).contains(Float.NEGATIVE_INFINITY);
         initialize(Raw.floatArrayAssertion(), new float[]{Float.NaN, Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY, 3.0f}).contains(3.0f);
+        initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f}).isNotNull().contains(2.0f).isInstanceOf(float[].class);
 
         try {
             Raw.floatArrayAssertion().contains(1.0f);
@@ -232,6 +236,7 @@ public final class FloatArrayAssertionTest extends AssertionTest {
         initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f}).doesNotContain(3.0f);
         initialize(Raw.floatArrayAssertion(), new float[]{Float.NaN, Float.POSITIVE_INFINITY}).doesNotContain(Float.NEGATIVE_INFINITY);
         initialize(Raw.floatArrayAssertion(), new float[]{Float.NaN, Float.POSITIVE_INFINITY}).doesNotContain(3.0f);
+        initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f}).isNotNull().doesNotContain(3.0f).isInstanceOf(float[].class);
 
         try {
             Raw.floatArrayAssertion().doesNotContain(1.0f);
@@ -286,6 +291,7 @@ public final class FloatArrayAssertionTest extends AssertionTest {
         initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f, 3.0f, 4.0f}).containsAll(1.0f, 3.0f);
         initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f, 3.0f, 4.0f}).containsAll(4.0f, 2.0f);
         initialize(Raw.floatArrayAssertion(), new float[]{Float.NaN, Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY, 3.0f}).containsAll(Float.NEGATIVE_INFINITY, Float.NaN);
+        initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f, 3.0f, 4.0f}).isNotNull().containsAll(4.0f, 2.0f).isInstanceOf(float[].class);
 
         try {
             Raw.floatArrayAssertion().containsAll(1.0f);
@@ -376,6 +382,7 @@ public final class FloatArrayAssertionTest extends AssertionTest {
         initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f, 3.0f, 4.0f}).containsAll(DataHelper.createIterable(1.0f, 3.0f));
         initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f, 3.0f, 4.0f}).containsAll(DataHelper.createIterable(4.0f, 2.0f));
         initialize(Raw.floatArrayAssertion(), new float[]{Float.NaN, Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY, 3.0f}).containsAll(DataHelper.createIterable(Float.NEGATIVE_INFINITY, Float.NaN));
+        initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f, 3.0f, 4.0f}).isNotNull().containsAll(DataHelper.createIterable(4.0f, 2.0f)).isInstanceOf(float[].class);
 
         try {
             Raw.floatArrayAssertion().containsAll(DataHelper.<Float>createIterable());
@@ -465,6 +472,7 @@ public final class FloatArrayAssertionTest extends AssertionTest {
         initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f}).containsAllInOrder(1.0f, 2.0f);
         initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f, 3.0f, 4.0f}).containsAllInOrder(1.0f, 3.0f, 4.0f);
         initialize(Raw.floatArrayAssertion(), new float[]{Float.NaN, Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY, 3.0f}).containsAllInOrder(Float.NaN, Float.NEGATIVE_INFINITY, 3.0f);
+        initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f, 3.0f, 4.0f}).isNotNull().containsAllInOrder(1.0f, 3.0f, 4.0f).isInstanceOf(float[].class);
 
         try {
             Raw.floatArrayAssertion().containsAllInOrder(1.0f);
@@ -560,6 +568,7 @@ public final class FloatArrayAssertionTest extends AssertionTest {
         initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f}).containsAllInOrder(DataHelper.createIterable(1.0f, 2.0f));
         initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f, 3.0f, 4.0f}).containsAllInOrder(DataHelper.createIterable(1.0f, 3.0f, 4.0f));
         initialize(Raw.floatArrayAssertion(), new float[]{Float.NaN, Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY, 3.0f}).containsAllInOrder(DataHelper.createIterable(Float.NaN, Float.NEGATIVE_INFINITY, 3.0f));
+        initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f, 3.0f, 4.0f}).isNotNull().containsAllInOrder(DataHelper.createIterable(1.0f, 3.0f, 4.0f)).isInstanceOf(float[].class);
 
         try {
             Raw.floatArrayAssertion().containsAllInOrder(DataHelper.<Float>createIterable());
@@ -657,6 +666,7 @@ public final class FloatArrayAssertionTest extends AssertionTest {
         initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f, 3.0f, 4.0f}).containsExactly(1.0f, 3.0f, 2.0f, 4.0f);
         initialize(Raw.floatArrayAssertion(), new float[]{}).containsExactly();
         initialize(Raw.floatArrayAssertion(), new float[]{Float.NaN, Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY, 3.0f}).containsExactly(Float.NEGATIVE_INFINITY, Float.NaN, 3.0f, Float.POSITIVE_INFINITY);
+        initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f}).isNotNull().containsExactly(1.0f, 2.0f).isInstanceOf(float[].class);
 
         try {
             Raw.floatArrayAssertion().containsExactly(1.0f);
@@ -754,6 +764,7 @@ public final class FloatArrayAssertionTest extends AssertionTest {
         initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f, 3.0f, 4.0f}).containsExactly(DataHelper.createIterable(1.0f, 3.0f, 2.0f, 4.0f));
         initialize(Raw.floatArrayAssertion(), new float[]{}).containsExactly(DataHelper.<Float>createIterable());
         initialize(Raw.floatArrayAssertion(), new float[]{Float.NaN, Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY, 3.0f}).containsExactly(DataHelper.createIterable(Float.NEGATIVE_INFINITY, Float.NaN, 3.0f, Float.POSITIVE_INFINITY));
+        initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f}).isNotNull().containsExactly(DataHelper.createIterable(1.0f, 2.0f)).isInstanceOf(float[].class);
 
         try {
             Raw.floatArrayAssertion().containsExactly(DataHelper.<Float>createIterable());
@@ -850,6 +861,7 @@ public final class FloatArrayAssertionTest extends AssertionTest {
         initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f, 3.0f, 4.0f}).containsExactlyInOrder(1.0f, 2.0f, 3.0f, 4.0f);
         initialize(Raw.floatArrayAssertion(), new float[]{}).containsExactlyInOrder();
         initialize(Raw.floatArrayAssertion(), new float[]{Float.NaN, Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY, 3.0f}).containsExactlyInOrder(Float.NaN, Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY, 3.0f);
+        initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f}).isNotNull().containsExactlyInOrder(1.0f, 2.0f).isInstanceOf(float[].class);
 
         try {
             Raw.floatArrayAssertion().containsExactlyInOrder(1.0f);
@@ -952,6 +964,7 @@ public final class FloatArrayAssertionTest extends AssertionTest {
         initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f, 3.0f, 4.0f}).containsExactlyInOrder(DataHelper.createIterable(1.0f, 2.0f, 3.0f, 4.0f));
         initialize(Raw.floatArrayAssertion(), new float[]{}).containsExactlyInOrder(DataHelper.<Float>createIterable());
         initialize(Raw.floatArrayAssertion(), new float[]{Float.NaN, Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY, 3.0f}).containsExactlyInOrder(DataHelper.createIterable(Float.NaN, Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY, 3.0f));
+        initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f}).isNotNull().containsExactlyInOrder(DataHelper.createIterable(1.0f, 2.0f)).isInstanceOf(float[].class);
 
         try {
             Raw.floatArrayAssertion().containsExactlyInOrder(DataHelper.<Float>createIterable());
@@ -1055,6 +1068,7 @@ public final class FloatArrayAssertionTest extends AssertionTest {
         initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f, 3.0f, 4.0f}).containsAny(4.0f, 1.0f);
         initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f, 3.0f, 4.0f}).containsAny(5.0f, 3.0f);
         initialize(Raw.floatArrayAssertion(), new float[]{Float.NaN, Float.NEGATIVE_INFINITY, 3.0f}).containsAny(Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY);
+        initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f, 3.0f, 4.0f}).isNotNull().containsAny(5.0f, 3.0f).isInstanceOf(float[].class);
 
         try {
             Raw.floatArrayAssertion().containsAny(1.0f);
@@ -1146,6 +1160,7 @@ public final class FloatArrayAssertionTest extends AssertionTest {
         initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f, 3.0f, 4.0f}).containsAny(DataHelper.createIterable(4.0f, 1.0f));
         initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f, 3.0f, 4.0f}).containsAny(DataHelper.createIterable(5.0f, 3.0f));
         initialize(Raw.floatArrayAssertion(), new float[]{Float.NaN, Float.NEGATIVE_INFINITY, 3.0f}).containsAny(DataHelper.createIterable(Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY));
+        initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f, 3.0f, 4.0f}).isNotNull().containsAny(DataHelper.createIterable(5.0f, 3.0f)).isInstanceOf(float[].class);
 
         try {
             Raw.floatArrayAssertion().containsAny(DataHelper.<Float>createIterable());
@@ -1235,6 +1250,7 @@ public final class FloatArrayAssertionTest extends AssertionTest {
         initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f}).containsNone(3.0f, 7.0f);
         initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f}).containsNone(3.0f, 4.0f, 5.0f);
         initialize(Raw.floatArrayAssertion(), new float[]{Float.NaN, Float.NEGATIVE_INFINITY, 3.0f}).containsNone(Float.POSITIVE_INFINITY, 4.0f);
+        initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f}).isNotNull().containsNone(3.0f, 4.0f, 5.0f).isInstanceOf(float[].class);
 
         try {
             Raw.floatArrayAssertion().containsNone(1.0f);
@@ -1324,6 +1340,7 @@ public final class FloatArrayAssertionTest extends AssertionTest {
         initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f}).containsNone(DataHelper.createIterable(3.0f, 7.0f));
         initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f}).containsNone(DataHelper.createIterable(3.0f, 4.0f, 5.0f));
         initialize(Raw.floatArrayAssertion(), new float[]{Float.NaN, Float.NEGATIVE_INFINITY, 3.0f}).containsNone(DataHelper.createIterable(Float.POSITIVE_INFINITY, 4.0f));
+        initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f}).isNotNull().containsNone(DataHelper.createIterable(3.0f, 4.0f, 5.0f)).isInstanceOf(float[].class);
 
         try {
             Raw.floatArrayAssertion().containsNone(DataHelper.<Float>createIterable());
@@ -1418,6 +1435,8 @@ public final class FloatArrayAssertionTest extends AssertionTest {
         initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f, 3.0f, 4.0f}).toLength().isGreaterThan(3);
         initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f, 3.0f, 4.0f}).toLength().isLessThan(5);
 
+        initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f, 3.0f, 4.0f}).isNotNull().toLength().isEqualTo(4);
+
         try {
             Raw.floatArrayAssertion().toLength();
             Assertions.fail("FloatArrayAssertion test fail");
@@ -1474,6 +1493,8 @@ public final class FloatArrayAssertionTest extends AssertionTest {
         initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f, 3.0f, 4.0f}).toLength(Matchers.equalTo(4));
         initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f, 3.0f, 4.0f}).toLength(Matchers.greaterThan(3));
         initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f, 3.0f, 4.0f}).toLength(Matchers.lessThan(5));
+
+        initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f, 3.0f, 4.0f}).isNotNull().toLength(Matchers.equalTo(4)).isInstanceOf(float[].class);
 
         try {
             Raw.floatArrayAssertion().toLength(Matchers.equalTo(0));
@@ -1538,6 +1559,7 @@ public final class FloatArrayAssertionTest extends AssertionTest {
     public void hasLengthTest() {
         initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f}).hasLength(2);
         initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f, 3.0f, 4.0f}).hasLength(4);
+        initialize(Raw.floatArrayAssertion(), new float[]{1.0f, 2.0f, 3.0f, 4.0f}).isNotNull().hasLength(4).isInstanceOf(float[].class);
 
         try {
             Raw.floatArrayAssertion().hasLength(0);

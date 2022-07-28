@@ -68,6 +68,7 @@ public final class ObjectArrayAssertionTest extends AssertionTest {
     @Test
     public void isEmptyTest() {
         initialize(Raw.objectArrayAssertion(), new String[]{}).isEmpty();
+        initialize(Raw.objectArrayAssertion(), new String[]{}).isNotNull().isEmpty().isInstanceOf(String[].class);
 
         try {
             Raw.objectArrayAssertion().isEmpty();
@@ -108,6 +109,7 @@ public final class ObjectArrayAssertionTest extends AssertionTest {
     public void isNullOrEmptyTest() {
         initialize(Raw.objectArrayAssertion(), null).isNullOrEmpty();
         initialize(Raw.objectArrayAssertion(), new String[]{}).isNullOrEmpty();
+        initialize(Raw.objectArrayAssertion(), new String[]{}).isNotNull().isNullOrEmpty().isInstanceOf(String[].class);
 
         try {
             Raw.objectArrayAssertion().isNullOrEmpty();
@@ -135,6 +137,7 @@ public final class ObjectArrayAssertionTest extends AssertionTest {
     @Test
     public void isNotEmptyTest() {
         initialize(Raw.objectArrayAssertion(), new String[]{"val1", "val2"}).isNotEmpty();
+        initialize(Raw.objectArrayAssertion(), new String[]{"val1", "val2"}).isNotNull().isNotEmpty().isInstanceOf(String[].class);
 
         try {
             Raw.objectArrayAssertion().isNotEmpty();
@@ -178,6 +181,7 @@ public final class ObjectArrayAssertionTest extends AssertionTest {
         initialize(Raw.<String>objectArrayAssertion(), new String[]{null, "val1", "val2"}).contains(null);
         initialize(Raw.<String>objectArrayAssertion(), new String[]{"val1", null, "val2"}).contains(null);
         initialize(Raw.<String>objectArrayAssertion(), new String[]{"val1", "val2", null}).contains(null);
+        initialize(Raw.<String>objectArrayAssertion(), new String[]{"val1", "val2"}).isNotNull().contains("val2").isInstanceOf(String[].class);
 
         try {
             Raw.<String>objectArrayAssertion().contains("val");
@@ -231,6 +235,7 @@ public final class ObjectArrayAssertionTest extends AssertionTest {
         initialize(Raw.<String>objectArrayAssertion(), new String[]{"val1", "val2"}).doesNotContain("val3");
         initialize(Raw.<String>objectArrayAssertion(), new String[]{"val1", null}).doesNotContain("val3");
         initialize(Raw.<String>objectArrayAssertion(), new String[]{"val1", "val2"}).doesNotContain(null);
+        initialize(Raw.<String>objectArrayAssertion(), new String[]{"val1", "val2"}).isNotNull().doesNotContain("val3").isInstanceOf(String[].class);
 
         try {
             Raw.<String>objectArrayAssertion().doesNotContain("val");
@@ -297,6 +302,7 @@ public final class ObjectArrayAssertionTest extends AssertionTest {
         initialize(Raw.<String>objectArrayAssertion(), new String[]{"val1", "val2", "val3", "val4"}).containsAll("val1", "val3");
         initialize(Raw.<String>objectArrayAssertion(), new String[]{"val1", "val2", "val3", "val4"}).containsAll("val4", "val2");
         initialize(Raw.<String>objectArrayAssertion(), new String[]{"val1", "val2", "val3", null}).containsAll(null, "val2");
+        initialize(Raw.<String>objectArrayAssertion(), new String[]{"val1", "val2", "val3", "val4"}).isNotNull().containsAll("val4", "val2").isInstanceOf(String[].class);
 
         try {
             Raw.<String>objectArrayAssertion().containsAll("val");
@@ -387,6 +393,7 @@ public final class ObjectArrayAssertionTest extends AssertionTest {
         initialize(Raw.<String>objectArrayAssertion(), new String[]{"val1", "val2", "val3", "val4"}).containsAll(DataHelper.createIterable("val1", "val3"));
         initialize(Raw.<String>objectArrayAssertion(), new String[]{"val1", "val2", "val3", "val4"}).containsAll(DataHelper.createIterable("val4", "val2"));
         initialize(Raw.<String>objectArrayAssertion(), new String[]{"val1", "val2", "val3", null}).containsAll(DataHelper.createIterable(null, "val2"));
+        initialize(Raw.<String>objectArrayAssertion(), new String[]{"val1", "val2", "val3", "val4"}).isNotNull().containsAll(DataHelper.createIterable("val4", "val2")).isInstanceOf(String[].class);
 
         try {
             Raw.<String>objectArrayAssertion().containsAll(DataHelper.<String>createIterable());
@@ -464,6 +471,7 @@ public final class ObjectArrayAssertionTest extends AssertionTest {
         initialize(Raw.<String>objectArrayAssertion(), new String[]{"val1", "val2"}).containsAllInOrder("val1", "val2");
         initialize(Raw.<String>objectArrayAssertion(), new String[]{"val1", "val2", "val3", "val4"}).containsAllInOrder("val1", "val3", "val4");
         initialize(Raw.<String>objectArrayAssertion(), new String[]{"val1", "val2", "val3", null}).containsAllInOrder("val1", "val3", null);
+        initialize(Raw.<String>objectArrayAssertion(), new String[]{"val1", "val2", "val3", "val4"}).isNotNull().containsAllInOrder("val1", "val3", "val4").isInstanceOf(String[].class);
 
         try {
             Raw.<String>objectArrayAssertion().containsAllInOrder("val");
@@ -559,6 +567,7 @@ public final class ObjectArrayAssertionTest extends AssertionTest {
         initialize(Raw.<String>objectArrayAssertion(), new String[]{"val1", "val2"}).containsAllInOrder(DataHelper.createIterable("val1", "val2"));
         initialize(Raw.<String>objectArrayAssertion(), new String[]{"val1", "val2", "val3", "val4"}).containsAllInOrder(DataHelper.createIterable("val1", "val3", "val4"));
         initialize(Raw.<String>objectArrayAssertion(), new String[]{"val1", "val2", "val3", null}).containsAllInOrder(DataHelper.createIterable("val1", "val3", null));
+        initialize(Raw.<String>objectArrayAssertion(), new String[]{"val1", "val2", "val3", "val4"}).isNotNull().containsAllInOrder(DataHelper.createIterable("val1", "val3", "val4")).isInstanceOf(String[].class);
 
         try {
             Raw.<String>objectArrayAssertion().containsAllInOrder(DataHelper.<String>createIterable());
@@ -644,6 +653,7 @@ public final class ObjectArrayAssertionTest extends AssertionTest {
         initialize(Raw.<String>objectArrayAssertion(), new String[]{"val1", "val2", "val3", "val4"}).containsExactly("val1", "val3", "val2", "val4");
         initialize(Raw.<String>objectArrayAssertion(), new String[]{"val1", "val2", "val3", null}).containsExactly("val1", "val3", "val2", null);
         initialize(Raw.<String>objectArrayAssertion(), new String[]{}).containsExactly();
+        initialize(Raw.<String>objectArrayAssertion(), new String[]{"val1", "val2"}).isNotNull().containsExactly("val1", "val2").isInstanceOf(String[].class);
 
         try {
             Raw.<String>objectArrayAssertion().containsExactly("val");
@@ -741,6 +751,7 @@ public final class ObjectArrayAssertionTest extends AssertionTest {
         initialize(Raw.<String>objectArrayAssertion(), new String[]{"val1", "val2", "val3", "val4"}).containsExactly(DataHelper.createIterable("val1", "val3", "val2", "val4"));
         initialize(Raw.<String>objectArrayAssertion(), new String[]{"val1", "val2", "val3", null}).containsExactly(DataHelper.createIterable("val1", "val3", "val2", null));
         initialize(Raw.<String>objectArrayAssertion(), new String[]{}).containsExactly(DataHelper.<String>createIterable());
+        initialize(Raw.<String>objectArrayAssertion(), new String[]{"val1", "val2"}).isNotNull().containsExactly(DataHelper.createIterable("val1", "val2")).isInstanceOf(String[].class);
 
         try {
             Raw.<String>objectArrayAssertion().containsExactly(DataHelper.<String>createIterable());
@@ -825,6 +836,7 @@ public final class ObjectArrayAssertionTest extends AssertionTest {
         initialize(Raw.<String>objectArrayAssertion(), new String[]{"val1", "val2", "val3", "val4"}).containsExactlyInOrder("val1", "val2", "val3", "val4");
         initialize(Raw.<String>objectArrayAssertion(), new String[]{"val1", "val2", "val3", null}).containsExactlyInOrder("val1", "val2", "val3", null);
         initialize(Raw.<String>objectArrayAssertion(), new String[]{}).containsExactlyInOrder();
+        initialize(Raw.<String>objectArrayAssertion(), new String[]{"val1", "val2"}).isNotNull().containsExactlyInOrder("val1", "val2").isInstanceOf(String[].class);
 
         try {
             Raw.<String>objectArrayAssertion().containsExactlyInOrder("val");
@@ -927,6 +939,7 @@ public final class ObjectArrayAssertionTest extends AssertionTest {
         initialize(Raw.<String>objectArrayAssertion(), new String[]{"val1", "val2", "val3", "val4"}).containsExactlyInOrder(DataHelper.createIterable("val1", "val2", "val3", "val4"));
         initialize(Raw.<String>objectArrayAssertion(), new String[]{"val1", "val2", "val3", null}).containsExactlyInOrder(DataHelper.createIterable("val1", "val2", "val3", null));
         initialize(Raw.<String>objectArrayAssertion(), new String[]{}).containsExactlyInOrder(DataHelper.<String>createIterable());
+        initialize(Raw.<String>objectArrayAssertion(), new String[]{"val1", "val2"}).isNotNull().containsExactlyInOrder(DataHelper.createIterable("val1", "val2")).isInstanceOf(String[].class);
 
         try {
             Raw.<String>objectArrayAssertion().containsExactlyInOrder(DataHelper.<String>createIterable());
@@ -1018,6 +1031,7 @@ public final class ObjectArrayAssertionTest extends AssertionTest {
         initialize(Raw.<String>objectArrayAssertion(), new String[]{"val1", "val2", "val3", "val4"}).containsAny("val4", "val1");
         initialize(Raw.<String>objectArrayAssertion(), new String[]{"val1", "val2", "val3", "val4"}).containsAny("val5", "val3");
         initialize(Raw.<String>objectArrayAssertion(), new String[]{"val1", "val2", "val3", null}).containsAny("val5", null);
+        initialize(Raw.<String>objectArrayAssertion(), new String[]{"val1", "val2", "val3", "val4"}).isNotNull().containsAny("val5", "val3").isInstanceOf(String[].class);
 
         try {
             Raw.<String>objectArrayAssertion().containsAny("val");
@@ -1109,6 +1123,7 @@ public final class ObjectArrayAssertionTest extends AssertionTest {
         initialize(Raw.<String>objectArrayAssertion(), new String[]{"val1", "val2", "val3", "val4"}).containsAny(DataHelper.createIterable("val4", "val1"));
         initialize(Raw.<String>objectArrayAssertion(), new String[]{"val1", "val2", "val3", "val4"}).containsAny(DataHelper.createIterable("val5", "val3"));
         initialize(Raw.<String>objectArrayAssertion(), new String[]{"val1", "val2", "val3", null}).containsAny(DataHelper.createIterable("val5", null));
+        initialize(Raw.<String>objectArrayAssertion(), new String[]{"val1", "val2", "val3", "val4"}).isNotNull().containsAny(DataHelper.createIterable("val5", "val3")).isInstanceOf(String[].class);
 
         try {
             Raw.<String>objectArrayAssertion().containsAny(DataHelper.<String>createIterable());
@@ -1188,6 +1203,7 @@ public final class ObjectArrayAssertionTest extends AssertionTest {
         initialize(Raw.<String>objectArrayAssertion(), new String[]{"val1", null}).containsNone("val3", "val4");
         initialize(Raw.<String>objectArrayAssertion(), new String[]{"val1", "val2"}).containsNone("val3", null);
         initialize(Raw.objectArrayAssertion(), new Object[]{"val1", '1'}).containsNone("val3", "val7");
+        initialize(Raw.<String>objectArrayAssertion(), new String[]{"val1", "val2"}).isNotNull().containsNone("val3", "val4", "val5").isInstanceOf(String[].class);
 
         try {
             Raw.<String>objectArrayAssertion().containsNone("val");
@@ -1278,6 +1294,7 @@ public final class ObjectArrayAssertionTest extends AssertionTest {
         initialize(Raw.<String>objectArrayAssertion(), new String[]{"val1", "val2"}).containsNone(DataHelper.createIterable("val3", "val4", "val5"));
         initialize(Raw.<String>objectArrayAssertion(), new String[]{"val1", null}).containsNone(DataHelper.createIterable("val3", "val4"));
         initialize(Raw.<String>objectArrayAssertion(), new String[]{"val1", "val2"}).containsNone(DataHelper.createIterable("val3", null));
+        initialize(Raw.<String>objectArrayAssertion(), new String[]{"val1", "val2"}).isNotNull().containsNone(DataHelper.createIterable("val3", "val4", "val5")).isInstanceOf(String[].class);
 
         try {
             Raw.<String>objectArrayAssertion().containsNone(DataHelper.<String>createIterable());
@@ -1360,6 +1377,8 @@ public final class ObjectArrayAssertionTest extends AssertionTest {
         initialize(Raw.objectArrayAssertion(), new String[]{"val1", "val2", "val3", "val4"}).toLength().isGreaterThan(3);
         initialize(Raw.objectArrayAssertion(), new String[]{"val1", "val2", "val3", "val4"}).toLength().isLessThan(5);
 
+        initialize(Raw.objectArrayAssertion(), new String[]{"val1", "val2", "val3", "val4"}).isNotNull().toLength().isEqualTo(4);
+
         try {
             Raw.objectArrayAssertion().toLength();
             Assertions.fail("ObjectArrayAssertion test fail");
@@ -1416,6 +1435,8 @@ public final class ObjectArrayAssertionTest extends AssertionTest {
         initialize(Raw.objectArrayAssertion(), new String[]{"val1", "val2", "val3", "val4"}).toLength(Matchers.equalTo(4));
         initialize(Raw.objectArrayAssertion(), new String[]{"val1", "val2", "val3", "val4"}).toLength(Matchers.greaterThan(3));
         initialize(Raw.objectArrayAssertion(), new String[]{"val1", "val2", "val3", "val4"}).toLength(Matchers.lessThan(5));
+
+        initialize(Raw.objectArrayAssertion(), new String[]{"val1", "val2", "val3", "val4"}).isNotNull().toLength(Matchers.equalTo(4)).isInstanceOf(String[].class);
 
         try {
             Raw.objectArrayAssertion().toLength(Matchers.equalTo(0));
@@ -1480,6 +1501,7 @@ public final class ObjectArrayAssertionTest extends AssertionTest {
     public void hasLengthTest() {
         initialize(Raw.objectArrayAssertion(), new String[]{"val1", "val2"}).hasLength(2);
         initialize(Raw.objectArrayAssertion(), new String[]{"val1", "val2", "val3", "val4"}).hasLength(4);
+        initialize(Raw.objectArrayAssertion(), new String[]{"val1", "val2", "val3", "val4"}).isNotNull().hasLength(4).isInstanceOf(String[].class);
 
         try {
             Raw.objectArrayAssertion().hasLength(0);

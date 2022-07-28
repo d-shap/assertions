@@ -68,6 +68,7 @@ public final class LongArrayAssertionTest extends AssertionTest {
     @Test
     public void isEmptyTest() {
         initialize(Raw.longArrayAssertion(), new long[]{}).isEmpty();
+        initialize(Raw.longArrayAssertion(), new long[]{}).isNotNull().isEmpty().isInstanceOf(long[].class);
 
         try {
             Raw.longArrayAssertion().isEmpty();
@@ -108,6 +109,7 @@ public final class LongArrayAssertionTest extends AssertionTest {
     public void isNullOrEmptyTest() {
         initialize(Raw.longArrayAssertion(), null).isNullOrEmpty();
         initialize(Raw.longArrayAssertion(), new long[]{}).isNullOrEmpty();
+        initialize(Raw.longArrayAssertion(), new long[]{}).isNotNull().isNullOrEmpty().isInstanceOf(long[].class);
 
         try {
             Raw.longArrayAssertion().isNullOrEmpty();
@@ -135,6 +137,7 @@ public final class LongArrayAssertionTest extends AssertionTest {
     @Test
     public void isNotEmptyTest() {
         initialize(Raw.longArrayAssertion(), new long[]{1L, 2L}).isNotEmpty();
+        initialize(Raw.longArrayAssertion(), new long[]{1L, 2L}).isNotNull().isNotEmpty().isInstanceOf(long[].class);
 
         try {
             Raw.longArrayAssertion().isNotEmpty();
@@ -175,6 +178,7 @@ public final class LongArrayAssertionTest extends AssertionTest {
     public void containsTest() {
         initialize(Raw.longArrayAssertion(), new long[]{1L, 2L}).contains(1L);
         initialize(Raw.longArrayAssertion(), new long[]{1L, 2L}).contains(2L);
+        initialize(Raw.longArrayAssertion(), new long[]{1L, 2L}).isNotNull().contains(2L).isInstanceOf(long[].class);
 
         try {
             Raw.longArrayAssertion().contains(1L);
@@ -214,6 +218,7 @@ public final class LongArrayAssertionTest extends AssertionTest {
     @Test
     public void doesNotContainTest() {
         initialize(Raw.longArrayAssertion(), new long[]{1L, 2L}).doesNotContain(3L);
+        initialize(Raw.longArrayAssertion(), new long[]{1L, 2L}).isNotNull().doesNotContain(3L).isInstanceOf(long[].class);
 
         try {
             Raw.longArrayAssertion().doesNotContain(1L);
@@ -255,6 +260,7 @@ public final class LongArrayAssertionTest extends AssertionTest {
         initialize(Raw.longArrayAssertion(), new long[]{1L, 2L}).containsAll(1L, 2L);
         initialize(Raw.longArrayAssertion(), new long[]{1L, 2L, 3L, 4L}).containsAll(1L, 3L);
         initialize(Raw.longArrayAssertion(), new long[]{1L, 2L, 3L, 4L}).containsAll(4L, 2L);
+        initialize(Raw.longArrayAssertion(), new long[]{1L, 2L, 3L, 4L}).isNotNull().containsAll(4L, 2L).isInstanceOf(long[].class);
 
         try {
             Raw.longArrayAssertion().containsAll(1L);
@@ -332,6 +338,7 @@ public final class LongArrayAssertionTest extends AssertionTest {
         initialize(Raw.longArrayAssertion(), new long[]{1L, 2L}).containsAll(DataHelper.createIterable(1L, 2L));
         initialize(Raw.longArrayAssertion(), new long[]{1L, 2L, 3L, 4L}).containsAll(DataHelper.createIterable(1L, 3L));
         initialize(Raw.longArrayAssertion(), new long[]{1L, 2L, 3L, 4L}).containsAll(DataHelper.createIterable(4L, 2L));
+        initialize(Raw.longArrayAssertion(), new long[]{1L, 2L, 3L, 4L}).isNotNull().containsAll(DataHelper.createIterable(4L, 2L)).isInstanceOf(long[].class);
 
         try {
             Raw.longArrayAssertion().containsAll(DataHelper.<Long>createIterable());
@@ -408,6 +415,7 @@ public final class LongArrayAssertionTest extends AssertionTest {
     public void containsAllInOrderArrayTest() {
         initialize(Raw.longArrayAssertion(), new long[]{1L, 2L}).containsAllInOrder(1L, 2L);
         initialize(Raw.longArrayAssertion(), new long[]{1L, 2L, 3L, 4L}).containsAllInOrder(1L, 3L, 4L);
+        initialize(Raw.longArrayAssertion(), new long[]{1L, 2L, 3L, 4L}).isNotNull().containsAllInOrder(1L, 3L, 4L).isInstanceOf(long[].class);
 
         try {
             Raw.longArrayAssertion().containsAllInOrder(1L);
@@ -490,6 +498,7 @@ public final class LongArrayAssertionTest extends AssertionTest {
     public void containsAllInOrderIterableTest() {
         initialize(Raw.longArrayAssertion(), new long[]{1L, 2L}).containsAllInOrder(DataHelper.createIterable(1L, 2L));
         initialize(Raw.longArrayAssertion(), new long[]{1L, 2L, 3L, 4L}).containsAllInOrder(DataHelper.createIterable(1L, 3L, 4L));
+        initialize(Raw.longArrayAssertion(), new long[]{1L, 2L, 3L, 4L}).isNotNull().containsAllInOrder(DataHelper.createIterable(1L, 3L, 4L)).isInstanceOf(long[].class);
 
         try {
             Raw.longArrayAssertion().containsAllInOrder(DataHelper.<Long>createIterable());
@@ -574,6 +583,7 @@ public final class LongArrayAssertionTest extends AssertionTest {
         initialize(Raw.longArrayAssertion(), new long[]{1L, 2L, 3L, 4L}).containsExactly(1L, 2L, 3L, 4L);
         initialize(Raw.longArrayAssertion(), new long[]{1L, 2L, 3L, 4L}).containsExactly(1L, 3L, 2L, 4L);
         initialize(Raw.longArrayAssertion(), new long[]{}).containsExactly();
+        initialize(Raw.longArrayAssertion(), new long[]{1L, 2L}).isNotNull().containsExactly(1L, 2L).isInstanceOf(long[].class);
 
         try {
             Raw.longArrayAssertion().containsExactly(1L);
@@ -658,6 +668,7 @@ public final class LongArrayAssertionTest extends AssertionTest {
         initialize(Raw.longArrayAssertion(), new long[]{1L, 2L, 3L, 4L}).containsExactly(DataHelper.createIterable(1L, 2L, 3L, 4L));
         initialize(Raw.longArrayAssertion(), new long[]{1L, 2L, 3L, 4L}).containsExactly(DataHelper.createIterable(1L, 3L, 2L, 4L));
         initialize(Raw.longArrayAssertion(), new long[]{}).containsExactly(DataHelper.<Long>createIterable());
+        initialize(Raw.longArrayAssertion(), new long[]{1L, 2L}).isNotNull().containsExactly(DataHelper.createIterable(1L, 2L)).isInstanceOf(long[].class);
 
         try {
             Raw.longArrayAssertion().containsExactly(DataHelper.<Long>createIterable());
@@ -741,6 +752,7 @@ public final class LongArrayAssertionTest extends AssertionTest {
         initialize(Raw.longArrayAssertion(), new long[]{1L, 2L}).containsExactlyInOrder(1L, 2L);
         initialize(Raw.longArrayAssertion(), new long[]{1L, 2L, 3L, 4L}).containsExactlyInOrder(1L, 2L, 3L, 4L);
         initialize(Raw.longArrayAssertion(), new long[]{}).containsExactlyInOrder();
+        initialize(Raw.longArrayAssertion(), new long[]{1L, 2L}).isNotNull().containsExactlyInOrder(1L, 2L).isInstanceOf(long[].class);
 
         try {
             Raw.longArrayAssertion().containsExactlyInOrder(1L);
@@ -830,6 +842,7 @@ public final class LongArrayAssertionTest extends AssertionTest {
         initialize(Raw.longArrayAssertion(), new long[]{1L, 2L}).containsExactlyInOrder(DataHelper.createIterable(1L, 2L));
         initialize(Raw.longArrayAssertion(), new long[]{1L, 2L, 3L, 4L}).containsExactlyInOrder(DataHelper.createIterable(1L, 2L, 3L, 4L));
         initialize(Raw.longArrayAssertion(), new long[]{}).containsExactlyInOrder(DataHelper.<Long>createIterable());
+        initialize(Raw.longArrayAssertion(), new long[]{1L, 2L}).isNotNull().containsExactlyInOrder(DataHelper.createIterable(1L, 2L)).isInstanceOf(long[].class);
 
         try {
             Raw.longArrayAssertion().containsExactlyInOrder(DataHelper.<Long>createIterable());
@@ -920,6 +933,7 @@ public final class LongArrayAssertionTest extends AssertionTest {
         initialize(Raw.longArrayAssertion(), new long[]{1L, 2L, 3L, 4L}).containsAny(2L, 4L);
         initialize(Raw.longArrayAssertion(), new long[]{1L, 2L, 3L, 4L}).containsAny(4L, 1L);
         initialize(Raw.longArrayAssertion(), new long[]{1L, 2L, 3L, 4L}).containsAny(5L, 3L);
+        initialize(Raw.longArrayAssertion(), new long[]{1L, 2L, 3L, 4L}).isNotNull().containsAny(5L, 3L).isInstanceOf(long[].class);
 
         try {
             Raw.longArrayAssertion().containsAny(1L);
@@ -998,6 +1012,7 @@ public final class LongArrayAssertionTest extends AssertionTest {
         initialize(Raw.longArrayAssertion(), new long[]{1L, 2L, 3L, 4L}).containsAny(DataHelper.createIterable(2L, 4L));
         initialize(Raw.longArrayAssertion(), new long[]{1L, 2L, 3L, 4L}).containsAny(DataHelper.createIterable(4L, 1L));
         initialize(Raw.longArrayAssertion(), new long[]{1L, 2L, 3L, 4L}).containsAny(DataHelper.createIterable(5L, 3L));
+        initialize(Raw.longArrayAssertion(), new long[]{1L, 2L, 3L, 4L}).isNotNull().containsAny(DataHelper.createIterable(5L, 3L)).isInstanceOf(long[].class);
 
         try {
             Raw.longArrayAssertion().containsAny(DataHelper.<Long>createIterable());
@@ -1074,6 +1089,7 @@ public final class LongArrayAssertionTest extends AssertionTest {
     public void containsNoneArrayTest() {
         initialize(Raw.longArrayAssertion(), new long[]{1L, 2L}).containsNone(3L, 7L);
         initialize(Raw.longArrayAssertion(), new long[]{1L, 2L}).containsNone(3L, 4L, 5L);
+        initialize(Raw.longArrayAssertion(), new long[]{1L, 2L}).isNotNull().containsNone(3L, 4L, 5L).isInstanceOf(long[].class);
 
         try {
             Raw.longArrayAssertion().containsNone(1L);
@@ -1150,6 +1166,7 @@ public final class LongArrayAssertionTest extends AssertionTest {
     public void containsNoneIterableTest() {
         initialize(Raw.longArrayAssertion(), new long[]{1L, 2L}).containsNone(DataHelper.createIterable(3L, 7L));
         initialize(Raw.longArrayAssertion(), new long[]{1L, 2L}).containsNone(DataHelper.createIterable(3L, 4L, 5L));
+        initialize(Raw.longArrayAssertion(), new long[]{1L, 2L}).isNotNull().containsNone(DataHelper.createIterable(3L, 4L, 5L)).isInstanceOf(long[].class);
 
         try {
             Raw.longArrayAssertion().containsNone(DataHelper.<Long>createIterable());
@@ -1232,6 +1249,8 @@ public final class LongArrayAssertionTest extends AssertionTest {
         initialize(Raw.longArrayAssertion(), new long[]{1L, 2L, 3L, 4L}).toLength().isGreaterThan(3);
         initialize(Raw.longArrayAssertion(), new long[]{1L, 2L, 3L, 4L}).toLength().isLessThan(5);
 
+        initialize(Raw.longArrayAssertion(), new long[]{1L, 2L, 3L, 4L}).isNotNull().toLength().isEqualTo(4);
+
         try {
             Raw.longArrayAssertion().toLength();
             Assertions.fail("LongArrayAssertion test fail");
@@ -1288,6 +1307,8 @@ public final class LongArrayAssertionTest extends AssertionTest {
         initialize(Raw.longArrayAssertion(), new long[]{1L, 2L, 3L, 4L}).toLength(Matchers.equalTo(4));
         initialize(Raw.longArrayAssertion(), new long[]{1L, 2L, 3L, 4L}).toLength(Matchers.greaterThan(3));
         initialize(Raw.longArrayAssertion(), new long[]{1L, 2L, 3L, 4L}).toLength(Matchers.lessThan(5));
+
+        initialize(Raw.longArrayAssertion(), new long[]{1L, 2L, 3L, 4L}).isNotNull().toLength(Matchers.equalTo(4)).isInstanceOf(long[].class);
 
         try {
             Raw.longArrayAssertion().toLength(Matchers.equalTo(0));
@@ -1352,6 +1373,7 @@ public final class LongArrayAssertionTest extends AssertionTest {
     public void hasLengthTest() {
         initialize(Raw.longArrayAssertion(), new long[]{1L, 2L}).hasLength(2);
         initialize(Raw.longArrayAssertion(), new long[]{1L, 2L, 3L, 4L}).hasLength(4);
+        initialize(Raw.longArrayAssertion(), new long[]{1L, 2L, 3L, 4L}).isNotNull().hasLength(4).isInstanceOf(long[].class);
 
         try {
             Raw.longArrayAssertion().hasLength(0);
@@ -1393,6 +1415,7 @@ public final class LongArrayAssertionTest extends AssertionTest {
         initialize(Raw.longArrayAssertion(), new long[]{1, 2}).toHexString().isEqualTo("00000000000000010000000000000002");
         initialize(Raw.longArrayAssertion(), new long[]{15, -3, 7}).toHexString().isEqualTo("000000000000000ffffffffffffffffd0000000000000007");
         initialize(Raw.longArrayAssertion(), new long[]{99, 5, 0, -21}).toHexString().isEqualTo("000000000000006300000000000000050000000000000000ffffffffffffffeb");
+        initialize(Raw.longArrayAssertion(), new long[]{99, 5, 0, -21}).isNotNull().toHexString().isEqualTo("000000000000006300000000000000050000000000000000ffffffffffffffeb");
 
         try {
             Raw.longArrayAssertion().toHexString();
@@ -1460,6 +1483,7 @@ public final class LongArrayAssertionTest extends AssertionTest {
         initialize(Raw.longArrayAssertion(), new long[]{99, 5, 0, -21}).toHexString(3, 3).isEqualTo("");
         initialize(Raw.longArrayAssertion(), new long[]{99, 5, 0, -21}).toHexString(3, 4).isEqualTo("ffffffffffffffeb");
         initialize(Raw.longArrayAssertion(), new long[]{99, 5, 0, -21}).toHexString(4, 4).isEqualTo("");
+        initialize(Raw.longArrayAssertion(), new long[]{99, 5, 0, -21}).isNotNull().toHexString(4, 4).isEqualTo("");
 
         try {
             Raw.longArrayAssertion().toHexString(0, 0);
@@ -1585,6 +1609,7 @@ public final class LongArrayAssertionTest extends AssertionTest {
         initialize(Raw.longArrayAssertion(), new long[]{1, 2}).toHexString(Matchers.is(Matchers.equalTo("00000000000000010000000000000002")));
         initialize(Raw.longArrayAssertion(), new long[]{15, -3, 7}).toHexString(Matchers.is(Matchers.equalTo("000000000000000ffffffffffffffffd0000000000000007")));
         initialize(Raw.longArrayAssertion(), new long[]{99, 5, 0, -21}).toHexString(Matchers.is(Matchers.equalTo("000000000000006300000000000000050000000000000000ffffffffffffffeb")));
+        initialize(Raw.longArrayAssertion(), new long[]{99, 5, 0, -21}).isNotNull().toHexString(Matchers.is(Matchers.equalTo("000000000000006300000000000000050000000000000000ffffffffffffffeb"))).isInstanceOf(long[].class);
 
         try {
             Raw.longArrayAssertion().toHexString(Matchers.equalTo(""));
@@ -1664,6 +1689,7 @@ public final class LongArrayAssertionTest extends AssertionTest {
         initialize(Raw.longArrayAssertion(), new long[]{99, 5, 0, -21}).toHexString(3, 3, Matchers.is(Matchers.equalTo("")));
         initialize(Raw.longArrayAssertion(), new long[]{99, 5, 0, -21}).toHexString(3, 4, Matchers.is(Matchers.equalTo("ffffffffffffffeb")));
         initialize(Raw.longArrayAssertion(), new long[]{99, 5, 0, -21}).toHexString(4, 4, Matchers.is(Matchers.equalTo("")));
+        initialize(Raw.longArrayAssertion(), new long[]{99, 5, 0, -21}).isNotNull().toHexString(4, 4, Matchers.is(Matchers.equalTo(""))).isInstanceOf(long[].class);
 
         try {
             Raw.longArrayAssertion().toHexString(0, 0, Matchers.equalTo("00000000000000000000000000000000"));
@@ -1801,6 +1827,7 @@ public final class LongArrayAssertionTest extends AssertionTest {
         initialize(Raw.longArrayAssertion(), new long[]{1, 2}).hasHexString("00000000000000010000000000000002");
         initialize(Raw.longArrayAssertion(), new long[]{15, -3, 7}).hasHexString("000000000000000ffffffffffffffffd0000000000000007");
         initialize(Raw.longArrayAssertion(), new long[]{99, 5, 0, -21}).hasHexString("000000000000006300000000000000050000000000000000ffffffffffffffeb");
+        initialize(Raw.longArrayAssertion(), new long[]{99, 5, 0, -21}).isNotNull().hasHexString("000000000000006300000000000000050000000000000000ffffffffffffffeb").isInstanceOf(long[].class);
 
         try {
             Raw.longArrayAssertion().hasHexString("");
@@ -1880,6 +1907,7 @@ public final class LongArrayAssertionTest extends AssertionTest {
         initialize(Raw.longArrayAssertion(), new long[]{99, 5, 0, -21}).hasHexString(3, 3, "");
         initialize(Raw.longArrayAssertion(), new long[]{99, 5, 0, -21}).hasHexString(3, 4, "ffffffffffffffeb");
         initialize(Raw.longArrayAssertion(), new long[]{99, 5, 0, -21}).hasHexString(4, 4, "");
+        initialize(Raw.longArrayAssertion(), new long[]{99, 5, 0, -21}).isNotNull().hasHexString(4, 4, "").isInstanceOf(long[].class);
 
         try {
             Raw.longArrayAssertion().hasHexString(0, 0, "");

@@ -68,6 +68,7 @@ public final class BooleanArrayAssertionTest extends AssertionTest {
     @Test
     public void isEmptyTest() {
         initialize(Raw.booleanArrayAssertion(), new boolean[]{}).isEmpty();
+        initialize(Raw.booleanArrayAssertion(), new boolean[]{}).isNotNull().isEmpty().isInstanceOf(boolean[].class);
 
         try {
             Raw.booleanArrayAssertion().isEmpty();
@@ -108,6 +109,7 @@ public final class BooleanArrayAssertionTest extends AssertionTest {
     public void isNullOrEmptyTest() {
         initialize(Raw.booleanArrayAssertion(), null).isNullOrEmpty();
         initialize(Raw.booleanArrayAssertion(), new boolean[]{}).isNullOrEmpty();
+        initialize(Raw.booleanArrayAssertion(), new boolean[]{}).isNotNull().isNullOrEmpty().isInstanceOf(boolean[].class);
 
         try {
             Raw.booleanArrayAssertion().isNullOrEmpty();
@@ -135,6 +137,7 @@ public final class BooleanArrayAssertionTest extends AssertionTest {
     @Test
     public void isNotEmptyTest() {
         initialize(Raw.booleanArrayAssertion(), new boolean[]{true, false}).isNotEmpty();
+        initialize(Raw.booleanArrayAssertion(), new boolean[]{true, false}).isNotNull().isNotEmpty().isInstanceOf(boolean[].class);
 
         try {
             Raw.booleanArrayAssertion().isNotEmpty();
@@ -175,6 +178,7 @@ public final class BooleanArrayAssertionTest extends AssertionTest {
     public void containsTest() {
         initialize(Raw.booleanArrayAssertion(), new boolean[]{true, false}).contains(true);
         initialize(Raw.booleanArrayAssertion(), new boolean[]{true, false}).contains(false);
+        initialize(Raw.booleanArrayAssertion(), new boolean[]{true, false}).isNotNull().contains(false).isInstanceOf(boolean[].class);
 
         try {
             Raw.booleanArrayAssertion().contains(true);
@@ -214,6 +218,7 @@ public final class BooleanArrayAssertionTest extends AssertionTest {
     @Test
     public void doesNotContainTest() {
         initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true}).doesNotContain(false);
+        initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true}).isNotNull().doesNotContain(false).isInstanceOf(boolean[].class);
 
         try {
             Raw.booleanArrayAssertion().doesNotContain(true);
@@ -255,6 +260,7 @@ public final class BooleanArrayAssertionTest extends AssertionTest {
         initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true}).containsAll(true, true);
         initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true, false, false}).containsAll(true, false);
         initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true, false, false}).containsAll(false, true);
+        initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true, false, false}).isNotNull().containsAll(false, true).isInstanceOf(boolean[].class);
 
         try {
             Raw.booleanArrayAssertion().containsAll(true);
@@ -332,6 +338,7 @@ public final class BooleanArrayAssertionTest extends AssertionTest {
         initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true}).containsAll(DataHelper.createIterable(true, true));
         initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true, false, false}).containsAll(DataHelper.createIterable(true, false));
         initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true, false, false}).containsAll(DataHelper.createIterable(false, true));
+        initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true, false, false}).isNotNull().containsAll(DataHelper.createIterable(false, true)).isInstanceOf(boolean[].class);
 
         try {
             Raw.booleanArrayAssertion().containsAll(DataHelper.<Boolean>createIterable());
@@ -408,6 +415,7 @@ public final class BooleanArrayAssertionTest extends AssertionTest {
     public void containsAllInOrderArrayTest() {
         initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true}).containsAllInOrder(true, true);
         initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true, false, false}).containsAllInOrder(true, false);
+        initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true, false, false}).isNotNull().containsAllInOrder(true, false).isInstanceOf(boolean[].class);
 
         try {
             Raw.booleanArrayAssertion().containsAllInOrder(true);
@@ -490,6 +498,7 @@ public final class BooleanArrayAssertionTest extends AssertionTest {
     public void containsAllInOrderIterableTest() {
         initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true}).containsAllInOrder(DataHelper.createIterable(true, true));
         initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true, false, false}).containsAllInOrder(DataHelper.createIterable(true, false));
+        initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true, false, false}).isNotNull().containsAllInOrder(DataHelper.createIterable(true, false)).isInstanceOf(boolean[].class);
 
         try {
             Raw.booleanArrayAssertion().containsAllInOrder(DataHelper.<Boolean>createIterable());
@@ -574,6 +583,7 @@ public final class BooleanArrayAssertionTest extends AssertionTest {
         initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true, false, false}).containsExactly(true, false, true, false);
         initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true, false, false}).containsExactly(false, false, true, true);
         initialize(Raw.booleanArrayAssertion(), new boolean[]{}).containsExactly();
+        initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true}).isNotNull().containsExactly(true, true).isInstanceOf(boolean[].class);
 
         try {
             Raw.booleanArrayAssertion().containsExactly(true);
@@ -658,6 +668,7 @@ public final class BooleanArrayAssertionTest extends AssertionTest {
         initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true, false, false}).containsExactly(DataHelper.createIterable(true, false, true, false));
         initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true, false, false}).containsExactly(DataHelper.createIterable(false, false, true, true));
         initialize(Raw.booleanArrayAssertion(), new boolean[]{}).containsExactly(DataHelper.<Boolean>createIterable());
+        initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true}).isNotNull().containsExactly(DataHelper.createIterable(true, true)).isInstanceOf(boolean[].class);
 
         try {
             Raw.booleanArrayAssertion().containsExactly(DataHelper.<Boolean>createIterable());
@@ -741,6 +752,7 @@ public final class BooleanArrayAssertionTest extends AssertionTest {
         initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true}).containsExactlyInOrder(true, true);
         initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true, false, false}).containsExactlyInOrder(true, true, false, false);
         initialize(Raw.booleanArrayAssertion(), new boolean[]{}).containsExactlyInOrder();
+        initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true}).isNotNull().containsExactlyInOrder(true, true).isInstanceOf(boolean[].class);
 
         try {
             Raw.booleanArrayAssertion().containsExactlyInOrder(true);
@@ -830,6 +842,7 @@ public final class BooleanArrayAssertionTest extends AssertionTest {
         initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true}).containsExactlyInOrder(DataHelper.createIterable(true, true));
         initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true, false, false}).containsExactlyInOrder(DataHelper.createIterable(true, true, false, false));
         initialize(Raw.booleanArrayAssertion(), new boolean[]{}).containsExactlyInOrder(DataHelper.<Boolean>createIterable());
+        initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true}).isNotNull().containsExactlyInOrder(DataHelper.createIterable(true, true)).isInstanceOf(boolean[].class);
 
         try {
             Raw.booleanArrayAssertion().containsExactlyInOrder(DataHelper.<Boolean>createIterable());
@@ -920,6 +933,7 @@ public final class BooleanArrayAssertionTest extends AssertionTest {
         initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true, false, false}).containsAny(true, true);
         initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true, false, false}).containsAny(false, false);
         initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true, false, false}).containsAny(true, false);
+        initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true, false, false}).isNotNull().containsAny(true, false).isInstanceOf(boolean[].class);
 
         try {
             Raw.booleanArrayAssertion().containsAny(true);
@@ -998,6 +1012,7 @@ public final class BooleanArrayAssertionTest extends AssertionTest {
         initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true, false, false}).containsAny(DataHelper.createIterable(true, true));
         initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true, false, false}).containsAny(DataHelper.createIterable(false, false));
         initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true, false, false}).containsAny(DataHelper.createIterable(true, false));
+        initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true, false, false}).isNotNull().containsAny(DataHelper.createIterable(true, false)).isInstanceOf(boolean[].class);
 
         try {
             Raw.booleanArrayAssertion().containsAny(DataHelper.<Boolean>createIterable());
@@ -1074,6 +1089,7 @@ public final class BooleanArrayAssertionTest extends AssertionTest {
     public void containsNoneArrayTest() {
         initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true}).containsNone(false, false);
         initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true}).containsNone(false, false, false);
+        initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true}).isNotNull().containsNone(false, false, false).isInstanceOf(boolean[].class);
 
         try {
             Raw.booleanArrayAssertion().containsNone(true);
@@ -1156,6 +1172,7 @@ public final class BooleanArrayAssertionTest extends AssertionTest {
     public void containsNoneIterableTest() {
         initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true}).containsNone(DataHelper.createIterable(false, false));
         initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true}).containsNone(DataHelper.createIterable(false, false, false));
+        initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true}).isNotNull().containsNone(DataHelper.createIterable(false, false, false)).isInstanceOf(boolean[].class);
 
         try {
             Raw.booleanArrayAssertion().containsNone(DataHelper.<Boolean>createIterable());
@@ -1244,6 +1261,8 @@ public final class BooleanArrayAssertionTest extends AssertionTest {
         initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true, false, false}).toLength().isGreaterThan(3);
         initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true, false, false}).toLength().isLessThan(5);
 
+        initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true, false, false}).isNotNull().toLength().isEqualTo(4);
+
         try {
             Raw.booleanArrayAssertion().toLength();
             Assertions.fail("BooleanArrayAssertion test fail");
@@ -1300,6 +1319,8 @@ public final class BooleanArrayAssertionTest extends AssertionTest {
         initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true, false, false}).toLength(Matchers.equalTo(4));
         initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true, false, false}).toLength(Matchers.greaterThan(3));
         initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true, false, false}).toLength(Matchers.lessThan(5));
+
+        initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true, false, false}).isNotNull().toLength(Matchers.equalTo(4)).isInstanceOf(boolean[].class);
 
         try {
             Raw.booleanArrayAssertion().toLength(Matchers.equalTo(0));
@@ -1364,6 +1385,7 @@ public final class BooleanArrayAssertionTest extends AssertionTest {
     public void hasLengthTest() {
         initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true}).hasLength(2);
         initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true, false, false}).hasLength(4);
+        initialize(Raw.booleanArrayAssertion(), new boolean[]{true, true, false, false}).isNotNull().hasLength(4).isInstanceOf(boolean[].class);
 
         try {
             Raw.booleanArrayAssertion().hasLength(0);

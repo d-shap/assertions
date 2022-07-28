@@ -68,6 +68,7 @@ public final class ShortArrayAssertionTest extends AssertionTest {
     @Test
     public void isEmptyTest() {
         initialize(Raw.shortArrayAssertion(), new short[]{}).isEmpty();
+        initialize(Raw.shortArrayAssertion(), new short[]{}).isNotNull().isEmpty().isInstanceOf(short[].class);
 
         try {
             Raw.shortArrayAssertion().isEmpty();
@@ -108,6 +109,7 @@ public final class ShortArrayAssertionTest extends AssertionTest {
     public void isNullOrEmptyTest() {
         initialize(Raw.shortArrayAssertion(), null).isNullOrEmpty();
         initialize(Raw.shortArrayAssertion(), new short[]{}).isNullOrEmpty();
+        initialize(Raw.shortArrayAssertion(), new short[]{}).isNotNull().isNullOrEmpty().isInstanceOf(short[].class);
 
         try {
             Raw.shortArrayAssertion().isNullOrEmpty();
@@ -135,6 +137,7 @@ public final class ShortArrayAssertionTest extends AssertionTest {
     @Test
     public void isNotEmptyTest() {
         initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).isNotEmpty();
+        initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).isNotNull().isNotEmpty().isInstanceOf(short[].class);
 
         try {
             Raw.shortArrayAssertion().isNotEmpty();
@@ -175,6 +178,7 @@ public final class ShortArrayAssertionTest extends AssertionTest {
     public void containsTest() {
         initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).contains(1);
         initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).contains(2);
+        initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).isNotNull().contains(2).isInstanceOf(short[].class);
 
         try {
             Raw.shortArrayAssertion().contains(1);
@@ -214,6 +218,7 @@ public final class ShortArrayAssertionTest extends AssertionTest {
     @Test
     public void doesNotContainTest() {
         initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).doesNotContain(3);
+        initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).isNotNull().doesNotContain(3).isInstanceOf(short[].class);
 
         try {
             Raw.shortArrayAssertion().doesNotContain(1);
@@ -255,6 +260,7 @@ public final class ShortArrayAssertionTest extends AssertionTest {
         initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).containsAll((short) 1, (short) 2);
         initialize(Raw.shortArrayAssertion(), new short[]{1, 2, 3, 4}).containsAll((short) 1, (short) 3);
         initialize(Raw.shortArrayAssertion(), new short[]{1, 2, 3, 4}).containsAll((short) 4, (short) 2);
+        initialize(Raw.shortArrayAssertion(), new short[]{1, 2, 3, 4}).isNotNull().containsAll((short) 4, (short) 2).isInstanceOf(short[].class);
 
         try {
             Raw.shortArrayAssertion().containsAll((short) 1);
@@ -332,6 +338,7 @@ public final class ShortArrayAssertionTest extends AssertionTest {
         initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).containsAll(1, 2);
         initialize(Raw.shortArrayAssertion(), new short[]{1, 2, 3, 4}).containsAll(1, 3);
         initialize(Raw.shortArrayAssertion(), new short[]{1, 2, 3, 4}).containsAll(4, 2);
+        initialize(Raw.shortArrayAssertion(), new short[]{1, 2, 3, 4}).isNotNull().containsAll(4, 2).isInstanceOf(short[].class);
 
         try {
             Raw.shortArrayAssertion().containsAll(1);
@@ -421,6 +428,7 @@ public final class ShortArrayAssertionTest extends AssertionTest {
         initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).containsAll(DataHelper.createIterable((short) 1, (short) 2));
         initialize(Raw.shortArrayAssertion(), new short[]{1, 2, 3, 4}).containsAll(DataHelper.createIterable((short) 1, (short) 3));
         initialize(Raw.shortArrayAssertion(), new short[]{1, 2, 3, 4}).containsAll(DataHelper.createIterable((short) 4, (short) 2));
+        initialize(Raw.shortArrayAssertion(), new short[]{1, 2, 3, 4}).isNotNull().containsAll(DataHelper.createIterable((short) 4, (short) 2)).isInstanceOf(short[].class);
 
         try {
             Raw.shortArrayAssertion().containsAll(DataHelper.<Short>createIterable());
@@ -497,6 +505,7 @@ public final class ShortArrayAssertionTest extends AssertionTest {
     public void containsAllInOrderArrayShortTest() {
         initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).containsAllInOrder((short) 1, (short) 2);
         initialize(Raw.shortArrayAssertion(), new short[]{1, 2, 3, 4}).containsAllInOrder((short) 1, (short) 3, (short) 4);
+        initialize(Raw.shortArrayAssertion(), new short[]{1, 2, 3, 4}).isNotNull().containsAllInOrder((short) 1, (short) 3, (short) 4).isInstanceOf(short[].class);
 
         try {
             Raw.shortArrayAssertion().containsAllInOrder((short) 1);
@@ -579,6 +588,7 @@ public final class ShortArrayAssertionTest extends AssertionTest {
     public void containsAllInOrderArrayIntTest() {
         initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).containsAllInOrder(1, 2);
         initialize(Raw.shortArrayAssertion(), new short[]{1, 2, 3, 4}).containsAllInOrder(1, 3, 4);
+        initialize(Raw.shortArrayAssertion(), new short[]{1, 2, 3, 4}).isNotNull().containsAllInOrder(1, 3, 4).isInstanceOf(short[].class);
 
         try {
             Raw.shortArrayAssertion().containsAllInOrder(1);
@@ -673,6 +683,7 @@ public final class ShortArrayAssertionTest extends AssertionTest {
     public void containsAllInOrderIterableTest() {
         initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).containsAllInOrder(DataHelper.createIterable((short) 1, (short) 2));
         initialize(Raw.shortArrayAssertion(), new short[]{1, 2, 3, 4}).containsAllInOrder(DataHelper.createIterable((short) 1, (short) 3, (short) 4));
+        initialize(Raw.shortArrayAssertion(), new short[]{1, 2, 3, 4}).isNotNull().containsAllInOrder(DataHelper.createIterable((short) 1, (short) 3, (short) 4)).isInstanceOf(short[].class);
 
         try {
             Raw.shortArrayAssertion().containsAllInOrder(DataHelper.<Short>createIterable());
@@ -757,6 +768,7 @@ public final class ShortArrayAssertionTest extends AssertionTest {
         initialize(Raw.shortArrayAssertion(), new short[]{1, 2, 3, 4}).containsExactly((short) 1, (short) 2, (short) 3, (short) 4);
         initialize(Raw.shortArrayAssertion(), new short[]{1, 2, 3, 4}).containsExactly((short) 1, (short) 3, (short) 2, (short) 4);
         initialize(Raw.shortArrayAssertion(), new short[]{}).containsExactly();
+        initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).isNotNull().containsExactly((short) 1, (short) 2).isInstanceOf(short[].class);
 
         try {
             Raw.shortArrayAssertion().containsExactly((short) 1);
@@ -841,6 +853,7 @@ public final class ShortArrayAssertionTest extends AssertionTest {
         initialize(Raw.shortArrayAssertion(), new short[]{1, 2, 3, 4}).containsExactly(1, 2, 3, 4);
         initialize(Raw.shortArrayAssertion(), new short[]{1, 2, 3, 4}).containsExactly(1, 3, 2, 4);
         initialize(Raw.shortArrayAssertion(), new short[]{}).containsExactly(new int[]{});
+        initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).isNotNull().containsExactly(1, 2).isInstanceOf(short[].class);
 
         try {
             Raw.shortArrayAssertion().containsExactly(1);
@@ -937,6 +950,7 @@ public final class ShortArrayAssertionTest extends AssertionTest {
         initialize(Raw.shortArrayAssertion(), new short[]{1, 2, 3, 4}).containsExactly(DataHelper.createIterable((short) 1, (short) 2, (short) 3, (short) 4));
         initialize(Raw.shortArrayAssertion(), new short[]{1, 2, 3, 4}).containsExactly(DataHelper.createIterable((short) 1, (short) 3, (short) 2, (short) 4));
         initialize(Raw.shortArrayAssertion(), new short[]{}).containsExactly(DataHelper.<Short>createIterable());
+        initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).isNotNull().containsExactly(DataHelper.createIterable((short) 1, (short) 2)).isInstanceOf(short[].class);
 
         try {
             Raw.shortArrayAssertion().containsExactly(DataHelper.<Short>createIterable());
@@ -1020,6 +1034,7 @@ public final class ShortArrayAssertionTest extends AssertionTest {
         initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).containsExactlyInOrder((short) 1, (short) 2);
         initialize(Raw.shortArrayAssertion(), new short[]{1, 2, 3, 4}).containsExactlyInOrder((short) 1, (short) 2, (short) 3, (short) 4);
         initialize(Raw.shortArrayAssertion(), new short[]{}).containsExactlyInOrder();
+        initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).isNotNull().containsExactlyInOrder((short) 1, (short) 2).isInstanceOf(short[].class);
 
         try {
             Raw.shortArrayAssertion().containsExactlyInOrder((short) 1);
@@ -1109,6 +1124,7 @@ public final class ShortArrayAssertionTest extends AssertionTest {
         initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).containsExactlyInOrder(1, 2);
         initialize(Raw.shortArrayAssertion(), new short[]{1, 2, 3, 4}).containsExactlyInOrder(1, 2, 3, 4);
         initialize(Raw.shortArrayAssertion(), new short[]{}).containsExactlyInOrder(new int[]{});
+        initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).isNotNull().containsExactlyInOrder(1, 2).isInstanceOf(short[].class);
 
         try {
             Raw.shortArrayAssertion().containsExactlyInOrder(1);
@@ -1210,6 +1226,7 @@ public final class ShortArrayAssertionTest extends AssertionTest {
         initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).containsExactlyInOrder(DataHelper.createIterable((short) 1, (short) 2));
         initialize(Raw.shortArrayAssertion(), new short[]{1, 2, 3, 4}).containsExactlyInOrder(DataHelper.createIterable((short) 1, (short) 2, (short) 3, (short) 4));
         initialize(Raw.shortArrayAssertion(), new short[]{}).containsExactlyInOrder(DataHelper.<Short>createIterable());
+        initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).isNotNull().containsExactlyInOrder(DataHelper.createIterable((short) 1, (short) 2)).isInstanceOf(short[].class);
 
         try {
             Raw.shortArrayAssertion().containsExactlyInOrder(DataHelper.<Short>createIterable());
@@ -1300,6 +1317,7 @@ public final class ShortArrayAssertionTest extends AssertionTest {
         initialize(Raw.shortArrayAssertion(), new short[]{1, 2, 3, 4}).containsAny((short) 2, (short) 3);
         initialize(Raw.shortArrayAssertion(), new short[]{1, 2, 3, 4}).containsAny((short) 4, (short) 1);
         initialize(Raw.shortArrayAssertion(), new short[]{1, 2, 3, 4}).containsAny((short) 5, (short) 3);
+        initialize(Raw.shortArrayAssertion(), new short[]{1, 2, 3, 4}).isNotNull().containsAny((short) 5, (short) 3).isInstanceOf(short[].class);
 
         try {
             Raw.shortArrayAssertion().containsAny((short) 1);
@@ -1378,6 +1396,7 @@ public final class ShortArrayAssertionTest extends AssertionTest {
         initialize(Raw.shortArrayAssertion(), new short[]{1, 2, 3, 4}).containsAny(2, 3);
         initialize(Raw.shortArrayAssertion(), new short[]{1, 2, 3, 4}).containsAny(4, 1);
         initialize(Raw.shortArrayAssertion(), new short[]{1, 2, 3, 4}).containsAny(5, 3);
+        initialize(Raw.shortArrayAssertion(), new short[]{1, 2, 3, 4}).isNotNull().containsAny(5, 3).isInstanceOf(short[].class);
 
         try {
             Raw.shortArrayAssertion().containsAny(1);
@@ -1468,6 +1487,7 @@ public final class ShortArrayAssertionTest extends AssertionTest {
         initialize(Raw.shortArrayAssertion(), new short[]{1, 2, 3, 4}).containsAny(DataHelper.createIterable((short) 2, (short) 3));
         initialize(Raw.shortArrayAssertion(), new short[]{1, 2, 3, 4}).containsAny(DataHelper.createIterable((short) 4, (short) 1));
         initialize(Raw.shortArrayAssertion(), new short[]{1, 2, 3, 4}).containsAny(DataHelper.createIterable((short) 5, (short) 3));
+        initialize(Raw.shortArrayAssertion(), new short[]{1, 2, 3, 4}).isNotNull().containsAny(DataHelper.createIterable((short) 5, (short) 3)).isInstanceOf(short[].class);
 
         try {
             Raw.shortArrayAssertion().containsAny(DataHelper.<Short>createIterable());
@@ -1544,6 +1564,7 @@ public final class ShortArrayAssertionTest extends AssertionTest {
     public void containsNoneArrayShortTest() {
         initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).containsNone((short) 3, (short) 7);
         initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).containsNone((short) 3, (short) 4, (short) 5);
+        initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).isNotNull().containsNone((short) 3, (short) 4, (short) 5).isInstanceOf(short[].class);
 
         try {
             Raw.shortArrayAssertion().containsNone((short) 1);
@@ -1621,6 +1642,7 @@ public final class ShortArrayAssertionTest extends AssertionTest {
         initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).containsNone(3, 7);
         initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).containsNone(3, 4, 5);
         initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).containsNone(100000, 100001);
+        initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).isNotNull().containsNone(100000, 100001).isInstanceOf(short[].class);
 
         try {
             Raw.shortArrayAssertion().containsNone(1);
@@ -1697,6 +1719,7 @@ public final class ShortArrayAssertionTest extends AssertionTest {
     public void containsNoneIterableTest() {
         initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).containsNone(DataHelper.createIterable((short) 3, (short) 7));
         initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).containsNone(DataHelper.createIterable((short) 3, (short) 4, (short) 5));
+        initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).isNotNull().containsNone(DataHelper.createIterable((short) 3, (short) 4, (short) 5)).isInstanceOf(short[].class);
 
         try {
             Raw.shortArrayAssertion().containsNone(DataHelper.<Short>createIterable());
@@ -1779,6 +1802,8 @@ public final class ShortArrayAssertionTest extends AssertionTest {
         initialize(Raw.shortArrayAssertion(), new short[]{1, 2, 3, 4}).toLength().isGreaterThan(3);
         initialize(Raw.shortArrayAssertion(), new short[]{1, 2, 3, 4}).toLength().isLessThan(5);
 
+        initialize(Raw.shortArrayAssertion(), new short[]{1, 2, 3, 4}).isNotNull().toLength().isEqualTo(4);
+
         try {
             Raw.shortArrayAssertion().toLength();
             Assertions.fail("ShortArrayAssertion test fail");
@@ -1835,6 +1860,8 @@ public final class ShortArrayAssertionTest extends AssertionTest {
         initialize(Raw.shortArrayAssertion(), new short[]{1, 2, 3, 4}).toLength(Matchers.equalTo(4));
         initialize(Raw.shortArrayAssertion(), new short[]{1, 2, 3, 4}).toLength(Matchers.greaterThan(3));
         initialize(Raw.shortArrayAssertion(), new short[]{1, 2, 3, 4}).toLength(Matchers.lessThan(5));
+
+        initialize(Raw.shortArrayAssertion(), new short[]{1, 2, 3, 4}).isNotNull().toLength(Matchers.equalTo(4)).isInstanceOf(short[].class);
 
         try {
             Raw.shortArrayAssertion().toLength(Matchers.equalTo(0));
@@ -1899,6 +1926,7 @@ public final class ShortArrayAssertionTest extends AssertionTest {
     public void hasLengthTest() {
         initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).hasLength(2);
         initialize(Raw.shortArrayAssertion(), new short[]{1, 2, 3, 4}).hasLength(4);
+        initialize(Raw.shortArrayAssertion(), new short[]{1, 2, 3, 4}).isNotNull().hasLength(4).isInstanceOf(short[].class);
 
         try {
             Raw.shortArrayAssertion().hasLength(0);
@@ -1940,6 +1968,7 @@ public final class ShortArrayAssertionTest extends AssertionTest {
         initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).toHexString().isEqualTo("00010002");
         initialize(Raw.shortArrayAssertion(), new short[]{15, -3, 7}).toHexString().isEqualTo("000ffffd0007");
         initialize(Raw.shortArrayAssertion(), new short[]{99, 5, 0, -21}).toHexString().isEqualTo("006300050000ffeb");
+        initialize(Raw.shortArrayAssertion(), new short[]{99, 5, 0, -21}).isNotNull().toHexString().isEqualTo("006300050000ffeb");
 
         try {
             Raw.shortArrayAssertion().toHexString();
@@ -2007,6 +2036,7 @@ public final class ShortArrayAssertionTest extends AssertionTest {
         initialize(Raw.shortArrayAssertion(), new short[]{99, 5, 0, -21}).toHexString(3, 3).isEqualTo("");
         initialize(Raw.shortArrayAssertion(), new short[]{99, 5, 0, -21}).toHexString(3, 4).isEqualTo("ffeb");
         initialize(Raw.shortArrayAssertion(), new short[]{99, 5, 0, -21}).toHexString(4, 4).isEqualTo("");
+        initialize(Raw.shortArrayAssertion(), new short[]{99, 5, 0, -21}).isNotNull().toHexString(4, 4).isEqualTo("");
 
         try {
             Raw.shortArrayAssertion().toHexString(0, 0);
@@ -2132,6 +2162,7 @@ public final class ShortArrayAssertionTest extends AssertionTest {
         initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).toHexString(Matchers.is(Matchers.equalTo("00010002")));
         initialize(Raw.shortArrayAssertion(), new short[]{15, -3, 7}).toHexString(Matchers.is(Matchers.equalTo("000ffffd0007")));
         initialize(Raw.shortArrayAssertion(), new short[]{99, 5, 0, -21}).toHexString(Matchers.is(Matchers.equalTo("006300050000ffeb")));
+        initialize(Raw.shortArrayAssertion(), new short[]{99, 5, 0, -21}).isNotNull().toHexString(Matchers.is(Matchers.equalTo("006300050000ffeb"))).isInstanceOf(short[].class);
 
         try {
             Raw.shortArrayAssertion().toHexString(Matchers.equalTo(""));
@@ -2211,6 +2242,7 @@ public final class ShortArrayAssertionTest extends AssertionTest {
         initialize(Raw.shortArrayAssertion(), new short[]{99, 5, 0, -21}).toHexString(3, 3, Matchers.is(Matchers.equalTo("")));
         initialize(Raw.shortArrayAssertion(), new short[]{99, 5, 0, -21}).toHexString(3, 4, Matchers.is(Matchers.equalTo("ffeb")));
         initialize(Raw.shortArrayAssertion(), new short[]{99, 5, 0, -21}).toHexString(4, 4, Matchers.is(Matchers.equalTo("")));
+        initialize(Raw.shortArrayAssertion(), new short[]{99, 5, 0, -21}).isNotNull().toHexString(4, 4, Matchers.is(Matchers.equalTo(""))).isInstanceOf(short[].class);
 
         try {
             Raw.shortArrayAssertion().toHexString(0, 0, Matchers.equalTo("00000000"));
@@ -2348,6 +2380,7 @@ public final class ShortArrayAssertionTest extends AssertionTest {
         initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).hasHexString("00010002");
         initialize(Raw.shortArrayAssertion(), new short[]{15, -3, 7}).hasHexString("000ffffd0007");
         initialize(Raw.shortArrayAssertion(), new short[]{99, 5, 0, -21}).hasHexString("006300050000ffeb");
+        initialize(Raw.shortArrayAssertion(), new short[]{99, 5, 0, -21}).isNotNull().hasHexString("006300050000ffeb").isInstanceOf(short[].class);
 
         try {
             Raw.shortArrayAssertion().hasHexString("");
@@ -2427,6 +2460,7 @@ public final class ShortArrayAssertionTest extends AssertionTest {
         initialize(Raw.shortArrayAssertion(), new short[]{99, 5, 0, -21}).hasHexString(3, 3, "");
         initialize(Raw.shortArrayAssertion(), new short[]{99, 5, 0, -21}).hasHexString(3, 4, "ffeb");
         initialize(Raw.shortArrayAssertion(), new short[]{99, 5, 0, -21}).hasHexString(4, 4, "");
+        initialize(Raw.shortArrayAssertion(), new short[]{99, 5, 0, -21}).isNotNull().hasHexString(4, 4, "").isInstanceOf(short[].class);
 
         try {
             Raw.shortArrayAssertion().hasHexString(0, 0, "");

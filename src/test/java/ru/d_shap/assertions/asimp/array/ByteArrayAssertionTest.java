@@ -68,6 +68,7 @@ public final class ByteArrayAssertionTest extends AssertionTest {
     @Test
     public void isEmptyTest() {
         initialize(Raw.byteArrayAssertion(), new byte[]{}).isEmpty();
+        initialize(Raw.byteArrayAssertion(), new byte[]{}).isNotNull().isEmpty().isInstanceOf(byte[].class);
 
         try {
             Raw.byteArrayAssertion().isEmpty();
@@ -108,6 +109,7 @@ public final class ByteArrayAssertionTest extends AssertionTest {
     public void isNullOrEmptyTest() {
         initialize(Raw.byteArrayAssertion(), null).isNullOrEmpty();
         initialize(Raw.byteArrayAssertion(), new byte[]{}).isNullOrEmpty();
+        initialize(Raw.byteArrayAssertion(), new byte[]{}).isNotNull().isNullOrEmpty().isInstanceOf(byte[].class);
 
         try {
             Raw.byteArrayAssertion().isNullOrEmpty();
@@ -135,6 +137,7 @@ public final class ByteArrayAssertionTest extends AssertionTest {
     @Test
     public void isNotEmptyTest() {
         initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}).isNotEmpty();
+        initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}).isNotNull().isNotEmpty().isInstanceOf(byte[].class);
 
         try {
             Raw.byteArrayAssertion().isNotEmpty();
@@ -175,6 +178,7 @@ public final class ByteArrayAssertionTest extends AssertionTest {
     public void containsTest() {
         initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}).contains(1);
         initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}).contains(2);
+        initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}).isNotNull().contains(2).isInstanceOf(byte[].class);
 
         try {
             Raw.byteArrayAssertion().contains(1);
@@ -214,6 +218,7 @@ public final class ByteArrayAssertionTest extends AssertionTest {
     @Test
     public void doesNotContainTest() {
         initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}).doesNotContain(3);
+        initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}).isNotNull().doesNotContain(3).isInstanceOf(byte[].class);
 
         try {
             Raw.byteArrayAssertion().doesNotContain(1);
@@ -255,6 +260,7 @@ public final class ByteArrayAssertionTest extends AssertionTest {
         initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}).containsAll((byte) 1, (byte) 2);
         initialize(Raw.byteArrayAssertion(), new byte[]{1, 2, 3, 4}).containsAll((byte) 1, (byte) 3);
         initialize(Raw.byteArrayAssertion(), new byte[]{1, 2, 3, 4}).containsAll((byte) 4, (byte) 2);
+        initialize(Raw.byteArrayAssertion(), new byte[]{1, 2, 3, 4}).isNotNull().containsAll((byte) 4, (byte) 2).isInstanceOf(byte[].class);
 
         try {
             Raw.byteArrayAssertion().containsAll((byte) 1);
@@ -332,6 +338,7 @@ public final class ByteArrayAssertionTest extends AssertionTest {
         initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}).containsAll(1, 2);
         initialize(Raw.byteArrayAssertion(), new byte[]{1, 2, 3, 4}).containsAll(1, 3);
         initialize(Raw.byteArrayAssertion(), new byte[]{1, 2, 3, 4}).containsAll(4, 2);
+        initialize(Raw.byteArrayAssertion(), new byte[]{1, 2, 3, 4}).isNotNull().containsAll(4, 2).isInstanceOf(byte[].class);
 
         try {
             Raw.byteArrayAssertion().containsAll(1);
@@ -421,6 +428,7 @@ public final class ByteArrayAssertionTest extends AssertionTest {
         initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}).containsAll(DataHelper.createIterable((byte) 1, (byte) 2));
         initialize(Raw.byteArrayAssertion(), new byte[]{1, 2, 3, 4}).containsAll(DataHelper.createIterable((byte) 1, (byte) 3));
         initialize(Raw.byteArrayAssertion(), new byte[]{1, 2, 3, 4}).containsAll(DataHelper.createIterable((byte) 4, (byte) 2));
+        initialize(Raw.byteArrayAssertion(), new byte[]{1, 2, 3, 4}).isNotNull().containsAll(DataHelper.createIterable((byte) 4, (byte) 2)).isInstanceOf(byte[].class);
 
         try {
             Raw.byteArrayAssertion().containsAll(DataHelper.<Byte>createIterable());
@@ -497,6 +505,7 @@ public final class ByteArrayAssertionTest extends AssertionTest {
     public void containsAllInOrderArrayByteTest() {
         initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}).containsAllInOrder((byte) 1, (byte) 2);
         initialize(Raw.byteArrayAssertion(), new byte[]{1, 2, 3, 4}).containsAllInOrder((byte) 1, (byte) 3, (byte) 4);
+        initialize(Raw.byteArrayAssertion(), new byte[]{1, 2, 3, 4}).isNotNull().containsAllInOrder((byte) 1, (byte) 3, (byte) 4).isInstanceOf(byte[].class);
 
         try {
             Raw.byteArrayAssertion().containsAllInOrder((byte) 1);
@@ -579,6 +588,7 @@ public final class ByteArrayAssertionTest extends AssertionTest {
     public void containsAllInOrderArrayIntTest() {
         initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}).containsAllInOrder(1, 2);
         initialize(Raw.byteArrayAssertion(), new byte[]{1, 2, 3, 4}).containsAllInOrder(1, 3, 4);
+        initialize(Raw.byteArrayAssertion(), new byte[]{1, 2, 3, 4}).isNotNull().containsAllInOrder(1, 3, 4).isInstanceOf(byte[].class);
 
         try {
             Raw.byteArrayAssertion().containsAllInOrder(1);
@@ -673,6 +683,7 @@ public final class ByteArrayAssertionTest extends AssertionTest {
     public void containsAllInOrderIterableTest() {
         initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}).containsAllInOrder(DataHelper.createIterable((byte) 1, (byte) 2));
         initialize(Raw.byteArrayAssertion(), new byte[]{1, 2, 3, 4}).containsAllInOrder(DataHelper.createIterable((byte) 1, (byte) 3, (byte) 4));
+        initialize(Raw.byteArrayAssertion(), new byte[]{1, 2, 3, 4}).isNotNull().containsAllInOrder(DataHelper.createIterable((byte) 1, (byte) 3, (byte) 4)).isInstanceOf(byte[].class);
 
         try {
             Raw.byteArrayAssertion().containsAllInOrder(DataHelper.<Byte>createIterable());
@@ -757,6 +768,7 @@ public final class ByteArrayAssertionTest extends AssertionTest {
         initialize(Raw.byteArrayAssertion(), new byte[]{1, 2, 3, 4}).containsExactly((byte) 1, (byte) 2, (byte) 3, (byte) 4);
         initialize(Raw.byteArrayAssertion(), new byte[]{1, 2, 3, 4}).containsExactly((byte) 1, (byte) 3, (byte) 2, (byte) 4);
         initialize(Raw.byteArrayAssertion(), new byte[]{}).containsExactly();
+        initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}).isNotNull().containsExactly((byte) 1, (byte) 2).isInstanceOf(byte[].class);
 
         try {
             Raw.byteArrayAssertion().containsExactly((byte) 1);
@@ -841,6 +853,7 @@ public final class ByteArrayAssertionTest extends AssertionTest {
         initialize(Raw.byteArrayAssertion(), new byte[]{1, 2, 3, 4}).containsExactly(1, 2, 3, 4);
         initialize(Raw.byteArrayAssertion(), new byte[]{1, 2, 3, 4}).containsExactly(1, 3, 2, 4);
         initialize(Raw.byteArrayAssertion(), new byte[]{}).containsExactly(new int[]{});
+        initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}).isNotNull().containsExactly(1, 2).isInstanceOf(byte[].class);
 
         try {
             Raw.byteArrayAssertion().containsExactly(1);
@@ -937,6 +950,7 @@ public final class ByteArrayAssertionTest extends AssertionTest {
         initialize(Raw.byteArrayAssertion(), new byte[]{1, 2, 3, 4}).containsExactly(DataHelper.createIterable((byte) 1, (byte) 2, (byte) 3, (byte) 4));
         initialize(Raw.byteArrayAssertion(), new byte[]{1, 2, 3, 4}).containsExactly(DataHelper.createIterable((byte) 1, (byte) 3, (byte) 2, (byte) 4));
         initialize(Raw.byteArrayAssertion(), new byte[]{}).containsExactly(DataHelper.<Byte>createIterable());
+        initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}).isNotNull().containsExactly(DataHelper.createIterable((byte) 1, (byte) 2)).isInstanceOf(byte[].class);
 
         try {
             Raw.byteArrayAssertion().containsExactly(DataHelper.<Byte>createIterable());
@@ -1020,6 +1034,7 @@ public final class ByteArrayAssertionTest extends AssertionTest {
         initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}).containsExactlyInOrder((byte) 1, (byte) 2);
         initialize(Raw.byteArrayAssertion(), new byte[]{1, 2, 3, 4}).containsExactlyInOrder((byte) 1, (byte) 2, (byte) 3, (byte) 4);
         initialize(Raw.byteArrayAssertion(), new byte[]{}).containsExactlyInOrder();
+        initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}).isNotNull().containsExactlyInOrder((byte) 1, (byte) 2).isInstanceOf(byte[].class);
 
         try {
             Raw.byteArrayAssertion().containsExactlyInOrder((byte) 1);
@@ -1109,6 +1124,7 @@ public final class ByteArrayAssertionTest extends AssertionTest {
         initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}).containsExactlyInOrder(1, 2);
         initialize(Raw.byteArrayAssertion(), new byte[]{1, 2, 3, 4}).containsExactlyInOrder(1, 2, 3, 4);
         initialize(Raw.byteArrayAssertion(), new byte[]{}).containsExactlyInOrder(new int[]{});
+        initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}).isNotNull().containsExactlyInOrder(1, 2).isInstanceOf(byte[].class);
 
         try {
             Raw.byteArrayAssertion().containsExactlyInOrder(1);
@@ -1210,6 +1226,7 @@ public final class ByteArrayAssertionTest extends AssertionTest {
         initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}).containsExactlyInOrder(DataHelper.createIterable((byte) 1, (byte) 2));
         initialize(Raw.byteArrayAssertion(), new byte[]{1, 2, 3, 4}).containsExactlyInOrder(DataHelper.createIterable((byte) 1, (byte) 2, (byte) 3, (byte) 4));
         initialize(Raw.byteArrayAssertion(), new byte[]{}).containsExactlyInOrder(DataHelper.<Byte>createIterable());
+        initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}).isNotNull().containsExactlyInOrder(DataHelper.createIterable((byte) 1, (byte) 2)).isInstanceOf(byte[].class);
 
         try {
             Raw.byteArrayAssertion().containsExactlyInOrder(DataHelper.<Byte>createIterable());
@@ -1300,6 +1317,7 @@ public final class ByteArrayAssertionTest extends AssertionTest {
         initialize(Raw.byteArrayAssertion(), new byte[]{1, 2, 3, 4}).containsAny((byte) 2, (byte) 1);
         initialize(Raw.byteArrayAssertion(), new byte[]{1, 2, 3, 4}).containsAny((byte) 4, (byte) 2);
         initialize(Raw.byteArrayAssertion(), new byte[]{1, 2, 3, 4}).containsAny((byte) 5, (byte) 3);
+        initialize(Raw.byteArrayAssertion(), new byte[]{1, 2, 3, 4}).isNotNull().containsAny((byte) 5, (byte) 3).isInstanceOf(byte[].class);
 
         try {
             Raw.byteArrayAssertion().containsAny((byte) 1);
@@ -1378,6 +1396,7 @@ public final class ByteArrayAssertionTest extends AssertionTest {
         initialize(Raw.byteArrayAssertion(), new byte[]{1, 2, 3, 4}).containsAny(2, 1);
         initialize(Raw.byteArrayAssertion(), new byte[]{1, 2, 3, 4}).containsAny(4, 2);
         initialize(Raw.byteArrayAssertion(), new byte[]{1, 2, 3, 4}).containsAny(5, 3);
+        initialize(Raw.byteArrayAssertion(), new byte[]{1, 2, 3, 4}).isNotNull().containsAny(5, 3).isInstanceOf(byte[].class);
 
         try {
             Raw.byteArrayAssertion().containsAny(1);
@@ -1468,6 +1487,7 @@ public final class ByteArrayAssertionTest extends AssertionTest {
         initialize(Raw.byteArrayAssertion(), new byte[]{1, 2, 3, 4}).containsAny(DataHelper.createIterable((byte) 2, (byte) 1));
         initialize(Raw.byteArrayAssertion(), new byte[]{1, 2, 3, 4}).containsAny(DataHelper.createIterable((byte) 4, (byte) 2));
         initialize(Raw.byteArrayAssertion(), new byte[]{1, 2, 3, 4}).containsAny(DataHelper.createIterable((byte) 5, (byte) 3));
+        initialize(Raw.byteArrayAssertion(), new byte[]{1, 2, 3, 4}).isNotNull().containsAny(DataHelper.createIterable((byte) 5, (byte) 3)).isInstanceOf(byte[].class);
 
         try {
             Raw.byteArrayAssertion().containsAny(DataHelper.<Byte>createIterable());
@@ -1544,6 +1564,7 @@ public final class ByteArrayAssertionTest extends AssertionTest {
     public void containsNoneArrayByteTest() {
         initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}).containsNone((byte) 3, (byte) 5);
         initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}).containsNone((byte) 3, (byte) 4, (byte) 5);
+        initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}).isNotNull().containsNone((byte) 3, (byte) 4, (byte) 5).isInstanceOf(byte[].class);
 
         try {
             Raw.byteArrayAssertion().containsNone((byte) 1);
@@ -1621,6 +1642,7 @@ public final class ByteArrayAssertionTest extends AssertionTest {
         initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}).containsNone(3, 5);
         initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}).containsNone(3, 4, 5);
         initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}).containsNone(100000, 100001);
+        initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}).isNotNull().containsNone(100000, 100001).isInstanceOf(byte[].class);
 
         try {
             Raw.byteArrayAssertion().containsNone(1);
@@ -1697,6 +1719,7 @@ public final class ByteArrayAssertionTest extends AssertionTest {
     public void containsNoneIterableTest() {
         initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}).containsNone(DataHelper.createIterable((byte) 3, (byte) 5));
         initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}).containsNone(DataHelper.createIterable((byte) 3, (byte) 4, (byte) 5));
+        initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}).isNotNull().containsNone(DataHelper.createIterable((byte) 3, (byte) 4, (byte) 5)).isInstanceOf(byte[].class);
 
         try {
             Raw.byteArrayAssertion().containsNone(DataHelper.<Byte>createIterable());
@@ -1779,6 +1802,8 @@ public final class ByteArrayAssertionTest extends AssertionTest {
         initialize(Raw.byteArrayAssertion(), new byte[]{1, 2, 3, 4}).toLength().isGreaterThan(3);
         initialize(Raw.byteArrayAssertion(), new byte[]{1, 2, 3, 4}).toLength().isLessThan(5);
 
+        initialize(Raw.byteArrayAssertion(), new byte[]{1, 2, 3, 4}).isNotNull().toLength().isEqualTo(4);
+
         try {
             Raw.byteArrayAssertion().toLength();
             Assertions.fail("ByteArrayAssertion test fail");
@@ -1835,6 +1860,8 @@ public final class ByteArrayAssertionTest extends AssertionTest {
         initialize(Raw.byteArrayAssertion(), new byte[]{1, 2, 3, 4}).toLength(Matchers.equalTo(4));
         initialize(Raw.byteArrayAssertion(), new byte[]{1, 2, 3, 4}).toLength(Matchers.greaterThan(3));
         initialize(Raw.byteArrayAssertion(), new byte[]{1, 2, 3, 4}).toLength(Matchers.lessThan(5));
+
+        initialize(Raw.byteArrayAssertion(), new byte[]{1, 2, 3, 4}).isNotNull().toLength(Matchers.equalTo(4)).isInstanceOf(byte[].class);
 
         try {
             Raw.byteArrayAssertion().toLength(Matchers.equalTo(0));
@@ -1899,6 +1926,7 @@ public final class ByteArrayAssertionTest extends AssertionTest {
     public void hasLengthTest() {
         initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}).hasLength(2);
         initialize(Raw.byteArrayAssertion(), new byte[]{1, 2, 3, 4}).hasLength(4);
+        initialize(Raw.byteArrayAssertion(), new byte[]{1, 2, 3, 4}).isNotNull().hasLength(4).isInstanceOf(byte[].class);
 
         try {
             Raw.byteArrayAssertion().hasLength(0);
@@ -2007,6 +2035,7 @@ public final class ByteArrayAssertionTest extends AssertionTest {
         initialize(Raw.byteArrayAssertion(), new byte[]{99, 5, 0, -21}).toHexString(3, 3).isEqualTo("");
         initialize(Raw.byteArrayAssertion(), new byte[]{99, 5, 0, -21}).toHexString(3, 4).isEqualTo("eb");
         initialize(Raw.byteArrayAssertion(), new byte[]{99, 5, 0, -21}).toHexString(4, 4).isEqualTo("");
+        initialize(Raw.byteArrayAssertion(), new byte[]{99, 5, 0, -21}).isNotNull().toHexString(4, 4).isEqualTo("");
 
         try {
             Raw.byteArrayAssertion().toHexString(0, 0);
@@ -2132,6 +2161,7 @@ public final class ByteArrayAssertionTest extends AssertionTest {
         initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}).toHexString(Matchers.is(Matchers.equalTo("0102")));
         initialize(Raw.byteArrayAssertion(), new byte[]{15, -3, 7}).toHexString(Matchers.is(Matchers.equalTo("0ffd07")));
         initialize(Raw.byteArrayAssertion(), new byte[]{99, 5, 0, -21}).toHexString(Matchers.is(Matchers.equalTo("630500eb")));
+        initialize(Raw.byteArrayAssertion(), new byte[]{99, 5, 0, -21}).isNotNull().toHexString(Matchers.is(Matchers.equalTo("630500eb"))).isInstanceOf(byte[].class);
 
         try {
             Raw.byteArrayAssertion().toHexString(Matchers.equalTo(""));
@@ -2211,6 +2241,7 @@ public final class ByteArrayAssertionTest extends AssertionTest {
         initialize(Raw.byteArrayAssertion(), new byte[]{99, 5, 0, -21}).toHexString(3, 3, Matchers.is(Matchers.equalTo("")));
         initialize(Raw.byteArrayAssertion(), new byte[]{99, 5, 0, -21}).toHexString(3, 4, Matchers.is(Matchers.equalTo("eb")));
         initialize(Raw.byteArrayAssertion(), new byte[]{99, 5, 0, -21}).toHexString(4, 4, Matchers.is(Matchers.equalTo("")));
+        initialize(Raw.byteArrayAssertion(), new byte[]{99, 5, 0, -21}).isNotNull().toHexString(4, 4, Matchers.is(Matchers.equalTo(""))).isInstanceOf(byte[].class);
 
         try {
             Raw.byteArrayAssertion().toHexString(0, 0, Matchers.equalTo("00"));
@@ -2348,6 +2379,7 @@ public final class ByteArrayAssertionTest extends AssertionTest {
         initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}).hasHexString("0102");
         initialize(Raw.byteArrayAssertion(), new byte[]{15, -3, 7}).hasHexString("0ffd07");
         initialize(Raw.byteArrayAssertion(), new byte[]{99, 5, 0, -21}).hasHexString("630500eb");
+        initialize(Raw.byteArrayAssertion(), new byte[]{99, 5, 0, -21}).isNotNull().hasHexString("630500eb").isInstanceOf(byte[].class);
 
         try {
             Raw.byteArrayAssertion().hasHexString("");
@@ -2427,6 +2459,7 @@ public final class ByteArrayAssertionTest extends AssertionTest {
         initialize(Raw.byteArrayAssertion(), new byte[]{99, 5, 0, -21}).hasHexString(3, 3, "");
         initialize(Raw.byteArrayAssertion(), new byte[]{99, 5, 0, -21}).hasHexString(3, 4, "eb");
         initialize(Raw.byteArrayAssertion(), new byte[]{99, 5, 0, -21}).hasHexString(4, 4, "");
+        initialize(Raw.byteArrayAssertion(), new byte[]{99, 5, 0, -21}).isNotNull().hasHexString(4, 4, "").isInstanceOf(byte[].class);
 
         try {
             Raw.byteArrayAssertion().hasHexString(0, 0, "");
