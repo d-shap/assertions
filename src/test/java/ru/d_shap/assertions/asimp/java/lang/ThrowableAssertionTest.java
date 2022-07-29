@@ -74,6 +74,8 @@ public final class ThrowableAssertionTest extends AssertionTest {
         initialize(Raw.throwableAssertion(), new Exception("some exception value")).toMessage().isEqualTo("some exception value");
         initialize(Raw.throwableAssertion(), new Exception("some exception value")).toMessage().contains("exception");
 
+        initialize(Raw.throwableAssertion(), new Exception("value")).isNotNull().toMessage().isEqualTo("value");
+
         try {
             Raw.throwableAssertion().toMessage();
             Assertions.fail("ThrowableAssertion test fail");
@@ -128,6 +130,8 @@ public final class ThrowableAssertionTest extends AssertionTest {
 
         initialize(Raw.throwableAssertion(), new Exception("some exception value")).toMessage(Matchers.equalTo("some exception value"));
         initialize(Raw.throwableAssertion(), new Exception("some exception value")).toMessage(Matchers.containsString("exception"));
+
+        initialize(Raw.throwableAssertion(), new Exception("value")).isNotNull().toMessage(Matchers.is(Matchers.equalTo("value"))).isInstanceOf(Throwable.class);
 
         try {
             Raw.throwableAssertion().toMessage(Matchers.equalTo(""));
@@ -191,6 +195,7 @@ public final class ThrowableAssertionTest extends AssertionTest {
     @Test
     public void messageIsNullTest() {
         initialize(Raw.throwableAssertion(), new Exception()).messageIsNull();
+        initialize(Raw.throwableAssertion(), new Exception()).isNotNull().messageIsNull().isInstanceOf(Throwable.class);
 
         try {
             Raw.throwableAssertion().messageIsNull();
@@ -256,6 +261,7 @@ public final class ThrowableAssertionTest extends AssertionTest {
         initialize(Raw.throwableAssertion(), new Exception("")).messageIsNotNull();
         initialize(Raw.throwableAssertion(), new Exception(" ")).messageIsNotNull();
         initialize(Raw.throwableAssertion(), new Exception("value")).messageIsNotNull();
+        initialize(Raw.throwableAssertion(), new Exception("value")).isNotNull().messageIsNotNull().isInstanceOf(Throwable.class);
 
         try {
             Raw.throwableAssertion().messageIsNotNull();
@@ -295,6 +301,7 @@ public final class ThrowableAssertionTest extends AssertionTest {
     @Test
     public void messageIsEmptyTest() {
         initialize(Raw.throwableAssertion(), new Exception("")).messageIsEmpty();
+        initialize(Raw.throwableAssertion(), new Exception("")).isNotNull().messageIsEmpty().isInstanceOf(Throwable.class);
 
         try {
             Raw.throwableAssertion().messageIsEmpty();
@@ -359,6 +366,7 @@ public final class ThrowableAssertionTest extends AssertionTest {
     public void messageIsNullOrEmptyTest() {
         initialize(Raw.throwableAssertion(), new Exception()).messageIsNullOrEmpty();
         initialize(Raw.throwableAssertion(), new Exception("")).messageIsNullOrEmpty();
+        initialize(Raw.throwableAssertion(), new Exception("")).isNotNull().messageIsNullOrEmpty().isInstanceOf(Throwable.class);
 
         try {
             Raw.throwableAssertion().messageIsNullOrEmpty();
@@ -411,6 +419,7 @@ public final class ThrowableAssertionTest extends AssertionTest {
     public void messageIsNotEmptyTest() {
         initialize(Raw.throwableAssertion(), new Exception(" ")).messageIsNotEmpty();
         initialize(Raw.throwableAssertion(), new Exception("value")).messageIsNotEmpty();
+        initialize(Raw.throwableAssertion(), new Exception("value")).isNotNull().messageIsNotEmpty().isInstanceOf(Throwable.class);
 
         try {
             Raw.throwableAssertion().messageIsNotEmpty();
@@ -463,6 +472,7 @@ public final class ThrowableAssertionTest extends AssertionTest {
     public void messageIsBlankTest() {
         initialize(Raw.throwableAssertion(), new Exception("")).messageIsBlank();
         initialize(Raw.throwableAssertion(), new Exception(" ")).messageIsBlank();
+        initialize(Raw.throwableAssertion(), new Exception(" ")).isNotNull().messageIsBlank().isInstanceOf(Throwable.class);
 
         try {
             Raw.throwableAssertion().messageIsBlank();
@@ -516,6 +526,7 @@ public final class ThrowableAssertionTest extends AssertionTest {
         initialize(Raw.throwableAssertion(), new Exception()).messageIsNullOrBlank();
         initialize(Raw.throwableAssertion(), new Exception("")).messageIsNullOrBlank();
         initialize(Raw.throwableAssertion(), new Exception(" ")).messageIsNullOrBlank();
+        initialize(Raw.throwableAssertion(), new Exception(" ")).isNotNull().messageIsNullOrBlank().isInstanceOf(Throwable.class);
 
         try {
             Raw.throwableAssertion().messageIsNullOrBlank();
@@ -555,6 +566,7 @@ public final class ThrowableAssertionTest extends AssertionTest {
     @Test
     public void messageIsNotBlankTest() {
         initialize(Raw.throwableAssertion(), new Exception("value")).messageIsNotBlank();
+        initialize(Raw.throwableAssertion(), new Exception("value")).isNotNull().messageIsNotBlank().isInstanceOf(Throwable.class);
 
         try {
             Raw.throwableAssertion().messageIsNotBlank();
@@ -619,6 +631,7 @@ public final class ThrowableAssertionTest extends AssertionTest {
     public void hasMessageTest() {
         initialize(Raw.throwableAssertion(), new Exception("value")).hasMessage("value");
         initialize(Raw.throwableAssertion(), new Exception("some exception value")).hasMessage("some exception value");
+        initialize(Raw.throwableAssertion(), new Exception("some exception value")).isNotNull().hasMessage("some exception value").isInstanceOf(Throwable.class);
 
         try {
             Raw.throwableAssertion().hasMessage("value");
@@ -704,6 +717,7 @@ public final class ThrowableAssertionTest extends AssertionTest {
         initialize(Raw.throwableAssertion(), new Exception("value")).messageContains("va");
         initialize(Raw.throwableAssertion(), new Exception("value")).messageContains("lu");
         initialize(Raw.throwableAssertion(), new Exception("value")).messageContains("e");
+        initialize(Raw.throwableAssertion(), new Exception("value")).isNotNull().messageContains("e").isInstanceOf(Throwable.class);
 
         try {
             Raw.throwableAssertion().messageContains("value");
@@ -783,6 +797,7 @@ public final class ThrowableAssertionTest extends AssertionTest {
         initialize(Raw.throwableAssertion(), new Exception("value")).messageContainsIgnoreCase("lu");
         initialize(Raw.throwableAssertion(), new Exception("value")).messageContainsIgnoreCase("LU");
         initialize(Raw.throwableAssertion(), new Exception("value")).messageContainsIgnoreCase("e");
+        initialize(Raw.throwableAssertion(), new Exception("value")).isNotNull().messageContainsIgnoreCase("e").isInstanceOf(Throwable.class);
 
         try {
             Raw.throwableAssertion().messageContainsIgnoreCase("value");
@@ -849,6 +864,7 @@ public final class ThrowableAssertionTest extends AssertionTest {
         initialize(Raw.throwableAssertion(), new Exception("value")).messageMatches("va.*");
         initialize(Raw.throwableAssertion(), new Exception("some exception value")).messageMatches("some exception value");
         initialize(Raw.throwableAssertion(), new Exception("some exception value")).messageMatches("some\\s+\\w+\\s+\\w+\\s*");
+        initialize(Raw.throwableAssertion(), new Exception("value")).isNotNull().messageMatches("va.*").isInstanceOf(Throwable.class);
 
         try {
             Raw.throwableAssertion().messageMatches("value");
@@ -922,6 +938,8 @@ public final class ThrowableAssertionTest extends AssertionTest {
 
         initialize(Raw.throwableAssertion(), new Exception()).toCause().isNull();
 
+        initialize(Raw.throwableAssertion(), new Exception(new RuntimeException("value"))).isNotNull().toCause().isInstanceOf(RuntimeException.class);
+
         try {
             Raw.throwableAssertion().toCause();
             Assertions.fail("ThrowableAssertion test fail");
@@ -981,6 +999,8 @@ public final class ThrowableAssertionTest extends AssertionTest {
         initialize(Raw.throwableAssertion(), new Exception(new Error("value"))).toCause().toCause(Matchers.nullValue(Throwable.class));
 
         initialize(Raw.throwableAssertion(), new Exception()).toCause(Matchers.nullValue(Throwable.class));
+
+        initialize(Raw.throwableAssertion(), new Exception(new RuntimeException("value"))).isNotNull().toCause(Matchers.<Throwable>instanceOf(RuntimeException.class)).isInstanceOf(Throwable.class);
 
         try {
             Raw.throwableAssertion().toCause(Matchers.<Throwable>instanceOf(Throwable.class));
@@ -1044,6 +1064,7 @@ public final class ThrowableAssertionTest extends AssertionTest {
     @Test
     public void causeIsNullTest() {
         initialize(Raw.throwableAssertion(), new Exception()).causeIsNull();
+        initialize(Raw.throwableAssertion(), new Exception()).isNotNull().causeIsNull().isInstanceOf(Throwable.class);
 
         try {
             Raw.throwableAssertion().causeIsNull();
@@ -1084,6 +1105,7 @@ public final class ThrowableAssertionTest extends AssertionTest {
     public void causeIsNotNullTest() {
         initialize(Raw.throwableAssertion(), new Exception(new RuntimeException("value"))).causeIsNotNull();
         initialize(Raw.throwableAssertion(), new Exception(new Error("value"))).causeIsNotNull();
+        initialize(Raw.throwableAssertion(), new Exception(new Error("value"))).isNotNull().causeIsNotNull().isInstanceOf(Throwable.class);
 
         try {
             Raw.throwableAssertion().causeIsNotNull();
@@ -1128,6 +1150,8 @@ public final class ThrowableAssertionTest extends AssertionTest {
 
         initialize(Raw.throwableAssertion(), new Exception(new Error("value"))).hasCause(Error.class);
         initialize(Raw.throwableAssertion(), new Exception(new Error("value"))).hasCause(Throwable.class);
+
+        initialize(Raw.throwableAssertion(), new Exception(new Error("value"))).isNotNull().hasCause(Error.class).isInstanceOf(Throwable.class);
 
         try {
             Raw.throwableAssertion().hasCause(RuntimeException.class);
@@ -1199,6 +1223,7 @@ public final class ThrowableAssertionTest extends AssertionTest {
         initialize(Raw.throwableAssertion(), new Exception(new RuntimeException(new Error(new IOException("value"))))).hasCauses(Throwable.class, Throwable.class, Throwable.class);
         initialize(Raw.throwableAssertion(), new Exception(new RuntimeException(new Error(new IOException("value"))))).hasCauses(Throwable.class, Throwable.class);
         initialize(Raw.throwableAssertion(), new Exception(new RuntimeException(new Error(new IOException("value"))))).hasCauses(Throwable.class);
+        initialize(Raw.throwableAssertion(), new Exception(new RuntimeException(new Error(new IOException("value"))))).isNotNull().hasCauses(Throwable.class).isInstanceOf(Throwable.class);
 
         try {
             Raw.throwableAssertion().hasCauses(RuntimeException.class);
@@ -1322,6 +1347,7 @@ public final class ThrowableAssertionTest extends AssertionTest {
     @Test
     public void causeMessageIsNullTest() {
         initialize(Raw.throwableAssertion(), new Exception(new Error())).causeMessageIsNull();
+        initialize(Raw.throwableAssertion(), new Exception(new Error())).isNotNull().causeMessageIsNull().isInstanceOf(Throwable.class);
 
         try {
             Raw.throwableAssertion().causeMessageIsNull();
@@ -1374,6 +1400,7 @@ public final class ThrowableAssertionTest extends AssertionTest {
     public void causeMessageIsNotNullTest() {
         initialize(Raw.throwableAssertion(), new Exception(new RuntimeException("value"))).causeMessageIsNotNull();
         initialize(Raw.throwableAssertion(), new Exception(new Error("value"))).causeMessageIsNotNull();
+        initialize(Raw.throwableAssertion(), new Exception(new Error("value"))).isNotNull().causeMessageIsNotNull().isInstanceOf(Throwable.class);
 
         try {
             Raw.throwableAssertion().causeMessageIsNotNull();
@@ -1425,6 +1452,7 @@ public final class ThrowableAssertionTest extends AssertionTest {
     @Test
     public void causeMessageIsEmptyTest() {
         initialize(Raw.throwableAssertion(), new Exception(new RuntimeException(""))).causeMessageIsEmpty();
+        initialize(Raw.throwableAssertion(), new Exception(new RuntimeException(""))).isNotNull().causeMessageIsEmpty().isInstanceOf(Throwable.class);
 
         try {
             Raw.throwableAssertion().causeMessageIsEmpty();
@@ -1501,6 +1529,7 @@ public final class ThrowableAssertionTest extends AssertionTest {
     public void causeMessageIsNullOrEmptyTest() {
         initialize(Raw.throwableAssertion(), new Exception(new RuntimeException())).causeMessageIsNullOrEmpty();
         initialize(Raw.throwableAssertion(), new Exception(new RuntimeException(""))).causeMessageIsNullOrEmpty();
+        initialize(Raw.throwableAssertion(), new Exception(new RuntimeException(""))).isNotNull().causeMessageIsNullOrEmpty().isInstanceOf(Throwable.class);
 
         try {
             Raw.throwableAssertion().causeMessageIsNullOrEmpty();
@@ -1565,6 +1594,7 @@ public final class ThrowableAssertionTest extends AssertionTest {
     public void causeMessageIsNotEmptyTest() {
         initialize(Raw.throwableAssertion(), new Exception(new RuntimeException(" "))).causeMessageIsNotEmpty();
         initialize(Raw.throwableAssertion(), new Exception(new RuntimeException("value"))).causeMessageIsNotEmpty();
+        initialize(Raw.throwableAssertion(), new Exception(new RuntimeException("value"))).isNotNull().causeMessageIsNotEmpty().isInstanceOf(Throwable.class);
 
         try {
             Raw.throwableAssertion().causeMessageIsNotEmpty();
@@ -1629,6 +1659,7 @@ public final class ThrowableAssertionTest extends AssertionTest {
     public void causeMessageIsBlankTest() {
         initialize(Raw.throwableAssertion(), new Exception(new RuntimeException(""))).causeMessageIsBlank();
         initialize(Raw.throwableAssertion(), new Exception(new RuntimeException(" "))).causeMessageIsBlank();
+        initialize(Raw.throwableAssertion(), new Exception(new RuntimeException(" "))).isNotNull().causeMessageIsBlank().isInstanceOf(Throwable.class);
 
         try {
             Raw.throwableAssertion().causeMessageIsBlank();
@@ -1694,6 +1725,7 @@ public final class ThrowableAssertionTest extends AssertionTest {
         initialize(Raw.throwableAssertion(), new Exception(new RuntimeException())).causeMessageIsNullOrBlank();
         initialize(Raw.throwableAssertion(), new Exception(new RuntimeException(""))).causeMessageIsNullOrBlank();
         initialize(Raw.throwableAssertion(), new Exception(new RuntimeException(" "))).causeMessageIsNullOrBlank();
+        initialize(Raw.throwableAssertion(), new Exception(new RuntimeException(" "))).isNotNull().causeMessageIsNullOrBlank().isInstanceOf(Throwable.class);
 
         try {
             Raw.throwableAssertion().causeMessageIsNullOrBlank();
@@ -1745,6 +1777,7 @@ public final class ThrowableAssertionTest extends AssertionTest {
     @Test
     public void causeMessageIsNotBlankTest() {
         initialize(Raw.throwableAssertion(), new Exception(new RuntimeException("value"))).causeMessageIsNotBlank();
+        initialize(Raw.throwableAssertion(), new Exception(new RuntimeException("value"))).isNotNull().causeMessageIsNotBlank().isInstanceOf(Throwable.class);
 
         try {
             Raw.throwableAssertion().causeMessageIsNotBlank();
@@ -1821,6 +1854,7 @@ public final class ThrowableAssertionTest extends AssertionTest {
     public void hasCauseMessageTest() {
         initialize(Raw.throwableAssertion(), new Exception(new RuntimeException("value"))).hasCauseMessage("value");
         initialize(Raw.throwableAssertion(), new Exception(new RuntimeException("some exception value"))).hasCauseMessage("some exception value");
+        initialize(Raw.throwableAssertion(), new Exception(new RuntimeException("some exception value"))).isNotNull().hasCauseMessage("some exception value").isInstanceOf(Throwable.class);
 
         try {
             Raw.throwableAssertion().hasCauseMessage("value");
@@ -1887,6 +1921,7 @@ public final class ThrowableAssertionTest extends AssertionTest {
         initialize(Raw.throwableAssertion(), new Exception(new RuntimeException("value"))).causeMessageContains("va");
         initialize(Raw.throwableAssertion(), new Exception(new RuntimeException("value"))).causeMessageContains("lu");
         initialize(Raw.throwableAssertion(), new Exception(new RuntimeException("value"))).causeMessageContains("e");
+        initialize(Raw.throwableAssertion(), new Exception(new RuntimeException("value"))).isNotNull().causeMessageContains("e").isInstanceOf(Throwable.class);
 
         try {
             Raw.throwableAssertion().causeMessageContains("value");
@@ -1990,6 +2025,7 @@ public final class ThrowableAssertionTest extends AssertionTest {
         initialize(Raw.throwableAssertion(), new Exception(new RuntimeException("value"))).causeMessageContainsIgnoreCase("lu");
         initialize(Raw.throwableAssertion(), new Exception(new RuntimeException("value"))).causeMessageContainsIgnoreCase("LU");
         initialize(Raw.throwableAssertion(), new Exception(new RuntimeException("value"))).causeMessageContainsIgnoreCase("e");
+        initialize(Raw.throwableAssertion(), new Exception(new RuntimeException("value"))).isNotNull().causeMessageContainsIgnoreCase("e").isInstanceOf(Throwable.class);
 
         try {
             Raw.throwableAssertion().causeMessageContainsIgnoreCase("value");
@@ -2080,6 +2116,7 @@ public final class ThrowableAssertionTest extends AssertionTest {
         initialize(Raw.throwableAssertion(), new Exception(new RuntimeException("value"))).causeMessageMatches("va.*");
         initialize(Raw.throwableAssertion(), new Exception(new RuntimeException("some exception value"))).causeMessageMatches("some exception value");
         initialize(Raw.throwableAssertion(), new Exception(new RuntimeException("some exception value"))).causeMessageMatches("some\\s+\\w+\\s+\\w+\\s*");
+        initialize(Raw.throwableAssertion(), new Exception(new RuntimeException("some exception value"))).isNotNull().causeMessageMatches("some\\s+\\w+\\s+\\w+\\s*").isInstanceOf(Throwable.class);
 
         try {
             Raw.throwableAssertion().causeMessageMatches("value");

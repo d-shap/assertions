@@ -69,6 +69,7 @@ public final class EnumAssertionTest extends AssertionTest {
         initialize(Raw.enumAssertion(), Values.class).toValueCount().isEqualTo(3);
         initialize(Raw.enumAssertion(), Values.class).toValueCount().isGreaterThan(2);
         initialize(Raw.enumAssertion(), Values.class).toValueCount().isLessThan(4);
+        initialize(Raw.enumAssertion(), Values.class).isNotNull().toValueCount().isEqualTo(3);
 
         try {
             Raw.enumAssertion().toValueCount();
@@ -122,6 +123,7 @@ public final class EnumAssertionTest extends AssertionTest {
         initialize(Raw.enumAssertion(), Values.class).toValueCount(Matchers.is(Matchers.equalTo(3)));
         initialize(Raw.enumAssertion(), Values.class).toValueCount(Matchers.is(Matchers.greaterThan(2)));
         initialize(Raw.enumAssertion(), Values.class).toValueCount(Matchers.is(Matchers.lessThan(4)));
+        initialize(Raw.enumAssertion(), Values.class).isNotNull().toValueCount(Matchers.is(Matchers.lessThan(4))).isInstanceOf(Class.class);
 
         try {
             Raw.enumAssertion().toValueCount(Matchers.equalTo(0));
@@ -185,6 +187,7 @@ public final class EnumAssertionTest extends AssertionTest {
     @Test
     public void hasValueCountTest() {
         initialize(Raw.enumAssertion(), Values.class).hasValueCount(3);
+        initialize(Raw.enumAssertion(), Values.class).isNotNull().hasValueCount(3).isInstanceOf(Class.class);
 
         try {
             Raw.enumAssertion().hasValueCount(1);

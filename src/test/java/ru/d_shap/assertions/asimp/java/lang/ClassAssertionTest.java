@@ -80,6 +80,7 @@ public final class ClassAssertionTest extends AssertionTest {
         initialize(Raw.classAssertion(), null).isEqualTo(null);
         initialize(Raw.classAssertion(), Integer.class).isEqualTo(Integer.class);
         initialize(Raw.classAssertion(), String.class).isEqualTo(String.class);
+        initialize(Raw.classAssertion(), String.class).isNotNull().isEqualTo(String.class).isInstanceOf(Class.class);
 
         try {
             Raw.classAssertion().isEqualTo(Object.class);
@@ -134,6 +135,7 @@ public final class ClassAssertionTest extends AssertionTest {
         initialize(Raw.classAssertion(), String.class).isNotEqualTo(null);
         initialize(Raw.classAssertion(), Integer.class).isNotEqualTo(String.class);
         initialize(Raw.classAssertion(), String.class).isNotEqualTo(Object.class);
+        initialize(Raw.classAssertion(), String.class).isNotNull().isNotEqualTo(Object.class).isInstanceOf(Class.class);
 
         try {
             Raw.classAssertion().isNotEqualTo(Object.class);
@@ -180,6 +182,8 @@ public final class ClassAssertionTest extends AssertionTest {
         initialize(Raw.classAssertion(), String.class).isSubtypeOf(Object.class);
         initialize(Raw.classAssertion(), String.class).isSubtypeOf(Serializable.class);
         initialize(Raw.classAssertion(), String.class).isSubtypeOf(CharSequence.class);
+
+        initialize(Raw.classAssertion(), String.class).isNotNull().isSubtypeOf(String.class).isInstanceOf(Class.class);
 
         try {
             Raw.classAssertion().isSubtypeOf(Object.class);
@@ -285,6 +289,7 @@ public final class ClassAssertionTest extends AssertionTest {
         initialize(Raw.classAssertion(), Object.class).isNotSubtypeOf(String.class);
         initialize(Raw.classAssertion(), Serializable.class).isNotSubtypeOf(String.class);
         initialize(Raw.classAssertion(), CharSequence.class).isNotSubtypeOf(String.class);
+        initialize(Raw.classAssertion(), CharSequence.class).isNotNull().isNotSubtypeOf(String.class).isInstanceOf(Class.class);
 
         try {
             Raw.classAssertion().isNotSubtypeOf(Object.class);
@@ -392,6 +397,8 @@ public final class ClassAssertionTest extends AssertionTest {
         initialize(Raw.classAssertion(), Serializable.class).isSupertypeOf(String.class);
         initialize(Raw.classAssertion(), CharSequence.class).isSupertypeOf(String.class);
 
+        initialize(Raw.classAssertion(), String.class).isNotNull().isSupertypeOf(String.class).isInstanceOf(Class.class);
+
         try {
             Raw.classAssertion().isSupertypeOf(Object.class);
             Assertions.fail("ClassAssertion test fail");
@@ -496,6 +503,7 @@ public final class ClassAssertionTest extends AssertionTest {
         initialize(Raw.classAssertion(), String.class).isNotSupertypeOf(Object.class);
         initialize(Raw.classAssertion(), String.class).isNotSupertypeOf(Serializable.class);
         initialize(Raw.classAssertion(), String.class).isNotSupertypeOf(CharSequence.class);
+        initialize(Raw.classAssertion(), String.class).isNotNull().isNotSupertypeOf(CharSequence.class).isInstanceOf(Class.class);
 
         try {
             Raw.classAssertion().isNotSupertypeOf(Object.class);
@@ -598,6 +606,7 @@ public final class ClassAssertionTest extends AssertionTest {
         initialize(Raw.classAssertion(), List.class).isInterface();
         initialize(Raw.classAssertion(), Set.class).isInterface();
         initialize(Raw.classAssertion(), Map.class).isInterface();
+        initialize(Raw.classAssertion(), Map.class).isNotNull().isInterface().isInstanceOf(Class.class);
 
         try {
             Raw.classAssertion().isInterface();
@@ -663,6 +672,7 @@ public final class ClassAssertionTest extends AssertionTest {
         initialize(Raw.classAssertion(), ArrayList.class).isNotInterface();
         initialize(Raw.classAssertion(), HashSet.class).isNotInterface();
         initialize(Raw.classAssertion(), HashMap.class).isNotInterface();
+        initialize(Raw.classAssertion(), HashMap.class).isNotNull().isNotInterface().isInstanceOf(Class.class);
 
         try {
             Raw.classAssertion().isNotInterface();
@@ -743,6 +753,7 @@ public final class ClassAssertionTest extends AssertionTest {
         initialize(Raw.classAssertion(), String[][].class).isArray();
         initialize(Raw.classAssertion(), int[].class).isArray();
         initialize(Raw.classAssertion(), int[][].class).isArray();
+        initialize(Raw.classAssertion(), Object[].class).isNotNull().isArray().isInstanceOf(Class.class);
 
         try {
             Raw.classAssertion().isArray();
@@ -784,6 +795,7 @@ public final class ClassAssertionTest extends AssertionTest {
         initialize(Raw.classAssertion(), Object.class).isNotArray();
         initialize(Raw.classAssertion(), String.class).isNotArray();
         initialize(Raw.classAssertion(), int.class).isNotArray();
+        initialize(Raw.classAssertion(), Object.class).isNotNull().isNotArray().isInstanceOf(Class.class);
 
         try {
             Raw.classAssertion().isNotArray();
@@ -859,6 +871,7 @@ public final class ClassAssertionTest extends AssertionTest {
     @Test
     public void isEnumTest() {
         initialize(Raw.classAssertion(), Values.class).isEnum();
+        initialize(Raw.classAssertion(), Values.class).isNotNull().isEnum().isInstanceOf(Class.class);
 
         try {
             Raw.classAssertion().isEnum();
@@ -900,6 +913,7 @@ public final class ClassAssertionTest extends AssertionTest {
         initialize(Raw.classAssertion(), Object.class).isNotEnum();
         initialize(Raw.classAssertion(), String.class).isNotEnum();
         initialize(Raw.classAssertion(), int.class).isNotEnum();
+        initialize(Raw.classAssertion(), Object.class).isNotNull().isNotEnum().isInstanceOf(Class.class);
 
         try {
             Raw.classAssertion().isNotEnum();
@@ -944,6 +958,7 @@ public final class ClassAssertionTest extends AssertionTest {
         initialize(Raw.classAssertion(), String[][].class).toComponentType().isEqualTo(String[].class);
         initialize(Raw.classAssertion(), int[].class).toComponentType().isEqualTo(int.class);
         initialize(Raw.classAssertion(), int[][].class).toComponentType().isEqualTo(int[].class);
+        initialize(Raw.classAssertion(), String[].class).isNotNull().toComponentType().isEqualTo(String.class);
 
         try {
             Raw.classAssertion().toComponentType();
@@ -1012,6 +1027,7 @@ public final class ClassAssertionTest extends AssertionTest {
         initialize(Raw.classAssertion(), String[][].class).toComponentType(Matchers.is(Matchers.equalTo(String[].class)));
         initialize(Raw.classAssertion(), int[].class).toComponentType(Matchers.is(Matchers.equalTo(int.class)));
         initialize(Raw.classAssertion(), int[][].class).toComponentType(Matchers.is(Matchers.equalTo(int[].class)));
+        initialize(Raw.classAssertion(), String[].class).isNotNull().toComponentType(Matchers.is(Matchers.equalTo(String.class))).isInstanceOf(Class.class);
 
         try {
             Raw.classAssertion().toComponentType(Matchers.is(Matchers.equalTo(Object.class)));
@@ -1092,6 +1108,7 @@ public final class ClassAssertionTest extends AssertionTest {
         initialize(Raw.classAssertion(), String[][].class).hasComponentType(String[].class);
         initialize(Raw.classAssertion(), int[].class).hasComponentType(int.class);
         initialize(Raw.classAssertion(), int[][].class).hasComponentType(int[].class);
+        initialize(Raw.classAssertion(), String[].class).isNotNull().hasComponentType(String.class).isInstanceOf(Class.class);
 
         try {
             Raw.classAssertion().hasComponentType(Object.class);
@@ -1167,6 +1184,7 @@ public final class ClassAssertionTest extends AssertionTest {
     @Test
     public void hasOnePrivateConstructorTest() {
         initialize(Raw.classAssertion(), Math.class).hasOnePrivateConstructor();
+        initialize(Raw.classAssertion(), Math.class).isNotNull().hasOnePrivateConstructor().isInstanceOf(Class.class);
 
         try {
             Raw.classAssertion().hasOnePrivateConstructor();
@@ -1253,6 +1271,7 @@ public final class ClassAssertionTest extends AssertionTest {
     public void asEnumTest() {
         initialize(Raw.classAssertion(), null).asEnum().isNull();
         initialize(Raw.classAssertion(), Values.class).asEnum().hasValueCount(3);
+        initialize(Raw.classAssertion(), Values.class).isNotNull().asEnum().hasValueCount(3);
 
         try {
             Raw.classAssertion().asEnum();

@@ -70,6 +70,7 @@ public final class ComparableAssertionTest extends AssertionTest {
         initialize(Raw.<Integer>comparableAssertion(), 75).isEqualTo(75);
         initialize(Raw.<Integer>comparableAssertion(), 236).isEqualTo(236);
         initialize(Raw.<Integer>comparableAssertion(), 257).isEqualTo(257);
+        initialize(Raw.<Integer>comparableAssertion(), 257).isNotNull().isEqualTo(257).isInstanceOf(Integer.class);
 
         try {
             Raw.<Integer>comparableAssertion().isEqualTo(1);
@@ -126,6 +127,7 @@ public final class ComparableAssertionTest extends AssertionTest {
         initialize(Raw.<Integer>comparableAssertion(), 75).isNotEqualTo(76);
         initialize(Raw.<Integer>comparableAssertion(), 236).isNotEqualTo(143);
         initialize(Raw.<Integer>comparableAssertion(), 257).isNotEqualTo(2);
+        initialize(Raw.<Integer>comparableAssertion(), 257).isNotNull().isNotEqualTo(2).isInstanceOf(Integer.class);
 
         try {
             Raw.<Integer>comparableAssertion().isNotEqualTo(1);
@@ -167,6 +169,7 @@ public final class ComparableAssertionTest extends AssertionTest {
         initialize(Raw.<Integer>comparableAssertion(), 10).isGreaterThan(5);
         initialize(Raw.<Integer>comparableAssertion(), 60).isGreaterThan(30);
         initialize(Raw.<Integer>comparableAssertion(), 245).isGreaterThan(244);
+        initialize(Raw.<Integer>comparableAssertion(), 245).isNotNull().isGreaterThan(244).isInstanceOf(Integer.class);
 
         try {
             Raw.<Integer>comparableAssertion().isGreaterThan(1);
@@ -238,6 +241,7 @@ public final class ComparableAssertionTest extends AssertionTest {
         initialize(Raw.<Integer>comparableAssertion(), 10).isGreaterThanOrEqualTo(5);
         initialize(Raw.<Integer>comparableAssertion(), 60).isGreaterThanOrEqualTo(60);
         initialize(Raw.<Integer>comparableAssertion(), 245).isGreaterThanOrEqualTo(244);
+        initialize(Raw.<Integer>comparableAssertion(), 245).isNotNull().isGreaterThanOrEqualTo(244).isInstanceOf(Integer.class);
 
         try {
             Raw.<Integer>comparableAssertion().isGreaterThanOrEqualTo(1);
@@ -303,6 +307,7 @@ public final class ComparableAssertionTest extends AssertionTest {
         initialize(Raw.<Integer>comparableAssertion(), 5).isLessThan(10);
         initialize(Raw.<Integer>comparableAssertion(), 30).isLessThan(60);
         initialize(Raw.<Integer>comparableAssertion(), 244).isLessThan(245);
+        initialize(Raw.<Integer>comparableAssertion(), 244).isNotNull().isLessThan(245).isInstanceOf(Integer.class);
 
         try {
             Raw.<Integer>comparableAssertion().isLessThan(1);
@@ -374,6 +379,7 @@ public final class ComparableAssertionTest extends AssertionTest {
         initialize(Raw.<Integer>comparableAssertion(), 5).isLessThanOrEqualTo(10);
         initialize(Raw.<Integer>comparableAssertion(), 60).isLessThanOrEqualTo(60);
         initialize(Raw.<Integer>comparableAssertion(), 244).isLessThanOrEqualTo(245);
+        initialize(Raw.<Integer>comparableAssertion(), 244).isNotNull().isLessThanOrEqualTo(245).isInstanceOf(Integer.class);
 
         try {
             Raw.<Integer>comparableAssertion().isLessThanOrEqualTo(1);
@@ -439,6 +445,7 @@ public final class ComparableAssertionTest extends AssertionTest {
         initialize(Raw.<Integer>comparableAssertion(), 5).isInRange(4, 6);
         initialize(Raw.<Integer>comparableAssertion(), 5).isInRange(5, 6);
         initialize(Raw.<Integer>comparableAssertion(), 5).isInRange(1, 10);
+        initialize(Raw.<Integer>comparableAssertion(), 5).isNotNull().isInRange(1, 10).isInstanceOf(Integer.class);
 
         try {
             Raw.<Integer>comparableAssertion().isInRange(1, 1);
@@ -552,6 +559,7 @@ public final class ComparableAssertionTest extends AssertionTest {
         initialize(Raw.<Integer>comparableAssertion(), 5).isNotInRange(1, 5);
         initialize(Raw.<Integer>comparableAssertion(), 5).isNotInRange(6, 10);
         initialize(Raw.<Integer>comparableAssertion(), 5).isNotInRange(8, 9);
+        initialize(Raw.<Integer>comparableAssertion(), 5).isNotNull().isNotInRange(8, 9).isInstanceOf(Integer.class);
 
         try {
             Raw.<Integer>comparableAssertion().isNotInRange(1, 1);

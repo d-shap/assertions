@@ -68,6 +68,7 @@ public final class CharSequenceAssertionTest extends AssertionTest {
     @Test
     public void isEmptyTest() {
         initialize(Raw.charSequenceAssertion(), "").isEmpty();
+        initialize(Raw.charSequenceAssertion(), "").isNotNull().isEmpty().isInstanceOf(String.class);
 
         try {
             Raw.charSequenceAssertion().isEmpty();
@@ -120,6 +121,7 @@ public final class CharSequenceAssertionTest extends AssertionTest {
     public void isNullOrEmptyTest() {
         initialize(Raw.charSequenceAssertion(), null).isNullOrEmpty();
         initialize(Raw.charSequenceAssertion(), "").isNullOrEmpty();
+        initialize(Raw.charSequenceAssertion(), "").isNotNull().isNullOrEmpty().isInstanceOf(String.class);
 
         try {
             Raw.charSequenceAssertion().isNullOrEmpty();
@@ -160,6 +162,7 @@ public final class CharSequenceAssertionTest extends AssertionTest {
     public void isNotEmptyTest() {
         initialize(Raw.charSequenceAssertion(), " ").isNotEmpty();
         initialize(Raw.charSequenceAssertion(), "value").isNotEmpty();
+        initialize(Raw.charSequenceAssertion(), "value").isNotNull().isNotEmpty().isInstanceOf(String.class);
 
         try {
             Raw.charSequenceAssertion().isNotEmpty();
@@ -202,6 +205,7 @@ public final class CharSequenceAssertionTest extends AssertionTest {
         initialize(Raw.charSequenceAssertion(), " ").isBlank();
         initialize(Raw.charSequenceAssertion(), "\t").isBlank();
         initialize(Raw.charSequenceAssertion(), "   \t   \t").isBlank();
+        initialize(Raw.charSequenceAssertion(), "   \t   \t").isNotNull().isBlank().isInstanceOf(String.class);
 
         try {
             Raw.charSequenceAssertion().isBlank();
@@ -257,6 +261,7 @@ public final class CharSequenceAssertionTest extends AssertionTest {
         initialize(Raw.charSequenceAssertion(), " ").isNullOrBlank();
         initialize(Raw.charSequenceAssertion(), "\t").isNullOrBlank();
         initialize(Raw.charSequenceAssertion(), "   \t   \t").isNullOrBlank();
+        initialize(Raw.charSequenceAssertion(), "   \t   \t").isNotNull().isNullOrBlank().isInstanceOf(String.class);
 
         try {
             Raw.charSequenceAssertion().isNullOrBlank();
@@ -297,6 +302,7 @@ public final class CharSequenceAssertionTest extends AssertionTest {
     public void isNotBlankTest() {
         initialize(Raw.charSequenceAssertion(), "value").isNotBlank();
         initialize(Raw.charSequenceAssertion(), "v   ").isNotBlank();
+        initialize(Raw.charSequenceAssertion(), "v   ").isNotNull().isNotBlank().isInstanceOf(String.class);
 
         try {
             Raw.charSequenceAssertion().isNotBlank();
@@ -377,6 +383,7 @@ public final class CharSequenceAssertionTest extends AssertionTest {
         initialize(Raw.charSequenceAssertion(), "значение").isEqualTo("значение");
         initialize(Raw.charSequenceAssertion(), "value's").isEqualTo("value's");
         initialize(Raw.charSequenceAssertion(), "").isEqualTo("");
+        initialize(Raw.charSequenceAssertion(), "value").isNotNull().isEqualTo("value").isInstanceOf(String.class);
 
         try {
             Raw.charSequenceAssertion().isEqualTo("value");
@@ -482,6 +489,7 @@ public final class CharSequenceAssertionTest extends AssertionTest {
         initialize(Raw.charSequenceAssertion(), "значение").isEqualToIgnoreCase("ЗНАЧЕНИЕ");
         initialize(Raw.charSequenceAssertion(), "valUe's").isEqualToIgnoreCase("vALue's");
         initialize(Raw.charSequenceAssertion(), "").isEqualToIgnoreCase("");
+        initialize(Raw.charSequenceAssertion(), "valUe").isNotNull().isEqualToIgnoreCase("vALue").isInstanceOf(String.class);
 
         try {
             Raw.charSequenceAssertion().isEqualToIgnoreCase("value");
@@ -577,6 +585,7 @@ public final class CharSequenceAssertionTest extends AssertionTest {
         initialize(Raw.charSequenceAssertion(), "ЗНАЧЕНИЕ").isNotEqualTo("");
         initialize(Raw.charSequenceAssertion(), "value's").isNotEqualTo("values");
         initialize(Raw.charSequenceAssertion(), "values").isNotEqualTo("value's");
+        initialize(Raw.charSequenceAssertion(), "value's").isNotNull().isNotEqualTo("values").isInstanceOf(String.class);
 
         try {
             Raw.charSequenceAssertion().isNotEqualTo("value");
@@ -648,6 +657,7 @@ public final class CharSequenceAssertionTest extends AssertionTest {
         initialize(Raw.charSequenceAssertion(), "ЗНачЕНие").isNotEqualToIgnoreCase("");
         initialize(Raw.charSequenceAssertion(), "vaLUe's").isNotEqualToIgnoreCase("VAluEs");
         initialize(Raw.charSequenceAssertion(), "vaLUes").isNotEqualToIgnoreCase("VAluE's");
+        initialize(Raw.charSequenceAssertion(), "vaLUe's").isNotNull().isNotEqualToIgnoreCase("VAluEs").isInstanceOf(String.class);
 
         try {
             Raw.charSequenceAssertion().isNotEqualToIgnoreCase("value");
@@ -715,6 +725,7 @@ public final class CharSequenceAssertionTest extends AssertionTest {
         initialize(Raw.charSequenceAssertion(), "value").isGreaterThan("valuazzz");
         initialize(Raw.charSequenceAssertion(), "value").isGreaterThan("VALUE");
         initialize(Raw.charSequenceAssertion(), "value").isGreaterThan("XYZ");
+        initialize(Raw.charSequenceAssertion(), "value").isNotNull().isGreaterThan("XYZ").isInstanceOf(String.class);
 
         try {
             Raw.charSequenceAssertion().isGreaterThan("value");
@@ -806,6 +817,7 @@ public final class CharSequenceAssertionTest extends AssertionTest {
         initialize(Raw.charSequenceAssertion(), "value").isGreaterThanIgnoreCase("vAi");
         initialize(Raw.charSequenceAssertion(), "value").isGreaterThanIgnoreCase("valuazzz");
         initialize(Raw.charSequenceAssertion(), "value").isGreaterThanIgnoreCase("vAlUazzz");
+        initialize(Raw.charSequenceAssertion(), "value").isNotNull().isGreaterThanIgnoreCase("vAlUazzz").isInstanceOf(String.class);
 
         try {
             Raw.charSequenceAssertion().isGreaterThanIgnoreCase("value");
@@ -912,6 +924,7 @@ public final class CharSequenceAssertionTest extends AssertionTest {
         initialize(Raw.charSequenceAssertion(), "value").isGreaterThanOrEqualTo("value");
         initialize(Raw.charSequenceAssertion(), "value").isGreaterThanOrEqualTo("");
         initialize(Raw.charSequenceAssertion(), "").isGreaterThanOrEqualTo("");
+        initialize(Raw.charSequenceAssertion(), "value").isNotNull().isGreaterThanOrEqualTo("aaa").isInstanceOf(String.class);
 
         try {
             Raw.charSequenceAssertion().isGreaterThanOrEqualTo("value");
@@ -989,6 +1002,7 @@ public final class CharSequenceAssertionTest extends AssertionTest {
         initialize(Raw.charSequenceAssertion(), "value").isGreaterThanOrEqualToIgnoreCase("VALUE");
         initialize(Raw.charSequenceAssertion(), "value").isGreaterThanOrEqualToIgnoreCase("");
         initialize(Raw.charSequenceAssertion(), "").isGreaterThanOrEqualToIgnoreCase("");
+        initialize(Raw.charSequenceAssertion(), "value").isNotNull().isGreaterThanOrEqualToIgnoreCase("aaa").isInstanceOf(String.class);
 
         try {
             Raw.charSequenceAssertion().isGreaterThanOrEqualToIgnoreCase("value");
@@ -1068,6 +1082,7 @@ public final class CharSequenceAssertionTest extends AssertionTest {
         initialize(Raw.charSequenceAssertion(), "value").isLessThan("valuezzz");
         initialize(Raw.charSequenceAssertion(), "VALUE").isLessThan("value");
         initialize(Raw.charSequenceAssertion(), "XYZ").isLessThan("value");
+        initialize(Raw.charSequenceAssertion(), "XYZ").isNotNull().isLessThan("value").isInstanceOf(String.class);
 
         try {
             Raw.charSequenceAssertion().isLessThan("value");
@@ -1159,6 +1174,7 @@ public final class CharSequenceAssertionTest extends AssertionTest {
         initialize(Raw.charSequenceAssertion(), "vAlue").isLessThanIgnoreCase("vam");
         initialize(Raw.charSequenceAssertion(), "value").isLessThanIgnoreCase("valuezzz");
         initialize(Raw.charSequenceAssertion(), "vAlUe").isLessThanIgnoreCase("valuezzz");
+        initialize(Raw.charSequenceAssertion(), "vAlUe").isNotNull().isLessThanIgnoreCase("valuezzz").isInstanceOf(String.class);
 
         try {
             Raw.charSequenceAssertion().isLessThanIgnoreCase("value");
@@ -1264,6 +1280,7 @@ public final class CharSequenceAssertionTest extends AssertionTest {
         initialize(Raw.charSequenceAssertion(), "XYZ").isLessThanOrEqualTo("value");
         initialize(Raw.charSequenceAssertion(), "value").isLessThanOrEqualTo("value");
         initialize(Raw.charSequenceAssertion(), "").isLessThanOrEqualTo("");
+        initialize(Raw.charSequenceAssertion(), "value").isNotNull().isLessThanOrEqualTo("yyy").isInstanceOf(String.class);
 
         try {
             Raw.charSequenceAssertion().isLessThanOrEqualTo("value");
@@ -1346,6 +1363,7 @@ public final class CharSequenceAssertionTest extends AssertionTest {
         initialize(Raw.charSequenceAssertion(), "value").isLessThanOrEqualToIgnoreCase("value");
         initialize(Raw.charSequenceAssertion(), "VALUE").isLessThanOrEqualToIgnoreCase("value");
         initialize(Raw.charSequenceAssertion(), "").isLessThanOrEqualToIgnoreCase("");
+        initialize(Raw.charSequenceAssertion(), "value").isNotNull().isLessThanOrEqualToIgnoreCase("yyy").isInstanceOf(String.class);
 
         try {
             Raw.charSequenceAssertion().isLessThanOrEqualToIgnoreCase("value");
@@ -1433,6 +1451,7 @@ public final class CharSequenceAssertionTest extends AssertionTest {
         initialize(Raw.charSequenceAssertion(), "value").isInRange("VALUE", "z");
         initialize(Raw.charSequenceAssertion(), "value").isInRange("", "z");
         initialize(Raw.charSequenceAssertion(), "").isInRange("", "z");
+        initialize(Raw.charSequenceAssertion(), "value").isNotNull().isInRange("v", "valuex").isInstanceOf(String.class);
 
         try {
             Raw.charSequenceAssertion().isInRange("value", "value");
@@ -1578,6 +1597,7 @@ public final class CharSequenceAssertionTest extends AssertionTest {
         initialize(Raw.charSequenceAssertion(), "value").isInRangeIgnoreCase("VALUE", "Z");
         initialize(Raw.charSequenceAssertion(), "value").isInRangeIgnoreCase("", "Z");
         initialize(Raw.charSequenceAssertion(), "").isInRangeIgnoreCase("", "Z");
+        initialize(Raw.charSequenceAssertion(), "value").isNotNull().isInRangeIgnoreCase("v", "valuex").isInstanceOf(String.class);
 
         try {
             Raw.charSequenceAssertion().isInRangeIgnoreCase("value", "value");
@@ -1720,6 +1740,7 @@ public final class CharSequenceAssertionTest extends AssertionTest {
         initialize(Raw.charSequenceAssertion(), "value").isNotInRange("xxx", "yyy");
         initialize(Raw.charSequenceAssertion(), "value").isNotInRange("XXX", "YYY");
         initialize(Raw.charSequenceAssertion(), "value").isNotInRange("", "aaa");
+        initialize(Raw.charSequenceAssertion(), "value").isNotNull().isNotInRange("A", "Z").isInstanceOf(String.class);
 
         try {
             Raw.charSequenceAssertion().isNotInRange("value", "value");
@@ -1860,6 +1881,7 @@ public final class CharSequenceAssertionTest extends AssertionTest {
         initialize(Raw.charSequenceAssertion(), "value").isNotInRangeIgnoreCase("xxx", "yyy");
         initialize(Raw.charSequenceAssertion(), "value").isNotInRangeIgnoreCase("XXX", "YYY");
         initialize(Raw.charSequenceAssertion(), "value").isNotInRangeIgnoreCase("", "AAA");
+        initialize(Raw.charSequenceAssertion(), "value").isNotNull().isNotInRangeIgnoreCase("a", "test").isInstanceOf(String.class);
 
         try {
             Raw.charSequenceAssertion().isNotInRangeIgnoreCase("value", "value");
@@ -2012,6 +2034,7 @@ public final class CharSequenceAssertionTest extends AssertionTest {
         initialize(Raw.charSequenceAssertion(), "значение").contains("знач");
         initialize(Raw.charSequenceAssertion(), "значение").contains("ен");
         initialize(Raw.charSequenceAssertion(), "значение").contains("ие");
+        initialize(Raw.charSequenceAssertion(), "value").isNotNull().contains("val").isInstanceOf(String.class);
 
         try {
             Raw.charSequenceAssertion().contains("value");
@@ -2122,6 +2145,7 @@ public final class CharSequenceAssertionTest extends AssertionTest {
         initialize(Raw.charSequenceAssertion(), "значение").containsIgnoreCase("ЗНАЧ");
         initialize(Raw.charSequenceAssertion(), "ЗНАчЕнИЕ").containsIgnoreCase("еН");
         initialize(Raw.charSequenceAssertion(), "ЗНАЧЕние").containsIgnoreCase("Ие");
+        initialize(Raw.charSequenceAssertion(), "value").isNotNull().containsIgnoreCase("VAL").isInstanceOf(String.class);
 
         try {
             Raw.charSequenceAssertion().containsIgnoreCase("value");
@@ -2232,6 +2256,7 @@ public final class CharSequenceAssertionTest extends AssertionTest {
         initialize(Raw.charSequenceAssertion(), "значение").doesNotContain("ЗНАЧ");
         initialize(Raw.charSequenceAssertion(), "значение").doesNotContain("кени");
         initialize(Raw.charSequenceAssertion(), "значение").doesNotContain("НИЕ");
+        initialize(Raw.charSequenceAssertion(), "value").isNotNull().doesNotContain("vaue").isInstanceOf(String.class);
 
         try {
             Raw.charSequenceAssertion().doesNotContain("value");
@@ -2342,6 +2367,7 @@ public final class CharSequenceAssertionTest extends AssertionTest {
         initialize(Raw.charSequenceAssertion(), "знАчеНие").doesNotContainIgnoreCase("ЗНАН");
         initialize(Raw.charSequenceAssertion(), "знАчеНие").doesNotContainIgnoreCase("кени");
         initialize(Raw.charSequenceAssertion(), "знАчеНие").doesNotContainIgnoreCase("чИЕ");
+        initialize(Raw.charSequenceAssertion(), "value").isNotNull().doesNotContainIgnoreCase("vaUE").isInstanceOf(String.class);
 
         try {
             Raw.charSequenceAssertion().doesNotContainIgnoreCase("value");
@@ -2453,6 +2479,7 @@ public final class CharSequenceAssertionTest extends AssertionTest {
         initialize(Raw.charSequenceAssertion(), "ен").isPartOf("значение");
         initialize(Raw.charSequenceAssertion(), "ие").isPartOf("значение");
         initialize(Raw.charSequenceAssertion(), "").isPartOf("");
+        initialize(Raw.charSequenceAssertion(), "val").isNotNull().isPartOf("value").isInstanceOf(String.class);
 
         try {
             Raw.charSequenceAssertion().isPartOf("value");
@@ -2558,6 +2585,7 @@ public final class CharSequenceAssertionTest extends AssertionTest {
         initialize(Raw.charSequenceAssertion(), "Ен").isPartOfIgnoreCase("зНАчеНИе");
         initialize(Raw.charSequenceAssertion(), "иЕ").isPartOfIgnoreCase("зНАчеНИе");
         initialize(Raw.charSequenceAssertion(), "").isPartOfIgnoreCase("");
+        initialize(Raw.charSequenceAssertion(), "vAl").isNotNull().isPartOfIgnoreCase("vaLUe").isInstanceOf(String.class);
 
         try {
             Raw.charSequenceAssertion().isPartOfIgnoreCase("value");
@@ -2663,6 +2691,7 @@ public final class CharSequenceAssertionTest extends AssertionTest {
         initialize(Raw.charSequenceAssertion(), "еНИ").isNotPartOf("значение");
         initialize(Raw.charSequenceAssertion(), "чие").isNotPartOf("значение");
         initialize(Raw.charSequenceAssertion(), "чие").isNotPartOf("");
+        initialize(Raw.charSequenceAssertion(), "vae").isNotNull().isNotPartOf("value").isInstanceOf(String.class);
 
         try {
             Raw.charSequenceAssertion().isNotPartOf("value");
@@ -2762,6 +2791,7 @@ public final class CharSequenceAssertionTest extends AssertionTest {
         initialize(Raw.charSequenceAssertion(), "еНе").isNotPartOfIgnoreCase("знАченИе");
         initialize(Raw.charSequenceAssertion(), "чИЕ").isNotPartOfIgnoreCase("знАченИе");
         initialize(Raw.charSequenceAssertion(), "чИЕ").isNotPartOfIgnoreCase("");
+        initialize(Raw.charSequenceAssertion(), "vAe").isNotNull().isNotPartOfIgnoreCase("vaLUe").isInstanceOf(String.class);
 
         try {
             Raw.charSequenceAssertion().isNotPartOfIgnoreCase("value");
@@ -2860,6 +2890,7 @@ public final class CharSequenceAssertionTest extends AssertionTest {
         initialize(Raw.charSequenceAssertion(), "value").matches("\\w{4,6}");
         initialize(Raw.charSequenceAssertion(), "значение").matches("\\p{L}+");
         initialize(Raw.charSequenceAssertion(), "").matches("");
+        initialize(Raw.charSequenceAssertion(), "value").isNotNull().matches("v.*e").isInstanceOf(String.class);
 
         try {
             Raw.charSequenceAssertion().matches("value");
@@ -2940,6 +2971,7 @@ public final class CharSequenceAssertionTest extends AssertionTest {
         initialize(Raw.charSequenceAssertion(), "value").doesNotMatch("\\w{8}");
         initialize(Raw.charSequenceAssertion(), "значение").doesNotMatch("\\w+");
         initialize(Raw.charSequenceAssertion(), "значение").doesNotMatch("");
+        initialize(Raw.charSequenceAssertion(), "value").isNotNull().doesNotMatch("valu.+e").isInstanceOf(String.class);
 
         try {
             Raw.charSequenceAssertion().doesNotMatch("value");
@@ -3020,6 +3052,7 @@ public final class CharSequenceAssertionTest extends AssertionTest {
         initialize(Raw.charSequenceAssertion(), "значение").startsWith("зна");
         initialize(Raw.charSequenceAssertion(), "значение").startsWith("значе");
         initialize(Raw.charSequenceAssertion(), "значение").startsWith("значение");
+        initialize(Raw.charSequenceAssertion(), "value").isNotNull().startsWith("va").isInstanceOf(String.class);
 
         try {
             Raw.charSequenceAssertion().startsWith("value");
@@ -3130,6 +3163,7 @@ public final class CharSequenceAssertionTest extends AssertionTest {
         initialize(Raw.charSequenceAssertion(), "знАчЕнИе").startsWithIgnoreCase("зНа");
         initialize(Raw.charSequenceAssertion(), "знАчЕнИе").startsWithIgnoreCase("зНаче");
         initialize(Raw.charSequenceAssertion(), "знАчЕнИе").startsWithIgnoreCase("зНачение");
+        initialize(Raw.charSequenceAssertion(), "vAlUe").isNotNull().startsWithIgnoreCase("vA").isInstanceOf(String.class);
 
         try {
             Raw.charSequenceAssertion().startsWithIgnoreCase("value");
@@ -3240,6 +3274,7 @@ public final class CharSequenceAssertionTest extends AssertionTest {
         initialize(Raw.charSequenceAssertion(), "значение").doesNotStartWith("ЗНА");
         initialize(Raw.charSequenceAssertion(), "значение").doesNotStartWith("Знач");
         initialize(Raw.charSequenceAssertion(), "значение").doesNotStartWith("чение");
+        initialize(Raw.charSequenceAssertion(), "value").isNotNull().doesNotStartWith("VA").isInstanceOf(String.class);
 
         try {
             Raw.charSequenceAssertion().doesNotStartWith("value");
@@ -3344,6 +3379,7 @@ public final class CharSequenceAssertionTest extends AssertionTest {
         initialize(Raw.charSequenceAssertion(), "знАчЕнИе").doesNotStartWithIgnoreCase("НА");
         initialize(Raw.charSequenceAssertion(), "знАчЕнИе").doesNotStartWithIgnoreCase("Знч");
         initialize(Raw.charSequenceAssertion(), "знАчЕнИе").doesNotStartWithIgnoreCase("чние");
+        initialize(Raw.charSequenceAssertion(), "vAlUe").isNotNull().doesNotStartWithIgnoreCase("Vu").isInstanceOf(String.class);
 
         try {
             Raw.charSequenceAssertion().doesNotStartWithIgnoreCase("value");
@@ -3448,6 +3484,7 @@ public final class CharSequenceAssertionTest extends AssertionTest {
         initialize(Raw.charSequenceAssertion(), "значение").endsWith("ачение");
         initialize(Raw.charSequenceAssertion(), "значение").endsWith("ние");
         initialize(Raw.charSequenceAssertion(), "значение").endsWith("е");
+        initialize(Raw.charSequenceAssertion(), "value").isNotNull().endsWith("alue").isInstanceOf(String.class);
 
         try {
             Raw.charSequenceAssertion().endsWith("value");
@@ -3559,6 +3596,7 @@ public final class CharSequenceAssertionTest extends AssertionTest {
         initialize(Raw.charSequenceAssertion(), "знАчЕнИе").endsWithIgnoreCase("чеНИЕ");
         initialize(Raw.charSequenceAssertion(), "знАчЕнИе").endsWithIgnoreCase("Е");
         initialize(Raw.charSequenceAssertion(), "aaaxxxxx").endsWithIgnoreCase("xxx");
+        initialize(Raw.charSequenceAssertion(), "vAlUe").isNotNull().endsWithIgnoreCase("vaLue").isInstanceOf(String.class);
 
         try {
             Raw.charSequenceAssertion().endsWithIgnoreCase("value");
@@ -3675,6 +3713,7 @@ public final class CharSequenceAssertionTest extends AssertionTest {
         initialize(Raw.charSequenceAssertion(), "значение").doesNotEndWith("ачЕниЕ");
         initialize(Raw.charSequenceAssertion(), "значение").doesNotEndWith("зние");
         initialize(Raw.charSequenceAssertion(), "значение").doesNotEndWith("зна");
+        initialize(Raw.charSequenceAssertion(), "value").isNotNull().doesNotEndWith("aLue").isInstanceOf(String.class);
 
         try {
             Raw.charSequenceAssertion().doesNotEndWith("value");
@@ -3780,6 +3819,7 @@ public final class CharSequenceAssertionTest extends AssertionTest {
         initialize(Raw.charSequenceAssertion(), "знАчЕнИе").doesNotEndWithIgnoreCase("зние");
         initialize(Raw.charSequenceAssertion(), "знАчЕнИе").doesNotEndWithIgnoreCase("зна");
         initialize(Raw.charSequenceAssertion(), "").doesNotEndWithIgnoreCase("val");
+        initialize(Raw.charSequenceAssertion(), "vAlUe").isNotNull().doesNotEndWithIgnoreCase("aLe").isInstanceOf(String.class);
 
         try {
             Raw.charSequenceAssertion().doesNotEndWithIgnoreCase("value");
@@ -3892,6 +3932,8 @@ public final class CharSequenceAssertionTest extends AssertionTest {
         initialize(Raw.charSequenceAssertion(), "знАчЕнИе").toLength().isGreaterThan(5);
         initialize(Raw.charSequenceAssertion(), "знАчЕнИе").toLength().isLessThan(10);
 
+        initialize(Raw.charSequenceAssertion(), "vAlUe").isNotNull().toLength().isEqualTo(5);
+
         try {
             Raw.charSequenceAssertion().toLength();
             Assertions.fail("CharSequenceAssertion test fail");
@@ -3948,6 +3990,8 @@ public final class CharSequenceAssertionTest extends AssertionTest {
         initialize(Raw.charSequenceAssertion(), "знАчЕнИе").toLength(Matchers.equalTo(8));
         initialize(Raw.charSequenceAssertion(), "знАчЕнИе").toLength(Matchers.greaterThan(7));
         initialize(Raw.charSequenceAssertion(), "знАчЕнИе").toLength(Matchers.lessThan(9));
+
+        initialize(Raw.charSequenceAssertion(), "vAlUe").isNotNull().toLength(Matchers.is(Matchers.equalTo(5))).isInstanceOf(String.class);
 
         try {
             Raw.charSequenceAssertion().toLength(Matchers.equalTo(0));
@@ -4012,6 +4056,7 @@ public final class CharSequenceAssertionTest extends AssertionTest {
     public void hasLengthTest() {
         initialize(Raw.charSequenceAssertion(), "vAlUe").hasLength(5);
         initialize(Raw.charSequenceAssertion(), "знАчЕнИе").hasLength(8);
+        initialize(Raw.charSequenceAssertion(), "знАчЕнИе").isNotNull().hasLength(8).isInstanceOf(String.class);
 
         try {
             Raw.charSequenceAssertion().hasLength(1);
@@ -4052,6 +4097,7 @@ public final class CharSequenceAssertionTest extends AssertionTest {
     public void toTokensTest() {
         initialize(Raw.charSequenceAssertion(), "value1 value2 value3").toTokens().containsAll("value1", "value2", "value3");
         initialize(Raw.charSequenceAssertion(), "value1|value2|value3").toTokens().containsAll("value1|value2|value3");
+        initialize(Raw.charSequenceAssertion(), "value1 value2 value3").isNotNull().toTokens().containsAll("value1", "value2", "value3");
 
         try {
             Raw.charSequenceAssertion().toTokens();
@@ -4105,6 +4151,7 @@ public final class CharSequenceAssertionTest extends AssertionTest {
         initialize(Raw.charSequenceAssertion(), "value1 value2 value3").toTokens("|").containsAll("value1 value2 value3");
         initialize(Raw.charSequenceAssertion(), "value1|value2|value3").toTokens("|").containsAll("value1", "value2", "value3");
         initialize(Raw.charSequenceAssertion(), "value1|value2|value3").toTokens("").containsAll("value1|value2|value3");
+        initialize(Raw.charSequenceAssertion(), "value1|value2|value3").isNotNull().toTokens("|").containsAll("value1", "value2", "value3");
 
         try {
             Raw.charSequenceAssertion().toTokens("|");
@@ -4187,6 +4234,7 @@ public final class CharSequenceAssertionTest extends AssertionTest {
         initialize(Raw.charSequenceAssertion(), "value1|value2|value3").toTokens("|", true).containsAll("value1", "value2", "value3", "|", "|");
         initialize(Raw.charSequenceAssertion(), "value1|value2|value3").toTokens("", false).containsAll("value1|value2|value3");
         initialize(Raw.charSequenceAssertion(), "value1|value2|value3").toTokens("", true).containsAll("value1|value2|value3");
+        initialize(Raw.charSequenceAssertion(), "value1|value2|value3").isNotNull().toTokens("|", false).containsAll("value1", "value2", "value3");
 
         try {
             Raw.charSequenceAssertion().toTokens("|", false);
@@ -4263,6 +4311,7 @@ public final class CharSequenceAssertionTest extends AssertionTest {
     public void toTokensMatcherTest() {
         initialize(Raw.charSequenceAssertion(), "value1 value2 value3").toTokens(Matchers.hasItems("value1", "value2", "value3"));
         initialize(Raw.charSequenceAssertion(), "value1|value2|value3").toTokens(Matchers.hasItems("value1|value2|value3"));
+        initialize(Raw.charSequenceAssertion(), "value1 value2 value3").isNotNull().toTokens(Matchers.hasItems("value1", "value2", "value3")).isInstanceOf(String.class);
 
         try {
             Raw.charSequenceAssertion().toTokens(Matchers.hasItems(""));
@@ -4328,6 +4377,7 @@ public final class CharSequenceAssertionTest extends AssertionTest {
         initialize(Raw.charSequenceAssertion(), "value1 value2 value3").toTokens("|", Matchers.hasItems("value1 value2 value3"));
         initialize(Raw.charSequenceAssertion(), "value1|value2|value3").toTokens("|", Matchers.hasItems("value1", "value2", "value3"));
         initialize(Raw.charSequenceAssertion(), "value1|value2|value3").toTokens("", Matchers.hasItems("value1|value2|value3"));
+        initialize(Raw.charSequenceAssertion(), "value1|value2|value3").isNotNull().toTokens("|", Matchers.hasItems("value1", "value2", "value3")).isInstanceOf(String.class);
 
         try {
             Raw.charSequenceAssertion().toTokens("|", Matchers.hasItems(""));
@@ -4422,6 +4472,7 @@ public final class CharSequenceAssertionTest extends AssertionTest {
         initialize(Raw.charSequenceAssertion(), "value1|value2|value3").toTokens("|", true, Matchers.hasItems("value1", "value2", "value3", "|", "|"));
         initialize(Raw.charSequenceAssertion(), "value1|value2|value3").toTokens("", false, Matchers.hasItems("value1|value2|value3"));
         initialize(Raw.charSequenceAssertion(), "value1|value2|value3").toTokens("", true, Matchers.hasItems("value1|value2|value3"));
+        initialize(Raw.charSequenceAssertion(), "value1|value2|value3").isNotNull().toTokens("|", false, Matchers.hasItems("value1", "value2", "value3")).isInstanceOf(String.class);
 
         try {
             Raw.charSequenceAssertion().toTokens("|", false, Matchers.hasItems(""));
