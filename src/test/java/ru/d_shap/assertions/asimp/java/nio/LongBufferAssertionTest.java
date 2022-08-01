@@ -73,6 +73,7 @@ public final class LongBufferAssertionTest extends AssertionTest {
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).isEmpty();
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L}, 2)).isEmpty();
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L}, 2, 2, 4)).isEmpty();
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L}, 2, 2, 4)).isNotNull().isEmpty().isInstanceOf(LongBuffer.class);
 
         try {
             Raw.longBufferAssertion().isEmpty();
@@ -126,6 +127,7 @@ public final class LongBufferAssertionTest extends AssertionTest {
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).isRewindAndEmpty();
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L}, 0, 0)).isRewindAndEmpty();
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L}, 0, 0, 4)).isRewindAndEmpty();
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L}, 0, 0, 4)).isNotNull().isRewindAndEmpty().isInstanceOf(LongBuffer.class);
 
         try {
             Raw.longBufferAssertion().isRewindAndEmpty();
@@ -180,6 +182,7 @@ public final class LongBufferAssertionTest extends AssertionTest {
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L}, 2)).isNullOrEmpty();
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L}, 2, 2, 4)).isNullOrEmpty();
         initialize(Raw.longBufferAssertion(), null).isNullOrEmpty();
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).isNotNull().isNullOrEmpty().isInstanceOf(LongBuffer.class);
 
         try {
             Raw.longBufferAssertion().isNullOrEmpty();
@@ -222,6 +225,7 @@ public final class LongBufferAssertionTest extends AssertionTest {
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L}, 0, 0)).isRewindAndNullOrEmpty();
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L}, 0, 0, 4)).isRewindAndNullOrEmpty();
         initialize(Raw.longBufferAssertion(), null).isRewindAndNullOrEmpty();
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).isNotNull().isRewindAndNullOrEmpty().isInstanceOf(LongBuffer.class);
 
         try {
             Raw.longBufferAssertion().isRewindAndNullOrEmpty();
@@ -263,6 +267,7 @@ public final class LongBufferAssertionTest extends AssertionTest {
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).isNotEmpty();
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L}, 1)).isNotEmpty();
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{}, 0, 4, 4)).isNotEmpty();
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).isNotNull().isNotEmpty().isInstanceOf(LongBuffer.class);
 
         try {
             Raw.longBufferAssertion().isNotEmpty();
@@ -318,6 +323,7 @@ public final class LongBufferAssertionTest extends AssertionTest {
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{}, 0, 4, 4)).isRewindAndNotEmpty();
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L}, 2)).isRewindAndNotEmpty();
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L}, 2, 2, 4)).isRewindAndNotEmpty();
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).isNotNull().isRewindAndNotEmpty().isInstanceOf(LongBuffer.class);
 
         try {
             Raw.longBufferAssertion().isRewindAndNotEmpty();
@@ -358,6 +364,7 @@ public final class LongBufferAssertionTest extends AssertionTest {
     public void containsTest() {
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).contains(1L);
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).contains(2L);
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).isNotNull().contains(2L).isInstanceOf(LongBuffer.class);
 
         try {
             Raw.longBufferAssertion().contains(1L);
@@ -411,6 +418,7 @@ public final class LongBufferAssertionTest extends AssertionTest {
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).rewindAndContains(1L);
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).rewindAndContains(2L);
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L, 5L}, 3)).rewindAndContains(2L);
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).isNotNull().rewindAndContains(2L).isInstanceOf(LongBuffer.class);
 
         try {
             Raw.longBufferAssertion().rewindAndContains(1L);
@@ -458,6 +466,7 @@ public final class LongBufferAssertionTest extends AssertionTest {
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).doesNotContain(3L);
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L, 5L}, 3)).doesNotContain(2L);
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L, 5L}, 0, 3)).doesNotContain(5L);
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).isNotNull().doesNotContain(3L).isInstanceOf(LongBuffer.class);
 
         try {
             Raw.longBufferAssertion().doesNotContain(1L);
@@ -504,6 +513,7 @@ public final class LongBufferAssertionTest extends AssertionTest {
     public void rewindAndDoesNotContainTest() {
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).rewindAndDoesNotContain(3L);
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L, 5L}, 0, 3)).rewindAndDoesNotContain(5L);
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).isNotNull().rewindAndDoesNotContain(3L).isInstanceOf(LongBuffer.class);
 
         try {
             Raw.longBufferAssertion().rewindAndDoesNotContain(1L);
@@ -557,6 +567,7 @@ public final class LongBufferAssertionTest extends AssertionTest {
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).containsAll(1L, 2L);
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L})).containsAll(1L, 3L);
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L})).containsAll(4L, 2L);
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).isNotNull().containsAll(1L, 2L).isInstanceOf(LongBuffer.class);
 
         try {
             Raw.longBufferAssertion().containsAll(1L);
@@ -646,6 +657,7 @@ public final class LongBufferAssertionTest extends AssertionTest {
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).containsAll(DataHelper.createIterable(1L, 2L));
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L})).containsAll(DataHelper.createIterable(1L, 3L));
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L})).containsAll(DataHelper.createIterable(4L, 2L));
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).isNotNull().containsAll(DataHelper.createIterable(1L, 2L)).isInstanceOf(LongBuffer.class);
 
         try {
             Raw.longBufferAssertion().containsAll(DataHelper.<Long>createIterable());
@@ -736,6 +748,7 @@ public final class LongBufferAssertionTest extends AssertionTest {
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L})).rewindAndContainsAll(1L, 3L);
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L})).rewindAndContainsAll(4L, 2L);
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L, 5L}, 3)).rewindAndContainsAll(1L, 2L);
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).isNotNull().rewindAndContainsAll(1L, 2L).isInstanceOf(LongBuffer.class);
 
         try {
             Raw.longBufferAssertion().rewindAndContainsAll(1L);
@@ -820,6 +833,7 @@ public final class LongBufferAssertionTest extends AssertionTest {
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L})).rewindAndContainsAll(DataHelper.createIterable(1L, 3L));
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L})).rewindAndContainsAll(DataHelper.createIterable(4L, 2L));
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L, 5L}, 3)).rewindAndContainsAll(DataHelper.createIterable(1L, 2L));
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).isNotNull().rewindAndContainsAll(DataHelper.createIterable(1L, 2L)).isInstanceOf(LongBuffer.class);
 
         try {
             Raw.longBufferAssertion().rewindAndContainsAll(DataHelper.<Long>createIterable());
@@ -902,6 +916,7 @@ public final class LongBufferAssertionTest extends AssertionTest {
     public void containsAllInOrderArrayTest() {
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).containsAllInOrder(1L, 2L);
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L})).containsAllInOrder(1L, 3L, 4L);
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).isNotNull().containsAllInOrder(1L, 2L).isInstanceOf(LongBuffer.class);
 
         try {
             Raw.longBufferAssertion().containsAllInOrder(1L);
@@ -996,6 +1011,7 @@ public final class LongBufferAssertionTest extends AssertionTest {
     public void containsAllInOrderIterableTest() {
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).containsAllInOrder(DataHelper.createIterable(1L, 2L));
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L})).containsAllInOrder(DataHelper.createIterable(1L, 3L, 4L));
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).isNotNull().containsAllInOrder(DataHelper.createIterable(1L, 2L)).isInstanceOf(LongBuffer.class);
 
         try {
             Raw.longBufferAssertion().containsAllInOrder(DataHelper.<Long>createIterable());
@@ -1091,6 +1107,7 @@ public final class LongBufferAssertionTest extends AssertionTest {
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).rewindAndContainsAllInOrder(1L, 2L);
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L})).rewindAndContainsAllInOrder(1L, 3L, 4L);
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L, 5L}, 3)).rewindAndContainsAllInOrder(1L, 2L);
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).isNotNull().rewindAndContainsAllInOrder(1L, 2L).isInstanceOf(LongBuffer.class);
 
         try {
             Raw.longBufferAssertion().rewindAndContainsAllInOrder(1L);
@@ -1180,6 +1197,7 @@ public final class LongBufferAssertionTest extends AssertionTest {
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).rewindAndContainsAllInOrder(DataHelper.createIterable(1L, 2L));
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L})).rewindAndContainsAllInOrder(DataHelper.createIterable(1L, 3L, 4L));
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L, 5L}, 3)).rewindAndContainsAllInOrder(DataHelper.createIterable(1L, 2L));
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).isNotNull().rewindAndContainsAllInOrder(DataHelper.createIterable(1L, 2L)).isInstanceOf(LongBuffer.class);
 
         try {
             Raw.longBufferAssertion().rewindAndContainsAllInOrder(DataHelper.<Long>createIterable());
@@ -1270,6 +1288,7 @@ public final class LongBufferAssertionTest extends AssertionTest {
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L})).containsExactly(1L, 2L, 3L, 4L);
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L})).containsExactly(1L, 3L, 2L, 4L);
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).containsExactly();
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).isNotNull().containsExactly(1L, 2L).isInstanceOf(LongBuffer.class);
 
         try {
             Raw.longBufferAssertion().containsExactly(1L);
@@ -1366,6 +1385,7 @@ public final class LongBufferAssertionTest extends AssertionTest {
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L})).containsExactly(DataHelper.createIterable(1L, 2L, 3L, 4L));
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L})).containsExactly(DataHelper.createIterable(1L, 3L, 2L, 4L));
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).containsExactly(DataHelper.<Long>createIterable());
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).isNotNull().containsExactly(DataHelper.createIterable(1L, 2L)).isInstanceOf(LongBuffer.class);
 
         try {
             Raw.longBufferAssertion().containsExactly(DataHelper.<Long>createIterable());
@@ -1463,6 +1483,7 @@ public final class LongBufferAssertionTest extends AssertionTest {
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L})).rewindAndContainsExactly(1L, 3L, 2L, 4L);
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).rewindAndContainsExactly();
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L, 5L}, 3)).rewindAndContainsExactly(1L, 2L, 3L, 4L, 5L);
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).isNotNull().rewindAndContainsExactly(1L, 2L).isInstanceOf(LongBuffer.class);
 
         try {
             Raw.longBufferAssertion().rewindAndContainsExactly(1L);
@@ -1554,6 +1575,7 @@ public final class LongBufferAssertionTest extends AssertionTest {
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L})).rewindAndContainsExactly(DataHelper.createIterable(1L, 3L, 2L, 4L));
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).rewindAndContainsExactly(DataHelper.<Long>createIterable());
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L, 5L}, 3)).rewindAndContainsExactly(DataHelper.createIterable(1L, 2L, 3L, 4L, 5L));
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).isNotNull().rewindAndContainsExactly(DataHelper.createIterable(1L, 2L)).isInstanceOf(LongBuffer.class);
 
         try {
             Raw.longBufferAssertion().rewindAndContainsExactly(DataHelper.<Long>createIterable());
@@ -1643,6 +1665,7 @@ public final class LongBufferAssertionTest extends AssertionTest {
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).containsExactlyInOrder(1L, 2L);
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L})).containsExactlyInOrder(1L, 2L, 3L, 4L);
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).containsExactlyInOrder();
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).isNotNull().containsExactlyInOrder(1L, 2L).isInstanceOf(LongBuffer.class);
 
         try {
             Raw.longBufferAssertion().containsExactlyInOrder(1L);
@@ -1744,6 +1767,7 @@ public final class LongBufferAssertionTest extends AssertionTest {
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).containsExactlyInOrder(DataHelper.createIterable(1L, 2L));
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L})).containsExactlyInOrder(DataHelper.createIterable(1L, 2L, 3L, 4L));
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).containsExactlyInOrder(DataHelper.<Long>createIterable());
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).isNotNull().containsExactlyInOrder(DataHelper.createIterable(1L, 2L)).isInstanceOf(LongBuffer.class);
 
         try {
             Raw.longBufferAssertion().containsExactlyInOrder(DataHelper.<Long>createIterable());
@@ -1846,6 +1870,7 @@ public final class LongBufferAssertionTest extends AssertionTest {
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L})).rewindAndContainsExactlyInOrder(1L, 2L, 3L, 4L);
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).rewindAndContainsExactlyInOrder();
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L, 5L}, 3)).rewindAndContainsExactlyInOrder(1L, 2L, 3L, 4L, 5L);
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).isNotNull().rewindAndContainsExactlyInOrder(1L, 2L).isInstanceOf(LongBuffer.class);
 
         try {
             Raw.longBufferAssertion().rewindAndContainsExactlyInOrder(1L);
@@ -1942,6 +1967,7 @@ public final class LongBufferAssertionTest extends AssertionTest {
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L})).rewindAndContainsExactlyInOrder(DataHelper.createIterable(1L, 2L, 3L, 4L));
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{})).rewindAndContainsExactlyInOrder(DataHelper.<Long>createIterable());
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L, 5L}, 3)).rewindAndContainsExactlyInOrder(DataHelper.createIterable(1L, 2L, 3L, 4L, 5L));
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).isNotNull().rewindAndContainsExactlyInOrder(DataHelper.createIterable(1L, 2L)).isInstanceOf(LongBuffer.class);
 
         try {
             Raw.longBufferAssertion().rewindAndContainsExactlyInOrder(DataHelper.<Long>createIterable());
@@ -2038,6 +2064,7 @@ public final class LongBufferAssertionTest extends AssertionTest {
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L})).containsAny(2L, 4L);
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L})).containsAny(4L, 1L);
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L})).containsAny(5L, 3L);
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).isNotNull().containsAny(2L, 3L).isInstanceOf(LongBuffer.class);
 
         try {
             Raw.longBufferAssertion().containsAny(1L);
@@ -2128,6 +2155,7 @@ public final class LongBufferAssertionTest extends AssertionTest {
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L})).containsAny(DataHelper.createIterable(2L, 4L));
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L})).containsAny(DataHelper.createIterable(4L, 1L));
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L})).containsAny(DataHelper.createIterable(5L, 3L));
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).isNotNull().containsAny(DataHelper.createIterable(2L, 3L)).isInstanceOf(LongBuffer.class);
 
         try {
             Raw.longBufferAssertion().containsAny(DataHelper.<Long>createIterable());
@@ -2219,6 +2247,7 @@ public final class LongBufferAssertionTest extends AssertionTest {
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L})).rewindAndContainsAny(4L, 1L);
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L})).rewindAndContainsAny(5L, 3L);
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L, 5L}, 3)).rewindAndContainsAny(1L, 3L);
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).isNotNull().rewindAndContainsAny(2L, 3L).isInstanceOf(LongBuffer.class);
 
         try {
             Raw.longBufferAssertion().rewindAndContainsAny(1L);
@@ -2304,6 +2333,7 @@ public final class LongBufferAssertionTest extends AssertionTest {
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L})).rewindAndContainsAny(DataHelper.createIterable(4L, 1L));
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L})).rewindAndContainsAny(DataHelper.createIterable(5L, 3L));
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L, 5L}, 3)).rewindAndContainsAny(DataHelper.createIterable(1L, 3L));
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).isNotNull().rewindAndContainsAny(DataHelper.createIterable(2L, 3L)).isInstanceOf(LongBuffer.class);
 
         try {
             Raw.longBufferAssertion().rewindAndContainsAny(DataHelper.<Long>createIterable());
@@ -2388,6 +2418,7 @@ public final class LongBufferAssertionTest extends AssertionTest {
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).containsNone(3L, 4L, 5L);
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L, 5L}, 3)).containsNone(1L, 3L);
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L, 5L}, 0, 3)).containsNone(4L, 5L);
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).isNotNull().containsNone(3L, 7L).isInstanceOf(LongBuffer.class);
 
         try {
             Raw.longBufferAssertion().containsNone(1L);
@@ -2466,6 +2497,7 @@ public final class LongBufferAssertionTest extends AssertionTest {
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).containsNone(DataHelper.createIterable(3L, 4L, 5L));
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L, 5L}, 3)).containsNone(DataHelper.createIterable(1L, 3L));
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L, 5L}, 0, 3)).containsNone(DataHelper.createIterable(4L, 5L));
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).isNotNull().containsNone(DataHelper.createIterable(3L, 7L)).isInstanceOf(LongBuffer.class);
 
         try {
             Raw.longBufferAssertion().containsNone(DataHelper.<Long>createIterable());
@@ -2543,6 +2575,7 @@ public final class LongBufferAssertionTest extends AssertionTest {
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).rewindAndContainsNone(3L, 7L);
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).rewindAndContainsNone(3L, 4L, 5L);
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L, 5L}, 0, 3)).rewindAndContainsNone(4L, 5L);
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).isNotNull().rewindAndContainsNone(3L, 7L).isInstanceOf(LongBuffer.class);
 
         try {
             Raw.longBufferAssertion().rewindAndContainsNone(1L);
@@ -2626,6 +2659,7 @@ public final class LongBufferAssertionTest extends AssertionTest {
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).rewindAndContainsNone(DataHelper.createIterable(3L, 7L));
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).rewindAndContainsNone(DataHelper.createIterable(3L, 4L, 5L));
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L, 4L, 5L}, 0, 3)).rewindAndContainsNone(DataHelper.createIterable(4L, 5L));
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).isNotNull().rewindAndContainsNone(DataHelper.createIterable(3L, 7L)).isInstanceOf(LongBuffer.class);
 
         try {
             Raw.longBufferAssertion().rewindAndContainsNone(DataHelper.<Long>createIterable());
@@ -2711,6 +2745,7 @@ public final class LongBufferAssertionTest extends AssertionTest {
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{99L, 5L, 0L, -21L})).toHexString().isEqualTo("000000000000006300000000000000050000000000000000ffffffffffffffeb");
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{99L, 5L, 0L, -21L}, 2)).toHexString().isEqualTo("0000000000000000ffffffffffffffeb");
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{99L, 5L, 0L, -21L}, 1, 3)).toHexString().isEqualTo("00000000000000050000000000000000");
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).isNotNull().toHexString().isEqualTo("00000000000000010000000000000002");
 
         try {
             Raw.longBufferAssertion().toHexString();
@@ -2789,6 +2824,7 @@ public final class LongBufferAssertionTest extends AssertionTest {
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{99L, 5L, 0L, -21L}, 1, 3)).toHexString(1, 1).isEqualTo("");
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{99L, 5L, 0L, -21L}, 1, 3)).toHexString(1, 2).isEqualTo("0000000000000000");
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{99L, 5L, 0L, -21L}, 1, 3)).toHexString(2, 2).isEqualTo("");
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).isNotNull().toHexString(0, 2).isEqualTo("00000000000000010000000000000002");
 
         try {
             Raw.longBufferAssertion().toHexString(0, 0);
@@ -2928,6 +2964,7 @@ public final class LongBufferAssertionTest extends AssertionTest {
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{99L, 5L, 0L, -21L})).toHexString(Matchers.is(Matchers.equalTo("000000000000006300000000000000050000000000000000ffffffffffffffeb")));
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{99L, 5L, 0L, -21L}, 2)).toHexString(Matchers.is(Matchers.equalTo("0000000000000000ffffffffffffffeb")));
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{99L, 5L, 0L, -21L}, 1, 3)).toHexString(Matchers.is(Matchers.equalTo("00000000000000050000000000000000")));
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).isNotNull().toHexString(Matchers.is(Matchers.equalTo("00000000000000010000000000000002"))).isInstanceOf(LongBuffer.class);
 
         try {
             Raw.longBufferAssertion().toHexString(Matchers.equalTo(""));
@@ -3018,6 +3055,7 @@ public final class LongBufferAssertionTest extends AssertionTest {
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{99L, 5L, 0L, -21L}, 1, 3)).toHexString(1, 1, Matchers.is(Matchers.equalTo("")));
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{99L, 5L, 0L, -21L}, 1, 3)).toHexString(1, 2, Matchers.is(Matchers.equalTo("0000000000000000")));
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{99L, 5L, 0L, -21L}, 1, 3)).toHexString(2, 2, Matchers.is(Matchers.equalTo("")));
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).isNotNull().toHexString(0, 2, Matchers.is(Matchers.equalTo("00000000000000010000000000000002"))).isInstanceOf(LongBuffer.class);
 
         try {
             Raw.longBufferAssertion().toHexString(0, 0, Matchers.equalTo(""));
@@ -3169,6 +3207,7 @@ public final class LongBufferAssertionTest extends AssertionTest {
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{99L, 5L, 0L, -21L})).toRewindAndHexString().isEqualTo("000000000000006300000000000000050000000000000000ffffffffffffffeb");
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{99L, 5L, 0L, -21L}, 2)).toRewindAndHexString().isEqualTo("000000000000006300000000000000050000000000000000ffffffffffffffeb");
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{99L, 5L, 0L, -21L}, 1, 3)).toRewindAndHexString().isEqualTo("000000000000006300000000000000050000000000000000");
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).isNotNull().toRewindAndHexString().isEqualTo("00000000000000010000000000000002");
 
         try {
             Raw.longBufferAssertion().toRewindAndHexString();
@@ -3251,6 +3290,7 @@ public final class LongBufferAssertionTest extends AssertionTest {
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{99L, 5L, 0L, -21L}, 1, 3)).toRewindAndHexString(2, 2).isEqualTo("");
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{99L, 5L, 0L, -21L}, 1, 3)).toRewindAndHexString(2, 3).isEqualTo("0000000000000000");
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{99L, 5L, 0L, -21L}, 1, 3)).toRewindAndHexString(3, 3).isEqualTo("");
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).isNotNull().toRewindAndHexString(0, 2).isEqualTo("00000000000000010000000000000002");
 
         try {
             Raw.longBufferAssertion().toRewindAndHexString(0, 0);
@@ -3390,6 +3430,7 @@ public final class LongBufferAssertionTest extends AssertionTest {
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{99L, 5L, 0L, -21L})).toRewindAndHexString(Matchers.is(Matchers.equalTo("000000000000006300000000000000050000000000000000ffffffffffffffeb")));
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{99L, 5L, 0L, -21L}, 2)).toRewindAndHexString(Matchers.is(Matchers.equalTo("000000000000006300000000000000050000000000000000ffffffffffffffeb")));
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{99L, 5L, 0L, -21L}, 1, 3)).toRewindAndHexString(Matchers.is(Matchers.equalTo("000000000000006300000000000000050000000000000000")));
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).isNotNull().toRewindAndHexString(Matchers.is(Matchers.equalTo("00000000000000010000000000000002"))).isInstanceOf(LongBuffer.class);
 
         try {
             Raw.longBufferAssertion().toRewindAndHexString(Matchers.equalTo(""));
@@ -3484,6 +3525,7 @@ public final class LongBufferAssertionTest extends AssertionTest {
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{99L, 5L, 0L, -21L}, 1, 3)).toRewindAndHexString(2, 2, Matchers.is(Matchers.equalTo("")));
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{99L, 5L, 0L, -21L}, 1, 3)).toRewindAndHexString(2, 3, Matchers.is(Matchers.equalTo("0000000000000000")));
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{99L, 5L, 0L, -21L}, 1, 3)).toRewindAndHexString(3, 3, Matchers.is(Matchers.equalTo("")));
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).isNotNull().toRewindAndHexString(0, 2, Matchers.is(Matchers.equalTo("00000000000000010000000000000002"))).isInstanceOf(LongBuffer.class);
 
         try {
             Raw.longBufferAssertion().toRewindAndHexString(0, 0, Matchers.equalTo(""));
@@ -3635,6 +3677,7 @@ public final class LongBufferAssertionTest extends AssertionTest {
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{99L, 5L, 0L, -21L})).hasHexString("000000000000006300000000000000050000000000000000ffffffffffffffeb");
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{99L, 5L, 0L, -21L}, 2)).hasHexString("0000000000000000ffffffffffffffeb");
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{99L, 5L, 0L, -21L}, 1, 3)).hasHexString("00000000000000050000000000000000");
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).isNotNull().hasHexString("00000000000000010000000000000002").isInstanceOf(LongBuffer.class);
 
         try {
             Raw.longBufferAssertion().hasHexString("");
@@ -3725,6 +3768,7 @@ public final class LongBufferAssertionTest extends AssertionTest {
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{99L, 5L, 0L, -21L}, 1, 3)).hasHexString(1, 1, "");
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{99L, 5L, 0L, -21L}, 1, 3)).hasHexString(1, 2, "0000000000000000");
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{99L, 5L, 0L, -21L}, 1, 3)).hasHexString(2, 2, "");
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).isNotNull().hasHexString(0, 2, "00000000000000010000000000000002").isInstanceOf(LongBuffer.class);
 
         try {
             Raw.longBufferAssertion().hasHexString(0, 0, "");
@@ -3876,6 +3920,7 @@ public final class LongBufferAssertionTest extends AssertionTest {
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{99L, 5L, 0L, -21L})).hasRewindAndHexString("000000000000006300000000000000050000000000000000ffffffffffffffeb");
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{99L, 5L, 0L, -21L}, 2)).hasRewindAndHexString("000000000000006300000000000000050000000000000000ffffffffffffffeb");
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{99L, 5L, 0L, -21L}, 1, 3)).hasRewindAndHexString("000000000000006300000000000000050000000000000000");
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).isNotNull().hasRewindAndHexString("00000000000000010000000000000002").isInstanceOf(LongBuffer.class);
 
         try {
             Raw.longBufferAssertion().hasRewindAndHexString("");
@@ -3970,6 +4015,7 @@ public final class LongBufferAssertionTest extends AssertionTest {
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{99L, 5L, 0L, -21L}, 1, 3)).hasRewindAndHexString(2, 2, "");
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{99L, 5L, 0L, -21L}, 1, 3)).hasRewindAndHexString(2, 3, "0000000000000000");
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{99L, 5L, 0L, -21L}, 1, 3)).hasRewindAndHexString(3, 3, "");
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L})).isNotNull().hasRewindAndHexString(0, 2, "00000000000000010000000000000002").isInstanceOf(LongBuffer.class);
 
         try {
             Raw.longBufferAssertion().hasRewindAndHexString(0, 0, "");
@@ -4128,6 +4174,8 @@ public final class LongBufferAssertionTest extends AssertionTest {
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 4, 3, 5)).toPosition().isGreaterThan(1);
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 4, 3, 5)).toPosition().isLessThan(5);
 
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 3)).isNotNull().toPosition().isEqualTo(3);
+
         try {
             Raw.longBufferAssertion().toPosition();
             Assertions.fail("LongBufferAssertion test fail");
@@ -4188,6 +4236,8 @@ public final class LongBufferAssertionTest extends AssertionTest {
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 4, 3, 5)).toPosition(Matchers.equalTo(3));
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 4, 3, 5)).toPosition(Matchers.greaterThan(2));
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 4, 3, 5)).toPosition(Matchers.lessThan(4));
+
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 3)).isNotNull().toPosition(Matchers.is(Matchers.equalTo(3))).isInstanceOf(LongBuffer.class);
 
         try {
             Raw.longBufferAssertion().toPosition(Matchers.equalTo(0));
@@ -4253,6 +4303,7 @@ public final class LongBufferAssertionTest extends AssertionTest {
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 3)).hasPosition(3);
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 1)).hasPosition(1);
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 4, 3, 5)).hasPosition(3);
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 3)).isNotNull().hasPosition(3).isInstanceOf(LongBuffer.class);
 
         try {
             Raw.longBufferAssertion().hasPosition(1);
@@ -4302,6 +4353,8 @@ public final class LongBufferAssertionTest extends AssertionTest {
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 4, 3, 5)).toLimit().isEqualTo(3);
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 4, 3, 5)).toLimit().isGreaterThan(1);
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 4, 3, 5)).toLimit().isLessThan(5);
+
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 3)).isNotNull().toLimit().isEqualTo(3);
 
         try {
             Raw.longBufferAssertion().toLimit();
@@ -4363,6 +4416,8 @@ public final class LongBufferAssertionTest extends AssertionTest {
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 4, 3, 5)).toLimit(Matchers.equalTo(3));
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 4, 3, 5)).toLimit(Matchers.greaterThan(2));
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 4, 3, 5)).toLimit(Matchers.lessThan(4));
+
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 3)).isNotNull().toLimit(Matchers.is(Matchers.equalTo(3))).isInstanceOf(LongBuffer.class);
 
         try {
             Raw.longBufferAssertion().toLimit(Matchers.equalTo(0));
@@ -4428,6 +4483,7 @@ public final class LongBufferAssertionTest extends AssertionTest {
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 3)).hasLimit(3);
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 1, 1)).hasLimit(1);
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 4, 3, 5)).hasLimit(3);
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 3)).isNotNull().hasLimit(3).isInstanceOf(LongBuffer.class);
 
         try {
             Raw.longBufferAssertion().hasLimit(1);
@@ -4477,6 +4533,8 @@ public final class LongBufferAssertionTest extends AssertionTest {
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 4, 3, 5)).toCapacity().isEqualTo(5);
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 4, 3, 5)).toCapacity().isGreaterThan(1);
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 4, 3, 5)).toCapacity().isLessThan(7);
+
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 3)).isNotNull().toCapacity().isEqualTo(3);
 
         try {
             Raw.longBufferAssertion().toCapacity();
@@ -4538,6 +4596,8 @@ public final class LongBufferAssertionTest extends AssertionTest {
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 4, 3, 5)).toCapacity(Matchers.equalTo(5));
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 4, 3, 5)).toCapacity(Matchers.greaterThan(4));
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 4, 3, 5)).toCapacity(Matchers.lessThan(6));
+
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 3)).isNotNull().toCapacity(Matchers.is(Matchers.equalTo(3))).isInstanceOf(LongBuffer.class);
 
         try {
             Raw.longBufferAssertion().toCapacity(Matchers.equalTo(0));
@@ -4603,6 +4663,7 @@ public final class LongBufferAssertionTest extends AssertionTest {
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 3)).hasCapacity(3);
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 1, 1)).hasCapacity(3);
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 4, 3, 5)).hasCapacity(5);
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 3)).isNotNull().hasCapacity(3).isInstanceOf(LongBuffer.class);
 
         try {
             Raw.longBufferAssertion().hasCapacity(1);
@@ -4644,6 +4705,7 @@ public final class LongBufferAssertionTest extends AssertionTest {
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 3)).hasProperties(3, 3, 3);
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 1)).hasProperties(1, 3, 3);
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 4, 3, 5)).hasProperties(3, 3, 5);
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 3)).isNotNull().hasProperties(3, 3, 3).isInstanceOf(LongBuffer.class);
 
         try {
             Raw.longBufferAssertion().hasProperties(1, 1, 1);
@@ -4722,6 +4784,8 @@ public final class LongBufferAssertionTest extends AssertionTest {
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 2, 4, 5)).toRemaining().isGreaterThan(1);
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 2, 4, 5)).toRemaining().isLessThan(5);
 
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 3)).isNotNull().toRemaining().isEqualTo(0);
+
         try {
             Raw.longBufferAssertion().toRemaining();
             Assertions.fail("LongBufferAssertion test fail");
@@ -4786,6 +4850,8 @@ public final class LongBufferAssertionTest extends AssertionTest {
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 2, 4, 5)).toRemaining(Matchers.equalTo(2));
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 2, 4, 5)).toRemaining(Matchers.greaterThan(1));
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 2, 4, 5)).toRemaining(Matchers.lessThan(3));
+
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 3)).isNotNull().toRemaining(Matchers.is(Matchers.equalTo(0))).isInstanceOf(LongBuffer.class);
 
         try {
             Raw.longBufferAssertion().toRemaining(Matchers.equalTo(0));
@@ -4852,6 +4918,7 @@ public final class LongBufferAssertionTest extends AssertionTest {
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 1, 3)).hasRemaining(2);
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 4, 2, 5)).hasRemaining(0);
         initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 2, 4, 5)).hasRemaining(2);
+        initialize(Raw.longBufferAssertion(), createLongBuffer(new long[]{1L, 2L, 3L}, 3)).isNotNull().hasRemaining(0).isInstanceOf(LongBuffer.class);
 
         try {
             Raw.longBufferAssertion().hasRemaining(1);
@@ -4891,6 +4958,7 @@ public final class LongBufferAssertionTest extends AssertionTest {
     @Test
     public void isDirectTest() {
         initialize(Raw.longBufferAssertion(), ByteBuffer.allocateDirect(12).asLongBuffer()).isDirect();
+        initialize(Raw.longBufferAssertion(), ByteBuffer.allocateDirect(12).asLongBuffer()).isNotNull().isDirect().isInstanceOf(LongBuffer.class);
 
         try {
             Raw.longBufferAssertion().isDirect();
@@ -4930,6 +4998,7 @@ public final class LongBufferAssertionTest extends AssertionTest {
     @Test
     public void isNotDirectTest() {
         initialize(Raw.longBufferAssertion(), ByteBuffer.allocate(12).asLongBuffer()).isNotDirect();
+        initialize(Raw.longBufferAssertion(), ByteBuffer.allocate(12).asLongBuffer()).isNotNull().isNotDirect().isInstanceOf(LongBuffer.class);
 
         try {
             Raw.longBufferAssertion().isNotDirect();
@@ -4972,6 +5041,7 @@ public final class LongBufferAssertionTest extends AssertionTest {
         LongBuffer readOnlyBuffer = buffer.asReadOnlyBuffer();
 
         initialize(Raw.longBufferAssertion(), readOnlyBuffer).isReadOnly();
+        initialize(Raw.longBufferAssertion(), readOnlyBuffer).isNotNull().isReadOnly().isInstanceOf(LongBuffer.class);
 
         try {
             Raw.longBufferAssertion().isReadOnly();
@@ -5014,6 +5084,7 @@ public final class LongBufferAssertionTest extends AssertionTest {
         LongBuffer readOnlyBuffer = buffer.asReadOnlyBuffer();
 
         initialize(Raw.longBufferAssertion(), buffer).isNotReadOnly();
+        initialize(Raw.longBufferAssertion(), buffer).isNotNull().isNotReadOnly().isInstanceOf(LongBuffer.class);
 
         try {
             Raw.longBufferAssertion().isNotReadOnly();

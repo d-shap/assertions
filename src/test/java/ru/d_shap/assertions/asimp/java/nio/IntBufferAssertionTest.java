@@ -3207,7 +3207,7 @@ public final class IntBufferAssertionTest extends AssertionTest {
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{99, 5, 0, -21})).toRewindAndHexString().isEqualTo("000000630000000500000000ffffffeb");
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{99, 5, 0, -21}, 2)).toRewindAndHexString().isEqualTo("000000630000000500000000ffffffeb");
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{99, 5, 0, -21}, 1, 3)).toRewindAndHexString().isEqualTo("000000630000000500000000");
-        initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2})).isNotNull().toRewindAndHexString().isEqualTo("0000000100000002").isInstanceOf(IntBuffer.class);
+        initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2})).isNotNull().toRewindAndHexString().isEqualTo("0000000100000002");
 
         try {
             Raw.intBufferAssertion().toRewindAndHexString();
@@ -3290,7 +3290,7 @@ public final class IntBufferAssertionTest extends AssertionTest {
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{99, 5, 0, -21}, 1, 3)).toRewindAndHexString(2, 2).isEqualTo("");
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{99, 5, 0, -21}, 1, 3)).toRewindAndHexString(2, 3).isEqualTo("00000000");
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{99, 5, 0, -21}, 1, 3)).toRewindAndHexString(3, 3).isEqualTo("");
-        initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2})).isNotNull().toRewindAndHexString(0, 2).isEqualTo("0000000100000002").isInstanceOf(IntBuffer.class);
+        initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2})).isNotNull().toRewindAndHexString(0, 2).isEqualTo("0000000100000002");
 
         try {
             Raw.intBufferAssertion().toRewindAndHexString(0, 0);
