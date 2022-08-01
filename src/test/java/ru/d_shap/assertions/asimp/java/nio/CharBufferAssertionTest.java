@@ -73,6 +73,7 @@ public final class CharBufferAssertionTest extends AssertionTest {
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{})).isEmpty();
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'}, 2)).isEmpty();
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'}, 2, 2, 4)).isEmpty();
+        initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'}, 2, 2, 4)).isNotNull().isEmpty().isInstanceOf(CharBuffer.class);
 
         try {
             Raw.charBufferAssertion().isEmpty();
@@ -126,6 +127,7 @@ public final class CharBufferAssertionTest extends AssertionTest {
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{})).isRewindAndEmpty();
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'}, 0, 0)).isRewindAndEmpty();
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'}, 0, 0, 4)).isRewindAndEmpty();
+        initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'}, 0, 0, 4)).isNotNull().isRewindAndEmpty().isInstanceOf(CharBuffer.class);
 
         try {
             Raw.charBufferAssertion().isRewindAndEmpty();
@@ -180,6 +182,7 @@ public final class CharBufferAssertionTest extends AssertionTest {
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'}, 2)).isNullOrEmpty();
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'}, 2, 2, 4)).isNullOrEmpty();
         initialize(Raw.charBufferAssertion(), null).isNullOrEmpty();
+        initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{})).isNotNull().isNullOrEmpty().isInstanceOf(CharBuffer.class);
 
         try {
             Raw.charBufferAssertion().isNullOrEmpty();
@@ -222,6 +225,7 @@ public final class CharBufferAssertionTest extends AssertionTest {
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'}, 0, 0)).isRewindAndNullOrEmpty();
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'}, 0, 0, 4)).isRewindAndNullOrEmpty();
         initialize(Raw.charBufferAssertion(), null).isRewindAndNullOrEmpty();
+        initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{})).isNotNull().isRewindAndNullOrEmpty().isInstanceOf(CharBuffer.class);
 
         try {
             Raw.charBufferAssertion().isRewindAndNullOrEmpty();
@@ -263,6 +267,7 @@ public final class CharBufferAssertionTest extends AssertionTest {
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).isNotEmpty();
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'}, 1)).isNotEmpty();
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{}, 0, 4, 4)).isNotEmpty();
+        initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).isNotNull().isNotEmpty().isInstanceOf(CharBuffer.class);
 
         try {
             Raw.charBufferAssertion().isNotEmpty();
@@ -318,6 +323,7 @@ public final class CharBufferAssertionTest extends AssertionTest {
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{}, 0, 4, 4)).isRewindAndNotEmpty();
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'}, 2)).isRewindAndNotEmpty();
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'}, 2, 2, 4)).isRewindAndNotEmpty();
+        initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).isNotNull().isRewindAndNotEmpty().isInstanceOf(CharBuffer.class);
 
         try {
             Raw.charBufferAssertion().isRewindAndNotEmpty();
@@ -358,6 +364,7 @@ public final class CharBufferAssertionTest extends AssertionTest {
     public void containsTest() {
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).contains('1');
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).contains('2');
+        initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).isNotNull().contains('2').isInstanceOf(CharBuffer.class);
 
         try {
             Raw.charBufferAssertion().contains('1');
@@ -411,6 +418,7 @@ public final class CharBufferAssertionTest extends AssertionTest {
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).rewindAndContains('1');
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).rewindAndContains('2');
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 3)).rewindAndContains('2');
+        initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).isNotNull().rewindAndContains('2').isInstanceOf(CharBuffer.class);
 
         try {
             Raw.charBufferAssertion().rewindAndContains('1');
@@ -458,6 +466,7 @@ public final class CharBufferAssertionTest extends AssertionTest {
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).doesNotContain('3');
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 3)).doesNotContain('2');
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 0, 3)).doesNotContain('5');
+        initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).isNotNull().doesNotContain('3').isInstanceOf(CharBuffer.class);
 
         try {
             Raw.charBufferAssertion().doesNotContain('1');
@@ -504,6 +513,7 @@ public final class CharBufferAssertionTest extends AssertionTest {
     public void rewindAndDoesNotContainTest() {
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).rewindAndDoesNotContain('3');
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 0, 3)).rewindAndDoesNotContain('5');
+        initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).isNotNull().rewindAndDoesNotContain('3').isInstanceOf(CharBuffer.class);
 
         try {
             Raw.charBufferAssertion().rewindAndDoesNotContain('1');
@@ -557,6 +567,7 @@ public final class CharBufferAssertionTest extends AssertionTest {
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).containsAll('1', '2');
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3', '4'})).containsAll('1', '3');
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3', '4'})).containsAll('4', '2');
+        initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).isNotNull().containsAll('1', '2').isInstanceOf(CharBuffer.class);
 
         try {
             Raw.charBufferAssertion().containsAll('1');
@@ -646,6 +657,7 @@ public final class CharBufferAssertionTest extends AssertionTest {
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).containsAll(49, 50);
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3', '4'})).containsAll(49, 51);
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3', '4'})).containsAll(52, 50);
+        initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).isNotNull().containsAll(49, 50).isInstanceOf(CharBuffer.class);
 
         try {
             Raw.charBufferAssertion().containsAll(49);
@@ -735,6 +747,7 @@ public final class CharBufferAssertionTest extends AssertionTest {
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).containsAll(DataHelper.createIterable('1', '2'));
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3', '4'})).containsAll(DataHelper.createIterable('1', '3'));
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3', '4'})).containsAll(DataHelper.createIterable('4', '2'));
+        initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).isNotNull().containsAll(DataHelper.createIterable('1', '2')).isInstanceOf(CharBuffer.class);
 
         try {
             Raw.charBufferAssertion().containsAll(DataHelper.<Character>createIterable());
@@ -825,6 +838,7 @@ public final class CharBufferAssertionTest extends AssertionTest {
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3', '4'})).rewindAndContainsAll('1', '3');
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3', '4'})).rewindAndContainsAll('4', '2');
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 3)).rewindAndContainsAll('1', '2');
+        initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).isNotNull().rewindAndContainsAll('1', '2').isInstanceOf(CharBuffer.class);
 
         try {
             Raw.charBufferAssertion().rewindAndContainsAll('1');
@@ -909,6 +923,7 @@ public final class CharBufferAssertionTest extends AssertionTest {
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3', '4'})).rewindAndContainsAll(49, 51);
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3', '4'})).rewindAndContainsAll(52, 50);
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 3)).rewindAndContainsAll(49, 50);
+        initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).isNotNull().rewindAndContainsAll(49, 50).isInstanceOf(CharBuffer.class);
 
         try {
             Raw.charBufferAssertion().rewindAndContainsAll(49);
@@ -993,6 +1008,7 @@ public final class CharBufferAssertionTest extends AssertionTest {
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3', '4'})).rewindAndContainsAll(DataHelper.createIterable('1', '3'));
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3', '4'})).rewindAndContainsAll(DataHelper.createIterable('4', '2'));
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 3)).rewindAndContainsAll(DataHelper.createIterable('1', '2'));
+        initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).isNotNull().rewindAndContainsAll(DataHelper.createIterable('1', '2')).isInstanceOf(CharBuffer.class);
 
         try {
             Raw.charBufferAssertion().rewindAndContainsAll(DataHelper.<Character>createIterable());
@@ -1075,6 +1091,7 @@ public final class CharBufferAssertionTest extends AssertionTest {
     public void containsAllInOrderArrayCharTest() {
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).containsAllInOrder('1', '2');
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3', '4'})).containsAllInOrder('1', '3', '4');
+        initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).isNotNull().containsAllInOrder('1', '2').isInstanceOf(CharBuffer.class);
 
         try {
             Raw.charBufferAssertion().containsAllInOrder('1');
@@ -1169,6 +1186,7 @@ public final class CharBufferAssertionTest extends AssertionTest {
     public void containsAllInOrderArrayIntTest() {
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).containsAllInOrder(49, 50);
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3', '4'})).containsAllInOrder(49, 51, 52);
+        initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).isNotNull().containsAllInOrder(49, 50).isInstanceOf(CharBuffer.class);
 
         try {
             Raw.charBufferAssertion().containsAllInOrder(49);
@@ -1263,6 +1281,7 @@ public final class CharBufferAssertionTest extends AssertionTest {
     public void containsAllInOrderIterableTest() {
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).containsAllInOrder(DataHelper.createIterable('1', '2'));
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3', '4'})).containsAllInOrder(DataHelper.createIterable('1', '3', '4'));
+        initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).isNotNull().containsAllInOrder(DataHelper.createIterable('1', '2')).isInstanceOf(CharBuffer.class);
 
         try {
             Raw.charBufferAssertion().containsAllInOrder(DataHelper.<Character>createIterable());
@@ -1358,6 +1377,7 @@ public final class CharBufferAssertionTest extends AssertionTest {
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).rewindAndContainsAllInOrder('1', '2');
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3', '4'})).rewindAndContainsAllInOrder('1', '3', '4');
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 3)).rewindAndContainsAllInOrder('1', '2');
+        initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).isNotNull().rewindAndContainsAllInOrder('1', '2').isInstanceOf(CharBuffer.class);
 
         try {
             Raw.charBufferAssertion().rewindAndContainsAllInOrder('1');
@@ -1447,6 +1467,7 @@ public final class CharBufferAssertionTest extends AssertionTest {
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).rewindAndContainsAllInOrder(49, 50);
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3', '4'})).rewindAndContainsAllInOrder(49, 51, 52);
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 3)).rewindAndContainsAllInOrder(49, 50);
+        initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).isNotNull().rewindAndContainsAllInOrder(49, 50).isInstanceOf(CharBuffer.class);
 
         try {
             Raw.charBufferAssertion().rewindAndContainsAllInOrder(49);
@@ -1536,6 +1557,7 @@ public final class CharBufferAssertionTest extends AssertionTest {
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).rewindAndContainsAllInOrder(DataHelper.createIterable('1', '2'));
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3', '4'})).rewindAndContainsAllInOrder(DataHelper.createIterable('1', '3', '4'));
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 3)).rewindAndContainsAllInOrder(DataHelper.createIterable('1', '2'));
+        initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).isNotNull().rewindAndContainsAllInOrder(DataHelper.createIterable('1', '2')).isInstanceOf(CharBuffer.class);
 
         try {
             Raw.charBufferAssertion().rewindAndContainsAllInOrder(DataHelper.<Character>createIterable());
@@ -1626,6 +1648,7 @@ public final class CharBufferAssertionTest extends AssertionTest {
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3', '4'})).containsExactly('1', '2', '3', '4');
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3', '4'})).containsExactly('1', '3', '2', '4');
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{})).containsExactly();
+        initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).isNotNull().containsExactly('1', '2').isInstanceOf(CharBuffer.class);
 
         try {
             Raw.charBufferAssertion().containsExactly('1');
@@ -1722,6 +1745,7 @@ public final class CharBufferAssertionTest extends AssertionTest {
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3', '4'})).containsExactly(49, 50, 51, 52);
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3', '4'})).containsExactly(49, 51, 50, 52);
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{})).containsExactly(new int[]{});
+        initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).isNotNull().containsExactly(49, 50).isInstanceOf(CharBuffer.class);
 
         try {
             Raw.charBufferAssertion().containsExactly(49);
@@ -1818,6 +1842,7 @@ public final class CharBufferAssertionTest extends AssertionTest {
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3', '4'})).containsExactly(DataHelper.createIterable('1', '2', '3', '4'));
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3', '4'})).containsExactly(DataHelper.createIterable('1', '3', '2', '4'));
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{})).containsExactly(DataHelper.<Character>createIterable());
+        initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).isNotNull().containsExactly(DataHelper.createIterable('1', '2')).isInstanceOf(CharBuffer.class);
 
         try {
             Raw.charBufferAssertion().containsExactly(DataHelper.<Character>createIterable());
@@ -1915,6 +1940,7 @@ public final class CharBufferAssertionTest extends AssertionTest {
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3', '4'})).rewindAndContainsExactly('1', '3', '2', '4');
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{})).rewindAndContainsExactly();
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 3)).rewindAndContainsExactly('1', '2', '3', '4', '5');
+        initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).isNotNull().rewindAndContainsExactly('1', '2').isInstanceOf(CharBuffer.class);
 
         try {
             Raw.charBufferAssertion().rewindAndContainsExactly('1');
@@ -2006,6 +2032,7 @@ public final class CharBufferAssertionTest extends AssertionTest {
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3', '4'})).rewindAndContainsExactly(49, 51, 50, 52);
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{})).rewindAndContainsExactly(new int[]{});
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 3)).rewindAndContainsExactly(49, 50, 51, 52, 53);
+        initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).isNotNull().rewindAndContainsExactly(49, 50).isInstanceOf(CharBuffer.class);
 
         try {
             Raw.charBufferAssertion().rewindAndContainsExactly(49);
@@ -2097,6 +2124,7 @@ public final class CharBufferAssertionTest extends AssertionTest {
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3', '4'})).rewindAndContainsExactly(DataHelper.createIterable('1', '3', '2', '4'));
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{})).rewindAndContainsExactly(DataHelper.<Character>createIterable());
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 3)).rewindAndContainsExactly(DataHelper.createIterable('1', '2', '3', '4', '5'));
+        initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).isNotNull().rewindAndContainsExactly(DataHelper.createIterable('1', '2')).isInstanceOf(CharBuffer.class);
 
         try {
             Raw.charBufferAssertion().rewindAndContainsExactly(DataHelper.<Character>createIterable());
@@ -2186,6 +2214,7 @@ public final class CharBufferAssertionTest extends AssertionTest {
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).containsExactlyInOrder('1', '2');
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3', '4'})).containsExactlyInOrder('1', '2', '3', '4');
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{})).containsExactlyInOrder();
+        initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).isNotNull().containsExactlyInOrder('1', '2').isInstanceOf(CharBuffer.class);
 
         try {
             Raw.charBufferAssertion().containsExactlyInOrder('1');
@@ -2287,6 +2316,7 @@ public final class CharBufferAssertionTest extends AssertionTest {
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).containsExactlyInOrder(49, 50);
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3', '4'})).containsExactlyInOrder(49, 50, 51, 52);
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{})).containsExactlyInOrder(new int[]{});
+        initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).isNotNull().containsExactlyInOrder(49, 50).isInstanceOf(CharBuffer.class);
 
         try {
             Raw.charBufferAssertion().containsExactlyInOrder(49);
@@ -2388,6 +2418,7 @@ public final class CharBufferAssertionTest extends AssertionTest {
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).containsExactlyInOrder(DataHelper.createIterable('1', '2'));
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3', '4'})).containsExactlyInOrder(DataHelper.createIterable('1', '2', '3', '4'));
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{})).containsExactlyInOrder(DataHelper.<Character>createIterable());
+        initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).isNotNull().containsExactlyInOrder(DataHelper.createIterable('1', '2')).isInstanceOf(CharBuffer.class);
 
         try {
             Raw.charBufferAssertion().containsExactlyInOrder(DataHelper.<Character>createIterable());
@@ -2490,6 +2521,7 @@ public final class CharBufferAssertionTest extends AssertionTest {
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3', '4'})).rewindAndContainsExactlyInOrder('1', '2', '3', '4');
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{})).rewindAndContainsExactlyInOrder();
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 3)).rewindAndContainsExactlyInOrder('1', '2', '3', '4', '5');
+        initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).isNotNull().rewindAndContainsExactlyInOrder('1', '2').isInstanceOf(CharBuffer.class);
 
         try {
             Raw.charBufferAssertion().rewindAndContainsExactlyInOrder('1');
@@ -2586,6 +2618,7 @@ public final class CharBufferAssertionTest extends AssertionTest {
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3', '4'})).rewindAndContainsExactlyInOrder(49, 50, 51, 52);
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{})).rewindAndContainsExactlyInOrder(new int[]{});
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 3)).rewindAndContainsExactlyInOrder(49, 50, 51, 52, 53);
+        initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).isNotNull().rewindAndContainsExactlyInOrder(49, 50).isInstanceOf(CharBuffer.class);
 
         try {
             Raw.charBufferAssertion().rewindAndContainsExactlyInOrder(49);
@@ -2682,6 +2715,7 @@ public final class CharBufferAssertionTest extends AssertionTest {
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3', '4'})).rewindAndContainsExactlyInOrder(DataHelper.createIterable('1', '2', '3', '4'));
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{})).rewindAndContainsExactlyInOrder(DataHelper.<Character>createIterable());
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 3)).rewindAndContainsExactlyInOrder(DataHelper.createIterable('1', '2', '3', '4', '5'));
+        initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).isNotNull().rewindAndContainsExactlyInOrder(DataHelper.createIterable('1', '2')).isInstanceOf(CharBuffer.class);
 
         try {
             Raw.charBufferAssertion().rewindAndContainsExactlyInOrder(DataHelper.<Character>createIterable());
@@ -2778,6 +2812,7 @@ public final class CharBufferAssertionTest extends AssertionTest {
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3', '4'})).containsAny('2', '4');
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3', '4'})).containsAny('4', '1');
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3', '4'})).containsAny('5', '3');
+        initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).isNotNull().containsAny('2', '3').isInstanceOf(CharBuffer.class);
 
         try {
             Raw.charBufferAssertion().containsAny('1');
@@ -2868,6 +2903,7 @@ public final class CharBufferAssertionTest extends AssertionTest {
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3', '4'})).containsAny(50, 52);
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3', '4'})).containsAny(52, 49);
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3', '4'})).containsAny(53, 51);
+        initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).isNotNull().containsAny(50, 51).isInstanceOf(CharBuffer.class);
 
         try {
             Raw.charBufferAssertion().containsAny(49);
@@ -2958,6 +2994,7 @@ public final class CharBufferAssertionTest extends AssertionTest {
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3', '4'})).containsAny(DataHelper.createIterable('2', '4'));
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3', '4'})).containsAny(DataHelper.createIterable('4', '1'));
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3', '4'})).containsAny(DataHelper.createIterable('5', '3'));
+        initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).isNotNull().containsAny(DataHelper.createIterable('2', '3')).isInstanceOf(CharBuffer.class);
 
         try {
             Raw.charBufferAssertion().containsAny(DataHelper.<Character>createIterable());
@@ -3049,6 +3086,7 @@ public final class CharBufferAssertionTest extends AssertionTest {
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3', '4'})).rewindAndContainsAny('4', '1');
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3', '4'})).rewindAndContainsAny('5', '3');
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 3)).rewindAndContainsAny('1', '3');
+        initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).isNotNull().rewindAndContainsAny('2', '3').isInstanceOf(CharBuffer.class);
 
         try {
             Raw.charBufferAssertion().rewindAndContainsAny('1');
@@ -3134,6 +3172,7 @@ public final class CharBufferAssertionTest extends AssertionTest {
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3', '4'})).rewindAndContainsAny(52, 49);
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3', '4'})).rewindAndContainsAny(53, 51);
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 3)).rewindAndContainsAny(49, 51);
+        initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).isNotNull().rewindAndContainsAny(50, 51).isInstanceOf(CharBuffer.class);
 
         try {
             Raw.charBufferAssertion().rewindAndContainsAny(49);
@@ -3219,6 +3258,7 @@ public final class CharBufferAssertionTest extends AssertionTest {
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3', '4'})).rewindAndContainsAny(DataHelper.createIterable('4', '1'));
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3', '4'})).rewindAndContainsAny(DataHelper.createIterable('5', '3'));
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 3)).rewindAndContainsAny(DataHelper.createIterable('1', '3'));
+        initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).isNotNull().rewindAndContainsAny(DataHelper.createIterable('2', '3')).isInstanceOf(CharBuffer.class);
 
         try {
             Raw.charBufferAssertion().rewindAndContainsAny(DataHelper.<Character>createIterable());
@@ -3303,6 +3343,7 @@ public final class CharBufferAssertionTest extends AssertionTest {
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).containsNone('3', '4', '5');
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 3)).containsNone('1', '3');
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 0, 3)).containsNone('4', '5');
+        initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).isNotNull().containsNone('3', '7').isInstanceOf(CharBuffer.class);
 
         try {
             Raw.charBufferAssertion().containsNone('1');
@@ -3381,6 +3422,7 @@ public final class CharBufferAssertionTest extends AssertionTest {
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).containsNone(51, 52, 53);
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 3)).containsNone(49, 51);
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 0, 3)).containsNone(52, 53);
+        initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).isNotNull().containsNone(51, 55).isInstanceOf(CharBuffer.class);
 
         try {
             Raw.charBufferAssertion().containsNone(49);
@@ -3459,6 +3501,7 @@ public final class CharBufferAssertionTest extends AssertionTest {
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).containsNone(DataHelper.createIterable('3', '4', '5'));
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 3)).containsNone(DataHelper.createIterable('1', '3'));
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 0, 3)).containsNone(DataHelper.createIterable('4', '5'));
+        initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).isNotNull().containsNone(DataHelper.createIterable('3', '7')).isInstanceOf(CharBuffer.class);
 
         try {
             Raw.charBufferAssertion().containsNone(DataHelper.<Character>createIterable());
@@ -3536,6 +3579,7 @@ public final class CharBufferAssertionTest extends AssertionTest {
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).rewindAndContainsNone('3', '7');
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).rewindAndContainsNone('3', '4', '5');
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 0, 3)).rewindAndContainsNone('4', '5');
+        initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).isNotNull().rewindAndContainsNone('3', '7').isInstanceOf(CharBuffer.class);
 
         try {
             Raw.charBufferAssertion().rewindAndContainsNone('1');
@@ -3619,6 +3663,7 @@ public final class CharBufferAssertionTest extends AssertionTest {
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).rewindAndContainsNone(51, 55);
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).rewindAndContainsNone(51, 52, 53);
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 0, 3)).rewindAndContainsNone(52, 53);
+        initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).isNotNull().rewindAndContainsNone(51, 55).isInstanceOf(CharBuffer.class);
 
         try {
             Raw.charBufferAssertion().rewindAndContainsNone(49);
@@ -3702,6 +3747,7 @@ public final class CharBufferAssertionTest extends AssertionTest {
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).rewindAndContainsNone(DataHelper.createIterable('3', '7'));
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).rewindAndContainsNone(DataHelper.createIterable('3', '4', '5'));
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3', '4', '5'}, 0, 3)).rewindAndContainsNone(DataHelper.createIterable('4', '5'));
+        initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2'})).isNotNull().rewindAndContainsNone(DataHelper.createIterable('3', '7')).isInstanceOf(CharBuffer.class);
 
         try {
             Raw.charBufferAssertion().rewindAndContainsNone(DataHelper.<Character>createIterable());
@@ -3794,6 +3840,8 @@ public final class CharBufferAssertionTest extends AssertionTest {
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3'}, 4, 3, 5)).toPosition().isGreaterThan(1);
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3'}, 4, 3, 5)).toPosition().isLessThan(5);
 
+        initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3'}, 3)).isNotNull().toPosition().isEqualTo(3);
+
         try {
             Raw.charBufferAssertion().toPosition();
             Assertions.fail("CharBufferAssertion test fail");
@@ -3854,6 +3902,8 @@ public final class CharBufferAssertionTest extends AssertionTest {
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3'}, 4, 3, 5)).toPosition(Matchers.equalTo(3));
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3'}, 4, 3, 5)).toPosition(Matchers.greaterThan(2));
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3'}, 4, 3, 5)).toPosition(Matchers.lessThan(4));
+
+        initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3'}, 3)).isNotNull().toPosition(Matchers.is(Matchers.equalTo(3))).isInstanceOf(CharBuffer.class);
 
         try {
             Raw.charBufferAssertion().toPosition(Matchers.equalTo(0));
@@ -3919,6 +3969,7 @@ public final class CharBufferAssertionTest extends AssertionTest {
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3'}, 3)).hasPosition(3);
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3'}, 1)).hasPosition(1);
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3'}, 4, 3, 5)).hasPosition(3);
+        initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3'}, 3)).isNotNull().hasPosition(3).isInstanceOf(CharBuffer.class);
 
         try {
             Raw.charBufferAssertion().hasPosition(1);
@@ -3968,6 +4019,8 @@ public final class CharBufferAssertionTest extends AssertionTest {
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3'}, 4, 3, 5)).toLimit().isEqualTo(3);
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3'}, 4, 3, 5)).toLimit().isGreaterThan(1);
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3'}, 4, 3, 5)).toLimit().isLessThan(5);
+
+        initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3'}, 3)).isNotNull().toLimit().isEqualTo(3);
 
         try {
             Raw.charBufferAssertion().toLimit();
@@ -4029,6 +4082,8 @@ public final class CharBufferAssertionTest extends AssertionTest {
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3'}, 4, 3, 5)).toLimit(Matchers.equalTo(3));
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3'}, 4, 3, 5)).toLimit(Matchers.greaterThan(2));
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3'}, 4, 3, 5)).toLimit(Matchers.lessThan(4));
+
+        initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3'}, 3)).isNotNull().toLimit(Matchers.is(Matchers.equalTo(3))).isInstanceOf(CharBuffer.class);
 
         try {
             Raw.charBufferAssertion().toLimit(Matchers.equalTo(0));
@@ -4094,6 +4149,7 @@ public final class CharBufferAssertionTest extends AssertionTest {
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3'}, 3)).hasLimit(3);
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3'}, 1, 1)).hasLimit(1);
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3'}, 4, 3, 5)).hasLimit(3);
+        initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3'}, 3)).isNotNull().hasLimit(3).isInstanceOf(CharBuffer.class);
 
         try {
             Raw.charBufferAssertion().hasLimit(1);
@@ -4143,6 +4199,8 @@ public final class CharBufferAssertionTest extends AssertionTest {
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3'}, 4, 3, 5)).toCapacity().isEqualTo(5);
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3'}, 4, 3, 5)).toCapacity().isGreaterThan(1);
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3'}, 4, 3, 5)).toCapacity().isLessThan(7);
+
+        initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3'}, 3)).isNotNull().toCapacity().isEqualTo(3);
 
         try {
             Raw.charBufferAssertion().toCapacity();
@@ -4204,6 +4262,8 @@ public final class CharBufferAssertionTest extends AssertionTest {
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3'}, 4, 3, 5)).toCapacity(Matchers.equalTo(5));
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3'}, 4, 3, 5)).toCapacity(Matchers.greaterThan(4));
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3'}, 4, 3, 5)).toCapacity(Matchers.lessThan(6));
+
+        initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3'}, 3)).isNotNull().toCapacity(Matchers.is(Matchers.equalTo(3))).isInstanceOf(CharBuffer.class);
 
         try {
             Raw.charBufferAssertion().toCapacity(Matchers.equalTo(0));
@@ -4269,6 +4329,7 @@ public final class CharBufferAssertionTest extends AssertionTest {
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3'}, 3)).hasCapacity(3);
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3'}, 1, 1)).hasCapacity(3);
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3'}, 4, 3, 5)).hasCapacity(5);
+        initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3'}, 3)).isNotNull().hasCapacity(3).isInstanceOf(CharBuffer.class);
 
         try {
             Raw.charBufferAssertion().hasCapacity(1);
@@ -4310,6 +4371,7 @@ public final class CharBufferAssertionTest extends AssertionTest {
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3'}, 3)).hasProperties(3, 3, 3);
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3'}, 1)).hasProperties(1, 3, 3);
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3'}, 4, 3, 5)).hasProperties(3, 3, 5);
+        initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3'}, 3)).isNotNull().hasProperties(3, 3, 3).isInstanceOf(CharBuffer.class);
 
         try {
             Raw.charBufferAssertion().hasProperties(1, 1, 1);
@@ -4388,6 +4450,8 @@ public final class CharBufferAssertionTest extends AssertionTest {
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3'}, 2, 4, 5)).toRemaining().isGreaterThan(1);
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3'}, 2, 4, 5)).toRemaining().isLessThan(5);
 
+        initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3'}, 3)).isNotNull().toRemaining().isEqualTo(0);
+
         try {
             Raw.charBufferAssertion().toRemaining();
             Assertions.fail("CharBufferAssertion test fail");
@@ -4452,6 +4516,8 @@ public final class CharBufferAssertionTest extends AssertionTest {
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3'}, 2, 4, 5)).toRemaining(Matchers.equalTo(2));
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3'}, 2, 4, 5)).toRemaining(Matchers.greaterThan(1));
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3'}, 2, 4, 5)).toRemaining(Matchers.lessThan(3));
+
+        initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3'}, 3)).isNotNull().toRemaining(Matchers.is(Matchers.equalTo(0))).isInstanceOf(CharBuffer.class);
 
         try {
             Raw.charBufferAssertion().toRemaining(Matchers.equalTo(0));
@@ -4518,6 +4584,7 @@ public final class CharBufferAssertionTest extends AssertionTest {
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3'}, 1, 3)).hasRemaining(2);
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3'}, 4, 2, 5)).hasRemaining(0);
         initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3'}, 2, 4, 5)).hasRemaining(2);
+        initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3'}, 3)).isNotNull().hasRemaining(0).isInstanceOf(CharBuffer.class);
 
         try {
             Raw.charBufferAssertion().hasRemaining(1);
@@ -4557,6 +4624,7 @@ public final class CharBufferAssertionTest extends AssertionTest {
     @Test
     public void isDirectTest() {
         initialize(Raw.charBufferAssertion(), ByteBuffer.allocateDirect(12).asCharBuffer()).isDirect();
+        initialize(Raw.charBufferAssertion(), ByteBuffer.allocateDirect(12).asCharBuffer()).isNotNull().isDirect().isInstanceOf(CharBuffer.class);
 
         try {
             Raw.charBufferAssertion().isDirect();
@@ -4596,6 +4664,7 @@ public final class CharBufferAssertionTest extends AssertionTest {
     @Test
     public void isNotDirectTest() {
         initialize(Raw.charBufferAssertion(), ByteBuffer.allocate(12).asCharBuffer()).isNotDirect();
+        initialize(Raw.charBufferAssertion(), ByteBuffer.allocate(12).asCharBuffer()).isNotNull().isNotDirect().isInstanceOf(CharBuffer.class);
 
         try {
             Raw.charBufferAssertion().isNotDirect();
@@ -4638,6 +4707,7 @@ public final class CharBufferAssertionTest extends AssertionTest {
         CharBuffer readOnlyBuffer = buffer.asReadOnlyBuffer();
 
         initialize(Raw.charBufferAssertion(), readOnlyBuffer).isReadOnly();
+        initialize(Raw.charBufferAssertion(), readOnlyBuffer).isNotNull().isReadOnly().isInstanceOf(CharBuffer.class);
 
         try {
             Raw.charBufferAssertion().isReadOnly();
@@ -4680,6 +4750,7 @@ public final class CharBufferAssertionTest extends AssertionTest {
         CharBuffer readOnlyBuffer = buffer.asReadOnlyBuffer();
 
         initialize(Raw.charBufferAssertion(), buffer).isNotReadOnly();
+        initialize(Raw.charBufferAssertion(), buffer).isNotNull().isNotReadOnly().isInstanceOf(CharBuffer.class);
 
         try {
             Raw.charBufferAssertion().isNotReadOnly();

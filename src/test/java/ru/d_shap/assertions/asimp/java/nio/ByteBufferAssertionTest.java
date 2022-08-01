@@ -72,6 +72,7 @@ public final class ByteBufferAssertionTest extends AssertionTest {
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{})).isEmpty();
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2}, 2)).isEmpty();
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2}, 2, 2, 4)).isEmpty();
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2}, 2, 2, 4)).isNotNull().isEmpty().isInstanceOf(ByteBuffer.class);
 
         try {
             Raw.byteBufferAssertion().isEmpty();
@@ -125,6 +126,7 @@ public final class ByteBufferAssertionTest extends AssertionTest {
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{})).isRewindAndEmpty();
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2}, 0, 0)).isRewindAndEmpty();
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2}, 0, 0, 4)).isRewindAndEmpty();
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2}, 0, 0, 4)).isNotNull().isRewindAndEmpty().isInstanceOf(ByteBuffer.class);
 
         try {
             Raw.byteBufferAssertion().isRewindAndEmpty();
@@ -179,6 +181,7 @@ public final class ByteBufferAssertionTest extends AssertionTest {
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2}, 2)).isNullOrEmpty();
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2}, 2, 2, 4)).isNullOrEmpty();
         initialize(Raw.byteBufferAssertion(), null).isNullOrEmpty();
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{})).isNotNull().isNullOrEmpty().isInstanceOf(ByteBuffer.class);
 
         try {
             Raw.byteBufferAssertion().isNullOrEmpty();
@@ -221,6 +224,7 @@ public final class ByteBufferAssertionTest extends AssertionTest {
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2}, 0, 0)).isRewindAndNullOrEmpty();
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2}, 0, 0, 4)).isRewindAndNullOrEmpty();
         initialize(Raw.byteBufferAssertion(), null).isRewindAndNullOrEmpty();
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{})).isNotNull().isRewindAndNullOrEmpty().isInstanceOf(ByteBuffer.class);
 
         try {
             Raw.byteBufferAssertion().isRewindAndNullOrEmpty();
@@ -262,6 +266,7 @@ public final class ByteBufferAssertionTest extends AssertionTest {
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).isNotEmpty();
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2}, 1)).isNotEmpty();
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{}, 0, 4, 4)).isNotEmpty();
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).isNotNull().isNotEmpty().isInstanceOf(ByteBuffer.class);
 
         try {
             Raw.byteBufferAssertion().isNotEmpty();
@@ -317,6 +322,7 @@ public final class ByteBufferAssertionTest extends AssertionTest {
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{}, 0, 4, 4)).isRewindAndNotEmpty();
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2}, 2)).isRewindAndNotEmpty();
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2}, 2, 2, 4)).isRewindAndNotEmpty();
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).isNotNull().isRewindAndNotEmpty().isInstanceOf(ByteBuffer.class);
 
         try {
             Raw.byteBufferAssertion().isRewindAndNotEmpty();
@@ -357,6 +363,7 @@ public final class ByteBufferAssertionTest extends AssertionTest {
     public void containsTest() {
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).contains(1);
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).contains(2);
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).isNotNull().contains(2).isInstanceOf(ByteBuffer.class);
 
         try {
             Raw.byteBufferAssertion().contains(1);
@@ -410,6 +417,7 @@ public final class ByteBufferAssertionTest extends AssertionTest {
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).rewindAndContains(1);
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).rewindAndContains(2);
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3)).rewindAndContains(2);
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).isNotNull().rewindAndContains(2).isInstanceOf(ByteBuffer.class);
 
         try {
             Raw.byteBufferAssertion().rewindAndContains(1);
@@ -457,6 +465,7 @@ public final class ByteBufferAssertionTest extends AssertionTest {
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).doesNotContain(3);
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3)).doesNotContain(2);
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3)).doesNotContain(5);
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).isNotNull().doesNotContain(3).isInstanceOf(ByteBuffer.class);
 
         try {
             Raw.byteBufferAssertion().doesNotContain(1);
@@ -503,6 +512,7 @@ public final class ByteBufferAssertionTest extends AssertionTest {
     public void rewindAndDoesNotContainTest() {
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).rewindAndDoesNotContain(3);
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3)).rewindAndDoesNotContain(5);
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).isNotNull().rewindAndDoesNotContain(3).isInstanceOf(ByteBuffer.class);
 
         try {
             Raw.byteBufferAssertion().rewindAndDoesNotContain(1);
@@ -556,6 +566,7 @@ public final class ByteBufferAssertionTest extends AssertionTest {
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).containsAll((byte) 1, (byte) 2);
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4})).containsAll((byte) 1, (byte) 3);
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4})).containsAll((byte) 4, (byte) 2);
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).isNotNull().containsAll((byte) 1, (byte) 2).isInstanceOf(ByteBuffer.class);
 
         try {
             Raw.byteBufferAssertion().containsAll((byte) 1);
@@ -645,6 +656,7 @@ public final class ByteBufferAssertionTest extends AssertionTest {
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).containsAll(1, 2);
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4})).containsAll(1, 3);
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4})).containsAll(4, 2);
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).isNotNull().containsAll(1, 2).isInstanceOf(ByteBuffer.class);
 
         try {
             Raw.byteBufferAssertion().containsAll(1);
@@ -734,6 +746,7 @@ public final class ByteBufferAssertionTest extends AssertionTest {
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).containsAll(DataHelper.createIterable((byte) 1, (byte) 2));
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4})).containsAll(DataHelper.createIterable((byte) 1, (byte) 3));
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4})).containsAll(DataHelper.createIterable((byte) 4, (byte) 2));
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).isNotNull().containsAll(DataHelper.createIterable((byte) 1, (byte) 2)).isInstanceOf(ByteBuffer.class);
 
         try {
             Raw.byteBufferAssertion().containsAll(DataHelper.<Byte>createIterable());
@@ -824,6 +837,7 @@ public final class ByteBufferAssertionTest extends AssertionTest {
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4})).rewindAndContainsAll((byte) 1, (byte) 3);
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4})).rewindAndContainsAll((byte) 4, (byte) 2);
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3)).rewindAndContainsAll((byte) 1, (byte) 2);
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).isNotNull().rewindAndContainsAll((byte) 1, (byte) 2).isInstanceOf(ByteBuffer.class);
 
         try {
             Raw.byteBufferAssertion().rewindAndContainsAll((byte) 1);
@@ -908,6 +922,7 @@ public final class ByteBufferAssertionTest extends AssertionTest {
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4})).rewindAndContainsAll(1, 3);
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4})).rewindAndContainsAll(4, 2);
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3)).rewindAndContainsAll(1, 2);
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).isNotNull().rewindAndContainsAll(1, 2).isInstanceOf(ByteBuffer.class);
 
         try {
             Raw.byteBufferAssertion().rewindAndContainsAll(1);
@@ -992,6 +1007,7 @@ public final class ByteBufferAssertionTest extends AssertionTest {
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4})).rewindAndContainsAll(DataHelper.createIterable((byte) 1, (byte) 3));
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4})).rewindAndContainsAll(DataHelper.createIterable((byte) 4, (byte) 2));
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3)).rewindAndContainsAll(DataHelper.createIterable((byte) 1, (byte) 2));
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).isNotNull().rewindAndContainsAll(DataHelper.createIterable((byte) 1, (byte) 2)).isInstanceOf(ByteBuffer.class);
 
         try {
             Raw.byteBufferAssertion().rewindAndContainsAll(DataHelper.<Byte>createIterable());
@@ -1074,6 +1090,7 @@ public final class ByteBufferAssertionTest extends AssertionTest {
     public void containsAllInOrderArrayByteTest() {
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).containsAllInOrder((byte) 1, (byte) 2);
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4})).containsAllInOrder((byte) 1, (byte) 3, (byte) 4);
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).isNotNull().containsAllInOrder((byte) 1, (byte) 2).isInstanceOf(ByteBuffer.class);
 
         try {
             Raw.byteBufferAssertion().containsAllInOrder((byte) 1);
@@ -1168,6 +1185,7 @@ public final class ByteBufferAssertionTest extends AssertionTest {
     public void containsAllInOrderArrayIntTest() {
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).containsAllInOrder(1, 2);
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4})).containsAllInOrder(1, 3, 4);
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).isNotNull().containsAllInOrder(1, 2).isInstanceOf(ByteBuffer.class);
 
         try {
             Raw.byteBufferAssertion().containsAllInOrder(1);
@@ -1262,6 +1280,7 @@ public final class ByteBufferAssertionTest extends AssertionTest {
     public void containsAllInOrderIterableTest() {
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).containsAllInOrder(DataHelper.createIterable((byte) 1, (byte) 2));
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4})).containsAllInOrder(DataHelper.createIterable((byte) 1, (byte) 3, (byte) 4));
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).isNotNull().containsAllInOrder(DataHelper.createIterable((byte) 1, (byte) 2)).isInstanceOf(ByteBuffer.class);
 
         try {
             Raw.byteBufferAssertion().containsAllInOrder(DataHelper.<Byte>createIterable());
@@ -1357,6 +1376,7 @@ public final class ByteBufferAssertionTest extends AssertionTest {
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).rewindAndContainsAllInOrder((byte) 1, (byte) 2);
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4})).rewindAndContainsAllInOrder((byte) 1, (byte) 3, (byte) 4);
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3)).rewindAndContainsAllInOrder((byte) 1, (byte) 2);
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).isNotNull().rewindAndContainsAllInOrder((byte) 1, (byte) 2).isInstanceOf(ByteBuffer.class);
 
         try {
             Raw.byteBufferAssertion().rewindAndContainsAllInOrder((byte) 1);
@@ -1446,6 +1466,7 @@ public final class ByteBufferAssertionTest extends AssertionTest {
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).rewindAndContainsAllInOrder(1, 2);
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4})).rewindAndContainsAllInOrder(1, 3, 4);
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3)).rewindAndContainsAllInOrder(1, 2);
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).isNotNull().rewindAndContainsAllInOrder(1, 2).isInstanceOf(ByteBuffer.class);
 
         try {
             Raw.byteBufferAssertion().rewindAndContainsAllInOrder(1);
@@ -1535,6 +1556,7 @@ public final class ByteBufferAssertionTest extends AssertionTest {
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).rewindAndContainsAllInOrder(DataHelper.createIterable((byte) 1, (byte) 2));
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4})).rewindAndContainsAllInOrder(DataHelper.createIterable((byte) 1, (byte) 3, (byte) 4));
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3)).rewindAndContainsAllInOrder(DataHelper.createIterable((byte) 1, (byte) 2));
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).isNotNull().rewindAndContainsAllInOrder(DataHelper.createIterable((byte) 1, (byte) 2)).isInstanceOf(ByteBuffer.class);
 
         try {
             Raw.byteBufferAssertion().rewindAndContainsAllInOrder(DataHelper.<Byte>createIterable());
@@ -1625,6 +1647,7 @@ public final class ByteBufferAssertionTest extends AssertionTest {
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4})).containsExactly((byte) 1, (byte) 2, (byte) 3, (byte) 4);
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4})).containsExactly((byte) 1, (byte) 3, (byte) 2, (byte) 4);
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{})).containsExactly();
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).isNotNull().containsExactly((byte) 1, (byte) 2).isInstanceOf(ByteBuffer.class);
 
         try {
             Raw.byteBufferAssertion().containsExactly((byte) 1);
@@ -1721,6 +1744,7 @@ public final class ByteBufferAssertionTest extends AssertionTest {
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4})).containsExactly(1, 2, 3, 4);
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4})).containsExactly(1, 3, 2, 4);
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{})).containsExactly(new int[]{});
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).isNotNull().containsExactly(1, 2).isInstanceOf(ByteBuffer.class);
 
         try {
             Raw.byteBufferAssertion().containsExactly(1);
@@ -1817,6 +1841,7 @@ public final class ByteBufferAssertionTest extends AssertionTest {
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4})).containsExactly(DataHelper.createIterable((byte) 1, (byte) 2, (byte) 3, (byte) 4));
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4})).containsExactly(DataHelper.createIterable((byte) 1, (byte) 3, (byte) 2, (byte) 4));
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{})).containsExactly(DataHelper.<Byte>createIterable());
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).isNotNull().containsExactly(DataHelper.createIterable((byte) 1, (byte) 2)).isInstanceOf(ByteBuffer.class);
 
         try {
             Raw.byteBufferAssertion().containsExactly(DataHelper.<Byte>createIterable());
@@ -1914,6 +1939,7 @@ public final class ByteBufferAssertionTest extends AssertionTest {
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4})).rewindAndContainsExactly((byte) 1, (byte) 3, (byte) 2, (byte) 4);
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{})).rewindAndContainsExactly();
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3)).rewindAndContainsExactly((byte) 1, (byte) 2, (byte) 3, (byte) 4, (byte) 5);
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).isNotNull().rewindAndContainsExactly((byte) 1, (byte) 2).isInstanceOf(ByteBuffer.class);
 
         try {
             Raw.byteBufferAssertion().rewindAndContainsExactly((byte) 1);
@@ -2005,6 +2031,7 @@ public final class ByteBufferAssertionTest extends AssertionTest {
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4})).rewindAndContainsExactly(1, 3, 2, 4);
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{})).rewindAndContainsExactly(new int[]{});
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3)).rewindAndContainsExactly(1, 2, 3, 4, 5);
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).isNotNull().rewindAndContainsExactly(1, 2).isInstanceOf(ByteBuffer.class);
 
         try {
             Raw.byteBufferAssertion().rewindAndContainsExactly(1);
@@ -2096,6 +2123,7 @@ public final class ByteBufferAssertionTest extends AssertionTest {
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4})).rewindAndContainsExactly(DataHelper.createIterable((byte) 1, (byte) 3, (byte) 2, (byte) 4));
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{})).rewindAndContainsExactly(DataHelper.<Byte>createIterable());
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3)).rewindAndContainsExactly(DataHelper.createIterable((byte) 1, (byte) 2, (byte) 3, (byte) 4, (byte) 5));
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).isNotNull().rewindAndContainsExactly(DataHelper.createIterable((byte) 1, (byte) 2)).isInstanceOf(ByteBuffer.class);
 
         try {
             Raw.byteBufferAssertion().rewindAndContainsExactly(DataHelper.<Byte>createIterable());
@@ -2185,6 +2213,7 @@ public final class ByteBufferAssertionTest extends AssertionTest {
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).containsExactlyInOrder((byte) 1, (byte) 2);
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4})).containsExactlyInOrder((byte) 1, (byte) 2, (byte) 3, (byte) 4);
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{})).containsExactlyInOrder();
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).isNotNull().containsExactlyInOrder((byte) 1, (byte) 2).isInstanceOf(ByteBuffer.class);
 
         try {
             Raw.byteBufferAssertion().containsExactlyInOrder((byte) 1);
@@ -2286,6 +2315,7 @@ public final class ByteBufferAssertionTest extends AssertionTest {
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).containsExactlyInOrder(1, 2);
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4})).containsExactlyInOrder(1, 2, 3, 4);
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{})).containsExactlyInOrder(new int[]{});
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).isNotNull().containsExactlyInOrder(1, 2).isInstanceOf(ByteBuffer.class);
 
         try {
             Raw.byteBufferAssertion().containsExactlyInOrder(1);
@@ -2387,6 +2417,7 @@ public final class ByteBufferAssertionTest extends AssertionTest {
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).containsExactlyInOrder(DataHelper.createIterable((byte) 1, (byte) 2));
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4})).containsExactlyInOrder(DataHelper.createIterable((byte) 1, (byte) 2, (byte) 3, (byte) 4));
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{})).containsExactlyInOrder(DataHelper.<Byte>createIterable());
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).isNotNull().containsExactlyInOrder(DataHelper.createIterable((byte) 1, (byte) 2)).isInstanceOf(ByteBuffer.class);
 
         try {
             Raw.byteBufferAssertion().containsExactlyInOrder(DataHelper.<Byte>createIterable());
@@ -2489,6 +2520,7 @@ public final class ByteBufferAssertionTest extends AssertionTest {
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4})).rewindAndContainsExactlyInOrder((byte) 1, (byte) 2, (byte) 3, (byte) 4);
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{})).rewindAndContainsExactlyInOrder();
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3)).rewindAndContainsExactlyInOrder((byte) 1, (byte) 2, (byte) 3, (byte) 4, (byte) 5);
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).isNotNull().rewindAndContainsExactlyInOrder((byte) 1, (byte) 2).isInstanceOf(ByteBuffer.class);
 
         try {
             Raw.byteBufferAssertion().rewindAndContainsExactlyInOrder((byte) 1);
@@ -2585,6 +2617,7 @@ public final class ByteBufferAssertionTest extends AssertionTest {
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4})).rewindAndContainsExactlyInOrder(1, 2, 3, 4);
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{})).rewindAndContainsExactlyInOrder(new int[]{});
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3)).rewindAndContainsExactlyInOrder(1, 2, 3, 4, 5);
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).isNotNull().rewindAndContainsExactlyInOrder(1, 2).isInstanceOf(ByteBuffer.class);
 
         try {
             Raw.byteBufferAssertion().rewindAndContainsExactlyInOrder(1);
@@ -2681,6 +2714,7 @@ public final class ByteBufferAssertionTest extends AssertionTest {
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4})).rewindAndContainsExactlyInOrder(DataHelper.createIterable((byte) 1, (byte) 2, (byte) 3, (byte) 4));
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{})).rewindAndContainsExactlyInOrder(DataHelper.<Byte>createIterable());
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3)).rewindAndContainsExactlyInOrder(DataHelper.createIterable((byte) 1, (byte) 2, (byte) 3, (byte) 4, (byte) 5));
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).isNotNull().rewindAndContainsExactlyInOrder(DataHelper.createIterable((byte) 1, (byte) 2)).isInstanceOf(ByteBuffer.class);
 
         try {
             Raw.byteBufferAssertion().rewindAndContainsExactlyInOrder(DataHelper.<Byte>createIterable());
@@ -2777,6 +2811,7 @@ public final class ByteBufferAssertionTest extends AssertionTest {
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4})).containsAny((byte) 2, (byte) 4);
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4})).containsAny((byte) 4, (byte) 1);
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4})).containsAny((byte) 5, (byte) 3);
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).isNotNull().containsAny((byte) 2, (byte) 3).isInstanceOf(ByteBuffer.class);
 
         try {
             Raw.byteBufferAssertion().containsAny((byte) 1);
@@ -2867,6 +2902,7 @@ public final class ByteBufferAssertionTest extends AssertionTest {
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4})).containsAny(2, 4);
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4})).containsAny(4, 1);
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4})).containsAny(5, 3);
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).isNotNull().containsAny(2, 3).isInstanceOf(ByteBuffer.class);
 
         try {
             Raw.byteBufferAssertion().containsAny(1);
@@ -2957,6 +2993,7 @@ public final class ByteBufferAssertionTest extends AssertionTest {
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4})).containsAny(DataHelper.createIterable((byte) 2, (byte) 4));
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4})).containsAny(DataHelper.createIterable((byte) 4, (byte) 1));
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4})).containsAny(DataHelper.createIterable((byte) 5, (byte) 3));
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).isNotNull().containsAny(DataHelper.createIterable((byte) 2, (byte) 3)).isInstanceOf(ByteBuffer.class);
 
         try {
             Raw.byteBufferAssertion().containsAny(DataHelper.<Byte>createIterable());
@@ -3048,6 +3085,7 @@ public final class ByteBufferAssertionTest extends AssertionTest {
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4})).rewindAndContainsAny((byte) 4, (byte) 1);
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4})).rewindAndContainsAny((byte) 5, (byte) 3);
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3)).rewindAndContainsAny((byte) 1, (byte) 3);
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).isNotNull().rewindAndContainsAny((byte) 2, (byte) 3).isInstanceOf(ByteBuffer.class);
 
         try {
             Raw.byteBufferAssertion().rewindAndContainsAny((byte) 1);
@@ -3133,6 +3171,7 @@ public final class ByteBufferAssertionTest extends AssertionTest {
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4})).rewindAndContainsAny(4, 1);
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4})).rewindAndContainsAny(5, 3);
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3)).rewindAndContainsAny(1, 3);
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).isNotNull().rewindAndContainsAny(2, 3).isInstanceOf(ByteBuffer.class);
 
         try {
             Raw.byteBufferAssertion().rewindAndContainsAny(1);
@@ -3218,6 +3257,7 @@ public final class ByteBufferAssertionTest extends AssertionTest {
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4})).rewindAndContainsAny(DataHelper.createIterable((byte) 4, (byte) 1));
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4})).rewindAndContainsAny(DataHelper.createIterable((byte) 5, (byte) 3));
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3)).rewindAndContainsAny(DataHelper.createIterable((byte) 1, (byte) 3));
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).isNotNull().rewindAndContainsAny(DataHelper.createIterable((byte) 2, (byte) 3)).isInstanceOf(ByteBuffer.class);
 
         try {
             Raw.byteBufferAssertion().rewindAndContainsAny(DataHelper.<Byte>createIterable());
@@ -3302,6 +3342,7 @@ public final class ByteBufferAssertionTest extends AssertionTest {
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).containsNone((byte) 3, (byte) 4, (byte) 5);
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3)).containsNone((byte) 1, (byte) 3);
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3)).containsNone((byte) 4, (byte) 5);
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).isNotNull().containsNone((byte) 3, (byte) 7).isInstanceOf(ByteBuffer.class);
 
         try {
             Raw.byteBufferAssertion().containsNone((byte) 1);
@@ -3380,6 +3421,7 @@ public final class ByteBufferAssertionTest extends AssertionTest {
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).containsNone(3, 4, 5);
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3)).containsNone(1, 3);
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3)).containsNone(4, 5);
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).isNotNull().containsNone(3, 7).isInstanceOf(ByteBuffer.class);
 
         try {
             Raw.byteBufferAssertion().containsNone(1);
@@ -3458,6 +3500,7 @@ public final class ByteBufferAssertionTest extends AssertionTest {
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).containsNone(DataHelper.createIterable((byte) 3, (byte) 4, (byte) 5));
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 3)).containsNone(DataHelper.createIterable((byte) 1, (byte) 3));
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3)).containsNone(DataHelper.createIterable((byte) 4, (byte) 5));
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).isNotNull().containsNone(DataHelper.createIterable((byte) 3, (byte) 7)).isInstanceOf(ByteBuffer.class);
 
         try {
             Raw.byteBufferAssertion().containsNone(DataHelper.<Byte>createIterable());
@@ -3535,6 +3578,7 @@ public final class ByteBufferAssertionTest extends AssertionTest {
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).rewindAndContainsNone((byte) 3, (byte) 7);
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).rewindAndContainsNone((byte) 3, (byte) 4, (byte) 5);
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3)).rewindAndContainsNone((byte) 4, (byte) 5);
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).isNotNull().rewindAndContainsNone((byte) 3, (byte) 7).isInstanceOf(ByteBuffer.class);
 
         try {
             Raw.byteBufferAssertion().rewindAndContainsNone((byte) 1);
@@ -3618,6 +3662,7 @@ public final class ByteBufferAssertionTest extends AssertionTest {
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).rewindAndContainsNone(3, 7);
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).rewindAndContainsNone(3, 4, 5);
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3)).rewindAndContainsNone(4, 5);
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).isNotNull().rewindAndContainsNone(3, 7).isInstanceOf(ByteBuffer.class);
 
         try {
             Raw.byteBufferAssertion().rewindAndContainsNone(1);
@@ -3701,6 +3746,7 @@ public final class ByteBufferAssertionTest extends AssertionTest {
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).rewindAndContainsNone(DataHelper.createIterable((byte) 3, (byte) 7));
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).rewindAndContainsNone(DataHelper.createIterable((byte) 3, (byte) 4, (byte) 5));
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3, 4, 5}, 0, 3)).rewindAndContainsNone(DataHelper.createIterable((byte) 4, (byte) 5));
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).isNotNull().rewindAndContainsNone(DataHelper.createIterable((byte) 3, (byte) 7)).isInstanceOf(ByteBuffer.class);
 
         try {
             Raw.byteBufferAssertion().rewindAndContainsNone(DataHelper.<Byte>createIterable());
@@ -3786,6 +3832,7 @@ public final class ByteBufferAssertionTest extends AssertionTest {
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{99, 5, 0, -21})).toHexString().isEqualTo("630500eb");
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{99, 5, 0, -21}, 2)).toHexString().isEqualTo("00eb");
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{99, 5, 0, -21}, 1, 3)).toHexString().isEqualTo("0500");
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).isNotNull().toHexString().isEqualTo("0102");
 
         try {
             Raw.byteBufferAssertion().toHexString();
@@ -3864,6 +3911,7 @@ public final class ByteBufferAssertionTest extends AssertionTest {
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{99, 5, 0, -21}, 1, 3)).toHexString(1, 1).isEqualTo("");
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{99, 5, 0, -21}, 1, 3)).toHexString(1, 2).isEqualTo("00");
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{99, 5, 0, -21}, 1, 3)).toHexString(2, 2).isEqualTo("");
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).isNotNull().toHexString(0, 2).isEqualTo("0102");
 
         try {
             Raw.byteBufferAssertion().toHexString(0, 0);
@@ -4003,6 +4051,7 @@ public final class ByteBufferAssertionTest extends AssertionTest {
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{99, 5, 0, -21})).toHexString(Matchers.is(Matchers.equalTo("630500eb")));
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{99, 5, 0, -21}, 2)).toHexString(Matchers.is(Matchers.equalTo("00eb")));
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{99, 5, 0, -21}, 1, 3)).toHexString(Matchers.is(Matchers.equalTo("0500")));
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).isNotNull().toHexString(Matchers.is(Matchers.equalTo("0102"))).isInstanceOf(ByteBuffer.class);
 
         try {
             Raw.byteBufferAssertion().toHexString(Matchers.equalTo(""));
@@ -4093,6 +4142,7 @@ public final class ByteBufferAssertionTest extends AssertionTest {
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{99, 5, 0, -21}, 1, 3)).toHexString(1, 1, Matchers.is(Matchers.equalTo("")));
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{99, 5, 0, -21}, 1, 3)).toHexString(1, 2, Matchers.is(Matchers.equalTo("00")));
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{99, 5, 0, -21}, 1, 3)).toHexString(2, 2, Matchers.is(Matchers.equalTo("")));
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).isNotNull().toHexString(0, 2, Matchers.is(Matchers.equalTo("0102"))).isInstanceOf(ByteBuffer.class);
 
         try {
             Raw.byteBufferAssertion().toHexString(0, 0, Matchers.equalTo(""));
@@ -4244,6 +4294,7 @@ public final class ByteBufferAssertionTest extends AssertionTest {
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{99, 5, 0, -21})).toRewindAndHexString().isEqualTo("630500eb");
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{99, 5, 0, -21}, 2)).toRewindAndHexString().isEqualTo("630500eb");
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{99, 5, 0, -21}, 1, 3)).toRewindAndHexString().isEqualTo("630500");
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).isNotNull().toRewindAndHexString().isEqualTo("0102");
 
         try {
             Raw.byteBufferAssertion().toRewindAndHexString();
@@ -4326,6 +4377,7 @@ public final class ByteBufferAssertionTest extends AssertionTest {
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{99, 5, 0, -21}, 1, 3)).toRewindAndHexString(2, 2).isEqualTo("");
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{99, 5, 0, -21}, 1, 3)).toRewindAndHexString(2, 3).isEqualTo("00");
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{99, 5, 0, -21}, 1, 3)).toRewindAndHexString(3, 3).isEqualTo("");
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).isNotNull().toRewindAndHexString(0, 2).isEqualTo("0102");
 
         try {
             Raw.byteBufferAssertion().toRewindAndHexString(0, 0);
@@ -4465,6 +4517,7 @@ public final class ByteBufferAssertionTest extends AssertionTest {
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{99, 5, 0, -21})).toRewindAndHexString(Matchers.is(Matchers.equalTo("630500eb")));
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{99, 5, 0, -21}, 2)).toRewindAndHexString(Matchers.is(Matchers.equalTo("630500eb")));
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{99, 5, 0, -21}, 1, 3)).toRewindAndHexString(Matchers.is(Matchers.equalTo("630500")));
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).isNotNull().toRewindAndHexString(Matchers.is(Matchers.equalTo("0102"))).isInstanceOf(ByteBuffer.class);
 
         try {
             Raw.byteBufferAssertion().toRewindAndHexString(Matchers.equalTo(""));
@@ -4559,6 +4612,7 @@ public final class ByteBufferAssertionTest extends AssertionTest {
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{99, 5, 0, -21}, 1, 3)).toRewindAndHexString(2, 2, Matchers.is(Matchers.equalTo("")));
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{99, 5, 0, -21}, 1, 3)).toRewindAndHexString(2, 3, Matchers.is(Matchers.equalTo("00")));
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{99, 5, 0, -21}, 1, 3)).toRewindAndHexString(3, 3, Matchers.is(Matchers.equalTo("")));
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).isNotNull().toRewindAndHexString(0, 2, Matchers.is(Matchers.equalTo("0102"))).isInstanceOf(ByteBuffer.class);
 
         try {
             Raw.byteBufferAssertion().toRewindAndHexString(0, 0, Matchers.equalTo(""));
@@ -4710,6 +4764,7 @@ public final class ByteBufferAssertionTest extends AssertionTest {
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{99, 5, 0, -21})).hasHexString("630500eb");
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{99, 5, 0, -21}, 2)).hasHexString("00eb");
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{99, 5, 0, -21}, 1, 3)).hasHexString("0500");
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).isNotNull().hasHexString("0102").isInstanceOf(ByteBuffer.class);
 
         try {
             Raw.byteBufferAssertion().hasHexString("");
@@ -4800,6 +4855,7 @@ public final class ByteBufferAssertionTest extends AssertionTest {
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{99, 5, 0, -21}, 1, 3)).hasHexString(1, 1, "");
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{99, 5, 0, -21}, 1, 3)).hasHexString(1, 2, "00");
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{99, 5, 0, -21}, 1, 3)).hasHexString(2, 2, "");
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).isNotNull().hasHexString(0, 2, "0102").isInstanceOf(ByteBuffer.class);
 
         try {
             Raw.byteBufferAssertion().hasHexString(0, 0, "");
@@ -4951,6 +5007,7 @@ public final class ByteBufferAssertionTest extends AssertionTest {
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{99, 5, 0, -21})).hasRewindAndHexString("630500eb");
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{99, 5, 0, -21}, 2)).hasRewindAndHexString("630500eb");
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{99, 5, 0, -21}, 1, 3)).hasRewindAndHexString("630500");
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).isNotNull().hasRewindAndHexString("0102").isInstanceOf(ByteBuffer.class);
 
         try {
             Raw.byteBufferAssertion().hasRewindAndHexString("");
@@ -5045,6 +5102,7 @@ public final class ByteBufferAssertionTest extends AssertionTest {
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{99, 5, 0, -21}, 1, 3)).hasRewindAndHexString(2, 2, "");
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{99, 5, 0, -21}, 1, 3)).hasRewindAndHexString(2, 3, "00");
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{99, 5, 0, -21}, 1, 3)).hasRewindAndHexString(3, 3, "");
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).isNotNull().hasRewindAndHexString(0, 2, "0102").isInstanceOf(ByteBuffer.class);
 
         try {
             Raw.byteBufferAssertion().hasRewindAndHexString(0, 0, "");
@@ -5203,6 +5261,8 @@ public final class ByteBufferAssertionTest extends AssertionTest {
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3}, 4, 3, 5)).toPosition().isGreaterThan(1);
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3}, 4, 3, 5)).toPosition().isLessThan(5);
 
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3}, 3)).isNotNull().toPosition().isEqualTo(3);
+
         try {
             Raw.byteBufferAssertion().toPosition();
             Assertions.fail("ByteBufferAssertion test fail");
@@ -5263,6 +5323,8 @@ public final class ByteBufferAssertionTest extends AssertionTest {
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3}, 4, 3, 5)).toPosition(Matchers.equalTo(3));
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3}, 4, 3, 5)).toPosition(Matchers.greaterThan(2));
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3}, 4, 3, 5)).toPosition(Matchers.lessThan(4));
+
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3}, 3)).isNotNull().toPosition(Matchers.is(Matchers.equalTo(3))).isInstanceOf(ByteBuffer.class);
 
         try {
             Raw.byteBufferAssertion().toPosition(Matchers.equalTo(0));
@@ -5328,6 +5390,7 @@ public final class ByteBufferAssertionTest extends AssertionTest {
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3}, 3)).hasPosition(3);
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3}, 1)).hasPosition(1);
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3}, 4, 3, 5)).hasPosition(3);
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3}, 3)).isNotNull().hasPosition(3).isInstanceOf(ByteBuffer.class);
 
         try {
             Raw.byteBufferAssertion().hasPosition(1);
@@ -5377,6 +5440,8 @@ public final class ByteBufferAssertionTest extends AssertionTest {
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3}, 4, 3, 5)).toLimit().isEqualTo(3);
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3}, 4, 3, 5)).toLimit().isGreaterThan(1);
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3}, 4, 3, 5)).toLimit().isLessThan(5);
+
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3}, 3)).isNotNull().toLimit().isEqualTo(3);
 
         try {
             Raw.byteBufferAssertion().toLimit();
@@ -5438,6 +5503,8 @@ public final class ByteBufferAssertionTest extends AssertionTest {
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3}, 4, 3, 5)).toLimit(Matchers.equalTo(3));
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3}, 4, 3, 5)).toLimit(Matchers.greaterThan(2));
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3}, 4, 3, 5)).toLimit(Matchers.lessThan(4));
+
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3}, 3)).isNotNull().toLimit(Matchers.is(Matchers.equalTo(3))).isInstanceOf(ByteBuffer.class);
 
         try {
             Raw.byteBufferAssertion().toLimit(Matchers.equalTo(0));
@@ -5503,6 +5570,7 @@ public final class ByteBufferAssertionTest extends AssertionTest {
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3}, 3)).hasLimit(3);
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3}, 1, 1)).hasLimit(1);
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3}, 4, 3, 5)).hasLimit(3);
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3}, 3)).isNotNull().hasLimit(3).isInstanceOf(ByteBuffer.class);
 
         try {
             Raw.byteBufferAssertion().hasLimit(1);
@@ -5552,6 +5620,8 @@ public final class ByteBufferAssertionTest extends AssertionTest {
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3}, 4, 3, 5)).toCapacity().isEqualTo(5);
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3}, 4, 3, 5)).toCapacity().isGreaterThan(1);
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3}, 4, 3, 5)).toCapacity().isLessThan(7);
+
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3}, 3)).isNotNull().toCapacity().isEqualTo(3);
 
         try {
             Raw.byteBufferAssertion().toCapacity();
@@ -5613,6 +5683,8 @@ public final class ByteBufferAssertionTest extends AssertionTest {
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3}, 4, 3, 5)).toCapacity(Matchers.equalTo(5));
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3}, 4, 3, 5)).toCapacity(Matchers.greaterThan(4));
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3}, 4, 3, 5)).toCapacity(Matchers.lessThan(6));
+
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3}, 3)).isNotNull().toCapacity(Matchers.is(Matchers.equalTo(3))).isInstanceOf(ByteBuffer.class);
 
         try {
             Raw.byteBufferAssertion().toCapacity(Matchers.equalTo(0));
@@ -5678,6 +5750,7 @@ public final class ByteBufferAssertionTest extends AssertionTest {
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3}, 3)).hasCapacity(3);
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3}, 1, 1)).hasCapacity(3);
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3}, 4, 3, 5)).hasCapacity(5);
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3}, 3)).isNotNull().hasCapacity(3).isInstanceOf(ByteBuffer.class);
 
         try {
             Raw.byteBufferAssertion().hasCapacity(1);
@@ -5719,6 +5792,7 @@ public final class ByteBufferAssertionTest extends AssertionTest {
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3}, 3)).hasProperties(3, 3, 3);
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3}, 1)).hasProperties(1, 3, 3);
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3}, 4, 3, 5)).hasProperties(3, 3, 5);
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3}, 3)).isNotNull().hasProperties(3, 3, 3).isInstanceOf(ByteBuffer.class);
 
         try {
             Raw.byteBufferAssertion().hasProperties(1, 1, 1);
@@ -5797,6 +5871,8 @@ public final class ByteBufferAssertionTest extends AssertionTest {
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3}, 2, 4, 5)).toRemaining().isGreaterThan(1);
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3}, 2, 4, 5)).toRemaining().isLessThan(5);
 
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3}, 3)).isNotNull().toRemaining().isEqualTo(0);
+
         try {
             Raw.byteBufferAssertion().toRemaining();
             Assertions.fail("ByteBufferAssertion test fail");
@@ -5861,6 +5937,8 @@ public final class ByteBufferAssertionTest extends AssertionTest {
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3}, 2, 4, 5)).toRemaining(Matchers.equalTo(2));
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3}, 2, 4, 5)).toRemaining(Matchers.greaterThan(1));
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3}, 2, 4, 5)).toRemaining(Matchers.lessThan(3));
+
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3}, 3)).isNotNull().toRemaining(Matchers.is(Matchers.equalTo(0))).isInstanceOf(ByteBuffer.class);
 
         try {
             Raw.byteBufferAssertion().toRemaining(Matchers.equalTo(0));
@@ -5927,6 +6005,7 @@ public final class ByteBufferAssertionTest extends AssertionTest {
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3}, 1, 3)).hasRemaining(2);
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3}, 4, 2, 5)).hasRemaining(0);
         initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3}, 2, 4, 5)).hasRemaining(2);
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3}, 3)).isNotNull().hasRemaining(0).isInstanceOf(ByteBuffer.class);
 
         try {
             Raw.byteBufferAssertion().hasRemaining(1);
@@ -5966,6 +6045,7 @@ public final class ByteBufferAssertionTest extends AssertionTest {
     @Test
     public void isDirectTest() {
         initialize(Raw.byteBufferAssertion(), ByteBuffer.allocateDirect(12)).isDirect();
+        initialize(Raw.byteBufferAssertion(), ByteBuffer.allocateDirect(12)).isNotNull().isDirect().isInstanceOf(ByteBuffer.class);
 
         try {
             Raw.byteBufferAssertion().isDirect();
@@ -6005,6 +6085,7 @@ public final class ByteBufferAssertionTest extends AssertionTest {
     @Test
     public void isNotDirectTest() {
         initialize(Raw.byteBufferAssertion(), ByteBuffer.allocate(12)).isNotDirect();
+        initialize(Raw.byteBufferAssertion(), ByteBuffer.allocate(12)).isNotNull().isNotDirect().isInstanceOf(ByteBuffer.class);
 
         try {
             Raw.byteBufferAssertion().isNotDirect();
@@ -6047,6 +6128,7 @@ public final class ByteBufferAssertionTest extends AssertionTest {
         ByteBuffer readOnlyBuffer = buffer.asReadOnlyBuffer();
 
         initialize(Raw.byteBufferAssertion(), readOnlyBuffer).isReadOnly();
+        initialize(Raw.byteBufferAssertion(), readOnlyBuffer).isNotNull().isReadOnly().isInstanceOf(ByteBuffer.class);
 
         try {
             Raw.byteBufferAssertion().isReadOnly();
@@ -6089,6 +6171,7 @@ public final class ByteBufferAssertionTest extends AssertionTest {
         ByteBuffer readOnlyBuffer = buffer.asReadOnlyBuffer();
 
         initialize(Raw.byteBufferAssertion(), buffer).isNotReadOnly();
+        initialize(Raw.byteBufferAssertion(), buffer).isNotNull().isNotReadOnly().isInstanceOf(ByteBuffer.class);
 
         try {
             Raw.byteBufferAssertion().isNotReadOnly();

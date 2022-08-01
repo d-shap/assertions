@@ -73,6 +73,7 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{})).isEmpty();
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0}, 2)).isEmpty();
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0}, 2, 2, 4)).isEmpty();
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0}, 2, 2, 4)).isNotNull().isEmpty().isInstanceOf(DoubleBuffer.class);
 
         try {
             Raw.doubleBufferAssertion().isEmpty();
@@ -126,6 +127,7 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{})).isRewindAndEmpty();
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0}, 0, 0)).isRewindAndEmpty();
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0}, 0, 0, 4)).isRewindAndEmpty();
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0}, 0, 0, 4)).isNotNull().isRewindAndEmpty().isInstanceOf(DoubleBuffer.class);
 
         try {
             Raw.doubleBufferAssertion().isRewindAndEmpty();
@@ -180,6 +182,7 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0}, 2)).isNullOrEmpty();
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0}, 2, 2, 4)).isNullOrEmpty();
         initialize(Raw.doubleBufferAssertion(), null).isNullOrEmpty();
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{})).isNotNull().isNullOrEmpty().isInstanceOf(DoubleBuffer.class);
 
         try {
             Raw.doubleBufferAssertion().isNullOrEmpty();
@@ -222,6 +225,7 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0}, 0, 0)).isRewindAndNullOrEmpty();
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0}, 0, 0, 4)).isRewindAndNullOrEmpty();
         initialize(Raw.doubleBufferAssertion(), null).isRewindAndNullOrEmpty();
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{})).isNotNull().isRewindAndNullOrEmpty().isInstanceOf(DoubleBuffer.class);
 
         try {
             Raw.doubleBufferAssertion().isRewindAndNullOrEmpty();
@@ -263,6 +267,7 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).isNotEmpty();
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0}, 1)).isNotEmpty();
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{}, 0, 4, 4)).isNotEmpty();
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).isNotNull().isNotEmpty().isInstanceOf(DoubleBuffer.class);
 
         try {
             Raw.doubleBufferAssertion().isNotEmpty();
@@ -318,6 +323,7 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{}, 0, 4, 4)).isRewindAndNotEmpty();
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0}, 2)).isRewindAndNotEmpty();
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0}, 2, 2, 4)).isRewindAndNotEmpty();
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).isNotNull().isRewindAndNotEmpty().isInstanceOf(DoubleBuffer.class);
 
         try {
             Raw.doubleBufferAssertion().isRewindAndNotEmpty();
@@ -362,6 +368,7 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0})).contains(Double.POSITIVE_INFINITY);
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0})).contains(Double.NEGATIVE_INFINITY);
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0})).contains(3.0);
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).isNotNull().contains(2.0).isInstanceOf(DoubleBuffer.class);
 
         try {
             Raw.doubleBufferAssertion().contains(1.0);
@@ -427,6 +434,7 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).rewindAndContains(1.0);
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).rewindAndContains(2.0);
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 3)).rewindAndContains(2.0);
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).isNotNull().rewindAndContains(2.0).isInstanceOf(DoubleBuffer.class);
 
         try {
             Raw.doubleBufferAssertion().rewindAndContains(1.0);
@@ -476,6 +484,7 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 0, 3)).doesNotContain(5.0);
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{Double.NaN, Double.POSITIVE_INFINITY})).doesNotContain(Double.NEGATIVE_INFINITY);
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{Double.NaN, Double.POSITIVE_INFINITY})).doesNotContain(3.0);
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).isNotNull().doesNotContain(3.0).isInstanceOf(DoubleBuffer.class);
 
         try {
             Raw.doubleBufferAssertion().doesNotContain(1.0);
@@ -534,6 +543,7 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
     public void rewindAndDoesNotContainTest() {
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).rewindAndDoesNotContain(3.0);
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 0, 3)).rewindAndDoesNotContain(5.0);
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).isNotNull().rewindAndDoesNotContain(3.0).isInstanceOf(DoubleBuffer.class);
 
         try {
             Raw.doubleBufferAssertion().rewindAndDoesNotContain(1.0);
@@ -588,6 +598,7 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0})).containsAll(1.0, 3.0);
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0})).containsAll(4.0, 2.0);
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0})).containsAll(Double.NEGATIVE_INFINITY, Double.NaN);
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).isNotNull().containsAll(1.0, 2.0).isInstanceOf(DoubleBuffer.class);
 
         try {
             Raw.doubleBufferAssertion().containsAll(1.0);
@@ -690,6 +701,7 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0})).containsAll(DataHelper.createIterable(1.0, 3.0));
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0})).containsAll(DataHelper.createIterable(4.0, 2.0));
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0})).containsAll(DataHelper.createIterable(Double.NEGATIVE_INFINITY, Double.NaN));
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).isNotNull().containsAll(DataHelper.createIterable(1.0, 2.0)).isInstanceOf(DoubleBuffer.class);
 
         try {
             Raw.doubleBufferAssertion().containsAll(DataHelper.<Double>createIterable());
@@ -792,6 +804,7 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0})).rewindAndContainsAll(1.0, 3.0);
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0})).rewindAndContainsAll(4.0, 2.0);
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 3)).rewindAndContainsAll(1.0, 2.0);
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).isNotNull().rewindAndContainsAll(1.0, 2.0).isInstanceOf(DoubleBuffer.class);
 
         try {
             Raw.doubleBufferAssertion().rewindAndContainsAll(1.0);
@@ -876,6 +889,7 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0})).rewindAndContainsAll(DataHelper.createIterable(1.0, 3.0));
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0})).rewindAndContainsAll(DataHelper.createIterable(4.0, 2.0));
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 3)).rewindAndContainsAll(DataHelper.createIterable(1.0, 2.0));
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).isNotNull().rewindAndContainsAll(DataHelper.createIterable(1.0, 2.0)).isInstanceOf(DoubleBuffer.class);
 
         try {
             Raw.doubleBufferAssertion().rewindAndContainsAll(DataHelper.<Double>createIterable());
@@ -959,6 +973,7 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).containsAllInOrder(1.0, 2.0);
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0})).containsAllInOrder(1.0, 3.0, 4.0);
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0})).containsAllInOrder(Double.NaN, Double.NEGATIVE_INFINITY, 3.0);
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).isNotNull().containsAllInOrder(1.0, 2.0).isInstanceOf(DoubleBuffer.class);
 
         try {
             Raw.doubleBufferAssertion().containsAllInOrder(1.0);
@@ -1066,6 +1081,7 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).containsAllInOrder(DataHelper.createIterable(1.0, 2.0));
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0})).containsAllInOrder(DataHelper.createIterable(1.0, 3.0, 4.0));
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0})).containsAllInOrder(DataHelper.createIterable(Double.NaN, Double.NEGATIVE_INFINITY, 3.0));
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).isNotNull().containsAllInOrder(DataHelper.createIterable(1.0, 2.0)).isInstanceOf(DoubleBuffer.class);
 
         try {
             Raw.doubleBufferAssertion().containsAllInOrder(DataHelper.<Double>createIterable());
@@ -1173,6 +1189,7 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).rewindAndContainsAllInOrder(1.0, 2.0);
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0})).rewindAndContainsAllInOrder(1.0, 3.0, 4.0);
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 3)).rewindAndContainsAllInOrder(1.0, 2.0);
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).isNotNull().rewindAndContainsAllInOrder(1.0, 2.0).isInstanceOf(DoubleBuffer.class);
 
         try {
             Raw.doubleBufferAssertion().rewindAndContainsAllInOrder(1.0);
@@ -1262,6 +1279,7 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).rewindAndContainsAllInOrder(DataHelper.createIterable(1.0, 2.0));
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0})).rewindAndContainsAllInOrder(DataHelper.createIterable(1.0, 3.0, 4.0));
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 3)).rewindAndContainsAllInOrder(DataHelper.createIterable(1.0, 2.0));
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).isNotNull().rewindAndContainsAllInOrder(DataHelper.createIterable(1.0, 2.0)).isInstanceOf(DoubleBuffer.class);
 
         try {
             Raw.doubleBufferAssertion().rewindAndContainsAllInOrder(DataHelper.<Double>createIterable());
@@ -1353,6 +1371,7 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0})).containsExactly(1.0, 3.0, 2.0, 4.0);
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{})).containsExactly();
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0})).containsExactly(Double.NEGATIVE_INFINITY, Double.NaN, 3.0, Double.POSITIVE_INFINITY);
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).isNotNull().containsExactly(1.0, 2.0).isInstanceOf(DoubleBuffer.class);
 
         try {
             Raw.doubleBufferAssertion().containsExactly(1.0);
@@ -1462,6 +1481,7 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0})).containsExactly(DataHelper.createIterable(1.0, 3.0, 2.0, 4.0));
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{})).containsExactly(DataHelper.<Double>createIterable());
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0})).containsExactly(DataHelper.createIterable(Double.NEGATIVE_INFINITY, Double.NaN, 3.0, Double.POSITIVE_INFINITY));
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).isNotNull().containsExactly(DataHelper.createIterable(1.0, 2.0)).isInstanceOf(DoubleBuffer.class);
 
         try {
             Raw.doubleBufferAssertion().containsExactly(DataHelper.<Double>createIterable());
@@ -1571,6 +1591,7 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0})).rewindAndContainsExactly(1.0, 3.0, 2.0, 4.0);
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{})).rewindAndContainsExactly();
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 3)).rewindAndContainsExactly(1.0, 2.0, 3.0, 4.0, 5.0);
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).isNotNull().rewindAndContainsExactly(1.0, 2.0).isInstanceOf(DoubleBuffer.class);
 
         try {
             Raw.doubleBufferAssertion().rewindAndContainsExactly(1.0);
@@ -1662,6 +1683,7 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0})).rewindAndContainsExactly(DataHelper.createIterable(1.0, 3.0, 2.0, 4.0));
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{})).rewindAndContainsExactly(DataHelper.<Double>createIterable());
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 3)).rewindAndContainsExactly(DataHelper.createIterable(1.0, 2.0, 3.0, 4.0, 5.0));
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).isNotNull().rewindAndContainsExactly(DataHelper.createIterable(1.0, 2.0)).isInstanceOf(DoubleBuffer.class);
 
         try {
             Raw.doubleBufferAssertion().rewindAndContainsExactly(DataHelper.<Double>createIterable());
@@ -1752,6 +1774,7 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0})).containsExactlyInOrder(1.0, 2.0, 3.0, 4.0);
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{})).containsExactlyInOrder();
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0})).containsExactlyInOrder(Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0);
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).isNotNull().containsExactlyInOrder(1.0, 2.0).isInstanceOf(DoubleBuffer.class);
 
         try {
             Raw.doubleBufferAssertion().containsExactlyInOrder(1.0);
@@ -1866,6 +1889,7 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0})).containsExactlyInOrder(DataHelper.createIterable(1.0, 2.0, 3.0, 4.0));
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{})).containsExactlyInOrder(DataHelper.<Double>createIterable());
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0})).containsExactlyInOrder(DataHelper.createIterable(Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0));
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).isNotNull().containsExactlyInOrder(DataHelper.createIterable(1.0, 2.0)).isInstanceOf(DoubleBuffer.class);
 
         try {
             Raw.doubleBufferAssertion().containsExactlyInOrder(DataHelper.<Double>createIterable());
@@ -1980,6 +2004,7 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0})).rewindAndContainsExactlyInOrder(1.0, 2.0, 3.0, 4.0);
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{})).rewindAndContainsExactlyInOrder();
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 3)).rewindAndContainsExactlyInOrder(1.0, 2.0, 3.0, 4.0, 5.0);
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).isNotNull().rewindAndContainsExactlyInOrder(1.0, 2.0).isInstanceOf(DoubleBuffer.class);
 
         try {
             Raw.doubleBufferAssertion().rewindAndContainsExactlyInOrder(1.0);
@@ -2076,6 +2101,7 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0})).rewindAndContainsExactlyInOrder(DataHelper.createIterable(1.0, 2.0, 3.0, 4.0));
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{})).rewindAndContainsExactlyInOrder(DataHelper.<Double>createIterable());
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 3)).rewindAndContainsExactlyInOrder(DataHelper.createIterable(1.0, 2.0, 3.0, 4.0, 5.0));
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).isNotNull().rewindAndContainsExactlyInOrder(DataHelper.createIterable(1.0, 2.0)).isInstanceOf(DoubleBuffer.class);
 
         try {
             Raw.doubleBufferAssertion().rewindAndContainsExactlyInOrder(DataHelper.<Double>createIterable());
@@ -2173,6 +2199,7 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0})).containsAny(4.0, 1.0);
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0})).containsAny(5.0, 3.0);
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{Double.NaN, Double.NEGATIVE_INFINITY, 3.0})).containsAny(Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY);
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).isNotNull().containsAny(2.0, 3.0).isInstanceOf(DoubleBuffer.class);
 
         try {
             Raw.doubleBufferAssertion().containsAny(1.0);
@@ -2276,6 +2303,7 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0})).containsAny(DataHelper.createIterable(4.0, 1.0));
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0})).containsAny(DataHelper.createIterable(5.0, 3.0));
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{Double.NaN, Double.NEGATIVE_INFINITY, 3.0})).containsAny(DataHelper.createIterable(Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY));
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).isNotNull().containsAny(DataHelper.createIterable(2.0, 3.0)).isInstanceOf(DoubleBuffer.class);
 
         try {
             Raw.doubleBufferAssertion().containsAny(DataHelper.<Double>createIterable());
@@ -2379,6 +2407,7 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0})).rewindAndContainsAny(4.0, 1.0);
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0})).rewindAndContainsAny(5.0, 3.0);
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 3)).rewindAndContainsAny(1.0, 3.0);
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).isNotNull().rewindAndContainsAny(2.0, 3.0).isInstanceOf(DoubleBuffer.class);
 
         try {
             Raw.doubleBufferAssertion().rewindAndContainsAny(1.0);
@@ -2464,6 +2493,7 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0})).rewindAndContainsAny(DataHelper.createIterable(4.0, 1.0));
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0})).rewindAndContainsAny(DataHelper.createIterable(5.0, 3.0));
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 3)).rewindAndContainsAny(DataHelper.createIterable(1.0, 3.0));
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).isNotNull().rewindAndContainsAny(DataHelper.createIterable(2.0, 3.0)).isInstanceOf(DoubleBuffer.class);
 
         try {
             Raw.doubleBufferAssertion().rewindAndContainsAny(DataHelper.<Double>createIterable());
@@ -2549,6 +2579,7 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 3)).containsNone(1.0, 3.0);
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 0, 3)).containsNone(4.0, 5.0);
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{Double.NaN, Double.NEGATIVE_INFINITY, 3.0})).containsNone(Double.POSITIVE_INFINITY, 4.0);
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).isNotNull().containsNone(3.0, 7.0).isInstanceOf(DoubleBuffer.class);
 
         try {
             Raw.doubleBufferAssertion().containsNone(1.0);
@@ -2640,6 +2671,7 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 3)).containsNone(DataHelper.createIterable(1.0, 3.0));
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 0, 3)).containsNone(DataHelper.createIterable(4.0, 5.0));
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{Double.NaN, Double.NEGATIVE_INFINITY, 3.0})).containsNone(DataHelper.createIterable(Double.POSITIVE_INFINITY, 4.0));
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).isNotNull().containsNone(DataHelper.createIterable(3.0, 7.0)).isInstanceOf(DoubleBuffer.class);
 
         try {
             Raw.doubleBufferAssertion().containsNone(DataHelper.<Double>createIterable());
@@ -2729,6 +2761,7 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).rewindAndContainsNone(3.0, 7.0);
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).rewindAndContainsNone(3.0, 4.0, 5.0);
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 0, 3)).rewindAndContainsNone(4.0, 5.0);
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).isNotNull().rewindAndContainsNone(3.0, 7.0).isInstanceOf(DoubleBuffer.class);
 
         try {
             Raw.doubleBufferAssertion().rewindAndContainsNone(1.0);
@@ -2812,6 +2845,7 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).rewindAndContainsNone(DataHelper.createIterable(3.0, 7.0));
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).rewindAndContainsNone(DataHelper.createIterable(3.0, 4.0, 5.0));
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0, 4.0, 5.0}, 0, 3)).rewindAndContainsNone(DataHelper.createIterable(4.0, 5.0));
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0})).isNotNull().rewindAndContainsNone(DataHelper.createIterable(3.0, 7.0)).isInstanceOf(DoubleBuffer.class);
 
         try {
             Raw.doubleBufferAssertion().rewindAndContainsNone(DataHelper.<Double>createIterable());
@@ -2904,6 +2938,8 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0}, 4, 3, 5)).toPosition().isGreaterThan(1);
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0}, 4, 3, 5)).toPosition().isLessThan(5);
 
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0}, 3)).isNotNull().toPosition().isEqualTo(3);
+
         try {
             Raw.doubleBufferAssertion().toPosition();
             Assertions.fail("DoubleBufferAssertion test fail");
@@ -2964,6 +3000,8 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0}, 4, 3, 5)).toPosition(Matchers.equalTo(3));
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0}, 4, 3, 5)).toPosition(Matchers.greaterThan(2));
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0}, 4, 3, 5)).toPosition(Matchers.lessThan(4));
+
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0}, 3)).isNotNull().toPosition(Matchers.is(Matchers.equalTo(3))).isInstanceOf(DoubleBuffer.class);
 
         try {
             Raw.doubleBufferAssertion().toPosition(Matchers.equalTo(0));
@@ -3029,6 +3067,7 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0}, 3)).hasPosition(3);
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0}, 1)).hasPosition(1);
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0}, 4, 3, 5)).hasPosition(3);
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0}, 3)).isNotNull().hasPosition(3).isInstanceOf(DoubleBuffer.class);
 
         try {
             Raw.doubleBufferAssertion().hasPosition(1);
@@ -3078,6 +3117,8 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0}, 4, 3, 5)).toLimit().isEqualTo(3);
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0}, 4, 3, 5)).toLimit().isGreaterThan(1);
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0}, 4, 3, 5)).toLimit().isLessThan(5);
+
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0}, 3)).isNotNull().toLimit().isEqualTo(3);
 
         try {
             Raw.doubleBufferAssertion().toLimit();
@@ -3139,6 +3180,8 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0}, 4, 3, 5)).toLimit(Matchers.equalTo(3));
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0}, 4, 3, 5)).toLimit(Matchers.greaterThan(2));
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0}, 4, 3, 5)).toLimit(Matchers.lessThan(4));
+
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0}, 3)).isNotNull().toLimit(Matchers.is(Matchers.equalTo(3))).isInstanceOf(DoubleBuffer.class);
 
         try {
             Raw.doubleBufferAssertion().toLimit(Matchers.equalTo(0));
@@ -3204,6 +3247,7 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0}, 3)).hasLimit(3);
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0}, 1, 1)).hasLimit(1);
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0}, 4, 3, 5)).hasLimit(3);
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0}, 3)).isNotNull().hasLimit(3).isInstanceOf(DoubleBuffer.class);
 
         try {
             Raw.doubleBufferAssertion().hasLimit(1);
@@ -3253,6 +3297,8 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0}, 4, 3, 5)).toCapacity().isEqualTo(5);
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0}, 4, 3, 5)).toCapacity().isGreaterThan(1);
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0}, 4, 3, 5)).toCapacity().isLessThan(7);
+
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0}, 3)).isNotNull().toCapacity().isEqualTo(3);
 
         try {
             Raw.doubleBufferAssertion().toCapacity();
@@ -3314,6 +3360,8 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0}, 4, 3, 5)).toCapacity(Matchers.equalTo(5));
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0}, 4, 3, 5)).toCapacity(Matchers.greaterThan(4));
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0}, 4, 3, 5)).toCapacity(Matchers.lessThan(6));
+
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0}, 3)).isNotNull().toCapacity(Matchers.is(Matchers.equalTo(3))).isInstanceOf(DoubleBuffer.class);
 
         try {
             Raw.doubleBufferAssertion().toCapacity(Matchers.equalTo(0));
@@ -3379,6 +3427,7 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0}, 3)).hasCapacity(3);
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0}, 1, 1)).hasCapacity(3);
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0}, 4, 3, 5)).hasCapacity(5);
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0}, 3)).isNotNull().hasCapacity(3).isInstanceOf(DoubleBuffer.class);
 
         try {
             Raw.doubleBufferAssertion().hasCapacity(1);
@@ -3420,6 +3469,7 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0}, 3)).hasProperties(3, 3, 3);
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0}, 1)).hasProperties(1, 3, 3);
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0}, 4, 3, 5)).hasProperties(3, 3, 5);
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0}, 3)).isNotNull().hasProperties(3, 3, 3).isInstanceOf(DoubleBuffer.class);
 
         try {
             Raw.doubleBufferAssertion().hasProperties(1, 1, 1);
@@ -3498,6 +3548,8 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0}, 2, 4, 5)).toRemaining().isGreaterThan(1);
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0}, 2, 4, 5)).toRemaining().isLessThan(5);
 
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0}, 3)).isNotNull().toRemaining().isEqualTo(0);
+
         try {
             Raw.doubleBufferAssertion().toRemaining();
             Assertions.fail("DoubleBufferAssertion test fail");
@@ -3562,6 +3614,8 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0}, 2, 4, 5)).toRemaining(Matchers.equalTo(2));
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0}, 2, 4, 5)).toRemaining(Matchers.greaterThan(1));
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0}, 2, 4, 5)).toRemaining(Matchers.lessThan(3));
+
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0}, 3)).isNotNull().toRemaining(Matchers.is(Matchers.equalTo(0))).isInstanceOf(DoubleBuffer.class);
 
         try {
             Raw.doubleBufferAssertion().toRemaining(Matchers.equalTo(0));
@@ -3628,6 +3682,7 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0}, 1, 3)).hasRemaining(2);
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0}, 4, 2, 5)).hasRemaining(0);
         initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0}, 2, 4, 5)).hasRemaining(2);
+        initialize(Raw.doubleBufferAssertion(), createDoubleBuffer(new double[]{1.0, 2.0, 3.0}, 3)).isNotNull().hasRemaining(0).isInstanceOf(DoubleBuffer.class);
 
         try {
             Raw.doubleBufferAssertion().hasRemaining(1);
@@ -3667,6 +3722,7 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
     @Test
     public void isDirectTest() {
         initialize(Raw.doubleBufferAssertion(), ByteBuffer.allocateDirect(12).asDoubleBuffer()).isDirect();
+        initialize(Raw.doubleBufferAssertion(), ByteBuffer.allocateDirect(12).asDoubleBuffer()).isNotNull().isDirect().isInstanceOf(DoubleBuffer.class);
 
         try {
             Raw.doubleBufferAssertion().isDirect();
@@ -3706,6 +3762,7 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
     @Test
     public void isNotDirectTest() {
         initialize(Raw.doubleBufferAssertion(), ByteBuffer.allocate(12).asDoubleBuffer()).isNotDirect();
+        initialize(Raw.doubleBufferAssertion(), ByteBuffer.allocate(12).asDoubleBuffer()).isNotNull().isNotDirect().isInstanceOf(DoubleBuffer.class);
 
         try {
             Raw.doubleBufferAssertion().isNotDirect();
@@ -3748,6 +3805,7 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
         DoubleBuffer readOnlyBuffer = buffer.asReadOnlyBuffer();
 
         initialize(Raw.doubleBufferAssertion(), readOnlyBuffer).isReadOnly();
+        initialize(Raw.doubleBufferAssertion(), readOnlyBuffer).isNotNull().isReadOnly().isInstanceOf(DoubleBuffer.class);
 
         try {
             Raw.doubleBufferAssertion().isReadOnly();
@@ -3790,6 +3848,7 @@ public final class DoubleBufferAssertionTest extends AssertionTest {
         DoubleBuffer readOnlyBuffer = buffer.asReadOnlyBuffer();
 
         initialize(Raw.doubleBufferAssertion(), buffer).isNotReadOnly();
+        initialize(Raw.doubleBufferAssertion(), buffer).isNotNull().isNotReadOnly().isInstanceOf(DoubleBuffer.class);
 
         try {
             Raw.doubleBufferAssertion().isNotReadOnly();
