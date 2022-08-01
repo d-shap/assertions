@@ -73,6 +73,7 @@ public final class ShortBufferAssertionTest extends AssertionTest {
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{})).isEmpty();
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}, 2)).isEmpty();
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}, 2, 2, 4)).isEmpty();
+        initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}, 2, 2, 4)).isNotNull().isEmpty().isInstanceOf(ShortBuffer.class);
 
         try {
             Raw.shortBufferAssertion().isEmpty();
@@ -126,6 +127,7 @@ public final class ShortBufferAssertionTest extends AssertionTest {
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{})).isRewindAndEmpty();
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}, 0, 0)).isRewindAndEmpty();
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}, 0, 0, 4)).isRewindAndEmpty();
+        initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}, 0, 0, 4)).isNotNull().isRewindAndEmpty().isInstanceOf(ShortBuffer.class);
 
         try {
             Raw.shortBufferAssertion().isRewindAndEmpty();
@@ -180,6 +182,7 @@ public final class ShortBufferAssertionTest extends AssertionTest {
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}, 2)).isNullOrEmpty();
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}, 2, 2, 4)).isNullOrEmpty();
         initialize(Raw.shortBufferAssertion(), null).isNullOrEmpty();
+        initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{})).isNotNull().isNullOrEmpty().isInstanceOf(ShortBuffer.class);
 
         try {
             Raw.shortBufferAssertion().isNullOrEmpty();
@@ -222,6 +225,7 @@ public final class ShortBufferAssertionTest extends AssertionTest {
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}, 0, 0)).isRewindAndNullOrEmpty();
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}, 0, 0, 4)).isRewindAndNullOrEmpty();
         initialize(Raw.shortBufferAssertion(), null).isRewindAndNullOrEmpty();
+        initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{})).isNotNull().isRewindAndNullOrEmpty().isInstanceOf(ShortBuffer.class);
 
         try {
             Raw.shortBufferAssertion().isRewindAndNullOrEmpty();
@@ -263,6 +267,7 @@ public final class ShortBufferAssertionTest extends AssertionTest {
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).isNotEmpty();
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}, 1)).isNotEmpty();
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{}, 0, 4, 4)).isNotEmpty();
+        initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).isNotNull().isNotEmpty().isInstanceOf(ShortBuffer.class);
 
         try {
             Raw.shortBufferAssertion().isNotEmpty();
@@ -318,6 +323,7 @@ public final class ShortBufferAssertionTest extends AssertionTest {
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{}, 0, 4, 4)).isRewindAndNotEmpty();
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}, 2)).isRewindAndNotEmpty();
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}, 2, 2, 4)).isRewindAndNotEmpty();
+        initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).isNotNull().isRewindAndNotEmpty().isInstanceOf(ShortBuffer.class);
 
         try {
             Raw.shortBufferAssertion().isRewindAndNotEmpty();
@@ -358,6 +364,7 @@ public final class ShortBufferAssertionTest extends AssertionTest {
     public void containsTest() {
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).contains(1);
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).contains(2);
+        initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).isNotNull().contains(2).isInstanceOf(ShortBuffer.class);
 
         try {
             Raw.shortBufferAssertion().contains(1);
@@ -411,6 +418,7 @@ public final class ShortBufferAssertionTest extends AssertionTest {
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).rewindAndContains(1);
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).rewindAndContains(2);
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4, 5}, 3)).rewindAndContains(2);
+        initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).isNotNull().rewindAndContains(2).isInstanceOf(ShortBuffer.class);
 
         try {
             Raw.shortBufferAssertion().rewindAndContains(1);
@@ -458,6 +466,7 @@ public final class ShortBufferAssertionTest extends AssertionTest {
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).doesNotContain(3);
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4, 5}, 3)).doesNotContain(2);
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4, 5}, 0, 3)).doesNotContain(5);
+        initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).isNotNull().doesNotContain(3).isInstanceOf(ShortBuffer.class);
 
         try {
             Raw.shortBufferAssertion().doesNotContain(1);
@@ -504,6 +513,7 @@ public final class ShortBufferAssertionTest extends AssertionTest {
     public void rewindAndDoesNotContainTest() {
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).rewindAndDoesNotContain(3);
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4, 5}, 0, 3)).rewindAndDoesNotContain(5);
+        initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).isNotNull().rewindAndDoesNotContain(3).isInstanceOf(ShortBuffer.class);
 
         try {
             Raw.shortBufferAssertion().rewindAndDoesNotContain(1);
@@ -557,6 +567,7 @@ public final class ShortBufferAssertionTest extends AssertionTest {
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).containsAll((short) 1, (short) 2);
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4})).containsAll((short) 1, (short) 3);
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4})).containsAll((short) 4, (short) 2);
+        initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).isNotNull().containsAll((short) 1, (short) 2).isInstanceOf(ShortBuffer.class);
 
         try {
             Raw.shortBufferAssertion().containsAll((short) 1);
@@ -646,6 +657,7 @@ public final class ShortBufferAssertionTest extends AssertionTest {
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).containsAll(1, 2);
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4})).containsAll(1, 3);
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4})).containsAll(4, 2);
+        initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).isNotNull().containsAll(1, 2).isInstanceOf(ShortBuffer.class);
 
         try {
             Raw.shortBufferAssertion().containsAll(1);
@@ -735,6 +747,7 @@ public final class ShortBufferAssertionTest extends AssertionTest {
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).containsAll(DataHelper.createIterable((short) 1, (short) 2));
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4})).containsAll(DataHelper.createIterable((short) 1, (short) 3));
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4})).containsAll(DataHelper.createIterable((short) 4, (short) 2));
+        initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).isNotNull().containsAll(DataHelper.createIterable((short) 1, (short) 2)).isInstanceOf(ShortBuffer.class);
 
         try {
             Raw.shortBufferAssertion().containsAll(DataHelper.<Short>createIterable());
@@ -825,6 +838,7 @@ public final class ShortBufferAssertionTest extends AssertionTest {
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4})).rewindAndContainsAll((short) 1, (short) 3);
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4})).rewindAndContainsAll((short) 4, (short) 2);
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4, 5}, 3)).rewindAndContainsAll((short) 1, (short) 2);
+        initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).isNotNull().rewindAndContainsAll((short) 1, (short) 2).isInstanceOf(ShortBuffer.class);
 
         try {
             Raw.shortBufferAssertion().rewindAndContainsAll((short) 1);
@@ -909,6 +923,7 @@ public final class ShortBufferAssertionTest extends AssertionTest {
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4})).rewindAndContainsAll(1, 3);
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4})).rewindAndContainsAll(4, 2);
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4, 5}, 3)).rewindAndContainsAll(1, 2);
+        initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).isNotNull().rewindAndContainsAll(1, 2).isInstanceOf(ShortBuffer.class);
 
         try {
             Raw.shortBufferAssertion().rewindAndContainsAll(1);
@@ -993,6 +1008,7 @@ public final class ShortBufferAssertionTest extends AssertionTest {
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4})).rewindAndContainsAll(DataHelper.createIterable((short) 1, (short) 3));
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4})).rewindAndContainsAll(DataHelper.createIterable((short) 4, (short) 2));
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4, 5}, 3)).rewindAndContainsAll(DataHelper.createIterable((short) 1, (short) 2));
+        initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).isNotNull().rewindAndContainsAll(DataHelper.createIterable((short) 1, (short) 2)).isInstanceOf(ShortBuffer.class);
 
         try {
             Raw.shortBufferAssertion().rewindAndContainsAll(DataHelper.<Short>createIterable());
@@ -1075,6 +1091,7 @@ public final class ShortBufferAssertionTest extends AssertionTest {
     public void containsAllInOrderArrayShortTest() {
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).containsAllInOrder((short) 1, (short) 2);
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4})).containsAllInOrder((short) 1, (short) 3, (short) 4);
+        initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).isNotNull().containsAllInOrder((short) 1, (short) 2).isInstanceOf(ShortBuffer.class);
 
         try {
             Raw.shortBufferAssertion().containsAllInOrder((short) 1);
@@ -1169,6 +1186,7 @@ public final class ShortBufferAssertionTest extends AssertionTest {
     public void containsAllInOrderArrayIntTest() {
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).containsAllInOrder(1, 2);
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4})).containsAllInOrder(1, 3, 4);
+        initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).isNotNull().containsAllInOrder(1, 2).isInstanceOf(ShortBuffer.class);
 
         try {
             Raw.shortBufferAssertion().containsAllInOrder(1);
@@ -1263,6 +1281,7 @@ public final class ShortBufferAssertionTest extends AssertionTest {
     public void containsAllInOrderIterableTest() {
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).containsAllInOrder(DataHelper.createIterable((short) 1, (short) 2));
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4})).containsAllInOrder(DataHelper.createIterable((short) 1, (short) 3, (short) 4));
+        initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).isNotNull().containsAllInOrder(DataHelper.createIterable((short) 1, (short) 2)).isInstanceOf(ShortBuffer.class);
 
         try {
             Raw.shortBufferAssertion().containsAllInOrder(DataHelper.<Short>createIterable());
@@ -1358,6 +1377,7 @@ public final class ShortBufferAssertionTest extends AssertionTest {
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).rewindAndContainsAllInOrder((short) 1, (short) 2);
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4})).rewindAndContainsAllInOrder((short) 1, (short) 3, (short) 4);
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4, 5}, 3)).rewindAndContainsAllInOrder((short) 1, (short) 2);
+        initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).isNotNull().rewindAndContainsAllInOrder((short) 1, (short) 2).isInstanceOf(ShortBuffer.class);
 
         try {
             Raw.shortBufferAssertion().rewindAndContainsAllInOrder((short) 1);
@@ -1447,6 +1467,7 @@ public final class ShortBufferAssertionTest extends AssertionTest {
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).rewindAndContainsAllInOrder(1, 2);
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4})).rewindAndContainsAllInOrder(1, 3, 4);
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4, 5}, 3)).rewindAndContainsAllInOrder(1, 2);
+        initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).isNotNull().rewindAndContainsAllInOrder(1, 2).isInstanceOf(ShortBuffer.class);
 
         try {
             Raw.shortBufferAssertion().rewindAndContainsAllInOrder(1);
@@ -1536,6 +1557,7 @@ public final class ShortBufferAssertionTest extends AssertionTest {
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).rewindAndContainsAllInOrder(DataHelper.createIterable((short) 1, (short) 2));
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4})).rewindAndContainsAllInOrder(DataHelper.createIterable((short) 1, (short) 3, (short) 4));
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4, 5}, 3)).rewindAndContainsAllInOrder(DataHelper.createIterable((short) 1, (short) 2));
+        initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).isNotNull().rewindAndContainsAllInOrder(DataHelper.createIterable((short) 1, (short) 2)).isInstanceOf(ShortBuffer.class);
 
         try {
             Raw.shortBufferAssertion().rewindAndContainsAllInOrder(DataHelper.<Short>createIterable());
@@ -1626,6 +1648,7 @@ public final class ShortBufferAssertionTest extends AssertionTest {
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4})).containsExactly((short) 1, (short) 2, (short) 3, (short) 4);
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4})).containsExactly((short) 1, (short) 3, (short) 2, (short) 4);
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{})).containsExactly();
+        initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).isNotNull().containsExactly((short) 1, (short) 2).isInstanceOf(ShortBuffer.class);
 
         try {
             Raw.shortBufferAssertion().containsExactly((short) 1);
@@ -1722,6 +1745,7 @@ public final class ShortBufferAssertionTest extends AssertionTest {
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4})).containsExactly(1, 2, 3, 4);
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4})).containsExactly(1, 3, 2, 4);
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{})).containsExactly(new int[]{});
+        initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).isNotNull().containsExactly(1, 2).isInstanceOf(ShortBuffer.class);
 
         try {
             Raw.shortBufferAssertion().containsExactly(1);
@@ -1818,6 +1842,7 @@ public final class ShortBufferAssertionTest extends AssertionTest {
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4})).containsExactly(DataHelper.createIterable((short) 1, (short) 2, (short) 3, (short) 4));
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4})).containsExactly(DataHelper.createIterable((short) 1, (short) 3, (short) 2, (short) 4));
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{})).containsExactly(DataHelper.<Short>createIterable());
+        initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).isNotNull().containsExactly(DataHelper.createIterable((short) 1, (short) 2)).isInstanceOf(ShortBuffer.class);
 
         try {
             Raw.shortBufferAssertion().containsExactly(DataHelper.<Short>createIterable());
@@ -1915,6 +1940,7 @@ public final class ShortBufferAssertionTest extends AssertionTest {
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4})).rewindAndContainsExactly((short) 1, (short) 3, (short) 2, (short) 4);
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{})).rewindAndContainsExactly();
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4, 5}, 3)).rewindAndContainsExactly((short) 1, (short) 2, (short) 3, (short) 4, (short) 5);
+        initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).isNotNull().rewindAndContainsExactly((short) 1, (short) 2).isInstanceOf(ShortBuffer.class);
 
         try {
             Raw.shortBufferAssertion().rewindAndContainsExactly((short) 1);
@@ -2006,6 +2032,7 @@ public final class ShortBufferAssertionTest extends AssertionTest {
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4})).rewindAndContainsExactly(1, 3, 2, 4);
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{})).rewindAndContainsExactly(new int[]{});
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4, 5}, 3)).rewindAndContainsExactly(1, 2, 3, 4, 5);
+        initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).isNotNull().rewindAndContainsExactly(1, 2).isInstanceOf(ShortBuffer.class);
 
         try {
             Raw.shortBufferAssertion().rewindAndContainsExactly(1);
@@ -2097,6 +2124,7 @@ public final class ShortBufferAssertionTest extends AssertionTest {
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4})).rewindAndContainsExactly(DataHelper.createIterable((short) 1, (short) 3, (short) 2, (short) 4));
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{})).rewindAndContainsExactly(DataHelper.<Short>createIterable());
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4, 5}, 3)).rewindAndContainsExactly(DataHelper.createIterable((short) 1, (short) 2, (short) 3, (short) 4, (short) 5));
+        initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).isNotNull().rewindAndContainsExactly(DataHelper.createIterable((short) 1, (short) 2)).isInstanceOf(ShortBuffer.class);
 
         try {
             Raw.shortBufferAssertion().rewindAndContainsExactly(DataHelper.<Short>createIterable());
@@ -2186,6 +2214,7 @@ public final class ShortBufferAssertionTest extends AssertionTest {
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).containsExactlyInOrder((short) 1, (short) 2);
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4})).containsExactlyInOrder((short) 1, (short) 2, (short) 3, (short) 4);
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{})).containsExactlyInOrder();
+        initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).isNotNull().containsExactlyInOrder((short) 1, (short) 2).isInstanceOf(ShortBuffer.class);
 
         try {
             Raw.shortBufferAssertion().containsExactlyInOrder((short) 1);
@@ -2287,6 +2316,7 @@ public final class ShortBufferAssertionTest extends AssertionTest {
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).containsExactlyInOrder(1, 2);
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4})).containsExactlyInOrder(1, 2, 3, 4);
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{})).containsExactlyInOrder(new int[]{});
+        initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).isNotNull().containsExactlyInOrder(1, 2).isInstanceOf(ShortBuffer.class);
 
         try {
             Raw.shortBufferAssertion().containsExactlyInOrder(1);
@@ -2388,6 +2418,7 @@ public final class ShortBufferAssertionTest extends AssertionTest {
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).containsExactlyInOrder(DataHelper.createIterable((short) 1, (short) 2));
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4})).containsExactlyInOrder(DataHelper.createIterable((short) 1, (short) 2, (short) 3, (short) 4));
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{})).containsExactlyInOrder(DataHelper.<Short>createIterable());
+        initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).isNotNull().containsExactlyInOrder(DataHelper.createIterable((short) 1, (short) 2)).isInstanceOf(ShortBuffer.class);
 
         try {
             Raw.shortBufferAssertion().containsExactlyInOrder(DataHelper.<Short>createIterable());
@@ -2490,6 +2521,7 @@ public final class ShortBufferAssertionTest extends AssertionTest {
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4})).rewindAndContainsExactlyInOrder((short) 1, (short) 2, (short) 3, (short) 4);
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{})).rewindAndContainsExactlyInOrder();
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4, 5}, 3)).rewindAndContainsExactlyInOrder((short) 1, (short) 2, (short) 3, (short) 4, (short) 5);
+        initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).isNotNull().rewindAndContainsExactlyInOrder((short) 1, (short) 2).isInstanceOf(ShortBuffer.class);
 
         try {
             Raw.shortBufferAssertion().rewindAndContainsExactlyInOrder((short) 1);
@@ -2586,6 +2618,7 @@ public final class ShortBufferAssertionTest extends AssertionTest {
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4})).rewindAndContainsExactlyInOrder(1, 2, 3, 4);
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{})).rewindAndContainsExactlyInOrder(new int[]{});
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4, 5}, 3)).rewindAndContainsExactlyInOrder(1, 2, 3, 4, 5);
+        initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).isNotNull().rewindAndContainsExactlyInOrder(1, 2).isInstanceOf(ShortBuffer.class);
 
         try {
             Raw.shortBufferAssertion().rewindAndContainsExactlyInOrder(1);
@@ -2682,6 +2715,7 @@ public final class ShortBufferAssertionTest extends AssertionTest {
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4})).rewindAndContainsExactlyInOrder(DataHelper.createIterable((short) 1, (short) 2, (short) 3, (short) 4));
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{})).rewindAndContainsExactlyInOrder(DataHelper.<Short>createIterable());
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4, 5}, 3)).rewindAndContainsExactlyInOrder(DataHelper.createIterable((short) 1, (short) 2, (short) 3, (short) 4, (short) 5));
+        initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).isNotNull().rewindAndContainsExactlyInOrder(DataHelper.createIterable((short) 1, (short) 2)).isInstanceOf(ShortBuffer.class);
 
         try {
             Raw.shortBufferAssertion().rewindAndContainsExactlyInOrder(DataHelper.<Short>createIterable());
@@ -2778,6 +2812,7 @@ public final class ShortBufferAssertionTest extends AssertionTest {
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4})).containsAny((short) 2, (short) 4);
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4})).containsAny((short) 4, (short) 1);
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4})).containsAny((short) 5, (short) 3);
+        initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).isNotNull().containsAny((short) 2, (short) 3).isInstanceOf(ShortBuffer.class);
 
         try {
             Raw.shortBufferAssertion().containsAny((short) 1);
@@ -2868,6 +2903,7 @@ public final class ShortBufferAssertionTest extends AssertionTest {
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4})).containsAny(2, 4);
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4})).containsAny(4, 1);
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4})).containsAny(5, 3);
+        initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).isNotNull().containsAny(2, 3).isInstanceOf(ShortBuffer.class);
 
         try {
             Raw.shortBufferAssertion().containsAny(1);
@@ -2958,6 +2994,7 @@ public final class ShortBufferAssertionTest extends AssertionTest {
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4})).containsAny(DataHelper.createIterable((short) 2, (short) 4));
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4})).containsAny(DataHelper.createIterable((short) 4, (short) 1));
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4})).containsAny(DataHelper.createIterable((short) 5, (short) 3));
+        initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).isNotNull().containsAny(DataHelper.createIterable((short) 2, (short) 3)).isInstanceOf(ShortBuffer.class);
 
         try {
             Raw.shortBufferAssertion().containsAny(DataHelper.<Short>createIterable());
@@ -3049,6 +3086,7 @@ public final class ShortBufferAssertionTest extends AssertionTest {
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4})).rewindAndContainsAny((short) 4, (short) 1);
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4})).rewindAndContainsAny((short) 5, (short) 3);
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4, 5}, 3)).rewindAndContainsAny((short) 1, (short) 3);
+        initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).isNotNull().rewindAndContainsAny((short) 2, (short) 3).isInstanceOf(ShortBuffer.class);
 
         try {
             Raw.shortBufferAssertion().rewindAndContainsAny((short) 1);
@@ -3134,6 +3172,7 @@ public final class ShortBufferAssertionTest extends AssertionTest {
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4})).rewindAndContainsAny(4, 1);
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4})).rewindAndContainsAny(5, 3);
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4, 5}, 3)).rewindAndContainsAny(1, 3);
+        initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).isNotNull().rewindAndContainsAny(2, 3).isInstanceOf(ShortBuffer.class);
 
         try {
             Raw.shortBufferAssertion().rewindAndContainsAny(1);
@@ -3219,6 +3258,7 @@ public final class ShortBufferAssertionTest extends AssertionTest {
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4})).rewindAndContainsAny(DataHelper.createIterable((short) 4, (short) 1));
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4})).rewindAndContainsAny(DataHelper.createIterable((short) 5, (short) 3));
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4, 5}, 3)).rewindAndContainsAny(DataHelper.createIterable((short) 1, (short) 3));
+        initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).isNotNull().rewindAndContainsAny(DataHelper.createIterable((short) 2, (short) 3)).isInstanceOf(ShortBuffer.class);
 
         try {
             Raw.shortBufferAssertion().rewindAndContainsAny(DataHelper.<Short>createIterable());
@@ -3303,6 +3343,7 @@ public final class ShortBufferAssertionTest extends AssertionTest {
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).containsNone((short) 3, (short) 4, (short) 5);
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4, 5}, 3)).containsNone((short) 1, (short) 3);
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4, 5}, 0, 3)).containsNone((short) 4, (short) 5);
+        initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).isNotNull().containsNone((short) 3, (short) 7).isInstanceOf(ShortBuffer.class);
 
         try {
             Raw.shortBufferAssertion().containsNone((short) 1);
@@ -3381,6 +3422,7 @@ public final class ShortBufferAssertionTest extends AssertionTest {
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).containsNone(3, 4, 5);
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4, 5}, 3)).containsNone(1, 3);
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4, 5}, 0, 3)).containsNone(4, 5);
+        initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).isNotNull().containsNone(3, 7).isInstanceOf(ShortBuffer.class);
 
         try {
             Raw.shortBufferAssertion().containsNone(1);
@@ -3459,6 +3501,7 @@ public final class ShortBufferAssertionTest extends AssertionTest {
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).containsNone(DataHelper.createIterable((short) 3, (short) 4, (short) 5));
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4, 5}, 3)).containsNone(DataHelper.createIterable((short) 1, (short) 3));
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4, 5}, 0, 3)).containsNone(DataHelper.createIterable((short) 4, (short) 5));
+        initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).isNotNull().containsNone(DataHelper.createIterable((short) 3, (short) 7)).isInstanceOf(ShortBuffer.class);
 
         try {
             Raw.shortBufferAssertion().containsNone(DataHelper.<Short>createIterable());
@@ -3536,6 +3579,7 @@ public final class ShortBufferAssertionTest extends AssertionTest {
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).rewindAndContainsNone((short) 3, (short) 7);
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).rewindAndContainsNone((short) 3, (short) 4, (short) 5);
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4, 5}, 0, 3)).rewindAndContainsNone((short) 4, (short) 5);
+        initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).isNotNull().rewindAndContainsNone((short) 3, (short) 7).isInstanceOf(ShortBuffer.class);
 
         try {
             Raw.shortBufferAssertion().rewindAndContainsNone((short) 1);
@@ -3619,6 +3663,7 @@ public final class ShortBufferAssertionTest extends AssertionTest {
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).rewindAndContainsNone(3, 7);
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).rewindAndContainsNone(3, 4, 5);
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4, 5}, 0, 3)).rewindAndContainsNone(4, 5);
+        initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).isNotNull().rewindAndContainsNone(3, 7).isInstanceOf(ShortBuffer.class);
 
         try {
             Raw.shortBufferAssertion().rewindAndContainsNone(1);
@@ -3702,6 +3747,7 @@ public final class ShortBufferAssertionTest extends AssertionTest {
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).rewindAndContainsNone(DataHelper.createIterable((short) 3, (short) 7));
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).rewindAndContainsNone(DataHelper.createIterable((short) 3, (short) 4, (short) 5));
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4, 5}, 0, 3)).rewindAndContainsNone(DataHelper.createIterable((short) 4, (short) 5));
+        initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).isNotNull().rewindAndContainsNone(DataHelper.createIterable((short) 3, (short) 7)).isInstanceOf(ShortBuffer.class);
 
         try {
             Raw.shortBufferAssertion().rewindAndContainsNone(DataHelper.<Short>createIterable());
@@ -3787,6 +3833,7 @@ public final class ShortBufferAssertionTest extends AssertionTest {
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{99, 5, 0, -21})).toHexString().isEqualTo("006300050000ffeb");
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{99, 5, 0, -21}, 2)).toHexString().isEqualTo("0000ffeb");
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{99, 5, 0, -21}, 1, 3)).toHexString().isEqualTo("00050000");
+        initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).isNotNull().toHexString().isEqualTo("00010002");
 
         try {
             Raw.shortBufferAssertion().toHexString();
@@ -3865,6 +3912,7 @@ public final class ShortBufferAssertionTest extends AssertionTest {
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{99, 5, 0, -21}, 1, 3)).toHexString(1, 1).isEqualTo("");
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{99, 5, 0, -21}, 1, 3)).toHexString(1, 2).isEqualTo("0000");
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{99, 5, 0, -21}, 1, 3)).toHexString(2, 2).isEqualTo("");
+        initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).isNotNull().toHexString(0, 2).isEqualTo("00010002");
 
         try {
             Raw.shortBufferAssertion().toHexString(0, 0);
@@ -4004,6 +4052,7 @@ public final class ShortBufferAssertionTest extends AssertionTest {
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{99, 5, 0, -21})).toHexString(Matchers.is(Matchers.equalTo("006300050000ffeb")));
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{99, 5, 0, -21}, 2)).toHexString(Matchers.is(Matchers.equalTo("0000ffeb")));
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{99, 5, 0, -21}, 1, 3)).toHexString(Matchers.is(Matchers.equalTo("00050000")));
+        initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).isNotNull().toHexString(Matchers.is(Matchers.equalTo("00010002"))).isInstanceOf(ShortBuffer.class);
 
         try {
             Raw.shortBufferAssertion().toHexString(Matchers.equalTo(""));
@@ -4094,6 +4143,7 @@ public final class ShortBufferAssertionTest extends AssertionTest {
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{99, 5, 0, -21}, 1, 3)).toHexString(1, 1, Matchers.is(Matchers.equalTo("")));
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{99, 5, 0, -21}, 1, 3)).toHexString(1, 2, Matchers.is(Matchers.equalTo("0000")));
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{99, 5, 0, -21}, 1, 3)).toHexString(2, 2, Matchers.is(Matchers.equalTo("")));
+        initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).isNotNull().toHexString(0, 2, Matchers.is(Matchers.equalTo("00010002"))).isInstanceOf(ShortBuffer.class);
 
         try {
             Raw.shortBufferAssertion().toHexString(0, 0, Matchers.equalTo(""));
@@ -4245,6 +4295,7 @@ public final class ShortBufferAssertionTest extends AssertionTest {
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{99, 5, 0, -21})).toRewindAndHexString().isEqualTo("006300050000ffeb");
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{99, 5, 0, -21}, 2)).toRewindAndHexString().isEqualTo("006300050000ffeb");
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{99, 5, 0, -21}, 1, 3)).toRewindAndHexString().isEqualTo("006300050000");
+        initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).isNotNull().toRewindAndHexString().isEqualTo("00010002");
 
         try {
             Raw.shortBufferAssertion().toRewindAndHexString();
@@ -4327,6 +4378,7 @@ public final class ShortBufferAssertionTest extends AssertionTest {
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{99, 5, 0, -21}, 1, 3)).toRewindAndHexString(2, 2).isEqualTo("");
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{99, 5, 0, -21}, 1, 3)).toRewindAndHexString(2, 3).isEqualTo("0000");
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{99, 5, 0, -21}, 1, 3)).toRewindAndHexString(3, 3).isEqualTo("");
+        initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).isNotNull().toRewindAndHexString(0, 2).isEqualTo("00010002");
 
         try {
             Raw.shortBufferAssertion().toRewindAndHexString(0, 0);
@@ -4466,6 +4518,7 @@ public final class ShortBufferAssertionTest extends AssertionTest {
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{99, 5, 0, -21})).toRewindAndHexString(Matchers.is(Matchers.equalTo("006300050000ffeb")));
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{99, 5, 0, -21}, 2)).toRewindAndHexString(Matchers.is(Matchers.equalTo("006300050000ffeb")));
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{99, 5, 0, -21}, 1, 3)).toRewindAndHexString(Matchers.is(Matchers.equalTo("006300050000")));
+        initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).isNotNull().toRewindAndHexString(Matchers.is(Matchers.equalTo("00010002"))).isInstanceOf(ShortBuffer.class);
 
         try {
             Raw.shortBufferAssertion().toRewindAndHexString(Matchers.equalTo(""));
@@ -4560,6 +4613,7 @@ public final class ShortBufferAssertionTest extends AssertionTest {
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{99, 5, 0, -21}, 1, 3)).toRewindAndHexString(2, 2, Matchers.is(Matchers.equalTo("")));
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{99, 5, 0, -21}, 1, 3)).toRewindAndHexString(2, 3, Matchers.is(Matchers.equalTo("0000")));
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{99, 5, 0, -21}, 1, 3)).toRewindAndHexString(3, 3, Matchers.is(Matchers.equalTo("")));
+        initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).isNotNull().toRewindAndHexString(0, 2, Matchers.is(Matchers.equalTo("00010002"))).isInstanceOf(ShortBuffer.class);
 
         try {
             Raw.shortBufferAssertion().toRewindAndHexString(0, 0, Matchers.equalTo(""));
@@ -4711,6 +4765,7 @@ public final class ShortBufferAssertionTest extends AssertionTest {
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{99, 5, 0, -21})).hasHexString("006300050000ffeb");
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{99, 5, 0, -21}, 2)).hasHexString("0000ffeb");
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{99, 5, 0, -21}, 1, 3)).hasHexString("00050000");
+        initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).isNotNull().hasHexString("00010002").isInstanceOf(ShortBuffer.class);
 
         try {
             Raw.shortBufferAssertion().hasHexString("");
@@ -4801,6 +4856,7 @@ public final class ShortBufferAssertionTest extends AssertionTest {
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{99, 5, 0, -21}, 1, 3)).hasHexString(1, 1, "");
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{99, 5, 0, -21}, 1, 3)).hasHexString(1, 2, "0000");
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{99, 5, 0, -21}, 1, 3)).hasHexString(2, 2, "");
+        initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).isNotNull().hasHexString(0, 2, "00010002").isInstanceOf(ShortBuffer.class);
 
         try {
             Raw.shortBufferAssertion().hasHexString(0, 0, "");
@@ -4952,6 +5008,7 @@ public final class ShortBufferAssertionTest extends AssertionTest {
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{99, 5, 0, -21})).hasRewindAndHexString("006300050000ffeb");
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{99, 5, 0, -21}, 2)).hasRewindAndHexString("006300050000ffeb");
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{99, 5, 0, -21}, 1, 3)).hasRewindAndHexString("006300050000");
+        initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).isNotNull().hasRewindAndHexString("00010002").isInstanceOf(ShortBuffer.class);
 
         try {
             Raw.shortBufferAssertion().hasRewindAndHexString("");
@@ -5046,6 +5103,7 @@ public final class ShortBufferAssertionTest extends AssertionTest {
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{99, 5, 0, -21}, 1, 3)).hasRewindAndHexString(2, 2, "");
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{99, 5, 0, -21}, 1, 3)).hasRewindAndHexString(2, 3, "0000");
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{99, 5, 0, -21}, 1, 3)).hasRewindAndHexString(3, 3, "");
+        initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).isNotNull().hasRewindAndHexString(0, 2, "00010002").isInstanceOf(ShortBuffer.class);
 
         try {
             Raw.shortBufferAssertion().hasRewindAndHexString(0, 0, "");
@@ -5204,6 +5262,8 @@ public final class ShortBufferAssertionTest extends AssertionTest {
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3}, 4, 3, 5)).toPosition().isGreaterThan(1);
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3}, 4, 3, 5)).toPosition().isLessThan(5);
 
+        initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3}, 3)).isNotNull().toPosition().isEqualTo(3);
+
         try {
             Raw.shortBufferAssertion().toPosition();
             Assertions.fail("ShortBufferAssertion test fail");
@@ -5264,6 +5324,8 @@ public final class ShortBufferAssertionTest extends AssertionTest {
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3}, 4, 3, 5)).toPosition(Matchers.equalTo(3));
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3}, 4, 3, 5)).toPosition(Matchers.greaterThan(2));
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3}, 4, 3, 5)).toPosition(Matchers.lessThan(4));
+
+        initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3}, 3)).isNotNull().toPosition(Matchers.is(Matchers.equalTo(3))).isInstanceOf(ShortBuffer.class);
 
         try {
             Raw.shortBufferAssertion().toPosition(Matchers.equalTo(0));
@@ -5329,6 +5391,7 @@ public final class ShortBufferAssertionTest extends AssertionTest {
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3}, 3)).hasPosition(3);
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3}, 1)).hasPosition(1);
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3}, 4, 3, 5)).hasPosition(3);
+        initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3}, 3)).isNotNull().hasPosition(3).isInstanceOf(ShortBuffer.class);
 
         try {
             Raw.shortBufferAssertion().hasPosition(1);
@@ -5378,6 +5441,8 @@ public final class ShortBufferAssertionTest extends AssertionTest {
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3}, 4, 3, 5)).toLimit().isEqualTo(3);
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3}, 4, 3, 5)).toLimit().isGreaterThan(1);
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3}, 4, 3, 5)).toLimit().isLessThan(5);
+
+        initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3}, 3)).isNotNull().toLimit().isEqualTo(3);
 
         try {
             Raw.shortBufferAssertion().toLimit();
@@ -5439,6 +5504,8 @@ public final class ShortBufferAssertionTest extends AssertionTest {
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3}, 4, 3, 5)).toLimit(Matchers.equalTo(3));
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3}, 4, 3, 5)).toLimit(Matchers.greaterThan(2));
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3}, 4, 3, 5)).toLimit(Matchers.lessThan(4));
+
+        initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3}, 3)).isNotNull().toLimit(Matchers.is(Matchers.equalTo(3))).isInstanceOf(ShortBuffer.class);
 
         try {
             Raw.shortBufferAssertion().toLimit(Matchers.equalTo(0));
@@ -5504,6 +5571,7 @@ public final class ShortBufferAssertionTest extends AssertionTest {
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3}, 3)).hasLimit(3);
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3}, 1, 1)).hasLimit(1);
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3}, 4, 3, 5)).hasLimit(3);
+        initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3}, 3)).isNotNull().hasLimit(3).isInstanceOf(ShortBuffer.class);
 
         try {
             Raw.shortBufferAssertion().hasLimit(1);
@@ -5553,6 +5621,8 @@ public final class ShortBufferAssertionTest extends AssertionTest {
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3}, 4, 3, 5)).toCapacity().isEqualTo(5);
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3}, 4, 3, 5)).toCapacity().isGreaterThan(1);
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3}, 4, 3, 5)).toCapacity().isLessThan(7);
+
+        initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3}, 3)).isNotNull().toCapacity().isEqualTo(3);
 
         try {
             Raw.shortBufferAssertion().toCapacity();
@@ -5614,6 +5684,8 @@ public final class ShortBufferAssertionTest extends AssertionTest {
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3}, 4, 3, 5)).toCapacity(Matchers.equalTo(5));
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3}, 4, 3, 5)).toCapacity(Matchers.greaterThan(4));
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3}, 4, 3, 5)).toCapacity(Matchers.lessThan(6));
+
+        initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3}, 3)).isNotNull().toCapacity(Matchers.is(Matchers.equalTo(3))).isInstanceOf(ShortBuffer.class);
 
         try {
             Raw.shortBufferAssertion().toCapacity(Matchers.equalTo(0));
@@ -5679,6 +5751,7 @@ public final class ShortBufferAssertionTest extends AssertionTest {
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3}, 3)).hasCapacity(3);
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3}, 1, 1)).hasCapacity(3);
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3}, 4, 3, 5)).hasCapacity(5);
+        initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3}, 3)).isNotNull().hasCapacity(3).isInstanceOf(ShortBuffer.class);
 
         try {
             Raw.shortBufferAssertion().hasCapacity(1);
@@ -5720,6 +5793,7 @@ public final class ShortBufferAssertionTest extends AssertionTest {
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3}, 3)).hasProperties(3, 3, 3);
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3}, 1)).hasProperties(1, 3, 3);
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3}, 4, 3, 5)).hasProperties(3, 3, 5);
+        initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3}, 3)).isNotNull().hasProperties(3, 3, 3).isInstanceOf(ShortBuffer.class);
 
         try {
             Raw.shortBufferAssertion().hasProperties(1, 1, 1);
@@ -5798,6 +5872,8 @@ public final class ShortBufferAssertionTest extends AssertionTest {
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3}, 2, 4, 5)).toRemaining().isGreaterThan(1);
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3}, 2, 4, 5)).toRemaining().isLessThan(5);
 
+        initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3}, 3)).isNotNull().toRemaining().isEqualTo(0);
+
         try {
             Raw.shortBufferAssertion().toRemaining();
             Assertions.fail("ShortBufferAssertion test fail");
@@ -5862,6 +5938,8 @@ public final class ShortBufferAssertionTest extends AssertionTest {
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3}, 2, 4, 5)).toRemaining(Matchers.equalTo(2));
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3}, 2, 4, 5)).toRemaining(Matchers.greaterThan(1));
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3}, 2, 4, 5)).toRemaining(Matchers.lessThan(3));
+
+        initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3}, 3)).isNotNull().toRemaining(Matchers.is(Matchers.equalTo(0))).isInstanceOf(ShortBuffer.class);
 
         try {
             Raw.shortBufferAssertion().toRemaining(Matchers.equalTo(0));
@@ -5928,6 +6006,7 @@ public final class ShortBufferAssertionTest extends AssertionTest {
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3}, 1, 3)).hasRemaining(2);
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3}, 4, 2, 5)).hasRemaining(0);
         initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3}, 2, 4, 5)).hasRemaining(2);
+        initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3}, 3)).isNotNull().hasRemaining(0).isInstanceOf(ShortBuffer.class);
 
         try {
             Raw.shortBufferAssertion().hasRemaining(1);
@@ -5967,6 +6046,7 @@ public final class ShortBufferAssertionTest extends AssertionTest {
     @Test
     public void isDirectTest() {
         initialize(Raw.shortBufferAssertion(), ByteBuffer.allocateDirect(12).asShortBuffer()).isDirect();
+        initialize(Raw.shortBufferAssertion(), ByteBuffer.allocateDirect(12).asShortBuffer()).isNotNull().isDirect().isInstanceOf(ShortBuffer.class);
 
         try {
             Raw.shortBufferAssertion().isDirect();
@@ -6006,6 +6086,7 @@ public final class ShortBufferAssertionTest extends AssertionTest {
     @Test
     public void isNotDirectTest() {
         initialize(Raw.shortBufferAssertion(), ByteBuffer.allocate(12).asShortBuffer()).isNotDirect();
+        initialize(Raw.shortBufferAssertion(), ByteBuffer.allocate(12).asShortBuffer()).isNotNull().isNotDirect().isInstanceOf(ShortBuffer.class);
 
         try {
             Raw.shortBufferAssertion().isNotDirect();
@@ -6048,6 +6129,7 @@ public final class ShortBufferAssertionTest extends AssertionTest {
         ShortBuffer readOnlyBuffer = buffer.asReadOnlyBuffer();
 
         initialize(Raw.shortBufferAssertion(), readOnlyBuffer).isReadOnly();
+        initialize(Raw.shortBufferAssertion(), readOnlyBuffer).isNotNull().isReadOnly().isInstanceOf(ShortBuffer.class);
 
         try {
             Raw.shortBufferAssertion().isReadOnly();
@@ -6090,6 +6172,7 @@ public final class ShortBufferAssertionTest extends AssertionTest {
         ShortBuffer readOnlyBuffer = buffer.asReadOnlyBuffer();
 
         initialize(Raw.shortBufferAssertion(), buffer).isNotReadOnly();
+        initialize(Raw.shortBufferAssertion(), buffer).isNotNull().isNotReadOnly().isInstanceOf(ShortBuffer.class);
 
         try {
             Raw.shortBufferAssertion().isNotReadOnly();
