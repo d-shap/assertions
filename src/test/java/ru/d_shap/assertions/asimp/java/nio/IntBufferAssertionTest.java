@@ -73,6 +73,7 @@ public final class IntBufferAssertionTest extends AssertionTest {
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{})).isEmpty();
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2}, 2)).isEmpty();
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2}, 2, 2, 4)).isEmpty();
+        initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2}, 2, 2, 4)).isNotNull().isEmpty().isInstanceOf(IntBuffer.class);
 
         try {
             Raw.intBufferAssertion().isEmpty();
@@ -126,6 +127,7 @@ public final class IntBufferAssertionTest extends AssertionTest {
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{})).isRewindAndEmpty();
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2}, 0, 0)).isRewindAndEmpty();
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2}, 0, 0, 4)).isRewindAndEmpty();
+        initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2}, 0, 0, 4)).isNotNull().isRewindAndEmpty().isInstanceOf(IntBuffer.class);
 
         try {
             Raw.intBufferAssertion().isRewindAndEmpty();
@@ -180,6 +182,7 @@ public final class IntBufferAssertionTest extends AssertionTest {
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2}, 2)).isNullOrEmpty();
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2}, 2, 2, 4)).isNullOrEmpty();
         initialize(Raw.intBufferAssertion(), null).isNullOrEmpty();
+        initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{})).isNotNull().isNullOrEmpty().isInstanceOf(IntBuffer.class);
 
         try {
             Raw.intBufferAssertion().isNullOrEmpty();
@@ -222,6 +225,7 @@ public final class IntBufferAssertionTest extends AssertionTest {
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2}, 0, 0)).isRewindAndNullOrEmpty();
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2}, 0, 0, 4)).isRewindAndNullOrEmpty();
         initialize(Raw.intBufferAssertion(), null).isRewindAndNullOrEmpty();
+        initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{})).isNotNull().isRewindAndNullOrEmpty().isInstanceOf(IntBuffer.class);
 
         try {
             Raw.intBufferAssertion().isRewindAndNullOrEmpty();
@@ -263,6 +267,7 @@ public final class IntBufferAssertionTest extends AssertionTest {
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2})).isNotEmpty();
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2}, 1)).isNotEmpty();
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{}, 0, 4, 4)).isNotEmpty();
+        initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2})).isNotNull().isNotEmpty().isInstanceOf(IntBuffer.class);
 
         try {
             Raw.intBufferAssertion().isNotEmpty();
@@ -318,6 +323,7 @@ public final class IntBufferAssertionTest extends AssertionTest {
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{}, 0, 4, 4)).isRewindAndNotEmpty();
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2}, 2)).isRewindAndNotEmpty();
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2}, 2, 2, 4)).isRewindAndNotEmpty();
+        initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2})).isNotNull().isRewindAndNotEmpty().isInstanceOf(IntBuffer.class);
 
         try {
             Raw.intBufferAssertion().isRewindAndNotEmpty();
@@ -358,6 +364,7 @@ public final class IntBufferAssertionTest extends AssertionTest {
     public void containsTest() {
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2})).contains(1);
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2})).contains(2);
+        initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2})).isNotNull().contains(2).isInstanceOf(IntBuffer.class);
 
         try {
             Raw.intBufferAssertion().contains(1);
@@ -411,6 +418,7 @@ public final class IntBufferAssertionTest extends AssertionTest {
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2})).rewindAndContains(1);
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2})).rewindAndContains(2);
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3, 4, 5}, 3)).rewindAndContains(2);
+        initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2})).isNotNull().rewindAndContains(2).isInstanceOf(IntBuffer.class);
 
         try {
             Raw.intBufferAssertion().rewindAndContains(1);
@@ -458,6 +466,7 @@ public final class IntBufferAssertionTest extends AssertionTest {
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2})).doesNotContain(3);
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3, 4, 5}, 3)).doesNotContain(2);
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3, 4, 5}, 0, 3)).doesNotContain(5);
+        initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2})).isNotNull().doesNotContain(3).isInstanceOf(IntBuffer.class);
 
         try {
             Raw.intBufferAssertion().doesNotContain(1);
@@ -504,6 +513,7 @@ public final class IntBufferAssertionTest extends AssertionTest {
     public void rewindAndDoesNotContainTest() {
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2})).rewindAndDoesNotContain(3);
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3, 4, 5}, 0, 3)).rewindAndDoesNotContain(5);
+        initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2})).isNotNull().rewindAndDoesNotContain(3).isInstanceOf(IntBuffer.class);
 
         try {
             Raw.intBufferAssertion().rewindAndDoesNotContain(1);
@@ -557,6 +567,7 @@ public final class IntBufferAssertionTest extends AssertionTest {
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2})).containsAll(1, 2);
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3, 4})).containsAll(1, 3);
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3, 4})).containsAll(4, 2);
+        initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2})).isNotNull().containsAll(1, 2).isInstanceOf(IntBuffer.class);
 
         try {
             Raw.intBufferAssertion().containsAll(1);
@@ -646,6 +657,7 @@ public final class IntBufferAssertionTest extends AssertionTest {
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2})).containsAll(DataHelper.createIterable(1, 2));
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3, 4})).containsAll(DataHelper.createIterable(1, 3));
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3, 4})).containsAll(DataHelper.createIterable(4, 2));
+        initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2})).isNotNull().containsAll(DataHelper.createIterable(1, 2)).isInstanceOf(IntBuffer.class);
 
         try {
             Raw.intBufferAssertion().containsAll(DataHelper.<Integer>createIterable());
@@ -736,6 +748,7 @@ public final class IntBufferAssertionTest extends AssertionTest {
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3, 4})).rewindAndContainsAll(1, 3);
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3, 4})).rewindAndContainsAll(4, 2);
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3, 4, 5}, 3)).rewindAndContainsAll(1, 2);
+        initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2})).isNotNull().rewindAndContainsAll(1, 2).isInstanceOf(IntBuffer.class);
 
         try {
             Raw.intBufferAssertion().rewindAndContainsAll(1);
@@ -820,6 +833,7 @@ public final class IntBufferAssertionTest extends AssertionTest {
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3, 4})).rewindAndContainsAll(DataHelper.createIterable(1, 3));
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3, 4})).rewindAndContainsAll(DataHelper.createIterable(4, 2));
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3, 4, 5}, 3)).rewindAndContainsAll(DataHelper.createIterable(1, 2));
+        initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2})).isNotNull().rewindAndContainsAll(DataHelper.createIterable(1, 2)).isInstanceOf(IntBuffer.class);
 
         try {
             Raw.intBufferAssertion().rewindAndContainsAll(DataHelper.<Integer>createIterable());
@@ -902,6 +916,7 @@ public final class IntBufferAssertionTest extends AssertionTest {
     public void containsAllInOrderArrayTest() {
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2})).containsAllInOrder(1, 2);
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3, 4})).containsAllInOrder(1, 3, 4);
+        initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2})).isNotNull().containsAllInOrder(1, 2).isInstanceOf(IntBuffer.class);
 
         try {
             Raw.intBufferAssertion().containsAllInOrder(1);
@@ -996,6 +1011,7 @@ public final class IntBufferAssertionTest extends AssertionTest {
     public void containsAllInOrderIterableTest() {
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2})).containsAllInOrder(DataHelper.createIterable(1, 2));
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3, 4})).containsAllInOrder(DataHelper.createIterable(1, 3, 4));
+        initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2})).isNotNull().containsAllInOrder(DataHelper.createIterable(1, 2)).isInstanceOf(IntBuffer.class);
 
         try {
             Raw.intBufferAssertion().containsAllInOrder(DataHelper.<Integer>createIterable());
@@ -1091,6 +1107,7 @@ public final class IntBufferAssertionTest extends AssertionTest {
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2})).rewindAndContainsAllInOrder(1, 2);
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3, 4})).rewindAndContainsAllInOrder(1, 3, 4);
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3, 4, 5}, 3)).rewindAndContainsAllInOrder(1, 2);
+        initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2})).isNotNull().rewindAndContainsAllInOrder(1, 2).isInstanceOf(IntBuffer.class);
 
         try {
             Raw.intBufferAssertion().rewindAndContainsAllInOrder(1);
@@ -1180,6 +1197,7 @@ public final class IntBufferAssertionTest extends AssertionTest {
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2})).rewindAndContainsAllInOrder(DataHelper.createIterable(1, 2));
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3, 4})).rewindAndContainsAllInOrder(DataHelper.createIterable(1, 3, 4));
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3, 4, 5}, 3)).rewindAndContainsAllInOrder(DataHelper.createIterable(1, 2));
+        initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2})).isNotNull().rewindAndContainsAllInOrder(DataHelper.createIterable(1, 2)).isInstanceOf(IntBuffer.class);
 
         try {
             Raw.intBufferAssertion().rewindAndContainsAllInOrder(DataHelper.<Integer>createIterable());
@@ -1270,6 +1288,7 @@ public final class IntBufferAssertionTest extends AssertionTest {
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3, 4})).containsExactly(1, 2, 3, 4);
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3, 4})).containsExactly(1, 3, 2, 4);
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{})).containsExactly();
+        initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2})).isNotNull().containsExactly(1, 2).isInstanceOf(IntBuffer.class);
 
         try {
             Raw.intBufferAssertion().containsExactly(1);
@@ -1366,6 +1385,7 @@ public final class IntBufferAssertionTest extends AssertionTest {
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3, 4})).containsExactly(DataHelper.createIterable(1, 2, 3, 4));
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3, 4})).containsExactly(DataHelper.createIterable(1, 3, 2, 4));
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{})).containsExactly(DataHelper.<Integer>createIterable());
+        initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2})).isNotNull().containsExactly(DataHelper.createIterable(1, 2)).isInstanceOf(IntBuffer.class);
 
         try {
             Raw.intBufferAssertion().containsExactly(DataHelper.<Integer>createIterable());
@@ -1463,6 +1483,7 @@ public final class IntBufferAssertionTest extends AssertionTest {
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3, 4})).rewindAndContainsExactly(1, 3, 2, 4);
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{})).rewindAndContainsExactly();
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3, 4, 5}, 3)).rewindAndContainsExactly(1, 2, 3, 4, 5);
+        initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2})).isNotNull().rewindAndContainsExactly(1, 2).isInstanceOf(IntBuffer.class);
 
         try {
             Raw.intBufferAssertion().rewindAndContainsExactly(1);
@@ -1554,6 +1575,7 @@ public final class IntBufferAssertionTest extends AssertionTest {
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3, 4})).rewindAndContainsExactly(DataHelper.createIterable(1, 3, 2, 4));
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{})).rewindAndContainsExactly(DataHelper.<Integer>createIterable());
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3, 4, 5}, 3)).rewindAndContainsExactly(DataHelper.createIterable(1, 2, 3, 4, 5));
+        initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2})).isNotNull().rewindAndContainsExactly(DataHelper.createIterable(1, 2)).isInstanceOf(IntBuffer.class);
 
         try {
             Raw.intBufferAssertion().rewindAndContainsExactly(DataHelper.<Integer>createIterable());
@@ -1643,6 +1665,7 @@ public final class IntBufferAssertionTest extends AssertionTest {
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2})).containsExactlyInOrder(1, 2);
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3, 4})).containsExactlyInOrder(1, 2, 3, 4);
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{})).containsExactlyInOrder();
+        initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2})).isNotNull().containsExactlyInOrder(1, 2).isInstanceOf(IntBuffer.class);
 
         try {
             Raw.intBufferAssertion().containsExactlyInOrder(1);
@@ -1744,6 +1767,7 @@ public final class IntBufferAssertionTest extends AssertionTest {
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2})).containsExactlyInOrder(DataHelper.createIterable(1, 2));
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3, 4})).containsExactlyInOrder(DataHelper.createIterable(1, 2, 3, 4));
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{})).containsExactlyInOrder(DataHelper.<Integer>createIterable());
+        initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2})).isNotNull().containsExactlyInOrder(DataHelper.createIterable(1, 2)).isInstanceOf(IntBuffer.class);
 
         try {
             Raw.intBufferAssertion().containsExactlyInOrder(DataHelper.<Integer>createIterable());
@@ -1846,6 +1870,7 @@ public final class IntBufferAssertionTest extends AssertionTest {
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3, 4})).rewindAndContainsExactlyInOrder(1, 2, 3, 4);
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{})).rewindAndContainsExactlyInOrder();
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3, 4, 5}, 3)).rewindAndContainsExactlyInOrder(1, 2, 3, 4, 5);
+        initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2})).isNotNull().rewindAndContainsExactlyInOrder(1, 2).isInstanceOf(IntBuffer.class);
 
         try {
             Raw.intBufferAssertion().rewindAndContainsExactlyInOrder(1);
@@ -1942,6 +1967,7 @@ public final class IntBufferAssertionTest extends AssertionTest {
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3, 4})).rewindAndContainsExactlyInOrder(DataHelper.createIterable(1, 2, 3, 4));
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{})).rewindAndContainsExactlyInOrder(DataHelper.<Integer>createIterable());
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3, 4, 5}, 3)).rewindAndContainsExactlyInOrder(DataHelper.createIterable(1, 2, 3, 4, 5));
+        initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2})).isNotNull().rewindAndContainsExactlyInOrder(DataHelper.createIterable(1, 2)).isInstanceOf(IntBuffer.class);
 
         try {
             Raw.intBufferAssertion().rewindAndContainsExactlyInOrder(DataHelper.<Integer>createIterable());
@@ -2038,6 +2064,7 @@ public final class IntBufferAssertionTest extends AssertionTest {
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3, 4})).containsAny(2, 4);
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3, 4})).containsAny(4, 1);
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3, 4})).containsAny(5, 3);
+        initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2})).isNotNull().containsAny(2, 3).isInstanceOf(IntBuffer.class);
 
         try {
             Raw.intBufferAssertion().containsAny(1);
@@ -2128,6 +2155,7 @@ public final class IntBufferAssertionTest extends AssertionTest {
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3, 4})).containsAny(DataHelper.createIterable(2, 4));
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3, 4})).containsAny(DataHelper.createIterable(4, 1));
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3, 4})).containsAny(DataHelper.createIterable(5, 3));
+        initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2})).isNotNull().containsAny(DataHelper.createIterable(2, 3)).isInstanceOf(IntBuffer.class);
 
         try {
             Raw.intBufferAssertion().containsAny(DataHelper.<Integer>createIterable());
@@ -2219,6 +2247,7 @@ public final class IntBufferAssertionTest extends AssertionTest {
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3, 4})).rewindAndContainsAny(4, 1);
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3, 4})).rewindAndContainsAny(5, 3);
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3, 4, 5}, 3)).rewindAndContainsAny(1, 3);
+        initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2})).isNotNull().rewindAndContainsAny(2, 3).isInstanceOf(IntBuffer.class);
 
         try {
             Raw.intBufferAssertion().rewindAndContainsAny(1);
@@ -2304,6 +2333,7 @@ public final class IntBufferAssertionTest extends AssertionTest {
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3, 4})).rewindAndContainsAny(DataHelper.createIterable(4, 1));
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3, 4})).rewindAndContainsAny(DataHelper.createIterable(5, 3));
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3, 4, 5}, 3)).rewindAndContainsAny(DataHelper.createIterable(1, 3));
+        initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2})).isNotNull().rewindAndContainsAny(DataHelper.createIterable(2, 3)).isInstanceOf(IntBuffer.class);
 
         try {
             Raw.intBufferAssertion().rewindAndContainsAny(DataHelper.<Integer>createIterable());
@@ -2388,6 +2418,7 @@ public final class IntBufferAssertionTest extends AssertionTest {
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2})).containsNone(3, 4, 5);
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3, 4, 5}, 3)).containsNone(1, 3);
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3, 4, 5}, 0, 3)).containsNone(4, 5);
+        initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2})).isNotNull().containsNone(3, 7).isInstanceOf(IntBuffer.class);
 
         try {
             Raw.intBufferAssertion().containsNone(1);
@@ -2466,6 +2497,7 @@ public final class IntBufferAssertionTest extends AssertionTest {
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2})).containsNone(DataHelper.createIterable(3, 4, 5));
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3, 4, 5}, 3)).containsNone(DataHelper.createIterable(1, 3));
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3, 4, 5}, 0, 3)).containsNone(DataHelper.createIterable(4, 5));
+        initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2})).isNotNull().containsNone(DataHelper.createIterable(3, 7)).isInstanceOf(IntBuffer.class);
 
         try {
             Raw.intBufferAssertion().containsNone(DataHelper.<Integer>createIterable());
@@ -2543,6 +2575,7 @@ public final class IntBufferAssertionTest extends AssertionTest {
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2})).rewindAndContainsNone(3, 7);
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2})).rewindAndContainsNone(3, 4, 5);
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3, 4, 5}, 0, 3)).rewindAndContainsNone(4, 5);
+        initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2})).isNotNull().rewindAndContainsNone(3, 7).isInstanceOf(IntBuffer.class);
 
         try {
             Raw.intBufferAssertion().rewindAndContainsNone(1);
@@ -2626,6 +2659,7 @@ public final class IntBufferAssertionTest extends AssertionTest {
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2})).rewindAndContainsNone(DataHelper.createIterable(3, 7));
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2})).rewindAndContainsNone(DataHelper.createIterable(3, 4, 5));
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3, 4, 5}, 0, 3)).rewindAndContainsNone(DataHelper.createIterable(4, 5));
+        initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2})).isNotNull().rewindAndContainsNone(DataHelper.createIterable(3, 7)).isInstanceOf(IntBuffer.class);
 
         try {
             Raw.intBufferAssertion().rewindAndContainsNone(DataHelper.<Integer>createIterable());
@@ -2711,6 +2745,7 @@ public final class IntBufferAssertionTest extends AssertionTest {
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{99, 5, 0, -21})).toHexString().isEqualTo("000000630000000500000000ffffffeb");
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{99, 5, 0, -21}, 2)).toHexString().isEqualTo("00000000ffffffeb");
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{99, 5, 0, -21}, 1, 3)).toHexString().isEqualTo("0000000500000000");
+        initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2})).isNotNull().toHexString().isEqualTo("0000000100000002");
 
         try {
             Raw.intBufferAssertion().toHexString();
@@ -2789,6 +2824,7 @@ public final class IntBufferAssertionTest extends AssertionTest {
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{99, 5, 0, -21}, 1, 3)).toHexString(1, 1).isEqualTo("");
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{99, 5, 0, -21}, 1, 3)).toHexString(1, 2).isEqualTo("00000000");
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{99, 5, 0, -21}, 1, 3)).toHexString(2, 2).isEqualTo("");
+        initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2})).isNotNull().toHexString(0, 2).isEqualTo("0000000100000002");
 
         try {
             Raw.intBufferAssertion().toHexString(0, 0);
@@ -2928,6 +2964,7 @@ public final class IntBufferAssertionTest extends AssertionTest {
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{99, 5, 0, -21})).toHexString(Matchers.is(Matchers.equalTo("000000630000000500000000ffffffeb")));
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{99, 5, 0, -21}, 2)).toHexString(Matchers.is(Matchers.equalTo("00000000ffffffeb")));
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{99, 5, 0, -21}, 1, 3)).toHexString(Matchers.is(Matchers.equalTo("0000000500000000")));
+        initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2})).isNotNull().toHexString(Matchers.is(Matchers.equalTo("0000000100000002"))).isInstanceOf(IntBuffer.class);
 
         try {
             Raw.intBufferAssertion().toHexString(Matchers.equalTo(""));
@@ -3018,6 +3055,7 @@ public final class IntBufferAssertionTest extends AssertionTest {
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{99, 5, 0, -21}, 1, 3)).toHexString(1, 1, Matchers.is(Matchers.equalTo("")));
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{99, 5, 0, -21}, 1, 3)).toHexString(1, 2, Matchers.is(Matchers.equalTo("00000000")));
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{99, 5, 0, -21}, 1, 3)).toHexString(2, 2, Matchers.is(Matchers.equalTo("")));
+        initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2})).isNotNull().toHexString(0, 2, Matchers.is(Matchers.equalTo("0000000100000002"))).isInstanceOf(IntBuffer.class);
 
         try {
             Raw.intBufferAssertion().toHexString(0, 0, Matchers.equalTo(""));
@@ -3169,6 +3207,7 @@ public final class IntBufferAssertionTest extends AssertionTest {
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{99, 5, 0, -21})).toRewindAndHexString().isEqualTo("000000630000000500000000ffffffeb");
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{99, 5, 0, -21}, 2)).toRewindAndHexString().isEqualTo("000000630000000500000000ffffffeb");
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{99, 5, 0, -21}, 1, 3)).toRewindAndHexString().isEqualTo("000000630000000500000000");
+        initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2})).isNotNull().toRewindAndHexString().isEqualTo("0000000100000002").isInstanceOf(IntBuffer.class);
 
         try {
             Raw.intBufferAssertion().toRewindAndHexString();
@@ -3251,6 +3290,7 @@ public final class IntBufferAssertionTest extends AssertionTest {
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{99, 5, 0, -21}, 1, 3)).toRewindAndHexString(2, 2).isEqualTo("");
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{99, 5, 0, -21}, 1, 3)).toRewindAndHexString(2, 3).isEqualTo("00000000");
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{99, 5, 0, -21}, 1, 3)).toRewindAndHexString(3, 3).isEqualTo("");
+        initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2})).isNotNull().toRewindAndHexString(0, 2).isEqualTo("0000000100000002").isInstanceOf(IntBuffer.class);
 
         try {
             Raw.intBufferAssertion().toRewindAndHexString(0, 0);
@@ -3390,6 +3430,7 @@ public final class IntBufferAssertionTest extends AssertionTest {
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{99, 5, 0, -21})).toRewindAndHexString(Matchers.is(Matchers.equalTo("000000630000000500000000ffffffeb")));
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{99, 5, 0, -21}, 2)).toRewindAndHexString(Matchers.is(Matchers.equalTo("000000630000000500000000ffffffeb")));
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{99, 5, 0, -21}, 1, 3)).toRewindAndHexString(Matchers.is(Matchers.equalTo("000000630000000500000000")));
+        initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2})).isNotNull().toRewindAndHexString(Matchers.is(Matchers.equalTo("0000000100000002"))).isInstanceOf(IntBuffer.class);
 
         try {
             Raw.intBufferAssertion().toRewindAndHexString(Matchers.equalTo(""));
@@ -3484,6 +3525,7 @@ public final class IntBufferAssertionTest extends AssertionTest {
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{99, 5, 0, -21}, 1, 3)).toRewindAndHexString(2, 2, Matchers.is(Matchers.equalTo("")));
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{99, 5, 0, -21}, 1, 3)).toRewindAndHexString(2, 3, Matchers.is(Matchers.equalTo("00000000")));
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{99, 5, 0, -21}, 1, 3)).toRewindAndHexString(3, 3, Matchers.is(Matchers.equalTo("")));
+        initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2})).isNotNull().toRewindAndHexString(0, 2, Matchers.is(Matchers.equalTo("0000000100000002"))).isInstanceOf(IntBuffer.class);
 
         try {
             Raw.intBufferAssertion().toRewindAndHexString(0, 0, Matchers.equalTo(""));
@@ -3635,6 +3677,7 @@ public final class IntBufferAssertionTest extends AssertionTest {
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{99, 5, 0, -21})).hasHexString("000000630000000500000000ffffffeb");
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{99, 5, 0, -21}, 2)).hasHexString("00000000ffffffeb");
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{99, 5, 0, -21}, 1, 3)).hasHexString("0000000500000000");
+        initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2})).isNotNull().hasHexString("0000000100000002").isInstanceOf(IntBuffer.class);
 
         try {
             Raw.intBufferAssertion().hasHexString("");
@@ -3725,6 +3768,7 @@ public final class IntBufferAssertionTest extends AssertionTest {
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{99, 5, 0, -21}, 1, 3)).hasHexString(1, 1, "");
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{99, 5, 0, -21}, 1, 3)).hasHexString(1, 2, "00000000");
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{99, 5, 0, -21}, 1, 3)).hasHexString(2, 2, "");
+        initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2})).isNotNull().hasHexString(0, 2, "0000000100000002").isInstanceOf(IntBuffer.class);
 
         try {
             Raw.intBufferAssertion().hasHexString(0, 0, "");
@@ -3876,6 +3920,7 @@ public final class IntBufferAssertionTest extends AssertionTest {
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{99, 5, 0, -21})).hasRewindAndHexString("000000630000000500000000ffffffeb");
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{99, 5, 0, -21}, 2)).hasRewindAndHexString("000000630000000500000000ffffffeb");
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{99, 5, 0, -21}, 1, 3)).hasRewindAndHexString("000000630000000500000000");
+        initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2})).isNotNull().hasRewindAndHexString("0000000100000002").isInstanceOf(IntBuffer.class);
 
         try {
             Raw.intBufferAssertion().hasRewindAndHexString("");
@@ -3970,6 +4015,7 @@ public final class IntBufferAssertionTest extends AssertionTest {
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{99, 5, 0, -21}, 1, 3)).hasRewindAndHexString(2, 2, "");
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{99, 5, 0, -21}, 1, 3)).hasRewindAndHexString(2, 3, "00000000");
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{99, 5, 0, -21}, 1, 3)).hasRewindAndHexString(3, 3, "");
+        initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2})).isNotNull().hasRewindAndHexString(0, 2, "0000000100000002").isInstanceOf(IntBuffer.class);
 
         try {
             Raw.intBufferAssertion().hasRewindAndHexString(0, 0, "");
@@ -4128,6 +4174,8 @@ public final class IntBufferAssertionTest extends AssertionTest {
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3}, 4, 3, 5)).toPosition().isGreaterThan(1);
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3}, 4, 3, 5)).toPosition().isLessThan(5);
 
+        initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3}, 3)).isNotNull().toPosition().isEqualTo(3);
+
         try {
             Raw.intBufferAssertion().toPosition();
             Assertions.fail("IntBufferAssertion test fail");
@@ -4188,6 +4236,8 @@ public final class IntBufferAssertionTest extends AssertionTest {
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3}, 4, 3, 5)).toPosition(Matchers.equalTo(3));
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3}, 4, 3, 5)).toPosition(Matchers.greaterThan(2));
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3}, 4, 3, 5)).toPosition(Matchers.lessThan(4));
+
+        initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3}, 3)).isNotNull().toPosition(Matchers.is(Matchers.equalTo(3))).isInstanceOf(IntBuffer.class);
 
         try {
             Raw.intBufferAssertion().toPosition(Matchers.equalTo(0));
@@ -4253,6 +4303,7 @@ public final class IntBufferAssertionTest extends AssertionTest {
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3}, 3)).hasPosition(3);
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3}, 1)).hasPosition(1);
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3}, 4, 3, 5)).hasPosition(3);
+        initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3}, 3)).isNotNull().hasPosition(3).isInstanceOf(IntBuffer.class);
 
         try {
             Raw.intBufferAssertion().hasPosition(1);
@@ -4302,6 +4353,8 @@ public final class IntBufferAssertionTest extends AssertionTest {
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3}, 4, 3, 5)).toLimit().isEqualTo(3);
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3}, 4, 3, 5)).toLimit().isGreaterThan(1);
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3}, 4, 3, 5)).toLimit().isLessThan(5);
+
+        initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3}, 3)).isNotNull().toLimit().isEqualTo(3);
 
         try {
             Raw.intBufferAssertion().toLimit();
@@ -4363,6 +4416,8 @@ public final class IntBufferAssertionTest extends AssertionTest {
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3}, 4, 3, 5)).toLimit(Matchers.equalTo(3));
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3}, 4, 3, 5)).toLimit(Matchers.greaterThan(2));
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3}, 4, 3, 5)).toLimit(Matchers.lessThan(4));
+
+        initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3}, 3)).isNotNull().toLimit(Matchers.is(Matchers.equalTo(3))).isInstanceOf(IntBuffer.class);
 
         try {
             Raw.intBufferAssertion().toLimit(Matchers.equalTo(0));
@@ -4429,6 +4484,8 @@ public final class IntBufferAssertionTest extends AssertionTest {
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3}, 1, 1)).hasLimit(1);
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3}, 4, 3, 5)).hasLimit(3);
 
+        initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3}, 3)).isNotNull().hasLimit(3).isInstanceOf(IntBuffer.class);
+
         try {
             Raw.intBufferAssertion().hasLimit(1);
             Assertions.fail("IntBufferAssertion test fail");
@@ -4477,6 +4534,8 @@ public final class IntBufferAssertionTest extends AssertionTest {
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3}, 4, 3, 5)).toCapacity().isEqualTo(5);
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3}, 4, 3, 5)).toCapacity().isGreaterThan(1);
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3}, 4, 3, 5)).toCapacity().isLessThan(7);
+
+        initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3}, 3)).isNotNull().toCapacity().isEqualTo(3);
 
         try {
             Raw.intBufferAssertion().toCapacity();
@@ -4538,6 +4597,8 @@ public final class IntBufferAssertionTest extends AssertionTest {
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3}, 4, 3, 5)).toCapacity(Matchers.equalTo(5));
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3}, 4, 3, 5)).toCapacity(Matchers.greaterThan(4));
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3}, 4, 3, 5)).toCapacity(Matchers.lessThan(6));
+
+        initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3}, 3)).isNotNull().toCapacity(Matchers.is(Matchers.equalTo(3))).isInstanceOf(IntBuffer.class);
 
         try {
             Raw.intBufferAssertion().toCapacity(Matchers.equalTo(0));
@@ -4603,6 +4664,7 @@ public final class IntBufferAssertionTest extends AssertionTest {
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3}, 3)).hasCapacity(3);
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3}, 1, 1)).hasCapacity(3);
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3}, 4, 3, 5)).hasCapacity(5);
+        initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3}, 3)).isNotNull().hasCapacity(3).isInstanceOf(IntBuffer.class);
 
         try {
             Raw.intBufferAssertion().hasCapacity(1);
@@ -4644,6 +4706,7 @@ public final class IntBufferAssertionTest extends AssertionTest {
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3}, 3)).hasProperties(3, 3, 3);
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3}, 1)).hasProperties(1, 3, 3);
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3}, 4, 3, 5)).hasProperties(3, 3, 5);
+        initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3}, 3)).isNotNull().hasProperties(3, 3, 3).isInstanceOf(IntBuffer.class);
 
         try {
             Raw.intBufferAssertion().hasProperties(1, 1, 1);
@@ -4722,6 +4785,8 @@ public final class IntBufferAssertionTest extends AssertionTest {
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3}, 2, 4, 5)).toRemaining().isGreaterThan(1);
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3}, 2, 4, 5)).toRemaining().isLessThan(5);
 
+        initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3}, 3)).isNotNull().toRemaining().isEqualTo(0);
+
         try {
             Raw.intBufferAssertion().toRemaining();
             Assertions.fail("IntBufferAssertion test fail");
@@ -4786,6 +4851,8 @@ public final class IntBufferAssertionTest extends AssertionTest {
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3}, 2, 4, 5)).toRemaining(Matchers.equalTo(2));
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3}, 2, 4, 5)).toRemaining(Matchers.greaterThan(1));
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3}, 2, 4, 5)).toRemaining(Matchers.lessThan(3));
+
+        initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3}, 3)).isNotNull().toRemaining(Matchers.is(Matchers.equalTo(0))).isInstanceOf(IntBuffer.class);
 
         try {
             Raw.intBufferAssertion().toRemaining(Matchers.equalTo(0));
@@ -4852,6 +4919,7 @@ public final class IntBufferAssertionTest extends AssertionTest {
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3}, 1, 3)).hasRemaining(2);
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3}, 4, 2, 5)).hasRemaining(0);
         initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3}, 2, 4, 5)).hasRemaining(2);
+        initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2, 3}, 3)).isNotNull().hasRemaining(0).isInstanceOf(IntBuffer.class);
 
         try {
             Raw.intBufferAssertion().hasRemaining(1);
@@ -4891,6 +4959,7 @@ public final class IntBufferAssertionTest extends AssertionTest {
     @Test
     public void isDirectTest() {
         initialize(Raw.intBufferAssertion(), ByteBuffer.allocateDirect(12).asIntBuffer()).isDirect();
+        initialize(Raw.intBufferAssertion(), ByteBuffer.allocateDirect(12).asIntBuffer()).isNotNull().isDirect().isInstanceOf(IntBuffer.class);
 
         try {
             Raw.intBufferAssertion().isDirect();
@@ -4930,6 +4999,7 @@ public final class IntBufferAssertionTest extends AssertionTest {
     @Test
     public void isNotDirectTest() {
         initialize(Raw.intBufferAssertion(), ByteBuffer.allocate(12).asIntBuffer()).isNotDirect();
+        initialize(Raw.intBufferAssertion(), ByteBuffer.allocate(12).asIntBuffer()).isNotNull().isNotDirect().isInstanceOf(IntBuffer.class);
 
         try {
             Raw.intBufferAssertion().isNotDirect();
@@ -4972,6 +5042,7 @@ public final class IntBufferAssertionTest extends AssertionTest {
         IntBuffer readOnlyBuffer = buffer.asReadOnlyBuffer();
 
         initialize(Raw.intBufferAssertion(), readOnlyBuffer).isReadOnly();
+        initialize(Raw.intBufferAssertion(), readOnlyBuffer).isNotNull().isReadOnly().isInstanceOf(IntBuffer.class);
 
         try {
             Raw.intBufferAssertion().isReadOnly();
@@ -5014,6 +5085,7 @@ public final class IntBufferAssertionTest extends AssertionTest {
         IntBuffer readOnlyBuffer = buffer.asReadOnlyBuffer();
 
         initialize(Raw.intBufferAssertion(), buffer).isNotReadOnly();
+        initialize(Raw.intBufferAssertion(), buffer).isNotNull().isNotReadOnly().isInstanceOf(IntBuffer.class);
 
         try {
             Raw.intBufferAssertion().isNotReadOnly();
