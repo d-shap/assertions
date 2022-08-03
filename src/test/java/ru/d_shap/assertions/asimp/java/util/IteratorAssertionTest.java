@@ -75,6 +75,7 @@ public final class IteratorAssertionTest extends AssertionTest {
         Assertions.assertThat(iterator.next()).isEqualTo("val2");
         Assertions.assertThat(iterator.next()).isEqualTo("val3");
         initialize(Raw.<String>iteratorAssertion(), iterator).isCompleted();
+        initialize(Raw.<String>iteratorAssertion(), iterator).isNotNull().isCompleted().isInstanceOf(Iterator.class);
 
         try {
             Raw.<String>iteratorAssertion().isCompleted();
@@ -125,6 +126,7 @@ public final class IteratorAssertionTest extends AssertionTest {
         initialize(Raw.<String>iteratorAssertion(), iterator).isNotCompleted();
         Assertions.assertThat(iterator.next()).isEqualTo("val3");
         initialize(Raw.<String>iteratorAssertion(), iterator).isCompleted();
+        initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3")).isNotNull().isNotCompleted().isInstanceOf(Iterator.class);
 
         try {
             Raw.<String>iteratorAssertion().isNotCompleted();
@@ -164,6 +166,7 @@ public final class IteratorAssertionTest extends AssertionTest {
     @Test
     public void toListTest() {
         initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3", "val4")).toList().containsExactlyInOrder("val1", "val2", "val3", "val4");
+        initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3", "val4")).isNotNull().toList().containsExactlyInOrder("val1", "val2", "val3", "val4");
 
         try {
             Raw.<String>iteratorAssertion().toList();
@@ -219,6 +222,7 @@ public final class IteratorAssertionTest extends AssertionTest {
         initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3", "val4")).toList(3).containsExactlyInOrder("val1", "val2", "val3");
         initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3", "val4")).toList(2).containsExactlyInOrder("val1", "val2");
         initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3", "val4")).toList(1).containsExactlyInOrder("val1");
+        initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3", "val4")).isNotNull().toList(5).containsExactlyInOrder("val1", "val2", "val3", "val4");
 
         try {
             Raw.<String>iteratorAssertion().toList(1);
@@ -306,6 +310,7 @@ public final class IteratorAssertionTest extends AssertionTest {
     @Test
     public void toListMatcherTest() {
         initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3", "val4")).toList(Matchers.hasItems("val1", "val2", "val3", "val4"));
+        initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3", "val4")).isNotNull().toList(Matchers.hasItems("val1", "val2", "val3", "val4")).isInstanceOf(Iterator.class);
 
         try {
             Raw.<String>iteratorAssertion().toList(Matchers.hasItems(""));
@@ -373,6 +378,7 @@ public final class IteratorAssertionTest extends AssertionTest {
         initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3", "val4")).toList(3, Matchers.hasItems("val1", "val2", "val3"));
         initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3", "val4")).toList(2, Matchers.hasItems("val1", "val2"));
         initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3", "val4")).toList(1, Matchers.hasItems("val1"));
+        initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3", "val4")).isNotNull().toList(5, Matchers.hasItems("val1", "val2", "val3", "val4")).isInstanceOf(Iterator.class);
 
         try {
             Raw.<String>iteratorAssertion().toList(1, Matchers.hasItems(""));
@@ -474,6 +480,7 @@ public final class IteratorAssertionTest extends AssertionTest {
         initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator()).isEmpty();
         initialize(Raw.iteratorAssertion(), DataHelper.createHashSet().iterator()).isEmpty();
         initialize(Raw.iteratorAssertion(), DataHelper.createTreeSet().iterator()).isEmpty();
+        initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator()).isNotNull().isEmpty().isInstanceOf(Iterator.class);
 
         try {
             Raw.<String>iteratorAssertion().isEmpty();
@@ -516,6 +523,7 @@ public final class IteratorAssertionTest extends AssertionTest {
         initialize(Raw.iteratorAssertion(), DataHelper.createHashSet().iterator()).isNullOrEmpty();
         initialize(Raw.iteratorAssertion(), DataHelper.createTreeSet().iterator()).isNullOrEmpty();
         initialize(Raw.<String>iteratorAssertion(), null).isNullOrEmpty();
+        initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator()).isNotNull().isNullOrEmpty().isInstanceOf(Iterator.class);
 
         try {
             Raw.<String>iteratorAssertion().isNullOrEmpty();
@@ -544,6 +552,7 @@ public final class IteratorAssertionTest extends AssertionTest {
     public void isNotEmptyTest() {
         initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2")).isNotEmpty();
         initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("test1", "test2")).isNotEmpty();
+        initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2")).isNotNull().isNotEmpty().isInstanceOf(Iterator.class);
 
         try {
             Raw.<String>iteratorAssertion().isNotEmpty();
@@ -609,6 +618,7 @@ public final class IteratorAssertionTest extends AssertionTest {
         initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3")).isNextElementEqualTo("val1");
         initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val2", "val3")).isNextElementEqualTo("val2");
         initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator(null, null)).isNextElementEqualTo(null);
+        initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3")).isNotNull().isNextElementEqualTo("val1").isInstanceOf(Iterator.class);
 
         try {
             Raw.<String>iteratorAssertion().isNextElementEqualTo("val");
@@ -675,6 +685,7 @@ public final class IteratorAssertionTest extends AssertionTest {
         initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3", "val4")).isNextElementsEqualTo("val1", "val2", "val3");
         initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3", "val4")).isNextElementsEqualTo("val1", "val2", "val3", "val4");
         initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", null, "val4")).isNextElementsEqualTo("val1", "val2", null, "val4");
+        initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3", "val4")).isNotNull().isNextElementsEqualTo("val1", "val2").isInstanceOf(Iterator.class);
 
         try {
             Raw.<String>iteratorAssertion().isNextElementsEqualTo("val");
@@ -771,6 +782,7 @@ public final class IteratorAssertionTest extends AssertionTest {
         initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3", "val4")).isNextElementsEqualTo(DataHelper.createIterable("val1", "val2", "val3"));
         initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3", "val4")).isNextElementsEqualTo(DataHelper.createIterable("val1", "val2", "val3", "val4"));
         initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", null, "val4")).isNextElementsEqualTo(DataHelper.createIterable("val1", "val2", null, "val4"));
+        initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3", "val4")).isNotNull().isNextElementsEqualTo(DataHelper.createIterable("val1", "val2")).isInstanceOf(Iterator.class);
 
         try {
             Raw.<String>iteratorAssertion().isNextElementsEqualTo(DataHelper.<String>createIterable());
@@ -855,6 +867,7 @@ public final class IteratorAssertionTest extends AssertionTest {
         initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3", "val4", "val5")).isAllElementsEqualTo("val1", "val2", "val3", "val4", "val5");
         initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3", "val4", null)).isAllElementsEqualTo("val1", "val2", "val3", "val4", null);
         initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator()).isAllElementsEqualTo();
+        initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3")).isNotNull().isAllElementsEqualTo("val1", "val2", "val3").isInstanceOf(Iterator.class);
 
         try {
             Raw.<String>iteratorAssertion().isAllElementsEqualTo("val");
@@ -963,6 +976,7 @@ public final class IteratorAssertionTest extends AssertionTest {
         initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3", "val4", "val5")).isAllElementsEqualTo(DataHelper.createIterable("val1", "val2", "val3", "val4", "val5"));
         initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3", "val4", null)).isAllElementsEqualTo(DataHelper.createIterable("val1", "val2", "val3", "val4", null));
         initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator()).isAllElementsEqualTo(DataHelper.<String>createIterable());
+        initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3")).isNotNull().isAllElementsEqualTo(DataHelper.createIterable("val1", "val2", "val3")).isInstanceOf(Iterator.class);
 
         try {
             Raw.<String>iteratorAssertion().isAllElementsEqualTo(DataHelper.<String>createIterable());
@@ -1060,6 +1074,7 @@ public final class IteratorAssertionTest extends AssertionTest {
         initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator(null, "val1", "val2")).contains(null);
         initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", null, "val2")).contains(null);
         initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", null)).contains(null);
+        initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2")).isNotNull().contains("val1").isInstanceOf(Iterator.class);
 
         try {
             Raw.<String>iteratorAssertion().contains("val");
@@ -1113,6 +1128,7 @@ public final class IteratorAssertionTest extends AssertionTest {
         initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2")).doesNotContain("val3");
         initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", null)).doesNotContain("val3");
         initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2")).doesNotContain(null);
+        initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2")).isNotNull().doesNotContain("val3").isInstanceOf(Iterator.class);
 
         try {
             Raw.<String>iteratorAssertion().doesNotContain("val");
@@ -1188,6 +1204,7 @@ public final class IteratorAssertionTest extends AssertionTest {
         initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3", "val4", "val5")).containsAll("val3", "val5", "val4");
         initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3", "val4", "val5")).containsAll("val3", "val1", "val4", "val5", "val2");
         initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3", "val4", null)).containsAll("val3", "val1", "val4", null, "val2");
+        initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3", "val4", "val5")).isNotNull().containsAll("val1", "val2").isInstanceOf(Iterator.class);
 
         try {
             Raw.<String>iteratorAssertion().containsAll("val");
@@ -1299,6 +1316,7 @@ public final class IteratorAssertionTest extends AssertionTest {
         initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3", "val4", "val5")).containsAll(DataHelper.createIterable("val3", "val5", "val4"));
         initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3", "val4", "val5")).containsAll(DataHelper.createIterable("val3", "val1", "val4", "val5", "val2"));
         initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3", "val4", null)).containsAll(DataHelper.createIterable("val3", "val1", "val4", null, "val2"));
+        initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3", "val4", "val5")).isNotNull().containsAll(DataHelper.createIterable("val1", "val2")).isInstanceOf(Iterator.class);
 
         try {
             Raw.<String>iteratorAssertion().containsAll(DataHelper.<String>createIterable());
@@ -1398,6 +1416,7 @@ public final class IteratorAssertionTest extends AssertionTest {
         initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val1", "val1", "val2", "val2")).containsAllInOrder("val1", "val1", "val1", "val2", "val2");
         initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3", "val4", "val5")).containsAllInOrder("val1", "val2", "val3", "val4", "val5");
         initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3", "val4", null)).containsAllInOrder("val1", "val2", "val3", "val4", null);
+        initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3", "val4", "val5")).isNotNull().containsAllInOrder("val1", "val2").isInstanceOf(Iterator.class);
 
         try {
             Raw.<String>iteratorAssertion().containsAllInOrder("val");
@@ -1509,6 +1528,7 @@ public final class IteratorAssertionTest extends AssertionTest {
         initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val1", "val1", "val2", "val2")).containsAllInOrder(DataHelper.createIterable("val1", "val1", "val1", "val2", "val2"));
         initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3", "val4", "val5")).containsAllInOrder(DataHelper.createIterable("val1", "val2", "val3", "val4", "val5"));
         initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3", "val4", null)).containsAllInOrder(DataHelper.createIterable("val1", "val2", "val3", "val4", null));
+        initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3", "val4", "val5")).isNotNull().containsAllInOrder(DataHelper.createIterable("val1", "val2")).isInstanceOf(Iterator.class);
 
         try {
             Raw.<String>iteratorAssertion().containsAllInOrder(DataHelper.<String>createIterable());
@@ -1609,6 +1629,7 @@ public final class IteratorAssertionTest extends AssertionTest {
         initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3", "val4", "val5")).containsExactly("val2", "val4", "val1", "val3", "val5");
         initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3", "val4", null)).containsExactly("val2", "val4", "val1", "val3", null);
         initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator()).containsExactly();
+        initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3")).isNotNull().containsExactly("val1", "val2", "val3").isInstanceOf(Iterator.class);
 
         try {
             Raw.<String>iteratorAssertion().containsExactly("val");
@@ -1721,6 +1742,7 @@ public final class IteratorAssertionTest extends AssertionTest {
         initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3", "val4", "val5")).containsExactly(DataHelper.createIterable("val2", "val4", "val1", "val3", "val5"));
         initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3", "val4", null)).containsExactly(DataHelper.createIterable("val2", "val4", "val1", "val3", null));
         initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator()).containsExactly(DataHelper.<String>createIterable());
+        initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3")).isNotNull().containsExactly(DataHelper.createIterable("val1", "val2", "val3")).isInstanceOf(Iterator.class);
 
         try {
             Raw.<String>iteratorAssertion().containsExactly(DataHelper.<String>createIterable());
@@ -1817,6 +1839,7 @@ public final class IteratorAssertionTest extends AssertionTest {
         initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3", "val4", "val5")).containsExactlyInOrder("val1", "val2", "val3", "val4", "val5");
         initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3", "val4", null)).containsExactlyInOrder("val1", "val2", "val3", "val4", null);
         initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator()).containsExactlyInOrder();
+        initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3")).isNotNull().containsExactlyInOrder("val1", "val2", "val3").isInstanceOf(Iterator.class);
 
         try {
             Raw.<String>iteratorAssertion().containsExactlyInOrder("val");
@@ -1925,6 +1948,7 @@ public final class IteratorAssertionTest extends AssertionTest {
         initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3", "val4", "val5")).containsExactlyInOrder(DataHelper.createIterable("val1", "val2", "val3", "val4", "val5"));
         initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3", "val4", null)).containsExactlyInOrder(DataHelper.createIterable("val1", "val2", "val3", "val4", null));
         initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator()).containsExactlyInOrder(DataHelper.<String>createIterable());
+        initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3")).isNotNull().containsExactlyInOrder(DataHelper.createIterable("val1", "val2", "val3")).isInstanceOf(Iterator.class);
 
         try {
             Raw.<String>iteratorAssertion().containsExactlyInOrder(DataHelper.<String>createIterable());
@@ -2022,6 +2046,7 @@ public final class IteratorAssertionTest extends AssertionTest {
         initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3", "val4", "val5")).containsAny("val7", "val9", "val1", "val5", "val3");
         initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3", "val4", null)).containsAny("val7", "val9", "val1", null, "val3");
         initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3", "val4", null)).containsAny("val7", "val9", null);
+        initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3")).isNotNull().containsAny("val1", "val3", "val5").isInstanceOf(Iterator.class);
 
         try {
             Raw.<String>iteratorAssertion().containsAny("val");
@@ -2119,6 +2144,7 @@ public final class IteratorAssertionTest extends AssertionTest {
         initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3", "val4", "val5")).containsAny(DataHelper.createIterable("val7", "val9", "val1", "val5", "val3"));
         initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3", "val4", null)).containsAny(DataHelper.createIterable("val7", "val9", "val1", null, "val3"));
         initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3", "val4", null)).containsAny(DataHelper.createIterable("val7", "val9", null));
+        initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3")).isNotNull().containsAny(DataHelper.createIterable("val1", "val3", "val5")).isInstanceOf(Iterator.class);
 
         try {
             Raw.<String>iteratorAssertion().containsAny(DataHelper.<String>createIterable());
@@ -2204,6 +2230,7 @@ public final class IteratorAssertionTest extends AssertionTest {
         initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", null)).containsNone("val8", "val4");
         initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3")).containsNone("val8", "val4", null);
         initialize(Raw.iteratorAssertion(), DataHelper.createIterator((Object) "val1", "val2", '1')).containsNone("val8", "val4");
+        initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3")).isNotNull().containsNone("val4", "val5", "val6").isInstanceOf(Iterator.class);
 
         try {
             Raw.<String>iteratorAssertion().containsNone("val");
@@ -2300,6 +2327,7 @@ public final class IteratorAssertionTest extends AssertionTest {
         initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3")).containsNone(DataHelper.createIterable("val8", "val4"));
         initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", null)).containsNone(DataHelper.createIterable("val8", "val4"));
         initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3")).containsNone(DataHelper.createIterable("val8", "val4", null));
+        initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3")).isNotNull().containsNone(DataHelper.createIterable("val4", "val5", "val6")).isInstanceOf(Iterator.class);
 
         try {
             Raw.<String>iteratorAssertion().containsNone(DataHelper.<String>createIterable());
@@ -2388,6 +2416,8 @@ public final class IteratorAssertionTest extends AssertionTest {
         initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3", "val4", "val5")).toSize().isGreaterThan(1);
         initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3", "val4", "val5")).toSize().isLessThan(9);
 
+        initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3")).isNotNull().toSize().isEqualTo(3);
+
         try {
             Raw.<String>iteratorAssertion().toSize();
             Assertions.fail("IteratorAssertion test fail");
@@ -2444,6 +2474,8 @@ public final class IteratorAssertionTest extends AssertionTest {
         initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3", "val4", "val5")).toSize(Matchers.equalTo(5));
         initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3", "val4", "val5")).toSize(Matchers.greaterThan(4));
         initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3", "val4", "val5")).toSize(Matchers.lessThan(6));
+
+        initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3")).isNotNull().toSize(Matchers.is(Matchers.equalTo(3))).isInstanceOf(Iterator.class);
 
         try {
             Raw.<String>iteratorAssertion().toSize(Matchers.equalTo(0));
@@ -2508,6 +2540,7 @@ public final class IteratorAssertionTest extends AssertionTest {
     public void hasSizeTest() {
         initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3")).hasSize(3);
         initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3", "val4", "val5")).hasSize(5);
+        initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3")).isNotNull().hasSize(3).isInstanceOf(Iterator.class);
 
         try {
             Raw.<String>iteratorAssertion().hasSize(1);

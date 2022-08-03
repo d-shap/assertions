@@ -72,6 +72,7 @@ public final class LocaleAssertionTest extends AssertionTest {
         initialize(Raw.localeAssertion(), new Locale("en")).isEqualTo(new Locale("en"));
         initialize(Raw.localeAssertion(), new Locale("en", "US")).isEqualTo(new Locale("en", "US"));
         initialize(Raw.localeAssertion(), new Locale("en", "US", "polyton")).isEqualTo(new Locale("en", "US", "polyton"));
+        initialize(Raw.localeAssertion(), new Locale("en")).isNotNull().isEqualTo(new Locale("en")).isInstanceOf(Locale.class);
 
         try {
             Raw.localeAssertion().isEqualTo(new Locale("en"));
@@ -153,6 +154,7 @@ public final class LocaleAssertionTest extends AssertionTest {
         initialize(Raw.localeAssertion(), new Locale("en", "US")).isNotEqualTo(new Locale("en"));
         initialize(Raw.localeAssertion(), new Locale("en", "GB")).isNotEqualTo(new Locale("en", "US"));
         initialize(Raw.localeAssertion(), new Locale("en", "US")).isNotEqualTo(new Locale("en", "GB"));
+        initialize(Raw.localeAssertion(), new Locale("en")).isNotNull().isNotEqualTo(new Locale("fr")).isInstanceOf(Locale.class);
 
         try {
             Raw.localeAssertion().isNotEqualTo(new Locale("en"));
@@ -219,6 +221,7 @@ public final class LocaleAssertionTest extends AssertionTest {
         initialize(Raw.localeAssertion(), new Locale("en", "US")).toLanguage().isEqualTo("en");
         initialize(Raw.localeAssertion(), new Locale("en", "US", "polyton")).toLanguage().isEqualTo("en");
         initialize(Raw.localeAssertion(), new Locale("fr", "FR", "POSIX")).toLanguage().isEqualTo("fr");
+        initialize(Raw.localeAssertion(), new Locale("en")).isNotNull().toLanguage().isEqualTo("en");
 
         try {
             Raw.localeAssertion().toLanguage();
@@ -273,6 +276,7 @@ public final class LocaleAssertionTest extends AssertionTest {
         initialize(Raw.localeAssertion(), new Locale("en", "US")).toLanguage(Matchers.is(Matchers.equalTo("en")));
         initialize(Raw.localeAssertion(), new Locale("en", "US", "polyton")).toLanguage(Matchers.is(Matchers.equalTo("en")));
         initialize(Raw.localeAssertion(), new Locale("fr", "FR", "POSIX")).toLanguage(Matchers.is(Matchers.equalTo("fr")));
+        initialize(Raw.localeAssertion(), new Locale("en")).isNotNull().toLanguage(Matchers.is(Matchers.equalTo("en"))).isInstanceOf(Locale.class);
 
         try {
             Raw.localeAssertion().toLanguage(Matchers.equalTo(""));
@@ -339,6 +343,7 @@ public final class LocaleAssertionTest extends AssertionTest {
         initialize(Raw.localeAssertion(), new Locale("en", "US")).hasLanguage("en");
         initialize(Raw.localeAssertion(), new Locale("en", "US", "polyton")).hasLanguage("en");
         initialize(Raw.localeAssertion(), new Locale("fr", "FR", "POSIX")).hasLanguage("fr");
+        initialize(Raw.localeAssertion(), new Locale("en")).isNotNull().hasLanguage("en").isInstanceOf(Locale.class);
 
         try {
             Raw.localeAssertion().hasLanguage("");
@@ -410,6 +415,7 @@ public final class LocaleAssertionTest extends AssertionTest {
             initialize(Raw.localeAssertion(), new Locale("en", "US")).toDisplayLanguage().isEqualTo("English");
             initialize(Raw.localeAssertion(), new Locale("en", "US", "polyton")).toDisplayLanguage().isEqualTo("English");
             initialize(Raw.localeAssertion(), new Locale("fr", "FR", "POSIX")).toDisplayLanguage().isEqualTo("French");
+            initialize(Raw.localeAssertion(), new Locale("en")).isNotNull().toDisplayLanguage().isEqualTo("English");
 
             try {
                 Raw.localeAssertion().toDisplayLanguage();
@@ -472,6 +478,7 @@ public final class LocaleAssertionTest extends AssertionTest {
             initialize(Raw.localeAssertion(), new Locale("en", "US")).toDisplayLanguage(Matchers.is(Matchers.equalTo("English")));
             initialize(Raw.localeAssertion(), new Locale("en", "US", "polyton")).toDisplayLanguage(Matchers.is(Matchers.equalTo("English")));
             initialize(Raw.localeAssertion(), new Locale("fr", "FR", "POSIX")).toDisplayLanguage(Matchers.is(Matchers.equalTo("French")));
+            initialize(Raw.localeAssertion(), new Locale("en")).isNotNull().toDisplayLanguage(Matchers.is(Matchers.equalTo("English"))).isInstanceOf(Locale.class);
 
             try {
                 Raw.localeAssertion().toDisplayLanguage(Matchers.equalTo(""));
@@ -546,6 +553,7 @@ public final class LocaleAssertionTest extends AssertionTest {
             initialize(Raw.localeAssertion(), new Locale("en", "US")).hasDisplayLanguage("English");
             initialize(Raw.localeAssertion(), new Locale("en", "US", "polyton")).hasDisplayLanguage("English");
             initialize(Raw.localeAssertion(), new Locale("fr", "FR", "POSIX")).hasDisplayLanguage("French");
+            initialize(Raw.localeAssertion(), new Locale("en")).isNotNull().hasDisplayLanguage("English").isInstanceOf(Locale.class);
 
             try {
                 Raw.localeAssertion().hasDisplayLanguage("");
@@ -615,6 +623,7 @@ public final class LocaleAssertionTest extends AssertionTest {
         initialize(Raw.localeAssertion(), new Locale.Builder().setLanguage("en").setScript("Latn").build()).toScript().isEqualTo("Latn");
         initialize(Raw.localeAssertion(), new Locale.Builder().setLanguage("en").setScript("Latn").setRegion("US").build()).toScript().isEqualTo("Latn");
         initialize(Raw.localeAssertion(), new Locale.Builder().setLanguage("en").setScript("Latn").setRegion("US").setVariant("polyton").build()).toScript().isEqualTo("Latn");
+        initialize(Raw.localeAssertion(), new Locale.Builder().setLanguage("en").setScript("Latn").build()).isNotNull().toScript().isEqualTo("Latn");
 
         try {
             Raw.localeAssertion().toScript();
@@ -669,6 +678,7 @@ public final class LocaleAssertionTest extends AssertionTest {
         initialize(Raw.localeAssertion(), new Locale.Builder().setLanguage("en").setScript("Latn").build()).toScript(Matchers.is(Matchers.equalTo("Latn")));
         initialize(Raw.localeAssertion(), new Locale.Builder().setLanguage("en").setScript("Latn").setRegion("US").build()).toScript(Matchers.is(Matchers.equalTo("Latn")));
         initialize(Raw.localeAssertion(), new Locale.Builder().setLanguage("en").setScript("Latn").setRegion("US").setVariant("polyton").build()).toScript(Matchers.is(Matchers.equalTo("Latn")));
+        initialize(Raw.localeAssertion(), new Locale.Builder().setLanguage("en").setScript("Latn").build()).isNotNull().toScript(Matchers.is(Matchers.equalTo("Latn"))).isInstanceOf(Locale.class);
 
         try {
             Raw.localeAssertion().toScript(Matchers.equalTo(""));
@@ -735,6 +745,7 @@ public final class LocaleAssertionTest extends AssertionTest {
         initialize(Raw.localeAssertion(), new Locale.Builder().setLanguage("en").setScript("Latn").build()).hasScript("Latn");
         initialize(Raw.localeAssertion(), new Locale.Builder().setLanguage("en").setScript("Latn").setRegion("US").build()).hasScript("Latn");
         initialize(Raw.localeAssertion(), new Locale.Builder().setLanguage("en").setScript("Latn").setRegion("US").setVariant("polyton").build()).hasScript("Latn");
+        initialize(Raw.localeAssertion(), new Locale.Builder().setLanguage("en").setScript("Latn").build()).isNotNull().hasScript("Latn").isInstanceOf(Locale.class);
 
         try {
             Raw.localeAssertion().hasScript("");
@@ -806,6 +817,7 @@ public final class LocaleAssertionTest extends AssertionTest {
             initialize(Raw.localeAssertion(), new Locale.Builder().setLanguage("en").setScript("Latn").build()).toDisplayScript().isEqualTo("Latin");
             initialize(Raw.localeAssertion(), new Locale.Builder().setLanguage("en").setScript("Latn").setRegion("US").build()).toDisplayScript().isEqualTo("Latin");
             initialize(Raw.localeAssertion(), new Locale.Builder().setLanguage("en").setScript("Latn").setRegion("US").setVariant("polyton").build()).toDisplayScript().isEqualTo("Latin");
+            initialize(Raw.localeAssertion(), new Locale.Builder().setLanguage("en").setScript("Latn").build()).isNotNull().toDisplayScript().isEqualTo("Latin");
 
             try {
                 Raw.localeAssertion().toDisplayScript();
@@ -868,6 +880,7 @@ public final class LocaleAssertionTest extends AssertionTest {
             initialize(Raw.localeAssertion(), new Locale.Builder().setLanguage("en").setScript("Latn").build()).toDisplayScript(Matchers.is(Matchers.equalTo("Latin")));
             initialize(Raw.localeAssertion(), new Locale.Builder().setLanguage("en").setScript("Latn").setRegion("US").build()).toDisplayScript(Matchers.is(Matchers.equalTo("Latin")));
             initialize(Raw.localeAssertion(), new Locale.Builder().setLanguage("en").setScript("Latn").setRegion("US").setVariant("polyton").build()).toDisplayScript(Matchers.is(Matchers.equalTo("Latin")));
+            initialize(Raw.localeAssertion(), new Locale.Builder().setLanguage("en").setScript("Latn").build()).isNotNull().toDisplayScript(Matchers.is(Matchers.equalTo("Latin"))).isInstanceOf(Locale.class);
 
             try {
                 Raw.localeAssertion().toDisplayScript(Matchers.equalTo(""));
@@ -942,6 +955,7 @@ public final class LocaleAssertionTest extends AssertionTest {
             initialize(Raw.localeAssertion(), new Locale.Builder().setLanguage("en").setScript("Latn").build()).hasDisplayScript("Latin");
             initialize(Raw.localeAssertion(), new Locale.Builder().setLanguage("en").setScript("Latn").setRegion("US").build()).hasDisplayScript("Latin");
             initialize(Raw.localeAssertion(), new Locale.Builder().setLanguage("en").setScript("Latn").setRegion("US").setVariant("polyton").build()).hasDisplayScript("Latin");
+            initialize(Raw.localeAssertion(), new Locale.Builder().setLanguage("en").setScript("Latn").build()).isNotNull().hasDisplayScript("Latin").isInstanceOf(Locale.class);
 
             try {
                 Raw.localeAssertion().hasDisplayScript("");
@@ -1011,6 +1025,7 @@ public final class LocaleAssertionTest extends AssertionTest {
         initialize(Raw.localeAssertion(), new Locale("en", "US")).toCountry().isEqualTo("US");
         initialize(Raw.localeAssertion(), new Locale("en", "US", "polyton")).toCountry().isEqualTo("US");
         initialize(Raw.localeAssertion(), new Locale("fr", "FR", "POSIX")).toCountry().isEqualTo("FR");
+        initialize(Raw.localeAssertion(), new Locale("en", "US")).isNotNull().toCountry().isEqualTo("US");
 
         try {
             Raw.localeAssertion().toCountry();
@@ -1065,6 +1080,7 @@ public final class LocaleAssertionTest extends AssertionTest {
         initialize(Raw.localeAssertion(), new Locale("en", "US")).toCountry(Matchers.is(Matchers.equalTo("US")));
         initialize(Raw.localeAssertion(), new Locale("en", "US", "polyton")).toCountry(Matchers.is(Matchers.equalTo("US")));
         initialize(Raw.localeAssertion(), new Locale("fr", "FR", "POSIX")).toCountry(Matchers.is(Matchers.equalTo("FR")));
+        initialize(Raw.localeAssertion(), new Locale("en", "US")).isNotNull().toCountry(Matchers.is(Matchers.equalTo("US"))).isInstanceOf(Locale.class);
 
         try {
             Raw.localeAssertion().toCountry(Matchers.equalTo(""));
@@ -1131,6 +1147,7 @@ public final class LocaleAssertionTest extends AssertionTest {
         initialize(Raw.localeAssertion(), new Locale("en", "US")).hasCountry("US");
         initialize(Raw.localeAssertion(), new Locale("en", "US", "polyton")).hasCountry("US");
         initialize(Raw.localeAssertion(), new Locale("fr", "FR", "POSIX")).hasCountry("FR");
+        initialize(Raw.localeAssertion(), new Locale("en", "US")).isNotNull().hasCountry("US").isInstanceOf(Locale.class);
 
         try {
             Raw.localeAssertion().hasCountry("");
@@ -1202,6 +1219,7 @@ public final class LocaleAssertionTest extends AssertionTest {
             initialize(Raw.localeAssertion(), new Locale("en", "US")).toDisplayCountry().isEqualTo("United States");
             initialize(Raw.localeAssertion(), new Locale("en", "US", "polyton")).toDisplayCountry().isEqualTo("United States");
             initialize(Raw.localeAssertion(), new Locale("fr", "FR", "POSIX")).toDisplayCountry().isEqualTo("France");
+            initialize(Raw.localeAssertion(), new Locale("en", "US")).isNotNull().toDisplayCountry().isEqualTo("United States");
 
             try {
                 Raw.localeAssertion().toDisplayCountry();
@@ -1264,6 +1282,7 @@ public final class LocaleAssertionTest extends AssertionTest {
             initialize(Raw.localeAssertion(), new Locale("en", "US")).toDisplayCountry(Matchers.is(Matchers.equalTo("United States")));
             initialize(Raw.localeAssertion(), new Locale("en", "US", "polyton")).toDisplayCountry(Matchers.is(Matchers.equalTo("United States")));
             initialize(Raw.localeAssertion(), new Locale("fr", "FR", "POSIX")).toDisplayCountry(Matchers.is(Matchers.equalTo("France")));
+            initialize(Raw.localeAssertion(), new Locale("en", "US")).isNotNull().toDisplayCountry(Matchers.is(Matchers.equalTo("United States"))).isInstanceOf(Locale.class);
 
             try {
                 Raw.localeAssertion().toDisplayCountry(Matchers.equalTo(""));
@@ -1338,6 +1357,7 @@ public final class LocaleAssertionTest extends AssertionTest {
             initialize(Raw.localeAssertion(), new Locale("en", "US")).hasDisplayCountry("United States");
             initialize(Raw.localeAssertion(), new Locale("en", "US", "polyton")).hasDisplayCountry("United States");
             initialize(Raw.localeAssertion(), new Locale("fr", "FR", "POSIX")).hasDisplayCountry("France");
+            initialize(Raw.localeAssertion(), new Locale("en", "US")).isNotNull().hasDisplayCountry("United States").isInstanceOf(Locale.class);
 
             try {
                 Raw.localeAssertion().hasDisplayCountry("");
@@ -1407,6 +1427,7 @@ public final class LocaleAssertionTest extends AssertionTest {
         initialize(Raw.localeAssertion(), new Locale("en", "US")).toVariant().isEqualTo("");
         initialize(Raw.localeAssertion(), new Locale("en", "US", "polyton")).toVariant().isEqualTo("polyton");
         initialize(Raw.localeAssertion(), new Locale("fr", "FR", "POSIX")).toVariant().isEqualTo("POSIX");
+        initialize(Raw.localeAssertion(), new Locale("en", "US", "polyton")).isNotNull().toVariant().isEqualTo("polyton");
 
         try {
             Raw.localeAssertion().toVariant();
@@ -1461,6 +1482,7 @@ public final class LocaleAssertionTest extends AssertionTest {
         initialize(Raw.localeAssertion(), new Locale("en", "US")).toVariant(Matchers.is(Matchers.equalTo("")));
         initialize(Raw.localeAssertion(), new Locale("en", "US", "polyton")).toVariant(Matchers.is(Matchers.equalTo("polyton")));
         initialize(Raw.localeAssertion(), new Locale("fr", "FR", "POSIX")).toVariant(Matchers.is(Matchers.equalTo("POSIX")));
+        initialize(Raw.localeAssertion(), new Locale("en", "US", "polyton")).isNotNull().toVariant(Matchers.is(Matchers.equalTo("polyton"))).isInstanceOf(Locale.class);
 
         try {
             Raw.localeAssertion().toVariant(Matchers.equalTo(""));
@@ -1527,6 +1549,7 @@ public final class LocaleAssertionTest extends AssertionTest {
         initialize(Raw.localeAssertion(), new Locale("en", "US")).hasVariant("");
         initialize(Raw.localeAssertion(), new Locale("en", "US", "polyton")).hasVariant("polyton");
         initialize(Raw.localeAssertion(), new Locale("fr", "FR", "POSIX")).hasVariant("POSIX");
+        initialize(Raw.localeAssertion(), new Locale("en", "US", "polyton")).isNotNull().hasVariant("polyton").isInstanceOf(Locale.class);
 
         try {
             Raw.localeAssertion().hasVariant("");
@@ -1598,6 +1621,7 @@ public final class LocaleAssertionTest extends AssertionTest {
             initialize(Raw.localeAssertion(), new Locale("en", "US")).toDisplayVariant().isEqualTo("");
             initialize(Raw.localeAssertion(), new Locale("en", "US", "polyton")).toDisplayVariant().isEqualTo("polyton");
             initialize(Raw.localeAssertion(), new Locale("fr", "FR", "POSIX")).toDisplayVariant().isEqualTo("POSIX");
+            initialize(Raw.localeAssertion(), new Locale("en", "US", "polyton")).isNotNull().toDisplayVariant().isEqualTo("polyton");
 
             try {
                 Raw.localeAssertion().toDisplayVariant();
@@ -1660,6 +1684,7 @@ public final class LocaleAssertionTest extends AssertionTest {
             initialize(Raw.localeAssertion(), new Locale("en", "US")).toDisplayVariant(Matchers.is(Matchers.equalTo("")));
             initialize(Raw.localeAssertion(), new Locale("en", "US", "polyton")).toDisplayVariant(Matchers.is(Matchers.equalTo("polyton")));
             initialize(Raw.localeAssertion(), new Locale("fr", "FR", "POSIX")).toDisplayVariant(Matchers.is(Matchers.equalTo("POSIX")));
+            initialize(Raw.localeAssertion(), new Locale("en", "US", "polyton")).isNotNull().toDisplayVariant(Matchers.is(Matchers.equalTo("polyton"))).isInstanceOf(Locale.class);
 
             try {
                 Raw.localeAssertion().toDisplayVariant(Matchers.equalTo(""));
@@ -1734,6 +1759,7 @@ public final class LocaleAssertionTest extends AssertionTest {
             initialize(Raw.localeAssertion(), new Locale("en", "US")).hasDisplayVariant("");
             initialize(Raw.localeAssertion(), new Locale("en", "US", "polyton")).hasDisplayVariant("polyton");
             initialize(Raw.localeAssertion(), new Locale("fr", "FR", "POSIX")).hasDisplayVariant("POSIX");
+            initialize(Raw.localeAssertion(), new Locale("en", "US", "polyton")).isNotNull().hasDisplayVariant("polyton").isInstanceOf(Locale.class);
 
             try {
                 Raw.localeAssertion().hasDisplayVariant("");
@@ -1801,6 +1827,7 @@ public final class LocaleAssertionTest extends AssertionTest {
     public void hasPropertiesLanguageTest() {
         initialize(Raw.localeAssertion(), new Locale("en", "US", "polyton")).hasProperties("en");
         initialize(Raw.localeAssertion(), new Locale("fr", "FR", "POSIX")).hasProperties("fr");
+        initialize(Raw.localeAssertion(), new Locale("en", "US", "polyton")).isNotNull().hasProperties("en").isInstanceOf(Locale.class);
 
         try {
             Raw.localeAssertion().hasProperties("");
@@ -1865,6 +1892,7 @@ public final class LocaleAssertionTest extends AssertionTest {
     public void hasPropertiesLanguageAndCountryTest() {
         initialize(Raw.localeAssertion(), new Locale("en", "US", "polyton")).hasProperties("en", "US");
         initialize(Raw.localeAssertion(), new Locale("fr", "FR", "POSIX")).hasProperties("fr", "FR");
+        initialize(Raw.localeAssertion(), new Locale("en", "US", "polyton")).isNotNull().hasProperties("en", "US").isInstanceOf(Locale.class);
 
         try {
             Raw.localeAssertion().hasProperties("", "");
@@ -1965,6 +1993,7 @@ public final class LocaleAssertionTest extends AssertionTest {
     public void hasPropertiesLanguageAndCountryAndVariantTest() {
         initialize(Raw.localeAssertion(), new Locale("en", "US", "polyton")).hasProperties("en", "US", "polyton");
         initialize(Raw.localeAssertion(), new Locale("fr", "FR", "POSIX")).hasProperties("fr", "FR", "POSIX");
+        initialize(Raw.localeAssertion(), new Locale("en", "US", "polyton")).isNotNull().hasProperties("en", "US", "polyton").isInstanceOf(Locale.class);
 
         try {
             Raw.localeAssertion().hasProperties("", "", "");

@@ -71,6 +71,7 @@ public final class ListAssertionTest extends AssertionTest {
     @Test
     public void isEmptyTest() {
         initialize(Raw.<String>listAssertion(), DataHelper.<String>createArrayList()).isEmpty();
+        initialize(Raw.<String>listAssertion(), DataHelper.<String>createArrayList()).isNotNull().isEmpty().isInstanceOf(List.class);
 
         try {
             Raw.<String>listAssertion().isEmpty();
@@ -111,6 +112,7 @@ public final class ListAssertionTest extends AssertionTest {
     public void isNullOrEmptyTest() {
         initialize(Raw.<String>listAssertion(), DataHelper.<String>createArrayList()).isNullOrEmpty();
         initialize(Raw.<String>listAssertion(), null).isNullOrEmpty();
+        initialize(Raw.<String>listAssertion(), DataHelper.<String>createArrayList()).isNotNull().isNullOrEmpty().isInstanceOf(List.class);
 
         try {
             Raw.<String>listAssertion().isNullOrEmpty();
@@ -139,6 +141,7 @@ public final class ListAssertionTest extends AssertionTest {
     public void isNotEmptyTest() {
         initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2")).isNotEmpty();
         initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("test1", "test2")).isNotEmpty();
+        initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2")).isNotNull().isNotEmpty().isInstanceOf(List.class);
 
         try {
             Raw.<String>listAssertion().isNotEmpty();
@@ -178,6 +181,7 @@ public final class ListAssertionTest extends AssertionTest {
     @Test
     public void isRandomAccessTest() {
         initialize(Raw.<String>listAssertion(), DataHelper.<String>createArrayList()).isRandomAccess();
+        initialize(Raw.<String>listAssertion(), DataHelper.<String>createArrayList()).isNotNull().isRandomAccess().isInstanceOf(List.class);
 
         try {
             Raw.<String>listAssertion().isRandomAccess();
@@ -217,6 +221,7 @@ public final class ListAssertionTest extends AssertionTest {
     @Test
     public void isNotRandomAccessTest() {
         initialize(Raw.<String>listAssertion(), new LinkedList<String>()).isNotRandomAccess();
+        initialize(Raw.<String>listAssertion(), new LinkedList<String>()).isNotNull().isNotRandomAccess().isInstanceOf(List.class);
 
         try {
             Raw.<String>listAssertion().isNotRandomAccess();
@@ -262,6 +267,7 @@ public final class ListAssertionTest extends AssertionTest {
         initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", null)).contains(null);
         initialize(Raw.<Float>listAssertion(), DataHelper.createArrayList(Float.NaN, Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY, 3.0f)).contains(Float.POSITIVE_INFINITY);
         initialize(Raw.<Double>listAssertion(), DataHelper.createArrayList(Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0)).contains(Double.POSITIVE_INFINITY);
+        initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2")).isNotNull().contains("val1").isInstanceOf(List.class);
 
         try {
             Raw.<String>listAssertion().contains("val");
@@ -329,6 +335,7 @@ public final class ListAssertionTest extends AssertionTest {
         initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2")).doesNotContain(null);
         initialize(Raw.<Float>listAssertion(), DataHelper.createArrayList(Float.NaN, Float.POSITIVE_INFINITY)).doesNotContain(3.0f);
         initialize(Raw.<Double>listAssertion(), DataHelper.createArrayList(Double.NaN, Double.POSITIVE_INFINITY)).doesNotContain(3.0);
+        initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2")).isNotNull().doesNotContain("val3").isInstanceOf(List.class);
 
         try {
             Raw.<String>listAssertion().doesNotContain("val");
@@ -424,6 +431,7 @@ public final class ListAssertionTest extends AssertionTest {
         initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3", "val4", null)).containsAll("val3", "val1", "val4", null, "val2");
         initialize(Raw.<Float>listAssertion(), DataHelper.createArrayList(Float.NaN, Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY, 3.0f)).containsAll(Float.NEGATIVE_INFINITY, Float.NaN);
         initialize(Raw.<Double>listAssertion(), DataHelper.createArrayList(Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0)).containsAll(Double.NEGATIVE_INFINITY, Double.NaN);
+        initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3", "val4", "val5")).isNotNull().containsAll("val1", "val2").isInstanceOf(List.class);
 
         try {
             Raw.<String>listAssertion().containsAll("val");
@@ -549,6 +557,7 @@ public final class ListAssertionTest extends AssertionTest {
         initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3", "val4", null)).containsAll(DataHelper.createIterable("val3", "val1", "val4", null, "val2"));
         initialize(Raw.<Float>listAssertion(), DataHelper.createArrayList(Float.NaN, Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY, 3.0f)).containsAll(DataHelper.createIterable(Float.NEGATIVE_INFINITY, Float.NaN));
         initialize(Raw.<Double>listAssertion(), DataHelper.createArrayList(Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0)).containsAll(DataHelper.createIterable(Double.NEGATIVE_INFINITY, Double.NaN));
+        initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3", "val4", "val5")).isNotNull().containsAll(DataHelper.createIterable("val1", "val2")).isInstanceOf(List.class);
 
         try {
             Raw.<String>listAssertion().containsAll(DataHelper.<String>createIterable());
@@ -662,6 +671,7 @@ public final class ListAssertionTest extends AssertionTest {
         initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3", "val4", null)).containsAllInOrder("val1", "val2", "val3", "val4", null);
         initialize(Raw.<Float>listAssertion(), DataHelper.createArrayList(Float.NaN, Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY, 3.0f)).containsAllInOrder(Float.NaN, Float.NEGATIVE_INFINITY, 3.0f);
         initialize(Raw.<Double>listAssertion(), DataHelper.createArrayList(Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0)).containsAllInOrder(Double.NaN, Double.NEGATIVE_INFINITY, 3.0);
+        initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3", "val4", "val5")).isNotNull().containsAllInOrder("val1", "val2").isInstanceOf(List.class);
 
         try {
             Raw.<String>listAssertion().containsAllInOrder("val");
@@ -787,6 +797,7 @@ public final class ListAssertionTest extends AssertionTest {
         initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3", "val4", null)).containsAllInOrder(DataHelper.createIterable("val1", "val2", "val3", "val4", null));
         initialize(Raw.<Float>listAssertion(), DataHelper.createArrayList(Float.NaN, Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY, 3.0f)).containsAllInOrder(DataHelper.createIterable(Float.NaN, Float.NEGATIVE_INFINITY, 3.0f));
         initialize(Raw.<Double>listAssertion(), DataHelper.createArrayList(Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0)).containsAllInOrder(DataHelper.createIterable(Double.NaN, Double.NEGATIVE_INFINITY, 3.0));
+        initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3", "val4", "val5")).isNotNull().containsAllInOrder(DataHelper.createIterable("val1", "val2")).isInstanceOf(List.class);
 
         try {
             Raw.<String>listAssertion().containsAllInOrder(DataHelper.<String>createIterable());
@@ -901,6 +912,7 @@ public final class ListAssertionTest extends AssertionTest {
         initialize(Raw.<String>listAssertion(), DataHelper.<String>createArrayList()).containsExactly();
         initialize(Raw.<Float>listAssertion(), DataHelper.createArrayList(Float.NaN, Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY, 3.0f)).containsExactly(Float.NEGATIVE_INFINITY, Float.NaN, 3.0f, Float.POSITIVE_INFINITY);
         initialize(Raw.<Double>listAssertion(), DataHelper.createArrayList(Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0)).containsExactly(Double.NEGATIVE_INFINITY, Double.NaN, 3.0, Double.POSITIVE_INFINITY);
+        initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3")).isNotNull().containsExactly("val1", "val2", "val3").isInstanceOf(List.class);
 
         try {
             Raw.<String>listAssertion().containsExactly("val");
@@ -1027,6 +1039,7 @@ public final class ListAssertionTest extends AssertionTest {
         initialize(Raw.<String>listAssertion(), DataHelper.<String>createArrayList()).containsExactly(DataHelper.<String>createIterable());
         initialize(Raw.<Float>listAssertion(), DataHelper.createArrayList(Float.NaN, Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY, 3.0f)).containsExactly(DataHelper.createIterable(Float.NEGATIVE_INFINITY, Float.NaN, 3.0f, Float.POSITIVE_INFINITY));
         initialize(Raw.<Double>listAssertion(), DataHelper.createArrayList(Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0)).containsExactly(DataHelper.createIterable(Double.NEGATIVE_INFINITY, Double.NaN, 3.0, Double.POSITIVE_INFINITY));
+        initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3")).isNotNull().containsExactly(DataHelper.createIterable("val1", "val2", "val3")).isInstanceOf(List.class);
 
         try {
             Raw.<String>listAssertion().containsExactly(DataHelper.<String>createIterable());
@@ -1137,6 +1150,7 @@ public final class ListAssertionTest extends AssertionTest {
         initialize(Raw.<String>listAssertion(), DataHelper.<String>createArrayList()).containsExactlyInOrder();
         initialize(Raw.<Float>listAssertion(), DataHelper.createArrayList(Float.NaN, Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY, 3.0f)).containsExactlyInOrder(Float.NaN, Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY, 3.0f);
         initialize(Raw.<Double>listAssertion(), DataHelper.createArrayList(Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0)).containsExactlyInOrder(Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0);
+        initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3")).isNotNull().containsExactlyInOrder("val1", "val2", "val3").isInstanceOf(List.class);
 
         try {
             Raw.<String>listAssertion().containsExactlyInOrder("val");
@@ -1259,6 +1273,7 @@ public final class ListAssertionTest extends AssertionTest {
         initialize(Raw.<String>listAssertion(), DataHelper.<String>createArrayList()).containsExactlyInOrder(DataHelper.<String>createIterable());
         initialize(Raw.<Float>listAssertion(), DataHelper.createArrayList(Float.NaN, Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY, 3.0f)).containsExactlyInOrder(DataHelper.createIterable(Float.NaN, Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY, 3.0f));
         initialize(Raw.<Double>listAssertion(), DataHelper.createArrayList(Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0)).containsExactlyInOrder(DataHelper.createIterable(Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0));
+        initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3")).isNotNull().containsExactlyInOrder(DataHelper.createIterable("val1", "val2", "val3")).isInstanceOf(List.class);
 
         try {
             Raw.<String>listAssertion().containsExactlyInOrder(DataHelper.<String>createIterable());
@@ -1370,6 +1385,7 @@ public final class ListAssertionTest extends AssertionTest {
         initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3", "val4", null)).containsAny("val7", "val9", null);
         initialize(Raw.<Float>listAssertion(), DataHelper.createArrayList(Float.NaN, Float.NEGATIVE_INFINITY, 3.0f)).containsAny(Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY);
         initialize(Raw.<Double>listAssertion(), DataHelper.createArrayList(Double.NaN, Double.NEGATIVE_INFINITY, 3.0)).containsAny(Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY);
+        initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3")).isNotNull().containsAny("val1", "val3", "val5").isInstanceOf(List.class);
 
         try {
             Raw.<String>listAssertion().containsAny("val");
@@ -1481,6 +1497,7 @@ public final class ListAssertionTest extends AssertionTest {
         initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3", "val4", null)).containsAny(DataHelper.createIterable("val7", "val9", null));
         initialize(Raw.<Float>listAssertion(), DataHelper.createArrayList(Float.NaN, Float.NEGATIVE_INFINITY, 3.0f)).containsAny(DataHelper.createIterable(Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY));
         initialize(Raw.<Double>listAssertion(), DataHelper.createArrayList(Double.NaN, Double.NEGATIVE_INFINITY, 3.0)).containsAny(DataHelper.createIterable(Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY));
+        initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3")).isNotNull().containsAny(DataHelper.createIterable("val1", "val3", "val5")).isInstanceOf(List.class);
 
         try {
             Raw.<String>listAssertion().containsAny(DataHelper.<String>createIterable());
@@ -1580,6 +1597,7 @@ public final class ListAssertionTest extends AssertionTest {
         initialize(Raw.listAssertion(), DataHelper.createArrayList((Object) "val1", "val2", '1')).containsNone("val8", "val4");
         initialize(Raw.<Float>listAssertion(), DataHelper.createArrayList(Float.NaN, Float.NEGATIVE_INFINITY, 3.0f)).containsNone(Float.POSITIVE_INFINITY, 4.0f);
         initialize(Raw.<Double>listAssertion(), DataHelper.createArrayList(Double.NaN, Double.NEGATIVE_INFINITY, 3.0)).containsNone(Double.POSITIVE_INFINITY, 4.0);
+        initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3")).isNotNull().containsNone("val4", "val5", "val6").isInstanceOf(List.class);
 
         try {
             Raw.<String>listAssertion().containsNone("val");
@@ -1690,6 +1708,7 @@ public final class ListAssertionTest extends AssertionTest {
         initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3")).containsNone(DataHelper.createIterable("val8", "val4", null));
         initialize(Raw.<Float>listAssertion(), DataHelper.createArrayList(Float.NaN, Float.NEGATIVE_INFINITY, 3.0f)).containsNone(DataHelper.createIterable(Float.POSITIVE_INFINITY, 4.0f));
         initialize(Raw.<Double>listAssertion(), DataHelper.createArrayList(Double.NaN, Double.NEGATIVE_INFINITY, 3.0)).containsNone(DataHelper.createIterable(Double.POSITIVE_INFINITY, 4.0));
+        initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3")).isNotNull().containsNone(DataHelper.createIterable("val4", "val5", "val6")).isInstanceOf(List.class);
 
         try {
             Raw.<String>listAssertion().containsNone(DataHelper.<String>createIterable());
@@ -1790,6 +1809,8 @@ public final class ListAssertionTest extends AssertionTest {
         initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3", "val4", "val5")).toSize().isGreaterThan(1);
         initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3", "val4", "val5")).toSize().isLessThan(9);
 
+        initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3")).isNotNull().toSize().isEqualTo(3);
+
         try {
             Raw.<String>listAssertion().toSize();
             Assertions.fail("ListAssertion test fail");
@@ -1846,6 +1867,8 @@ public final class ListAssertionTest extends AssertionTest {
         initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3", "val4", "val5")).toSize(Matchers.equalTo(5));
         initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3", "val4", "val5")).toSize(Matchers.greaterThan(4));
         initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3", "val4", "val5")).toSize(Matchers.lessThan(6));
+
+        initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3")).isNotNull().toSize(Matchers.is(Matchers.equalTo(3))).isInstanceOf(List.class);
 
         try {
             Raw.<String>listAssertion().toSize(Matchers.equalTo(0));
@@ -1910,6 +1933,7 @@ public final class ListAssertionTest extends AssertionTest {
     public void hasSizeTest() {
         initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3")).hasSize(3);
         initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3", "val4", "val5")).hasSize(5);
+        initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3")).isNotNull().hasSize(3).isInstanceOf(List.class);
 
         try {
             Raw.<String>listAssertion().hasSize(1);

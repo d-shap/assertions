@@ -83,6 +83,7 @@ public class CalendarAssertionTest extends AssertionTest {
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47, "Europe/Berlin")).isEqualTo(DataHelper.createCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47, "Europe/Berlin"));
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543, "Europe/Berlin")).isEqualTo(DataHelper.createCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543, "Europe/Berlin"));
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543, "Europe/Berlin")).isEqualTo(DataHelper.createCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543, "Europe/Berlin"));
+        initialize(Raw.calendarAssertion(), DataHelper.createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC")).isNotNull().isEqualTo(DataHelper.createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC")).isInstanceOf(Calendar.class);
 
         try {
             Raw.calendarAssertion().isEqualTo(DataHelper.createCalendar(1, 1, 1, 1, 1, 1, "UTC"));
@@ -178,6 +179,7 @@ public class CalendarAssertionTest extends AssertionTest {
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543, "UTC")).isNotEqualTo(DataHelper.createCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543, "Europe/Berlin"));
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543, "UTC")).isNotEqualTo(DataHelper.createCalendar(1324, Calendar.DECEMBER, 21, 4, 22, 46, 543, "Europe/Berlin"));
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543, "UTC")).isNotEqualTo(DataHelper.createCalendar(1324, Calendar.DECEMBER, 21, 5, 22, 46, 543, "Europe/Berlin"));
+        initialize(Raw.calendarAssertion(), DataHelper.createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC")).isNotNull().isNotEqualTo(DataHelper.createCalendar(2019, Calendar.JULY, 11, 15, 23, 47, "UTC")).isInstanceOf(Calendar.class);
 
         try {
             Raw.calendarAssertion().isNotEqualTo(DataHelper.createCalendar(1, 1, 1, 1, 1, 1, "UTC"));
@@ -238,6 +240,7 @@ public class CalendarAssertionTest extends AssertionTest {
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "UTC")).isGreaterThan(DataHelper.createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "Europe/Berlin"));
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "UTC")).isGreaterThan(DataHelper.createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "Asia/Vientiane"));
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "Europe/Berlin")).isGreaterThan(DataHelper.createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "Asia/Vientiane"));
+        initialize(Raw.calendarAssertion(), DataHelper.createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "UTC")).isNotNull().isGreaterThan(DataHelper.createCalendar(2019, Calendar.JULY, 11, 15, 23, 47, 345, "UTC")).isInstanceOf(Calendar.class);
 
         try {
             Raw.calendarAssertion().isGreaterThan(DataHelper.createCalendar(1, 1, 1, 1, 1, 1, 1, "UTC"));
@@ -347,6 +350,7 @@ public class CalendarAssertionTest extends AssertionTest {
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "UTC")).isGreaterThanOrEqualTo(DataHelper.createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "Europe/Berlin"));
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "UTC")).isGreaterThanOrEqualTo(DataHelper.createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "Asia/Vientiane"));
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "Europe/Berlin")).isGreaterThanOrEqualTo(DataHelper.createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "Asia/Vientiane"));
+        initialize(Raw.calendarAssertion(), DataHelper.createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "UTC")).isNotNull().isGreaterThanOrEqualTo(DataHelper.createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "UTC")).isInstanceOf(Calendar.class);
 
         try {
             Raw.calendarAssertion().isGreaterThanOrEqualTo(DataHelper.createCalendar(1, 1, 1, 1, 1, 1, 1, "UTC"));
@@ -443,6 +447,7 @@ public class CalendarAssertionTest extends AssertionTest {
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "Europe/Berlin")).isLessThan(DataHelper.createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "UTC"));
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "Asia/Vientiane")).isLessThan(DataHelper.createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "UTC"));
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "Asia/Vientiane")).isLessThan(DataHelper.createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "Europe/Berlin"));
+        initialize(Raw.calendarAssertion(), DataHelper.createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "UTC")).isNotNull().isLessThan(DataHelper.createCalendar(2021, Calendar.JULY, 11, 15, 23, 47, 345, "UTC")).isInstanceOf(Calendar.class);
 
         try {
             Raw.calendarAssertion().isLessThan(DataHelper.createCalendar(1, 1, 1, 1, 1, 1, 1, "UTC"));
@@ -552,6 +557,7 @@ public class CalendarAssertionTest extends AssertionTest {
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "Europe/Berlin")).isLessThanOrEqualTo(DataHelper.createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "UTC"));
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "Asia/Vientiane")).isLessThanOrEqualTo(DataHelper.createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "UTC"));
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "Asia/Vientiane")).isLessThanOrEqualTo(DataHelper.createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "Europe/Berlin"));
+        initialize(Raw.calendarAssertion(), DataHelper.createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "UTC")).isNotNull().isLessThanOrEqualTo(DataHelper.createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "UTC")).isInstanceOf(Calendar.class);
 
         try {
             Raw.calendarAssertion().isLessThanOrEqualTo(DataHelper.createCalendar(1, 1, 1, 1, 1, 1, 1, "UTC"));
@@ -647,6 +653,7 @@ public class CalendarAssertionTest extends AssertionTest {
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "UTC")).isInRange(DataHelper.createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "UTC"), DataHelper.createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 346, "UTC"));
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "UTC")).isInRange(DataHelper.createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 344, "UTC"), DataHelper.createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 346, "UTC"));
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "Europe/Berlin")).isInRange(DataHelper.createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "Asia/Vientiane"), DataHelper.createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "UTC"));
+        initialize(Raw.calendarAssertion(), DataHelper.createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "UTC")).isNotNull().isInRange(DataHelper.createCalendar(2019, Calendar.JULY, 11, 15, 23, 47, 345, "UTC"), DataHelper.createCalendar(2021, Calendar.JULY, 11, 15, 23, 47, 345, "UTC")).isInstanceOf(Calendar.class);
 
         try {
             Raw.calendarAssertion().isInRange(DataHelper.createCalendar(1, 1, 1, 1, 1, 1, 1, "UTC"), DataHelper.createCalendar(1, 1, 1, 1, 1, 1, 1, "UTC"));
@@ -786,6 +793,7 @@ public class CalendarAssertionTest extends AssertionTest {
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "UTC")).isNotInRange(DataHelper.createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 346, "UTC"), DataHelper.createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 347, "UTC"));
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "Asia/Vientiane")).isNotInRange(DataHelper.createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "Europe/Berlin"), DataHelper.createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "UTC"));
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "UTC")).isNotInRange(DataHelper.createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "Asia/Vientiane"), DataHelper.createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "Europe/Berlin"));
+        initialize(Raw.calendarAssertion(), DataHelper.createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "UTC")).isNotNull().isNotInRange(DataHelper.createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "UTC"), DataHelper.createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "UTC")).isInstanceOf(Calendar.class);
 
         try {
             Raw.calendarAssertion().isNotInRange(DataHelper.createCalendar(1, 1, 1, 1, 1, 1, 1, "UTC"), DataHelper.createCalendar(1, 1, 1, 1, 1, 1, 1, "UTC"));
@@ -912,6 +920,7 @@ public class CalendarAssertionTest extends AssertionTest {
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47)).toYear().isEqualTo(2020);
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543)).toYear().isEqualTo(1324);
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).toYear().isEqualTo(1324);
+        initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(2020, Calendar.JULY, 11, 15, 23, 47)).isNotNull().toYear().isEqualTo(2020);
 
         try {
             Raw.calendarAssertion().toYear();
@@ -966,6 +975,7 @@ public class CalendarAssertionTest extends AssertionTest {
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47)).toYear(Matchers.is(Matchers.equalTo(2020)));
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543)).toYear(Matchers.is(Matchers.equalTo(1324)));
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).toYear(Matchers.is(Matchers.equalTo(1324)));
+        initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(2020, Calendar.JULY, 11, 15, 23, 47)).isNotNull().toYear(Matchers.is(Matchers.equalTo(2020))).isInstanceOf(Calendar.class);
 
         try {
             Raw.calendarAssertion().toYear(Matchers.equalTo(0));
@@ -1032,6 +1042,7 @@ public class CalendarAssertionTest extends AssertionTest {
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47)).hasYear(2020);
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543)).hasYear(1324);
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).hasYear(1324);
+        initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(2020, Calendar.JULY, 11, 15, 23, 47)).isNotNull().hasYear(2020).isInstanceOf(Calendar.class);
 
         try {
             Raw.calendarAssertion().hasYear(0);
@@ -1074,6 +1085,7 @@ public class CalendarAssertionTest extends AssertionTest {
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47)).toMonth().isEqualTo(Calendar.DECEMBER);
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543)).toMonth().isEqualTo(Calendar.JULY);
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).toMonth().isEqualTo(Calendar.DECEMBER);
+        initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(2020, Calendar.JULY, 11, 15, 23, 47)).isNotNull().toMonth().isEqualTo(Calendar.JULY);
 
         try {
             Raw.calendarAssertion().toMonth();
@@ -1128,6 +1140,7 @@ public class CalendarAssertionTest extends AssertionTest {
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47)).toMonth(Matchers.is(Matchers.equalTo(Calendar.DECEMBER)));
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543)).toMonth(Matchers.is(Matchers.equalTo(Calendar.JULY)));
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).toMonth(Matchers.is(Matchers.equalTo(Calendar.DECEMBER)));
+        initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(2020, Calendar.JULY, 11, 15, 23, 47)).isNotNull().toMonth(Matchers.is(Matchers.equalTo(Calendar.JULY))).isInstanceOf(Calendar.class);
 
         try {
             Raw.calendarAssertion().toMonth(Matchers.equalTo(0));
@@ -1194,6 +1207,7 @@ public class CalendarAssertionTest extends AssertionTest {
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47)).hasMonth(Calendar.DECEMBER);
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543)).hasMonth(Calendar.JULY);
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).hasMonth(Calendar.DECEMBER);
+        initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(2020, Calendar.JULY, 11, 15, 23, 47)).isNotNull().hasMonth(Calendar.JULY).isInstanceOf(Calendar.class);
 
         try {
             Raw.calendarAssertion().hasMonth(0);
@@ -1236,6 +1250,7 @@ public class CalendarAssertionTest extends AssertionTest {
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47)).toWeekOfYear().isEqualTo(50);
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543)).toWeekOfYear().isEqualTo(30);
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).toWeekOfYear().isEqualTo(52);
+        initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(2020, Calendar.JULY, 11, 15, 23, 47)).isNotNull().toWeekOfYear().isEqualTo(28);
 
         try {
             Raw.calendarAssertion().toWeekOfYear();
@@ -1290,6 +1305,7 @@ public class CalendarAssertionTest extends AssertionTest {
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47)).toWeekOfYear(Matchers.is(Matchers.equalTo(50)));
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543)).toWeekOfYear(Matchers.is(Matchers.equalTo(30)));
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).toWeekOfYear(Matchers.is(Matchers.equalTo(52)));
+        initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(2020, Calendar.JULY, 11, 15, 23, 47)).isNotNull().toWeekOfYear(Matchers.is(Matchers.equalTo(28))).isInstanceOf(Calendar.class);
 
         try {
             Raw.calendarAssertion().toWeekOfYear(Matchers.equalTo(0));
@@ -1356,6 +1372,7 @@ public class CalendarAssertionTest extends AssertionTest {
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47)).hasWeekOfYear(50);
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543)).hasWeekOfYear(30);
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).hasWeekOfYear(52);
+        initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(2020, Calendar.JULY, 11, 15, 23, 47)).isNotNull().hasWeekOfYear(28).isInstanceOf(Calendar.class);
 
         try {
             Raw.calendarAssertion().hasWeekOfYear(0);
@@ -1398,6 +1415,7 @@ public class CalendarAssertionTest extends AssertionTest {
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47)).toWeekOfMonth().isEqualTo(2);
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543)).toWeekOfMonth().isEqualTo(4);
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).toWeekOfMonth().isEqualTo(4);
+        initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(2020, Calendar.JULY, 11, 15, 23, 47)).isNotNull().toWeekOfMonth().isEqualTo(2);
 
         try {
             Raw.calendarAssertion().toWeekOfMonth();
@@ -1452,6 +1470,7 @@ public class CalendarAssertionTest extends AssertionTest {
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47)).toWeekOfMonth(Matchers.is(Matchers.equalTo(2)));
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543)).toWeekOfMonth(Matchers.is(Matchers.equalTo(4)));
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).toWeekOfMonth(Matchers.is(Matchers.equalTo(4)));
+        initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(2020, Calendar.JULY, 11, 15, 23, 47)).isNotNull().toWeekOfMonth(Matchers.is(Matchers.equalTo(2))).isInstanceOf(Calendar.class);
 
         try {
             Raw.calendarAssertion().toWeekOfMonth(Matchers.equalTo(0));
@@ -1518,6 +1537,7 @@ public class CalendarAssertionTest extends AssertionTest {
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47)).hasWeekOfMonth(2);
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543)).hasWeekOfMonth(4);
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).hasWeekOfMonth(4);
+        initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(2020, Calendar.JULY, 11, 15, 23, 47)).isNotNull().hasWeekOfMonth(2).isInstanceOf(Calendar.class);
 
         try {
             Raw.calendarAssertion().hasWeekOfMonth(0);
@@ -1560,6 +1580,7 @@ public class CalendarAssertionTest extends AssertionTest {
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47)).toDayOfYear().isEqualTo(346);
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543)).toDayOfYear().isEqualTo(203);
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).toDayOfYear().isEqualTo(356);
+        initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(2020, Calendar.JULY, 11, 15, 23, 47)).isNotNull().toDayOfYear().isEqualTo(193);
 
         try {
             Raw.calendarAssertion().toDayOfYear();
@@ -1614,6 +1635,7 @@ public class CalendarAssertionTest extends AssertionTest {
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47)).toDayOfYear(Matchers.is(Matchers.equalTo(346)));
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543)).toDayOfYear(Matchers.is(Matchers.equalTo(203)));
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).toDayOfYear(Matchers.is(Matchers.equalTo(356)));
+        initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(2020, Calendar.JULY, 11, 15, 23, 47)).isNotNull().toDayOfYear(Matchers.is(Matchers.equalTo(193))).isInstanceOf(Calendar.class);
 
         try {
             Raw.calendarAssertion().toDayOfYear(Matchers.equalTo(0));
@@ -1680,6 +1702,7 @@ public class CalendarAssertionTest extends AssertionTest {
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47)).hasDayOfYear(346);
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543)).hasDayOfYear(203);
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).hasDayOfYear(356);
+        initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(2020, Calendar.JULY, 11, 15, 23, 47)).isNotNull().hasDayOfYear(193).isInstanceOf(Calendar.class);
 
         try {
             Raw.calendarAssertion().hasDayOfYear(0);
@@ -1722,6 +1745,7 @@ public class CalendarAssertionTest extends AssertionTest {
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47)).toDayOfMonth().isEqualTo(11);
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543)).toDayOfMonth().isEqualTo(21);
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).toDayOfMonth().isEqualTo(21);
+        initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(2020, Calendar.JULY, 11, 15, 23, 47)).isNotNull().toDayOfMonth().isEqualTo(11);
 
         try {
             Raw.calendarAssertion().toDayOfMonth();
@@ -1776,6 +1800,7 @@ public class CalendarAssertionTest extends AssertionTest {
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47)).toDayOfMonth(Matchers.is(Matchers.equalTo(11)));
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543)).toDayOfMonth(Matchers.is(Matchers.equalTo(21)));
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).toDayOfMonth(Matchers.is(Matchers.equalTo(21)));
+        initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(2020, Calendar.JULY, 11, 15, 23, 47)).isNotNull().toDayOfMonth(Matchers.is(Matchers.equalTo(11))).isInstanceOf(Calendar.class);
 
         try {
             Raw.calendarAssertion().toDayOfMonth(Matchers.equalTo(0));
@@ -1842,6 +1867,7 @@ public class CalendarAssertionTest extends AssertionTest {
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47)).hasDayOfMonth(11);
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543)).hasDayOfMonth(21);
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).hasDayOfMonth(21);
+        initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(2020, Calendar.JULY, 11, 15, 23, 47)).isNotNull().hasDayOfMonth(11).isInstanceOf(Calendar.class);
 
         try {
             Raw.calendarAssertion().hasDayOfMonth(0);
@@ -1884,6 +1910,7 @@ public class CalendarAssertionTest extends AssertionTest {
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47)).toDayOfWeekInMonth().isEqualTo(2);
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543)).toDayOfWeekInMonth().isEqualTo(3);
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).toDayOfWeekInMonth().isEqualTo(3);
+        initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(2020, Calendar.JULY, 11, 15, 23, 47)).isNotNull().toDayOfWeekInMonth().isEqualTo(2);
 
         try {
             Raw.calendarAssertion().toDayOfWeekInMonth();
@@ -1938,6 +1965,7 @@ public class CalendarAssertionTest extends AssertionTest {
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47)).toDayOfWeekInMonth(Matchers.is(Matchers.equalTo(2)));
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543)).toDayOfWeekInMonth(Matchers.is(Matchers.equalTo(3)));
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).toDayOfWeekInMonth(Matchers.is(Matchers.equalTo(3)));
+        initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(2020, Calendar.JULY, 11, 15, 23, 47)).isNotNull().toDayOfWeekInMonth(Matchers.is(Matchers.equalTo(2))).isInstanceOf(Calendar.class);
 
         try {
             Raw.calendarAssertion().toDayOfWeekInMonth(Matchers.equalTo(0));
@@ -2004,6 +2032,7 @@ public class CalendarAssertionTest extends AssertionTest {
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47)).hasDayOfWeekInMonth(2);
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543)).hasDayOfWeekInMonth(3);
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).hasDayOfWeekInMonth(3);
+        initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(2020, Calendar.JULY, 11, 15, 23, 47)).isNotNull().hasDayOfWeekInMonth(2).isInstanceOf(Calendar.class);
 
         try {
             Raw.calendarAssertion().hasDayOfWeekInMonth(0);
@@ -2046,6 +2075,7 @@ public class CalendarAssertionTest extends AssertionTest {
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47)).toDayOfWeek().isEqualTo(Calendar.FRIDAY);
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543)).toDayOfWeek().isEqualTo(Calendar.SATURDAY);
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).toDayOfWeek().isEqualTo(Calendar.FRIDAY);
+        initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(2020, Calendar.JULY, 11, 15, 23, 47)).isNotNull().toDayOfWeek().isEqualTo(Calendar.SATURDAY);
 
         try {
             Raw.calendarAssertion().toDayOfWeek();
@@ -2100,6 +2130,7 @@ public class CalendarAssertionTest extends AssertionTest {
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47)).toDayOfWeek(Matchers.is(Matchers.equalTo(Calendar.FRIDAY)));
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543)).toDayOfWeek(Matchers.is(Matchers.equalTo(Calendar.SATURDAY)));
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).toDayOfWeek(Matchers.is(Matchers.equalTo(Calendar.FRIDAY)));
+        initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(2020, Calendar.JULY, 11, 15, 23, 47)).isNotNull().toDayOfWeek(Matchers.is(Matchers.equalTo(Calendar.SATURDAY))).isInstanceOf(Calendar.class);
 
         try {
             Raw.calendarAssertion().toDayOfWeek(Matchers.equalTo(0));
@@ -2166,6 +2197,7 @@ public class CalendarAssertionTest extends AssertionTest {
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47)).hasDayOfWeek(Calendar.FRIDAY);
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543)).hasDayOfWeek(Calendar.SATURDAY);
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).hasDayOfWeek(Calendar.FRIDAY);
+        initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(2020, Calendar.JULY, 11, 15, 23, 47)).isNotNull().hasDayOfWeek(Calendar.SATURDAY).isInstanceOf(Calendar.class);
 
         try {
             Raw.calendarAssertion().hasDayOfWeek(0);
@@ -2208,6 +2240,7 @@ public class CalendarAssertionTest extends AssertionTest {
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47)).toAmPm().isEqualTo(Calendar.PM);
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543)).toAmPm().isEqualTo(Calendar.AM);
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).toAmPm().isEqualTo(Calendar.AM);
+        initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(2020, Calendar.JULY, 11, 15, 23, 47)).isNotNull().toAmPm().isEqualTo(Calendar.PM);
 
         try {
             Raw.calendarAssertion().toAmPm();
@@ -2262,6 +2295,7 @@ public class CalendarAssertionTest extends AssertionTest {
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47)).toAmPm(Matchers.is(Matchers.equalTo(Calendar.PM)));
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543)).toAmPm(Matchers.is(Matchers.equalTo(Calendar.AM)));
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).toAmPm(Matchers.is(Matchers.equalTo(Calendar.AM)));
+        initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(2020, Calendar.JULY, 11, 15, 23, 47)).isNotNull().toAmPm(Matchers.is(Matchers.equalTo(Calendar.PM))).isInstanceOf(Calendar.class);
 
         try {
             Raw.calendarAssertion().toAmPm(Matchers.equalTo(0));
@@ -2326,6 +2360,7 @@ public class CalendarAssertionTest extends AssertionTest {
     public void isAmTest() {
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543)).isAm();
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).isAm();
+        initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543)).isNotNull().isAm().isInstanceOf(Calendar.class);
 
         try {
             Raw.calendarAssertion().isAm();
@@ -2366,6 +2401,7 @@ public class CalendarAssertionTest extends AssertionTest {
     public void isPmTest() {
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(2020, Calendar.JULY, 11, 15, 23, 47)).isPm();
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47)).isPm();
+        initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(2020, Calendar.JULY, 11, 15, 23, 47)).isNotNull().isPm().isInstanceOf(Calendar.class);
 
         try {
             Raw.calendarAssertion().isPm();
@@ -2408,6 +2444,7 @@ public class CalendarAssertionTest extends AssertionTest {
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47)).toHourOfDay().isEqualTo(15);
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543)).toHourOfDay().isEqualTo(3);
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).toHourOfDay().isEqualTo(3);
+        initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(2020, Calendar.JULY, 11, 15, 23, 47)).isNotNull().toHourOfDay().isEqualTo(15);
 
         try {
             Raw.calendarAssertion().toHourOfDay();
@@ -2462,6 +2499,7 @@ public class CalendarAssertionTest extends AssertionTest {
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47)).toHourOfDay(Matchers.is(Matchers.equalTo(15)));
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543)).toHourOfDay(Matchers.is(Matchers.equalTo(3)));
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).toHourOfDay(Matchers.is(Matchers.equalTo(3)));
+        initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(2020, Calendar.JULY, 11, 15, 23, 47)).isNotNull().toHourOfDay(Matchers.is(Matchers.equalTo(15))).isInstanceOf(Calendar.class);
 
         try {
             Raw.calendarAssertion().toHourOfDay(Matchers.equalTo(0));
@@ -2528,6 +2566,7 @@ public class CalendarAssertionTest extends AssertionTest {
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47)).hasHourOfDay(15);
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543)).hasHourOfDay(3);
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).hasHourOfDay(3);
+        initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(2020, Calendar.JULY, 11, 15, 23, 47)).isNotNull().hasHourOfDay(15).isInstanceOf(Calendar.class);
 
         try {
             Raw.calendarAssertion().hasHourOfDay(0);
@@ -2570,6 +2609,7 @@ public class CalendarAssertionTest extends AssertionTest {
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47)).toHour().isEqualTo(3);
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543)).toHour().isEqualTo(3);
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).toHour().isEqualTo(3);
+        initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(2020, Calendar.JULY, 11, 15, 23, 47)).isNotNull().toHour().isEqualTo(3);
 
         try {
             Raw.calendarAssertion().toHour();
@@ -2624,6 +2664,7 @@ public class CalendarAssertionTest extends AssertionTest {
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47)).toHour(Matchers.is(Matchers.equalTo(3)));
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543)).toHour(Matchers.is(Matchers.equalTo(3)));
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).toHour(Matchers.is(Matchers.equalTo(3)));
+        initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(2020, Calendar.JULY, 11, 15, 23, 47)).isNotNull().toHour(Matchers.is(Matchers.equalTo(3))).isInstanceOf(Calendar.class);
 
         try {
             Raw.calendarAssertion().toHour(Matchers.equalTo(0));
@@ -2690,6 +2731,7 @@ public class CalendarAssertionTest extends AssertionTest {
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47)).hasHour(3);
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543)).hasHour(3);
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).hasHour(3);
+        initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(2020, Calendar.JULY, 11, 15, 23, 47)).isNotNull().hasHour(3).isInstanceOf(Calendar.class);
 
         try {
             Raw.calendarAssertion().hasHour(0);
@@ -2732,6 +2774,7 @@ public class CalendarAssertionTest extends AssertionTest {
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47)).toMinute().isEqualTo(23);
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543)).toMinute().isEqualTo(22);
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).toMinute().isEqualTo(22);
+        initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(2020, Calendar.JULY, 11, 15, 23, 47)).isNotNull().toMinute().isEqualTo(23);
 
         try {
             Raw.calendarAssertion().toMinute();
@@ -2786,6 +2829,7 @@ public class CalendarAssertionTest extends AssertionTest {
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47)).toMinute(Matchers.is(Matchers.equalTo(23)));
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543)).toMinute(Matchers.is(Matchers.equalTo(22)));
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).toMinute(Matchers.is(Matchers.equalTo(22)));
+        initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(2020, Calendar.JULY, 11, 15, 23, 47)).isNotNull().toMinute(Matchers.is(Matchers.equalTo(23))).isInstanceOf(Calendar.class);
 
         try {
             Raw.calendarAssertion().toMinute(Matchers.equalTo(0));
@@ -2852,6 +2896,7 @@ public class CalendarAssertionTest extends AssertionTest {
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47)).hasMinute(23);
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543)).hasMinute(22);
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).hasMinute(22);
+        initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(2020, Calendar.JULY, 11, 15, 23, 47)).isNotNull().hasMinute(23).isInstanceOf(Calendar.class);
 
         try {
             Raw.calendarAssertion().hasMinute(0);
@@ -2894,6 +2939,7 @@ public class CalendarAssertionTest extends AssertionTest {
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47)).toSecond().isEqualTo(47);
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543)).toSecond().isEqualTo(46);
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).toSecond().isEqualTo(46);
+        initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(2020, Calendar.JULY, 11, 15, 23, 47)).isNotNull().toSecond().isEqualTo(47);
 
         try {
             Raw.calendarAssertion().toSecond();
@@ -2948,6 +2994,7 @@ public class CalendarAssertionTest extends AssertionTest {
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47)).toSecond(Matchers.is(Matchers.equalTo(47)));
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543)).toSecond(Matchers.is(Matchers.equalTo(46)));
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).toSecond(Matchers.is(Matchers.equalTo(46)));
+        initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(2020, Calendar.JULY, 11, 15, 23, 47)).isNotNull().toSecond(Matchers.is(Matchers.equalTo(47))).isInstanceOf(Calendar.class);
 
         try {
             Raw.calendarAssertion().toSecond(Matchers.equalTo(0));
@@ -3014,6 +3061,7 @@ public class CalendarAssertionTest extends AssertionTest {
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47)).hasSecond(47);
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543)).hasSecond(46);
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).hasSecond(46);
+        initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(2020, Calendar.JULY, 11, 15, 23, 47)).isNotNull().hasSecond(47).isInstanceOf(Calendar.class);
 
         try {
             Raw.calendarAssertion().hasSecond(0);
@@ -3056,6 +3104,7 @@ public class CalendarAssertionTest extends AssertionTest {
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47)).toMillisecond().isEqualTo(0);
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543)).toMillisecond().isEqualTo(543);
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).toMillisecond().isEqualTo(543);
+        initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(2020, Calendar.JULY, 11, 15, 23, 47)).isNotNull().toMillisecond().isEqualTo(0);
 
         try {
             Raw.calendarAssertion().toMillisecond();
@@ -3110,6 +3159,7 @@ public class CalendarAssertionTest extends AssertionTest {
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47)).toMillisecond(Matchers.is(Matchers.equalTo(0)));
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543)).toMillisecond(Matchers.is(Matchers.equalTo(543)));
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).toMillisecond(Matchers.is(Matchers.equalTo(543)));
+        initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(2020, Calendar.JULY, 11, 15, 23, 47)).isNotNull().toMillisecond(Matchers.is(Matchers.equalTo(0))).isInstanceOf(Calendar.class);
 
         try {
             Raw.calendarAssertion().toMillisecond(Matchers.equalTo(0));
@@ -3176,6 +3226,7 @@ public class CalendarAssertionTest extends AssertionTest {
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47)).hasMillisecond(0);
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543)).hasMillisecond(543);
         initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).hasMillisecond(543);
+        initialize(Raw.calendarAssertion(), DataHelper.createUtcCalendar(2020, Calendar.JULY, 11, 15, 23, 47)).isNotNull().hasMillisecond(0).isInstanceOf(Calendar.class);
 
         try {
             Raw.calendarAssertion().hasMillisecond(0);
@@ -3226,6 +3277,7 @@ public class CalendarAssertionTest extends AssertionTest {
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47, "Europe/Berlin")).toZoneOffset().isEqualTo(60 * 60 * 1000);
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543, "Europe/Berlin")).toZoneOffset().isEqualTo(60 * 60 * 1000);
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543, "Europe/Berlin")).toZoneOffset().isEqualTo(60 * 60 * 1000);
+        initialize(Raw.calendarAssertion(), DataHelper.createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC")).isNotNull().toZoneOffset().isEqualTo(0);
 
         try {
             Raw.calendarAssertion().toZoneOffset();
@@ -3288,6 +3340,7 @@ public class CalendarAssertionTest extends AssertionTest {
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47, "Europe/Berlin")).toZoneOffset(Matchers.is(Matchers.equalTo(60 * 60 * 1000)));
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543, "Europe/Berlin")).toZoneOffset(Matchers.is(Matchers.equalTo(60 * 60 * 1000)));
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543, "Europe/Berlin")).toZoneOffset(Matchers.is(Matchers.equalTo(60 * 60 * 1000)));
+        initialize(Raw.calendarAssertion(), DataHelper.createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC")).isNotNull().toZoneOffset(Matchers.is(Matchers.equalTo(0))).isInstanceOf(Calendar.class);
 
         try {
             Raw.calendarAssertion().toZoneOffset(Matchers.equalTo(0));
@@ -3362,6 +3415,7 @@ public class CalendarAssertionTest extends AssertionTest {
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47, "Europe/Berlin")).hasZoneOffset(60 * 60 * 1000);
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543, "Europe/Berlin")).hasZoneOffset(60 * 60 * 1000);
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543, "Europe/Berlin")).hasZoneOffset(60 * 60 * 1000);
+        initialize(Raw.calendarAssertion(), DataHelper.createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC")).isNotNull().hasZoneOffset(0).isInstanceOf(Calendar.class);
 
         try {
             Raw.calendarAssertion().hasZoneOffset(0);
@@ -3412,6 +3466,7 @@ public class CalendarAssertionTest extends AssertionTest {
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47, "Europe/Berlin")).toDstOffset().isEqualTo(0);
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543, "Europe/Berlin")).toDstOffset().isEqualTo(0);
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543, "Europe/Berlin")).toDstOffset().isEqualTo(0);
+        initialize(Raw.calendarAssertion(), DataHelper.createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC")).isNotNull().toDstOffset().isEqualTo(0);
 
         try {
             Raw.calendarAssertion().toDstOffset();
@@ -3474,6 +3529,7 @@ public class CalendarAssertionTest extends AssertionTest {
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47, "Europe/Berlin")).toDstOffset(Matchers.is(Matchers.equalTo(0)));
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543, "Europe/Berlin")).toDstOffset(Matchers.is(Matchers.equalTo(0)));
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543, "Europe/Berlin")).toDstOffset(Matchers.is(Matchers.equalTo(0)));
+        initialize(Raw.calendarAssertion(), DataHelper.createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC")).isNotNull().toDstOffset(Matchers.is(Matchers.equalTo(0))).isInstanceOf(Calendar.class);
 
         try {
             Raw.calendarAssertion().toDstOffset(Matchers.equalTo(0));
@@ -3548,6 +3604,7 @@ public class CalendarAssertionTest extends AssertionTest {
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47, "Europe/Berlin")).hasDstOffset(0);
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543, "Europe/Berlin")).hasDstOffset(0);
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543, "Europe/Berlin")).hasDstOffset(0);
+        initialize(Raw.calendarAssertion(), DataHelper.createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC")).isNotNull().hasDstOffset(0).isInstanceOf(Calendar.class);
 
         try {
             Raw.calendarAssertion().hasDstOffset(0);
@@ -3598,6 +3655,7 @@ public class CalendarAssertionTest extends AssertionTest {
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47, "Europe/Berlin")).toTimeZone().isEqualTo(TimeZone.getTimeZone("Europe/Berlin"));
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543, "Europe/Berlin")).toTimeZone().isEqualTo(TimeZone.getTimeZone("Europe/Berlin"));
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543, "Europe/Berlin")).toTimeZone().isEqualTo(TimeZone.getTimeZone("Europe/Berlin"));
+        initialize(Raw.calendarAssertion(), DataHelper.createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC")).isNotNull().toTimeZone().isEqualTo(TimeZone.getTimeZone("UTC"));
 
         try {
             Raw.calendarAssertion().toTimeZone();
@@ -3660,6 +3718,7 @@ public class CalendarAssertionTest extends AssertionTest {
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47, "Europe/Berlin")).toTimeZone(Matchers.is(Matchers.equalTo(TimeZone.getTimeZone("Europe/Berlin"))));
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543, "Europe/Berlin")).toTimeZone(Matchers.is(Matchers.equalTo(TimeZone.getTimeZone("Europe/Berlin"))));
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543, "Europe/Berlin")).toTimeZone(Matchers.is(Matchers.equalTo(TimeZone.getTimeZone("Europe/Berlin"))));
+        initialize(Raw.calendarAssertion(), DataHelper.createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC")).isNotNull().toTimeZone(Matchers.is(Matchers.equalTo(TimeZone.getTimeZone("UTC")))).isInstanceOf(Calendar.class);
 
         try {
             Raw.calendarAssertion().toTimeZone(Matchers.equalTo(TimeZone.getTimeZone("UTC")));
@@ -3734,6 +3793,7 @@ public class CalendarAssertionTest extends AssertionTest {
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47, "Europe/Berlin")).hasTimeZone(TimeZone.getTimeZone("Europe/Berlin"));
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543, "Europe/Berlin")).hasTimeZone(TimeZone.getTimeZone("Europe/Berlin"));
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543, "Europe/Berlin")).hasTimeZone(TimeZone.getTimeZone("Europe/Berlin"));
+        initialize(Raw.calendarAssertion(), DataHelper.createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC")).isNotNull().hasTimeZone(TimeZone.getTimeZone("UTC")).isInstanceOf(Calendar.class);
 
         try {
             Raw.calendarAssertion().hasTimeZone(TimeZone.getTimeZone("UTC"));
@@ -3784,6 +3844,7 @@ public class CalendarAssertionTest extends AssertionTest {
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47, "Europe/Berlin")).hasTimeZoneId("Europe/Berlin");
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543, "Europe/Berlin")).hasTimeZoneId("Europe/Berlin");
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543, "Europe/Berlin")).hasTimeZoneId("Europe/Berlin");
+        initialize(Raw.calendarAssertion(), DataHelper.createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC")).isNotNull().hasTimeZoneId("UTC").isInstanceOf(Calendar.class);
 
         try {
             Raw.calendarAssertion().hasTimeZoneId("UTC");
@@ -3834,6 +3895,7 @@ public class CalendarAssertionTest extends AssertionTest {
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47, "Europe/Berlin")).hasDate(2020, Calendar.DECEMBER, 11);
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543, "Europe/Berlin")).hasDate(1324, Calendar.JULY, 21);
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543, "Europe/Berlin")).hasDate(1324, Calendar.DECEMBER, 21);
+        initialize(Raw.calendarAssertion(), DataHelper.createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC")).isNotNull().hasDate(2020, Calendar.JULY, 11).isInstanceOf(Calendar.class);
 
         try {
             Raw.calendarAssertion().hasDate(1, 1, 1);
@@ -3908,6 +3970,7 @@ public class CalendarAssertionTest extends AssertionTest {
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47, "Europe/Berlin")).hasTimeZoneDate(2020, Calendar.DECEMBER, 11, "Europe/Berlin");
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543, "Europe/Berlin")).hasTimeZoneDate(1324, Calendar.JULY, 21, "Europe/Berlin");
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543, "Europe/Berlin")).hasTimeZoneDate(1324, Calendar.DECEMBER, 21, "Europe/Berlin");
+        initialize(Raw.calendarAssertion(), DataHelper.createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC")).isNotNull().hasTimeZoneDate(2020, Calendar.JULY, 11, "UTC").isInstanceOf(Calendar.class);
 
         try {
             Raw.calendarAssertion().hasTimeZoneDate(1, 1, 1, "UTC");
@@ -3994,6 +4057,7 @@ public class CalendarAssertionTest extends AssertionTest {
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47, "Europe/Berlin")).hasTimeZoneDate(2020, Calendar.DECEMBER, 11, 60 * 60 * 1000);
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543, "Europe/Berlin")).hasTimeZoneDate(1324, Calendar.JULY, 21, 60 * 60 * 1000);
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543, "Europe/Berlin")).hasTimeZoneDate(1324, Calendar.DECEMBER, 21, 60 * 60 * 1000);
+        initialize(Raw.calendarAssertion(), DataHelper.createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC")).isNotNull().hasTimeZoneDate(2020, Calendar.JULY, 11, 0).isInstanceOf(Calendar.class);
 
         try {
             Raw.calendarAssertion().hasTimeZoneDate(1, 1, 1, 0);
@@ -4080,6 +4144,7 @@ public class CalendarAssertionTest extends AssertionTest {
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47, "Europe/Berlin")).hasUtcDate(2020, Calendar.DECEMBER, 11);
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543, "Europe/Berlin")).hasUtcDate(1324, Calendar.JULY, 21);
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543, "Europe/Berlin")).hasUtcDate(1324, Calendar.DECEMBER, 21);
+        initialize(Raw.calendarAssertion(), DataHelper.createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC")).isNotNull().hasUtcDate(2020, Calendar.JULY, 11).isInstanceOf(Calendar.class);
 
         try {
             Raw.calendarAssertion().hasUtcDate(1, 1, 1);
@@ -4154,6 +4219,7 @@ public class CalendarAssertionTest extends AssertionTest {
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47, "Europe/Berlin")).hasTime(15, 23, 47);
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543, "Europe/Berlin")).hasTime(3, 22, 46);
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543, "Europe/Berlin")).hasTime(3, 22, 46);
+        initialize(Raw.calendarAssertion(), DataHelper.createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC")).isNotNull().hasTime(15, 23, 47).isInstanceOf(Calendar.class);
 
         try {
             Raw.calendarAssertion().hasTime(1, 1, 1);
@@ -4228,6 +4294,7 @@ public class CalendarAssertionTest extends AssertionTest {
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47, "Europe/Berlin")).hasTime(15, 23, 47, 0);
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543, "Europe/Berlin")).hasTime(3, 22, 46, 543);
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543, "Europe/Berlin")).hasTime(3, 22, 46, 543);
+        initialize(Raw.calendarAssertion(), DataHelper.createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC")).isNotNull().hasTime(15, 23, 47, 0).isInstanceOf(Calendar.class);
 
         try {
             Raw.calendarAssertion().hasTime(1, 1, 1, 1);
@@ -4314,6 +4381,7 @@ public class CalendarAssertionTest extends AssertionTest {
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47, "Europe/Berlin")).hasTimeZoneTime(15, 23, 47, "Europe/Berlin");
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543, "Europe/Berlin")).hasTimeZoneTime(3, 22, 46, "Europe/Berlin");
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543, "Europe/Berlin")).hasTimeZoneTime(3, 22, 46, "Europe/Berlin");
+        initialize(Raw.calendarAssertion(), DataHelper.createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC")).isNotNull().hasTimeZoneTime(15, 23, 47, "UTC").isInstanceOf(Calendar.class);
 
         try {
             Raw.calendarAssertion().hasTimeZoneTime(1, 1, 1, "UTC");
@@ -4400,6 +4468,7 @@ public class CalendarAssertionTest extends AssertionTest {
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47, "Europe/Berlin")).hasTimeZoneTime(15, 23, 47, 60 * 60 * 1000);
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543, "Europe/Berlin")).hasTimeZoneTime(3, 22, 46, 60 * 60 * 1000);
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543, "Europe/Berlin")).hasTimeZoneTime(3, 22, 46, 60 * 60 * 1000);
+        initialize(Raw.calendarAssertion(), DataHelper.createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC")).isNotNull().hasTimeZoneTime(15, 23, 47, 0).isInstanceOf(Calendar.class);
 
         try {
             Raw.calendarAssertion().hasTimeZoneTime(1, 1, 1, 0);
@@ -4486,6 +4555,7 @@ public class CalendarAssertionTest extends AssertionTest {
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47, "Europe/Berlin")).hasTimeZoneTime(15, 23, 47, 0, "Europe/Berlin");
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543, "Europe/Berlin")).hasTimeZoneTime(3, 22, 46, 543, "Europe/Berlin");
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543, "Europe/Berlin")).hasTimeZoneTime(3, 22, 46, 543, "Europe/Berlin");
+        initialize(Raw.calendarAssertion(), DataHelper.createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC")).isNotNull().hasTimeZoneTime(15, 23, 47, 0, "UTC").isInstanceOf(Calendar.class);
 
         try {
             Raw.calendarAssertion().hasTimeZoneTime(1, 1, 1, 1, "UTC");
@@ -4584,6 +4654,7 @@ public class CalendarAssertionTest extends AssertionTest {
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47, "Europe/Berlin")).hasTimeZoneTime(15, 23, 47, 0, 60 * 60 * 1000);
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543, "Europe/Berlin")).hasTimeZoneTime(3, 22, 46, 543, 60 * 60 * 1000);
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543, "Europe/Berlin")).hasTimeZoneTime(3, 22, 46, 543, 60 * 60 * 1000);
+        initialize(Raw.calendarAssertion(), DataHelper.createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC")).isNotNull().hasTimeZoneTime(15, 23, 47, 0, 0).isInstanceOf(Calendar.class);
 
         try {
             Raw.calendarAssertion().hasTimeZoneTime(1, 1, 1, 1, 0);
@@ -4682,6 +4753,7 @@ public class CalendarAssertionTest extends AssertionTest {
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47, "Europe/Berlin")).hasUtcTime(14, 23, 47);
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543, "Europe/Berlin")).hasUtcTime(2, 22, 46);
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543, "Europe/Berlin")).hasUtcTime(2, 22, 46);
+        initialize(Raw.calendarAssertion(), DataHelper.createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC")).isNotNull().hasUtcTime(15, 23, 47).isInstanceOf(Calendar.class);
 
         try {
             Raw.calendarAssertion().hasUtcTime(1, 1, 1);
@@ -4756,6 +4828,7 @@ public class CalendarAssertionTest extends AssertionTest {
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47, "Europe/Berlin")).hasUtcTime(14, 23, 47, 0);
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543, "Europe/Berlin")).hasUtcTime(2, 22, 46, 543);
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543, "Europe/Berlin")).hasUtcTime(2, 22, 46, 543);
+        initialize(Raw.calendarAssertion(), DataHelper.createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC")).isNotNull().hasUtcTime(15, 23, 47, 0).isInstanceOf(Calendar.class);
 
         try {
             Raw.calendarAssertion().hasUtcTime(1, 1, 1, 1);
@@ -4842,6 +4915,7 @@ public class CalendarAssertionTest extends AssertionTest {
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47, "Europe/Berlin")).hasDateAndTime(2020, Calendar.DECEMBER, 11, 15, 23, 47);
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543, "Europe/Berlin")).hasDateAndTime(1324, Calendar.JULY, 21, 3, 22, 46);
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543, "Europe/Berlin")).hasDateAndTime(1324, Calendar.DECEMBER, 21, 3, 22, 46);
+        initialize(Raw.calendarAssertion(), DataHelper.createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC")).isNotNull().hasDateAndTime(2020, Calendar.JULY, 11, 15, 23, 47).isInstanceOf(Calendar.class);
 
         try {
             Raw.calendarAssertion().hasDateAndTime(1, 1, 1, 1, 1, 1);
@@ -4952,6 +5026,7 @@ public class CalendarAssertionTest extends AssertionTest {
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47, "Europe/Berlin")).hasDateAndTime(2020, Calendar.DECEMBER, 11, 15, 23, 47, 0);
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543, "Europe/Berlin")).hasDateAndTime(1324, Calendar.JULY, 21, 3, 22, 46, 543);
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543, "Europe/Berlin")).hasDateAndTime(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543);
+        initialize(Raw.calendarAssertion(), DataHelper.createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC")).isNotNull().hasDateAndTime(2020, Calendar.JULY, 11, 15, 23, 47, 0).isInstanceOf(Calendar.class);
 
         try {
             Raw.calendarAssertion().hasDateAndTime(1, 1, 1, 1, 1, 1, 1);
@@ -5074,6 +5149,7 @@ public class CalendarAssertionTest extends AssertionTest {
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47, "Europe/Berlin")).hasTimeZoneDateAndTime(2020, Calendar.DECEMBER, 11, 15, 23, 47, "Europe/Berlin");
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543, "Europe/Berlin")).hasTimeZoneDateAndTime(1324, Calendar.JULY, 21, 3, 22, 46, "Europe/Berlin");
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543, "Europe/Berlin")).hasTimeZoneDateAndTime(1324, Calendar.DECEMBER, 21, 3, 22, 46, "Europe/Berlin");
+        initialize(Raw.calendarAssertion(), DataHelper.createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC")).isNotNull().hasTimeZoneDateAndTime(2020, Calendar.JULY, 11, 15, 23, 47, "UTC").isInstanceOf(Calendar.class);
 
         try {
             Raw.calendarAssertion().hasTimeZoneDateAndTime(1, 1, 1, 1, 1, 1, "UTC");
@@ -5196,6 +5272,7 @@ public class CalendarAssertionTest extends AssertionTest {
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47, "Europe/Berlin")).hasTimeZoneDateAndTime(2020, Calendar.DECEMBER, 11, 15, 23, 47, 60 * 60 * 1000);
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543, "Europe/Berlin")).hasTimeZoneDateAndTime(1324, Calendar.JULY, 21, 3, 22, 46, 60 * 60 * 1000);
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543, "Europe/Berlin")).hasTimeZoneDateAndTime(1324, Calendar.DECEMBER, 21, 3, 22, 46, 60 * 60 * 1000);
+        initialize(Raw.calendarAssertion(), DataHelper.createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC")).isNotNull().hasTimeZoneDateAndTime(2020, Calendar.JULY, 11, 15, 23, 47, 0).isInstanceOf(Calendar.class);
 
         try {
             Raw.calendarAssertion().hasTimeZoneDateAndTime(1, 1, 1, 1, 1, 1, 0);
@@ -5318,6 +5395,7 @@ public class CalendarAssertionTest extends AssertionTest {
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47, "Europe/Berlin")).hasTimeZoneDateAndTime(2020, Calendar.DECEMBER, 11, 15, 23, 47, 0, "Europe/Berlin");
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543, "Europe/Berlin")).hasTimeZoneDateAndTime(1324, Calendar.JULY, 21, 3, 22, 46, 543, "Europe/Berlin");
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543, "Europe/Berlin")).hasTimeZoneDateAndTime(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543, "Europe/Berlin");
+        initialize(Raw.calendarAssertion(), DataHelper.createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC")).isNotNull().hasTimeZoneDateAndTime(2020, Calendar.JULY, 11, 15, 23, 47, 0, "UTC").isInstanceOf(Calendar.class);
 
         try {
             Raw.calendarAssertion().hasTimeZoneDateAndTime(1, 1, 1, 1, 1, 1, 1, "UTC");
@@ -5452,6 +5530,7 @@ public class CalendarAssertionTest extends AssertionTest {
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47, "Europe/Berlin")).hasTimeZoneDateAndTime(2020, Calendar.DECEMBER, 11, 15, 23, 47, 0, 60 * 60 * 1000);
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543, "Europe/Berlin")).hasTimeZoneDateAndTime(1324, Calendar.JULY, 21, 3, 22, 46, 543, 60 * 60 * 1000);
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543, "Europe/Berlin")).hasTimeZoneDateAndTime(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543, 60 * 60 * 1000);
+        initialize(Raw.calendarAssertion(), DataHelper.createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC")).isNotNull().hasTimeZoneDateAndTime(2020, Calendar.JULY, 11, 15, 23, 47, 0, 0).isInstanceOf(Calendar.class);
 
         try {
             Raw.calendarAssertion().hasTimeZoneDateAndTime(1, 1, 1, 1, 1, 1, 1, 0);
@@ -5586,6 +5665,7 @@ public class CalendarAssertionTest extends AssertionTest {
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47, "Europe/Berlin")).hasUtcDateAndTime(2020, Calendar.DECEMBER, 11, 14, 23, 47);
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543, "Europe/Berlin")).hasUtcDateAndTime(1324, Calendar.JULY, 21, 2, 22, 46);
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543, "Europe/Berlin")).hasUtcDateAndTime(1324, Calendar.DECEMBER, 21, 2, 22, 46);
+        initialize(Raw.calendarAssertion(), DataHelper.createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC")).isNotNull().hasUtcDateAndTime(2020, Calendar.JULY, 11, 15, 23, 47).isInstanceOf(Calendar.class);
 
         try {
             Raw.calendarAssertion().hasUtcDateAndTime(1, 1, 1, 1, 1, 1);
@@ -5696,6 +5776,7 @@ public class CalendarAssertionTest extends AssertionTest {
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47, "Europe/Berlin")).hasUtcDateAndTime(2020, Calendar.DECEMBER, 11, 14, 23, 47, 0);
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543, "Europe/Berlin")).hasUtcDateAndTime(1324, Calendar.JULY, 21, 2, 22, 46, 543);
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543, "Europe/Berlin")).hasUtcDateAndTime(1324, Calendar.DECEMBER, 21, 2, 22, 46, 543);
+        initialize(Raw.calendarAssertion(), DataHelper.createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC")).isNotNull().hasUtcDateAndTime(2020, Calendar.JULY, 11, 15, 23, 47, 0).isInstanceOf(Calendar.class);
 
         try {
             Raw.calendarAssertion().hasUtcDateAndTime(1, 1, 1, 1, 1, 1, 1);
@@ -5842,6 +5923,7 @@ public class CalendarAssertionTest extends AssertionTest {
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47, "Europe/Berlin")).toTimeZoneCalendar(TimeZone.getTimeZone("Europe/Berlin")).isEqualTo(DataHelper.createCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47, "Europe/Berlin"));
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543, "Europe/Berlin")).toTimeZoneCalendar(TimeZone.getTimeZone("Europe/Berlin")).isEqualTo(DataHelper.createCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543, "Europe/Berlin"));
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543, "Europe/Berlin")).toTimeZoneCalendar(TimeZone.getTimeZone("Europe/Berlin")).isEqualTo(DataHelper.createCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543, "Europe/Berlin"));
+        initialize(Raw.calendarAssertion(), DataHelper.createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC")).isNotNull().toTimeZoneCalendar(TimeZone.getTimeZone("UTC")).isEqualTo(DataHelper.createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC"));
 
         try {
             Raw.calendarAssertion().toTimeZoneCalendar(TimeZone.getTimeZone("UTC"));
@@ -5940,6 +6022,7 @@ public class CalendarAssertionTest extends AssertionTest {
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47, "Europe/Berlin")).toTimeZoneCalendar("Europe/Berlin").isEqualTo(DataHelper.createCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47, "Europe/Berlin"));
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543, "Europe/Berlin")).toTimeZoneCalendar("Europe/Berlin").isEqualTo(DataHelper.createCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543, "Europe/Berlin"));
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543, "Europe/Berlin")).toTimeZoneCalendar("Europe/Berlin").isEqualTo(DataHelper.createCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543, "Europe/Berlin"));
+        initialize(Raw.calendarAssertion(), DataHelper.createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC")).isNotNull().toTimeZoneCalendar("UTC").isEqualTo(DataHelper.createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC"));
 
         try {
             Raw.calendarAssertion().toTimeZoneCalendar("UTC");
@@ -6014,6 +6097,7 @@ public class CalendarAssertionTest extends AssertionTest {
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47, "Europe/Berlin")).toUtcTimeZoneCalendar().isEqualTo(DataHelper.createCalendar(2020, Calendar.DECEMBER, 11, 14, 23, 47, "UTC"));
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543, "Europe/Berlin")).toUtcTimeZoneCalendar().isEqualTo(DataHelper.createCalendar(1324, Calendar.JULY, 21, 2, 22, 46, 543, "UTC"));
         initialize(Raw.calendarAssertion(), DataHelper.createCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543, "Europe/Berlin")).toUtcTimeZoneCalendar().isEqualTo(DataHelper.createCalendar(1324, Calendar.DECEMBER, 21, 2, 22, 46, 543, "UTC"));
+        initialize(Raw.calendarAssertion(), DataHelper.createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC")).isNotNull().toUtcTimeZoneCalendar().isEqualTo(DataHelper.createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC"));
 
         try {
             Raw.calendarAssertion().toUtcTimeZoneCalendar();

@@ -75,6 +75,7 @@ public class DateAssertionTest extends AssertionTest {
         initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.DECEMBER, 11, 15, 23, 47)).isEqualTo(DataHelper.createDate(2020, Calendar.DECEMBER, 11, 15, 23, 47));
         initialize(Raw.dateAssertion(), DataHelper.createDate(1324, Calendar.JULY, 21, 3, 22, 46, 543)).isEqualTo(DataHelper.createDate(1324, Calendar.JULY, 21, 3, 22, 46, 543));
         initialize(Raw.dateAssertion(), DataHelper.createDate(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).isEqualTo(DataHelper.createDate(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543));
+        initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.JULY, 11, 15, 23, 47)).isNotNull().isEqualTo(DataHelper.createDate(2020, Calendar.JULY, 11, 15, 23, 47)).isInstanceOf(Date.class);
 
         try {
             Raw.dateAssertion().isEqualTo(DataHelper.createDate(1, 1, 1, 1, 1, 1));
@@ -145,6 +146,7 @@ public class DateAssertionTest extends AssertionTest {
         initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.JULY, 11, 15, 23, 47)).isNotEqualTo(DataHelper.createDate(2020, Calendar.JULY, 11, 16, 23, 47));
         initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.JULY, 11, 15, 23, 47)).isNotEqualTo(DataHelper.createDate(2020, Calendar.JULY, 11, 15, 22, 47));
         initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.JULY, 11, 15, 23, 47)).isNotEqualTo(DataHelper.createDate(2020, Calendar.JULY, 11, 15, 23, 46));
+        initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.JULY, 11, 15, 23, 47)).isNotNull().isNotEqualTo(DataHelper.createDate(2019, Calendar.JULY, 11, 15, 23, 47)).isInstanceOf(Date.class);
 
         try {
             Raw.dateAssertion().isNotEqualTo(DataHelper.createDate(1, 1, 1, 1, 1, 1));
@@ -202,6 +204,7 @@ public class DateAssertionTest extends AssertionTest {
         initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.JULY, 11, 15, 23, 47, 345)).isGreaterThan(DataHelper.createDate(2020, Calendar.JULY, 11, 15, 22, 47, 345));
         initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.JULY, 11, 15, 23, 47, 345)).isGreaterThan(DataHelper.createDate(2020, Calendar.JULY, 11, 15, 23, 46, 345));
         initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.JULY, 11, 15, 23, 47, 345)).isGreaterThan(DataHelper.createDate(2020, Calendar.JULY, 11, 15, 23, 47, 344));
+        initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.JULY, 11, 15, 23, 47, 345)).isNotNull().isGreaterThan(DataHelper.createDate(2019, Calendar.JULY, 11, 15, 23, 47, 345)).isInstanceOf(Date.class);
 
         try {
             Raw.dateAssertion().isGreaterThan(DataHelper.createDate(1, 1, 1, 1, 1, 1, 1));
@@ -284,6 +287,7 @@ public class DateAssertionTest extends AssertionTest {
         initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.JULY, 11, 15, 23, 47, 345)).isGreaterThanOrEqualTo(DataHelper.createDate(2020, Calendar.JULY, 11, 15, 22, 47, 345));
         initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.JULY, 11, 15, 23, 47, 345)).isGreaterThanOrEqualTo(DataHelper.createDate(2020, Calendar.JULY, 11, 15, 23, 46, 345));
         initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.JULY, 11, 15, 23, 47, 345)).isGreaterThanOrEqualTo(DataHelper.createDate(2020, Calendar.JULY, 11, 15, 23, 47, 344));
+        initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.JULY, 11, 15, 23, 47, 345)).isNotNull().isGreaterThanOrEqualTo(DataHelper.createDate(2020, Calendar.JULY, 11, 15, 23, 47, 345)).isInstanceOf(Date.class);
 
         try {
             Raw.dateAssertion().isGreaterThanOrEqualTo(DataHelper.createDate(1, 1, 1, 1, 1, 1, 1));
@@ -353,6 +357,7 @@ public class DateAssertionTest extends AssertionTest {
         initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.JULY, 11, 15, 23, 47, 345)).isLessThan(DataHelper.createDate(2020, Calendar.JULY, 11, 15, 24, 47, 345));
         initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.JULY, 11, 15, 23, 47, 345)).isLessThan(DataHelper.createDate(2020, Calendar.JULY, 11, 15, 23, 48, 345));
         initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.JULY, 11, 15, 23, 47, 345)).isLessThan(DataHelper.createDate(2020, Calendar.JULY, 11, 15, 23, 47, 346));
+        initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.JULY, 11, 15, 23, 47, 345)).isNotNull().isLessThan(DataHelper.createDate(2021, Calendar.JULY, 11, 15, 23, 47, 345)).isInstanceOf(Date.class);
 
         try {
             Raw.dateAssertion().isLessThan(DataHelper.createDate(1, 1, 1, 1, 1, 1, 1));
@@ -435,6 +440,7 @@ public class DateAssertionTest extends AssertionTest {
         initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.JULY, 11, 15, 23, 47, 345)).isLessThanOrEqualTo(DataHelper.createDate(2020, Calendar.JULY, 11, 15, 24, 47, 345));
         initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.JULY, 11, 15, 23, 47, 345)).isLessThanOrEqualTo(DataHelper.createDate(2020, Calendar.JULY, 11, 15, 23, 48, 345));
         initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.JULY, 11, 15, 23, 47, 345)).isLessThanOrEqualTo(DataHelper.createDate(2020, Calendar.JULY, 11, 15, 23, 47, 346));
+        initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.JULY, 11, 15, 23, 47, 345)).isNotNull().isLessThanOrEqualTo(DataHelper.createDate(2020, Calendar.JULY, 11, 15, 23, 47, 345)).isInstanceOf(Date.class);
 
         try {
             Raw.dateAssertion().isLessThanOrEqualTo(DataHelper.createDate(1, 1, 1, 1, 1, 1, 1));
@@ -505,6 +511,7 @@ public class DateAssertionTest extends AssertionTest {
         initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.JULY, 11, 15, 23, 47, 345)).isInRange(DataHelper.createDate(2020, Calendar.JULY, 11, 15, 23, 46, 345), DataHelper.createDate(2020, Calendar.JULY, 11, 15, 23, 48, 345));
         initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.JULY, 11, 15, 23, 47, 345)).isInRange(DataHelper.createDate(2020, Calendar.JULY, 11, 15, 23, 47, 345), DataHelper.createDate(2020, Calendar.JULY, 11, 15, 23, 47, 346));
         initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.JULY, 11, 15, 23, 47, 345)).isInRange(DataHelper.createDate(2020, Calendar.JULY, 11, 15, 23, 47, 344), DataHelper.createDate(2020, Calendar.JULY, 11, 15, 23, 47, 346));
+        initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.JULY, 11, 15, 23, 47, 345)).isNotNull().isInRange(DataHelper.createDate(2019, Calendar.JULY, 11, 15, 23, 47, 345), DataHelper.createDate(2021, Calendar.JULY, 11, 15, 23, 47, 345)).isInstanceOf(Date.class);
 
         try {
             Raw.dateAssertion().isInRange(DataHelper.createDate(1, 1, 1, 1, 1, 1, 1), DataHelper.createDate(1, 1, 1, 1, 1, 1, 1));
@@ -642,6 +649,7 @@ public class DateAssertionTest extends AssertionTest {
         initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.JULY, 11, 15, 23, 47, 345)).isNotInRange(DataHelper.createDate(2020, Calendar.JULY, 11, 15, 23, 48, 345), DataHelper.createDate(2020, Calendar.JULY, 11, 15, 23, 49, 345));
         initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.JULY, 11, 15, 23, 47, 345)).isNotInRange(DataHelper.createDate(2020, Calendar.JULY, 11, 15, 23, 47, 343), DataHelper.createDate(2020, Calendar.JULY, 11, 15, 23, 47, 344));
         initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.JULY, 11, 15, 23, 47, 345)).isNotInRange(DataHelper.createDate(2020, Calendar.JULY, 11, 15, 23, 47, 346), DataHelper.createDate(2020, Calendar.JULY, 11, 15, 23, 47, 347));
+        initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.JULY, 11, 15, 23, 47, 345)).isNotNull().isNotInRange(DataHelper.createDate(2020, Calendar.JULY, 11, 15, 23, 47, 345), DataHelper.createDate(2020, Calendar.JULY, 11, 15, 23, 47, 345)).isInstanceOf(Date.class);
 
         try {
             Raw.dateAssertion().isNotInRange(DataHelper.createDate(1, 1, 1, 1, 1, 1, 1), DataHelper.createDate(1, 1, 1, 1, 1, 1, 1));
@@ -756,6 +764,7 @@ public class DateAssertionTest extends AssertionTest {
         initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.DECEMBER, 11, 15, 23, 47)).toYear().isEqualTo(2020);
         initialize(Raw.dateAssertion(), DataHelper.createDate(1324, Calendar.JULY, 21, 3, 22, 46, 543)).toYear().isEqualTo(1324);
         initialize(Raw.dateAssertion(), DataHelper.createDate(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).toYear().isEqualTo(1324);
+        initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.JULY, 11, 15, 23, 47)).isNotNull().toYear().isEqualTo(2020);
 
         try {
             Raw.dateAssertion().toYear();
@@ -810,6 +819,7 @@ public class DateAssertionTest extends AssertionTest {
         initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.DECEMBER, 11, 15, 23, 47)).toYear(Matchers.is(Matchers.equalTo(2020)));
         initialize(Raw.dateAssertion(), DataHelper.createDate(1324, Calendar.JULY, 21, 3, 22, 46, 543)).toYear(Matchers.is(Matchers.equalTo(1324)));
         initialize(Raw.dateAssertion(), DataHelper.createDate(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).toYear(Matchers.is(Matchers.equalTo(1324)));
+        initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.JULY, 11, 15, 23, 47)).isNotNull().toYear(Matchers.is(Matchers.equalTo(2020))).isInstanceOf(Date.class);
 
         try {
             Raw.dateAssertion().toYear(Matchers.equalTo(0));
@@ -876,6 +886,7 @@ public class DateAssertionTest extends AssertionTest {
         initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.DECEMBER, 11, 15, 23, 47)).hasYear(2020);
         initialize(Raw.dateAssertion(), DataHelper.createDate(1324, Calendar.JULY, 21, 3, 22, 46, 543)).hasYear(1324);
         initialize(Raw.dateAssertion(), DataHelper.createDate(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).hasYear(1324);
+        initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.JULY, 11, 15, 23, 47)).isNotNull().hasYear(2020).isInstanceOf(Date.class);
 
         try {
             Raw.dateAssertion().hasYear(0);
@@ -918,6 +929,7 @@ public class DateAssertionTest extends AssertionTest {
         initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.DECEMBER, 11, 15, 23, 47)).toMonth().isEqualTo(Calendar.DECEMBER);
         initialize(Raw.dateAssertion(), DataHelper.createDate(1324, Calendar.JULY, 21, 3, 22, 46, 543)).toMonth().isEqualTo(Calendar.JULY);
         initialize(Raw.dateAssertion(), DataHelper.createDate(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).toMonth().isEqualTo(Calendar.DECEMBER);
+        initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.JULY, 11, 15, 23, 47)).isNotNull().toMonth().isEqualTo(Calendar.JULY);
 
         try {
             Raw.dateAssertion().toMonth();
@@ -972,6 +984,7 @@ public class DateAssertionTest extends AssertionTest {
         initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.DECEMBER, 11, 15, 23, 47)).toMonth(Matchers.is(Matchers.equalTo(Calendar.DECEMBER)));
         initialize(Raw.dateAssertion(), DataHelper.createDate(1324, Calendar.JULY, 21, 3, 22, 46, 543)).toMonth(Matchers.is(Matchers.equalTo(Calendar.JULY)));
         initialize(Raw.dateAssertion(), DataHelper.createDate(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).toMonth(Matchers.is(Matchers.equalTo(Calendar.DECEMBER)));
+        initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.JULY, 11, 15, 23, 47)).isNotNull().toMonth(Matchers.is(Matchers.equalTo(Calendar.JULY))).isInstanceOf(Date.class);
 
         try {
             Raw.dateAssertion().toMonth(Matchers.equalTo(0));
@@ -1038,6 +1051,7 @@ public class DateAssertionTest extends AssertionTest {
         initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.DECEMBER, 11, 15, 23, 47)).hasMonth(Calendar.DECEMBER);
         initialize(Raw.dateAssertion(), DataHelper.createDate(1324, Calendar.JULY, 21, 3, 22, 46, 543)).hasMonth(Calendar.JULY);
         initialize(Raw.dateAssertion(), DataHelper.createDate(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).hasMonth(Calendar.DECEMBER);
+        initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.JULY, 11, 15, 23, 47)).isNotNull().hasMonth(Calendar.JULY).isInstanceOf(Date.class);
 
         try {
             Raw.dateAssertion().hasMonth(0);
@@ -1080,6 +1094,7 @@ public class DateAssertionTest extends AssertionTest {
         initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.DECEMBER, 11, 15, 23, 47)).toWeekOfYear().isEqualTo(50);
         initialize(Raw.dateAssertion(), DataHelper.createDate(1324, Calendar.JULY, 21, 3, 22, 46, 543)).toWeekOfYear().isEqualTo(30);
         initialize(Raw.dateAssertion(), DataHelper.createDate(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).toWeekOfYear().isEqualTo(52);
+        initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.JULY, 11, 15, 23, 47)).isNotNull().toWeekOfYear().isEqualTo(28);
 
         try {
             Raw.dateAssertion().toWeekOfYear();
@@ -1134,6 +1149,7 @@ public class DateAssertionTest extends AssertionTest {
         initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.DECEMBER, 11, 15, 23, 47)).toWeekOfYear(Matchers.is(Matchers.equalTo(50)));
         initialize(Raw.dateAssertion(), DataHelper.createDate(1324, Calendar.JULY, 21, 3, 22, 46, 543)).toWeekOfYear(Matchers.is(Matchers.equalTo(30)));
         initialize(Raw.dateAssertion(), DataHelper.createDate(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).toWeekOfYear(Matchers.is(Matchers.equalTo(52)));
+        initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.JULY, 11, 15, 23, 47)).isNotNull().toWeekOfYear(Matchers.is(Matchers.equalTo(28))).isInstanceOf(Date.class);
 
         try {
             Raw.dateAssertion().toWeekOfYear(Matchers.equalTo(0));
@@ -1200,6 +1216,7 @@ public class DateAssertionTest extends AssertionTest {
         initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.DECEMBER, 11, 15, 23, 47)).hasWeekOfYear(50);
         initialize(Raw.dateAssertion(), DataHelper.createDate(1324, Calendar.JULY, 21, 3, 22, 46, 543)).hasWeekOfYear(30);
         initialize(Raw.dateAssertion(), DataHelper.createDate(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).hasWeekOfYear(52);
+        initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.JULY, 11, 15, 23, 47)).isNotNull().hasWeekOfYear(28).isInstanceOf(Date.class);
 
         try {
             Raw.dateAssertion().hasWeekOfYear(0);
@@ -1242,6 +1259,7 @@ public class DateAssertionTest extends AssertionTest {
         initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.DECEMBER, 11, 15, 23, 47)).toWeekOfMonth().isEqualTo(2);
         initialize(Raw.dateAssertion(), DataHelper.createDate(1324, Calendar.JULY, 21, 3, 22, 46, 543)).toWeekOfMonth().isEqualTo(4);
         initialize(Raw.dateAssertion(), DataHelper.createDate(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).toWeekOfMonth().isEqualTo(4);
+        initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.JULY, 11, 15, 23, 47)).isNotNull().toWeekOfMonth().isEqualTo(2);
 
         try {
             Raw.dateAssertion().toWeekOfMonth();
@@ -1296,6 +1314,7 @@ public class DateAssertionTest extends AssertionTest {
         initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.DECEMBER, 11, 15, 23, 47)).toWeekOfMonth(Matchers.is(Matchers.equalTo(2)));
         initialize(Raw.dateAssertion(), DataHelper.createDate(1324, Calendar.JULY, 21, 3, 22, 46, 543)).toWeekOfMonth(Matchers.is(Matchers.equalTo(4)));
         initialize(Raw.dateAssertion(), DataHelper.createDate(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).toWeekOfMonth(Matchers.is(Matchers.equalTo(4)));
+        initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.JULY, 11, 15, 23, 47)).isNotNull().toWeekOfMonth(Matchers.is(Matchers.equalTo(2))).isInstanceOf(Date.class);
 
         try {
             Raw.dateAssertion().toWeekOfMonth(Matchers.equalTo(0));
@@ -1362,6 +1381,7 @@ public class DateAssertionTest extends AssertionTest {
         initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.DECEMBER, 11, 15, 23, 47)).hasWeekOfMonth(2);
         initialize(Raw.dateAssertion(), DataHelper.createDate(1324, Calendar.JULY, 21, 3, 22, 46, 543)).hasWeekOfMonth(4);
         initialize(Raw.dateAssertion(), DataHelper.createDate(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).hasWeekOfMonth(4);
+        initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.JULY, 11, 15, 23, 47)).isNotNull().hasWeekOfMonth(2).isInstanceOf(Date.class);
 
         try {
             Raw.dateAssertion().hasWeekOfMonth(0);
@@ -1404,6 +1424,7 @@ public class DateAssertionTest extends AssertionTest {
         initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.DECEMBER, 11, 15, 23, 47)).toDayOfYear().isEqualTo(346);
         initialize(Raw.dateAssertion(), DataHelper.createDate(1324, Calendar.JULY, 21, 3, 22, 46, 543)).toDayOfYear().isEqualTo(203);
         initialize(Raw.dateAssertion(), DataHelper.createDate(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).toDayOfYear().isEqualTo(356);
+        initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.JULY, 11, 15, 23, 47)).isNotNull().toDayOfYear().isEqualTo(193);
 
         try {
             Raw.dateAssertion().toDayOfYear();
@@ -1458,6 +1479,7 @@ public class DateAssertionTest extends AssertionTest {
         initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.DECEMBER, 11, 15, 23, 47)).toDayOfYear(Matchers.is(Matchers.equalTo(346)));
         initialize(Raw.dateAssertion(), DataHelper.createDate(1324, Calendar.JULY, 21, 3, 22, 46, 543)).toDayOfYear(Matchers.is(Matchers.equalTo(203)));
         initialize(Raw.dateAssertion(), DataHelper.createDate(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).toDayOfYear(Matchers.is(Matchers.equalTo(356)));
+        initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.JULY, 11, 15, 23, 47)).isNotNull().toDayOfYear(Matchers.is(Matchers.equalTo(193))).isInstanceOf(Date.class);
 
         try {
             Raw.dateAssertion().toDayOfYear(Matchers.equalTo(0));
@@ -1524,6 +1546,7 @@ public class DateAssertionTest extends AssertionTest {
         initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.DECEMBER, 11, 15, 23, 47)).hasDayOfYear(346);
         initialize(Raw.dateAssertion(), DataHelper.createDate(1324, Calendar.JULY, 21, 3, 22, 46, 543)).hasDayOfYear(203);
         initialize(Raw.dateAssertion(), DataHelper.createDate(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).hasDayOfYear(356);
+        initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.JULY, 11, 15, 23, 47)).isNotNull().hasDayOfYear(193).isInstanceOf(Date.class);
 
         try {
             Raw.dateAssertion().hasDayOfYear(0);
@@ -1566,6 +1589,7 @@ public class DateAssertionTest extends AssertionTest {
         initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.DECEMBER, 11, 15, 23, 47)).toDayOfMonth().isEqualTo(11);
         initialize(Raw.dateAssertion(), DataHelper.createDate(1324, Calendar.JULY, 21, 3, 22, 46, 543)).toDayOfMonth().isEqualTo(21);
         initialize(Raw.dateAssertion(), DataHelper.createDate(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).toDayOfMonth().isEqualTo(21);
+        initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.JULY, 11, 15, 23, 47)).isNotNull().toDayOfMonth().isEqualTo(11);
 
         try {
             Raw.dateAssertion().toDayOfMonth();
@@ -1620,6 +1644,7 @@ public class DateAssertionTest extends AssertionTest {
         initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.DECEMBER, 11, 15, 23, 47)).toDayOfMonth(Matchers.is(Matchers.equalTo(11)));
         initialize(Raw.dateAssertion(), DataHelper.createDate(1324, Calendar.JULY, 21, 3, 22, 46, 543)).toDayOfMonth(Matchers.is(Matchers.equalTo(21)));
         initialize(Raw.dateAssertion(), DataHelper.createDate(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).toDayOfMonth(Matchers.is(Matchers.equalTo(21)));
+        initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.JULY, 11, 15, 23, 47)).isNotNull().toDayOfMonth(Matchers.is(Matchers.equalTo(11))).isInstanceOf(Date.class);
 
         try {
             Raw.dateAssertion().toDayOfMonth(Matchers.equalTo(0));
@@ -1686,6 +1711,7 @@ public class DateAssertionTest extends AssertionTest {
         initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.DECEMBER, 11, 15, 23, 47)).hasDayOfMonth(11);
         initialize(Raw.dateAssertion(), DataHelper.createDate(1324, Calendar.JULY, 21, 3, 22, 46, 543)).hasDayOfMonth(21);
         initialize(Raw.dateAssertion(), DataHelper.createDate(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).hasDayOfMonth(21);
+        initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.JULY, 11, 15, 23, 47)).isNotNull().hasDayOfMonth(11).isInstanceOf(Date.class);
 
         try {
             Raw.dateAssertion().hasDayOfMonth(0);
@@ -1728,6 +1754,7 @@ public class DateAssertionTest extends AssertionTest {
         initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.DECEMBER, 11, 15, 23, 47)).toDayOfWeekInMonth().isEqualTo(2);
         initialize(Raw.dateAssertion(), DataHelper.createDate(1324, Calendar.JULY, 21, 3, 22, 46, 543)).toDayOfWeekInMonth().isEqualTo(3);
         initialize(Raw.dateAssertion(), DataHelper.createDate(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).toDayOfWeekInMonth().isEqualTo(3);
+        initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.JULY, 11, 15, 23, 47)).isNotNull().toDayOfWeekInMonth().isEqualTo(2);
 
         try {
             Raw.dateAssertion().toDayOfWeekInMonth();
@@ -1782,6 +1809,7 @@ public class DateAssertionTest extends AssertionTest {
         initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.DECEMBER, 11, 15, 23, 47)).toDayOfWeekInMonth(Matchers.is(Matchers.equalTo(2)));
         initialize(Raw.dateAssertion(), DataHelper.createDate(1324, Calendar.JULY, 21, 3, 22, 46, 543)).toDayOfWeekInMonth(Matchers.is(Matchers.equalTo(3)));
         initialize(Raw.dateAssertion(), DataHelper.createDate(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).toDayOfWeekInMonth(Matchers.is(Matchers.equalTo(3)));
+        initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.JULY, 11, 15, 23, 47)).isNotNull().toDayOfWeekInMonth(Matchers.is(Matchers.equalTo(2))).isInstanceOf(Date.class);
 
         try {
             Raw.dateAssertion().toDayOfWeekInMonth(Matchers.equalTo(0));
@@ -1848,6 +1876,7 @@ public class DateAssertionTest extends AssertionTest {
         initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.DECEMBER, 11, 15, 23, 47)).hasDayOfWeekInMonth(2);
         initialize(Raw.dateAssertion(), DataHelper.createDate(1324, Calendar.JULY, 21, 3, 22, 46, 543)).hasDayOfWeekInMonth(3);
         initialize(Raw.dateAssertion(), DataHelper.createDate(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).hasDayOfWeekInMonth(3);
+        initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.JULY, 11, 15, 23, 47)).isNotNull().hasDayOfWeekInMonth(2).isInstanceOf(Date.class);
 
         try {
             Raw.dateAssertion().hasDayOfWeekInMonth(0);
@@ -1890,6 +1919,7 @@ public class DateAssertionTest extends AssertionTest {
         initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.DECEMBER, 11, 15, 23, 47)).toDayOfWeek().isEqualTo(Calendar.FRIDAY);
         initialize(Raw.dateAssertion(), DataHelper.createDate(1324, Calendar.JULY, 21, 3, 22, 46, 543)).toDayOfWeek().isEqualTo(Calendar.SATURDAY);
         initialize(Raw.dateAssertion(), DataHelper.createDate(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).toDayOfWeek().isEqualTo(Calendar.FRIDAY);
+        initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.JULY, 11, 15, 23, 47)).isNotNull().toDayOfWeek().isEqualTo(Calendar.SATURDAY);
 
         try {
             Raw.dateAssertion().toDayOfWeek();
@@ -1944,6 +1974,7 @@ public class DateAssertionTest extends AssertionTest {
         initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.DECEMBER, 11, 15, 23, 47)).toDayOfWeek(Matchers.is(Matchers.equalTo(Calendar.FRIDAY)));
         initialize(Raw.dateAssertion(), DataHelper.createDate(1324, Calendar.JULY, 21, 3, 22, 46, 543)).toDayOfWeek(Matchers.is(Matchers.equalTo(Calendar.SATURDAY)));
         initialize(Raw.dateAssertion(), DataHelper.createDate(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).toDayOfWeek(Matchers.is(Matchers.equalTo(Calendar.FRIDAY)));
+        initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.JULY, 11, 15, 23, 47)).isNotNull().toDayOfWeek(Matchers.is(Matchers.equalTo(Calendar.SATURDAY))).isInstanceOf(Date.class);
 
         try {
             Raw.dateAssertion().toDayOfWeek(Matchers.equalTo(0));
@@ -2010,6 +2041,7 @@ public class DateAssertionTest extends AssertionTest {
         initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.DECEMBER, 11, 15, 23, 47)).hasDayOfWeek(Calendar.FRIDAY);
         initialize(Raw.dateAssertion(), DataHelper.createDate(1324, Calendar.JULY, 21, 3, 22, 46, 543)).hasDayOfWeek(Calendar.SATURDAY);
         initialize(Raw.dateAssertion(), DataHelper.createDate(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).hasDayOfWeek(Calendar.FRIDAY);
+        initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.JULY, 11, 15, 23, 47)).isNotNull().hasDayOfWeek(Calendar.SATURDAY).isInstanceOf(Date.class);
 
         try {
             Raw.dateAssertion().hasDayOfWeek(0);
@@ -2052,6 +2084,7 @@ public class DateAssertionTest extends AssertionTest {
         initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.DECEMBER, 11, 15, 23, 47)).toAmPm().isEqualTo(Calendar.PM);
         initialize(Raw.dateAssertion(), DataHelper.createDate(1324, Calendar.JULY, 21, 3, 22, 46, 543)).toAmPm().isEqualTo(Calendar.AM);
         initialize(Raw.dateAssertion(), DataHelper.createDate(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).toAmPm().isEqualTo(Calendar.AM);
+        initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.JULY, 11, 15, 23, 47)).isNotNull().toAmPm().isEqualTo(Calendar.PM);
 
         try {
             Raw.dateAssertion().toAmPm();
@@ -2106,6 +2139,7 @@ public class DateAssertionTest extends AssertionTest {
         initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.DECEMBER, 11, 15, 23, 47)).toAmPm(Matchers.is(Matchers.equalTo(Calendar.PM)));
         initialize(Raw.dateAssertion(), DataHelper.createDate(1324, Calendar.JULY, 21, 3, 22, 46, 543)).toAmPm(Matchers.is(Matchers.equalTo(Calendar.AM)));
         initialize(Raw.dateAssertion(), DataHelper.createDate(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).toAmPm(Matchers.is(Matchers.equalTo(Calendar.AM)));
+        initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.JULY, 11, 15, 23, 47)).isNotNull().toAmPm(Matchers.is(Matchers.equalTo(Calendar.PM))).isInstanceOf(Date.class);
 
         try {
             Raw.dateAssertion().toAmPm(Matchers.equalTo(0));
@@ -2170,6 +2204,7 @@ public class DateAssertionTest extends AssertionTest {
     public void isAmTest() {
         initialize(Raw.dateAssertion(), DataHelper.createDate(1324, Calendar.JULY, 21, 3, 22, 46, 543)).isAm();
         initialize(Raw.dateAssertion(), DataHelper.createDate(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).isAm();
+        initialize(Raw.dateAssertion(), DataHelper.createDate(1324, Calendar.JULY, 21, 3, 22, 46, 543)).isNotNull().isAm().isInstanceOf(Date.class);
 
         try {
             Raw.dateAssertion().isAm();
@@ -2210,6 +2245,7 @@ public class DateAssertionTest extends AssertionTest {
     public void isPmTest() {
         initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.JULY, 11, 15, 23, 47)).isPm();
         initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.DECEMBER, 11, 15, 23, 47)).isPm();
+        initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.JULY, 11, 15, 23, 47)).isNotNull().isPm().isInstanceOf(Date.class);
 
         try {
             Raw.dateAssertion().isPm();
@@ -2252,6 +2288,7 @@ public class DateAssertionTest extends AssertionTest {
         initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.DECEMBER, 11, 15, 23, 47)).toHourOfDay().isEqualTo(15);
         initialize(Raw.dateAssertion(), DataHelper.createDate(1324, Calendar.JULY, 21, 3, 22, 46, 543)).toHourOfDay().isEqualTo(3);
         initialize(Raw.dateAssertion(), DataHelper.createDate(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).toHourOfDay().isEqualTo(3);
+        initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.JULY, 11, 15, 23, 47)).isNotNull().toHourOfDay().isEqualTo(15);
 
         try {
             Raw.dateAssertion().toHourOfDay();
@@ -2306,6 +2343,7 @@ public class DateAssertionTest extends AssertionTest {
         initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.DECEMBER, 11, 15, 23, 47)).toHourOfDay(Matchers.is(Matchers.equalTo(15)));
         initialize(Raw.dateAssertion(), DataHelper.createDate(1324, Calendar.JULY, 21, 3, 22, 46, 543)).toHourOfDay(Matchers.is(Matchers.equalTo(3)));
         initialize(Raw.dateAssertion(), DataHelper.createDate(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).toHourOfDay(Matchers.is(Matchers.equalTo(3)));
+        initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.JULY, 11, 15, 23, 47)).isNotNull().toHourOfDay(Matchers.is(Matchers.equalTo(15))).isInstanceOf(Date.class);
 
         try {
             Raw.dateAssertion().toHourOfDay(Matchers.equalTo(0));
@@ -2372,6 +2410,7 @@ public class DateAssertionTest extends AssertionTest {
         initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.DECEMBER, 11, 15, 23, 47)).hasHourOfDay(15);
         initialize(Raw.dateAssertion(), DataHelper.createDate(1324, Calendar.JULY, 21, 3, 22, 46, 543)).hasHourOfDay(3);
         initialize(Raw.dateAssertion(), DataHelper.createDate(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).hasHourOfDay(3);
+        initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.JULY, 11, 15, 23, 47)).isNotNull().hasHourOfDay(15).isInstanceOf(Date.class);
 
         try {
             Raw.dateAssertion().hasHourOfDay(0);
@@ -2414,6 +2453,7 @@ public class DateAssertionTest extends AssertionTest {
         initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.DECEMBER, 11, 15, 23, 47)).toHour().isEqualTo(3);
         initialize(Raw.dateAssertion(), DataHelper.createDate(1324, Calendar.JULY, 21, 3, 22, 46, 543)).toHour().isEqualTo(3);
         initialize(Raw.dateAssertion(), DataHelper.createDate(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).toHour().isEqualTo(3);
+        initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.JULY, 11, 15, 23, 47)).isNotNull().toHour().isEqualTo(3);
 
         try {
             Raw.dateAssertion().toHour();
@@ -2468,6 +2508,7 @@ public class DateAssertionTest extends AssertionTest {
         initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.DECEMBER, 11, 15, 23, 47)).toHour(Matchers.is(Matchers.equalTo(3)));
         initialize(Raw.dateAssertion(), DataHelper.createDate(1324, Calendar.JULY, 21, 3, 22, 46, 543)).toHour(Matchers.is(Matchers.equalTo(3)));
         initialize(Raw.dateAssertion(), DataHelper.createDate(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).toHour(Matchers.is(Matchers.equalTo(3)));
+        initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.JULY, 11, 15, 23, 47)).isNotNull().toHour(Matchers.is(Matchers.equalTo(3))).isInstanceOf(Date.class);
 
         try {
             Raw.dateAssertion().toHour(Matchers.equalTo(0));
@@ -2534,6 +2575,7 @@ public class DateAssertionTest extends AssertionTest {
         initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.DECEMBER, 11, 15, 23, 47)).hasHour(3);
         initialize(Raw.dateAssertion(), DataHelper.createDate(1324, Calendar.JULY, 21, 3, 22, 46, 543)).hasHour(3);
         initialize(Raw.dateAssertion(), DataHelper.createDate(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).hasHour(3);
+        initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.JULY, 11, 15, 23, 47)).isNotNull().hasHour(3).isInstanceOf(Date.class);
 
         try {
             Raw.dateAssertion().hasHour(0);
@@ -2576,6 +2618,7 @@ public class DateAssertionTest extends AssertionTest {
         initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.DECEMBER, 11, 15, 23, 47)).toMinute().isEqualTo(23);
         initialize(Raw.dateAssertion(), DataHelper.createDate(1324, Calendar.JULY, 21, 3, 22, 46, 543)).toMinute().isEqualTo(22);
         initialize(Raw.dateAssertion(), DataHelper.createDate(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).toMinute().isEqualTo(22);
+        initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.JULY, 11, 15, 23, 47)).isNotNull().toMinute().isEqualTo(23);
 
         try {
             Raw.dateAssertion().toMinute();
@@ -2630,6 +2673,7 @@ public class DateAssertionTest extends AssertionTest {
         initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.DECEMBER, 11, 15, 23, 47)).toMinute(Matchers.is(Matchers.equalTo(23)));
         initialize(Raw.dateAssertion(), DataHelper.createDate(1324, Calendar.JULY, 21, 3, 22, 46, 543)).toMinute(Matchers.is(Matchers.equalTo(22)));
         initialize(Raw.dateAssertion(), DataHelper.createDate(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).toMinute(Matchers.is(Matchers.equalTo(22)));
+        initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.JULY, 11, 15, 23, 47)).isNotNull().toMinute(Matchers.is(Matchers.equalTo(23))).isInstanceOf(Date.class);
 
         try {
             Raw.dateAssertion().toMinute(Matchers.equalTo(0));
@@ -2696,6 +2740,7 @@ public class DateAssertionTest extends AssertionTest {
         initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.DECEMBER, 11, 15, 23, 47)).hasMinute(23);
         initialize(Raw.dateAssertion(), DataHelper.createDate(1324, Calendar.JULY, 21, 3, 22, 46, 543)).hasMinute(22);
         initialize(Raw.dateAssertion(), DataHelper.createDate(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).hasMinute(22);
+        initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.JULY, 11, 15, 23, 47)).isNotNull().hasMinute(23).isInstanceOf(Date.class);
 
         try {
             Raw.dateAssertion().hasMinute(0);
@@ -2738,6 +2783,7 @@ public class DateAssertionTest extends AssertionTest {
         initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.DECEMBER, 11, 15, 23, 47)).toSecond().isEqualTo(47);
         initialize(Raw.dateAssertion(), DataHelper.createDate(1324, Calendar.JULY, 21, 3, 22, 46, 543)).toSecond().isEqualTo(46);
         initialize(Raw.dateAssertion(), DataHelper.createDate(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).toSecond().isEqualTo(46);
+        initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.JULY, 11, 15, 23, 47)).isNotNull().toSecond().isEqualTo(47);
 
         try {
             Raw.dateAssertion().toSecond();
@@ -2792,6 +2838,7 @@ public class DateAssertionTest extends AssertionTest {
         initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.DECEMBER, 11, 15, 23, 47)).toSecond(Matchers.is(Matchers.equalTo(47)));
         initialize(Raw.dateAssertion(), DataHelper.createDate(1324, Calendar.JULY, 21, 3, 22, 46, 543)).toSecond(Matchers.is(Matchers.equalTo(46)));
         initialize(Raw.dateAssertion(), DataHelper.createDate(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).toSecond(Matchers.is(Matchers.equalTo(46)));
+        initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.JULY, 11, 15, 23, 47)).isNotNull().toSecond(Matchers.is(Matchers.equalTo(47))).isInstanceOf(Date.class);
 
         try {
             Raw.dateAssertion().toSecond(Matchers.equalTo(0));
@@ -2858,6 +2905,7 @@ public class DateAssertionTest extends AssertionTest {
         initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.DECEMBER, 11, 15, 23, 47)).hasSecond(47);
         initialize(Raw.dateAssertion(), DataHelper.createDate(1324, Calendar.JULY, 21, 3, 22, 46, 543)).hasSecond(46);
         initialize(Raw.dateAssertion(), DataHelper.createDate(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).hasSecond(46);
+        initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.JULY, 11, 15, 23, 47)).isNotNull().hasSecond(47).isInstanceOf(Date.class);
 
         try {
             Raw.dateAssertion().hasSecond(0);
@@ -2900,6 +2948,7 @@ public class DateAssertionTest extends AssertionTest {
         initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.DECEMBER, 11, 15, 23, 47)).toMillisecond().isEqualTo(0);
         initialize(Raw.dateAssertion(), DataHelper.createDate(1324, Calendar.JULY, 21, 3, 22, 46, 543)).toMillisecond().isEqualTo(543);
         initialize(Raw.dateAssertion(), DataHelper.createDate(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).toMillisecond().isEqualTo(543);
+        initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.JULY, 11, 15, 23, 47)).isNotNull().toMillisecond().isEqualTo(0);
 
         try {
             Raw.dateAssertion().toMillisecond();
@@ -2954,6 +3003,7 @@ public class DateAssertionTest extends AssertionTest {
         initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.DECEMBER, 11, 15, 23, 47)).toMillisecond(Matchers.is(Matchers.equalTo(0)));
         initialize(Raw.dateAssertion(), DataHelper.createDate(1324, Calendar.JULY, 21, 3, 22, 46, 543)).toMillisecond(Matchers.is(Matchers.equalTo(543)));
         initialize(Raw.dateAssertion(), DataHelper.createDate(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).toMillisecond(Matchers.is(Matchers.equalTo(543)));
+        initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.JULY, 11, 15, 23, 47)).isNotNull().toMillisecond(Matchers.is(Matchers.equalTo(0))).isInstanceOf(Date.class);
 
         try {
             Raw.dateAssertion().toMillisecond(Matchers.equalTo(0));
@@ -3020,6 +3070,7 @@ public class DateAssertionTest extends AssertionTest {
         initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.DECEMBER, 11, 15, 23, 47)).hasMillisecond(0);
         initialize(Raw.dateAssertion(), DataHelper.createDate(1324, Calendar.JULY, 21, 3, 22, 46, 543)).hasMillisecond(543);
         initialize(Raw.dateAssertion(), DataHelper.createDate(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).hasMillisecond(543);
+        initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.JULY, 11, 15, 23, 47)).isNotNull().hasMillisecond(0).isInstanceOf(Date.class);
 
         try {
             Raw.dateAssertion().hasMillisecond(0);
@@ -3062,6 +3113,7 @@ public class DateAssertionTest extends AssertionTest {
         initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.DECEMBER, 11, 15, 23, 47)).hasDate(2020, Calendar.DECEMBER, 11);
         initialize(Raw.dateAssertion(), DataHelper.createDate(1324, Calendar.JULY, 21, 3, 22, 46, 543)).hasDate(1324, Calendar.JULY, 21);
         initialize(Raw.dateAssertion(), DataHelper.createDate(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).hasDate(1324, Calendar.DECEMBER, 21);
+        initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.JULY, 11, 15, 23, 47)).isNotNull().hasDate(2020, Calendar.JULY, 11).isInstanceOf(Date.class);
 
         try {
             Raw.dateAssertion().hasDate(1, 1, 1);
@@ -3128,6 +3180,7 @@ public class DateAssertionTest extends AssertionTest {
         initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.DECEMBER, 11, 15, 23, 47)).hasTime(15, 23, 47);
         initialize(Raw.dateAssertion(), DataHelper.createDate(1324, Calendar.JULY, 21, 3, 22, 46, 543)).hasTime(3, 22, 46);
         initialize(Raw.dateAssertion(), DataHelper.createDate(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).hasTime(3, 22, 46);
+        initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.JULY, 11, 15, 23, 47)).isNotNull().hasTime(15, 23, 47).isInstanceOf(Date.class);
 
         try {
             Raw.dateAssertion().hasTime(1, 1, 1);
@@ -3194,6 +3247,7 @@ public class DateAssertionTest extends AssertionTest {
         initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.DECEMBER, 11, 15, 23, 47)).hasTime(15, 23, 47, 0);
         initialize(Raw.dateAssertion(), DataHelper.createDate(1324, Calendar.JULY, 21, 3, 22, 46, 543)).hasTime(3, 22, 46, 543);
         initialize(Raw.dateAssertion(), DataHelper.createDate(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).hasTime(3, 22, 46, 543);
+        initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.JULY, 11, 15, 23, 47)).isNotNull().hasTime(15, 23, 47, 0).isInstanceOf(Date.class);
 
         try {
             Raw.dateAssertion().hasTime(1, 1, 1, 1);
@@ -3272,6 +3326,7 @@ public class DateAssertionTest extends AssertionTest {
         initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.DECEMBER, 11, 15, 23, 47)).hasDateAndTime(2020, Calendar.DECEMBER, 11, 15, 23, 47);
         initialize(Raw.dateAssertion(), DataHelper.createDate(1324, Calendar.JULY, 21, 3, 22, 46, 543)).hasDateAndTime(1324, Calendar.JULY, 21, 3, 22, 46);
         initialize(Raw.dateAssertion(), DataHelper.createDate(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).hasDateAndTime(1324, Calendar.DECEMBER, 21, 3, 22, 46);
+        initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.JULY, 11, 15, 23, 47)).isNotNull().hasDateAndTime(2020, Calendar.JULY, 11, 15, 23, 47).isInstanceOf(Date.class);
 
         try {
             Raw.dateAssertion().hasDateAndTime(1, 1, 1, 1, 1, 1);
@@ -3374,6 +3429,7 @@ public class DateAssertionTest extends AssertionTest {
         initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.DECEMBER, 11, 15, 23, 47)).hasDateAndTime(2020, Calendar.DECEMBER, 11, 15, 23, 47, 0);
         initialize(Raw.dateAssertion(), DataHelper.createDate(1324, Calendar.JULY, 21, 3, 22, 46, 543)).hasDateAndTime(1324, Calendar.JULY, 21, 3, 22, 46, 543);
         initialize(Raw.dateAssertion(), DataHelper.createDate(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).hasDateAndTime(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543);
+        initialize(Raw.dateAssertion(), DataHelper.createDate(2020, Calendar.JULY, 11, 15, 23, 47)).isNotNull().hasDateAndTime(2020, Calendar.JULY, 11, 15, 23, 47, 0).isInstanceOf(Date.class);
 
         try {
             Raw.dateAssertion().hasDateAndTime(1, 1, 1, 1, 1, 1, 1);
