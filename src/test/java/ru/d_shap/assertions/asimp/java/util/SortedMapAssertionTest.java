@@ -70,6 +70,7 @@ public final class SortedMapAssertionTest extends AssertionTest {
     @Test
     public void isEmptyTest() {
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.<String, String>createTreeMap()).isEmpty();
+        initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.<String, String>createTreeMap()).isNotNull().isEmpty().isInstanceOf(SortedMap.class);
 
         try {
             Raw.<String, String>sortedMapAssertion().isEmpty();
@@ -110,6 +111,7 @@ public final class SortedMapAssertionTest extends AssertionTest {
     public void isNullOrEmptyTest() {
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.<String, String>createTreeMap()).isNullOrEmpty();
         initialize(Raw.<String, String>sortedMapAssertion(), null).isNullOrEmpty();
+        initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.<String, String>createTreeMap()).isNotNull().isNullOrEmpty().isInstanceOf(SortedMap.class);
 
         try {
             Raw.<String, String>sortedMapAssertion().isNullOrEmpty();
@@ -137,6 +139,7 @@ public final class SortedMapAssertionTest extends AssertionTest {
     @Test
     public void isNotEmptyTest() {
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key", "value")).isNotEmpty();
+        initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key", "value")).isNotNull().isNotEmpty().isInstanceOf(SortedMap.class);
 
         try {
             Raw.<String, String>sortedMapAssertion().isNotEmpty();
@@ -176,6 +179,7 @@ public final class SortedMapAssertionTest extends AssertionTest {
     @Test
     public void toKeysTest() {
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", "value2")).toKeys().isNotEmpty();
+        initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", "value2")).isNotNull().toKeys().isNotEmpty();
 
         try {
             Raw.<String, String>sortedMapAssertion().toKeys();
@@ -227,6 +231,7 @@ public final class SortedMapAssertionTest extends AssertionTest {
     @Test
     public void toKeysMatcherTest() {
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", "value2")).toKeys(Matchers.hasItems("key1", "key2"));
+        initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", "value2")).isNotNull().toKeys(Matchers.hasItems("key1", "key2")).isInstanceOf(SortedMap.class);
 
         try {
             Raw.<String, String>sortedMapAssertion().toKeys(Matchers.hasItems(""));
@@ -293,6 +298,7 @@ public final class SortedMapAssertionTest extends AssertionTest {
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", "value2")).containsKey("key2");
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap(null, "value1", "key2", "value2")).containsKey(null);
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", null, "value2")).containsKey(null);
+        initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", "value2")).isNotNull().containsKey("key1").isInstanceOf(SortedMap.class);
 
         try {
             Raw.<String, String>sortedMapAssertion().containsKey("key");
@@ -359,6 +365,7 @@ public final class SortedMapAssertionTest extends AssertionTest {
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", "value2")).doesNotContainKey("key4");
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", null, "value2")).doesNotContainKey("key3");
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", "value2")).doesNotContainKey(null);
+        initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", "value2")).isNotNull().doesNotContainKey("key3").isInstanceOf(SortedMap.class);
 
         try {
             Raw.<String, String>sortedMapAssertion().doesNotContainKey("key");
@@ -428,6 +435,7 @@ public final class SortedMapAssertionTest extends AssertionTest {
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", "value2", "key3", "value3")).toHeadKeys("key4").containsExactlyInOrder("key1", "key2", "key3");
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap(null, "value", "key1", "value1", "key2", "value2")).toHeadKeys("key1").containsExactlyInOrder((String) null);
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", "value2", "key3", "value3")).toHeadKeys(null).containsExactlyInOrder();
+        initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", "value2", "key3", "value3")).isNotNull().toHeadKeys("key0").containsExactlyInOrder();
 
         try {
             Raw.<String, String>sortedMapAssertion().toHeadKeys("key");
@@ -518,6 +526,7 @@ public final class SortedMapAssertionTest extends AssertionTest {
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", "value2", "key3", "value3")).toHeadKeys(2).containsExactlyInOrder("key1", "key2");
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", "value2", "key3", "value3")).toHeadKeys(3).containsExactlyInOrder("key1", "key2", "key3");
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", "value2", "key3", "value3")).toHeadKeys(4).containsExactlyInOrder("key1", "key2", "key3");
+        initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", "value2", "key3", "value3")).isNotNull().toHeadKeys(1).containsExactlyInOrder("key1");
 
         try {
             Raw.<String, String>sortedMapAssertion().toHeadKeys(1);
@@ -659,6 +668,7 @@ public final class SortedMapAssertionTest extends AssertionTest {
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", "value2", "key3", "value3")).toHeadKeys("key4", Matchers.hasItems("key1", "key2", "key3"));
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap(null, "value", "key1", "value1", "key2", "value2")).toHeadKeys("key1", Matchers.hasItems((String) null));
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", "value2", "key3", "value3")).toHeadKeys(null, Matchers.emptyIterableOf(String.class));
+        initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", "value2", "key3", "value3")).isNotNull().toHeadKeys("key0", Matchers.emptyIterableOf(String.class)).isInstanceOf(SortedMap.class);
 
         try {
             Raw.<String, String>sortedMapAssertion().toHeadKeys("key", Matchers.hasItems(""));
@@ -725,6 +735,7 @@ public final class SortedMapAssertionTest extends AssertionTest {
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", "value2", "key3", "value3")).toHeadKeys(2, Matchers.hasItems("key1", "key2"));
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", "value2", "key3", "value3")).toHeadKeys(3, Matchers.hasItems("key1", "key2", "key3"));
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", "value2", "key3", "value3")).toHeadKeys(4, Matchers.hasItems("key1", "key2", "key3"));
+        initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", "value2", "key3", "value3")).isNotNull().toHeadKeys(1, Matchers.hasItems("key1")).isInstanceOf(SortedMap.class);
 
         try {
             Raw.<String, String>sortedMapAssertion().toHeadKeys(1, Matchers.hasItems(""));
@@ -842,6 +853,7 @@ public final class SortedMapAssertionTest extends AssertionTest {
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", "value2", "key3", "value3")).toTailKeys("key4").containsExactlyInOrder();
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap(null, "value", "key1", "value1", "key2", "value2")).toTailKeys("key1").containsExactlyInOrder("key1", "key2");
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", "value2", "key3", "value3")).toTailKeys(null).containsExactlyInOrder("key1", "key2", "key3");
+        initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", "value2", "key3", "value3")).isNotNull().toTailKeys("key0").containsExactlyInOrder("key1", "key2", "key3");
 
         try {
             Raw.<String, String>sortedMapAssertion().toTailKeys("key");
@@ -932,6 +944,7 @@ public final class SortedMapAssertionTest extends AssertionTest {
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", "value2", "key3", "value3")).toTailKeys(2).containsExactlyInOrder("key2", "key3");
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", "value2", "key3", "value3")).toTailKeys(3).containsExactlyInOrder("key1", "key2", "key3");
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", "value2", "key3", "value3")).toTailKeys(4).containsExactlyInOrder("key1", "key2", "key3");
+        initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", "value2", "key3", "value3")).isNotNull().toTailKeys(1).containsExactlyInOrder("key3");
 
         try {
             Raw.<String, String>sortedMapAssertion().toTailKeys(1);
@@ -1073,6 +1086,7 @@ public final class SortedMapAssertionTest extends AssertionTest {
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", "value2", "key3", "value3")).toTailKeys("key4", Matchers.emptyIterableOf(String.class));
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap(null, "value", "key1", "value1", "key2", "value2")).toTailKeys("key1", Matchers.hasItems("key1", "key2"));
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", "value2", "key3", "value3")).toTailKeys(null, Matchers.hasItems("key1", "key2", "key3"));
+        initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", "value2", "key3", "value3")).isNotNull().toTailKeys("key0", Matchers.hasItems("key1", "key2", "key3")).isInstanceOf(SortedMap.class);
 
         try {
             Raw.<String, String>sortedMapAssertion().toTailKeys("key", Matchers.hasItems(""));
@@ -1139,6 +1153,7 @@ public final class SortedMapAssertionTest extends AssertionTest {
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", "value2", "key3", "value3")).toTailKeys(2, Matchers.hasItems("key2", "key3"));
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", "value2", "key3", "value3")).toTailKeys(3, Matchers.hasItems("key1", "key2", "key3"));
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", "value2", "key3", "value3")).toTailKeys(4, Matchers.hasItems("key1", "key2", "key3"));
+        initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", "value2", "key3", "value3")).isNotNull().toTailKeys(1, Matchers.hasItems("key3")).isInstanceOf(SortedMap.class);
 
         try {
             Raw.<String, String>sortedMapAssertion().toTailKeys(1, Matchers.hasItems(""));
@@ -1254,6 +1269,7 @@ public final class SortedMapAssertionTest extends AssertionTest {
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", "value2", "key3", "value3")).containsAllKeys("key1", "key2");
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", "value2", "key3", "value3")).containsAllKeys("key2", "key1");
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", null, "value2", "key3", "value3")).containsAllKeys(null, "key1");
+        initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", "value2", "key3", "value3")).isNotNull().containsAllKeys("key1", "key3").isInstanceOf(SortedMap.class);
 
         try {
             Raw.<String, String>sortedMapAssertion().containsAllKeys("key");
@@ -1363,6 +1379,7 @@ public final class SortedMapAssertionTest extends AssertionTest {
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", "value2", "key3", "value3")).containsAllKeys(DataHelper.createIterable("key1", "key2"));
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", "value2", "key3", "value3")).containsAllKeys(DataHelper.createIterable("key2", "key1"));
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", null, "value2", "key3", "value3")).containsAllKeys(DataHelper.createIterable(null, "key1"));
+        initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", "value2", "key3", "value3")).isNotNull().containsAllKeys(DataHelper.createIterable("key1", "key3")).isInstanceOf(SortedMap.class);
 
         try {
             Raw.<String, String>sortedMapAssertion().containsAllKeys(DataHelper.<String>createIterable());
@@ -1449,6 +1466,7 @@ public final class SortedMapAssertionTest extends AssertionTest {
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", "value2", "key3", "value3")).containsAllKeysInOrder("key1", "key2", "key3");
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", null, "value2", "key3", "value3")).containsAllKeysInOrder(null, "key1");
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", null, "value2", "key3", "value3")).containsAllKeysInOrder(null, "key3");
+        initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", "value2", "key3", "value3")).isNotNull().containsAllKeysInOrder("key1", "key2").isInstanceOf(SortedMap.class);
 
         try {
             Raw.<String, String>sortedMapAssertion().containsAllKeysInOrder("key");
@@ -1577,6 +1595,7 @@ public final class SortedMapAssertionTest extends AssertionTest {
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", "value2", "key3", "value3")).containsAllKeysInOrder(DataHelper.createIterable("key1", "key2", "key3"));
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", null, "value2", "key3", "value3")).containsAllKeysInOrder(DataHelper.createIterable(null, "key1"));
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", null, "value2", "key3", "value3")).containsAllKeysInOrder(DataHelper.createIterable(null, "key3"));
+        initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", "value2", "key3", "value3")).isNotNull().containsAllKeysInOrder(DataHelper.createIterable("key1", "key2")).isInstanceOf(SortedMap.class);
 
         try {
             Raw.<String, String>sortedMapAssertion().containsAllKeysInOrder(DataHelper.<String>createIterable());
@@ -1679,6 +1698,7 @@ public final class SortedMapAssertionTest extends AssertionTest {
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", "value2")).containsKeysExactly("key2", "key1");
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", null, "value2")).containsKeysExactly(null, "key1");
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.<String, String>createTreeMap()).containsKeysExactly();
+        initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", "value2")).isNotNull().containsKeysExactly("key1", "key2").isInstanceOf(SortedMap.class);
 
         try {
             Raw.<String, String>sortedMapAssertion().containsKeysExactly("key");
@@ -1781,6 +1801,7 @@ public final class SortedMapAssertionTest extends AssertionTest {
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", "value2")).containsKeysExactly(DataHelper.createIterable("key2", "key1"));
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", null, "value2")).containsKeysExactly(DataHelper.createIterable(null, "key1"));
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.<String, String>createTreeMap()).containsKeysExactly(DataHelper.<String>createIterable());
+        initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", "value2")).isNotNull().containsKeysExactly(DataHelper.createIterable("key1", "key2")).isInstanceOf(SortedMap.class);
 
         try {
             Raw.<String, String>sortedMapAssertion().containsKeysExactly(DataHelper.<String>createIterable());
@@ -1858,6 +1879,7 @@ public final class SortedMapAssertionTest extends AssertionTest {
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", "value2")).containsKeysExactlyInOrder("key1", "key2");
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", null, "value2")).containsKeysExactlyInOrder(null, "key1");
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.<String, String>createTreeMap()).containsKeysExactlyInOrder();
+        initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", "value2")).isNotNull().containsKeysExactlyInOrder("key1", "key2").isInstanceOf(SortedMap.class);
 
         try {
             Raw.<String, String>sortedMapAssertion().containsKeysExactlyInOrder("key");
@@ -1977,6 +1999,7 @@ public final class SortedMapAssertionTest extends AssertionTest {
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", "value2")).containsKeysExactlyInOrder(DataHelper.createIterable("key1", "key2"));
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", null, "value2")).containsKeysExactlyInOrder(DataHelper.createIterable(null, "key1"));
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.<String, String>createTreeMap()).containsKeysExactlyInOrder(DataHelper.<String>createIterable());
+        initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", "value2")).isNotNull().containsKeysExactlyInOrder(DataHelper.createIterable("key1", "key2")).isInstanceOf(SortedMap.class);
 
         try {
             Raw.<String, String>sortedMapAssertion().containsKeysExactlyInOrder(DataHelper.<String>createIterable());
@@ -2074,6 +2097,7 @@ public final class SortedMapAssertionTest extends AssertionTest {
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", "value2")).containsAnyKey("key1", "key3", "key5");
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", "value2")).containsAnyKey("key6", "key2", "key4");
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", null, "value2")).containsAnyKey("key6", null, "key4");
+        initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", "value2")).isNotNull().containsAnyKey("key1", "key2").isInstanceOf(SortedMap.class);
 
         try {
             Raw.<String, String>sortedMapAssertion().containsAnyKey("key");
@@ -2183,6 +2207,7 @@ public final class SortedMapAssertionTest extends AssertionTest {
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", "value2")).containsAnyKey(DataHelper.createIterable("key1", "key3", "key5"));
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", "value2")).containsAnyKey(DataHelper.createIterable("key6", "key2", "key4"));
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", null, "value2")).containsAnyKey(DataHelper.createIterable("key6", null, "key4"));
+        initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", "value2")).isNotNull().containsAnyKey(DataHelper.createIterable("key1", "key2")).isInstanceOf(SortedMap.class);
 
         try {
             Raw.<String, String>sortedMapAssertion().containsAnyKey(DataHelper.<String>createIterable());
@@ -2269,6 +2294,7 @@ public final class SortedMapAssertionTest extends AssertionTest {
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", "value2")).containsNoKey("key7", "key6", "key8");
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", null, "value2")).containsNoKey("key7", "key6", "key8");
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", "value2")).containsNoKey("key7", null, "key8");
+        initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", "value2")).isNotNull().containsNoKey("key3", "key4").isInstanceOf(SortedMap.class);
 
         try {
             Raw.<String, String>sortedMapAssertion().containsNoKey("key");
@@ -2379,6 +2405,7 @@ public final class SortedMapAssertionTest extends AssertionTest {
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", "value2")).containsNoKey(DataHelper.createIterable("key7", "key6", "key8"));
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", null, "value2")).containsNoKey(DataHelper.createIterable("key7", "key6", "key8"));
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", "value2")).containsNoKey(DataHelper.createIterable("key7", null, "key8"));
+        initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", "value2")).isNotNull().containsNoKey(DataHelper.createIterable("key3", "key4")).isInstanceOf(SortedMap.class);
 
         try {
             Raw.<String, String>sortedMapAssertion().containsNoKey(DataHelper.<String>createIterable());
@@ -2462,6 +2489,7 @@ public final class SortedMapAssertionTest extends AssertionTest {
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", "value2")).toValues().isNotEmpty();
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", null)).toValues().contains("value1");
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", null)).toValues().contains(null);
+        initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", "value2")).isNotNull().toValues().isNotEmpty();
 
         try {
             Raw.<String, String>sortedMapAssertion().toValues();
@@ -2515,6 +2543,7 @@ public final class SortedMapAssertionTest extends AssertionTest {
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", "value2")).toValues(Matchers.hasItems("value1", "value2"));
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", null)).toValues(Matchers.hasItems("value1"));
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", null)).toValues(Matchers.hasItems((String) null));
+        initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", "value2")).isNotNull().toValues(Matchers.hasItems("value1", "value2")).isInstanceOf(SortedMap.class);
 
         try {
             Raw.<String, String>sortedMapAssertion().toValues(Matchers.hasItems(""));
@@ -2581,6 +2610,7 @@ public final class SortedMapAssertionTest extends AssertionTest {
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", "value2")).containsEntry("key2", "value2");
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap(null, "value1", "key2", "value2")).containsEntry(null, "value1");
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", null, "key2", "value2")).containsEntry("key1", null);
+        initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", "value2")).isNotNull().containsEntry("key1", "value1").isInstanceOf(SortedMap.class);
 
         try {
             Raw.<String, String>sortedMapAssertion().containsEntry("key", "value");
@@ -2674,6 +2704,7 @@ public final class SortedMapAssertionTest extends AssertionTest {
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", "value2")).doesNotContainEntry("key", null);
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap(null, "value1", "key2", "value2")).doesNotContainEntry("key1", "value1");
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", null, "key2", "value2")).doesNotContainEntry("key1", "value1");
+        initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", "value2")).isNotNull().doesNotContainEntry("key", "value").isInstanceOf(SortedMap.class);
 
         try {
             Raw.<String, String>sortedMapAssertion().doesNotContainEntry("key", "value");
@@ -2749,6 +2780,7 @@ public final class SortedMapAssertionTest extends AssertionTest {
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", "value2", "key3", "value3")).toHeadMap("key4").containsExactlyInOrder(DataHelper.createHashMap("key1", "value1", "key2", "value2", "key3", "value3"));
         initialize(Raw.sortedMapAssertion(), DataHelper.createTreeMap((Object) null, (Object) "value", "key1", "value1", "key2", "value2")).toHeadMap("key1").containsExactlyInOrder(DataHelper.createHashMap(null, (Object) "value"));
         initialize(Raw.sortedMapAssertion(), DataHelper.createTreeMap((Object) "key1", (Object) "value1", "key2", "value2", "key3", "value3")).toHeadMap(null).containsExactlyInOrder(DataHelper.createHashMap());
+        initialize(Raw.sortedMapAssertion(), DataHelper.createTreeMap((Object) "key1", (Object) "value1", "key2", "value2", "key3", "value3")).isNotNull().toHeadMap("key0").containsExactlyInOrder(DataHelper.createHashMap());
 
         try {
             Raw.<String, String>sortedMapAssertion().toHeadMap("key");
@@ -2846,6 +2878,8 @@ public final class SortedMapAssertionTest extends AssertionTest {
         initialize(Raw.<String, String>sortedMapAssertion(), sortedMap).toHeadMap(2).isNotSameAs(sortedMap);
         initialize(Raw.<String, String>sortedMapAssertion(), sortedMap).toHeadMap(3).isSameAs(sortedMap);
         initialize(Raw.<String, String>sortedMapAssertion(), sortedMap).toHeadMap(4).isSameAs(sortedMap);
+
+        initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", "value2", "key3", "value3", "key4", "value4", "key5", "value5")).isNotNull().toHeadMap(1).containsExactlyInOrder(DataHelper.createHashMap("key1", "value1"));
 
         try {
             Raw.<String, String>sortedMapAssertion().toHeadMap(1);
@@ -2995,6 +3029,7 @@ public final class SortedMapAssertionTest extends AssertionTest {
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", "value2", "key3", "value3")).toHeadMap("key2", Matchers.hasEntry("key1", "value1"));
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", "value2", "key3", "value3")).toHeadMap("key3", Matchers.allOf(Matchers.hasEntry("key1", "value1"), Matchers.hasEntry("key2", "value2")));
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", "value2", "key3", "value3")).toHeadMap("key4", Matchers.allOf(Matchers.hasEntry("key1", "value1"), Matchers.hasEntry("key2", "value2"), Matchers.hasEntry("key3", "value3")));
+        initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", "value2", "key3", "value3")).isNotNull().toHeadMap("key2", Matchers.hasEntry("key1", "value1")).isInstanceOf(SortedMap.class);
 
         try {
             Raw.<String, String>sortedMapAssertion().toHeadMap("key", Matchers.hasEntry("", ""));
@@ -3061,6 +3096,7 @@ public final class SortedMapAssertionTest extends AssertionTest {
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", "value2", "key3", "value3")).toHeadMap(2, Matchers.allOf(Matchers.hasEntry("key1", "value1"), Matchers.hasEntry("key2", "value2")));
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", "value2", "key3", "value3")).toHeadMap(3, Matchers.allOf(Matchers.hasEntry("key1", "value1"), Matchers.hasEntry("key2", "value2"), Matchers.hasEntry("key3", "value3")));
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", "value2", "key3", "value3")).toHeadMap(4, Matchers.allOf(Matchers.hasEntry("key1", "value1"), Matchers.hasEntry("key2", "value2"), Matchers.hasEntry("key3", "value3")));
+        initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", "value2", "key3", "value3")).isNotNull().toHeadMap(1, Matchers.hasEntry("key1", "value1")).isInstanceOf(SortedMap.class);
 
         try {
             Raw.<String, String>sortedMapAssertion().toHeadMap(1, Matchers.hasEntry("", ""));
@@ -3190,6 +3226,7 @@ public final class SortedMapAssertionTest extends AssertionTest {
         initialize(Raw.sortedMapAssertion(), DataHelper.createTreeMap((Object) "key1", (Object) "value1", "key2", "value2", "key3", "value3")).toTailMap("key4").containsExactlyInOrder(DataHelper.createHashMap());
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap(null, "value", "key1", "value1", "key2", "value2")).toTailMap("key1").containsExactlyInOrder(DataHelper.createHashMap("key1", "value1", "key2", "value2"));
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", "value2", "key3", "value3")).toTailMap(null).containsExactlyInOrder(DataHelper.createHashMap("key1", "value1", "key2", "value2", "key3", "value3"));
+        initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", "value2", "key3", "value3")).isNotNull().toTailMap("key0").containsExactlyInOrder(DataHelper.createHashMap("key1", "value1", "key2", "value2", "key3", "value3"));
 
         try {
             Raw.<String, String>sortedMapAssertion().toTailMap("key");
@@ -3287,6 +3324,8 @@ public final class SortedMapAssertionTest extends AssertionTest {
         initialize(Raw.<String, String>sortedMapAssertion(), sortedMap).toTailMap(2).isNotSameAs(sortedMap);
         initialize(Raw.<String, String>sortedMapAssertion(), sortedMap).toTailMap(3).isSameAs(sortedMap);
         initialize(Raw.<String, String>sortedMapAssertion(), sortedMap).toTailMap(4).isSameAs(sortedMap);
+
+        initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", "value2", "key3", "value3", "key4", "value4", "key5", "value5")).isNotNull().toTailMap(1).containsExactlyInOrder(DataHelper.createHashMap("key5", "value5"));
 
         try {
             Raw.<String, String>sortedMapAssertion().toTailMap(1);
@@ -3439,6 +3478,7 @@ public final class SortedMapAssertionTest extends AssertionTest {
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", "value2", "key3", "value3")).toTailMap("key3", Matchers.hasEntry("key3", "value3"));
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap(null, "value", "key1", "value1", "key2", "value2")).toTailMap("key1", Matchers.allOf(Matchers.hasEntry("key1", "value1"), Matchers.hasEntry("key2", "value2")));
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", "value2", "key3", "value3")).toTailMap(null, Matchers.allOf(Matchers.hasEntry("key1", "value1"), Matchers.hasEntry("key2", "value2"), Matchers.hasEntry("key3", "value3")));
+        initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", "value2", "key3", "value3")).isNotNull().toTailMap("key0", Matchers.allOf(Matchers.hasEntry("key1", "value1"), Matchers.hasEntry("key2", "value2"), Matchers.hasEntry("key3", "value3"))).isInstanceOf(SortedMap.class);
 
         try {
             Raw.<String, String>sortedMapAssertion().toTailMap("key", Matchers.hasEntry("", ""));
@@ -3505,6 +3545,7 @@ public final class SortedMapAssertionTest extends AssertionTest {
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", "value2", "key3", "value3")).toTailMap(2, Matchers.allOf(Matchers.hasEntry("key2", "value2"), Matchers.hasEntry("key3", "value3")));
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", "value2", "key3", "value3")).toTailMap(3, Matchers.allOf(Matchers.hasEntry("key1", "value1"), Matchers.hasEntry("key2", "value2"), Matchers.hasEntry("key3", "value3")));
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", "value2", "key3", "value3")).toTailMap(4, Matchers.allOf(Matchers.hasEntry("key1", "value1"), Matchers.hasEntry("key2", "value2"), Matchers.hasEntry("key3", "value3")));
+        initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", "value2", "key3", "value3")).isNotNull().toTailMap(1, Matchers.hasEntry("key3", "value3")).isInstanceOf(SortedMap.class);
 
         try {
             Raw.<String, String>sortedMapAssertion().toTailMap(1, Matchers.hasEntry("", ""));
@@ -3629,6 +3670,7 @@ public final class SortedMapAssertionTest extends AssertionTest {
     public void containsAll1Test() {
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).containsAll("k1", "v1");
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).containsAll("k3", "v3");
+        initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).isNotNull().containsAll("k1", "v1").isInstanceOf(SortedMap.class);
 
         try {
             Raw.<String, String>sortedMapAssertion().containsAll("k1", "v1");
@@ -3669,6 +3711,7 @@ public final class SortedMapAssertionTest extends AssertionTest {
     public void containsAll2Test() {
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).containsAll("k1", "v1", "k2", "v2");
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).containsAll("k3", "v3", "k5", "v5");
+        initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).isNotNull().containsAll("k1", "v1", "k2", "v2").isInstanceOf(SortedMap.class);
 
         try {
             Raw.<String, String>sortedMapAssertion().containsAll("k1", "v1", "k2", "v2");
@@ -3709,6 +3752,7 @@ public final class SortedMapAssertionTest extends AssertionTest {
     public void containsAll3Test() {
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).containsAll("k1", "v1", "k2", "v2", "k3", "v3");
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).containsAll("k3", "v3", "k5", "v5", "k2", "v2");
+        initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).isNotNull().containsAll("k1", "v1", "k2", "v2", "k3", "v3").isInstanceOf(SortedMap.class);
 
         try {
             Raw.<String, String>sortedMapAssertion().containsAll("k1", "v1", "k2", "v2", "k3", "v3");
@@ -3749,6 +3793,7 @@ public final class SortedMapAssertionTest extends AssertionTest {
     public void containsAll4Test() {
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).containsAll("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4");
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).containsAll("k3", "v3", "k5", "v5", "k2", "v2", "k1", "v1");
+        initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).isNotNull().containsAll("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4").isInstanceOf(SortedMap.class);
 
         try {
             Raw.<String, String>sortedMapAssertion().containsAll("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4");
@@ -3789,6 +3834,7 @@ public final class SortedMapAssertionTest extends AssertionTest {
     public void containsAll5Test() {
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).containsAll("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5");
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).containsAll("k3", "v3", "k5", "v5", "k2", "v2", "k1", "v1", "k4", "v4");
+        initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).isNotNull().containsAll("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5").isInstanceOf(SortedMap.class);
 
         try {
             Raw.<String, String>sortedMapAssertion().containsAll("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5");
@@ -3835,6 +3881,7 @@ public final class SortedMapAssertionTest extends AssertionTest {
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap(null, "value1", "key2", "value2")).containsAll(DataHelper.createHashMap("key2", "value2", null, "value1"));
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", null, "key2", "value2")).containsAll(DataHelper.createHashMap("key2", "value2", "key1", null));
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", null, "key2", "value2")).containsAll(DataHelper.createHashMap("key2", "value2", "key1", null));
+        initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", "value2")).isNotNull().containsAll(DataHelper.createHashMap("key1", "value1")).isInstanceOf(SortedMap.class);
 
         try {
             Raw.<String, String>sortedMapAssertion().containsAll(DataHelper.<String, String>createHashMap());
@@ -3947,6 +3994,7 @@ public final class SortedMapAssertionTest extends AssertionTest {
     public void containsAllInOrder1Test() {
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).containsAllInOrder("k1", "v1");
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).containsAllInOrder("k3", "v3");
+        initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).isNotNull().containsAllInOrder("k1", "v1").isInstanceOf(SortedMap.class);
 
         try {
             Raw.<String, String>sortedMapAssertion().containsAllInOrder("k1", "v1");
@@ -3987,6 +4035,7 @@ public final class SortedMapAssertionTest extends AssertionTest {
     public void containsAllInOrder2Test() {
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).containsAllInOrder("k1", "v1", "k2", "v2");
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).containsAllInOrder("k3", "v3", "k5", "v5");
+        initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).isNotNull().containsAllInOrder("k1", "v1", "k2", "v2").isInstanceOf(SortedMap.class);
 
         try {
             Raw.<String, String>sortedMapAssertion().containsAllInOrder("k1", "v1", "k2", "v2");
@@ -4027,6 +4076,7 @@ public final class SortedMapAssertionTest extends AssertionTest {
     public void containsAllInOrder3Test() {
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).containsAllInOrder("k1", "v1", "k2", "v2", "k3", "v3");
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).containsAllInOrder("k1", "v1", "k3", "v3", "k5", "v5");
+        initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).isNotNull().containsAllInOrder("k1", "v1", "k2", "v2", "k3", "v3").isInstanceOf(SortedMap.class);
 
         try {
             Raw.<String, String>sortedMapAssertion().containsAllInOrder("k1", "v1", "k2", "v2", "k3", "v3");
@@ -4067,6 +4117,7 @@ public final class SortedMapAssertionTest extends AssertionTest {
     public void containsAllInOrder4Test() {
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).containsAllInOrder("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4");
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).containsAllInOrder("k1", "v1", "k3", "v3", "k4", "v4", "k5", "v5");
+        initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).isNotNull().containsAllInOrder("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4").isInstanceOf(SortedMap.class);
 
         try {
             Raw.<String, String>sortedMapAssertion().containsAllInOrder("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4");
@@ -4106,6 +4157,7 @@ public final class SortedMapAssertionTest extends AssertionTest {
     @Test
     public void containsAllInOrder5Test() {
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).containsAllInOrder("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5");
+        initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).isNotNull().containsAllInOrder("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5").isInstanceOf(SortedMap.class);
 
         try {
             Raw.<String, String>sortedMapAssertion().containsAllInOrder("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5");
@@ -4149,6 +4201,7 @@ public final class SortedMapAssertionTest extends AssertionTest {
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", "value2")).containsAllInOrder(DataHelper.createHashMap("key1", "value1", "key2", "value2"));
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap(null, "value1", "key2", "value2")).containsAllInOrder(DataHelper.createHashMap(null, "value1", "key2", "value2"));
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", null, "key2", "value2")).containsAllInOrder(DataHelper.createHashMap("key1", null, "key2", "value2"));
+        initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", "value2")).isNotNull().containsAllInOrder(DataHelper.createHashMap("key1", "value1")).isInstanceOf(SortedMap.class);
 
         try {
             Raw.<String, String>sortedMapAssertion().containsAllInOrder(DataHelper.<String, String>createHashMap());
@@ -4278,6 +4331,7 @@ public final class SortedMapAssertionTest extends AssertionTest {
     @Test
     public void containsExactly0Test() {
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.<String, String>createTreeMap()).containsExactly();
+        initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.<String, String>createTreeMap()).isNotNull().containsExactly().isInstanceOf(SortedMap.class);
 
         try {
             Raw.<String, String>sortedMapAssertion().containsExactly();
@@ -4317,6 +4371,7 @@ public final class SortedMapAssertionTest extends AssertionTest {
     @Test
     public void containsExactly1Test() {
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("k1", "v1")).containsExactly("k1", "v1");
+        initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("k1", "v1")).isNotNull().containsExactly("k1", "v1").isInstanceOf(SortedMap.class);
 
         try {
             Raw.<String, String>sortedMapAssertion().containsExactly("k1", "v1");
@@ -4357,6 +4412,7 @@ public final class SortedMapAssertionTest extends AssertionTest {
     public void containsExactly2Test() {
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("k1", "v1", "k2", "v2")).containsExactly("k1", "v1", "k2", "v2");
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("k1", "v1", "k2", "v2")).containsExactly("k2", "v2", "k1", "v1");
+        initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("k1", "v1", "k2", "v2")).isNotNull().containsExactly("k1", "v1", "k2", "v2").isInstanceOf(SortedMap.class);
 
         try {
             Raw.<String, String>sortedMapAssertion().containsExactly("k1", "v1", "k2", "v2");
@@ -4397,6 +4453,7 @@ public final class SortedMapAssertionTest extends AssertionTest {
     public void containsExactly3Test() {
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("k1", "v1", "k2", "v2", "k3", "v3")).containsExactly("k1", "v1", "k2", "v2", "k3", "v3");
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("k1", "v1", "k2", "v2", "k3", "v3")).containsExactly("k2", "v2", "k1", "v1", "k3", "v3");
+        initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("k1", "v1", "k2", "v2", "k3", "v3")).isNotNull().containsExactly("k1", "v1", "k2", "v2", "k3", "v3").isInstanceOf(SortedMap.class);
 
         try {
             Raw.<String, String>sortedMapAssertion().containsExactly("k1", "v1", "k2", "v2", "k3", "v3");
@@ -4437,6 +4494,7 @@ public final class SortedMapAssertionTest extends AssertionTest {
     public void containsExactly4Test() {
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4")).containsExactly("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4");
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4")).containsExactly("k2", "v2", "k1", "v1", "k3", "v3", "k4", "v4");
+        initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4")).isNotNull().containsExactly("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4").isInstanceOf(SortedMap.class);
 
         try {
             Raw.<String, String>sortedMapAssertion().containsExactly("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4");
@@ -4477,6 +4535,7 @@ public final class SortedMapAssertionTest extends AssertionTest {
     public void containsExactly5Test() {
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).containsExactly("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5");
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).containsExactly("k2", "v2", "k1", "v1", "k3", "v3", "k4", "v4", "k5", "v5");
+        initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).isNotNull().containsExactly("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5").isInstanceOf(SortedMap.class);
 
         try {
             Raw.<String, String>sortedMapAssertion().containsExactly("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5");
@@ -4520,6 +4579,7 @@ public final class SortedMapAssertionTest extends AssertionTest {
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap(null, "value1", "key2", "value2")).containsExactly(DataHelper.createHashMap(null, "value1", "key2", "value2"));
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", null, "key2", "value2")).containsExactly(DataHelper.createHashMap("key1", null, "key2", "value2"));
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.<String, String>createTreeMap()).containsExactly(DataHelper.<String, String>createHashMap());
+        initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", "value2")).isNotNull().containsExactly(DataHelper.createHashMap("key1", "value1", "key2", "value2")).isInstanceOf(SortedMap.class);
 
         try {
             Raw.<String, String>sortedMapAssertion().containsExactly(DataHelper.<String, String>createHashMap());
@@ -4637,6 +4697,7 @@ public final class SortedMapAssertionTest extends AssertionTest {
     @Test
     public void containsExactlyInOrder0Test() {
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.<String, String>createTreeMap()).containsExactlyInOrder();
+        initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.<String, String>createTreeMap()).isNotNull().containsExactlyInOrder().isInstanceOf(SortedMap.class);
 
         try {
             Raw.<String, String>sortedMapAssertion().containsExactlyInOrder();
@@ -4676,6 +4737,7 @@ public final class SortedMapAssertionTest extends AssertionTest {
     @Test
     public void containsExactlyInOrder1Test() {
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("k1", "v1")).containsExactlyInOrder("k1", "v1");
+        initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("k1", "v1")).isNotNull().containsExactlyInOrder("k1", "v1").isInstanceOf(SortedMap.class);
 
         try {
             Raw.<String, String>sortedMapAssertion().containsExactlyInOrder("k1", "v1");
@@ -4715,6 +4777,7 @@ public final class SortedMapAssertionTest extends AssertionTest {
     @Test
     public void containsExactlyInOrder2Test() {
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("k1", "v1", "k2", "v2")).containsExactlyInOrder("k1", "v1", "k2", "v2");
+        initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("k1", "v1", "k2", "v2")).isNotNull().containsExactlyInOrder("k1", "v1", "k2", "v2").isInstanceOf(SortedMap.class);
 
         try {
             Raw.<String, String>sortedMapAssertion().containsExactlyInOrder("k1", "v1", "k2", "v2");
@@ -4754,6 +4817,7 @@ public final class SortedMapAssertionTest extends AssertionTest {
     @Test
     public void containsExactlyInOrder3Test() {
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("k1", "v1", "k2", "v2", "k3", "v3")).containsExactlyInOrder("k1", "v1", "k2", "v2", "k3", "v3");
+        initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("k1", "v1", "k2", "v2", "k3", "v3")).isNotNull().containsExactlyInOrder("k1", "v1", "k2", "v2", "k3", "v3").isInstanceOf(SortedMap.class);
 
         try {
             Raw.<String, String>sortedMapAssertion().containsExactlyInOrder("k1", "v1", "k2", "v2", "k3", "v3");
@@ -4793,6 +4857,7 @@ public final class SortedMapAssertionTest extends AssertionTest {
     @Test
     public void containsExactlyInOrder4Test() {
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4")).containsExactlyInOrder("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4");
+        initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4")).isNotNull().containsExactlyInOrder("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4").isInstanceOf(SortedMap.class);
 
         try {
             Raw.<String, String>sortedMapAssertion().containsExactlyInOrder("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4");
@@ -4832,6 +4897,7 @@ public final class SortedMapAssertionTest extends AssertionTest {
     @Test
     public void containsExactlyInOrder5Test() {
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).containsExactlyInOrder("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5");
+        initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).isNotNull().containsExactlyInOrder("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5").isInstanceOf(SortedMap.class);
 
         try {
             Raw.<String, String>sortedMapAssertion().containsExactlyInOrder("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5");
@@ -4874,6 +4940,7 @@ public final class SortedMapAssertionTest extends AssertionTest {
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap(null, "value1", "key2", "value2")).containsExactlyInOrder(DataHelper.createHashMap(null, "value1", "key2", "value2"));
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", null, "key2", "value2")).containsExactlyInOrder(DataHelper.createHashMap("key1", null, "key2", "value2"));
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.<String, String>createTreeMap()).containsExactlyInOrder(DataHelper.<String, String>createHashMap());
+        initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", "value2")).isNotNull().containsExactlyInOrder(DataHelper.createHashMap("key1", "value1", "key2", "value2")).isInstanceOf(SortedMap.class);
 
         try {
             Raw.<String, String>sortedMapAssertion().containsExactlyInOrder(DataHelper.<String, String>createHashMap());
@@ -5010,6 +5077,7 @@ public final class SortedMapAssertionTest extends AssertionTest {
     public void containsAny1Test() {
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).containsAny("k1", "v1");
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).containsAny("k5", "v5");
+        initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).isNotNull().containsAny("k1", "v1").isInstanceOf(SortedMap.class);
 
         try {
             Raw.<String, String>sortedMapAssertion().containsAny("k1", "v1");
@@ -5050,6 +5118,7 @@ public final class SortedMapAssertionTest extends AssertionTest {
     public void containsAny2Test() {
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).containsAny("k1", "v1", "k2", "v2");
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).containsAny("k7", "v7", "k5", "v5");
+        initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).isNotNull().containsAny("k1", "v1", "k2", "v2").isInstanceOf(SortedMap.class);
 
         try {
             Raw.<String, String>sortedMapAssertion().containsAny("k1", "v1", "k2", "v2");
@@ -5090,6 +5159,7 @@ public final class SortedMapAssertionTest extends AssertionTest {
     public void containsAny3Test() {
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).containsAny("k1", "v1", "k2", "v2", "k3", "v3");
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).containsAny("k7", "v7", "k8", "v8", "k5", "v5");
+        initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).isNotNull().containsAny("k1", "v1", "k2", "v2", "k3", "v3").isInstanceOf(SortedMap.class);
 
         try {
             Raw.<String, String>sortedMapAssertion().containsAny("k1", "v1", "k2", "v2", "k3", "v3");
@@ -5130,6 +5200,7 @@ public final class SortedMapAssertionTest extends AssertionTest {
     public void containsAny4Test() {
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).containsAny("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4");
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).containsAny("k7", "v7", "k8", "v8", "k9", "v9", "k5", "v5");
+        initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).isNotNull().containsAny("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4").isInstanceOf(SortedMap.class);
 
         try {
             Raw.<String, String>sortedMapAssertion().containsAny("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4");
@@ -5170,6 +5241,7 @@ public final class SortedMapAssertionTest extends AssertionTest {
     public void containsAny5Test() {
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).containsAny("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5");
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).containsAny("k7", "v7", "k8", "v8", "k9", "v9", "k10", "v10", "k5", "v5");
+        initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).isNotNull().containsAny("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5").isInstanceOf(SortedMap.class);
 
         try {
             Raw.<String, String>sortedMapAssertion().containsAny("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5");
@@ -5212,6 +5284,7 @@ public final class SortedMapAssertionTest extends AssertionTest {
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", "value2")).containsAny(DataHelper.createHashMap("key4", "value4", "key2", "value2", "key1", "value1"));
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap(null, "value1", "key2", "value2")).containsAny(DataHelper.createHashMap(null, "value1", "key3", "value3", "key5", "value5"));
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", null, "key2", "value2")).containsAny(DataHelper.createHashMap("key1", null, "key3", "value3", "key5", "value5"));
+        initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", "value2")).isNotNull().containsAny(DataHelper.createHashMap("key1", "value1", "key3", "value3", "key5", "value5")).isInstanceOf(SortedMap.class);
 
         try {
             Raw.<String, String>sortedMapAssertion().containsAny(DataHelper.<String, String>createHashMap());
@@ -5311,6 +5384,7 @@ public final class SortedMapAssertionTest extends AssertionTest {
     @Test
     public void containsNone1Test() {
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).containsNone("k1", "v11");
+        initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).isNotNull().containsNone("k1", "v11").isInstanceOf(SortedMap.class);
 
         try {
             Raw.<String, String>sortedMapAssertion().containsNone("k1", "v11");
@@ -5350,6 +5424,7 @@ public final class SortedMapAssertionTest extends AssertionTest {
     @Test
     public void containsNone2Test() {
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).containsNone("k1", "v11", "k2", "v22");
+        initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).isNotNull().containsNone("k1", "v11", "k2", "v22").isInstanceOf(SortedMap.class);
 
         try {
             Raw.<String, String>sortedMapAssertion().containsNone("k1", "v11", "k2", "v22");
@@ -5389,6 +5464,7 @@ public final class SortedMapAssertionTest extends AssertionTest {
     @Test
     public void containsNone3Test() {
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).containsNone("k1", "v11", "k2", "v22", "k3", "v33");
+        initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).isNotNull().containsNone("k1", "v11", "k2", "v22", "k3", "v33").isInstanceOf(SortedMap.class);
 
         try {
             Raw.<String, String>sortedMapAssertion().containsNone("k1", "v11", "k2", "v22", "k3", "v33");
@@ -5428,6 +5504,7 @@ public final class SortedMapAssertionTest extends AssertionTest {
     @Test
     public void containsNone4Test() {
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).containsNone("k1", "v11", "k2", "v22", "k3", "v33", "k4", "v44");
+        initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).isNotNull().containsNone("k1", "v11", "k2", "v22", "k3", "v33", "k4", "v44").isInstanceOf(SortedMap.class);
 
         try {
             Raw.<String, String>sortedMapAssertion().containsNone("k1", "v11", "k2", "v22", "k3", "v33", "k4", "v44");
@@ -5467,6 +5544,7 @@ public final class SortedMapAssertionTest extends AssertionTest {
     @Test
     public void containsNone5Test() {
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).containsNone("k1", "v11", "k2", "v22", "k3", "v33", "k4", "v44", "k5", "v55");
+        initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).isNotNull().containsNone("k1", "v11", "k2", "v22", "k3", "v33", "k4", "v44", "k5", "v55").isInstanceOf(SortedMap.class);
 
         try {
             Raw.<String, String>sortedMapAssertion().containsNone("k1", "v11", "k2", "v22", "k3", "v33", "k4", "v44", "k5", "v55");
@@ -5511,6 +5589,7 @@ public final class SortedMapAssertionTest extends AssertionTest {
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", null, "key2", "value2")).containsNone(DataHelper.createHashMap("key1", "value1"));
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", "value2")).containsNone(DataHelper.<String, String>createHashMap(null, "value1"));
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", "value2")).containsNone(DataHelper.<String, String>createHashMap("key1", null));
+        initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", "value2")).isNotNull().containsNone(DataHelper.createHashMap("key3", "value3", "key4", "value4", "key5", "value5")).isInstanceOf(SortedMap.class);
 
         try {
             Raw.<String, String>sortedMapAssertion().containsNone(DataHelper.<String, String>createHashMap());
@@ -5619,6 +5698,7 @@ public final class SortedMapAssertionTest extends AssertionTest {
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1")).toSize().isEqualTo(1);
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", "value2")).toSize().isEqualTo(2);
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", "value2", "key3", "value3")).toSize().isEqualTo(3);
+        initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1")).isNotNull().toSize().isEqualTo(1);
 
         try {
             Raw.<String, String>sortedMapAssertion().toSize();
@@ -5673,6 +5753,7 @@ public final class SortedMapAssertionTest extends AssertionTest {
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1")).toSize(Matchers.equalTo(1));
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", "value2")).toSize(Matchers.equalTo(2));
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", "value2", "key3", "value3")).toSize(Matchers.equalTo(3));
+        initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1")).isNotNull().toSize(Matchers.equalTo(1)).isInstanceOf(SortedMap.class);
 
         try {
             Raw.<String, String>sortedMapAssertion().toSize(Matchers.equalTo(0));
@@ -5739,6 +5820,7 @@ public final class SortedMapAssertionTest extends AssertionTest {
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1")).hasSize(1);
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", "value2")).hasSize(2);
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", "value2", "key3", "value3")).hasSize(3);
+        initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1")).isNotNull().hasSize(1).isInstanceOf(SortedMap.class);
 
         try {
             Raw.<String, String>sortedMapAssertion().hasSize(1);
