@@ -76,6 +76,7 @@ public class TimeZoneAssertionTest extends AssertionTest {
         initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("Asia/Vientiane")).isEqualTo(TimeZone.getTimeZone("Asia/Vientiane"));
         initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("Europe/Berlin")).isEqualTo(TimeZone.getTimeZone("Europe/Berlin"));
         initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("Europe/Vienna")).isEqualTo(TimeZone.getTimeZone("Europe/Vienna"));
+        initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("UTC")).isNotNull().isEqualTo(TimeZone.getTimeZone("UTC")).isInstanceOf(TimeZone.class);
 
         try {
             Raw.timeZoneAssertion().isEqualTo(TimeZone.getTimeZone("UTC"));
@@ -150,6 +151,7 @@ public class TimeZoneAssertionTest extends AssertionTest {
         initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("Asia/Vientiane")).isNotEqualTo(TimeZone.getTimeZone("Asia/Krasnoyarsk"));
         initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("Europe/Berlin")).isNotEqualTo(TimeZone.getTimeZone("Europe/Vienna"));
         initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("Europe/Vienna")).isNotEqualTo(TimeZone.getTimeZone("Europe/Berlin"));
+        initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("UTC")).isNotNull().isNotEqualTo(TimeZone.getTimeZone("GMT")).isInstanceOf(TimeZone.class);
 
         try {
             Raw.timeZoneAssertion().isNotEqualTo(TimeZone.getTimeZone("UTC"));
@@ -209,6 +211,7 @@ public class TimeZoneAssertionTest extends AssertionTest {
         initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("Asia/Vientiane")).hasSameRules(TimeZone.getTimeZone("Asia/Vientiane"));
         initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("Europe/Berlin")).hasSameRules(TimeZone.getTimeZone("Europe/Berlin"));
         initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("Europe/Vienna")).hasSameRules(TimeZone.getTimeZone("Europe/Vienna"));
+        initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("UTC")).isNotNull().hasSameRules(TimeZone.getTimeZone("UTC")).isInstanceOf(TimeZone.class);
 
         try {
             Raw.timeZoneAssertion().hasSameRules(TimeZone.getTimeZone("UTC"));
@@ -279,6 +282,7 @@ public class TimeZoneAssertionTest extends AssertionTest {
         initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("Asia/Vientiane")).doesNotHaveSameRules(TimeZone.getTimeZone("Asia/Krasnoyarsk"));
         initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("Europe/Berlin")).doesNotHaveSameRules(TimeZone.getTimeZone("Europe/Vienna"));
         initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("Europe/Vienna")).doesNotHaveSameRules(TimeZone.getTimeZone("Europe/Berlin"));
+        initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("Asia/Novosibirsk")).isNotNull().doesNotHaveSameRules(TimeZone.getTimeZone("Asia/Krasnoyarsk")).isInstanceOf(TimeZone.class);
 
         try {
             Raw.timeZoneAssertion().doesNotHaveSameRules(TimeZone.getTimeZone("UTC"));
@@ -360,6 +364,7 @@ public class TimeZoneAssertionTest extends AssertionTest {
         initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("Asia/Vientiane")).toId().isEqualTo("Asia/Vientiane");
         initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("Europe/Berlin")).toId().isEqualTo("Europe/Berlin");
         initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("Europe/Vienna")).toId().isEqualTo("Europe/Vienna");
+        initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("UTC")).isNotNull().toId().isEqualTo("UTC");
 
         try {
             Raw.timeZoneAssertion().toId();
@@ -417,6 +422,7 @@ public class TimeZoneAssertionTest extends AssertionTest {
         initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("Asia/Vientiane")).toId(Matchers.is(Matchers.equalTo("Asia/Vientiane")));
         initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("Europe/Berlin")).toId(Matchers.is(Matchers.equalTo("Europe/Berlin")));
         initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("Europe/Vienna")).toId(Matchers.is(Matchers.equalTo("Europe/Vienna")));
+        initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("UTC")).isNotNull().toId(Matchers.is(Matchers.equalTo("UTC"))).isInstanceOf(TimeZone.class);
 
         try {
             Raw.timeZoneAssertion().toId(Matchers.equalTo(""));
@@ -486,6 +492,7 @@ public class TimeZoneAssertionTest extends AssertionTest {
         initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("Asia/Vientiane")).hasId("Asia/Vientiane");
         initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("Europe/Berlin")).hasId("Europe/Berlin");
         initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("Europe/Vienna")).hasId("Europe/Vienna");
+        initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("UTC")).isNotNull().hasId("UTC").isInstanceOf(TimeZone.class);
 
         try {
             Raw.timeZoneAssertion().hasId("");
@@ -531,6 +538,7 @@ public class TimeZoneAssertionTest extends AssertionTest {
         initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("Asia/Vientiane")).toDisplayName().isEqualTo("Indochina Time");
         initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("Europe/Berlin")).toDisplayName().isEqualTo("Central European Time");
         initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("Europe/Vienna")).toDisplayName().isEqualTo("Central European Time");
+        initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("UTC")).isNotNull().toDisplayName().isEqualTo("Coordinated Universal Time");
 
         try {
             Raw.timeZoneAssertion().toDisplayName();
@@ -588,6 +596,7 @@ public class TimeZoneAssertionTest extends AssertionTest {
         initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("Asia/Vientiane")).toDisplayName(Matchers.is(Matchers.equalTo("Indochina Time")));
         initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("Europe/Berlin")).toDisplayName(Matchers.is(Matchers.equalTo("Central European Time")));
         initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("Europe/Vienna")).toDisplayName(Matchers.is(Matchers.equalTo("Central European Time")));
+        initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("UTC")).isNotNull().toDisplayName(Matchers.is(Matchers.equalTo("Coordinated Universal Time"))).isInstanceOf(TimeZone.class);
 
         try {
             Raw.timeZoneAssertion().toDisplayName(Matchers.equalTo(""));
@@ -657,6 +666,7 @@ public class TimeZoneAssertionTest extends AssertionTest {
         initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("Asia/Vientiane")).hasDisplayName("Indochina Time");
         initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("Europe/Berlin")).hasDisplayName("Central European Time");
         initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("Europe/Vienna")).hasDisplayName("Central European Time");
+        initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("UTC")).isNotNull().hasDisplayName("Coordinated Universal Time").isInstanceOf(TimeZone.class);
 
         try {
             Raw.timeZoneAssertion().hasDisplayName("");
@@ -702,6 +712,7 @@ public class TimeZoneAssertionTest extends AssertionTest {
         initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("Asia/Vientiane")).toRawOffset().isEqualTo(7 * 60 * 60 * 1000);
         initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("Europe/Berlin")).toRawOffset().isEqualTo(60 * 60 * 1000);
         initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("Europe/Vienna")).toRawOffset().isEqualTo(60 * 60 * 1000);
+        initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("UTC")).isNotNull().toRawOffset().isEqualTo(0);
 
         try {
             Raw.timeZoneAssertion().toRawOffset();
@@ -759,6 +770,7 @@ public class TimeZoneAssertionTest extends AssertionTest {
         initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("Asia/Vientiane")).toRawOffset(Matchers.is(Matchers.equalTo(7 * 60 * 60 * 1000)));
         initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("Europe/Berlin")).toRawOffset(Matchers.is(Matchers.equalTo(60 * 60 * 1000)));
         initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("Europe/Vienna")).toRawOffset(Matchers.is(Matchers.equalTo(60 * 60 * 1000)));
+        initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("UTC")).isNotNull().toRawOffset(Matchers.is(Matchers.equalTo(0))).isInstanceOf(TimeZone.class);
 
         try {
             Raw.timeZoneAssertion().toRawOffset(Matchers.equalTo(0));
@@ -828,6 +840,7 @@ public class TimeZoneAssertionTest extends AssertionTest {
         initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("Asia/Vientiane")).hasRawOffset(7 * 60 * 60 * 1000);
         initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("Europe/Berlin")).hasRawOffset(60 * 60 * 1000);
         initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("Europe/Vienna")).hasRawOffset(60 * 60 * 1000);
+        initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("UTC")).isNotNull().hasRawOffset(0).isInstanceOf(TimeZone.class);
 
         try {
             Raw.timeZoneAssertion().hasRawOffset(0);
@@ -873,6 +886,7 @@ public class TimeZoneAssertionTest extends AssertionTest {
         initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("Asia/Vientiane")).toUseDaylightTime().isFalse();
         initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("Europe/Berlin")).toUseDaylightTime().isTrue();
         initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("Europe/Vienna")).toUseDaylightTime().isTrue();
+        initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("UTC")).isNotNull().toUseDaylightTime().isFalse();
 
         try {
             Raw.timeZoneAssertion().toUseDaylightTime();
@@ -930,6 +944,7 @@ public class TimeZoneAssertionTest extends AssertionTest {
         initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("Asia/Vientiane")).toUseDaylightTime(Matchers.is(Matchers.equalTo(false)));
         initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("Europe/Berlin")).toUseDaylightTime(Matchers.is(Matchers.equalTo(true)));
         initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("Europe/Vienna")).toUseDaylightTime(Matchers.is(Matchers.equalTo(true)));
+        initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("UTC")).isNotNull().toUseDaylightTime(Matchers.is(Matchers.equalTo(false))).isInstanceOf(TimeZone.class);
 
         try {
             Raw.timeZoneAssertion().toUseDaylightTime(Matchers.equalTo(false));
@@ -994,6 +1009,7 @@ public class TimeZoneAssertionTest extends AssertionTest {
     public void useDaylightTimeTest() {
         initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("Europe/Berlin")).useDaylightTime();
         initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("Europe/Vienna")).useDaylightTime();
+        initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("Europe/Berlin")).isNotNull().useDaylightTime().isInstanceOf(TimeZone.class);
 
         try {
             Raw.timeZoneAssertion().useDaylightTime();
@@ -1037,6 +1053,7 @@ public class TimeZoneAssertionTest extends AssertionTest {
         initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("Asia/Novosibirsk")).doesNotUseDaylightTime();
         initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("Asia/Krasnoyarsk")).doesNotUseDaylightTime();
         initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("Asia/Vientiane")).doesNotUseDaylightTime();
+        initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("UTC")).isNotNull().doesNotUseDaylightTime().isInstanceOf(TimeZone.class);
 
         try {
             Raw.timeZoneAssertion().doesNotUseDaylightTime();
@@ -1082,6 +1099,7 @@ public class TimeZoneAssertionTest extends AssertionTest {
         initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("Asia/Vientiane")).toDstSavings().isEqualTo(0);
         initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("Europe/Berlin")).toDstSavings().isEqualTo(60 * 60 * 1000);
         initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("Europe/Vienna")).toDstSavings().isEqualTo(60 * 60 * 1000);
+        initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("UTC")).isNotNull().toDstSavings().isEqualTo(0);
 
         try {
             Raw.timeZoneAssertion().toDstSavings();
@@ -1127,6 +1145,7 @@ public class TimeZoneAssertionTest extends AssertionTest {
         initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("Asia/Vientiane")).toDstSavings(Matchers.is(Matchers.equalTo(0)));
         initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("Europe/Berlin")).toDstSavings(Matchers.is(Matchers.equalTo(60 * 60 * 1000)));
         initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("Europe/Vienna")).toDstSavings(Matchers.is(Matchers.equalTo(60 * 60 * 1000)));
+        initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("UTC")).isNotNull().toDstSavings(Matchers.is(Matchers.equalTo(0))).isInstanceOf(TimeZone.class);
 
         try {
             Raw.timeZoneAssertion().toDstSavings(Matchers.equalTo(0));
@@ -1196,6 +1215,7 @@ public class TimeZoneAssertionTest extends AssertionTest {
         initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("Asia/Vientiane")).hasDstSavings(0);
         initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("Europe/Berlin")).hasDstSavings(60 * 60 * 1000);
         initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("Europe/Vienna")).hasDstSavings(60 * 60 * 1000);
+        initialize(Raw.timeZoneAssertion(), TimeZone.getTimeZone("UTC")).isNotNull().hasDstSavings(0).isInstanceOf(TimeZone.class);
 
         try {
             Raw.timeZoneAssertion().hasDstSavings(0);

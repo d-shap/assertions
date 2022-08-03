@@ -70,6 +70,7 @@ public final class MapAssertionTest extends AssertionTest {
     @Test
     public void isEmptyTest() {
         initialize(Raw.<String, String>mapAssertion(), DataHelper.<String, String>createHashMap()).isEmpty();
+        initialize(Raw.<String, String>mapAssertion(), DataHelper.<String, String>createHashMap()).isNotNull().isEmpty().isInstanceOf(Map.class);
 
         try {
             Raw.<String, String>mapAssertion().isEmpty();
@@ -110,6 +111,7 @@ public final class MapAssertionTest extends AssertionTest {
     public void isNullOrEmptyTest() {
         initialize(Raw.<String, String>mapAssertion(), DataHelper.<String, String>createHashMap()).isNullOrEmpty();
         initialize(Raw.<String, String>mapAssertion(), null).isNullOrEmpty();
+        initialize(Raw.<String, String>mapAssertion(), DataHelper.<String, String>createHashMap()).isNotNull().isNullOrEmpty().isInstanceOf(Map.class);
 
         try {
             Raw.<String, String>mapAssertion().isNullOrEmpty();
@@ -137,6 +139,7 @@ public final class MapAssertionTest extends AssertionTest {
     @Test
     public void isNotEmptyTest() {
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("key", "value")).isNotEmpty();
+        initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("key", "value")).isNotNull().isNotEmpty().isInstanceOf(Map.class);
 
         try {
             Raw.<String, String>mapAssertion().isNotEmpty();
@@ -176,6 +179,7 @@ public final class MapAssertionTest extends AssertionTest {
     @Test
     public void toKeysTest() {
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("key1", "value1", "key2", "value2")).toKeys().isNotEmpty();
+        initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("key1", "value1", "key2", "value2")).isNotNull().toKeys().isNotEmpty();
 
         try {
             Raw.<String, String>mapAssertion().toKeys();
@@ -227,6 +231,7 @@ public final class MapAssertionTest extends AssertionTest {
     @Test
     public void toKeysMatcherTest() {
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("key1", "value1", "key2", "value2")).toKeys(Matchers.hasItems("key1", "key2"));
+        initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("key1", "value1", "key2", "value2")).isNotNull().toKeys(Matchers.hasItems("key1", "key2")).isInstanceOf(Map.class);
 
         try {
             Raw.<String, String>mapAssertion().toKeys(Matchers.hasItems(""));
@@ -293,6 +298,7 @@ public final class MapAssertionTest extends AssertionTest {
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("key1", "value1", "key2", "value2")).containsKey("key2");
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap(null, "value1", "key2", "value2")).containsKey(null);
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("key1", "value1", null, "value2")).containsKey(null);
+        initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("key1", "value1", "key2", "value2")).isNotNull().containsKey("key1").isInstanceOf(Map.class);
 
         try {
             Raw.<String, String>mapAssertion().containsKey("key");
@@ -359,6 +365,7 @@ public final class MapAssertionTest extends AssertionTest {
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("key1", "value1", "key2", "value2")).doesNotContainKey("key4");
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("key1", "value1", null, "value2")).doesNotContainKey("key3");
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("key1", "value1", "key2", "value2")).doesNotContainKey(null);
+        initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("key1", "value1", "key2", "value2")).isNotNull().doesNotContainKey("key3").isInstanceOf(Map.class);
 
         try {
             Raw.<String, String>mapAssertion().doesNotContainKey("key");
@@ -426,6 +433,7 @@ public final class MapAssertionTest extends AssertionTest {
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("key1", "value1", "key2", "value2", "key3", "value3")).containsAllKeys("key1", "key2");
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("key1", "value1", "key2", "value2", "key3", "value3")).containsAllKeys("key2", "key1");
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("key1", "value1", null, "value2", "key3", "value3")).containsAllKeys(null, "key1");
+        initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("key1", "value1", "key2", "value2", "key3", "value3")).isNotNull().containsAllKeys("key1", "key3").isInstanceOf(Map.class);
 
         try {
             Raw.<String, String>mapAssertion().containsAllKeys("key");
@@ -535,6 +543,7 @@ public final class MapAssertionTest extends AssertionTest {
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("key1", "value1", "key2", "value2", "key3", "value3")).containsAllKeys(DataHelper.createIterable("key1", "key2"));
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("key1", "value1", "key2", "value2", "key3", "value3")).containsAllKeys(DataHelper.createIterable("key2", "key1"));
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("key1", "value1", null, "value2", "key3", "value3")).containsAllKeys(DataHelper.createIterable(null, "key1"));
+        initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("key1", "value1", "key2", "value2", "key3", "value3")).isNotNull().containsAllKeys(DataHelper.createIterable("key1", "key3")).isInstanceOf(Map.class);
 
         try {
             Raw.<String, String>mapAssertion().containsAllKeys(DataHelper.<String>createIterable());
@@ -621,6 +630,7 @@ public final class MapAssertionTest extends AssertionTest {
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("key1", "value1", "key2", "value2", "key3", "value3")).containsAllKeysInOrder("key1", "key2", "key3");
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("key1", "value1", null, "value2", "key3", "value3")).containsAllKeysInOrder("key1", null);
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("key1", "value1", null, "value2", "key3", "value3")).containsAllKeysInOrder(null, "key3");
+        initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("key1", "value1", "key2", "value2", "key3", "value3")).isNotNull().containsAllKeysInOrder("key1", "key2").isInstanceOf(Map.class);
 
         try {
             Raw.<String, String>mapAssertion().containsAllKeysInOrder("key");
@@ -749,6 +759,7 @@ public final class MapAssertionTest extends AssertionTest {
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("key1", "value1", "key2", "value2", "key3", "value3")).containsAllKeysInOrder(DataHelper.createIterable("key1", "key2", "key3"));
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("key1", "value1", null, "value2", "key3", "value3")).containsAllKeysInOrder(DataHelper.createIterable("key1", null));
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("key1", "value1", null, "value2", "key3", "value3")).containsAllKeysInOrder(DataHelper.createIterable(null, "key3"));
+        initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("key1", "value1", "key2", "value2", "key3", "value3")).isNotNull().containsAllKeysInOrder(DataHelper.createIterable("key1", "key2")).isInstanceOf(Map.class);
 
         try {
             Raw.<String, String>mapAssertion().containsAllKeysInOrder(DataHelper.<String>createIterable());
@@ -851,6 +862,7 @@ public final class MapAssertionTest extends AssertionTest {
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("key1", "value1", "key2", "value2")).containsKeysExactly("key2", "key1");
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("key1", "value1", null, "value2")).containsKeysExactly(null, "key1");
         initialize(Raw.<String, String>mapAssertion(), DataHelper.<String, String>createHashMap()).containsKeysExactly();
+        initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("key1", "value1", "key2", "value2")).isNotNull().containsKeysExactly("key1", "key2").isInstanceOf(Map.class);
 
         try {
             Raw.<String, String>mapAssertion().containsKeysExactly("key");
@@ -953,6 +965,7 @@ public final class MapAssertionTest extends AssertionTest {
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("key1", "value1", "key2", "value2")).containsKeysExactly(DataHelper.createIterable("key2", "key1"));
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("key1", "value1", null, "value2")).containsKeysExactly(DataHelper.createIterable(null, "key1"));
         initialize(Raw.<String, String>mapAssertion(), DataHelper.<String, String>createHashMap()).containsKeysExactly(DataHelper.<String>createIterable());
+        initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("key1", "value1", "key2", "value2")).isNotNull().containsKeysExactly(DataHelper.createIterable("key1", "key2")).isInstanceOf(Map.class);
 
         try {
             Raw.<String, String>mapAssertion().containsKeysExactly(DataHelper.<String>createIterable());
@@ -1030,6 +1043,7 @@ public final class MapAssertionTest extends AssertionTest {
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("key1", "value1", "key2", "value2")).containsKeysExactlyInOrder("key1", "key2");
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("key1", "value1", null, "value2")).containsKeysExactlyInOrder("key1", null);
         initialize(Raw.<String, String>mapAssertion(), DataHelper.<String, String>createHashMap()).containsKeysExactlyInOrder();
+        initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("key1", "value1", "key2", "value2")).isNotNull().containsKeysExactlyInOrder("key1", "key2").isInstanceOf(Map.class);
 
         try {
             Raw.<String, String>mapAssertion().containsKeysExactlyInOrder("key");
@@ -1149,6 +1163,7 @@ public final class MapAssertionTest extends AssertionTest {
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("key1", "value1", "key2", "value2")).containsKeysExactlyInOrder(DataHelper.createIterable("key1", "key2"));
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("key1", "value1", null, "value2")).containsKeysExactlyInOrder(DataHelper.createIterable("key1", null));
         initialize(Raw.<String, String>mapAssertion(), DataHelper.<String, String>createHashMap()).containsKeysExactlyInOrder(DataHelper.<String>createIterable());
+        initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("key1", "value1", "key2", "value2")).isNotNull().containsKeysExactlyInOrder(DataHelper.createIterable("key1", "key2")).isInstanceOf(Map.class);
 
         try {
             Raw.<String, String>mapAssertion().containsKeysExactlyInOrder(DataHelper.<String>createIterable());
@@ -1246,6 +1261,7 @@ public final class MapAssertionTest extends AssertionTest {
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("key1", "value1", "key2", "value2")).containsAnyKey("key1", "key3", "key5");
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("key1", "value1", "key2", "value2")).containsAnyKey("key6", "key2", "key4");
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("key1", "value1", null, "value2")).containsAnyKey("key6", null, "key4");
+        initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("key1", "value1", "key2", "value2")).isNotNull().containsAnyKey("key1", "key2").isInstanceOf(Map.class);
 
         try {
             Raw.<String, String>mapAssertion().containsAnyKey("key");
@@ -1355,6 +1371,7 @@ public final class MapAssertionTest extends AssertionTest {
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("key1", "value1", "key2", "value2")).containsAnyKey(DataHelper.createIterable("key1", "key3", "key5"));
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("key1", "value1", "key2", "value2")).containsAnyKey(DataHelper.createIterable("key6", "key2", "key4"));
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("key1", "value1", null, "value2")).containsAnyKey(DataHelper.createIterable("key6", null, "key4"));
+        initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("key1", "value1", "key2", "value2")).isNotNull().containsAnyKey(DataHelper.createIterable("key1", "key2")).isInstanceOf(Map.class);
 
         try {
             Raw.<String, String>mapAssertion().containsAnyKey(DataHelper.<String>createIterable());
@@ -1443,6 +1460,7 @@ public final class MapAssertionTest extends AssertionTest {
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("key1", "value1", "key2", "value2")).containsNoKey("key7", null, "key8");
         initialize(Raw.mapAssertion(), DataHelper.createHashMap((Object) "key1", (Object) "value1", '1', "value2")).containsNoKey("key4", "key3");
         initialize(Raw.mapAssertion(), DataHelper.createHashMap((Object) "key1", (Object) "value1", "key2", '1')).containsNoKey("key4", "key3");
+        initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("key1", "value1", "key2", "value2")).isNotNull().containsNoKey("key3", "key4").isInstanceOf(Map.class);
 
         try {
             Raw.<String, String>mapAssertion().containsNoKey("key");
@@ -1553,6 +1571,7 @@ public final class MapAssertionTest extends AssertionTest {
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("key1", "value1", "key2", "value2")).containsNoKey(DataHelper.createIterable("key7", "key6", "key8"));
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("key1", "value1", null, "value2")).containsNoKey(DataHelper.createIterable("key7", "key6", "key8"));
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("key1", "value1", "key2", "value2")).containsNoKey(DataHelper.createIterable("key7", null, "key8"));
+        initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("key1", "value1", "key2", "value2")).isNotNull().containsNoKey(DataHelper.createIterable("key3", "key4")).isInstanceOf(Map.class);
 
         try {
             Raw.<String, String>mapAssertion().containsNoKey(DataHelper.<String>createIterable());
@@ -1636,6 +1655,7 @@ public final class MapAssertionTest extends AssertionTest {
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("key1", "value1", "key2", "value2")).toValues().isNotEmpty();
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("key1", "value1", "key2", null)).toValues().contains("value1");
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("key1", "value1", "key2", null)).toValues().contains(null);
+        initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("key1", "value1", "key2", "value2")).isNotNull().toValues().isNotEmpty();
 
         try {
             Raw.<String, String>mapAssertion().toValues();
@@ -1689,6 +1709,7 @@ public final class MapAssertionTest extends AssertionTest {
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("key1", "value1", "key2", "value2")).toValues(Matchers.hasItems("value1", "value2"));
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("key1", "value1", "key2", null)).toValues(Matchers.hasItems("value1"));
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("key1", "value1", "key2", null)).toValues(Matchers.hasItems((String) null));
+        initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("key1", "value1", "key2", "value2")).isNotNull().toValues(Matchers.hasItems("value1", "value2")).isInstanceOf(Map.class);
 
         try {
             Raw.<String, String>mapAssertion().toValues(Matchers.hasItems(""));
@@ -1755,6 +1776,7 @@ public final class MapAssertionTest extends AssertionTest {
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("key1", "value1", "key2", "value2")).containsEntry("key2", "value2");
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap(null, "value1", "key2", "value2")).containsEntry(null, "value1");
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("key1", null, "key2", "value2")).containsEntry("key1", null);
+        initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("key1", "value1", "key2", "value2")).isNotNull().containsEntry("key1", "value1").isInstanceOf(Map.class);
 
         try {
             Raw.<String, String>mapAssertion().containsEntry("key", "value");
@@ -1850,6 +1872,7 @@ public final class MapAssertionTest extends AssertionTest {
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("key1", null, "key2", "value2")).doesNotContainEntry("key1", "value1");
         initialize(Raw.mapAssertion(), DataHelper.createHashMap((Object) "key1", (Object) "value1", '1', "value2")).doesNotContainEntry("key1", "value2");
         initialize(Raw.mapAssertion(), DataHelper.createHashMap((Object) "key1", (Object) "value1", "key2", '1')).doesNotContainEntry("key1", "value2");
+        initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("key1", "value1", "key2", "value2")).isNotNull().doesNotContainEntry("key", "value").isInstanceOf(Map.class);
 
         try {
             Raw.<String, String>mapAssertion().doesNotContainEntry("key", "value");
@@ -1920,6 +1943,7 @@ public final class MapAssertionTest extends AssertionTest {
     public void containsAll1Test() {
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).containsAll("k1", "v1");
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).containsAll("k3", "v3");
+        initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).isNotNull().containsAll("k1", "v1").isInstanceOf(Map.class);
 
         try {
             Raw.<String, String>mapAssertion().containsAll("k1", "v1");
@@ -1960,6 +1984,7 @@ public final class MapAssertionTest extends AssertionTest {
     public void containsAll2Test() {
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).containsAll("k1", "v1", "k2", "v2");
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).containsAll("k3", "v3", "k5", "v5");
+        initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).isNotNull().containsAll("k1", "v1", "k2", "v2").isInstanceOf(Map.class);
 
         try {
             Raw.<String, String>mapAssertion().containsAll("k1", "v1", "k2", "v2");
@@ -2000,6 +2025,7 @@ public final class MapAssertionTest extends AssertionTest {
     public void containsAll3Test() {
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).containsAll("k1", "v1", "k2", "v2", "k3", "v3");
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).containsAll("k3", "v3", "k5", "v5", "k2", "v2");
+        initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).isNotNull().containsAll("k1", "v1", "k2", "v2", "k3", "v3").isInstanceOf(Map.class);
 
         try {
             Raw.<String, String>mapAssertion().containsAll("k1", "v1", "k2", "v2", "k3", "v3");
@@ -2040,6 +2066,7 @@ public final class MapAssertionTest extends AssertionTest {
     public void containsAll4Test() {
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).containsAll("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4");
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).containsAll("k3", "v3", "k5", "v5", "k2", "v2", "k1", "v1");
+        initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).isNotNull().containsAll("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4").isInstanceOf(Map.class);
 
         try {
             Raw.<String, String>mapAssertion().containsAll("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4");
@@ -2080,6 +2107,7 @@ public final class MapAssertionTest extends AssertionTest {
     public void containsAll5Test() {
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).containsAll("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5");
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).containsAll("k3", "v3", "k5", "v5", "k2", "v2", "k1", "v1", "k4", "v4");
+        initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).isNotNull().containsAll("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5").isInstanceOf(Map.class);
 
         try {
             Raw.<String, String>mapAssertion().containsAll("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5");
@@ -2127,6 +2155,7 @@ public final class MapAssertionTest extends AssertionTest {
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("key1", null, "key2", "value2")).containsAll(DataHelper.createHashMap("key2", "value2", "key1", null));
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("key1", null, "key2", "value2")).containsAll(DataHelper.createHashMap("key2", "value2", "key1", null));
         initialize(Raw.<String, String>mapAssertion(), createDuplicateMap("key1", "value1", "key1", "value2", "key1", "value3")).containsAll(createDuplicateMap("key1", "value1", "key1", "value2", "key1", "value3"));
+        initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("key1", "value1", "key2", "value2")).isNotNull().containsAll(DataHelper.createHashMap("key1", "value1")).isInstanceOf(Map.class);
 
         try {
             Raw.<String, String>mapAssertion().containsAll(DataHelper.<String, String>createHashMap());
@@ -2253,6 +2282,7 @@ public final class MapAssertionTest extends AssertionTest {
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).containsAllInOrder("k3", "v3");
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).containsAllInOrder("k1", "v1", "k3", "v3", "k4", "v4");
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).containsAllInOrder("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5");
+        initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).isNotNull().containsAllInOrder("k1", "v1").isInstanceOf(Map.class);
 
         try {
             Raw.<String, String>mapAssertion().containsAllInOrder("k1", "v1");
@@ -2305,6 +2335,7 @@ public final class MapAssertionTest extends AssertionTest {
     public void containsAllInOrder2Test() {
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).containsAllInOrder("k1", "v1", "k2", "v2");
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).containsAllInOrder("k3", "v3", "k5", "v5");
+        initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).isNotNull().containsAllInOrder("k1", "v1", "k2", "v2").isInstanceOf(Map.class);
 
         try {
             Raw.<String, String>mapAssertion().containsAllInOrder("k1", "v1", "k2", "v2");
@@ -2345,6 +2376,7 @@ public final class MapAssertionTest extends AssertionTest {
     public void containsAllInOrder3Test() {
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).containsAllInOrder("k1", "v1", "k2", "v2", "k3", "v3");
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).containsAllInOrder("k1", "v1", "k3", "v3", "k5", "v5");
+        initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).isNotNull().containsAllInOrder("k1", "v1", "k2", "v2", "k3", "v3").isInstanceOf(Map.class);
 
         try {
             Raw.<String, String>mapAssertion().containsAllInOrder("k1", "v1", "k2", "v2", "k3", "v3");
@@ -2385,6 +2417,7 @@ public final class MapAssertionTest extends AssertionTest {
     public void containsAllInOrder4Test() {
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).containsAllInOrder("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4");
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).containsAllInOrder("k1", "v1", "k3", "v3", "k4", "v4", "k5", "v5");
+        initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).isNotNull().containsAllInOrder("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4").isInstanceOf(Map.class);
 
         try {
             Raw.<String, String>mapAssertion().containsAllInOrder("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4");
@@ -2424,6 +2457,7 @@ public final class MapAssertionTest extends AssertionTest {
     @Test
     public void containsAllInOrder5Test() {
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).containsAllInOrder("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5");
+        initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).isNotNull().containsAllInOrder("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5").isInstanceOf(Map.class);
 
         try {
             Raw.<String, String>mapAssertion().containsAllInOrder("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5");
@@ -2468,6 +2502,7 @@ public final class MapAssertionTest extends AssertionTest {
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap(null, "value1", "key2", "value2")).containsAllInOrder(DataHelper.createHashMap(null, "value1", "key2", "value2"));
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("key1", null, "key2", "value2")).containsAllInOrder(DataHelper.createHashMap("key1", null, "key2", "value2"));
         initialize(Raw.<String, String>mapAssertion(), createDuplicateMap("key1", "value1", "key1", "value2", "key1", "value3")).containsAllInOrder(createDuplicateMap("key1", "value1", "key1", "value2", "key1", "value3"));
+        initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("key1", "value1", "key2", "value2")).isNotNull().containsAllInOrder(DataHelper.createHashMap("key1", "value1")).isInstanceOf(Map.class);
 
         try {
             Raw.<String, String>mapAssertion().containsAllInOrder(DataHelper.<String, String>createHashMap());
@@ -2609,6 +2644,7 @@ public final class MapAssertionTest extends AssertionTest {
     @Test
     public void containsExactly0Test() {
         initialize(Raw.<String, String>mapAssertion(), DataHelper.<String, String>createHashMap()).containsExactly();
+        initialize(Raw.<String, String>mapAssertion(), DataHelper.<String, String>createHashMap()).isNotNull().containsExactly().isInstanceOf(Map.class);
 
         try {
             Raw.<String, String>mapAssertion().containsExactly();
@@ -2648,6 +2684,7 @@ public final class MapAssertionTest extends AssertionTest {
     @Test
     public void containsExactly1Test() {
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("k1", "v1")).containsExactly("k1", "v1");
+        initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("k1", "v1")).isNotNull().containsExactly("k1", "v1").isInstanceOf(Map.class);
 
         try {
             Raw.<String, String>mapAssertion().containsExactly("k1", "v1");
@@ -2688,6 +2725,7 @@ public final class MapAssertionTest extends AssertionTest {
     public void containsExactly2Test() {
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("k1", "v1", "k2", "v2")).containsExactly("k1", "v1", "k2", "v2");
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("k1", "v1", "k2", "v2")).containsExactly("k2", "v2", "k1", "v1");
+        initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("k1", "v1", "k2", "v2")).isNotNull().containsExactly("k1", "v1", "k2", "v2").isInstanceOf(Map.class);
 
         try {
             Raw.<String, String>mapAssertion().containsExactly("k1", "v1", "k2", "v2");
@@ -2728,6 +2766,7 @@ public final class MapAssertionTest extends AssertionTest {
     public void containsExactly3Test() {
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("k1", "v1", "k2", "v2", "k3", "v3")).containsExactly("k1", "v1", "k2", "v2", "k3", "v3");
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("k1", "v1", "k2", "v2", "k3", "v3")).containsExactly("k2", "v2", "k1", "v1", "k3", "v3");
+        initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("k1", "v1", "k2", "v2", "k3", "v3")).isNotNull().containsExactly("k1", "v1", "k2", "v2", "k3", "v3").isInstanceOf(Map.class);
 
         try {
             Raw.<String, String>mapAssertion().containsExactly("k1", "v1", "k2", "v2", "k3", "v3");
@@ -2768,6 +2807,7 @@ public final class MapAssertionTest extends AssertionTest {
     public void containsExactly4Test() {
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4")).containsExactly("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4");
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4")).containsExactly("k2", "v2", "k1", "v1", "k3", "v3", "k4", "v4");
+        initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4")).isNotNull().containsExactly("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4").isInstanceOf(Map.class);
 
         try {
             Raw.<String, String>mapAssertion().containsExactly("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4");
@@ -2808,6 +2848,7 @@ public final class MapAssertionTest extends AssertionTest {
     public void containsExactly5Test() {
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).containsExactly("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5");
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).containsExactly("k2", "v2", "k1", "v1", "k3", "v3", "k4", "v4", "k5", "v5");
+        initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).isNotNull().containsExactly("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5").isInstanceOf(Map.class);
 
         try {
             Raw.<String, String>mapAssertion().containsExactly("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5");
@@ -2852,6 +2893,7 @@ public final class MapAssertionTest extends AssertionTest {
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("key1", null, "key2", "value2")).containsExactly(DataHelper.createHashMap("key1", null, "key2", "value2"));
         initialize(Raw.<String, String>mapAssertion(), DataHelper.<String, String>createHashMap()).containsExactly(DataHelper.<String, String>createHashMap());
         initialize(Raw.<String, String>mapAssertion(), createDuplicateMap("key1", "value1", "key1", "value2", "key1", "value3")).containsExactly(createDuplicateMap("key1", "value1", "key1", "value2", "key1", "value3"));
+        initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("key1", "value1", "key2", "value2")).isNotNull().containsExactly(DataHelper.createHashMap("key1", "value1", "key2", "value2")).isInstanceOf(Map.class);
 
         try {
             Raw.<String, String>mapAssertion().containsExactly(DataHelper.<String, String>createHashMap());
@@ -2987,6 +3029,7 @@ public final class MapAssertionTest extends AssertionTest {
     @Test
     public void containsExactlyInOrder0Test() {
         initialize(Raw.<String, String>mapAssertion(), DataHelper.<String, String>createHashMap()).containsExactlyInOrder();
+        initialize(Raw.<String, String>mapAssertion(), DataHelper.<String, String>createHashMap()).isNotNull().containsExactlyInOrder().isInstanceOf(Map.class);
 
         try {
             Raw.<String, String>mapAssertion().containsExactlyInOrder();
@@ -3026,6 +3069,7 @@ public final class MapAssertionTest extends AssertionTest {
     @Test
     public void containsExactlyInOrder1Test() {
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("k1", "v1")).containsExactlyInOrder("k1", "v1");
+        initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("k1", "v1")).isNotNull().containsExactlyInOrder("k1", "v1").isInstanceOf(Map.class);
 
         try {
             Raw.<String, String>mapAssertion().containsExactlyInOrder("k1", "v1");
@@ -3065,6 +3109,7 @@ public final class MapAssertionTest extends AssertionTest {
     @Test
     public void containsExactlyInOrder2Test() {
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("k1", "v1", "k2", "v2")).containsExactlyInOrder("k1", "v1", "k2", "v2");
+        initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("k1", "v1", "k2", "v2")).isNotNull().containsExactlyInOrder("k1", "v1", "k2", "v2").isInstanceOf(Map.class);
 
         try {
             Raw.<String, String>mapAssertion().containsExactlyInOrder("k1", "v1", "k2", "v2");
@@ -3104,6 +3149,7 @@ public final class MapAssertionTest extends AssertionTest {
     @Test
     public void containsExactlyInOrder3Test() {
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("k1", "v1", "k2", "v2", "k3", "v3")).containsExactlyInOrder("k1", "v1", "k2", "v2", "k3", "v3");
+        initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("k1", "v1", "k2", "v2", "k3", "v3")).isNotNull().containsExactlyInOrder("k1", "v1", "k2", "v2", "k3", "v3").isInstanceOf(Map.class);
 
         try {
             Raw.<String, String>mapAssertion().containsExactlyInOrder("k1", "v1", "k2", "v2", "k3", "v3");
@@ -3143,6 +3189,7 @@ public final class MapAssertionTest extends AssertionTest {
     @Test
     public void containsExactlyInOrder4Test() {
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4")).containsExactlyInOrder("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4");
+        initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4")).isNotNull().containsExactlyInOrder("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4").isInstanceOf(Map.class);
 
         try {
             Raw.<String, String>mapAssertion().containsExactlyInOrder("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4");
@@ -3182,6 +3229,7 @@ public final class MapAssertionTest extends AssertionTest {
     @Test
     public void containsExactlyInOrder5Test() {
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).containsExactlyInOrder("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5");
+        initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).isNotNull().containsExactlyInOrder("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5").isInstanceOf(Map.class);
 
         try {
             Raw.<String, String>mapAssertion().containsExactlyInOrder("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5");
@@ -3225,6 +3273,7 @@ public final class MapAssertionTest extends AssertionTest {
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("key1", null, "key2", "value2")).containsExactlyInOrder(DataHelper.createHashMap("key1", null, "key2", "value2"));
         initialize(Raw.<String, String>mapAssertion(), DataHelper.<String, String>createHashMap()).containsExactlyInOrder(DataHelper.<String, String>createHashMap());
         initialize(Raw.<String, String>mapAssertion(), createDuplicateMap("key1", "value1", "key1", "value2", "key1", "value3")).containsExactlyInOrder(createDuplicateMap("key1", "value1", "key1", "value2", "key1", "value3"));
+        initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("key1", "value1", "key2", "value2")).isNotNull().containsExactlyInOrder(DataHelper.createHashMap("key1", "value1", "key2", "value2")).isInstanceOf(Map.class);
 
         try {
             Raw.<String, String>mapAssertion().containsExactlyInOrder(DataHelper.<String, String>createHashMap());
@@ -3379,6 +3428,7 @@ public final class MapAssertionTest extends AssertionTest {
     public void containsAny1Test() {
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).containsAny("k1", "v1");
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).containsAny("k5", "v5");
+        initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).isNotNull().containsAny("k1", "v1").isInstanceOf(Map.class);
 
         try {
             Raw.<String, String>mapAssertion().containsAny("k1", "v1");
@@ -3419,6 +3469,7 @@ public final class MapAssertionTest extends AssertionTest {
     public void containsAny2Test() {
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).containsAny("k1", "v1", "k2", "v2");
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).containsAny("k7", "v7", "k5", "v5");
+        initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).isNotNull().containsAny("k1", "v1", "k2", "v2").isInstanceOf(Map.class);
 
         try {
             Raw.<String, String>mapAssertion().containsAny("k1", "v1", "k2", "v2");
@@ -3459,6 +3510,7 @@ public final class MapAssertionTest extends AssertionTest {
     public void containsAny3Test() {
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).containsAny("k1", "v1", "k2", "v2", "k3", "v3");
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).containsAny("k7", "v7", "k8", "v8", "k5", "v5");
+        initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).isNotNull().containsAny("k1", "v1", "k2", "v2", "k3", "v3").isInstanceOf(Map.class);
 
         try {
             Raw.<String, String>mapAssertion().containsAny("k1", "v1", "k2", "v2", "k3", "v3");
@@ -3499,6 +3551,7 @@ public final class MapAssertionTest extends AssertionTest {
     public void containsAny4Test() {
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).containsAny("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4");
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).containsAny("k7", "v7", "k8", "v8", "k9", "v9", "k5", "v5");
+        initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).isNotNull().containsAny("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4").isInstanceOf(Map.class);
 
         try {
             Raw.<String, String>mapAssertion().containsAny("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4");
@@ -3539,6 +3592,7 @@ public final class MapAssertionTest extends AssertionTest {
     public void containsAny5Test() {
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).containsAny("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5");
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).containsAny("k7", "v7", "k8", "v8", "k9", "v9", "k10", "v10", "k5", "v5");
+        initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).isNotNull().containsAny("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5").isInstanceOf(Map.class);
 
         try {
             Raw.<String, String>mapAssertion().containsAny("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5");
@@ -3583,6 +3637,7 @@ public final class MapAssertionTest extends AssertionTest {
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("key1", null, "key2", "value2")).containsAny(DataHelper.createHashMap("key1", null, "key3", "value3", "key5", "value5"));
         initialize(Raw.<String, String>mapAssertion(), createDuplicateMap("key1", "value1", "key1", "value2", "key1", "value3")).containsAny(createDuplicateMap("key1", "value1", "key1", "value2", "key1", "value3"));
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("key1", "value1", "key1", "value2", "key1", "value3")).containsAny(createDuplicateMap("key1", "value1", "key1", "value2", "key1", "value3"));
+        initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("key1", "value1", "key2", "value2")).isNotNull().containsAny(DataHelper.createHashMap("key1", "value1", "key3", "value3", "key5", "value5")).isInstanceOf(Map.class);
 
         try {
             Raw.<String, String>mapAssertion().containsAny(DataHelper.<String, String>createHashMap());
@@ -3700,6 +3755,7 @@ public final class MapAssertionTest extends AssertionTest {
     @Test
     public void containsNone1Test() {
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).containsNone("k1", "v11");
+        initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).isNotNull().containsNone("k1", "v11").isInstanceOf(Map.class);
 
         try {
             Raw.<String, String>mapAssertion().containsNone("k1", "v11");
@@ -3739,6 +3795,7 @@ public final class MapAssertionTest extends AssertionTest {
     @Test
     public void containsNone2Test() {
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).containsNone("k1", "v11", "k2", "v22");
+        initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).isNotNull().containsNone("k1", "v11", "k2", "v22").isInstanceOf(Map.class);
 
         try {
             Raw.<String, String>mapAssertion().containsNone("k1", "v11", "k2", "v22");
@@ -3778,6 +3835,7 @@ public final class MapAssertionTest extends AssertionTest {
     @Test
     public void containsNone3Test() {
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).containsNone("k1", "v11", "k2", "v22", "k3", "v33");
+        initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).isNotNull().containsNone("k1", "v11", "k2", "v22", "k3", "v33").isInstanceOf(Map.class);
 
         try {
             Raw.<String, String>mapAssertion().containsNone("k1", "v11", "k2", "v22", "k3", "v33");
@@ -3817,6 +3875,7 @@ public final class MapAssertionTest extends AssertionTest {
     @Test
     public void containsNone4Test() {
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).containsNone("k1", "v11", "k2", "v22", "k3", "v33", "k4", "v44");
+        initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).isNotNull().containsNone("k1", "v11", "k2", "v22", "k3", "v33", "k4", "v44").isInstanceOf(Map.class);
 
         try {
             Raw.<String, String>mapAssertion().containsNone("k1", "v11", "k2", "v22", "k3", "v33", "k4", "v44");
@@ -3856,6 +3915,7 @@ public final class MapAssertionTest extends AssertionTest {
     @Test
     public void containsNone5Test() {
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).containsNone("k1", "v11", "k2", "v22", "k3", "v33", "k4", "v44", "k5", "v55");
+        initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("k1", "v1", "k2", "v2", "k3", "v3", "k4", "v4", "k5", "v5")).isNotNull().containsNone("k1", "v11", "k2", "v22", "k3", "v33", "k4", "v44", "k5", "v55").isInstanceOf(Map.class);
 
         try {
             Raw.<String, String>mapAssertion().containsNone("k1", "v11", "k2", "v22", "k3", "v33", "k4", "v44", "k5", "v55");
@@ -3902,6 +3962,7 @@ public final class MapAssertionTest extends AssertionTest {
         initialize(Raw.mapAssertion(), DataHelper.createHashMap((Object) "key1", (Object) "value1", "key2", "value2")).containsNone(DataHelper.createHashMap((Object) "key1", null));
         initialize(Raw.mapAssertion(), DataHelper.createHashMap((Object) "key1", (Object) "value1", '1', "value2")).containsNone(DataHelper.createHashMap((Object) "key", (Object) "value"));
         initialize(Raw.mapAssertion(), DataHelper.createHashMap((Object) "key1", (Object) "value1", "key2", '1')).containsNone(DataHelper.createHashMap((Object) "key", (Object) "value"));
+        initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("key1", "value1", "key2", "value2")).isNotNull().containsNone(DataHelper.createHashMap("key3", "value3", "key4", "value4", "key5", "value5")).isInstanceOf(Map.class);
 
         try {
             Raw.<String, String>mapAssertion().containsNone(DataHelper.<String, String>createHashMap());
@@ -4010,6 +4071,7 @@ public final class MapAssertionTest extends AssertionTest {
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("key1", "value1")).toSize().isEqualTo(1);
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("key1", "value1", "key2", "value2")).toSize().isEqualTo(2);
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("key1", "value1", "key2", "value2", "key3", "value3")).toSize().isEqualTo(3);
+        initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("key1", "value1")).isNotNull().toSize().isEqualTo(1);
 
         try {
             Raw.<String, String>mapAssertion().toSize();
@@ -4064,6 +4126,7 @@ public final class MapAssertionTest extends AssertionTest {
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("key1", "value1")).toSize(Matchers.equalTo(1));
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("key1", "value1", "key2", "value2")).toSize(Matchers.equalTo(2));
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("key1", "value1", "key2", "value2", "key3", "value3")).toSize(Matchers.equalTo(3));
+        initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("key1", "value1")).isNotNull().toSize(Matchers.equalTo(1)).isInstanceOf(Map.class);
 
         try {
             Raw.<String, String>mapAssertion().toSize(Matchers.equalTo(0));
@@ -4130,6 +4193,7 @@ public final class MapAssertionTest extends AssertionTest {
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("key1", "value1")).hasSize(1);
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("key1", "value1", "key2", "value2")).hasSize(2);
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("key1", "value1", "key2", "value2", "key3", "value3")).hasSize(3);
+        initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("key1", "value1")).isNotNull().hasSize(1).isInstanceOf(Map.class);
 
         try {
             Raw.<String, String>mapAssertion().hasSize(1);
