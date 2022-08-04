@@ -70,6 +70,7 @@ public final class SortedSetAssertionTest extends AssertionTest {
     @Test
     public void isEmptyTest() {
         initialize(Raw.<String>sortedSetAssertion(), DataHelper.<String>createTreeSet()).isEmpty();
+        initialize(Raw.<String>sortedSetAssertion(), DataHelper.<String>createTreeSet()).isNotNull().isEmpty().isInstanceOf(SortedSet.class);
 
         try {
             Raw.<String>sortedSetAssertion().isEmpty();
@@ -110,6 +111,7 @@ public final class SortedSetAssertionTest extends AssertionTest {
     public void isNullOrEmptyTest() {
         initialize(Raw.<String>sortedSetAssertion(), DataHelper.<String>createTreeSet()).isNullOrEmpty();
         initialize(Raw.<String>sortedSetAssertion(), null).isNullOrEmpty();
+        initialize(Raw.<String>sortedSetAssertion(), DataHelper.<String>createTreeSet()).isNotNull().isNullOrEmpty().isInstanceOf(SortedSet.class);
 
         try {
             Raw.<String>sortedSetAssertion().isNullOrEmpty();
@@ -138,6 +140,7 @@ public final class SortedSetAssertionTest extends AssertionTest {
     public void isNotEmptyTest() {
         initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2")).isNotEmpty();
         initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("test1", "test2")).isNotEmpty();
+        initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2")).isNotNull().isNotEmpty().isInstanceOf(SortedSet.class);
 
         try {
             Raw.<String>sortedSetAssertion().isNotEmpty();
@@ -181,6 +184,7 @@ public final class SortedSetAssertionTest extends AssertionTest {
         initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet(null, "val1", "val2")).contains(null);
         initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", null, "val2")).contains(null);
         initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", null)).contains(null);
+        initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2")).isNotNull().contains("val1").isInstanceOf(SortedSet.class);
 
         try {
             Raw.<String>sortedSetAssertion().contains("val");
@@ -234,6 +238,7 @@ public final class SortedSetAssertionTest extends AssertionTest {
         initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2")).doesNotContain("val3");
         initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", null)).doesNotContain("val3");
         initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2")).doesNotContain(null);
+        initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2")).isNotNull().doesNotContain("val3").isInstanceOf(SortedSet.class);
 
         try {
             Raw.<String>sortedSetAssertion().doesNotContain("val");
@@ -311,6 +316,7 @@ public final class SortedSetAssertionTest extends AssertionTest {
         initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", "val5")).toHeadSet("val6").containsExactlyInOrder("val1", "val2", "val3", "val4", "val5");
         initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet(null, "val1", "val2", "val3", "val4")).toHeadSet("val2").containsExactlyInOrder(null, "val1");
         initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", "val5")).toHeadSet(null).containsExactlyInOrder();
+        initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", "val5")).isNotNull().toHeadSet("val0").containsExactlyInOrder();
 
         try {
             Raw.<String>sortedSetAssertion().toHeadSet("val");
@@ -396,6 +402,8 @@ public final class SortedSetAssertionTest extends AssertionTest {
         initialize(Raw.<String>sortedSetAssertion(), sortedSet).toHeadSet(4).isNotSameAs(sortedSet);
         initialize(Raw.<String>sortedSetAssertion(), sortedSet).toHeadSet(5).isSameAs(sortedSet);
         initialize(Raw.<String>sortedSetAssertion(), sortedSet).toHeadSet(6).isSameAs(sortedSet);
+
+        initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", "val5")).isNotNull().toHeadSet(1).containsExactlyInOrder("val1");
 
         try {
             Raw.<String>sortedSetAssertion().toHeadSet(1);
@@ -539,6 +547,7 @@ public final class SortedSetAssertionTest extends AssertionTest {
         initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", "val5")).toHeadSet("val6", Matchers.hasItems("val1", "val2", "val3", "val4", "val5"));
         initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet(null, "val1", "val2", "val3", "val4")).toHeadSet("val2", Matchers.hasItems(null, "val1"));
         initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", "val5")).toHeadSet(null, Matchers.emptyIterableOf(String.class));
+        initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", "val5")).isNotNull().toHeadSet("val0", Matchers.emptyIterableOf(String.class)).isInstanceOf(SortedSet.class);
 
         try {
             Raw.<String>sortedSetAssertion().toHeadSet("val", Matchers.hasItems(""));
@@ -607,6 +616,7 @@ public final class SortedSetAssertionTest extends AssertionTest {
         initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", "val5")).toHeadSet(4, Matchers.hasItems("val1", "val2", "val3", "val4"));
         initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", "val5")).toHeadSet(5, Matchers.hasItems("val1", "val2", "val3", "val4", "val5"));
         initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", "val5")).toHeadSet(6, Matchers.hasItems("val1", "val2", "val3", "val4", "val5"));
+        initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", "val5")).isNotNull().toHeadSet(1, Matchers.hasItems("val1")).isInstanceOf(SortedSet.class);
 
         try {
             Raw.<String>sortedSetAssertion().toHeadSet(1, Matchers.hasItems(""));
@@ -738,6 +748,7 @@ public final class SortedSetAssertionTest extends AssertionTest {
         initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", "val5")).toTailSet("val6").containsExactlyInOrder();
         initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet(null, "val1", "val2", "val3", "val4")).toTailSet("val2").containsExactlyInOrder("val2", "val3", "val4");
         initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", "val5")).toTailSet(null).containsExactlyInOrder("val1", "val2", "val3", "val4", "val5");
+        initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", "val5")).isNotNull().toTailSet("val0").containsExactlyInOrder("val1", "val2", "val3", "val4", "val5");
 
         try {
             Raw.<String>sortedSetAssertion().toTailSet("val");
@@ -823,6 +834,8 @@ public final class SortedSetAssertionTest extends AssertionTest {
         initialize(Raw.<String>sortedSetAssertion(), sortedSet).toTailSet(4).isNotSameAs(sortedSet);
         initialize(Raw.<String>sortedSetAssertion(), sortedSet).toTailSet(5).isSameAs(sortedSet);
         initialize(Raw.<String>sortedSetAssertion(), sortedSet).toTailSet(6).isSameAs(sortedSet);
+
+        initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", "val5")).isNotNull().toTailSet(1).containsExactlyInOrder("val5");
 
         try {
             Raw.<String>sortedSetAssertion().toTailSet(1);
@@ -966,6 +979,7 @@ public final class SortedSetAssertionTest extends AssertionTest {
         initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", "val5")).toTailSet("val6", Matchers.emptyIterableOf(String.class));
         initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet(null, "val1", "val2", "val3", "val4")).toTailSet("val2", Matchers.hasItems("val2", "val3", "val4"));
         initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", "val5")).toTailSet(null, Matchers.hasItems("val1", "val2", "val3", "val4", "val5"));
+        initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", "val5")).isNotNull().toTailSet("val0", Matchers.hasItems("val1", "val2", "val3", "val4", "val5")).isInstanceOf(SortedSet.class);
 
         try {
             Raw.<String>sortedSetAssertion().toTailSet("val", Matchers.hasItems(""));
@@ -1034,6 +1048,7 @@ public final class SortedSetAssertionTest extends AssertionTest {
         initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", "val5")).toTailSet(4, Matchers.hasItems("val2", "val3", "val4", "val5"));
         initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", "val5")).toTailSet(5, Matchers.hasItems("val1", "val2", "val3", "val4", "val5"));
         initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", "val5")).toTailSet(6, Matchers.hasItems("val1", "val2", "val3", "val4", "val5"));
+        initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", "val5")).isNotNull().toTailSet(1, Matchers.hasItems("val5")).isInstanceOf(SortedSet.class);
 
         try {
             Raw.<String>sortedSetAssertion().toTailSet(1, Matchers.hasItems(""));
@@ -1163,6 +1178,7 @@ public final class SortedSetAssertionTest extends AssertionTest {
         initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", "val5")).containsAll("val3", "val5", "val4");
         initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", "val5")).containsAll("val3", "val1", "val4", "val5", "val2");
         initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", null)).containsAll("val3", "val1", "val4", null, "val2");
+        initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", "val5")).isNotNull().containsAll("val1", "val2").isInstanceOf(SortedSet.class);
 
         try {
             Raw.<String>sortedSetAssertion().containsAll("val");
@@ -1274,6 +1290,7 @@ public final class SortedSetAssertionTest extends AssertionTest {
         initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", "val5")).containsAll(DataHelper.createIterable("val3", "val5", "val4"));
         initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", "val5")).containsAll(DataHelper.createIterable("val3", "val1", "val4", "val5", "val2"));
         initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", null)).containsAll(DataHelper.createIterable("val3", "val1", "val4", null, "val2"));
+        initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", "val5")).isNotNull().containsAll(DataHelper.createIterable("val1", "val2")).isInstanceOf(SortedSet.class);
 
         try {
             Raw.<String>sortedSetAssertion().containsAll(DataHelper.<String>createIterable());
@@ -1372,6 +1389,7 @@ public final class SortedSetAssertionTest extends AssertionTest {
         initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", "val5")).containsAllInOrder("val3", "val4", "val5");
         initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", "val5")).containsAllInOrder("val1", "val2", "val3", "val4", "val5");
         initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", null)).containsAllInOrder(null, "val1", "val2", "val3", "val4");
+        initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", "val5")).isNotNull().containsAllInOrder("val1", "val2").isInstanceOf(SortedSet.class);
 
         try {
             Raw.<String>sortedSetAssertion().containsAllInOrder("val");
@@ -1482,6 +1500,7 @@ public final class SortedSetAssertionTest extends AssertionTest {
         initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", "val5")).containsAllInOrder(DataHelper.createIterable("val3", "val4", "val5"));
         initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", "val5")).containsAllInOrder(DataHelper.createIterable("val1", "val2", "val3", "val4", "val5"));
         initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", null)).containsAllInOrder(DataHelper.createIterable(null, "val1", "val2", "val3", "val4"));
+        initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", "val5")).isNotNull().containsAllInOrder(DataHelper.createIterable("val1", "val2")).isInstanceOf(SortedSet.class);
 
         try {
             Raw.<String>sortedSetAssertion().containsAllInOrder(DataHelper.<String>createIterable());
@@ -1582,6 +1601,7 @@ public final class SortedSetAssertionTest extends AssertionTest {
         initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", "val5")).containsExactly("val2", "val4", "val1", "val3", "val5");
         initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", null)).containsExactly("val2", "val4", "val1", "val3", null);
         initialize(Raw.<String>sortedSetAssertion(), DataHelper.<String>createTreeSet()).containsExactly();
+        initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3")).isNotNull().containsExactly("val1", "val2", "val3").isInstanceOf(SortedSet.class);
 
         try {
             Raw.<String>sortedSetAssertion().containsExactly("val");
@@ -1694,6 +1714,7 @@ public final class SortedSetAssertionTest extends AssertionTest {
         initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", "val5")).containsExactly(DataHelper.createIterable("val2", "val4", "val1", "val3", "val5"));
         initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", null)).containsExactly(DataHelper.createIterable("val2", "val4", "val1", "val3", null));
         initialize(Raw.<String>sortedSetAssertion(), DataHelper.<String>createTreeSet()).containsExactly(DataHelper.<String>createIterable());
+        initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3")).isNotNull().containsExactly(DataHelper.createIterable("val1", "val2", "val3")).isInstanceOf(SortedSet.class);
 
         try {
             Raw.<String>sortedSetAssertion().containsExactly(DataHelper.<String>createIterable());
@@ -1790,6 +1811,7 @@ public final class SortedSetAssertionTest extends AssertionTest {
         initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", "val5")).containsExactlyInOrder("val1", "val2", "val3", "val4", "val5");
         initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", null)).containsExactlyInOrder(null, "val1", "val2", "val3", "val4");
         initialize(Raw.<String>sortedSetAssertion(), DataHelper.<String>createTreeSet()).containsExactlyInOrder();
+        initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3")).isNotNull().containsExactlyInOrder("val1", "val2", "val3").isInstanceOf(SortedSet.class);
 
         try {
             Raw.<String>sortedSetAssertion().containsExactlyInOrder("val");
@@ -1898,6 +1920,7 @@ public final class SortedSetAssertionTest extends AssertionTest {
         initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", "val5")).containsExactlyInOrder(DataHelper.createIterable("val1", "val2", "val3", "val4", "val5"));
         initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", null)).containsExactlyInOrder(DataHelper.createIterable(null, "val1", "val2", "val3", "val4"));
         initialize(Raw.<String>sortedSetAssertion(), DataHelper.<String>createTreeSet()).containsExactlyInOrder(DataHelper.<String>createIterable());
+        initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3")).isNotNull().containsExactlyInOrder(DataHelper.createIterable("val1", "val2", "val3")).isInstanceOf(SortedSet.class);
 
         try {
             Raw.<String>sortedSetAssertion().containsExactlyInOrder(DataHelper.<String>createIterable());
@@ -1995,6 +2018,7 @@ public final class SortedSetAssertionTest extends AssertionTest {
         initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", "val5")).containsAny("val7", "val9", "val1", "val5", "val3");
         initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", null)).containsAny("val7", "val9", "val1", null, "val3");
         initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", null)).containsAny("val7", "val9", null);
+        initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3")).isNotNull().containsAny("val1", "val3", "val5").isInstanceOf(SortedSet.class);
 
         try {
             Raw.<String>sortedSetAssertion().containsAny("val");
@@ -2092,6 +2116,7 @@ public final class SortedSetAssertionTest extends AssertionTest {
         initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", "val5")).containsAny(DataHelper.createIterable("val7", "val9", "val1", "val5", "val3"));
         initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", null)).containsAny(DataHelper.createIterable("val7", "val9", "val1", null, "val3"));
         initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", null)).containsAny(DataHelper.createIterable("val7", "val9", null));
+        initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3")).isNotNull().containsAny(DataHelper.createIterable("val1", "val3", "val5")).isInstanceOf(SortedSet.class);
 
         try {
             Raw.<String>sortedSetAssertion().containsAny(DataHelper.<String>createIterable());
@@ -2176,6 +2201,7 @@ public final class SortedSetAssertionTest extends AssertionTest {
         initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3")).containsNone("val8", "val4");
         initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", null)).containsNone("val8", "val4");
         initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3")).containsNone("val8", "val4", null);
+        initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3")).isNotNull().containsNone("val4", "val5", "val6").isInstanceOf(SortedSet.class);
 
         try {
             Raw.<String>sortedSetAssertion().containsNone("val");
@@ -2272,6 +2298,7 @@ public final class SortedSetAssertionTest extends AssertionTest {
         initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3")).containsNone(DataHelper.createIterable("val8", "val4"));
         initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", null)).containsNone(DataHelper.createIterable("val8", "val4"));
         initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3")).containsNone(DataHelper.createIterable("val8", "val4", null));
+        initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3")).isNotNull().containsNone(DataHelper.createIterable("val4", "val5", "val6")).isInstanceOf(SortedSet.class);
 
         try {
             Raw.<String>sortedSetAssertion().containsNone(DataHelper.<String>createIterable());
@@ -2360,6 +2387,8 @@ public final class SortedSetAssertionTest extends AssertionTest {
         initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", "val5")).toSize().isGreaterThan(1);
         initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", "val5")).toSize().isLessThan(9);
 
+        initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3")).isNotNull().toSize().isEqualTo(3);
+
         try {
             Raw.<String>sortedSetAssertion().toSize();
             Assertions.fail("SortedSetAssertion test fail");
@@ -2416,6 +2445,8 @@ public final class SortedSetAssertionTest extends AssertionTest {
         initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", "val5")).toSize(Matchers.equalTo(5));
         initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", "val5")).toSize(Matchers.greaterThan(4));
         initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", "val5")).toSize(Matchers.lessThan(6));
+
+        initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3")).isNotNull().toSize(Matchers.is(Matchers.equalTo(3))).isInstanceOf(SortedSet.class);
 
         try {
             Raw.<String>sortedSetAssertion().toSize(Matchers.equalTo(0));
@@ -2480,6 +2511,7 @@ public final class SortedSetAssertionTest extends AssertionTest {
     public void hasSizeTest() {
         initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3")).hasSize(3);
         initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3", "val4", "val5")).hasSize(5);
+        initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3")).isNotNull().hasSize(3).isInstanceOf(SortedSet.class);
 
         try {
             Raw.<String>sortedSetAssertion().hasSize(1);
