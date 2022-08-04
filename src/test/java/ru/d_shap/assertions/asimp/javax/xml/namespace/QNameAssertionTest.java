@@ -725,6 +725,7 @@ public final class QNameAssertionTest extends AssertionTest {
         initialize(Raw.qnameAssertion(), new QName("")).hasLocalPart("");
         initialize(Raw.qnameAssertion(), new QName("namespace", "local")).hasLocalPart("local");
         initialize(Raw.qnameAssertion(), new QName("namespace", "local")).hasLocalPart("local");
+        initialize(Raw.qnameAssertion(), new QName("namespace", "local")).isNotNull().hasLocalPart("local").isInstanceOf(QName.class);
 
         try {
             Raw.qnameAssertion().hasLocalPart("");
