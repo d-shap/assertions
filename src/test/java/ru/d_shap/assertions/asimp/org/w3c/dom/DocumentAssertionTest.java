@@ -3181,6 +3181,117 @@ public final class DocumentAssertionTest extends AssertionTest {
      * {@link DocumentAssertion} class test.
      */
     @Test
+    public void hasChildElementsTest() {
+        initialize(Raw.documentAssertion(), createDocument("<element><child/><child/><child/></element>")).hasChildElements();
+        initialize(Raw.documentAssertion(), createDocument("<element><child/><child/><child/></element>")).isNotNull().hasChildElements().isInstanceOf(Document.class);
+
+        try {
+            Raw.documentAssertion().hasChildElements();
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), null).hasChildElements();
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), null, "Message").hasChildElements();
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element/>")).hasChildElements();
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should have the child elements.\n\tActual:<<element/>>");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element/>"), "Message").hasChildElements();
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should have the child elements.\n\tActual:<<element/>>");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element></element>")).hasChildElements();
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should have the child elements.\n\tActual:<<element/>>");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element></element>"), "Message").hasChildElements();
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should have the child elements.\n\tActual:<<element/>>");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element>text</element>")).hasChildElements();
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should have the child elements.\n\tActual:<<element>text</element>>");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element>text</element>"), "Message").hasChildElements();
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should have the child elements.\n\tActual:<<element>text</element>>");
+        }
+    }
+
+    /**
+     * {@link DocumentAssertion} class test.
+     */
+    @Test
+    public void hasNotChildElementsTest() {
+        initialize(Raw.documentAssertion(), createDocument("<element> </element>")).hasNotChildElements();
+        initialize(Raw.documentAssertion(), createDocument("<element>text</element>")).hasNotChildElements();
+        initialize(Raw.documentAssertion(), createDocument("<element><![CDATA[text1]]>text2<![CDATA[text3]]></element>")).hasNotChildElements();
+        initialize(Raw.documentAssertion(), createDocument("<element><?procinstr?></element>")).hasNotChildElements();
+        initialize(Raw.documentAssertion(), createDocument("<element/>")).hasNotChildElements();
+        initialize(Raw.documentAssertion(), createDocument("<element attr='val'/>")).hasNotChildElements();
+        initialize(Raw.documentAssertion(), createDocument("<element></element>")).hasNotChildElements();
+        initialize(Raw.documentAssertion(), createDocument("<element attr='val'></element>")).hasNotChildElements();
+        initialize(Raw.documentAssertion(), createDocument("<element/>")).isNotNull().hasNotChildElements().isInstanceOf(Document.class);
+
+        try {
+            Raw.documentAssertion().hasNotChildElements();
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), null).hasNotChildElements();
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), null, "Message").hasNotChildElements();
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element><child/><child/><child/></element>")).hasNotChildElements();
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not have the child elements.\n\tActual:<<element><child/><child/><child/></element>>");
+        }
+        try {
+            initialize(Raw.documentAssertion(), createDocument("<element><child/><child/><child/></element>"), "Message").hasNotChildElements();
+            Assertions.fail("DocumentAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not have the child elements.\n\tActual:<<element><child/><child/><child/></element>>");
+        }
+    }
+
+    /**
+     * {@link DocumentAssertion} class test.
+     */
+    @Test
     public void toChildElementsCountTest() {
         initialize(Raw.documentAssertion(), createDocument("<element/>")).toChildElementsCount().isEqualTo(0);
         initialize(Raw.documentAssertion(), createDocument("<element attr='val'/>")).toChildElementsCount().isEqualTo(0);
