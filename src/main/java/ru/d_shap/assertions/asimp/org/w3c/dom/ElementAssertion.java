@@ -544,7 +544,7 @@ public final class ElementAssertion extends ReferenceAssertion<ElementAssertion,
      */
     public ElementAssertion hasChildElements() {
         checkActualIsNotNull();
-        if (!(getChildElementsCount() > 0)) {
+        if (getChildElementsCount() == 0) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.HAS_CHILD_ELEMENTS).addActual().build();
         }
         return this;
