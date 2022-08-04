@@ -78,6 +78,7 @@ public final class DocumentAssertionTest extends AssertionTest {
         initialize(Raw.documentAssertion(), createDocument("<element><child>text</child></element>")).isEqualTo(createDocument("<element><child>text</child></element>"));
         initialize(Raw.documentAssertion(), createDocument("<element xmlns='aaa'>text</element>")).isEqualTo(createDocument("<element xmlns='aaa'>text</element>"));
         initialize(Raw.documentAssertion(), createDocument("<ns1:element xmlns:ns1='aaa' xmlns:ns2='bbb'><ns2:child>text</ns2:child></ns1:element>")).isEqualTo(createDocument("<ns1:element xmlns:ns1='aaa' xmlns:ns2='bbb'><ns2:child>text</ns2:child></ns1:element>"));
+        initialize(Raw.documentAssertion(), createDocument("<element/>")).isNotNull().isEqualTo(createDocument("<element/>")).isInstanceOf(Document.class);
 
         try {
             Raw.documentAssertion().isEqualTo(createDocument("<element/>"));
@@ -171,6 +172,7 @@ public final class DocumentAssertionTest extends AssertionTest {
         initialize(Raw.documentAssertion(), createDocument("<element><child>text</child></element>")).isEqualTo("<element><child>text</child></element>");
         initialize(Raw.documentAssertion(), createDocument("<element xmlns='aaa'>text</element>")).isEqualTo("<element xmlns='aaa'>text</element>");
         initialize(Raw.documentAssertion(), createDocument("<ns1:element xmlns:ns1='aaa' xmlns:ns2='bbb'><ns2:child>text</ns2:child></ns1:element>")).isEqualTo("<ns1:element xmlns:ns1='aaa' xmlns:ns2='bbb'><ns2:child>text</ns2:child></ns1:element>");
+        initialize(Raw.documentAssertion(), createDocument("<element/>")).isNotNull().isEqualTo("<element/>").isInstanceOf(Document.class);
 
         try {
             Raw.documentAssertion().isEqualTo("<element/>");
@@ -288,6 +290,7 @@ public final class DocumentAssertionTest extends AssertionTest {
         initialize(Raw.documentAssertion(), createDocument("<element/>")).isNotEqualTo(createDocument("<element>content</element>"));
         initialize(Raw.documentAssertion(), createDocument("<element/>")).isNotEqualTo(createDocument("<element attr='val'/>"));
         initialize(Raw.documentAssertion(), createDocument("<element xmlns='aaa'/>")).isNotEqualTo(createDocument("<element xmlns:ns1='aaa'/>"));
+        initialize(Raw.documentAssertion(), createDocument("<element1/>")).isNotNull().isNotEqualTo(createDocument("<element2/>")).isInstanceOf(Document.class);
 
         try {
             Raw.documentAssertion().isNotEqualTo(createDocument("<element/>"));
@@ -393,6 +396,7 @@ public final class DocumentAssertionTest extends AssertionTest {
         initialize(Raw.documentAssertion(), createDocument("<element/>")).isNotEqualTo("<element>content</element>");
         initialize(Raw.documentAssertion(), createDocument("<element/>")).isNotEqualTo("<element attr='val'/>");
         initialize(Raw.documentAssertion(), createDocument("<element xmlns='aaa'/>")).isNotEqualTo("<element xmlns:ns1='aaa'/>");
+        initialize(Raw.documentAssertion(), createDocument("<element1/>")).isNotNull().isNotEqualTo("<element2/>").isInstanceOf(Document.class);
 
         try {
             Raw.documentAssertion().isNotEqualTo("<element/>");
@@ -518,6 +522,7 @@ public final class DocumentAssertionTest extends AssertionTest {
         initialize(Raw.documentAssertion(), createDocument("<element/>")).toNamespaceURI().isNull();
         initialize(Raw.documentAssertion(), createDocument("<element xmlns='aaa'/>")).toNamespaceURI().isEqualTo("aaa");
         initialize(Raw.documentAssertion(), createDocument("<ns1:element xmlns:ns1='aaa'/>")).toNamespaceURI().isEqualTo("aaa");
+        initialize(Raw.documentAssertion(), createDocument("<element xmlns='aaa'/>")).isNotNull().toNamespaceURI().isEqualTo("aaa");
 
         try {
             Raw.documentAssertion().toNamespaceURI();
@@ -559,6 +564,7 @@ public final class DocumentAssertionTest extends AssertionTest {
         initialize(Raw.documentAssertion(), createDocument("<element/>")).toNamespaceURI(Matchers.is(Matchers.emptyOrNullString()));
         initialize(Raw.documentAssertion(), createDocument("<element xmlns='aaa'/>")).toNamespaceURI(Matchers.is(Matchers.equalTo("aaa")));
         initialize(Raw.documentAssertion(), createDocument("<ns1:element xmlns:ns1='aaa'/>")).toNamespaceURI(Matchers.is(Matchers.equalTo("aaa")));
+        initialize(Raw.documentAssertion(), createDocument("<element xmlns='aaa'/>")).isNotNull().toNamespaceURI(Matchers.is(Matchers.equalTo("aaa"))).isInstanceOf(Document.class);
 
         try {
             Raw.documentAssertion().toNamespaceURI(Matchers.equalTo(""));
@@ -623,6 +629,7 @@ public final class DocumentAssertionTest extends AssertionTest {
     public void hasNamespaceURITest() {
         initialize(Raw.documentAssertion(), createDocument("<element xmlns='aaa'/>")).hasNamespaceURI("aaa");
         initialize(Raw.documentAssertion(), createDocument("<ns1:element xmlns:ns1='aaa'/>")).hasNamespaceURI("aaa");
+        initialize(Raw.documentAssertion(), createDocument("<element xmlns='aaa'/>")).isNotNull().hasNamespaceURI("aaa").isInstanceOf(Document.class);
 
         try {
             Raw.documentAssertion().hasNamespaceURI("");
@@ -688,6 +695,7 @@ public final class DocumentAssertionTest extends AssertionTest {
         initialize(Raw.documentAssertion(), createDocument("<element/>")).toPrefix().isNull();
         initialize(Raw.documentAssertion(), createDocument("<element xmlns='aaa'/>")).toPrefix().isNull();
         initialize(Raw.documentAssertion(), createDocument("<ns1:element xmlns:ns1='aaa'/>")).toPrefix().isEqualTo("ns1");
+        initialize(Raw.documentAssertion(), createDocument("<ns1:element xmlns:ns1='aaa'/>")).isNotNull().toPrefix().isEqualTo("ns1");
 
         try {
             Raw.documentAssertion().toPrefix();
@@ -729,6 +737,7 @@ public final class DocumentAssertionTest extends AssertionTest {
         initialize(Raw.documentAssertion(), createDocument("<element/>")).toPrefix(Matchers.is(Matchers.emptyOrNullString()));
         initialize(Raw.documentAssertion(), createDocument("<element xmlns='aaa'/>")).toPrefix(Matchers.is(Matchers.emptyOrNullString()));
         initialize(Raw.documentAssertion(), createDocument("<ns1:element xmlns:ns1='aaa'/>")).toPrefix(Matchers.is(Matchers.equalTo("ns1")));
+        initialize(Raw.documentAssertion(), createDocument("<ns1:element xmlns:ns1='aaa'/>")).isNotNull().toPrefix(Matchers.is(Matchers.equalTo("ns1"))).isInstanceOf(Document.class);
 
         try {
             Raw.documentAssertion().toPrefix(Matchers.equalTo(""));
@@ -792,6 +801,7 @@ public final class DocumentAssertionTest extends AssertionTest {
     @Test
     public void hasPrefixTest() {
         initialize(Raw.documentAssertion(), createDocument("<ns1:element xmlns:ns1='aaa'/>")).hasPrefix("ns1");
+        initialize(Raw.documentAssertion(), createDocument("<ns1:element xmlns:ns1='aaa'/>")).isNotNull().hasPrefix("ns1").isInstanceOf(Document.class);
 
         try {
             Raw.documentAssertion().hasPrefix("");
@@ -857,6 +867,7 @@ public final class DocumentAssertionTest extends AssertionTest {
         initialize(Raw.documentAssertion(), createDocument("<element/>")).toLocalName().isEqualTo("element");
         initialize(Raw.documentAssertion(), createDocument("<element xmlns='aaa'/>")).toLocalName().isEqualTo("element");
         initialize(Raw.documentAssertion(), createDocument("<ns1:element xmlns:ns1='aaa'/>")).toLocalName().isEqualTo("element");
+        initialize(Raw.documentAssertion(), createDocument("<element xmlns='aaa'/>")).isNotNull().toLocalName().isEqualTo("element");
 
         try {
             Raw.documentAssertion().toLocalName();
@@ -898,6 +909,7 @@ public final class DocumentAssertionTest extends AssertionTest {
         initialize(Raw.documentAssertion(), createDocument("<element/>")).toLocalName(Matchers.is(Matchers.equalTo("element")));
         initialize(Raw.documentAssertion(), createDocument("<element xmlns='aaa'/>")).toLocalName(Matchers.is(Matchers.equalTo("element")));
         initialize(Raw.documentAssertion(), createDocument("<ns1:element xmlns:ns1='aaa'/>")).toLocalName(Matchers.is(Matchers.equalTo("element")));
+        initialize(Raw.documentAssertion(), createDocument("<element xmlns='aaa'/>")).isNotNull().toLocalName(Matchers.is(Matchers.equalTo("element"))).isInstanceOf(Document.class);
 
         try {
             Raw.documentAssertion().toLocalName(Matchers.equalTo(""));
@@ -963,6 +975,7 @@ public final class DocumentAssertionTest extends AssertionTest {
         initialize(Raw.documentAssertion(), createDocument("<element/>")).hasLocalName("element");
         initialize(Raw.documentAssertion(), createDocument("<element xmlns='aaa'/>")).hasLocalName("element");
         initialize(Raw.documentAssertion(), createDocument("<ns1:element xmlns:ns1='aaa'/>")).hasLocalName("element");
+        initialize(Raw.documentAssertion(), createDocument("<element xmlns='aaa'/>")).isNotNull().hasLocalName("element").isInstanceOf(Document.class);
 
         try {
             Raw.documentAssertion().hasLocalName("");
@@ -1028,6 +1041,7 @@ public final class DocumentAssertionTest extends AssertionTest {
         initialize(Raw.documentAssertion(), createDocument("<element/>")).toQualifiedName().isEqualTo("element");
         initialize(Raw.documentAssertion(), createDocument("<element xmlns='aaa'/>")).toQualifiedName().isEqualTo("element");
         initialize(Raw.documentAssertion(), createDocument("<ns1:element xmlns:ns1='aaa'/>")).toQualifiedName().isEqualTo("ns1:element");
+        initialize(Raw.documentAssertion(), createDocument("<ns1:element xmlns:ns1='aaa'/>")).isNotNull().toQualifiedName().isEqualTo("ns1:element");
 
         try {
             Raw.documentAssertion().toQualifiedName();
@@ -1093,6 +1107,7 @@ public final class DocumentAssertionTest extends AssertionTest {
         initialize(Raw.documentAssertion(), createDocument("<element/>")).toQualifiedName(Matchers.is(Matchers.equalTo("element")));
         initialize(Raw.documentAssertion(), createDocument("<element xmlns='aaa'/>")).toQualifiedName(Matchers.is(Matchers.equalTo("element")));
         initialize(Raw.documentAssertion(), createDocument("<ns1:element xmlns:ns1='aaa'/>")).toQualifiedName(Matchers.is(Matchers.equalTo("ns1:element")));
+        initialize(Raw.documentAssertion(), createDocument("<ns1:element xmlns:ns1='aaa'/>")).isNotNull().toQualifiedName(Matchers.is(Matchers.equalTo("ns1:element"))).isInstanceOf(Document.class);
 
         try {
             Raw.documentAssertion().toQualifiedName(Matchers.equalTo(""));
@@ -1182,6 +1197,7 @@ public final class DocumentAssertionTest extends AssertionTest {
         initialize(Raw.documentAssertion(), createDocument("<element/>")).hasQualifiedName("element");
         initialize(Raw.documentAssertion(), createDocument("<element xmlns='aaa'/>")).hasQualifiedName("element");
         initialize(Raw.documentAssertion(), createDocument("<ns1:element xmlns:ns1='aaa'/>")).hasQualifiedName("ns1:element");
+        initialize(Raw.documentAssertion(), createDocument("<ns1:element xmlns:ns1='aaa'/>")).isNotNull().hasQualifiedName("ns1:element").isInstanceOf(Document.class);
 
         try {
             Raw.documentAssertion().hasQualifiedName("");
@@ -1272,6 +1288,7 @@ public final class DocumentAssertionTest extends AssertionTest {
         initialize(Raw.documentAssertion(), createDocument("<element attr='val'/>")).hasProperties("element");
         initialize(Raw.documentAssertion(), createDocument("<element2/>")).hasProperties("element2");
         initialize(Raw.documentAssertion(), createDocument("<element>content</element>")).hasProperties("element");
+        initialize(Raw.documentAssertion(), createDocument("<element attr='val'/>")).isNotNull().hasProperties("element").isInstanceOf(Document.class);
 
         try {
             Raw.documentAssertion().hasProperties("");
@@ -1351,6 +1368,7 @@ public final class DocumentAssertionTest extends AssertionTest {
         initialize(Raw.documentAssertion(), createDocument("<ns2:element xmlns:ns2='aaa'/>")).hasProperties("aaa", "element");
         initialize(Raw.documentAssertion(), createDocument("<ns1:element xmlns:ns1='bbb'/>")).hasProperties("bbb", "element");
         initialize(Raw.documentAssertion(), createDocument("<ns1:element2 xmlns:ns1='aaa'/>")).hasProperties("aaa", "element2");
+        initialize(Raw.documentAssertion(), createDocument("<ns1:element xmlns:ns1='aaa'/>")).isNotNull().hasProperties("aaa", "element").isInstanceOf(Document.class);
 
         try {
             Raw.documentAssertion().hasProperties("", "");
@@ -1454,6 +1472,7 @@ public final class DocumentAssertionTest extends AssertionTest {
         initialize(Raw.documentAssertion(), createDocument("<element attr1='val1' attr2='val2'/>")).hasAttribute("attr2");
         initialize(Raw.documentAssertion(), createDocument("<element xmlns='aaa'/>")).hasAttribute("xmlns");
         initialize(Raw.documentAssertion(), createDocument("<ns1:element xmlns:ns1='aaa'/>")).hasAttribute("xmlns:ns1");
+        initialize(Raw.documentAssertion(), createDocument("<element attr1='val1' attr2='val2'/>")).isNotNull().hasAttribute("attr1").isInstanceOf(Document.class);
 
         try {
             Raw.documentAssertion().hasAttribute("");
@@ -1543,6 +1562,7 @@ public final class DocumentAssertionTest extends AssertionTest {
         initialize(Raw.documentAssertion(), createDocument("<element xmlns:ns1='aaa' ns1:attr='val'/>")).hasAttribute("aaa", "attr");
         initialize(Raw.documentAssertion(), createDocument("<element xmlns:ns1='aaa' ns1:attr1='val1' ns1:attr2='val2'/>")).hasAttribute("aaa", "attr1");
         initialize(Raw.documentAssertion(), createDocument("<element xmlns:ns1='aaa' ns1:attr1='val1' ns1:attr2='val2'/>")).hasAttribute("aaa", "attr2");
+        initialize(Raw.documentAssertion(), createDocument("<element xmlns:ns1='aaa' ns1:attr1='val1' ns1:attr2='val2'/>")).isNotNull().hasAttribute("aaa", "attr1").isInstanceOf(Document.class);
 
         try {
             Raw.documentAssertion().hasAttribute("", "");
@@ -1657,6 +1677,7 @@ public final class DocumentAssertionTest extends AssertionTest {
         initialize(Raw.documentAssertion(), createDocument("<element attr1='val'/>")).hasNotAttribute("attr2");
         initialize(Raw.documentAssertion(), createDocument("<element xmlns:ns1='aaa' ns1:attr='val'/>")).hasNotAttribute("attr");
         initialize(Raw.documentAssertion(), createDocument("<element xmlns:ns1='aaa' ns1:attr='val'/>")).hasNotAttribute("ns2:attr");
+        initialize(Raw.documentAssertion(), createDocument("<element attr1='val'/>")).isNotNull().hasNotAttribute("attr2").isInstanceOf(Document.class);
 
         try {
             Raw.documentAssertion().hasNotAttribute("");
@@ -1758,6 +1779,7 @@ public final class DocumentAssertionTest extends AssertionTest {
         initialize(Raw.documentAssertion(), createDocument("<element/>")).hasNotAttribute("aaa", "attr");
         initialize(Raw.documentAssertion(), createDocument("<element xmlns:ns1='aaa' ns1:attr='val'/>")).hasNotAttribute("bbb", "attr");
         initialize(Raw.documentAssertion(), createDocument("<element xmlns:ns1='aaa' ns1:attr1='val'/>")).hasNotAttribute("aaa", "attr2");
+        initialize(Raw.documentAssertion(), createDocument("<element xmlns:ns1='aaa' ns1:attr='val'/>")).isNotNull().hasNotAttribute("bbb", "attr").isInstanceOf(Document.class);
 
         try {
             Raw.documentAssertion().hasNotAttribute("", "");
@@ -1861,6 +1883,7 @@ public final class DocumentAssertionTest extends AssertionTest {
         initialize(Raw.documentAssertion(), createDocument("<element attr1='val1' attr2='val2'/>")).toAttribute("attr2").hasValue("val2");
         initialize(Raw.documentAssertion(), createDocument("<element xmlns='aaa'/>")).toAttribute("xmlns").hasValue("aaa");
         initialize(Raw.documentAssertion(), createDocument("<ns1:element xmlns:ns1='aaa'/>")).toAttribute("xmlns:ns1").hasValue("aaa");
+        initialize(Raw.documentAssertion(), createDocument("<element attr='val'/>")).isNotNull().toAttribute("attr").hasValue("val");
 
         try {
             Raw.documentAssertion().toAttribute("");
@@ -1962,6 +1985,7 @@ public final class DocumentAssertionTest extends AssertionTest {
         initialize(Raw.documentAssertion(), createDocument("<element xmlns:ns1='aaa' ns1:attr='val'/>")).toAttribute("aaa", "attr").hasValue("val");
         initialize(Raw.documentAssertion(), createDocument("<element xmlns:ns1='aaa' ns1:attr1='val1' ns1:attr2='val2'/>")).toAttribute("aaa", "attr1").hasValue("val1");
         initialize(Raw.documentAssertion(), createDocument("<element xmlns:ns1='aaa' ns1:attr1='val1' ns1:attr2='val2'/>")).toAttribute("aaa", "attr2").hasValue("val2");
+        initialize(Raw.documentAssertion(), createDocument("<element xmlns:ns1='aaa' ns1:attr='val'/>")).isNotNull().toAttribute("aaa", "attr").hasValue("val");
 
         try {
             Raw.documentAssertion().toAttribute("", "");
@@ -2089,6 +2113,7 @@ public final class DocumentAssertionTest extends AssertionTest {
         initialize(Raw.documentAssertion(), createDocument("<element attr1='val1' attr2='val2'/>")).toAttribute("attr2", new MatcherAttributeValue("val2"));
         initialize(Raw.documentAssertion(), createDocument("<element xmlns='aaa'/>")).toAttribute("xmlns", new MatcherAttributeValue("aaa"));
         initialize(Raw.documentAssertion(), createDocument("<ns1:element xmlns:ns1='aaa'/>")).toAttribute("xmlns:ns1", new MatcherAttributeValue("aaa"));
+        initialize(Raw.documentAssertion(), createDocument("<element attr='val'/>")).isNotNull().toAttribute("attr", new MatcherAttributeValue("val")).isInstanceOf(Document.class);
 
         try {
             Raw.documentAssertion().toAttribute("", new MatcherAttributeValue(""));
@@ -2214,6 +2239,7 @@ public final class DocumentAssertionTest extends AssertionTest {
         initialize(Raw.documentAssertion(), createDocument("<element xmlns:ns1='aaa' ns1:attr='val'/>")).toAttribute("aaa", "attr", new MatcherAttributeValue("val"));
         initialize(Raw.documentAssertion(), createDocument("<element xmlns:ns1='aaa' ns1:attr1='val1' ns1:attr2='val2'/>")).toAttribute("aaa", "attr1", new MatcherAttributeValue("val1"));
         initialize(Raw.documentAssertion(), createDocument("<element xmlns:ns1='aaa' ns1:attr1='val1' ns1:attr2='val2'/>")).toAttribute("aaa", "attr2", new MatcherAttributeValue("val2"));
+        initialize(Raw.documentAssertion(), createDocument("<element xmlns:ns1='aaa' ns1:attr='val'/>")).isNotNull().toAttribute("aaa", "attr", new MatcherAttributeValue("val")).isInstanceOf(Document.class);
 
         try {
             Raw.documentAssertion().toAttribute("", "", new MatcherAttributeValue(""));
@@ -2365,6 +2391,7 @@ public final class DocumentAssertionTest extends AssertionTest {
         initialize(Raw.documentAssertion(), createDocument("<element attr1='val1' attr2='val2'/>")).hasAttributeValue("attr2", "val2");
         initialize(Raw.documentAssertion(), createDocument("<element xmlns='aaa'/>")).hasAttributeValue("xmlns", "aaa");
         initialize(Raw.documentAssertion(), createDocument("<ns1:element xmlns:ns1='aaa'/>")).hasAttributeValue("xmlns:ns1", "aaa");
+        initialize(Raw.documentAssertion(), createDocument("<element attr='val'/>")).isNotNull().hasAttributeValue("attr", "val").isInstanceOf(Document.class);
 
         try {
             Raw.documentAssertion().hasAttributeValue("", "");
@@ -2490,6 +2517,7 @@ public final class DocumentAssertionTest extends AssertionTest {
         initialize(Raw.documentAssertion(), createDocument("<element xmlns:ns1='aaa' ns1:attr='val'/>")).hasAttributeValue("aaa", "attr", "val");
         initialize(Raw.documentAssertion(), createDocument("<element xmlns:ns1='aaa' ns1:attr1='val1' ns1:attr2='val2'/>")).hasAttributeValue("aaa", "attr1", "val1");
         initialize(Raw.documentAssertion(), createDocument("<element xmlns:ns1='aaa' ns1:attr1='val1' ns1:attr2='val2'/>")).hasAttributeValue("aaa", "attr2", "val2");
+        initialize(Raw.documentAssertion(), createDocument("<element xmlns:ns1='aaa' ns1:attr='val'/>")).isNotNull().hasAttributeValue("aaa", "attr", "val").isInstanceOf(Document.class);
 
         try {
             Raw.documentAssertion().hasAttributeValue("", "", "");
@@ -2644,6 +2672,7 @@ public final class DocumentAssertionTest extends AssertionTest {
         initialize(Raw.documentAssertion(), createDocument("<element xmlns='aaa'/>")).hasNotAttributeValue("xmlns", "bbb");
         initialize(Raw.documentAssertion(), createDocument("<ns1:element xmlns:ns1='aaa'/>")).hasNotAttributeValue("xmlns:ns2", "aaa");
         initialize(Raw.documentAssertion(), createDocument("<ns1:element xmlns:ns1='aaa'/>")).hasNotAttributeValue("xmlns:ns1", "bbb");
+        initialize(Raw.documentAssertion(), createDocument("<element attr1='val'/>")).isNotNull().hasNotAttributeValue("attr2", "val").isInstanceOf(Document.class);
 
         try {
             Raw.documentAssertion().hasNotAttributeValue("", "");
@@ -2748,6 +2777,7 @@ public final class DocumentAssertionTest extends AssertionTest {
         initialize(Raw.documentAssertion(), createDocument("<element xmlns:ns1='aaa' ns1:attr='val1'/>")).hasNotAttributeValue("aaa", "attr", "val2");
         initialize(Raw.documentAssertion(), createDocument("<element xmlns:ns1='aaa' ns1:attr1='val1' ns1:attr2='val2'/>")).hasNotAttributeValue("aaa", "attr1", "val2");
         initialize(Raw.documentAssertion(), createDocument("<element xmlns:ns1='aaa' ns1:attr1='val1' ns1:attr2='val2'/>")).hasNotAttributeValue("aaa", "attr2", "val1");
+        initialize(Raw.documentAssertion(), createDocument("<element xmlns:ns1='aaa' ns1:attr1='val'/>")).isNotNull().hasNotAttributeValue("aaa", "attr2", "val").isInstanceOf(Document.class);
 
         try {
             Raw.documentAssertion().hasNotAttributeValue("", "", "");
@@ -2863,6 +2893,7 @@ public final class DocumentAssertionTest extends AssertionTest {
         initialize(Raw.documentAssertion(), createDocument("<element><![CDATA[text1]]>text2<![CDATA[text3]]></element>")).hasChildNodes();
         initialize(Raw.documentAssertion(), createDocument("<element><child/><child/><child/></element>")).hasChildNodes();
         initialize(Raw.documentAssertion(), createDocument("<element><?procinstr?></element>")).hasChildNodes();
+        initialize(Raw.documentAssertion(), createDocument("<element>text</element>")).isNotNull().hasChildNodes().isInstanceOf(Document.class);
 
         try {
             Raw.documentAssertion().hasChildNodes();
@@ -2917,6 +2948,7 @@ public final class DocumentAssertionTest extends AssertionTest {
         initialize(Raw.documentAssertion(), createDocument("<element attr='val'/>")).hasNotChildNodes();
         initialize(Raw.documentAssertion(), createDocument("<element></element>")).hasNotChildNodes();
         initialize(Raw.documentAssertion(), createDocument("<element attr='val'></element>")).hasNotChildNodes();
+        initialize(Raw.documentAssertion(), createDocument("<element attr='val'/>")).isNotNull().hasNotChildNodes().isInstanceOf(Document.class);
 
         try {
             Raw.documentAssertion().hasNotChildNodes();
@@ -2989,6 +3021,7 @@ public final class DocumentAssertionTest extends AssertionTest {
         initialize(Raw.documentAssertion(), createDocument("<element><child/>text1<child/>text2<child/></element>")).toChildNodesCount().isEqualTo(5);
         initialize(Raw.documentAssertion(), createDocument("<element><child><child/><child/></child></element>")).toChildNodesCount().isEqualTo(1);
         initialize(Raw.documentAssertion(), createDocument("<element><?procinstr?></element>")).toChildNodesCount().isEqualTo(1);
+        initialize(Raw.documentAssertion(), createDocument("<element> </element>")).isNotNull().toChildNodesCount().isEqualTo(1);
 
         try {
             Raw.documentAssertion().toChildNodesCount();
@@ -3037,6 +3070,7 @@ public final class DocumentAssertionTest extends AssertionTest {
         initialize(Raw.documentAssertion(), createDocument("<element><child/>text1<child/>text2<child/></element>")).toChildNodesCount(Matchers.is(Matchers.equalTo(5)));
         initialize(Raw.documentAssertion(), createDocument("<element><child><child/><child/></child></element>")).toChildNodesCount(Matchers.is(Matchers.equalTo(1)));
         initialize(Raw.documentAssertion(), createDocument("<element><?procinstr?></element>")).toChildNodesCount(Matchers.is(Matchers.equalTo(1)));
+        initialize(Raw.documentAssertion(), createDocument("<element> </element>")).isNotNull().toChildNodesCount(Matchers.is(Matchers.equalTo(1))).isInstanceOf(Document.class);
 
         try {
             Raw.documentAssertion().toChildNodesCount(Matchers.equalTo(0));
@@ -3109,6 +3143,7 @@ public final class DocumentAssertionTest extends AssertionTest {
         initialize(Raw.documentAssertion(), createDocument("<element><child/>text1<child/>text2<child/></element>")).hasChildNodesCount(5);
         initialize(Raw.documentAssertion(), createDocument("<element><child><child/><child/></child></element>")).hasChildNodesCount(1);
         initialize(Raw.documentAssertion(), createDocument("<element><?procinstr?></element>")).hasChildNodesCount(1);
+        initialize(Raw.documentAssertion(), createDocument("<element> </element>")).isNotNull().hasChildNodesCount(1).isInstanceOf(Document.class);
 
         try {
             Raw.documentAssertion().hasChildNodesCount(0);
@@ -3157,6 +3192,7 @@ public final class DocumentAssertionTest extends AssertionTest {
         initialize(Raw.documentAssertion(), createDocument("<element><child/>text1<child/>text2<child/></element>")).toChildElementsCount().isEqualTo(3);
         initialize(Raw.documentAssertion(), createDocument("<element><child><child/><child/></child></element>")).toChildElementsCount().isEqualTo(1);
         initialize(Raw.documentAssertion(), createDocument("<element><?procinstr?></element>")).toChildElementsCount().isEqualTo(0);
+        initialize(Raw.documentAssertion(), createDocument("<element><child><child/><child/></child></element>")).isNotNull().toChildElementsCount().isEqualTo(1);
 
         try {
             Raw.documentAssertion().toChildElementsCount();
@@ -3205,6 +3241,7 @@ public final class DocumentAssertionTest extends AssertionTest {
         initialize(Raw.documentAssertion(), createDocument("<element><child/>text1<child/>text2<child/></element>")).toChildElementsCount(Matchers.is(Matchers.equalTo(3)));
         initialize(Raw.documentAssertion(), createDocument("<element><child><child/><child/></child></element>")).toChildElementsCount(Matchers.is(Matchers.equalTo(1)));
         initialize(Raw.documentAssertion(), createDocument("<element><?procinstr?></element>")).toChildElementsCount(Matchers.is(Matchers.equalTo(0)));
+        initialize(Raw.documentAssertion(), createDocument("<element><child><child/><child/></child></element>")).isNotNull().toChildElementsCount(Matchers.is(Matchers.equalTo(1))).isInstanceOf(Document.class);
 
         try {
             Raw.documentAssertion().toChildElementsCount(Matchers.equalTo(0));
@@ -3277,6 +3314,7 @@ public final class DocumentAssertionTest extends AssertionTest {
         initialize(Raw.documentAssertion(), createDocument("<element><child/>text1<child/>text2<child/></element>")).hasChildElementsCount(3);
         initialize(Raw.documentAssertion(), createDocument("<element><child><child/><child/></child></element>")).hasChildElementsCount(1);
         initialize(Raw.documentAssertion(), createDocument("<element><?procinstr?></element>")).hasChildElementsCount(0);
+        initialize(Raw.documentAssertion(), createDocument("<element><child><child/><child/></child></element>")).isNotNull().hasChildElementsCount(1).isInstanceOf(Document.class);
 
         try {
             Raw.documentAssertion().hasChildElementsCount(0);

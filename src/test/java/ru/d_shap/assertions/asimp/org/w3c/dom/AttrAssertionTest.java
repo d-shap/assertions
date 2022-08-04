@@ -70,6 +70,7 @@ public final class AttrAssertionTest extends AssertionTest {
         initialize(Raw.attrAssertion(), null).isEqualTo(null);
         initialize(Raw.attrAssertion(), createAttr("<element attr='val'/>")).isEqualTo(createAttr("<element attr='val'/>"));
         initialize(Raw.attrAssertion(), createAttr("<element attr1='val1'/>")).isEqualTo(createAttr("<element attr1='val1'/>"));
+        initialize(Raw.attrAssertion(), createAttr("<element attr='val'/>")).isNotNull().isEqualTo(createAttr("<element attr='val'/>")).isInstanceOf(Attr.class);
 
         try {
             Raw.attrAssertion().isEqualTo(createAttr("<element attr='val'/>"));
@@ -149,6 +150,7 @@ public final class AttrAssertionTest extends AssertionTest {
         initialize(Raw.attrAssertion(), createAttr("<element attr='val1'/>")).isNotEqualTo(createAttr("<element attr='val2'/>"));
         initialize(Raw.attrAssertion(), createAttr("<element attr1='val'/>")).isNotEqualTo(createAttr("<element attr2='val'/>"));
         initialize(Raw.attrAssertion(), createAttr("<element xmlns:ns1='aaa' ns1:attr='val'/>")).isNotEqualTo(createAttr("<element attr='val'/>"));
+        initialize(Raw.attrAssertion(), createAttr("<element attr='val1'/>")).isNotNull().isNotEqualTo(createAttr("<element attr='val2'/>")).isInstanceOf(Attr.class);
 
         try {
             Raw.attrAssertion().isNotEqualTo(createAttr("<element attr='val'/>"));
@@ -202,6 +204,7 @@ public final class AttrAssertionTest extends AssertionTest {
         initialize(Raw.attrAssertion(), createAttr("<element attr='val1'/>")).toNamespaceURI().isNull();
         initialize(Raw.attrAssertion(), createAttr("<element xmlns:ns1='aaa' attr='val'/>")).toNamespaceURI().isNull();
         initialize(Raw.attrAssertion(), createAttr("<element xmlns:ns1='aaa' ns1:attr='val'/>")).toNamespaceURI().isEqualTo("aaa");
+        initialize(Raw.attrAssertion(), createAttr("<element xmlns:ns1='aaa' ns1:attr='val'/>")).isNotNull().toNamespaceURI().isEqualTo("aaa");
 
         try {
             Raw.attrAssertion().toNamespaceURI();
@@ -243,6 +246,7 @@ public final class AttrAssertionTest extends AssertionTest {
         initialize(Raw.attrAssertion(), createAttr("<element attr='val1'/>")).toNamespaceURI(Matchers.is(Matchers.emptyOrNullString()));
         initialize(Raw.attrAssertion(), createAttr("<element xmlns:ns1='aaa' attr='val'/>")).toNamespaceURI(Matchers.is(Matchers.emptyOrNullString()));
         initialize(Raw.attrAssertion(), createAttr("<element xmlns:ns1='aaa' ns1:attr='val'/>")).toNamespaceURI(Matchers.is(Matchers.equalTo("aaa")));
+        initialize(Raw.attrAssertion(), createAttr("<element xmlns:ns1='aaa' ns1:attr='val'/>")).isNotNull().toNamespaceURI(Matchers.is(Matchers.equalTo("aaa"))).isInstanceOf(Attr.class);
 
         try {
             Raw.attrAssertion().toNamespaceURI(Matchers.equalTo(""));
@@ -306,6 +310,7 @@ public final class AttrAssertionTest extends AssertionTest {
     @Test
     public void hasNamespaceURITest() {
         initialize(Raw.attrAssertion(), createAttr("<element xmlns:ns1='aaa' ns1:attr='val'/>")).hasNamespaceURI("aaa");
+        initialize(Raw.attrAssertion(), createAttr("<element xmlns:ns1='aaa' ns1:attr='val'/>")).isNotNull().hasNamespaceURI("aaa").isInstanceOf(Attr.class);
 
         try {
             Raw.attrAssertion().hasNamespaceURI("");
@@ -371,6 +376,7 @@ public final class AttrAssertionTest extends AssertionTest {
         initialize(Raw.attrAssertion(), createAttr("<element attr='val1'/>")).toPrefix().isNull();
         initialize(Raw.attrAssertion(), createAttr("<element xmlns:ns1='aaa' attr='val'/>")).toPrefix().isNull();
         initialize(Raw.attrAssertion(), createAttr("<element xmlns:ns1='aaa' ns1:attr='val'/>")).toPrefix().isEqualTo("ns1");
+        initialize(Raw.attrAssertion(), createAttr("<element xmlns:ns1='aaa' ns1:attr='val'/>")).isNotNull().toPrefix().isEqualTo("ns1");
 
         try {
             Raw.attrAssertion().toPrefix();
@@ -412,6 +418,7 @@ public final class AttrAssertionTest extends AssertionTest {
         initialize(Raw.attrAssertion(), createAttr("<element attr='val1'/>")).toPrefix(Matchers.is(Matchers.emptyOrNullString()));
         initialize(Raw.attrAssertion(), createAttr("<element xmlns:ns1='aaa' attr='val'/>")).toPrefix(Matchers.is(Matchers.emptyOrNullString()));
         initialize(Raw.attrAssertion(), createAttr("<element xmlns:ns1='aaa' ns1:attr='val'/>")).toPrefix(Matchers.is(Matchers.equalTo("ns1")));
+        initialize(Raw.attrAssertion(), createAttr("<element xmlns:ns1='aaa' ns1:attr='val'/>")).isNotNull().toPrefix(Matchers.is(Matchers.equalTo("ns1"))).isInstanceOf(Attr.class);
 
         try {
             Raw.attrAssertion().toPrefix(Matchers.equalTo(""));
@@ -475,6 +482,7 @@ public final class AttrAssertionTest extends AssertionTest {
     @Test
     public void hasPrefixTest() {
         initialize(Raw.attrAssertion(), createAttr("<element xmlns:ns1='aaa' ns1:attr='val'/>")).hasPrefix("ns1");
+        initialize(Raw.attrAssertion(), createAttr("<element xmlns:ns1='aaa' ns1:attr='val'/>")).isNotNull().hasPrefix("ns1").isInstanceOf(Attr.class);
 
         try {
             Raw.attrAssertion().hasPrefix("");
@@ -540,6 +548,7 @@ public final class AttrAssertionTest extends AssertionTest {
         initialize(Raw.attrAssertion(), createAttr("<element attr='val1'/>")).toLocalName().isEqualTo("attr");
         initialize(Raw.attrAssertion(), createAttr("<element xmlns:ns1='aaa' attr='val'/>")).toLocalName().isEqualTo("attr");
         initialize(Raw.attrAssertion(), createAttr("<element xmlns:ns1='aaa' ns1:attr='val'/>")).toLocalName().isEqualTo("attr");
+        initialize(Raw.attrAssertion(), createAttr("<element xmlns:ns1='aaa' ns1:attr='val'/>")).isNotNull().toLocalName().isEqualTo("attr");
 
         try {
             Raw.attrAssertion().toLocalName();
@@ -581,6 +590,7 @@ public final class AttrAssertionTest extends AssertionTest {
         initialize(Raw.attrAssertion(), createAttr("<element attr='val1'/>")).toLocalName(Matchers.is(Matchers.equalTo("attr")));
         initialize(Raw.attrAssertion(), createAttr("<element xmlns:ns1='aaa' attr='val'/>")).toLocalName(Matchers.is(Matchers.equalTo("attr")));
         initialize(Raw.attrAssertion(), createAttr("<element xmlns:ns1='aaa' ns1:attr='val'/>")).toLocalName(Matchers.is(Matchers.equalTo("attr")));
+        initialize(Raw.attrAssertion(), createAttr("<element xmlns:ns1='aaa' ns1:attr='val'/>")).isNotNull().toLocalName(Matchers.is(Matchers.equalTo("attr"))).isInstanceOf(Attr.class);
 
         try {
             Raw.attrAssertion().toLocalName(Matchers.equalTo(""));
@@ -646,6 +656,7 @@ public final class AttrAssertionTest extends AssertionTest {
         initialize(Raw.attrAssertion(), createAttr("<element attr='val1'/>")).hasLocalName("attr");
         initialize(Raw.attrAssertion(), createAttr("<element xmlns:ns1='aaa' attr='val'/>")).hasLocalName("attr");
         initialize(Raw.attrAssertion(), createAttr("<element xmlns:ns1='aaa' ns1:attr='val'/>")).hasLocalName("attr");
+        initialize(Raw.attrAssertion(), createAttr("<element xmlns:ns1='aaa' ns1:attr='val'/>")).isNotNull().hasLocalName("attr").isInstanceOf(Attr.class);
 
         try {
             Raw.attrAssertion().hasLocalName("");
@@ -711,6 +722,7 @@ public final class AttrAssertionTest extends AssertionTest {
         initialize(Raw.attrAssertion(), createAttr("<element attr='val1'/>")).toQualifiedName().isEqualTo("attr");
         initialize(Raw.attrAssertion(), createAttr("<element xmlns:ns1='aaa' attr='val'/>")).toQualifiedName().isEqualTo("attr");
         initialize(Raw.attrAssertion(), createAttr("<element xmlns:ns1='aaa' ns1:attr='val'/>")).toQualifiedName().isEqualTo("ns1:attr");
+        initialize(Raw.attrAssertion(), createAttr("<element xmlns:ns1='aaa' ns1:attr='val'/>")).isNotNull().toQualifiedName().isEqualTo("ns1:attr");
 
         try {
             Raw.attrAssertion().toQualifiedName();
@@ -764,6 +776,7 @@ public final class AttrAssertionTest extends AssertionTest {
         initialize(Raw.attrAssertion(), createAttr("<element attr='val1'/>")).toQualifiedName(Matchers.is(Matchers.equalTo("attr")));
         initialize(Raw.attrAssertion(), createAttr("<element xmlns:ns1='aaa' attr='val'/>")).toQualifiedName(Matchers.is(Matchers.equalTo("attr")));
         initialize(Raw.attrAssertion(), createAttr("<element xmlns:ns1='aaa' ns1:attr='val'/>")).toQualifiedName(Matchers.is(Matchers.equalTo("ns1:attr")));
+        initialize(Raw.attrAssertion(), createAttr("<element xmlns:ns1='aaa' ns1:attr='val'/>")).isNotNull().toQualifiedName(Matchers.is(Matchers.equalTo("ns1:attr"))).isInstanceOf(Attr.class);
 
         try {
             Raw.attrAssertion().toQualifiedName(Matchers.equalTo(""));
@@ -841,6 +854,7 @@ public final class AttrAssertionTest extends AssertionTest {
         initialize(Raw.attrAssertion(), createAttr("<element attr='val1'/>")).hasQualifiedName("attr");
         initialize(Raw.attrAssertion(), createAttr("<element xmlns:ns1='aaa' attr='val'/>")).hasQualifiedName("attr");
         initialize(Raw.attrAssertion(), createAttr("<element xmlns:ns1='aaa' ns1:attr='val'/>")).hasQualifiedName("ns1:attr");
+        initialize(Raw.attrAssertion(), createAttr("<element xmlns:ns1='aaa' ns1:attr='val'/>")).isNotNull().hasQualifiedName("ns1:attr").isInstanceOf(Attr.class);
 
         try {
             Raw.attrAssertion().hasQualifiedName("");
@@ -919,6 +933,7 @@ public final class AttrAssertionTest extends AssertionTest {
         initialize(Raw.attrAssertion(), createAttr("<element attr='val2'/>")).toValue().isEqualTo("val2");
         initialize(Raw.attrAssertion(), createAttr("<element xmlns:ns1='aaa' attr='val'/>")).toValue().isEqualTo("val");
         initialize(Raw.attrAssertion(), createAttr("<element xmlns:ns1='aaa' ns1:attr='val'/>")).toValue().isEqualTo("val");
+        initialize(Raw.attrAssertion(), createAttr("<element xmlns:ns1='aaa' attr='val'/>")).isNotNull().toValue().isEqualTo("val");
 
         try {
             Raw.attrAssertion().toValue();
@@ -961,6 +976,7 @@ public final class AttrAssertionTest extends AssertionTest {
         initialize(Raw.attrAssertion(), createAttr("<element attr='val2'/>")).toValue(Matchers.is(Matchers.equalTo("val2")));
         initialize(Raw.attrAssertion(), createAttr("<element xmlns:ns1='aaa' attr='val'/>")).toValue(Matchers.is(Matchers.equalTo("val")));
         initialize(Raw.attrAssertion(), createAttr("<element xmlns:ns1='aaa' ns1:attr='val'/>")).toValue(Matchers.is(Matchers.equalTo("val")));
+        initialize(Raw.attrAssertion(), createAttr("<element xmlns:ns1='aaa' attr='val'/>")).isNotNull().toValue(Matchers.is(Matchers.equalTo("val"))).isInstanceOf(Attr.class);
 
         try {
             Raw.attrAssertion().toValue(Matchers.equalTo(""));
@@ -1027,6 +1043,7 @@ public final class AttrAssertionTest extends AssertionTest {
         initialize(Raw.attrAssertion(), createAttr("<element attr='val2'/>")).hasValue("val2");
         initialize(Raw.attrAssertion(), createAttr("<element xmlns:ns1='aaa' attr='val'/>")).hasValue("val");
         initialize(Raw.attrAssertion(), createAttr("<element xmlns:ns1='aaa' ns1:attr='val'/>")).hasValue("val");
+        initialize(Raw.attrAssertion(), createAttr("<element xmlns:ns1='aaa' attr='val'/>")).isNotNull().hasValue("val").isInstanceOf(Attr.class);
 
         try {
             Raw.attrAssertion().hasValue("");
@@ -1092,6 +1109,7 @@ public final class AttrAssertionTest extends AssertionTest {
         initialize(Raw.attrAssertion(), createAttr("<element attr='val1'/>")).hasProperties("attr", "val1");
         initialize(Raw.attrAssertion(), createAttr("<element attr='val2'/>")).hasProperties("attr", "val2");
         initialize(Raw.attrAssertion(), createAttr("<element bttr='val1'/>")).hasProperties("bttr", "val1");
+        initialize(Raw.attrAssertion(), createAttr("<element attr='val1'/>")).isNotNull().hasProperties("attr", "val1").isInstanceOf(Attr.class);
 
         try {
             Raw.attrAssertion().hasProperties("", "");
@@ -1207,6 +1225,7 @@ public final class AttrAssertionTest extends AssertionTest {
         initialize(Raw.attrAssertion(), createAttr("<element xmlns:ns1='bbb' ns1:attr='val1'/>")).hasProperties("bbb", "attr", "val1");
         initialize(Raw.attrAssertion(), createAttr("<element xmlns:ns1='aaa' ns1:attr='val2'/>")).hasProperties("aaa", "attr", "val2");
         initialize(Raw.attrAssertion(), createAttr("<element xmlns:ns1='aaa' ns1:bttr='val1'/>")).hasProperties("aaa", "bttr", "val1");
+        initialize(Raw.attrAssertion(), createAttr("<element xmlns:ns1='aaa' ns1:attr='val1'/>")).isNotNull().hasProperties("aaa", "attr", "val1").isInstanceOf(Attr.class);
 
         try {
             Raw.attrAssertion().hasProperties("", "", "");

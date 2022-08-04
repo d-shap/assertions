@@ -71,6 +71,7 @@ public final class CharacterDataAssertionTest extends AssertionTest {
         initialize(Raw.characterDataAssertion(), createCharacterData("text")).isEqualTo(createCharacterData("text"));
         initialize(Raw.characterDataAssertion(), createCharacterData("<!-- comment -->")).isEqualTo(createCharacterData("<!-- comment -->"));
         initialize(Raw.characterDataAssertion(), createCharacterData("<![CDATA[<element>value<element>]]>")).isEqualTo(createCharacterData("<![CDATA[<element>value<element>]]>"));
+        initialize(Raw.characterDataAssertion(), createCharacterData("text")).isNotNull().isEqualTo(createCharacterData("text")).isInstanceOf(CharacterData.class);
 
         try {
             Raw.characterDataAssertion().isEqualTo(createCharacterData("text"));
@@ -165,6 +166,7 @@ public final class CharacterDataAssertionTest extends AssertionTest {
         initialize(Raw.characterDataAssertion(), createCharacterData("text")).isNotEqualTo(createCharacterData("<!-- comment -->"));
         initialize(Raw.characterDataAssertion(), createCharacterData("text")).isNotEqualTo(createCharacterData("<![CDATA[<element>value<element>]]>"));
         initialize(Raw.characterDataAssertion(), createCharacterData("<!-- comment -->")).isNotEqualTo(createCharacterData("<![CDATA[<element>value<element>]]>"));
+        initialize(Raw.characterDataAssertion(), createCharacterData("text1")).isNotNull().isNotEqualTo(createCharacterData("text2")).isInstanceOf(CharacterData.class);
 
         try {
             Raw.characterDataAssertion().isNotEqualTo(createCharacterData("text"));
@@ -232,6 +234,7 @@ public final class CharacterDataAssertionTest extends AssertionTest {
         initialize(Raw.characterDataAssertion(), createCharacterData("<!-- comment -->")).toData().isEqualTo(" comment ");
         initialize(Raw.characterDataAssertion(), createCharacterData("<![CDATA[<element>value<element>]]>")).toData().isEqualTo("<element>value<element>");
         initialize(Raw.characterDataAssertion(), createCharacterData("<![CDATA[ <element> value <element> ]]>")).toData().isEqualTo(" <element> value <element> ");
+        initialize(Raw.characterDataAssertion(), createCharacterData("text")).isNotNull().toData().isEqualTo("text");
 
         try {
             Raw.characterDataAssertion().toData();
@@ -299,6 +302,7 @@ public final class CharacterDataAssertionTest extends AssertionTest {
         initialize(Raw.characterDataAssertion(), createCharacterData("<!-- comment -->")).toData(Matchers.is(Matchers.equalTo(" comment ")));
         initialize(Raw.characterDataAssertion(), createCharacterData("<![CDATA[<element>value<element>]]>")).toData(Matchers.is(Matchers.equalTo("<element>value<element>")));
         initialize(Raw.characterDataAssertion(), createCharacterData("<![CDATA[ <element> value <element> ]]>")).toData(Matchers.is(Matchers.equalTo(" <element> value <element> ")));
+        initialize(Raw.characterDataAssertion(), createCharacterData("text")).isNotNull().toData(Matchers.is(Matchers.equalTo("text"))).isInstanceOf(CharacterData.class);
 
         try {
             Raw.characterDataAssertion().toData(Matchers.equalTo(""));
@@ -390,6 +394,7 @@ public final class CharacterDataAssertionTest extends AssertionTest {
         initialize(Raw.characterDataAssertion(), createCharacterData("<!-- comment -->")).hasData(" comment ");
         initialize(Raw.characterDataAssertion(), createCharacterData("<![CDATA[<element>value<element>]]>")).hasData("<element>value<element>");
         initialize(Raw.characterDataAssertion(), createCharacterData("<![CDATA[ <element> value <element> ]]>")).hasData(" <element> value <element> ");
+        initialize(Raw.characterDataAssertion(), createCharacterData("text")).isNotNull().hasData("text").isInstanceOf(CharacterData.class);
 
         try {
             Raw.characterDataAssertion().hasData("");

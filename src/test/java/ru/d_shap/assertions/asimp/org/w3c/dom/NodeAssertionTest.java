@@ -72,6 +72,7 @@ public final class NodeAssertionTest extends AssertionTest {
         initialize(Raw.nodeAssertion(), createNode("<element></element>")).isEqualTo(createNode("<element/>"));
         initialize(Raw.nodeAssertion(), createNode("<!-- comment -->")).isEqualTo(createNode("<!-- comment -->"));
         initialize(Raw.nodeAssertion(), createNode("<?procinstr?>")).isEqualTo(createNode("<?procinstr?>"));
+        initialize(Raw.nodeAssertion(), createNode("<element/>")).isNotNull().isEqualTo(createNode("<element/>")).isInstanceOf(Node.class);
 
         try {
             Raw.nodeAssertion().isEqualTo(createNode("<element/>"));
@@ -164,6 +165,7 @@ public final class NodeAssertionTest extends AssertionTest {
         initialize(Raw.nodeAssertion(), createNode("<element/>")).isNotEqualTo(createNode("<element>content</element>"));
         initialize(Raw.nodeAssertion(), createNode("<element/>")).isNotEqualTo(createNode("<element attr='val'/>"));
         initialize(Raw.nodeAssertion(), createNode("<element/>")).isNotEqualTo(createNode("<?procinstr?>"));
+        initialize(Raw.nodeAssertion(), createNode("<element1/>")).isNotNull().isNotEqualTo(createNode("<element2/>")).isInstanceOf(Node.class);
 
         try {
             Raw.nodeAssertion().isNotEqualTo(createNode("<element/>"));
@@ -243,6 +245,7 @@ public final class NodeAssertionTest extends AssertionTest {
         initialize(Raw.nodeAssertion(), createNode("<ns1:element xmlns:ns1='aaa'/>")).toNamespaceURI().isEqualTo("aaa");
         initialize(Raw.nodeAssertion(), createNode("<!-- comment -->")).toNamespaceURI().isNull();
         initialize(Raw.nodeAssertion(), createNode("<?procinstr?>")).toNamespaceURI().isNull();
+        initialize(Raw.nodeAssertion(), createNode("<element xmlns='aaa'/>")).isNotNull().toNamespaceURI().isEqualTo("aaa");
 
         try {
             Raw.nodeAssertion().toNamespaceURI();
@@ -286,6 +289,7 @@ public final class NodeAssertionTest extends AssertionTest {
         initialize(Raw.nodeAssertion(), createNode("<ns1:element xmlns:ns1='aaa'/>")).toNamespaceURI(Matchers.is(Matchers.equalTo("aaa")));
         initialize(Raw.nodeAssertion(), createNode("<!-- comment -->")).toNamespaceURI(Matchers.is(Matchers.emptyOrNullString()));
         initialize(Raw.nodeAssertion(), createNode("<?procinstr?>")).toNamespaceURI(Matchers.is(Matchers.emptyOrNullString()));
+        initialize(Raw.nodeAssertion(), createNode("<element xmlns='aaa'/>")).isNotNull().toNamespaceURI(Matchers.is(Matchers.equalTo("aaa"))).isInstanceOf(Node.class);
 
         try {
             Raw.nodeAssertion().toNamespaceURI(Matchers.equalTo(""));
@@ -350,6 +354,7 @@ public final class NodeAssertionTest extends AssertionTest {
     public void hasNamespaceURITest() {
         initialize(Raw.nodeAssertion(), createNode("<element xmlns='aaa'/>")).hasNamespaceURI("aaa");
         initialize(Raw.nodeAssertion(), createNode("<ns1:element xmlns:ns1='aaa'/>")).hasNamespaceURI("aaa");
+        initialize(Raw.nodeAssertion(), createNode("<element xmlns='aaa'/>")).isNotNull().hasNamespaceURI("aaa").isInstanceOf(Node.class);
 
         try {
             Raw.nodeAssertion().hasNamespaceURI("");
@@ -417,6 +422,7 @@ public final class NodeAssertionTest extends AssertionTest {
         initialize(Raw.nodeAssertion(), createNode("<ns1:element xmlns:ns1='aaa'/>")).toPrefix().isEqualTo("ns1");
         initialize(Raw.nodeAssertion(), createNode("<!-- comment -->")).toPrefix().isNull();
         initialize(Raw.nodeAssertion(), createNode("<?procinstr?>")).toPrefix().isNull();
+        initialize(Raw.nodeAssertion(), createNode("<ns1:element xmlns:ns1='aaa'/>")).isNotNull().toPrefix().isEqualTo("ns1");
 
         try {
             Raw.nodeAssertion().toPrefix();
@@ -460,6 +466,7 @@ public final class NodeAssertionTest extends AssertionTest {
         initialize(Raw.nodeAssertion(), createNode("<ns1:element xmlns:ns1='aaa'/>")).toPrefix(Matchers.is(Matchers.equalTo("ns1")));
         initialize(Raw.nodeAssertion(), createNode("<!-- comment -->")).toPrefix(Matchers.is(Matchers.emptyOrNullString()));
         initialize(Raw.nodeAssertion(), createNode("<?procinstr?>")).toPrefix(Matchers.is(Matchers.emptyOrNullString()));
+        initialize(Raw.nodeAssertion(), createNode("<ns1:element xmlns:ns1='aaa'/>")).isNotNull().toPrefix(Matchers.is(Matchers.equalTo("ns1"))).isInstanceOf(Node.class);
 
         try {
             Raw.nodeAssertion().toPrefix(Matchers.equalTo(""));
@@ -523,6 +530,7 @@ public final class NodeAssertionTest extends AssertionTest {
     @Test
     public void hasPrefixTest() {
         initialize(Raw.nodeAssertion(), createNode("<ns1:element xmlns:ns1='aaa'/>")).hasPrefix("ns1");
+        initialize(Raw.nodeAssertion(), createNode("<ns1:element xmlns:ns1='aaa'/>")).isNotNull().hasPrefix("ns1").isInstanceOf(Node.class);
 
         try {
             Raw.nodeAssertion().hasPrefix("");
@@ -590,6 +598,7 @@ public final class NodeAssertionTest extends AssertionTest {
         initialize(Raw.nodeAssertion(), createNode("<ns1:element xmlns:ns1='aaa'/>")).toLocalName().isEqualTo("element");
         initialize(Raw.nodeAssertion(), createNode("<!-- comment -->")).toLocalName().isNull();
         initialize(Raw.nodeAssertion(), createNode("<?procinstr?>")).toLocalName().isNull();
+        initialize(Raw.nodeAssertion(), createNode("<element xmlns='aaa'/>")).isNotNull().toLocalName().isEqualTo("element");
 
         try {
             Raw.nodeAssertion().toLocalName();
@@ -633,6 +642,7 @@ public final class NodeAssertionTest extends AssertionTest {
         initialize(Raw.nodeAssertion(), createNode("<ns1:element xmlns:ns1='aaa'/>")).toLocalName(Matchers.is(Matchers.equalTo("element")));
         initialize(Raw.nodeAssertion(), createNode("<!-- comment -->")).toLocalName(Matchers.is(Matchers.emptyOrNullString()));
         initialize(Raw.nodeAssertion(), createNode("<?procinstr?>")).toLocalName(Matchers.is(Matchers.emptyOrNullString()));
+        initialize(Raw.nodeAssertion(), createNode("<element xmlns='aaa'/>")).isNotNull().toLocalName(Matchers.is(Matchers.equalTo("element"))).isInstanceOf(Node.class);
 
         try {
             Raw.nodeAssertion().toLocalName(Matchers.equalTo(""));
@@ -698,6 +708,7 @@ public final class NodeAssertionTest extends AssertionTest {
         initialize(Raw.nodeAssertion(), createNode("<element/>")).hasLocalName("element");
         initialize(Raw.nodeAssertion(), createNode("<element xmlns='aaa'/>")).hasLocalName("element");
         initialize(Raw.nodeAssertion(), createNode("<ns1:element xmlns:ns1='aaa'/>")).hasLocalName("element");
+        initialize(Raw.nodeAssertion(), createNode("<element xmlns='aaa'/>")).isNotNull().hasLocalName("element").isInstanceOf(Node.class);
 
         try {
             Raw.nodeAssertion().hasLocalName("");
@@ -764,6 +775,7 @@ public final class NodeAssertionTest extends AssertionTest {
         initialize(Raw.nodeAssertion(), createNode("<element attr='val'/>")).hasProperties("element");
         initialize(Raw.nodeAssertion(), createNode("<element2/>")).hasProperties("element2");
         initialize(Raw.nodeAssertion(), createNode("<element>content</element>")).hasProperties("element");
+        initialize(Raw.nodeAssertion(), createNode("<element attr='val'/>")).isNotNull().hasProperties("element").isInstanceOf(Node.class);
 
         try {
             Raw.nodeAssertion().hasProperties("");
@@ -843,6 +855,7 @@ public final class NodeAssertionTest extends AssertionTest {
         initialize(Raw.nodeAssertion(), createNode("<ns2:element xmlns:ns2='aaa'/>")).hasProperties("aaa", "element");
         initialize(Raw.nodeAssertion(), createNode("<ns1:element xmlns:ns1='bbb'/>")).hasProperties("bbb", "element");
         initialize(Raw.nodeAssertion(), createNode("<ns1:element2 xmlns:ns1='aaa'/>")).hasProperties("aaa", "element2");
+        initialize(Raw.nodeAssertion(), createNode("<ns1:element xmlns:ns1='aaa'/>")).isNotNull().hasProperties("aaa", "element").isInstanceOf(Node.class);
 
         try {
             Raw.nodeAssertion().hasProperties("", "");

@@ -78,6 +78,7 @@ public final class ElementAssertionTest extends AssertionTest {
         initialize(Raw.elementAssertion(), createElement("<element><child>text</child></element>")).isEqualTo(createElement("<element><child>text</child></element>"));
         initialize(Raw.elementAssertion(), createElement("<element xmlns='aaa'>text</element>")).isEqualTo(createElement("<element xmlns='aaa'>text</element>"));
         initialize(Raw.elementAssertion(), createElement("<ns1:element xmlns:ns1='aaa' xmlns:ns2='bbb'><ns2:child>text</ns2:child></ns1:element>")).isEqualTo(createElement("<ns1:element xmlns:ns1='aaa' xmlns:ns2='bbb'><ns2:child>text</ns2:child></ns1:element>"));
+        initialize(Raw.elementAssertion(), createElement("<element/>")).isNotNull().isEqualTo(createElement("<element/>")).isInstanceOf(Element.class);
 
         try {
             Raw.elementAssertion().isEqualTo(createElement("<element/>"));
@@ -198,6 +199,7 @@ public final class ElementAssertionTest extends AssertionTest {
         initialize(Raw.elementAssertion(), createElement("<element><child>text</child></element>")).isEqualTo("<element><child>text</child></element>");
         initialize(Raw.elementAssertion(), createElement("<element xmlns='aaa'>text</element>")).isEqualTo("<element xmlns='aaa'>text</element>");
         initialize(Raw.elementAssertion(), createElement("<ns1:element xmlns:ns1='aaa' xmlns:ns2='bbb'><ns2:child>text</ns2:child></ns1:element>")).isEqualTo("<ns1:element xmlns:ns1='aaa' xmlns:ns2='bbb'><ns2:child>text</ns2:child></ns1:element>");
+        initialize(Raw.elementAssertion(), createElement("<element/>")).isNotNull().isEqualTo("<element/>").isInstanceOf(Element.class);
 
         try {
             Raw.elementAssertion().isEqualTo("<element/>");
@@ -315,6 +317,7 @@ public final class ElementAssertionTest extends AssertionTest {
         initialize(Raw.elementAssertion(), createElement("<element/>")).isNotEqualTo(createElement("<element>content</element>"));
         initialize(Raw.elementAssertion(), createElement("<element/>")).isNotEqualTo(createElement("<element attr='val'/>"));
         initialize(Raw.elementAssertion(), createElement("<element xmlns='aaa'/>")).isNotEqualTo(createElement("<element xmlns:ns1='aaa'/>"));
+        initialize(Raw.elementAssertion(), createElement("<element1/>")).isNotNull().isNotEqualTo(createElement("<element2/>")).isInstanceOf(Element.class);
 
         Element element11 = (Element) createElement("<element xmlns:ns1='aaa'><ns1:child>text</ns1:child></element>").getChildNodes().item(0);
         Element element12 = (Element) createElement("<element xmlns='aaa'><child>text</child></element>").getChildNodes().item(0);
@@ -434,6 +437,7 @@ public final class ElementAssertionTest extends AssertionTest {
         initialize(Raw.elementAssertion(), createElement("<element/>")).isNotEqualTo("<element>content</element>");
         initialize(Raw.elementAssertion(), createElement("<element/>")).isNotEqualTo("<element attr='val'/>");
         initialize(Raw.elementAssertion(), createElement("<element xmlns='aaa'/>")).isNotEqualTo("<element xmlns:ns1='aaa'/>");
+        initialize(Raw.elementAssertion(), createElement("<element1/>")).isNotNull().isNotEqualTo("<element2/>").isInstanceOf(Element.class);
 
         try {
             Raw.elementAssertion().isNotEqualTo("<element/>");
@@ -559,6 +563,7 @@ public final class ElementAssertionTest extends AssertionTest {
         initialize(Raw.elementAssertion(), createElement("<element/>")).toNamespaceURI().isNull();
         initialize(Raw.elementAssertion(), createElement("<element xmlns='aaa'/>")).toNamespaceURI().isEqualTo("aaa");
         initialize(Raw.elementAssertion(), createElement("<ns1:element xmlns:ns1='aaa'/>")).toNamespaceURI().isEqualTo("aaa");
+        initialize(Raw.elementAssertion(), createElement("<element xmlns='aaa'/>")).isNotNull().toNamespaceURI().isEqualTo("aaa");
 
         Element element1 = (Element) createElement("<element xmlns='aaa'><child>text</child></element>").getChildNodes().item(0);
         initialize(Raw.elementAssertion(), element1).toNamespaceURI().isEqualTo("aaa");
@@ -606,6 +611,7 @@ public final class ElementAssertionTest extends AssertionTest {
         initialize(Raw.elementAssertion(), createElement("<element/>")).toNamespaceURI(Matchers.is(Matchers.emptyOrNullString()));
         initialize(Raw.elementAssertion(), createElement("<element xmlns='aaa'/>")).toNamespaceURI(Matchers.is(Matchers.equalTo("aaa")));
         initialize(Raw.elementAssertion(), createElement("<ns1:element xmlns:ns1='aaa'/>")).toNamespaceURI(Matchers.is(Matchers.equalTo("aaa")));
+        initialize(Raw.elementAssertion(), createElement("<element xmlns='aaa'/>")).isNotNull().toNamespaceURI(Matchers.is(Matchers.equalTo("aaa"))).isInstanceOf(Element.class);
 
         try {
             Raw.elementAssertion().toNamespaceURI(Matchers.equalTo(""));
@@ -670,6 +676,7 @@ public final class ElementAssertionTest extends AssertionTest {
     public void hasNamespaceURITest() {
         initialize(Raw.elementAssertion(), createElement("<element xmlns='aaa'/>")).hasNamespaceURI("aaa");
         initialize(Raw.elementAssertion(), createElement("<ns1:element xmlns:ns1='aaa'/>")).hasNamespaceURI("aaa");
+        initialize(Raw.elementAssertion(), createElement("<element xmlns='aaa'/>")).isNotNull().hasNamespaceURI("aaa").isInstanceOf(Element.class);
 
         try {
             Raw.elementAssertion().hasNamespaceURI("");
@@ -742,6 +749,8 @@ public final class ElementAssertionTest extends AssertionTest {
         Element element2 = (Element) createElement("<ns1:element xmlns:ns1='aaa'><ns1:child>text</ns1:child></ns1:element>").getChildNodes().item(0);
         initialize(Raw.elementAssertion(), element2).toPrefix().isEqualTo("ns1");
 
+        initialize(Raw.elementAssertion(), createElement("<ns1:element xmlns:ns1='aaa'/>")).isNotNull().toPrefix().isEqualTo("ns1");
+
         try {
             Raw.elementAssertion().toPrefix();
             Assertions.fail("ElementAssertion test fail");
@@ -782,6 +791,7 @@ public final class ElementAssertionTest extends AssertionTest {
         initialize(Raw.elementAssertion(), createElement("<element/>")).toPrefix(Matchers.is(Matchers.emptyOrNullString()));
         initialize(Raw.elementAssertion(), createElement("<element xmlns='aaa'/>")).toPrefix(Matchers.is(Matchers.emptyOrNullString()));
         initialize(Raw.elementAssertion(), createElement("<ns1:element xmlns:ns1='aaa'/>")).toPrefix(Matchers.is(Matchers.equalTo("ns1")));
+        initialize(Raw.elementAssertion(), createElement("<ns1:element xmlns:ns1='aaa'/>")).isNotNull().toPrefix(Matchers.is(Matchers.equalTo("ns1"))).isInstanceOf(Element.class);
 
         try {
             Raw.elementAssertion().toPrefix(Matchers.equalTo(""));
@@ -845,6 +855,7 @@ public final class ElementAssertionTest extends AssertionTest {
     @Test
     public void hasPrefixTest() {
         initialize(Raw.elementAssertion(), createElement("<ns1:element xmlns:ns1='aaa'/>")).hasPrefix("ns1");
+        initialize(Raw.elementAssertion(), createElement("<ns1:element xmlns:ns1='aaa'/>")).isNotNull().hasPrefix("ns1").isInstanceOf(Element.class);
 
         try {
             Raw.elementAssertion().hasPrefix("");
@@ -917,6 +928,8 @@ public final class ElementAssertionTest extends AssertionTest {
         Element element2 = (Element) createElement("<ns1:element xmlns:ns1='aaa'><ns1:child>text</ns1:child></ns1:element>").getChildNodes().item(0);
         initialize(Raw.elementAssertion(), element2).toLocalName().isEqualTo("child");
 
+        initialize(Raw.elementAssertion(), createElement("<element xmlns='aaa'/>")).isNotNull().toLocalName().isEqualTo("element");
+
         try {
             Raw.elementAssertion().toLocalName();
             Assertions.fail("ElementAssertion test fail");
@@ -957,6 +970,7 @@ public final class ElementAssertionTest extends AssertionTest {
         initialize(Raw.elementAssertion(), createElement("<element/>")).toLocalName(Matchers.is(Matchers.equalTo("element")));
         initialize(Raw.elementAssertion(), createElement("<element xmlns='aaa'/>")).toLocalName(Matchers.is(Matchers.equalTo("element")));
         initialize(Raw.elementAssertion(), createElement("<ns1:element xmlns:ns1='aaa'/>")).toLocalName(Matchers.is(Matchers.equalTo("element")));
+        initialize(Raw.elementAssertion(), createElement("<element xmlns='aaa'/>")).isNotNull().toLocalName(Matchers.is(Matchers.equalTo("element"))).isInstanceOf(Element.class);
 
         try {
             Raw.elementAssertion().toLocalName(Matchers.equalTo(""));
@@ -1022,6 +1036,7 @@ public final class ElementAssertionTest extends AssertionTest {
         initialize(Raw.elementAssertion(), createElement("<element/>")).hasLocalName("element");
         initialize(Raw.elementAssertion(), createElement("<element xmlns='aaa'/>")).hasLocalName("element");
         initialize(Raw.elementAssertion(), createElement("<ns1:element xmlns:ns1='aaa'/>")).hasLocalName("element");
+        initialize(Raw.elementAssertion(), createElement("<element xmlns='aaa'/>")).isNotNull().hasLocalName("element").isInstanceOf(Element.class);
 
         try {
             Raw.elementAssertion().hasLocalName("");
@@ -1094,6 +1109,8 @@ public final class ElementAssertionTest extends AssertionTest {
         Element element2 = (Element) createElement("<ns1:element xmlns:ns1='aaa'><ns1:child>text</ns1:child></ns1:element>").getChildNodes().item(0);
         initialize(Raw.elementAssertion(), element2).toQualifiedName().isEqualTo("ns1:child");
 
+        initialize(Raw.elementAssertion(), createElement("<ns1:element xmlns:ns1='aaa'/>")).isNotNull().toQualifiedName().isEqualTo("ns1:element");
+
         try {
             Raw.elementAssertion().toQualifiedName();
             Assertions.fail("ElementAssertion test fail");
@@ -1158,6 +1175,7 @@ public final class ElementAssertionTest extends AssertionTest {
         initialize(Raw.elementAssertion(), createElement("<element/>")).toQualifiedName(Matchers.is(Matchers.equalTo("element")));
         initialize(Raw.elementAssertion(), createElement("<element xmlns='aaa'/>")).toQualifiedName(Matchers.is(Matchers.equalTo("element")));
         initialize(Raw.elementAssertion(), createElement("<ns1:element xmlns:ns1='aaa'/>")).toQualifiedName(Matchers.is(Matchers.equalTo("ns1:element")));
+        initialize(Raw.elementAssertion(), createElement("<ns1:element xmlns:ns1='aaa'/>")).isNotNull().toQualifiedName(Matchers.is(Matchers.equalTo("ns1:element"))).isInstanceOf(Element.class);
 
         try {
             Raw.elementAssertion().toQualifiedName(Matchers.equalTo(""));
@@ -1247,6 +1265,7 @@ public final class ElementAssertionTest extends AssertionTest {
         initialize(Raw.elementAssertion(), createElement("<element/>")).hasQualifiedName("element");
         initialize(Raw.elementAssertion(), createElement("<element xmlns='aaa'/>")).hasQualifiedName("element");
         initialize(Raw.elementAssertion(), createElement("<ns1:element xmlns:ns1='aaa'/>")).hasQualifiedName("ns1:element");
+        initialize(Raw.elementAssertion(), createElement("<ns1:element xmlns:ns1='aaa'/>")).isNotNull().hasQualifiedName("ns1:element").isInstanceOf(Element.class);
 
         try {
             Raw.elementAssertion().hasQualifiedName("");
@@ -1337,6 +1356,7 @@ public final class ElementAssertionTest extends AssertionTest {
         initialize(Raw.elementAssertion(), createElement("<element attr='val'/>")).hasProperties("element");
         initialize(Raw.elementAssertion(), createElement("<element2/>")).hasProperties("element2");
         initialize(Raw.elementAssertion(), createElement("<element>content</element>")).hasProperties("element");
+        initialize(Raw.elementAssertion(), createElement("<element/>")).isNotNull().hasProperties("element").isInstanceOf(Element.class);
 
         try {
             Raw.elementAssertion().hasProperties("");
@@ -1416,6 +1436,7 @@ public final class ElementAssertionTest extends AssertionTest {
         initialize(Raw.elementAssertion(), createElement("<ns2:element xmlns:ns2='aaa'/>")).hasProperties("aaa", "element");
         initialize(Raw.elementAssertion(), createElement("<ns1:element xmlns:ns1='bbb'/>")).hasProperties("bbb", "element");
         initialize(Raw.elementAssertion(), createElement("<ns1:element2 xmlns:ns1='aaa'/>")).hasProperties("aaa", "element2");
+        initialize(Raw.elementAssertion(), createElement("<element xmlns='aaa'/>")).isNotNull().hasProperties("aaa", "element").isInstanceOf(Element.class);
 
         try {
             Raw.elementAssertion().hasProperties("", "");
@@ -1519,6 +1540,7 @@ public final class ElementAssertionTest extends AssertionTest {
         initialize(Raw.elementAssertion(), createElement("<element attr1='val1' attr2='val2'/>")).hasAttribute("attr2");
         initialize(Raw.elementAssertion(), createElement("<element xmlns='aaa'/>")).hasAttribute("xmlns");
         initialize(Raw.elementAssertion(), createElement("<ns1:element xmlns:ns1='aaa'/>")).hasAttribute("xmlns:ns1");
+        initialize(Raw.elementAssertion(), createElement("<element attr='val'/>")).isNotNull().hasAttribute("attr").isInstanceOf(Element.class);
 
         try {
             Raw.elementAssertion().hasAttribute("");
@@ -1608,6 +1630,7 @@ public final class ElementAssertionTest extends AssertionTest {
         initialize(Raw.elementAssertion(), createElement("<element xmlns:ns1='aaa' ns1:attr='val'/>")).hasAttribute("aaa", "attr");
         initialize(Raw.elementAssertion(), createElement("<element xmlns:ns1='aaa' ns1:attr1='val1' ns1:attr2='val2'/>")).hasAttribute("aaa", "attr1");
         initialize(Raw.elementAssertion(), createElement("<element xmlns:ns1='aaa' ns1:attr1='val1' ns1:attr2='val2'/>")).hasAttribute("aaa", "attr2");
+        initialize(Raw.elementAssertion(), createElement("<element xmlns:ns1='aaa' ns1:attr='val'/>")).isNotNull().hasAttribute("aaa", "attr").isInstanceOf(Element.class);
 
         try {
             Raw.elementAssertion().hasAttribute("", "");
@@ -1722,6 +1745,7 @@ public final class ElementAssertionTest extends AssertionTest {
         initialize(Raw.elementAssertion(), createElement("<element attr1='val'/>")).hasNotAttribute("attr2");
         initialize(Raw.elementAssertion(), createElement("<element xmlns:ns1='aaa' ns1:attr='val'/>")).hasNotAttribute("attr");
         initialize(Raw.elementAssertion(), createElement("<element xmlns:ns1='aaa' ns1:attr='val'/>")).hasNotAttribute("ns2:attr");
+        initialize(Raw.elementAssertion(), createElement("<element/>")).isNotNull().hasNotAttribute("attr").isInstanceOf(Element.class);
 
         try {
             Raw.elementAssertion().hasNotAttribute("");
@@ -1823,6 +1847,7 @@ public final class ElementAssertionTest extends AssertionTest {
         initialize(Raw.elementAssertion(), createElement("<element/>")).hasNotAttribute("aaa", "attr");
         initialize(Raw.elementAssertion(), createElement("<element xmlns:ns1='aaa' ns1:attr='val'/>")).hasNotAttribute("bbb", "attr");
         initialize(Raw.elementAssertion(), createElement("<element xmlns:ns1='aaa' ns1:attr1='val'/>")).hasNotAttribute("aaa", "attr2");
+        initialize(Raw.elementAssertion(), createElement("<element/>")).isNotNull().hasNotAttribute("aaa", "attr").isInstanceOf(Element.class);
 
         try {
             Raw.elementAssertion().hasNotAttribute("", "");
@@ -1926,6 +1951,7 @@ public final class ElementAssertionTest extends AssertionTest {
         initialize(Raw.elementAssertion(), createElement("<element attr1='val1' attr2='val2'/>")).toAttribute("attr2").hasValue("val2");
         initialize(Raw.elementAssertion(), createElement("<element xmlns='aaa'/>")).toAttribute("xmlns").hasValue("aaa");
         initialize(Raw.elementAssertion(), createElement("<ns1:element xmlns:ns1='aaa'/>")).toAttribute("xmlns:ns1").hasValue("aaa");
+        initialize(Raw.elementAssertion(), createElement("<element attr='val'/>")).isNotNull().toAttribute("attr").hasValue("val");
 
         try {
             Raw.elementAssertion().toAttribute("");
@@ -2027,6 +2053,7 @@ public final class ElementAssertionTest extends AssertionTest {
         initialize(Raw.elementAssertion(), createElement("<element xmlns:ns1='aaa' ns1:attr='val'/>")).toAttribute("aaa", "attr").hasValue("val");
         initialize(Raw.elementAssertion(), createElement("<element xmlns:ns1='aaa' ns1:attr1='val1' ns1:attr2='val2'/>")).toAttribute("aaa", "attr1").hasValue("val1");
         initialize(Raw.elementAssertion(), createElement("<element xmlns:ns1='aaa' ns1:attr1='val1' ns1:attr2='val2'/>")).toAttribute("aaa", "attr2").hasValue("val2");
+        initialize(Raw.elementAssertion(), createElement("<element xmlns:ns1='aaa' ns1:attr='val'/>")).isNotNull().toAttribute("aaa", "attr").hasValue("val");
 
         try {
             Raw.elementAssertion().toAttribute("", "");
@@ -2154,6 +2181,7 @@ public final class ElementAssertionTest extends AssertionTest {
         initialize(Raw.elementAssertion(), createElement("<element attr1='val1' attr2='val2'/>")).toAttribute("attr2", new MatcherAttributeValue("val2"));
         initialize(Raw.elementAssertion(), createElement("<element xmlns='aaa'/>")).toAttribute("xmlns", new MatcherAttributeValue("aaa"));
         initialize(Raw.elementAssertion(), createElement("<ns1:element xmlns:ns1='aaa'/>")).toAttribute("xmlns:ns1", new MatcherAttributeValue("aaa"));
+        initialize(Raw.elementAssertion(), createElement("<element attr='val'/>")).isNotNull().toAttribute("attr", new MatcherAttributeValue("val")).isInstanceOf(Element.class);
 
         try {
             Raw.elementAssertion().toAttribute("", new MatcherAttributeValue(""));
@@ -2279,6 +2307,7 @@ public final class ElementAssertionTest extends AssertionTest {
         initialize(Raw.elementAssertion(), createElement("<element xmlns:ns1='aaa' ns1:attr='val'/>")).toAttribute("aaa", "attr", new MatcherAttributeValue("val"));
         initialize(Raw.elementAssertion(), createElement("<element xmlns:ns1='aaa' ns1:attr1='val1' ns1:attr2='val2'/>")).toAttribute("aaa", "attr1", new MatcherAttributeValue("val1"));
         initialize(Raw.elementAssertion(), createElement("<element xmlns:ns1='aaa' ns1:attr1='val1' ns1:attr2='val2'/>")).toAttribute("aaa", "attr2", new MatcherAttributeValue("val2"));
+        initialize(Raw.elementAssertion(), createElement("<element xmlns:ns1='aaa' ns1:attr='val'/>")).isNotNull().toAttribute("aaa", "attr", new MatcherAttributeValue("val")).isInstanceOf(Element.class);
 
         try {
             Raw.elementAssertion().toAttribute("", "", new MatcherAttributeValue(""));
@@ -2430,6 +2459,7 @@ public final class ElementAssertionTest extends AssertionTest {
         initialize(Raw.elementAssertion(), createElement("<element attr1='val1' attr2='val2'/>")).hasAttributeValue("attr2", "val2");
         initialize(Raw.elementAssertion(), createElement("<element xmlns='aaa'/>")).hasAttributeValue("xmlns", "aaa");
         initialize(Raw.elementAssertion(), createElement("<ns1:element xmlns:ns1='aaa'/>")).hasAttributeValue("xmlns:ns1", "aaa");
+        initialize(Raw.elementAssertion(), createElement("<element attr='val'/>")).isNotNull().hasAttributeValue("attr", "val").isInstanceOf(Element.class);
 
         try {
             Raw.elementAssertion().hasAttributeValue("", "");
@@ -2555,6 +2585,7 @@ public final class ElementAssertionTest extends AssertionTest {
         initialize(Raw.elementAssertion(), createElement("<element xmlns:ns1='aaa' ns1:attr='val'/>")).hasAttributeValue("aaa", "attr", "val");
         initialize(Raw.elementAssertion(), createElement("<element xmlns:ns1='aaa' ns1:attr1='val1' ns1:attr2='val2'/>")).hasAttributeValue("aaa", "attr1", "val1");
         initialize(Raw.elementAssertion(), createElement("<element xmlns:ns1='aaa' ns1:attr1='val1' ns1:attr2='val2'/>")).hasAttributeValue("aaa", "attr2", "val2");
+        initialize(Raw.elementAssertion(), createElement("<element xmlns:ns1='aaa' ns1:attr='val'/>")).isNotNull().hasAttributeValue("aaa", "attr", "val").isInstanceOf(Element.class);
 
         try {
             Raw.elementAssertion().hasAttributeValue("", "", "");
@@ -2709,6 +2740,7 @@ public final class ElementAssertionTest extends AssertionTest {
         initialize(Raw.elementAssertion(), createElement("<element xmlns='aaa'/>")).hasNotAttributeValue("xmlns", "bbb");
         initialize(Raw.elementAssertion(), createElement("<ns1:element xmlns:ns1='aaa'/>")).hasNotAttributeValue("xmlns:ns2", "aaa");
         initialize(Raw.elementAssertion(), createElement("<ns1:element xmlns:ns1='aaa'/>")).hasNotAttributeValue("xmlns:ns1", "bbb");
+        initialize(Raw.elementAssertion(), createElement("<element/>")).isNotNull().hasNotAttributeValue("attr", "val").isInstanceOf(Element.class);
 
         try {
             Raw.elementAssertion().hasNotAttributeValue("", "");
@@ -2813,6 +2845,7 @@ public final class ElementAssertionTest extends AssertionTest {
         initialize(Raw.elementAssertion(), createElement("<element xmlns:ns1='aaa' ns1:attr='val1'/>")).hasNotAttributeValue("aaa", "attr", "val2");
         initialize(Raw.elementAssertion(), createElement("<element xmlns:ns1='aaa' ns1:attr1='val1' ns1:attr2='val2'/>")).hasNotAttributeValue("aaa", "attr1", "val2");
         initialize(Raw.elementAssertion(), createElement("<element xmlns:ns1='aaa' ns1:attr1='val1' ns1:attr2='val2'/>")).hasNotAttributeValue("aaa", "attr2", "val1");
+        initialize(Raw.elementAssertion(), createElement("<element/>")).isNotNull().hasNotAttributeValue("aaa", "attr", "val").isInstanceOf(Element.class);
 
         try {
             Raw.elementAssertion().hasNotAttributeValue("", "", "");
@@ -2928,6 +2961,7 @@ public final class ElementAssertionTest extends AssertionTest {
         initialize(Raw.elementAssertion(), createElement("<element><![CDATA[text1]]>text2<![CDATA[text3]]></element>")).hasChildNodes();
         initialize(Raw.elementAssertion(), createElement("<element><child/><child/><child/></element>")).hasChildNodes();
         initialize(Raw.elementAssertion(), createElement("<element><?procinstr?></element>")).hasChildNodes();
+        initialize(Raw.elementAssertion(), createElement("<element>text</element>")).isNotNull().hasChildNodes().isInstanceOf(Element.class);
 
         try {
             Raw.elementAssertion().hasChildNodes();
@@ -2982,6 +3016,7 @@ public final class ElementAssertionTest extends AssertionTest {
         initialize(Raw.elementAssertion(), createElement("<element attr='val'/>")).hasNotChildNodes();
         initialize(Raw.elementAssertion(), createElement("<element></element>")).hasNotChildNodes();
         initialize(Raw.elementAssertion(), createElement("<element attr='val'></element>")).hasNotChildNodes();
+        initialize(Raw.elementAssertion(), createElement("<element/>")).isNotNull().hasNotChildNodes().isInstanceOf(Element.class);
 
         try {
             Raw.elementAssertion().hasNotChildNodes();
@@ -3054,6 +3089,7 @@ public final class ElementAssertionTest extends AssertionTest {
         initialize(Raw.elementAssertion(), createElement("<element><child/>text1<child/>text2<child/></element>")).toChildNodesCount().isEqualTo(5);
         initialize(Raw.elementAssertion(), createElement("<element><child><child/><child/></child></element>")).toChildNodesCount().isEqualTo(1);
         initialize(Raw.elementAssertion(), createElement("<element><?procinstr?></element>")).toChildNodesCount().isEqualTo(1);
+        initialize(Raw.elementAssertion(), createElement("<element>text</element>")).isNotNull().toChildNodesCount().isEqualTo(1);
 
         try {
             Raw.elementAssertion().toChildNodesCount();
@@ -3102,6 +3138,7 @@ public final class ElementAssertionTest extends AssertionTest {
         initialize(Raw.elementAssertion(), createElement("<element><child/>text1<child/>text2<child/></element>")).toChildNodesCount(Matchers.is(Matchers.equalTo(5)));
         initialize(Raw.elementAssertion(), createElement("<element><child><child/><child/></child></element>")).toChildNodesCount(Matchers.is(Matchers.equalTo(1)));
         initialize(Raw.elementAssertion(), createElement("<element><?procinstr?></element>")).toChildNodesCount(Matchers.is(Matchers.equalTo(1)));
+        initialize(Raw.elementAssertion(), createElement("<element>text</element>")).isNotNull().toChildNodesCount(Matchers.is(Matchers.equalTo(1))).isInstanceOf(Element.class);
 
         try {
             Raw.elementAssertion().toChildNodesCount(Matchers.equalTo(0));
@@ -3174,6 +3211,7 @@ public final class ElementAssertionTest extends AssertionTest {
         initialize(Raw.elementAssertion(), createElement("<element><child/>text1<child/>text2<child/></element>")).hasChildNodesCount(5);
         initialize(Raw.elementAssertion(), createElement("<element><child><child/><child/></child></element>")).hasChildNodesCount(1);
         initialize(Raw.elementAssertion(), createElement("<element><?procinstr?></element>")).hasChildNodesCount(1);
+        initialize(Raw.elementAssertion(), createElement("<element>text</element>")).isNotNull().hasChildNodesCount(1).isInstanceOf(Element.class);
 
         try {
             Raw.elementAssertion().hasChildNodesCount(0);
@@ -3222,6 +3260,7 @@ public final class ElementAssertionTest extends AssertionTest {
         initialize(Raw.elementAssertion(), createElement("<element><child/>text1<child/>text2<child/></element>")).toChildElementsCount().isEqualTo(3);
         initialize(Raw.elementAssertion(), createElement("<element><child><child/><child/></child></element>")).toChildElementsCount().isEqualTo(1);
         initialize(Raw.elementAssertion(), createElement("<element><?procinstr?></element>")).toChildElementsCount().isEqualTo(0);
+        initialize(Raw.elementAssertion(), createElement("<element><child><child/><child/></child></element>")).isNotNull().toChildElementsCount().isEqualTo(1);
 
         try {
             Raw.elementAssertion().toChildElementsCount();
@@ -3270,6 +3309,7 @@ public final class ElementAssertionTest extends AssertionTest {
         initialize(Raw.elementAssertion(), createElement("<element><child/>text1<child/>text2<child/></element>")).toChildElementsCount(Matchers.is(Matchers.equalTo(3)));
         initialize(Raw.elementAssertion(), createElement("<element><child><child/><child/></child></element>")).toChildElementsCount(Matchers.is(Matchers.equalTo(1)));
         initialize(Raw.elementAssertion(), createElement("<element><?procinstr?></element>")).toChildElementsCount(Matchers.is(Matchers.equalTo(0)));
+        initialize(Raw.elementAssertion(), createElement("<element><child><child/><child/></child></element>")).isNotNull().toChildElementsCount(Matchers.is(Matchers.equalTo(1))).isInstanceOf(Element.class);
 
         try {
             Raw.elementAssertion().toChildElementsCount(Matchers.equalTo(0));
@@ -3342,6 +3382,7 @@ public final class ElementAssertionTest extends AssertionTest {
         initialize(Raw.elementAssertion(), createElement("<element><child/>text1<child/>text2<child/></element>")).hasChildElementsCount(3);
         initialize(Raw.elementAssertion(), createElement("<element><child><child/><child/></child></element>")).hasChildElementsCount(1);
         initialize(Raw.elementAssertion(), createElement("<element><?procinstr?></element>")).hasChildElementsCount(0);
+        initialize(Raw.elementAssertion(), createElement("<element><child><child/><child/></child></element>")).isNotNull().hasChildElementsCount(1).isInstanceOf(Element.class);
 
         try {
             Raw.elementAssertion().hasChildElementsCount(0);
