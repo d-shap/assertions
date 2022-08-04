@@ -76,6 +76,7 @@ public final class FloatAssertionTest extends AssertionTest {
         initialize(Raw.floatAssertion(), 10.000011f).isEqualTo(10.000012f);
         initialize(Raw.floatAssertion(), 10.000001f).isEqualTo(10.000002f);
         initialize(Raw.floatAssertion(), 10.0000001f).isEqualTo(10.0000002f);
+        initialize(Raw.floatAssertion(), 10.1f).isNotNull().isEqualTo(10.1f).isInstanceOf(Float.class);
 
         try {
             Raw.floatAssertion().isEqualTo(1.0f);
@@ -216,6 +217,7 @@ public final class FloatAssertionTest extends AssertionTest {
         initialize(Raw.floatAssertion(), 10.000011f).isEqualTo(Float.valueOf("10.000012"));
         initialize(Raw.floatAssertion(), 10.000001f).isEqualTo(Float.valueOf("10.000002"));
         initialize(Raw.floatAssertion(), 10.0000001f).isEqualTo(Float.valueOf("10.0000002"));
+        initialize(Raw.floatAssertion(), 10.1f).isNotNull().isEqualTo(Float.valueOf("10.1")).isInstanceOf(Float.class);
 
         try {
             Raw.floatAssertion().isEqualTo(Float.valueOf("1.0"));
@@ -381,6 +383,7 @@ public final class FloatAssertionTest extends AssertionTest {
         initialize(Raw.floatAssertion(), Float.MAX_VALUE).isEqualTo(Float.MAX_VALUE, 0.01f);
         initialize(Raw.floatAssertion(), -0.0f).isEqualTo(+0.0f, 0.0f);
         initialize(Raw.floatAssertion(), +0.0f).isEqualTo(-0.0f, 0.0f);
+        initialize(Raw.floatAssertion(), 10.0f).isNotNull().isEqualTo(10.0f, 0.01f).isInstanceOf(Float.class);
 
         try {
             Raw.floatAssertion().isEqualTo(1.0f, 0.01f);
@@ -449,6 +452,7 @@ public final class FloatAssertionTest extends AssertionTest {
         initialize(Raw.floatAssertion(), 10.0f).isEqualTo(Float.valueOf("10.001"), 0.01f);
         initialize(Raw.floatAssertion(), 0.0f).isEqualTo(Float.valueOf("0.0"), 0.01f);
         initialize(Raw.floatAssertion(), Float.MAX_VALUE).isEqualTo(Float.valueOf(Float.MAX_VALUE), 0.01f);
+        initialize(Raw.floatAssertion(), 10.0f).isNotNull().isEqualTo(Float.valueOf("10.0"), 0.01f).isInstanceOf(Float.class);
 
         try {
             Raw.floatAssertion().isEqualTo(Float.valueOf("1.0"), 0.01f);
@@ -544,6 +548,7 @@ public final class FloatAssertionTest extends AssertionTest {
         initialize(Raw.floatAssertion(), 10.001f).isNotEqualTo(10.002f);
         initialize(Raw.floatAssertion(), 10.0001f).isNotEqualTo(10.0002f);
         initialize(Raw.floatAssertion(), 10.00001f).isNotEqualTo(10.00002f);
+        initialize(Raw.floatAssertion(), 10.1f).isNotNull().isNotEqualTo(10.2f).isInstanceOf(Float.class);
 
         try {
             Raw.floatAssertion().isNotEqualTo(1.0f);
@@ -613,6 +618,7 @@ public final class FloatAssertionTest extends AssertionTest {
         initialize(Raw.floatAssertion(), 10.001f).isNotEqualTo(Float.valueOf("10.002"));
         initialize(Raw.floatAssertion(), 10.0001f).isNotEqualTo(Float.valueOf("10.0002"));
         initialize(Raw.floatAssertion(), 10.00001f).isNotEqualTo(Float.valueOf("10.00002"));
+        initialize(Raw.floatAssertion(), 10.1f).isNotNull().isNotEqualTo(Float.valueOf("10.2")).isInstanceOf(Float.class);
 
         try {
             Raw.floatAssertion().isNotEqualTo(Float.valueOf("1.0"));
@@ -672,6 +678,7 @@ public final class FloatAssertionTest extends AssertionTest {
         initialize(Raw.floatAssertion(), 10.0f).isNotEqualTo(10.01f, 0.001f);
         initialize(Raw.floatAssertion(), 10.0f).isNotEqualTo(9.99f, 0.001f);
         initialize(Raw.floatAssertion(), 10.0f).isNotEqualTo(20.0f, 0.0f);
+        initialize(Raw.floatAssertion(), 10.0f).isNotNull().isNotEqualTo(10.01f, 0.001f).isInstanceOf(Float.class);
 
         try {
             Raw.floatAssertion().isNotEqualTo(1.0f, 0.001f);
@@ -751,6 +758,7 @@ public final class FloatAssertionTest extends AssertionTest {
         initialize(Raw.floatAssertion(), 10.0f).isNotEqualTo(Float.valueOf("10.01"), 0.001f);
         initialize(Raw.floatAssertion(), 10.0f).isNotEqualTo(Float.valueOf("9.99"), 0.001f);
         initialize(Raw.floatAssertion(), 10.0f).isNotEqualTo(Float.valueOf("20.0"), 0.0f);
+        initialize(Raw.floatAssertion(), 10.0f).isNotNull().isNotEqualTo(Float.valueOf("10.01"), 0.001f).isInstanceOf(Float.class);
 
         try {
             Raw.floatAssertion().isNotEqualTo(Float.valueOf("1.0"), 0.001f);
@@ -816,6 +824,7 @@ public final class FloatAssertionTest extends AssertionTest {
         initialize(Raw.floatAssertion(), 10.0f).isGreaterThan(9.0f);
         initialize(Raw.floatAssertion(), 10.0f).isGreaterThan(8.0f);
         initialize(Raw.floatAssertion(), 10.0f).isGreaterThan(-1.0f);
+        initialize(Raw.floatAssertion(), 10.0f).isNotNull().isGreaterThan(9.0f).isInstanceOf(Float.class);
 
         try {
             Raw.floatAssertion().isGreaterThan(1.0f);
@@ -893,6 +902,7 @@ public final class FloatAssertionTest extends AssertionTest {
         initialize(Raw.floatAssertion(), 10.0f).isGreaterThan(Float.valueOf("9.0"));
         initialize(Raw.floatAssertion(), 10.0f).isGreaterThan(Float.valueOf("8.0"));
         initialize(Raw.floatAssertion(), 10.0f).isGreaterThan(Float.valueOf("-1.0"));
+        initialize(Raw.floatAssertion(), 10.0f).isNotNull().isGreaterThan(Float.valueOf("9.0")).isInstanceOf(Float.class);
 
         try {
             Raw.floatAssertion().isGreaterThan(Float.valueOf("1.0"));
@@ -994,6 +1004,7 @@ public final class FloatAssertionTest extends AssertionTest {
         initialize(Raw.floatAssertion(), 10.0f).isGreaterThanOrEqualTo(9.0f);
         initialize(Raw.floatAssertion(), 10.0f).isGreaterThanOrEqualTo(10.0f);
         initialize(Raw.floatAssertion(), 10.0f).isGreaterThanOrEqualTo(-1.0f);
+        initialize(Raw.floatAssertion(), 10.0f).isNotNull().isGreaterThanOrEqualTo(9.0f).isInstanceOf(Float.class);
 
         try {
             Raw.floatAssertion().isGreaterThanOrEqualTo(1.0f);
@@ -1059,6 +1070,7 @@ public final class FloatAssertionTest extends AssertionTest {
         initialize(Raw.floatAssertion(), 10.0f).isGreaterThanOrEqualTo(Float.valueOf("9.0"));
         initialize(Raw.floatAssertion(), 10.0f).isGreaterThanOrEqualTo(Float.valueOf("10.0"));
         initialize(Raw.floatAssertion(), 10.0f).isGreaterThanOrEqualTo(Float.valueOf("-1.0"));
+        initialize(Raw.floatAssertion(), 10.0f).isNotNull().isGreaterThanOrEqualTo(Float.valueOf("9.0")).isInstanceOf(Float.class);
 
         try {
             Raw.floatAssertion().isGreaterThanOrEqualTo(Float.valueOf("1.0"));
@@ -1148,6 +1160,7 @@ public final class FloatAssertionTest extends AssertionTest {
         initialize(Raw.floatAssertion(), 10.0f).isLessThan(11.0f);
         initialize(Raw.floatAssertion(), 10.0f).isLessThan(12.0f);
         initialize(Raw.floatAssertion(), 10.0f).isLessThan(100.0f);
+        initialize(Raw.floatAssertion(), 10.0f).isNotNull().isLessThan(11.0f).isInstanceOf(Float.class);
 
         try {
             Raw.floatAssertion().isLessThan(1.0f);
@@ -1225,6 +1238,7 @@ public final class FloatAssertionTest extends AssertionTest {
         initialize(Raw.floatAssertion(), 10.0f).isLessThan(Float.valueOf("11.0"));
         initialize(Raw.floatAssertion(), 10.0f).isLessThan(Float.valueOf("12.0"));
         initialize(Raw.floatAssertion(), 10.0f).isLessThan(Float.valueOf("100.0"));
+        initialize(Raw.floatAssertion(), 10.0f).isNotNull().isLessThan(Float.valueOf("11.0")).isInstanceOf(Float.class);
 
         try {
             Raw.floatAssertion().isLessThan(Float.valueOf("1.0"));
@@ -1326,6 +1340,7 @@ public final class FloatAssertionTest extends AssertionTest {
         initialize(Raw.floatAssertion(), 10.0f).isLessThanOrEqualTo(11.0f);
         initialize(Raw.floatAssertion(), 10.0f).isLessThanOrEqualTo(10.0f);
         initialize(Raw.floatAssertion(), 10.0f).isLessThanOrEqualTo(100.0f);
+        initialize(Raw.floatAssertion(), 10.0f).isNotNull().isLessThanOrEqualTo(11.0f).isInstanceOf(Float.class);
 
         try {
             Raw.floatAssertion().isLessThanOrEqualTo(1.0f);
@@ -1391,6 +1406,7 @@ public final class FloatAssertionTest extends AssertionTest {
         initialize(Raw.floatAssertion(), 10.0f).isLessThanOrEqualTo(Float.valueOf("11.0"));
         initialize(Raw.floatAssertion(), 10.0f).isLessThanOrEqualTo(Float.valueOf("10.0"));
         initialize(Raw.floatAssertion(), 10.0f).isLessThanOrEqualTo(Float.valueOf("100.0"));
+        initialize(Raw.floatAssertion(), 10.0f).isNotNull().isLessThanOrEqualTo(Float.valueOf("11.0")).isInstanceOf(Float.class);
 
         try {
             Raw.floatAssertion().isLessThanOrEqualTo(Float.valueOf("1.0"));
@@ -1480,6 +1496,7 @@ public final class FloatAssertionTest extends AssertionTest {
         initialize(Raw.floatAssertion(), 5.0f).isInRange(4.0f, 6.0f);
         initialize(Raw.floatAssertion(), 5.0f).isInRange(5.0f, 6.0f);
         initialize(Raw.floatAssertion(), 5.0f).isInRange(1.0f, 10.0f);
+        initialize(Raw.floatAssertion(), 5.0f).isNotNull().isInRange(4.0f, 6.0f).isInstanceOf(Float.class);
 
         try {
             Raw.floatAssertion().isInRange(1.0f, 1.0f);
@@ -1581,6 +1598,7 @@ public final class FloatAssertionTest extends AssertionTest {
         initialize(Raw.floatAssertion(), 5.0f).isInRange(Float.valueOf("4.0"), Float.valueOf("6.0"));
         initialize(Raw.floatAssertion(), 5.0f).isInRange(Float.valueOf("5.0"), Float.valueOf("6.0"));
         initialize(Raw.floatAssertion(), 5.0f).isInRange(Float.valueOf("1.0"), Float.valueOf("10.0"));
+        initialize(Raw.floatAssertion(), 5.0f).isNotNull().isInRange(Float.valueOf("4.0"), Float.valueOf("6.0")).isInstanceOf(Float.class);
 
         try {
             Raw.floatAssertion().isInRange(Float.valueOf("1.0"), Float.valueOf("1.0"));
@@ -1730,6 +1748,7 @@ public final class FloatAssertionTest extends AssertionTest {
         initialize(Raw.floatAssertion(), 5.0f).isNotInRange(1.0f, 5.0f);
         initialize(Raw.floatAssertion(), 5.0f).isNotInRange(6.0f, 10.0f);
         initialize(Raw.floatAssertion(), 5.0f).isNotInRange(8.0f, 9.0f);
+        initialize(Raw.floatAssertion(), 5.0f).isNotNull().isNotInRange(1.0f, 5.0f).isInstanceOf(Float.class);
 
         try {
             Raw.floatAssertion().isNotInRange(1.0f, 1.0f);
@@ -1831,6 +1850,7 @@ public final class FloatAssertionTest extends AssertionTest {
         initialize(Raw.floatAssertion(), 5.0f).isNotInRange(Float.valueOf("1.0"), Float.valueOf("5.0"));
         initialize(Raw.floatAssertion(), 5.0f).isNotInRange(Float.valueOf("6.0"), Float.valueOf("10.0"));
         initialize(Raw.floatAssertion(), 5.0f).isNotInRange(Float.valueOf("8.0"), Float.valueOf("9.0"));
+        initialize(Raw.floatAssertion(), 5.0f).isNotNull().isNotInRange(Float.valueOf("1.0"), Float.valueOf("5.0")).isInstanceOf(Float.class);
 
         try {
             Raw.floatAssertion().isNotInRange(Float.valueOf("1.0"), Float.valueOf("1.0"));
@@ -1980,6 +2000,7 @@ public final class FloatAssertionTest extends AssertionTest {
         initialize(Raw.floatAssertion(), 0.0f).isZero();
         initialize(Raw.floatAssertion(), +0.0f).isZero();
         initialize(Raw.floatAssertion(), -0.0f).isZero();
+        initialize(Raw.floatAssertion(), 0.0f).isNotNull().isZero().isInstanceOf(Float.class);
 
         try {
             Raw.floatAssertion().isZero();
@@ -2059,6 +2080,7 @@ public final class FloatAssertionTest extends AssertionTest {
         initialize(Raw.floatAssertion(), Float.POSITIVE_INFINITY).isNotZero();
         initialize(Raw.floatAssertion(), Float.NEGATIVE_INFINITY).isNotZero();
         initialize(Raw.floatAssertion(), Float.NaN).isNotZero();
+        initialize(Raw.floatAssertion(), 10.0f).isNotNull().isNotZero().isInstanceOf(Float.class);
 
         try {
             Raw.floatAssertion().isNotZero();
@@ -2124,6 +2146,7 @@ public final class FloatAssertionTest extends AssertionTest {
         initialize(Raw.floatAssertion(), Float.POSITIVE_INFINITY).isPositiveInfinity();
         float val = getZero();
         initialize(Raw.floatAssertion(), 1.0f / val).isPositiveInfinity();
+        initialize(Raw.floatAssertion(), Float.POSITIVE_INFINITY).isNotNull().isPositiveInfinity().isInstanceOf(Float.class);
 
         try {
             Raw.floatAssertion().isPositiveInfinity();
@@ -2202,6 +2225,7 @@ public final class FloatAssertionTest extends AssertionTest {
         initialize(Raw.floatAssertion(), 10.0f).isNotPositiveInfinity();
         initialize(Raw.floatAssertion(), Float.NaN).isNotPositiveInfinity();
         initialize(Raw.floatAssertion(), Float.NEGATIVE_INFINITY).isNotPositiveInfinity();
+        initialize(Raw.floatAssertion(), 0.0f).isNotNull().isNotPositiveInfinity().isInstanceOf(Float.class);
 
         try {
             Raw.floatAssertion().isNotPositiveInfinity();
@@ -2243,6 +2267,7 @@ public final class FloatAssertionTest extends AssertionTest {
         initialize(Raw.floatAssertion(), Float.NEGATIVE_INFINITY).isNegativeInfinity();
         float val = getZero();
         initialize(Raw.floatAssertion(), -1.0f / val).isNegativeInfinity();
+        initialize(Raw.floatAssertion(), Float.NEGATIVE_INFINITY).isNotNull().isNegativeInfinity().isInstanceOf(Float.class);
 
         try {
             Raw.floatAssertion().isNegativeInfinity();
@@ -2321,6 +2346,7 @@ public final class FloatAssertionTest extends AssertionTest {
         initialize(Raw.floatAssertion(), 10.0f).isNotNegativeInfinity();
         initialize(Raw.floatAssertion(), Float.NaN).isNotNegativeInfinity();
         initialize(Raw.floatAssertion(), Float.POSITIVE_INFINITY).isNotNegativeInfinity();
+        initialize(Raw.floatAssertion(), 0.0f).isNotNull().isNotNegativeInfinity().isInstanceOf(Float.class);
 
         try {
             Raw.floatAssertion().isNotNegativeInfinity();
@@ -2364,6 +2390,7 @@ public final class FloatAssertionTest extends AssertionTest {
         float val = getZero();
         initialize(Raw.floatAssertion(), 1.0f / val).isInfinity();
         initialize(Raw.floatAssertion(), -1.0f / val).isInfinity();
+        initialize(Raw.floatAssertion(), Float.POSITIVE_INFINITY).isNotNull().isInfinity().isInstanceOf(Float.class);
 
         try {
             Raw.floatAssertion().isInfinity();
@@ -2442,6 +2469,7 @@ public final class FloatAssertionTest extends AssertionTest {
         initialize(Raw.floatAssertion(), 10.0f).isNotInfinity();
         initialize(Raw.floatAssertion(), -10.0f).isNotInfinity();
         initialize(Raw.floatAssertion(), Float.NaN).isNotInfinity();
+        initialize(Raw.floatAssertion(), 0.0f).isNotNull().isNotInfinity().isInstanceOf(Float.class);
 
         try {
             Raw.floatAssertion().isNotInfinity();
@@ -2495,6 +2523,7 @@ public final class FloatAssertionTest extends AssertionTest {
         initialize(Raw.floatAssertion(), Float.NaN).isNaN();
         initialize(Raw.floatAssertion(), (float) Math.sqrt(-2.0f)).isNaN();
         initialize(Raw.floatAssertion(), Float.POSITIVE_INFINITY / Float.NEGATIVE_INFINITY).isNaN();
+        initialize(Raw.floatAssertion(), Float.NaN).isNotNull().isNaN().isInstanceOf(Float.class);
 
         try {
             Raw.floatAssertion().isNaN();
@@ -2586,6 +2615,7 @@ public final class FloatAssertionTest extends AssertionTest {
         initialize(Raw.floatAssertion(), -10.0f).isNotNaN();
         initialize(Raw.floatAssertion(), Float.POSITIVE_INFINITY).isNotNaN();
         initialize(Raw.floatAssertion(), Float.NEGATIVE_INFINITY).isNotNaN();
+        initialize(Raw.floatAssertion(), 0.0f).isNotNull().isNotNaN().isInstanceOf(Float.class);
 
         try {
             Raw.floatAssertion().isNotNaN();
@@ -2627,6 +2657,7 @@ public final class FloatAssertionTest extends AssertionTest {
         initialize(Raw.floatAssertion(), 0.0f).isFinite();
         initialize(Raw.floatAssertion(), 10.0f).isFinite();
         initialize(Raw.floatAssertion(), -10.0f).isFinite();
+        initialize(Raw.floatAssertion(), 0.0f).isNotNull().isFinite().isInstanceOf(Float.class);
 
         try {
             Raw.floatAssertion().isFinite();
@@ -2692,6 +2723,7 @@ public final class FloatAssertionTest extends AssertionTest {
         initialize(Raw.floatAssertion(), Float.NaN).isNotFinite();
         initialize(Raw.floatAssertion(), Float.POSITIVE_INFINITY).isNotFinite();
         initialize(Raw.floatAssertion(), Float.NEGATIVE_INFINITY).isNotFinite();
+        initialize(Raw.floatAssertion(), Float.NaN).isNotNull().isNotFinite().isInstanceOf(Float.class);
 
         try {
             Raw.floatAssertion().isNotFinite();

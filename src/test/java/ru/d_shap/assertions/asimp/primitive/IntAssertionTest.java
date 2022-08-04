@@ -70,6 +70,7 @@ public final class IntAssertionTest extends AssertionTest {
         initialize(Raw.intAssertion(), 75).isEqualTo(75);
         initialize(Raw.intAssertion(), 236).isEqualTo(236);
         initialize(Raw.intAssertion(), 257).isEqualTo(257);
+        initialize(Raw.intAssertion(), 10).isNotNull().isEqualTo(10).isInstanceOf(Integer.class);
 
         try {
             Raw.intAssertion().isEqualTo(1);
@@ -113,6 +114,7 @@ public final class IntAssertionTest extends AssertionTest {
         initialize(Raw.intAssertion(), 75).isEqualTo(Integer.valueOf("75"));
         initialize(Raw.intAssertion(), 236).isEqualTo(Integer.valueOf("236"));
         initialize(Raw.intAssertion(), 257).isEqualTo(Integer.valueOf("257"));
+        initialize(Raw.intAssertion(), 10).isNotNull().isEqualTo(Integer.valueOf("10")).isInstanceOf(Integer.class);
 
         try {
             Raw.intAssertion().isEqualTo(Integer.valueOf("1"));
@@ -168,6 +170,7 @@ public final class IntAssertionTest extends AssertionTest {
         initialize(Raw.intAssertion(), 75).isNotEqualTo(76);
         initialize(Raw.intAssertion(), 236).isNotEqualTo(143);
         initialize(Raw.intAssertion(), 257).isNotEqualTo(2);
+        initialize(Raw.intAssertion(), 10).isNotNull().isNotEqualTo(15).isInstanceOf(Integer.class);
 
         try {
             Raw.intAssertion().isNotEqualTo(1);
@@ -200,6 +203,7 @@ public final class IntAssertionTest extends AssertionTest {
         initialize(Raw.intAssertion(), 75).isNotEqualTo(Integer.valueOf("76"));
         initialize(Raw.intAssertion(), 236).isNotEqualTo(Integer.valueOf("143"));
         initialize(Raw.intAssertion(), 257).isNotEqualTo(Integer.valueOf("2"));
+        initialize(Raw.intAssertion(), 10).isNotNull().isNotEqualTo(Integer.valueOf("15")).isInstanceOf(Integer.class);
 
         try {
             Raw.intAssertion().isNotEqualTo(Integer.valueOf("1"));
@@ -241,6 +245,7 @@ public final class IntAssertionTest extends AssertionTest {
         initialize(Raw.intAssertion(), 10).isGreaterThan(5);
         initialize(Raw.intAssertion(), 60).isGreaterThan(30);
         initialize(Raw.intAssertion(), 245).isGreaterThan(244);
+        initialize(Raw.intAssertion(), 10).isNotNull().isGreaterThan(5).isInstanceOf(Integer.class);
 
         try {
             Raw.intAssertion().isGreaterThan(1);
@@ -294,6 +299,7 @@ public final class IntAssertionTest extends AssertionTest {
         initialize(Raw.intAssertion(), 10).isGreaterThan(Integer.valueOf("5"));
         initialize(Raw.intAssertion(), 60).isGreaterThan(Integer.valueOf("30"));
         initialize(Raw.intAssertion(), 245).isGreaterThan(Integer.valueOf("244"));
+        initialize(Raw.intAssertion(), 10).isNotNull().isGreaterThan(Integer.valueOf("5")).isInstanceOf(Integer.class);
 
         try {
             Raw.intAssertion().isGreaterThan(Integer.valueOf("1"));
@@ -371,6 +377,7 @@ public final class IntAssertionTest extends AssertionTest {
         initialize(Raw.intAssertion(), 10).isGreaterThanOrEqualTo(5);
         initialize(Raw.intAssertion(), 60).isGreaterThanOrEqualTo(60);
         initialize(Raw.intAssertion(), 245).isGreaterThanOrEqualTo(244);
+        initialize(Raw.intAssertion(), 10).isNotNull().isGreaterThanOrEqualTo(5).isInstanceOf(Integer.class);
 
         try {
             Raw.intAssertion().isGreaterThanOrEqualTo(1);
@@ -412,6 +419,7 @@ public final class IntAssertionTest extends AssertionTest {
         initialize(Raw.intAssertion(), 10).isGreaterThanOrEqualTo(Integer.valueOf("5"));
         initialize(Raw.intAssertion(), 60).isGreaterThanOrEqualTo(Integer.valueOf("60"));
         initialize(Raw.intAssertion(), 245).isGreaterThanOrEqualTo(Integer.valueOf("244"));
+        initialize(Raw.intAssertion(), 10).isNotNull().isGreaterThanOrEqualTo(Integer.valueOf("5")).isInstanceOf(Integer.class);
 
         try {
             Raw.intAssertion().isGreaterThanOrEqualTo(Integer.valueOf("1"));
@@ -477,6 +485,7 @@ public final class IntAssertionTest extends AssertionTest {
         initialize(Raw.intAssertion(), 5).isLessThan(10);
         initialize(Raw.intAssertion(), 30).isLessThan(60);
         initialize(Raw.intAssertion(), 244).isLessThan(245);
+        initialize(Raw.intAssertion(), 5).isNotNull().isLessThan(10).isInstanceOf(Integer.class);
 
         try {
             Raw.intAssertion().isLessThan(1);
@@ -530,6 +539,7 @@ public final class IntAssertionTest extends AssertionTest {
         initialize(Raw.intAssertion(), 5).isLessThan(Integer.valueOf("10"));
         initialize(Raw.intAssertion(), 30).isLessThan(Integer.valueOf("60"));
         initialize(Raw.intAssertion(), 244).isLessThan(Integer.valueOf("245"));
+        initialize(Raw.intAssertion(), 5).isNotNull().isLessThan(Integer.valueOf("10")).isInstanceOf(Integer.class);
 
         try {
             Raw.intAssertion().isLessThan(Integer.valueOf("1"));
@@ -607,6 +617,7 @@ public final class IntAssertionTest extends AssertionTest {
         initialize(Raw.intAssertion(), 5).isLessThanOrEqualTo(10);
         initialize(Raw.intAssertion(), 60).isLessThanOrEqualTo(60);
         initialize(Raw.intAssertion(), 244).isLessThanOrEqualTo(245);
+        initialize(Raw.intAssertion(), 5).isNotNull().isLessThanOrEqualTo(10).isInstanceOf(Integer.class);
 
         try {
             Raw.intAssertion().isLessThanOrEqualTo(1);
@@ -648,6 +659,7 @@ public final class IntAssertionTest extends AssertionTest {
         initialize(Raw.intAssertion(), 5).isLessThanOrEqualTo(Integer.valueOf("10"));
         initialize(Raw.intAssertion(), 60).isLessThanOrEqualTo(Integer.valueOf("60"));
         initialize(Raw.intAssertion(), 244).isLessThanOrEqualTo(Integer.valueOf("245"));
+        initialize(Raw.intAssertion(), 5).isNotNull().isLessThanOrEqualTo(Integer.valueOf("10")).isInstanceOf(Integer.class);
 
         try {
             Raw.intAssertion().isLessThanOrEqualTo(Integer.valueOf("1"));
@@ -713,6 +725,7 @@ public final class IntAssertionTest extends AssertionTest {
         initialize(Raw.intAssertion(), 5).isInRange(4, 6);
         initialize(Raw.intAssertion(), 5).isInRange(5, 6);
         initialize(Raw.intAssertion(), 5).isInRange(1, 10);
+        initialize(Raw.intAssertion(), 5).isNotNull().isInRange(4, 6).isInstanceOf(Integer.class);
 
         try {
             Raw.intAssertion().isInRange(1, 1);
@@ -778,6 +791,7 @@ public final class IntAssertionTest extends AssertionTest {
         initialize(Raw.intAssertion(), 5).isInRange(Integer.valueOf("4"), Integer.valueOf("6"));
         initialize(Raw.intAssertion(), 5).isInRange(Integer.valueOf("5"), Integer.valueOf("6"));
         initialize(Raw.intAssertion(), 5).isInRange(Integer.valueOf("1"), Integer.valueOf("10"));
+        initialize(Raw.intAssertion(), 5).isNotNull().isInRange(Integer.valueOf("4"), Integer.valueOf("6")).isInstanceOf(Integer.class);
 
         try {
             Raw.intAssertion().isInRange(Integer.valueOf("1"), Integer.valueOf("1"));
@@ -891,6 +905,7 @@ public final class IntAssertionTest extends AssertionTest {
         initialize(Raw.intAssertion(), 5).isNotInRange(1, 5);
         initialize(Raw.intAssertion(), 5).isNotInRange(6, 10);
         initialize(Raw.intAssertion(), 5).isNotInRange(8, 9);
+        initialize(Raw.intAssertion(), 5).isNotNull().isNotInRange(1, 5).isInstanceOf(Integer.class);
 
         try {
             Raw.intAssertion().isNotInRange(1, 1);
@@ -956,6 +971,7 @@ public final class IntAssertionTest extends AssertionTest {
         initialize(Raw.intAssertion(), 5).isNotInRange(Integer.valueOf("1"), Integer.valueOf("5"));
         initialize(Raw.intAssertion(), 5).isNotInRange(Integer.valueOf("6"), Integer.valueOf("10"));
         initialize(Raw.intAssertion(), 5).isNotInRange(Integer.valueOf("8"), Integer.valueOf("9"));
+        initialize(Raw.intAssertion(), 5).isNotNull().isNotInRange(Integer.valueOf("1"), Integer.valueOf("5")).isInstanceOf(Integer.class);
 
         try {
             Raw.intAssertion().isNotInRange(Integer.valueOf("1"), Integer.valueOf("1"));
@@ -1079,6 +1095,7 @@ public final class IntAssertionTest extends AssertionTest {
         initialize(Raw.intAssertion(), Integer.MAX_VALUE).toHexString().isEqualTo("7fffffff");
         initialize(Raw.intAssertion(), -1).toHexString().isEqualTo("ffffffff");
         initialize(Raw.intAssertion(), Integer.MIN_VALUE).toHexString().isEqualTo("80000000");
+        initialize(Raw.intAssertion(), 31).isNotNull().toHexString().isEqualTo("0000001f");
 
         try {
             Raw.intAssertion().toHexString();
@@ -1142,6 +1159,7 @@ public final class IntAssertionTest extends AssertionTest {
         initialize(Raw.intAssertion(), Integer.MAX_VALUE).toHexString(Matchers.is(Matchers.equalTo("7fffffff")));
         initialize(Raw.intAssertion(), -1).toHexString(Matchers.is(Matchers.equalTo("ffffffff")));
         initialize(Raw.intAssertion(), Integer.MIN_VALUE).toHexString(Matchers.is(Matchers.equalTo("80000000")));
+        initialize(Raw.intAssertion(), 31).isNotNull().toHexString(Matchers.is(Matchers.equalTo("0000001f"))).isInstanceOf(Integer.class);
 
         try {
             Raw.intAssertion().toHexString(Matchers.equalTo("0"));
@@ -1217,6 +1235,7 @@ public final class IntAssertionTest extends AssertionTest {
         initialize(Raw.intAssertion(), Integer.MAX_VALUE).hasHexString("7fffffff");
         initialize(Raw.intAssertion(), -1).hasHexString("ffffffff");
         initialize(Raw.intAssertion(), Integer.MIN_VALUE).hasHexString("80000000");
+        initialize(Raw.intAssertion(), 31).isNotNull().hasHexString("0000001f").isInstanceOf(Integer.class);
 
         try {
             Raw.intAssertion().hasHexString("0");

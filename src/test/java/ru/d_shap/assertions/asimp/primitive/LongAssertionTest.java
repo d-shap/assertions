@@ -70,6 +70,7 @@ public final class LongAssertionTest extends AssertionTest {
         initialize(Raw.longAssertion(), 75L).isEqualTo(75L);
         initialize(Raw.longAssertion(), 236L).isEqualTo(236L);
         initialize(Raw.longAssertion(), 257L).isEqualTo(257L);
+        initialize(Raw.longAssertion(), 10L).isNotNull().isEqualTo(10L).isInstanceOf(Long.class);
 
         try {
             Raw.longAssertion().isEqualTo(1L);
@@ -113,6 +114,7 @@ public final class LongAssertionTest extends AssertionTest {
         initialize(Raw.longAssertion(), 75L).isEqualTo(Long.valueOf("75"));
         initialize(Raw.longAssertion(), 236L).isEqualTo(Long.valueOf("236"));
         initialize(Raw.longAssertion(), 257L).isEqualTo(Long.valueOf("257"));
+        initialize(Raw.longAssertion(), 10L).isNotNull().isEqualTo(Long.valueOf("10")).isInstanceOf(Long.class);
 
         try {
             Raw.longAssertion().isEqualTo(Long.valueOf("1"));
@@ -168,6 +170,7 @@ public final class LongAssertionTest extends AssertionTest {
         initialize(Raw.longAssertion(), 75L).isNotEqualTo(76L);
         initialize(Raw.longAssertion(), 236L).isNotEqualTo(143L);
         initialize(Raw.longAssertion(), 257L).isNotEqualTo(2L);
+        initialize(Raw.longAssertion(), 10L).isNotNull().isNotEqualTo(15L).isInstanceOf(Long.class);
 
         try {
             Raw.longAssertion().isNotEqualTo(1L);
@@ -200,6 +203,7 @@ public final class LongAssertionTest extends AssertionTest {
         initialize(Raw.longAssertion(), 75L).isNotEqualTo(Long.valueOf("76"));
         initialize(Raw.longAssertion(), 236L).isNotEqualTo(Long.valueOf("143"));
         initialize(Raw.longAssertion(), 257L).isNotEqualTo(Long.valueOf("2"));
+        initialize(Raw.longAssertion(), 10L).isNotNull().isNotEqualTo(Long.valueOf("15")).isInstanceOf(Long.class);
 
         try {
             Raw.longAssertion().isNotEqualTo(Long.valueOf("1"));
@@ -241,6 +245,7 @@ public final class LongAssertionTest extends AssertionTest {
         initialize(Raw.longAssertion(), 10L).isGreaterThan(5L);
         initialize(Raw.longAssertion(), 60L).isGreaterThan(30L);
         initialize(Raw.longAssertion(), 245L).isGreaterThan(244L);
+        initialize(Raw.longAssertion(), 10L).isNotNull().isGreaterThan(5L).isInstanceOf(Long.class);
 
         try {
             Raw.longAssertion().isGreaterThan(1L);
@@ -294,6 +299,7 @@ public final class LongAssertionTest extends AssertionTest {
         initialize(Raw.longAssertion(), 10L).isGreaterThan(Long.valueOf("5"));
         initialize(Raw.longAssertion(), 60L).isGreaterThan(Long.valueOf("30"));
         initialize(Raw.longAssertion(), 245L).isGreaterThan(Long.valueOf("244"));
+        initialize(Raw.longAssertion(), 10L).isNotNull().isGreaterThan(Long.valueOf("5")).isInstanceOf(Long.class);
 
         try {
             Raw.longAssertion().isGreaterThan(Long.valueOf("1"));
@@ -371,6 +377,7 @@ public final class LongAssertionTest extends AssertionTest {
         initialize(Raw.longAssertion(), 10L).isGreaterThanOrEqualTo(5L);
         initialize(Raw.longAssertion(), 60L).isGreaterThanOrEqualTo(60L);
         initialize(Raw.longAssertion(), 245L).isGreaterThanOrEqualTo(244L);
+        initialize(Raw.longAssertion(), 10L).isNotNull().isGreaterThanOrEqualTo(5L).isInstanceOf(Long.class);
 
         try {
             Raw.longAssertion().isGreaterThanOrEqualTo(1L);
@@ -412,6 +419,7 @@ public final class LongAssertionTest extends AssertionTest {
         initialize(Raw.longAssertion(), 10L).isGreaterThanOrEqualTo(Long.valueOf("5"));
         initialize(Raw.longAssertion(), 60L).isGreaterThanOrEqualTo(Long.valueOf("60"));
         initialize(Raw.longAssertion(), 245L).isGreaterThanOrEqualTo(Long.valueOf("244"));
+        initialize(Raw.longAssertion(), 10L).isNotNull().isGreaterThanOrEqualTo(Long.valueOf("5")).isInstanceOf(Long.class);
 
         try {
             Raw.longAssertion().isGreaterThanOrEqualTo(Long.valueOf("1"));
@@ -477,6 +485,7 @@ public final class LongAssertionTest extends AssertionTest {
         initialize(Raw.longAssertion(), 5L).isLessThan(10L);
         initialize(Raw.longAssertion(), 30L).isLessThan(60L);
         initialize(Raw.longAssertion(), 244L).isLessThan(245L);
+        initialize(Raw.longAssertion(), 5L).isNotNull().isLessThan(10L).isInstanceOf(Long.class);
 
         try {
             Raw.longAssertion().isLessThan(1L);
@@ -530,6 +539,7 @@ public final class LongAssertionTest extends AssertionTest {
         initialize(Raw.longAssertion(), 5L).isLessThan(Long.valueOf("10"));
         initialize(Raw.longAssertion(), 30L).isLessThan(Long.valueOf("60"));
         initialize(Raw.longAssertion(), 244L).isLessThan(Long.valueOf("245"));
+        initialize(Raw.longAssertion(), 5L).isNotNull().isLessThan(Long.valueOf("10")).isInstanceOf(Long.class);
 
         try {
             Raw.longAssertion().isLessThan(Long.valueOf("1"));
@@ -607,6 +617,7 @@ public final class LongAssertionTest extends AssertionTest {
         initialize(Raw.longAssertion(), 5L).isLessThanOrEqualTo(10L);
         initialize(Raw.longAssertion(), 60L).isLessThanOrEqualTo(60L);
         initialize(Raw.longAssertion(), 244L).isLessThanOrEqualTo(245L);
+        initialize(Raw.longAssertion(), 5L).isNotNull().isLessThanOrEqualTo(10L).isInstanceOf(Long.class);
 
         try {
             Raw.longAssertion().isLessThanOrEqualTo(1L);
@@ -648,6 +659,7 @@ public final class LongAssertionTest extends AssertionTest {
         initialize(Raw.longAssertion(), 5L).isLessThanOrEqualTo(Long.valueOf("10"));
         initialize(Raw.longAssertion(), 60L).isLessThanOrEqualTo(Long.valueOf("60"));
         initialize(Raw.longAssertion(), 244L).isLessThanOrEqualTo(Long.valueOf("245"));
+        initialize(Raw.longAssertion(), 5L).isNotNull().isLessThanOrEqualTo(Long.valueOf("10")).isInstanceOf(Long.class);
 
         try {
             Raw.longAssertion().isLessThanOrEqualTo(Long.valueOf("1"));
@@ -713,6 +725,7 @@ public final class LongAssertionTest extends AssertionTest {
         initialize(Raw.longAssertion(), 5L).isInRange(4L, 6L);
         initialize(Raw.longAssertion(), 5L).isInRange(5L, 6L);
         initialize(Raw.longAssertion(), 5L).isInRange(1L, 10L);
+        initialize(Raw.longAssertion(), 5L).isNotNull().isInRange(4L, 6L).isInstanceOf(Long.class);
 
         try {
             Raw.longAssertion().isInRange(1L, 1L);
@@ -778,6 +791,7 @@ public final class LongAssertionTest extends AssertionTest {
         initialize(Raw.longAssertion(), 5L).isInRange(Long.valueOf("4"), Long.valueOf("6"));
         initialize(Raw.longAssertion(), 5L).isInRange(Long.valueOf("5"), Long.valueOf("6"));
         initialize(Raw.longAssertion(), 5L).isInRange(Long.valueOf("1"), Long.valueOf("10"));
+        initialize(Raw.longAssertion(), 5L).isNotNull().isInRange(Long.valueOf("4"), Long.valueOf("6")).isInstanceOf(Long.class);
 
         try {
             Raw.longAssertion().isInRange(Long.valueOf("1"), Long.valueOf("1"));
@@ -891,6 +905,7 @@ public final class LongAssertionTest extends AssertionTest {
         initialize(Raw.longAssertion(), 5L).isNotInRange(1L, 5L);
         initialize(Raw.longAssertion(), 5L).isNotInRange(6L, 10L);
         initialize(Raw.longAssertion(), 5L).isNotInRange(8L, 9L);
+        initialize(Raw.longAssertion(), 5L).isNotNull().isNotInRange(1L, 5L).isInstanceOf(Long.class);
 
         try {
             Raw.longAssertion().isNotInRange(1L, 1L);
@@ -956,6 +971,7 @@ public final class LongAssertionTest extends AssertionTest {
         initialize(Raw.longAssertion(), 5L).isNotInRange(Long.valueOf("1"), Long.valueOf("5"));
         initialize(Raw.longAssertion(), 5L).isNotInRange(Long.valueOf("6"), Long.valueOf("10"));
         initialize(Raw.longAssertion(), 5L).isNotInRange(Long.valueOf("8"), Long.valueOf("9"));
+        initialize(Raw.longAssertion(), 5L).isNotNull().isNotInRange(Long.valueOf("1"), Long.valueOf("5")).isInstanceOf(Long.class);
 
         try {
             Raw.longAssertion().isNotInRange(Long.valueOf("1"), Long.valueOf("1"));
@@ -1083,6 +1099,7 @@ public final class LongAssertionTest extends AssertionTest {
         initialize(Raw.longAssertion(), Long.MAX_VALUE).toHexString().isEqualTo("7fffffffffffffff");
         initialize(Raw.longAssertion(), -1L).toHexString().isEqualTo("ffffffffffffffff");
         initialize(Raw.longAssertion(), Long.MIN_VALUE).toHexString().isEqualTo("8000000000000000");
+        initialize(Raw.longAssertion(), 31L).isNotNull().toHexString().isEqualTo("000000000000001f");
 
         try {
             Raw.longAssertion().toHexString();
@@ -1150,6 +1167,7 @@ public final class LongAssertionTest extends AssertionTest {
         initialize(Raw.longAssertion(), Long.MAX_VALUE).toHexString(Matchers.is(Matchers.equalTo("7fffffffffffffff")));
         initialize(Raw.longAssertion(), -1L).toHexString(Matchers.is(Matchers.equalTo("ffffffffffffffff")));
         initialize(Raw.longAssertion(), Long.MIN_VALUE).toHexString(Matchers.is(Matchers.equalTo("8000000000000000")));
+        initialize(Raw.longAssertion(), 31L).isNotNull().toHexString(Matchers.is(Matchers.equalTo("000000000000001f"))).isInstanceOf(Long.class);
 
         try {
             Raw.longAssertion().toHexString(Matchers.equalTo("0"));
@@ -1229,6 +1247,7 @@ public final class LongAssertionTest extends AssertionTest {
         initialize(Raw.longAssertion(), Long.MAX_VALUE).hasHexString("7fffffffffffffff");
         initialize(Raw.longAssertion(), -1L).hasHexString("ffffffffffffffff");
         initialize(Raw.longAssertion(), Long.MIN_VALUE).hasHexString("8000000000000000");
+        initialize(Raw.longAssertion(), 31L).isNotNull().hasHexString("000000000000001f").isInstanceOf(Long.class);
 
         try {
             Raw.longAssertion().hasHexString("0");

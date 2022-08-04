@@ -69,6 +69,7 @@ public final class CharAssertionTest extends AssertionTest {
         initialize(Raw.charAssertion(), 'Z').isEqualTo('Z');
         initialize(Raw.charAssertion(), 'Й').isEqualTo('Й');
         initialize(Raw.charAssertion(), '5').isEqualTo('5');
+        initialize(Raw.charAssertion(), 'a').isNotNull().isEqualTo('a').isInstanceOf(Character.class);
 
         try {
             Raw.charAssertion().isEqualTo('1');
@@ -136,6 +137,7 @@ public final class CharAssertionTest extends AssertionTest {
         initialize(Raw.charAssertion(), 'Z').isEqualTo(Character.valueOf('Z'));
         initialize(Raw.charAssertion(), 'Й').isEqualTo(Character.valueOf('Й'));
         initialize(Raw.charAssertion(), '5').isEqualTo(Character.valueOf('5'));
+        initialize(Raw.charAssertion(), 'a').isNotNull().isEqualTo(Character.valueOf('a')).isInstanceOf(Character.class);
 
         try {
             Raw.charAssertion().isEqualTo(Character.valueOf('1'));
@@ -203,6 +205,7 @@ public final class CharAssertionTest extends AssertionTest {
         initialize(Raw.charAssertion(), 'Z').isNotEqualTo('X');
         initialize(Raw.charAssertion(), '1').isNotEqualTo('2');
         initialize(Raw.charAssertion(), 'Й').isNotEqualTo('Ё');
+        initialize(Raw.charAssertion(), 'a').isNotNull().isNotEqualTo('b').isInstanceOf(Character.class);
 
         try {
             Raw.charAssertion().isNotEqualTo('1');
@@ -235,6 +238,7 @@ public final class CharAssertionTest extends AssertionTest {
         initialize(Raw.charAssertion(), 'Z').isNotEqualTo(Character.valueOf('X'));
         initialize(Raw.charAssertion(), '1').isNotEqualTo(Character.valueOf('2'));
         initialize(Raw.charAssertion(), 'Й').isNotEqualTo(Character.valueOf('Ё'));
+        initialize(Raw.charAssertion(), 'a').isNotNull().isNotEqualTo(Character.valueOf('b')).isInstanceOf(Character.class);
 
         try {
             Raw.charAssertion().isNotEqualTo(Character.valueOf('1'));
@@ -276,6 +280,7 @@ public final class CharAssertionTest extends AssertionTest {
         initialize(Raw.charAssertion(), 'b').isGreaterThan('a');
         initialize(Raw.charAssertion(), '7').isGreaterThan('0');
         initialize(Raw.charAssertion(), 'Z').isGreaterThan('F');
+        initialize(Raw.charAssertion(), 'b').isNotNull().isGreaterThan('a').isInstanceOf(Character.class);
 
         try {
             Raw.charAssertion().isGreaterThan('1');
@@ -329,6 +334,7 @@ public final class CharAssertionTest extends AssertionTest {
         initialize(Raw.charAssertion(), 'b').isGreaterThan(Character.valueOf('a'));
         initialize(Raw.charAssertion(), '7').isGreaterThan(Character.valueOf('0'));
         initialize(Raw.charAssertion(), 'Z').isGreaterThan(Character.valueOf('F'));
+        initialize(Raw.charAssertion(), 'b').isNotNull().isGreaterThan(Character.valueOf('a')).isInstanceOf(Character.class);
 
         try {
             Raw.charAssertion().isGreaterThan(Character.valueOf('1'));
@@ -406,6 +412,7 @@ public final class CharAssertionTest extends AssertionTest {
         initialize(Raw.charAssertion(), 'b').isGreaterThanOrEqualTo('a');
         initialize(Raw.charAssertion(), '7').isGreaterThanOrEqualTo('7');
         initialize(Raw.charAssertion(), 'Z').isGreaterThanOrEqualTo('F');
+        initialize(Raw.charAssertion(), 'b').isNotNull().isGreaterThanOrEqualTo('a').isInstanceOf(Character.class);
 
         try {
             Raw.charAssertion().isGreaterThanOrEqualTo('1');
@@ -447,6 +454,7 @@ public final class CharAssertionTest extends AssertionTest {
         initialize(Raw.charAssertion(), 'b').isGreaterThanOrEqualTo(Character.valueOf('a'));
         initialize(Raw.charAssertion(), '7').isGreaterThanOrEqualTo(Character.valueOf('7'));
         initialize(Raw.charAssertion(), 'Z').isGreaterThanOrEqualTo(Character.valueOf('F'));
+        initialize(Raw.charAssertion(), 'b').isNotNull().isGreaterThanOrEqualTo(Character.valueOf('a')).isInstanceOf(Character.class);
 
         try {
             Raw.charAssertion().isGreaterThanOrEqualTo(Character.valueOf('1'));
@@ -512,6 +520,7 @@ public final class CharAssertionTest extends AssertionTest {
         initialize(Raw.charAssertion(), 'a').isLessThan('b');
         initialize(Raw.charAssertion(), '0').isLessThan('7');
         initialize(Raw.charAssertion(), 'F').isLessThan('Z');
+        initialize(Raw.charAssertion(), 'a').isNotNull().isLessThan('b').isInstanceOf(Character.class);
 
         try {
             Raw.charAssertion().isLessThan('1');
@@ -565,6 +574,7 @@ public final class CharAssertionTest extends AssertionTest {
         initialize(Raw.charAssertion(), 'a').isLessThan(Character.valueOf('b'));
         initialize(Raw.charAssertion(), '0').isLessThan(Character.valueOf('7'));
         initialize(Raw.charAssertion(), 'F').isLessThan(Character.valueOf('Z'));
+        initialize(Raw.charAssertion(), 'a').isNotNull().isLessThan(Character.valueOf('b')).isInstanceOf(Character.class);
 
         try {
             Raw.charAssertion().isLessThan(Character.valueOf('1'));
@@ -642,6 +652,7 @@ public final class CharAssertionTest extends AssertionTest {
         initialize(Raw.charAssertion(), 'a').isLessThanOrEqualTo('b');
         initialize(Raw.charAssertion(), '7').isLessThanOrEqualTo('7');
         initialize(Raw.charAssertion(), 'F').isLessThanOrEqualTo('Z');
+        initialize(Raw.charAssertion(), 'a').isNotNull().isLessThanOrEqualTo('b').isInstanceOf(Character.class);
 
         try {
             Raw.charAssertion().isLessThanOrEqualTo('1');
@@ -683,6 +694,7 @@ public final class CharAssertionTest extends AssertionTest {
         initialize(Raw.charAssertion(), 'a').isLessThanOrEqualTo(Character.valueOf('b'));
         initialize(Raw.charAssertion(), '7').isLessThanOrEqualTo(Character.valueOf('7'));
         initialize(Raw.charAssertion(), 'F').isLessThanOrEqualTo(Character.valueOf('Z'));
+        initialize(Raw.charAssertion(), 'a').isNotNull().isLessThanOrEqualTo(Character.valueOf('b')).isInstanceOf(Character.class);
 
         try {
             Raw.charAssertion().isLessThanOrEqualTo(Character.valueOf('1'));
@@ -748,6 +760,7 @@ public final class CharAssertionTest extends AssertionTest {
         initialize(Raw.charAssertion(), 's').isInRange('p', 'x');
         initialize(Raw.charAssertion(), 's').isInRange('s', 'x');
         initialize(Raw.charAssertion(), 's').isInRange('a', 'x');
+        initialize(Raw.charAssertion(), 's').isNotNull().isInRange('p', 'x').isInstanceOf(Character.class);
 
         try {
             Raw.charAssertion().isInRange('1', '1');
@@ -813,6 +826,7 @@ public final class CharAssertionTest extends AssertionTest {
         initialize(Raw.charAssertion(), 's').isInRange(Character.valueOf('p'), Character.valueOf('x'));
         initialize(Raw.charAssertion(), 's').isInRange(Character.valueOf('s'), Character.valueOf('x'));
         initialize(Raw.charAssertion(), 's').isInRange(Character.valueOf('a'), Character.valueOf('x'));
+        initialize(Raw.charAssertion(), 's').isNotNull().isInRange(Character.valueOf('p'), Character.valueOf('x')).isInstanceOf(Character.class);
 
         try {
             Raw.charAssertion().isInRange(Character.valueOf('1'), Character.valueOf('1'));
@@ -926,6 +940,7 @@ public final class CharAssertionTest extends AssertionTest {
         initialize(Raw.charAssertion(), 's').isNotInRange('a', 's');
         initialize(Raw.charAssertion(), 's').isNotInRange('t', 'x');
         initialize(Raw.charAssertion(), 's').isNotInRange('a', 'c');
+        initialize(Raw.charAssertion(), 's').isNotNull().isNotInRange('a', 's').isInstanceOf(Character.class);
 
         try {
             Raw.charAssertion().isNotInRange('1', '1');
@@ -991,6 +1006,7 @@ public final class CharAssertionTest extends AssertionTest {
         initialize(Raw.charAssertion(), 's').isNotInRange(Character.valueOf('a'), Character.valueOf('s'));
         initialize(Raw.charAssertion(), 's').isNotInRange(Character.valueOf('t'), Character.valueOf('x'));
         initialize(Raw.charAssertion(), 's').isNotInRange(Character.valueOf('a'), Character.valueOf('c'));
+        initialize(Raw.charAssertion(), 's').isNotNull().isNotInRange(Character.valueOf('a'), Character.valueOf('s')).isInstanceOf(Character.class);
 
         try {
             Raw.charAssertion().isNotInRange(Character.valueOf('1'), Character.valueOf('1'));
@@ -1105,6 +1121,7 @@ public final class CharAssertionTest extends AssertionTest {
         initialize(Raw.charAssertion(), 'F').isAlphabetic();
         initialize(Raw.charAssertion(), 'Й').isAlphabetic();
         initialize(Raw.charAssertion(), 'ё').isAlphabetic();
+        initialize(Raw.charAssertion(), 'a').isNotNull().isAlphabetic().isInstanceOf(Character.class);
 
         try {
             Raw.charAssertion().isAlphabetic();
@@ -1159,6 +1176,7 @@ public final class CharAssertionTest extends AssertionTest {
         initialize(Raw.charAssertion(), '\n').isNotAlphabetic();
         initialize(Raw.charAssertion(), ' ').isNotAlphabetic();
         initialize(Raw.charAssertion(), '\t').isNotAlphabetic();
+        initialize(Raw.charAssertion(), '7').isNotNull().isNotAlphabetic().isInstanceOf(Character.class);
 
         try {
             Raw.charAssertion().isNotAlphabetic();
@@ -1213,6 +1231,7 @@ public final class CharAssertionTest extends AssertionTest {
         initialize(Raw.charAssertion(), 'F').isLetter();
         initialize(Raw.charAssertion(), 'Й').isLetter();
         initialize(Raw.charAssertion(), 'ё').isLetter();
+        initialize(Raw.charAssertion(), 'a').isNotNull().isLetter().isInstanceOf(Character.class);
 
         try {
             Raw.charAssertion().isLetter();
@@ -1267,6 +1286,7 @@ public final class CharAssertionTest extends AssertionTest {
         initialize(Raw.charAssertion(), '\n').isNotLetter();
         initialize(Raw.charAssertion(), ' ').isNotLetter();
         initialize(Raw.charAssertion(), '\t').isNotLetter();
+        initialize(Raw.charAssertion(), '7').isNotNull().isNotLetter().isInstanceOf(Character.class);
 
         try {
             Raw.charAssertion().isNotLetter();
@@ -1320,6 +1340,7 @@ public final class CharAssertionTest extends AssertionTest {
         initialize(Raw.charAssertion(), '1').isDigit();
         initialize(Raw.charAssertion(), '7').isDigit();
         initialize(Raw.charAssertion(), '0').isDigit();
+        initialize(Raw.charAssertion(), '1').isNotNull().isDigit().isInstanceOf(Character.class);
 
         try {
             Raw.charAssertion().isDigit();
@@ -1387,6 +1408,7 @@ public final class CharAssertionTest extends AssertionTest {
         initialize(Raw.charAssertion(), '\n').isNotDigit();
         initialize(Raw.charAssertion(), ' ').isNotDigit();
         initialize(Raw.charAssertion(), '\t').isNotDigit();
+        initialize(Raw.charAssertion(), 'a').isNotNull().isNotDigit().isInstanceOf(Character.class);
 
         try {
             Raw.charAssertion().isNotDigit();
@@ -1440,6 +1462,7 @@ public final class CharAssertionTest extends AssertionTest {
         initialize(Raw.charAssertion(), ' ').isWhitespace();
         initialize(Raw.charAssertion(), '\t').isWhitespace();
         initialize(Raw.charAssertion(), '\n').isWhitespace();
+        initialize(Raw.charAssertion(), ' ').isNotNull().isWhitespace().isInstanceOf(Character.class);
 
         try {
             Raw.charAssertion().isWhitespace();
@@ -1505,6 +1528,7 @@ public final class CharAssertionTest extends AssertionTest {
         initialize(Raw.charAssertion(), 'a').isNotWhitespace();
         initialize(Raw.charAssertion(), 'й').isNotWhitespace();
         initialize(Raw.charAssertion(), '7').isNotWhitespace();
+        initialize(Raw.charAssertion(), 'a').isNotNull().isNotWhitespace().isInstanceOf(Character.class);
 
         try {
             Raw.charAssertion().isNotWhitespace();
@@ -1572,6 +1596,7 @@ public final class CharAssertionTest extends AssertionTest {
         initialize(Raw.charAssertion(), 'Й').isLetterOrDigit();
         initialize(Raw.charAssertion(), 'ё').isLetterOrDigit();
         initialize(Raw.charAssertion(), '7').isLetterOrDigit();
+        initialize(Raw.charAssertion(), 'a').isNotNull().isLetterOrDigit().isInstanceOf(Character.class);
 
         try {
             Raw.charAssertion().isLetterOrDigit();
@@ -1615,6 +1640,7 @@ public final class CharAssertionTest extends AssertionTest {
         initialize(Raw.charAssertion(), 'Й').isLetterOrWhitespace();
         initialize(Raw.charAssertion(), ' ').isLetterOrWhitespace();
         initialize(Raw.charAssertion(), '\t').isLetterOrWhitespace();
+        initialize(Raw.charAssertion(), 'a').isNotNull().isLetterOrWhitespace().isInstanceOf(Character.class);
 
         try {
             Raw.charAssertion().isLetterOrWhitespace();
@@ -1655,6 +1681,7 @@ public final class CharAssertionTest extends AssertionTest {
     public void isControlTest() {
         initialize(Raw.charAssertion(), '\n').isControl();
         initialize(Raw.charAssertion(), '\r').isControl();
+        initialize(Raw.charAssertion(), '\n').isNotNull().isControl().isInstanceOf(Character.class);
 
         try {
             Raw.charAssertion().isControl();
@@ -1721,6 +1748,7 @@ public final class CharAssertionTest extends AssertionTest {
         initialize(Raw.charAssertion(), 'Й').isNotControl();
         initialize(Raw.charAssertion(), '7').isNotControl();
         initialize(Raw.charAssertion(), ' ').isNotControl();
+        initialize(Raw.charAssertion(), 'a').isNotNull().isNotControl().isInstanceOf(Character.class);
 
         try {
             Raw.charAssertion().isNotControl();
@@ -1775,6 +1803,7 @@ public final class CharAssertionTest extends AssertionTest {
         initialize(Raw.charAssertion(), 'f').isLowerCase();
         initialize(Raw.charAssertion(), 'й').isLowerCase();
         initialize(Raw.charAssertion(), 'ё').isLowerCase();
+        initialize(Raw.charAssertion(), 'a').isNotNull().isLowerCase().isInstanceOf(Character.class);
 
         try {
             Raw.charAssertion().isLowerCase();
@@ -1853,6 +1882,7 @@ public final class CharAssertionTest extends AssertionTest {
         initialize(Raw.charAssertion(), 'Й').isNotLowerCase();
         initialize(Raw.charAssertion(), '7').isNotLowerCase();
         initialize(Raw.charAssertion(), '\n').isNotLowerCase();
+        initialize(Raw.charAssertion(), 'A').isNotNull().isNotLowerCase().isInstanceOf(Character.class);
 
         try {
             Raw.charAssertion().isNotLowerCase();
@@ -1931,6 +1961,7 @@ public final class CharAssertionTest extends AssertionTest {
         initialize(Raw.charAssertion(), 'F').isUpperCase();
         initialize(Raw.charAssertion(), 'Й').isUpperCase();
         initialize(Raw.charAssertion(), 'Ё').isUpperCase();
+        initialize(Raw.charAssertion(), 'A').isNotNull().isUpperCase().isInstanceOf(Character.class);
 
         try {
             Raw.charAssertion().isUpperCase();
@@ -2009,6 +2040,7 @@ public final class CharAssertionTest extends AssertionTest {
         initialize(Raw.charAssertion(), 'й').isNotUpperCase();
         initialize(Raw.charAssertion(), '7').isNotUpperCase();
         initialize(Raw.charAssertion(), '\n').isNotUpperCase();
+        initialize(Raw.charAssertion(), 'a').isNotNull().isNotUpperCase().isInstanceOf(Character.class);
 
         try {
             Raw.charAssertion().isNotUpperCase();

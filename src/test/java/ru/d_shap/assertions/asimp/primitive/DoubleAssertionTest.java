@@ -82,6 +82,7 @@ public final class DoubleAssertionTest extends AssertionTest {
         initialize(Raw.doubleAssertion(), 10.000000000011).isEqualTo(10.000000000012);
         initialize(Raw.doubleAssertion(), 10.000000000001).isEqualTo(10.000000000002);
         initialize(Raw.doubleAssertion(), 10.0000000000001).isEqualTo(10.0000000000002);
+        initialize(Raw.doubleAssertion(), 10.1).isNotNull().isEqualTo(10.1).isInstanceOf(Double.class);
 
         try {
             Raw.doubleAssertion().isEqualTo(1.0);
@@ -228,6 +229,7 @@ public final class DoubleAssertionTest extends AssertionTest {
         initialize(Raw.doubleAssertion(), 10.000000000011).isEqualTo(Double.valueOf("10.000000000012"));
         initialize(Raw.doubleAssertion(), 10.000000000001).isEqualTo(Double.valueOf("10.000000000002"));
         initialize(Raw.doubleAssertion(), 10.0000000000001).isEqualTo(Double.valueOf("10.0000000000002"));
+        initialize(Raw.doubleAssertion(), 10.1).isNotNull().isEqualTo(Double.valueOf("10.1")).isInstanceOf(Double.class);
 
         try {
             Raw.doubleAssertion().isEqualTo(Double.valueOf("1.0"));
@@ -393,6 +395,7 @@ public final class DoubleAssertionTest extends AssertionTest {
         initialize(Raw.doubleAssertion(), Double.MAX_VALUE).isEqualTo(Double.MAX_VALUE, 0.01);
         initialize(Raw.doubleAssertion(), -0.0).isEqualTo(+0.0, 0.0);
         initialize(Raw.doubleAssertion(), +0.0).isEqualTo(-0.0, 0.0);
+        initialize(Raw.doubleAssertion(), 10.0).isNotNull().isEqualTo(10.0, 0.01).isInstanceOf(Double.class);
 
         try {
             Raw.doubleAssertion().isEqualTo(1.0, 0.01);
@@ -461,6 +464,7 @@ public final class DoubleAssertionTest extends AssertionTest {
         initialize(Raw.doubleAssertion(), 10.0).isEqualTo(Double.valueOf("10.001"), 0.01);
         initialize(Raw.doubleAssertion(), 0.0).isEqualTo(Double.valueOf("0.0"), 0.01);
         initialize(Raw.doubleAssertion(), Double.MAX_VALUE).isEqualTo(Double.valueOf(Double.MAX_VALUE), 0.01);
+        initialize(Raw.doubleAssertion(), 10.0).isNotNull().isEqualTo(Double.valueOf("10.0"), 0.01).isInstanceOf(Double.class);
 
         try {
             Raw.doubleAssertion().isEqualTo(Double.valueOf("1.0"), 0.01);
@@ -562,6 +566,7 @@ public final class DoubleAssertionTest extends AssertionTest {
         initialize(Raw.doubleAssertion(), 10.000000001).isNotEqualTo(10.000000002);
         initialize(Raw.doubleAssertion(), 10.0000000001).isNotEqualTo(10.0000000002);
         initialize(Raw.doubleAssertion(), 10.00000000001).isNotEqualTo(10.00000000002);
+        initialize(Raw.doubleAssertion(), 10.1).isNotNull().isNotEqualTo(10.2).isInstanceOf(Double.class);
 
         try {
             Raw.doubleAssertion().isNotEqualTo(1.0);
@@ -637,6 +642,7 @@ public final class DoubleAssertionTest extends AssertionTest {
         initialize(Raw.doubleAssertion(), 10.000000001).isNotEqualTo(Double.valueOf("10.000000002"));
         initialize(Raw.doubleAssertion(), 10.0000000001).isNotEqualTo(Double.valueOf("10.0000000002"));
         initialize(Raw.doubleAssertion(), 10.00000000001).isNotEqualTo(Double.valueOf("10.00000000002"));
+        initialize(Raw.doubleAssertion(), 10.1).isNotNull().isNotEqualTo(Double.valueOf("10.2")).isInstanceOf(Double.class);
 
         try {
             Raw.doubleAssertion().isNotEqualTo(Double.valueOf("1.0"));
@@ -696,6 +702,7 @@ public final class DoubleAssertionTest extends AssertionTest {
         initialize(Raw.doubleAssertion(), 10.0).isNotEqualTo(10.01, 0.001);
         initialize(Raw.doubleAssertion(), 10.0).isNotEqualTo(9.99, 0.001);
         initialize(Raw.doubleAssertion(), 10.0).isNotEqualTo(20.0, 0.0);
+        initialize(Raw.doubleAssertion(), 10.0).isNotNull().isNotEqualTo(10.01, 0.001).isInstanceOf(Double.class);
 
         try {
             Raw.doubleAssertion().isNotEqualTo(1.0, 0.01);
@@ -775,6 +782,7 @@ public final class DoubleAssertionTest extends AssertionTest {
         initialize(Raw.doubleAssertion(), 10.0).isNotEqualTo(Double.valueOf("10.01"), 0.001);
         initialize(Raw.doubleAssertion(), 10.0).isNotEqualTo(Double.valueOf("9.99"), 0.001);
         initialize(Raw.doubleAssertion(), 10.0).isNotEqualTo(Double.valueOf("20.0"), 0.0);
+        initialize(Raw.doubleAssertion(), 10.0).isNotNull().isNotEqualTo(Double.valueOf("10.01"), 0.001).isInstanceOf(Double.class);
 
         try {
             Raw.doubleAssertion().isNotEqualTo(Double.valueOf("1.0"), 0.01);
@@ -840,6 +848,7 @@ public final class DoubleAssertionTest extends AssertionTest {
         initialize(Raw.doubleAssertion(), 10.0).isGreaterThan(9.0);
         initialize(Raw.doubleAssertion(), 10.0).isGreaterThan(8.0);
         initialize(Raw.doubleAssertion(), 10.0).isGreaterThan(-1.0);
+        initialize(Raw.doubleAssertion(), 10.0).isNotNull().isGreaterThan(9.0).isInstanceOf(Double.class);
 
         try {
             Raw.doubleAssertion().isGreaterThan(1.0);
@@ -917,6 +926,7 @@ public final class DoubleAssertionTest extends AssertionTest {
         initialize(Raw.doubleAssertion(), 10.0).isGreaterThan(Double.valueOf("9.0"));
         initialize(Raw.doubleAssertion(), 10.0).isGreaterThan(Double.valueOf("8.0"));
         initialize(Raw.doubleAssertion(), 10.0).isGreaterThan(Double.valueOf("-1.0"));
+        initialize(Raw.doubleAssertion(), 10.0).isNotNull().isGreaterThan(Double.valueOf("-1.0")).isInstanceOf(Double.class);
 
         try {
             Raw.doubleAssertion().isGreaterThan(Double.valueOf("1.0"));
@@ -1018,6 +1028,7 @@ public final class DoubleAssertionTest extends AssertionTest {
         initialize(Raw.doubleAssertion(), 10.0).isGreaterThanOrEqualTo(9.0);
         initialize(Raw.doubleAssertion(), 10.0).isGreaterThanOrEqualTo(10.0);
         initialize(Raw.doubleAssertion(), 10.0).isGreaterThanOrEqualTo(-1.0);
+        initialize(Raw.doubleAssertion(), 10.0).isNotNull().isGreaterThanOrEqualTo(9.0).isInstanceOf(Double.class);
 
         try {
             Raw.doubleAssertion().isGreaterThanOrEqualTo(1.0);
@@ -1083,6 +1094,7 @@ public final class DoubleAssertionTest extends AssertionTest {
         initialize(Raw.doubleAssertion(), 10.0).isGreaterThanOrEqualTo(Double.valueOf("9.0"));
         initialize(Raw.doubleAssertion(), 10.0).isGreaterThanOrEqualTo(Double.valueOf("10.0"));
         initialize(Raw.doubleAssertion(), 10.0).isGreaterThanOrEqualTo(Double.valueOf("-1.0"));
+        initialize(Raw.doubleAssertion(), 10.0).isNotNull().isGreaterThanOrEqualTo(Double.valueOf("9.0")).isInstanceOf(Double.class);
 
         try {
             Raw.doubleAssertion().isGreaterThanOrEqualTo(Double.valueOf("1.0"));
@@ -1172,6 +1184,7 @@ public final class DoubleAssertionTest extends AssertionTest {
         initialize(Raw.doubleAssertion(), 10.0).isLessThan(11.0);
         initialize(Raw.doubleAssertion(), 10.0).isLessThan(12.0);
         initialize(Raw.doubleAssertion(), 10.0).isLessThan(100.0);
+        initialize(Raw.doubleAssertion(), 10.0).isNotNull().isLessThan(11.0).isInstanceOf(Double.class);
 
         try {
             Raw.doubleAssertion().isLessThan(1.0);
@@ -1249,6 +1262,7 @@ public final class DoubleAssertionTest extends AssertionTest {
         initialize(Raw.doubleAssertion(), 10.0).isLessThan(Double.valueOf("11.0"));
         initialize(Raw.doubleAssertion(), 10.0).isLessThan(Double.valueOf("12.0"));
         initialize(Raw.doubleAssertion(), 10.0).isLessThan(Double.valueOf("100.0"));
+        initialize(Raw.doubleAssertion(), 10.0).isNotNull().isLessThan(Double.valueOf("11.0")).isInstanceOf(Double.class);
 
         try {
             Raw.doubleAssertion().isLessThan(Double.valueOf("1.0"));
@@ -1350,6 +1364,7 @@ public final class DoubleAssertionTest extends AssertionTest {
         initialize(Raw.doubleAssertion(), 10.0).isLessThanOrEqualTo(11.0);
         initialize(Raw.doubleAssertion(), 10.0).isLessThanOrEqualTo(10.0);
         initialize(Raw.doubleAssertion(), 10.0).isLessThanOrEqualTo(100.0);
+        initialize(Raw.doubleAssertion(), 10.0).isNotNull().isLessThanOrEqualTo(11.0).isInstanceOf(Double.class);
 
         try {
             Raw.doubleAssertion().isLessThanOrEqualTo(1.0);
@@ -1415,6 +1430,7 @@ public final class DoubleAssertionTest extends AssertionTest {
         initialize(Raw.doubleAssertion(), 10.0).isLessThanOrEqualTo(Double.valueOf("11.0"));
         initialize(Raw.doubleAssertion(), 10.0).isLessThanOrEqualTo(Double.valueOf("10.0"));
         initialize(Raw.doubleAssertion(), 10.0).isLessThanOrEqualTo(Double.valueOf("100.0"));
+        initialize(Raw.doubleAssertion(), 10.0).isNotNull().isLessThanOrEqualTo(Double.valueOf("11.0")).isInstanceOf(Double.class);
 
         try {
             Raw.doubleAssertion().isLessThanOrEqualTo(Double.valueOf("1.0"));
@@ -1504,6 +1520,7 @@ public final class DoubleAssertionTest extends AssertionTest {
         initialize(Raw.doubleAssertion(), 5.0).isInRange(4.0, 6.0);
         initialize(Raw.doubleAssertion(), 5.0).isInRange(5.0, 6.0);
         initialize(Raw.doubleAssertion(), 5.0).isInRange(1.0, 10.0);
+        initialize(Raw.doubleAssertion(), 5.0).isNotNull().isInRange(4.0, 6.0).isInstanceOf(Double.class);
 
         try {
             Raw.doubleAssertion().isInRange(1.0, 1.0);
@@ -1605,6 +1622,7 @@ public final class DoubleAssertionTest extends AssertionTest {
         initialize(Raw.doubleAssertion(), 5.0).isInRange(Double.valueOf("4.0"), Double.valueOf("6.0"));
         initialize(Raw.doubleAssertion(), 5.0).isInRange(Double.valueOf("5.0"), Double.valueOf("6.0"));
         initialize(Raw.doubleAssertion(), 5.0).isInRange(Double.valueOf("1.0"), Double.valueOf("10.0"));
+        initialize(Raw.doubleAssertion(), 5.0).isNotNull().isInRange(Double.valueOf("4.0"), Double.valueOf("6.0")).isInstanceOf(Double.class);
 
         try {
             Raw.doubleAssertion().isInRange(Double.valueOf("1.0"), Double.valueOf("1.0"));
@@ -1754,6 +1772,7 @@ public final class DoubleAssertionTest extends AssertionTest {
         initialize(Raw.doubleAssertion(), 5.0).isNotInRange(1.0, 5.0);
         initialize(Raw.doubleAssertion(), 5.0).isNotInRange(6.0, 10.0);
         initialize(Raw.doubleAssertion(), 5.0).isNotInRange(8.0, 9.0);
+        initialize(Raw.doubleAssertion(), 5.0).isNotNull().isNotInRange(1.0, 5.0).isInstanceOf(Double.class);
 
         try {
             Raw.doubleAssertion().isNotInRange(1.0, 1.0);
@@ -1855,6 +1874,7 @@ public final class DoubleAssertionTest extends AssertionTest {
         initialize(Raw.doubleAssertion(), 5.0).isNotInRange(Double.valueOf("1.0"), Double.valueOf("5.0"));
         initialize(Raw.doubleAssertion(), 5.0).isNotInRange(Double.valueOf("6.0"), Double.valueOf("10.0"));
         initialize(Raw.doubleAssertion(), 5.0).isNotInRange(Double.valueOf("8.0"), Double.valueOf("9.0"));
+        initialize(Raw.doubleAssertion(), 5.0).isNotNull().isNotInRange(Double.valueOf("1.0"), Double.valueOf("5.0")).isInstanceOf(Double.class);
 
         try {
             Raw.doubleAssertion().isNotInRange(Double.valueOf("1.0"), Double.valueOf("1.0"));
@@ -2004,6 +2024,7 @@ public final class DoubleAssertionTest extends AssertionTest {
         initialize(Raw.doubleAssertion(), 0.0).isZero();
         initialize(Raw.doubleAssertion(), +0.0).isZero();
         initialize(Raw.doubleAssertion(), -0.0).isZero();
+        initialize(Raw.doubleAssertion(), 0.0).isNotNull().isZero().isInstanceOf(Double.class);
 
         try {
             Raw.doubleAssertion().isZero();
@@ -2083,6 +2104,7 @@ public final class DoubleAssertionTest extends AssertionTest {
         initialize(Raw.doubleAssertion(), Double.POSITIVE_INFINITY).isNotZero();
         initialize(Raw.doubleAssertion(), Double.NEGATIVE_INFINITY).isNotZero();
         initialize(Raw.doubleAssertion(), Double.NaN).isNotZero();
+        initialize(Raw.doubleAssertion(), 10.0).isNotNull().isNotZero().isInstanceOf(Double.class);
 
         try {
             Raw.doubleAssertion().isNotZero();
@@ -2148,6 +2170,7 @@ public final class DoubleAssertionTest extends AssertionTest {
         initialize(Raw.doubleAssertion(), Double.POSITIVE_INFINITY).isPositiveInfinity();
         double val = getZero();
         initialize(Raw.doubleAssertion(), 1.0 / val).isPositiveInfinity();
+        initialize(Raw.doubleAssertion(), Double.POSITIVE_INFINITY).isNotNull().isPositiveInfinity().isInstanceOf(Double.class);
 
         try {
             Raw.doubleAssertion().isPositiveInfinity();
@@ -2226,6 +2249,7 @@ public final class DoubleAssertionTest extends AssertionTest {
         initialize(Raw.doubleAssertion(), 10.0).isNotPositiveInfinity();
         initialize(Raw.doubleAssertion(), Double.NaN).isNotPositiveInfinity();
         initialize(Raw.doubleAssertion(), Double.NEGATIVE_INFINITY).isNotPositiveInfinity();
+        initialize(Raw.doubleAssertion(), 0.0).isNotNull().isNotPositiveInfinity().isInstanceOf(Double.class);
 
         try {
             Raw.doubleAssertion().isNotPositiveInfinity();
@@ -2267,6 +2291,7 @@ public final class DoubleAssertionTest extends AssertionTest {
         initialize(Raw.doubleAssertion(), Double.NEGATIVE_INFINITY).isNegativeInfinity();
         double val = getZero();
         initialize(Raw.doubleAssertion(), -1.0 / val).isNegativeInfinity();
+        initialize(Raw.doubleAssertion(), Double.NEGATIVE_INFINITY).isNotNull().isNegativeInfinity().isInstanceOf(Double.class);
 
         try {
             Raw.doubleAssertion().isNegativeInfinity();
@@ -2345,6 +2370,7 @@ public final class DoubleAssertionTest extends AssertionTest {
         initialize(Raw.doubleAssertion(), 10.0).isNotNegativeInfinity();
         initialize(Raw.doubleAssertion(), Double.NaN).isNotNegativeInfinity();
         initialize(Raw.doubleAssertion(), Double.POSITIVE_INFINITY).isNotNegativeInfinity();
+        initialize(Raw.doubleAssertion(), 0.0).isNotNull().isNotNegativeInfinity().isInstanceOf(Double.class);
 
         try {
             Raw.doubleAssertion().isNotNegativeInfinity();
@@ -2388,6 +2414,7 @@ public final class DoubleAssertionTest extends AssertionTest {
         double val = getZero();
         initialize(Raw.doubleAssertion(), 1.0 / val).isInfinity();
         initialize(Raw.doubleAssertion(), -1.0 / val).isInfinity();
+        initialize(Raw.doubleAssertion(), Double.POSITIVE_INFINITY).isNotNull().isInfinity().isInstanceOf(Double.class);
 
         try {
             Raw.doubleAssertion().isInfinity();
@@ -2466,6 +2493,7 @@ public final class DoubleAssertionTest extends AssertionTest {
         initialize(Raw.doubleAssertion(), 10.0).isNotInfinity();
         initialize(Raw.doubleAssertion(), -10.0).isNotInfinity();
         initialize(Raw.doubleAssertion(), Double.NaN).isNotInfinity();
+        initialize(Raw.doubleAssertion(), 0.0).isNotNull().isNotInfinity().isInstanceOf(Double.class);
 
         try {
             Raw.doubleAssertion().isNotInfinity();
@@ -2519,6 +2547,7 @@ public final class DoubleAssertionTest extends AssertionTest {
         initialize(Raw.doubleAssertion(), Double.NaN).isNaN();
         initialize(Raw.doubleAssertion(), Math.sqrt(-2.0)).isNaN();
         initialize(Raw.doubleAssertion(), Double.POSITIVE_INFINITY / Double.NEGATIVE_INFINITY).isNaN();
+        initialize(Raw.doubleAssertion(), Double.NaN).isNotNull().isNaN().isInstanceOf(Double.class);
 
         try {
             Raw.doubleAssertion().isNaN();
@@ -2610,6 +2639,7 @@ public final class DoubleAssertionTest extends AssertionTest {
         initialize(Raw.doubleAssertion(), -10.0).isNotNaN();
         initialize(Raw.doubleAssertion(), Double.POSITIVE_INFINITY).isNotNaN();
         initialize(Raw.doubleAssertion(), Double.NEGATIVE_INFINITY).isNotNaN();
+        initialize(Raw.doubleAssertion(), 0.0).isNotNull().isNotNaN().isInstanceOf(Double.class);
 
         try {
             Raw.doubleAssertion().isNotNaN();
@@ -2651,6 +2681,7 @@ public final class DoubleAssertionTest extends AssertionTest {
         initialize(Raw.doubleAssertion(), 0.0).isFinite();
         initialize(Raw.doubleAssertion(), 10.0).isFinite();
         initialize(Raw.doubleAssertion(), -10.0).isFinite();
+        initialize(Raw.doubleAssertion(), 0.0).isNotNull().isFinite().isInstanceOf(Double.class);
 
         try {
             Raw.doubleAssertion().isFinite();
@@ -2716,6 +2747,7 @@ public final class DoubleAssertionTest extends AssertionTest {
         initialize(Raw.doubleAssertion(), Double.NaN).isNotFinite();
         initialize(Raw.doubleAssertion(), Double.POSITIVE_INFINITY).isNotFinite();
         initialize(Raw.doubleAssertion(), Double.NEGATIVE_INFINITY).isNotFinite();
+        initialize(Raw.doubleAssertion(), Double.NaN).isNotNull().isNotFinite().isInstanceOf(Double.class);
 
         try {
             Raw.doubleAssertion().isNotFinite();

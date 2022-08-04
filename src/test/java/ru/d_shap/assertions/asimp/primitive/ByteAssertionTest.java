@@ -70,6 +70,7 @@ public final class ByteAssertionTest extends AssertionTest {
         initialize(Raw.byteAssertion(), (byte) 75).isEqualTo(75);
         initialize(Raw.byteAssertion(), (byte) 236).isEqualTo((byte) 236);
         initialize(Raw.byteAssertion(), (byte) 257).isEqualTo(1);
+        initialize(Raw.byteAssertion(), (byte) 10).isNotNull().isEqualTo(10).isInstanceOf(Byte.class);
 
         try {
             Raw.byteAssertion().isEqualTo(1);
@@ -123,6 +124,7 @@ public final class ByteAssertionTest extends AssertionTest {
         initialize(Raw.byteAssertion(), null).isEqualTo(null);
         initialize(Raw.byteAssertion(), (byte) 10).isEqualTo(Byte.valueOf("10"));
         initialize(Raw.byteAssertion(), (byte) 75).isEqualTo(Byte.valueOf("75"));
+        initialize(Raw.byteAssertion(), (byte) 10).isNotNull().isEqualTo(Byte.valueOf("10")).isInstanceOf(Byte.class);
 
         try {
             Raw.byteAssertion().isEqualTo(Byte.valueOf("1"));
@@ -178,6 +180,7 @@ public final class ByteAssertionTest extends AssertionTest {
         initialize(Raw.byteAssertion(), (byte) 75).isNotEqualTo(76);
         initialize(Raw.byteAssertion(), (byte) 236).isNotEqualTo(143);
         initialize(Raw.byteAssertion(), (byte) 257).isNotEqualTo(2);
+        initialize(Raw.byteAssertion(), (byte) 10).isNotNull().isNotEqualTo(15).isInstanceOf(Byte.class);
 
         try {
             Raw.byteAssertion().isNotEqualTo(1);
@@ -208,6 +211,7 @@ public final class ByteAssertionTest extends AssertionTest {
         initialize(Raw.byteAssertion(), (byte) 1).isNotEqualTo(null);
         initialize(Raw.byteAssertion(), (byte) 10).isNotEqualTo(Byte.valueOf("15"));
         initialize(Raw.byteAssertion(), (byte) 75).isNotEqualTo(Byte.valueOf("76"));
+        initialize(Raw.byteAssertion(), (byte) 10).isNotNull().isNotEqualTo(Byte.valueOf("15")).isInstanceOf(Byte.class);
 
         try {
             Raw.byteAssertion().isNotEqualTo(Byte.valueOf("1"));
@@ -249,6 +253,7 @@ public final class ByteAssertionTest extends AssertionTest {
         initialize(Raw.byteAssertion(), (byte) 10).isGreaterThan(5);
         initialize(Raw.byteAssertion(), (byte) 60).isGreaterThan(30);
         initialize(Raw.byteAssertion(), (byte) 245).isGreaterThan((byte) 244);
+        initialize(Raw.byteAssertion(), (byte) 10).isNotNull().isGreaterThan(5).isInstanceOf(Byte.class);
 
         try {
             Raw.byteAssertion().isGreaterThan(1);
@@ -301,6 +306,7 @@ public final class ByteAssertionTest extends AssertionTest {
     public void isGreaterThanObjectTest() {
         initialize(Raw.byteAssertion(), (byte) 10).isGreaterThan(Byte.valueOf("5"));
         initialize(Raw.byteAssertion(), (byte) 60).isGreaterThan(Byte.valueOf("30"));
+        initialize(Raw.byteAssertion(), (byte) 10).isNotNull().isGreaterThan(Byte.valueOf("5")).isInstanceOf(Byte.class);
 
         try {
             Raw.byteAssertion().isGreaterThan(Byte.valueOf("1"));
@@ -378,6 +384,7 @@ public final class ByteAssertionTest extends AssertionTest {
         initialize(Raw.byteAssertion(), (byte) 10).isGreaterThanOrEqualTo(5);
         initialize(Raw.byteAssertion(), (byte) 60).isGreaterThanOrEqualTo(60);
         initialize(Raw.byteAssertion(), (byte) 245).isGreaterThanOrEqualTo((byte) 244);
+        initialize(Raw.byteAssertion(), (byte) 10).isNotNull().isGreaterThanOrEqualTo(5).isInstanceOf(Byte.class);
 
         try {
             Raw.byteAssertion().isGreaterThanOrEqualTo(1);
@@ -418,6 +425,7 @@ public final class ByteAssertionTest extends AssertionTest {
     public void isGreaterThanOrEqualToObjectTest() {
         initialize(Raw.byteAssertion(), (byte) 10).isGreaterThanOrEqualTo(Byte.valueOf("5"));
         initialize(Raw.byteAssertion(), (byte) 60).isGreaterThanOrEqualTo(Byte.valueOf("60"));
+        initialize(Raw.byteAssertion(), (byte) 10).isNotNull().isGreaterThanOrEqualTo(Byte.valueOf("5")).isInstanceOf(Byte.class);
 
         try {
             Raw.byteAssertion().isGreaterThanOrEqualTo(Byte.valueOf("1"));
@@ -483,6 +491,7 @@ public final class ByteAssertionTest extends AssertionTest {
         initialize(Raw.byteAssertion(), (byte) 5).isLessThan(10);
         initialize(Raw.byteAssertion(), (byte) 30).isLessThan(60);
         initialize(Raw.byteAssertion(), (byte) 244).isLessThan(245);
+        initialize(Raw.byteAssertion(), (byte) 5).isNotNull().isLessThan(10).isInstanceOf(Byte.class);
 
         try {
             Raw.byteAssertion().isLessThan(1);
@@ -535,6 +544,7 @@ public final class ByteAssertionTest extends AssertionTest {
     public void isLessThanObjectTest() {
         initialize(Raw.byteAssertion(), (byte) 5).isLessThan(Byte.valueOf("10"));
         initialize(Raw.byteAssertion(), (byte) 30).isLessThan(Byte.valueOf("60"));
+        initialize(Raw.byteAssertion(), (byte) 5).isNotNull().isLessThan(Byte.valueOf("10")).isInstanceOf(Byte.class);
 
         try {
             Raw.byteAssertion().isLessThan(Byte.valueOf("1"));
@@ -612,6 +622,7 @@ public final class ByteAssertionTest extends AssertionTest {
         initialize(Raw.byteAssertion(), (byte) 5).isLessThanOrEqualTo(10);
         initialize(Raw.byteAssertion(), (byte) 60).isLessThanOrEqualTo(60);
         initialize(Raw.byteAssertion(), (byte) 244).isLessThanOrEqualTo(245);
+        initialize(Raw.byteAssertion(), (byte) 5).isNotNull().isLessThanOrEqualTo(10).isInstanceOf(Byte.class);
 
         try {
             Raw.byteAssertion().isLessThanOrEqualTo(1);
@@ -652,6 +663,7 @@ public final class ByteAssertionTest extends AssertionTest {
     public void isLessThanOrEqualToObjectTest() {
         initialize(Raw.byteAssertion(), (byte) 5).isLessThanOrEqualTo(Byte.valueOf("10"));
         initialize(Raw.byteAssertion(), (byte) 60).isLessThanOrEqualTo(Byte.valueOf("60"));
+        initialize(Raw.byteAssertion(), (byte) 5).isNotNull().isLessThanOrEqualTo(Byte.valueOf("10")).isInstanceOf(Byte.class);
 
         try {
             Raw.byteAssertion().isLessThanOrEqualTo(Byte.valueOf("1"));
@@ -717,6 +729,7 @@ public final class ByteAssertionTest extends AssertionTest {
         initialize(Raw.byteAssertion(), (byte) 5).isInRange(4, 6);
         initialize(Raw.byteAssertion(), (byte) 5).isInRange(5, 6);
         initialize(Raw.byteAssertion(), (byte) 5).isInRange(1, 10);
+        initialize(Raw.byteAssertion(), (byte) 5).isNotNull().isInRange(4, 6).isInstanceOf(Byte.class);
 
         try {
             Raw.byteAssertion().isInRange(1, 1);
@@ -782,6 +795,7 @@ public final class ByteAssertionTest extends AssertionTest {
         initialize(Raw.byteAssertion(), (byte) 5).isInRange(Byte.valueOf("4"), Byte.valueOf("6"));
         initialize(Raw.byteAssertion(), (byte) 5).isInRange(Byte.valueOf("5"), Byte.valueOf("6"));
         initialize(Raw.byteAssertion(), (byte) 5).isInRange(Byte.valueOf("1"), Byte.valueOf("10"));
+        initialize(Raw.byteAssertion(), (byte) 5).isNotNull().isInRange(Byte.valueOf("4"), Byte.valueOf("6")).isInstanceOf(Byte.class);
 
         try {
             Raw.byteAssertion().isInRange(Byte.valueOf("1"), Byte.valueOf("1"));
@@ -895,6 +909,7 @@ public final class ByteAssertionTest extends AssertionTest {
         initialize(Raw.byteAssertion(), (byte) 5).isNotInRange(1, 5);
         initialize(Raw.byteAssertion(), (byte) 5).isNotInRange(6, 10);
         initialize(Raw.byteAssertion(), (byte) 5).isNotInRange(8, 9);
+        initialize(Raw.byteAssertion(), (byte) 5).isNotNull().isNotInRange(1, 5).isInstanceOf(Byte.class);
 
         try {
             Raw.byteAssertion().isNotInRange(1, 1);
@@ -960,6 +975,7 @@ public final class ByteAssertionTest extends AssertionTest {
         initialize(Raw.byteAssertion(), (byte) 5).isNotInRange(Byte.valueOf("1"), Byte.valueOf("5"));
         initialize(Raw.byteAssertion(), (byte) 5).isNotInRange(Byte.valueOf("6"), Byte.valueOf("10"));
         initialize(Raw.byteAssertion(), (byte) 5).isNotInRange(Byte.valueOf("8"), Byte.valueOf("9"));
+        initialize(Raw.byteAssertion(), (byte) 5).isNotNull().isNotInRange(Byte.valueOf("1"), Byte.valueOf("5")).isInstanceOf(Byte.class);
 
         try {
             Raw.byteAssertion().isNotInRange(Byte.valueOf("1"), Byte.valueOf("1"));
@@ -1078,6 +1094,7 @@ public final class ByteAssertionTest extends AssertionTest {
         initialize(Raw.byteAssertion(), (byte) 101).toHexString().isEqualTo("65");
         initialize(Raw.byteAssertion(), (byte) -1).toHexString().isEqualTo("ff");
         initialize(Raw.byteAssertion(), (byte) -127).toHexString().isEqualTo("81");
+        initialize(Raw.byteAssertion(), (byte) 31).isNotNull().toHexString().isEqualTo("1f");
 
         try {
             Raw.byteAssertion().toHexString();
@@ -1136,6 +1153,7 @@ public final class ByteAssertionTest extends AssertionTest {
         initialize(Raw.byteAssertion(), (byte) 101).toHexString(Matchers.is(Matchers.equalTo("65")));
         initialize(Raw.byteAssertion(), (byte) -1).toHexString(Matchers.is(Matchers.equalTo("ff")));
         initialize(Raw.byteAssertion(), (byte) -127).toHexString(Matchers.is(Matchers.equalTo("81")));
+        initialize(Raw.byteAssertion(), (byte) 31).isNotNull().toHexString(Matchers.is(Matchers.equalTo("1f"))).isInstanceOf(Byte.class);
 
         try {
             Raw.byteAssertion().toHexString(Matchers.equalTo("0"));
@@ -1206,6 +1224,7 @@ public final class ByteAssertionTest extends AssertionTest {
         initialize(Raw.byteAssertion(), (byte) 101).hasHexString("65");
         initialize(Raw.byteAssertion(), (byte) -1).hasHexString("ff");
         initialize(Raw.byteAssertion(), (byte) -127).hasHexString("81");
+        initialize(Raw.byteAssertion(), (byte) 31).isNotNull().hasHexString("1f").isInstanceOf(Byte.class);
 
         try {
             Raw.byteAssertion().hasHexString("0");

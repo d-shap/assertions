@@ -70,6 +70,7 @@ public final class ShortAssertionTest extends AssertionTest {
         initialize(Raw.shortAssertion(), (short) 75).isEqualTo(75);
         initialize(Raw.shortAssertion(), (short) 236).isEqualTo(236);
         initialize(Raw.shortAssertion(), (short) 257).isEqualTo(257);
+        initialize(Raw.shortAssertion(), (short) 10).isNotNull().isEqualTo(10).isInstanceOf(Short.class);
 
         try {
             Raw.shortAssertion().isEqualTo(1);
@@ -125,6 +126,7 @@ public final class ShortAssertionTest extends AssertionTest {
         initialize(Raw.shortAssertion(), (short) 75).isEqualTo(Short.valueOf("75"));
         initialize(Raw.shortAssertion(), (short) 236).isEqualTo(Short.valueOf("236"));
         initialize(Raw.shortAssertion(), (short) 257).isEqualTo(Short.valueOf("257"));
+        initialize(Raw.shortAssertion(), (short) 10).isNotNull().isEqualTo(Short.valueOf("10")).isInstanceOf(Short.class);
 
         try {
             Raw.shortAssertion().isEqualTo(Short.valueOf("1"));
@@ -180,6 +182,7 @@ public final class ShortAssertionTest extends AssertionTest {
         initialize(Raw.shortAssertion(), (short) 75).isNotEqualTo(76);
         initialize(Raw.shortAssertion(), (short) 236).isNotEqualTo(143);
         initialize(Raw.shortAssertion(), (short) 257).isNotEqualTo(2);
+        initialize(Raw.shortAssertion(), (short) 10).isNotNull().isNotEqualTo(15).isInstanceOf(Short.class);
 
         try {
             Raw.shortAssertion().isNotEqualTo(1);
@@ -212,6 +215,7 @@ public final class ShortAssertionTest extends AssertionTest {
         initialize(Raw.shortAssertion(), (short) 75).isNotEqualTo(Short.valueOf("76"));
         initialize(Raw.shortAssertion(), (short) 236).isNotEqualTo(Short.valueOf("143"));
         initialize(Raw.shortAssertion(), (short) 257).isNotEqualTo(Short.valueOf("2"));
+        initialize(Raw.shortAssertion(), (short) 10).isNotNull().isNotEqualTo(Short.valueOf("15")).isInstanceOf(Short.class);
 
         try {
             Raw.shortAssertion().isNotEqualTo(Short.valueOf("1"));
@@ -253,6 +257,7 @@ public final class ShortAssertionTest extends AssertionTest {
         initialize(Raw.shortAssertion(), (short) 10).isGreaterThan(5);
         initialize(Raw.shortAssertion(), (short) 60).isGreaterThan(30);
         initialize(Raw.shortAssertion(), (short) 245).isGreaterThan(244);
+        initialize(Raw.shortAssertion(), (short) 10).isNotNull().isGreaterThan(5).isInstanceOf(Short.class);
 
         try {
             Raw.shortAssertion().isGreaterThan(1);
@@ -306,6 +311,7 @@ public final class ShortAssertionTest extends AssertionTest {
         initialize(Raw.shortAssertion(), (short) 10).isGreaterThan(Short.valueOf("5"));
         initialize(Raw.shortAssertion(), (short) 60).isGreaterThan(Short.valueOf("30"));
         initialize(Raw.shortAssertion(), (short) 245).isGreaterThan(Short.valueOf("244"));
+        initialize(Raw.shortAssertion(), (short) 10).isNotNull().isGreaterThan(Short.valueOf("5")).isInstanceOf(Short.class);
 
         try {
             Raw.shortAssertion().isGreaterThan(Short.valueOf("1"));
@@ -383,6 +389,7 @@ public final class ShortAssertionTest extends AssertionTest {
         initialize(Raw.shortAssertion(), (short) 10).isGreaterThanOrEqualTo(5);
         initialize(Raw.shortAssertion(), (short) 60).isGreaterThanOrEqualTo(60);
         initialize(Raw.shortAssertion(), (short) 245).isGreaterThanOrEqualTo(244);
+        initialize(Raw.shortAssertion(), (short) 10).isNotNull().isGreaterThanOrEqualTo(5).isInstanceOf(Short.class);
 
         try {
             Raw.shortAssertion().isGreaterThanOrEqualTo(1);
@@ -424,6 +431,7 @@ public final class ShortAssertionTest extends AssertionTest {
         initialize(Raw.shortAssertion(), (short) 10).isGreaterThanOrEqualTo(Short.valueOf("5"));
         initialize(Raw.shortAssertion(), (short) 60).isGreaterThanOrEqualTo(Short.valueOf("60"));
         initialize(Raw.shortAssertion(), (short) 245).isGreaterThanOrEqualTo(Short.valueOf("244"));
+        initialize(Raw.shortAssertion(), (short) 10).isNotNull().isGreaterThanOrEqualTo(Short.valueOf("5")).isInstanceOf(Short.class);
 
         try {
             Raw.shortAssertion().isGreaterThanOrEqualTo(Short.valueOf("1"));
@@ -489,6 +497,7 @@ public final class ShortAssertionTest extends AssertionTest {
         initialize(Raw.shortAssertion(), (short) 5).isLessThan(10);
         initialize(Raw.shortAssertion(), (short) 30).isLessThan(60);
         initialize(Raw.shortAssertion(), (short) 244).isLessThan(245);
+        initialize(Raw.shortAssertion(), (short) 5).isNotNull().isLessThan(10).isInstanceOf(Short.class);
 
         try {
             Raw.shortAssertion().isLessThan(1);
@@ -542,6 +551,7 @@ public final class ShortAssertionTest extends AssertionTest {
         initialize(Raw.shortAssertion(), (short) 5).isLessThan(Short.valueOf("10"));
         initialize(Raw.shortAssertion(), (short) 30).isLessThan(Short.valueOf("60"));
         initialize(Raw.shortAssertion(), (short) 244).isLessThan(Short.valueOf("245"));
+        initialize(Raw.shortAssertion(), (short) 5).isNotNull().isLessThan(Short.valueOf("10")).isInstanceOf(Short.class);
 
         try {
             Raw.shortAssertion().isLessThan(Short.valueOf("1"));
@@ -619,6 +629,7 @@ public final class ShortAssertionTest extends AssertionTest {
         initialize(Raw.shortAssertion(), (short) 5).isLessThanOrEqualTo(10);
         initialize(Raw.shortAssertion(), (short) 60).isLessThanOrEqualTo(60);
         initialize(Raw.shortAssertion(), (short) 244).isLessThanOrEqualTo(245);
+        initialize(Raw.shortAssertion(), (short) 5).isNotNull().isLessThanOrEqualTo(10).isInstanceOf(Short.class);
 
         try {
             Raw.shortAssertion().isLessThanOrEqualTo(1);
@@ -660,6 +671,7 @@ public final class ShortAssertionTest extends AssertionTest {
         initialize(Raw.shortAssertion(), (short) 5).isLessThanOrEqualTo(Short.valueOf("10"));
         initialize(Raw.shortAssertion(), (short) 60).isLessThanOrEqualTo(Short.valueOf("60"));
         initialize(Raw.shortAssertion(), (short) 244).isLessThanOrEqualTo(Short.valueOf("245"));
+        initialize(Raw.shortAssertion(), (short) 5).isNotNull().isLessThanOrEqualTo(Short.valueOf("10")).isInstanceOf(Short.class);
 
         try {
             Raw.shortAssertion().isLessThanOrEqualTo(Short.valueOf("1"));
@@ -725,6 +737,7 @@ public final class ShortAssertionTest extends AssertionTest {
         initialize(Raw.shortAssertion(), (short) 5).isInRange(4, 6);
         initialize(Raw.shortAssertion(), (short) 5).isInRange(5, 6);
         initialize(Raw.shortAssertion(), (short) 5).isInRange(1, 10);
+        initialize(Raw.shortAssertion(), (short) 5).isNotNull().isInRange(4, 6).isInstanceOf(Short.class);
 
         try {
             Raw.shortAssertion().isInRange(1, 1);
@@ -790,6 +803,7 @@ public final class ShortAssertionTest extends AssertionTest {
         initialize(Raw.shortAssertion(), (short) 5).isInRange(Short.valueOf("4"), Short.valueOf("6"));
         initialize(Raw.shortAssertion(), (short) 5).isInRange(Short.valueOf("5"), Short.valueOf("6"));
         initialize(Raw.shortAssertion(), (short) 5).isInRange(Short.valueOf("1"), Short.valueOf("10"));
+        initialize(Raw.shortAssertion(), (short) 5).isNotNull().isInRange(Short.valueOf("4"), Short.valueOf("6")).isInstanceOf(Short.class);
 
         try {
             Raw.shortAssertion().isInRange(Short.valueOf("1"), Short.valueOf("1"));
@@ -903,6 +917,7 @@ public final class ShortAssertionTest extends AssertionTest {
         initialize(Raw.shortAssertion(), (short) 5).isNotInRange(1, 5);
         initialize(Raw.shortAssertion(), (short) 5).isNotInRange(6, 10);
         initialize(Raw.shortAssertion(), (short) 5).isNotInRange(8, 9);
+        initialize(Raw.shortAssertion(), (short) 5).isNotNull().isNotInRange(1, 5).isInstanceOf(Short.class);
 
         try {
             Raw.shortAssertion().isNotInRange(1, 1);
@@ -968,6 +983,7 @@ public final class ShortAssertionTest extends AssertionTest {
         initialize(Raw.shortAssertion(), (short) 5).isNotInRange(Short.valueOf("1"), Short.valueOf("5"));
         initialize(Raw.shortAssertion(), (short) 5).isNotInRange(Short.valueOf("6"), Short.valueOf("10"));
         initialize(Raw.shortAssertion(), (short) 5).isNotInRange(Short.valueOf("8"), Short.valueOf("9"));
+        initialize(Raw.shortAssertion(), (short) 5).isNotNull().isNotInRange(Short.valueOf("1"), Short.valueOf("5")).isInstanceOf(Short.class);
 
         try {
             Raw.shortAssertion().isNotInRange(Short.valueOf("1"), Short.valueOf("1"));
@@ -1088,6 +1104,7 @@ public final class ShortAssertionTest extends AssertionTest {
         initialize(Raw.shortAssertion(), (short) 32767).toHexString().isEqualTo("7fff");
         initialize(Raw.shortAssertion(), (short) -1).toHexString().isEqualTo("ffff");
         initialize(Raw.shortAssertion(), (short) -32767).toHexString().isEqualTo("8001");
+        initialize(Raw.shortAssertion(), (short) 31).isNotNull().toHexString().isEqualTo("001f");
 
         try {
             Raw.shortAssertion().toHexString();
@@ -1148,6 +1165,7 @@ public final class ShortAssertionTest extends AssertionTest {
         initialize(Raw.shortAssertion(), (short) 32767).toHexString(Matchers.is(Matchers.equalTo("7fff")));
         initialize(Raw.shortAssertion(), (short) -1).toHexString(Matchers.is(Matchers.equalTo("ffff")));
         initialize(Raw.shortAssertion(), (short) -32767).toHexString(Matchers.is(Matchers.equalTo("8001")));
+        initialize(Raw.shortAssertion(), (short) 31).isNotNull().toHexString(Matchers.is(Matchers.equalTo("001f"))).isInstanceOf(Short.class);
 
         try {
             Raw.shortAssertion().toHexString(Matchers.equalTo("0"));
@@ -1220,6 +1238,7 @@ public final class ShortAssertionTest extends AssertionTest {
         initialize(Raw.shortAssertion(), (short) 32767).hasHexString("7fff");
         initialize(Raw.shortAssertion(), (short) -1).hasHexString("ffff");
         initialize(Raw.shortAssertion(), (short) -32767).hasHexString("8001");
+        initialize(Raw.shortAssertion(), (short) 31).isNotNull().hasHexString("001f").isInstanceOf(Short.class);
 
         try {
             Raw.shortAssertion().hasHexString("0");
