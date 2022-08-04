@@ -504,6 +504,28 @@ public final class DocumentAssertion extends ReferenceAssertion<DocumentAssertio
     }
 
     /**
+     * Check if the actual value has child elements.
+     *
+     * @return current object for the chain call.
+     */
+    public DocumentAssertion hasChildElements() {
+        checkActualIsNotNull();
+        createElementAssertion().hasChildElements();
+        return this;
+    }
+
+    /**
+     * Check if the actual value has NOT child elements.
+     *
+     * @return current object for the chain call.
+     */
+    public DocumentAssertion hasNotChildElements() {
+        checkActualIsNotNull();
+        createElementAssertion().hasNotChildElements();
+        return this;
+    }
+
+    /**
      * Make assertion about the actual value's child elements count.
      *
      * @return the assertion.

@@ -538,6 +538,32 @@ public final class ElementAssertion extends ReferenceAssertion<ElementAssertion,
     }
 
     /**
+     * Check if the actual value has child elements.
+     *
+     * @return current object for the chain call.
+     */
+    public ElementAssertion hasChildElements() {
+        checkActualIsNotNull();
+        if (!(getChildElementsCount() > 0)) {
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.HAS_CHILD_ELEMENTS).addActual().build();
+        }
+        return this;
+    }
+
+    /**
+     * Check if the actual value has NOT child elements.
+     *
+     * @return current object for the chain call.
+     */
+    public ElementAssertion hasNotChildElements() {
+        checkActualIsNotNull();
+        if (getChildElementsCount() > 0) {
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.HAS_NOT_CHILD_ELEMENTS).addActual().build();
+        }
+        return this;
+    }
+
+    /**
      * Make assertion about the actual value's child elements count.
      *
      * @return the assertion.
