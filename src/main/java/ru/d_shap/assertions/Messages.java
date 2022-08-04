@@ -495,6 +495,10 @@ public final class Messages {
 
             public static final String HAS_NOT_CHILD_NODES = "Actual value should not have the child nodes.";
 
+            public static final String HAS_CHILD_ELEMENTS = "Actual value should have the child elements.";
+
+            public static final String HAS_NOT_CHILD_ELEMENTS = "Actual value should not have the child elements.";
+
             private Actual() {
                 super();
             }
