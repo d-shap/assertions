@@ -55,6 +55,7 @@ public final class ReferenceAssertionTest extends AssertionTest {
     @Test
     public void isNullTest() {
         createReferenceAssertion(null).isNull();
+        createReferenceAssertion(null).isNull().isNull();
 
         try {
             createReferenceAssertion().isNull();
@@ -83,6 +84,7 @@ public final class ReferenceAssertionTest extends AssertionTest {
     public void isNotNullTest() {
         createReferenceAssertion(new Object()).isNotNull();
         createReferenceAssertion("reference").isNotNull();
+        createReferenceAssertion("reference").isNotNull().isInstanceOf(Object.class);
 
         try {
             createReferenceAssertion().isNotNull();
@@ -111,6 +113,7 @@ public final class ReferenceAssertionTest extends AssertionTest {
     public void isSameAsTest() {
         Object object = new Object();
         createReferenceAssertion(object).isSameAs(object);
+        createReferenceAssertion(object).isSameAs(object).isInstanceOf(Object.class);
 
         try {
             createReferenceAssertion().isSameAs(new Object());
@@ -175,6 +178,7 @@ public final class ReferenceAssertionTest extends AssertionTest {
     public void isNotSameAsTest() {
         createReferenceAssertion(new Object()).isNotSameAs(new Object());
         createReferenceAssertion(new StringBuilder("value")).isNotSameAs(new StringBuilder("value"));
+        createReferenceAssertion(new Object()).isNotSameAs(new Object()).isInstanceOf(Object.class);
 
         try {
             createReferenceAssertion().isNotSameAs(new Object());
@@ -302,6 +306,8 @@ public final class ReferenceAssertionTest extends AssertionTest {
         createReferenceAssertion(new StringBuilder("value")).toClass(Matchers.typeCompatibleWith(CharSequence.class));
         createReferenceAssertion(new StringBuilder("value")).toClass(Matchers.typeCompatibleWith(Object.class));
 
+        createReferenceAssertion(new Object()).toClass(Matchers.typeCompatibleWith(Object.class)).isInstanceOf(Object.class);
+
         try {
             createReferenceAssertion().toClass(Matchers.typeCompatibleWith(Object.class));
             Assertions.fail("ReferenceAssertion test fail");
@@ -365,6 +371,7 @@ public final class ReferenceAssertionTest extends AssertionTest {
     public void hasClassTest() {
         createReferenceAssertion(new Object()).hasClass(Object.class);
         createReferenceAssertion(new StringBuilder("value")).hasClass(StringBuilder.class);
+        createReferenceAssertion(new Object()).hasClass(Object.class).isInstanceOf(Object.class);
 
         try {
             createReferenceAssertion().hasClass(Object.class);
@@ -454,6 +461,7 @@ public final class ReferenceAssertionTest extends AssertionTest {
         createReferenceAssertion(new Object()).hasNotClass(StringBuilder.class);
         createReferenceAssertion(new StringBuilder("value")).hasNotClass(CharSequence.class);
         createReferenceAssertion(new StringBuilder("value")).hasNotClass(Object.class);
+        createReferenceAssertion(new Object()).hasNotClass(StringBuilder.class).isInstanceOf(Object.class);
 
         try {
             createReferenceAssertion().hasNotClass(Object.class);
@@ -534,6 +542,8 @@ public final class ReferenceAssertionTest extends AssertionTest {
         createReferenceAssertion(new StringBuilder("value")).isInstanceOf(CharSequence.class);
         createReferenceAssertion(new StringBuilder("value")).isInstanceOf(Object.class);
 
+        createReferenceAssertion(new Object()).isInstanceOf(Object.class).isInstanceOf(Object.class);
+
         try {
             createReferenceAssertion().isInstanceOf(Object.class);
             Assertions.fail("ReferenceAssertion test fail");
@@ -596,6 +606,7 @@ public final class ReferenceAssertionTest extends AssertionTest {
     @Test
     public void isNotInstanceOfTest() {
         createReferenceAssertion(new Object()).isNotInstanceOf(StringBuilder.class);
+        createReferenceAssertion(new Object()).isNotInstanceOf(StringBuilder.class).isInstanceOf(Object.class);
 
         try {
             createReferenceAssertion().isNotInstanceOf(Object.class);
@@ -750,6 +761,7 @@ public final class ReferenceAssertionTest extends AssertionTest {
         createReferenceAssertion("reference").toToString(Matchers.equalTo("reference"));
         createReferenceAssertion("reference").toToString(Matchers.startsWith("ref"));
         createReferenceAssertion("reference").toToString(Matchers.endsWith("ce"));
+        createReferenceAssertion("reference").toToString(Matchers.equalTo("reference")).isInstanceOf(Object.class);
 
         try {
             createReferenceAssertion().toToString(Matchers.equalTo(""));
@@ -813,6 +825,7 @@ public final class ReferenceAssertionTest extends AssertionTest {
     @Test
     public void hasToStringTest() {
         createReferenceAssertion("reference").hasToString("reference");
+        createReferenceAssertion("reference").hasToString("reference").isInstanceOf(Object.class);
 
         try {
             createReferenceAssertion().hasToString("value");
@@ -876,6 +889,7 @@ public final class ReferenceAssertionTest extends AssertionTest {
     @Test
     public void toStringContainsTest() {
         createReferenceAssertion("reference").toStringContains("feren");
+        createReferenceAssertion("reference").toStringContains("feren").isInstanceOf(Object.class);
 
         try {
             createReferenceAssertion().toStringContains("value");
@@ -939,6 +953,7 @@ public final class ReferenceAssertionTest extends AssertionTest {
     @Test
     public void toStringMatchesTest() {
         createReferenceAssertion("reference").toStringMatches("re.*ce");
+        createReferenceAssertion("reference").toStringMatches("re.*ce").isInstanceOf(Object.class);
 
         try {
             createReferenceAssertion().toStringMatches("v.*e");
@@ -1057,6 +1072,7 @@ public final class ReferenceAssertionTest extends AssertionTest {
         createReferenceAssertion("reference").toHashCode(Matchers.equalTo(-925155509));
         createReferenceAssertion("reference").toHashCode(Matchers.lessThan(0));
         createReferenceAssertion("reference").toHashCode(Matchers.not(Matchers.allOf(Matchers.greaterThan(1), Matchers.lessThan(10))));
+        createReferenceAssertion("reference").toHashCode(Matchers.equalTo(-925155509)).isInstanceOf(Object.class);
 
         try {
             createReferenceAssertion().toHashCode(Matchers.equalTo(0));
@@ -1120,6 +1136,7 @@ public final class ReferenceAssertionTest extends AssertionTest {
     @Test
     public void hasHashCodeTest() {
         createReferenceAssertion("reference").hasHashCode(-925155509);
+        createReferenceAssertion("reference").hasHashCode(-925155509).isInstanceOf(Object.class);
 
         try {
             createReferenceAssertion().hasHashCode(1);
@@ -1379,6 +1396,8 @@ public final class ReferenceAssertionTest extends AssertionTest {
         createReferenceAssertion(new ChildClass()).toField("_nullField", Matchers.nullValue());
         createReferenceAssertion(new ChildClass()).toField("_parentField", Matchers.equalTo("parentField"));
         createReferenceAssertion(new ChildClass()).toField("_childField", Matchers.equalTo("childField"));
+
+        createReferenceAssertion(new ParentClass()).toField("_parentField", Matchers.equalTo("parentField")).isInstanceOf(Object.class);
 
         try {
             createReferenceAssertion().toField("value", Matchers.nullValue());
@@ -2187,6 +2206,8 @@ public final class ReferenceAssertionTest extends AssertionTest {
         createReferenceAssertion(new ChildClass()).toMethodCallResult("childMethod", Matchers.equalTo("childMethod:param"), new Class<?>[]{String.class}, new Object[]{"param"});
         createReferenceAssertion(new ChildClass()).toMethodCallResult("childMethod", Matchers.equalTo("childMethod:param,5"), new Class<?>[]{String.class, int.class}, new Object[]{"param", 5});
 
+        createReferenceAssertion(new ParentClass()).toMethodCallResult("parentMethod", Matchers.equalTo("parentMethod"), new Class<?>[]{}, new Object[]{}).isInstanceOf(Object.class);
+
         try {
             createReferenceAssertion().toMethodCallResult("method", Matchers.nullValue(), new Class<?>[]{}, new Object[]{});
             Assertions.fail("ReferenceAssertion test fail");
@@ -2366,6 +2387,8 @@ public final class ReferenceAssertionTest extends AssertionTest {
 
         createReferenceAssertion(new ChildClass()).toMethodCallResult("parentMethod", Matchers.equalTo("parentMethod"));
         createReferenceAssertion(new ChildClass()).toMethodCallResult("childMethod", Matchers.equalTo("childMethod:param"), "param");
+
+        createReferenceAssertion(new ParentClass()).toMethodCallResult("parentMethod", Matchers.equalTo("parentMethod")).isInstanceOf(Object.class);
 
         try {
             createReferenceAssertion().toMethodCallResult("method", Matchers.nullValue());
@@ -2866,6 +2889,8 @@ public final class ReferenceAssertionTest extends AssertionTest {
         createReferenceAssertion(new ChildClass()).toMethodCallException("childFailMethod", exceptionMessage("test rt exception: param"), new Class<?>[]{String.class}, new Object[]{"param"});
         createReferenceAssertion(new ChildClass()).toMethodCallException("childFailMethod", exceptionMessage("test rt exception: param,5"), new Class<?>[]{String.class, int.class}, new Object[]{"param", 5});
 
+        createReferenceAssertion(new ParentClass()).toMethodCallException("parentFailMethod", exceptionMessage("test io exception"), new Class<?>[]{}, new Object[]{}).isInstanceOf(Object.class);
+
         try {
             createReferenceAssertion().toMethodCallException("method", exceptionMessage(null), new Class<?>[]{}, new Object[]{});
             Assertions.fail("ReferenceAssertion test fail");
@@ -3046,6 +3071,8 @@ public final class ReferenceAssertionTest extends AssertionTest {
         createReferenceAssertion(new ChildClass()).toMethodCallException("parentFailMethod", exceptionMessage("test io exception"));
         createReferenceAssertion(new ChildClass()).toMethodCallException("childFailMethod", exceptionMessage("test rt exception"));
         createReferenceAssertion(new ChildClass()).toMethodCallException("childFailMethod", exceptionMessage("test rt exception: param"), "param");
+
+        createReferenceAssertion(new ParentClass()).toMethodCallException("parentFailMethod", exceptionMessage("test io exception")).isInstanceOf(Object.class);
 
         try {
             createReferenceAssertion().toMethodCallException("method", exceptionMessage(null));
