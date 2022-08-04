@@ -73,6 +73,7 @@ public final class QNameAssertionTest extends AssertionTest {
         initialize(Raw.qnameAssertion(), new QName("namespace", "local")).isEqualTo(new QName("namespace", "local"));
         initialize(Raw.qnameAssertion(), new QName("namespace", "local", "ns")).isEqualTo(new QName("namespace", "local", "ns"));
         initialize(Raw.qnameAssertion(), new QName("namespace", "local", "ns1")).isEqualTo(new QName("namespace", "local", "ns2"));
+        initialize(Raw.qnameAssertion(), new QName("local")).isNotNull().isEqualTo(new QName("local")).isInstanceOf(QName.class);
 
         try {
             Raw.qnameAssertion().isEqualTo(new QName("local"));
@@ -153,6 +154,7 @@ public final class QNameAssertionTest extends AssertionTest {
         initialize(Raw.qnameAssertion(), new QName("local")).isNotEqualTo(new QName("namespace", "local"));
         initialize(Raw.qnameAssertion(), new QName("namespace", "local1")).isNotEqualTo(new QName("namespace", "local2"));
         initialize(Raw.qnameAssertion(), new QName("namespace1", "local")).isNotEqualTo(new QName("namespace2", "local"));
+        initialize(Raw.qnameAssertion(), new QName("local1")).isNotNull().isNotEqualTo(new QName("local2")).isInstanceOf(QName.class);
 
         try {
             Raw.qnameAssertion().isNotEqualTo(new QName("local"));
@@ -219,6 +221,7 @@ public final class QNameAssertionTest extends AssertionTest {
         initialize(Raw.qnameAssertion(), new QName("", "local")).toNamespaceURI().isEqualTo("");
         initialize(Raw.qnameAssertion(), new QName(null, "local")).toNamespaceURI().isEqualTo("");
         initialize(Raw.qnameAssertion(), new QName("namespace", "local")).toNamespaceURI().isEqualTo("namespace");
+        initialize(Raw.qnameAssertion(), new QName("namespace", "local")).isNotNull().toNamespaceURI().isEqualTo("namespace");
 
         try {
             Raw.qnameAssertion().toNamespaceURI();
@@ -273,6 +276,7 @@ public final class QNameAssertionTest extends AssertionTest {
         initialize(Raw.qnameAssertion(), new QName("", "local")).toNamespaceURI(Matchers.is(Matchers.equalTo("")));
         initialize(Raw.qnameAssertion(), new QName(null, "local")).toNamespaceURI(Matchers.is(Matchers.equalTo("")));
         initialize(Raw.qnameAssertion(), new QName("namespace", "local")).toNamespaceURI(Matchers.is(Matchers.equalTo("namespace")));
+        initialize(Raw.qnameAssertion(), new QName("namespace", "local")).isNotNull().toNamespaceURI(Matchers.is(Matchers.equalTo("namespace"))).isInstanceOf(QName.class);
 
         try {
             Raw.qnameAssertion().toNamespaceURI(Matchers.equalTo(""));
@@ -339,6 +343,7 @@ public final class QNameAssertionTest extends AssertionTest {
         initialize(Raw.qnameAssertion(), new QName("", "local")).hasNamespaceURI("");
         initialize(Raw.qnameAssertion(), new QName(null, "local")).hasNamespaceURI("");
         initialize(Raw.qnameAssertion(), new QName("namespace", "local")).hasNamespaceURI("namespace");
+        initialize(Raw.qnameAssertion(), new QName("namespace", "local")).isNotNull().hasNamespaceURI("namespace").isInstanceOf(QName.class);
 
         try {
             Raw.qnameAssertion().hasNamespaceURI("");
@@ -407,6 +412,7 @@ public final class QNameAssertionTest extends AssertionTest {
         initialize(Raw.qnameAssertion(), new QName("namespace", "local")).toPrefix().isEqualTo("");
         initialize(Raw.qnameAssertion(), new QName("namespace", "local", "")).toPrefix().isEqualTo("");
         initialize(Raw.qnameAssertion(), new QName("namespace", "local", "ns")).toPrefix().isEqualTo("ns");
+        initialize(Raw.qnameAssertion(), new QName("namespace", "local", "ns")).isNotNull().toPrefix().isEqualTo("ns");
 
         try {
             Raw.qnameAssertion().toPrefix();
@@ -463,6 +469,7 @@ public final class QNameAssertionTest extends AssertionTest {
         initialize(Raw.qnameAssertion(), new QName("namespace", "local")).toPrefix(Matchers.is(Matchers.equalTo("")));
         initialize(Raw.qnameAssertion(), new QName("namespace", "local", "")).toPrefix(Matchers.is(Matchers.equalTo("")));
         initialize(Raw.qnameAssertion(), new QName("namespace", "local", "ns")).toPrefix(Matchers.is(Matchers.equalTo("ns")));
+        initialize(Raw.qnameAssertion(), new QName("namespace", "local", "ns")).isNotNull().toPrefix(Matchers.is(Matchers.equalTo("ns"))).isInstanceOf(QName.class);
 
         try {
             Raw.qnameAssertion().toPrefix(Matchers.equalTo(""));
@@ -531,6 +538,7 @@ public final class QNameAssertionTest extends AssertionTest {
         initialize(Raw.qnameAssertion(), new QName("namespace", "local")).hasPrefix("");
         initialize(Raw.qnameAssertion(), new QName("namespace", "local", "")).hasPrefix("");
         initialize(Raw.qnameAssertion(), new QName("namespace", "local", "ns")).hasPrefix("ns");
+        initialize(Raw.qnameAssertion(), new QName("namespace", "local", "ns")).isNotNull().hasPrefix("ns").isInstanceOf(QName.class);
 
         try {
             Raw.qnameAssertion().hasPrefix("");
@@ -596,6 +604,7 @@ public final class QNameAssertionTest extends AssertionTest {
         initialize(Raw.qnameAssertion(), new QName("local")).toLocalPart().isEqualTo("local");
         initialize(Raw.qnameAssertion(), new QName("")).toLocalPart().isEqualTo("");
         initialize(Raw.qnameAssertion(), new QName("namespace", "local")).toLocalPart().isEqualTo("local");
+        initialize(Raw.qnameAssertion(), new QName("namespace", "local")).isNotNull().toLocalPart().isEqualTo("local");
 
         try {
             Raw.qnameAssertion().toLocalPart();
@@ -649,6 +658,7 @@ public final class QNameAssertionTest extends AssertionTest {
         initialize(Raw.qnameAssertion(), new QName("local")).toLocalPart(Matchers.is(Matchers.equalTo("local")));
         initialize(Raw.qnameAssertion(), new QName("")).toLocalPart(Matchers.is(Matchers.equalTo("")));
         initialize(Raw.qnameAssertion(), new QName("namespace", "local")).toLocalPart(Matchers.is(Matchers.equalTo("local")));
+        initialize(Raw.qnameAssertion(), new QName("namespace", "local")).isNotNull().toLocalPart(Matchers.is(Matchers.equalTo("local"))).isInstanceOf(QName.class);
 
         try {
             Raw.qnameAssertion().toLocalPart(Matchers.equalTo(""));
@@ -713,6 +723,7 @@ public final class QNameAssertionTest extends AssertionTest {
     public void hasLocalPartTest() {
         initialize(Raw.qnameAssertion(), new QName("local")).hasLocalPart("local");
         initialize(Raw.qnameAssertion(), new QName("")).hasLocalPart("");
+        initialize(Raw.qnameAssertion(), new QName("namespace", "local")).hasLocalPart("local");
         initialize(Raw.qnameAssertion(), new QName("namespace", "local")).hasLocalPart("local");
 
         try {
@@ -780,6 +791,7 @@ public final class QNameAssertionTest extends AssertionTest {
         initialize(Raw.qnameAssertion(), new QName("", "local")).hasProperties("local");
         initialize(Raw.qnameAssertion(), new QName(null, "local")).hasProperties("local");
         initialize(Raw.qnameAssertion(), new QName("")).hasProperties("");
+        initialize(Raw.qnameAssertion(), new QName("local")).isNotNull().hasProperties("local").isInstanceOf(QName.class);
 
         try {
             Raw.qnameAssertion().hasProperties("");
@@ -860,6 +872,7 @@ public final class QNameAssertionTest extends AssertionTest {
         initialize(Raw.qnameAssertion(), new QName("")).hasProperties("", "");
         initialize(Raw.qnameAssertion(), new QName("namespace", "local")).hasProperties("namespace", "local");
         initialize(Raw.qnameAssertion(), new QName("namespace", "")).hasProperties("namespace", "");
+        initialize(Raw.qnameAssertion(), new QName("namespace", "local")).isNotNull().hasProperties("namespace", "local").isInstanceOf(QName.class);
 
         try {
             Raw.qnameAssertion().hasProperties("", "");

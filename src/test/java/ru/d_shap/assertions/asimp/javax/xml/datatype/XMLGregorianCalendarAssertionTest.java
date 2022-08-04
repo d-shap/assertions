@@ -87,6 +87,7 @@ public class XMLGregorianCalendarAssertionTest extends AssertionTest {
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createXmlCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543, "Europe/Berlin")).isEqualTo(DataHelper.createXmlCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543, "Europe/Berlin"));
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC")).isEqualTo(DataHelper.createXmlCalendar(2020, Calendar.JULY, 11, 22, 23, 47, "Asia/Vientiane"));
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC")).isEqualTo(DataHelper.createXmlCalendar(2020, Calendar.JULY, 11, 17, 23, 47, "Europe/Berlin"));
+        initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC")).isNotNull().isEqualTo(DataHelper.createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC")).isInstanceOf(XMLGregorianCalendar.class);
 
         try {
             Raw.xmlGregorianCalendarAssertion().isEqualTo(DataHelper.createXmlCalendar(1, 1, 1, 1, 1, 1, "UTC"));
@@ -168,6 +169,7 @@ public class XMLGregorianCalendarAssertionTest extends AssertionTest {
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createXmlCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543, "UTC")).isNotEqualTo(DataHelper.createXmlCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 555, "UTC"));
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createXmlCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543, "UTC")).isNotEqualTo(DataHelper.createXmlCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543, "Europe/Berlin"));
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createXmlCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543, "UTC")).isNotEqualTo(DataHelper.createXmlCalendar(1324, Calendar.DECEMBER, 21, 5, 22, 46, 543, "Europe/Berlin"));
+        initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC")).isNotNull().isNotEqualTo(DataHelper.createXmlCalendar(2019, Calendar.JULY, 11, 15, 23, 47, "UTC")).isInstanceOf(XMLGregorianCalendar.class);
 
         try {
             Raw.xmlGregorianCalendarAssertion().isNotEqualTo(DataHelper.createXmlCalendar(1, 1, 1, 1, 1, 1, "UTC"));
@@ -252,6 +254,7 @@ public class XMLGregorianCalendarAssertionTest extends AssertionTest {
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "UTC")).isGreaterThan(DataHelper.createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "Europe/Berlin"));
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "UTC")).isGreaterThan(DataHelper.createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "Asia/Vientiane"));
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "Europe/Berlin")).isGreaterThan(DataHelper.createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "Asia/Vientiane"));
+        initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "UTC")).isNotNull().isGreaterThan(DataHelper.createXmlCalendar(2019, Calendar.JULY, 11, 15, 23, 47, 345, "UTC")).isInstanceOf(XMLGregorianCalendar.class);
 
         try {
             Raw.xmlGregorianCalendarAssertion().isGreaterThan(DataHelper.createXmlCalendar(1, 1, 1, 1, 1, 1, 1, "UTC"));
@@ -361,6 +364,7 @@ public class XMLGregorianCalendarAssertionTest extends AssertionTest {
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "UTC")).isGreaterThanOrEqualTo(DataHelper.createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "Europe/Berlin"));
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "UTC")).isGreaterThanOrEqualTo(DataHelper.createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "Asia/Vientiane"));
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "Europe/Berlin")).isGreaterThanOrEqualTo(DataHelper.createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "Asia/Vientiane"));
+        initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "UTC")).isNotNull().isGreaterThanOrEqualTo(DataHelper.createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "UTC")).isInstanceOf(XMLGregorianCalendar.class);
 
         try {
             Raw.xmlGregorianCalendarAssertion().isGreaterThanOrEqualTo(DataHelper.createXmlCalendar(1, 1, 1, 1, 1, 1, 1, "UTC"));
@@ -457,6 +461,7 @@ public class XMLGregorianCalendarAssertionTest extends AssertionTest {
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "Europe/Berlin")).isLessThan(DataHelper.createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "UTC"));
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "Asia/Vientiane")).isLessThan(DataHelper.createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "UTC"));
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "Asia/Vientiane")).isLessThan(DataHelper.createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "Europe/Berlin"));
+        initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "UTC")).isNotNull().isLessThan(DataHelper.createXmlCalendar(2021, Calendar.JULY, 11, 15, 23, 47, 345, "UTC")).isInstanceOf(XMLGregorianCalendar.class);
 
         try {
             Raw.xmlGregorianCalendarAssertion().isLessThan(DataHelper.createXmlCalendar(1, 1, 1, 1, 1, 1, 1, "UTC"));
@@ -566,6 +571,7 @@ public class XMLGregorianCalendarAssertionTest extends AssertionTest {
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "Europe/Berlin")).isLessThanOrEqualTo(DataHelper.createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "UTC"));
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "Asia/Vientiane")).isLessThanOrEqualTo(DataHelper.createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "UTC"));
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "Asia/Vientiane")).isLessThanOrEqualTo(DataHelper.createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "Europe/Berlin"));
+        initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "UTC")).isNotNull().isLessThanOrEqualTo(DataHelper.createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "UTC")).isInstanceOf(XMLGregorianCalendar.class);
 
         try {
             Raw.xmlGregorianCalendarAssertion().isLessThanOrEqualTo(DataHelper.createXmlCalendar(1, 1, 1, 1, 1, 1, 1, "UTC"));
@@ -661,6 +667,7 @@ public class XMLGregorianCalendarAssertionTest extends AssertionTest {
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "UTC")).isInRange(DataHelper.createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "UTC"), DataHelper.createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 346, "UTC"));
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "UTC")).isInRange(DataHelper.createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 344, "UTC"), DataHelper.createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 346, "UTC"));
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "Europe/Berlin")).isInRange(DataHelper.createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "Asia/Vientiane"), DataHelper.createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "UTC"));
+        initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "UTC")).isNotNull().isInRange(DataHelper.createXmlCalendar(2019, Calendar.JULY, 11, 15, 23, 47, 345, "UTC"), DataHelper.createXmlCalendar(2021, Calendar.JULY, 11, 15, 23, 47, 345, "UTC")).isInstanceOf(XMLGregorianCalendar.class);
 
         try {
             Raw.xmlGregorianCalendarAssertion().isInRange(DataHelper.createXmlCalendar(1, 1, 1, 1, 1, 1, 1, "UTC"), DataHelper.createXmlCalendar(1, 1, 1, 1, 1, 1, 1, "UTC"));
@@ -800,6 +807,7 @@ public class XMLGregorianCalendarAssertionTest extends AssertionTest {
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "UTC")).isNotInRange(DataHelper.createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 346, "UTC"), DataHelper.createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 347, "UTC"));
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "Asia/Vientiane")).isNotInRange(DataHelper.createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "Europe/Berlin"), DataHelper.createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "UTC"));
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "UTC")).isNotInRange(DataHelper.createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "Asia/Vientiane"), DataHelper.createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "Europe/Berlin"));
+        initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "UTC")).isNotNull().isNotInRange(DataHelper.createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "UTC"), DataHelper.createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47, 345, "UTC")).isInstanceOf(XMLGregorianCalendar.class);
 
         try {
             Raw.xmlGregorianCalendarAssertion().isNotInRange(DataHelper.createXmlCalendar(1, 1, 1, 1, 1, 1, 1, "UTC"), DataHelper.createXmlCalendar(1, 1, 1, 1, 1, 1, 1, "UTC"));
@@ -926,6 +934,7 @@ public class XMLGregorianCalendarAssertionTest extends AssertionTest {
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createUtcXmlCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47)).toYear().isEqualTo(2020);
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createUtcXmlCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543)).toYear().isEqualTo(1324);
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createUtcXmlCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).toYear().isEqualTo(1324);
+        initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createUtcXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47)).isNotNull().toYear().isEqualTo(2020);
 
         try {
             Raw.xmlGregorianCalendarAssertion().toYear();
@@ -980,6 +989,7 @@ public class XMLGregorianCalendarAssertionTest extends AssertionTest {
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createUtcXmlCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47)).toYear(Matchers.is(Matchers.equalTo(2020)));
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createUtcXmlCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543)).toYear(Matchers.is(Matchers.equalTo(1324)));
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createUtcXmlCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).toYear(Matchers.is(Matchers.equalTo(1324)));
+        initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createUtcXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47)).isNotNull().toYear(Matchers.is(Matchers.equalTo(2020))).isInstanceOf(XMLGregorianCalendar.class);
 
         try {
             Raw.xmlGregorianCalendarAssertion().toYear(Matchers.equalTo(0));
@@ -1046,6 +1056,7 @@ public class XMLGregorianCalendarAssertionTest extends AssertionTest {
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createUtcXmlCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47)).hasYear(2020);
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createUtcXmlCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543)).hasYear(1324);
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createUtcXmlCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).hasYear(1324);
+        initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createUtcXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47)).isNotNull().hasYear(2020).isInstanceOf(XMLGregorianCalendar.class);
 
         try {
             Raw.xmlGregorianCalendarAssertion().hasYear(0);
@@ -1088,6 +1099,7 @@ public class XMLGregorianCalendarAssertionTest extends AssertionTest {
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createUtcXmlCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47)).toMonth().isEqualTo(Calendar.DECEMBER);
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createUtcXmlCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543)).toMonth().isEqualTo(Calendar.JULY);
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createUtcXmlCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).toMonth().isEqualTo(Calendar.DECEMBER);
+        initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createUtcXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47)).isNotNull().toMonth().isEqualTo(Calendar.JULY);
 
         try {
             Raw.xmlGregorianCalendarAssertion().toMonth();
@@ -1142,6 +1154,7 @@ public class XMLGregorianCalendarAssertionTest extends AssertionTest {
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createUtcXmlCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47)).toMonth(Matchers.is(Matchers.equalTo(Calendar.DECEMBER)));
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createUtcXmlCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543)).toMonth(Matchers.is(Matchers.equalTo(Calendar.JULY)));
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createUtcXmlCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).toMonth(Matchers.is(Matchers.equalTo(Calendar.DECEMBER)));
+        initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createUtcXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47)).isNotNull().toMonth(Matchers.is(Matchers.equalTo(Calendar.JULY))).isInstanceOf(XMLGregorianCalendar.class);
 
         try {
             Raw.xmlGregorianCalendarAssertion().toMonth(Matchers.equalTo(0));
@@ -1208,6 +1221,7 @@ public class XMLGregorianCalendarAssertionTest extends AssertionTest {
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createUtcXmlCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47)).hasMonth(Calendar.DECEMBER);
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createUtcXmlCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543)).hasMonth(Calendar.JULY);
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createUtcXmlCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).hasMonth(Calendar.DECEMBER);
+        initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createUtcXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47)).isNotNull().hasMonth(Calendar.JULY).isInstanceOf(XMLGregorianCalendar.class);
 
         try {
             Raw.xmlGregorianCalendarAssertion().hasMonth(0);
@@ -1250,6 +1264,7 @@ public class XMLGregorianCalendarAssertionTest extends AssertionTest {
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createUtcXmlCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47)).toDayOfMonth().isEqualTo(11);
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createUtcXmlCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543)).toDayOfMonth().isEqualTo(21);
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createUtcXmlCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).toDayOfMonth().isEqualTo(21);
+        initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createUtcXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47)).isNotNull().toDayOfMonth().isEqualTo(11);
 
         try {
             Raw.xmlGregorianCalendarAssertion().toDayOfMonth();
@@ -1304,6 +1319,7 @@ public class XMLGregorianCalendarAssertionTest extends AssertionTest {
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createUtcXmlCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47)).toDayOfMonth(Matchers.is(Matchers.equalTo(11)));
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createUtcXmlCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543)).toDayOfMonth(Matchers.is(Matchers.equalTo(21)));
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createUtcXmlCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).toDayOfMonth(Matchers.is(Matchers.equalTo(21)));
+        initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createUtcXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47)).isNotNull().toDayOfMonth(Matchers.is(Matchers.equalTo(11))).isInstanceOf(XMLGregorianCalendar.class);
 
         try {
             Raw.xmlGregorianCalendarAssertion().toDayOfMonth(Matchers.equalTo(0));
@@ -1370,6 +1386,7 @@ public class XMLGregorianCalendarAssertionTest extends AssertionTest {
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createUtcXmlCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47)).hasDayOfMonth(11);
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createUtcXmlCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543)).hasDayOfMonth(21);
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createUtcXmlCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).hasDayOfMonth(21);
+        initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createUtcXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47)).isNotNull().hasDayOfMonth(11).isInstanceOf(XMLGregorianCalendar.class);
 
         try {
             Raw.xmlGregorianCalendarAssertion().hasDayOfMonth(0);
@@ -1412,6 +1429,7 @@ public class XMLGregorianCalendarAssertionTest extends AssertionTest {
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createUtcXmlCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47)).toHourOfDay().isEqualTo(15);
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createUtcXmlCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543)).toHourOfDay().isEqualTo(3);
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createUtcXmlCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).toHourOfDay().isEqualTo(3);
+        initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createUtcXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47)).isNotNull().toHourOfDay().isEqualTo(15);
 
         try {
             Raw.xmlGregorianCalendarAssertion().toHourOfDay();
@@ -1466,6 +1484,7 @@ public class XMLGregorianCalendarAssertionTest extends AssertionTest {
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createUtcXmlCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47)).toHourOfDay(Matchers.is(Matchers.equalTo(15)));
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createUtcXmlCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543)).toHourOfDay(Matchers.is(Matchers.equalTo(3)));
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createUtcXmlCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).toHourOfDay(Matchers.is(Matchers.equalTo(3)));
+        initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createUtcXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47)).isNotNull().toHourOfDay(Matchers.is(Matchers.equalTo(15))).isInstanceOf(XMLGregorianCalendar.class).isInstanceOf(XMLGregorianCalendar.class);
 
         try {
             Raw.xmlGregorianCalendarAssertion().toHourOfDay(Matchers.equalTo(0));
@@ -1532,6 +1551,7 @@ public class XMLGregorianCalendarAssertionTest extends AssertionTest {
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createUtcXmlCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47)).hasHourOfDay(15);
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createUtcXmlCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543)).hasHourOfDay(3);
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createUtcXmlCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).hasHourOfDay(3);
+        initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createUtcXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47)).isNotNull().hasHourOfDay(15).isInstanceOf(XMLGregorianCalendar.class);
 
         try {
             Raw.xmlGregorianCalendarAssertion().hasHourOfDay(0);
@@ -1574,6 +1594,7 @@ public class XMLGregorianCalendarAssertionTest extends AssertionTest {
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createUtcXmlCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47)).toMinute().isEqualTo(23);
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createUtcXmlCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543)).toMinute().isEqualTo(22);
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createUtcXmlCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).toMinute().isEqualTo(22);
+        initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createUtcXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47)).isNotNull().toMinute().isEqualTo(23);
 
         try {
             Raw.xmlGregorianCalendarAssertion().toMinute();
@@ -1628,6 +1649,7 @@ public class XMLGregorianCalendarAssertionTest extends AssertionTest {
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createUtcXmlCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47)).toMinute(Matchers.is(Matchers.equalTo(23)));
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createUtcXmlCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543)).toMinute(Matchers.is(Matchers.equalTo(22)));
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createUtcXmlCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).toMinute(Matchers.is(Matchers.equalTo(22)));
+        initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createUtcXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47)).isNotNull().toMinute(Matchers.is(Matchers.equalTo(23))).isInstanceOf(XMLGregorianCalendar.class);
 
         try {
             Raw.xmlGregorianCalendarAssertion().toMinute(Matchers.equalTo(0));
@@ -1694,6 +1716,7 @@ public class XMLGregorianCalendarAssertionTest extends AssertionTest {
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createUtcXmlCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47)).hasMinute(23);
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createUtcXmlCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543)).hasMinute(22);
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createUtcXmlCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).hasMinute(22);
+        initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createUtcXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47)).isNotNull().hasMinute(23).isInstanceOf(XMLGregorianCalendar.class);
 
         try {
             Raw.xmlGregorianCalendarAssertion().hasMinute(0);
@@ -1736,6 +1759,7 @@ public class XMLGregorianCalendarAssertionTest extends AssertionTest {
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createUtcXmlCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47)).toSecond().isEqualTo(47);
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createUtcXmlCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543)).toSecond().isEqualTo(46);
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createUtcXmlCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).toSecond().isEqualTo(46);
+        initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createUtcXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47)).isNotNull().toSecond().isEqualTo(47);
 
         try {
             Raw.xmlGregorianCalendarAssertion().toSecond();
@@ -1790,6 +1814,7 @@ public class XMLGregorianCalendarAssertionTest extends AssertionTest {
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createUtcXmlCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47)).toSecond(Matchers.is(Matchers.equalTo(47)));
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createUtcXmlCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543)).toSecond(Matchers.is(Matchers.equalTo(46)));
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createUtcXmlCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).toSecond(Matchers.is(Matchers.equalTo(46)));
+        initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createUtcXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47)).isNotNull().toSecond(Matchers.is(Matchers.equalTo(47))).isInstanceOf(XMLGregorianCalendar.class);
 
         try {
             Raw.xmlGregorianCalendarAssertion().toSecond(Matchers.equalTo(0));
@@ -1856,6 +1881,7 @@ public class XMLGregorianCalendarAssertionTest extends AssertionTest {
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createUtcXmlCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47)).hasSecond(47);
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createUtcXmlCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543)).hasSecond(46);
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createUtcXmlCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).hasSecond(46);
+        initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createUtcXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47)).isNotNull().hasSecond(47).isInstanceOf(XMLGregorianCalendar.class);
 
         try {
             Raw.xmlGregorianCalendarAssertion().hasSecond(0);
@@ -1898,6 +1924,7 @@ public class XMLGregorianCalendarAssertionTest extends AssertionTest {
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createUtcXmlCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47)).toMillisecond().isEqualTo(0);
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createUtcXmlCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543)).toMillisecond().isEqualTo(543);
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createUtcXmlCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).toMillisecond().isEqualTo(543);
+        initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createUtcXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47)).isNotNull().toMillisecond().isEqualTo(0);
 
         try {
             Raw.xmlGregorianCalendarAssertion().toMillisecond();
@@ -1952,6 +1979,7 @@ public class XMLGregorianCalendarAssertionTest extends AssertionTest {
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createUtcXmlCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47)).toMillisecond(Matchers.is(Matchers.equalTo(0)));
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createUtcXmlCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543)).toMillisecond(Matchers.is(Matchers.equalTo(543)));
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createUtcXmlCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).toMillisecond(Matchers.is(Matchers.equalTo(543)));
+        initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createUtcXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47)).isNotNull().toMillisecond(Matchers.is(Matchers.equalTo(0))).isInstanceOf(XMLGregorianCalendar.class);
 
         try {
             Raw.xmlGregorianCalendarAssertion().toMillisecond(Matchers.equalTo(0));
@@ -2018,6 +2046,7 @@ public class XMLGregorianCalendarAssertionTest extends AssertionTest {
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createUtcXmlCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47)).hasMillisecond(0);
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createUtcXmlCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543)).hasMillisecond(543);
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createUtcXmlCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543)).hasMillisecond(543);
+        initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createUtcXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47)).isNotNull().hasMillisecond(0).isInstanceOf(XMLGregorianCalendar.class);
 
         try {
             Raw.xmlGregorianCalendarAssertion().hasMillisecond(0);
@@ -2068,6 +2097,7 @@ public class XMLGregorianCalendarAssertionTest extends AssertionTest {
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createXmlCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47, "Europe/Berlin")).toZoneOffset().isEqualTo(60 * 60 * 1000);
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createXmlCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543, "Europe/Berlin")).toZoneOffset().isEqualTo(60 * 60 * 1000);
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createXmlCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543, "Europe/Berlin")).toZoneOffset().isEqualTo(60 * 60 * 1000);
+        initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC")).isNotNull().toZoneOffset().isEqualTo(0);
 
         try {
             Raw.xmlGregorianCalendarAssertion().toZoneOffset();
@@ -2130,6 +2160,7 @@ public class XMLGregorianCalendarAssertionTest extends AssertionTest {
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createXmlCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47, "Europe/Berlin")).toZoneOffset(Matchers.is(Matchers.equalTo(60 * 60 * 1000)));
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createXmlCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543, "Europe/Berlin")).toZoneOffset(Matchers.is(Matchers.equalTo(60 * 60 * 1000)));
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createXmlCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543, "Europe/Berlin")).toZoneOffset(Matchers.is(Matchers.equalTo(60 * 60 * 1000)));
+        initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC")).isNotNull().toZoneOffset(Matchers.is(Matchers.equalTo(0))).isInstanceOf(XMLGregorianCalendar.class);
 
         try {
             Raw.xmlGregorianCalendarAssertion().toZoneOffset(Matchers.equalTo(0));
@@ -2204,6 +2235,7 @@ public class XMLGregorianCalendarAssertionTest extends AssertionTest {
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createXmlCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47, "Europe/Berlin")).hasZoneOffset(60 * 60 * 1000);
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createXmlCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543, "Europe/Berlin")).hasZoneOffset(60 * 60 * 1000);
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createXmlCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543, "Europe/Berlin")).hasZoneOffset(60 * 60 * 1000);
+        initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC")).isNotNull().hasZoneOffset(0).isInstanceOf(XMLGregorianCalendar.class);
 
         try {
             Raw.xmlGregorianCalendarAssertion().hasZoneOffset(0);
@@ -2254,6 +2286,7 @@ public class XMLGregorianCalendarAssertionTest extends AssertionTest {
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createXmlCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47, "Europe/Berlin")).hasDate(2020, Calendar.DECEMBER, 11);
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createXmlCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543, "Europe/Berlin")).hasDate(1324, Calendar.JULY, 21);
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createXmlCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543, "Europe/Berlin")).hasDate(1324, Calendar.DECEMBER, 21);
+        initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC")).isNotNull().hasDate(2020, Calendar.JULY, 11).isInstanceOf(XMLGregorianCalendar.class);
 
         try {
             Raw.xmlGregorianCalendarAssertion().hasDate(1, 1, 1);
@@ -2328,6 +2361,7 @@ public class XMLGregorianCalendarAssertionTest extends AssertionTest {
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createXmlCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47, "Europe/Berlin")).hasTimeZoneDate(2020, Calendar.DECEMBER, 11, 60 * 60 * 1000);
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createXmlCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543, "Europe/Berlin")).hasTimeZoneDate(1324, Calendar.JULY, 21, 60 * 60 * 1000);
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createXmlCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543, "Europe/Berlin")).hasTimeZoneDate(1324, Calendar.DECEMBER, 21, 60 * 60 * 1000);
+        initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC")).isNotNull().hasTimeZoneDate(2020, Calendar.JULY, 11, 0).isInstanceOf(XMLGregorianCalendar.class);
 
         try {
             Raw.xmlGregorianCalendarAssertion().hasTimeZoneDate(1, 1, 1, 0);
@@ -2414,6 +2448,7 @@ public class XMLGregorianCalendarAssertionTest extends AssertionTest {
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createXmlCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47, "Europe/Berlin")).hasUtcDate(2020, Calendar.DECEMBER, 11);
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createXmlCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543, "Europe/Berlin")).hasUtcDate(1324, Calendar.JULY, 21);
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createXmlCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543, "Europe/Berlin")).hasUtcDate(1324, Calendar.DECEMBER, 21);
+        initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC")).isNotNull().hasUtcDate(2020, Calendar.JULY, 11).isInstanceOf(XMLGregorianCalendar.class);
 
         try {
             Raw.xmlGregorianCalendarAssertion().hasUtcDate(1, 1, 1);
@@ -2488,6 +2523,7 @@ public class XMLGregorianCalendarAssertionTest extends AssertionTest {
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createXmlCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47, "Europe/Berlin")).hasTime(15, 23, 47);
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createXmlCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543, "Europe/Berlin")).hasTime(3, 22, 46);
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createXmlCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543, "Europe/Berlin")).hasTime(3, 22, 46);
+        initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC")).isNotNull().hasTime(15, 23, 47).isInstanceOf(XMLGregorianCalendar.class);
 
         try {
             Raw.xmlGregorianCalendarAssertion().hasTime(1, 1, 1);
@@ -2562,6 +2598,7 @@ public class XMLGregorianCalendarAssertionTest extends AssertionTest {
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createXmlCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47, "Europe/Berlin")).hasTime(15, 23, 47, 0);
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createXmlCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543, "Europe/Berlin")).hasTime(3, 22, 46, 543);
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createXmlCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543, "Europe/Berlin")).hasTime(3, 22, 46, 543);
+        initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC")).isNotNull().hasTime(15, 23, 47, 0).isInstanceOf(XMLGregorianCalendar.class);
 
         try {
             Raw.xmlGregorianCalendarAssertion().hasTime(1, 1, 1, 1);
@@ -2648,6 +2685,7 @@ public class XMLGregorianCalendarAssertionTest extends AssertionTest {
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createXmlCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47, "Europe/Berlin")).hasTimeZoneTime(15, 23, 47, 60 * 60 * 1000);
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createXmlCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543, "Europe/Berlin")).hasTimeZoneTime(3, 22, 46, 60 * 60 * 1000);
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createXmlCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543, "Europe/Berlin")).hasTimeZoneTime(3, 22, 46, 60 * 60 * 1000);
+        initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC")).isNotNull().hasTimeZoneTime(15, 23, 47, 0).isInstanceOf(XMLGregorianCalendar.class);
 
         try {
             Raw.xmlGregorianCalendarAssertion().hasTimeZoneTime(1, 1, 1, 0);
@@ -2734,6 +2772,7 @@ public class XMLGregorianCalendarAssertionTest extends AssertionTest {
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createXmlCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47, "Europe/Berlin")).hasTimeZoneTime(15, 23, 47, 0, 60 * 60 * 1000);
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createXmlCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543, "Europe/Berlin")).hasTimeZoneTime(3, 22, 46, 543, 60 * 60 * 1000);
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createXmlCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543, "Europe/Berlin")).hasTimeZoneTime(3, 22, 46, 543, 60 * 60 * 1000);
+        initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC")).isNotNull().hasTimeZoneTime(15, 23, 47, 0, 0).isInstanceOf(XMLGregorianCalendar.class);
 
         try {
             Raw.xmlGregorianCalendarAssertion().hasTimeZoneTime(1, 1, 1, 1, 0);
@@ -2832,6 +2871,7 @@ public class XMLGregorianCalendarAssertionTest extends AssertionTest {
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createXmlCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47, "Europe/Berlin")).hasUtcTime(14, 23, 47);
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createXmlCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543, "Europe/Berlin")).hasUtcTime(2, 22, 46);
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createXmlCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543, "Europe/Berlin")).hasUtcTime(2, 22, 46);
+        initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC")).isNotNull().hasUtcTime(15, 23, 47).isInstanceOf(XMLGregorianCalendar.class);
 
         try {
             Raw.xmlGregorianCalendarAssertion().hasUtcTime(1, 1, 1);
@@ -2906,6 +2946,7 @@ public class XMLGregorianCalendarAssertionTest extends AssertionTest {
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createXmlCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47, "Europe/Berlin")).hasUtcTime(14, 23, 47, 0);
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createXmlCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543, "Europe/Berlin")).hasUtcTime(2, 22, 46, 543);
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createXmlCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543, "Europe/Berlin")).hasUtcTime(2, 22, 46, 543);
+        initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC")).isNotNull().hasUtcTime(15, 23, 47, 0).isInstanceOf(XMLGregorianCalendar.class);
 
         try {
             Raw.xmlGregorianCalendarAssertion().hasUtcTime(1, 1, 1, 1);
@@ -2992,6 +3033,7 @@ public class XMLGregorianCalendarAssertionTest extends AssertionTest {
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createXmlCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47, "Europe/Berlin")).hasDateAndTime(2020, Calendar.DECEMBER, 11, 15, 23, 47);
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createXmlCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543, "Europe/Berlin")).hasDateAndTime(1324, Calendar.JULY, 21, 3, 22, 46);
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createXmlCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543, "Europe/Berlin")).hasDateAndTime(1324, Calendar.DECEMBER, 21, 3, 22, 46);
+        initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC")).isNotNull().hasDateAndTime(2020, Calendar.JULY, 11, 15, 23, 47).isInstanceOf(XMLGregorianCalendar.class);
 
         try {
             Raw.xmlGregorianCalendarAssertion().hasDateAndTime(1, 1, 1, 1, 1, 1);
@@ -3102,6 +3144,7 @@ public class XMLGregorianCalendarAssertionTest extends AssertionTest {
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createXmlCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47, "Europe/Berlin")).hasDateAndTime(2020, Calendar.DECEMBER, 11, 15, 23, 47, 0);
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createXmlCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543, "Europe/Berlin")).hasDateAndTime(1324, Calendar.JULY, 21, 3, 22, 46, 543);
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createXmlCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543, "Europe/Berlin")).hasDateAndTime(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543);
+        initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC")).isNotNull().hasDateAndTime(2020, Calendar.JULY, 11, 15, 23, 47, 0).isInstanceOf(XMLGregorianCalendar.class);
 
         try {
             Raw.xmlGregorianCalendarAssertion().hasDateAndTime(1, 1, 1, 1, 1, 1, 1);
@@ -3224,6 +3267,7 @@ public class XMLGregorianCalendarAssertionTest extends AssertionTest {
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createXmlCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47, "Europe/Berlin")).hasTimeZoneDateAndTime(2020, Calendar.DECEMBER, 11, 15, 23, 47, 60 * 60 * 1000);
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createXmlCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543, "Europe/Berlin")).hasTimeZoneDateAndTime(1324, Calendar.JULY, 21, 3, 22, 46, 60 * 60 * 1000);
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createXmlCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543, "Europe/Berlin")).hasTimeZoneDateAndTime(1324, Calendar.DECEMBER, 21, 3, 22, 46, 60 * 60 * 1000);
+        initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC")).isNotNull().hasTimeZoneDateAndTime(2020, Calendar.JULY, 11, 15, 23, 47, 0).isInstanceOf(XMLGregorianCalendar.class);
 
         try {
             Raw.xmlGregorianCalendarAssertion().hasTimeZoneDateAndTime(1, 1, 1, 1, 1, 1, 0);
@@ -3346,6 +3390,7 @@ public class XMLGregorianCalendarAssertionTest extends AssertionTest {
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createXmlCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47, "Europe/Berlin")).hasTimeZoneDateAndTime(2020, Calendar.DECEMBER, 11, 15, 23, 47, 0, 60 * 60 * 1000);
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createXmlCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543, "Europe/Berlin")).hasTimeZoneDateAndTime(1324, Calendar.JULY, 21, 3, 22, 46, 543, 60 * 60 * 1000);
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createXmlCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543, "Europe/Berlin")).hasTimeZoneDateAndTime(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543, 60 * 60 * 1000);
+        initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC")).isNotNull().hasTimeZoneDateAndTime(2020, Calendar.JULY, 11, 15, 23, 47, 0, 0).isInstanceOf(XMLGregorianCalendar.class);
 
         try {
             Raw.xmlGregorianCalendarAssertion().hasTimeZoneDateAndTime(1, 1, 1, 1, 1, 1, 1, 0);
@@ -3480,6 +3525,7 @@ public class XMLGregorianCalendarAssertionTest extends AssertionTest {
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createXmlCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47, "Europe/Berlin")).hasUtcDateAndTime(2020, Calendar.DECEMBER, 11, 14, 23, 47);
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createXmlCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543, "Europe/Berlin")).hasUtcDateAndTime(1324, Calendar.JULY, 21, 2, 22, 46);
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createXmlCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543, "Europe/Berlin")).hasUtcDateAndTime(1324, Calendar.DECEMBER, 21, 2, 22, 46);
+        initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC")).isNotNull().hasUtcDateAndTime(2020, Calendar.JULY, 11, 15, 23, 47).isInstanceOf(XMLGregorianCalendar.class);
 
         try {
             Raw.xmlGregorianCalendarAssertion().hasUtcDateAndTime(1, 1, 1, 1, 1, 1);
@@ -3590,6 +3636,7 @@ public class XMLGregorianCalendarAssertionTest extends AssertionTest {
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createXmlCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47, "Europe/Berlin")).hasUtcDateAndTime(2020, Calendar.DECEMBER, 11, 14, 23, 47, 0);
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createXmlCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543, "Europe/Berlin")).hasUtcDateAndTime(1324, Calendar.JULY, 21, 2, 22, 46, 543);
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createXmlCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543, "Europe/Berlin")).hasUtcDateAndTime(1324, Calendar.DECEMBER, 21, 2, 22, 46, 543);
+        initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC")).isNotNull().hasUtcDateAndTime(2020, Calendar.JULY, 11, 15, 23, 47, 0).isInstanceOf(XMLGregorianCalendar.class);
 
         try {
             Raw.xmlGregorianCalendarAssertion().hasUtcDateAndTime(1, 1, 1, 1, 1, 1, 1);
@@ -3736,6 +3783,7 @@ public class XMLGregorianCalendarAssertionTest extends AssertionTest {
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createXmlCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47, "Europe/Berlin")).toTimeZoneCalendar(TimeZone.getTimeZone("Europe/Berlin")).isEqualTo(DataHelper.createCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47, "Europe/Berlin"));
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createXmlCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543, "Europe/Berlin")).toTimeZoneCalendar(TimeZone.getTimeZone("Europe/Berlin")).isEqualTo(DataHelper.createCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543, "Europe/Berlin"));
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createXmlCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543, "Europe/Berlin")).toTimeZoneCalendar(TimeZone.getTimeZone("Europe/Berlin")).isEqualTo(DataHelper.createCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543, "Europe/Berlin"));
+        initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC")).isNotNull().toTimeZoneCalendar(TimeZone.getTimeZone("UTC")).isEqualTo(DataHelper.createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC"));
 
         try {
             Raw.xmlGregorianCalendarAssertion().toTimeZoneCalendar(TimeZone.getTimeZone("UTC"));
@@ -3834,6 +3882,7 @@ public class XMLGregorianCalendarAssertionTest extends AssertionTest {
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createXmlCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47, "Europe/Berlin")).toTimeZoneCalendar("Europe/Berlin").isEqualTo(DataHelper.createCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47, "Europe/Berlin"));
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createXmlCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543, "Europe/Berlin")).toTimeZoneCalendar("Europe/Berlin").isEqualTo(DataHelper.createCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543, "Europe/Berlin"));
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createXmlCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543, "Europe/Berlin")).toTimeZoneCalendar("Europe/Berlin").isEqualTo(DataHelper.createCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543, "Europe/Berlin"));
+        initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC")).isNotNull().toTimeZoneCalendar("UTC").isEqualTo(DataHelper.createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC"));
 
         try {
             Raw.xmlGregorianCalendarAssertion().toTimeZoneCalendar("UTC");
@@ -3908,6 +3957,7 @@ public class XMLGregorianCalendarAssertionTest extends AssertionTest {
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createXmlCalendar(2020, Calendar.DECEMBER, 11, 15, 23, 47, "Europe/Berlin")).toUtcTimeZoneCalendar().isEqualTo(DataHelper.createCalendar(2020, Calendar.DECEMBER, 11, 14, 23, 47, "UTC"));
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createXmlCalendar(1324, Calendar.JULY, 21, 3, 22, 46, 543, "Europe/Berlin")).toUtcTimeZoneCalendar().isEqualTo(DataHelper.createCalendar(1324, Calendar.JULY, 21, 2, 22, 46, 543, "UTC"));
         initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createXmlCalendar(1324, Calendar.DECEMBER, 21, 3, 22, 46, 543, "Europe/Berlin")).toUtcTimeZoneCalendar().isEqualTo(DataHelper.createCalendar(1324, Calendar.DECEMBER, 21, 2, 22, 46, 543, "UTC"));
+        initialize(Raw.xmlGregorianCalendarAssertion(), DataHelper.createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC")).isNotNull().toUtcTimeZoneCalendar().isEqualTo(DataHelper.createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "UTC"));
 
         try {
             Raw.xmlGregorianCalendarAssertion().toUtcTimeZoneCalendar();
