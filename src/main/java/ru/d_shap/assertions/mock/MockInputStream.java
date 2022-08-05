@@ -207,12 +207,42 @@ public final class MockInputStream extends InputStream implements IsCloseable {
         /**
          * Set exception for available call.
          *
+         * @param check     if true then set exception.
+         * @param exception exception for available call.
+         *
+         * @return current object for the chain call.
+         */
+        public Builder setAvailableException(final boolean check, final IOException exception) {
+            if (check) {
+                _availableException = exception;
+            }
+            return this;
+        }
+
+        /**
+         * Set exception for available call.
+         *
          * @param exceptionMessage exception message for available call.
          *
          * @return current object for the chain call.
          */
         public Builder setAvailableException(final String exceptionMessage) {
             _availableException = new IOException(exceptionMessage);
+            return this;
+        }
+
+        /**
+         * Set exception for available call.
+         *
+         * @param check            if true then set exception.
+         * @param exceptionMessage exception message for available call.
+         *
+         * @return current object for the chain call.
+         */
+        public Builder setAvailableException(final boolean check, final String exceptionMessage) {
+            if (check) {
+                _availableException = new IOException(exceptionMessage);
+            }
             return this;
         }
 
@@ -231,12 +261,42 @@ public final class MockInputStream extends InputStream implements IsCloseable {
         /**
          * Set exception for read call.
          *
+         * @param check     if true then set exception.
+         * @param exception exception for read call.
+         *
+         * @return current object for the chain call.
+         */
+        public Builder setReadException(final boolean check, final IOException exception) {
+            if (check) {
+                _readException = exception;
+            }
+            return this;
+        }
+
+        /**
+         * Set exception for read call.
+         *
          * @param exceptionMessage exception message for read call.
          *
          * @return current object for the chain call.
          */
         public Builder setReadException(final String exceptionMessage) {
             _readException = new IOException(exceptionMessage);
+            return this;
+        }
+
+        /**
+         * Set exception for read call.
+         *
+         * @param check            if true then set exception.
+         * @param exceptionMessage exception message for read call.
+         *
+         * @return current object for the chain call.
+         */
+        public Builder setReadException(final boolean check, final String exceptionMessage) {
+            if (check) {
+                _readException = new IOException(exceptionMessage);
+            }
             return this;
         }
 
@@ -255,12 +315,42 @@ public final class MockInputStream extends InputStream implements IsCloseable {
         /**
          * Set exception for skip call.
          *
+         * @param check     if true then set exception.
+         * @param exception exception for skip call.
+         *
+         * @return current object for the chain call.
+         */
+        public Builder setSkipException(final boolean check, final IOException exception) {
+            if (check) {
+                _skipException = exception;
+            }
+            return this;
+        }
+
+        /**
+         * Set exception for skip call.
+         *
          * @param exceptionMessage exception message for skip call.
          *
          * @return current object for the chain call.
          */
         public Builder setSkipException(final String exceptionMessage) {
             _skipException = new IOException(exceptionMessage);
+            return this;
+        }
+
+        /**
+         * Set exception for skip call.
+         *
+         * @param check            if true then set exception.
+         * @param exceptionMessage exception message for skip call.
+         *
+         * @return current object for the chain call.
+         */
+        public Builder setSkipException(final boolean check, final String exceptionMessage) {
+            if (check) {
+                _skipException = new IOException(exceptionMessage);
+            }
             return this;
         }
 
@@ -279,12 +369,42 @@ public final class MockInputStream extends InputStream implements IsCloseable {
         /**
          * Set exception for close call.
          *
+         * @param check     if true then set exception.
+         * @param exception exception for close call.
+         *
+         * @return current object for the chain call.
+         */
+        public Builder setCloseException(final boolean check, final IOException exception) {
+            if (check) {
+                _closeException = exception;
+            }
+            return this;
+        }
+
+        /**
+         * Set exception for close call.
+         *
          * @param exceptionMessage exception message for close call.
          *
          * @return current object for the chain call.
          */
         public Builder setCloseException(final String exceptionMessage) {
             _closeException = new IOException(exceptionMessage);
+            return this;
+        }
+
+        /**
+         * Set exception for close call.
+         *
+         * @param check            if true then set exception.
+         * @param exceptionMessage exception message for close call.
+         *
+         * @return current object for the chain call.
+         */
+        public Builder setCloseException(final boolean check, final String exceptionMessage) {
+            if (check) {
+                _closeException = new IOException(exceptionMessage);
+            }
             return this;
         }
 

@@ -197,12 +197,42 @@ public final class MockWriter extends Writer implements IsCloseable {
         /**
          * Set exception for write call.
          *
+         * @param check     if true then set exception.
+         * @param exception exception for write call.
+         *
+         * @return current object for the chain call.
+         */
+        public Builder setWriteException(final boolean check, final IOException exception) {
+            if (check) {
+                _writeException = exception;
+            }
+            return this;
+        }
+
+        /**
+         * Set exception for write call.
+         *
          * @param exceptionMessage exception message for write call.
          *
          * @return current object for the chain call.
          */
         public Builder setWriteException(final String exceptionMessage) {
             _writeException = new IOException(exceptionMessage);
+            return this;
+        }
+
+        /**
+         * Set exception for write call.
+         *
+         * @param check            if true then set exception.
+         * @param exceptionMessage exception message for write call.
+         *
+         * @return current object for the chain call.
+         */
+        public Builder setWriteException(final boolean check, final String exceptionMessage) {
+            if (check) {
+                _writeException = new IOException(exceptionMessage);
+            }
             return this;
         }
 
@@ -221,12 +251,42 @@ public final class MockWriter extends Writer implements IsCloseable {
         /**
          * Set exception for flush call.
          *
+         * @param check     if true then set exception.
+         * @param exception exception for flush call.
+         *
+         * @return current object for the chain call.
+         */
+        public Builder setFlushException(final boolean check, final IOException exception) {
+            if (check) {
+                _flushException = exception;
+            }
+            return this;
+        }
+
+        /**
+         * Set exception for flush call.
+         *
          * @param exceptionMessage exception message for flush call.
          *
          * @return current object for the chain call.
          */
         public Builder setFlushException(final String exceptionMessage) {
             _flushException = new IOException(exceptionMessage);
+            return this;
+        }
+
+        /**
+         * Set exception for flush call.
+         *
+         * @param check            if true then set exception.
+         * @param exceptionMessage exception message for flush call.
+         *
+         * @return current object for the chain call.
+         */
+        public Builder setFlushException(final boolean check, final String exceptionMessage) {
+            if (check) {
+                _flushException = new IOException(exceptionMessage);
+            }
             return this;
         }
 
@@ -245,12 +305,42 @@ public final class MockWriter extends Writer implements IsCloseable {
         /**
          * Set exception for close call.
          *
+         * @param check     if true then set exception.
+         * @param exception exception for close call.
+         *
+         * @return current object for the chain call.
+         */
+        public Builder setCloseException(final boolean check, final IOException exception) {
+            if (check) {
+                _closeException = exception;
+            }
+            return this;
+        }
+
+        /**
+         * Set exception for close call.
+         *
          * @param exceptionMessage exception message for close call.
          *
          * @return current object for the chain call.
          */
         public Builder setCloseException(final String exceptionMessage) {
             _closeException = new IOException(exceptionMessage);
+            return this;
+        }
+
+        /**
+         * Set exception for close call.
+         *
+         * @param check            if true then set exception.
+         * @param exceptionMessage exception message for close call.
+         *
+         * @return current object for the chain call.
+         */
+        public Builder setCloseException(final boolean check, final String exceptionMessage) {
+            if (check) {
+                _closeException = new IOException(exceptionMessage);
+            }
             return this;
         }
 
