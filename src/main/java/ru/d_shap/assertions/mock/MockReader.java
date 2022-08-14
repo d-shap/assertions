@@ -67,7 +67,12 @@ public final class MockReader extends Reader implements IsCloseable {
 
     @Override
     public int read() throws IOException {
-        return doRead(_readException);
+        int result = doRead(_readException);
+        if (result == Integer.MIN_VALUE) {
+            return -1;
+        } else {
+            return result;
+        }
     }
 
     @Override
@@ -90,7 +95,7 @@ public final class MockReader extends Reader implements IsCloseable {
         int to = offset + length;
         for (int i = offset; i < to; i++) {
             read = doRead(_readException);
-            if (read < 0) {
+            if (read == Integer.MIN_VALUE) {
                 break;
             }
             buffer[i] = (char) read;
@@ -110,7 +115,7 @@ public final class MockReader extends Reader implements IsCloseable {
             _position++;
             return result;
         } else {
-            return -1;
+            return Integer.MIN_VALUE;
         }
     }
 
@@ -120,7 +125,7 @@ public final class MockReader extends Reader implements IsCloseable {
         int read;
         for (long i = 0; i < count; i++) {
             read = doRead(_skipException);
-            if (read < 0) {
+            if (read == Integer.MIN_VALUE) {
                 break;
             }
             skipped++;
