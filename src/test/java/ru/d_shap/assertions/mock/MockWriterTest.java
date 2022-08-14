@@ -103,18 +103,34 @@ public final class MockWriterTest extends AssertionTest {
         writer05.write('2');
         Assertions.assertThat(((MockWriter) writer05).getContent()).containsExactlyInOrder();
 
-        Writer writer06 = DataHelper.createWriterBuilder().setContentSize(1).setFlushException("ex").buildWriter();
+        Writer writer06 = DataHelper.createWriterBuilder().setContentSize(1).setWriteException(false, new IOException("ex")).buildWriter();
         writer06.write('1');
         writer06.write('2');
         Assertions.assertThat(((MockWriter) writer06).getContent()).containsExactlyInOrder('1');
 
-        Writer writer07 = DataHelper.createWriterBuilder().setContentSize(1).setCloseException("ex").buildWriter();
+        Writer writer07 = DataHelper.createWriterBuilder().setContentSize(1).setWriteException(false, "ex").buildWriter();
         writer07.write('1');
         writer07.write('2');
         Assertions.assertThat(((MockWriter) writer07).getContent()).containsExactlyInOrder('1');
 
+        Writer writer08 = DataHelper.createWriterBuilder().setContentSize(1).setFlushException("ex").buildWriter();
+        writer08.write('1');
+        writer08.write('2');
+        Assertions.assertThat(((MockWriter) writer08).getContent()).containsExactlyInOrder('1');
+
+        Writer writer09 = DataHelper.createWriterBuilder().setContentSize(1).setCloseException("ex").buildWriter();
+        writer09.write('1');
+        writer09.write('2');
+        Assertions.assertThat(((MockWriter) writer09).getContent()).containsExactlyInOrder('1');
+
         try {
             DataHelper.createWriterBuilder().setWriteException(new IOException("fail")).buildWriter().write('1');
+            Assertions.fail("MockWriter test fail");
+        } catch (IOException ex) {
+            Assertions.assertThat(ex).hasMessage("fail");
+        }
+        try {
+            DataHelper.createWriterBuilder().setWriteException(true, new IOException("fail")).buildWriter().write('1');
             Assertions.fail("MockWriter test fail");
         } catch (IOException ex) {
             Assertions.assertThat(ex).hasMessage("fail");
@@ -125,22 +141,28 @@ public final class MockWriterTest extends AssertionTest {
         } catch (IOException ex) {
             Assertions.assertThat(ex).hasMessage("fail");
         }
-
-        Writer writer08 = DataHelper.createWriterBuilder().setContentSize(5).setWriteException("fail").buildWriter();
-        writer08.write('1');
-        writer08.write('2');
-        writer08.write('0');
-        Assertions.assertThat(((MockWriter) writer08).getContent()).containsExactlyInOrder('1', '2', '0');
-        writer08.write('3');
-        writer08.write('4');
-        Assertions.assertThat(((MockWriter) writer08).getContent()).containsExactlyInOrder('1', '2', '0', '3', '4');
         try {
-            writer08.write('5');
+            DataHelper.createWriterBuilder().setWriteException(true, "fail").buildWriter().write('1');
             Assertions.fail("MockWriter test fail");
         } catch (IOException ex) {
             Assertions.assertThat(ex).hasMessage("fail");
         }
-        Assertions.assertThat(((MockWriter) writer08).getContent()).containsExactlyInOrder('1', '2', '0', '3', '4');
+
+        Writer writer10 = DataHelper.createWriterBuilder().setContentSize(5).setWriteException("fail").buildWriter();
+        writer10.write('1');
+        writer10.write('2');
+        writer10.write('0');
+        Assertions.assertThat(((MockWriter) writer10).getContent()).containsExactlyInOrder('1', '2', '0');
+        writer10.write('3');
+        writer10.write('4');
+        Assertions.assertThat(((MockWriter) writer10).getContent()).containsExactlyInOrder('1', '2', '0', '3', '4');
+        try {
+            writer10.write('5');
+            Assertions.fail("MockWriter test fail");
+        } catch (IOException ex) {
+            Assertions.assertThat(ex).hasMessage("fail");
+        }
+        Assertions.assertThat(((MockWriter) writer10).getContent()).containsExactlyInOrder('1', '2', '0', '3', '4');
     }
 
     /**
@@ -186,17 +208,29 @@ public final class MockWriterTest extends AssertionTest {
         writer04.write(new char[]{'4', '5', '6'}, 1, 2);
         Assertions.assertThat(((MockWriter) writer04).getContent()).containsExactlyInOrder();
 
-        Writer writer05 = DataHelper.createWriterBuilder().setContentSize(2).setFlushException("ex").buildWriter();
+        Writer writer05 = DataHelper.createWriterBuilder().setContentSize(2).setWriteException(false, new IOException("ex")).buildWriter();
         writer05.write(new char[]{'1', '2', '3'}, 0, 3);
         Assertions.assertThat(((MockWriter) writer05).getContent()).containsExactlyInOrder('1', '2');
         writer05.write(new char[]{'4', '5', '6'}, 1, 2);
         Assertions.assertThat(((MockWriter) writer05).getContent()).containsExactlyInOrder('1', '2');
 
-        Writer writer06 = DataHelper.createWriterBuilder().setContentSize(2).setCloseException("ex").buildWriter();
+        Writer writer06 = DataHelper.createWriterBuilder().setContentSize(2).setWriteException(false, "ex").buildWriter();
         writer06.write(new char[]{'1', '2', '3'}, 0, 3);
         Assertions.assertThat(((MockWriter) writer06).getContent()).containsExactlyInOrder('1', '2');
         writer06.write(new char[]{'4', '5', '6'}, 1, 2);
         Assertions.assertThat(((MockWriter) writer06).getContent()).containsExactlyInOrder('1', '2');
+
+        Writer writer07 = DataHelper.createWriterBuilder().setContentSize(2).setFlushException("ex").buildWriter();
+        writer07.write(new char[]{'1', '2', '3'}, 0, 3);
+        Assertions.assertThat(((MockWriter) writer07).getContent()).containsExactlyInOrder('1', '2');
+        writer07.write(new char[]{'4', '5', '6'}, 1, 2);
+        Assertions.assertThat(((MockWriter) writer07).getContent()).containsExactlyInOrder('1', '2');
+
+        Writer writer08 = DataHelper.createWriterBuilder().setContentSize(2).setCloseException("ex").buildWriter();
+        writer08.write(new char[]{'1', '2', '3'}, 0, 3);
+        Assertions.assertThat(((MockWriter) writer08).getContent()).containsExactlyInOrder('1', '2');
+        writer08.write(new char[]{'4', '5', '6'}, 1, 2);
+        Assertions.assertThat(((MockWriter) writer08).getContent()).containsExactlyInOrder('1', '2');
 
         try {
             DataHelper.createWriterBuilder().buildWriter().write((char[]) null, 0, 10);
@@ -253,22 +287,34 @@ public final class MockWriterTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("fail");
         }
         try {
+            DataHelper.createWriterBuilder().setWriteException(true, new IOException("fail")).buildWriter().write(new char[]{'1'}, 0, 1);
+            Assertions.fail("MockWriter test fail");
+        } catch (IOException ex) {
+            Assertions.assertThat(ex).hasMessage("fail");
+        }
+        try {
             DataHelper.createWriterBuilder().setWriteException("fail").buildWriter().write(new char[]{'1'}, 0, 1);
             Assertions.fail("MockWriter test fail");
         } catch (IOException ex) {
             Assertions.assertThat(ex).hasMessage("fail");
         }
-
-        Writer writer07 = DataHelper.createWriterBuilder().setContentSize(5).setWriteException("fail").buildWriter();
-        writer07.write(new char[]{'1', '2', '3'}, 0, 3);
-        Assertions.assertThat(((MockWriter) writer07).getContent()).containsExactlyInOrder('1', '2', '3');
         try {
-            writer07.write(new char[]{'4', '5', '6'}, 0, 3);
+            DataHelper.createWriterBuilder().setWriteException(true, "fail").buildWriter().write(new char[]{'1'}, 0, 1);
             Assertions.fail("MockWriter test fail");
         } catch (IOException ex) {
             Assertions.assertThat(ex).hasMessage("fail");
         }
-        Assertions.assertThat(((MockWriter) writer07).getContent()).containsExactlyInOrder('1', '2', '3', '4', '5');
+
+        Writer writer09 = DataHelper.createWriterBuilder().setContentSize(5).setWriteException("fail").buildWriter();
+        writer09.write(new char[]{'1', '2', '3'}, 0, 3);
+        Assertions.assertThat(((MockWriter) writer09).getContent()).containsExactlyInOrder('1', '2', '3');
+        try {
+            writer09.write(new char[]{'4', '5', '6'}, 0, 3);
+            Assertions.fail("MockWriter test fail");
+        } catch (IOException ex) {
+            Assertions.assertThat(ex).hasMessage("fail");
+        }
+        Assertions.assertThat(((MockWriter) writer09).getContent()).containsExactlyInOrder('1', '2', '3', '4', '5');
     }
 
     /**
@@ -314,17 +360,29 @@ public final class MockWriterTest extends AssertionTest {
         writer04.write("56");
         Assertions.assertThat(((MockWriter) writer04).getContent()).containsExactlyInOrder();
 
-        Writer writer05 = DataHelper.createWriterBuilder().setContentSize(2).setFlushException("ex").buildWriter();
+        Writer writer05 = DataHelper.createWriterBuilder().setContentSize(2).setWriteException(false, new IOException("ex")).buildWriter();
         writer05.write("123");
         Assertions.assertThat(((MockWriter) writer05).getContent()).containsExactlyInOrder('1', '2');
         writer05.write("56");
         Assertions.assertThat(((MockWriter) writer05).getContent()).containsExactlyInOrder('1', '2');
 
-        Writer writer06 = DataHelper.createWriterBuilder().setContentSize(2).setCloseException("ex").buildWriter();
+        Writer writer06 = DataHelper.createWriterBuilder().setContentSize(2).setWriteException(false, "ex").buildWriter();
         writer06.write("123");
         Assertions.assertThat(((MockWriter) writer06).getContent()).containsExactlyInOrder('1', '2');
         writer06.write("56");
         Assertions.assertThat(((MockWriter) writer06).getContent()).containsExactlyInOrder('1', '2');
+
+        Writer writer07 = DataHelper.createWriterBuilder().setContentSize(2).setFlushException("ex").buildWriter();
+        writer07.write("123");
+        Assertions.assertThat(((MockWriter) writer07).getContent()).containsExactlyInOrder('1', '2');
+        writer07.write("56");
+        Assertions.assertThat(((MockWriter) writer07).getContent()).containsExactlyInOrder('1', '2');
+
+        Writer writer08 = DataHelper.createWriterBuilder().setContentSize(2).setCloseException("ex").buildWriter();
+        writer08.write("123");
+        Assertions.assertThat(((MockWriter) writer08).getContent()).containsExactlyInOrder('1', '2');
+        writer08.write("56");
+        Assertions.assertThat(((MockWriter) writer08).getContent()).containsExactlyInOrder('1', '2');
 
         try {
             DataHelper.createWriterBuilder().buildWriter().write((String) null);
@@ -339,22 +397,34 @@ public final class MockWriterTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("fail");
         }
         try {
+            DataHelper.createWriterBuilder().setWriteException(true, new IOException("fail")).buildWriter().write("1");
+            Assertions.fail("MockWriter test fail");
+        } catch (IOException ex) {
+            Assertions.assertThat(ex).hasMessage("fail");
+        }
+        try {
             DataHelper.createWriterBuilder().setWriteException("fail").buildWriter().write("1");
             Assertions.fail("MockWriter test fail");
         } catch (IOException ex) {
             Assertions.assertThat(ex).hasMessage("fail");
         }
-
-        Writer writer07 = DataHelper.createWriterBuilder().setContentSize(5).setWriteException("fail").buildWriter();
-        writer07.write("123");
-        Assertions.assertThat(((MockWriter) writer07).getContent()).containsExactlyInOrder('1', '2', '3');
         try {
-            writer07.write("456");
+            DataHelper.createWriterBuilder().setWriteException(true, "fail").buildWriter().write("1");
             Assertions.fail("MockWriter test fail");
         } catch (IOException ex) {
             Assertions.assertThat(ex).hasMessage("fail");
         }
-        Assertions.assertThat(((MockWriter) writer07).getContent()).containsExactlyInOrder('1', '2', '3', '4', '5');
+
+        Writer writer09 = DataHelper.createWriterBuilder().setContentSize(5).setWriteException("fail").buildWriter();
+        writer09.write("123");
+        Assertions.assertThat(((MockWriter) writer09).getContent()).containsExactlyInOrder('1', '2', '3');
+        try {
+            writer09.write("456");
+            Assertions.fail("MockWriter test fail");
+        } catch (IOException ex) {
+            Assertions.assertThat(ex).hasMessage("fail");
+        }
+        Assertions.assertThat(((MockWriter) writer09).getContent()).containsExactlyInOrder('1', '2', '3', '4', '5');
     }
 
     /**
@@ -400,17 +470,29 @@ public final class MockWriterTest extends AssertionTest {
         writer04.write("456", 1, 2);
         Assertions.assertThat(((MockWriter) writer04).getContent()).containsExactlyInOrder();
 
-        Writer writer05 = DataHelper.createWriterBuilder().setContentSize(2).setFlushException("ex").buildWriter();
+        Writer writer05 = DataHelper.createWriterBuilder().setContentSize(2).setWriteException(false, new IOException("ex")).buildWriter();
         writer05.write("123", 0, 3);
         Assertions.assertThat(((MockWriter) writer05).getContent()).containsExactlyInOrder('1', '2');
         writer05.write("456", 1, 2);
         Assertions.assertThat(((MockWriter) writer05).getContent()).containsExactlyInOrder('1', '2');
 
-        Writer writer06 = DataHelper.createWriterBuilder().setContentSize(2).setCloseException("ex").buildWriter();
+        Writer writer06 = DataHelper.createWriterBuilder().setContentSize(2).setWriteException(false, "ex").buildWriter();
         writer06.write("123", 0, 3);
         Assertions.assertThat(((MockWriter) writer06).getContent()).containsExactlyInOrder('1', '2');
         writer06.write("456", 1, 2);
         Assertions.assertThat(((MockWriter) writer06).getContent()).containsExactlyInOrder('1', '2');
+
+        Writer writer07 = DataHelper.createWriterBuilder().setContentSize(2).setFlushException("ex").buildWriter();
+        writer07.write("123", 0, 3);
+        Assertions.assertThat(((MockWriter) writer07).getContent()).containsExactlyInOrder('1', '2');
+        writer07.write("456", 1, 2);
+        Assertions.assertThat(((MockWriter) writer07).getContent()).containsExactlyInOrder('1', '2');
+
+        Writer writer08 = DataHelper.createWriterBuilder().setContentSize(2).setCloseException("ex").buildWriter();
+        writer08.write("123", 0, 3);
+        Assertions.assertThat(((MockWriter) writer08).getContent()).containsExactlyInOrder('1', '2');
+        writer08.write("456", 1, 2);
+        Assertions.assertThat(((MockWriter) writer08).getContent()).containsExactlyInOrder('1', '2');
 
         try {
             DataHelper.createWriterBuilder().buildWriter().write((String) null, 0, 10);
@@ -467,22 +549,34 @@ public final class MockWriterTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("fail");
         }
         try {
+            DataHelper.createWriterBuilder().setWriteException(true, new IOException("fail")).buildWriter().write("1", 0, 1);
+            Assertions.fail("MockWriter test fail");
+        } catch (IOException ex) {
+            Assertions.assertThat(ex).hasMessage("fail");
+        }
+        try {
             DataHelper.createWriterBuilder().setWriteException("fail").buildWriter().write("1", 0, 1);
             Assertions.fail("MockWriter test fail");
         } catch (IOException ex) {
             Assertions.assertThat(ex).hasMessage("fail");
         }
-
-        Writer writer07 = DataHelper.createWriterBuilder().setContentSize(5).setWriteException("fail").buildWriter();
-        writer07.write("123", 0, 3);
-        Assertions.assertThat(((MockWriter) writer07).getContent()).containsExactlyInOrder('1', '2', '3');
         try {
-            writer07.write("456", 0, 3);
+            DataHelper.createWriterBuilder().setWriteException(true, "fail").buildWriter().write("1", 0, 1);
             Assertions.fail("MockWriter test fail");
         } catch (IOException ex) {
             Assertions.assertThat(ex).hasMessage("fail");
         }
-        Assertions.assertThat(((MockWriter) writer07).getContent()).containsExactlyInOrder('1', '2', '3', '4', '5');
+
+        Writer writer09 = DataHelper.createWriterBuilder().setContentSize(5).setWriteException("fail").buildWriter();
+        writer09.write("123", 0, 3);
+        Assertions.assertThat(((MockWriter) writer09).getContent()).containsExactlyInOrder('1', '2', '3');
+        try {
+            writer09.write("456", 0, 3);
+            Assertions.fail("MockWriter test fail");
+        } catch (IOException ex) {
+            Assertions.assertThat(ex).hasMessage("fail");
+        }
+        Assertions.assertThat(((MockWriter) writer09).getContent()).containsExactlyInOrder('1', '2', '3', '4', '5');
     }
 
     /**
@@ -502,11 +596,23 @@ public final class MockWriterTest extends AssertionTest {
         Writer writer03 = DataHelper.createWriterBuilder().setWriteException("ex").buildWriter();
         writer03.flush();
 
-        Writer writer04 = DataHelper.createWriterBuilder().setCloseException("ex").buildWriter();
+        Writer writer04 = DataHelper.createWriterBuilder().setFlushException(false, new IOException("ex")).buildWriter();
         writer04.flush();
+
+        Writer writer05 = DataHelper.createWriterBuilder().setFlushException(false, "ex").buildWriter();
+        writer05.flush();
+
+        Writer writer06 = DataHelper.createWriterBuilder().setCloseException("ex").buildWriter();
+        writer06.flush();
 
         try {
             DataHelper.createWriterBuilder().setFlushException(new IOException("fail")).buildWriter().flush();
+            Assertions.fail("MockWriter test fail");
+        } catch (IOException ex) {
+            Assertions.assertThat(ex).hasMessage("fail");
+        }
+        try {
+            DataHelper.createWriterBuilder().setFlushException(true, new IOException("fail")).buildWriter().flush();
             Assertions.fail("MockWriter test fail");
         } catch (IOException ex) {
             Assertions.assertThat(ex).hasMessage("fail");
@@ -517,26 +623,32 @@ public final class MockWriterTest extends AssertionTest {
         } catch (IOException ex) {
             Assertions.assertThat(ex).hasMessage("fail");
         }
-
-        Writer writer05 = DataHelper.createWriterBuilder().setContentSize(5).setFlushException("fail").buildWriter();
-        writer05.flush();
-        writer05.write('1');
-        writer05.flush();
-        writer05.write('2');
-        writer05.flush();
-        writer05.write('3');
-        writer05.flush();
-        Assertions.assertThat(((MockWriter) writer05).getContent()).containsExactlyInOrder('1', '2', '3');
-        writer05.write('4');
-        writer05.flush();
-        writer05.write('5');
         try {
-            writer05.flush();
+            DataHelper.createWriterBuilder().setFlushException(true, "fail").buildWriter().flush();
             Assertions.fail("MockWriter test fail");
         } catch (IOException ex) {
             Assertions.assertThat(ex).hasMessage("fail");
         }
-        Assertions.assertThat(((MockWriter) writer05).getContent()).containsExactlyInOrder('1', '2', '3', '4', '5');
+
+        Writer writer07 = DataHelper.createWriterBuilder().setContentSize(5).setFlushException("fail").buildWriter();
+        writer07.flush();
+        writer07.write('1');
+        writer07.flush();
+        writer07.write('2');
+        writer07.flush();
+        writer07.write('3');
+        writer07.flush();
+        Assertions.assertThat(((MockWriter) writer07).getContent()).containsExactlyInOrder('1', '2', '3');
+        writer07.write('4');
+        writer07.flush();
+        writer07.write('5');
+        try {
+            writer07.flush();
+            Assertions.fail("MockWriter test fail");
+        } catch (IOException ex) {
+            Assertions.assertThat(ex).hasMessage("fail");
+        }
+        Assertions.assertThat(((MockWriter) writer07).getContent()).containsExactlyInOrder('1', '2', '3', '4', '5');
     }
 
     /**
@@ -559,8 +671,20 @@ public final class MockWriterTest extends AssertionTest {
         Writer writer04 = DataHelper.createWriterBuilder().setContentSize(5).setFlushException("ex").buildWriter();
         writer04.close();
 
+        Writer writer05 = DataHelper.createWriterBuilder().setCloseException(false, new IOException("ex")).buildWriter();
+        writer05.close();
+
+        Writer writer06 = DataHelper.createWriterBuilder().setCloseException(false, "ex").buildWriter();
+        writer06.close();
+
         try {
             DataHelper.createWriterBuilder().setCloseException(new IOException("fail")).buildWriter().close();
+            Assertions.fail("MockWriter test fail");
+        } catch (IOException ex) {
+            Assertions.assertThat(ex).hasMessage("fail");
+        }
+        try {
+            DataHelper.createWriterBuilder().setCloseException(true, new IOException("fail")).buildWriter().close();
             Assertions.fail("MockWriter test fail");
         } catch (IOException ex) {
             Assertions.assertThat(ex).hasMessage("fail");
@@ -572,39 +696,45 @@ public final class MockWriterTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("fail");
         }
         try {
+            DataHelper.createWriterBuilder().setCloseException(true, "fail").buildWriter().close();
+            Assertions.fail("MockWriter test fail");
+        } catch (IOException ex) {
+            Assertions.assertThat(ex).hasMessage("fail");
+        }
+        try {
             DataHelper.createWriterBuilder().setContentSize(5).setCloseException("fail").buildWriter().close();
             Assertions.fail("MockWriter test fail");
         } catch (IOException ex) {
             Assertions.assertThat(ex).hasMessage("fail");
         }
 
-        Writer writer05 = DataHelper.createWriterBuilder().setContentSize(5).setFlushException("fail").buildWriter();
-        writer05.write('1');
-        writer05.write('2');
-        writer05.write('3');
-        writer05.write('4');
-        writer05.write('5');
+        Writer writer07 = DataHelper.createWriterBuilder().setContentSize(5).setFlushException("fail").buildWriter();
+        writer07.write('1');
+        writer07.write('2');
+        writer07.write('3');
+        writer07.write('4');
+        writer07.write('5');
         try {
-            writer05.close();
+            writer07.close();
             Assertions.fail("MockWriter test fail");
         } catch (IOException ex) {
             Assertions.assertThat(ex).hasMessage("fail");
         }
 
-        Writer writer06 = DataHelper.createWriterBuilder().setContentSize(5).setFlushException("fail 1").setCloseException("fail 2").buildWriter();
-        writer06.write('1');
-        writer06.write('2');
-        writer06.write('3');
-        writer06.write('4');
-        writer06.write('5');
+        Writer writer08 = DataHelper.createWriterBuilder().setContentSize(5).setFlushException("fail 1").setCloseException("fail 2").buildWriter();
+        writer08.write('1');
+        writer08.write('2');
+        writer08.write('3');
+        writer08.write('4');
+        writer08.write('5');
         try {
-            writer06.close();
+            writer08.close();
             Assertions.fail("MockWriter test fail");
         } catch (IOException ex) {
             Assertions.assertThat(ex).hasMessage("fail 1");
         }
         try {
-            writer06.close();
+            writer08.close();
             Assertions.fail("MockWriter test fail");
         } catch (IOException ex) {
             Assertions.assertThat(ex).hasMessage("fail 2");
