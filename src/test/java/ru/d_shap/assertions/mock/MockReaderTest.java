@@ -64,16 +64,30 @@ public final class MockReaderTest extends AssertionTest {
         Reader reader02 = DataHelper.createReaderBuilder().setContent(new char[]{}).buildReader();
         Assertions.assertThat(reader02.read()).isEqualTo(-1);
 
-        Reader reader03 = DataHelper.createReaderBuilder().setContent(new char[]{'1'}).setSkipException("ex").buildReader();
+        Reader reader03 = DataHelper.createReaderBuilder().setContent(new char[]{'1'}).setReadException(false, new IOException("ex")).buildReader();
         Assertions.assertThat(reader03.read()).isEqualTo('1');
         Assertions.assertThat(reader03.read()).isEqualTo(-1);
 
-        Reader reader04 = DataHelper.createReaderBuilder().setContent(new char[]{'1'}).setCloseException("ex").buildReader();
+        Reader reader04 = DataHelper.createReaderBuilder().setContent(new char[]{'1'}).setReadException(false, "ex").buildReader();
         Assertions.assertThat(reader04.read()).isEqualTo('1');
         Assertions.assertThat(reader04.read()).isEqualTo(-1);
 
+        Reader reader05 = DataHelper.createReaderBuilder().setContent(new char[]{'1'}).setSkipException("ex").buildReader();
+        Assertions.assertThat(reader05.read()).isEqualTo('1');
+        Assertions.assertThat(reader05.read()).isEqualTo(-1);
+
+        Reader reader06 = DataHelper.createReaderBuilder().setContent(new char[]{'1'}).setCloseException("ex").buildReader();
+        Assertions.assertThat(reader06.read()).isEqualTo('1');
+        Assertions.assertThat(reader06.read()).isEqualTo(-1);
+
         try {
             DataHelper.createReaderBuilder().setReadException(new IOException("fail")).buildReader().read();
+            Assertions.fail("MockReader test fail");
+        } catch (IOException ex) {
+            Assertions.assertThat(ex).hasMessage("fail");
+        }
+        try {
+            DataHelper.createReaderBuilder().setReadException(true, new IOException("fail")).buildReader().read();
             Assertions.fail("MockReader test fail");
         } catch (IOException ex) {
             Assertions.assertThat(ex).hasMessage("fail");
@@ -84,15 +98,21 @@ public final class MockReaderTest extends AssertionTest {
         } catch (IOException ex) {
             Assertions.assertThat(ex).hasMessage("fail");
         }
-
-        Reader reader05 = DataHelper.createReaderBuilder().setContent(new char[]{'1', '2', '3', '4', '5'}).setReadException("fail").buildReader();
-        reader05.read();
-        reader05.read();
-        reader05.read();
-        Assertions.assertThat(reader05.read()).isEqualTo('4');
-        reader05.read();
         try {
-            reader05.read();
+            DataHelper.createReaderBuilder().setReadException(true, "fail").buildReader().read();
+            Assertions.fail("MockReader test fail");
+        } catch (IOException ex) {
+            Assertions.assertThat(ex).hasMessage("fail");
+        }
+
+        Reader reader07 = DataHelper.createReaderBuilder().setContent(new char[]{'1', '2', '3', '4', '5'}).setReadException("fail").buildReader();
+        reader07.read();
+        reader07.read();
+        reader07.read();
+        Assertions.assertThat(reader07.read()).isEqualTo('4');
+        reader07.read();
+        try {
+            reader07.read();
             Assertions.fail("MockReader test fail");
         } catch (IOException ex) {
             Assertions.assertThat(ex).hasMessage("fail");
@@ -155,21 +175,35 @@ public final class MockReaderTest extends AssertionTest {
         Assertions.assertThat(reader06.read(buff06, 0, 10)).isEqualTo(-1);
         Assertions.assertThat(buff06).containsExactlyInOrder(0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 
-        Reader reader07 = DataHelper.createReaderBuilder().setContent(new char[]{'1', '2', '3', '4', '5'}).setSkipException("ex").buildReader();
+        Reader reader07 = DataHelper.createReaderBuilder().setContent(new char[]{'1', '2', '3', '4', '5'}).setReadException(false, new IOException("ex")).buildReader();
         char[] buff07 = new char[10];
         Assertions.assertThat(reader07.read(buff07, 0, 10)).isEqualTo(5);
         Assertions.assertThat(buff07).containsExactlyInOrder('1', '2', '3', '4', '5', 0, 0, 0, 0, 0);
         Assertions.assertThat(reader07.read(buff07, 0, 10)).isEqualTo(-1);
         Assertions.assertThat(buff07).containsExactlyInOrder('1', '2', '3', '4', '5', 0, 0, 0, 0, 0);
 
-        Reader reader08 = DataHelper.createReaderBuilder().setContent(new char[]{'1', '2', '3', '4', '5'}).setCloseException("ex").buildReader();
+        Reader reader08 = DataHelper.createReaderBuilder().setContent(new char[]{'1', '2', '3', '4', '5'}).setReadException(false, "ex").buildReader();
         char[] buff08 = new char[10];
-        Assertions.assertThat(reader08.read(buff08, 0, 0)).isEqualTo(0);
-        Assertions.assertThat(buff08).containsExactlyInOrder(0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
         Assertions.assertThat(reader08.read(buff08, 0, 10)).isEqualTo(5);
         Assertions.assertThat(buff08).containsExactlyInOrder('1', '2', '3', '4', '5', 0, 0, 0, 0, 0);
         Assertions.assertThat(reader08.read(buff08, 0, 10)).isEqualTo(-1);
         Assertions.assertThat(buff08).containsExactlyInOrder('1', '2', '3', '4', '5', 0, 0, 0, 0, 0);
+
+        Reader reader09 = DataHelper.createReaderBuilder().setContent(new char[]{'1', '2', '3', '4', '5'}).setSkipException("ex").buildReader();
+        char[] buff09 = new char[10];
+        Assertions.assertThat(reader09.read(buff09, 0, 10)).isEqualTo(5);
+        Assertions.assertThat(buff09).containsExactlyInOrder('1', '2', '3', '4', '5', 0, 0, 0, 0, 0);
+        Assertions.assertThat(reader09.read(buff09, 0, 10)).isEqualTo(-1);
+        Assertions.assertThat(buff09).containsExactlyInOrder('1', '2', '3', '4', '5', 0, 0, 0, 0, 0);
+
+        Reader reader10 = DataHelper.createReaderBuilder().setContent(new char[]{'1', '2', '3', '4', '5'}).setCloseException("ex").buildReader();
+        char[] buff10 = new char[10];
+        Assertions.assertThat(reader10.read(buff10, 0, 0)).isEqualTo(0);
+        Assertions.assertThat(buff10).containsExactlyInOrder(0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+        Assertions.assertThat(reader10.read(buff10, 0, 10)).isEqualTo(5);
+        Assertions.assertThat(buff10).containsExactlyInOrder('1', '2', '3', '4', '5', 0, 0, 0, 0, 0);
+        Assertions.assertThat(reader10.read(buff10, 0, 10)).isEqualTo(-1);
+        Assertions.assertThat(buff10).containsExactlyInOrder('1', '2', '3', '4', '5', 0, 0, 0, 0, 0);
 
         try {
             DataHelper.createReaderBuilder().setContent(new char[]{'1', '2', '3', '4', '5'}).buildReader().read(null, 0, 10);
@@ -228,6 +262,14 @@ public final class MockReaderTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("fail");
         }
         try {
+            Reader reader = DataHelper.createReaderBuilder().setContent(new char[]{'1', '2', '3', '4', '5'}).setReadException(true, new IOException("fail")).buildReader();
+            char[] buff = new char[10];
+            reader.read(buff, 0, 10);
+            Assertions.fail("MockReader test fail");
+        } catch (IOException ex) {
+            Assertions.assertThat(ex).hasMessage("fail");
+        }
+        try {
             Reader reader = DataHelper.createReaderBuilder().setContent(new char[]{'1', '2', '3', '4', '5'}).setReadException("fail").buildReader();
             char[] buff = new char[10];
             reader.read(buff, 0, 10);
@@ -235,16 +277,24 @@ public final class MockReaderTest extends AssertionTest {
         } catch (IOException ex) {
             Assertions.assertThat(ex).hasMessage("fail");
         }
-
-        Reader reader10 = DataHelper.createReaderBuilder().setContent(new char[]{'1', '2', '3', '4', '5'}).setReadException("fail").buildReader();
-        char[] buff10 = new char[10];
         try {
-            reader10.read(buff10, 0, 10);
+            Reader reader = DataHelper.createReaderBuilder().setContent(new char[]{'1', '2', '3', '4', '5'}).setReadException(true, "fail").buildReader();
+            char[] buff = new char[10];
+            reader.read(buff, 0, 10);
             Assertions.fail("MockReader test fail");
         } catch (IOException ex) {
             Assertions.assertThat(ex).hasMessage("fail");
         }
-        Assertions.assertThat(buff10).containsExactlyInOrder('1', '2', '3', '4', '5', 0, 0, 0, 0, 0);
+
+        Reader reader11 = DataHelper.createReaderBuilder().setContent(new char[]{'1', '2', '3', '4', '5'}).setReadException("fail").buildReader();
+        char[] buff11 = new char[10];
+        try {
+            reader11.read(buff11, 0, 10);
+            Assertions.fail("MockReader test fail");
+        } catch (IOException ex) {
+            Assertions.assertThat(ex).hasMessage("fail");
+        }
+        Assertions.assertThat(buff11).containsExactlyInOrder('1', '2', '3', '4', '5', 0, 0, 0, 0, 0);
     }
 
     /**
@@ -286,12 +336,26 @@ public final class MockReaderTest extends AssertionTest {
         Assertions.assertThat(reader06.skip(2)).isEqualTo(1);
         Assertions.assertThat(reader06.skip(2)).isEqualTo(0);
 
-        Reader reader07 = DataHelper.createReaderBuilder().setContent(new char[]{'1'}).setCloseException("ex").buildReader();
+        Reader reader07 = DataHelper.createReaderBuilder().setContent(new char[]{'1'}).setSkipException(false, new IOException("ex")).buildReader();
         Assertions.assertThat(reader07.skip(2)).isEqualTo(1);
         Assertions.assertThat(reader07.skip(2)).isEqualTo(0);
 
+        Reader reader08 = DataHelper.createReaderBuilder().setContent(new char[]{'1'}).setSkipException(false, "ex").buildReader();
+        Assertions.assertThat(reader08.skip(2)).isEqualTo(1);
+        Assertions.assertThat(reader08.skip(2)).isEqualTo(0);
+
+        Reader reader09 = DataHelper.createReaderBuilder().setContent(new char[]{'1'}).setCloseException("ex").buildReader();
+        Assertions.assertThat(reader09.skip(2)).isEqualTo(1);
+        Assertions.assertThat(reader09.skip(2)).isEqualTo(0);
+
         try {
             DataHelper.createReaderBuilder().setSkipException(new IOException("fail")).buildReader().skip(1);
+            Assertions.fail("MockReader test fail");
+        } catch (IOException ex) {
+            Assertions.assertThat(ex).hasMessage("fail");
+        }
+        try {
+            DataHelper.createReaderBuilder().setSkipException(true, new IOException("fail")).buildReader().skip(1);
             Assertions.fail("MockReader test fail");
         } catch (IOException ex) {
             Assertions.assertThat(ex).hasMessage("fail");
@@ -302,12 +366,18 @@ public final class MockReaderTest extends AssertionTest {
         } catch (IOException ex) {
             Assertions.assertThat(ex).hasMessage("fail");
         }
-
-        Reader reader08 = DataHelper.createReaderBuilder().setContent(new char[]{'1', '2', '3', '4', '5'}).setSkipException("fail").buildReader();
-        reader08.skip(3);
-        reader08.skip(2);
         try {
-            reader08.skip(1);
+            DataHelper.createReaderBuilder().setSkipException(true, "fail").buildReader().skip(1);
+            Assertions.fail("MockReader test fail");
+        } catch (IOException ex) {
+            Assertions.assertThat(ex).hasMessage("fail");
+        }
+
+        Reader reader10 = DataHelper.createReaderBuilder().setContent(new char[]{'1', '2', '3', '4', '5'}).setSkipException("fail").buildReader();
+        reader10.skip(3);
+        reader10.skip(2);
+        try {
+            reader10.skip(1);
             Assertions.fail("MockReader test fail");
         } catch (IOException ex) {
             Assertions.assertThat(ex).hasMessage("fail");
@@ -333,6 +403,8 @@ public final class MockReaderTest extends AssertionTest {
         DataHelper.createReaderBuilder().setContent(new char[]{'1'}).buildReader().close();
         DataHelper.createReaderBuilder().setContent(new char[]{'1'}).setReadException("ex").buildReader().close();
         DataHelper.createReaderBuilder().setContent(new char[]{'1'}).setSkipException("ex").buildReader().close();
+        DataHelper.createReaderBuilder().setContent(new char[]{'1'}).setCloseException(false, new IOException("ex")).buildReader().close();
+        DataHelper.createReaderBuilder().setContent(new char[]{'1'}).setCloseException(false, "ex").buildReader().close();
 
         try {
             DataHelper.createReaderBuilder().setCloseException(new IOException("fail")).buildReader().close();
@@ -341,7 +413,19 @@ public final class MockReaderTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("fail");
         }
         try {
+            DataHelper.createReaderBuilder().setCloseException(true, new IOException("fail")).buildReader().close();
+            Assertions.fail("MockReader test fail");
+        } catch (IOException ex) {
+            Assertions.assertThat(ex).hasMessage("fail");
+        }
+        try {
             DataHelper.createReaderBuilder().setCloseException("fail").buildReader().close();
+            Assertions.fail("MockReader test fail");
+        } catch (IOException ex) {
+            Assertions.assertThat(ex).hasMessage("fail");
+        }
+        try {
+            DataHelper.createReaderBuilder().setCloseException(true, "fail").buildReader().close();
             Assertions.fail("MockReader test fail");
         } catch (IOException ex) {
             Assertions.assertThat(ex).hasMessage("fail");
