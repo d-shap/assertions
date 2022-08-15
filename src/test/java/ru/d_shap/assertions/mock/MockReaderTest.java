@@ -22,6 +22,7 @@ package ru.d_shap.assertions.mock;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.Reader;
+import java.io.StringReader;
 
 import org.junit.Test;
 
@@ -60,6 +61,17 @@ public final class MockReaderTest extends AssertionTest {
         Assertions.assertThat(reader01.read()).isEqualTo('6');
         Assertions.assertThat(reader01.read()).isEqualTo(-1);
         Assertions.assertThat(reader01.read()).isEqualTo(-1);
+
+        StringReader sr01 = new StringReader("12345\u00006");
+        Assertions.assertThat(sr01.read()).isEqualTo('1');
+        Assertions.assertThat(sr01.read()).isEqualTo('2');
+        Assertions.assertThat(sr01.read()).isEqualTo('3');
+        Assertions.assertThat(sr01.read()).isEqualTo('4');
+        Assertions.assertThat(sr01.read()).isEqualTo('5');
+        Assertions.assertThat(sr01.read()).isEqualTo(0);
+        Assertions.assertThat(sr01.read()).isEqualTo('6');
+        Assertions.assertThat(sr01.read()).isEqualTo(-1);
+        Assertions.assertThat(sr01.read()).isEqualTo(-1);
 
         Reader reader02 = DataHelper.createReaderBuilder().setContent(new char[]{}).buildReader();
         Assertions.assertThat(reader02.read()).isEqualTo(-1);
@@ -127,14 +139,24 @@ public final class MockReaderTest extends AssertionTest {
     @Test
     public void readCharArrayTest() throws IOException {
         Reader reader01 = DataHelper.createReaderBuilder().setContent(new char[]{'1', '2', '3', '4', '5'}).buildReader();
-        char[] buff011 = new char[0];
-        char[] buff012 = new char[3];
-        Assertions.assertThat(reader01.read(buff011, 0, 0)).isEqualTo(0);
-        Assertions.assertThat(buff011).containsExactlyInOrder();
-        Assertions.assertThat(reader01.read(buff012, 0, 3)).isEqualTo(3);
-        Assertions.assertThat(buff012).containsExactlyInOrder('1', '2', '3');
-        Assertions.assertThat(reader01.read(buff012, 0, 3)).isEqualTo(2);
-        Assertions.assertThat(buff012).containsExactlyInOrder('4', '5', '3');
+        char[] buff0111 = new char[0];
+        Assertions.assertThat(reader01.read(buff0111, 0, 0)).isEqualTo(0);
+        Assertions.assertThat(buff0111).containsExactlyInOrder();
+        char[] buff0112 = new char[3];
+        Assertions.assertThat(reader01.read(buff0112, 0, 3)).isEqualTo(3);
+        Assertions.assertThat(buff0112).containsExactlyInOrder('1', '2', '3');
+        Assertions.assertThat(reader01.read(buff0112, 0, 3)).isEqualTo(2);
+        Assertions.assertThat(buff0112).containsExactlyInOrder('4', '5', '3');
+
+        StringReader sr01 = new StringReader("12345");
+        char[] buff0211 = new char[0];
+        Assertions.assertThat(sr01.read(buff0211, 0, 0)).isEqualTo(0);
+        Assertions.assertThat(buff0211).containsExactlyInOrder();
+        char[] buff0212 = new char[3];
+        Assertions.assertThat(sr01.read(buff0212, 0, 3)).isEqualTo(3);
+        Assertions.assertThat(buff0212).containsExactlyInOrder('1', '2', '3');
+        Assertions.assertThat(sr01.read(buff0212, 0, 3)).isEqualTo(2);
+        Assertions.assertThat(buff0212).containsExactlyInOrder('4', '5', '3');
 
         Reader reader02 = DataHelper.createReaderBuilder().setContent(new char[]{'1', '2', '3', '4', '5'}).buildReader();
         char[] buff02 = new char[3];

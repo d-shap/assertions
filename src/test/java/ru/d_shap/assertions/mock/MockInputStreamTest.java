@@ -19,6 +19,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.mock;
 
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -125,7 +126,7 @@ public final class MockInputStreamTest extends AssertionTest {
      */
     @Test
     public void readByteTest() throws IOException {
-        InputStream inputStream01 = DataHelper.createInputStreamBuilder().setContent(new byte[]{1, 2, 3, 4, 5, 0, 6}).buildInputStream();
+        InputStream inputStream01 = DataHelper.createInputStreamBuilder().setContent(new byte[]{1, 2, 3, 4, 5, 0, 6, -5, -3}).buildInputStream();
         Assertions.assertThat(inputStream01.read()).isEqualTo(1);
         Assertions.assertThat(inputStream01.read()).isEqualTo(2);
         Assertions.assertThat(inputStream01.read()).isEqualTo(3);
@@ -133,8 +134,23 @@ public final class MockInputStreamTest extends AssertionTest {
         Assertions.assertThat(inputStream01.read()).isEqualTo(5);
         Assertions.assertThat(inputStream01.read()).isEqualTo(0);
         Assertions.assertThat(inputStream01.read()).isEqualTo(6);
+        Assertions.assertThat(inputStream01.read()).isEqualTo(251);
+        Assertions.assertThat(inputStream01.read()).isEqualTo(253);
         Assertions.assertThat(inputStream01.read()).isEqualTo(-1);
         Assertions.assertThat(inputStream01.read()).isEqualTo(-1);
+
+        ByteArrayInputStream bais01 = new ByteArrayInputStream(new byte[]{1, 2, 3, 4, 5, 0, 6, -5, -3});
+        Assertions.assertThat(bais01.read()).isEqualTo(1);
+        Assertions.assertThat(bais01.read()).isEqualTo(2);
+        Assertions.assertThat(bais01.read()).isEqualTo(3);
+        Assertions.assertThat(bais01.read()).isEqualTo(4);
+        Assertions.assertThat(bais01.read()).isEqualTo(5);
+        Assertions.assertThat(bais01.read()).isEqualTo(0);
+        Assertions.assertThat(bais01.read()).isEqualTo(6);
+        Assertions.assertThat(bais01.read()).isEqualTo(251);
+        Assertions.assertThat(bais01.read()).isEqualTo(253);
+        Assertions.assertThat(bais01.read()).isEqualTo(-1);
+        Assertions.assertThat(bais01.read()).isEqualTo(-1);
 
         InputStream inputStream02 = DataHelper.createInputStreamBuilder().setContent(new byte[]{}).buildInputStream();
         Assertions.assertThat(inputStream02.read()).isEqualTo(-1);
@@ -205,15 +221,29 @@ public final class MockInputStreamTest extends AssertionTest {
      */
     @Test
     public void readByteArrayTest() throws IOException {
-        InputStream inputStream01 = DataHelper.createInputStreamBuilder().setContent(new byte[]{1, 2, 3, 4, 5}).buildInputStream();
-        byte[] buff011 = new byte[0];
-        byte[] buff012 = new byte[3];
-        Assertions.assertThat(inputStream01.read(buff011, 0, 0)).isEqualTo(0);
-        Assertions.assertThat(buff011).containsExactlyInOrder();
-        Assertions.assertThat(inputStream01.read(buff012, 0, 3)).isEqualTo(3);
-        Assertions.assertThat(buff012).containsExactlyInOrder(1, 2, 3);
-        Assertions.assertThat(inputStream01.read(buff012, 0, 3)).isEqualTo(2);
-        Assertions.assertThat(buff012).containsExactlyInOrder(4, 5, 3);
+        InputStream inputStream01 = DataHelper.createInputStreamBuilder().setContent(new byte[]{1, 2, 3, 4, 0, 5, 6, -5}).buildInputStream();
+        byte[] buff0111 = new byte[0];
+        Assertions.assertThat(inputStream01.read(buff0111, 0, 0)).isEqualTo(0);
+        Assertions.assertThat(buff0111).containsExactlyInOrder();
+        byte[] buff0112 = new byte[3];
+        Assertions.assertThat(inputStream01.read(buff0112, 0, 3)).isEqualTo(3);
+        Assertions.assertThat(buff0112).containsExactlyInOrder(1, 2, 3);
+        Assertions.assertThat(inputStream01.read(buff0112, 0, 3)).isEqualTo(3);
+        Assertions.assertThat(buff0112).containsExactlyInOrder(4, 0, 5);
+        Assertions.assertThat(inputStream01.read(buff0112, 0, 3)).isEqualTo(2);
+        Assertions.assertThat(buff0112).containsExactlyInOrder(6, -5, 5);
+
+        ByteArrayInputStream bais01 = new ByteArrayInputStream(new byte[]{1, 2, 3, 4, 0, 5, 6, -5});
+        byte[] buff0121 = new byte[0];
+        Assertions.assertThat(bais01.read(buff0121, 0, 0)).isEqualTo(0);
+        Assertions.assertThat(buff0121).containsExactlyInOrder();
+        byte[] buff0122 = new byte[3];
+        Assertions.assertThat(bais01.read(buff0122, 0, 3)).isEqualTo(3);
+        Assertions.assertThat(buff0122).containsExactlyInOrder(1, 2, 3);
+        Assertions.assertThat(bais01.read(buff0122, 0, 3)).isEqualTo(3);
+        Assertions.assertThat(buff0122).containsExactlyInOrder(4, 0, 5);
+        Assertions.assertThat(bais01.read(buff0122, 0, 3)).isEqualTo(2);
+        Assertions.assertThat(buff0122).containsExactlyInOrder(6, -5, 5);
 
         InputStream inputStream02 = DataHelper.createInputStreamBuilder().setContent(new byte[]{1, 2, 3, 4, 5}).buildInputStream();
         byte[] buff02 = new byte[3];
