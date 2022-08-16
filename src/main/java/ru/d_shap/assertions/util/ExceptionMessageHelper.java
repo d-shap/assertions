@@ -30,7 +30,7 @@ public final class ExceptionMessageHelper {
         super();
     }
 
-    static String getMessage(final Exception cause) {
+    static String getMessage(final Throwable cause) {
         if (cause == null) {
             return null;
         } else {
