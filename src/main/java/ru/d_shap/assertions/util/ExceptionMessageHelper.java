@@ -20,7 +20,7 @@
 package ru.d_shap.assertions.util;
 
 /**
- * Utility class to get message of exception.
+ * Helper class to get message of exception.
  *
  * @author Dmitry Shapovalov
  */
