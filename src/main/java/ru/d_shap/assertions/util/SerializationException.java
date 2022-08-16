@@ -34,15 +34,7 @@ public final class SerializationException extends RuntimeException {
      * @param cause the cause of the exception.
      */
     public SerializationException(final Throwable cause) {
-        super(getMessage(cause), cause);
-    }
-
-    private static String getMessage(final Throwable cause) {
-        if (cause == null) {
-            return null;
-        } else {
-            return cause.getMessage();
-        }
+        super(ExceptionMessageHelper.getMessage(cause), cause);
     }
 
 }

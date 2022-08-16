@@ -36,15 +36,7 @@ public final class IOStreamException extends RuntimeException {
      * @param cause the cause of the exception.
      */
     public IOStreamException(final IOException cause) {
-        super(getMessage(cause), cause);
-    }
-
-    private static String getMessage(final IOException cause) {
-        if (cause == null) {
-            return null;
-        } else {
-            return cause.getMessage();
-        }
+        super(ExceptionMessageHelper.getMessage(cause), cause);
     }
 
 }
