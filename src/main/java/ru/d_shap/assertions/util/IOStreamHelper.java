@@ -40,6 +40,13 @@ public final class IOStreamHelper {
         super();
     }
 
+    /**
+     * Read all bytes from the specified input stream.
+     *
+     * @param inputStream the specified input stream.
+     *
+     * @return all bytes read from the specified input stream.
+     */
     public static byte[] readAsBytes(final InputStream inputStream) {
         try {
             try {
@@ -62,6 +69,13 @@ public final class IOStreamHelper {
         }
     }
 
+    /**
+     * Read all chars from the specified reader.
+     *
+     * @param reader the specified reader.
+     *
+     * @return all chars read from the specified reader.
+     */
     public static char[] readAsChars(final Reader reader) {
         try {
             try {
@@ -84,11 +98,27 @@ public final class IOStreamHelper {
         }
     }
 
+    /**
+     * Read all bytes from the specified input stream and convert them to the string.
+     *
+     * @param inputStream the specified input stream.
+     * @param charset     charset to encode chars.
+     *
+     * @return string read from the specified input stream.
+     */
     public static String readAsString(final InputStream inputStream, final Charset charset) {
         byte[] bytes = readAsBytes(inputStream);
         return new String(bytes, charset);
     }
 
+    /**
+     * Read all bytes from the specified input stream and convert them to the string.
+     *
+     * @param inputStream the specified input stream.
+     * @param charsetName the name of charset to encode chars.
+     *
+     * @return string read from the specified input stream.
+     */
     public static String readAsString(final InputStream inputStream, final String charsetName) {
         try {
             byte[] bytes = readAsBytes(inputStream);
@@ -98,11 +128,25 @@ public final class IOStreamHelper {
         }
     }
 
+    /**
+     * Read all chars from the specified reader and convert them to the string.
+     *
+     * @param reader the specified reader.
+     *
+     * @return string read from the specified reader.
+     */
     public static String readAsString(final Reader reader) {
         char[] chars = readAsChars(reader);
         return new String(chars);
     }
 
+    /**
+     * Read all bytes from the specified input stream and convert them to the string.
+     *
+     * @param inputStream the specified input stream.
+     *
+     * @return string read from the specified input stream.
+     */
     public static String readAsUtf8String(final InputStream inputStream) {
         return readAsString(inputStream, StandardCharsets.UTF_8);
     }
