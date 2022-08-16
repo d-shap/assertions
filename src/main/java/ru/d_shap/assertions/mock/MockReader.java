@@ -181,7 +181,7 @@ public final class MockReader extends Reader implements IsCloseable {
          *
          * @return current object for the chain call.
          */
-        public Builder setContent(final char[] content) {
+        public Builder setContent(final char... content) {
             _content = content;
             return this;
         }

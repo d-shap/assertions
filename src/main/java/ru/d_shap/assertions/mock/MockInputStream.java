@@ -192,7 +192,7 @@ public final class MockInputStream extends InputStream implements IsCloseable {
          *
          * @return current object for the chain call.
          */
-        public Builder setContent(final byte[] content) {
+        public Builder setContent(final byte... content) {
             _content = content;
             return this;
         }
