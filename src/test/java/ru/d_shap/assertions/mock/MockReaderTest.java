@@ -28,6 +28,7 @@ import org.junit.Test;
 
 import ru.d_shap.assertions.AssertionTest;
 import ru.d_shap.assertions.Assertions;
+import ru.d_shap.assertions.converter.ConversionException;
 import ru.d_shap.assertions.util.DataHelper;
 
 /**
@@ -129,6 +130,33 @@ public final class MockReaderTest extends AssertionTest {
         } catch (IOException ex) {
             Assertions.assertThat(ex).hasMessage("fail");
         }
+
+        Reader reader08 = DataHelper.createReaderBuilder().setContent('1', '2').buildReader();
+        Assertions.assertThat(reader08.read()).isEqualTo('1');
+        Assertions.assertThat(reader08.read()).isEqualTo('2');
+        Assertions.assertThat(reader08.read()).isEqualTo(-1);
+        Assertions.assertThat(reader08.read()).isEqualTo(-1);
+
+        Reader reader09 = DataHelper.createReaderBuilder().setContent(49, 50).buildReader();
+        Assertions.assertThat(reader09.read()).isEqualTo('1');
+        Assertions.assertThat(reader09.read()).isEqualTo('2');
+        Assertions.assertThat(reader09.read()).isEqualTo(-1);
+        Assertions.assertThat(reader09.read()).isEqualTo(-1);
+
+        try {
+            DataHelper.createReaderBuilder().setContent(1000000, 2000000);
+            Assertions.fail("MockReader test fail");
+        } catch (ConversionException ex) {
+            Assertions.assertThat(ex).hasCause(ClassCastException.class);
+        }
+
+        Reader reader10 = DataHelper.createReaderBuilder().setContent("test").buildReader();
+        Assertions.assertThat(reader10.read()).isEqualTo('t');
+        Assertions.assertThat(reader10.read()).isEqualTo('e');
+        Assertions.assertThat(reader10.read()).isEqualTo('s');
+        Assertions.assertThat(reader10.read()).isEqualTo('t');
+        Assertions.assertThat(reader10.read()).isEqualTo(-1);
+        Assertions.assertThat(reader10.read()).isEqualTo(-1);
     }
 
     /**
