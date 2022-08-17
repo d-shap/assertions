@@ -21,6 +21,8 @@ package ru.d_shap.assertions.util;
 
 import java.io.InputStream;
 import java.io.Reader;
+import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
 
 import org.junit.Test;
 
@@ -119,7 +121,8 @@ public final class IOStreamHelperTest extends AssertionTest {
      */
     @Test
     public void readAsStringInputStreamCharsetTest() {
-        // TODO
+        Assertions.assertThat(IOStreamHelper.readAsString(DataHelper.createInputStreamBuilder().setContent(116, 101, 115, 116).buildInputStream(), StandardCharsets.UTF_8)).isEqualTo("test");
+        Assertions.assertThat(IOStreamHelper.readAsString(DataHelper.createInputStreamBuilder().setContent("value").buildInputStream(), StandardCharsets.US_ASCII)).isEqualTo("value");
     }
 
     /**
@@ -127,7 +130,15 @@ public final class IOStreamHelperTest extends AssertionTest {
      */
     @Test
     public void readAsStringInputStreamCharsetNameTest() {
-        // TODO
+        Assertions.assertThat(IOStreamHelper.readAsString(DataHelper.createInputStreamBuilder().setContent(116, 101, 115, 116).buildInputStream(), "UTF-8")).isEqualTo("test");
+        Assertions.assertThat(IOStreamHelper.readAsString(DataHelper.createInputStreamBuilder().setContent("value").buildInputStream(), "ISO-8859-1")).isEqualTo("value");
+
+        try {
+            IOStreamHelper.readAsString(DataHelper.createInputStreamBuilder().setContent(116, 101, 115, 116).buildInputStream(), "wrong encoding");
+            Assertions.fail("IOStreamHelper test fail");
+        } catch (IOStreamException ex) {
+            Assertions.assertThat(ex).hasCause(UnsupportedEncodingException.class);
+        }
     }
 
     /**
@@ -135,7 +146,8 @@ public final class IOStreamHelperTest extends AssertionTest {
      */
     @Test
     public void readAsStringReaderTest() {
-        // TODO
+        Assertions.assertThat(IOStreamHelper.readAsString(DataHelper.createReaderBuilder().setContent('1', '2', '3').buildReader())).isEqualTo("123");
+        Assertions.assertThat(IOStreamHelper.readAsString(DataHelper.createReaderBuilder().setContent('a', 0, 125, 'c').buildReader())).isEqualTo("a\u0000}c");
     }
 
     /**
@@ -143,7 +155,8 @@ public final class IOStreamHelperTest extends AssertionTest {
      */
     @Test
     public void readAsUtf8StringTest() {
-        // TODO
+        Assertions.assertThat(IOStreamHelper.readAsUtf8String(DataHelper.createInputStreamBuilder().setContent(116, 101, 115, 116).buildInputStream())).isEqualTo("test");
+        Assertions.assertThat(IOStreamHelper.readAsUtf8String(DataHelper.createInputStreamBuilder().setContent("value").buildInputStream())).isEqualTo("value");
     }
 
 }
