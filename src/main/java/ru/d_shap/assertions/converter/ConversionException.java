@@ -19,6 +19,8 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.converter;
 
+import ru.d_shap.assertions.util.ExceptionMessageHelper;
+
 /**
  * Wrapper for exceptions, that can occur during conversion.
  *
@@ -34,15 +36,7 @@ public final class ConversionException extends RuntimeException {
      * @param cause the cause of the exception.
      */
     public ConversionException(final Throwable cause) {
-        super(getMessage(cause), cause);
-    }
-
-    private static String getMessage(final Throwable cause) {
-        if (cause == null) {
-            return null;
-        } else {
-            return cause.getMessage();
-        }
+        super(ExceptionMessageHelper.getMessage(cause), cause);
     }
 
 }
