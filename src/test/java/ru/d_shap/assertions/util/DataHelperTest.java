@@ -665,8 +665,8 @@ public final class DataHelperTest extends AssertionTest {
      */
     @Test
     public void createReaderBuilderTest() throws Exception {
-        Assertions.assertThat(DataHelper.createReaderBuilder().setContent(new char[]{'1', '2', '3'}).buildReader().skip(10)).isEqualTo(3);
-        Assertions.assertThat(DataHelper.createReaderBuilder().setContent(new char[]{'1', '2', '3'}).buildReader().read()).isEqualTo('1');
+        Assertions.assertThat(DataHelper.createReaderBuilder().setContent('1', '2', '3').buildReader().skip(10)).isEqualTo(3);
+        Assertions.assertThat(DataHelper.createReaderBuilder().setContent('1', '2', '3').buildReader().read()).isEqualTo('1');
         Assertions.assertThat(DataHelper.createReaderBuilder().setContent("row1\nrow2").buildBufferedReader().readLine()).isEqualTo("row1");
     }
 
