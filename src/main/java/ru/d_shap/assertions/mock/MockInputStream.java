@@ -21,6 +21,12 @@ package ru.d_shap.assertions.mock;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
+
+import ru.d_shap.assertions.converter.ConversionException;
+import ru.d_shap.assertions.converter.ValueConverter;
 
 /**
  * The input stream mock.
@@ -195,6 +201,62 @@ public final class MockInputStream extends InputStream implements IsCloseable {
         public Builder setContent(final byte... content) {
             _content = content;
             return this;
+        }
+
+        /**
+         * Set content.
+         *
+         * @param content content.
+         *
+         * @return current object for the chain call.
+         */
+        public Builder setContent(final int... content) {
+            Object object = ValueConverter.convert(content, byte[].class);
+            try {
+                _content = (byte[]) object;
+                return this;
+            } catch (ClassCastException ex) {
+                throw new ConversionException(ex);
+            }
+        }
+
+        /**
+         * Set content.
+         *
+         * @param content content.
+         * @param charset charset to get bytes.
+         *
+         * @return current object for the chain call.
+         */
+        public Builder setContent(final String content, final Charset charset) {
+            return setContent(content.getBytes(charset));
+        }
+
+        /**
+         * Set content.
+         *
+         * @param content     content.
+         * @param charsetName charset to get bytes.
+         *
+         * @return current object for the chain call.
+         */
+        public Builder setContent(final String content, final String charsetName) {
+            try {
+                return setContent(content.getBytes(charsetName));
+            } catch (UnsupportedEncodingException ex) {
+                throw new ConversionException(ex);
+            }
+        }
+
+        /**
+         * Set content.
+         *
+         * @param content content.
+         *
+         * @return current object for the chain call.
+         */
+        public Builder setContent(final String content) {
+            return setContent(content, StandardCharsets.UTF_8);
         }
 
         /**
