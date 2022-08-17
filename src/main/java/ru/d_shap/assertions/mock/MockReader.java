@@ -23,6 +23,9 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.Reader;
 
+import ru.d_shap.assertions.converter.ConversionException;
+import ru.d_shap.assertions.converter.ValueConverter;
+
 /**
  * The reader mock.
  *
@@ -193,9 +196,25 @@ public final class MockReader extends Reader implements IsCloseable {
          *
          * @return current object for the chain call.
          */
+        public Builder setContent(final int... content) {
+            Object object = ValueConverter.convert(content, char[].class);
+            try {
+                _content = (char[]) object;
+                return this;
+            } catch (ClassCastException ex) {
+                throw new ConversionException(ex);
+            }
+        }
+
+        /**
+         * Set content.
+         *
+         * @param content content.
+         *
+         * @return current object for the chain call.
+         */
         public Builder setContent(final String content) {
-            _content = content.toCharArray();
-            return this;
+            return setContent(content.toCharArray());
         }
 
         /**
