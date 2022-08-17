@@ -30,11 +30,18 @@ public final class ExceptionMessageHelper {
         super();
     }
 
-    static String getMessage(final Throwable cause) {
-        if (cause == null) {
+    /**
+     * Get the message of the throwable.
+     *
+     * @param throwable the throwable.
+     *
+     * @return the message of the throwable.
+     */
+    public static String getMessage(final Throwable throwable) {
+        if (throwable == null) {
             return null;
         } else {
-            return cause.getMessage();
+            return throwable.getMessage();
         }
     }
 
