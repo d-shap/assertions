@@ -22,11 +22,14 @@ package ru.d_shap.assertions.mock;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
 
 import org.junit.Test;
 
 import ru.d_shap.assertions.AssertionTest;
 import ru.d_shap.assertions.Assertions;
+import ru.d_shap.assertions.converter.ConversionException;
 import ru.d_shap.assertions.util.DataHelper;
 
 /**
@@ -212,6 +215,56 @@ public final class MockInputStreamTest extends AssertionTest {
         } catch (IOException ex) {
             Assertions.assertThat(ex).hasMessage("fail");
         }
+
+        InputStream inputStream09 = DataHelper.createInputStreamBuilder().setContent(new byte[]{1, 2}).buildInputStream();
+        Assertions.assertThat(inputStream09.read()).isEqualTo(1);
+        Assertions.assertThat(inputStream09.read()).isEqualTo(2);
+        Assertions.assertThat(inputStream09.read()).isEqualTo(-1);
+        Assertions.assertThat(inputStream09.read()).isEqualTo(-1);
+
+        InputStream inputStream10 = DataHelper.createInputStreamBuilder().setContent(1, 2).buildInputStream();
+        Assertions.assertThat(inputStream10.read()).isEqualTo(1);
+        Assertions.assertThat(inputStream10.read()).isEqualTo(2);
+        Assertions.assertThat(inputStream10.read()).isEqualTo(-1);
+        Assertions.assertThat(inputStream10.read()).isEqualTo(-1);
+
+        try {
+            DataHelper.createInputStreamBuilder().setContent(1000000, 2000000);
+            Assertions.fail("MockInputStream test fail");
+        } catch (ConversionException ex) {
+            Assertions.assertThat(ex).hasCause(ClassCastException.class);
+        }
+
+        InputStream inputStream11 = DataHelper.createInputStreamBuilder().setContent("test", StandardCharsets.UTF_8).buildInputStream();
+        Assertions.assertThat(inputStream11.read()).isEqualTo(116);
+        Assertions.assertThat(inputStream11.read()).isEqualTo(101);
+        Assertions.assertThat(inputStream11.read()).isEqualTo(115);
+        Assertions.assertThat(inputStream11.read()).isEqualTo(116);
+        Assertions.assertThat(inputStream11.read()).isEqualTo(-1);
+        Assertions.assertThat(inputStream11.read()).isEqualTo(-1);
+
+        InputStream inputStream12 = DataHelper.createInputStreamBuilder().setContent("test", "UTF-8").buildInputStream();
+        Assertions.assertThat(inputStream12.read()).isEqualTo(116);
+        Assertions.assertThat(inputStream12.read()).isEqualTo(101);
+        Assertions.assertThat(inputStream12.read()).isEqualTo(115);
+        Assertions.assertThat(inputStream12.read()).isEqualTo(116);
+        Assertions.assertThat(inputStream12.read()).isEqualTo(-1);
+        Assertions.assertThat(inputStream12.read()).isEqualTo(-1);
+
+        try {
+            DataHelper.createInputStreamBuilder().setContent("test", "wrong charset");
+            Assertions.fail("MockInputStream test fail");
+        } catch (ConversionException ex) {
+            Assertions.assertThat(ex).hasCause(UnsupportedEncodingException.class);
+        }
+
+        InputStream inputStream13 = DataHelper.createInputStreamBuilder().setContent("test").buildInputStream();
+        Assertions.assertThat(inputStream13.read()).isEqualTo(116);
+        Assertions.assertThat(inputStream13.read()).isEqualTo(101);
+        Assertions.assertThat(inputStream13.read()).isEqualTo(115);
+        Assertions.assertThat(inputStream13.read()).isEqualTo(116);
+        Assertions.assertThat(inputStream13.read()).isEqualTo(-1);
+        Assertions.assertThat(inputStream13.read()).isEqualTo(-1);
     }
 
     /**
