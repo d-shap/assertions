@@ -27,7 +27,7 @@ import java.io.Writer;
  *
  * @author Dmitry Shapovalov
  */
-public final class MockWriter extends Writer implements IsCloseable {
+public final class MockWriter extends Writer implements IsFlushable, IsCloseable {
 
     private final char[] _content;
 
@@ -39,6 +39,8 @@ public final class MockWriter extends Writer implements IsCloseable {
 
     private final IOException _closeException;
 
+    private boolean _isFlushed;
+
     private boolean _isClosed;
 
     MockWriter(final int contentSize, final IOException writeException, final IOException flushException, final IOException closeException) {
@@ -48,6 +50,7 @@ public final class MockWriter extends Writer implements IsCloseable {
         _writeException = writeException;
         _flushException = flushException;
         _closeException = closeException;
+        _isFlushed = false;
         _isClosed = false;
     }
 
@@ -107,10 +110,12 @@ public final class MockWriter extends Writer implements IsCloseable {
             _content[_position] = (char) value;
             _position++;
         }
+        _isFlushed = false;
     }
 
     @Override
     public void flush() throws IOException {
+        _isFlushed = true;
         checkAndThrowException(_flushException, true);
     }
 
@@ -142,6 +147,11 @@ public final class MockWriter extends Writer implements IsCloseable {
         char[] result = new char[_position];
         System.arraycopy(_content, 0, result, 0, _position);
         return result;
+    }
+
+    @Override
+    public boolean isFlushed() {
+        return _isFlushed;
     }
 
     @Override

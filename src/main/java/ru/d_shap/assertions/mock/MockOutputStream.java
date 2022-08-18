@@ -27,7 +27,7 @@ import java.io.OutputStream;
  *
  * @author Dmitry Shapovalov
  */
-public final class MockOutputStream extends OutputStream implements IsCloseable {
+public final class MockOutputStream extends OutputStream implements IsFlushable, IsCloseable {
 
     private final byte[] _content;
 
@@ -39,6 +39,8 @@ public final class MockOutputStream extends OutputStream implements IsCloseable 
 
     private final IOException _closeException;
 
+    private boolean _isFlushed;
+
     private boolean _isClosed;
 
     MockOutputStream(final int contentSize, final IOException writeException, final IOException flushException, final IOException closeException) {
@@ -48,6 +50,7 @@ public final class MockOutputStream extends OutputStream implements IsCloseable 
         _writeException = writeException;
         _flushException = flushException;
         _closeException = closeException;
+        _isFlushed = false;
         _isClosed = false;
     }
 
@@ -91,10 +94,12 @@ public final class MockOutputStream extends OutputStream implements IsCloseable 
             _content[_position] = (byte) value;
             _position++;
         }
+        _isFlushed = false;
     }
 
     @Override
     public void flush() throws IOException {
+        _isFlushed = true;
         checkAndThrowException(_flushException, true);
     }
 
@@ -126,6 +131,11 @@ public final class MockOutputStream extends OutputStream implements IsCloseable 
         byte[] result = new byte[_position];
         System.arraycopy(_content, 0, result, 0, _position);
         return result;
+    }
+
+    @Override
+    public boolean isFlushed() {
+        return _isFlushed;
     }
 
     @Override
