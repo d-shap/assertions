@@ -747,19 +747,51 @@ public final class MockWriterTest extends AssertionTest {
      * @throws IOException exception in test.
      */
     @Test
+    public void isFlushedTest() throws IOException {
+        Writer writer = DataHelper.createWriterBuilder().setContentSize(10).buildWriter();
+        Assertions.assertThat(((IsFlushable) writer).isFlushed()).isFalse();
+        writer.flush();
+        Assertions.assertThat(((IsFlushable) writer).isFlushed()).isTrue();
+        writer.write('1');
+        Assertions.assertThat(((IsFlushable) writer).isFlushed()).isFalse();
+        writer.flush();
+        Assertions.assertThat(((IsFlushable) writer).isFlushed()).isTrue();
+        writer.write(new char[]{'2', '3', '4'});
+        Assertions.assertThat(((IsFlushable) writer).isFlushed()).isFalse();
+        writer.flush();
+        Assertions.assertThat(((IsFlushable) writer).isFlushed()).isTrue();
+        writer.write(new char[]{0, 0, '5', '6', '7', 0, 0, 0}, 2, 3);
+        Assertions.assertThat(((IsFlushable) writer).isFlushed()).isFalse();
+        writer.flush();
+        Assertions.assertThat(((IsFlushable) writer).isFlushed()).isTrue();
+        Assertions.assertThat(((MockWriter) writer).getContent()).containsExactlyInOrder('1', '2', '3', '4', '5', '6', '7');
+    }
+
+    /**
+     * {@link MockWriter} class test.
+     *
+     * @throws IOException exception in test.
+     */
+    @Test
     public void isClosedTest() throws IOException {
         Writer writer01 = DataHelper.createWriterBuilder().setContentSize(5).buildWriter();
+        Assertions.assertThat(((IsFlushable) writer01).isFlushed()).isFalse();
         Assertions.assertThat(((IsCloseable) writer01).isClosed()).isFalse();
         writer01.write('1');
+        Assertions.assertThat(((IsFlushable) writer01).isFlushed()).isFalse();
         Assertions.assertThat(((IsCloseable) writer01).isClosed()).isFalse();
         writer01.write('2');
+        Assertions.assertThat(((IsFlushable) writer01).isFlushed()).isFalse();
         Assertions.assertThat(((IsCloseable) writer01).isClosed()).isFalse();
         writer01.close();
+        Assertions.assertThat(((IsFlushable) writer01).isFlushed()).isTrue();
         Assertions.assertThat(((IsCloseable) writer01).isClosed()).isTrue();
         writer01.close();
+        Assertions.assertThat(((IsFlushable) writer01).isFlushed()).isTrue();
         Assertions.assertThat(((IsCloseable) writer01).isClosed()).isTrue();
 
         Writer writer02 = DataHelper.createWriterBuilder().setCloseException("fail").buildWriter();
+        Assertions.assertThat(((IsFlushable) writer02).isFlushed()).isFalse();
         Assertions.assertThat(((IsCloseable) writer02).isClosed()).isFalse();
         try {
             writer02.close();
@@ -767,9 +799,11 @@ public final class MockWriterTest extends AssertionTest {
         } catch (IOException ex) {
             Assertions.assertThat(ex).hasMessage("fail");
         }
+        Assertions.assertThat(((IsFlushable) writer02).isFlushed()).isTrue();
         Assertions.assertThat(((IsCloseable) writer02).isClosed()).isTrue();
 
         Writer writer03 = DataHelper.createWriterBuilder().setFlushException("fail 1").setCloseException("fail 2").buildWriter();
+        Assertions.assertThat(((IsFlushable) writer03).isFlushed()).isFalse();
         Assertions.assertThat(((IsCloseable) writer03).isClosed()).isFalse();
         try {
             writer03.close();
@@ -777,6 +811,7 @@ public final class MockWriterTest extends AssertionTest {
         } catch (IOException ex) {
             Assertions.assertThat(ex).hasMessage("fail 1");
         }
+        Assertions.assertThat(((IsFlushable) writer03).isFlushed()).isTrue();
         Assertions.assertThat(((IsCloseable) writer03).isClosed()).isTrue();
         try {
             writer03.close();
@@ -784,6 +819,7 @@ public final class MockWriterTest extends AssertionTest {
         } catch (IOException ex) {
             Assertions.assertThat(ex).hasMessage("fail 2");
         }
+        Assertions.assertThat(((IsFlushable) writer03).isFlushed()).isTrue();
         Assertions.assertThat(((IsCloseable) writer03).isClosed()).isTrue();
     }
 

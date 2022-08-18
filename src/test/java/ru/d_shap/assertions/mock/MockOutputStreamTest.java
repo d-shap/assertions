@@ -485,19 +485,51 @@ public final class MockOutputStreamTest extends AssertionTest {
      * @throws IOException exception in test.
      */
     @Test
+    public void isFlushedTest() throws IOException {
+        OutputStream outputStream = DataHelper.createOutputStreamBuilder().setContentSize(10).buildOutputStream();
+        Assertions.assertThat(((IsFlushable) outputStream).isFlushed()).isFalse();
+        outputStream.flush();
+        Assertions.assertThat(((IsFlushable) outputStream).isFlushed()).isTrue();
+        outputStream.write(1);
+        Assertions.assertThat(((IsFlushable) outputStream).isFlushed()).isFalse();
+        outputStream.flush();
+        Assertions.assertThat(((IsFlushable) outputStream).isFlushed()).isTrue();
+        outputStream.write(new byte[]{2, 3, 4});
+        Assertions.assertThat(((IsFlushable) outputStream).isFlushed()).isFalse();
+        outputStream.flush();
+        Assertions.assertThat(((IsFlushable) outputStream).isFlushed()).isTrue();
+        outputStream.write(new byte[]{0, 0, 5, 6, 7, 0, 0, 0}, 2, 3);
+        Assertions.assertThat(((IsFlushable) outputStream).isFlushed()).isFalse();
+        outputStream.flush();
+        Assertions.assertThat(((IsFlushable) outputStream).isFlushed()).isTrue();
+        Assertions.assertThat(((MockOutputStream) outputStream).getContent()).containsExactlyInOrder(1, 2, 3, 4, 5, 6, 7);
+    }
+
+    /**
+     * {@link MockOutputStream} class test.
+     *
+     * @throws IOException exception in test.
+     */
+    @Test
     public void isClosedTest() throws IOException {
         OutputStream outputStream01 = DataHelper.createOutputStreamBuilder().setContentSize(5).buildOutputStream();
+        Assertions.assertThat(((IsFlushable) outputStream01).isFlushed()).isFalse();
         Assertions.assertThat(((IsCloseable) outputStream01).isClosed()).isFalse();
         outputStream01.write(1);
+        Assertions.assertThat(((IsFlushable) outputStream01).isFlushed()).isFalse();
         Assertions.assertThat(((IsCloseable) outputStream01).isClosed()).isFalse();
         outputStream01.write(2);
+        Assertions.assertThat(((IsFlushable) outputStream01).isFlushed()).isFalse();
         Assertions.assertThat(((IsCloseable) outputStream01).isClosed()).isFalse();
         outputStream01.close();
+        Assertions.assertThat(((IsFlushable) outputStream01).isFlushed()).isTrue();
         Assertions.assertThat(((IsCloseable) outputStream01).isClosed()).isTrue();
         outputStream01.close();
+        Assertions.assertThat(((IsFlushable) outputStream01).isFlushed()).isTrue();
         Assertions.assertThat(((IsCloseable) outputStream01).isClosed()).isTrue();
 
         OutputStream outputStream02 = DataHelper.createOutputStreamBuilder().setCloseException("fail").buildOutputStream();
+        Assertions.assertThat(((IsFlushable) outputStream02).isFlushed()).isFalse();
         Assertions.assertThat(((IsCloseable) outputStream02).isClosed()).isFalse();
         try {
             outputStream02.close();
@@ -505,9 +537,11 @@ public final class MockOutputStreamTest extends AssertionTest {
         } catch (IOException ex) {
             Assertions.assertThat(ex).hasMessage("fail");
         }
+        Assertions.assertThat(((IsFlushable) outputStream02).isFlushed()).isTrue();
         Assertions.assertThat(((IsCloseable) outputStream02).isClosed()).isTrue();
 
         OutputStream outputStream03 = DataHelper.createOutputStreamBuilder().setFlushException("fail 1").setCloseException("fail 2").buildOutputStream();
+        Assertions.assertThat(((IsFlushable) outputStream03).isFlushed()).isFalse();
         Assertions.assertThat(((IsCloseable) outputStream03).isClosed()).isFalse();
         try {
             outputStream03.close();
@@ -515,6 +549,7 @@ public final class MockOutputStreamTest extends AssertionTest {
         } catch (IOException ex) {
             Assertions.assertThat(ex).hasMessage("fail 1");
         }
+        Assertions.assertThat(((IsFlushable) outputStream03).isFlushed()).isTrue();
         Assertions.assertThat(((IsCloseable) outputStream03).isClosed()).isTrue();
         try {
             outputStream03.close();
@@ -522,6 +557,7 @@ public final class MockOutputStreamTest extends AssertionTest {
         } catch (IOException ex) {
             Assertions.assertThat(ex).hasMessage("fail 2");
         }
+        Assertions.assertThat(((IsFlushable) outputStream03).isFlushed()).isTrue();
         Assertions.assertThat(((IsCloseable) outputStream03).isClosed()).isTrue();
     }
 
