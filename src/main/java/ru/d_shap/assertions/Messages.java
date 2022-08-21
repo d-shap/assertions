@@ -67,6 +67,10 @@ public final class Messages {
 
         public static final String HEX_REPRESENTATION_PART = "Check actual value''s hex representation part: {0}:{1}.";
 
+        public static final String MIN_VALUE = "Check actual value''s minimum value";
+
+        public static final String MAX_VALUE = "Check actual value''s maximum value";
+
         public static final String ELEMENTS_ALL = "Check all actual value''s elements.";
 
         public static final String ELEMENTS_COUNT = "Check next N actual value''s elements: {0}.";
