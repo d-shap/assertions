@@ -29,6 +29,7 @@ import ru.d_shap.assertions.asimp.HexString;
 import ru.d_shap.assertions.asimp.ReferenceAssertion;
 import ru.d_shap.assertions.asimp.java.lang.CharSequenceAssertion;
 import ru.d_shap.assertions.asimp.java.lang.IterableAssertion;
+import ru.d_shap.assertions.asimp.primitive.ByteAssertion;
 import ru.d_shap.assertions.asimp.primitive.IntAssertion;
 
 /**
@@ -352,6 +353,11 @@ public final class ByteArrayAssertion extends ReferenceAssertion<ByteArrayAssert
         return this;
     }
 
+    private IterableAssertion<Object> createIterableAssertion() {
+        List<Object> list = convertValue(getActual(), null, List.class);
+        return initializeAssertion(Raw.iterableAssertion(), list);
+    }
+
     /**
      * Make assertion about the actual value's length.
      *
@@ -487,9 +493,130 @@ public final class ByteArrayAssertion extends ReferenceAssertion<ByteArrayAssert
         return this;
     }
 
-    private IterableAssertion<Object> createIterableAssertion() {
-        List<Object> list = convertValue(getActual(), null, List.class);
-        return initializeAssertion(Raw.iterableAssertion(), list);
+    /**
+     * Make assertion about the actual value's minimum value.
+     *
+     * @return the assertion.
+     */
+    public ByteAssertion toMin() {
+        checkActualIsNotNull();
+        Byte minValue = getMinValue();
+        return initializeAssertion(Raw.byteAssertion(), minValue, Messages.Check.MIN_VALUE);
+    }
+
+    /**
+     * Make assertion about the actual value's minimum value.
+     *
+     * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
+     */
+    public ByteArrayAssertion toMin(final Matcher<? super Byte> matcher) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(matcher, "matcher");
+        Byte minValue = getMinValue();
+        matcherAssertion(minValue, matcher, Messages.Check.MIN_VALUE);
+        return this;
+    }
+
+    /**
+     * Check if the actual value's minimum value is equal to the expected minimum value.
+     *
+     * @param expected the expected minimum value.
+     *
+     * @return current object for the chain call.
+     */
+    public ByteArrayAssertion hasMin(final int expected) {
+        toMin().isEqualTo(expected);
+        return this;
+    }
+
+    /**
+     * Check if the actual value's minimum value is equal to the expected minimum value.
+     *
+     * @param expected the expected minimum value.
+     *
+     * @return current object for the chain call.
+     */
+    public ByteArrayAssertion hasMin(final Byte expected) {
+        toMin().isEqualTo(expected);
+        return this;
+    }
+
+    private Byte getMinValue() {
+        byte[] actual = getActual();
+        int length = actual.length;
+        if (length == 0) {
+            return null;
+        }
+        byte result = actual[0];
+        for (int i = 1; i < length; i++) {
+            result = (byte) Math.min(result, actual[i]);
+        }
+        return result;
+    }
+
+    /**
+     * Make assertion about the actual value's maximum value.
+     *
+     * @return the assertion.
+     */
+    public ByteAssertion toMax() {
+        checkActualIsNotNull();
+        Byte maxValue = getMaxValue();
+        return initializeAssertion(Raw.byteAssertion(), maxValue, Messages.Check.MAX_VALUE);
+    }
+
+    /**
+     * Make assertion about the actual value's maximum value.
+     *
+     * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
+     */
+    public ByteArrayAssertion toMax(final Matcher<? super Byte> matcher) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(matcher, "matcher");
+        Byte maxValue = getMaxValue();
+        matcherAssertion(maxValue, matcher, Messages.Check.MAX_VALUE);
+        return this;
+    }
+
+    /**
+     * Check if the actual value's maximum value is equal to the expected maximum value.
+     *
+     * @param expected the expected maximum value.
+     *
+     * @return current object for the chain call.
+     */
+    public ByteArrayAssertion hasMax(final int expected) {
+        toMax().isEqualTo(expected);
+        return this;
+    }
+
+    /**
+     * Check if the actual value's maximum value is equal to the expected maximum value.
+     *
+     * @param expected the expected maximum value.
+     *
+     * @return current object for the chain call.
+     */
+    public ByteArrayAssertion hasMax(final Byte expected) {
+        toMax().isEqualTo(expected);
+        return this;
+    }
+
+    private Byte getMaxValue() {
+        byte[] actual = getActual();
+        int length = actual.length;
+        if (length == 0) {
+            return null;
+        }
+        byte result = actual[0];
+        for (int i = 1; i < length; i++) {
+            result = (byte) Math.max(result, actual[i]);
+        }
+        return result;
     }
 
 }
