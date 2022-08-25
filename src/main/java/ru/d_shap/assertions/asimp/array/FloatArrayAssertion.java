@@ -27,6 +27,7 @@ import ru.d_shap.assertions.Messages;
 import ru.d_shap.assertions.Raw;
 import ru.d_shap.assertions.asimp.ReferenceAssertion;
 import ru.d_shap.assertions.asimp.java.lang.IterableAssertion;
+import ru.d_shap.assertions.asimp.primitive.FloatAssertion;
 import ru.d_shap.assertions.asimp.primitive.IntAssertion;
 
 /**
@@ -266,6 +267,11 @@ public final class FloatArrayAssertion extends ReferenceAssertion<FloatArrayAsse
         return this;
     }
 
+    private IterableAssertion<Object> createIterableAssertion() {
+        List<Object> list = convertValue(getActual(), null, List.class);
+        return initializeAssertion(Raw.iterableAssertion(), list);
+    }
+
     /**
      * Make assertion about the actual value's length.
      *
@@ -302,9 +308,182 @@ public final class FloatArrayAssertion extends ReferenceAssertion<FloatArrayAsse
         return this;
     }
 
-    private IterableAssertion<Object> createIterableAssertion() {
-        List<Object> list = convertValue(getActual(), null, List.class);
-        return initializeAssertion(Raw.iterableAssertion(), list);
+    /**
+     * Make assertion about the actual value's minimum value.
+     *
+     * @return the assertion.
+     */
+    public FloatAssertion toMin() {
+        checkActualIsNotNull();
+        Float minValue = getMinValue();
+        return initializeAssertion(Raw.floatAssertion(), minValue, Messages.Check.MIN_VALUE);
+    }
+
+    /**
+     * Make assertion about the actual value's minimum value.
+     *
+     * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
+     */
+    public FloatArrayAssertion toMin(final Matcher<? super Float> matcher) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(matcher, "matcher");
+        Float minValue = getMinValue();
+        matcherAssertion(minValue, matcher, Messages.Check.MIN_VALUE);
+        return this;
+    }
+
+    /**
+     * Check if the actual value's minimum value is equal to the expected minimum value.
+     *
+     * @param expected the expected minimum value.
+     *
+     * @return current object for the chain call.
+     */
+    public FloatArrayAssertion hasMin(final float expected) {
+        toMin().isEqualTo(expected);
+        return this;
+    }
+
+    /**
+     * Check if the actual value's minimum value is equal to the expected minimum value.
+     *
+     * @param expected the expected minimum value.
+     *
+     * @return current object for the chain call.
+     */
+    public FloatArrayAssertion hasMin(final Float expected) {
+        toMin().isEqualTo(expected);
+        return this;
+    }
+
+    /**
+     * Check if the actual value's minimum value is equal to the expected minimum value.
+     *
+     * @param expected the expected minimum value.
+     * @param delta    maximum delta between the actual value and the expected value.
+     *
+     * @return current object for the chain call.
+     */
+    public FloatArrayAssertion hasMin(final float expected, final float delta) {
+        toMin().isEqualTo(expected, delta);
+        return this;
+    }
+
+    /**
+     * Check if the actual value's minimum value is equal to the expected minimum value.
+     *
+     * @param expected the expected minimum value.
+     * @param delta    maximum delta between the actual value and the expected value.
+     *
+     * @return current object for the chain call.
+     */
+    public FloatArrayAssertion hasMin(final Float expected, final float delta) {
+        toMin().isEqualTo(expected, delta);
+        return this;
+    }
+
+    private Float getMinValue() {
+        float[] actual = getActual();
+        int length = actual.length;
+        if (length == 0) {
+            return null;
+        }
+        float result = actual[0];
+        for (int i = 1; i < length; i++) {
+            result = Math.min(result, actual[i]);
+        }
+        return result;
+    }
+
+    /**
+     * Make assertion about the actual value's maximum value.
+     *
+     * @return the assertion.
+     */
+    public FloatAssertion toMax() {
+        checkActualIsNotNull();
+        Float maxValue = getMaxValue();
+        return initializeAssertion(Raw.floatAssertion(), maxValue, Messages.Check.MAX_VALUE);
+    }
+
+    /**
+     * Make assertion about the actual value's maximum value.
+     *
+     * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
+     */
+    public FloatArrayAssertion toMax(final Matcher<? super Float> matcher) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(matcher, "matcher");
+        Float maxValue = getMaxValue();
+        matcherAssertion(maxValue, matcher, Messages.Check.MAX_VALUE);
+        return this;
+    }
+
+    /**
+     * Check if the actual value's maximum value is equal to the expected maximum value.
+     *
+     * @param expected the expected maximum value.
+     *
+     * @return current object for the chain call.
+     */
+    public FloatArrayAssertion hasMax(final float expected) {
+        toMax().isEqualTo(expected);
+        return this;
+    }
+
+    /**
+     * Check if the actual value's maximum value is equal to the expected maximum value.
+     *
+     * @param expected the expected maximum value.
+     *
+     * @return current object for the chain call.
+     */
+    public FloatArrayAssertion hasMax(final Float expected) {
+        toMax().isEqualTo(expected);
+        return this;
+    }
+
+    /**
+     * Check if the actual value's maximum value is equal to the expected maximum value.
+     *
+     * @param expected the expected maximum value.
+     * @param delta    maximum delta between the actual value and the expected value.
+     *
+     * @return current object for the chain call.
+     */
+    public FloatArrayAssertion hasMax(final float expected, final float delta) {
+        toMax().isEqualTo(expected, delta);
+        return this;
+    }
+
+    /**
+     * Check if the actual value's maximum value is equal to the expected maximum value.
+     *
+     * @param expected the expected maximum value.
+     * @param delta    maximum delta between the actual value and the expected value.
+     *
+     * @return current object for the chain call.
+     */
+    public FloatArrayAssertion hasMax(final Float expected, final float delta) {
+        toMax().isEqualTo(expected, delta);
+        return this;
+    }
+
+    private Float getMaxValue() {
+        float[] actual = getActual();
+        int length = actual.length;
+        if (length == 0) {
+            return null;
+        }
+        float result = actual[0];
+        for (int i = 1; i < length; i++) {
+            result = Math.max(result, actual[i]);
+        }
+        return result;
     }
 
 }
