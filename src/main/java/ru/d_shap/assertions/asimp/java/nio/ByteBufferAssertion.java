@@ -28,6 +28,7 @@ import ru.d_shap.assertions.Raw;
 import ru.d_shap.assertions.asimp.ReferenceAssertion;
 import ru.d_shap.assertions.asimp.array.ByteArrayAssertion;
 import ru.d_shap.assertions.asimp.java.lang.CharSequenceAssertion;
+import ru.d_shap.assertions.asimp.primitive.ByteAssertion;
 import ru.d_shap.assertions.asimp.primitive.IntAssertion;
 
 /**
@@ -735,6 +736,11 @@ public final class ByteBufferAssertion extends ReferenceAssertion<ByteBufferAsse
         return this;
     }
 
+    private ByteArrayAssertion createByteArrayAssertion(final boolean rewind) {
+        byte[] bytes = convertValue(getActual(), null, byte[].class, rewind);
+        return initializeAssertion(Raw.byteArrayAssertion(), bytes);
+    }
+
     /**
      * Make assertion about the actual value's position.
      *
@@ -947,9 +953,230 @@ public final class ByteBufferAssertion extends ReferenceAssertion<ByteBufferAsse
         return this;
     }
 
-    private ByteArrayAssertion createByteArrayAssertion(final boolean rewind) {
-        byte[] bytes = convertValue(getActual(), null, byte[].class, rewind);
-        return initializeAssertion(Raw.byteArrayAssertion(), bytes);
+    /**
+     * Make assertion about the actual value's minimum value.
+     *
+     * @return the assertion.
+     */
+    public ByteAssertion toMin() {
+        checkActualIsNotNull();
+        Byte minValue = getMinValue(false);
+        return initializeAssertion(Raw.byteAssertion(), minValue, Messages.Check.MIN_VALUE);
+    }
+
+    /**
+     * Make assertion about the actual value's minimum value.
+     *
+     * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
+     */
+    public ByteBufferAssertion toMin(final Matcher<? super Byte> matcher) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(matcher, "matcher");
+        Byte minValue = getMinValue(false);
+        matcherAssertion(minValue, matcher, Messages.Check.MIN_VALUE);
+        return this;
+    }
+
+    /**
+     * Make assertion about the actual value's minimum value.
+     *
+     * @return the assertion.
+     */
+    public ByteAssertion toRewindAndMin() {
+        checkActualIsNotNull();
+        Byte minValue = getMinValue(true);
+        return initializeAssertion(Raw.byteAssertion(), minValue, Messages.Check.MIN_VALUE);
+    }
+
+    /**
+     * Make assertion about the actual value's minimum value.
+     *
+     * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
+     */
+    public ByteBufferAssertion toRewindAndMin(final Matcher<? super Byte> matcher) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(matcher, "matcher");
+        Byte minValue = getMinValue(true);
+        matcherAssertion(minValue, matcher, Messages.Check.MIN_VALUE);
+        return this;
+    }
+
+    /**
+     * Check if the actual value's minimum value is equal to the expected minimum value.
+     *
+     * @param expected the expected minimum value.
+     *
+     * @return current object for the chain call.
+     */
+    public ByteBufferAssertion hasMin(final int expected) {
+        toMin().isEqualTo(expected);
+        return this;
+    }
+
+    /**
+     * Check if the actual value's minimum value is equal to the expected minimum value.
+     *
+     * @param expected the expected minimum value.
+     *
+     * @return current object for the chain call.
+     */
+    public ByteBufferAssertion hasMin(final Byte expected) {
+        toMin().isEqualTo(expected);
+        return this;
+    }
+
+    /**
+     * Check if the actual value's minimum value is equal to the expected minimum value.
+     *
+     * @param expected the expected minimum value.
+     *
+     * @return current object for the chain call.
+     */
+    public ByteBufferAssertion hasRewindAndMin(final int expected) {
+        toRewindAndMin().isEqualTo(expected);
+        return this;
+    }
+
+    /**
+     * Check if the actual value's minimum value is equal to the expected minimum value.
+     *
+     * @param expected the expected minimum value.
+     *
+     * @return current object for the chain call.
+     */
+    public ByteBufferAssertion hasRewindAndMin(final Byte expected) {
+        toRewindAndMin().isEqualTo(expected);
+        return this;
+    }
+
+    private Byte getMinValue(final boolean rewind) {
+        byte[] actual = convertValue(getActual(), null, byte[].class, rewind);
+        int length = actual.length;
+        if (length == 0) {
+            return null;
+        }
+        byte result = actual[0];
+        for (int i = 1; i < length; i++) {
+            result = (byte) Math.min(result, actual[i]);
+        }
+        return result;
+    }
+
+    /**
+     * Make assertion about the actual value's maximum value.
+     *
+     * @return the assertion.
+     */
+    public ByteAssertion toMax() {
+        checkActualIsNotNull();
+        Byte maxValue = getMaxValue(false);
+        return initializeAssertion(Raw.byteAssertion(), maxValue, Messages.Check.MAX_VALUE);
+    }
+
+    /**
+     * Make assertion about the actual value's maximum value.
+     *
+     * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
+     */
+    public ByteBufferAssertion toMax(final Matcher<? super Byte> matcher) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(matcher, "matcher");
+        Byte maxValue = getMaxValue(false);
+        matcherAssertion(maxValue, matcher, Messages.Check.MAX_VALUE);
+        return this;
+    }
+
+    /**
+     * Make assertion about the actual value's maximum value.
+     *
+     * @return the assertion.
+     */
+    public ByteAssertion toRewindAndMax() {
+        checkActualIsNotNull();
+        Byte maxValue = getMaxValue(true);
+        return initializeAssertion(Raw.byteAssertion(), maxValue, Messages.Check.MAX_VALUE);
+    }
+
+    /**
+     * Make assertion about the actual value's maximum value.
+     *
+     * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
+     */
+    public ByteBufferAssertion toRewindAndMax(final Matcher<? super Byte> matcher) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(matcher, "matcher");
+        Byte maxValue = getMaxValue(true);
+        matcherAssertion(maxValue, matcher, Messages.Check.MAX_VALUE);
+        return this;
+    }
+
+    /**
+     * Check if the actual value's maximum value is equal to the expected maximum value.
+     *
+     * @param expected the expected maximum value.
+     *
+     * @return current object for the chain call.
+     */
+    public ByteBufferAssertion hasMax(final int expected) {
+        toMax().isEqualTo(expected);
+        return this;
+    }
+
+    /**
+     * Check if the actual value's maximum value is equal to the expected maximum value.
+     *
+     * @param expected the expected maximum value.
+     *
+     * @return current object for the chain call.
+     */
+    public ByteBufferAssertion hasMax(final Byte expected) {
+        toMax().isEqualTo(expected);
+        return this;
+    }
+
+    /**
+     * Check if the actual value's maximum value is equal to the expected maximum value.
+     *
+     * @param expected the expected maximum value.
+     *
+     * @return current object for the chain call.
+     */
+    public ByteBufferAssertion hasRewindAndMax(final int expected) {
+        toRewindAndMax().isEqualTo(expected);
+        return this;
+    }
+
+    /**
+     * Check if the actual value's maximum value is equal to the expected maximum value.
+     *
+     * @param expected the expected maximum value.
+     *
+     * @return current object for the chain call.
+     */
+    public ByteBufferAssertion hasRewindAndMax(final Byte expected) {
+        toRewindAndMax().isEqualTo(expected);
+        return this;
+    }
+
+    private Byte getMaxValue(final boolean rewind) {
+        byte[] actual = convertValue(getActual(), null, byte[].class, rewind);
+        int length = actual.length;
+        if (length == 0) {
+            return null;
+        }
+        byte result = actual[0];
+        for (int i = 1; i < length; i++) {
+            result = (byte) Math.max(result, actual[i]);
+        }
+        return result;
     }
 
 }
