@@ -30,6 +30,7 @@ import ru.d_shap.assertions.asimp.ReferenceAssertion;
 import ru.d_shap.assertions.asimp.java.lang.CharSequenceAssertion;
 import ru.d_shap.assertions.asimp.java.lang.IterableAssertion;
 import ru.d_shap.assertions.asimp.primitive.IntAssertion;
+import ru.d_shap.assertions.asimp.primitive.ShortAssertion;
 
 /**
  * Assertions for the short array.
@@ -352,6 +353,11 @@ public final class ShortArrayAssertion extends ReferenceAssertion<ShortArrayAsse
         return this;
     }
 
+    private IterableAssertion<Object> createIterableAssertion() {
+        List<Object> list = convertValue(getActual(), null, List.class);
+        return initializeAssertion(Raw.iterableAssertion(), list);
+    }
+
     /**
      * Make assertion about the actual value's length.
      *
@@ -487,9 +493,130 @@ public final class ShortArrayAssertion extends ReferenceAssertion<ShortArrayAsse
         return this;
     }
 
-    private IterableAssertion<Object> createIterableAssertion() {
-        List<Object> list = convertValue(getActual(), null, List.class);
-        return initializeAssertion(Raw.iterableAssertion(), list);
+    /**
+     * Make assertion about the actual value's minimum value.
+     *
+     * @return the assertion.
+     */
+    public ShortAssertion toMin() {
+        checkActualIsNotNull();
+        Short minValue = getMinValue();
+        return initializeAssertion(Raw.shortAssertion(), minValue, Messages.Check.MIN_VALUE);
+    }
+
+    /**
+     * Make assertion about the actual value's minimum value.
+     *
+     * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
+     */
+    public ShortArrayAssertion toMin(final Matcher<? super Short> matcher) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(matcher, "matcher");
+        Short minValue = getMinValue();
+        matcherAssertion(minValue, matcher, Messages.Check.MIN_VALUE);
+        return this;
+    }
+
+    /**
+     * Check if the actual value's minimum value is equal to the expected minimum value.
+     *
+     * @param expected the expected minimum value.
+     *
+     * @return current object for the chain call.
+     */
+    public ShortArrayAssertion hasMin(final int expected) {
+        toMin().isEqualTo(expected);
+        return this;
+    }
+
+    /**
+     * Check if the actual value's minimum value is equal to the expected minimum value.
+     *
+     * @param expected the expected minimum value.
+     *
+     * @return current object for the chain call.
+     */
+    public ShortArrayAssertion hasMin(final Short expected) {
+        toMin().isEqualTo(expected);
+        return this;
+    }
+
+    private Short getMinValue() {
+        short[] actual = getActual();
+        int length = actual.length;
+        if (length == 0) {
+            return null;
+        }
+        short result = actual[0];
+        for (int i = 1; i < length; i++) {
+            result = (short) Math.min(result, actual[i]);
+        }
+        return result;
+    }
+
+    /**
+     * Make assertion about the actual value's maximum value.
+     *
+     * @return the assertion.
+     */
+    public ShortAssertion toMax() {
+        checkActualIsNotNull();
+        Short maxValue = getMaxValue();
+        return initializeAssertion(Raw.shortAssertion(), maxValue, Messages.Check.MAX_VALUE);
+    }
+
+    /**
+     * Make assertion about the actual value's maximum value.
+     *
+     * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
+     */
+    public ShortArrayAssertion toMax(final Matcher<? super Short> matcher) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(matcher, "matcher");
+        Short maxValue = getMaxValue();
+        matcherAssertion(maxValue, matcher, Messages.Check.MAX_VALUE);
+        return this;
+    }
+
+    /**
+     * Check if the actual value's maximum value is equal to the expected maximum value.
+     *
+     * @param expected the expected maximum value.
+     *
+     * @return current object for the chain call.
+     */
+    public ShortArrayAssertion hasMax(final int expected) {
+        toMax().isEqualTo(expected);
+        return this;
+    }
+
+    /**
+     * Check if the actual value's maximum value is equal to the expected maximum value.
+     *
+     * @param expected the expected maximum value.
+     *
+     * @return current object for the chain call.
+     */
+    public ShortArrayAssertion hasMax(final Short expected) {
+        toMax().isEqualTo(expected);
+        return this;
+    }
+
+    private Short getMaxValue() {
+        short[] actual = getActual();
+        int length = actual.length;
+        if (length == 0) {
+            return null;
+        }
+        short result = actual[0];
+        for (int i = 1; i < length; i++) {
+            result = (short) Math.max(result, actual[i]);
+        }
+        return result;
     }
 
 }
