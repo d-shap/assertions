@@ -27,6 +27,7 @@ import ru.d_shap.assertions.Messages;
 import ru.d_shap.assertions.Raw;
 import ru.d_shap.assertions.asimp.ReferenceAssertion;
 import ru.d_shap.assertions.asimp.java.lang.IterableAssertion;
+import ru.d_shap.assertions.asimp.primitive.CharAssertion;
 import ru.d_shap.assertions.asimp.primitive.IntAssertion;
 
 /**
@@ -350,6 +351,11 @@ public final class CharArrayAssertion extends ReferenceAssertion<CharArrayAssert
         return this;
     }
 
+    private IterableAssertion<Object> createIterableAssertion() {
+        List<Object> list = convertValue(getActual(), null, List.class);
+        return initializeAssertion(Raw.iterableAssertion(), list);
+    }
+
     /**
      * Make assertion about the actual value's length.
      *
@@ -386,9 +392,130 @@ public final class CharArrayAssertion extends ReferenceAssertion<CharArrayAssert
         return this;
     }
 
-    private IterableAssertion<Object> createIterableAssertion() {
-        List<Object> list = convertValue(getActual(), null, List.class);
-        return initializeAssertion(Raw.iterableAssertion(), list);
+    /**
+     * Make assertion about the actual value's minimum value.
+     *
+     * @return the assertion.
+     */
+    public CharAssertion toMin() {
+        checkActualIsNotNull();
+        Character minValue = getMinValue();
+        return initializeAssertion(Raw.charAssertion(), minValue, Messages.Check.MIN_VALUE);
+    }
+
+    /**
+     * Make assertion about the actual value's minimum value.
+     *
+     * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
+     */
+    public CharArrayAssertion toMin(final Matcher<? super Character> matcher) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(matcher, "matcher");
+        Character minValue = getMinValue();
+        matcherAssertion(minValue, matcher, Messages.Check.MIN_VALUE);
+        return this;
+    }
+
+    /**
+     * Check if the actual value's minimum value is equal to the expected minimum value.
+     *
+     * @param expected the expected minimum value.
+     *
+     * @return current object for the chain call.
+     */
+    public CharArrayAssertion hasMin(final int expected) {
+        toMin().isEqualTo(expected);
+        return this;
+    }
+
+    /**
+     * Check if the actual value's minimum value is equal to the expected minimum value.
+     *
+     * @param expected the expected minimum value.
+     *
+     * @return current object for the chain call.
+     */
+    public CharArrayAssertion hasMin(final Character expected) {
+        toMin().isEqualTo(expected);
+        return this;
+    }
+
+    private Character getMinValue() {
+        char[] actual = getActual();
+        int length = actual.length;
+        if (length == 0) {
+            return null;
+        }
+        char result = actual[0];
+        for (int i = 1; i < length; i++) {
+            result = (char) Math.min(result, actual[i]);
+        }
+        return result;
+    }
+
+    /**
+     * Make assertion about the actual value's maximum value.
+     *
+     * @return the assertion.
+     */
+    public CharAssertion toMax() {
+        checkActualIsNotNull();
+        Character maxValue = getMaxValue();
+        return initializeAssertion(Raw.charAssertion(), maxValue, Messages.Check.MAX_VALUE);
+    }
+
+    /**
+     * Make assertion about the actual value's maximum value.
+     *
+     * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
+     */
+    public CharArrayAssertion toMax(final Matcher<? super Character> matcher) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(matcher, "matcher");
+        Character maxValue = getMaxValue();
+        matcherAssertion(maxValue, matcher, Messages.Check.MAX_VALUE);
+        return this;
+    }
+
+    /**
+     * Check if the actual value's maximum value is equal to the expected maximum value.
+     *
+     * @param expected the expected maximum value.
+     *
+     * @return current object for the chain call.
+     */
+    public CharArrayAssertion hasMax(final int expected) {
+        toMax().isEqualTo(expected);
+        return this;
+    }
+
+    /**
+     * Check if the actual value's maximum value is equal to the expected maximum value.
+     *
+     * @param expected the expected maximum value.
+     *
+     * @return current object for the chain call.
+     */
+    public CharArrayAssertion hasMax(final Character expected) {
+        toMax().isEqualTo(expected);
+        return this;
+    }
+
+    private Character getMaxValue() {
+        char[] actual = getActual();
+        int length = actual.length;
+        if (length == 0) {
+            return null;
+        }
+        char result = actual[0];
+        for (int i = 1; i < length; i++) {
+            result = (char) Math.max(result, actual[i]);
+        }
+        return result;
     }
 
 }
