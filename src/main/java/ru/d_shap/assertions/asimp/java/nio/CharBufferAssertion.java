@@ -27,6 +27,7 @@ import ru.d_shap.assertions.Messages;
 import ru.d_shap.assertions.Raw;
 import ru.d_shap.assertions.asimp.ReferenceAssertion;
 import ru.d_shap.assertions.asimp.array.CharArrayAssertion;
+import ru.d_shap.assertions.asimp.primitive.CharAssertion;
 import ru.d_shap.assertions.asimp.primitive.IntAssertion;
 
 /**
@@ -588,6 +589,11 @@ public final class CharBufferAssertion extends ReferenceAssertion<CharBufferAsse
         return this;
     }
 
+    private CharArrayAssertion createCharArrayAssertion(final boolean rewind) {
+        char[] chars = convertValue(getActual(), null, char[].class, rewind);
+        return initializeAssertion(Raw.charArrayAssertion(), chars);
+    }
+
     /**
      * Make assertion about the actual value's position.
      *
@@ -800,9 +806,230 @@ public final class CharBufferAssertion extends ReferenceAssertion<CharBufferAsse
         return this;
     }
 
-    private CharArrayAssertion createCharArrayAssertion(final boolean rewind) {
-        char[] chars = convertValue(getActual(), null, char[].class, rewind);
-        return initializeAssertion(Raw.charArrayAssertion(), chars);
+    /**
+     * Make assertion about the actual value's minimum value.
+     *
+     * @return the assertion.
+     */
+    public CharAssertion toMin() {
+        checkActualIsNotNull();
+        Character minValue = getMinValue(false);
+        return initializeAssertion(Raw.charAssertion(), minValue, Messages.Check.MIN_VALUE);
+    }
+
+    /**
+     * Make assertion about the actual value's minimum value.
+     *
+     * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
+     */
+    public CharBufferAssertion toMin(final Matcher<? super Character> matcher) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(matcher, "matcher");
+        Character minValue = getMinValue(false);
+        matcherAssertion(minValue, matcher, Messages.Check.MIN_VALUE);
+        return this;
+    }
+
+    /**
+     * Make assertion about the actual value's minimum value.
+     *
+     * @return the assertion.
+     */
+    public CharAssertion toRewindAndMin() {
+        checkActualIsNotNull();
+        Character minValue = getMinValue(true);
+        return initializeAssertion(Raw.charAssertion(), minValue, Messages.Check.MIN_VALUE);
+    }
+
+    /**
+     * Make assertion about the actual value's minimum value.
+     *
+     * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
+     */
+    public CharBufferAssertion toRewindAndMin(final Matcher<? super Character> matcher) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(matcher, "matcher");
+        Character minValue = getMinValue(true);
+        matcherAssertion(minValue, matcher, Messages.Check.MIN_VALUE);
+        return this;
+    }
+
+    /**
+     * Check if the actual value's minimum value is equal to the expected minimum value.
+     *
+     * @param expected the expected minimum value.
+     *
+     * @return current object for the chain call.
+     */
+    public CharBufferAssertion hasMin(final int expected) {
+        toMin().isEqualTo(expected);
+        return this;
+    }
+
+    /**
+     * Check if the actual value's minimum value is equal to the expected minimum value.
+     *
+     * @param expected the expected minimum value.
+     *
+     * @return current object for the chain call.
+     */
+    public CharBufferAssertion hasMin(final Character expected) {
+        toMin().isEqualTo(expected);
+        return this;
+    }
+
+    /**
+     * Check if the actual value's minimum value is equal to the expected minimum value.
+     *
+     * @param expected the expected minimum value.
+     *
+     * @return current object for the chain call.
+     */
+    public CharBufferAssertion hasRewindAndMin(final int expected) {
+        toRewindAndMin().isEqualTo(expected);
+        return this;
+    }
+
+    /**
+     * Check if the actual value's minimum value is equal to the expected minimum value.
+     *
+     * @param expected the expected minimum value.
+     *
+     * @return current object for the chain call.
+     */
+    public CharBufferAssertion hasRewindAndMin(final Character expected) {
+        toRewindAndMin().isEqualTo(expected);
+        return this;
+    }
+
+    private Character getMinValue(final boolean rewind) {
+        char[] actual = convertValue(getActual(), null, char[].class, rewind);
+        int length = actual.length;
+        if (length == 0) {
+            return null;
+        }
+        char result = actual[0];
+        for (int i = 1; i < length; i++) {
+            result = (char) Math.min(result, actual[i]);
+        }
+        return result;
+    }
+
+    /**
+     * Make assertion about the actual value's maximum value.
+     *
+     * @return the assertion.
+     */
+    public CharAssertion toMax() {
+        checkActualIsNotNull();
+        Character maxValue = getMaxValue(false);
+        return initializeAssertion(Raw.charAssertion(), maxValue, Messages.Check.MAX_VALUE);
+    }
+
+    /**
+     * Make assertion about the actual value's maximum value.
+     *
+     * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
+     */
+    public CharBufferAssertion toMax(final Matcher<? super Character> matcher) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(matcher, "matcher");
+        Character maxValue = getMaxValue(false);
+        matcherAssertion(maxValue, matcher, Messages.Check.MAX_VALUE);
+        return this;
+    }
+
+    /**
+     * Make assertion about the actual value's maximum value.
+     *
+     * @return the assertion.
+     */
+    public CharAssertion toRewindAndMax() {
+        checkActualIsNotNull();
+        Character maxValue = getMaxValue(true);
+        return initializeAssertion(Raw.charAssertion(), maxValue, Messages.Check.MAX_VALUE);
+    }
+
+    /**
+     * Make assertion about the actual value's maximum value.
+     *
+     * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
+     */
+    public CharBufferAssertion toRewindAndMax(final Matcher<? super Character> matcher) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(matcher, "matcher");
+        Character maxValue = getMaxValue(true);
+        matcherAssertion(maxValue, matcher, Messages.Check.MAX_VALUE);
+        return this;
+    }
+
+    /**
+     * Check if the actual value's maximum value is equal to the expected maximum value.
+     *
+     * @param expected the expected maximum value.
+     *
+     * @return current object for the chain call.
+     */
+    public CharBufferAssertion hasMax(final int expected) {
+        toMax().isEqualTo(expected);
+        return this;
+    }
+
+    /**
+     * Check if the actual value's maximum value is equal to the expected maximum value.
+     *
+     * @param expected the expected maximum value.
+     *
+     * @return current object for the chain call.
+     */
+    public CharBufferAssertion hasMax(final Character expected) {
+        toMax().isEqualTo(expected);
+        return this;
+    }
+
+    /**
+     * Check if the actual value's maximum value is equal to the expected maximum value.
+     *
+     * @param expected the expected maximum value.
+     *
+     * @return current object for the chain call.
+     */
+    public CharBufferAssertion hasRewindAndMax(final int expected) {
+        toRewindAndMax().isEqualTo(expected);
+        return this;
+    }
+
+    /**
+     * Check if the actual value's maximum value is equal to the expected maximum value.
+     *
+     * @param expected the expected maximum value.
+     *
+     * @return current object for the chain call.
+     */
+    public CharBufferAssertion hasRewindAndMax(final Character expected) {
+        toRewindAndMax().isEqualTo(expected);
+        return this;
+    }
+
+    private Character getMaxValue(final boolean rewind) {
+        char[] actual = convertValue(getActual(), null, char[].class, rewind);
+        int length = actual.length;
+        if (length == 0) {
+            return null;
+        }
+        char result = actual[0];
+        for (int i = 1; i < length; i++) {
+            result = (char) Math.max(result, actual[i]);
+        }
+        return result;
     }
 
 }
