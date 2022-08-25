@@ -27,6 +27,7 @@ import ru.d_shap.assertions.Messages;
 import ru.d_shap.assertions.Raw;
 import ru.d_shap.assertions.asimp.ReferenceAssertion;
 import ru.d_shap.assertions.asimp.java.lang.IterableAssertion;
+import ru.d_shap.assertions.asimp.primitive.DoubleAssertion;
 import ru.d_shap.assertions.asimp.primitive.IntAssertion;
 
 /**
@@ -266,6 +267,11 @@ public final class DoubleArrayAssertion extends ReferenceAssertion<DoubleArrayAs
         return this;
     }
 
+    private IterableAssertion<Object> createIterableAssertion() {
+        List<Object> list = convertValue(getActual(), null, List.class);
+        return initializeAssertion(Raw.iterableAssertion(), list);
+    }
+
     /**
      * Make assertion about the actual value's length.
      *
@@ -302,9 +308,182 @@ public final class DoubleArrayAssertion extends ReferenceAssertion<DoubleArrayAs
         return this;
     }
 
-    private IterableAssertion<Object> createIterableAssertion() {
-        List<Object> list = convertValue(getActual(), null, List.class);
-        return initializeAssertion(Raw.iterableAssertion(), list);
+    /**
+     * Make assertion about the actual value's minimum value.
+     *
+     * @return the assertion.
+     */
+    public DoubleAssertion toMin() {
+        checkActualIsNotNull();
+        Double minValue = getMinValue();
+        return initializeAssertion(Raw.doubleAssertion(), minValue, Messages.Check.MIN_VALUE);
+    }
+
+    /**
+     * Make assertion about the actual value's minimum value.
+     *
+     * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
+     */
+    public DoubleArrayAssertion toMin(final Matcher<? super Double> matcher) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(matcher, "matcher");
+        Double minValue = getMinValue();
+        matcherAssertion(minValue, matcher, Messages.Check.MIN_VALUE);
+        return this;
+    }
+
+    /**
+     * Check if the actual value's minimum value is equal to the expected minimum value.
+     *
+     * @param expected the expected minimum value.
+     *
+     * @return current object for the chain call.
+     */
+    public DoubleArrayAssertion hasMin(final double expected) {
+        toMin().isEqualTo(expected);
+        return this;
+    }
+
+    /**
+     * Check if the actual value's minimum value is equal to the expected minimum value.
+     *
+     * @param expected the expected minimum value.
+     *
+     * @return current object for the chain call.
+     */
+    public DoubleArrayAssertion hasMin(final Double expected) {
+        toMin().isEqualTo(expected);
+        return this;
+    }
+
+    /**
+     * Check if the actual value's minimum value is equal to the expected minimum value.
+     *
+     * @param expected the expected minimum value.
+     * @param delta    maximum delta between the actual value and the expected value.
+     *
+     * @return current object for the chain call.
+     */
+    public DoubleArrayAssertion hasMin(final double expected, final double delta) {
+        toMin().isEqualTo(expected, delta);
+        return this;
+    }
+
+    /**
+     * Check if the actual value's minimum value is equal to the expected minimum value.
+     *
+     * @param expected the expected minimum value.
+     * @param delta    maximum delta between the actual value and the expected value.
+     *
+     * @return current object for the chain call.
+     */
+    public DoubleArrayAssertion hasMin(final Double expected, final double delta) {
+        toMin().isEqualTo(expected, delta);
+        return this;
+    }
+
+    private Double getMinValue() {
+        double[] actual = getActual();
+        int length = actual.length;
+        if (length == 0) {
+            return null;
+        }
+        double result = actual[0];
+        for (int i = 1; i < length; i++) {
+            result = Math.min(result, actual[i]);
+        }
+        return result;
+    }
+
+    /**
+     * Make assertion about the actual value's maximum value.
+     *
+     * @return the assertion.
+     */
+    public DoubleAssertion toMax() {
+        checkActualIsNotNull();
+        Double maxValue = getMaxValue();
+        return initializeAssertion(Raw.doubleAssertion(), maxValue, Messages.Check.MAX_VALUE);
+    }
+
+    /**
+     * Make assertion about the actual value's maximum value.
+     *
+     * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
+     */
+    public DoubleArrayAssertion toMax(final Matcher<? super Double> matcher) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(matcher, "matcher");
+        Double maxValue = getMaxValue();
+        matcherAssertion(maxValue, matcher, Messages.Check.MAX_VALUE);
+        return this;
+    }
+
+    /**
+     * Check if the actual value's maximum value is equal to the expected maximum value.
+     *
+     * @param expected the expected maximum value.
+     *
+     * @return current object for the chain call.
+     */
+    public DoubleArrayAssertion hasMax(final double expected) {
+        toMax().isEqualTo(expected);
+        return this;
+    }
+
+    /**
+     * Check if the actual value's maximum value is equal to the expected maximum value.
+     *
+     * @param expected the expected maximum value.
+     *
+     * @return current object for the chain call.
+     */
+    public DoubleArrayAssertion hasMax(final Double expected) {
+        toMax().isEqualTo(expected);
+        return this;
+    }
+
+    /**
+     * Check if the actual value's maximum value is equal to the expected maximum value.
+     *
+     * @param expected the expected maximum value.
+     * @param delta    maximum delta between the actual value and the expected value.
+     *
+     * @return current object for the chain call.
+     */
+    public DoubleArrayAssertion hasMax(final double expected, final double delta) {
+        toMax().isEqualTo(expected, delta);
+        return this;
+    }
+
+    /**
+     * Check if the actual value's maximum value is equal to the expected maximum value.
+     *
+     * @param expected the expected maximum value.
+     * @param delta    maximum delta between the actual value and the expected value.
+     *
+     * @return current object for the chain call.
+     */
+    public DoubleArrayAssertion hasMax(final Double expected, final double delta) {
+        toMax().isEqualTo(expected, delta);
+        return this;
+    }
+
+    private Double getMaxValue() {
+        double[] actual = getActual();
+        int length = actual.length;
+        if (length == 0) {
+            return null;
+        }
+        double result = actual[0];
+        for (int i = 1; i < length; i++) {
+            result = Math.max(result, actual[i]);
+        }
+        return result;
     }
 
 }
