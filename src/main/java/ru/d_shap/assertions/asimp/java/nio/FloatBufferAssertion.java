@@ -27,6 +27,7 @@ import ru.d_shap.assertions.Messages;
 import ru.d_shap.assertions.Raw;
 import ru.d_shap.assertions.asimp.ReferenceAssertion;
 import ru.d_shap.assertions.asimp.array.FloatArrayAssertion;
+import ru.d_shap.assertions.asimp.primitive.FloatAssertion;
 import ru.d_shap.assertions.asimp.primitive.IntAssertion;
 
 /**
@@ -444,6 +445,11 @@ public final class FloatBufferAssertion extends ReferenceAssertion<FloatBufferAs
         return this;
     }
 
+    private FloatArrayAssertion createFloatArrayAssertion(final boolean rewind) {
+        float[] floats = convertValue(getActual(), null, float[].class, rewind);
+        return initializeAssertion(Raw.floatArrayAssertion(), floats);
+    }
+
     /**
      * Make assertion about the actual value's position.
      *
@@ -656,9 +662,334 @@ public final class FloatBufferAssertion extends ReferenceAssertion<FloatBufferAs
         return this;
     }
 
-    private FloatArrayAssertion createFloatArrayAssertion(final boolean rewind) {
-        float[] floats = convertValue(getActual(), null, float[].class, rewind);
-        return initializeAssertion(Raw.floatArrayAssertion(), floats);
+    /**
+     * Make assertion about the actual value's minimum value.
+     *
+     * @return the assertion.
+     */
+    public FloatAssertion toMin() {
+        checkActualIsNotNull();
+        Float minValue = getMinValue(false);
+        return initializeAssertion(Raw.floatAssertion(), minValue, Messages.Check.MIN_VALUE);
+    }
+
+    /**
+     * Make assertion about the actual value's minimum value.
+     *
+     * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
+     */
+    public FloatBufferAssertion toMin(final Matcher<? super Float> matcher) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(matcher, "matcher");
+        Float minValue = getMinValue(false);
+        matcherAssertion(minValue, matcher, Messages.Check.MIN_VALUE);
+        return this;
+    }
+
+    /**
+     * Make assertion about the actual value's minimum value.
+     *
+     * @return the assertion.
+     */
+    public FloatAssertion toRewindAndMin() {
+        checkActualIsNotNull();
+        Float minValue = getMinValue(true);
+        return initializeAssertion(Raw.floatAssertion(), minValue, Messages.Check.MIN_VALUE);
+    }
+
+    /**
+     * Make assertion about the actual value's minimum value.
+     *
+     * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
+     */
+    public FloatBufferAssertion toRewindAndMin(final Matcher<? super Float> matcher) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(matcher, "matcher");
+        Float minValue = getMinValue(true);
+        matcherAssertion(minValue, matcher, Messages.Check.MIN_VALUE);
+        return this;
+    }
+
+    /**
+     * Check if the actual value's minimum value is equal to the expected minimum value.
+     *
+     * @param expected the expected minimum value.
+     *
+     * @return current object for the chain call.
+     */
+    public FloatBufferAssertion hasMin(final float expected) {
+        toMin().isEqualTo(expected);
+        return this;
+    }
+
+    /**
+     * Check if the actual value's minimum value is equal to the expected minimum value.
+     *
+     * @param expected the expected minimum value.
+     *
+     * @return current object for the chain call.
+     */
+    public FloatBufferAssertion hasMin(final Float expected) {
+        toMin().isEqualTo(expected);
+        return this;
+    }
+
+    /**
+     * Check if the actual value's minimum value is equal to the expected minimum value.
+     *
+     * @param expected the expected minimum value.
+     * @param delta    maximum delta between the actual value and the expected value.
+     *
+     * @return current object for the chain call.
+     */
+    public FloatBufferAssertion hasMin(final float expected, final float delta) {
+        toMin().isEqualTo(expected, delta);
+        return this;
+    }
+
+    /**
+     * Check if the actual value's minimum value is equal to the expected minimum value.
+     *
+     * @param expected the expected minimum value.
+     * @param delta    maximum delta between the actual value and the expected value.
+     *
+     * @return current object for the chain call.
+     */
+    public FloatBufferAssertion hasMin(final Float expected, final float delta) {
+        toMin().isEqualTo(expected, delta);
+        return this;
+    }
+
+    /**
+     * Check if the actual value's minimum value is equal to the expected minimum value.
+     *
+     * @param expected the expected minimum value.
+     *
+     * @return current object for the chain call.
+     */
+    public FloatBufferAssertion hasRewindAndMin(final float expected) {
+        toRewindAndMin().isEqualTo(expected);
+        return this;
+    }
+
+    /**
+     * Check if the actual value's minimum value is equal to the expected minimum value.
+     *
+     * @param expected the expected minimum value.
+     *
+     * @return current object for the chain call.
+     */
+    public FloatBufferAssertion hasRewindAndMin(final Float expected) {
+        toRewindAndMin().isEqualTo(expected);
+        return this;
+    }
+
+    /**
+     * Check if the actual value's minimum value is equal to the expected minimum value.
+     *
+     * @param expected the expected minimum value.
+     * @param delta    maximum delta between the actual value and the expected value.
+     *
+     * @return current object for the chain call.
+     */
+    public FloatBufferAssertion hasRewindAndMin(final float expected, final float delta) {
+        toRewindAndMin().isEqualTo(expected, delta);
+        return this;
+    }
+
+    /**
+     * Check if the actual value's minimum value is equal to the expected minimum value.
+     *
+     * @param expected the expected minimum value.
+     * @param delta    maximum delta between the actual value and the expected value.
+     *
+     * @return current object for the chain call.
+     */
+    public FloatBufferAssertion hasRewindAndMin(final Float expected, final float delta) {
+        toRewindAndMin().isEqualTo(expected, delta);
+        return this;
+    }
+
+    private Float getMinValue(final boolean rewind) {
+        float[] actual = convertValue(getActual(), null, float[].class, rewind);
+        int length = actual.length;
+        if (length == 0) {
+            return null;
+        }
+        float result = actual[0];
+        for (int i = 1; i < length; i++) {
+            result = Math.min(result, actual[i]);
+        }
+        return result;
+    }
+
+    /**
+     * Make assertion about the actual value's maximum value.
+     *
+     * @return the assertion.
+     */
+    public FloatAssertion toMax() {
+        checkActualIsNotNull();
+        Float maxValue = getMaxValue(false);
+        return initializeAssertion(Raw.floatAssertion(), maxValue, Messages.Check.MAX_VALUE);
+    }
+
+    /**
+     * Make assertion about the actual value's maximum value.
+     *
+     * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
+     */
+    public FloatBufferAssertion toMax(final Matcher<? super Float> matcher) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(matcher, "matcher");
+        Float maxValue = getMaxValue(false);
+        matcherAssertion(maxValue, matcher, Messages.Check.MAX_VALUE);
+        return this;
+    }
+
+    /**
+     * Make assertion about the actual value's maximum value.
+     *
+     * @return the assertion.
+     */
+    public FloatAssertion toRewindAndMax() {
+        checkActualIsNotNull();
+        Float maxValue = getMaxValue(true);
+        return initializeAssertion(Raw.floatAssertion(), maxValue, Messages.Check.MAX_VALUE);
+    }
+
+    /**
+     * Make assertion about the actual value's maximum value.
+     *
+     * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
+     */
+    public FloatBufferAssertion toRewindAndMax(final Matcher<? super Float> matcher) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(matcher, "matcher");
+        Float maxValue = getMaxValue(true);
+        matcherAssertion(maxValue, matcher, Messages.Check.MAX_VALUE);
+        return this;
+    }
+
+    /**
+     * Check if the actual value's maximum value is equal to the expected maximum value.
+     *
+     * @param expected the expected maximum value.
+     *
+     * @return current object for the chain call.
+     */
+    public FloatBufferAssertion hasMax(final float expected) {
+        toMax().isEqualTo(expected);
+        return this;
+    }
+
+    /**
+     * Check if the actual value's maximum value is equal to the expected maximum value.
+     *
+     * @param expected the expected maximum value.
+     *
+     * @return current object for the chain call.
+     */
+    public FloatBufferAssertion hasMax(final Float expected) {
+        toMax().isEqualTo(expected);
+        return this;
+    }
+
+    /**
+     * Check if the actual value's maximum value is equal to the expected maximum value.
+     *
+     * @param expected the expected maximum value.
+     * @param delta    maximum delta between the actual value and the expected value.
+     *
+     * @return current object for the chain call.
+     */
+    public FloatBufferAssertion hasMax(final float expected, final float delta) {
+        toMax().isEqualTo(expected, delta);
+        return this;
+    }
+
+    /**
+     * Check if the actual value's maximum value is equal to the expected maximum value.
+     *
+     * @param expected the expected maximum value.
+     * @param delta    maximum delta between the actual value and the expected value.
+     *
+     * @return current object for the chain call.
+     */
+    public FloatBufferAssertion hasMax(final Float expected, final float delta) {
+        toMax().isEqualTo(expected, delta);
+        return this;
+    }
+
+    /**
+     * Check if the actual value's maximum value is equal to the expected maximum value.
+     *
+     * @param expected the expected maximum value.
+     *
+     * @return current object for the chain call.
+     */
+    public FloatBufferAssertion hasRewindAndMax(final float expected) {
+        toRewindAndMax().isEqualTo(expected);
+        return this;
+    }
+
+    /**
+     * Check if the actual value's maximum value is equal to the expected maximum value.
+     *
+     * @param expected the expected maximum value.
+     *
+     * @return current object for the chain call.
+     */
+    public FloatBufferAssertion hasRewindAndMax(final Float expected) {
+        toRewindAndMax().isEqualTo(expected);
+        return this;
+    }
+
+    /**
+     * Check if the actual value's maximum value is equal to the expected maximum value.
+     *
+     * @param expected the expected maximum value.
+     * @param delta    maximum delta between the actual value and the expected value.
+     *
+     * @return current object for the chain call.
+     */
+    public FloatBufferAssertion hasRewindAndMax(final float expected, final float delta) {
+        toRewindAndMax().isEqualTo(expected, delta);
+        return this;
+    }
+
+    /**
+     * Check if the actual value's maximum value is equal to the expected maximum value.
+     *
+     * @param expected the expected maximum value.
+     * @param delta    maximum delta between the actual value and the expected value.
+     *
+     * @return current object for the chain call.
+     */
+    public FloatBufferAssertion hasRewindAndMax(final Float expected, final float delta) {
+        toRewindAndMax().isEqualTo(expected, delta);
+        return this;
+    }
+
+    private Float getMaxValue(final boolean rewind) {
+        float[] actual = convertValue(getActual(), null, float[].class, rewind);
+        int length = actual.length;
+        if (length == 0) {
+            return null;
+        }
+        float result = actual[0];
+        for (int i = 1; i < length; i++) {
+            result = Math.max(result, actual[i]);
+        }
+        return result;
     }
 
 }
