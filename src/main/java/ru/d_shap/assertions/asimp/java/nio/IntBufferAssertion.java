@@ -591,6 +591,11 @@ public final class IntBufferAssertion extends ReferenceAssertion<IntBufferAssert
         return this;
     }
 
+    private IntArrayAssertion createIntArrayAssertion(final boolean rewind) {
+        int[] ints = convertValue(getActual(), null, int[].class, rewind);
+        return initializeAssertion(Raw.intArrayAssertion(), ints);
+    }
+
     /**
      * Make assertion about the actual value's position.
      *
@@ -803,9 +808,230 @@ public final class IntBufferAssertion extends ReferenceAssertion<IntBufferAssert
         return this;
     }
 
-    private IntArrayAssertion createIntArrayAssertion(final boolean rewind) {
-        int[] ints = convertValue(getActual(), null, int[].class, rewind);
-        return initializeAssertion(Raw.intArrayAssertion(), ints);
+    /**
+     * Make assertion about the actual value's minimum value.
+     *
+     * @return the assertion.
+     */
+    public IntAssertion toMin() {
+        checkActualIsNotNull();
+        Integer minValue = getMinValue(false);
+        return initializeAssertion(Raw.intAssertion(), minValue, Messages.Check.MIN_VALUE);
+    }
+
+    /**
+     * Make assertion about the actual value's minimum value.
+     *
+     * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
+     */
+    public IntBufferAssertion toMin(final Matcher<? super Integer> matcher) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(matcher, "matcher");
+        Integer minValue = getMinValue(false);
+        matcherAssertion(minValue, matcher, Messages.Check.MIN_VALUE);
+        return this;
+    }
+
+    /**
+     * Make assertion about the actual value's minimum value.
+     *
+     * @return the assertion.
+     */
+    public IntAssertion toRewindAndMin() {
+        checkActualIsNotNull();
+        Integer minValue = getMinValue(true);
+        return initializeAssertion(Raw.intAssertion(), minValue, Messages.Check.MIN_VALUE);
+    }
+
+    /**
+     * Make assertion about the actual value's minimum value.
+     *
+     * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
+     */
+    public IntBufferAssertion toRewindAndMin(final Matcher<? super Integer> matcher) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(matcher, "matcher");
+        Integer minValue = getMinValue(true);
+        matcherAssertion(minValue, matcher, Messages.Check.MIN_VALUE);
+        return this;
+    }
+
+    /**
+     * Check if the actual value's minimum value is equal to the expected minimum value.
+     *
+     * @param expected the expected minimum value.
+     *
+     * @return current object for the chain call.
+     */
+    public IntBufferAssertion hasMin(final int expected) {
+        toMin().isEqualTo(expected);
+        return this;
+    }
+
+    /**
+     * Check if the actual value's minimum value is equal to the expected minimum value.
+     *
+     * @param expected the expected minimum value.
+     *
+     * @return current object for the chain call.
+     */
+    public IntBufferAssertion hasMin(final Integer expected) {
+        toMin().isEqualTo(expected);
+        return this;
+    }
+
+    /**
+     * Check if the actual value's minimum value is equal to the expected minimum value.
+     *
+     * @param expected the expected minimum value.
+     *
+     * @return current object for the chain call.
+     */
+    public IntBufferAssertion hasRewindAndMin(final int expected) {
+        toRewindAndMin().isEqualTo(expected);
+        return this;
+    }
+
+    /**
+     * Check if the actual value's minimum value is equal to the expected minimum value.
+     *
+     * @param expected the expected minimum value.
+     *
+     * @return current object for the chain call.
+     */
+    public IntBufferAssertion hasRewindAndMin(final Integer expected) {
+        toRewindAndMin().isEqualTo(expected);
+        return this;
+    }
+
+    private Integer getMinValue(final boolean rewind) {
+        int[] actual = convertValue(getActual(), null, int[].class, rewind);
+        int length = actual.length;
+        if (length == 0) {
+            return null;
+        }
+        int result = actual[0];
+        for (int i = 1; i < length; i++) {
+            result = Math.min(result, actual[i]);
+        }
+        return result;
+    }
+
+    /**
+     * Make assertion about the actual value's maximum value.
+     *
+     * @return the assertion.
+     */
+    public IntAssertion toMax() {
+        checkActualIsNotNull();
+        Integer maxValue = getMaxValue(false);
+        return initializeAssertion(Raw.intAssertion(), maxValue, Messages.Check.MAX_VALUE);
+    }
+
+    /**
+     * Make assertion about the actual value's maximum value.
+     *
+     * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
+     */
+    public IntBufferAssertion toMax(final Matcher<? super Integer> matcher) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(matcher, "matcher");
+        Integer maxValue = getMaxValue(false);
+        matcherAssertion(maxValue, matcher, Messages.Check.MAX_VALUE);
+        return this;
+    }
+
+    /**
+     * Make assertion about the actual value's maximum value.
+     *
+     * @return the assertion.
+     */
+    public IntAssertion toRewindAndMax() {
+        checkActualIsNotNull();
+        Integer maxValue = getMaxValue(true);
+        return initializeAssertion(Raw.intAssertion(), maxValue, Messages.Check.MAX_VALUE);
+    }
+
+    /**
+     * Make assertion about the actual value's maximum value.
+     *
+     * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
+     */
+    public IntBufferAssertion toRewindAndMax(final Matcher<? super Integer> matcher) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(matcher, "matcher");
+        Integer maxValue = getMaxValue(true);
+        matcherAssertion(maxValue, matcher, Messages.Check.MAX_VALUE);
+        return this;
+    }
+
+    /**
+     * Check if the actual value's maximum value is equal to the expected maximum value.
+     *
+     * @param expected the expected maximum value.
+     *
+     * @return current object for the chain call.
+     */
+    public IntBufferAssertion hasMax(final int expected) {
+        toMax().isEqualTo(expected);
+        return this;
+    }
+
+    /**
+     * Check if the actual value's maximum value is equal to the expected maximum value.
+     *
+     * @param expected the expected maximum value.
+     *
+     * @return current object for the chain call.
+     */
+    public IntBufferAssertion hasMax(final Integer expected) {
+        toMax().isEqualTo(expected);
+        return this;
+    }
+
+    /**
+     * Check if the actual value's maximum value is equal to the expected maximum value.
+     *
+     * @param expected the expected maximum value.
+     *
+     * @return current object for the chain call.
+     */
+    public IntBufferAssertion hasRewindAndMax(final int expected) {
+        toRewindAndMax().isEqualTo(expected);
+        return this;
+    }
+
+    /**
+     * Check if the actual value's maximum value is equal to the expected maximum value.
+     *
+     * @param expected the expected maximum value.
+     *
+     * @return current object for the chain call.
+     */
+    public IntBufferAssertion hasRewindAndMax(final Integer expected) {
+        toRewindAndMax().isEqualTo(expected);
+        return this;
+    }
+
+    private Integer getMaxValue(final boolean rewind) {
+        int[] actual = convertValue(getActual(), null, int[].class, rewind);
+        int length = actual.length;
+        if (length == 0) {
+            return null;
+        }
+        int result = actual[0];
+        for (int i = 1; i < length; i++) {
+            result = Math.max(result, actual[i]);
+        }
+        return result;
     }
 
 }
