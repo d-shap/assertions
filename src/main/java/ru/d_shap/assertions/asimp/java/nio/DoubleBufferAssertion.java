@@ -27,6 +27,7 @@ import ru.d_shap.assertions.Messages;
 import ru.d_shap.assertions.Raw;
 import ru.d_shap.assertions.asimp.ReferenceAssertion;
 import ru.d_shap.assertions.asimp.array.DoubleArrayAssertion;
+import ru.d_shap.assertions.asimp.primitive.DoubleAssertion;
 import ru.d_shap.assertions.asimp.primitive.IntAssertion;
 
 /**
@@ -444,6 +445,11 @@ public final class DoubleBufferAssertion extends ReferenceAssertion<DoubleBuffer
         return this;
     }
 
+    private DoubleArrayAssertion createDoubleArrayAssertion(final boolean rewind) {
+        double[] doubles = convertValue(getActual(), null, double[].class, rewind);
+        return initializeAssertion(Raw.doubleArrayAssertion(), doubles);
+    }
+
     /**
      * Make assertion about the actual value's position.
      *
@@ -656,9 +662,334 @@ public final class DoubleBufferAssertion extends ReferenceAssertion<DoubleBuffer
         return this;
     }
 
-    private DoubleArrayAssertion createDoubleArrayAssertion(final boolean rewind) {
-        double[] doubles = convertValue(getActual(), null, double[].class, rewind);
-        return initializeAssertion(Raw.doubleArrayAssertion(), doubles);
+    /**
+     * Make assertion about the actual value's minimum value.
+     *
+     * @return the assertion.
+     */
+    public DoubleAssertion toMin() {
+        checkActualIsNotNull();
+        Double minValue = getMinValue(false);
+        return initializeAssertion(Raw.doubleAssertion(), minValue, Messages.Check.MIN_VALUE);
+    }
+
+    /**
+     * Make assertion about the actual value's minimum value.
+     *
+     * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
+     */
+    public DoubleBufferAssertion toMin(final Matcher<? super Double> matcher) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(matcher, "matcher");
+        Double minValue = getMinValue(false);
+        matcherAssertion(minValue, matcher, Messages.Check.MIN_VALUE);
+        return this;
+    }
+
+    /**
+     * Make assertion about the actual value's minimum value.
+     *
+     * @return the assertion.
+     */
+    public DoubleAssertion toRewindAndMin() {
+        checkActualIsNotNull();
+        Double minValue = getMinValue(true);
+        return initializeAssertion(Raw.doubleAssertion(), minValue, Messages.Check.MIN_VALUE);
+    }
+
+    /**
+     * Make assertion about the actual value's minimum value.
+     *
+     * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
+     */
+    public DoubleBufferAssertion toRewindAndMin(final Matcher<? super Double> matcher) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(matcher, "matcher");
+        Double minValue = getMinValue(true);
+        matcherAssertion(minValue, matcher, Messages.Check.MIN_VALUE);
+        return this;
+    }
+
+    /**
+     * Check if the actual value's minimum value is equal to the expected minimum value.
+     *
+     * @param expected the expected minimum value.
+     *
+     * @return current object for the chain call.
+     */
+    public DoubleBufferAssertion hasMin(final double expected) {
+        toMin().isEqualTo(expected);
+        return this;
+    }
+
+    /**
+     * Check if the actual value's minimum value is equal to the expected minimum value.
+     *
+     * @param expected the expected minimum value.
+     *
+     * @return current object for the chain call.
+     */
+    public DoubleBufferAssertion hasMin(final Double expected) {
+        toMin().isEqualTo(expected);
+        return this;
+    }
+
+    /**
+     * Check if the actual value's minimum value is equal to the expected minimum value.
+     *
+     * @param expected the expected minimum value.
+     * @param delta    maximum delta between the actual value and the expected value.
+     *
+     * @return current object for the chain call.
+     */
+    public DoubleBufferAssertion hasMin(final double expected, final double delta) {
+        toMin().isEqualTo(expected, delta);
+        return this;
+    }
+
+    /**
+     * Check if the actual value's minimum value is equal to the expected minimum value.
+     *
+     * @param expected the expected minimum value.
+     * @param delta    maximum delta between the actual value and the expected value.
+     *
+     * @return current object for the chain call.
+     */
+    public DoubleBufferAssertion hasMin(final Double expected, final double delta) {
+        toMin().isEqualTo(expected, delta);
+        return this;
+    }
+
+    /**
+     * Check if the actual value's minimum value is equal to the expected minimum value.
+     *
+     * @param expected the expected minimum value.
+     *
+     * @return current object for the chain call.
+     */
+    public DoubleBufferAssertion hasRewindAndMin(final double expected) {
+        toRewindAndMin().isEqualTo(expected);
+        return this;
+    }
+
+    /**
+     * Check if the actual value's minimum value is equal to the expected minimum value.
+     *
+     * @param expected the expected minimum value.
+     *
+     * @return current object for the chain call.
+     */
+    public DoubleBufferAssertion hasRewindAndMin(final Double expected) {
+        toRewindAndMin().isEqualTo(expected);
+        return this;
+    }
+
+    /**
+     * Check if the actual value's minimum value is equal to the expected minimum value.
+     *
+     * @param expected the expected minimum value.
+     * @param delta    maximum delta between the actual value and the expected value.
+     *
+     * @return current object for the chain call.
+     */
+    public DoubleBufferAssertion hasRewindAndMin(final double expected, final double delta) {
+        toRewindAndMin().isEqualTo(expected, delta);
+        return this;
+    }
+
+    /**
+     * Check if the actual value's minimum value is equal to the expected minimum value.
+     *
+     * @param expected the expected minimum value.
+     * @param delta    maximum delta between the actual value and the expected value.
+     *
+     * @return current object for the chain call.
+     */
+    public DoubleBufferAssertion hasRewindAndMin(final Double expected, final double delta) {
+        toRewindAndMin().isEqualTo(expected, delta);
+        return this;
+    }
+
+    private Double getMinValue(final boolean rewind) {
+        double[] actual = convertValue(getActual(), null, double[].class, rewind);
+        int length = actual.length;
+        if (length == 0) {
+            return null;
+        }
+        double result = actual[0];
+        for (int i = 1; i < length; i++) {
+            result = Math.min(result, actual[i]);
+        }
+        return result;
+    }
+
+    /**
+     * Make assertion about the actual value's maximum value.
+     *
+     * @return the assertion.
+     */
+    public DoubleAssertion toMax() {
+        checkActualIsNotNull();
+        Double maxValue = getMaxValue(false);
+        return initializeAssertion(Raw.doubleAssertion(), maxValue, Messages.Check.MAX_VALUE);
+    }
+
+    /**
+     * Make assertion about the actual value's maximum value.
+     *
+     * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
+     */
+    public DoubleBufferAssertion toMax(final Matcher<? super Double> matcher) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(matcher, "matcher");
+        Double maxValue = getMaxValue(false);
+        matcherAssertion(maxValue, matcher, Messages.Check.MAX_VALUE);
+        return this;
+    }
+
+    /**
+     * Make assertion about the actual value's maximum value.
+     *
+     * @return the assertion.
+     */
+    public DoubleAssertion toRewindAndMax() {
+        checkActualIsNotNull();
+        Double maxValue = getMaxValue(true);
+        return initializeAssertion(Raw.doubleAssertion(), maxValue, Messages.Check.MAX_VALUE);
+    }
+
+    /**
+     * Make assertion about the actual value's maximum value.
+     *
+     * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
+     */
+    public DoubleBufferAssertion toRewindAndMax(final Matcher<? super Double> matcher) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(matcher, "matcher");
+        Double maxValue = getMaxValue(true);
+        matcherAssertion(maxValue, matcher, Messages.Check.MAX_VALUE);
+        return this;
+    }
+
+    /**
+     * Check if the actual value's maximum value is equal to the expected maximum value.
+     *
+     * @param expected the expected maximum value.
+     *
+     * @return current object for the chain call.
+     */
+    public DoubleBufferAssertion hasMax(final double expected) {
+        toMax().isEqualTo(expected);
+        return this;
+    }
+
+    /**
+     * Check if the actual value's maximum value is equal to the expected maximum value.
+     *
+     * @param expected the expected maximum value.
+     *
+     * @return current object for the chain call.
+     */
+    public DoubleBufferAssertion hasMax(final Double expected) {
+        toMax().isEqualTo(expected);
+        return this;
+    }
+
+    /**
+     * Check if the actual value's maximum value is equal to the expected maximum value.
+     *
+     * @param expected the expected maximum value.
+     * @param delta    maximum delta between the actual value and the expected value.
+     *
+     * @return current object for the chain call.
+     */
+    public DoubleBufferAssertion hasMax(final double expected, final double delta) {
+        toMax().isEqualTo(expected, delta);
+        return this;
+    }
+
+    /**
+     * Check if the actual value's maximum value is equal to the expected maximum value.
+     *
+     * @param expected the expected maximum value.
+     * @param delta    maximum delta between the actual value and the expected value.
+     *
+     * @return current object for the chain call.
+     */
+    public DoubleBufferAssertion hasMax(final Double expected, final double delta) {
+        toMax().isEqualTo(expected, delta);
+        return this;
+    }
+
+    /**
+     * Check if the actual value's maximum value is equal to the expected maximum value.
+     *
+     * @param expected the expected maximum value.
+     *
+     * @return current object for the chain call.
+     */
+    public DoubleBufferAssertion hasRewindAndMax(final double expected) {
+        toRewindAndMax().isEqualTo(expected);
+        return this;
+    }
+
+    /**
+     * Check if the actual value's maximum value is equal to the expected maximum value.
+     *
+     * @param expected the expected maximum value.
+     *
+     * @return current object for the chain call.
+     */
+    public DoubleBufferAssertion hasRewindAndMax(final Double expected) {
+        toRewindAndMax().isEqualTo(expected);
+        return this;
+    }
+
+    /**
+     * Check if the actual value's maximum value is equal to the expected maximum value.
+     *
+     * @param expected the expected maximum value.
+     * @param delta    maximum delta between the actual value and the expected value.
+     *
+     * @return current object for the chain call.
+     */
+    public DoubleBufferAssertion hasRewindAndMax(final double expected, final double delta) {
+        toRewindAndMax().isEqualTo(expected, delta);
+        return this;
+    }
+
+    /**
+     * Check if the actual value's maximum value is equal to the expected maximum value.
+     *
+     * @param expected the expected maximum value.
+     * @param delta    maximum delta between the actual value and the expected value.
+     *
+     * @return current object for the chain call.
+     */
+    public DoubleBufferAssertion hasRewindAndMax(final Double expected, final double delta) {
+        toRewindAndMax().isEqualTo(expected, delta);
+        return this;
+    }
+
+    private Double getMaxValue(final boolean rewind) {
+        double[] actual = convertValue(getActual(), null, double[].class, rewind);
+        int length = actual.length;
+        if (length == 0) {
+            return null;
+        }
+        double result = actual[0];
+        for (int i = 1; i < length; i++) {
+            result = Math.max(result, actual[i]);
+        }
+        return result;
     }
 
 }
