@@ -911,13 +911,12 @@ public final class LongBufferAssertion extends ReferenceAssertion<LongBufferAsse
 
     private Long getMinValue(final boolean rewind) {
         long[] actual = convertValue(getActual(), null, long[].class, rewind);
-        int length = actual.length;
-        if (length == 0) {
+        if (actual.length == 0) {
             return null;
         }
         long result = actual[0];
-        for (int i = 1; i < length; i++) {
-            result = Math.min(result, actual[i]);
+        for (long value : actual) {
+            result = Math.min(result, value);
         }
         return result;
     }
@@ -1024,13 +1023,12 @@ public final class LongBufferAssertion extends ReferenceAssertion<LongBufferAsse
 
     private Long getMaxValue(final boolean rewind) {
         long[] actual = convertValue(getActual(), null, long[].class, rewind);
-        int length = actual.length;
-        if (length == 0) {
+        if (actual.length == 0) {
             return null;
         }
         long result = actual[0];
-        for (int i = 1; i < length; i++) {
-            result = Math.max(result, actual[i]);
+        for (long value : actual) {
+            result = Math.max(result, value);
         }
         return result;
     }

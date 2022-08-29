@@ -910,13 +910,12 @@ public final class IntBufferAssertion extends ReferenceAssertion<IntBufferAssert
 
     private Integer getMinValue(final boolean rewind) {
         int[] actual = convertValue(getActual(), null, int[].class, rewind);
-        int length = actual.length;
-        if (length == 0) {
+        if (actual.length == 0) {
             return null;
         }
         int result = actual[0];
-        for (int i = 1; i < length; i++) {
-            result = Math.min(result, actual[i]);
+        for (int value : actual) {
+            result = Math.min(result, value);
         }
         return result;
     }
@@ -1023,13 +1022,12 @@ public final class IntBufferAssertion extends ReferenceAssertion<IntBufferAssert
 
     private Integer getMaxValue(final boolean rewind) {
         int[] actual = convertValue(getActual(), null, int[].class, rewind);
-        int length = actual.length;
-        if (length == 0) {
+        if (actual.length == 0) {
             return null;
         }
         int result = actual[0];
-        for (int i = 1; i < length; i++) {
-            result = Math.max(result, actual[i]);
+        for (int value : actual) {
+            result = Math.max(result, value);
         }
         return result;
     }

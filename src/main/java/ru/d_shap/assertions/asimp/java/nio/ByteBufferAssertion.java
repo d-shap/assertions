@@ -1055,13 +1055,12 @@ public final class ByteBufferAssertion extends ReferenceAssertion<ByteBufferAsse
 
     private Byte getMinValue(final boolean rewind) {
         byte[] actual = convertValue(getActual(), null, byte[].class, rewind);
-        int length = actual.length;
-        if (length == 0) {
+        if (actual.length == 0) {
             return null;
         }
         byte result = actual[0];
-        for (int i = 1; i < length; i++) {
-            result = (byte) Math.min(result, actual[i]);
+        for (byte value : actual) {
+            result = (byte) Math.min(result, value);
         }
         return result;
     }
@@ -1168,13 +1167,12 @@ public final class ByteBufferAssertion extends ReferenceAssertion<ByteBufferAsse
 
     private Byte getMaxValue(final boolean rewind) {
         byte[] actual = convertValue(getActual(), null, byte[].class, rewind);
-        int length = actual.length;
-        if (length == 0) {
+        if (actual.length == 0) {
             return null;
         }
         byte result = actual[0];
-        for (int i = 1; i < length; i++) {
-            result = (byte) Math.max(result, actual[i]);
+        for (byte value : actual) {
+            result = (byte) Math.max(result, value);
         }
         return result;
     }

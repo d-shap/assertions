@@ -816,13 +816,12 @@ public final class FloatBufferAssertion extends ReferenceAssertion<FloatBufferAs
 
     private Float getMinValue(final boolean rewind) {
         float[] actual = convertValue(getActual(), null, float[].class, rewind);
-        int length = actual.length;
-        if (length == 0) {
+        if (actual.length == 0) {
             return null;
         }
         float result = actual[0];
-        for (int i = 1; i < length; i++) {
-            result = Math.min(result, actual[i]);
+        for (float value : actual) {
+            result = Math.min(result, value);
         }
         return result;
     }
@@ -981,13 +980,12 @@ public final class FloatBufferAssertion extends ReferenceAssertion<FloatBufferAs
 
     private Float getMaxValue(final boolean rewind) {
         float[] actual = convertValue(getActual(), null, float[].class, rewind);
-        int length = actual.length;
-        if (length == 0) {
+        if (actual.length == 0) {
             return null;
         }
         float result = actual[0];
-        for (int i = 1; i < length; i++) {
-            result = Math.max(result, actual[i]);
+        for (float value : actual) {
+            result = Math.max(result, value);
         }
         return result;
     }

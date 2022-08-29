@@ -1055,13 +1055,12 @@ public final class ShortBufferAssertion extends ReferenceAssertion<ShortBufferAs
 
     private Short getMinValue(final boolean rewind) {
         short[] actual = convertValue(getActual(), null, short[].class, rewind);
-        int length = actual.length;
-        if (length == 0) {
+        if (actual.length == 0) {
             return null;
         }
         short result = actual[0];
-        for (int i = 1; i < length; i++) {
-            result = (short) Math.min(result, actual[i]);
+        for (short value : actual) {
+            result = (short) Math.min(result, value);
         }
         return result;
     }
@@ -1168,13 +1167,12 @@ public final class ShortBufferAssertion extends ReferenceAssertion<ShortBufferAs
 
     private Short getMaxValue(final boolean rewind) {
         short[] actual = convertValue(getActual(), null, short[].class, rewind);
-        int length = actual.length;
-        if (length == 0) {
+        if (actual.length == 0) {
             return null;
         }
         short result = actual[0];
-        for (int i = 1; i < length; i++) {
-            result = (short) Math.max(result, actual[i]);
+        for (short value : actual) {
+            result = (short) Math.max(result, value);
         }
         return result;
     }
