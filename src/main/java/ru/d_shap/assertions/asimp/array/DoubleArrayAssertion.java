@@ -386,13 +386,12 @@ public final class DoubleArrayAssertion extends ReferenceAssertion<DoubleArrayAs
 
     private Double getMinValue() {
         double[] actual = getActual();
-        int length = actual.length;
-        if (length == 0) {
+        if (actual.length == 0) {
             return null;
         }
         double result = actual[0];
-        for (int i = 1; i < length; i++) {
-            result = Math.min(result, actual[i]);
+        for (double value : actual) {
+            result = Math.min(result, value);
         }
         return result;
     }
@@ -475,13 +474,12 @@ public final class DoubleArrayAssertion extends ReferenceAssertion<DoubleArrayAs
 
     private Double getMaxValue() {
         double[] actual = getActual();
-        int length = actual.length;
-        if (length == 0) {
+        if (actual.length == 0) {
             return null;
         }
         double result = actual[0];
-        for (int i = 1; i < length; i++) {
-            result = Math.max(result, actual[i]);
+        for (double value : actual) {
+            result = Math.max(result, value);
         }
         return result;
     }

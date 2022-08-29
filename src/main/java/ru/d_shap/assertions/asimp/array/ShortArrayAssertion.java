@@ -545,13 +545,12 @@ public final class ShortArrayAssertion extends ReferenceAssertion<ShortArrayAsse
 
     private Short getMinValue() {
         short[] actual = getActual();
-        int length = actual.length;
-        if (length == 0) {
+        if (actual.length == 0) {
             return null;
         }
         short result = actual[0];
-        for (int i = 1; i < length; i++) {
-            result = (short) Math.min(result, actual[i]);
+        for (short value : actual) {
+            result = (short) Math.min(result, value);
         }
         return result;
     }
@@ -608,13 +607,12 @@ public final class ShortArrayAssertion extends ReferenceAssertion<ShortArrayAsse
 
     private Short getMaxValue() {
         short[] actual = getActual();
-        int length = actual.length;
-        if (length == 0) {
+        if (actual.length == 0) {
             return null;
         }
         short result = actual[0];
-        for (int i = 1; i < length; i++) {
-            result = (short) Math.max(result, actual[i]);
+        for (short value : actual) {
+            result = (short) Math.max(result, value);
         }
         return result;
     }

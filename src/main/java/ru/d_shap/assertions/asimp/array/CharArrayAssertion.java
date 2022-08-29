@@ -444,13 +444,12 @@ public final class CharArrayAssertion extends ReferenceAssertion<CharArrayAssert
 
     private Character getMinValue() {
         char[] actual = getActual();
-        int length = actual.length;
-        if (length == 0) {
+        if (actual.length == 0) {
             return null;
         }
         char result = actual[0];
-        for (int i = 1; i < length; i++) {
-            result = (char) Math.min(result, actual[i]);
+        for (char value : actual) {
+            result = (char) Math.min(result, value);
         }
         return result;
     }
@@ -507,13 +506,12 @@ public final class CharArrayAssertion extends ReferenceAssertion<CharArrayAssert
 
     private Character getMaxValue() {
         char[] actual = getActual();
-        int length = actual.length;
-        if (length == 0) {
+        if (actual.length == 0) {
             return null;
         }
         char result = actual[0];
-        for (int i = 1; i < length; i++) {
-            result = (char) Math.max(result, actual[i]);
+        for (char value : actual) {
+            result = (char) Math.max(result, value);
         }
         return result;
     }
