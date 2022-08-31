@@ -1100,7 +1100,58 @@ public final class ByteBufferAggregateAssertionTest extends AssertionTest {
      */
     @Test
     public void hasRewindAndMaxPrimitiveTest() {
-        // TODO
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1})).hasRewindAndMax(1);
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{15, 25, 10, 1})).hasRewindAndMax(25);
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{Byte.MAX_VALUE, 100, -100, 100, 100})).hasRewindAndMax(Byte.MAX_VALUE);
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{100, -100, 100, 100, Byte.MAX_VALUE})).hasRewindAndMax(Byte.MAX_VALUE);
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{100, -100, Byte.MAX_VALUE, 100, 100})).hasRewindAndMax(Byte.MAX_VALUE);
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{30, 15, 25, 10, 1}, 1)).hasRewindAndMax(30);
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{30, 15, 25, 10, 1}, 2)).hasRewindAndMax(30);
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{30, 15, 25, 10, 1}, 3)).hasRewindAndMax(30);
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1})).isNotNull().hasRewindAndMax(1).isInstanceOf(ByteBuffer.class);
+
+        try {
+            Raw.byteBufferAssertion().hasRewindAndMax(0);
+            Assertions.fail("ByteBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.byteBufferAssertion(), null).hasRewindAndMax(0);
+            Assertions.fail("ByteBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.byteBufferAssertion(), null, "Message").hasRewindAndMax(0);
+            Assertions.fail("ByteBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{2, 1})).hasRewindAndMax(4);
+            Assertions.fail("ByteBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's maximum value.\n\tActual and expected values should be the same.\n\tExpected:<4b> but was:<2b>");
+        }
+        try {
+            initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{2, 1}), "Message").hasRewindAndMax(4);
+            Assertions.fail("ByteBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's maximum value.\n\tActual and expected values should be the same.\n\tExpected:<4b> but was:<2b>");
+        }
+        try {
+            initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{2, 1}, 1)).hasRewindAndMax(4);
+            Assertions.fail("ByteBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's maximum value.\n\tActual and expected values should be the same.\n\tExpected:<4b> but was:<2b>");
+        }
+        try {
+            initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{2, 1}, 1), "Message").hasRewindAndMax(4);
+            Assertions.fail("ByteBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's maximum value.\n\tActual and expected values should be the same.\n\tExpected:<4b> but was:<2b>");
+        }
     }
 
     /**
@@ -1108,7 +1159,83 @@ public final class ByteBufferAggregateAssertionTest extends AssertionTest {
      */
     @Test
     public void hasRewindAndMaxObjectTest() {
-        // TODO
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{})).hasRewindAndMax(null);
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1})).hasRewindAndMax(Byte.valueOf("1"));
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{15, 25, 10, 1})).hasRewindAndMax(Byte.valueOf("25"));
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{Byte.MAX_VALUE, 100, -100, 100, 100})).hasRewindAndMax(Byte.valueOf("127"));
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{100, -100, 100, 100, Byte.MAX_VALUE})).hasRewindAndMax(Byte.valueOf("127"));
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{100, -100, Byte.MAX_VALUE, 100, 100})).hasRewindAndMax(Byte.valueOf("127"));
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{30, 15, 25, 10, 1}, 1)).hasRewindAndMax(Byte.valueOf("30"));
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{30, 15, 25, 10, 1}, 2)).hasRewindAndMax(Byte.valueOf("30"));
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{30, 15, 25, 10, 1}, 3)).hasRewindAndMax(Byte.valueOf("30"));
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1})).isNotNull().hasRewindAndMax(Byte.valueOf("1")).isInstanceOf(ByteBuffer.class);
+
+        try {
+            Raw.byteBufferAssertion().hasRewindAndMax(Byte.valueOf("0"));
+            Assertions.fail("ByteBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.byteBufferAssertion(), null).hasRewindAndMax(Byte.valueOf("0"));
+            Assertions.fail("ByteBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.byteBufferAssertion(), null, "Message").hasRewindAndMax(Byte.valueOf("0"));
+            Assertions.fail("ByteBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.byteBufferAssertion(), null).hasRewindAndMax(null);
+            Assertions.fail("ByteBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.byteBufferAssertion(), null, "Message").hasRewindAndMax(null);
+            Assertions.fail("ByteBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1})).hasRewindAndMax(null);
+            Assertions.fail("ByteBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's maximum value.\n\tActual value should be null.\n\tActual:<1b>");
+        }
+        try {
+            initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1}), "Message").hasRewindAndMax(null);
+            Assertions.fail("ByteBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's maximum value.\n\tActual value should be null.\n\tActual:<1b>");
+        }
+        try {
+            initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{2, 1})).hasRewindAndMax(Byte.valueOf("4"));
+            Assertions.fail("ByteBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's maximum value.\n\tActual and expected values should be the same.\n\tExpected:<4b> but was:<2b>");
+        }
+        try {
+            initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{2, 1}), "Message").hasRewindAndMax(Byte.valueOf("4"));
+            Assertions.fail("ByteBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's maximum value.\n\tActual and expected values should be the same.\n\tExpected:<4b> but was:<2b>");
+        }
+        try {
+            initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{2, 1}, 1)).hasRewindAndMax(Byte.valueOf("4"));
+            Assertions.fail("ByteBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's maximum value.\n\tActual and expected values should be the same.\n\tExpected:<4b> but was:<2b>");
+        }
+        try {
+            initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{2, 1}, 1), "Message").hasRewindAndMax(Byte.valueOf("4"));
+            Assertions.fail("ByteBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's maximum value.\n\tActual and expected values should be the same.\n\tExpected:<4b> but was:<2b>");
+        }
     }
 
 }
