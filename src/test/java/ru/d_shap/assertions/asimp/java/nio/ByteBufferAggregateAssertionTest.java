@@ -19,6 +19,9 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.asimp.java.nio;
 
+import java.nio.ByteBuffer;
+
+import org.hamcrest.Matchers;
 import org.junit.Test;
 
 import ru.d_shap.assertions.AssertionTest;
@@ -116,7 +119,83 @@ public final class ByteBufferAggregateAssertionTest extends AssertionTest {
      */
     @Test
     public void toMinMatcherTest() {
-        // TODO
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{})).toMin(Matchers.nullValue());
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1})).toMin(Matchers.is(Matchers.equalTo((byte) 1)));
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{10, 1, 15, 25})).toMin(Matchers.is(Matchers.equalTo((byte) 1)));
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{Byte.MIN_VALUE, 100, -100, 100, 100})).toMin(Matchers.is(Matchers.equalTo(Byte.MIN_VALUE)));
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{100, -100, 100, 100, Byte.MIN_VALUE})).toMin(Matchers.is(Matchers.equalTo(Byte.MIN_VALUE)));
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{100, -100, Byte.MIN_VALUE, 100, 100})).toMin(Matchers.is(Matchers.equalTo(Byte.MIN_VALUE)));
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 10, 2, 15, 25}, 1)).toMin(Matchers.is(Matchers.equalTo((byte) 2)));
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 10, 2, 15, 25}, 2)).toMin(Matchers.is(Matchers.equalTo((byte) 2)));
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 10, 2, 15, 25}, 3)).toMin(Matchers.is(Matchers.equalTo((byte) 15)));
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1})).isNotNull().toMin(Matchers.is(Matchers.equalTo((byte) 1))).isInstanceOf(ByteBuffer.class);
+
+        try {
+            Raw.byteBufferAssertion().toMin(Matchers.equalTo((byte) 0));
+            Assertions.fail("ByteBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.byteBufferAssertion(), null).toMin(Matchers.equalTo((byte) 0));
+            Assertions.fail("ByteBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.byteBufferAssertion(), null, "Message").toMin(Matchers.equalTo((byte) 0));
+            Assertions.fail("ByteBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.byteBufferAssertion(), null).toMin(null);
+            Assertions.fail("ByteBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.byteBufferAssertion(), null, "Message").toMin(null);
+            Assertions.fail("ByteBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{})).toMin(null);
+            Assertions.fail("ByteBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: matcher.");
+        }
+        try {
+            initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{}), "Message").toMin(null);
+            Assertions.fail("ByteBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: matcher.");
+        }
+        try {
+            initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).toMin(Matchers.equalTo((byte) 4));
+            Assertions.fail("ByteBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's minimum value.\nExpected: <4>\n     but: was <1>");
+        }
+        try {
+            initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2}), "Message").toMin(Matchers.equalTo((byte) 4));
+            Assertions.fail("ByteBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's minimum value.\nExpected: <4>\n     but: was <1>");
+        }
+        try {
+            initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2}, 1)).toMin(Matchers.equalTo((byte) 4));
+            Assertions.fail("ByteBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's minimum value.\nExpected: <4>\n     but: was <2>");
+        }
+        try {
+            initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2}, 1), "Message").toMin(Matchers.equalTo((byte) 4));
+            Assertions.fail("ByteBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's minimum value.\nExpected: <4>\n     but: was <2>");
+        }
     }
 
     /**
@@ -196,7 +275,83 @@ public final class ByteBufferAggregateAssertionTest extends AssertionTest {
      */
     @Test
     public void toRewindAndMinMatcherTest() {
-        // TODO
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{})).toRewindAndMin(Matchers.nullValue());
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1})).toRewindAndMin(Matchers.is(Matchers.equalTo((byte) 1)));
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{10, 1, 15, 25})).toRewindAndMin(Matchers.is(Matchers.equalTo((byte) 1)));
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{Byte.MIN_VALUE, 100, -100, 100, 100})).toRewindAndMin(Matchers.is(Matchers.equalTo(Byte.MIN_VALUE)));
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{100, -100, 100, 100, Byte.MIN_VALUE})).toRewindAndMin(Matchers.is(Matchers.equalTo(Byte.MIN_VALUE)));
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{100, -100, Byte.MIN_VALUE, 100, 100})).toRewindAndMin(Matchers.is(Matchers.equalTo(Byte.MIN_VALUE)));
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 10, 2, 15, 25}, 1)).toRewindAndMin(Matchers.is(Matchers.equalTo((byte) 1)));
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 10, 2, 15, 25}, 2)).toRewindAndMin(Matchers.is(Matchers.equalTo((byte) 1)));
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 10, 2, 15, 25}, 3)).toRewindAndMin(Matchers.is(Matchers.equalTo((byte) 1)));
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1})).isNotNull().toRewindAndMin(Matchers.is(Matchers.equalTo((byte) 1))).isInstanceOf(ByteBuffer.class);
+
+        try {
+            Raw.byteBufferAssertion().toRewindAndMin(Matchers.equalTo((byte) 0));
+            Assertions.fail("ByteBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.byteBufferAssertion(), null).toRewindAndMin(Matchers.equalTo((byte) 0));
+            Assertions.fail("ByteBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.byteBufferAssertion(), null, "Message").toRewindAndMin(Matchers.equalTo((byte) 0));
+            Assertions.fail("ByteBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.byteBufferAssertion(), null).toRewindAndMin(null);
+            Assertions.fail("ByteBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.byteBufferAssertion(), null, "Message").toRewindAndMin(null);
+            Assertions.fail("ByteBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{})).toRewindAndMin(null);
+            Assertions.fail("ByteBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: matcher.");
+        }
+        try {
+            initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{}), "Message").toRewindAndMin(null);
+            Assertions.fail("ByteBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: matcher.");
+        }
+        try {
+            initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).toRewindAndMin(Matchers.equalTo((byte) 4));
+            Assertions.fail("ByteBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's minimum value.\nExpected: <4>\n     but: was <1>");
+        }
+        try {
+            initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2}), "Message").toRewindAndMin(Matchers.equalTo((byte) 4));
+            Assertions.fail("ByteBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's minimum value.\nExpected: <4>\n     but: was <1>");
+        }
+        try {
+            initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2}, 1)).toRewindAndMin(Matchers.equalTo((byte) 4));
+            Assertions.fail("ByteBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's minimum value.\nExpected: <4>\n     but: was <1>");
+        }
+        try {
+            initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2}, 1), "Message").toRewindAndMin(Matchers.equalTo((byte) 4));
+            Assertions.fail("ByteBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's minimum value.\nExpected: <4>\n     but: was <1>");
+        }
     }
 
     /**
