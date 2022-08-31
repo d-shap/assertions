@@ -717,7 +717,83 @@ public final class ByteBufferAggregateAssertionTest extends AssertionTest {
      */
     @Test
     public void toMaxMatcherTest() {
-        // TODO
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{})).toMax(Matchers.nullValue());
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1})).toMax(Matchers.is(Matchers.equalTo((byte) 1)));
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{15, 25, 10, 1})).toMax(Matchers.is(Matchers.equalTo((byte) 25)));
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{Byte.MAX_VALUE, 100, -100, 100, 100})).toMax(Matchers.is(Matchers.equalTo(Byte.MAX_VALUE)));
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{100, -100, 100, 100, Byte.MAX_VALUE})).toMax(Matchers.is(Matchers.equalTo(Byte.MAX_VALUE)));
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{100, -100, Byte.MAX_VALUE, 100, 100})).toMax(Matchers.is(Matchers.equalTo(Byte.MAX_VALUE)));
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{30, 15, 25, 10, 1}, 1)).toMax(Matchers.is(Matchers.equalTo((byte) 25)));
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{30, 15, 25, 10, 1}, 2)).toMax(Matchers.is(Matchers.equalTo((byte) 25)));
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{30, 15, 25, 10, 1}, 3)).toMax(Matchers.is(Matchers.equalTo((byte) 10)));
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1})).isNotNull().toMax(Matchers.is(Matchers.equalTo((byte) 1))).isInstanceOf(ByteBuffer.class);
+
+        try {
+            Raw.byteBufferAssertion().toMax(Matchers.equalTo((byte) 0));
+            Assertions.fail("ByteBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.byteBufferAssertion(), null).toMax(Matchers.equalTo((byte) 0));
+            Assertions.fail("ByteBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.byteBufferAssertion(), null, "Message").toMax(Matchers.equalTo((byte) 0));
+            Assertions.fail("ByteBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.byteBufferAssertion(), null).toMax(null);
+            Assertions.fail("ByteBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.byteBufferAssertion(), null, "Message").toMax(null);
+            Assertions.fail("ByteBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{})).toMax(null);
+            Assertions.fail("ByteBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: matcher.");
+        }
+        try {
+            initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{}), "Message").toMax(null);
+            Assertions.fail("ByteBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: matcher.");
+        }
+        try {
+            initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{2, 1})).toMax(Matchers.equalTo((byte) 4));
+            Assertions.fail("ByteBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's maximum value.\nExpected: <4>\n     but: was <2>");
+        }
+        try {
+            initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{2, 1}), "Message").toMax(Matchers.equalTo((byte) 4));
+            Assertions.fail("ByteBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's maximum value.\nExpected: <4>\n     but: was <2>");
+        }
+        try {
+            initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{2, 1}, 1)).toMax(Matchers.equalTo((byte) 4));
+            Assertions.fail("ByteBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's maximum value.\nExpected: <4>\n     but: was <1>");
+        }
+        try {
+            initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{2, 1}, 1), "Message").toMax(Matchers.equalTo((byte) 4));
+            Assertions.fail("ByteBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's maximum value.\nExpected: <4>\n     but: was <1>");
+        }
     }
 
     /**
@@ -797,7 +873,83 @@ public final class ByteBufferAggregateAssertionTest extends AssertionTest {
      */
     @Test
     public void toRewindAndMaxMatcherTest() {
-        // TODO
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{})).toRewindAndMax(Matchers.nullValue());
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1})).toRewindAndMax(Matchers.is(Matchers.equalTo((byte) 1)));
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{15, 25, 10, 1})).toRewindAndMax(Matchers.is(Matchers.equalTo((byte) 25)));
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{Byte.MAX_VALUE, 100, -100, 100, 100})).toRewindAndMax(Matchers.is(Matchers.equalTo(Byte.MAX_VALUE)));
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{100, -100, 100, 100, Byte.MAX_VALUE})).toRewindAndMax(Matchers.is(Matchers.equalTo(Byte.MAX_VALUE)));
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{100, -100, Byte.MAX_VALUE, 100, 100})).toRewindAndMax(Matchers.is(Matchers.equalTo(Byte.MAX_VALUE)));
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{30, 15, 25, 10, 1}, 1)).toRewindAndMax(Matchers.is(Matchers.equalTo((byte) 30)));
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{30, 15, 25, 10, 1}, 2)).toRewindAndMax(Matchers.is(Matchers.equalTo((byte) 30)));
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{30, 15, 25, 10, 1}, 3)).toRewindAndMax(Matchers.is(Matchers.equalTo((byte) 30)));
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1})).isNotNull().toRewindAndMax(Matchers.is(Matchers.equalTo((byte) 1))).isInstanceOf(ByteBuffer.class);
+
+        try {
+            Raw.byteBufferAssertion().toRewindAndMax(Matchers.equalTo((byte) 0));
+            Assertions.fail("ByteBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.byteBufferAssertion(), null).toRewindAndMax(Matchers.equalTo((byte) 0));
+            Assertions.fail("ByteBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.byteBufferAssertion(), null, "Message").toRewindAndMax(Matchers.equalTo((byte) 0));
+            Assertions.fail("ByteBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.byteBufferAssertion(), null).toRewindAndMax(null);
+            Assertions.fail("ByteBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.byteBufferAssertion(), null, "Message").toRewindAndMax(null);
+            Assertions.fail("ByteBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1})).toRewindAndMax(null);
+            Assertions.fail("ByteBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: matcher.");
+        }
+        try {
+            initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1}), "Message").toRewindAndMax(null);
+            Assertions.fail("ByteBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: matcher.");
+        }
+        try {
+            initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{2, 1})).toRewindAndMax(Matchers.equalTo((byte) 4));
+            Assertions.fail("ByteBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's maximum value.\nExpected: <4>\n     but: was <2>");
+        }
+        try {
+            initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{2, 1}), "Message").toRewindAndMax(Matchers.equalTo((byte) 4));
+            Assertions.fail("ByteBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's maximum value.\nExpected: <4>\n     but: was <2>");
+        }
+        try {
+            initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{2, 1}, 1)).toRewindAndMax(Matchers.equalTo((byte) 4));
+            Assertions.fail("ByteBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's maximum value.\nExpected: <4>\n     but: was <2>");
+        }
+        try {
+            initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{2, 1}, 1), "Message").toRewindAndMax(Matchers.equalTo((byte) 4));
+            Assertions.fail("ByteBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's maximum value.\nExpected: <4>\n     but: was <2>");
+        }
     }
 
     /**
