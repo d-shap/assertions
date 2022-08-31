@@ -502,7 +502,58 @@ public final class ByteBufferAggregateAssertionTest extends AssertionTest {
      */
     @Test
     public void hasRewindAndMinPrimitiveTest() {
-        // TODO
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1})).hasRewindAndMin(1);
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{10, 1, 15, 25})).hasRewindAndMin(1);
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{Byte.MIN_VALUE, 100, -100, 100, 100})).hasRewindAndMin(Byte.MIN_VALUE);
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{100, -100, 100, 100, Byte.MIN_VALUE})).hasRewindAndMin(Byte.MIN_VALUE);
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{100, -100, Byte.MIN_VALUE, 100, 100})).hasRewindAndMin(Byte.MIN_VALUE);
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 10, 2, 15, 25}, 1)).hasRewindAndMin(1);
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 10, 2, 15, 25}, 2)).hasRewindAndMin(1);
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 10, 2, 15, 25}, 3)).hasRewindAndMin(1);
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1})).isNotNull().hasRewindAndMin(1).isInstanceOf(ByteBuffer.class);
+
+        try {
+            Raw.byteBufferAssertion().hasRewindAndMin(0);
+            Assertions.fail("ByteBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.byteBufferAssertion(), null).hasRewindAndMin(0);
+            Assertions.fail("ByteBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.byteBufferAssertion(), null, "Message").hasRewindAndMin(0);
+            Assertions.fail("ByteBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).hasRewindAndMin(4);
+            Assertions.fail("ByteBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's minimum value.\n\tActual and expected values should be the same.\n\tExpected:<4b> but was:<1b>");
+        }
+        try {
+            initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2}), "Message").hasRewindAndMin(4);
+            Assertions.fail("ByteBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's minimum value.\n\tActual and expected values should be the same.\n\tExpected:<4b> but was:<1b>");
+        }
+        try {
+            initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2}, 1)).hasRewindAndMin(4);
+            Assertions.fail("ByteBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's minimum value.\n\tActual and expected values should be the same.\n\tExpected:<4b> but was:<1b>");
+        }
+        try {
+            initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2}, 1), "Message").hasRewindAndMin(4);
+            Assertions.fail("ByteBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's minimum value.\n\tActual and expected values should be the same.\n\tExpected:<4b> but was:<1b>");
+        }
     }
 
     /**
@@ -510,7 +561,83 @@ public final class ByteBufferAggregateAssertionTest extends AssertionTest {
      */
     @Test
     public void hasRewindAndMinObjectTest() {
-        // TODO
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{})).hasRewindAndMin(null);
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1})).hasRewindAndMin(Byte.valueOf("1"));
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{10, 1, 15, 25})).hasRewindAndMin(Byte.valueOf("1"));
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{Byte.MIN_VALUE, 100, -100, 100, 100})).hasRewindAndMin(Byte.valueOf("-128"));
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{100, -100, 100, 100, Byte.MIN_VALUE})).hasRewindAndMin(Byte.valueOf("-128"));
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{100, -100, Byte.MIN_VALUE, 100, 100})).hasRewindAndMin(Byte.valueOf("-128"));
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 10, 2, 15, 25}, 1)).hasRewindAndMin(Byte.valueOf("1"));
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 10, 2, 15, 25}, 2)).hasRewindAndMin(Byte.valueOf("1"));
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 10, 2, 15, 25}, 3)).hasRewindAndMin(Byte.valueOf("1"));
+        initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1})).isNotNull().hasRewindAndMin(Byte.valueOf("1")).isInstanceOf(ByteBuffer.class);
+
+        try {
+            Raw.byteBufferAssertion().hasRewindAndMin(Byte.valueOf("0"));
+            Assertions.fail("ByteBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.byteBufferAssertion(), null).hasRewindAndMin(Byte.valueOf("0"));
+            Assertions.fail("ByteBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.byteBufferAssertion(), null, "Message").hasRewindAndMin(Byte.valueOf("0"));
+            Assertions.fail("ByteBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.byteBufferAssertion(), null).hasRewindAndMin(null);
+            Assertions.fail("ByteBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.byteBufferAssertion(), null, "Message").hasRewindAndMin(null);
+            Assertions.fail("ByteBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1})).hasRewindAndMin(null);
+            Assertions.fail("ByteBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's minimum value.\n\tActual value should be null.\n\tActual:<1b>");
+        }
+        try {
+            initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1}), "Message").hasRewindAndMin(null);
+            Assertions.fail("ByteBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's minimum value.\n\tActual value should be null.\n\tActual:<1b>");
+        }
+        try {
+            initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2})).hasRewindAndMin(Byte.valueOf("4"));
+            Assertions.fail("ByteBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's minimum value.\n\tActual and expected values should be the same.\n\tExpected:<4b> but was:<1b>");
+        }
+        try {
+            initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2}), "Message").hasRewindAndMin(Byte.valueOf("4"));
+            Assertions.fail("ByteBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's minimum value.\n\tActual and expected values should be the same.\n\tExpected:<4b> but was:<1b>");
+        }
+        try {
+            initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2}, 1)).hasRewindAndMin(Byte.valueOf("4"));
+            Assertions.fail("ByteBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's minimum value.\n\tActual and expected values should be the same.\n\tExpected:<4b> but was:<1b>");
+        }
+        try {
+            initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2}, 1), "Message").hasRewindAndMin(Byte.valueOf("4"));
+            Assertions.fail("ByteBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's minimum value.\n\tActual and expected values should be the same.\n\tExpected:<4b> but was:<1b>");
+        }
     }
 
     /**
