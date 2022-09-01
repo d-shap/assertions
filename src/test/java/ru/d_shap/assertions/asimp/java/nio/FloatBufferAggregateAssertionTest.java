@@ -1394,7 +1394,60 @@ public final class FloatBufferAggregateAssertionTest extends AssertionTest {
      */
     @Test
     public void hasMaxSpecifiedDeltaPrimitiveTest() {
-        // TODO
+        initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{1.0f})).hasMax(1.0f, 0.1f);
+        initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{15.0f, 25.0f, 10.0f, 1.0f})).hasMax(25.0f, 0.1f);
+        initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{15.0f, 25.0f, 10.0f, 1.0f})).hasMax(24.95f, 0.1f);
+        initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{15.0f, 25.0f, 10.0f, 1.0f})).hasMax(25.05f, 0.1f);
+        initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{Float.MAX_VALUE, 100.0f, -100.0f, 100.0f, 100.0f})).hasMax(Float.MAX_VALUE, 0.1f);
+        initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{100.0f, -100.0f, 100.0f, 100.0f, Float.MAX_VALUE})).hasMax(Float.MAX_VALUE, 0.1f);
+        initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{100.0f, -100.0f, Float.MAX_VALUE, 100.0f, 100.0f})).hasMax(Float.MAX_VALUE, 0.1f);
+        initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{30.0f, 15.0f, 25.0f, 10.0f, 1.0f}, 1)).hasMax(25.0f, 0.1f);
+        initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{30.0f, 15.0f, 25.0f, 10.0f, 1.0f}, 2)).hasMax(25.0f, 0.1f);
+        initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{30.0f, 15.0f, 25.0f, 10.0f, 1.0f}, 3)).hasMax(10.0f, 0.1f);
+        initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{1.0f})).isNotNull().hasMax(1.0f, 0.1f).isInstanceOf(FloatBuffer.class);
+
+        try {
+            Raw.floatBufferAssertion().hasMax(0.0f, 0.1f);
+            Assertions.fail("FloatBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.floatBufferAssertion(), null).hasMax(0.0f, 0.1f);
+            Assertions.fail("FloatBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.floatBufferAssertion(), null, "Message").hasMax(0.0f, 0.1f);
+            Assertions.fail("FloatBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{2.0f, 1.0f})).hasMax(4.0f, 0.1f);
+            Assertions.fail("FloatBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's maximum value.\n\tActual and expected values should be the same.\n\tExpected:<4.0f±0.1f> but was:<2.0f>");
+        }
+        try {
+            initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{2.0f, 1.0f}), "Message").hasMax(4.0f, 0.1f);
+            Assertions.fail("FloatBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's maximum value.\n\tActual and expected values should be the same.\n\tExpected:<4.0f±0.1f> but was:<2.0f>");
+        }
+        try {
+            initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{2.0f, 1.0f}, 1)).hasMax(4.0f, 0.1f);
+            Assertions.fail("FloatBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's maximum value.\n\tActual and expected values should be the same.\n\tExpected:<4.0f±0.1f> but was:<1.0f>");
+        }
+        try {
+            initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{2.0f, 1.0f}, 1), "Message").hasMax(4.0f, 0.1f);
+            Assertions.fail("FloatBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's maximum value.\n\tActual and expected values should be the same.\n\tExpected:<4.0f±0.1f> but was:<1.0f>");
+        }
     }
 
     /**
@@ -1402,7 +1455,85 @@ public final class FloatBufferAggregateAssertionTest extends AssertionTest {
      */
     @Test
     public void hasMaxSpecifiedDeltaObjectTest() {
-        // TODO
+        initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{})).hasMax(null, 0.1f);
+        initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{1.0f})).hasMax(Float.valueOf(1.0f), 0.1f);
+        initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{15.0f, 25.0f, 10.0f, 1.0f})).hasMax(Float.valueOf(25.0f), 0.1f);
+        initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{15.0f, 25.0f, 10.0f, 1.0f})).hasMax(Float.valueOf(24.95f), 0.1f);
+        initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{15.0f, 25.0f, 10.0f, 1.0f})).hasMax(Float.valueOf(25.05f), 0.1f);
+        initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{Float.MAX_VALUE, 100.0f, -100.0f, 100.0f, 100.0f})).hasMax(Float.valueOf(Float.MAX_VALUE), 0.1f);
+        initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{100.0f, -100.0f, 100.0f, 100.0f, Float.MAX_VALUE})).hasMax(Float.valueOf(Float.MAX_VALUE), 0.1f);
+        initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{100.0f, -100.0f, Float.MAX_VALUE, 100.0f, 100.0f})).hasMax(Float.valueOf(Float.MAX_VALUE), 0.1f);
+        initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{30.0f, 15.0f, 25.0f, 10.0f, 1.0f}, 1)).hasMax(Float.valueOf(25.0f), 0.1f);
+        initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{30.0f, 15.0f, 25.0f, 10.0f, 1.0f}, 2)).hasMax(Float.valueOf(25.0f), 0.1f);
+        initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{30.0f, 15.0f, 25.0f, 10.0f, 1.0f}, 3)).hasMax(Float.valueOf(10.0f), 0.1f);
+        initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{1.0f})).isNotNull().hasMax(Float.valueOf(1.0f), 0.1f).isInstanceOf(FloatBuffer.class);
+
+        try {
+            Raw.floatBufferAssertion().hasMax(Float.valueOf(0.0f), 0.1f);
+            Assertions.fail("FloatBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.floatBufferAssertion(), null).hasMax(Float.valueOf(0.0f), 0.1f);
+            Assertions.fail("FloatBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.floatBufferAssertion(), null, "Message").hasMax(Float.valueOf(0.0f), 0.1f);
+            Assertions.fail("FloatBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.floatBufferAssertion(), null).hasMax(null, 0.1f);
+            Assertions.fail("FloatBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.floatBufferAssertion(), null, "Message").hasMax(null, 0.1f);
+            Assertions.fail("FloatBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{1.0f})).hasMax(null, 0.1f);
+            Assertions.fail("FloatBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's maximum value.\n\tActual value should be null.\n\tActual:<1.0f>");
+        }
+        try {
+            initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{1.0f}), "Message").hasMax(null, 0.1f);
+            Assertions.fail("FloatBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's maximum value.\n\tActual value should be null.\n\tActual:<1.0f>");
+        }
+        try {
+            initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{2.0f, 1.0f})).hasMax(Float.valueOf(4.0f), 0.1f);
+            Assertions.fail("FloatBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's maximum value.\n\tActual and expected values should be the same.\n\tExpected:<4.0f±0.1f> but was:<2.0f>");
+        }
+        try {
+            initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{2.0f, 1.0f}), "Message").hasMax(Float.valueOf(4.0f), 0.1f);
+            Assertions.fail("FloatBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's maximum value.\n\tActual and expected values should be the same.\n\tExpected:<4.0f±0.1f> but was:<2.0f>");
+        }
+        try {
+            initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{2.0f, 1.0f}, 1)).hasMax(Float.valueOf(4.0f), 0.1f);
+            Assertions.fail("FloatBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's maximum value.\n\tActual and expected values should be the same.\n\tExpected:<4.0f±0.1f> but was:<1.0f>");
+        }
+        try {
+            initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{2.0f, 1.0f}, 1), "Message").hasMax(Float.valueOf(4.0f), 0.1f);
+            Assertions.fail("FloatBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's maximum value.\n\tActual and expected values should be the same.\n\tExpected:<4.0f±0.1f> but was:<1.0f>");
+        }
     }
 
     /**
@@ -1553,7 +1684,60 @@ public final class FloatBufferAggregateAssertionTest extends AssertionTest {
      */
     @Test
     public void hasRewindAndMaxSpecifiedDeltaPrimitiveTest() {
-        // TODO
+        initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{1.0f})).hasRewindAndMax(1.0f, 0.1f);
+        initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{15.0f, 25.0f, 10.0f, 1.0f})).hasRewindAndMax(25.0f, 0.1f);
+        initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{15.0f, 25.0f, 10.0f, 1.0f})).hasRewindAndMax(24.95f, 0.1f);
+        initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{15.0f, 25.0f, 10.0f, 1.0f})).hasRewindAndMax(25.05f, 0.1f);
+        initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{Float.MAX_VALUE, 100.0f, -100.0f, 100.0f, 100.0f})).hasRewindAndMax(Float.MAX_VALUE, 0.1f);
+        initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{100.0f, -100.0f, 100.0f, 100.0f, Float.MAX_VALUE})).hasRewindAndMax(Float.MAX_VALUE, 0.1f);
+        initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{100.0f, -100.0f, Float.MAX_VALUE, 100.0f, 100.0f})).hasRewindAndMax(Float.MAX_VALUE, 0.1f);
+        initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{30.0f, 15.0f, 25.0f, 10.0f, 1.0f}, 1)).hasRewindAndMax(30.0f, 0.1f);
+        initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{30.0f, 15.0f, 25.0f, 10.0f, 1.0f}, 2)).hasRewindAndMax(30.0f, 0.1f);
+        initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{30.0f, 15.0f, 25.0f, 10.0f, 1.0f}, 3)).hasRewindAndMax(30.0f, 0.1f);
+        initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{1.0f})).isNotNull().hasRewindAndMax(1.0f, 0.1f).isInstanceOf(FloatBuffer.class);
+
+        try {
+            Raw.floatBufferAssertion().hasRewindAndMax(0.0f, 0.1f);
+            Assertions.fail("FloatBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.floatBufferAssertion(), null).hasRewindAndMax(0.0f, 0.1f);
+            Assertions.fail("FloatBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.floatBufferAssertion(), null, "Message").hasRewindAndMax(0.0f, 0.1f);
+            Assertions.fail("FloatBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{2.0f, 1.0f})).hasRewindAndMax(4.0f, 0.1f);
+            Assertions.fail("FloatBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's maximum value.\n\tActual and expected values should be the same.\n\tExpected:<4.0f±0.1f> but was:<2.0f>");
+        }
+        try {
+            initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{2.0f, 1.0f}), "Message").hasRewindAndMax(4.0f, 0.1f);
+            Assertions.fail("FloatBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's maximum value.\n\tActual and expected values should be the same.\n\tExpected:<4.0f±0.1f> but was:<2.0f>");
+        }
+        try {
+            initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{2.0f, 1.0f}, 1)).hasRewindAndMax(4.0f, 0.1f);
+            Assertions.fail("FloatBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's maximum value.\n\tActual and expected values should be the same.\n\tExpected:<4.0f±0.1f> but was:<2.0f>");
+        }
+        try {
+            initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{2.0f, 1.0f}, 1), "Message").hasRewindAndMax(4.0f, 0.1f);
+            Assertions.fail("FloatBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's maximum value.\n\tActual and expected values should be the same.\n\tExpected:<4.0f±0.1f> but was:<2.0f>");
+        }
     }
 
     /**
@@ -1561,7 +1745,85 @@ public final class FloatBufferAggregateAssertionTest extends AssertionTest {
      */
     @Test
     public void hasRewindAndMaxSpecifiedDeltaObjectTest() {
-        // TODO
+        initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{})).hasRewindAndMax(null, 0.1f);
+        initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{1.0f})).hasRewindAndMax(Float.valueOf(1.0f), 0.1f);
+        initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{15.0f, 25.0f, 10.0f, 1.0f})).hasRewindAndMax(Float.valueOf(25.0f), 0.1f);
+        initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{15.0f, 25.0f, 10.0f, 1.0f})).hasRewindAndMax(Float.valueOf(24.95f), 0.1f);
+        initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{15.0f, 25.0f, 10.0f, 1.0f})).hasRewindAndMax(Float.valueOf(25.05f), 0.1f);
+        initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{Float.MAX_VALUE, 100.0f, -100.0f, 100.0f, 100.0f})).hasRewindAndMax(Float.valueOf(Float.MAX_VALUE), 0.1f);
+        initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{100.0f, -100.0f, 100.0f, 100.0f, Float.MAX_VALUE})).hasRewindAndMax(Float.valueOf(Float.MAX_VALUE), 0.1f);
+        initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{100.0f, -100.0f, Float.MAX_VALUE, 100.0f, 100.0f})).hasRewindAndMax(Float.valueOf(Float.MAX_VALUE), 0.1f);
+        initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{30.0f, 15.0f, 25.0f, 10.0f, 1.0f}, 1)).hasRewindAndMax(Float.valueOf(30.0f), 0.1f);
+        initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{30.0f, 15.0f, 25.0f, 10.0f, 1.0f}, 2)).hasRewindAndMax(Float.valueOf(30.0f), 0.1f);
+        initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{30.0f, 15.0f, 25.0f, 10.0f, 1.0f}, 3)).hasRewindAndMax(Float.valueOf(30.0f), 0.1f);
+        initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{1.0f})).isNotNull().hasRewindAndMax(Float.valueOf(1.0f), 0.1f).isInstanceOf(FloatBuffer.class);
+
+        try {
+            Raw.floatBufferAssertion().hasRewindAndMax(Float.valueOf(0.0f), 0.1f);
+            Assertions.fail("FloatBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.floatBufferAssertion(), null).hasRewindAndMax(Float.valueOf(0.0f), 0.1f);
+            Assertions.fail("FloatBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.floatBufferAssertion(), null, "Message").hasRewindAndMax(Float.valueOf(0.0f), 0.1f);
+            Assertions.fail("FloatBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.floatBufferAssertion(), null).hasRewindAndMax(null, 0.1f);
+            Assertions.fail("FloatBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.floatBufferAssertion(), null, "Message").hasRewindAndMax(null, 0.1f);
+            Assertions.fail("FloatBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{1.0f})).hasRewindAndMax(null, 0.1f);
+            Assertions.fail("FloatBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's maximum value.\n\tActual value should be null.\n\tActual:<1.0f>");
+        }
+        try {
+            initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{1.0f}), "Message").hasRewindAndMax(null, 0.1f);
+            Assertions.fail("FloatBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's maximum value.\n\tActual value should be null.\n\tActual:<1.0f>");
+        }
+        try {
+            initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{2.0f, 1.0f})).hasRewindAndMax(Float.valueOf(4.0f), 0.1f);
+            Assertions.fail("FloatBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's maximum value.\n\tActual and expected values should be the same.\n\tExpected:<4.0f±0.1f> but was:<2.0f>");
+        }
+        try {
+            initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{2.0f, 1.0f}), "Message").hasRewindAndMax(Float.valueOf(4.0f), 0.1f);
+            Assertions.fail("FloatBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's maximum value.\n\tActual and expected values should be the same.\n\tExpected:<4.0f±0.1f> but was:<2.0f>");
+        }
+        try {
+            initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{2.0f, 1.0f}, 1)).hasRewindAndMax(Float.valueOf(4.0f), 0.1f);
+            Assertions.fail("FloatBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's maximum value.\n\tActual and expected values should be the same.\n\tExpected:<4.0f±0.1f> but was:<2.0f>");
+        }
+        try {
+            initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{2.0f, 1.0f}, 1), "Message").hasRewindAndMax(Float.valueOf(4.0f), 0.1f);
+            Assertions.fail("FloatBufferAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's maximum value.\n\tActual and expected values should be the same.\n\tExpected:<4.0f±0.1f> but was:<2.0f>");
+        }
     }
 
 }
