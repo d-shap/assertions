@@ -358,7 +358,7 @@ public final class FloatBufferAggregateAssertionTest extends AssertionTest {
      * {@link FloatBufferAssertion} class test.
      */
     @Test
-    public void hasMinPrimitiveTest() {
+    public void hasMinDefaultDeltaPrimitiveTest() {
         initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{1.0f})).hasMin(1.0f);
         initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{10.0f, 1.0f, 15.0f, 25.0f})).hasMin(1.0f);
         initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{-Float.MAX_VALUE, 100.0f, -100.0f, 100.0f, 100.0f})).hasMin(-Float.MAX_VALUE);
@@ -417,7 +417,7 @@ public final class FloatBufferAggregateAssertionTest extends AssertionTest {
      * {@link FloatBufferAssertion} class test.
      */
     @Test
-    public void hasMinObjectTest() {
+    public void hasMinDefaultDeltaObjectTest() {
         initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{})).hasMin(null);
         initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{1.0f})).hasMin(Float.valueOf(1.0f));
         initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{10.0f, 1.0f, 15.0f, 25.0f})).hasMin(Float.valueOf(1.0f));
@@ -501,7 +501,23 @@ public final class FloatBufferAggregateAssertionTest extends AssertionTest {
      * {@link FloatBufferAssertion} class test.
      */
     @Test
-    public void hasRewindAndMinPrimitiveTest() {
+    public void hasMinSpecifiedDeltaPrimitiveTest() {
+        // TODO
+    }
+
+    /**
+     * {@link FloatBufferAssertion} class test.
+     */
+    @Test
+    public void hasMinSpecifiedDeltaObjectTest() {
+        // TODO
+    }
+
+    /**
+     * {@link FloatBufferAssertion} class test.
+     */
+    @Test
+    public void hasRewindAndMinDefaultDeltaPrimitiveTest() {
         initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{1.0f})).hasRewindAndMin(1.0f);
         initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{10.0f, 1.0f, 15.0f, 25.0f})).hasRewindAndMin(1.0f);
         initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{-Float.MAX_VALUE, 100.0f, -100.0f, 100.0f, 100.0f})).hasRewindAndMin(-Float.MAX_VALUE);
@@ -560,7 +576,7 @@ public final class FloatBufferAggregateAssertionTest extends AssertionTest {
      * {@link FloatBufferAssertion} class test.
      */
     @Test
-    public void hasRewindAndMinObjectTest() {
+    public void hasRewindAndMinDefaultDeltaObjectTest() {
         initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{})).hasRewindAndMin(null);
         initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{1.0f})).hasRewindAndMin(Float.valueOf(1.0f));
         initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{10.0f, 1.0f, 15.0f, 25.0f})).hasRewindAndMin(Float.valueOf(1.0f));
@@ -638,6 +654,22 @@ public final class FloatBufferAggregateAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's minimum value.\n\tActual and expected values should be the same.\n\tExpected:<4.0f±1.0E-5f> but was:<1.0f>");
         }
+    }
+
+    /**
+     * {@link FloatBufferAssertion} class test.
+     */
+    @Test
+    public void hasRewindAndMinSpecifiedDeltaPrimitiveTest() {
+        // TODO
+    }
+
+    /**
+     * {@link FloatBufferAssertion} class test.
+     */
+    @Test
+    public void hasRewindAndMinSpecifiedDeltaObjectTest() {
+        // TODO
     }
 
     /**
@@ -956,7 +988,7 @@ public final class FloatBufferAggregateAssertionTest extends AssertionTest {
      * {@link FloatBufferAssertion} class test.
      */
     @Test
-    public void hasMaxPrimitiveTest() {
+    public void hasMaxDefaultDeltaPrimitiveTest() {
         initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{1.0f})).hasMax(1.0f);
         initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{15.0f, 25.0f, 10.0f, 1.0f})).hasMax(25.0f);
         initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{Float.MAX_VALUE, 100.0f, -100.0f, 100.0f, 100.0f})).hasMax(Float.MAX_VALUE);
@@ -1015,7 +1047,7 @@ public final class FloatBufferAggregateAssertionTest extends AssertionTest {
      * {@link FloatBufferAssertion} class test.
      */
     @Test
-    public void hasMaxObjectTest() {
+    public void hasMaxDefaultDeltaObjectTest() {
         initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{})).hasMax(null);
         initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{1.0f})).hasMax(Float.valueOf(1.0f));
         initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{15.0f, 25.0f, 10.0f, 1.0f})).hasMax(Float.valueOf(25.0f));
@@ -1099,7 +1131,23 @@ public final class FloatBufferAggregateAssertionTest extends AssertionTest {
      * {@link FloatBufferAssertion} class test.
      */
     @Test
-    public void hasRewindAndMaxPrimitiveTest() {
+    public void hasMaxSpecifiedDeltaPrimitiveTest() {
+        // TODO
+    }
+
+    /**
+     * {@link FloatBufferAssertion} class test.
+     */
+    @Test
+    public void hasMaxSpecifiedDeltaObjectTest() {
+        // TODO
+    }
+
+    /**
+     * {@link FloatBufferAssertion} class test.
+     */
+    @Test
+    public void hasRewindAndMaxDefaultDeltaPrimitiveTest() {
         initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{1.0f})).hasRewindAndMax(1.0f);
         initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{15.0f, 25.0f, 10.0f, 1.0f})).hasRewindAndMax(25.0f);
         initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{Float.MAX_VALUE, 100.0f, -100.0f, 100.0f, 100.0f})).hasRewindAndMax(Float.MAX_VALUE);
@@ -1158,7 +1206,7 @@ public final class FloatBufferAggregateAssertionTest extends AssertionTest {
      * {@link FloatBufferAssertion} class test.
      */
     @Test
-    public void hasRewindAndMaxObjectTest() {
+    public void hasRewindAndMaxDefaultDeltaObjectTest() {
         initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{})).hasRewindAndMax(null);
         initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{1.0f})).hasRewindAndMax(Float.valueOf(1.0f));
         initialize(Raw.floatBufferAssertion(), createFloatBuffer(new float[]{15.0f, 25.0f, 10.0f, 1.0f})).hasRewindAndMax(Float.valueOf(25.0f));
@@ -1236,6 +1284,22 @@ public final class FloatBufferAggregateAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's maximum value.\n\tActual and expected values should be the same.\n\tExpected:<4.0f±1.0E-5f> but was:<2.0f>");
         }
+    }
+
+    /**
+     * {@link FloatBufferAssertion} class test.
+     */
+    @Test
+    public void hasRewindAndMaxSpecifiedDeltaPrimitiveTest() {
+        // TODO
+    }
+
+    /**
+     * {@link FloatBufferAssertion} class test.
+     */
+    @Test
+    public void hasRewindAndMaxSpecifiedDeltaObjectTest() {
+        // TODO
     }
 
 }
