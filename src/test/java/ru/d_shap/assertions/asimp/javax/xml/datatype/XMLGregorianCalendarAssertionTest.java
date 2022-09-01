@@ -37,7 +37,7 @@ import ru.d_shap.assertions.util.DataHelper;
  *
  * @author Dmitry Shapovalov
  */
-public class XMLGregorianCalendarAssertionTest extends AssertionTest {
+public final class XMLGregorianCalendarAssertionTest extends AssertionTest {
 
     /**
      * Test class constructor.

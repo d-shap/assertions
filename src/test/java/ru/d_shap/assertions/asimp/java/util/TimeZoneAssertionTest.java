@@ -33,7 +33,7 @@ import ru.d_shap.assertions.Raw;
  *
  * @author Dmitry Shapovalov
  */
-public class TimeZoneAssertionTest extends AssertionTest {
+public final class TimeZoneAssertionTest extends AssertionTest {
 
     /**
      * Test class constructor.

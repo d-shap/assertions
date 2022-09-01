@@ -35,7 +35,7 @@ import ru.d_shap.assertions.util.DataHelper;
  *
  * @author Dmitry Shapovalov
  */
-public class DateAssertionTest extends AssertionTest {
+public final class DateAssertionTest extends AssertionTest {
 
     /**
      * Test class constructor.
