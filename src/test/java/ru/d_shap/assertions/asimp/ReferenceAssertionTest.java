@@ -22,6 +22,7 @@ package ru.d_shap.assertions.asimp;
 import java.io.IOException;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
+import java.util.Set;
 
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
@@ -33,6 +34,7 @@ import ru.d_shap.assertions.AssertionTest;
 import ru.d_shap.assertions.Assertions;
 import ru.d_shap.assertions.BaseAssertion;
 import ru.d_shap.assertions.Raw;
+import ru.d_shap.assertions.util.DataHelper;
 import ru.d_shap.assertions.util.ReflectionException;
 
 /**
@@ -3243,13 +3245,39 @@ public final class ReferenceAssertionTest extends AssertionTest {
         Field field = privateField.getClass().getDeclaredField("_childField");
         try {
             field.get(privateField);
-            Assertions.fail("PrivateAccessor test fail");
+            Assertions.fail("ReferenceAssertion test fail");
         } catch (IllegalAccessException ex) {
             Assertions.assertThat(ex).messageContains("with modifiers \"private final\"");
         }
         createReferenceAssertion(new Object()).setAccessible(field);
         Object value = field.get(privateField);
         Assertions.assertThat(value).isEqualTo("childField");
+    }
+
+    /**
+     * {@link BaseAssertion} class test.
+     */
+    @Test
+    public void chainMessageTest() {
+        createReferenceAssertion(DataHelper.createArrayList()).isNotNull().isInstanceOf(Object.class).hasToString("[]");
+        try {
+            createReferenceAssertion(null).isNotNull().isInstanceOf(Object.class).hasToString("[]");
+            Assertions.fail("ReferenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            createReferenceAssertion(DataHelper.createArrayList()).isNotNull().isInstanceOf(Set.class).hasToString("[]");
+            Assertions.fail("ReferenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's class.\n\tActual value should be the subtype of the expected value.\n\tExpected:<java.util.Set> but was:<java.util.ArrayList>");
+        }
+        try {
+            createReferenceAssertion(DataHelper.createArrayList()).isNotNull().isInstanceOf(Object.class).hasToString("{}");
+            Assertions.fail("ReferenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's string representation.\n\tActual and expected values should be the same.\n\tExpected:<{}> but was:<[]>");
+        }
     }
 
     private ReferenceAssertionImpl createReferenceAssertion() {
