@@ -2650,6 +2650,82 @@ public final class BaseAssertionTest extends AssertionTest {
         Assertions.assertThat(createBaseAssertionObject(null, "Message.").getAssertionErrorBuilder().build().getMessage()).isEqualTo("Message.");
     }
 
+    /**
+     * {@link BaseAssertion} class test.
+     */
+    @Test
+    public void messageReuseTest() {
+        BaseAssertion<Object> assertion11 = createBaseAssertionObject(null, null);
+        Assertions.assertThat(assertion11.getAssertionErrorBuilder().build()).hasMessage("");
+
+        BaseAssertion<Object> assertion12 = createBaseAssertionObject();
+        assertion11.initializeAssertion(assertion12, null);
+        Assertions.assertThat(assertion12.getAssertionErrorBuilder().build()).hasMessage("");
+
+        BaseAssertion<Object> assertion13 = createBaseAssertionObject();
+        assertion11.initializeAssertion(assertion13, null);
+        Assertions.assertThat(assertion13.getAssertionErrorBuilder().build()).hasMessage("");
+
+        BaseAssertion<Object> assertion14 = createBaseAssertionObject();
+        assertion13.initializeAssertion(assertion14, null);
+        Assertions.assertThat(assertion14.getAssertionErrorBuilder().build()).hasMessage("");
+
+        BaseAssertion<Object> assertion15 = createBaseAssertionObject();
+        assertion11.initializeAssertion(assertion15, null, "Message 1");
+        Assertions.assertThat(assertion15.getAssertionErrorBuilder().build()).hasMessage("Message 1.");
+
+        BaseAssertion<Object> assertion16 = createBaseAssertionObject();
+        assertion15.initializeAssertion(assertion16, null, "Message 2");
+        Assertions.assertThat(assertion16.getAssertionErrorBuilder().build()).hasMessage("Message 1.\n\tMessage 2.");
+
+        BaseAssertion<Object> assertion17 = createBaseAssertionObject();
+        assertion15.initializeAssertion(assertion17, null, "Message 3");
+        Assertions.assertThat(assertion17.getAssertionErrorBuilder().build()).hasMessage("Message 1.\n\tMessage 3.");
+
+        BaseAssertion<Object> assertion18 = createBaseAssertionObject();
+        assertion17.initializeAssertion(assertion18, null, "Message 4");
+        Assertions.assertThat(assertion18.getAssertionErrorBuilder().build()).hasMessage("Message 1.\n\tMessage 3.\n\tMessage 4.");
+
+        BaseAssertion<Object> assertion19 = createBaseAssertionObject();
+        assertion17.initializeAssertion(assertion19, null, "Message 5");
+        Assertions.assertThat(assertion19.getAssertionErrorBuilder().build()).hasMessage("Message 1.\n\tMessage 3.\n\tMessage 5.");
+
+        BaseAssertion<Object> assertion21 = createBaseAssertionObject(null, "Base message");
+        Assertions.assertThat(assertion21.getAssertionErrorBuilder().build()).hasMessage("Base message.");
+
+        BaseAssertion<Object> assertion22 = createBaseAssertionObject();
+        assertion21.initializeAssertion(assertion22, null);
+        Assertions.assertThat(assertion22.getAssertionErrorBuilder().build()).hasMessage("Base message.");
+
+        BaseAssertion<Object> assertion23 = createBaseAssertionObject();
+        assertion21.initializeAssertion(assertion23, null);
+        Assertions.assertThat(assertion23.getAssertionErrorBuilder().build()).hasMessage("Base message.");
+
+        BaseAssertion<Object> assertion24 = createBaseAssertionObject();
+        assertion23.initializeAssertion(assertion24, null);
+        Assertions.assertThat(assertion24.getAssertionErrorBuilder().build()).hasMessage("Base message.");
+
+        BaseAssertion<Object> assertion25 = createBaseAssertionObject();
+        assertion21.initializeAssertion(assertion25, null, "Message 1");
+        Assertions.assertThat(assertion25.getAssertionErrorBuilder().build()).hasMessage("Base message.\n\tMessage 1.");
+
+        BaseAssertion<Object> assertion26 = createBaseAssertionObject();
+        assertion25.initializeAssertion(assertion26, null, "Message 2");
+        Assertions.assertThat(assertion26.getAssertionErrorBuilder().build()).hasMessage("Base message.\n\tMessage 1.\n\tMessage 2.");
+
+        BaseAssertion<Object> assertion27 = createBaseAssertionObject();
+        assertion25.initializeAssertion(assertion27, null, "Message 3");
+        Assertions.assertThat(assertion27.getAssertionErrorBuilder().build()).hasMessage("Base message.\n\tMessage 1.\n\tMessage 3.");
+
+        BaseAssertion<Object> assertion28 = createBaseAssertionObject();
+        assertion27.initializeAssertion(assertion28, null, "Message 4");
+        Assertions.assertThat(assertion28.getAssertionErrorBuilder().build()).hasMessage("Base message.\n\tMessage 1.\n\tMessage 3.\n\tMessage 4.");
+
+        BaseAssertion<Object> assertion29 = createBaseAssertionObject();
+        assertion27.initializeAssertion(assertion29, null, "Message 5");
+        Assertions.assertThat(assertion29.getAssertionErrorBuilder().build()).hasMessage("Base message.\n\tMessage 1.\n\tMessage 3.\n\tMessage 5.");
+    }
+
     private BaseAssertion<Object> createBaseAssertionObject() {
         return new BaseAssertionObjectImpl();
     }
