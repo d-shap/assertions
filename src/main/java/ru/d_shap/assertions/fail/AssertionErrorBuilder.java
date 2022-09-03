@@ -40,12 +40,15 @@ public final class AssertionErrorBuilder {
 
     private Throwable _throwable;
 
+    private List<Throwable> _suppressedThrowables;
+
     private AssertionErrorBuilder(final FailDescription failDescription, final Class<?> actualClass, final Object actual) {
         super();
         _failDescription = failDescription;
         _failDescriptionEntries = new ArrayList<>();
         _failDescriptionValues = new FailDescriptionValues(actualClass, actual);
         _throwable = null;
+        _suppressedThrowables = new ArrayList<>();
     }
 
     /**
@@ -95,9 +98,9 @@ public final class AssertionErrorBuilder {
     }
 
     /**
-     * Add the throwabe message to the assertion error.
+     * Add the throwable message to the assertion error.
      *
-     * @param throwable the throwabe.
+     * @param throwable the throwable.
      *
      * @return current object for the chain call.
      */
@@ -245,14 +248,38 @@ public final class AssertionErrorBuilder {
     }
 
     /**
-     * Add the throwabe to the assertion error.
+     * Add the throwable to the assertion error.
      *
-     * @param throwable the throwabe.
+     * @param throwable the throwable.
      *
      * @return current object for the chain call.
      */
     public AssertionErrorBuilder addThrowable(final Throwable throwable) {
         _throwable = throwable;
+        return this;
+    }
+
+    /**
+     * Add the suppressed throwable to the assertion error.
+     *
+     * @param throwable the suppressed throwable.
+     *
+     * @return current object for the chain call.
+     */
+    public AssertionErrorBuilder addSuppressedThrowable(final Throwable throwable) {
+        _suppressedThrowables.add(throwable);
+        return this;
+    }
+
+    /**
+     * Add the suppressed throwables to the assertion error.
+     *
+     * @param throwables the suppressed throwables.
+     *
+     * @return current object for the chain call.
+     */
+    public AssertionErrorBuilder addSuppressedThrowable(final List<Throwable> throwables) {
+        _suppressedThrowables.addAll(throwables);
         return this;
     }
 
@@ -279,7 +306,9 @@ public final class AssertionErrorBuilder {
         }
         String fullMessage = failDescription.getFullMessage();
         Throwable throwable = getThrowable(_throwable);
-        return new AssertionError(fullMessage, throwable);
+        AssertionError assertionError = new AssertionError(fullMessage, throwable);
+        fillSuppressedThrowable(assertionError);
+        return assertionError;
     }
 
     private AssertionError createAssertionError(final ConversionException conversionException) {
@@ -298,6 +327,12 @@ public final class AssertionErrorBuilder {
             return throwable.getCause();
         } else {
             return throwable;
+        }
+    }
+
+    private void fillSuppressedThrowable(final AssertionError assertionError) {
+        for (Throwable throwable : _suppressedThrowables) {
+            assertionError.addSuppressed(throwable);
         }
     }
 
