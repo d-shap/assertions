@@ -97,7 +97,9 @@ public final class Messages {
 
         public static final String CAUSE = "Check actual value''s cause.";
 
-        public static final String SUPPRESSED = "Check actual value''s suppressed.";
+        public static final String SUPPRESSED_COUNT = "Check actual value''s suppressed count.";
+
+        public static final String SUPPRESSED = "Check actual value''s suppressed {0}.";
 
         public static final String YEAR = "Check actual value''s year.";
 
