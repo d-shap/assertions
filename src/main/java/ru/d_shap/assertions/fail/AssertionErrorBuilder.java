@@ -40,7 +40,7 @@ public final class AssertionErrorBuilder {
 
     private Throwable _throwable;
 
-    private List<Throwable> _suppressedThrowables;
+    private final List<Throwable> _suppressedThrowables;
 
     private AssertionErrorBuilder(final FailDescription failDescription, final Class<?> actualClass, final Object actual) {
         super();
