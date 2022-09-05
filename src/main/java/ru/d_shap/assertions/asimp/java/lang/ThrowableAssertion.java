@@ -264,7 +264,7 @@ public final class ThrowableAssertion extends ReferenceAssertion<ThrowableAssert
     }
 
     /**
-     * Check if the causes of the throwable is instance of the expected classes.
+     * Check if the causes of the throwable are instance of the expected classes.
      *
      * @param expected the expected classes.
      *
@@ -488,6 +488,23 @@ public final class ThrowableAssertion extends ReferenceAssertion<ThrowableAssert
         checkArgumentIsValid(idx < getActual().getSuppressed().length, "idx", Messages.Fail.Argument.IS_LESS_THAN_MAXIMUM_VALUE, getActual().getSuppressed().length);
         checkArgumentIsNotNull(matcher, "matcher");
         matcherAssertion(getActual().getSuppressed()[idx], matcher, Messages.Check.SUPPRESSED, idx);
+        return this;
+    }
+
+    /**
+     * Check if the actual value's suppressed are instance of the expected classes.
+     *
+     * @param expected the expected classes.
+     *
+     * @return current object for the chain call.
+     */
+    public ThrowableAssertion hasSuppressed(final Class<?>... expected) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(expected, "expected");
+        toSuppressedCount().isEqualTo(expected.length);
+        for (int i = 0; i < expected.length; i++) {
+            toSuppressed(i).isInstanceOf(expected[i]);
+        }
         return this;
     }
 
