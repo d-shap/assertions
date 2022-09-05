@@ -24,6 +24,7 @@ import org.hamcrest.Matcher;
 import ru.d_shap.assertions.Messages;
 import ru.d_shap.assertions.Raw;
 import ru.d_shap.assertions.asimp.ReferenceAssertion;
+import ru.d_shap.assertions.asimp.primitive.IntAssertion;
 
 /**
  * Assertions for the throwable.
@@ -205,7 +206,7 @@ public final class ThrowableAssertion extends ReferenceAssertion<ThrowableAssert
     }
 
     /**
-     * Make assertion about the actual throwable cause.
+     * Make assertion about the actual value's cause.
      *
      * @return the assertion.
      */
@@ -215,7 +216,7 @@ public final class ThrowableAssertion extends ReferenceAssertion<ThrowableAssert
     }
 
     /**
-     * Make assertion about the actual throwable cause.
+     * Make assertion about the actual value's cause.
      *
      * @param matcher the hamcrest matcher.
      *
@@ -420,6 +421,42 @@ public final class ThrowableAssertion extends ReferenceAssertion<ThrowableAssert
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         toCause().messageMatches(expected);
+        return this;
+    }
+
+    /**
+     * Make assertion about the actual value's suppressed count.
+     *
+     * @return the assertion.
+     */
+    public IntAssertion toSuppressedCount() {
+        checkActualIsNotNull();
+        return initializeAssertion(Raw.intAssertion(), getActual().getSuppressed().length, Messages.Check.SUPPRESSED);
+    }
+
+    /**
+     * Make assertion about the actual value's suppressed count.
+     *
+     * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
+     */
+    public ThrowableAssertion toSuppressedCount(final Matcher<? super Integer> matcher) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(matcher, "matcher");
+        matcherAssertion(getActual().getSuppressed().length, matcher, Messages.Check.SUPPRESSED);
+        return this;
+    }
+
+    /**
+     * Check if the actual value's suppressed count is equal to the expected suppressed count.
+     *
+     * @param expected the expected suppressed count.
+     *
+     * @return current object for the chain call.
+     */
+    public ThrowableAssertion hasSuppressedCount(final int expected) {
+        toSuppressedCount().isEqualTo(expected);
         return this;
     }
 
