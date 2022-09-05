@@ -2202,6 +2202,150 @@ public final class ThrowableAssertionTest extends AssertionTest {
      * {@link ThrowableAssertion} class test.
      */
     @Test
+    public void toSuppressedCountTest() {
+        // TODO
+    }
+
+    /**
+     * {@link ThrowableAssertion} class test.
+     */
+    @Test
+    public void toSuppressedCountMatcherTest() {
+        // TODO
+    }
+
+    /**
+     * {@link ThrowableAssertion} class test.
+     */
+    @Test
+    public void hasSuppressedCountTest() {
+        // TODO
+    }
+
+    /**
+     * {@link ThrowableAssertion} class test.
+     */
+    @Test
+    public void toSuppressedTest() {
+        // TODO
+    }
+
+    /**
+     * {@link ThrowableAssertion} class test.
+     */
+    @Test
+    public void toSuppressedMatcherTest() {
+        // TODO
+    }
+
+    /**
+     * {@link ThrowableAssertion} class test.
+     */
+    @Test
+    public void hasSuppressedTest() {
+        // TODO
+    }
+
+    /**
+     * {@link ThrowableAssertion} class test.
+     */
+    @Test
+    public void suppressedMessageIsNullTest() {
+        // TODO
+    }
+
+    /**
+     * {@link ThrowableAssertion} class test.
+     */
+    @Test
+    public void suppressedMessageIsNotNullTest() {
+        // TODO
+    }
+
+    /**
+     * {@link ThrowableAssertion} class test.
+     */
+    @Test
+    public void suppressedMessageIsEmptyTest() {
+        // TODO
+    }
+
+    /**
+     * {@link ThrowableAssertion} class test.
+     */
+    @Test
+    public void suppressedMessageIsNullOrEmptyTest() {
+        // TODO
+    }
+
+    /**
+     * {@link ThrowableAssertion} class test.
+     */
+    @Test
+    public void suppressedMessageIsNotEmptyTest() {
+        // TODO
+    }
+
+    /**
+     * {@link ThrowableAssertion} class test.
+     */
+    @Test
+    public void suppressedMessageIsBlankTest() {
+        // TODO
+    }
+
+    /**
+     * {@link ThrowableAssertion} class test.
+     */
+    @Test
+    public void suppressedMessageIsNullOrBlankTest() {
+        // TODO
+    }
+
+    /**
+     * {@link ThrowableAssertion} class test.
+     */
+    @Test
+    public void suppressedMessageIsNotBlankTest() {
+        // TODO
+    }
+
+    /**
+     * {@link ThrowableAssertion} class test.
+     */
+    @Test
+    public void hasSuppressedMessageTest() {
+        // TODO
+    }
+
+    /**
+     * {@link ThrowableAssertion} class test.
+     */
+    @Test
+    public void suppressedMessageContainsTest() {
+        // TODO
+    }
+
+    /**
+     * {@link ThrowableAssertion} class test.
+     */
+    @Test
+    public void suppressedMessageContainsIgnoreCaseTest() {
+        // TODO
+    }
+
+    /**
+     * {@link ThrowableAssertion} class test.
+     */
+    @Test
+    public void suppressedMessageMatchesTest() {
+        // TODO
+    }
+
+    /**
+     * {@link ThrowableAssertion} class test.
+     */
+    @Test
     public void isNullTest() {
         initialize(Raw.throwableAssertion(), null).isNull();
 
