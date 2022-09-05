@@ -431,7 +431,7 @@ public final class ThrowableAssertion extends ReferenceAssertion<ThrowableAssert
      */
     public IntAssertion toSuppressedCount() {
         checkActualIsNotNull();
-        return initializeAssertion(Raw.intAssertion(), getActual().getSuppressed().length, Messages.Check.SUPPRESSED);
+        return initializeAssertion(Raw.intAssertion(), getActual().getSuppressed().length, Messages.Check.SUPPRESSED_COUNT);
     }
 
     /**
@@ -444,7 +444,7 @@ public final class ThrowableAssertion extends ReferenceAssertion<ThrowableAssert
     public ThrowableAssertion toSuppressedCount(final Matcher<? super Integer> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
-        matcherAssertion(getActual().getSuppressed().length, matcher, Messages.Check.SUPPRESSED);
+        matcherAssertion(getActual().getSuppressed().length, matcher, Messages.Check.SUPPRESSED_COUNT);
         return this;
     }
 
@@ -457,6 +457,37 @@ public final class ThrowableAssertion extends ReferenceAssertion<ThrowableAssert
      */
     public ThrowableAssertion hasSuppressedCount(final int expected) {
         toSuppressedCount().isEqualTo(expected);
+        return this;
+    }
+
+    /**
+     * Make assertion about the actual value's suppressed.
+     *
+     * @param idx the index of suppressed.
+     *
+     * @return the assertion.
+     */
+    public ThrowableAssertion toSuppressed(final int idx) {
+        checkActualIsNotNull();
+        checkArgumentIsValid(idx >= 0, "idx", Messages.Fail.Argument.IS_GREATER_THAN_OR_EQUAL_TO_ZERO);
+        checkArgumentIsValid(idx < getActual().getSuppressed().length, "idx", Messages.Fail.Argument.IS_LESS_THAN_MAXIMUM_VALUE, getActual().getSuppressed().length);
+        return initializeAssertion(Raw.throwableAssertion(), getActual().getSuppressed()[idx], Messages.Check.SUPPRESSED, idx);
+    }
+
+    /**
+     * Make assertion about the actual value's suppressed.
+     *
+     * @param idx     the index of suppressed.
+     * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
+     */
+    public ThrowableAssertion toSuppressed(final int idx, final Matcher<? super Throwable> matcher) {
+        checkActualIsNotNull();
+        checkArgumentIsValid(idx >= 0, "idx", Messages.Fail.Argument.IS_GREATER_THAN_OR_EQUAL_TO_ZERO);
+        checkArgumentIsValid(idx < getActual().getSuppressed().length, "idx", Messages.Fail.Argument.IS_LESS_THAN_MAXIMUM_VALUE, getActual().getSuppressed().length);
+        checkArgumentIsNotNull(matcher, "matcher");
+        matcherAssertion(getActual().getSuppressed()[idx], matcher, Messages.Check.SUPPRESSED, idx);
         return this;
     }
 
