@@ -491,4 +491,168 @@ public final class ThrowableAssertion extends ReferenceAssertion<ThrowableAssert
         return this;
     }
 
+    /**
+     * Check if the message of the actual value's suppressed is null.
+     *
+     * @param idx the index of suppressed.
+     *
+     * @return current object for the chain call.
+     */
+    public ThrowableAssertion suppressedMessageIsNull(final int idx) {
+        toSuppressed(idx).messageIsNull();
+        return this;
+    }
+
+    /**
+     * Check if the message of the actual value's suppressed is NOT null.
+     *
+     * @param idx the index of suppressed.
+     *
+     * @return current object for the chain call.
+     */
+    public ThrowableAssertion suppressedMessageIsNotNull(final int idx) {
+        toSuppressed(idx).messageIsNotNull();
+        return this;
+    }
+
+    /**
+     * Check if the message of the actual value's suppressed is empty.
+     *
+     * @param idx the index of suppressed.
+     *
+     * @return current object for the chain call.
+     */
+    public ThrowableAssertion suppressedMessageIsEmpty(final int idx) {
+        toSuppressed(idx).messageIsEmpty();
+        return this;
+    }
+
+    /**
+     * Check if the message of the actual value's suppressed is null or empty.
+     *
+     * @param idx the index of suppressed.
+     *
+     * @return current object for the chain call.
+     */
+    public ThrowableAssertion suppressedMessageIsNullOrEmpty(final int idx) {
+        toSuppressed(idx).messageIsNullOrEmpty();
+        return this;
+    }
+
+    /**
+     * Check if the message of the actual value's suppressed is NOT empty.
+     *
+     * @param idx the index of suppressed.
+     *
+     * @return current object for the chain call.
+     */
+    public ThrowableAssertion suppressedMessageIsNotEmpty(final int idx) {
+        toSuppressed(idx).messageIsNotEmpty();
+        return this;
+    }
+
+    /**
+     * Check if the message of the actual value's suppressed is blank.
+     *
+     * @param idx the index of suppressed.
+     *
+     * @return current object for the chain call.
+     */
+    public ThrowableAssertion suppressedMessageIsBlank(final int idx) {
+        toSuppressed(idx).messageIsBlank();
+        return this;
+    }
+
+    /**
+     * Check if the message of the actual value's suppressed is null or blank.
+     *
+     * @param idx the index of suppressed.
+     *
+     * @return current object for the chain call.
+     */
+    public ThrowableAssertion suppressedMessageIsNullOrBlank(final int idx) {
+        toSuppressed(idx).messageIsNullOrBlank();
+        return this;
+    }
+
+    /**
+     * Check if the message of the actual value's suppressed is NOT blank.
+     *
+     * @param idx the index of suppressed.
+     *
+     * @return current object for the chain call.
+     */
+    public ThrowableAssertion suppressedMessageIsNotBlank(final int idx) {
+        toSuppressed(idx).messageIsNotBlank();
+        return this;
+    }
+
+    /**
+     * Check if the message of the actual value's suppressed has the expected value.
+     *
+     * @param idx      the index of suppressed.
+     * @param expected the expected value.
+     *
+     * @return current object for the chain call.
+     */
+    public ThrowableAssertion hasSuppressedMessage(final int idx, final String expected) {
+        checkActualIsNotNull();
+        checkArgumentIsValid(idx >= 0, "idx", Messages.Fail.Argument.IS_GREATER_THAN_OR_EQUAL_TO_ZERO);
+        checkArgumentIsValid(idx < getActual().getSuppressed().length, "idx", Messages.Fail.Argument.IS_LESS_THAN_MAXIMUM_VALUE, getActual().getSuppressed().length);
+        checkArgumentIsNotNull(expected, "expected");
+        toSuppressed(idx).hasMessage(expected);
+        return this;
+    }
+
+    /**
+     * Check if the message of the actual value's suppressed contains the expected value.
+     *
+     * @param idx      the index of suppressed.
+     * @param expected the expected value.
+     *
+     * @return current object for the chain call.
+     */
+    public ThrowableAssertion suppressedMessageContains(final int idx, final String expected) {
+        checkActualIsNotNull();
+        checkArgumentIsValid(idx >= 0, "idx", Messages.Fail.Argument.IS_GREATER_THAN_OR_EQUAL_TO_ZERO);
+        checkArgumentIsValid(idx < getActual().getSuppressed().length, "idx", Messages.Fail.Argument.IS_LESS_THAN_MAXIMUM_VALUE, getActual().getSuppressed().length);
+        checkArgumentIsNotNull(expected, "expected");
+        toSuppressed(idx).messageContains(expected);
+        return this;
+    }
+
+    /**
+     * Check if the message of the actual value's suppressed contains the expected value ignoring case.
+     *
+     * @param idx      the index of suppressed.
+     * @param expected the expected value.
+     *
+     * @return current object for the chain call.
+     */
+    public ThrowableAssertion suppressedMessageContainsIgnoreCase(final int idx, final String expected) {
+        checkActualIsNotNull();
+        checkArgumentIsValid(idx >= 0, "idx", Messages.Fail.Argument.IS_GREATER_THAN_OR_EQUAL_TO_ZERO);
+        checkArgumentIsValid(idx < getActual().getSuppressed().length, "idx", Messages.Fail.Argument.IS_LESS_THAN_MAXIMUM_VALUE, getActual().getSuppressed().length);
+        checkArgumentIsNotNull(expected, "expected");
+        toSuppressed(idx).messageContainsIgnoreCase(expected);
+        return this;
+    }
+
+    /**
+     * Check if the message of the actual value's suppressed matches the expected value.
+     *
+     * @param idx      the index of suppressed.
+     * @param expected the expected value.
+     *
+     * @return current object for the chain call.
+     */
+    public ThrowableAssertion suppressedMessageMatches(final int idx, final String expected) {
+        checkActualIsNotNull();
+        checkArgumentIsValid(idx >= 0, "idx", Messages.Fail.Argument.IS_GREATER_THAN_OR_EQUAL_TO_ZERO);
+        checkArgumentIsValid(idx < getActual().getSuppressed().length, "idx", Messages.Fail.Argument.IS_LESS_THAN_MAXIMUM_VALUE, getActual().getSuppressed().length);
+        checkArgumentIsNotNull(expected, "expected");
+        toSuppressed(idx).messageMatches(expected);
+        return this;
+    }
+
 }
