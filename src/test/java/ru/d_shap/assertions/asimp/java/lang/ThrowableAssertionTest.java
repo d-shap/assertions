@@ -2203,7 +2203,54 @@ public final class ThrowableAssertionTest extends AssertionTest {
      */
     @Test
     public void toSuppressedCountTest() {
-        // TODO
+        initialize(Raw.throwableAssertion(), addSuppressed(new Exception())).toSuppressedCount().isEqualTo(0);
+        initialize(Raw.throwableAssertion(), addSuppressed(new Exception(), new RuntimeException())).toSuppressedCount().isEqualTo(1);
+        initialize(Raw.throwableAssertion(), addSuppressed(new Exception(), new RuntimeException(), new Error())).toSuppressedCount().isEqualTo(2);
+        initialize(Raw.throwableAssertion(), addSuppressed(new Exception(), new RuntimeException(), new Error(), new IOException())).toSuppressedCount().isEqualTo(3);
+        initialize(Raw.throwableAssertion(), addSuppressed(new Exception())).isNotNull().toSuppressedCount().isEqualTo(0);
+
+        try {
+            Raw.throwableAssertion().toSuppressedCount();
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), null).toSuppressedCount();
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), null, "Message").toSuppressedCount();
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), addSuppressed(new Exception())).toSuppressedCount().isEqualTo(1);
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's suppressed count.\n\tActual and expected values should be the same.\n\tExpected:<1> but was:<0>");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), addSuppressed(new Exception()), "Message").toSuppressedCount().isEqualTo(1);
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's suppressed count.\n\tActual and expected values should be the same.\n\tExpected:<1> but was:<0>");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), addSuppressed(new Exception(), new RuntimeException(), new Error())).toSuppressedCount().isEqualTo(1);
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's suppressed count.\n\tActual and expected values should be the same.\n\tExpected:<1> but was:<2>");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), addSuppressed(new Exception(), new RuntimeException(), new Error()), "Message").toSuppressedCount().isEqualTo(1);
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's suppressed count.\n\tActual and expected values should be the same.\n\tExpected:<1> but was:<2>");
+        }
     }
 
     /**
@@ -2211,7 +2258,78 @@ public final class ThrowableAssertionTest extends AssertionTest {
      */
     @Test
     public void toSuppressedCountMatcherTest() {
-        // TODO
+        initialize(Raw.throwableAssertion(), addSuppressed(new Exception())).toSuppressedCount(Matchers.is(Matchers.equalTo(0)));
+        initialize(Raw.throwableAssertion(), addSuppressed(new Exception(), new RuntimeException())).toSuppressedCount(Matchers.is(Matchers.equalTo(1)));
+        initialize(Raw.throwableAssertion(), addSuppressed(new Exception(), new RuntimeException(), new Error())).toSuppressedCount(Matchers.is(Matchers.equalTo(2)));
+        initialize(Raw.throwableAssertion(), addSuppressed(new Exception(), new RuntimeException(), new Error(), new IOException())).toSuppressedCount(Matchers.is(Matchers.equalTo(3)));
+        initialize(Raw.throwableAssertion(), addSuppressed(new Exception())).isNotNull().toSuppressedCount(Matchers.is(Matchers.equalTo(0))).isInstanceOf(Throwable.class);
+
+        try {
+            Raw.throwableAssertion().toSuppressedCount(Matchers.equalTo(0));
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), null).toSuppressedCount(Matchers.equalTo(0));
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), null, "Message").toSuppressedCount(Matchers.equalTo(0));
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), null).toSuppressedCount(null);
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), null, "Message").toSuppressedCount(null);
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), addSuppressed(new Exception())).toSuppressedCount(null);
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: matcher.");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), addSuppressed(new Exception()), "Message").toSuppressedCount(null);
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: matcher.");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), addSuppressed(new Exception())).toSuppressedCount(Matchers.equalTo(1));
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's suppressed count.\nExpected: <1>\n     but: was <0>");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), addSuppressed(new Exception()), "Message").toSuppressedCount(Matchers.equalTo(1));
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's suppressed count.\nExpected: <1>\n     but: was <0>");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), addSuppressed(new Exception(), new RuntimeException(), new Error())).toSuppressedCount(Matchers.equalTo(1));
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's suppressed count.\nExpected: <1>\n     but: was <2>");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), addSuppressed(new Exception(), new RuntimeException(), new Error()), "Message").toSuppressedCount(Matchers.equalTo(1));
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's suppressed count.\nExpected: <1>\n     but: was <2>");
+        }
     }
 
     /**
@@ -2219,7 +2337,54 @@ public final class ThrowableAssertionTest extends AssertionTest {
      */
     @Test
     public void hasSuppressedCountTest() {
-        // TODO
+        initialize(Raw.throwableAssertion(), addSuppressed(new Exception())).hasSuppressedCount(0);
+        initialize(Raw.throwableAssertion(), addSuppressed(new Exception(), new RuntimeException())).hasSuppressedCount(1);
+        initialize(Raw.throwableAssertion(), addSuppressed(new Exception(), new RuntimeException(), new Error())).hasSuppressedCount(2);
+        initialize(Raw.throwableAssertion(), addSuppressed(new Exception(), new RuntimeException(), new Error(), new IOException())).hasSuppressedCount(3);
+        initialize(Raw.throwableAssertion(), addSuppressed(new Exception())).isNotNull().hasSuppressedCount(0);
+
+        try {
+            Raw.throwableAssertion().hasSuppressedCount(0);
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), null).hasSuppressedCount(0);
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), null, "Message").hasSuppressedCount(0);
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), addSuppressed(new Exception())).hasSuppressedCount(1);
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's suppressed count.\n\tActual and expected values should be the same.\n\tExpected:<1> but was:<0>");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), addSuppressed(new Exception()), "Message").hasSuppressedCount(1);
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's suppressed count.\n\tActual and expected values should be the same.\n\tExpected:<1> but was:<0>");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), addSuppressed(new Exception(), new RuntimeException(), new Error())).hasSuppressedCount(1);
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's suppressed count.\n\tActual and expected values should be the same.\n\tExpected:<1> but was:<2>");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), addSuppressed(new Exception(), new RuntimeException(), new Error()), "Message").hasSuppressedCount(1);
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's suppressed count.\n\tActual and expected values should be the same.\n\tExpected:<1> but was:<2>");
+        }
     }
 
     /**
@@ -2405,6 +2570,13 @@ public final class ThrowableAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should point to the different objects.\n\tActual:<java.lang.Exception: value>");
         }
+    }
+
+    private static Throwable addSuppressed(final Throwable throwable, final Throwable... suppressed) {
+        for (Throwable ex : suppressed) {
+            throwable.addSuppressed(ex);
+        }
+        return throwable;
     }
 
 }
