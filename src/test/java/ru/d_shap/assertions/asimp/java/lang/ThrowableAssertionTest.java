@@ -2828,7 +2828,87 @@ public final class ThrowableAssertionTest extends AssertionTest {
      */
     @Test
     public void suppressedMessageIsEmptyTest() {
-        // TODO
+        initialize(Raw.throwableAssertion(), addSuppressed(new Exception(), new RuntimeException(""))).suppressedMessageIsEmpty(0);
+        initialize(Raw.throwableAssertion(), addSuppressed(new Exception(), new RuntimeException(""))).isNotNull().suppressedMessageIsEmpty(0).isInstanceOf(Throwable.class);
+
+        try {
+            Raw.throwableAssertion().suppressedMessageIsEmpty(0);
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), null).suppressedMessageIsEmpty(0);
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), null, "Message").suppressedMessageIsEmpty(0);
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), addSuppressed(new Exception(), new RuntimeException(""))).suppressedMessageIsEmpty(-1);
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should be valid: idx.\n\tThe argument's value should be greater than or equal to zero.");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), addSuppressed(new Exception(), new RuntimeException("")), "Message").suppressedMessageIsEmpty(-1);
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: idx.\n\tThe argument's value should be greater than or equal to zero.");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), addSuppressed(new Exception(), new RuntimeException(""))).suppressedMessageIsEmpty(1);
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should be valid: idx.\n\tThe argument's value should be less than the maximum value: 1.");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), addSuppressed(new Exception(), new RuntimeException("")), "Message").suppressedMessageIsEmpty(1);
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: idx.\n\tThe argument's value should be less than the maximum value: 1.");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), addSuppressed(new Exception(), new RuntimeException())).suppressedMessageIsEmpty(0);
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's suppressed 0.\n\tCheck actual value's message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), addSuppressed(new Exception(), new RuntimeException()), "Message").suppressedMessageIsEmpty(0);
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's suppressed 0.\n\tCheck actual value's message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), addSuppressed(new Exception(), new RuntimeException(" "))).suppressedMessageIsEmpty(0);
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's suppressed 0.\n\tCheck actual value's message.\n\tActual value should be empty.\n\tActual:< >");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), addSuppressed(new Exception(), new RuntimeException(" ")), "Message").suppressedMessageIsEmpty(0);
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's suppressed 0.\n\tCheck actual value's message.\n\tActual value should be empty.\n\tActual:< >");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), addSuppressed(new Exception(), new RuntimeException("value"))).suppressedMessageIsEmpty(0);
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's suppressed 0.\n\tCheck actual value's message.\n\tActual value should be empty.\n\tActual:<value>");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), addSuppressed(new Exception(), new RuntimeException("value")), "Message").suppressedMessageIsEmpty(0);
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's suppressed 0.\n\tCheck actual value's message.\n\tActual value should be empty.\n\tActual:<value>");
+        }
     }
 
     /**
@@ -2836,7 +2916,76 @@ public final class ThrowableAssertionTest extends AssertionTest {
      */
     @Test
     public void suppressedMessageIsNullOrEmptyTest() {
-        // TODO
+        initialize(Raw.throwableAssertion(), addSuppressed(new Exception(), new RuntimeException())).suppressedMessageIsNullOrEmpty(0);
+        initialize(Raw.throwableAssertion(), addSuppressed(new Exception(), new RuntimeException(""))).suppressedMessageIsNullOrEmpty(0);
+        initialize(Raw.throwableAssertion(), addSuppressed(new Exception(), new RuntimeException(""))).isNotNull().suppressedMessageIsNullOrEmpty(0).isInstanceOf(Throwable.class);
+
+        try {
+            Raw.throwableAssertion().suppressedMessageIsNullOrEmpty(0);
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), null).suppressedMessageIsNullOrEmpty(0);
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), null, "Message").suppressedMessageIsNullOrEmpty(0);
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), addSuppressed(new Exception(), new RuntimeException(""))).suppressedMessageIsNullOrEmpty(-1);
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should be valid: idx.\n\tThe argument's value should be greater than or equal to zero.");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), addSuppressed(new Exception(), new RuntimeException("")), "Message").suppressedMessageIsNullOrEmpty(-1);
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: idx.\n\tThe argument's value should be greater than or equal to zero.");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), addSuppressed(new Exception(), new RuntimeException(""))).suppressedMessageIsNullOrEmpty(1);
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should be valid: idx.\n\tThe argument's value should be less than the maximum value: 1.");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), addSuppressed(new Exception(), new RuntimeException("")), "Message").suppressedMessageIsNullOrEmpty(1);
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: idx.\n\tThe argument's value should be less than the maximum value: 1.");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), addSuppressed(new Exception(), new RuntimeException(" "))).suppressedMessageIsNullOrEmpty(0);
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's suppressed 0.\n\tCheck actual value's message.\n\tActual value should be null or empty.\n\tActual:< >");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), addSuppressed(new Exception(), new RuntimeException(" ")), "Message").suppressedMessageIsNullOrEmpty(0);
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's suppressed 0.\n\tCheck actual value's message.\n\tActual value should be null or empty.\n\tActual:< >");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), addSuppressed(new Exception(), new RuntimeException("value"))).suppressedMessageIsNullOrEmpty(0);
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's suppressed 0.\n\tCheck actual value's message.\n\tActual value should be null or empty.\n\tActual:<value>");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), addSuppressed(new Exception(), new RuntimeException("value")), "Message").suppressedMessageIsNullOrEmpty(0);
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's suppressed 0.\n\tCheck actual value's message.\n\tActual value should be null or empty.\n\tActual:<value>");
+        }
     }
 
     /**
@@ -2844,7 +2993,76 @@ public final class ThrowableAssertionTest extends AssertionTest {
      */
     @Test
     public void suppressedMessageIsNotEmptyTest() {
-        // TODO
+        initialize(Raw.throwableAssertion(), addSuppressed(new Exception(), new RuntimeException(" "))).suppressedMessageIsNotEmpty(0);
+        initialize(Raw.throwableAssertion(), addSuppressed(new Exception(), new RuntimeException("value"))).suppressedMessageIsNotEmpty(0);
+        initialize(Raw.throwableAssertion(), addSuppressed(new Exception(), new RuntimeException(" "))).isNotNull().suppressedMessageIsNotEmpty(0).isInstanceOf(Throwable.class);
+
+        try {
+            Raw.throwableAssertion().suppressedMessageIsNotEmpty(0);
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), null).suppressedMessageIsNotEmpty(0);
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), null, "Message").suppressedMessageIsNotEmpty(0);
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), addSuppressed(new Exception(), new RuntimeException(""))).suppressedMessageIsNotEmpty(-1);
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should be valid: idx.\n\tThe argument's value should be greater than or equal to zero.");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), addSuppressed(new Exception(), new RuntimeException("")), "Message").suppressedMessageIsNotEmpty(-1);
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: idx.\n\tThe argument's value should be greater than or equal to zero.");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), addSuppressed(new Exception(), new RuntimeException(""))).suppressedMessageIsNotEmpty(1);
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should be valid: idx.\n\tThe argument's value should be less than the maximum value: 1.");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), addSuppressed(new Exception(), new RuntimeException("")), "Message").suppressedMessageIsNotEmpty(1);
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: idx.\n\tThe argument's value should be less than the maximum value: 1.");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), addSuppressed(new Exception(), new RuntimeException())).suppressedMessageIsNotEmpty(0);
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's suppressed 0.\n\tCheck actual value's message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), addSuppressed(new Exception(), new RuntimeException()), "Message").suppressedMessageIsNotEmpty(0);
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's suppressed 0.\n\tCheck actual value's message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), addSuppressed(new Exception(), new RuntimeException(""))).suppressedMessageIsNotEmpty(0);
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's suppressed 0.\n\tCheck actual value's message.\n\tActual value should not be empty.");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), addSuppressed(new Exception(), new RuntimeException("")), "Message").suppressedMessageIsNotEmpty(0);
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's suppressed 0.\n\tCheck actual value's message.\n\tActual value should not be empty.");
+        }
     }
 
     /**
