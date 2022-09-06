@@ -989,33 +989,33 @@ public final class ThrowableAssertionTest extends AssertionTest {
      */
     @Test
     public void toCauseMatcherTest() {
-        initialize(Raw.throwableAssertion(), new Exception(new RuntimeException("value"))).toCause(Matchers.<Throwable>instanceOf(RuntimeException.class));
-        initialize(Raw.throwableAssertion(), new Exception(new RuntimeException("value"))).toCause(Matchers.<Throwable>instanceOf(Exception.class));
-        initialize(Raw.throwableAssertion(), new Exception(new RuntimeException("value"))).toCause(Matchers.<Throwable>instanceOf(Throwable.class));
+        initialize(Raw.throwableAssertion(), new Exception(new RuntimeException("value"))).toCause(Matchers.instanceOf(RuntimeException.class));
+        initialize(Raw.throwableAssertion(), new Exception(new RuntimeException("value"))).toCause(Matchers.instanceOf(Exception.class));
+        initialize(Raw.throwableAssertion(), new Exception(new RuntimeException("value"))).toCause(Matchers.instanceOf(Throwable.class));
         initialize(Raw.throwableAssertion(), new Exception(new RuntimeException("value"))).toCause().toCause(Matchers.nullValue(Throwable.class));
 
-        initialize(Raw.throwableAssertion(), new Exception(new Error("value"))).toCause(Matchers.<Throwable>instanceOf(Error.class));
-        initialize(Raw.throwableAssertion(), new Exception(new Error("value"))).toCause(Matchers.<Throwable>instanceOf(Throwable.class));
+        initialize(Raw.throwableAssertion(), new Exception(new Error("value"))).toCause(Matchers.instanceOf(Error.class));
+        initialize(Raw.throwableAssertion(), new Exception(new Error("value"))).toCause(Matchers.instanceOf(Throwable.class));
         initialize(Raw.throwableAssertion(), new Exception(new Error("value"))).toCause().toCause(Matchers.nullValue(Throwable.class));
 
         initialize(Raw.throwableAssertion(), new Exception()).toCause(Matchers.nullValue(Throwable.class));
 
-        initialize(Raw.throwableAssertion(), new Exception(new RuntimeException("value"))).isNotNull().toCause(Matchers.<Throwable>instanceOf(RuntimeException.class)).isInstanceOf(Throwable.class);
+        initialize(Raw.throwableAssertion(), new Exception(new RuntimeException("value"))).isNotNull().toCause(Matchers.instanceOf(RuntimeException.class)).isInstanceOf(Throwable.class);
 
         try {
-            Raw.throwableAssertion().toCause(Matchers.<Throwable>instanceOf(Throwable.class));
+            Raw.throwableAssertion().toCause(Matchers.instanceOf(Throwable.class));
             Assertions.fail("ThrowableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
-            initialize(Raw.throwableAssertion(), null).toCause(Matchers.<Throwable>instanceOf(Throwable.class));
+            initialize(Raw.throwableAssertion(), null).toCause(Matchers.instanceOf(Throwable.class));
             Assertions.fail("ThrowableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
-            initialize(Raw.throwableAssertion(), null, "Message").toCause(Matchers.<Throwable>instanceOf(Throwable.class));
+            initialize(Raw.throwableAssertion(), null, "Message").toCause(Matchers.instanceOf(Throwable.class));
             Assertions.fail("ThrowableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
@@ -1045,13 +1045,13 @@ public final class ThrowableAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: matcher.");
         }
         try {
-            initialize(Raw.throwableAssertion(), new Exception(new Error("value"))).toCause(Matchers.<Throwable>instanceOf(RuntimeException.class));
+            initialize(Raw.throwableAssertion(), new Exception(new Error("value"))).toCause(Matchers.instanceOf(RuntimeException.class));
             Assertions.fail("ThrowableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's cause.\nExpected: an instance of java.lang.RuntimeException\n     but: <java.lang.Error: value> is a java.lang.Error");
         }
         try {
-            initialize(Raw.throwableAssertion(), new Exception(new Error("value")), "Message").toCause(Matchers.<Throwable>instanceOf(RuntimeException.class));
+            initialize(Raw.throwableAssertion(), new Exception(new Error("value")), "Message").toCause(Matchers.instanceOf(RuntimeException.class));
             Assertions.fail("ThrowableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's cause.\nExpected: an instance of java.lang.RuntimeException\n     but: <java.lang.Error: value> is a java.lang.Error");
@@ -2341,7 +2341,7 @@ public final class ThrowableAssertionTest extends AssertionTest {
         initialize(Raw.throwableAssertion(), addSuppressed(new Exception(), new RuntimeException())).hasSuppressedCount(1);
         initialize(Raw.throwableAssertion(), addSuppressed(new Exception(), new RuntimeException(), new Error())).hasSuppressedCount(2);
         initialize(Raw.throwableAssertion(), addSuppressed(new Exception(), new RuntimeException(), new Error(), new IOException())).hasSuppressedCount(3);
-        initialize(Raw.throwableAssertion(), addSuppressed(new Exception())).isNotNull().hasSuppressedCount(0);
+        initialize(Raw.throwableAssertion(), addSuppressed(new Exception())).isNotNull().hasSuppressedCount(0).isInstanceOf(Throwable.class);
 
         try {
             Raw.throwableAssertion().hasSuppressedCount(0);
@@ -2392,7 +2392,78 @@ public final class ThrowableAssertionTest extends AssertionTest {
      */
     @Test
     public void toSuppressedTest() {
-        // TODO
+        initialize(Raw.throwableAssertion(), addSuppressed(new Exception(), new RuntimeException())).toSuppressed(0).isInstanceOf(RuntimeException.class);
+        initialize(Raw.throwableAssertion(), addSuppressed(new Exception(), new RuntimeException(), new Error(), new IOException())).toSuppressed(0).isInstanceOf(RuntimeException.class);
+        initialize(Raw.throwableAssertion(), addSuppressed(new Exception(), new RuntimeException(), new Error(), new IOException())).toSuppressed(1).isInstanceOf(Error.class);
+        initialize(Raw.throwableAssertion(), addSuppressed(new Exception(), new RuntimeException(), new Error(), new IOException())).toSuppressed(2).isInstanceOf(IOException.class);
+        initialize(Raw.throwableAssertion(), addSuppressed(new Exception(), new RuntimeException())).isNotNull().toSuppressed(0).isInstanceOf(RuntimeException.class);
+
+        try {
+            Raw.throwableAssertion().toSuppressed(0);
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), null).toSuppressed(0);
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), null, "Message").toSuppressed(0);
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), addSuppressed(new Exception())).toSuppressed(-1);
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should be valid: idx.\n\tThe argument's value should be greater than or equal to zero.");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), addSuppressed(new Exception()), "Message").toSuppressed(-1);
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: idx.\n\tThe argument's value should be greater than or equal to zero.");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), addSuppressed(new Exception())).toSuppressed(0);
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should be valid: idx.\n\tThe argument's value should be less than the maximum value: 0.");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), addSuppressed(new Exception()), "Message").toSuppressed(0);
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: idx.\n\tThe argument's value should be less than the maximum value: 0.");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), addSuppressed(new Exception(), new RuntimeException(), new Error(), new IOException())).toSuppressed(3);
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should be valid: idx.\n\tThe argument's value should be less than the maximum value: 3.");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), addSuppressed(new Exception(), new RuntimeException(), new Error(), new IOException()), "Message").toSuppressed(3);
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: idx.\n\tThe argument's value should be less than the maximum value: 3.");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), addSuppressed(new Exception(), new RuntimeException(), new Error(), new IOException())).toSuppressed(4);
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should be valid: idx.\n\tThe argument's value should be less than the maximum value: 3.");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), addSuppressed(new Exception(), new RuntimeException(), new Error(), new IOException()), "Message").toSuppressed(4);
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: idx.\n\tThe argument's value should be less than the maximum value: 3.");
+        }
     }
 
     /**
@@ -2400,7 +2471,90 @@ public final class ThrowableAssertionTest extends AssertionTest {
      */
     @Test
     public void toSuppressedMatcherTest() {
-        // TODO
+        initialize(Raw.throwableAssertion(), addSuppressed(new Exception(), new RuntimeException())).toSuppressed(0, Matchers.is(Matchers.instanceOf(RuntimeException.class)));
+        initialize(Raw.throwableAssertion(), addSuppressed(new Exception(), new RuntimeException(), new Error(), new IOException())).toSuppressed(0, Matchers.is(Matchers.instanceOf(RuntimeException.class)));
+        initialize(Raw.throwableAssertion(), addSuppressed(new Exception(), new RuntimeException(), new Error(), new IOException())).toSuppressed(1, Matchers.is(Matchers.instanceOf(Error.class)));
+        initialize(Raw.throwableAssertion(), addSuppressed(new Exception(), new RuntimeException(), new Error(), new IOException())).toSuppressed(2, Matchers.is(Matchers.instanceOf(IOException.class)));
+        initialize(Raw.throwableAssertion(), addSuppressed(new Exception(), new RuntimeException())).isNotNull().toSuppressed(0, Matchers.is(Matchers.instanceOf(RuntimeException.class))).isInstanceOf(Throwable.class);
+
+        try {
+            Raw.throwableAssertion().toSuppressed(0, null);
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), null).toSuppressed(0, null);
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), null, "Message").toSuppressed(0, null);
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), addSuppressed(new Exception())).toSuppressed(-1, null);
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should be valid: idx.\n\tThe argument's value should be greater than or equal to zero.");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), addSuppressed(new Exception()), "Message").toSuppressed(-1, null);
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: idx.\n\tThe argument's value should be greater than or equal to zero.");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), addSuppressed(new Exception())).toSuppressed(0, null);
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should be valid: idx.\n\tThe argument's value should be less than the maximum value: 0.");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), addSuppressed(new Exception()), "Message").toSuppressed(0, null);
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: idx.\n\tThe argument's value should be less than the maximum value: 0.");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), addSuppressed(new Exception(), new RuntimeException())).toSuppressed(0, null);
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: matcher.");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), addSuppressed(new Exception(), new RuntimeException()), "Message").toSuppressed(0, null);
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: matcher.");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), addSuppressed(new Exception(), new RuntimeException(), new Error(), new IOException())).toSuppressed(3, Matchers.instanceOf(Throwable.class));
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should be valid: idx.\n\tThe argument's value should be less than the maximum value: 3.");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), addSuppressed(new Exception(), new RuntimeException(), new Error(), new IOException()), "Message").toSuppressed(3, Matchers.instanceOf(Throwable.class));
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: idx.\n\tThe argument's value should be less than the maximum value: 3.");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), addSuppressed(new Exception(), new RuntimeException(), new Error(), new IOException())).toSuppressed(2, Matchers.instanceOf(RuntimeException.class));
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's suppressed 2.\nExpected: an instance of java.lang.RuntimeException\n     but: <java.io.IOException> is a java.io.IOException");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), addSuppressed(new Exception(), new RuntimeException(), new Error(), new IOException()), "Message").toSuppressed(2, Matchers.instanceOf(RuntimeException.class));
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's suppressed 2.\nExpected: an instance of java.lang.RuntimeException\n     but: <java.io.IOException> is a java.io.IOException");
+        }
     }
 
     /**
