@@ -2228,6 +2228,18 @@ public final class ThrowableAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
+            clearActual(initialize(Raw.throwableAssertion(), addSuppressed(new Exception())).toSuppressedCount()).isEqualTo(1);
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's suppressed count.\n\tActual value should not be null.");
+        }
+        try {
+            clearActual(initialize(Raw.throwableAssertion(), addSuppressed(new Exception()), "Message").toSuppressedCount()).isEqualTo(1);
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's suppressed count.\n\tActual value should not be null.");
+        }
+        try {
             initialize(Raw.throwableAssertion(), addSuppressed(new Exception())).toSuppressedCount().isEqualTo(1);
             Assertions.fail("ThrowableAssertion test fail");
         } catch (AssertionError ex) {
@@ -2463,6 +2475,30 @@ public final class ThrowableAssertionTest extends AssertionTest {
             Assertions.fail("ThrowableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: idx.\n\tThe argument's value should be less than the maximum value: 3.");
+        }
+        try {
+            clearActual(initialize(Raw.throwableAssertion(), addSuppressed(new Exception(), new RuntimeException(), new Error(), new IOException())).toSuppressed(2)).isInstanceOf(IOException.class);
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's suppressed 2.\n\tActual value should not be null.");
+        }
+        try {
+            clearActual(initialize(Raw.throwableAssertion(), addSuppressed(new Exception(), new RuntimeException(), new Error(), new IOException()), "Message").toSuppressed(2)).isInstanceOf(IOException.class);
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's suppressed 2.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), addSuppressed(new Exception(), new RuntimeException(), new Error(), new IOException())).toSuppressed(2).isInstanceOf(RuntimeException.class);
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check actual value's suppressed 2.\n\tCheck actual value's class.\n\tActual value should be the subtype of the expected value.\n\tExpected:<java.lang.RuntimeException> but was:<java.io.IOException>");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), addSuppressed(new Exception(), new RuntimeException(), new Error(), new IOException()), "Message").toSuppressed(2).isInstanceOf(RuntimeException.class);
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's suppressed 2.\n\tCheck actual value's class.\n\tActual value should be the subtype of the expected value.\n\tExpected:<java.lang.RuntimeException> but was:<java.io.IOException>");
         }
     }
 
