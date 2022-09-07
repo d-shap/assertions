@@ -3803,11 +3803,4 @@ public final class ThrowableAssertionTest extends AssertionTest {
         }
     }
 
-    private static Throwable addSuppressed(final Throwable throwable, final Throwable... suppressed) {
-        for (Throwable ex : suppressed) {
-            throwable.addSuppressed(ex);
-        }
-        return throwable;
-    }
-
 }

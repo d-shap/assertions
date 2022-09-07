@@ -188,6 +188,21 @@ public class AssertionTest {
     }
 
     /**
+     * Add suppressed throwables to the specified throwable.
+     *
+     * @param throwable  the specified throwable.
+     * @param suppressed suppressed throwables.
+     *
+     * @return throwable with suppressed throwables.
+     */
+    protected final Throwable addSuppressed(final Throwable throwable, final Throwable... suppressed) {
+        for (Throwable ex : suppressed) {
+            throwable.addSuppressed(ex);
+        }
+        return throwable;
+    }
+
+    /**
      * Create duplicate set object.
      *
      * @param values the values.
