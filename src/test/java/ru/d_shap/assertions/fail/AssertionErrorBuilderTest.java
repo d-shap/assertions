@@ -2230,7 +2230,45 @@ public final class AssertionErrorBuilderTest extends AssertionTest {
      */
     @Test
     public void buildWithActualAndThrowableTest() {
-        // TODO
+        Assertions.assertThat(AssertionErrorBuilder.getInstance().addActual().addThrowable(new IOException("runtime exception")).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance().addActual().addThrowable(new IOException("runtime exception")).build()).hasMessage("");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance().addActual().addThrowable(new IOException("runtime exception")).build()).hasCause(IOException.class);
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null).addActual().addThrowable(new IOException("runtime exception")).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null).addActual().addThrowable(new IOException("runtime exception")).build()).hasMessage("");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null).addActual().addThrowable(new IOException("runtime exception")).build()).hasCause(IOException.class);
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, null, null).addActual().addThrowable(new IOException("runtime exception")).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, null, null).addActual().addThrowable(new IOException("runtime exception")).build()).hasMessage("");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, null, null).addActual().addThrowable(new IOException("runtime exception")).build()).hasCause(IOException.class);
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription()).addActual().addThrowable(new IOException("runtime exception")).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription()).addActual().addThrowable(new IOException("runtime exception")).build()).hasMessage("");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription()).addActual().addThrowable(new IOException("runtime exception")).build()).hasCause(IOException.class);
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription(), null, null).addActual().addThrowable(new IOException("runtime exception")).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription(), null, null).addActual().addThrowable(new IOException("runtime exception")).build()).hasMessage("");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription(), null, null).addActual().addThrowable(new IOException("runtime exception")).build()).hasCause(IOException.class);
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message")).addActual().addThrowable(new IOException("runtime exception")).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message")).addActual().addThrowable(new IOException("runtime exception")).build()).hasMessage("message.");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message")).addActual().addThrowable(new IOException("runtime exception")).build()).hasCause(IOException.class);
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), null, null).addActual().addThrowable(new IOException("runtime exception")).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), null, null).addActual().addThrowable(new IOException("runtime exception")).build()).hasMessage("message.");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), null, null).addActual().addThrowable(new IOException("runtime exception")).build()).hasCause(IOException.class);
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, null).addActual().addThrowable(new IOException("runtime exception")).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, null).addActual().addThrowable(new IOException("runtime exception")).build()).hasMessage("Actual:<<NULL>>");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, null).addActual().addThrowable(new IOException("runtime exception")).build()).hasCause(IOException.class);
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, "actual").addActual().addThrowable(new IOException("runtime exception")).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, "actual").addActual().addThrowable(new IOException("runtime exception")).build()).hasMessage("Actual:<actual>");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, "actual").addActual().addThrowable(new IOException("runtime exception")).build()).hasCause(IOException.class);
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), String.class, "actual").addActual().addThrowable(new IOException("runtime exception")).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), String.class, "actual").addActual().addThrowable(new IOException("runtime exception")).build()).hasMessage("message.\n\tActual:<actual>");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), String.class, "actual").addActual().addThrowable(new IOException("runtime exception")).build()).hasCause(IOException.class);
     }
 
     /**
@@ -2238,7 +2276,45 @@ public final class AssertionErrorBuilderTest extends AssertionTest {
      */
     @Test
     public void buildWithActualAndExpectedAndThrowableTest() {
-        // TODO
+        Assertions.assertThat(AssertionErrorBuilder.getInstance().addActual().addExpected(5).addThrowable(new IOException("runtime exception")).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance().addActual().addExpected(5).addThrowable(new IOException("runtime exception")).build()).hasMessage("");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance().addActual().addExpected(5).addThrowable(new IOException("runtime exception")).build()).hasCause(IOException.class);
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null).addActual().addExpected(5).addThrowable(new IOException("runtime exception")).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null).addActual().addExpected(5).addThrowable(new IOException("runtime exception")).build()).hasMessage("");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null).addActual().addExpected(5).addThrowable(new IOException("runtime exception")).build()).hasCause(IOException.class);
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, null, null).addActual().addExpected(5).addThrowable(new IOException("runtime exception")).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, null, null).addActual().addExpected(5).addThrowable(new IOException("runtime exception")).build()).hasMessage("");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, null, null).addActual().addExpected(5).addThrowable(new IOException("runtime exception")).build()).hasCause(IOException.class);
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription()).addActual().addExpected(5).addThrowable(new IOException("runtime exception")).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription()).addActual().addExpected(5).addThrowable(new IOException("runtime exception")).build()).hasMessage("");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription()).addActual().addExpected(5).addThrowable(new IOException("runtime exception")).build()).hasCause(IOException.class);
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription(), null, null).addActual().addExpected(5).addThrowable(new IOException("runtime exception")).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription(), null, null).addActual().addExpected(5).addThrowable(new IOException("runtime exception")).build()).hasMessage("");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription(), null, null).addActual().addExpected(5).addThrowable(new IOException("runtime exception")).build()).hasCause(IOException.class);
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message")).addActual().addExpected(5).addThrowable(new IOException("runtime exception")).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message")).addActual().addExpected(5).addThrowable(new IOException("runtime exception")).build()).hasMessage("message.");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message")).addActual().addExpected(5).addThrowable(new IOException("runtime exception")).build()).hasCause(IOException.class);
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), null, null).addActual().addExpected(5).addThrowable(new IOException("runtime exception")).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), null, null).addActual().addExpected(5).addThrowable(new IOException("runtime exception")).build()).hasMessage("message.");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), null, null).addActual().addExpected(5).addThrowable(new IOException("runtime exception")).build()).hasCause(IOException.class);
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, null).addActual().addExpected(5).addThrowable(new IOException("runtime exception")).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, null).addActual().addExpected(5).addThrowable(new IOException("runtime exception")).build()).hasMessage("Expected:<5> but was:<<NULL>>");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, null).addActual().addExpected(5).addThrowable(new IOException("runtime exception")).build()).hasCause(IOException.class);
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, "actual").addActual().addExpected(5).addThrowable(new IOException("runtime exception")).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, "actual").addActual().addExpected(5).addThrowable(new IOException("runtime exception")).build()).hasMessage("Expected:<5> but was:<actual>");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, "actual").addActual().addExpected(5).addThrowable(new IOException("runtime exception")).build()).hasCause(IOException.class);
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), String.class, "actual").addActual().addExpected(5).addThrowable(new IOException("runtime exception")).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), String.class, "actual").addActual().addExpected(5).addThrowable(new IOException("runtime exception")).build()).hasMessage("message.\n\tExpected:<5> but was:<actual>");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), String.class, "actual").addActual().addExpected(5).addThrowable(new IOException("runtime exception")).build()).hasCause(IOException.class);
     }
 
     /**
