@@ -2229,6 +2229,70 @@ public final class AssertionErrorBuilderTest extends AssertionTest {
      * {@link AssertionErrorBuilder} class test.
      */
     @Test
+    public void buildWithActualAndThrowableTest() {
+        // TODO
+    }
+
+    /**
+     * {@link AssertionErrorBuilder} class test.
+     */
+    @Test
+    public void buildWithActualAndExpectedAndThrowableTest() {
+        // TODO
+    }
+
+    /**
+     * {@link AssertionErrorBuilder} class test.
+     */
+    @Test
+    public void buildWithSuppressedThrowableTest() {
+        // TODO
+    }
+
+    /**
+     * {@link AssertionErrorBuilder} class test.
+     */
+    @Test
+    public void buildWithSuppressedThrowablesTest() {
+        // TODO
+    }
+
+    /**
+     * {@link AssertionErrorBuilder} class test.
+     */
+    @Test
+    public void buildWithActualAndSuppressedThrowableTest() {
+        // TODO
+    }
+
+    /**
+     * {@link AssertionErrorBuilder} class test.
+     */
+    @Test
+    public void buildWithActualAndSuppressedThrowablesTest() {
+        // TODO
+    }
+
+    /**
+     * {@link AssertionErrorBuilder} class test.
+     */
+    @Test
+    public void buildWithActualAndExpectedAndSuppressedThrowableTest() {
+        // TODO
+    }
+
+    /**
+     * {@link AssertionErrorBuilder} class test.
+     */
+    @Test
+    public void buildWithActualAndExpectedAndSuppressedThrowablesTest() {
+        // TODO
+    }
+
+    /**
+     * {@link AssertionErrorBuilder} class test.
+     */
+    @Test
     @SuppressWarnings("unchecked")
     public void conversionExceptionTest() {
         List<ValueConverterProvider> valueConverterProviders = (List<ValueConverterProvider>) ReflectionHelper.getFieldValue(ValueConverter.class, null, "CONVERTER_PROVIDERS");
