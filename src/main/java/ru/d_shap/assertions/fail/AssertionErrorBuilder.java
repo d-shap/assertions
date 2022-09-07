@@ -105,7 +105,8 @@ public final class AssertionErrorBuilder {
      * @return current object for the chain call.
      */
     public AssertionErrorBuilder addMessage(final Throwable throwable) {
-        return addMessage(Messages.SIMPLE_MESSAGE, getThrowable(throwable).toString());
+        Throwable unwrappedThrowable = getUnwrappedThrowable(throwable);
+        return addMessage(Messages.SIMPLE_MESSAGE, unwrappedThrowable.toString());
     }
 
     /**
@@ -305,24 +306,24 @@ public final class AssertionErrorBuilder {
             failDescription = new FailDescription(failDescription, failDescriptionEntry);
         }
         String fullMessage = failDescription.getFullMessage();
-        Throwable throwable = getThrowable(_throwable);
-        AssertionError assertionError = new AssertionError(fullMessage, throwable);
+        Throwable unwrappedThrowable = getUnwrappedThrowable(_throwable);
+        AssertionError assertionError = new AssertionError(fullMessage, unwrappedThrowable);
         fillSuppressedThrowable(assertionError);
         return assertionError;
     }
 
     private AssertionError createAssertionError(final ConversionException conversionException) {
-        Throwable throwable = getThrowable(conversionException);
+        Throwable unwrappedThrowable = getUnwrappedThrowable(conversionException);
         try {
-            FailDescription failDescription = new FailDescription(_failDescription, throwable.toString());
+            FailDescription failDescription = new FailDescription(_failDescription, unwrappedThrowable.toString());
             String fullMessage = failDescription.getFullMessage();
-            return new AssertionError(fullMessage, throwable);
+            return new AssertionError(fullMessage, unwrappedThrowable);
         } catch (ConversionException ex) {
-            return new AssertionError(throwable.toString(), throwable);
+            return new AssertionError(unwrappedThrowable.toString(), unwrappedThrowable);
         }
     }
 
-    private Throwable getThrowable(final Throwable throwable) {
+    private Throwable getUnwrappedThrowable(final Throwable throwable) {
         if (throwable instanceof ConversionException) {
             return throwable.getCause();
         } else {
@@ -332,7 +333,8 @@ public final class AssertionErrorBuilder {
 
     private void fillSuppressedThrowable(final AssertionError assertionError) {
         for (Throwable throwable : _suppressedThrowables) {
-            assertionError.addSuppressed(throwable);
+            Throwable unwrappedThrowable = getUnwrappedThrowable(throwable);
+            assertionError.addSuppressed(unwrappedThrowable);
         }
     }
 
