@@ -282,9 +282,11 @@ public final class AssertionErrorBuilder {
      * @return current object for the chain call.
      */
     public AssertionErrorBuilder addSuppressedThrowable(final List<? extends Throwable> throwables) {
-        for (Throwable throwable : throwables) {
-            if (throwable != null) {
-                _suppressedThrowables.add(throwable);
+        if (throwables != null) {
+            for (Throwable throwable : throwables) {
+                if (throwable != null) {
+                    _suppressedThrowables.add(throwable);
+                }
             }
         }
         return this;
