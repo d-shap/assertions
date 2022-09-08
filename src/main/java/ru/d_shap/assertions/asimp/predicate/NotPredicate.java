@@ -46,11 +46,15 @@ public final class NotPredicate extends BaseAssertion<AssertionInvoker> implemen
     public void invoke() {
         checkActualIsNotNull();
         AssertionInvoker assertionInvoker = getActual();
+        AssertionError assertionError;
         try {
             assertionInvoker.invoke();
-            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Predicate.NOT_IS_FALSE).build();
+            assertionError = null;
         } catch (AssertionError ex) {
-            // Ignore
+            assertionError = ex;
+        }
+        if (assertionError == null) {
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Predicate.NOT_IS_FALSE).build();
         }
     }
 
