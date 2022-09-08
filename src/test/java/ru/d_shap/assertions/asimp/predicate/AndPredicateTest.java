@@ -69,7 +69,6 @@ public final class AndPredicateTest extends AssertionTest {
      */
     @Test
     public void invokeTest() {
-        initialize(new AndPredicate(), new AssertionInvoker[0]).invoke();
         AssertionInvoker assertionInvoker1 = new AssertionInvoker() {
 
             @Override
@@ -77,12 +76,25 @@ public final class AndPredicateTest extends AssertionTest {
                 Assertions.assertThat(5).isEqualTo(5);
             }
         };
-        initialize(new AndPredicate(), new AssertionInvoker[]{assertionInvoker1}).invoke();
+        AssertionInvoker assertionInvoker1Fail = new AssertionInvoker() {
+
+            @Override
+            public void invoke() {
+                Assertions.assertThat(5).isEqualTo(6);
+            }
+        };
         AssertionInvoker assertionInvoker2 = new AssertionInvoker() {
 
             @Override
             public void invoke() {
                 Assertions.assertThat(DataHelper.createArrayList()).isEmpty();
+            }
+        };
+        AssertionInvoker assertionInvoker2Fail = new AssertionInvoker() {
+
+            @Override
+            public void invoke() {
+                Assertions.assertThat(DataHelper.createArrayList()).isNotEmpty();
             }
         };
         AssertionInvoker assertionInvoker3 = new AssertionInvoker() {
@@ -92,6 +104,16 @@ public final class AndPredicateTest extends AssertionTest {
                 Assertions.assertThat(DataHelper.createDate(2020, Calendar.SEPTEMBER, 10, 0, 0, 0)).isInstanceOf(Date.class);
             }
         };
+        AssertionInvoker assertionInvoker3Fail = new AssertionInvoker() {
+
+            @Override
+            public void invoke() {
+                Assertions.assertThat(DataHelper.createDate(2020, Calendar.SEPTEMBER, 10, 0, 0, 0)).isInstanceOf(Calendar.class);
+            }
+        };
+
+        initialize(new AndPredicate(), new AssertionInvoker[0]).invoke();
+        initialize(new AndPredicate(), new AssertionInvoker[]{assertionInvoker1}).invoke();
         initialize(new AndPredicate(), new AssertionInvoker[]{assertionInvoker1, assertionInvoker2, assertionInvoker3}).invoke();
 
         try {
@@ -113,14 +135,7 @@ public final class AndPredicateTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            AssertionInvoker assertionInvoker = new AssertionInvoker() {
-
-                @Override
-                public void invoke() {
-                    Assertions.assertThat(5).isEqualTo(6);
-                }
-            };
-            initialize(new AndPredicate(), new AssertionInvoker[]{assertionInvoker}).invoke();
+            initialize(new AndPredicate(), new AssertionInvoker[]{assertionInvoker1Fail}).invoke();
             Assertions.fail("AndPredicate test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("One of the assertions in AND predicate failed.");
@@ -128,14 +143,15 @@ public final class AndPredicateTest extends AssertionTest {
             Assertions.assertThat(ex).hasSuppressedMessage(0, "Actual and expected values should be the same.\n\tExpected:<6> but was:<5>");
         }
         try {
-            AssertionInvoker assertionInvoker = new AssertionInvoker() {
-
-                @Override
-                public void invoke() {
-                    Assertions.assertThat(5).isEqualTo(6);
-                }
-            };
-            initialize(new AndPredicate(), new AssertionInvoker[]{assertionInvoker, assertionInvoker2, assertionInvoker3}).invoke();
+            initialize(new AndPredicate(), new AssertionInvoker[]{assertionInvoker1Fail}, "Message").invoke();
+            Assertions.fail("AndPredicate test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tOne of the assertions in AND predicate failed.");
+            Assertions.assertThat(ex).hasSuppressed(AssertionError.class);
+            Assertions.assertThat(ex).hasSuppressedMessage(0, "Actual and expected values should be the same.\n\tExpected:<6> but was:<5>");
+        }
+        try {
+            initialize(new AndPredicate(), new AssertionInvoker[]{assertionInvoker1Fail, assertionInvoker2, assertionInvoker3}).invoke();
             Assertions.fail("AndPredicate test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("One of the assertions in AND predicate failed.");
@@ -143,14 +159,15 @@ public final class AndPredicateTest extends AssertionTest {
             Assertions.assertThat(ex).hasSuppressedMessage(0, "Actual and expected values should be the same.\n\tExpected:<6> but was:<5>");
         }
         try {
-            AssertionInvoker assertionInvoker = new AssertionInvoker() {
-
-                @Override
-                public void invoke() {
-                    Assertions.assertThat(DataHelper.createArrayList()).isNotEmpty();
-                }
-            };
-            initialize(new AndPredicate(), new AssertionInvoker[]{assertionInvoker1, assertionInvoker, assertionInvoker3}).invoke();
+            initialize(new AndPredicate(), new AssertionInvoker[]{assertionInvoker1Fail, assertionInvoker2, assertionInvoker3}, "Message").invoke();
+            Assertions.fail("AndPredicate test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tOne of the assertions in AND predicate failed.");
+            Assertions.assertThat(ex).hasSuppressed(AssertionError.class);
+            Assertions.assertThat(ex).hasSuppressedMessage(0, "Actual and expected values should be the same.\n\tExpected:<6> but was:<5>");
+        }
+        try {
+            initialize(new AndPredicate(), new AssertionInvoker[]{assertionInvoker1, assertionInvoker2Fail, assertionInvoker3}).invoke();
             Assertions.fail("AndPredicate test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("One of the assertions in AND predicate failed.");
@@ -158,14 +175,15 @@ public final class AndPredicateTest extends AssertionTest {
             Assertions.assertThat(ex).hasSuppressedMessage(0, "Actual value should not be empty.");
         }
         try {
-            AssertionInvoker assertionInvoker = new AssertionInvoker() {
-
-                @Override
-                public void invoke() {
-                    Assertions.assertThat(DataHelper.createDate(2020, Calendar.SEPTEMBER, 10, 0, 0, 0)).isInstanceOf(Calendar.class);
-                }
-            };
-            initialize(new AndPredicate(), new AssertionInvoker[]{assertionInvoker1, assertionInvoker2, assertionInvoker}).invoke();
+            initialize(new AndPredicate(), new AssertionInvoker[]{assertionInvoker1, assertionInvoker2Fail, assertionInvoker3}, "Message").invoke();
+            Assertions.fail("AndPredicate test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tOne of the assertions in AND predicate failed.");
+            Assertions.assertThat(ex).hasSuppressed(AssertionError.class);
+            Assertions.assertThat(ex).hasSuppressedMessage(0, "Actual value should not be empty.");
+        }
+        try {
+            initialize(new AndPredicate(), new AssertionInvoker[]{assertionInvoker1, assertionInvoker2, assertionInvoker3Fail}).invoke();
             Assertions.fail("AndPredicate test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("One of the assertions in AND predicate failed.");
@@ -173,14 +191,7 @@ public final class AndPredicateTest extends AssertionTest {
             Assertions.assertThat(ex).hasSuppressedMessage(0, "Check actual value's class.\n\tActual value should be the subtype of the expected value.\n\tExpected:<java.util.Calendar> but was:<java.util.Date>");
         }
         try {
-            AssertionInvoker assertionInvoker = new AssertionInvoker() {
-
-                @Override
-                public void invoke() {
-                    Assertions.assertThat(DataHelper.createDate(2020, Calendar.SEPTEMBER, 10, 0, 0, 0)).isInstanceOf(Calendar.class);
-                }
-            };
-            initialize(new AndPredicate(), new AssertionInvoker[]{assertionInvoker1, assertionInvoker2, assertionInvoker}, "Message").invoke();
+            initialize(new AndPredicate(), new AssertionInvoker[]{assertionInvoker1, assertionInvoker2, assertionInvoker3Fail}, "Message").invoke();
             Assertions.fail("AndPredicate test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tOne of the assertions in AND predicate failed.");
