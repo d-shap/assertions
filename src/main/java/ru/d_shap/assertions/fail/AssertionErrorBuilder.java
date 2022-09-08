@@ -279,7 +279,7 @@ public final class AssertionErrorBuilder {
      *
      * @return current object for the chain call.
      */
-    public AssertionErrorBuilder addSuppressedThrowable(final List<Throwable> throwables) {
+    public AssertionErrorBuilder addSuppressedThrowable(final List<? extends Throwable> throwables) {
         _suppressedThrowables.addAll(throwables);
         return this;
     }
