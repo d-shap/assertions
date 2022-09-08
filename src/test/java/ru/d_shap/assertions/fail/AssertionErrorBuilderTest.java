@@ -31,6 +31,7 @@ import ru.d_shap.assertions.converter.AsStringConverterProvider;
 import ru.d_shap.assertions.converter.ConversionException;
 import ru.d_shap.assertions.converter.ValueConverter;
 import ru.d_shap.assertions.converter.ValueConverterProvider;
+import ru.d_shap.assertions.util.DataHelper;
 import ru.d_shap.assertions.util.ReflectionHelper;
 
 /**
@@ -2402,6 +2403,14 @@ public final class AssertionErrorBuilderTest extends AssertionTest {
         Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), String.class, "actual").addSuppressedThrowable(new ConversionException(new IOException("runtime exception"))).build()).hasSuppressed(IOException.class);
         Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), String.class, "actual").addSuppressedThrowable(new ConversionException(new IOException("runtime exception"))).build()).hasSuppressedMessage(0, "runtime exception");
 
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), String.class, "actual").addSuppressedThrowable(new IOException("runtime exception")).addSuppressedThrowable((Throwable) null).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), String.class, "actual").addSuppressedThrowable(new IOException("runtime exception")).addSuppressedThrowable((Throwable) null).build()).hasMessage("message.");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), String.class, "actual").addSuppressedThrowable(new ConversionException(new IOException("runtime exception"))).addSuppressedThrowable((Throwable) null).build()).hasMessage("message.");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), String.class, "actual").addSuppressedThrowable(new IOException("runtime exception")).addSuppressedThrowable((Throwable) null).build()).hasSuppressed(IOException.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), String.class, "actual").addSuppressedThrowable(new IOException("runtime exception")).addSuppressedThrowable((Throwable) null).build()).hasSuppressedMessage(0, "runtime exception");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), String.class, "actual").addSuppressedThrowable(new ConversionException(new IOException("runtime exception"))).addSuppressedThrowable((Throwable) null).build()).hasSuppressed(IOException.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), String.class, "actual").addSuppressedThrowable(new ConversionException(new IOException("runtime exception"))).addSuppressedThrowable((Throwable) null).build()).hasSuppressedMessage(0, "runtime exception");
+
         Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message")).addSuppressedThrowable(new IOException("runtime exception")).addSuppressedThrowable(new RuntimeException("rte")).build()).isInstanceOf(AssertionError.class);
         Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message")).addSuppressedThrowable(new IOException("runtime exception")).addSuppressedThrowable(new RuntimeException("rte")).build()).hasMessage("message.");
         Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message")).addSuppressedThrowable(new ConversionException(new IOException("runtime exception"))).addSuppressedThrowable(new RuntimeException("rte")).build()).hasMessage("message.");
@@ -2418,7 +2427,111 @@ public final class AssertionErrorBuilderTest extends AssertionTest {
      */
     @Test
     public void buildWithSuppressedThrowablesTest() {
-        // TODO
+        Assertions.assertThat(AssertionErrorBuilder.getInstance().addSuppressedThrowable(DataHelper.createArrayList(new IOException("runtime exception"))).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance().addSuppressedThrowable(DataHelper.createArrayList(new IOException("runtime exception"))).build()).hasMessage("");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance().addSuppressedThrowable(DataHelper.createArrayList(new ConversionException(new IOException("runtime exception")))).build()).hasMessage("");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance().addSuppressedThrowable(DataHelper.createArrayList(new IOException("runtime exception"))).build()).hasSuppressed(IOException.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance().addSuppressedThrowable(DataHelper.createArrayList(new IOException("runtime exception"))).build()).hasSuppressedMessage(0, "runtime exception");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance().addSuppressedThrowable(DataHelper.createArrayList(new ConversionException(new IOException("runtime exception")))).build()).hasSuppressed(IOException.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance().addSuppressedThrowable(DataHelper.createArrayList(new ConversionException(new IOException("runtime exception")))).build()).hasSuppressedMessage(0, "runtime exception");
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null).addSuppressedThrowable(DataHelper.createArrayList(new IOException("runtime exception"))).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null).addSuppressedThrowable(DataHelper.createArrayList(new IOException("runtime exception"))).build()).hasMessage("");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null).addSuppressedThrowable(DataHelper.createArrayList(new ConversionException(new IOException("runtime exception")))).build()).hasMessage("");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null).addSuppressedThrowable(DataHelper.createArrayList(new IOException("runtime exception"))).build()).hasSuppressed(IOException.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null).addSuppressedThrowable(DataHelper.createArrayList(new IOException("runtime exception"))).build()).hasSuppressedMessage(0, "runtime exception");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null).addSuppressedThrowable(DataHelper.createArrayList(new ConversionException(new IOException("runtime exception")))).build()).hasSuppressed(IOException.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null).addSuppressedThrowable(DataHelper.createArrayList(new ConversionException(new IOException("runtime exception")))).build()).hasSuppressedMessage(0, "runtime exception");
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, null, null).addSuppressedThrowable(DataHelper.createArrayList(new IOException("runtime exception"))).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, null, null).addSuppressedThrowable(DataHelper.createArrayList(new IOException("runtime exception"))).build()).hasMessage("");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, null, null).addSuppressedThrowable(DataHelper.createArrayList(new ConversionException(new IOException("runtime exception")))).build()).hasMessage("");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, null, null).addSuppressedThrowable(DataHelper.createArrayList(new IOException("runtime exception"))).build()).hasSuppressed(IOException.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, null, null).addSuppressedThrowable(DataHelper.createArrayList(new IOException("runtime exception"))).build()).hasSuppressedMessage(0, "runtime exception");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, null, null).addSuppressedThrowable(DataHelper.createArrayList(new ConversionException(new IOException("runtime exception")))).build()).hasSuppressed(IOException.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, null, null).addSuppressedThrowable(DataHelper.createArrayList(new ConversionException(new IOException("runtime exception")))).build()).hasSuppressedMessage(0, "runtime exception");
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription()).addSuppressedThrowable(DataHelper.createArrayList(new IOException("runtime exception"))).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription()).addSuppressedThrowable(DataHelper.createArrayList(new IOException("runtime exception"))).build()).hasMessage("");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription()).addSuppressedThrowable(DataHelper.createArrayList(new ConversionException(new IOException("runtime exception")))).build()).hasMessage("");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription()).addSuppressedThrowable(DataHelper.createArrayList(new IOException("runtime exception"))).build()).hasSuppressed(IOException.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription()).addSuppressedThrowable(DataHelper.createArrayList(new IOException("runtime exception"))).build()).hasSuppressedMessage(0, "runtime exception");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription()).addSuppressedThrowable(DataHelper.createArrayList(new ConversionException(new IOException("runtime exception")))).build()).hasSuppressed(IOException.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription()).addSuppressedThrowable(DataHelper.createArrayList(new ConversionException(new IOException("runtime exception")))).build()).hasSuppressedMessage(0, "runtime exception");
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription(), null, null).addSuppressedThrowable(DataHelper.createArrayList(new IOException("runtime exception"))).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription(), null, null).addSuppressedThrowable(DataHelper.createArrayList(new IOException("runtime exception"))).build()).hasMessage("");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription(), null, null).addSuppressedThrowable(DataHelper.createArrayList(new ConversionException(new IOException("runtime exception")))).build()).hasMessage("");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription(), null, null).addSuppressedThrowable(DataHelper.createArrayList(new IOException("runtime exception"))).build()).hasSuppressed(IOException.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription(), null, null).addSuppressedThrowable(DataHelper.createArrayList(new IOException("runtime exception"))).build()).hasSuppressedMessage(0, "runtime exception");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription(), null, null).addSuppressedThrowable(DataHelper.createArrayList(new ConversionException(new IOException("runtime exception")))).build()).hasSuppressed(IOException.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription(), null, null).addSuppressedThrowable(DataHelper.createArrayList(new ConversionException(new IOException("runtime exception")))).build()).hasSuppressedMessage(0, "runtime exception");
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message")).addSuppressedThrowable(DataHelper.createArrayList(new IOException("runtime exception"))).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message")).addSuppressedThrowable(DataHelper.createArrayList(new IOException("runtime exception"))).build()).hasMessage("message.");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message")).addSuppressedThrowable(DataHelper.createArrayList(new ConversionException(new IOException("runtime exception")))).build()).hasMessage("message.");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message")).addSuppressedThrowable(DataHelper.createArrayList(new IOException("runtime exception"))).build()).hasSuppressed(IOException.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message")).addSuppressedThrowable(DataHelper.createArrayList(new IOException("runtime exception"))).build()).hasSuppressedMessage(0, "runtime exception");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message")).addSuppressedThrowable(DataHelper.createArrayList(new ConversionException(new IOException("runtime exception")))).build()).hasSuppressed(IOException.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message")).addSuppressedThrowable(DataHelper.createArrayList(new ConversionException(new IOException("runtime exception")))).build()).hasSuppressedMessage(0, "runtime exception");
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), null, null).addSuppressedThrowable(DataHelper.createArrayList(new IOException("runtime exception"))).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), null, null).addSuppressedThrowable(DataHelper.createArrayList(new IOException("runtime exception"))).build()).hasMessage("message.");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), null, null).addSuppressedThrowable(DataHelper.createArrayList(new ConversionException(new IOException("runtime exception")))).build()).hasMessage("message.");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), null, null).addSuppressedThrowable(DataHelper.createArrayList(new IOException("runtime exception"))).build()).hasSuppressed(IOException.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), null, null).addSuppressedThrowable(DataHelper.createArrayList(new IOException("runtime exception"))).build()).hasSuppressedMessage(0, "runtime exception");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), null, null).addSuppressedThrowable(DataHelper.createArrayList(new ConversionException(new IOException("runtime exception")))).build()).hasSuppressed(IOException.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), null, null).addSuppressedThrowable(DataHelper.createArrayList(new ConversionException(new IOException("runtime exception")))).build()).hasSuppressedMessage(0, "runtime exception");
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, null).addSuppressedThrowable(DataHelper.createArrayList(new IOException("runtime exception"))).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, null).addSuppressedThrowable(DataHelper.createArrayList(new IOException("runtime exception"))).build()).hasMessage("");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, null).addSuppressedThrowable(DataHelper.createArrayList(new ConversionException(new IOException("runtime exception")))).build()).hasMessage("");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, null).addSuppressedThrowable(DataHelper.createArrayList(new IOException("runtime exception"))).build()).hasSuppressed(IOException.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, null).addSuppressedThrowable(DataHelper.createArrayList(new IOException("runtime exception"))).build()).hasSuppressedMessage(0, "runtime exception");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, null).addSuppressedThrowable(DataHelper.createArrayList(new ConversionException(new IOException("runtime exception")))).build()).hasSuppressed(IOException.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, null).addSuppressedThrowable(DataHelper.createArrayList(new ConversionException(new IOException("runtime exception")))).build()).hasSuppressedMessage(0, "runtime exception");
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, "actual").addSuppressedThrowable(DataHelper.createArrayList(new IOException("runtime exception"))).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, "actual").addSuppressedThrowable(DataHelper.createArrayList(new IOException("runtime exception"))).build()).hasMessage("");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, "actual").addSuppressedThrowable(DataHelper.createArrayList(new ConversionException(new IOException("runtime exception")))).build()).hasMessage("");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, "actual").addSuppressedThrowable(DataHelper.createArrayList(new IOException("runtime exception"))).build()).hasSuppressed(IOException.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, "actual").addSuppressedThrowable(DataHelper.createArrayList(new IOException("runtime exception"))).build()).hasSuppressedMessage(0, "runtime exception");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, "actual").addSuppressedThrowable(DataHelper.createArrayList(new ConversionException(new IOException("runtime exception")))).build()).hasSuppressed(IOException.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(null, String.class, "actual").addSuppressedThrowable(DataHelper.createArrayList(new ConversionException(new IOException("runtime exception")))).build()).hasSuppressedMessage(0, "runtime exception");
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), String.class, "actual").addSuppressedThrowable(DataHelper.createArrayList(new IOException("runtime exception"))).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), String.class, "actual").addSuppressedThrowable(DataHelper.createArrayList(new IOException("runtime exception"))).build()).hasMessage("message.");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), String.class, "actual").addSuppressedThrowable(DataHelper.createArrayList(new ConversionException(new IOException("runtime exception")))).build()).hasMessage("message.");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), String.class, "actual").addSuppressedThrowable(DataHelper.createArrayList(new IOException("runtime exception"))).build()).hasSuppressed(IOException.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), String.class, "actual").addSuppressedThrowable(DataHelper.createArrayList(new IOException("runtime exception"))).build()).hasSuppressedMessage(0, "runtime exception");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), String.class, "actual").addSuppressedThrowable(DataHelper.createArrayList(new ConversionException(new IOException("runtime exception")))).build()).hasSuppressed(IOException.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), String.class, "actual").addSuppressedThrowable(DataHelper.createArrayList(new ConversionException(new IOException("runtime exception")))).build()).hasSuppressedMessage(0, "runtime exception");
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), String.class, "actual").addSuppressedThrowable(DataHelper.createArrayList(new IOException("runtime exception"), null)).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), String.class, "actual").addSuppressedThrowable(DataHelper.createArrayList(new IOException("runtime exception"), null)).build()).hasMessage("message.");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), String.class, "actual").addSuppressedThrowable(DataHelper.createArrayList(new ConversionException(new IOException("runtime exception")), null)).build()).hasMessage("message.");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), String.class, "actual").addSuppressedThrowable(DataHelper.createArrayList(new IOException("runtime exception"), null)).build()).hasSuppressed(IOException.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), String.class, "actual").addSuppressedThrowable(DataHelper.createArrayList(new IOException("runtime exception"), null)).build()).hasSuppressedMessage(0, "runtime exception");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), String.class, "actual").addSuppressedThrowable(DataHelper.createArrayList(new ConversionException(new IOException("runtime exception")), null)).build()).hasSuppressed(IOException.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message"), String.class, "actual").addSuppressedThrowable(DataHelper.createArrayList(new ConversionException(new IOException("runtime exception")), null)).build()).hasSuppressedMessage(0, "runtime exception");
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message")).addSuppressedThrowable((List<Throwable>) null).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message")).addSuppressedThrowable((List<Throwable>) null).build()).hasMessage("message.");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message")).addSuppressedThrowable((List<Throwable>) null).build()).hasSuppressed();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message")).addSuppressedThrowable(DataHelper.<Throwable>createArrayList()).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message")).addSuppressedThrowable(DataHelper.<Throwable>createArrayList()).build()).hasMessage("message.");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message")).addSuppressedThrowable(DataHelper.<Throwable>createArrayList()).build()).hasSuppressed();
+
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message")).addSuppressedThrowable(DataHelper.createArrayList(new IOException("runtime exception"), new RuntimeException("rte"))).build()).isInstanceOf(AssertionError.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message")).addSuppressedThrowable(DataHelper.createArrayList(new IOException("runtime exception"), new RuntimeException("rte"))).build()).hasMessage("message.");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message")).addSuppressedThrowable(DataHelper.createArrayList(new ConversionException(new IOException("runtime exception")), new RuntimeException("rte"))).build()).hasMessage("message.");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message")).addSuppressedThrowable(DataHelper.createArrayList(new IOException("runtime exception"), new RuntimeException("rte"))).build()).hasSuppressed(IOException.class, RuntimeException.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message")).addSuppressedThrowable(DataHelper.createArrayList(new IOException("runtime exception"), new RuntimeException("rte"))).build()).hasSuppressedMessage(0, "runtime exception");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message")).addSuppressedThrowable(DataHelper.createArrayList(new IOException("runtime exception"), new RuntimeException("rte"))).build()).hasSuppressedMessage(1, "rte");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message")).addSuppressedThrowable(DataHelper.createArrayList(new ConversionException(new IOException("runtime exception")), new RuntimeException("rte"))).build()).hasSuppressed(IOException.class, RuntimeException.class);
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message")).addSuppressedThrowable(DataHelper.createArrayList(new ConversionException(new IOException("runtime exception")), new RuntimeException("rte"))).build()).hasSuppressedMessage(0, "runtime exception");
+        Assertions.assertThat(AssertionErrorBuilder.getInstance(new FailDescription("message")).addSuppressedThrowable(DataHelper.createArrayList(new ConversionException(new IOException("runtime exception")), new RuntimeException("rte"))).build()).hasSuppressedMessage(1, "rte");
     }
 
     /**
