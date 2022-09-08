@@ -3364,6 +3364,18 @@ public final class ThrowableAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: idx.\n\tThe argument's value should be greater than or equal to zero.");
         }
         try {
+            initialize(Raw.throwableAssertion(), addSuppressed(new Exception(), new RuntimeException("value"))).hasSuppressedMessage(-1, null);
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should be valid: idx.\n\tThe argument's value should be greater than or equal to zero.");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), addSuppressed(new Exception(), new RuntimeException("value")), "Message").hasSuppressedMessage(-1, null);
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: idx.\n\tThe argument's value should be greater than or equal to zero.");
+        }
+        try {
             initialize(Raw.throwableAssertion(), addSuppressed(new Exception(), new RuntimeException("value"))).hasSuppressedMessage(1, "");
             Assertions.fail("ThrowableAssertion test fail");
         } catch (AssertionError ex) {
@@ -3463,6 +3475,18 @@ public final class ThrowableAssertionTest extends AssertionTest {
         }
         try {
             initialize(Raw.throwableAssertion(), addSuppressed(new Exception(), new RuntimeException("value")), "Message").suppressedMessageContains(-1, "");
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: idx.\n\tThe argument's value should be greater than or equal to zero.");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), addSuppressed(new Exception(), new RuntimeException("value"))).suppressedMessageContains(-1, null);
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should be valid: idx.\n\tThe argument's value should be greater than or equal to zero.");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), addSuppressed(new Exception(), new RuntimeException("value")), "Message").suppressedMessageContains(-1, null);
             Assertions.fail("ThrowableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: idx.\n\tThe argument's value should be greater than or equal to zero.");
@@ -3586,6 +3610,18 @@ public final class ThrowableAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: idx.\n\tThe argument's value should be greater than or equal to zero.");
         }
         try {
+            initialize(Raw.throwableAssertion(), addSuppressed(new Exception(), new RuntimeException("value"))).suppressedMessageContainsIgnoreCase(-1, null);
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should be valid: idx.\n\tThe argument's value should be greater than or equal to zero.");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), addSuppressed(new Exception(), new RuntimeException("value")), "Message").suppressedMessageContainsIgnoreCase(-1, null);
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: idx.\n\tThe argument's value should be greater than or equal to zero.");
+        }
+        try {
             initialize(Raw.throwableAssertion(), addSuppressed(new Exception(), new RuntimeException("value"))).suppressedMessageContainsIgnoreCase(1, "");
             Assertions.fail("ThrowableAssertion test fail");
         } catch (AssertionError ex) {
@@ -3684,6 +3720,18 @@ public final class ThrowableAssertionTest extends AssertionTest {
         }
         try {
             initialize(Raw.throwableAssertion(), addSuppressed(new Exception(), new RuntimeException("value")), "Message").suppressedMessageMatches(-1, "");
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: idx.\n\tThe argument's value should be greater than or equal to zero.");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), addSuppressed(new Exception(), new RuntimeException("value"))).suppressedMessageMatches(-1, null);
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should be valid: idx.\n\tThe argument's value should be greater than or equal to zero.");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), addSuppressed(new Exception(), new RuntimeException("value")), "Message").suppressedMessageMatches(-1, null);
             Assertions.fail("ThrowableAssertion test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: idx.\n\tThe argument's value should be greater than or equal to zero.");
