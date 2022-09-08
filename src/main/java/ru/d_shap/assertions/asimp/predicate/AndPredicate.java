@@ -28,7 +28,7 @@ import ru.d_shap.assertions.Messages;
  *
  * @author Dmitry Shapovalov
  */
-public final class AndPredicate extends BaseAssertion<AssertionInvoker[]> {
+public final class AndPredicate extends BaseAssertion<AssertionInvoker[]> implements AssertionInvoker {
 
     /**
      * Create new object.
@@ -42,9 +42,7 @@ public final class AndPredicate extends BaseAssertion<AssertionInvoker[]> {
         return AssertionInvoker[].class;
     }
 
-    /**
-     * Invoke the assertion invoker.
-     */
+    @Override
     public void invoke() {
         checkActualIsNotNull();
         AssertionInvoker[] assertionInvokers = getActual();
