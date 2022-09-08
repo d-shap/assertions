@@ -281,6 +281,25 @@ public final class Messages {
         }
 
         /**
+         * Predicate fail messages.
+         *
+         * @author Dmitry Shapovalov
+         */
+        public static final class Predicate {
+
+            public static final String AND_IS_FALSE = "One of the assertions in AND predicate failed";
+
+            public static final String OR_IS_FALSE = "All of the assertions in OR predicate failed";
+
+            public static final String NOT_IS_FALSE = "Assertion in NOT predicate does not fail";
+
+            private Predicate() {
+                super();
+            }
+
+        }
+
+        /**
          * Actual fail messages.
          *
          * @author Dmitry Shapovalov
