@@ -145,7 +145,7 @@ public final class OrPredicateTest extends AssertionTest {
             initialize(new OrPredicate(), new AssertionInvoker[]{assertionInvoker1Fail}).invoke();
             Assertions.fail("OrPredicate test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("All of the assertions in OR predicate failed.");
+            Assertions.assertThat(ex).hasMessage("OR predicate failed.");
             Assertions.assertThat(ex).hasSuppressed(AssertionError.class);
             Assertions.assertThat(ex).hasSuppressedMessage(0, "Actual and expected values should be the same.\n\tExpected:<6> but was:<5>");
         }
@@ -153,7 +153,7 @@ public final class OrPredicateTest extends AssertionTest {
             initialize(new OrPredicate(), new AssertionInvoker[]{assertionInvoker1Fail}, "Message").invoke();
             Assertions.fail("OrPredicate test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tAll of the assertions in OR predicate failed.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tOR predicate failed.");
             Assertions.assertThat(ex).hasSuppressed(AssertionError.class);
             Assertions.assertThat(ex).hasSuppressedMessage(0, "Actual and expected values should be the same.\n\tExpected:<6> but was:<5>");
         }
@@ -161,7 +161,7 @@ public final class OrPredicateTest extends AssertionTest {
             initialize(new OrPredicate(), new AssertionInvoker[]{assertionInvoker1Fail, assertionInvoker2Fail, assertionInvoker3Fail}).invoke();
             Assertions.fail("OrPredicate test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("All of the assertions in OR predicate failed.");
+            Assertions.assertThat(ex).hasMessage("OR predicate failed.");
             Assertions.assertThat(ex).hasSuppressed(AssertionError.class, AssertionError.class, AssertionError.class);
             Assertions.assertThat(ex).hasSuppressedMessage(0, "Actual and expected values should be the same.\n\tExpected:<6> but was:<5>");
             Assertions.assertThat(ex).hasSuppressedMessage(1, "Suspended message.\n\tActual value should not be empty.");
@@ -171,7 +171,7 @@ public final class OrPredicateTest extends AssertionTest {
             initialize(new OrPredicate(), new AssertionInvoker[]{assertionInvoker1Fail, assertionInvoker2Fail, assertionInvoker3Fail}, "Message").invoke();
             Assertions.fail("OrPredicate test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tAll of the assertions in OR predicate failed.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tOR predicate failed.");
             Assertions.assertThat(ex).hasSuppressed(AssertionError.class, AssertionError.class, AssertionError.class);
             Assertions.assertThat(ex).hasSuppressedMessage(0, "Actual and expected values should be the same.\n\tExpected:<6> but was:<5>");
             Assertions.assertThat(ex).hasSuppressedMessage(1, "Suspended message.\n\tActual value should not be empty.");

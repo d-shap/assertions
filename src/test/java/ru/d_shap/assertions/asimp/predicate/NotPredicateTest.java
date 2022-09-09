@@ -146,42 +146,42 @@ public final class NotPredicateTest extends AssertionTest {
             initialize(new NotPredicate(), assertionInvoker1).invoke();
             Assertions.fail("NotPredicate test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Assertion in NOT predicate does not fail.");
+            Assertions.assertThat(ex).hasMessage("NOT predicate failed.");
             Assertions.assertThat(ex).hasSuppressed();
         }
         try {
             initialize(new NotPredicate(), assertionInvoker1, "Message").invoke();
             Assertions.fail("NotPredicate test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tAssertion in NOT predicate does not fail.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tNOT predicate failed.");
             Assertions.assertThat(ex).hasSuppressed();
         }
         try {
             initialize(new NotPredicate(), assertionInvoker2).invoke();
             Assertions.fail("NotPredicate test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Assertion in NOT predicate does not fail.");
+            Assertions.assertThat(ex).hasMessage("NOT predicate failed.");
             Assertions.assertThat(ex).hasSuppressed();
         }
         try {
             initialize(new NotPredicate(), assertionInvoker2, "Message").invoke();
             Assertions.fail("NotPredicate test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tAssertion in NOT predicate does not fail.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tNOT predicate failed.");
             Assertions.assertThat(ex).hasSuppressed();
         }
         try {
             initialize(new NotPredicate(), assertionInvoker3).invoke();
             Assertions.fail("NotPredicate test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Assertion in NOT predicate does not fail.");
+            Assertions.assertThat(ex).hasMessage("NOT predicate failed.");
             Assertions.assertThat(ex).hasSuppressed();
         }
         try {
             initialize(new NotPredicate(), assertionInvoker3, "Message").invoke();
             Assertions.fail("NotPredicate test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tAssertion in NOT predicate does not fail.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tNOT predicate failed.");
             Assertions.assertThat(ex).hasSuppressed();
         }
     }
