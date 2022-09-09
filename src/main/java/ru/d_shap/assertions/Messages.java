@@ -287,13 +287,13 @@ public final class Messages {
          */
         public static final class Predicate {
 
-            public static final String AND_IS_FALSE = "One of the assertions in AND predicate failed";
+            public static final String AND_IS_FALSE = "AND predicate failed";
 
-            public static final String OR_IS_FALSE = "All of the assertions in OR predicate failed";
+            public static final String OR_IS_FALSE = "OR predicate failed";
 
-            public static final String XOR_IS_FALSE = "Some of the assertions in XOR predicate failed";
+            public static final String XOR_IS_FALSE = "XOR predicate failed";
 
-            public static final String NOT_IS_FALSE = "Assertion in NOT predicate does not fail";
+            public static final String NOT_IS_FALSE = "NOT predicate failed";
 
             private Predicate() {
                 super();
