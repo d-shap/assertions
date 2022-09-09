@@ -1283,25 +1283,43 @@ public final class ThrowableAssertionTest extends AssertionTest {
             initialize(Raw.throwableAssertion(), new Exception()).hasCauses((Class<?>) null);
             Assertions.fail("ThrowableAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
+            Assertions.assertThat(ex).hasMessage("Argument's property should not be null: expected[0].");
         }
         try {
             initialize(Raw.throwableAssertion(), new Exception(), "Message").hasCauses((Class<?>) null);
             Assertions.fail("ThrowableAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument's property should not be null: expected[0].");
         }
         try {
             initialize(Raw.throwableAssertion(), new Exception(new Error())).hasCauses((Class<?>) null);
             Assertions.fail("ThrowableAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
+            Assertions.assertThat(ex).hasMessage("Argument's property should not be null: expected[0].");
         }
         try {
             initialize(Raw.throwableAssertion(), new Exception(new Error()), "Message").hasCauses((Class<?>) null);
             Assertions.fail("ThrowableAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument's property should not be null: expected[0].");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), new Exception(new Error())).hasCauses(null, IOException.class, RuntimeException.class);
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument's property should not be null: expected[0].");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), new Exception(new Error())).hasCauses(Error.class, null, RuntimeException.class);
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument's property should not be null: expected[1].");
+        }
+        try {
+            initialize(Raw.throwableAssertion(), new Exception(new Error())).hasCauses(Error.class, IOException.class, null);
+            Assertions.fail("ThrowableAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument's property should not be null: expected[2].");
         }
         try {
             initialize(Raw.throwableAssertion(), new Exception(new Error(new IOException("value")))).hasCauses(Error.class, RuntimeException.class);
