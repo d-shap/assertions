@@ -420,7 +420,7 @@ public final class Messages {
 
             public static final String IS_NOT_BLANK = "Actual value should not be blank.";
 
-            public static final String PROPERTY_IS_NOT_NULL = "Actual value's property should not be null: {0}.";
+            public static final String PROPERTY_IS_NOT_NULL = "Actual value''s property should not be null: {0}.";
 
             public static final String IS_SUBTYPE_OF = "Actual value should be the subtype of the expected value.";
 
