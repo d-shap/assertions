@@ -1875,6 +1875,67 @@ public final class BaseAssertionTest extends AssertionTest {
      * {@link BaseAssertion} class test.
      */
     @Test
+    public void checkActualPropertyIsNotNullTest() {
+        createBaseAssertionObject(null).checkActualPropertyIsNotNull(new Object(), null);
+        createBaseAssertionObject(null).checkActualPropertyIsNotNull(new Object(), "");
+        createBaseAssertionObject(null).checkActualPropertyIsNotNull(new Object(), "arg");
+
+        createBaseAssertionObject(null).checkActualPropertyIsNotNull("test", null);
+        createBaseAssertionObject(null).checkActualPropertyIsNotNull("test", "");
+        createBaseAssertionObject(null).checkActualPropertyIsNotNull("test", "arg");
+
+        createBaseAssertionObject(null).checkActualPropertyIsNotNull(1, null);
+        createBaseAssertionObject(null).checkActualPropertyIsNotNull(1, "");
+        createBaseAssertionObject(null).checkActualPropertyIsNotNull(1, "arg");
+
+        try {
+            createBaseAssertionObject().checkActualPropertyIsNotNull(null, "");
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            createBaseAssertionObject(new Object()).checkActualPropertyIsNotNull(null, null);
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value's property should not be null: <NULL>.");
+        }
+        try {
+            createBaseAssertionObject(new Object(), "Message").checkActualPropertyIsNotNull(null, null);
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value's property should not be null: <NULL>.");
+        }
+        try {
+            createBaseAssertionObject(new Object()).checkActualPropertyIsNotNull(null, "");
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value's property should not be null: .");
+        }
+        try {
+            createBaseAssertionObject(new Object(), "Message").checkActualPropertyIsNotNull(null, "");
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value's property should not be null: .");
+        }
+        try {
+            createBaseAssertionObject(new Object()).checkActualPropertyIsNotNull(null, "arg");
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value's property should not be null: arg.");
+        }
+        try {
+            createBaseAssertionObject(new Object(), "Message").checkActualPropertyIsNotNull(null, "arg");
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value's property should not be null: arg.");
+        }
+    }
+
+    /**
+     * {@link BaseAssertion} class test.
+     */
+    @Test
     public void checkArgumentIsNotNullTest() {
         createBaseAssertionObject(null).checkArgumentIsNotNull(new Object(), null);
         createBaseAssertionObject(null).checkArgumentIsNotNull(new Object(), "");
