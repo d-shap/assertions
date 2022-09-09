@@ -291,6 +291,8 @@ public final class Messages {
 
             public static final String OR_IS_FALSE = "All of the assertions in OR predicate failed";
 
+            public static final String XOR_IS_FALSE = "Some of the assertions in XOR predicate failed";
+
             public static final String NOT_IS_FALSE = "Assertion in NOT predicate does not fail";
 
             private Predicate() {
