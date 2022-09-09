@@ -261,6 +261,19 @@ public abstract class BaseAssertion<T> {
     }
 
     /**
+     * Check if the actual value's property is NOT null.
+     *
+     * @param property     the property.
+     * @param propertyName the property name.
+     */
+    protected final void checkActualPropertyIsNotNull(final Object property, final String propertyName) {
+        checkInitialized();
+        if (property == null) {
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.PROPERTY_IS_NOT_NULL, propertyName).build();
+        }
+    }
+
+    /**
      * Check if the argument is NOT null.
      *
      * @param argument     the argument.
