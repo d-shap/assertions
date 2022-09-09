@@ -1997,6 +1997,14 @@ public final class BaseAssertionTest extends AssertionTest {
      * {@link BaseAssertion} class test.
      */
     @Test
+    public void checkArgumentPropertyIsNotNullTest() {
+        // TODO
+    }
+
+    /**
+     * {@link BaseAssertion} class test.
+     */
+    @Test
     public void checkArgumentIsNotEmptyTest() {
         createBaseAssertionObject(null).checkArgumentIsNotEmpty(false, null, true);
         createBaseAssertionObject(null).checkArgumentIsNotEmpty(false, "", true);
@@ -2090,6 +2098,14 @@ public final class BaseAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: arg.\n\tThe result is always false.");
         }
+    }
+
+    /**
+     * {@link BaseAssertion} class test.
+     */
+    @Test
+    public void checkArgumentPropertyIsNotEmptyTest() {
+        // TODO
     }
 
     /**
