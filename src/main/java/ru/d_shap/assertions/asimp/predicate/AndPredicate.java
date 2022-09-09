@@ -46,6 +46,10 @@ public final class AndPredicate extends BaseAssertion<AssertionInvoker[]> implem
     public void invoke() {
         checkActualIsNotNull();
         AssertionInvoker[] assertionInvokers = getActual();
+        for (int i = 0; i < assertionInvokers.length; i++) {
+            AssertionInvoker assertionInvoker = assertionInvokers[i];
+            checkArgumentPropertyIsNotNull(assertionInvoker, "assertionInvoker", "[" + i + "]");
+        }
         for (AssertionInvoker assertionInvoker : assertionInvokers) {
             try {
                 assertionInvoker.invoke();

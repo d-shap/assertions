@@ -49,6 +49,10 @@ public final class XorPredicate extends BaseAssertion<AssertionInvoker[]> implem
     public void invoke() {
         checkActualIsNotNull();
         AssertionInvoker[] assertionInvokers = getActual();
+        for (int i = 0; i < assertionInvokers.length; i++) {
+            AssertionInvoker assertionInvoker = assertionInvokers[i];
+            checkArgumentPropertyIsNotNull(assertionInvoker, "assertionInvoker", "[" + i + "]");
+        }
         List<AssertionError> assertionErrors = new ArrayList<>();
         if (assertionInvokers.length == 0) {
             return;
