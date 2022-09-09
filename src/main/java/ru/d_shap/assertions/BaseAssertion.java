@@ -287,6 +287,20 @@ public abstract class BaseAssertion<T> {
     }
 
     /**
+     * Check if the argument's property is NOT null.
+     *
+     * @param property     the property.
+     * @param argumentName the argument name.
+     * @param propertyName the property name.
+     */
+    protected final void checkArgumentPropertyIsNotNull(final Object property, final String argumentName, final String propertyName) {
+        checkInitialized();
+        if (property == null) {
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Argument.PROPERTY_IS_NOT_NULL, argumentName, propertyName).build();
+        }
+    }
+
+    /**
      * Check if the argument is NOT empty because the result is always known.
      *
      * @param isEmpty      is the argument empty.
@@ -297,12 +311,33 @@ public abstract class BaseAssertion<T> {
         checkInitialized();
         if (isEmpty) {
             AssertionErrorBuilder assertionErrorBuilder = getAssertionErrorBuilder().addMessage(Messages.Fail.Argument.IS_NOT_EMPTY, argumentName);
-            if (knownResult) {
-                assertionErrorBuilder.addMessage(Messages.Fail.Argument.RESULT_IS_ALWAYS_TRUE);
-            } else {
-                assertionErrorBuilder.addMessage(Messages.Fail.Argument.RESULT_IS_ALWAYS_FALSE);
-            }
+            addKnownResult(assertionErrorBuilder, knownResult);
             throw assertionErrorBuilder.build();
+        }
+    }
+
+    /**
+     * Check if the argument's property is NOT empty because the result is always known.
+     *
+     * @param isEmpty      is the argument empty.
+     * @param argumentName the argument name.
+     * @param propertyName the property name.
+     * @param knownResult  the known result of the check.
+     */
+    protected final void checkArgumentPropertyIsNotEmpty(final boolean isEmpty, final String argumentName, final String propertyName, final boolean knownResult) {
+        checkInitialized();
+        if (isEmpty) {
+            AssertionErrorBuilder assertionErrorBuilder = getAssertionErrorBuilder().addMessage(Messages.Fail.Argument.PROPERTY_IS_NOT_EMPTY, argumentName, propertyName);
+            addKnownResult(assertionErrorBuilder, knownResult);
+            throw assertionErrorBuilder.build();
+        }
+    }
+
+    private void addKnownResult(final AssertionErrorBuilder assertionErrorBuilder, final boolean knownResult) {
+        if (knownResult) {
+            assertionErrorBuilder.addMessage(Messages.Fail.Argument.RESULT_IS_ALWAYS_TRUE);
+        } else {
+            assertionErrorBuilder.addMessage(Messages.Fail.Argument.RESULT_IS_ALWAYS_FALSE);
         }
     }
 
