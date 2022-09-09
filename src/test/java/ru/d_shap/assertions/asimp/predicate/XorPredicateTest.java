@@ -122,7 +122,7 @@ public final class XorPredicateTest extends AssertionTest {
         initialize(new XorPredicate(), new AssertionInvoker[]{assertionInvoker1Fail, assertionInvoker3}).invoke();
         initialize(new XorPredicate(), new AssertionInvoker[]{assertionInvoker2, assertionInvoker3Fail}).invoke();
         initialize(new XorPredicate(), new AssertionInvoker[]{assertionInvoker2Fail, assertionInvoker3}).invoke();
-
+        initialize(new XorPredicate(), new AssertionInvoker[]{assertionInvoker1, assertionInvoker2, assertionInvoker3}).invoke();
         initialize(new XorPredicate(), new AssertionInvoker[]{assertionInvoker1, assertionInvoker2Fail, assertionInvoker3Fail}).invoke();
         initialize(new XorPredicate(), new AssertionInvoker[]{assertionInvoker1Fail, assertionInvoker2, assertionInvoker3Fail}).invoke();
         initialize(new XorPredicate(), new AssertionInvoker[]{assertionInvoker1Fail, assertionInvoker2Fail, assertionInvoker3}).invoke();
@@ -217,6 +217,50 @@ public final class XorPredicateTest extends AssertionTest {
             Assertions.assertThat(ex).hasSuppressed(AssertionError.class, AssertionError.class);
             Assertions.assertThat(ex).hasSuppressedMessage(0, "Suspended message.\n\tActual value should not be empty.");
             Assertions.assertThat(ex).hasSuppressedMessage(1, "Check actual value's class.\n\tActual value should be the subtype of the expected value.\n\tExpected:<java.util.Calendar> but was:<java.util.Date>");
+        }
+        try {
+            initialize(new XorPredicate(), new AssertionInvoker[]{assertionInvoker1Fail, assertionInvoker2, assertionInvoker3}).invoke();
+            Assertions.fail("XorPredicate test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Some of the assertions in XOR predicate failed.");
+            Assertions.assertThat(ex).hasSuppressed(AssertionError.class);
+            Assertions.assertThat(ex).hasSuppressedMessage(0, "Actual and expected values should be the same.\n\tExpected:<6> but was:<5>");
+        }
+        try {
+            initialize(new XorPredicate(), new AssertionInvoker[]{assertionInvoker1, assertionInvoker2Fail, assertionInvoker3}).invoke();
+            Assertions.fail("XorPredicate test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Some of the assertions in XOR predicate failed.");
+            Assertions.assertThat(ex).hasSuppressed(AssertionError.class);
+            Assertions.assertThat(ex).hasSuppressedMessage(0, "Suspended message.\n\tActual value should not be empty.");
+        }
+        try {
+            initialize(new XorPredicate(), new AssertionInvoker[]{assertionInvoker1, assertionInvoker2, assertionInvoker3Fail}).invoke();
+            Assertions.fail("XorPredicate test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Some of the assertions in XOR predicate failed.");
+            Assertions.assertThat(ex).hasSuppressed(AssertionError.class);
+            Assertions.assertThat(ex).hasSuppressedMessage(0, "Check actual value's class.\n\tActual value should be the subtype of the expected value.\n\tExpected:<java.util.Calendar> but was:<java.util.Date>");
+        }
+        try {
+            initialize(new XorPredicate(), new AssertionInvoker[]{assertionInvoker1Fail, assertionInvoker2Fail, assertionInvoker3Fail}).invoke();
+            Assertions.fail("XorPredicate test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Some of the assertions in XOR predicate failed.");
+            Assertions.assertThat(ex).hasSuppressed(AssertionError.class, AssertionError.class, AssertionError.class);
+            Assertions.assertThat(ex).hasSuppressedMessage(0, "Actual and expected values should be the same.\n\tExpected:<6> but was:<5>");
+            Assertions.assertThat(ex).hasSuppressedMessage(1, "Suspended message.\n\tActual value should not be empty.");
+            Assertions.assertThat(ex).hasSuppressedMessage(2, "Check actual value's class.\n\tActual value should be the subtype of the expected value.\n\tExpected:<java.util.Calendar> but was:<java.util.Date>");
+        }
+        try {
+            initialize(new XorPredicate(), new AssertionInvoker[]{assertionInvoker1Fail, assertionInvoker2Fail, assertionInvoker3Fail}, "Message").invoke();
+            Assertions.fail("XorPredicate test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tSome of the assertions in XOR predicate failed.");
+            Assertions.assertThat(ex).hasSuppressed(AssertionError.class, AssertionError.class, AssertionError.class);
+            Assertions.assertThat(ex).hasSuppressedMessage(0, "Actual and expected values should be the same.\n\tExpected:<6> but was:<5>");
+            Assertions.assertThat(ex).hasSuppressedMessage(1, "Suspended message.\n\tActual value should not be empty.");
+            Assertions.assertThat(ex).hasSuppressedMessage(2, "Check actual value's class.\n\tActual value should be the subtype of the expected value.\n\tExpected:<java.util.Calendar> but was:<java.util.Date>");
         }
     }
 
