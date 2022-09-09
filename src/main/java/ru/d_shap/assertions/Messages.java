@@ -254,9 +254,9 @@ public final class Messages {
 
             public static final String IS_NOT_EMPTY = "Argument should not be empty: {0}.";
 
-            public static final String PROPERTY_IS_NOT_NULL = "Argument''s property should not be null: {0}.{1}.";
+            public static final String PROPERTY_IS_NOT_NULL = "Argument''s property should not be null: {0}{1}.";
 
-            public static final String PROPERTY_IS_NOT_EMPTY = "Argument''s property should not be empty: {0}.{1}.";
+            public static final String PROPERTY_IS_NOT_EMPTY = "Argument''s property should not be empty: {0}{1}.";
 
             public static final String IS_FINITE = "Argument should be finite: {0}.";
 
