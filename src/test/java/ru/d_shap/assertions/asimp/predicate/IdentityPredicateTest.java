@@ -30,21 +30,21 @@ import ru.d_shap.assertions.Assertions;
 import ru.d_shap.assertions.util.DataHelper;
 
 /**
- * Tests for {@link AssertionInvokerPredicate}.
+ * Tests for {@link IdentityPredicate}.
  *
  * @author Dmitry Shapovalov
  */
-public final class AssertionInvokerPredicateTest extends AssertionTest {
+public final class IdentityPredicateTest extends AssertionTest {
 
     /**
      * Test class constructor.
      */
-    public AssertionInvokerPredicateTest() {
+    public IdentityPredicateTest() {
         super();
     }
 
     /**
-     * {@link AssertionInvokerPredicate} class test.
+     * {@link IdentityPredicate} class test.
      */
     @Test
     public void actualValueValidatorTest() {
@@ -55,24 +55,24 @@ public final class AssertionInvokerPredicateTest extends AssertionTest {
                 Assertions.assertThat(5).isEqualTo(5);
             }
         };
-        initialize(new AssertionInvokerPredicate(), assertionInvoker);
+        initialize(new IdentityPredicate(), assertionInvoker);
 
         try {
-            initializeWithRawActual(new AssertionInvokerPredicate(), new Object());
-            Assertions.fail("AssertionInvokerPredicate test fail");
+            initializeWithRawActual(new IdentityPredicate(), new Object());
+            Assertions.fail("IdentityPredicate test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should match the assertion.\n\tActual value should be the instance of the expected class.\n\tExpected:<ru.d_shap.assertions.AssertionInvoker> but was:<java.lang.Object>");
         }
         try {
-            initializeWithRawActual(new AssertionInvokerPredicate(), new Object(), "Message");
-            Assertions.fail("AssertionInvokerPredicate test fail");
+            initializeWithRawActual(new IdentityPredicate(), new Object(), "Message");
+            Assertions.fail("IdentityPredicate test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should match the assertion.\n\tActual value should be the instance of the expected class.\n\tExpected:<ru.d_shap.assertions.AssertionInvoker> but was:<java.lang.Object>");
         }
     }
 
     /**
-     * {@link AssertionInvokerPredicate} class test.
+     * {@link IdentityPredicate} class test.
      */
     @Test
     public void invokeTest() {
@@ -119,67 +119,67 @@ public final class AssertionInvokerPredicateTest extends AssertionTest {
             }
         };
 
-        initialize(new AssertionInvokerPredicate(), assertionInvoker1).invoke();
-        initialize(new AssertionInvokerPredicate(), assertionInvoker2).invoke();
-        initialize(new AssertionInvokerPredicate(), assertionInvoker3).invoke();
+        initialize(new IdentityPredicate(), assertionInvoker1).invoke();
+        initialize(new IdentityPredicate(), assertionInvoker2).invoke();
+        initialize(new IdentityPredicate(), assertionInvoker3).invoke();
 
         try {
-            new AssertionInvokerPredicate().invoke();
-            Assertions.fail("AssertionInvokerPredicate test fail");
+            new IdentityPredicate().invoke();
+            Assertions.fail("IdentityPredicate test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
-            initialize(new AssertionInvokerPredicate(), null).invoke();
-            Assertions.fail("AssertionInvokerPredicate test fail");
+            initialize(new IdentityPredicate(), null).invoke();
+            Assertions.fail("IdentityPredicate test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
-            initialize(new AssertionInvokerPredicate(), null, "Message").invoke();
-            Assertions.fail("AssertionInvokerPredicate test fail");
+            initialize(new IdentityPredicate(), null, "Message").invoke();
+            Assertions.fail("IdentityPredicate test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
 
         try {
-            initialize(new AssertionInvokerPredicate(), assertionInvoker1Fail).invoke();
-            Assertions.fail("AssertionInvokerPredicate test fail");
+            initialize(new IdentityPredicate(), assertionInvoker1Fail).invoke();
+            Assertions.fail("IdentityPredicate test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<6> but was:<5>");
             Assertions.assertThat(ex).hasSuppressed();
         }
         try {
-            initialize(new AssertionInvokerPredicate(), assertionInvoker1Fail, "Message").invoke();
-            Assertions.fail("AssertionInvokerPredicate test fail");
+            initialize(new IdentityPredicate(), assertionInvoker1Fail, "Message").invoke();
+            Assertions.fail("IdentityPredicate test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<6> but was:<5>");
             Assertions.assertThat(ex).hasSuppressed();
         }
         try {
-            initialize(new AssertionInvokerPredicate(), assertionInvoker2Fail).invoke();
-            Assertions.fail("AssertionInvokerPredicate test fail");
+            initialize(new IdentityPredicate(), assertionInvoker2Fail).invoke();
+            Assertions.fail("IdentityPredicate test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Fail message.\n\tActual value should not be empty.");
             Assertions.assertThat(ex).hasSuppressed();
         }
         try {
-            initialize(new AssertionInvokerPredicate(), assertionInvoker2Fail, "Message").invoke();
-            Assertions.fail("AssertionInvokerPredicate test fail");
+            initialize(new IdentityPredicate(), assertionInvoker2Fail, "Message").invoke();
+            Assertions.fail("IdentityPredicate test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Fail message.\n\tActual value should not be empty.");
             Assertions.assertThat(ex).hasSuppressed();
         }
         try {
-            initialize(new AssertionInvokerPredicate(), assertionInvoker3Fail).invoke();
-            Assertions.fail("AssertionInvokerPredicate test fail");
+            initialize(new IdentityPredicate(), assertionInvoker3Fail).invoke();
+            Assertions.fail("IdentityPredicate test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's class.\n\tActual value should be the subtype of the expected value.\n\tExpected:<java.util.Calendar> but was:<java.util.Date>");
             Assertions.assertThat(ex).hasSuppressed();
         }
         try {
-            initialize(new AssertionInvokerPredicate(), assertionInvoker3Fail, "Message").invoke();
-            Assertions.fail("AssertionInvokerPredicate test fail");
+            initialize(new IdentityPredicate(), assertionInvoker3Fail, "Message").invoke();
+            Assertions.fail("IdentityPredicate test fail");
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's class.\n\tActual value should be the subtype of the expected value.\n\tExpected:<java.util.Calendar> but was:<java.util.Date>");
             Assertions.assertThat(ex).hasSuppressed();

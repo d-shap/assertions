@@ -23,16 +23,16 @@ import ru.d_shap.assertions.AssertionInvoker;
 import ru.d_shap.assertions.BaseAssertion;
 
 /**
- * Predicate fto invoke assertion invoker.
+ * Predicate for the identity operation.
  *
  * @author Dmitry Shapovalov
  */
-public final class AssertionInvokerPredicate extends BaseAssertion<AssertionInvoker> implements AssertionInvoker {
+public final class IdentityPredicate extends BaseAssertion<AssertionInvoker> implements AssertionInvoker {
 
     /**
      * Create new object.
      */
-    public AssertionInvokerPredicate() {
+    public IdentityPredicate() {
         super();
     }
 
