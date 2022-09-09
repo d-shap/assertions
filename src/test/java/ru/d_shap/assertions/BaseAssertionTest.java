@@ -1998,7 +1998,96 @@ public final class BaseAssertionTest extends AssertionTest {
      */
     @Test
     public void checkArgumentPropertyIsNotNullTest() {
-        // TODO
+        createBaseAssertionObject(null).checkArgumentPropertyIsNotNull(new Object(), null, null);
+        createBaseAssertionObject(null).checkArgumentPropertyIsNotNull(new Object(), "", null);
+        createBaseAssertionObject(null).checkArgumentPropertyIsNotNull(new Object(), "arg", null);
+
+        createBaseAssertionObject(null).checkArgumentPropertyIsNotNull(new Object(), null, "");
+        createBaseAssertionObject(null).checkArgumentPropertyIsNotNull(new Object(), "", "");
+        createBaseAssertionObject(null).checkArgumentPropertyIsNotNull(new Object(), "arg", "");
+
+        createBaseAssertionObject(null).checkArgumentPropertyIsNotNull(new Object(), null, ".prop");
+        createBaseAssertionObject(null).checkArgumentPropertyIsNotNull(new Object(), "", ".prop");
+        createBaseAssertionObject(null).checkArgumentPropertyIsNotNull(new Object(), "arg", ".prop");
+
+        createBaseAssertionObject(null).checkArgumentPropertyIsNotNull("test", null, null);
+        createBaseAssertionObject(null).checkArgumentPropertyIsNotNull("test", "", null);
+        createBaseAssertionObject(null).checkArgumentPropertyIsNotNull("test", "arg", null);
+
+        createBaseAssertionObject(null).checkArgumentPropertyIsNotNull("test", null, "");
+        createBaseAssertionObject(null).checkArgumentPropertyIsNotNull("test", "", "");
+        createBaseAssertionObject(null).checkArgumentPropertyIsNotNull("test", "arg", "");
+
+        createBaseAssertionObject(null).checkArgumentPropertyIsNotNull("test", null, ".prop");
+        createBaseAssertionObject(null).checkArgumentPropertyIsNotNull("test", "", ".prop");
+        createBaseAssertionObject(null).checkArgumentPropertyIsNotNull("test", "arg", ".prop");
+
+        createBaseAssertionObject(null).checkArgumentPropertyIsNotNull(1, null, null);
+        createBaseAssertionObject(null).checkArgumentPropertyIsNotNull(1, "", null);
+        createBaseAssertionObject(null).checkArgumentPropertyIsNotNull(1, "arg", null);
+
+        createBaseAssertionObject(null).checkArgumentPropertyIsNotNull(1, null, "");
+        createBaseAssertionObject(null).checkArgumentPropertyIsNotNull(1, "", "");
+        createBaseAssertionObject(null).checkArgumentPropertyIsNotNull(1, "arg", "");
+
+        createBaseAssertionObject(null).checkArgumentPropertyIsNotNull(1, null, ".prop");
+        createBaseAssertionObject(null).checkArgumentPropertyIsNotNull(1, "", ".prop");
+        createBaseAssertionObject(null).checkArgumentPropertyIsNotNull(1, "arg", ".prop");
+
+        try {
+            createBaseAssertionObject().checkArgumentPropertyIsNotNull(null, "", "");
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            createBaseAssertionObject(new Object()).checkArgumentPropertyIsNotNull(null, null, null);
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument's property should not be null: <NULL><NULL>.");
+        }
+        try {
+            createBaseAssertionObject(new Object(), "Message").checkArgumentPropertyIsNotNull(null, null, null);
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument's property should not be null: <NULL><NULL>.");
+        }
+        try {
+            createBaseAssertionObject(new Object()).checkArgumentPropertyIsNotNull(null, "", "");
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument's property should not be null: .");
+        }
+        try {
+            createBaseAssertionObject(new Object(), "Message").checkArgumentPropertyIsNotNull(null, "", "");
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument's property should not be null: .");
+        }
+        try {
+            createBaseAssertionObject(new Object()).checkArgumentPropertyIsNotNull(null, "arg", ".prop");
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument's property should not be null: arg.prop.");
+        }
+        try {
+            createBaseAssertionObject(new Object(), "Message").checkArgumentPropertyIsNotNull(null, "arg", ".prop");
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument's property should not be null: arg.prop.");
+        }
+        try {
+            createBaseAssertionObject(new Object()).checkArgumentPropertyIsNotNull(null, "arg", "[9]");
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument's property should not be null: arg[9].");
+        }
+        try {
+            createBaseAssertionObject(new Object(), "Message").checkArgumentPropertyIsNotNull(null, "arg", "[9]");
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument's property should not be null: arg[9].");
+        }
     }
 
     /**
