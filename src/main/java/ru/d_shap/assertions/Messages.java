@@ -408,6 +408,8 @@ public final class Messages {
 
             public static final String IS_NOT_NULL = "Actual value should not be null.";
 
+            public static final String PROPERTY_IS_NOT_NULL = "Actual value's property should not be null: {0}.";
+
             public static final String IS_EMPTY = "Actual value should be empty.";
 
             public static final String IS_NULL_OR_EMPTY = "Actual value should be null or empty.";
