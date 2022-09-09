@@ -274,8 +274,9 @@ public final class ThrowableAssertion extends ReferenceAssertion<ThrowableAssert
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         checkArgumentIsNotEmpty(expected.length == 0, "expected", true);
-        for (Class<?> clazz : expected) {
-            checkArgumentIsNotNull(clazz, "expected");
+        for (int i = 0; i < expected.length; i++) {
+            Class<?> clazz = expected[i];
+            checkArgumentPropertyIsNotNull(clazz, "expected", "[" + i + "]");
         }
         hasCauses(0, expected);
         return this;
