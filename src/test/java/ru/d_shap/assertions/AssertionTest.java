@@ -878,6 +878,18 @@ public class AssertionTest {
         return (CharacterData) createNode(content);
     }
 
+    /**
+     * Create assertion invoker.
+     *
+     * @param actual   the actual value.
+     * @param expected the expected value.
+     *
+     * @return the created object.
+     */
+    protected final AssertionInvoker createAssertionInvoker(final int actual, final int expected) {
+        return new AssertionInvokerImpl(actual, expected);
+    }
+
     private static final class NullFieldClass {
 
         private Object _field;
@@ -1520,6 +1532,25 @@ public class AssertionTest {
     public enum Values {
 
         VALUE_1, VALUE_2, VALUE_3
+
+    }
+
+    private static final class AssertionInvokerImpl implements AssertionInvoker {
+
+        private final int _actual;
+
+        private final int _expected;
+
+        AssertionInvokerImpl(final int actual, final int expected) {
+            super();
+            _actual = actual;
+            _expected = expected;
+        }
+
+        @Override
+        public void invoke() {
+            Assertions.assertThat(_actual).isEqualTo(_expected);
+        }
 
     }
 
