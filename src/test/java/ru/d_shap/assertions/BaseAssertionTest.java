@@ -2194,7 +2194,138 @@ public final class BaseAssertionTest extends AssertionTest {
      */
     @Test
     public void checkArgumentPropertyIsNotEmptyTest() {
-        // TODO
+        createBaseAssertionObject(null).checkArgumentPropertyIsNotEmpty(false, null, null, true);
+        createBaseAssertionObject(null).checkArgumentPropertyIsNotEmpty(false, "", null, true);
+        createBaseAssertionObject(null).checkArgumentPropertyIsNotEmpty(false, "arg", null, true);
+
+        createBaseAssertionObject(null).checkArgumentPropertyIsNotEmpty(false, null, "", true);
+        createBaseAssertionObject(null).checkArgumentPropertyIsNotEmpty(false, "", "", true);
+        createBaseAssertionObject(null).checkArgumentPropertyIsNotEmpty(false, "arg", "", true);
+
+        createBaseAssertionObject(null).checkArgumentPropertyIsNotEmpty(false, null, ".prop", true);
+        createBaseAssertionObject(null).checkArgumentPropertyIsNotEmpty(false, "", ".prop", true);
+        createBaseAssertionObject(null).checkArgumentPropertyIsNotEmpty(false, "arg", ".prop", true);
+
+        createBaseAssertionObject(null).checkArgumentPropertyIsNotEmpty(false, null, null, false);
+        createBaseAssertionObject(null).checkArgumentPropertyIsNotEmpty(false, "", null, false);
+        createBaseAssertionObject(null).checkArgumentPropertyIsNotEmpty(false, "arg", null, false);
+
+        createBaseAssertionObject(null).checkArgumentPropertyIsNotEmpty(false, null, "", false);
+        createBaseAssertionObject(null).checkArgumentPropertyIsNotEmpty(false, "", "", false);
+        createBaseAssertionObject(null).checkArgumentPropertyIsNotEmpty(false, "arg", "", false);
+
+        createBaseAssertionObject(null).checkArgumentPropertyIsNotEmpty(false, null, ".prop", false);
+        createBaseAssertionObject(null).checkArgumentPropertyIsNotEmpty(false, "", ".prop", false);
+        createBaseAssertionObject(null).checkArgumentPropertyIsNotEmpty(false, "arg", ".prop", false);
+
+        try {
+            createBaseAssertionObject().checkArgumentPropertyIsNotEmpty(false, "", "", true);
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            createBaseAssertionObject().checkArgumentPropertyIsNotEmpty(false, "", "", false);
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            createBaseAssertionObject(new Object()).checkArgumentPropertyIsNotEmpty(true, null, null, true);
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument's property should not be empty: <NULL><NULL>.\n\tThe result is always true.");
+        }
+        try {
+            createBaseAssertionObject(new Object(), "Message").checkArgumentPropertyIsNotEmpty(true, null, null, true);
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument's property should not be empty: <NULL><NULL>.\n\tThe result is always true.");
+        }
+        try {
+            createBaseAssertionObject(new Object()).checkArgumentPropertyIsNotEmpty(true, "", "", true);
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument's property should not be empty: .\n\tThe result is always true.");
+        }
+        try {
+            createBaseAssertionObject(new Object(), "Message").checkArgumentPropertyIsNotEmpty(true, "", "", true);
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument's property should not be empty: .\n\tThe result is always true.");
+        }
+        try {
+            createBaseAssertionObject(new Object()).checkArgumentPropertyIsNotEmpty(true, "arg", ".prop", true);
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument's property should not be empty: arg.prop.\n\tThe result is always true.");
+        }
+        try {
+            createBaseAssertionObject(new Object(), "Message").checkArgumentPropertyIsNotEmpty(true, "arg", ".prop", true);
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument's property should not be empty: arg.prop.\n\tThe result is always true.");
+        }
+        try {
+            createBaseAssertionObject(new Object()).checkArgumentPropertyIsNotEmpty(true, "arg", "[9]", true);
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument's property should not be empty: arg[9].\n\tThe result is always true.");
+        }
+        try {
+            createBaseAssertionObject(new Object(), "Message").checkArgumentPropertyIsNotEmpty(true, "arg", "[9]", true);
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument's property should not be empty: arg[9].\n\tThe result is always true.");
+        }
+        try {
+            createBaseAssertionObject(new Object()).checkArgumentPropertyIsNotEmpty(true, null, null, false);
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument's property should not be empty: <NULL><NULL>.\n\tThe result is always false.");
+        }
+        try {
+            createBaseAssertionObject(new Object(), "Message").checkArgumentPropertyIsNotEmpty(true, null, null, false);
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument's property should not be empty: <NULL><NULL>.\n\tThe result is always false.");
+        }
+        try {
+            createBaseAssertionObject(new Object()).checkArgumentPropertyIsNotEmpty(true, "", "", false);
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument's property should not be empty: .\n\tThe result is always false.");
+        }
+        try {
+            createBaseAssertionObject(new Object(), "Message").checkArgumentPropertyIsNotEmpty(true, "", "", false);
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument's property should not be empty: .\n\tThe result is always false.");
+        }
+        try {
+            createBaseAssertionObject(new Object()).checkArgumentPropertyIsNotEmpty(true, "arg", ".prop", false);
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument's property should not be empty: arg.prop.\n\tThe result is always false.");
+        }
+        try {
+            createBaseAssertionObject(new Object(), "Message").checkArgumentPropertyIsNotEmpty(true, "arg", ".prop", false);
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument's property should not be empty: arg.prop.\n\tThe result is always false.");
+        }
+        try {
+            createBaseAssertionObject(new Object()).checkArgumentPropertyIsNotEmpty(true, "arg", "[9]", false);
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument's property should not be empty: arg[9].\n\tThe result is always false.");
+        }
+        try {
+            createBaseAssertionObject(new Object(), "Message").checkArgumentPropertyIsNotEmpty(true, "arg", "[9]", false);
+            Assertions.fail("BaseAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument's property should not be empty: arg[9].\n\tThe result is always false.");
+        }
     }
 
     /**
