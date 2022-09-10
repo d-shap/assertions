@@ -48,14 +48,7 @@ public final class IdentityPredicateTest extends AssertionTest {
      */
     @Test
     public void actualValueValidatorTest() {
-        AssertionInvoker assertionInvoker = new AssertionInvoker() {
-
-            @Override
-            public void invoke() {
-                Assertions.assertThat(5).isEqualTo(5);
-            }
-        };
-        initialize(new IdentityPredicate(), assertionInvoker);
+        initialize(new IdentityPredicate(), createAssertionInvoker(5, 5));
 
         try {
             initializeWithRawActual(new IdentityPredicate(), new Object());
@@ -76,20 +69,8 @@ public final class IdentityPredicateTest extends AssertionTest {
      */
     @Test
     public void invokeTest() {
-        AssertionInvoker assertionInvoker1 = new AssertionInvoker() {
-
-            @Override
-            public void invoke() {
-                Assertions.assertThat(5).isEqualTo(5);
-            }
-        };
-        AssertionInvoker assertionInvoker1Fail = new AssertionInvoker() {
-
-            @Override
-            public void invoke() {
-                Assertions.assertThat(5).isEqualTo(6);
-            }
-        };
+        AssertionInvoker assertionInvoker1 = createAssertionInvoker(5, 5);
+        AssertionInvoker assertionInvoker1Fail = createAssertionInvoker(5, 6);
         AssertionInvoker assertionInvoker2 = new AssertionInvoker() {
 
             @Override

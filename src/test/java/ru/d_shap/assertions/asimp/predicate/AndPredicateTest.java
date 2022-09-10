@@ -69,20 +69,8 @@ public final class AndPredicateTest extends AssertionTest {
      */
     @Test
     public void invokeTest() {
-        AssertionInvoker assertionInvoker1 = new AssertionInvoker() {
-
-            @Override
-            public void invoke() {
-                Assertions.assertThat(5).isEqualTo(5);
-            }
-        };
-        AssertionInvoker assertionInvoker1Fail = new AssertionInvoker() {
-
-            @Override
-            public void invoke() {
-                Assertions.assertThat(5).isEqualTo(6);
-            }
-        };
+        AssertionInvoker assertionInvoker1 = createAssertionInvoker(5, 5);
+        AssertionInvoker assertionInvoker1Fail = createAssertionInvoker(5, 6);
         AssertionInvoker assertionInvoker2 = new AssertionInvoker() {
 
             @Override
