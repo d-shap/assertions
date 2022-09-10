@@ -128,6 +128,42 @@ public final class OrPredicateTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
+        try {
+            initialize(new OrPredicate(), new AssertionInvoker[]{null, assertionInvoker2, assertionInvoker3}).invoke();
+            Assertions.fail("OrPredicate test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument's property should not be null: assertionInvoker[0].");
+        }
+        try {
+            initialize(new OrPredicate(), new AssertionInvoker[]{null, assertionInvoker2, assertionInvoker3}, "Message").invoke();
+            Assertions.fail("OrPredicate test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument's property should not be null: assertionInvoker[0].");
+        }
+        try {
+            initialize(new OrPredicate(), new AssertionInvoker[]{assertionInvoker1, null, assertionInvoker3}).invoke();
+            Assertions.fail("OrPredicate test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument's property should not be null: assertionInvoker[1].");
+        }
+        try {
+            initialize(new OrPredicate(), new AssertionInvoker[]{assertionInvoker1, null, assertionInvoker3}, "Message").invoke();
+            Assertions.fail("OrPredicate test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument's property should not be null: assertionInvoker[1].");
+        }
+        try {
+            initialize(new OrPredicate(), new AssertionInvoker[]{assertionInvoker1, assertionInvoker2, null}).invoke();
+            Assertions.fail("OrPredicate test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument's property should not be null: assertionInvoker[2].");
+        }
+        try {
+            initialize(new OrPredicate(), new AssertionInvoker[]{assertionInvoker1, assertionInvoker2, null}, "Message").invoke();
+            Assertions.fail("OrPredicate test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument's property should not be null: assertionInvoker[2].");
+        }
 
         try {
             initialize(new OrPredicate(), new AssertionInvoker[]{assertionInvoker1Fail}).invoke();
