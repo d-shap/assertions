@@ -1515,7 +1515,73 @@ public final class AssertionsTest extends AssertionTest {
      */
     @Test
     public void xorTest() {
-        // TODO
+        Assertions.assertThat(Assertions.xor());
+        Assertions.assertThat(Assertions.xor(createAssertionInvoker(1, 1)));
+        Assertions.assertThat(Assertions.xor(createAssertionInvoker(1, 1), createAssertionInvoker(2, 0)));
+        Assertions.assertThat(Assertions.xor(createAssertionInvoker(1, 0), createAssertionInvoker(2, 2)));
+        Assertions.assertThat(Assertions.xor(createAssertionInvoker(1, 1), createAssertionInvoker(2, 2), createAssertionInvoker(3, 3)));
+        Assertions.assertThat(Assertions.xor(createAssertionInvoker(1, 0), createAssertionInvoker(2, 0), createAssertionInvoker(3, 3)));
+        Assertions.assertThat(Assertions.xor(createAssertionInvoker(1, 0), createAssertionInvoker(2, 2), createAssertionInvoker(3, 0)));
+        Assertions.assertThat(Assertions.xor(createAssertionInvoker(1, 1), createAssertionInvoker(2, 0), createAssertionInvoker(3, 0)));
+
+        try {
+            Assertions.assertThat(Assertions.xor(createAssertionInvoker(1, 0)));
+            Assertions.fail("Assertions test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("XOR predicate failed.");
+            Assertions.assertThat(ex).hasSuppressed(AssertionError.class);
+            Assertions.assertThat(ex).hasSuppressedMessage(0, "Actual and expected values should be the same.\n\tExpected:<0> but was:<1>");
+        }
+        try {
+            Assertions.assertThat(Assertions.xor(createAssertionInvoker(1, 1), createAssertionInvoker(2, 2)));
+            Assertions.fail("Assertions test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("XOR predicate failed.");
+            Assertions.assertThat(ex).hasSuppressed();
+        }
+        try {
+            Assertions.assertThat(Assertions.xor(createAssertionInvoker(1, 0), createAssertionInvoker(2, 0)));
+            Assertions.fail("Assertions test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("XOR predicate failed.");
+            Assertions.assertThat(ex).hasSuppressed(AssertionError.class, AssertionError.class);
+            Assertions.assertThat(ex).hasSuppressedMessage(0, "Actual and expected values should be the same.\n\tExpected:<0> but was:<1>");
+            Assertions.assertThat(ex).hasSuppressedMessage(1, "Actual and expected values should be the same.\n\tExpected:<0> but was:<2>");
+        }
+        try {
+            Assertions.assertThat(Assertions.xor(createAssertionInvoker(1, 0), createAssertionInvoker(2, 2), createAssertionInvoker(3, 3)));
+            Assertions.fail("Assertions test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("XOR predicate failed.");
+            Assertions.assertThat(ex).hasSuppressed(AssertionError.class);
+            Assertions.assertThat(ex).hasSuppressedMessage(0, "Actual and expected values should be the same.\n\tExpected:<0> but was:<1>");
+        }
+        try {
+            Assertions.assertThat(Assertions.xor(createAssertionInvoker(1, 1), createAssertionInvoker(2, 0), createAssertionInvoker(3, 3)));
+            Assertions.fail("Assertions test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("XOR predicate failed.");
+            Assertions.assertThat(ex).hasSuppressed(AssertionError.class);
+            Assertions.assertThat(ex).hasSuppressedMessage(0, "Actual and expected values should be the same.\n\tExpected:<0> but was:<2>");
+        }
+        try {
+            Assertions.assertThat(Assertions.xor(createAssertionInvoker(1, 1), createAssertionInvoker(2, 2), createAssertionInvoker(3, 0)));
+            Assertions.fail("Assertions test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("XOR predicate failed.");
+            Assertions.assertThat(ex).hasSuppressed(AssertionError.class);
+            Assertions.assertThat(ex).hasSuppressedMessage(0, "Actual and expected values should be the same.\n\tExpected:<0> but was:<3>");
+        }
+        try {
+            Assertions.assertThat(Assertions.xor(createAssertionInvoker(1, 0), createAssertionInvoker(2, 0), createAssertionInvoker(3, 0)));
+            Assertions.fail("Assertions test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("XOR predicate failed.");
+            Assertions.assertThat(ex).hasSuppressed(AssertionError.class, AssertionError.class, AssertionError.class);
+            Assertions.assertThat(ex).hasSuppressedMessage(0, "Actual and expected values should be the same.\n\tExpected:<0> but was:<1>");
+            Assertions.assertThat(ex).hasSuppressedMessage(1, "Actual and expected values should be the same.\n\tExpected:<0> but was:<2>");
+            Assertions.assertThat(ex).hasSuppressedMessage(2, "Actual and expected values should be the same.\n\tExpected:<0> but was:<3>");
+        }
     }
 
     /**
