@@ -92,6 +92,11 @@ import ru.d_shap.assertions.asimp.org.w3c.dom.CharacterDataAssertion;
 import ru.d_shap.assertions.asimp.org.w3c.dom.DocumentAssertion;
 import ru.d_shap.assertions.asimp.org.w3c.dom.ElementAssertion;
 import ru.d_shap.assertions.asimp.org.w3c.dom.NodeAssertion;
+import ru.d_shap.assertions.asimp.predicate.AndPredicate;
+import ru.d_shap.assertions.asimp.predicate.IdentityPredicate;
+import ru.d_shap.assertions.asimp.predicate.NotPredicate;
+import ru.d_shap.assertions.asimp.predicate.OrPredicate;
+import ru.d_shap.assertions.asimp.predicate.XorPredicate;
 import ru.d_shap.assertions.asimp.primitive.BooleanAssertion;
 import ru.d_shap.assertions.asimp.primitive.ByteAssertion;
 import ru.d_shap.assertions.asimp.primitive.CharAssertion;
@@ -965,6 +970,69 @@ public final class Assertions {
         CharacterDataAssertion assertion = Raw.characterDataAssertion();
         ((BaseAssertion<CharacterData>) assertion).initialize(actual);
         return assertion;
+    }
+
+    /**
+     * Invoke the assertion invoker.
+     *
+     * @param assertionInvoker the assertion invoker.
+     */
+    public static void assertThat(final AssertionInvoker assertionInvoker) {
+        IdentityPredicate predicate = new IdentityPredicate();
+        ((BaseAssertion<AssertionInvoker>) predicate).initialize(assertionInvoker);
+        predicate.invoke();
+    }
+
+    /**
+     * Create AND predicate to join the assertion invokers.
+     *
+     * @param assertionInvokers the assertion invokers.
+     *
+     * @return the predicate.
+     */
+    public static AssertionInvoker and(final AssertionInvoker... assertionInvokers) {
+        AndPredicate predicate = new AndPredicate();
+        ((BaseAssertion<AssertionInvoker[]>) predicate).initialize(assertionInvokers);
+        return predicate;
+    }
+
+    /**
+     * Create OR predicate to join the assertion invokers.
+     *
+     * @param assertionInvokers the assertion invokers.
+     *
+     * @return the predicate.
+     */
+    public static AssertionInvoker or(final AssertionInvoker... assertionInvokers) {
+        OrPredicate predicate = new OrPredicate();
+        ((BaseAssertion<AssertionInvoker[]>) predicate).initialize(assertionInvokers);
+        return predicate;
+    }
+
+    /**
+     * Create XOR predicate to join the assertion invokers.
+     *
+     * @param assertionInvokers the assertion invokers.
+     *
+     * @return the predicate.
+     */
+    public static AssertionInvoker xor(final AssertionInvoker... assertionInvokers) {
+        XorPredicate predicate = new XorPredicate();
+        ((BaseAssertion<AssertionInvoker[]>) predicate).initialize(assertionInvokers);
+        return predicate;
+    }
+
+    /**
+     * Create NOT predicate to join the assertion invoker.
+     *
+     * @param assertionInvoker the assertion invoker.
+     *
+     * @return the predicate.
+     */
+    public static AssertionInvoker not(final AssertionInvoker assertionInvoker) {
+        NotPredicate predicate = new NotPredicate();
+        ((BaseAssertion<AssertionInvoker>) predicate).initialize(assertionInvoker);
+        return predicate;
     }
 
     /**
