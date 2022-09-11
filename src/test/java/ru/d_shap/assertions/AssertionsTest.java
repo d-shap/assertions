@@ -1354,7 +1354,54 @@ public final class AssertionsTest extends AssertionTest {
      */
     @Test
     public void assertionInvokerTest() {
-        // TODO
+        AssertionInvoker assertionInvoker = new AssertionInvoker() {
+
+            @Override
+            public void invoke() {
+                Assertions.assertThat(1).isEqualTo(1);
+            }
+        };
+        Assertions.assertThat(assertionInvoker);
+        Assertions.assertThat(Assertions.or(Assertions.and(createAssertionInvoker(11, 11), createAssertionInvoker(12, 12)), Assertions.and(createAssertionInvoker(21, 21), createAssertionInvoker(22, 22)), Assertions.not(createAssertionInvoker(1, 0))));
+        Assertions.assertThat(Assertions.or(Assertions.and(createAssertionInvoker(11, 0), createAssertionInvoker(12, 12)), Assertions.and(createAssertionInvoker(21, 21), createAssertionInvoker(22, 22)), Assertions.not(createAssertionInvoker(1, 0))));
+        Assertions.assertThat(Assertions.or(Assertions.and(createAssertionInvoker(11, 11), createAssertionInvoker(12, 0)), Assertions.and(createAssertionInvoker(21, 21), createAssertionInvoker(22, 22)), Assertions.not(createAssertionInvoker(1, 0))));
+        Assertions.assertThat(Assertions.or(Assertions.and(createAssertionInvoker(11, 0), createAssertionInvoker(12, 0)), Assertions.and(createAssertionInvoker(21, 21), createAssertionInvoker(22, 22)), Assertions.not(createAssertionInvoker(1, 0))));
+        Assertions.assertThat(Assertions.or(Assertions.and(createAssertionInvoker(11, 11), createAssertionInvoker(12, 12)), Assertions.and(createAssertionInvoker(21, 0), createAssertionInvoker(22, 22)), Assertions.not(createAssertionInvoker(1, 0))));
+        Assertions.assertThat(Assertions.or(Assertions.and(createAssertionInvoker(11, 11), createAssertionInvoker(12, 12)), Assertions.and(createAssertionInvoker(21, 21), createAssertionInvoker(22, 0)), Assertions.not(createAssertionInvoker(1, 0))));
+        Assertions.assertThat(Assertions.or(Assertions.and(createAssertionInvoker(11, 11), createAssertionInvoker(12, 12)), Assertions.and(createAssertionInvoker(21, 0), createAssertionInvoker(22, 0)), Assertions.not(createAssertionInvoker(1, 0))));
+        Assertions.assertThat(Assertions.or(Assertions.and(createAssertionInvoker(11, 11), createAssertionInvoker(12, 12)), Assertions.and(createAssertionInvoker(21, 21), createAssertionInvoker(22, 22)), Assertions.not(createAssertionInvoker(1, 1))));
+        Assertions.assertThat(Assertions.or(Assertions.and(createAssertionInvoker(11, 0), createAssertionInvoker(12, 12)), Assertions.and(createAssertionInvoker(21, 0), createAssertionInvoker(22, 22)), Assertions.not(createAssertionInvoker(1, 0))));
+        Assertions.assertThat(Assertions.or(Assertions.and(createAssertionInvoker(11, 0), createAssertionInvoker(12, 12)), Assertions.and(createAssertionInvoker(21, 21), createAssertionInvoker(22, 22)), Assertions.not(createAssertionInvoker(1, 1))));
+        Assertions.assertThat(Assertions.or(Assertions.and(createAssertionInvoker(11, 11), createAssertionInvoker(12, 12)), Assertions.and(createAssertionInvoker(21, 0), createAssertionInvoker(22, 22)), Assertions.not(createAssertionInvoker(1, 1))));
+
+        try {
+            AssertionInvoker assertionInvokerFail = new AssertionInvoker() {
+
+                @Override
+                public void invoke() {
+                    Assertions.assertThat(1).isEqualTo(0);
+                }
+            };
+            Assertions.assertThat(assertionInvokerFail);
+            Assertions.fail("Assertions test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<0> but was:<1>");
+        }
+        try {
+            Assertions.assertThat(Assertions.or(Assertions.and(createAssertionInvoker(11, 0), createAssertionInvoker(12, 12)), Assertions.and(createAssertionInvoker(21, 0), createAssertionInvoker(22, 22)), Assertions.not(createAssertionInvoker(1, 1))));
+            Assertions.fail("Assertions test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("OR predicate failed.");
+            Assertions.assertThat(ex).hasSuppressed(AssertionError.class, AssertionError.class, AssertionError.class);
+            Assertions.assertThat(ex).hasSuppressedMessage(0, "AND predicate failed.");
+            Assertions.assertThat(ex).toSuppressed(0).hasSuppressed(AssertionError.class);
+            Assertions.assertThat(ex).toSuppressed(0).hasSuppressedMessage(0, "Actual and expected values should be the same.\n\tExpected:<0> but was:<11>");
+            Assertions.assertThat(ex).hasSuppressedMessage(1, "AND predicate failed.");
+            Assertions.assertThat(ex).toSuppressed(1).hasSuppressed(AssertionError.class);
+            Assertions.assertThat(ex).toSuppressed(1).hasSuppressedMessage(0, "Actual and expected values should be the same.\n\tExpected:<0> but was:<21>");
+            Assertions.assertThat(ex).hasSuppressedMessage(2, "NOT predicate failed.");
+            Assertions.assertThat(ex).toSuppressed(2).hasSuppressed();
+        }
     }
 
     /**
