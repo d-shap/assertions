@@ -19,6 +19,9 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.asimp.predicate;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import ru.d_shap.assertions.AssertionInvoker;
 import ru.d_shap.assertions.BaseAssertion;
 import ru.d_shap.assertions.Messages;
@@ -50,12 +53,16 @@ public final class AndPredicate extends BaseAssertion<AssertionInvoker[]> implem
             AssertionInvoker assertionInvoker = assertionInvokers[i];
             checkArgumentPropertyIsNotNull(assertionInvoker, "assertionInvoker", "[" + i + "]");
         }
+        List<AssertionError> assertionErrors = new ArrayList<>();
         for (AssertionInvoker assertionInvoker : assertionInvokers) {
             try {
                 assertionInvoker.invoke();
             } catch (AssertionError ex) {
-                throw getAssertionErrorBuilder().addMessage(Messages.Fail.Predicate.AND_IS_FALSE).addSuppressedThrowable(ex).build();
+                assertionErrors.add(ex);
             }
+        }
+        if (assertionInvokers.length > 0) {
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Predicate.AND_IS_FALSE).addSuppressedThrowable(assertionErrors).build();
         }
     }
 
