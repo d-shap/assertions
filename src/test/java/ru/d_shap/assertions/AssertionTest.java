@@ -887,7 +887,20 @@ public class AssertionTest {
      * @return the created object.
      */
     protected final AssertionInvoker createAssertionInvoker(final int actual, final int expected) {
-        return new AssertionInvokerImpl(actual, expected);
+        return new AssertionInvokerImpl(null, actual, expected);
+    }
+
+    /**
+     * Create assertion invoker.
+     *
+     * @param message  the message.
+     * @param actual   the actual value.
+     * @param expected the expected value.
+     *
+     * @return the created object.
+     */
+    protected final AssertionInvoker createAssertionInvoker(final String message, final int actual, final int expected) {
+        return new AssertionInvokerImpl(message, actual, expected);
     }
 
     private static final class NullFieldClass {
@@ -1537,19 +1550,26 @@ public class AssertionTest {
 
     private static final class AssertionInvokerImpl implements AssertionInvoker {
 
+        private final String _message;
+
         private final int _actual;
 
         private final int _expected;
 
-        AssertionInvokerImpl(final int actual, final int expected) {
+        AssertionInvokerImpl(final String message, final int actual, final int expected) {
             super();
+            _message = message;
             _actual = actual;
             _expected = expected;
         }
 
         @Override
         public void invoke() {
-            Assertions.assertThat(_actual).isEqualTo(_expected);
+            if (_message == null) {
+                Assertions.assertThat(_actual).isEqualTo(_expected);
+            } else {
+                Assertions.assertWithMessage(_message).that(_actual).isEqualTo(_expected);
+            }
         }
 
     }
