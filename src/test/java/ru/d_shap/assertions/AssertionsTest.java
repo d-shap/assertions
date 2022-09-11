@@ -1589,7 +1589,15 @@ public final class AssertionsTest extends AssertionTest {
      */
     @Test
     public void notTest() {
-        // TODO
+        Assertions.assertThat(Assertions.not(createAssertionInvoker(1, 0)));
+
+        try {
+            Assertions.assertThat(Assertions.not(createAssertionInvoker(1, 1)));
+            Assertions.fail("Assertions test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("NOT predicate failed.");
+            Assertions.assertThat(ex).hasSuppressed();
+        }
     }
 
     /**
