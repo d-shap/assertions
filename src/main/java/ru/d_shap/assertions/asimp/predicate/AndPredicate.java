@@ -61,7 +61,7 @@ public final class AndPredicate extends BaseAssertion<AssertionInvoker[]> implem
                 assertionErrors.add(ex);
             }
         }
-        if (assertionInvokers.length > 0) {
+        if (assertionErrors.size() > 0) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Predicate.AND_IS_FALSE).addSuppressedThrowable(assertionErrors).build();
         }
     }
