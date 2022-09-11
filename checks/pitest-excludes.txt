@@ -1,0 +1,8 @@
+Total - 45
+===========================================================================
+ru.d_shap.assertions.asimp.java.lang - 10
+ru.d_shap.assertions.asimp.org.w3c.dom - 1
+ru.d_shap.assertions.converter - 24
+ru.d_shap.assertions.fail - 3
+ru.d_shap.assertions.util - 7
+===========================================================================
