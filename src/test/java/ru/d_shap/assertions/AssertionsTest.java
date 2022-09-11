@@ -1353,6 +1353,144 @@ public final class AssertionsTest extends AssertionTest {
      * {@link Assertions} class test.
      */
     @Test
+    public void assertionInvokerTest() {
+        // TODO
+    }
+
+    /**
+     * {@link Assertions} class test.
+     */
+    @Test
+    public void andTest() {
+        Assertions.assertThat(Assertions.and());
+        Assertions.assertThat(Assertions.and(createAssertionInvoker(1, 1)));
+        Assertions.assertThat(Assertions.and(createAssertionInvoker(1, 1), createAssertionInvoker(2, 2)));
+        Assertions.assertThat(Assertions.and(createAssertionInvoker(1, 1), createAssertionInvoker(2, 2), createAssertionInvoker(3, 3)));
+
+        try {
+            Assertions.assertThat(Assertions.and(createAssertionInvoker(1, 0)));
+            Assertions.fail("Assertions test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("AND predicate failed.");
+            Assertions.assertThat(ex).hasSuppressed(AssertionError.class);
+            Assertions.assertThat(ex).hasSuppressedMessage(0, "Actual and expected values should be the same.\n\tExpected:<0> but was:<1>");
+        }
+        try {
+            Assertions.assertThat(Assertions.and(createAssertionInvoker(1, 0), createAssertionInvoker(2, 2)));
+            Assertions.fail("Assertions test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("AND predicate failed.");
+            Assertions.assertThat(ex).hasSuppressed(AssertionError.class);
+            Assertions.assertThat(ex).hasSuppressedMessage(0, "Actual and expected values should be the same.\n\tExpected:<0> but was:<1>");
+        }
+        try {
+            Assertions.assertThat(Assertions.and(createAssertionInvoker(1, 1), createAssertionInvoker(2, 0)));
+            Assertions.fail("Assertions test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("AND predicate failed.");
+            Assertions.assertThat(ex).hasSuppressed(AssertionError.class);
+            Assertions.assertThat(ex).hasSuppressedMessage(0, "Actual and expected values should be the same.\n\tExpected:<0> but was:<2>");
+        }
+        try {
+            Assertions.assertThat(Assertions.and(createAssertionInvoker(1, 0), createAssertionInvoker(2, 0)));
+            Assertions.fail("Assertions test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("AND predicate failed.");
+            Assertions.assertThat(ex).hasSuppressed(AssertionError.class, AssertionError.class);
+            Assertions.assertThat(ex).hasSuppressedMessage(0, "Actual and expected values should be the same.\n\tExpected:<0> but was:<1>");
+            Assertions.assertThat(ex).hasSuppressedMessage(1, "Actual and expected values should be the same.\n\tExpected:<0> but was:<2>");
+        }
+        try {
+            Assertions.assertThat(Assertions.and(createAssertionInvoker(1, 0), createAssertionInvoker(2, 2), createAssertionInvoker(3, 3)));
+            Assertions.fail("Assertions test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("AND predicate failed.");
+            Assertions.assertThat(ex).hasSuppressed(AssertionError.class);
+            Assertions.assertThat(ex).hasSuppressedMessage(0, "Actual and expected values should be the same.\n\tExpected:<0> but was:<1>");
+        }
+        try {
+            Assertions.assertThat(Assertions.and(createAssertionInvoker(1, 1), createAssertionInvoker(2, 0), createAssertionInvoker(3, 3)));
+            Assertions.fail("Assertions test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("AND predicate failed.");
+            Assertions.assertThat(ex).hasSuppressed(AssertionError.class);
+            Assertions.assertThat(ex).hasSuppressedMessage(0, "Actual and expected values should be the same.\n\tExpected:<0> but was:<2>");
+        }
+        try {
+            Assertions.assertThat(Assertions.and(createAssertionInvoker(1, 1), createAssertionInvoker(2, 2), createAssertionInvoker(3, 0)));
+            Assertions.fail("Assertions test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("AND predicate failed.");
+            Assertions.assertThat(ex).hasSuppressed(AssertionError.class);
+            Assertions.assertThat(ex).hasSuppressedMessage(0, "Actual and expected values should be the same.\n\tExpected:<0> but was:<3>");
+        }
+        try {
+            Assertions.assertThat(Assertions.and(createAssertionInvoker(1, 0), createAssertionInvoker(2, 0), createAssertionInvoker(3, 3)));
+            Assertions.fail("Assertions test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("AND predicate failed.");
+            Assertions.assertThat(ex).hasSuppressed(AssertionError.class, AssertionError.class);
+            Assertions.assertThat(ex).hasSuppressedMessage(0, "Actual and expected values should be the same.\n\tExpected:<0> but was:<1>");
+            Assertions.assertThat(ex).hasSuppressedMessage(1, "Actual and expected values should be the same.\n\tExpected:<0> but was:<2>");
+        }
+        try {
+            Assertions.assertThat(Assertions.and(createAssertionInvoker(1, 0), createAssertionInvoker(2, 2), createAssertionInvoker(3, 0)));
+            Assertions.fail("Assertions test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("AND predicate failed.");
+            Assertions.assertThat(ex).hasSuppressed(AssertionError.class, AssertionError.class);
+            Assertions.assertThat(ex).hasSuppressedMessage(0, "Actual and expected values should be the same.\n\tExpected:<0> but was:<1>");
+            Assertions.assertThat(ex).hasSuppressedMessage(1, "Actual and expected values should be the same.\n\tExpected:<0> but was:<3>");
+        }
+        try {
+            Assertions.assertThat(Assertions.and(createAssertionInvoker(1, 1), createAssertionInvoker(2, 0), createAssertionInvoker(3, 0)));
+            Assertions.fail("Assertions test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("AND predicate failed.");
+            Assertions.assertThat(ex).hasSuppressed(AssertionError.class, AssertionError.class);
+            Assertions.assertThat(ex).hasSuppressedMessage(0, "Actual and expected values should be the same.\n\tExpected:<0> but was:<2>");
+            Assertions.assertThat(ex).hasSuppressedMessage(1, "Actual and expected values should be the same.\n\tExpected:<0> but was:<3>");
+        }
+        try {
+            Assertions.assertThat(Assertions.and(createAssertionInvoker(1, 0), createAssertionInvoker(2, 0), createAssertionInvoker(3, 0)));
+            Assertions.fail("Assertions test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("AND predicate failed.");
+            Assertions.assertThat(ex).hasSuppressed(AssertionError.class, AssertionError.class, AssertionError.class);
+            Assertions.assertThat(ex).hasSuppressedMessage(0, "Actual and expected values should be the same.\n\tExpected:<0> but was:<1>");
+            Assertions.assertThat(ex).hasSuppressedMessage(1, "Actual and expected values should be the same.\n\tExpected:<0> but was:<2>");
+            Assertions.assertThat(ex).hasSuppressedMessage(2, "Actual and expected values should be the same.\n\tExpected:<0> but was:<3>");
+        }
+    }
+
+    /**
+     * {@link Assertions} class test.
+     */
+    @Test
+    public void orTest() {
+        // TODO
+    }
+
+    /**
+     * {@link Assertions} class test.
+     */
+    @Test
+    public void xorTest() {
+        // TODO
+    }
+
+    /**
+     * {@link Assertions} class test.
+     */
+    @Test
+    public void notTest() {
+        // TODO
+    }
+
+    /**
+     * {@link Assertions} class test.
+     */
+    @Test
     public void failWithMessageTest() {
         try {
             Assertions.fail((String) null);
