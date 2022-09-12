@@ -19,7 +19,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 /**
  * <p>
- * Package contains mock objects.
+ * Package contains classes to create mock objects.
  * </p>
  * <p>
  * This mocks can be used in tests to provide specific behaviour.
