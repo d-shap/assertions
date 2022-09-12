@@ -180,6 +180,7 @@ assertThat(actual).isNotEqualTo(expected);
 ## Static import
 Hamcrest assertions are readable only if static import is used.
 But sometimes coding policy does not allow static import.
+Or there could be several unit-testing libraries it the project that provide `assertThat` method.
 In this case tests with Hamcrest matchers are not readable at all.
 
 Hamcrest check with static import:
@@ -221,6 +222,24 @@ assertThat(stringValue).isNullOrBlank();
 assertThat(stringValue).isNullOrEmpty();
 ```
 This prevents creation of the error prone combinations of assertions.
+
+Also, Assertions library provides predicates to create complicated combinations of assertions:
+```
+assertThat(
+    or(
+        () -> assertThat(list).isNull(),
+        and(
+            () -> assertThat(list).isNotEmpty(),
+            () -> assertThat(list).contains("value")
+        ),
+        not(
+            () -> assertThat(list).hasSize(5)
+        )
+    )
+);
+```
+But this predicates make assertions more complicated and error prone.
+That is why they should be avaided if it is possible. 
 
 ## Custom assertions and matchers
 Custom Hamcrest matchers can be easily developed and used in assertions.
