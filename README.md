@@ -10,7 +10,7 @@ Assertions library is based on the following pillars:
 
 Import declaration for all the following examples:
 ```
-import static ru.d_shap.assertions.Assertions.assertThat;
+import static ru.d_shap.assertions.Assertions.*;
 ```
 
 Assertion examples for the primitive data types:
@@ -46,10 +46,11 @@ assertThat(throwableValue).hasMessage("Exception");
 
 Assertion examples for the array data types:
 ```
-assertThat(booleanArrayValue).isEmpty();
+assertThat(booleanArrayValue).isNotNull().isEmpty();
 assertThat(byteArrayValue).hasLength(3);
 assertThat(shortArrayValue).contains(5);
 assertThat(intArrayValue).containsAll(5, 10, 15);
+assertThat(intArrayValue).hasHexString("12CC1204");
 assertThat(longArrayValue).containsAny(1L, 2L, 3L);
 assertThat(floatArrayValue).containsNone(10.0f, 20.0f);
 assertThat(charArrayValue).doesNotContain('c');
@@ -72,6 +73,12 @@ assertThat(mapValue).hasSize(5);
 assertThat(mapValue).containsAnyKey("key1", "key2", "key3");
 assertThat(mapValue).containsEntry("key", "value");
 assertThat(mapValue).containsNone("key1", "value1", "key2", "value2", "key3", "value3");
+
+assertThat(dateValue).hasDate(2020, Calendar.SEPTEMBER, 10);
+assertThat(dateValue).hasDateAndTime(2020, Calendar.SEPTEMBER, 10, 11, 30, 0);
+assertThat(calendarValue).hasUtcDateAndTime(2020, Calendar.SEPTEMBER, 10, 11, 30, 0);
+assertThat(calendarValue).hasTimeZoneDate(2020, Calendar.SEPTEMBER, 10, "UTC");
+assertThat(calendarValue).hasTimeZoneTime(11, 30, 0, 500, "GMT");
 ```
 
 Assertion examples for the java.io data types:
@@ -91,6 +98,7 @@ assertThat(byteBufferValue).hasCapacity(10);
 assertThat(shortBufferValue).hasLimit(5);
 assertThat(intBufferValue).hasPosition(7);
 assertThat(longBufferValue).contains(4L);
+assertThat(longBufferValue).hasHexString("FF1234C20D");
 assertThat(floatBufferValue).containsExactlyInOrder(1.0f, 2.0f, 1.0f, 2.0f, 3.0f);
 assertThat(doubleBufferValue).rewindAndContainsAll(5.0, 10.0, 15.0);
 assertThat(charBufferValue).rewindAndContainsNone('a', 'b', 'c');
