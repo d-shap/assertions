@@ -30,8 +30,5 @@
  * <p>
  * Classes to convert the value to the string representation are used for the fail message generation.
  * </p>
- * <p>
- * All convertes use SPI to locate the converter providers.
- * </p>
  */
 package ru.d_shap.assertions.converter;
