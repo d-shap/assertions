@@ -48,6 +48,18 @@ public final class IOStreamHelper {
      * @return all bytes read from the specified input stream.
      */
     public static byte[] readAsBytes(final InputStream inputStream) {
+        return readAsBytes(inputStream, true);
+    }
+
+    /**
+     * Read all bytes from the specified input stream.
+     *
+     * @param inputStream the specified input stream.
+     * @param close       true to close the specified input stream after read.
+     *
+     * @return all bytes read from the specified input stream.
+     */
+    public static byte[] readAsBytes(final InputStream inputStream, final boolean close) {
         try {
             try {
                 ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -62,7 +74,9 @@ public final class IOStreamHelper {
                 }
                 return baos.toByteArray();
             } finally {
-                inputStream.close();
+                if (close) {
+                    inputStream.close();
+                }
             }
         } catch (IOException ex) {
             throw new IOStreamException(ex);
@@ -77,6 +91,18 @@ public final class IOStreamHelper {
      * @return all chars read from the specified reader.
      */
     public static char[] readAsChars(final Reader reader) {
+        return readAsChars(reader, true);
+    }
+
+    /**
+     * Read all chars from the specified reader.
+     *
+     * @param reader the specified reader.
+     * @param close  true to close the specified reader after read.
+     *
+     * @return all chars read from the specified reader.
+     */
+    public static char[] readAsChars(final Reader reader, final boolean close) {
         try {
             try {
                 CharArrayWriter caw = new CharArrayWriter();
@@ -91,7 +117,9 @@ public final class IOStreamHelper {
                 }
                 return caw.toCharArray();
             } finally {
-                reader.close();
+                if (close) {
+                    reader.close();
+                }
             }
         } catch (IOException ex) {
             throw new IOStreamException(ex);
@@ -107,7 +135,20 @@ public final class IOStreamHelper {
      * @return string read from the specified input stream.
      */
     public static String readAsString(final InputStream inputStream, final Charset charset) {
-        byte[] bytes = readAsBytes(inputStream);
+        return readAsString(inputStream, charset, true);
+    }
+
+    /**
+     * Read all bytes from the specified input stream and convert them to the string.
+     *
+     * @param inputStream the specified input stream.
+     * @param charset     charset to encode chars.
+     * @param close       true to close the specified input stream after read.
+     *
+     * @return string read from the specified input stream.
+     */
+    public static String readAsString(final InputStream inputStream, final Charset charset, final boolean close) {
+        byte[] bytes = readAsBytes(inputStream, close);
         return new String(bytes, charset);
     }
 
@@ -120,8 +161,21 @@ public final class IOStreamHelper {
      * @return string read from the specified input stream.
      */
     public static String readAsString(final InputStream inputStream, final String charsetName) {
+        return readAsString(inputStream, charsetName, true);
+    }
+
+    /**
+     * Read all bytes from the specified input stream and convert them to the string.
+     *
+     * @param inputStream the specified input stream.
+     * @param charsetName the name of charset to encode chars.
+     * @param close       true to close the specified input stream after read.
+     *
+     * @return string read from the specified input stream.
+     */
+    public static String readAsString(final InputStream inputStream, final String charsetName, final boolean close) {
         try {
-            byte[] bytes = readAsBytes(inputStream);
+            byte[] bytes = readAsBytes(inputStream, close);
             return new String(bytes, charsetName);
         } catch (IOException ex) {
             throw new IOStreamException(ex);
@@ -136,7 +190,19 @@ public final class IOStreamHelper {
      * @return string read from the specified reader.
      */
     public static String readAsString(final Reader reader) {
-        char[] chars = readAsChars(reader);
+        return readAsString(reader, true);
+    }
+
+    /**
+     * Read all chars from the specified reader and convert them to the string.
+     *
+     * @param reader the specified reader.
+     * @param close  true to close the specified reader after read.
+     *
+     * @return string read from the specified reader.
+     */
+    public static String readAsString(final Reader reader, final boolean close) {
+        char[] chars = readAsChars(reader, close);
         return new String(chars);
     }
 
@@ -148,7 +214,19 @@ public final class IOStreamHelper {
      * @return string read from the specified input stream.
      */
     public static String readAsUtf8String(final InputStream inputStream) {
-        return readAsString(inputStream, StandardCharsets.UTF_8);
+        return readAsUtf8String(inputStream, true);
+    }
+
+    /**
+     * Read all bytes from the specified input stream and convert them to the string.
+     *
+     * @param inputStream the specified input stream.
+     * @param close       true to close the specified input stream after read.
+     *
+     * @return string read from the specified input stream.
+     */
+    public static String readAsUtf8String(final InputStream inputStream, final boolean close) {
+        return readAsString(inputStream, StandardCharsets.UTF_8, close);
     }
 
 }
