@@ -467,7 +467,14 @@ public final class IOStreamHelperTest extends AssertionTest {
      */
     @Test
     public void readAsStringsReaderCloseByDefaultTest() {
-        // TODO
+        Assertions.assertThat(IOStreamHelper.readAsStrings(DataHelper.createReaderBuilder().buildReader())).containsExactlyInOrder();
+        Assertions.assertThat(IOStreamHelper.readAsStrings(DataHelper.createReaderBuilder().setContent('1', '2', '3').buildReader())).containsExactlyInOrder("123");
+        Assertions.assertThat(IOStreamHelper.readAsStrings(DataHelper.createReaderBuilder().setContent('a', 0, 125, 'c').buildReader())).containsExactlyInOrder("a\u0000}c");
+        Assertions.assertThat(IOStreamHelper.readAsStrings(DataHelper.createReaderBuilder().setContent('a', 'b', 'c', '\n', 'd', 'e', '\n', 'f').buildReader())).containsExactlyInOrder("abc", "de", "f");
+
+        Reader reader = DataHelper.createReaderBuilder().setContent('1', '2', '3').buildReader();
+        Assertions.assertThat(IOStreamHelper.readAsStrings(reader)).containsExactlyInOrder("123");
+        Assertions.assertThat(((IsCloseable) reader).isClosed()).isTrue();
     }
 
     /**
@@ -475,7 +482,22 @@ public final class IOStreamHelperTest extends AssertionTest {
      */
     @Test
     public void readAsStringsReaderTest() {
-        // TODO
+        Assertions.assertThat(IOStreamHelper.readAsStrings(DataHelper.createReaderBuilder().buildReader(), true)).containsExactlyInOrder();
+        Assertions.assertThat(IOStreamHelper.readAsStrings(DataHelper.createReaderBuilder().buildReader(), false)).containsExactlyInOrder();
+        Assertions.assertThat(IOStreamHelper.readAsStrings(DataHelper.createReaderBuilder().setContent('1', '2', '3').buildReader(), true)).containsExactlyInOrder("123");
+        Assertions.assertThat(IOStreamHelper.readAsStrings(DataHelper.createReaderBuilder().setContent('1', '2', '3').buildReader(), false)).containsExactlyInOrder("123");
+        Assertions.assertThat(IOStreamHelper.readAsStrings(DataHelper.createReaderBuilder().setContent('a', 0, 125, 'c').buildReader(), true)).containsExactlyInOrder("a\u0000}c");
+        Assertions.assertThat(IOStreamHelper.readAsStrings(DataHelper.createReaderBuilder().setContent('a', 0, 125, 'c').buildReader(), false)).containsExactlyInOrder("a\u0000}c");
+        Assertions.assertThat(IOStreamHelper.readAsStrings(DataHelper.createReaderBuilder().setContent('a', 'b', 'c', '\n', 'd', 'e', '\n', 'f').buildReader(), true)).containsExactlyInOrder("abc", "de", "f");
+        Assertions.assertThat(IOStreamHelper.readAsStrings(DataHelper.createReaderBuilder().setContent('a', 'b', 'c', '\n', 'd', 'e', '\n', 'f').buildReader(), false)).containsExactlyInOrder("abc", "de", "f");
+
+        Reader reader1 = DataHelper.createReaderBuilder().setContent('1', '2', '3').buildReader();
+        Assertions.assertThat(IOStreamHelper.readAsStrings(reader1, true)).containsExactlyInOrder("123");
+        Assertions.assertThat(((IsCloseable) reader1).isClosed()).isTrue();
+
+        Reader reader2 = DataHelper.createReaderBuilder().setContent('1', '2', '3').buildReader();
+        Assertions.assertThat(IOStreamHelper.readAsStrings(reader2, false)).containsExactlyInOrder("123");
+        Assertions.assertThat(((IsCloseable) reader2).isClosed()).isFalse();
     }
 
     /**
