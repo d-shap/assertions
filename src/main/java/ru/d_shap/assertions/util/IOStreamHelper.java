@@ -19,13 +19,16 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.util;
 
+import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
 import java.io.CharArrayWriter;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.Reader;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
+import java.util.List;
 
 /**
  * Helper class to perform IO operations.
@@ -227,6 +230,129 @@ public final class IOStreamHelper {
      */
     public static String readAsUtf8String(final InputStream inputStream, final boolean close) {
         return readAsString(inputStream, StandardCharsets.UTF_8, close);
+    }
+
+    /**
+     * Read all bytes from the specified input stream and convert them to the list of strings.
+     *
+     * @param inputStream the specified input stream.
+     * @param charset     charset to encode chars.
+     *
+     * @return list of strings read from the specified input stream.
+     */
+    public static List<String> readAsStrings(final InputStream inputStream, final Charset charset) {
+        return readAsStrings(inputStream, charset, true);
+    }
+
+    /**
+     * Read all bytes from the specified input stream and convert them to the list of strings.
+     *
+     * @param inputStream the specified input stream.
+     * @param charset     charset to encode chars.
+     * @param close       true to close the specified input stream after read.
+     *
+     * @return list of strings read from the specified input stream.
+     */
+    public static List<String> readAsStrings(final InputStream inputStream, final Charset charset, final boolean close) {
+        Reader reader = new InputStreamReader(inputStream, charset);
+        return readAsStrings(reader, close);
+    }
+
+    /**
+     * Read all bytes from the specified input stream and convert them to the list of strings.
+     *
+     * @param inputStream the specified input stream.
+     * @param charsetName the name of charset to encode chars.
+     *
+     * @return list of strings read from the specified input stream.
+     */
+    public static List<String> readAsStrings(final InputStream inputStream, final String charsetName) {
+        return readAsStrings(inputStream, charsetName, true);
+    }
+
+    /**
+     * Read all bytes from the specified input stream and convert them to the list of strings.
+     *
+     * @param inputStream the specified input stream.
+     * @param charsetName the name of charset to encode chars.
+     * @param close       true to close the specified input stream after read.
+     *
+     * @return list of strings read from the specified input stream.
+     */
+    public static List<String> readAsStrings(final InputStream inputStream, final String charsetName, final boolean close) {
+        try {
+            Reader reader = new InputStreamReader(inputStream, charsetName);
+            return readAsStrings(reader, close);
+        } catch (IOException ex) {
+            throw new IOStreamException(ex);
+        }
+    }
+
+    /**
+     * Read all chars from the specified reader and convert them to the list of strings.
+     *
+     * @param reader the specified reader.
+     *
+     * @return list of strings read from the specified reader.
+     */
+    public static List<String> readAsStrings(final Reader reader) {
+        return readAsStrings(reader, true);
+    }
+
+    /**
+     * Read all chars from the specified reader and convert them to the list of strings.
+     *
+     * @param reader the specified reader.
+     * @param close  true to close the specified reader after read.
+     *
+     * @return list of strings read from the specified reader.
+     */
+    public static List<String> readAsStrings(final Reader reader, final boolean close) {
+        try {
+            BufferedReader bufferedReader = new BufferedReader(reader);
+            try {
+                List<String> result = DataHelper.createArrayList();
+                String line;
+                while (true) {
+                    line = bufferedReader.readLine();
+                    if (line == null) {
+                        break;
+                    } else {
+                        result.add(line);
+                    }
+                }
+                return result;
+            } finally {
+                if (close) {
+                    bufferedReader.close();
+                }
+            }
+        } catch (IOException ex) {
+            throw new IOStreamException(ex);
+        }
+    }
+
+    /**
+     * Read all bytes from the specified input stream and convert them to the list of strings.
+     *
+     * @param inputStream the specified input stream.
+     *
+     * @return list of strings read from the specified input stream.
+     */
+    public static List<String> readAsUtf8Strings(final InputStream inputStream) {
+        return readAsUtf8Strings(inputStream, true);
+    }
+
+    /**
+     * Read all bytes from the specified input stream and convert them to the list of strings.
+     *
+     * @param inputStream the specified input stream.
+     * @param close       true to close the specified input stream after read.
+     *
+     * @return list of strings read from the specified input stream.
+     */
+    public static List<String> readAsUtf8Strings(final InputStream inputStream, final boolean close) {
+        return readAsStrings(inputStream, StandardCharsets.UTF_8, close);
     }
 
 }
