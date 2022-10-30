@@ -366,4 +366,90 @@ public final class IOStreamHelperTest extends AssertionTest {
         Assertions.assertThat(((IsCloseable) inputStream2).isClosed()).isFalse();
     }
 
+    /**
+     * {@link IOStreamHelper} class test.
+     */
+    @Test
+    public void readAsStringsInputStreamCharsetCloseByDefaultTest() {
+        Assertions.assertThat(IOStreamHelper.readAsStrings(DataHelper.createInputStreamBuilder().buildInputStream(), StandardCharsets.UTF_8)).containsExactlyInOrder();
+        Assertions.assertThat(IOStreamHelper.readAsStrings(DataHelper.createInputStreamBuilder().setContent(116, 101, 115, 116).buildInputStream(), StandardCharsets.UTF_8)).containsExactlyInOrder("test");
+        Assertions.assertThat(IOStreamHelper.readAsStrings(DataHelper.createInputStreamBuilder().setContent("value").buildInputStream(), StandardCharsets.US_ASCII)).containsExactlyInOrder("value");
+        Assertions.assertThat(IOStreamHelper.readAsStrings(DataHelper.createInputStreamBuilder().setContent("value1\nvalue2\nvalue3").buildInputStream(), StandardCharsets.US_ASCII)).containsExactlyInOrder("value1", "value2", "value3");
+
+        InputStream inputStream = DataHelper.createInputStreamBuilder().setContent(116, 101, 115, 116).buildInputStream();
+        Assertions.assertThat(IOStreamHelper.readAsStrings(inputStream, StandardCharsets.UTF_8)).containsExactlyInOrder("test");
+        Assertions.assertThat(((IsCloseable) inputStream).isClosed()).isTrue();
+    }
+
+    /**
+     * {@link IOStreamHelper} class test.
+     */
+    @Test
+    public void readAsStringsInputStreamCharsetTest() {
+        Assertions.assertThat(IOStreamHelper.readAsStrings(DataHelper.createInputStreamBuilder().buildInputStream(), StandardCharsets.UTF_8, true)).containsExactlyInOrder();
+        Assertions.assertThat(IOStreamHelper.readAsStrings(DataHelper.createInputStreamBuilder().buildInputStream(), StandardCharsets.UTF_8, false)).containsExactlyInOrder();
+        Assertions.assertThat(IOStreamHelper.readAsStrings(DataHelper.createInputStreamBuilder().setContent(116, 101, 115, 116).buildInputStream(), StandardCharsets.UTF_8, true)).containsExactlyInOrder("test");
+        Assertions.assertThat(IOStreamHelper.readAsStrings(DataHelper.createInputStreamBuilder().setContent(116, 101, 115, 116).buildInputStream(), StandardCharsets.UTF_8, false)).containsExactlyInOrder("test");
+        Assertions.assertThat(IOStreamHelper.readAsStrings(DataHelper.createInputStreamBuilder().setContent("value").buildInputStream(), StandardCharsets.US_ASCII, true)).containsExactlyInOrder("value");
+        Assertions.assertThat(IOStreamHelper.readAsStrings(DataHelper.createInputStreamBuilder().setContent("value").buildInputStream(), StandardCharsets.US_ASCII, false)).containsExactlyInOrder("value");
+        Assertions.assertThat(IOStreamHelper.readAsStrings(DataHelper.createInputStreamBuilder().setContent("value1\nvalue2\nvalue3").buildInputStream(), StandardCharsets.US_ASCII, true)).containsExactlyInOrder("value1", "value2", "value3");
+        Assertions.assertThat(IOStreamHelper.readAsStrings(DataHelper.createInputStreamBuilder().setContent("value1\nvalue2\nvalue3").buildInputStream(), StandardCharsets.US_ASCII, false)).containsExactlyInOrder("value1", "value2", "value3");
+
+        InputStream inputStream1 = DataHelper.createInputStreamBuilder().setContent(116, 101, 115, 116).buildInputStream();
+        Assertions.assertThat(IOStreamHelper.readAsStrings(inputStream1, StandardCharsets.UTF_8, true)).containsExactlyInOrder("test");
+        Assertions.assertThat(((IsCloseable) inputStream1).isClosed()).isTrue();
+
+        InputStream inputStream2 = DataHelper.createInputStreamBuilder().setContent(116, 101, 115, 116).buildInputStream();
+        Assertions.assertThat(IOStreamHelper.readAsStrings(inputStream2, StandardCharsets.UTF_8, false)).containsExactlyInOrder("test");
+        Assertions.assertThat(((IsCloseable) inputStream2).isClosed()).isFalse();
+    }
+
+    /**
+     * {@link IOStreamHelper} class test.
+     */
+    @Test
+    public void readAsStringsInputStreamCharsetNameCloseByDefaultTest() {
+        // TODO
+    }
+
+    /**
+     * {@link IOStreamHelper} class test.
+     */
+    @Test
+    public void readAsStringsInputStreamCharsetNameTest() {
+        // TODO
+    }
+
+    /**
+     * {@link IOStreamHelper} class test.
+     */
+    @Test
+    public void readAsStringsReaderCloseByDefaultTest() {
+        // TODO
+    }
+
+    /**
+     * {@link IOStreamHelper} class test.
+     */
+    @Test
+    public void readAsStringsReaderTest() {
+        // TODO
+    }
+
+    /**
+     * {@link IOStreamHelper} class test.
+     */
+    @Test
+    public void readAsUtf8StringsCloseByDefaultTest() {
+        // TODO
+    }
+
+    /**
+     * {@link IOStreamHelper} class test.
+     */
+    @Test
+    public void readAsUtf8StringsTest() {
+        // TODO
+    }
+
 }
