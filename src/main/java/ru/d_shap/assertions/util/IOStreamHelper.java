@@ -151,8 +151,8 @@ public final class IOStreamHelper {
      * @return string read from the specified input stream.
      */
     public static String readAsString(final InputStream inputStream, final Charset charset, final boolean close) {
-        byte[] bytes = readAsBytes(inputStream, close);
-        return new String(bytes, charset);
+        Reader reader = new InputStreamReader(inputStream, charset);
+        return readAsString(reader, close);
     }
 
     /**
@@ -178,8 +178,8 @@ public final class IOStreamHelper {
      */
     public static String readAsString(final InputStream inputStream, final String charsetName, final boolean close) {
         try {
-            byte[] bytes = readAsBytes(inputStream, close);
-            return new String(bytes, charsetName);
+            Reader reader = new InputStreamReader(inputStream, charsetName);
+            return readAsString(reader, close);
         } catch (IOException ex) {
             throw new IOStreamException(ex);
         }
