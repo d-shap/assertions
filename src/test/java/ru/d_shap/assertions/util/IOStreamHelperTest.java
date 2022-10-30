@@ -409,7 +409,21 @@ public final class IOStreamHelperTest extends AssertionTest {
      */
     @Test
     public void readAsStringsInputStreamCharsetNameCloseByDefaultTest() {
-        // TODO
+        Assertions.assertThat(IOStreamHelper.readAsStrings(DataHelper.createInputStreamBuilder().buildInputStream(), "UTF-8")).containsExactlyInOrder();
+        Assertions.assertThat(IOStreamHelper.readAsStrings(DataHelper.createInputStreamBuilder().setContent(116, 101, 115, 116).buildInputStream(), "UTF-8")).containsExactlyInOrder("test");
+        Assertions.assertThat(IOStreamHelper.readAsStrings(DataHelper.createInputStreamBuilder().setContent("value").buildInputStream(), "ISO-8859-1")).containsExactlyInOrder("value");
+        Assertions.assertThat(IOStreamHelper.readAsStrings(DataHelper.createInputStreamBuilder().setContent("value1\nvalue2\nvalue3").buildInputStream(), "ISO-8859-1")).containsExactlyInOrder("value1", "value2", "value3");
+
+        try {
+            IOStreamHelper.readAsStrings(DataHelper.createInputStreamBuilder().setContent(116, 101, 115, 116).buildInputStream(), "wrong encoding");
+            Assertions.fail("IOStreamHelper test fail");
+        } catch (IOStreamException ex) {
+            Assertions.assertThat(ex).hasCause(UnsupportedEncodingException.class);
+        }
+
+        InputStream inputStream = DataHelper.createInputStreamBuilder().setContent(116, 101, 115, 116).buildInputStream();
+        Assertions.assertThat(IOStreamHelper.readAsStrings(inputStream, "UTF-8")).containsExactlyInOrder("test");
+        Assertions.assertThat(((IsCloseable) inputStream).isClosed()).isTrue();
     }
 
     /**
@@ -417,7 +431,35 @@ public final class IOStreamHelperTest extends AssertionTest {
      */
     @Test
     public void readAsStringsInputStreamCharsetNameTest() {
-        // TODO
+        Assertions.assertThat(IOStreamHelper.readAsStrings(DataHelper.createInputStreamBuilder().buildInputStream(), "UTF-8", true)).containsExactlyInOrder();
+        Assertions.assertThat(IOStreamHelper.readAsStrings(DataHelper.createInputStreamBuilder().buildInputStream(), "UTF-8", false)).containsExactlyInOrder();
+        Assertions.assertThat(IOStreamHelper.readAsStrings(DataHelper.createInputStreamBuilder().setContent(116, 101, 115, 116).buildInputStream(), "UTF-8", true)).containsExactlyInOrder("test");
+        Assertions.assertThat(IOStreamHelper.readAsStrings(DataHelper.createInputStreamBuilder().setContent(116, 101, 115, 116).buildInputStream(), "UTF-8", false)).containsExactlyInOrder("test");
+        Assertions.assertThat(IOStreamHelper.readAsStrings(DataHelper.createInputStreamBuilder().setContent("value").buildInputStream(), "ISO-8859-1", true)).containsExactlyInOrder("value");
+        Assertions.assertThat(IOStreamHelper.readAsStrings(DataHelper.createInputStreamBuilder().setContent("value").buildInputStream(), "ISO-8859-1", false)).containsExactlyInOrder("value");
+        Assertions.assertThat(IOStreamHelper.readAsStrings(DataHelper.createInputStreamBuilder().setContent("value1\nvalue2\nvalue3").buildInputStream(), "ISO-8859-1", true)).containsExactlyInOrder("value1", "value2", "value3");
+        Assertions.assertThat(IOStreamHelper.readAsStrings(DataHelper.createInputStreamBuilder().setContent("value1\nvalue2\nvalue3").buildInputStream(), "ISO-8859-1", false)).containsExactlyInOrder("value1", "value2", "value3");
+
+        try {
+            IOStreamHelper.readAsStrings(DataHelper.createInputStreamBuilder().setContent(116, 101, 115, 116).buildInputStream(), "wrong encoding", true);
+            Assertions.fail("IOStreamHelper test fail");
+        } catch (IOStreamException ex) {
+            Assertions.assertThat(ex).hasCause(UnsupportedEncodingException.class);
+        }
+        try {
+            IOStreamHelper.readAsStrings(DataHelper.createInputStreamBuilder().setContent(116, 101, 115, 116).buildInputStream(), "wrong encoding", false);
+            Assertions.fail("IOStreamHelper test fail");
+        } catch (IOStreamException ex) {
+            Assertions.assertThat(ex).hasCause(UnsupportedEncodingException.class);
+        }
+
+        InputStream inputStream1 = DataHelper.createInputStreamBuilder().setContent(116, 101, 115, 116).buildInputStream();
+        Assertions.assertThat(IOStreamHelper.readAsStrings(inputStream1, "UTF-8", true)).containsExactlyInOrder("test");
+        Assertions.assertThat(((IsCloseable) inputStream1).isClosed()).isTrue();
+
+        InputStream inputStream2 = DataHelper.createInputStreamBuilder().setContent(116, 101, 115, 116).buildInputStream();
+        Assertions.assertThat(IOStreamHelper.readAsStrings(inputStream2, "UTF-8", false)).containsExactlyInOrder("test");
+        Assertions.assertThat(((IsCloseable) inputStream2).isClosed()).isFalse();
     }
 
     /**
