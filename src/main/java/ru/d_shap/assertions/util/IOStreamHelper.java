@@ -324,7 +324,7 @@ public final class IOStreamHelper {
                 return result;
             } finally {
                 if (close) {
-                    bufferedReader.close();
+                    reader.close();
                 }
             }
         } catch (IOException ex) {
