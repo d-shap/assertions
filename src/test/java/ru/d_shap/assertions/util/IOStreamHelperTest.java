@@ -505,7 +505,14 @@ public final class IOStreamHelperTest extends AssertionTest {
      */
     @Test
     public void readAsUtf8StringsCloseByDefaultTest() {
-        // TODO
+        Assertions.assertThat(IOStreamHelper.readAsUtf8Strings(DataHelper.createInputStreamBuilder().buildInputStream())).containsExactlyInOrder();
+        Assertions.assertThat(IOStreamHelper.readAsUtf8Strings(DataHelper.createInputStreamBuilder().setContent(116, 101, 115, 116).buildInputStream())).containsExactlyInOrder("test");
+        Assertions.assertThat(IOStreamHelper.readAsUtf8Strings(DataHelper.createInputStreamBuilder().setContent("value").buildInputStream())).containsExactlyInOrder("value");
+        Assertions.assertThat(IOStreamHelper.readAsUtf8Strings(DataHelper.createInputStreamBuilder().setContent("value1\nvalue2\nvalue3").buildInputStream())).containsExactlyInOrder("value1", "value2", "value3");
+
+        InputStream inputStream = DataHelper.createInputStreamBuilder().setContent(116, 101, 115, 116).buildInputStream();
+        Assertions.assertThat(IOStreamHelper.readAsUtf8Strings(inputStream)).containsExactlyInOrder("test");
+        Assertions.assertThat(((IsCloseable) inputStream).isClosed()).isTrue();
     }
 
     /**
@@ -513,7 +520,22 @@ public final class IOStreamHelperTest extends AssertionTest {
      */
     @Test
     public void readAsUtf8StringsTest() {
-        // TODO
+        Assertions.assertThat(IOStreamHelper.readAsUtf8Strings(DataHelper.createInputStreamBuilder().buildInputStream(), true)).containsExactlyInOrder();
+        Assertions.assertThat(IOStreamHelper.readAsUtf8Strings(DataHelper.createInputStreamBuilder().buildInputStream(), false)).containsExactlyInOrder();
+        Assertions.assertThat(IOStreamHelper.readAsUtf8Strings(DataHelper.createInputStreamBuilder().setContent(116, 101, 115, 116).buildInputStream(), true)).containsExactlyInOrder("test");
+        Assertions.assertThat(IOStreamHelper.readAsUtf8Strings(DataHelper.createInputStreamBuilder().setContent(116, 101, 115, 116).buildInputStream(), false)).containsExactlyInOrder("test");
+        Assertions.assertThat(IOStreamHelper.readAsUtf8Strings(DataHelper.createInputStreamBuilder().setContent("value").buildInputStream(), true)).containsExactlyInOrder("value");
+        Assertions.assertThat(IOStreamHelper.readAsUtf8Strings(DataHelper.createInputStreamBuilder().setContent("value").buildInputStream(), false)).containsExactlyInOrder("value");
+        Assertions.assertThat(IOStreamHelper.readAsUtf8Strings(DataHelper.createInputStreamBuilder().setContent("value1\nvalue2\nvalue3").buildInputStream(), true)).containsExactlyInOrder("value1", "value2", "value3");
+        Assertions.assertThat(IOStreamHelper.readAsUtf8Strings(DataHelper.createInputStreamBuilder().setContent("value1\nvalue2\nvalue3").buildInputStream(), false)).containsExactlyInOrder("value1", "value2", "value3");
+
+        InputStream inputStream1 = DataHelper.createInputStreamBuilder().setContent(116, 101, 115, 116).buildInputStream();
+        Assertions.assertThat(IOStreamHelper.readAsUtf8Strings(inputStream1, true)).containsExactlyInOrder("test");
+        Assertions.assertThat(((IsCloseable) inputStream1).isClosed()).isTrue();
+
+        InputStream inputStream2 = DataHelper.createInputStreamBuilder().setContent(116, 101, 115, 116).buildInputStream();
+        Assertions.assertThat(IOStreamHelper.readAsUtf8Strings(inputStream2, false)).containsExactlyInOrder("test");
+        Assertions.assertThat(((IsCloseable) inputStream2).isClosed()).isFalse();
     }
 
 }
