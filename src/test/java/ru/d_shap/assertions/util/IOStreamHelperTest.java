@@ -376,6 +376,25 @@ public final class IOStreamHelperTest extends AssertionTest {
         Assertions.assertThat(IOStreamHelper.readAsStrings(DataHelper.createInputStreamBuilder().setContent("value").buildInputStream(), StandardCharsets.US_ASCII)).containsExactlyInOrder("value");
         Assertions.assertThat(IOStreamHelper.readAsStrings(DataHelper.createInputStreamBuilder().setContent("value1\nvalue2\nvalue3").buildInputStream(), StandardCharsets.US_ASCII)).containsExactlyInOrder("value1", "value2", "value3");
 
+        try {
+            IOStreamHelper.readAsStrings(DataHelper.createInputStreamBuilder().setContent(116, 101, 115, 116).setReadException("fail").buildInputStream(), StandardCharsets.UTF_8);
+            Assertions.fail("IOStreamHelper test fail");
+        } catch (IOStreamException ex) {
+            Assertions.assertThat(ex).hasMessage("fail");
+        }
+        try {
+            IOStreamHelper.readAsStrings(DataHelper.createInputStreamBuilder().setContent(116, 101, 115, 116).setCloseException("fail").buildInputStream(), StandardCharsets.UTF_8);
+            Assertions.fail("IOStreamHelper test fail");
+        } catch (IOStreamException ex) {
+            Assertions.assertThat(ex).hasMessage("fail");
+        }
+        try {
+            IOStreamHelper.readAsStrings(DataHelper.createInputStreamBuilder().setContent(116, 101, 115, 116).setReadException("fail 1").setCloseException("fail 2").buildInputStream(), StandardCharsets.UTF_8);
+            Assertions.fail("IOStreamHelper test fail");
+        } catch (IOStreamException ex) {
+            Assertions.assertThat(ex).hasMessage("fail 2");
+        }
+
         InputStream inputStream = DataHelper.createInputStreamBuilder().setContent(116, 101, 115, 116).buildInputStream();
         Assertions.assertThat(IOStreamHelper.readAsStrings(inputStream, StandardCharsets.UTF_8)).containsExactlyInOrder("test");
         Assertions.assertThat(((IsCloseable) inputStream).isClosed()).isTrue();
@@ -394,6 +413,38 @@ public final class IOStreamHelperTest extends AssertionTest {
         Assertions.assertThat(IOStreamHelper.readAsStrings(DataHelper.createInputStreamBuilder().setContent("value").buildInputStream(), StandardCharsets.US_ASCII, false)).containsExactlyInOrder("value");
         Assertions.assertThat(IOStreamHelper.readAsStrings(DataHelper.createInputStreamBuilder().setContent("value1\nvalue2\nvalue3").buildInputStream(), StandardCharsets.US_ASCII, true)).containsExactlyInOrder("value1", "value2", "value3");
         Assertions.assertThat(IOStreamHelper.readAsStrings(DataHelper.createInputStreamBuilder().setContent("value1\nvalue2\nvalue3").buildInputStream(), StandardCharsets.US_ASCII, false)).containsExactlyInOrder("value1", "value2", "value3");
+        Assertions.assertThat(IOStreamHelper.readAsStrings(DataHelper.createInputStreamBuilder().setContent(116, 101, 115, 116).setCloseException("fail").buildInputStream(), StandardCharsets.UTF_8, false)).containsExactlyInOrder("test");
+
+        try {
+            IOStreamHelper.readAsStrings(DataHelper.createInputStreamBuilder().setContent(116, 101, 115, 116).setReadException("fail").buildInputStream(), StandardCharsets.UTF_8, true);
+            Assertions.fail("IOStreamHelper test fail");
+        } catch (IOStreamException ex) {
+            Assertions.assertThat(ex).hasMessage("fail");
+        }
+        try {
+            IOStreamHelper.readAsStrings(DataHelper.createInputStreamBuilder().setContent(116, 101, 115, 116).setReadException("fail").buildInputStream(), StandardCharsets.UTF_8, false);
+            Assertions.fail("IOStreamHelper test fail");
+        } catch (IOStreamException ex) {
+            Assertions.assertThat(ex).hasMessage("fail");
+        }
+        try {
+            IOStreamHelper.readAsStrings(DataHelper.createInputStreamBuilder().setContent(116, 101, 115, 116).setCloseException("fail").buildInputStream(), StandardCharsets.UTF_8, true);
+            Assertions.fail("IOStreamHelper test fail");
+        } catch (IOStreamException ex) {
+            Assertions.assertThat(ex).hasMessage("fail");
+        }
+        try {
+            IOStreamHelper.readAsStrings(DataHelper.createInputStreamBuilder().setContent(116, 101, 115, 116).setReadException("fail 1").setCloseException("fail 2").buildInputStream(), StandardCharsets.UTF_8, true);
+            Assertions.fail("IOStreamHelper test fail");
+        } catch (IOStreamException ex) {
+            Assertions.assertThat(ex).hasMessage("fail 2");
+        }
+        try {
+            IOStreamHelper.readAsStrings(DataHelper.createInputStreamBuilder().setContent(116, 101, 115, 116).setReadException("fail 1").setCloseException("fail 2").buildInputStream(), StandardCharsets.UTF_8, false);
+            Assertions.fail("IOStreamHelper test fail");
+        } catch (IOStreamException ex) {
+            Assertions.assertThat(ex).hasMessage("fail 1");
+        }
 
         InputStream inputStream1 = DataHelper.createInputStreamBuilder().setContent(116, 101, 115, 116).buildInputStream();
         Assertions.assertThat(IOStreamHelper.readAsStrings(inputStream1, StandardCharsets.UTF_8, true)).containsExactlyInOrder("test");
