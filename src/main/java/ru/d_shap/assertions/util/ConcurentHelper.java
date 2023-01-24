@@ -36,58 +36,117 @@ public final class ConcurentHelper {
      * @param milliseconds the specified number of milliseconds.
      */
     public static void sleep(final long milliseconds) {
+        Interruptable interruptable = new SleepInterruptable(milliseconds);
+        runInterruptable(interruptable);
+    }
+
+    /**
+     * Run the specified runnable in separate thread and wait for its completition.
+     *
+     * @param runnable the specified runnable.
+     */
+    public static void run(final Runnable runnable) {
+        Object semaphore = new Object();
+        Runnable runnableInvoker = new RunnableInvoker(semaphore, runnable);
+        runnableInvoker.run();
+    }
+
+    static void runInterruptable(final Interruptable interruptable) {
         try {
-            Thread.sleep(milliseconds);
+            interruptable.run();
         } catch (InterruptedException ex) {
             throw new ConcurentException(ex);
         }
     }
 
-    /**
-     * Invoke the specified runnable in separate thread and wait for completition.
-     *
-     * @param runnable the specified runnable.
-     */
-    public static void invokeAndWait(final Runnable runnable) {
-        Object semaphore = new Object();
-        Invoker invoker = new Invoker(semaphore, runnable);
-        invoker.invoke();
+    interface Interruptable {
+
+        void run() throws InterruptedException;
+
     }
 
-    private static final class Invoker {
+    private static final class SleepInterruptable implements Interruptable {
+
+        private final long _milliseconds;
+
+        SleepInterruptable(final long milliseconds) {
+            super();
+            _milliseconds = milliseconds;
+        }
+
+        @Override
+        public void run() throws InterruptedException {
+            Thread.sleep(_milliseconds);
+        }
+
+    }
+
+    private static final class WaitInterruptable implements Interruptable {
 
         private final Object _semaphore;
 
-        private final Runnable _runnable;
-
-        Invoker(final Object semaphore, final Runnable runnable) {
+        WaitInterruptable(final Object semaphore) {
             super();
             _semaphore = semaphore;
-            _runnable = runnable;
         }
 
-        void invoke() {
-            Runnable runnableWithSemaphore = new RunnableWithSemaphore(_semaphore, _runnable);
-            Thread thread = new Thread(runnableWithSemaphore);
-            thread.start();
+        @Override
+        public void run() throws InterruptedException {
             synchronized (_semaphore) {
-                try {
-                    _semaphore.wait();
-                } catch (InterruptedException ex) {
-                    throw new ConcurentException(ex);
-                }
+                _semaphore.wait();
             }
         }
 
     }
 
-    private static final class RunnableWithSemaphore implements Runnable {
+    private static final class NotifyAllInterruptable implements Interruptable {
+
+        private final Object _semaphore;
+
+        NotifyAllInterruptable(final Object semaphore) {
+            super();
+            _semaphore = semaphore;
+        }
+
+        @Override
+        public void run() throws InterruptedException {
+            synchronized (_semaphore) {
+                _semaphore.notifyAll();
+            }
+        }
+
+    }
+
+    private static final class RunnableInvoker implements Runnable {
 
         private final Object _semaphore;
 
         private final Runnable _runnable;
 
-        RunnableWithSemaphore(final Object semaphore, final Runnable runnable) {
+        RunnableInvoker(final Object semaphore, final Runnable runnable) {
+            super();
+            _semaphore = semaphore;
+            _runnable = runnable;
+        }
+
+        @Override
+        public void run() {
+            Runnable runnable = new RunnableNotifier(_semaphore, _runnable);
+            Thread thread = new Thread(runnable);
+            thread.start();
+            Interruptable interruptable = new WaitInterruptable(_semaphore);
+            runInterruptable(interruptable);
+        }
+
+    }
+
+    private static final class RunnableNotifier implements Runnable {
+
+        private final Object _semaphore;
+
+        private final Runnable _runnable;
+
+        RunnableNotifier(final Object semaphore, final Runnable runnable) {
             super();
             _semaphore = semaphore;
             _runnable = runnable;
@@ -96,9 +155,8 @@ public final class ConcurentHelper {
         @Override
         public void run() {
             _runnable.run();
-            synchronized (_semaphore) {
-                _semaphore.notifyAll();
-            }
+            NotifyAllInterruptable interruptable = new NotifyAllInterruptable(_semaphore);
+            runInterruptable(interruptable);
         }
 
     }
