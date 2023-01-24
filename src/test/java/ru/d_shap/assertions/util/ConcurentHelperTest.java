@@ -56,4 +56,31 @@ public final class ConcurentHelperTest extends AssertionTest {
         ConcurentHelper.sleep(-1);
     }
 
+    /**
+     * {@link ConcurentHelper} class test.
+     */
+    @Test
+    public void runInterruptableFailTest() {
+        ConcurentHelper.Interruptable interruptable = new InterruptableFail();
+        try {
+            ConcurentHelper.runInterruptable(interruptable);
+            Assertions.fail("ConcurentHelper test fail");
+        } catch (ConcurentException ex) {
+            Assertions.assertThat(ex).hasMessage("fail");
+        }
+    }
+
+    private static final class InterruptableFail implements ConcurentHelper.Interruptable {
+
+        InterruptableFail() {
+            super();
+        }
+
+        @Override
+        public void run() throws InterruptedException {
+            throw new InterruptedException("fail");
+        }
+
+    }
+
 }
