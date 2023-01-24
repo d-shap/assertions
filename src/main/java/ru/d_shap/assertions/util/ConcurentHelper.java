@@ -36,8 +36,10 @@ public final class ConcurentHelper {
      * @param milliseconds the specified number of milliseconds.
      */
     public static void sleep(final long milliseconds) {
-        Interruptable interruptable = new SleepInterruptable(milliseconds);
-        runInterruptable(interruptable);
+        if (milliseconds > 0) {
+            Interruptable interruptable = new SleepInterruptable(milliseconds);
+            runInterruptable(interruptable);
+        }
     }
 
     /**
