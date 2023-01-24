@@ -1,19 +1,19 @@
-Total - 50
+Total                                                               - 50
 ===========================================================================
-ru.d_shap.assertions - 0
-ru.d_shap.assertions.asimp - 0
-ru.d_shap.assertions.asimp.array - 0
-ru.d_shap.assertions.asimp.java.io - 0
-ru.d_shap.assertions.asimp.java.lang - 10
-ru.d_shap.assertions.asimp.java.nio - 0
-ru.d_shap.assertions.asimp.java.util - 0
-ru.d_shap.assertions.asimp.javax.xml.datatype - 0
-ru.d_shap.assertions.asimp.javax.xml.namespace - 0
-ru.d_shap.assertions.asimp.org.w3c.dom - 1
-ru.d_shap.assertions.asimp.predicate - 0
-ru.d_shap.assertions.asimp.primitive - 0
-ru.d_shap.assertions.converter - 24
-ru.d_shap.assertions.fail - 3
-ru.d_shap.assertions.mock - 0
-ru.d_shap.assertions.util - 12
+ru.d_shap.assertions                                                - 0
+ru.d_shap.assertions.asimp                                          - 0
+ru.d_shap.assertions.asimp.array                                    - 0
+ru.d_shap.assertions.asimp.java.io                                  - 0
+ru.d_shap.assertions.asimp.java.lang                                - 10
+ru.d_shap.assertions.asimp.java.nio                                 - 0
+ru.d_shap.assertions.asimp.java.util                                - 0
+ru.d_shap.assertions.asimp.javax.xml.datatype                       - 0
+ru.d_shap.assertions.asimp.javax.xml.namespace                      - 0
+ru.d_shap.assertions.asimp.org.w3c.dom                              - 1
+ru.d_shap.assertions.asimp.predicate                                - 0
+ru.d_shap.assertions.asimp.primitive                                - 0
+ru.d_shap.assertions.converter                                      - 24
+ru.d_shap.assertions.fail                                           - 3
+ru.d_shap.assertions.mock                                           - 0
+ru.d_shap.assertions.util                                           - 12
 ===========================================================================
