@@ -46,4 +46,14 @@ public final class ConcurentHelperTest extends AssertionTest {
         Assertions.assertThat(ConcurentHelper.class).hasOnePrivateConstructor();
     }
 
+    /**
+     * {@link ConcurentHelper} class test.
+     */
+    @Test
+    public void sleepTest() {
+        ConcurentHelper.sleep(10);
+        ConcurentHelper.sleep(0);
+        ConcurentHelper.sleep(-1);
+    }
+
 }
