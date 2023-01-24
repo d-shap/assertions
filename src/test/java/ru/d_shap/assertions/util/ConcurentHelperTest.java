@@ -19,6 +19,8 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.util;
 
+import java.util.List;
+
 import org.junit.Test;
 
 import ru.d_shap.assertions.AssertionTest;
@@ -70,6 +72,24 @@ public final class ConcurentHelperTest extends AssertionTest {
         }
     }
 
+    /**
+     * {@link ConcurentHelper} class test.
+     */
+    @Test
+    public void runTest() {
+        List<String> values = DataHelper.createArrayList();
+        List<String> expectedValues = DataHelper.createArrayList();
+        Runnable[] runnables = new Runnable[100];
+        for (int i = 0; i < runnables.length; i++) {
+            runnables[i] = new RunnableImpl(values, i);
+            expectedValues.add("value: " + i);
+        }
+        for (Runnable runnable : runnables) {
+            ConcurentHelper.run(runnable);
+        }
+        Assertions.assertThat(values).containsExactlyInOrder(expectedValues);
+    }
+
     private static final class InterruptableFail implements ConcurentHelper.Interruptable {
 
         InterruptableFail() {
@@ -79,6 +99,25 @@ public final class ConcurentHelperTest extends AssertionTest {
         @Override
         public void run() throws InterruptedException {
             throw new InterruptedException("fail");
+        }
+
+    }
+
+    private static final class RunnableImpl implements Runnable {
+
+        private final List<String> _values;
+
+        private final int _value;
+
+        RunnableImpl(final List<String> values, final int value) {
+            super();
+            _values = values;
+            _value = value;
+        }
+
+        @Override
+        public void run() {
+            _values.add("value: " + _value);
         }
 
     }
