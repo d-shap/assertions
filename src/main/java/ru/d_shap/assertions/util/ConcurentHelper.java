@@ -43,6 +43,16 @@ public final class ConcurentHelper {
     }
 
     /**
+     * Run the specified runnable in a separate thread.
+     *
+     * @param runnable the specified runnable.
+     */
+    public static void run(final Runnable runnable) {
+        Runnable runnableInvoker = new RunnableInvoker(null, runnable);
+        runnableInvoker.run();
+    }
+
+    /**
      * Run the specified runnable in a separate thread and wait for its completition.
      *
      * @param runnable the specified runnable.
@@ -136,8 +146,10 @@ public final class ConcurentHelper {
             Runnable runnable = new RunnableNotifier(_semaphore, _runnable);
             Thread thread = new Thread(runnable);
             thread.start();
-            Interruptable interruptable = new WaitInterruptable(_semaphore);
-            runInterruptable(interruptable);
+            if (_semaphore != null) {
+                Interruptable interruptable = new WaitInterruptable(_semaphore);
+                runInterruptable(interruptable);
+            }
         }
 
     }
@@ -157,8 +169,10 @@ public final class ConcurentHelper {
         @Override
         public void run() {
             _runnable.run();
-            NotifyAllInterruptable interruptable = new NotifyAllInterruptable(_semaphore);
-            runInterruptable(interruptable);
+            if (_semaphore != null) {
+                NotifyAllInterruptable interruptable = new NotifyAllInterruptable(_semaphore);
+                runInterruptable(interruptable);
+            }
         }
 
     }
