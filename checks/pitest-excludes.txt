@@ -1,4 +1,4 @@
-Total                                                               - 50
+Total                                                               - 48
 ===========================================================================
 ru.d_shap.assertions                                                - 0
 ru.d_shap.assertions.asimp                                          - 0
@@ -15,5 +15,5 @@ ru.d_shap.assertions.asimp.primitive                                - 0
 ru.d_shap.assertions.converter                                      - 24
 ru.d_shap.assertions.fail                                           - 3
 ru.d_shap.assertions.mock                                           - 0
-ru.d_shap.assertions.util                                           - 12
+ru.d_shap.assertions.util                                           - 10
 ===========================================================================
