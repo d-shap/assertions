@@ -76,12 +76,25 @@ public final class ConcurentHelperTest extends AssertionTest {
      * {@link ConcurentHelper} class test.
      */
     @Test
+    public void runTest() {
+        List<String> values = DataHelper.createArrayList();
+        Runnable runnable = new RunnableSleep(values);
+        ConcurentHelper.run(runnable);
+        Assertions.assertThat(values).containsExactlyInOrder();
+        ConcurentHelper.sleep(1000);
+        Assertions.assertThat(values).containsExactlyInOrder("value");
+    }
+
+    /**
+     * {@link ConcurentHelper} class test.
+     */
+    @Test
     public void runAndWaitTest() {
         List<String> values = DataHelper.createArrayList();
         List<String> expectedValues = DataHelper.createArrayList();
         Runnable[] runnables = new Runnable[100];
         for (int i = 0; i < runnables.length; i++) {
-            runnables[i] = new RunnableImpl(values, i);
+            runnables[i] = new RunnableListAdd(values, i);
             expectedValues.add("value: " + i);
         }
         for (Runnable runnable : runnables) {
@@ -103,13 +116,30 @@ public final class ConcurentHelperTest extends AssertionTest {
 
     }
 
-    private static final class RunnableImpl implements Runnable {
+    private static final class RunnableSleep implements Runnable {
+
+        private final List<String> _values;
+
+        RunnableSleep(final List<String> values) {
+            super();
+            _values = values;
+        }
+
+        @Override
+        public void run() {
+            ConcurentHelper.sleep(500);
+            _values.add("value");
+        }
+
+    }
+
+    private static final class RunnableListAdd implements Runnable {
 
         private final List<String> _values;
 
         private final int _value;
 
-        RunnableImpl(final List<String> values, final int value) {
+        RunnableListAdd(final List<String> values, final int value) {
             super();
             _values = values;
             _value = value;
