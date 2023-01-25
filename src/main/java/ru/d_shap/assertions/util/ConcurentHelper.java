@@ -43,11 +43,11 @@ public final class ConcurentHelper {
     }
 
     /**
-     * Run the specified runnable in separate thread and wait for its completition.
+     * Run the specified runnable in a separate thread and wait for its completition.
      *
      * @param runnable the specified runnable.
      */
-    public static void run(final Runnable runnable) {
+    public static void runAndWait(final Runnable runnable) {
         Object semaphore = new Object();
         Runnable runnableInvoker = new RunnableInvoker(semaphore, runnable);
         runnableInvoker.run();

@@ -53,9 +53,9 @@ public final class ConcurentHelperTest extends AssertionTest {
      */
     @Test
     public void sleepTest() {
-        ConcurentHelper.sleep(10);
-        ConcurentHelper.sleep(0);
         ConcurentHelper.sleep(-1);
+        ConcurentHelper.sleep(0);
+        ConcurentHelper.sleep(10);
     }
 
     /**
@@ -76,7 +76,7 @@ public final class ConcurentHelperTest extends AssertionTest {
      * {@link ConcurentHelper} class test.
      */
     @Test
-    public void runTest() {
+    public void runAndWaitTest() {
         List<String> values = DataHelper.createArrayList();
         List<String> expectedValues = DataHelper.createArrayList();
         Runnable[] runnables = new Runnable[100];
@@ -85,7 +85,7 @@ public final class ConcurentHelperTest extends AssertionTest {
             expectedValues.add("value: " + i);
         }
         for (Runnable runnable : runnables) {
-            ConcurentHelper.run(runnable);
+            ConcurentHelper.runAndWait(runnable);
         }
         Assertions.assertThat(values).containsExactlyInOrder(expectedValues);
     }
