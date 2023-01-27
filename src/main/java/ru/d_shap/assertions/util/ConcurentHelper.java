@@ -48,7 +48,7 @@ public final class ConcurentHelper {
      * @param runnable the specified runnable.
      */
     public static void run(final Runnable runnable) {
-        Runnable runnableInvoker = new RunnableInvoker(null, runnable);
+        Runnable runnableInvoker = new RunnableInvoker(null, runnable, null);
         runnableInvoker.run();
     }
 
@@ -59,7 +59,8 @@ public final class ConcurentHelper {
      */
     public static void runAndWait(final Runnable runnable) {
         Object semaphore = new Object();
-        Runnable runnableInvoker = new RunnableInvoker(semaphore, runnable);
+        BooleanHolder booleanHolder = new BooleanHolder();
+        Runnable runnableInvoker = new RunnableInvoker(semaphore, runnable, booleanHolder);
         runnableInvoker.run();
     }
 
@@ -97,15 +98,20 @@ public final class ConcurentHelper {
 
         private final Object _semaphore;
 
-        WaitInterruptable(final Object semaphore) {
+        private final BooleanHolder _booleanHolder;
+
+        WaitInterruptable(final Object semaphore, final BooleanHolder booleanHolder) {
             super();
             _semaphore = semaphore;
+            _booleanHolder = booleanHolder;
         }
 
         @Override
         public void run() throws InterruptedException {
             synchronized (_semaphore) {
-                _semaphore.wait();
+                while (!_booleanHolder.isFlagSet()) {
+                    _semaphore.wait();
+                }
             }
         }
 
@@ -115,15 +121,19 @@ public final class ConcurentHelper {
 
         private final Object _semaphore;
 
-        NotifyAllInterruptable(final Object semaphore) {
+        private final BooleanHolder _booleanHolder;
+
+        NotifyAllInterruptable(final Object semaphore, final BooleanHolder booleanHolder) {
             super();
             _semaphore = semaphore;
+            _booleanHolder = booleanHolder;
         }
 
         @Override
         public void run() throws InterruptedException {
             synchronized (_semaphore) {
                 _semaphore.notifyAll();
+                _booleanHolder.setFlag();
             }
         }
 
@@ -135,19 +145,22 @@ public final class ConcurentHelper {
 
         private final Runnable _runnable;
 
-        RunnableInvoker(final Object semaphore, final Runnable runnable) {
+        private final BooleanHolder _booleanHolder;
+
+        RunnableInvoker(final Object semaphore, final Runnable runnable, final BooleanHolder booleanHolder) {
             super();
             _semaphore = semaphore;
             _runnable = runnable;
+            _booleanHolder = booleanHolder;
         }
 
         @Override
         public void run() {
-            Runnable runnable = new RunnableNotifier(_semaphore, _runnable);
+            Runnable runnable = new RunnableNotifier(_semaphore, _runnable, _booleanHolder);
             Thread thread = new Thread(runnable);
             thread.start();
             if (_semaphore != null) {
-                Interruptable interruptable = new WaitInterruptable(_semaphore);
+                Interruptable interruptable = new WaitInterruptable(_semaphore, _booleanHolder);
                 runInterruptable(interruptable);
             }
         }
@@ -160,18 +173,43 @@ public final class ConcurentHelper {
 
         private final Runnable _runnable;
 
-        RunnableNotifier(final Object semaphore, final Runnable runnable) {
+        private final BooleanHolder _booleanHolder;
+
+        RunnableNotifier(final Object semaphore, final Runnable runnable, final BooleanHolder booleanHolder) {
             super();
             _semaphore = semaphore;
             _runnable = runnable;
+            _booleanHolder = booleanHolder;
         }
 
         @Override
         public void run() {
             _runnable.run();
             if (_semaphore != null) {
-                NotifyAllInterruptable interruptable = new NotifyAllInterruptable(_semaphore);
+                NotifyAllInterruptable interruptable = new NotifyAllInterruptable(_semaphore, _booleanHolder);
                 runInterruptable(interruptable);
+            }
+        }
+
+    }
+
+    private static final class BooleanHolder {
+
+        private boolean _flag;
+
+        BooleanHolder() {
+            super();
+        }
+
+        boolean isFlagSet() {
+            synchronized (this) {
+                return _flag;
+            }
+        }
+
+        void setFlag() {
+            synchronized (this) {
+                _flag = true;
             }
         }
 
