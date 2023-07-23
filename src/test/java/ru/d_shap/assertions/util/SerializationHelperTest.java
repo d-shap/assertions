@@ -19,7 +19,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.util;
 
-import java.io.NotSerializableException;
+import java.io.IOException;
 import java.util.List;
 
 import org.junit.Test;
@@ -67,8 +67,7 @@ public final class SerializationHelperTest extends AssertionTest {
             SerializationHelper.serialize(value);
             Assertions.fail("SerializationHelper test fail");
         } catch (SerializationException ex) {
-            Assertions.assertThat(ex).hasMessage("java.lang.Object");
-            Assertions.assertThat(ex).hasCause(NotSerializableException.class);
+            Assertions.assertThat(ex).hasCause(IOException.class);
         }
 
         try {
@@ -76,8 +75,33 @@ public final class SerializationHelperTest extends AssertionTest {
             SerializationHelper.serialize(value);
             Assertions.fail("SerializationHelper test fail");
         } catch (SerializationException ex) {
-            Assertions.assertThat(ex).hasMessage("java.lang.Object");
-            Assertions.assertThat(ex).hasCause(NotSerializableException.class);
+            Assertions.assertThat(ex).hasCause(IOException.class);
+        }
+    }
+
+    /**
+     * {@link SerializationHelper} class test.
+     */
+    @Test
+    public void deserializeTest() {
+        Integer value1 = 5;
+        byte[] bytes1 = SerializationHelper.serialize(value1);
+        Integer dValue1 = SerializationHelper.deserialize(bytes1);
+        Assertions.assertThat(dValue1).isNotSameAs(value1);
+        Assertions.assertThat(dValue1).isEqualTo(value1);
+
+        List<String> value2 = DataHelper.createArrayList("val1", "val2", "val3");
+        byte[] bytes2 = SerializationHelper.serialize(value2);
+        List<String> dValue2 = SerializationHelper.deserialize(bytes2);
+        Assertions.assertThat(dValue2).isNotSameAs(value2);
+        Assertions.assertThat(dValue2).containsExactlyInOrder("val1", "val2", "val3");
+
+        try {
+            byte[] bytes = new byte[]{1, 2, 3};
+            SerializationHelper.deserialize(bytes);
+            Assertions.fail("SerializationHelper test fail");
+        } catch (SerializationException ex) {
+            Assertions.assertThat(ex).hasCause(IOException.class);
         }
     }
 
@@ -101,8 +125,7 @@ public final class SerializationHelperTest extends AssertionTest {
             SerializationHelper.serializeAndDeserialize(value);
             Assertions.fail("SerializationHelper test fail");
         } catch (SerializationException ex) {
-            Assertions.assertThat(ex).hasMessage("java.lang.Object");
-            Assertions.assertThat(ex).hasCause(NotSerializableException.class);
+            Assertions.assertThat(ex).hasCause(IOException.class);
         }
 
         try {
@@ -110,8 +133,7 @@ public final class SerializationHelperTest extends AssertionTest {
             SerializationHelper.serializeAndDeserialize(value);
             Assertions.fail("SerializationHelper test fail");
         } catch (SerializationException ex) {
-            Assertions.assertThat(ex).hasMessage("java.lang.Object");
-            Assertions.assertThat(ex).hasCause(NotSerializableException.class);
+            Assertions.assertThat(ex).hasCause(IOException.class);
         }
     }
 
