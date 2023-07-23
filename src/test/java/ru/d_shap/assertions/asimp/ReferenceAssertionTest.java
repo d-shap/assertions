@@ -1233,7 +1233,51 @@ public final class ReferenceAssertionTest extends AssertionTest {
      */
     @Test
     public void isNotSerializableTest() {
+        createReferenceAssertion(new Object()).isNotSerializable();
+        createReferenceAssertion(DataHelper.createArrayList(5, new Object(), 7)).isNotSerializable();
 
+        try {
+            createReferenceAssertion().isNotSerializable();
+            Assertions.fail("ReferenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            createReferenceAssertion(null).isNotSerializable();
+            Assertions.fail("ReferenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            createReferenceAssertion(null, "Message").isNotSerializable();
+            Assertions.fail("ReferenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            createReferenceAssertion("reference").isNotSerializable();
+            Assertions.fail("ReferenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be serializable.\n\tActual:<reference>");
+        }
+        try {
+            createReferenceAssertion("reference", "Message").isNotSerializable();
+            Assertions.fail("ReferenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be serializable.\n\tActual:<reference>");
+        }
+        try {
+            createReferenceAssertion(DataHelper.createArrayList(1, "val", true)).isNotSerializable();
+            Assertions.fail("ReferenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be serializable.\n\tActual:<[1, val, T]>");
+        }
+        try {
+            createReferenceAssertion(DataHelper.createArrayList(1, "val", true), "Message").isNotSerializable();
+            Assertions.fail("ReferenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be serializable.\n\tActual:<[1, val, T]>");
+        }
     }
 
     /**
