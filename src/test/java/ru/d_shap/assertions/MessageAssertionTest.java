@@ -750,25 +750,25 @@ public final class MessageAssertionTest extends AssertionTest {
             Assertions.assertWithMessage(null).that(createPrivateFieldsClass(), "_object", Matchers.equalTo(new StringBuilder("value")));
             Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check actual value's field: _object.\nExpected: <value>\n     but: was <value>");
+            Assertions.assertThat(ex).hasMessage("Check actual value's field value: _object.\nExpected: <value>\n     but: was <value>");
         }
         try {
             Assertions.assertWithMessage("").that(createPrivateFieldsClass(), "_object", Matchers.equalTo(new StringBuilder("value")));
             Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check actual value's field: _object.\nExpected: <value>\n     but: was <value>");
+            Assertions.assertThat(ex).hasMessage("Check actual value's field value: _object.\nExpected: <value>\n     but: was <value>");
         }
         try {
             Assertions.assertWithMessage("Test message").that(createPrivateFieldsClass(), "_object", Matchers.equalTo(new StringBuilder("value")));
             Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Test message.\n\tCheck actual value's field: _object.\nExpected: <value>\n     but: was <value>");
+            Assertions.assertThat(ex).hasMessage("Test message.\n\tCheck actual value's field value: _object.\nExpected: <value>\n     but: was <value>");
         }
         try {
             Assertions.assertWithMessage("value''s.").that(createPrivateFieldsClass(), "_object", Matchers.equalTo(new StringBuilder("value")));
             Assertions.fail("MessageAssertion test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("value''s.\n\tCheck actual value's field: _object.\nExpected: <value>\n     but: was <value>");
+            Assertions.assertThat(ex).hasMessage("value''s.\n\tCheck actual value's field value: _object.\nExpected: <value>\n     but: was <value>");
         }
     }
 

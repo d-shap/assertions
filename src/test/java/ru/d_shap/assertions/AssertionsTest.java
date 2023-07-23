@@ -450,7 +450,7 @@ public final class AssertionsTest extends AssertionTest {
             Assertions.assertThat(createPrivateFieldsClass(), "_object", Matchers.equalTo(new StringBuilder("value")));
             Assertions.fail("Assertions test fail");
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Check actual value's field: _object.\nExpected: <value>\n     but: was <value>");
+            Assertions.assertThat(ex).hasMessage("Check actual value's field value: _object.\nExpected: <value>\n     but: was <value>");
         }
     }
 
