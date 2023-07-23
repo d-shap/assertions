@@ -306,7 +306,7 @@ public abstract class ReferenceAssertion<R extends ReferenceAssertion<R, T>, T> 
     }
 
     /**
-     * Check if the actual value is serializable
+     * Check if the actual value is serializable.
      *
      * @return current object for the chain call.
      */
@@ -324,7 +324,7 @@ public abstract class ReferenceAssertion<R extends ReferenceAssertion<R, T>, T> 
     }
 
     /**
-     * Check if the actual value is NOT serializable
+     * Check if the actual value is NOT serializable.
      *
      * @return current object for the chain call.
      */
