@@ -516,6 +516,8 @@ public final class Messages {
 
             public static final String IS_NOT_READ_ONLY = "Actual value should not be read only.";
 
+            public static final String IS_SERIALIZABLE = "Actual value should be serializable.";
+
             public static final String CONTAINS_FIELD = "Actual value should contain the expected field.";
 
             public static final String CONTAINS_METHOD = "Actual value should contain the expected method.";
