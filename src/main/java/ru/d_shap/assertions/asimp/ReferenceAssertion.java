@@ -420,7 +420,7 @@ public abstract class ReferenceAssertion<R extends ReferenceAssertion<R, T>, T> 
             Object methodCallResult = ReflectionHelper.callMethod(method, getActual(), arguments);
             return initializeAssertion(Raw.objectAssertion(), methodCallResult, Messages.Check.METHOD_CALL_RESULT, executableDescription);
         } catch (ReflectionException ex) {
-            throw getAssertionErrorBuilder().addThrowable(ex).addMessage(Messages.Fail.Actual.CALL_METHOD_RESULT).addExpected(executableDescription).build();
+            throw getAssertionErrorBuilder().addThrowable(ex).addMessage(Messages.Fail.Actual.METHOD_CALL_RESULT).addExpected(executableDescription).build();
         }
     }
 
@@ -448,7 +448,7 @@ public abstract class ReferenceAssertion<R extends ReferenceAssertion<R, T>, T> 
             Object methodCallResult = ReflectionHelper.callMethod(method, getActual(), arguments);
             return initializeAssertion(Raw.objectAssertion(), methodCallResult, Messages.Check.METHOD_CALL_RESULT, executableDescription);
         } catch (ReflectionException ex) {
-            throw getAssertionErrorBuilder().addThrowable(ex).addMessage(Messages.Fail.Actual.CALL_METHOD_RESULT).addExpected(executableDescription).build();
+            throw getAssertionErrorBuilder().addThrowable(ex).addMessage(Messages.Fail.Actual.METHOD_CALL_RESULT).addExpected(executableDescription).build();
         }
     }
 
@@ -520,7 +520,7 @@ public abstract class ReferenceAssertion<R extends ReferenceAssertion<R, T>, T> 
             Object methodCallResult = ReflectionHelper.callMethod(method, getActual(), arguments);
             matcherAssertion(methodCallResult, (Matcher<Object>) matcher, Messages.Check.METHOD_CALL_RESULT, executableDescription);
         } catch (ReflectionException ex) {
-            throw getAssertionErrorBuilder().addThrowable(ex).addMessage(Messages.Fail.Actual.CALL_METHOD_RESULT).addExpected(executableDescription).build();
+            throw getAssertionErrorBuilder().addThrowable(ex).addMessage(Messages.Fail.Actual.METHOD_CALL_RESULT).addExpected(executableDescription).build();
         }
         return (R) this;
     }
@@ -552,7 +552,7 @@ public abstract class ReferenceAssertion<R extends ReferenceAssertion<R, T>, T> 
             Object methodCallResult = ReflectionHelper.callMethod(method, getActual(), arguments);
             matcherAssertion(methodCallResult, (Matcher<Object>) matcher, Messages.Check.METHOD_CALL_RESULT, executableDescription);
         } catch (ReflectionException ex) {
-            throw getAssertionErrorBuilder().addThrowable(ex).addMessage(Messages.Fail.Actual.CALL_METHOD_RESULT).addExpected(executableDescription).build();
+            throw getAssertionErrorBuilder().addThrowable(ex).addMessage(Messages.Fail.Actual.METHOD_CALL_RESULT).addExpected(executableDescription).build();
         }
         return (R) this;
     }
@@ -580,7 +580,7 @@ public abstract class ReferenceAssertion<R extends ReferenceAssertion<R, T>, T> 
         }
         try {
             ReflectionHelper.callMethod(method, getActual(), arguments);
-            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.CALL_METHOD_EXCEPTION).addExpected(executableDescription).build();
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.METHOD_CALL_EXCEPTION).addExpected(executableDescription).build();
         } catch (ReflectionException ex) {
             Throwable reflectiveOperationException = ex.getCause();
             Throwable cause = reflectiveOperationException.getCause();
@@ -610,7 +610,7 @@ public abstract class ReferenceAssertion<R extends ReferenceAssertion<R, T>, T> 
         }
         try {
             ReflectionHelper.callMethod(method, getActual(), arguments);
-            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.CALL_METHOD_EXCEPTION).addExpected(executableDescription).build();
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.METHOD_CALL_EXCEPTION).addExpected(executableDescription).build();
         } catch (ReflectionException ex) {
             Throwable reflectiveOperationException = ex.getCause();
             Throwable cause = reflectiveOperationException.getCause();
@@ -644,7 +644,7 @@ public abstract class ReferenceAssertion<R extends ReferenceAssertion<R, T>, T> 
         }
         try {
             ReflectionHelper.callMethod(method, getActual(), arguments);
-            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.CALL_METHOD_EXCEPTION).addExpected(executableDescription).build();
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.METHOD_CALL_EXCEPTION).addExpected(executableDescription).build();
         } catch (ReflectionException ex) {
             Throwable reflectiveOperationException = ex.getCause();
             Throwable cause = reflectiveOperationException.getCause();
@@ -678,7 +678,7 @@ public abstract class ReferenceAssertion<R extends ReferenceAssertion<R, T>, T> 
         }
         try {
             ReflectionHelper.callMethod(method, getActual(), arguments);
-            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.CALL_METHOD_EXCEPTION).addExpected(executableDescription).build();
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.METHOD_CALL_EXCEPTION).addExpected(executableDescription).build();
         } catch (ReflectionException ex) {
             Throwable reflectiveOperationException = ex.getCause();
             Throwable cause = reflectiveOperationException.getCause();
