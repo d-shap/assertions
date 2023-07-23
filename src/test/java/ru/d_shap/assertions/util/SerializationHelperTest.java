@@ -53,6 +53,38 @@ public final class SerializationHelperTest extends AssertionTest {
      * {@link SerializationHelper} class test.
      */
     @Test
+    public void serializeTest() {
+        Integer value1 = 5;
+        byte[] bytes1 = SerializationHelper.serialize(value1);
+        Assertions.assertThat(bytes1).isNotNull();
+
+        List<String> value2 = DataHelper.createArrayList("val1", "val2", "val3");
+        byte[] bytes2 = SerializationHelper.serialize(value2);
+        Assertions.assertThat(bytes2).isNotNull();
+
+        try {
+            Object value = new Object();
+            SerializationHelper.serialize(value);
+            Assertions.fail("SerializationHelper test fail");
+        } catch (SerializationException ex) {
+            Assertions.assertThat(ex).hasMessage("java.lang.Object");
+            Assertions.assertThat(ex).hasCause(NotSerializableException.class);
+        }
+
+        try {
+            List<Object> value = DataHelper.createArrayList((Object) "str", 5, new Object[]{new Object()}, 5);
+            SerializationHelper.serialize(value);
+            Assertions.fail("SerializationHelper test fail");
+        } catch (SerializationException ex) {
+            Assertions.assertThat(ex).hasMessage("java.lang.Object");
+            Assertions.assertThat(ex).hasCause(NotSerializableException.class);
+        }
+    }
+
+    /**
+     * {@link SerializationHelper} class test.
+     */
+    @Test
     public void serializeAndDeserializeTest() {
         Integer value1 = 5;
         Integer dValue1 = SerializationHelper.serializeAndDeserialize(value1);
