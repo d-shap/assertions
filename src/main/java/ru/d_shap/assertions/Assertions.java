@@ -377,7 +377,7 @@ public final class Assertions {
     }
 
     /**
-     * Make assertion about the object's field.
+     * Make assertion about the object's field value.
      *
      * @param actual    the actual value.
      * @param fieldName the field name.
@@ -385,11 +385,11 @@ public final class Assertions {
      * @return the assertion.
      */
     public static ObjectAssertion assertThat(final Object actual, final String fieldName) {
-        return assertThat(actual).toField(fieldName);
+        return assertThat(actual).toFieldValue(fieldName);
     }
 
     /**
-     * Make assertion of specified type about the object's field.
+     * Make assertion of specified type about the object's field value.
      *
      * @param actual    the actual value.
      * @param fieldName the field name.
@@ -400,11 +400,11 @@ public final class Assertions {
      * @return the assertion.
      */
     public static <W, S extends BaseAssertion<W>> S assertThat(final Object actual, final String fieldName, final S assertion) {
-        return assertThat(actual).toField(fieldName, assertion);
+        return assertThat(actual).toFieldValue(fieldName, assertion);
     }
 
     /**
-     * Make assertion about the object's field with the hamcrest matcher.
+     * Make assertion about the object's field value with the hamcrest matcher.
      *
      * @param actual    the actual value.
      * @param fieldName the field name.
@@ -412,7 +412,7 @@ public final class Assertions {
      * @param <W>       the generic type of the matcher's actual value.
      */
     public static <W> void assertThat(final Object actual, final String fieldName, final Matcher<W> matcher) {
-        assertThat(actual).toField(fieldName, matcher);
+        assertThat(actual).toFieldValue(fieldName, matcher);
     }
 
     /**
