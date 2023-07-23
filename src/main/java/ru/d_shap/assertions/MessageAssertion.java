@@ -367,7 +367,7 @@ public final class MessageAssertion {
     }
 
     /**
-     * Make assertion about the object's field.
+     * Make assertion about the object's field value.
      *
      * @param actual    the actual value.
      * @param fieldName the field name.
@@ -375,11 +375,11 @@ public final class MessageAssertion {
      * @return the assertion.
      */
     public ObjectAssertion that(final Object actual, final String fieldName) {
-        return that(actual).toField(fieldName);
+        return that(actual).toFieldValue(fieldName);
     }
 
     /**
-     * Make assertion of specified type about the object's field.
+     * Make assertion of specified type about the object's field value.
      *
      * @param actual    the actual value.
      * @param fieldName the field name.
@@ -390,11 +390,11 @@ public final class MessageAssertion {
      * @return the assertion.
      */
     public <W, S extends BaseAssertion<W>> S that(final Object actual, final String fieldName, final S assertion) {
-        return that(actual).toField(fieldName, assertion);
+        return that(actual).toFieldValue(fieldName, assertion);
     }
 
     /**
-     * Make assertion about the object's field with the hamcrest matcher.
+     * Make assertion about the object's field value with the hamcrest matcher.
      *
      * @param actual    the actual value.
      * @param fieldName the field name.
@@ -402,7 +402,7 @@ public final class MessageAssertion {
      * @param <W>       the generic type of the matcher's actual value.
      */
     public <W> void that(final Object actual, final String fieldName, final Matcher<W> matcher) {
-        that(actual).toField(fieldName, matcher);
+        that(actual).toFieldValue(fieldName, matcher);
     }
 
     /**
