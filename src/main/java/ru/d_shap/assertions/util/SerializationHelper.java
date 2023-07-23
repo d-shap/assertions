@@ -37,6 +37,44 @@ public final class SerializationHelper {
     }
 
     /**
+     * Serialize the specified object to the byte array.
+     *
+     * @param object the specified object.
+     * @param <T>    the generic type of the specified object.
+     *
+     * @return the byte array.
+     */
+    public static <T> byte[] serialize(final T object) {
+        try {
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            ObjectOutputStream oos = new ObjectOutputStream(baos);
+            oos.writeObject(object);
+            return baos.toByteArray();
+        } catch (IOException ex) {
+            throw new SerializationException(ex);
+        }
+    }
+
+    /**
+     * Deserialize the object from the byte array.
+     *
+     * @param bytes the byte array.
+     * @param <T>   the generic type of the object.
+     *
+     * @return the object deserialized from the byte array.
+     */
+    @SuppressWarnings("unchecked")
+    public static <T> T deserialize(final byte[] bytes) {
+        try {
+            ByteArrayInputStream bais = new ByteArrayInputStream(bytes);
+            ObjectInputStream ois = new ObjectInputStream(bais);
+            return (T) ois.readObject();
+        } catch (IOException | ClassNotFoundException ex) {
+            throw new SerializationException(ex);
+        }
+    }
+
+    /**
      * Serialize the specified object and deserialize it back.
      *
      * @param object the specified object.
@@ -44,21 +82,9 @@ public final class SerializationHelper {
      *
      * @return the deserialized object.
      */
-    @SuppressWarnings("unchecked")
     public static <T> T serializeAndDeserialize(final T object) {
-        try {
-            ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            ObjectOutputStream oos = new ObjectOutputStream(baos);
-            oos.writeObject(object);
-
-            byte[] bytes = baos.toByteArray();
-
-            ByteArrayInputStream bais = new ByteArrayInputStream(bytes);
-            ObjectInputStream ois = new ObjectInputStream(bais);
-            return (T) ois.readObject();
-        } catch (IOException | ClassNotFoundException ex) {
-            throw new SerializationException(ex);
-        }
+        byte[] bytes = serialize(object);
+        return deserialize(bytes);
     }
 
 }
