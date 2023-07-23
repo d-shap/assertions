@@ -324,6 +324,23 @@ public abstract class ReferenceAssertion<R extends ReferenceAssertion<R, T>, T> 
     }
 
     /**
+     * Check if the actual value is NOT serializable
+     *
+     * @return current object for the chain call.
+     */
+    @SuppressWarnings("unchecked")
+    public final R isNotSerializable() {
+        checkActualIsNotNull();
+        try {
+            SerializationHelper.serializeAndDeserialize(getActual());
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_NOT_SERIALIZABLE).addActual().build();
+        } catch (SerializationException ex) {
+            // Ignore
+        }
+        return (R) this;
+    }
+
+    /**
      * Make assertion about the actual value's field.
      *
      * @param fieldName the field name.
