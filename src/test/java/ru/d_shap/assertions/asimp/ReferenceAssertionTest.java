@@ -22,6 +22,7 @@ package ru.d_shap.assertions.asimp;
 import java.io.IOException;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
+import java.util.Calendar;
 import java.util.Set;
 
 import org.hamcrest.Description;
@@ -1170,6 +1171,69 @@ public final class ReferenceAssertionTest extends AssertionTest {
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's hash code.\n\tActual and expected values should be the same.\n\tExpected:<1> but was:<-925155509>");
         }
+    }
+
+    /**
+     * {@link ReferenceAssertion} class test.
+     */
+    @Test
+    public void isSerializableTest() {
+        createReferenceAssertion("reference").isSerializable();
+        createReferenceAssertion(DataHelper.createArrayList()).isSerializable();
+        createReferenceAssertion(DataHelper.createArrayList(1, "val", true)).isSerializable();
+        createReferenceAssertion(DataHelper.createDate(2020, Calendar.SEPTEMBER, 19, 12, 0, 0)).isSerializable();
+        createReferenceAssertion(DataHelper.createDate(2020, Calendar.SEPTEMBER, 19, 12, 0, 0)).isSerializable().isInstanceOf(Object.class);
+
+        try {
+            createReferenceAssertion().isSerializable();
+            Assertions.fail("ReferenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            createReferenceAssertion(null).isSerializable();
+            Assertions.fail("ReferenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            createReferenceAssertion(null, "Message").isSerializable();
+            Assertions.fail("ReferenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            createReferenceAssertion(new Object()).isSerializable();
+            Assertions.fail("ReferenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).toMessage().startsWith("Actual value should be serializable.\n\tActual:<java.lang.Object");
+        }
+        try {
+            createReferenceAssertion(new Object(), "Message").isSerializable();
+            Assertions.fail("ReferenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).toMessage().startsWith("Message.\n\tActual value should be serializable.\n\tActual:<java.lang.Object");
+        }
+        try {
+            createReferenceAssertion(DataHelper.createArrayList(5, new Object(), 7)).isSerializable();
+            Assertions.fail("ReferenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).toMessage().startsWith("Actual value should be serializable.\n\tActual:<[5, java.lang.Object");
+        }
+        try {
+            createReferenceAssertion(DataHelper.createArrayList(5, new Object(), 7), "Message").isSerializable();
+            Assertions.fail("ReferenceAssertion test fail");
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).toMessage().startsWith("Message.\n\tActual value should be serializable.\n\tActual:<[5, java.lang.Object");
+        }
+    }
+
+    /**
+     * {@link ReferenceAssertion} class test.
+     */
+    @Test
+    public void isNotSerializableTest() {
+
     }
 
     /**
