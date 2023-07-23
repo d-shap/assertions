@@ -53,11 +53,11 @@ public final class Messages {
 
         public static final String COMPONENT_TYPE = "Check actual value''s component type.";
 
-        public static final String FIELD = "Check actual value''s field: {0}.";
+        public static final String FIELD_VALUE = "Check actual value''s field value: {0}.";
 
-        public static final String CALL_METHOD_RESULT = "Check actual value''s method call result: {0}.";
+        public static final String METHOD_CALL_RESULT = "Check actual value''s method call result: {0}.";
 
-        public static final String CALL_METHOD_EXCEPTION = "Check actual value''s method call exception: {0}.";
+        public static final String METHOD_CALL_EXCEPTION = "Check actual value''s method call exception: {0}.";
 
         public static final String LENGTH = "Check actual value''s length.";
 
