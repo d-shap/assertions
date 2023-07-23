@@ -1235,6 +1235,7 @@ public final class ReferenceAssertionTest extends AssertionTest {
     public void isNotSerializableTest() {
         createReferenceAssertion(new Object()).isNotSerializable();
         createReferenceAssertion(DataHelper.createArrayList(5, new Object(), 7)).isNotSerializable();
+        createReferenceAssertion(DataHelper.createArrayList(5, new Object(), 7)).isNotSerializable().isInstanceOf(Object.class);
 
         try {
             createReferenceAssertion().isNotSerializable();
