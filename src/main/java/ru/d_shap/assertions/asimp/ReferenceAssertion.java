@@ -339,25 +339,25 @@ public abstract class ReferenceAssertion<R extends ReferenceAssertion<R, T>, T> 
     }
 
     /**
-     * Make assertion about the actual value's field.
+     * Make assertion about the actual value's field value.
      *
      * @param fieldName the field name.
      *
      * @return the assertion.
      */
-    public final ObjectAssertion toField(final String fieldName) {
+    public final ObjectAssertion toFieldValue(final String fieldName) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(fieldName, "fieldName");
         try {
             Object fieldValue = ReflectionHelper.getFieldValue(getActual(), fieldName);
-            return initializeAssertion(Raw.objectAssertion(), fieldValue, Messages.Check.FIELD, fieldName);
+            return initializeAssertion(Raw.objectAssertion(), fieldValue, Messages.Check.FIELD_VALUE, fieldName);
         } catch (ReflectionException ex) {
             throw getAssertionErrorBuilder().addThrowable(ex).addMessage(Messages.Fail.Actual.CONTAINS_FIELD).addExpected(fieldName).build();
         }
     }
 
     /**
-     * Make assertion of the specified type about the actual value's field.
+     * Make assertion of the specified type about the actual value's field value.
      *
      * @param fieldName the field name.
      * @param assertion the assertion.
@@ -366,15 +366,15 @@ public abstract class ReferenceAssertion<R extends ReferenceAssertion<R, T>, T> 
      *
      * @return the assertion.
      */
-    public final <W, S extends BaseAssertion<W>> S toField(final String fieldName, final S assertion) {
+    public final <W, S extends BaseAssertion<W>> S toFieldValue(final String fieldName, final S assertion) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(fieldName, "fieldName");
         checkArgumentIsNotNull(assertion, "assertion");
-        return toField(fieldName).as(assertion);
+        return toFieldValue(fieldName).as(assertion);
     }
 
     /**
-     * Make assertion about the actual value's field.
+     * Make assertion about the actual value's field value.
      *
      * @param fieldName the field name.
      * @param matcher   the hamcrest matcher.
@@ -382,13 +382,13 @@ public abstract class ReferenceAssertion<R extends ReferenceAssertion<R, T>, T> 
      * @return current object for the chain call.
      */
     @SuppressWarnings("unchecked")
-    public final R toField(final String fieldName, final Matcher<?> matcher) {
+    public final R toFieldValue(final String fieldName, final Matcher<?> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(fieldName, "fieldName");
         checkArgumentIsNotNull(matcher, "matcher");
         try {
             Object fieldValue = ReflectionHelper.getFieldValue(getActual(), fieldName);
-            matcherAssertion(fieldValue, (Matcher<Object>) matcher, Messages.Check.FIELD, fieldName);
+            matcherAssertion(fieldValue, (Matcher<Object>) matcher, Messages.Check.FIELD_VALUE, fieldName);
         } catch (ReflectionException ex) {
             throw getAssertionErrorBuilder().addThrowable(ex).addMessage(Messages.Fail.Actual.CONTAINS_FIELD).addExpected(fieldName).build();
         }
@@ -418,7 +418,7 @@ public abstract class ReferenceAssertion<R extends ReferenceAssertion<R, T>, T> 
         }
         try {
             Object methodCallResult = ReflectionHelper.callMethod(method, getActual(), arguments);
-            return initializeAssertion(Raw.objectAssertion(), methodCallResult, Messages.Check.CALL_METHOD_RESULT, executableDescription);
+            return initializeAssertion(Raw.objectAssertion(), methodCallResult, Messages.Check.METHOD_CALL_RESULT, executableDescription);
         } catch (ReflectionException ex) {
             throw getAssertionErrorBuilder().addThrowable(ex).addMessage(Messages.Fail.Actual.CALL_METHOD_RESULT).addExpected(executableDescription).build();
         }
@@ -446,7 +446,7 @@ public abstract class ReferenceAssertion<R extends ReferenceAssertion<R, T>, T> 
         }
         try {
             Object methodCallResult = ReflectionHelper.callMethod(method, getActual(), arguments);
-            return initializeAssertion(Raw.objectAssertion(), methodCallResult, Messages.Check.CALL_METHOD_RESULT, executableDescription);
+            return initializeAssertion(Raw.objectAssertion(), methodCallResult, Messages.Check.METHOD_CALL_RESULT, executableDescription);
         } catch (ReflectionException ex) {
             throw getAssertionErrorBuilder().addThrowable(ex).addMessage(Messages.Fail.Actual.CALL_METHOD_RESULT).addExpected(executableDescription).build();
         }
@@ -518,7 +518,7 @@ public abstract class ReferenceAssertion<R extends ReferenceAssertion<R, T>, T> 
         }
         try {
             Object methodCallResult = ReflectionHelper.callMethod(method, getActual(), arguments);
-            matcherAssertion(methodCallResult, (Matcher<Object>) matcher, Messages.Check.CALL_METHOD_RESULT, executableDescription);
+            matcherAssertion(methodCallResult, (Matcher<Object>) matcher, Messages.Check.METHOD_CALL_RESULT, executableDescription);
         } catch (ReflectionException ex) {
             throw getAssertionErrorBuilder().addThrowable(ex).addMessage(Messages.Fail.Actual.CALL_METHOD_RESULT).addExpected(executableDescription).build();
         }
@@ -550,7 +550,7 @@ public abstract class ReferenceAssertion<R extends ReferenceAssertion<R, T>, T> 
         }
         try {
             Object methodCallResult = ReflectionHelper.callMethod(method, getActual(), arguments);
-            matcherAssertion(methodCallResult, (Matcher<Object>) matcher, Messages.Check.CALL_METHOD_RESULT, executableDescription);
+            matcherAssertion(methodCallResult, (Matcher<Object>) matcher, Messages.Check.METHOD_CALL_RESULT, executableDescription);
         } catch (ReflectionException ex) {
             throw getAssertionErrorBuilder().addThrowable(ex).addMessage(Messages.Fail.Actual.CALL_METHOD_RESULT).addExpected(executableDescription).build();
         }
@@ -584,7 +584,7 @@ public abstract class ReferenceAssertion<R extends ReferenceAssertion<R, T>, T> 
         } catch (ReflectionException ex) {
             Throwable reflectiveOperationException = ex.getCause();
             Throwable cause = reflectiveOperationException.getCause();
-            return initializeAssertion(Raw.throwableAssertion(), cause, Messages.Check.CALL_METHOD_EXCEPTION, executableDescription);
+            return initializeAssertion(Raw.throwableAssertion(), cause, Messages.Check.METHOD_CALL_EXCEPTION, executableDescription);
         }
     }
 
@@ -614,7 +614,7 @@ public abstract class ReferenceAssertion<R extends ReferenceAssertion<R, T>, T> 
         } catch (ReflectionException ex) {
             Throwable reflectiveOperationException = ex.getCause();
             Throwable cause = reflectiveOperationException.getCause();
-            return initializeAssertion(Raw.throwableAssertion(), cause, Messages.Check.CALL_METHOD_EXCEPTION, executableDescription);
+            return initializeAssertion(Raw.throwableAssertion(), cause, Messages.Check.METHOD_CALL_EXCEPTION, executableDescription);
         }
     }
 
@@ -648,7 +648,7 @@ public abstract class ReferenceAssertion<R extends ReferenceAssertion<R, T>, T> 
         } catch (ReflectionException ex) {
             Throwable reflectiveOperationException = ex.getCause();
             Throwable cause = reflectiveOperationException.getCause();
-            matcherAssertion(cause, matcher, Messages.Check.CALL_METHOD_RESULT, executableDescription);
+            matcherAssertion(cause, matcher, Messages.Check.METHOD_CALL_RESULT, executableDescription);
         }
         return (R) this;
     }
@@ -682,7 +682,7 @@ public abstract class ReferenceAssertion<R extends ReferenceAssertion<R, T>, T> 
         } catch (ReflectionException ex) {
             Throwable reflectiveOperationException = ex.getCause();
             Throwable cause = reflectiveOperationException.getCause();
-            matcherAssertion(cause, matcher, Messages.Check.CALL_METHOD_RESULT, executableDescription);
+            matcherAssertion(cause, matcher, Messages.Check.METHOD_CALL_RESULT, executableDescription);
         }
         return (R) this;
     }
