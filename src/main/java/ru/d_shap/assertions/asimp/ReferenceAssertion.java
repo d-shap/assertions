@@ -313,13 +313,11 @@ public abstract class ReferenceAssertion<R extends ReferenceAssertion<R, T>, T> 
     @SuppressWarnings("unchecked")
     public final R isSerializable() {
         checkActualIsNotNull();
-        T object;
         try {
-            object = SerializationHelper.serializeAndDeserialize(getActual());
+            SerializationHelper.serializeAndDeserialize(getActual());
         } catch (SerializationException ex) {
             throw getAssertionErrorBuilder().addThrowable(ex).addMessage(Messages.Fail.Actual.IS_SERIALIZABLE).addActual().build();
         }
-        isNotSameAs(object);
         return (R) this;
     }
 
