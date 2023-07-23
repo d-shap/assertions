@@ -34,6 +34,8 @@ import ru.d_shap.assertions.asimp.java.lang.ThrowableAssertion;
 import ru.d_shap.assertions.asimp.primitive.IntAssertion;
 import ru.d_shap.assertions.util.ReflectionException;
 import ru.d_shap.assertions.util.ReflectionHelper;
+import ru.d_shap.assertions.util.SerializationException;
+import ru.d_shap.assertions.util.SerializationHelper;
 
 /**
  * Base class for all reference type assertions.
@@ -300,6 +302,23 @@ public abstract class ReferenceAssertion<R extends ReferenceAssertion<R, T>, T> 
     @SuppressWarnings("unchecked")
     public final R hasHashCode(final int expected) {
         toHashCode().isEqualTo(expected);
+        return (R) this;
+    }
+
+    /**
+     * Check if the actual value is serializable
+     *
+     * @return current object for the chain call.
+     */
+    @SuppressWarnings("unchecked")
+    public final R isSerializable() {
+        checkActualIsNotNull();
+        try {
+            T object = SerializationHelper.serializeAndDeserialize(getActual());
+            isNotSameAs(object);
+        } catch (SerializationException ex) {
+            throw getAssertionErrorBuilder().addThrowable(ex).addMessage(Messages.Fail.Actual.IS_SERIALIZABLE).addActual().build();
+        }
         return (R) this;
     }
 
