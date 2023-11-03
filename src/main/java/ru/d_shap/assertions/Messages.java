@@ -218,6 +218,8 @@ public final class Messages {
      */
     public static final class Fail {
 
+        public static final String CLASS_TEST_FAIL = "{0} test fail";
+
         private Fail() {
             super();
         }
