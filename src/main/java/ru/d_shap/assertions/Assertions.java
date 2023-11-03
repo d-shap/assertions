@@ -1060,11 +1060,13 @@ public final class Assertions {
      * @param clazz the failed class.
      */
     public static void fail(final Class<?> clazz) {
+        AssertionErrorBuilder assertionErrorBuilder = AssertionErrorBuilder.getInstance();
         if (clazz == null) {
-            throw AssertionErrorBuilder.getInstance().addMessage(Messages.Fail.Argument.IS_NOT_NULL, "clazz").build();
+            assertionErrorBuilder.addMessage(Messages.Fail.Argument.IS_NOT_NULL, "clazz");
         } else {
-            throw AssertionErrorBuilder.getInstance().addMessage(Messages.Fail.TEST_FAIL_MESSAGE, clazz.getSimpleName()).build();
+            assertionErrorBuilder.addMessage(Messages.Fail.TEST_FAIL_MESSAGE, clazz.getSimpleName());
         }
+        throw assertionErrorBuilder.build();
     }
 
     /**
@@ -1074,11 +1076,13 @@ public final class Assertions {
      * @param throwable the throwabe.
      */
     public static void fail(final Class<?> clazz, final Throwable throwable) {
+        AssertionErrorBuilder assertionErrorBuilder = AssertionErrorBuilder.getInstance();
         if (clazz == null) {
-            throw AssertionErrorBuilder.getInstance().addMessage(Messages.Fail.Argument.IS_NOT_NULL, "clazz").build();
+            assertionErrorBuilder.addMessage(Messages.Fail.Argument.IS_NOT_NULL, "clazz");
         } else {
-            throw AssertionErrorBuilder.getInstance().addMessage(Messages.Fail.TEST_FAIL_MESSAGE, clazz.getSimpleName()).addThrowable(throwable).build();
+            assertionErrorBuilder.addMessage(Messages.Fail.TEST_FAIL_MESSAGE, clazz.getSimpleName()).addThrowable(throwable);
         }
+        throw assertionErrorBuilder.build();
     }
 
     /**
@@ -1087,11 +1091,11 @@ public final class Assertions {
      * @param throwable the throwabe.
      */
     public static void fail(final Throwable throwable) {
-        if (throwable == null) {
-            throw AssertionErrorBuilder.getInstance().addThrowable(throwable).build();
-        } else {
-            throw AssertionErrorBuilder.getInstance().addMessage(throwable).addThrowable(throwable).build();
+        AssertionErrorBuilder assertionErrorBuilder = AssertionErrorBuilder.getInstance();
+        if (throwable != null) {
+            assertionErrorBuilder.addMessage(throwable);
         }
+        throw assertionErrorBuilder.addThrowable(throwable).build();
     }
 
 }
