@@ -1060,7 +1060,11 @@ public final class Assertions {
      * @param clazz the failed class.
      */
     public static void fail(final Class<?> clazz) {
-        throw AssertionErrorBuilder.getInstance().addMessage(Messages.Fail.TEST_FAIL_MESSAGE, clazz.getSimpleName()).build();
+        if (clazz == null) {
+            throw AssertionErrorBuilder.getInstance().addMessage(Messages.Fail.Argument.IS_NOT_NULL, "clazz").build();
+        } else {
+            throw AssertionErrorBuilder.getInstance().addMessage(Messages.Fail.TEST_FAIL_MESSAGE, clazz.getSimpleName()).build();
+        }
     }
 
     /**
@@ -1070,7 +1074,11 @@ public final class Assertions {
      * @param throwable the throwabe.
      */
     public static void fail(final Class<?> clazz, final Throwable throwable) {
-        throw AssertionErrorBuilder.getInstance().addMessage(Messages.Fail.TEST_FAIL_MESSAGE, clazz.getSimpleName()).addThrowable(throwable).build();
+        if (clazz == null) {
+            throw AssertionErrorBuilder.getInstance().addMessage(Messages.Fail.Argument.IS_NOT_NULL, "clazz").build();
+        } else {
+            throw AssertionErrorBuilder.getInstance().addMessage(Messages.Fail.TEST_FAIL_MESSAGE, clazz.getSimpleName()).addThrowable(throwable).build();
+        }
     }
 
     /**
