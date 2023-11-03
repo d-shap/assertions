@@ -1087,7 +1087,11 @@ public final class Assertions {
      * @param throwable the throwabe.
      */
     public static void fail(final Throwable throwable) {
-        throw AssertionErrorBuilder.getInstance().addThrowable(throwable).build();
+        if (throwable == null) {
+            throw AssertionErrorBuilder.getInstance().addThrowable(throwable).build();
+        } else {
+            throw AssertionErrorBuilder.getInstance().addMessage(throwable).addThrowable(throwable).build();
+        }
     }
 
 }
