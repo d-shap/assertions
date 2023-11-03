@@ -1690,25 +1690,25 @@ public final class AssertionsTest extends AssertionTest {
     @Test
     public void failWithMessageAndThrowableTest() {
         try {
-            Assertions.fail(null, new IOException("runtime exception"));
+            Assertions.fail((String) null, new IOException("io exception"));
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("");
             Assertions.assertThat(ex).hasCause(IOException.class);
-            Assertions.assertThat(ex).hasCauseMessage("runtime exception");
+            Assertions.assertThat(ex).hasCauseMessage("io exception");
         }
         try {
-            Assertions.fail("", new IOException("runtime exception"));
+            Assertions.fail("", new IOException("io exception"));
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("");
             Assertions.assertThat(ex).hasCause(IOException.class);
-            Assertions.assertThat(ex).hasCauseMessage("runtime exception");
+            Assertions.assertThat(ex).hasCauseMessage("io exception");
         }
         try {
-            Assertions.fail(" ", new IOException("runtime exception"));
+            Assertions.fail(" ", new IOException("io exception"));
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage(" .");
             Assertions.assertThat(ex).hasCause(IOException.class);
-            Assertions.assertThat(ex).hasCauseMessage("runtime exception");
+            Assertions.assertThat(ex).hasCauseMessage("io exception");
         }
         try {
             Assertions.fail("fail a test", null);
@@ -1724,18 +1724,83 @@ public final class AssertionsTest extends AssertionTest {
             Assertions.assertThat(ex).causeMessageIsNull();
         }
         try {
-            Assertions.fail("fail a test", new IOException("runtime exception"));
+            Assertions.fail("fail a test", new IOException("io exception"));
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("fail a test.");
             Assertions.assertThat(ex).hasCause(IOException.class);
-            Assertions.assertThat(ex).hasCauseMessage("runtime exception");
+            Assertions.assertThat(ex).hasCauseMessage("io exception");
         }
         try {
-            Assertions.fail("value''s", new IOException("runtime exception"));
+            Assertions.fail("value''s", new IOException("io exception"));
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("value''s.");
             Assertions.assertThat(ex).hasCause(IOException.class);
-            Assertions.assertThat(ex).hasCauseMessage("runtime exception");
+            Assertions.assertThat(ex).hasCauseMessage("io exception");
+        }
+    }
+
+    /**
+     * {@link Assertions} class test.
+     */
+    @Test
+    public void failWithClassTest() {
+        try {
+            Assertions.fail((Class<?>) null);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: clazz.");
+            Assertions.assertThat(ex).causeIsNull();
+        }
+        try {
+            Assertions.fail(String.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("String test fail.");
+            Assertions.assertThat(ex).causeIsNull();
+        }
+        try {
+            Assertions.fail(Date.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Date test fail.");
+            Assertions.assertThat(ex).causeIsNull();
+        }
+    }
+
+    /**
+     * {@link Assertions} class test.
+     */
+    @Test
+    public void failWithClassAndThrowableTest() {
+        try {
+            Assertions.fail((Class<?>) null, new IOException("io exception"));
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: clazz.");
+            Assertions.assertThat(ex).causeIsNull();
+        }
+        try {
+            Assertions.fail(String.class, new IOException("io exception"));
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("String test fail.");
+            Assertions.assertThat(ex).hasCause(IOException.class);
+            Assertions.assertThat(ex).hasCauseMessage("io exception");
+        }
+        try {
+            Assertions.fail(Date.class, new IOException("io exception"));
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Date test fail.");
+            Assertions.assertThat(ex).hasCause(IOException.class);
+            Assertions.assertThat(ex).hasCauseMessage("io exception");
+        }
+        try {
+            Assertions.fail(Date.class, null);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Date test fail.");
+            Assertions.assertThat(ex).causeIsNull();
+        }
+        try {
+            Assertions.fail(Date.class, new IOException());
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Date test fail.");
+            Assertions.assertThat(ex).hasCause(IOException.class);
+            Assertions.assertThat(ex).causeMessageIsNull();
         }
     }
 
@@ -1753,16 +1818,16 @@ public final class AssertionsTest extends AssertionTest {
         try {
             Assertions.fail(new IOException());
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("");
+            Assertions.assertThat(ex).hasMessage("java.io.IOException.");
             Assertions.assertThat(ex).hasCause(IOException.class);
             Assertions.assertThat(ex).causeMessageIsNull();
         }
         try {
-            Assertions.fail(new IOException("runtime exception"));
+            Assertions.fail(new IOException("io exception"));
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("");
+            Assertions.assertThat(ex).hasMessage("java.io.IOException: io exception.");
             Assertions.assertThat(ex).hasCause(IOException.class);
-            Assertions.assertThat(ex).hasCauseMessage("runtime exception");
+            Assertions.assertThat(ex).hasCauseMessage("io exception");
         }
     }
 
