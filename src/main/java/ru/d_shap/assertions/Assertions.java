@@ -1057,6 +1057,25 @@ public final class Assertions {
     /**
      * Fail a test.
      *
+     * @param clazz the failed class.
+     */
+    public static void fail(final Class<?> clazz) {
+        throw AssertionErrorBuilder.getInstance().addMessage(Messages.Fail.TEST_FAIL_MESSAGE, clazz.getSimpleName()).build();
+    }
+
+    /**
+     * Fail a test.
+     *
+     * @param clazz     the failed class.
+     * @param throwable the throwabe.
+     */
+    public static void fail(final Class<?> clazz, final Throwable throwable) {
+        throw AssertionErrorBuilder.getInstance().addMessage(Messages.Fail.TEST_FAIL_MESSAGE, clazz.getSimpleName()).addThrowable(throwable).build();
+    }
+
+    /**
+     * Fail a test.
+     *
      * @param throwable the throwabe.
      */
     public static void fail(final Throwable throwable) {
