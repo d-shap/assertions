@@ -65,7 +65,7 @@ public final class SerializationHelperTest extends AssertionTest {
         try {
             Object value = new Object();
             SerializationHelper.serialize(value);
-            Assertions.fail("SerializationHelper test fail");
+            Assertions.fail(SerializationHelper.class);
         } catch (SerializationException ex) {
             Assertions.assertThat(ex).hasCause(IOException.class);
         }
@@ -73,7 +73,7 @@ public final class SerializationHelperTest extends AssertionTest {
         try {
             List<Object> value = DataHelper.createArrayList((Object) "str", 5, new Object[]{new Object()}, 5);
             SerializationHelper.serialize(value);
-            Assertions.fail("SerializationHelper test fail");
+            Assertions.fail(SerializationHelper.class);
         } catch (SerializationException ex) {
             Assertions.assertThat(ex).hasCause(IOException.class);
         }
@@ -99,7 +99,7 @@ public final class SerializationHelperTest extends AssertionTest {
         try {
             byte[] bytes = new byte[]{1, 2, 3};
             SerializationHelper.deserialize(bytes);
-            Assertions.fail("SerializationHelper test fail");
+            Assertions.fail(SerializationHelper.class);
         } catch (SerializationException ex) {
             Assertions.assertThat(ex).hasCause(IOException.class);
         }
@@ -123,7 +123,7 @@ public final class SerializationHelperTest extends AssertionTest {
         try {
             Object value = new Object();
             SerializationHelper.serializeAndDeserialize(value);
-            Assertions.fail("SerializationHelper test fail");
+            Assertions.fail(SerializationHelper.class);
         } catch (SerializationException ex) {
             Assertions.assertThat(ex).hasCause(IOException.class);
         }
@@ -131,7 +131,7 @@ public final class SerializationHelperTest extends AssertionTest {
         try {
             List<Object> value = DataHelper.createArrayList((Object) "str", 5, new Object[]{new Object()}, 5);
             SerializationHelper.serializeAndDeserialize(value);
-            Assertions.fail("SerializationHelper test fail");
+            Assertions.fail(SerializationHelper.class);
         } catch (SerializationException ex) {
             Assertions.assertThat(ex).hasCause(IOException.class);
         }

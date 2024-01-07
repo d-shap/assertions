@@ -66,7 +66,7 @@ public final class ConcurentHelperTest extends AssertionTest {
         ConcurentHelper.Interruptable interruptable = new InterruptableFail();
         try {
             ConcurentHelper.runInterruptable(interruptable);
-            Assertions.fail("ConcurentHelper test fail");
+            Assertions.fail(ConcurentHelper.class);
         } catch (ConcurentException ex) {
             Assertions.assertThat(ex).hasMessage("fail");
         }

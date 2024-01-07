@@ -62,19 +62,19 @@ public final class IOStreamHelperTest extends AssertionTest {
 
         try {
             IOStreamHelper.readAsBytes(DataHelper.createInputStreamBuilder().setContent(1, 2, 3).setReadException("fail").buildInputStream());
-            Assertions.fail("IOStreamHelper test fail");
+            Assertions.fail(IOStreamHelper.class);
         } catch (IOStreamException ex) {
             Assertions.assertThat(ex).hasMessage("fail");
         }
         try {
             IOStreamHelper.readAsBytes(DataHelper.createInputStreamBuilder().setContent(1, 2, 3).setCloseException("fail").buildInputStream());
-            Assertions.fail("IOStreamHelper test fail");
+            Assertions.fail(IOStreamHelper.class);
         } catch (IOStreamException ex) {
             Assertions.assertThat(ex).hasMessage("fail");
         }
         try {
             IOStreamHelper.readAsBytes(DataHelper.createInputStreamBuilder().setContent(1, 2, 3).setReadException("fail 1").setCloseException("fail 2").buildInputStream());
-            Assertions.fail("IOStreamHelper test fail");
+            Assertions.fail(IOStreamHelper.class);
         } catch (IOStreamException ex) {
             Assertions.assertThat(ex).hasMessage("fail 2");
         }
@@ -97,31 +97,31 @@ public final class IOStreamHelperTest extends AssertionTest {
 
         try {
             IOStreamHelper.readAsBytes(DataHelper.createInputStreamBuilder().setContent(1, 2, 3).setReadException("fail").buildInputStream(), true);
-            Assertions.fail("IOStreamHelper test fail");
+            Assertions.fail(IOStreamHelper.class);
         } catch (IOStreamException ex) {
             Assertions.assertThat(ex).hasMessage("fail");
         }
         try {
             IOStreamHelper.readAsBytes(DataHelper.createInputStreamBuilder().setContent(1, 2, 3).setReadException("fail").buildInputStream(), false);
-            Assertions.fail("IOStreamHelper test fail");
+            Assertions.fail(IOStreamHelper.class);
         } catch (IOStreamException ex) {
             Assertions.assertThat(ex).hasMessage("fail");
         }
         try {
             IOStreamHelper.readAsBytes(DataHelper.createInputStreamBuilder().setContent(1, 2, 3).setCloseException("fail").buildInputStream(), true);
-            Assertions.fail("IOStreamHelper test fail");
+            Assertions.fail(IOStreamHelper.class);
         } catch (IOStreamException ex) {
             Assertions.assertThat(ex).hasMessage("fail");
         }
         try {
             IOStreamHelper.readAsBytes(DataHelper.createInputStreamBuilder().setContent(1, 2, 3).setReadException("fail 1").setCloseException("fail 2").buildInputStream(), true);
-            Assertions.fail("IOStreamHelper test fail");
+            Assertions.fail(IOStreamHelper.class);
         } catch (IOStreamException ex) {
             Assertions.assertThat(ex).hasMessage("fail 2");
         }
         try {
             IOStreamHelper.readAsBytes(DataHelper.createInputStreamBuilder().setContent(1, 2, 3).setReadException("fail 1").setCloseException("fail 2").buildInputStream(), false);
-            Assertions.fail("IOStreamHelper test fail");
+            Assertions.fail(IOStreamHelper.class);
         } catch (IOStreamException ex) {
             Assertions.assertThat(ex).hasMessage("fail 1");
         }
@@ -145,19 +145,19 @@ public final class IOStreamHelperTest extends AssertionTest {
 
         try {
             IOStreamHelper.readAsChars(DataHelper.createReaderBuilder().setContent('1', '2', '3').setReadException("fail").buildReader());
-            Assertions.fail("IOStreamHelper test fail");
+            Assertions.fail(IOStreamHelper.class);
         } catch (IOStreamException ex) {
             Assertions.assertThat(ex).hasMessage("fail");
         }
         try {
             IOStreamHelper.readAsChars(DataHelper.createReaderBuilder().setContent('1', '2', '3').setCloseException("fail").buildReader());
-            Assertions.fail("IOStreamHelper test fail");
+            Assertions.fail(IOStreamHelper.class);
         } catch (IOStreamException ex) {
             Assertions.assertThat(ex).hasMessage("fail");
         }
         try {
             IOStreamHelper.readAsChars(DataHelper.createReaderBuilder().setContent('1', '2', '3').setReadException("fail 1").setCloseException("fail 2").buildReader());
-            Assertions.fail("IOStreamHelper test fail");
+            Assertions.fail(IOStreamHelper.class);
         } catch (IOStreamException ex) {
             Assertions.assertThat(ex).hasMessage("fail 2");
         }
@@ -180,31 +180,31 @@ public final class IOStreamHelperTest extends AssertionTest {
 
         try {
             IOStreamHelper.readAsChars(DataHelper.createReaderBuilder().setContent('1', '2', '3').setReadException("fail").buildReader(), true);
-            Assertions.fail("IOStreamHelper test fail");
+            Assertions.fail(IOStreamHelper.class);
         } catch (IOStreamException ex) {
             Assertions.assertThat(ex).hasMessage("fail");
         }
         try {
             IOStreamHelper.readAsChars(DataHelper.createReaderBuilder().setContent('1', '2', '3').setReadException("fail").buildReader(), false);
-            Assertions.fail("IOStreamHelper test fail");
+            Assertions.fail(IOStreamHelper.class);
         } catch (IOStreamException ex) {
             Assertions.assertThat(ex).hasMessage("fail");
         }
         try {
             IOStreamHelper.readAsChars(DataHelper.createReaderBuilder().setContent('1', '2', '3').setCloseException("fail").buildReader(), true);
-            Assertions.fail("IOStreamHelper test fail");
+            Assertions.fail(IOStreamHelper.class);
         } catch (IOStreamException ex) {
             Assertions.assertThat(ex).hasMessage("fail");
         }
         try {
             IOStreamHelper.readAsChars(DataHelper.createReaderBuilder().setContent('1', '2', '3').setReadException("fail 1").setCloseException("fail 2").buildReader(), true);
-            Assertions.fail("IOStreamHelper test fail");
+            Assertions.fail(IOStreamHelper.class);
         } catch (IOStreamException ex) {
             Assertions.assertThat(ex).hasMessage("fail 2");
         }
         try {
             IOStreamHelper.readAsChars(DataHelper.createReaderBuilder().setContent('1', '2', '3').setReadException("fail 1").setCloseException("fail 2").buildReader(), false);
-            Assertions.fail("IOStreamHelper test fail");
+            Assertions.fail(IOStreamHelper.class);
         } catch (IOStreamException ex) {
             Assertions.assertThat(ex).hasMessage("fail 1");
         }
@@ -260,7 +260,7 @@ public final class IOStreamHelperTest extends AssertionTest {
 
         try {
             IOStreamHelper.readAsString(DataHelper.createInputStreamBuilder().setContent(116, 101, 115, 116).buildInputStream(), "wrong encoding");
-            Assertions.fail("IOStreamHelper test fail");
+            Assertions.fail(IOStreamHelper.class);
         } catch (IOStreamException ex) {
             Assertions.assertThat(ex).hasCause(UnsupportedEncodingException.class);
         }
@@ -282,13 +282,13 @@ public final class IOStreamHelperTest extends AssertionTest {
 
         try {
             IOStreamHelper.readAsString(DataHelper.createInputStreamBuilder().setContent(116, 101, 115, 116).buildInputStream(), "wrong encoding", true);
-            Assertions.fail("IOStreamHelper test fail");
+            Assertions.fail(IOStreamHelper.class);
         } catch (IOStreamException ex) {
             Assertions.assertThat(ex).hasCause(UnsupportedEncodingException.class);
         }
         try {
             IOStreamHelper.readAsString(DataHelper.createInputStreamBuilder().setContent(116, 101, 115, 116).buildInputStream(), "wrong encoding", false);
-            Assertions.fail("IOStreamHelper test fail");
+            Assertions.fail(IOStreamHelper.class);
         } catch (IOStreamException ex) {
             Assertions.assertThat(ex).hasCause(UnsupportedEncodingException.class);
         }
@@ -378,19 +378,19 @@ public final class IOStreamHelperTest extends AssertionTest {
 
         try {
             IOStreamHelper.readAsStrings(DataHelper.createInputStreamBuilder().setContent(116, 101, 115, 116).setReadException("fail").buildInputStream(), StandardCharsets.UTF_8);
-            Assertions.fail("IOStreamHelper test fail");
+            Assertions.fail(IOStreamHelper.class);
         } catch (IOStreamException ex) {
             Assertions.assertThat(ex).hasMessage("fail");
         }
         try {
             IOStreamHelper.readAsStrings(DataHelper.createInputStreamBuilder().setContent(116, 101, 115, 116).setCloseException("fail").buildInputStream(), StandardCharsets.UTF_8);
-            Assertions.fail("IOStreamHelper test fail");
+            Assertions.fail(IOStreamHelper.class);
         } catch (IOStreamException ex) {
             Assertions.assertThat(ex).hasMessage("fail");
         }
         try {
             IOStreamHelper.readAsStrings(DataHelper.createInputStreamBuilder().setContent(116, 101, 115, 116).setReadException("fail 1").setCloseException("fail 2").buildInputStream(), StandardCharsets.UTF_8);
-            Assertions.fail("IOStreamHelper test fail");
+            Assertions.fail(IOStreamHelper.class);
         } catch (IOStreamException ex) {
             Assertions.assertThat(ex).hasMessage("fail 2");
         }
@@ -417,31 +417,31 @@ public final class IOStreamHelperTest extends AssertionTest {
 
         try {
             IOStreamHelper.readAsStrings(DataHelper.createInputStreamBuilder().setContent(116, 101, 115, 116).setReadException("fail").buildInputStream(), StandardCharsets.UTF_8, true);
-            Assertions.fail("IOStreamHelper test fail");
+            Assertions.fail(IOStreamHelper.class);
         } catch (IOStreamException ex) {
             Assertions.assertThat(ex).hasMessage("fail");
         }
         try {
             IOStreamHelper.readAsStrings(DataHelper.createInputStreamBuilder().setContent(116, 101, 115, 116).setReadException("fail").buildInputStream(), StandardCharsets.UTF_8, false);
-            Assertions.fail("IOStreamHelper test fail");
+            Assertions.fail(IOStreamHelper.class);
         } catch (IOStreamException ex) {
             Assertions.assertThat(ex).hasMessage("fail");
         }
         try {
             IOStreamHelper.readAsStrings(DataHelper.createInputStreamBuilder().setContent(116, 101, 115, 116).setCloseException("fail").buildInputStream(), StandardCharsets.UTF_8, true);
-            Assertions.fail("IOStreamHelper test fail");
+            Assertions.fail(IOStreamHelper.class);
         } catch (IOStreamException ex) {
             Assertions.assertThat(ex).hasMessage("fail");
         }
         try {
             IOStreamHelper.readAsStrings(DataHelper.createInputStreamBuilder().setContent(116, 101, 115, 116).setReadException("fail 1").setCloseException("fail 2").buildInputStream(), StandardCharsets.UTF_8, true);
-            Assertions.fail("IOStreamHelper test fail");
+            Assertions.fail(IOStreamHelper.class);
         } catch (IOStreamException ex) {
             Assertions.assertThat(ex).hasMessage("fail 2");
         }
         try {
             IOStreamHelper.readAsStrings(DataHelper.createInputStreamBuilder().setContent(116, 101, 115, 116).setReadException("fail 1").setCloseException("fail 2").buildInputStream(), StandardCharsets.UTF_8, false);
-            Assertions.fail("IOStreamHelper test fail");
+            Assertions.fail(IOStreamHelper.class);
         } catch (IOStreamException ex) {
             Assertions.assertThat(ex).hasMessage("fail 1");
         }
@@ -467,7 +467,7 @@ public final class IOStreamHelperTest extends AssertionTest {
 
         try {
             IOStreamHelper.readAsStrings(DataHelper.createInputStreamBuilder().setContent(116, 101, 115, 116).buildInputStream(), "wrong encoding");
-            Assertions.fail("IOStreamHelper test fail");
+            Assertions.fail(IOStreamHelper.class);
         } catch (IOStreamException ex) {
             Assertions.assertThat(ex).hasCause(UnsupportedEncodingException.class);
         }
@@ -493,13 +493,13 @@ public final class IOStreamHelperTest extends AssertionTest {
 
         try {
             IOStreamHelper.readAsStrings(DataHelper.createInputStreamBuilder().setContent(116, 101, 115, 116).buildInputStream(), "wrong encoding", true);
-            Assertions.fail("IOStreamHelper test fail");
+            Assertions.fail(IOStreamHelper.class);
         } catch (IOStreamException ex) {
             Assertions.assertThat(ex).hasCause(UnsupportedEncodingException.class);
         }
         try {
             IOStreamHelper.readAsStrings(DataHelper.createInputStreamBuilder().setContent(116, 101, 115, 116).buildInputStream(), "wrong encoding", false);
-            Assertions.fail("IOStreamHelper test fail");
+            Assertions.fail(IOStreamHelper.class);
         } catch (IOStreamException ex) {
             Assertions.assertThat(ex).hasCause(UnsupportedEncodingException.class);
         }

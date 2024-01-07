@@ -106,13 +106,13 @@ public final class DataHelperTest extends AssertionTest {
         Assertions.assertThat(iterator.hasNext()).isFalse();
         try {
             iterator.next();
-            Assertions.fail("DataHelper test fail");
+            Assertions.fail(DataHelper.class);
         } catch (NoSuchElementException ex) {
             Assertions.assertThat(ex).isNotNull();
         }
         try {
             iterator.remove();
-            Assertions.fail("DataHelper test fail");
+            Assertions.fail(DataHelper.class);
         } catch (IllegalStateException ex) {
             Assertions.assertThat(ex).isNotNull();
         }
@@ -696,7 +696,7 @@ public final class DataHelperTest extends AssertionTest {
 
         try {
             DataHelper.createDatatypeFactory(new DatatypeFactoryCreatorFailImpl());
-            Assertions.fail("DataHelper test fail");
+            Assertions.fail(DataHelper.class);
         } catch (DataException ex) {
             Assertions.assertThat(ex).hasCause(DatatypeConfigurationException.class);
             Assertions.assertThat(ex).hasCauseMessage("test exception");
@@ -718,7 +718,7 @@ public final class DataHelperTest extends AssertionTest {
 
         try {
             DataHelper.createDocumentBuilderFactory(new DocumentBuilderFactoryCreatorFailImpl());
-            Assertions.fail("DataHelper test fail");
+            Assertions.fail(DataHelper.class);
         } catch (DataException ex) {
             Assertions.assertThat(ex).hasCause(ParserConfigurationException.class);
             Assertions.assertThat(ex).hasCauseMessage("test exception");
@@ -736,7 +736,7 @@ public final class DataHelperTest extends AssertionTest {
 
         try {
             DataHelper.createDocumentBuilder(new DocumentBuilderCreatorFailImpl());
-            Assertions.fail("DataHelper test fail");
+            Assertions.fail(DataHelper.class);
         } catch (DataException ex) {
             Assertions.assertThat(ex).hasCause(ParserConfigurationException.class);
             Assertions.assertThat(ex).hasCauseMessage("test exception");
@@ -755,7 +755,7 @@ public final class DataHelperTest extends AssertionTest {
 
         try {
             DataHelper.createTransformerFactory(new TransformerFactoryCreatorFailImpl());
-            Assertions.fail("DataHelper test fail");
+            Assertions.fail(DataHelper.class);
         } catch (DataException ex) {
             Assertions.assertThat(ex).hasCause(TransformerConfigurationException.class);
             Assertions.assertThat(ex).hasCauseMessage("test exception");
@@ -772,7 +772,7 @@ public final class DataHelperTest extends AssertionTest {
 
         try {
             DataHelper.createTransformer(new TransformerCreatorFailImpl());
-            Assertions.fail("DataHelper test fail");
+            Assertions.fail(DataHelper.class);
         } catch (DataException ex) {
             Assertions.assertThat(ex).hasCause(TransformerConfigurationException.class);
             Assertions.assertThat(ex).hasCauseMessage("test exception");
