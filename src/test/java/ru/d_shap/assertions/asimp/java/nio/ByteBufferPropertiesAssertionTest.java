@@ -63,43 +63,43 @@ public final class ByteBufferPropertiesAssertionTest extends AssertionTest {
 
         try {
             Raw.byteBufferAssertion().toPosition();
-            Assertions.fail("ByteBufferAssertion test fail");
+            Assertions.fail(ByteBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), null).toPosition();
-            Assertions.fail("ByteBufferAssertion test fail");
+            Assertions.fail(ByteBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), null, "Message").toPosition();
-            Assertions.fail("ByteBufferAssertion test fail");
+            Assertions.fail(ByteBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             clearActual(initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3}, 3)).toPosition()).isEqualTo(1);
-            Assertions.fail("ByteBufferAssertion test fail");
+            Assertions.fail(ByteBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's position.\n\tActual value should not be null.");
         }
         try {
             clearActual(initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3}, 3), "Message").toPosition()).isEqualTo(1);
-            Assertions.fail("ByteBufferAssertion test fail");
+            Assertions.fail(ByteBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's position.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3}, 3)).toPosition().isEqualTo(4);
-            Assertions.fail("ByteBufferAssertion test fail");
+            Assertions.fail(ByteBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's position.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3}, 3), "Message").toPosition().isEqualTo(4);
-            Assertions.fail("ByteBufferAssertion test fail");
+            Assertions.fail(ByteBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's position.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
         }
@@ -126,55 +126,55 @@ public final class ByteBufferPropertiesAssertionTest extends AssertionTest {
 
         try {
             Raw.byteBufferAssertion().toPosition(Matchers.equalTo(0));
-            Assertions.fail("ByteBufferAssertion test fail");
+            Assertions.fail(ByteBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), null).toPosition(Matchers.equalTo(0));
-            Assertions.fail("ByteBufferAssertion test fail");
+            Assertions.fail(ByteBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), null, "Message").toPosition(Matchers.equalTo(0));
-            Assertions.fail("ByteBufferAssertion test fail");
+            Assertions.fail(ByteBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), null).toPosition(null);
-            Assertions.fail("ByteBufferAssertion test fail");
+            Assertions.fail(ByteBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), null, "Message").toPosition(null);
-            Assertions.fail("ByteBufferAssertion test fail");
+            Assertions.fail(ByteBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{})).toPosition(null);
-            Assertions.fail("ByteBufferAssertion test fail");
+            Assertions.fail(ByteBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: matcher.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{}), "Message").toPosition(null);
-            Assertions.fail("ByteBufferAssertion test fail");
+            Assertions.fail(ByteBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: matcher.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3}, 3)).toPosition(Matchers.equalTo(4));
-            Assertions.fail("ByteBufferAssertion test fail");
+            Assertions.fail(ByteBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's position.\nExpected: <4>\n     but: was <3>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3}, 3), "Message").toPosition(Matchers.equalTo(4));
-            Assertions.fail("ByteBufferAssertion test fail");
+            Assertions.fail(ByteBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's position.\nExpected: <4>\n     but: was <3>");
         }
@@ -192,31 +192,31 @@ public final class ByteBufferPropertiesAssertionTest extends AssertionTest {
 
         try {
             Raw.byteBufferAssertion().hasPosition(1);
-            Assertions.fail("ByteBufferAssertion test fail");
+            Assertions.fail(ByteBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), null).hasPosition(1);
-            Assertions.fail("ByteBufferAssertion test fail");
+            Assertions.fail(ByteBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), null, "Message").hasPosition(1);
-            Assertions.fail("ByteBufferAssertion test fail");
+            Assertions.fail(ByteBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3}, 3)).hasPosition(4);
-            Assertions.fail("ByteBufferAssertion test fail");
+            Assertions.fail(ByteBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's position.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3}, 3), "Message").hasPosition(4);
-            Assertions.fail("ByteBufferAssertion test fail");
+            Assertions.fail(ByteBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's position.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
         }
@@ -243,43 +243,43 @@ public final class ByteBufferPropertiesAssertionTest extends AssertionTest {
 
         try {
             Raw.byteBufferAssertion().toLimit();
-            Assertions.fail("ByteBufferAssertion test fail");
+            Assertions.fail(ByteBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), null).toLimit();
-            Assertions.fail("ByteBufferAssertion test fail");
+            Assertions.fail(ByteBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), null, "Message").toLimit();
-            Assertions.fail("ByteBufferAssertion test fail");
+            Assertions.fail(ByteBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             clearActual(initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3}, 3)).toLimit()).isEqualTo(1);
-            Assertions.fail("ByteBufferAssertion test fail");
+            Assertions.fail(ByteBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's limit.\n\tActual value should not be null.");
         }
         try {
             clearActual(initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3}, 3), "Message").toLimit()).isEqualTo(1);
-            Assertions.fail("ByteBufferAssertion test fail");
+            Assertions.fail(ByteBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's limit.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3}, 3)).toLimit().isEqualTo(4);
-            Assertions.fail("ByteBufferAssertion test fail");
+            Assertions.fail(ByteBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's limit.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3}, 3), "Message").toLimit().isEqualTo(4);
-            Assertions.fail("ByteBufferAssertion test fail");
+            Assertions.fail(ByteBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's limit.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
         }
@@ -306,55 +306,55 @@ public final class ByteBufferPropertiesAssertionTest extends AssertionTest {
 
         try {
             Raw.byteBufferAssertion().toLimit(Matchers.equalTo(0));
-            Assertions.fail("ByteBufferAssertion test fail");
+            Assertions.fail(ByteBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), null).toLimit(Matchers.equalTo(0));
-            Assertions.fail("ByteBufferAssertion test fail");
+            Assertions.fail(ByteBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), null, "Message").toLimit(Matchers.equalTo(0));
-            Assertions.fail("ByteBufferAssertion test fail");
+            Assertions.fail(ByteBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), null).toLimit(null);
-            Assertions.fail("ByteBufferAssertion test fail");
+            Assertions.fail(ByteBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), null, "Message").toLimit(null);
-            Assertions.fail("ByteBufferAssertion test fail");
+            Assertions.fail(ByteBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{})).toLimit(null);
-            Assertions.fail("ByteBufferAssertion test fail");
+            Assertions.fail(ByteBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: matcher.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{}), "Message").toLimit(null);
-            Assertions.fail("ByteBufferAssertion test fail");
+            Assertions.fail(ByteBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: matcher.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3}, 3)).toLimit(Matchers.equalTo(4));
-            Assertions.fail("ByteBufferAssertion test fail");
+            Assertions.fail(ByteBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's limit.\nExpected: <4>\n     but: was <3>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3}, 3), "Message").toLimit(Matchers.equalTo(4));
-            Assertions.fail("ByteBufferAssertion test fail");
+            Assertions.fail(ByteBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's limit.\nExpected: <4>\n     but: was <3>");
         }
@@ -372,31 +372,31 @@ public final class ByteBufferPropertiesAssertionTest extends AssertionTest {
 
         try {
             Raw.byteBufferAssertion().hasLimit(1);
-            Assertions.fail("ByteBufferAssertion test fail");
+            Assertions.fail(ByteBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), null).hasLimit(1);
-            Assertions.fail("ByteBufferAssertion test fail");
+            Assertions.fail(ByteBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), null, "Message").hasLimit(1);
-            Assertions.fail("ByteBufferAssertion test fail");
+            Assertions.fail(ByteBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3}, 3)).hasLimit(4);
-            Assertions.fail("ByteBufferAssertion test fail");
+            Assertions.fail(ByteBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's limit.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3}, 3), "Message").hasLimit(4);
-            Assertions.fail("ByteBufferAssertion test fail");
+            Assertions.fail(ByteBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's limit.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
         }
@@ -423,43 +423,43 @@ public final class ByteBufferPropertiesAssertionTest extends AssertionTest {
 
         try {
             Raw.byteBufferAssertion().toCapacity();
-            Assertions.fail("ByteBufferAssertion test fail");
+            Assertions.fail(ByteBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), null).toCapacity();
-            Assertions.fail("ByteBufferAssertion test fail");
+            Assertions.fail(ByteBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), null, "Message").toCapacity();
-            Assertions.fail("ByteBufferAssertion test fail");
+            Assertions.fail(ByteBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             clearActual(initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3}, 3)).toCapacity()).isEqualTo(1);
-            Assertions.fail("ByteBufferAssertion test fail");
+            Assertions.fail(ByteBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's capacity.\n\tActual value should not be null.");
         }
         try {
             clearActual(initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3}, 3), "Message").toCapacity()).isEqualTo(1);
-            Assertions.fail("ByteBufferAssertion test fail");
+            Assertions.fail(ByteBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's capacity.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3}, 3)).toCapacity().isEqualTo(4);
-            Assertions.fail("ByteBufferAssertion test fail");
+            Assertions.fail(ByteBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's capacity.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3}, 3), "Message").toCapacity().isEqualTo(4);
-            Assertions.fail("ByteBufferAssertion test fail");
+            Assertions.fail(ByteBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's capacity.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
         }
@@ -486,55 +486,55 @@ public final class ByteBufferPropertiesAssertionTest extends AssertionTest {
 
         try {
             Raw.byteBufferAssertion().toCapacity(Matchers.equalTo(0));
-            Assertions.fail("ByteBufferAssertion test fail");
+            Assertions.fail(ByteBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), null).toCapacity(Matchers.equalTo(0));
-            Assertions.fail("ByteBufferAssertion test fail");
+            Assertions.fail(ByteBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), null, "Message").toCapacity(Matchers.equalTo(0));
-            Assertions.fail("ByteBufferAssertion test fail");
+            Assertions.fail(ByteBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), null).toCapacity(null);
-            Assertions.fail("ByteBufferAssertion test fail");
+            Assertions.fail(ByteBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), null, "Message").toCapacity(null);
-            Assertions.fail("ByteBufferAssertion test fail");
+            Assertions.fail(ByteBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{})).toCapacity(null);
-            Assertions.fail("ByteBufferAssertion test fail");
+            Assertions.fail(ByteBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: matcher.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{}), "Message").toCapacity(null);
-            Assertions.fail("ByteBufferAssertion test fail");
+            Assertions.fail(ByteBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: matcher.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3}, 3)).toCapacity(Matchers.equalTo(4));
-            Assertions.fail("ByteBufferAssertion test fail");
+            Assertions.fail(ByteBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's capacity.\nExpected: <4>\n     but: was <3>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3}, 3), "Message").toCapacity(Matchers.equalTo(4));
-            Assertions.fail("ByteBufferAssertion test fail");
+            Assertions.fail(ByteBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's capacity.\nExpected: <4>\n     but: was <3>");
         }
@@ -552,31 +552,31 @@ public final class ByteBufferPropertiesAssertionTest extends AssertionTest {
 
         try {
             Raw.byteBufferAssertion().hasCapacity(1);
-            Assertions.fail("ByteBufferAssertion test fail");
+            Assertions.fail(ByteBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), null).hasCapacity(1);
-            Assertions.fail("ByteBufferAssertion test fail");
+            Assertions.fail(ByteBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), null, "Message").hasCapacity(1);
-            Assertions.fail("ByteBufferAssertion test fail");
+            Assertions.fail(ByteBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3}, 3)).hasCapacity(4);
-            Assertions.fail("ByteBufferAssertion test fail");
+            Assertions.fail(ByteBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's capacity.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3}, 3), "Message").hasCapacity(4);
-            Assertions.fail("ByteBufferAssertion test fail");
+            Assertions.fail(ByteBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's capacity.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
         }
@@ -594,55 +594,55 @@ public final class ByteBufferPropertiesAssertionTest extends AssertionTest {
 
         try {
             Raw.byteBufferAssertion().hasProperties(1, 1, 1);
-            Assertions.fail("ByteBufferAssertion test fail");
+            Assertions.fail(ByteBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), null).hasProperties(1, 1, 1);
-            Assertions.fail("ByteBufferAssertion test fail");
+            Assertions.fail(ByteBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), null, "Message").hasProperties(1, 1, 1);
-            Assertions.fail("ByteBufferAssertion test fail");
+            Assertions.fail(ByteBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3}, 3)).hasProperties(4, 3, 3);
-            Assertions.fail("ByteBufferAssertion test fail");
+            Assertions.fail(ByteBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's position.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3}, 3), "Message").hasProperties(4, 3, 3);
-            Assertions.fail("ByteBufferAssertion test fail");
+            Assertions.fail(ByteBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's position.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3}, 3)).hasProperties(3, 4, 3);
-            Assertions.fail("ByteBufferAssertion test fail");
+            Assertions.fail(ByteBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's limit.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3}, 3), "Message").hasProperties(3, 4, 3);
-            Assertions.fail("ByteBufferAssertion test fail");
+            Assertions.fail(ByteBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's limit.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3}, 3)).hasProperties(3, 3, 4);
-            Assertions.fail("ByteBufferAssertion test fail");
+            Assertions.fail(ByteBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's capacity.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3}, 3), "Message").hasProperties(3, 3, 4);
-            Assertions.fail("ByteBufferAssertion test fail");
+            Assertions.fail(ByteBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's capacity.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
         }
@@ -673,43 +673,43 @@ public final class ByteBufferPropertiesAssertionTest extends AssertionTest {
 
         try {
             Raw.byteBufferAssertion().toRemaining();
-            Assertions.fail("ByteBufferAssertion test fail");
+            Assertions.fail(ByteBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), null).toRemaining();
-            Assertions.fail("ByteBufferAssertion test fail");
+            Assertions.fail(ByteBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), null, "Message").toRemaining();
-            Assertions.fail("ByteBufferAssertion test fail");
+            Assertions.fail(ByteBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             clearActual(initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3}, 0, 3, 3)).toRemaining()).isEqualTo(1);
-            Assertions.fail("ByteBufferAssertion test fail");
+            Assertions.fail(ByteBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's remaining.\n\tActual value should not be null.");
         }
         try {
             clearActual(initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3}, 0, 3, 3), "Message").toRemaining()).isEqualTo(1);
-            Assertions.fail("ByteBufferAssertion test fail");
+            Assertions.fail(ByteBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's remaining.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3}, 0, 3, 3)).toRemaining().isEqualTo(4);
-            Assertions.fail("ByteBufferAssertion test fail");
+            Assertions.fail(ByteBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's remaining.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3}, 0, 3, 3), "Message").toRemaining().isEqualTo(4);
-            Assertions.fail("ByteBufferAssertion test fail");
+            Assertions.fail(ByteBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's remaining.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
         }
@@ -740,55 +740,55 @@ public final class ByteBufferPropertiesAssertionTest extends AssertionTest {
 
         try {
             Raw.byteBufferAssertion().toRemaining(Matchers.equalTo(0));
-            Assertions.fail("ByteBufferAssertion test fail");
+            Assertions.fail(ByteBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), null).toRemaining(Matchers.equalTo(0));
-            Assertions.fail("ByteBufferAssertion test fail");
+            Assertions.fail(ByteBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), null, "Message").toRemaining(Matchers.equalTo(0));
-            Assertions.fail("ByteBufferAssertion test fail");
+            Assertions.fail(ByteBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), null).toRemaining(null);
-            Assertions.fail("ByteBufferAssertion test fail");
+            Assertions.fail(ByteBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), null, "Message").toRemaining(null);
-            Assertions.fail("ByteBufferAssertion test fail");
+            Assertions.fail(ByteBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{})).toRemaining(null);
-            Assertions.fail("ByteBufferAssertion test fail");
+            Assertions.fail(ByteBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: matcher.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{}), "Message").toRemaining(null);
-            Assertions.fail("ByteBufferAssertion test fail");
+            Assertions.fail(ByteBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: matcher.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3}, 0, 3, 3)).toRemaining(Matchers.equalTo(4));
-            Assertions.fail("ByteBufferAssertion test fail");
+            Assertions.fail(ByteBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's remaining.\nExpected: <4>\n     but: was <3>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3}, 0, 3, 3), "Message").toRemaining(Matchers.equalTo(4));
-            Assertions.fail("ByteBufferAssertion test fail");
+            Assertions.fail(ByteBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's remaining.\nExpected: <4>\n     but: was <3>");
         }
@@ -807,31 +807,31 @@ public final class ByteBufferPropertiesAssertionTest extends AssertionTest {
 
         try {
             Raw.byteBufferAssertion().hasRemaining(1);
-            Assertions.fail("ByteBufferAssertion test fail");
+            Assertions.fail(ByteBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), null).hasRemaining(1);
-            Assertions.fail("ByteBufferAssertion test fail");
+            Assertions.fail(ByteBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), null, "Message").hasRemaining(1);
-            Assertions.fail("ByteBufferAssertion test fail");
+            Assertions.fail(ByteBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3}, 0, 3, 3)).hasRemaining(4);
-            Assertions.fail("ByteBufferAssertion test fail");
+            Assertions.fail(ByteBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's remaining.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
         }
         try {
             initialize(Raw.byteBufferAssertion(), createByteBuffer(new byte[]{1, 2, 3}, 0, 3, 3), "Message").hasRemaining(4);
-            Assertions.fail("ByteBufferAssertion test fail");
+            Assertions.fail(ByteBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's remaining.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
         }
@@ -847,31 +847,31 @@ public final class ByteBufferPropertiesAssertionTest extends AssertionTest {
 
         try {
             Raw.byteBufferAssertion().isDirect();
-            Assertions.fail("ByteBufferAssertion test fail");
+            Assertions.fail(ByteBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), null).isDirect();
-            Assertions.fail("ByteBufferAssertion test fail");
+            Assertions.fail(ByteBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), null, "Message").isDirect();
-            Assertions.fail("ByteBufferAssertion test fail");
+            Assertions.fail(ByteBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), ByteBuffer.allocate(12)).isDirect();
-            Assertions.fail("ByteBufferAssertion test fail");
+            Assertions.fail(ByteBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be direct.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), ByteBuffer.allocate(12), "Message").isDirect();
-            Assertions.fail("ByteBufferAssertion test fail");
+            Assertions.fail(ByteBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be direct.");
         }
@@ -887,31 +887,31 @@ public final class ByteBufferPropertiesAssertionTest extends AssertionTest {
 
         try {
             Raw.byteBufferAssertion().isNotDirect();
-            Assertions.fail("ByteBufferAssertion test fail");
+            Assertions.fail(ByteBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), null).isNotDirect();
-            Assertions.fail("ByteBufferAssertion test fail");
+            Assertions.fail(ByteBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), null, "Message").isNotDirect();
-            Assertions.fail("ByteBufferAssertion test fail");
+            Assertions.fail(ByteBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), ByteBuffer.allocateDirect(12)).isNotDirect();
-            Assertions.fail("ByteBufferAssertion test fail");
+            Assertions.fail(ByteBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be direct.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), ByteBuffer.allocateDirect(12), "Message").isNotDirect();
-            Assertions.fail("ByteBufferAssertion test fail");
+            Assertions.fail(ByteBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be direct.");
         }
@@ -930,31 +930,31 @@ public final class ByteBufferPropertiesAssertionTest extends AssertionTest {
 
         try {
             Raw.byteBufferAssertion().isReadOnly();
-            Assertions.fail("ByteBufferAssertion test fail");
+            Assertions.fail(ByteBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), null).isReadOnly();
-            Assertions.fail("ByteBufferAssertion test fail");
+            Assertions.fail(ByteBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), null, "Message").isReadOnly();
-            Assertions.fail("ByteBufferAssertion test fail");
+            Assertions.fail(ByteBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), buffer).isReadOnly();
-            Assertions.fail("ByteBufferAssertion test fail");
+            Assertions.fail(ByteBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be read only.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), buffer, "Message").isReadOnly();
-            Assertions.fail("ByteBufferAssertion test fail");
+            Assertions.fail(ByteBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be read only.");
         }
@@ -973,31 +973,31 @@ public final class ByteBufferPropertiesAssertionTest extends AssertionTest {
 
         try {
             Raw.byteBufferAssertion().isNotReadOnly();
-            Assertions.fail("ByteBufferAssertion test fail");
+            Assertions.fail(ByteBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), null).isNotReadOnly();
-            Assertions.fail("ByteBufferAssertion test fail");
+            Assertions.fail(ByteBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), null, "Message").isNotReadOnly();
-            Assertions.fail("ByteBufferAssertion test fail");
+            Assertions.fail(ByteBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), readOnlyBuffer).isNotReadOnly();
-            Assertions.fail("ByteBufferAssertion test fail");
+            Assertions.fail(ByteBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be read only.");
         }
         try {
             initialize(Raw.byteBufferAssertion(), readOnlyBuffer, "Message").isNotReadOnly();
-            Assertions.fail("ByteBufferAssertion test fail");
+            Assertions.fail(ByteBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be read only.");
         }

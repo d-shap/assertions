@@ -64,43 +64,43 @@ public final class ShortBufferPropertiesAssertionTest extends AssertionTest {
 
         try {
             Raw.shortBufferAssertion().toPosition();
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), null).toPosition();
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), null, "Message").toPosition();
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             clearActual(initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3}, 3)).toPosition()).isEqualTo(1);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's position.\n\tActual value should not be null.");
         }
         try {
             clearActual(initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3}, 3), "Message").toPosition()).isEqualTo(1);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's position.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3}, 3)).toPosition().isEqualTo(4);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's position.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3}, 3), "Message").toPosition().isEqualTo(4);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's position.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
         }
@@ -127,55 +127,55 @@ public final class ShortBufferPropertiesAssertionTest extends AssertionTest {
 
         try {
             Raw.shortBufferAssertion().toPosition(Matchers.equalTo(0));
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), null).toPosition(Matchers.equalTo(0));
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), null, "Message").toPosition(Matchers.equalTo(0));
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), null).toPosition(null);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), null, "Message").toPosition(null);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{})).toPosition(null);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: matcher.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{}), "Message").toPosition(null);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: matcher.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3}, 3)).toPosition(Matchers.equalTo(4));
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's position.\nExpected: <4>\n     but: was <3>");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3}, 3), "Message").toPosition(Matchers.equalTo(4));
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's position.\nExpected: <4>\n     but: was <3>");
         }
@@ -193,31 +193,31 @@ public final class ShortBufferPropertiesAssertionTest extends AssertionTest {
 
         try {
             Raw.shortBufferAssertion().hasPosition(1);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), null).hasPosition(1);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), null, "Message").hasPosition(1);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3}, 3)).hasPosition(4);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's position.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3}, 3), "Message").hasPosition(4);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's position.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
         }
@@ -244,43 +244,43 @@ public final class ShortBufferPropertiesAssertionTest extends AssertionTest {
 
         try {
             Raw.shortBufferAssertion().toLimit();
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), null).toLimit();
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), null, "Message").toLimit();
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             clearActual(initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3}, 3)).toLimit()).isEqualTo(1);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's limit.\n\tActual value should not be null.");
         }
         try {
             clearActual(initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3}, 3), "Message").toLimit()).isEqualTo(1);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's limit.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3}, 3)).toLimit().isEqualTo(4);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's limit.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3}, 3), "Message").toLimit().isEqualTo(4);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's limit.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
         }
@@ -307,55 +307,55 @@ public final class ShortBufferPropertiesAssertionTest extends AssertionTest {
 
         try {
             Raw.shortBufferAssertion().toLimit(Matchers.equalTo(0));
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), null).toLimit(Matchers.equalTo(0));
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), null, "Message").toLimit(Matchers.equalTo(0));
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), null).toLimit(null);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), null, "Message").toLimit(null);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{})).toLimit(null);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: matcher.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{}), "Message").toLimit(null);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: matcher.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3}, 3)).toLimit(Matchers.equalTo(4));
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's limit.\nExpected: <4>\n     but: was <3>");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3}, 3), "Message").toLimit(Matchers.equalTo(4));
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's limit.\nExpected: <4>\n     but: was <3>");
         }
@@ -373,31 +373,31 @@ public final class ShortBufferPropertiesAssertionTest extends AssertionTest {
 
         try {
             Raw.shortBufferAssertion().hasLimit(1);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), null).hasLimit(1);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), null, "Message").hasLimit(1);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3}, 3)).hasLimit(4);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's limit.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3}, 3), "Message").hasLimit(4);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's limit.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
         }
@@ -424,43 +424,43 @@ public final class ShortBufferPropertiesAssertionTest extends AssertionTest {
 
         try {
             Raw.shortBufferAssertion().toCapacity();
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), null).toCapacity();
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), null, "Message").toCapacity();
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             clearActual(initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3}, 3)).toCapacity()).isEqualTo(1);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's capacity.\n\tActual value should not be null.");
         }
         try {
             clearActual(initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3}, 3), "Message").toCapacity()).isEqualTo(1);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's capacity.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3}, 3)).toCapacity().isEqualTo(4);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's capacity.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3}, 3), "Message").toCapacity().isEqualTo(4);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's capacity.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
         }
@@ -487,55 +487,55 @@ public final class ShortBufferPropertiesAssertionTest extends AssertionTest {
 
         try {
             Raw.shortBufferAssertion().toCapacity(Matchers.equalTo(0));
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), null).toCapacity(Matchers.equalTo(0));
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), null, "Message").toCapacity(Matchers.equalTo(0));
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), null).toCapacity(null);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), null, "Message").toCapacity(null);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{})).toCapacity(null);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: matcher.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{}), "Message").toCapacity(null);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: matcher.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3}, 3)).toCapacity(Matchers.equalTo(4));
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's capacity.\nExpected: <4>\n     but: was <3>");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3}, 3), "Message").toCapacity(Matchers.equalTo(4));
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's capacity.\nExpected: <4>\n     but: was <3>");
         }
@@ -553,31 +553,31 @@ public final class ShortBufferPropertiesAssertionTest extends AssertionTest {
 
         try {
             Raw.shortBufferAssertion().hasCapacity(1);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), null).hasCapacity(1);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), null, "Message").hasCapacity(1);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3}, 3)).hasCapacity(4);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's capacity.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3}, 3), "Message").hasCapacity(4);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's capacity.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
         }
@@ -595,55 +595,55 @@ public final class ShortBufferPropertiesAssertionTest extends AssertionTest {
 
         try {
             Raw.shortBufferAssertion().hasProperties(1, 1, 1);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), null).hasProperties(1, 1, 1);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), null, "Message").hasProperties(1, 1, 1);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3}, 3)).hasProperties(4, 3, 3);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's position.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3}, 3), "Message").hasProperties(4, 3, 3);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's position.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3}, 3)).hasProperties(3, 4, 3);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's limit.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3}, 3), "Message").hasProperties(3, 4, 3);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's limit.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3}, 3)).hasProperties(3, 3, 4);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's capacity.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3}, 3), "Message").hasProperties(3, 3, 4);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's capacity.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
         }
@@ -674,43 +674,43 @@ public final class ShortBufferPropertiesAssertionTest extends AssertionTest {
 
         try {
             Raw.shortBufferAssertion().toRemaining();
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), null).toRemaining();
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), null, "Message").toRemaining();
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             clearActual(initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3}, 0, 3, 3)).toRemaining()).isEqualTo(1);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's remaining.\n\tActual value should not be null.");
         }
         try {
             clearActual(initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3}, 0, 3, 3), "Message").toRemaining()).isEqualTo(1);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's remaining.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3}, 0, 3, 3)).toRemaining().isEqualTo(4);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's remaining.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3}, 0, 3, 3), "Message").toRemaining().isEqualTo(4);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's remaining.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
         }
@@ -741,55 +741,55 @@ public final class ShortBufferPropertiesAssertionTest extends AssertionTest {
 
         try {
             Raw.shortBufferAssertion().toRemaining(Matchers.equalTo(0));
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), null).toRemaining(Matchers.equalTo(0));
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), null, "Message").toRemaining(Matchers.equalTo(0));
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), null).toRemaining(null);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), null, "Message").toRemaining(null);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{})).toRemaining(null);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: matcher.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{}), "Message").toRemaining(null);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: matcher.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3}, 0, 3, 3)).toRemaining(Matchers.equalTo(4));
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's remaining.\nExpected: <4>\n     but: was <3>");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3}, 0, 3, 3), "Message").toRemaining(Matchers.equalTo(4));
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's remaining.\nExpected: <4>\n     but: was <3>");
         }
@@ -808,31 +808,31 @@ public final class ShortBufferPropertiesAssertionTest extends AssertionTest {
 
         try {
             Raw.shortBufferAssertion().hasRemaining(1);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), null).hasRemaining(1);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), null, "Message").hasRemaining(1);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3}, 0, 3, 3)).hasRemaining(4);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's remaining.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3}, 0, 3, 3), "Message").hasRemaining(4);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's remaining.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
         }
@@ -848,31 +848,31 @@ public final class ShortBufferPropertiesAssertionTest extends AssertionTest {
 
         try {
             Raw.shortBufferAssertion().isDirect();
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), null).isDirect();
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), null, "Message").isDirect();
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), ByteBuffer.allocate(12).asShortBuffer()).isDirect();
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be direct.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), ByteBuffer.allocate(12).asShortBuffer(), "Message").isDirect();
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be direct.");
         }
@@ -888,31 +888,31 @@ public final class ShortBufferPropertiesAssertionTest extends AssertionTest {
 
         try {
             Raw.shortBufferAssertion().isNotDirect();
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), null).isNotDirect();
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), null, "Message").isNotDirect();
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), ByteBuffer.allocateDirect(12).asShortBuffer()).isNotDirect();
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be direct.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), ByteBuffer.allocateDirect(12).asShortBuffer(), "Message").isNotDirect();
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be direct.");
         }
@@ -931,31 +931,31 @@ public final class ShortBufferPropertiesAssertionTest extends AssertionTest {
 
         try {
             Raw.shortBufferAssertion().isReadOnly();
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), null).isReadOnly();
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), null, "Message").isReadOnly();
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), buffer).isReadOnly();
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be read only.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), buffer, "Message").isReadOnly();
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be read only.");
         }
@@ -974,31 +974,31 @@ public final class ShortBufferPropertiesAssertionTest extends AssertionTest {
 
         try {
             Raw.shortBufferAssertion().isNotReadOnly();
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), null).isNotReadOnly();
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), null, "Message").isNotReadOnly();
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), readOnlyBuffer).isNotReadOnly();
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be read only.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), readOnlyBuffer, "Message").isNotReadOnly();
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be read only.");
         }

@@ -56,55 +56,55 @@ public final class ShortBufferHexStringAssertionTest extends AssertionTest {
 
         try {
             Raw.shortBufferAssertion().toHexString();
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), null).toHexString();
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), null, "Message").toHexString();
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             clearActual(initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4, 5}, 3)).toHexString()).isEqualTo("00000000");
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's hex representation.\n\tActual value should not be null.");
         }
         try {
             clearActual(initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4, 5}, 3), "Message").toHexString()).isEqualTo("00000000");
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's hex representation.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4, 5}, 3)).toHexString().isEqualTo("00030004");
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's hex representation.\n\tActual and expected values should be the same.\n\tExpected:<00030004> but was:<00040005>");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4, 5}, 3), "Message").toHexString().isEqualTo("00030004");
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's hex representation.\n\tActual and expected values should be the same.\n\tExpected:<00030004> but was:<00040005>");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4, 5}, 0, 3)).toHexString().isEqualTo("00030004");
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's hex representation.\n\tActual and expected values should be the same.\n\tExpected:<00030004> but was:<000100020003>");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4, 5}, 0, 3), "Message").toHexString().isEqualTo("00030004");
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's hex representation.\n\tActual and expected values should be the same.\n\tExpected:<00030004> but was:<000100020003>");
         }
@@ -135,127 +135,127 @@ public final class ShortBufferHexStringAssertionTest extends AssertionTest {
 
         try {
             Raw.shortBufferAssertion().toHexString(0, 0);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), null).toHexString(0, 0);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), null, "Message").toHexString(0, 0);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), null).toHexString(-1, 0);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), null, "Message").toHexString(-1, 0);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).toHexString(-1, 0);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should be valid: from.\n\tThe argument's value should be greater than or equal to zero.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}), "Message").toHexString(-1, 0);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: from.\n\tThe argument's value should be greater than or equal to zero.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).toHexString(-1, 3);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should be valid: from.\n\tThe argument's value should be greater than or equal to zero.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}), "Message").toHexString(-1, 3);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: from.\n\tThe argument's value should be greater than or equal to zero.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).toHexString(0, 3);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should be valid: to.\n\tThe argument's value should be less than or equal to the maximum value: 2.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}), "Message").toHexString(0, 3);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: to.\n\tThe argument's value should be less than or equal to the maximum value: 2.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).toHexString(3, 3);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should be valid: from.\n\tThe argument's value should be less than or equal to the maximum value: 2.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}), "Message").toHexString(3, 3);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: from.\n\tThe argument's value should be less than or equal to the maximum value: 2.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).toHexString(1, 0);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should be valid: to.\n\tThe argument's value should be greater than or equal to the minimum value: 1.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}), "Message").toHexString(1, 0);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: to.\n\tThe argument's value should be greater than or equal to the minimum value: 1.");
         }
         try {
             clearActual(initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).toHexString(0, 0)).isEqualTo("00000000");
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's hex representation part: 0:0.\n\tActual value should not be null.");
         }
         try {
             clearActual(initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}), "Message").toHexString(0, 0)).isEqualTo("00000000");
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's hex representation part: 0:0.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4, 5}, 3)).toHexString(1, 2).isEqualTo("00000000");
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's hex representation part: 1:2.\n\tActual and expected values should be the same.\n\tExpected:<00000000> but was:<0005>");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4, 5}, 3), "Message").toHexString(1, 2).isEqualTo("00000000");
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's hex representation part: 1:2.\n\tActual and expected values should be the same.\n\tExpected:<00000000> but was:<0005>");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4, 5}, 1, 4)).toHexString(1, 3).isEqualTo("00000000");
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's hex representation part: 1:3.\n\tActual and expected values should be the same.\n\tExpected:<00000000> but was:<00030004>");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4, 5}, 1, 4), "Message").toHexString(1, 3).isEqualTo("00000000");
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's hex representation part: 1:3.\n\tActual and expected values should be the same.\n\tExpected:<00000000> but was:<00030004>");
         }
@@ -275,67 +275,67 @@ public final class ShortBufferHexStringAssertionTest extends AssertionTest {
 
         try {
             Raw.shortBufferAssertion().toHexString(Matchers.equalTo(""));
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), null).toHexString(Matchers.equalTo(""));
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), null, "Message").toHexString(Matchers.equalTo(""));
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), null).toHexString(null);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), null, "Message").toHexString(null);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).toHexString(null);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: matcher.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}), "Message").toHexString(null);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: matcher.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4, 5}, 3)).toHexString(Matchers.equalTo("00030004"));
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's hex representation.\nExpected: \"00030004\"\n     but: was \"00040005\"");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4, 5}, 3), "Message").toHexString(Matchers.equalTo("00030004"));
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's hex representation.\nExpected: \"00030004\"\n     but: was \"00040005\"");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4, 5}, 0, 3)).toHexString(Matchers.equalTo("00030004"));
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's hex representation.\nExpected: \"00030004\"\n     but: was \"000100020003\"");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4, 5}, 0, 3), "Message").toHexString(Matchers.equalTo("00030004"));
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's hex representation.\nExpected: \"00030004\"\n     but: was \"000100020003\"");
         }
@@ -366,139 +366,139 @@ public final class ShortBufferHexStringAssertionTest extends AssertionTest {
 
         try {
             Raw.shortBufferAssertion().toHexString(0, 0, Matchers.equalTo(""));
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), null).toHexString(0, 0, Matchers.equalTo(""));
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), null, "Message").toHexString(0, 0, Matchers.equalTo(""));
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), null).toHexString(-1, 0, Matchers.equalTo(""));
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), null, "Message").toHexString(-1, 0, Matchers.equalTo(""));
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).toHexString(-1, 0, Matchers.equalTo(""));
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should be valid: from.\n\tThe argument's value should be greater than or equal to zero.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}), "Message").toHexString(-1, 0, Matchers.equalTo(""));
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: from.\n\tThe argument's value should be greater than or equal to zero.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).toHexString(-1, 3, Matchers.equalTo(""));
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should be valid: from.\n\tThe argument's value should be greater than or equal to zero.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}), "Message").toHexString(-1, 3, Matchers.equalTo(""));
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: from.\n\tThe argument's value should be greater than or equal to zero.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).toHexString(0, 3, Matchers.equalTo(""));
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should be valid: to.\n\tThe argument's value should be less than or equal to the maximum value: 2.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}), "Message").toHexString(0, 3, Matchers.equalTo(""));
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: to.\n\tThe argument's value should be less than or equal to the maximum value: 2.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).toHexString(3, 3, Matchers.equalTo(""));
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should be valid: from.\n\tThe argument's value should be less than or equal to the maximum value: 2.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}), "Message").toHexString(3, 3, Matchers.equalTo(""));
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: from.\n\tThe argument's value should be less than or equal to the maximum value: 2.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).toHexString(1, 0, Matchers.equalTo(""));
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should be valid: to.\n\tThe argument's value should be greater than or equal to the minimum value: 1.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}), "Message").toHexString(1, 0, Matchers.equalTo(""));
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: to.\n\tThe argument's value should be greater than or equal to the minimum value: 1.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).toHexString(0, 3, null);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should be valid: to.\n\tThe argument's value should be less than or equal to the maximum value: 2.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}), "Message").toHexString(0, 3, null);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: to.\n\tThe argument's value should be less than or equal to the maximum value: 2.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).toHexString(0, 0, null);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: matcher.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}), "Message").toHexString(0, 0, null);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: matcher.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4, 5}, 3)).toHexString(1, 2, Matchers.equalTo("00000000"));
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's hex representation part: 1:2.\nExpected: \"00000000\"\n     but: was \"0005\"");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4, 5}, 3), "Message").toHexString(1, 2, Matchers.equalTo("00000000"));
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's hex representation part: 1:2.\nExpected: \"00000000\"\n     but: was \"0005\"");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4, 5}, 1, 4)).toHexString(1, 3, Matchers.equalTo("00000000"));
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's hex representation part: 1:3.\nExpected: \"00000000\"\n     but: was \"00030004\"");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4, 5}, 1, 4), "Message").toHexString(1, 3, Matchers.equalTo("00000000"));
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's hex representation part: 1:3.\nExpected: \"00000000\"\n     but: was \"00030004\"");
         }
@@ -518,55 +518,55 @@ public final class ShortBufferHexStringAssertionTest extends AssertionTest {
 
         try {
             Raw.shortBufferAssertion().toRewindAndHexString();
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), null).toRewindAndHexString();
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), null, "Message").toRewindAndHexString();
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             clearActual(initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4, 5}, 3)).toRewindAndHexString()).isEqualTo("00000000");
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's hex representation.\n\tActual value should not be null.");
         }
         try {
             clearActual(initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4, 5}, 3), "Message").toRewindAndHexString()).isEqualTo("00000000");
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's hex representation.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4, 5}, 3)).toRewindAndHexString().isEqualTo("00030004");
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's hex representation.\n\tActual and expected values should be the same.\n\tExpected:<00030004> but was:<00010002000300040005>");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4, 5}, 3), "Message").toRewindAndHexString().isEqualTo("00030004");
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's hex representation.\n\tActual and expected values should be the same.\n\tExpected:<00030004> but was:<00010002000300040005>");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4, 5}, 0, 3)).toRewindAndHexString().isEqualTo("00030004");
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's hex representation.\n\tActual and expected values should be the same.\n\tExpected:<00030004> but was:<000100020003>");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4, 5}, 0, 3), "Message").toRewindAndHexString().isEqualTo("00030004");
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's hex representation.\n\tActual and expected values should be the same.\n\tExpected:<00030004> but was:<000100020003>");
         }
@@ -601,127 +601,127 @@ public final class ShortBufferHexStringAssertionTest extends AssertionTest {
 
         try {
             Raw.shortBufferAssertion().toRewindAndHexString(0, 0);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), null).toRewindAndHexString(0, 0);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), null, "Message").toRewindAndHexString(0, 0);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), null).toRewindAndHexString(-1, 0);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), null, "Message").toRewindAndHexString(-1, 0);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).toRewindAndHexString(-1, 0);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should be valid: from.\n\tThe argument's value should be greater than or equal to zero.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}), "Message").toRewindAndHexString(-1, 0);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: from.\n\tThe argument's value should be greater than or equal to zero.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).toRewindAndHexString(-1, 3);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should be valid: from.\n\tThe argument's value should be greater than or equal to zero.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}), "Message").toRewindAndHexString(-1, 3);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: from.\n\tThe argument's value should be greater than or equal to zero.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).toRewindAndHexString(0, 3);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should be valid: to.\n\tThe argument's value should be less than or equal to the maximum value: 2.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}), "Message").toRewindAndHexString(0, 3);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: to.\n\tThe argument's value should be less than or equal to the maximum value: 2.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).toRewindAndHexString(3, 3);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should be valid: from.\n\tThe argument's value should be less than or equal to the maximum value: 2.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}), "Message").toRewindAndHexString(3, 3);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: from.\n\tThe argument's value should be less than or equal to the maximum value: 2.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).toRewindAndHexString(1, 0);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should be valid: to.\n\tThe argument's value should be greater than or equal to the minimum value: 1.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}), "Message").toRewindAndHexString(1, 0);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: to.\n\tThe argument's value should be greater than or equal to the minimum value: 1.");
         }
         try {
             clearActual(initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).toRewindAndHexString(0, 0)).isEqualTo("00000000");
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's hex representation part: 0:0.\n\tActual value should not be null.");
         }
         try {
             clearActual(initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}), "Message").toRewindAndHexString(0, 0)).isEqualTo("00000000");
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's hex representation part: 0:0.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4, 5}, 3)).toRewindAndHexString(1, 2).isEqualTo("00000000");
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's hex representation part: 1:2.\n\tActual and expected values should be the same.\n\tExpected:<00000000> but was:<0002>");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4, 5}, 3), "Message").toRewindAndHexString(1, 2).isEqualTo("00000000");
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's hex representation part: 1:2.\n\tActual and expected values should be the same.\n\tExpected:<00000000> but was:<0002>");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4, 5}, 1, 4)).toRewindAndHexString(1, 3).isEqualTo("00000000");
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's hex representation part: 1:3.\n\tActual and expected values should be the same.\n\tExpected:<00000000> but was:<00020003>");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4, 5}, 1, 4), "Message").toRewindAndHexString(1, 3).isEqualTo("00000000");
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's hex representation part: 1:3.\n\tActual and expected values should be the same.\n\tExpected:<00000000> but was:<00020003>");
         }
@@ -741,67 +741,67 @@ public final class ShortBufferHexStringAssertionTest extends AssertionTest {
 
         try {
             Raw.shortBufferAssertion().toRewindAndHexString(Matchers.equalTo(""));
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), null).toRewindAndHexString(Matchers.equalTo(""));
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), null, "Message").toRewindAndHexString(Matchers.equalTo(""));
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), null).toRewindAndHexString(null);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), null, "Message").toRewindAndHexString(null);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).toRewindAndHexString(null);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: matcher.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}), "Message").toRewindAndHexString(null);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: matcher.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4, 5}, 3)).toRewindAndHexString(Matchers.equalTo("00030004"));
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's hex representation.\nExpected: \"00030004\"\n     but: was \"00010002000300040005\"");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4, 5}, 3), "Message").toRewindAndHexString(Matchers.equalTo("00030004"));
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's hex representation.\nExpected: \"00030004\"\n     but: was \"00010002000300040005\"");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4, 5}, 0, 3)).toRewindAndHexString(Matchers.equalTo("00030004"));
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's hex representation.\nExpected: \"00030004\"\n     but: was \"000100020003\"");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4, 5}, 0, 3), "Message").toRewindAndHexString(Matchers.equalTo("00030004"));
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's hex representation.\nExpected: \"00030004\"\n     but: was \"000100020003\"");
         }
@@ -836,139 +836,139 @@ public final class ShortBufferHexStringAssertionTest extends AssertionTest {
 
         try {
             Raw.shortBufferAssertion().toRewindAndHexString(0, 0, Matchers.equalTo(""));
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), null).toRewindAndHexString(0, 0, Matchers.equalTo(""));
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), null, "Message").toRewindAndHexString(0, 0, Matchers.equalTo(""));
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), null).toRewindAndHexString(-1, 0, Matchers.equalTo(""));
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), null, "Message").toRewindAndHexString(-1, 0, Matchers.equalTo(""));
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).toRewindAndHexString(-1, 0, Matchers.equalTo(""));
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should be valid: from.\n\tThe argument's value should be greater than or equal to zero.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}), "Message").toRewindAndHexString(-1, 0, Matchers.equalTo(""));
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: from.\n\tThe argument's value should be greater than or equal to zero.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).toRewindAndHexString(-1, 3, Matchers.equalTo(""));
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should be valid: from.\n\tThe argument's value should be greater than or equal to zero.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}), "Message").toRewindAndHexString(-1, 3, Matchers.equalTo(""));
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: from.\n\tThe argument's value should be greater than or equal to zero.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).toRewindAndHexString(0, 3, Matchers.equalTo(""));
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should be valid: to.\n\tThe argument's value should be less than or equal to the maximum value: 2.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}), "Message").toRewindAndHexString(0, 3, Matchers.equalTo(""));
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: to.\n\tThe argument's value should be less than or equal to the maximum value: 2.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).toRewindAndHexString(3, 3, Matchers.equalTo(""));
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should be valid: from.\n\tThe argument's value should be less than or equal to the maximum value: 2.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}), "Message").toRewindAndHexString(3, 3, Matchers.equalTo(""));
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: from.\n\tThe argument's value should be less than or equal to the maximum value: 2.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).toRewindAndHexString(1, 0, Matchers.equalTo(""));
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should be valid: to.\n\tThe argument's value should be greater than or equal to the minimum value: 1.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}), "Message").toRewindAndHexString(1, 0, Matchers.equalTo(""));
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: to.\n\tThe argument's value should be greater than or equal to the minimum value: 1.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).toRewindAndHexString(0, 3, null);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should be valid: to.\n\tThe argument's value should be less than or equal to the maximum value: 2.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}), "Message").toRewindAndHexString(0, 3, null);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: to.\n\tThe argument's value should be less than or equal to the maximum value: 2.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).toRewindAndHexString(0, 0, null);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: matcher.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}), "Message").toRewindAndHexString(0, 0, null);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: matcher.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4, 5}, 3)).toRewindAndHexString(1, 2, Matchers.equalTo("00000000"));
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's hex representation part: 1:2.\nExpected: \"00000000\"\n     but: was \"0002\"");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4, 5}, 3), "Message").toRewindAndHexString(1, 2, Matchers.equalTo("00000000"));
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's hex representation part: 1:2.\nExpected: \"00000000\"\n     but: was \"0002\"");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4, 5}, 1, 4)).toRewindAndHexString(1, 3, Matchers.equalTo("00000000"));
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's hex representation part: 1:3.\nExpected: \"00000000\"\n     but: was \"00020003\"");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4, 5}, 1, 4), "Message").toRewindAndHexString(1, 3, Matchers.equalTo("00000000"));
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's hex representation part: 1:3.\nExpected: \"00000000\"\n     but: was \"00020003\"");
         }
@@ -988,67 +988,67 @@ public final class ShortBufferHexStringAssertionTest extends AssertionTest {
 
         try {
             Raw.shortBufferAssertion().hasHexString("");
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), null).hasHexString("");
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), null, "Message").hasHexString("");
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), null).hasHexString(null);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), null, "Message").hasHexString(null);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).hasHexString(null);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}), "Message").hasHexString(null);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4, 5}, 3)).hasHexString("00030004");
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's hex representation.\n\tActual and expected values should be the same.\n\tExpected:<00030004> but was:<00040005>");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4, 5}, 3), "Message").hasHexString("00030004");
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's hex representation.\n\tActual and expected values should be the same.\n\tExpected:<00030004> but was:<00040005>");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4, 5}, 0, 3)).hasHexString("00030004");
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's hex representation.\n\tActual and expected values should be the same.\n\tExpected:<00030004> but was:<000100020003>");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4, 5}, 0, 3), "Message").hasHexString("00030004");
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's hex representation.\n\tActual and expected values should be the same.\n\tExpected:<00030004> but was:<000100020003>");
         }
@@ -1079,139 +1079,139 @@ public final class ShortBufferHexStringAssertionTest extends AssertionTest {
 
         try {
             Raw.shortBufferAssertion().hasHexString(0, 0, "");
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), null).hasHexString(0, 0, "");
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), null, "Message").hasHexString(0, 0, "");
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), null).hasHexString(-1, 0, "");
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), null, "Message").hasHexString(-1, 0, "");
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).hasHexString(-1, 0, "");
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should be valid: from.\n\tThe argument's value should be greater than or equal to zero.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}), "Message").hasHexString(-1, 0, "");
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: from.\n\tThe argument's value should be greater than or equal to zero.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).hasHexString(-1, 3, "");
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should be valid: from.\n\tThe argument's value should be greater than or equal to zero.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}), "Message").hasHexString(-1, 3, "");
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: from.\n\tThe argument's value should be greater than or equal to zero.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).hasHexString(0, 3, "");
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should be valid: to.\n\tThe argument's value should be less than or equal to the maximum value: 2.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}), "Message").hasHexString(0, 3, "");
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: to.\n\tThe argument's value should be less than or equal to the maximum value: 2.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).hasHexString(3, 3, "");
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should be valid: from.\n\tThe argument's value should be less than or equal to the maximum value: 2.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}), "Message").hasHexString(3, 3, "");
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: from.\n\tThe argument's value should be less than or equal to the maximum value: 2.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).hasHexString(1, 0, "");
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should be valid: to.\n\tThe argument's value should be greater than or equal to the minimum value: 1.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}), "Message").hasHexString(1, 0, "");
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: to.\n\tThe argument's value should be greater than or equal to the minimum value: 1.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).hasHexString(0, 3, null);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should be valid: to.\n\tThe argument's value should be less than or equal to the maximum value: 2.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}), "Message").hasHexString(0, 3, null);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: to.\n\tThe argument's value should be less than or equal to the maximum value: 2.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).hasHexString(0, 0, null);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}), "Message").hasHexString(0, 0, null);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4, 5}, 3)).hasHexString(1, 2, "00000000");
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's hex representation part: 1:2.\n\tActual and expected values should be the same.\n\tExpected:<00000000> but was:<0005>");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4, 5}, 3), "Message").hasHexString(1, 2, "00000000");
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's hex representation part: 1:2.\n\tActual and expected values should be the same.\n\tExpected:<00000000> but was:<0005>");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4, 5}, 1, 4)).hasHexString(1, 3, "00000000");
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's hex representation part: 1:3.\n\tActual and expected values should be the same.\n\tExpected:<00000000> but was:<00030004>");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4, 5}, 1, 4), "Message").hasHexString(1, 3, "00000000");
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's hex representation part: 1:3.\n\tActual and expected values should be the same.\n\tExpected:<00000000> but was:<00030004>");
         }
@@ -1231,67 +1231,67 @@ public final class ShortBufferHexStringAssertionTest extends AssertionTest {
 
         try {
             Raw.shortBufferAssertion().hasRewindAndHexString("");
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), null).hasRewindAndHexString("");
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), null, "Message").hasRewindAndHexString("");
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), null).hasRewindAndHexString(null);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), null, "Message").hasRewindAndHexString(null);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).hasRewindAndHexString(null);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}), "Message").hasRewindAndHexString(null);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4, 5}, 3)).hasRewindAndHexString("00030004");
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's hex representation.\n\tActual and expected values should be the same.\n\tExpected:<00030004> but was:<00010002000300040005>");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4, 5}, 3), "Message").hasRewindAndHexString("00030004");
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's hex representation.\n\tActual and expected values should be the same.\n\tExpected:<00030004> but was:<00010002000300040005>");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4, 5}, 0, 3)).hasRewindAndHexString("00030004");
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's hex representation.\n\tActual and expected values should be the same.\n\tExpected:<00030004> but was:<000100020003>");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4, 5}, 0, 3), "Message").hasRewindAndHexString("00030004");
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's hex representation.\n\tActual and expected values should be the same.\n\tExpected:<00030004> but was:<000100020003>");
         }
@@ -1326,139 +1326,139 @@ public final class ShortBufferHexStringAssertionTest extends AssertionTest {
 
         try {
             Raw.shortBufferAssertion().hasRewindAndHexString(0, 0, "");
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), null).hasRewindAndHexString(0, 0, "");
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), null, "Message").hasRewindAndHexString(0, 0, "");
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), null).hasRewindAndHexString(-1, 0, "");
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), null, "Message").hasRewindAndHexString(-1, 0, "");
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).hasRewindAndHexString(-1, 0, "");
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should be valid: from.\n\tThe argument's value should be greater than or equal to zero.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}), "Message").hasRewindAndHexString(-1, 0, "");
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: from.\n\tThe argument's value should be greater than or equal to zero.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).hasRewindAndHexString(-1, 3, "");
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should be valid: from.\n\tThe argument's value should be greater than or equal to zero.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}), "Message").hasRewindAndHexString(-1, 3, "");
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: from.\n\tThe argument's value should be greater than or equal to zero.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).hasRewindAndHexString(0, 3, "");
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should be valid: to.\n\tThe argument's value should be less than or equal to the maximum value: 2.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}), "Message").hasRewindAndHexString(0, 3, "");
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: to.\n\tThe argument's value should be less than or equal to the maximum value: 2.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).hasRewindAndHexString(3, 3, "");
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should be valid: from.\n\tThe argument's value should be less than or equal to the maximum value: 2.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}), "Message").hasRewindAndHexString(3, 3, "");
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: from.\n\tThe argument's value should be less than or equal to the maximum value: 2.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).hasRewindAndHexString(1, 0, "");
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should be valid: to.\n\tThe argument's value should be greater than or equal to the minimum value: 1.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}), "Message").hasRewindAndHexString(1, 0, "");
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: to.\n\tThe argument's value should be greater than or equal to the minimum value: 1.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).hasRewindAndHexString(0, 3, null);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should be valid: to.\n\tThe argument's value should be less than or equal to the maximum value: 2.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}), "Message").hasRewindAndHexString(0, 3, null);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: to.\n\tThe argument's value should be less than or equal to the maximum value: 2.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2})).hasRewindAndHexString(0, 0, null);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2}), "Message").hasRewindAndHexString(0, 0, null);
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4, 5}, 3)).hasRewindAndHexString(1, 2, "00000000");
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's hex representation part: 1:2.\n\tActual and expected values should be the same.\n\tExpected:<00000000> but was:<0002>");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4, 5}, 3), "Message").hasRewindAndHexString(1, 2, "00000000");
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's hex representation part: 1:2.\n\tActual and expected values should be the same.\n\tExpected:<00000000> but was:<0002>");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4, 5}, 1, 4)).hasRewindAndHexString(1, 3, "00000000");
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's hex representation part: 1:3.\n\tActual and expected values should be the same.\n\tExpected:<00000000> but was:<00020003>");
         }
         try {
             initialize(Raw.shortBufferAssertion(), createShortBuffer(new short[]{1, 2, 3, 4, 5}, 1, 4), "Message").hasRewindAndHexString(1, 3, "00000000");
-            Assertions.fail("ShortBufferAssertion test fail");
+            Assertions.fail(ShortBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's hex representation part: 1:3.\n\tActual and expected values should be the same.\n\tExpected:<00000000> but was:<00020003>");
         }

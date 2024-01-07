@@ -64,43 +64,43 @@ public final class CharBufferPropertiesAssertionTest extends AssertionTest {
 
         try {
             Raw.charBufferAssertion().toPosition();
-            Assertions.fail("CharBufferAssertion test fail");
+            Assertions.fail(CharBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.charBufferAssertion(), null).toPosition();
-            Assertions.fail("CharBufferAssertion test fail");
+            Assertions.fail(CharBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.charBufferAssertion(), null, "Message").toPosition();
-            Assertions.fail("CharBufferAssertion test fail");
+            Assertions.fail(CharBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             clearActual(initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3'}, 3)).toPosition()).isEqualTo(1);
-            Assertions.fail("CharBufferAssertion test fail");
+            Assertions.fail(CharBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's position.\n\tActual value should not be null.");
         }
         try {
             clearActual(initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3'}, 3), "Message").toPosition()).isEqualTo(1);
-            Assertions.fail("CharBufferAssertion test fail");
+            Assertions.fail(CharBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's position.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3'}, 3)).toPosition().isEqualTo(4);
-            Assertions.fail("CharBufferAssertion test fail");
+            Assertions.fail(CharBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's position.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
         }
         try {
             initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3'}, 3), "Message").toPosition().isEqualTo(4);
-            Assertions.fail("CharBufferAssertion test fail");
+            Assertions.fail(CharBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's position.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
         }
@@ -127,55 +127,55 @@ public final class CharBufferPropertiesAssertionTest extends AssertionTest {
 
         try {
             Raw.charBufferAssertion().toPosition(Matchers.equalTo(0));
-            Assertions.fail("CharBufferAssertion test fail");
+            Assertions.fail(CharBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.charBufferAssertion(), null).toPosition(Matchers.equalTo(0));
-            Assertions.fail("CharBufferAssertion test fail");
+            Assertions.fail(CharBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.charBufferAssertion(), null, "Message").toPosition(Matchers.equalTo(0));
-            Assertions.fail("CharBufferAssertion test fail");
+            Assertions.fail(CharBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.charBufferAssertion(), null).toPosition(null);
-            Assertions.fail("CharBufferAssertion test fail");
+            Assertions.fail(CharBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.charBufferAssertion(), null, "Message").toPosition(null);
-            Assertions.fail("CharBufferAssertion test fail");
+            Assertions.fail(CharBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{})).toPosition(null);
-            Assertions.fail("CharBufferAssertion test fail");
+            Assertions.fail(CharBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: matcher.");
         }
         try {
             initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{}), "Message").toPosition(null);
-            Assertions.fail("CharBufferAssertion test fail");
+            Assertions.fail(CharBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: matcher.");
         }
         try {
             initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3'}, 3)).toPosition(Matchers.equalTo(4));
-            Assertions.fail("CharBufferAssertion test fail");
+            Assertions.fail(CharBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's position.\nExpected: <4>\n     but: was <3>");
         }
         try {
             initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3'}, 3), "Message").toPosition(Matchers.equalTo(4));
-            Assertions.fail("CharBufferAssertion test fail");
+            Assertions.fail(CharBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's position.\nExpected: <4>\n     but: was <3>");
         }
@@ -193,31 +193,31 @@ public final class CharBufferPropertiesAssertionTest extends AssertionTest {
 
         try {
             Raw.charBufferAssertion().hasPosition(1);
-            Assertions.fail("CharBufferAssertion test fail");
+            Assertions.fail(CharBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.charBufferAssertion(), null).hasPosition(1);
-            Assertions.fail("CharBufferAssertion test fail");
+            Assertions.fail(CharBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.charBufferAssertion(), null, "Message").hasPosition(1);
-            Assertions.fail("CharBufferAssertion test fail");
+            Assertions.fail(CharBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3'}, 3)).hasPosition(4);
-            Assertions.fail("CharBufferAssertion test fail");
+            Assertions.fail(CharBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's position.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
         }
         try {
             initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3'}, 3), "Message").hasPosition(4);
-            Assertions.fail("CharBufferAssertion test fail");
+            Assertions.fail(CharBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's position.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
         }
@@ -244,43 +244,43 @@ public final class CharBufferPropertiesAssertionTest extends AssertionTest {
 
         try {
             Raw.charBufferAssertion().toLimit();
-            Assertions.fail("CharBufferAssertion test fail");
+            Assertions.fail(CharBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.charBufferAssertion(), null).toLimit();
-            Assertions.fail("CharBufferAssertion test fail");
+            Assertions.fail(CharBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.charBufferAssertion(), null, "Message").toLimit();
-            Assertions.fail("CharBufferAssertion test fail");
+            Assertions.fail(CharBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             clearActual(initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3'}, 3)).toLimit()).isEqualTo(1);
-            Assertions.fail("CharBufferAssertion test fail");
+            Assertions.fail(CharBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's limit.\n\tActual value should not be null.");
         }
         try {
             clearActual(initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3'}, 3), "Message").toLimit()).isEqualTo(1);
-            Assertions.fail("CharBufferAssertion test fail");
+            Assertions.fail(CharBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's limit.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3'}, 3)).toLimit().isEqualTo(4);
-            Assertions.fail("CharBufferAssertion test fail");
+            Assertions.fail(CharBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's limit.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
         }
         try {
             initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3'}, 3), "Message").toLimit().isEqualTo(4);
-            Assertions.fail("CharBufferAssertion test fail");
+            Assertions.fail(CharBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's limit.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
         }
@@ -307,55 +307,55 @@ public final class CharBufferPropertiesAssertionTest extends AssertionTest {
 
         try {
             Raw.charBufferAssertion().toLimit(Matchers.equalTo(0));
-            Assertions.fail("CharBufferAssertion test fail");
+            Assertions.fail(CharBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.charBufferAssertion(), null).toLimit(Matchers.equalTo(0));
-            Assertions.fail("CharBufferAssertion test fail");
+            Assertions.fail(CharBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.charBufferAssertion(), null, "Message").toLimit(Matchers.equalTo(0));
-            Assertions.fail("CharBufferAssertion test fail");
+            Assertions.fail(CharBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.charBufferAssertion(), null).toLimit(null);
-            Assertions.fail("CharBufferAssertion test fail");
+            Assertions.fail(CharBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.charBufferAssertion(), null, "Message").toLimit(null);
-            Assertions.fail("CharBufferAssertion test fail");
+            Assertions.fail(CharBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{})).toLimit(null);
-            Assertions.fail("CharBufferAssertion test fail");
+            Assertions.fail(CharBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: matcher.");
         }
         try {
             initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{}), "Message").toLimit(null);
-            Assertions.fail("CharBufferAssertion test fail");
+            Assertions.fail(CharBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: matcher.");
         }
         try {
             initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3'}, 3)).toLimit(Matchers.equalTo(4));
-            Assertions.fail("CharBufferAssertion test fail");
+            Assertions.fail(CharBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's limit.\nExpected: <4>\n     but: was <3>");
         }
         try {
             initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3'}, 3), "Message").toLimit(Matchers.equalTo(4));
-            Assertions.fail("CharBufferAssertion test fail");
+            Assertions.fail(CharBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's limit.\nExpected: <4>\n     but: was <3>");
         }
@@ -373,31 +373,31 @@ public final class CharBufferPropertiesAssertionTest extends AssertionTest {
 
         try {
             Raw.charBufferAssertion().hasLimit(1);
-            Assertions.fail("CharBufferAssertion test fail");
+            Assertions.fail(CharBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.charBufferAssertion(), null).hasLimit(1);
-            Assertions.fail("CharBufferAssertion test fail");
+            Assertions.fail(CharBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.charBufferAssertion(), null, "Message").hasLimit(1);
-            Assertions.fail("CharBufferAssertion test fail");
+            Assertions.fail(CharBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3'}, 3)).hasLimit(4);
-            Assertions.fail("CharBufferAssertion test fail");
+            Assertions.fail(CharBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's limit.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
         }
         try {
             initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3'}, 3), "Message").hasLimit(4);
-            Assertions.fail("CharBufferAssertion test fail");
+            Assertions.fail(CharBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's limit.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
         }
@@ -424,43 +424,43 @@ public final class CharBufferPropertiesAssertionTest extends AssertionTest {
 
         try {
             Raw.charBufferAssertion().toCapacity();
-            Assertions.fail("CharBufferAssertion test fail");
+            Assertions.fail(CharBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.charBufferAssertion(), null).toCapacity();
-            Assertions.fail("CharBufferAssertion test fail");
+            Assertions.fail(CharBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.charBufferAssertion(), null, "Message").toCapacity();
-            Assertions.fail("CharBufferAssertion test fail");
+            Assertions.fail(CharBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             clearActual(initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3'}, 3)).toCapacity()).isEqualTo(1);
-            Assertions.fail("CharBufferAssertion test fail");
+            Assertions.fail(CharBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's capacity.\n\tActual value should not be null.");
         }
         try {
             clearActual(initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3'}, 3), "Message").toCapacity()).isEqualTo(1);
-            Assertions.fail("CharBufferAssertion test fail");
+            Assertions.fail(CharBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's capacity.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3'}, 3)).toCapacity().isEqualTo(4);
-            Assertions.fail("CharBufferAssertion test fail");
+            Assertions.fail(CharBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's capacity.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
         }
         try {
             initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3'}, 3), "Message").toCapacity().isEqualTo(4);
-            Assertions.fail("CharBufferAssertion test fail");
+            Assertions.fail(CharBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's capacity.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
         }
@@ -487,55 +487,55 @@ public final class CharBufferPropertiesAssertionTest extends AssertionTest {
 
         try {
             Raw.charBufferAssertion().toCapacity(Matchers.equalTo(0));
-            Assertions.fail("CharBufferAssertion test fail");
+            Assertions.fail(CharBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.charBufferAssertion(), null).toCapacity(Matchers.equalTo(0));
-            Assertions.fail("CharBufferAssertion test fail");
+            Assertions.fail(CharBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.charBufferAssertion(), null, "Message").toCapacity(Matchers.equalTo(0));
-            Assertions.fail("CharBufferAssertion test fail");
+            Assertions.fail(CharBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.charBufferAssertion(), null).toCapacity(null);
-            Assertions.fail("CharBufferAssertion test fail");
+            Assertions.fail(CharBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.charBufferAssertion(), null, "Message").toCapacity(null);
-            Assertions.fail("CharBufferAssertion test fail");
+            Assertions.fail(CharBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{})).toCapacity(null);
-            Assertions.fail("CharBufferAssertion test fail");
+            Assertions.fail(CharBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: matcher.");
         }
         try {
             initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{}), "Message").toCapacity(null);
-            Assertions.fail("CharBufferAssertion test fail");
+            Assertions.fail(CharBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: matcher.");
         }
         try {
             initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3'}, 3)).toCapacity(Matchers.equalTo(4));
-            Assertions.fail("CharBufferAssertion test fail");
+            Assertions.fail(CharBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's capacity.\nExpected: <4>\n     but: was <3>");
         }
         try {
             initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3'}, 3), "Message").toCapacity(Matchers.equalTo(4));
-            Assertions.fail("CharBufferAssertion test fail");
+            Assertions.fail(CharBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's capacity.\nExpected: <4>\n     but: was <3>");
         }
@@ -553,31 +553,31 @@ public final class CharBufferPropertiesAssertionTest extends AssertionTest {
 
         try {
             Raw.charBufferAssertion().hasCapacity(1);
-            Assertions.fail("CharBufferAssertion test fail");
+            Assertions.fail(CharBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.charBufferAssertion(), null).hasCapacity(1);
-            Assertions.fail("CharBufferAssertion test fail");
+            Assertions.fail(CharBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.charBufferAssertion(), null, "Message").hasCapacity(1);
-            Assertions.fail("CharBufferAssertion test fail");
+            Assertions.fail(CharBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3'}, 3)).hasCapacity(4);
-            Assertions.fail("CharBufferAssertion test fail");
+            Assertions.fail(CharBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's capacity.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
         }
         try {
             initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3'}, 3), "Message").hasCapacity(4);
-            Assertions.fail("CharBufferAssertion test fail");
+            Assertions.fail(CharBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's capacity.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
         }
@@ -595,55 +595,55 @@ public final class CharBufferPropertiesAssertionTest extends AssertionTest {
 
         try {
             Raw.charBufferAssertion().hasProperties(1, 1, 1);
-            Assertions.fail("CharBufferAssertion test fail");
+            Assertions.fail(CharBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.charBufferAssertion(), null).hasProperties(1, 1, 1);
-            Assertions.fail("CharBufferAssertion test fail");
+            Assertions.fail(CharBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.charBufferAssertion(), null, "Message").hasProperties(1, 1, 1);
-            Assertions.fail("CharBufferAssertion test fail");
+            Assertions.fail(CharBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3'}, 3)).hasProperties(4, 3, 3);
-            Assertions.fail("CharBufferAssertion test fail");
+            Assertions.fail(CharBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's position.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
         }
         try {
             initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3'}, 3), "Message").hasProperties(4, 3, 3);
-            Assertions.fail("CharBufferAssertion test fail");
+            Assertions.fail(CharBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's position.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
         }
         try {
             initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3'}, 3)).hasProperties(3, 4, 3);
-            Assertions.fail("CharBufferAssertion test fail");
+            Assertions.fail(CharBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's limit.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
         }
         try {
             initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3'}, 3), "Message").hasProperties(3, 4, 3);
-            Assertions.fail("CharBufferAssertion test fail");
+            Assertions.fail(CharBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's limit.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
         }
         try {
             initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3'}, 3)).hasProperties(3, 3, 4);
-            Assertions.fail("CharBufferAssertion test fail");
+            Assertions.fail(CharBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's capacity.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
         }
         try {
             initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3'}, 3), "Message").hasProperties(3, 3, 4);
-            Assertions.fail("CharBufferAssertion test fail");
+            Assertions.fail(CharBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's capacity.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
         }
@@ -674,43 +674,43 @@ public final class CharBufferPropertiesAssertionTest extends AssertionTest {
 
         try {
             Raw.charBufferAssertion().toRemaining();
-            Assertions.fail("CharBufferAssertion test fail");
+            Assertions.fail(CharBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.charBufferAssertion(), null).toRemaining();
-            Assertions.fail("CharBufferAssertion test fail");
+            Assertions.fail(CharBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.charBufferAssertion(), null, "Message").toRemaining();
-            Assertions.fail("CharBufferAssertion test fail");
+            Assertions.fail(CharBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             clearActual(initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3'}, 0, 3, 3)).toRemaining()).isEqualTo(1);
-            Assertions.fail("CharBufferAssertion test fail");
+            Assertions.fail(CharBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's remaining.\n\tActual value should not be null.");
         }
         try {
             clearActual(initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3'}, 0, 3, 3), "Message").toRemaining()).isEqualTo(1);
-            Assertions.fail("CharBufferAssertion test fail");
+            Assertions.fail(CharBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's remaining.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3'}, 0, 3, 3)).toRemaining().isEqualTo(4);
-            Assertions.fail("CharBufferAssertion test fail");
+            Assertions.fail(CharBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's remaining.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
         }
         try {
             initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3'}, 0, 3, 3), "Message").toRemaining().isEqualTo(4);
-            Assertions.fail("CharBufferAssertion test fail");
+            Assertions.fail(CharBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's remaining.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
         }
@@ -741,55 +741,55 @@ public final class CharBufferPropertiesAssertionTest extends AssertionTest {
 
         try {
             Raw.charBufferAssertion().toRemaining(Matchers.equalTo(0));
-            Assertions.fail("CharBufferAssertion test fail");
+            Assertions.fail(CharBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.charBufferAssertion(), null).toRemaining(Matchers.equalTo(0));
-            Assertions.fail("CharBufferAssertion test fail");
+            Assertions.fail(CharBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.charBufferAssertion(), null, "Message").toRemaining(Matchers.equalTo(0));
-            Assertions.fail("CharBufferAssertion test fail");
+            Assertions.fail(CharBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.charBufferAssertion(), null).toRemaining(null);
-            Assertions.fail("CharBufferAssertion test fail");
+            Assertions.fail(CharBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.charBufferAssertion(), null, "Message").toRemaining(null);
-            Assertions.fail("CharBufferAssertion test fail");
+            Assertions.fail(CharBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{})).toRemaining(null);
-            Assertions.fail("CharBufferAssertion test fail");
+            Assertions.fail(CharBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: matcher.");
         }
         try {
             initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{}), "Message").toRemaining(null);
-            Assertions.fail("CharBufferAssertion test fail");
+            Assertions.fail(CharBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: matcher.");
         }
         try {
             initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3'}, 0, 3, 3)).toRemaining(Matchers.equalTo(4));
-            Assertions.fail("CharBufferAssertion test fail");
+            Assertions.fail(CharBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's remaining.\nExpected: <4>\n     but: was <3>");
         }
         try {
             initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3'}, 0, 3, 3), "Message").toRemaining(Matchers.equalTo(4));
-            Assertions.fail("CharBufferAssertion test fail");
+            Assertions.fail(CharBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's remaining.\nExpected: <4>\n     but: was <3>");
         }
@@ -808,31 +808,31 @@ public final class CharBufferPropertiesAssertionTest extends AssertionTest {
 
         try {
             Raw.charBufferAssertion().hasRemaining(1);
-            Assertions.fail("CharBufferAssertion test fail");
+            Assertions.fail(CharBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.charBufferAssertion(), null).hasRemaining(1);
-            Assertions.fail("CharBufferAssertion test fail");
+            Assertions.fail(CharBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.charBufferAssertion(), null, "Message").hasRemaining(1);
-            Assertions.fail("CharBufferAssertion test fail");
+            Assertions.fail(CharBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3'}, 0, 3, 3)).hasRemaining(4);
-            Assertions.fail("CharBufferAssertion test fail");
+            Assertions.fail(CharBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's remaining.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
         }
         try {
             initialize(Raw.charBufferAssertion(), createCharBuffer(new char[]{'1', '2', '3'}, 0, 3, 3), "Message").hasRemaining(4);
-            Assertions.fail("CharBufferAssertion test fail");
+            Assertions.fail(CharBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's remaining.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<3>");
         }
@@ -848,31 +848,31 @@ public final class CharBufferPropertiesAssertionTest extends AssertionTest {
 
         try {
             Raw.charBufferAssertion().isDirect();
-            Assertions.fail("CharBufferAssertion test fail");
+            Assertions.fail(CharBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.charBufferAssertion(), null).isDirect();
-            Assertions.fail("CharBufferAssertion test fail");
+            Assertions.fail(CharBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.charBufferAssertion(), null, "Message").isDirect();
-            Assertions.fail("CharBufferAssertion test fail");
+            Assertions.fail(CharBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.charBufferAssertion(), ByteBuffer.allocate(12).asCharBuffer()).isDirect();
-            Assertions.fail("CharBufferAssertion test fail");
+            Assertions.fail(CharBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be direct.");
         }
         try {
             initialize(Raw.charBufferAssertion(), ByteBuffer.allocate(12).asCharBuffer(), "Message").isDirect();
-            Assertions.fail("CharBufferAssertion test fail");
+            Assertions.fail(CharBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be direct.");
         }
@@ -888,31 +888,31 @@ public final class CharBufferPropertiesAssertionTest extends AssertionTest {
 
         try {
             Raw.charBufferAssertion().isNotDirect();
-            Assertions.fail("CharBufferAssertion test fail");
+            Assertions.fail(CharBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.charBufferAssertion(), null).isNotDirect();
-            Assertions.fail("CharBufferAssertion test fail");
+            Assertions.fail(CharBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.charBufferAssertion(), null, "Message").isNotDirect();
-            Assertions.fail("CharBufferAssertion test fail");
+            Assertions.fail(CharBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.charBufferAssertion(), ByteBuffer.allocateDirect(12).asCharBuffer()).isNotDirect();
-            Assertions.fail("CharBufferAssertion test fail");
+            Assertions.fail(CharBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be direct.");
         }
         try {
             initialize(Raw.charBufferAssertion(), ByteBuffer.allocateDirect(12).asCharBuffer(), "Message").isNotDirect();
-            Assertions.fail("CharBufferAssertion test fail");
+            Assertions.fail(CharBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be direct.");
         }
@@ -931,31 +931,31 @@ public final class CharBufferPropertiesAssertionTest extends AssertionTest {
 
         try {
             Raw.charBufferAssertion().isReadOnly();
-            Assertions.fail("CharBufferAssertion test fail");
+            Assertions.fail(CharBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.charBufferAssertion(), null).isReadOnly();
-            Assertions.fail("CharBufferAssertion test fail");
+            Assertions.fail(CharBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.charBufferAssertion(), null, "Message").isReadOnly();
-            Assertions.fail("CharBufferAssertion test fail");
+            Assertions.fail(CharBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.charBufferAssertion(), buffer).isReadOnly();
-            Assertions.fail("CharBufferAssertion test fail");
+            Assertions.fail(CharBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be read only.");
         }
         try {
             initialize(Raw.charBufferAssertion(), buffer, "Message").isReadOnly();
-            Assertions.fail("CharBufferAssertion test fail");
+            Assertions.fail(CharBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be read only.");
         }
@@ -974,31 +974,31 @@ public final class CharBufferPropertiesAssertionTest extends AssertionTest {
 
         try {
             Raw.charBufferAssertion().isNotReadOnly();
-            Assertions.fail("CharBufferAssertion test fail");
+            Assertions.fail(CharBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.charBufferAssertion(), null).isNotReadOnly();
-            Assertions.fail("CharBufferAssertion test fail");
+            Assertions.fail(CharBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.charBufferAssertion(), null, "Message").isNotReadOnly();
-            Assertions.fail("CharBufferAssertion test fail");
+            Assertions.fail(CharBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.charBufferAssertion(), readOnlyBuffer).isNotReadOnly();
-            Assertions.fail("CharBufferAssertion test fail");
+            Assertions.fail(CharBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be read only.");
         }
         try {
             initialize(Raw.charBufferAssertion(), readOnlyBuffer, "Message").isNotReadOnly();
-            Assertions.fail("CharBufferAssertion test fail");
+            Assertions.fail(CharBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be read only.");
         }

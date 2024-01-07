@@ -60,55 +60,55 @@ public final class IntBufferAggregateAssertionTest extends AssertionTest {
 
         try {
             Raw.intBufferAssertion().toMin();
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.intBufferAssertion(), null).toMin();
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.intBufferAssertion(), null, "Message").toMin();
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             clearActual(initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2})).toMin()).isEqualTo(0);
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's minimum value.\n\tActual value should not be null.");
         }
         try {
             clearActual(initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2}), "Message").toMin()).isEqualTo(0);
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's minimum value.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2})).toMin().isEqualTo(4);
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's minimum value.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<1>");
         }
         try {
             initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2}), "Message").toMin().isEqualTo(4);
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's minimum value.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<1>");
         }
         try {
             initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2}, 1)).toMin().isEqualTo(4);
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's minimum value.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<2>");
         }
         try {
             initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2}, 1), "Message").toMin().isEqualTo(4);
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's minimum value.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<2>");
         }
@@ -132,67 +132,67 @@ public final class IntBufferAggregateAssertionTest extends AssertionTest {
 
         try {
             Raw.intBufferAssertion().toMin(Matchers.equalTo(0));
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.intBufferAssertion(), null).toMin(Matchers.equalTo(0));
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.intBufferAssertion(), null, "Message").toMin(Matchers.equalTo(0));
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.intBufferAssertion(), null).toMin(null);
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.intBufferAssertion(), null, "Message").toMin(null);
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{})).toMin(null);
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: matcher.");
         }
         try {
             initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{}), "Message").toMin(null);
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: matcher.");
         }
         try {
             initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2})).toMin(Matchers.equalTo(4));
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's minimum value.\nExpected: <4>\n     but: was <1>");
         }
         try {
             initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2}), "Message").toMin(Matchers.equalTo(4));
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's minimum value.\nExpected: <4>\n     but: was <1>");
         }
         try {
             initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2}, 1)).toMin(Matchers.equalTo(4));
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's minimum value.\nExpected: <4>\n     but: was <2>");
         }
         try {
             initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2}, 1), "Message").toMin(Matchers.equalTo(4));
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's minimum value.\nExpected: <4>\n     but: was <2>");
         }
@@ -216,55 +216,55 @@ public final class IntBufferAggregateAssertionTest extends AssertionTest {
 
         try {
             Raw.intBufferAssertion().toRewindAndMin();
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.intBufferAssertion(), null).toRewindAndMin();
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.intBufferAssertion(), null, "Message").toRewindAndMin();
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             clearActual(initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2})).toRewindAndMin()).isEqualTo(0);
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's minimum value.\n\tActual value should not be null.");
         }
         try {
             clearActual(initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2}), "Message").toRewindAndMin()).isEqualTo(0);
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's minimum value.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2})).toRewindAndMin().isEqualTo(4);
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's minimum value.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<1>");
         }
         try {
             initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2}), "Message").toRewindAndMin().isEqualTo(4);
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's minimum value.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<1>");
         }
         try {
             initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2}, 1)).toRewindAndMin().isEqualTo(4);
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's minimum value.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<1>");
         }
         try {
             initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2}, 1), "Message").toRewindAndMin().isEqualTo(4);
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's minimum value.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<1>");
         }
@@ -288,67 +288,67 @@ public final class IntBufferAggregateAssertionTest extends AssertionTest {
 
         try {
             Raw.intBufferAssertion().toRewindAndMin(Matchers.equalTo(0));
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.intBufferAssertion(), null).toRewindAndMin(Matchers.equalTo(0));
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.intBufferAssertion(), null, "Message").toRewindAndMin(Matchers.equalTo(0));
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.intBufferAssertion(), null).toRewindAndMin(null);
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.intBufferAssertion(), null, "Message").toRewindAndMin(null);
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{})).toRewindAndMin(null);
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: matcher.");
         }
         try {
             initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{}), "Message").toRewindAndMin(null);
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: matcher.");
         }
         try {
             initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2})).toRewindAndMin(Matchers.equalTo(4));
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's minimum value.\nExpected: <4>\n     but: was <1>");
         }
         try {
             initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2}), "Message").toRewindAndMin(Matchers.equalTo(4));
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's minimum value.\nExpected: <4>\n     but: was <1>");
         }
         try {
             initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2}, 1)).toRewindAndMin(Matchers.equalTo(4));
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's minimum value.\nExpected: <4>\n     but: was <1>");
         }
         try {
             initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2}, 1), "Message").toRewindAndMin(Matchers.equalTo(4));
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's minimum value.\nExpected: <4>\n     but: was <1>");
         }
@@ -371,43 +371,43 @@ public final class IntBufferAggregateAssertionTest extends AssertionTest {
 
         try {
             Raw.intBufferAssertion().hasMin(0);
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.intBufferAssertion(), null).hasMin(0);
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.intBufferAssertion(), null, "Message").hasMin(0);
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2})).hasMin(4);
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's minimum value.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<1>");
         }
         try {
             initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2}), "Message").hasMin(4);
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's minimum value.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<1>");
         }
         try {
             initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2}, 1)).hasMin(4);
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's minimum value.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<2>");
         }
         try {
             initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2}, 1), "Message").hasMin(4);
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's minimum value.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<2>");
         }
@@ -431,67 +431,67 @@ public final class IntBufferAggregateAssertionTest extends AssertionTest {
 
         try {
             Raw.intBufferAssertion().hasMin(Integer.valueOf("0"));
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.intBufferAssertion(), null).hasMin(Integer.valueOf("0"));
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.intBufferAssertion(), null, "Message").hasMin(Integer.valueOf("0"));
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.intBufferAssertion(), null).hasMin(null);
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.intBufferAssertion(), null, "Message").hasMin(null);
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1})).hasMin(null);
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's minimum value.\n\tActual value should be null.\n\tActual:<1>");
         }
         try {
             initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1}), "Message").hasMin(null);
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's minimum value.\n\tActual value should be null.\n\tActual:<1>");
         }
         try {
             initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2})).hasMin(Integer.valueOf("4"));
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's minimum value.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<1>");
         }
         try {
             initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2}), "Message").hasMin(Integer.valueOf("4"));
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's minimum value.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<1>");
         }
         try {
             initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2}, 1)).hasMin(Integer.valueOf("4"));
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's minimum value.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<2>");
         }
         try {
             initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2}, 1), "Message").hasMin(Integer.valueOf("4"));
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's minimum value.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<2>");
         }
@@ -514,43 +514,43 @@ public final class IntBufferAggregateAssertionTest extends AssertionTest {
 
         try {
             Raw.intBufferAssertion().hasRewindAndMin(0);
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.intBufferAssertion(), null).hasRewindAndMin(0);
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.intBufferAssertion(), null, "Message").hasRewindAndMin(0);
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2})).hasRewindAndMin(4);
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's minimum value.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<1>");
         }
         try {
             initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2}), "Message").hasRewindAndMin(4);
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's minimum value.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<1>");
         }
         try {
             initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2}, 1)).hasRewindAndMin(4);
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's minimum value.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<1>");
         }
         try {
             initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2}, 1), "Message").hasRewindAndMin(4);
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's minimum value.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<1>");
         }
@@ -574,67 +574,67 @@ public final class IntBufferAggregateAssertionTest extends AssertionTest {
 
         try {
             Raw.intBufferAssertion().hasRewindAndMin(Integer.valueOf("0"));
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.intBufferAssertion(), null).hasRewindAndMin(Integer.valueOf("0"));
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.intBufferAssertion(), null, "Message").hasRewindAndMin(Integer.valueOf("0"));
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.intBufferAssertion(), null).hasRewindAndMin(null);
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.intBufferAssertion(), null, "Message").hasRewindAndMin(null);
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1})).hasRewindAndMin(null);
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's minimum value.\n\tActual value should be null.\n\tActual:<1>");
         }
         try {
             initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1}), "Message").hasRewindAndMin(null);
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's minimum value.\n\tActual value should be null.\n\tActual:<1>");
         }
         try {
             initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2})).hasRewindAndMin(Integer.valueOf("4"));
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's minimum value.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<1>");
         }
         try {
             initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2}), "Message").hasRewindAndMin(Integer.valueOf("4"));
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's minimum value.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<1>");
         }
         try {
             initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2}, 1)).hasRewindAndMin(Integer.valueOf("4"));
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's minimum value.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<1>");
         }
         try {
             initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1, 2}, 1), "Message").hasRewindAndMin(Integer.valueOf("4"));
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's minimum value.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<1>");
         }
@@ -658,55 +658,55 @@ public final class IntBufferAggregateAssertionTest extends AssertionTest {
 
         try {
             Raw.intBufferAssertion().toMax();
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.intBufferAssertion(), null).toMax();
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.intBufferAssertion(), null, "Message").toMax();
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             clearActual(initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{2, 1})).toMax()).isEqualTo(0);
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's maximum value.\n\tActual value should not be null.");
         }
         try {
             clearActual(initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{2, 1}), "Message").toMax()).isEqualTo(0);
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's maximum value.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{2, 1})).toMax().isEqualTo(4);
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's maximum value.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<2>");
         }
         try {
             initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{2, 1}), "Message").toMax().isEqualTo(4);
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's maximum value.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<2>");
         }
         try {
             initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{2, 1}, 1)).toMax().isEqualTo(4);
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's maximum value.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<1>");
         }
         try {
             initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{2, 1}, 1), "Message").toMax().isEqualTo(4);
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's maximum value.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<1>");
         }
@@ -730,67 +730,67 @@ public final class IntBufferAggregateAssertionTest extends AssertionTest {
 
         try {
             Raw.intBufferAssertion().toMax(Matchers.equalTo(0));
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.intBufferAssertion(), null).toMax(Matchers.equalTo(0));
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.intBufferAssertion(), null, "Message").toMax(Matchers.equalTo(0));
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.intBufferAssertion(), null).toMax(null);
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.intBufferAssertion(), null, "Message").toMax(null);
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{})).toMax(null);
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: matcher.");
         }
         try {
             initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{}), "Message").toMax(null);
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: matcher.");
         }
         try {
             initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{2, 1})).toMax(Matchers.equalTo(4));
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's maximum value.\nExpected: <4>\n     but: was <2>");
         }
         try {
             initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{2, 1}), "Message").toMax(Matchers.equalTo(4));
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's maximum value.\nExpected: <4>\n     but: was <2>");
         }
         try {
             initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{2, 1}, 1)).toMax(Matchers.equalTo(4));
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's maximum value.\nExpected: <4>\n     but: was <1>");
         }
         try {
             initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{2, 1}, 1), "Message").toMax(Matchers.equalTo(4));
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's maximum value.\nExpected: <4>\n     but: was <1>");
         }
@@ -814,55 +814,55 @@ public final class IntBufferAggregateAssertionTest extends AssertionTest {
 
         try {
             Raw.intBufferAssertion().toRewindAndMax();
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.intBufferAssertion(), null).toRewindAndMax();
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.intBufferAssertion(), null, "Message").toRewindAndMax();
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             clearActual(initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{2, 1})).toRewindAndMax()).isEqualTo(0);
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's maximum value.\n\tActual value should not be null.");
         }
         try {
             clearActual(initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{2, 1}), "Message").toRewindAndMax()).isEqualTo(0);
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's maximum value.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{2, 1})).toRewindAndMax().isEqualTo(4);
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's maximum value.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<2>");
         }
         try {
             initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{2, 1}), "Message").toRewindAndMax().isEqualTo(4);
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's maximum value.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<2>");
         }
         try {
             initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{2, 1}, 1)).toRewindAndMax().isEqualTo(4);
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's maximum value.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<2>");
         }
         try {
             initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{2, 1}, 1), "Message").toRewindAndMax().isEqualTo(4);
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's maximum value.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<2>");
         }
@@ -886,67 +886,67 @@ public final class IntBufferAggregateAssertionTest extends AssertionTest {
 
         try {
             Raw.intBufferAssertion().toRewindAndMax(Matchers.equalTo(0));
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.intBufferAssertion(), null).toRewindAndMax(Matchers.equalTo(0));
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.intBufferAssertion(), null, "Message").toRewindAndMax(Matchers.equalTo(0));
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.intBufferAssertion(), null).toRewindAndMax(null);
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.intBufferAssertion(), null, "Message").toRewindAndMax(null);
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1})).toRewindAndMax(null);
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: matcher.");
         }
         try {
             initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1}), "Message").toRewindAndMax(null);
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: matcher.");
         }
         try {
             initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{2, 1})).toRewindAndMax(Matchers.equalTo(4));
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's maximum value.\nExpected: <4>\n     but: was <2>");
         }
         try {
             initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{2, 1}), "Message").toRewindAndMax(Matchers.equalTo(4));
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's maximum value.\nExpected: <4>\n     but: was <2>");
         }
         try {
             initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{2, 1}, 1)).toRewindAndMax(Matchers.equalTo(4));
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's maximum value.\nExpected: <4>\n     but: was <2>");
         }
         try {
             initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{2, 1}, 1), "Message").toRewindAndMax(Matchers.equalTo(4));
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's maximum value.\nExpected: <4>\n     but: was <2>");
         }
@@ -969,43 +969,43 @@ public final class IntBufferAggregateAssertionTest extends AssertionTest {
 
         try {
             Raw.intBufferAssertion().hasMax(0);
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.intBufferAssertion(), null).hasMax(0);
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.intBufferAssertion(), null, "Message").hasMax(0);
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{2, 1})).hasMax(4);
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's maximum value.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<2>");
         }
         try {
             initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{2, 1}), "Message").hasMax(4);
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's maximum value.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<2>");
         }
         try {
             initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{2, 1}, 1)).hasMax(4);
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's maximum value.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<1>");
         }
         try {
             initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{2, 1}, 1), "Message").hasMax(4);
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's maximum value.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<1>");
         }
@@ -1029,67 +1029,67 @@ public final class IntBufferAggregateAssertionTest extends AssertionTest {
 
         try {
             Raw.intBufferAssertion().hasMax(Integer.valueOf("0"));
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.intBufferAssertion(), null).hasMax(Integer.valueOf("0"));
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.intBufferAssertion(), null, "Message").hasMax(Integer.valueOf("0"));
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.intBufferAssertion(), null).hasMax(null);
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.intBufferAssertion(), null, "Message").hasMax(null);
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1})).hasMax(null);
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's maximum value.\n\tActual value should be null.\n\tActual:<1>");
         }
         try {
             initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1}), "Message").hasMax(null);
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's maximum value.\n\tActual value should be null.\n\tActual:<1>");
         }
         try {
             initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{2, 1})).hasMax(Integer.valueOf("4"));
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's maximum value.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<2>");
         }
         try {
             initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{2, 1}), "Message").hasMax(Integer.valueOf("4"));
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's maximum value.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<2>");
         }
         try {
             initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{2, 1}, 1)).hasMax(Integer.valueOf("4"));
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's maximum value.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<1>");
         }
         try {
             initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{2, 1}, 1), "Message").hasMax(Integer.valueOf("4"));
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's maximum value.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<1>");
         }
@@ -1112,43 +1112,43 @@ public final class IntBufferAggregateAssertionTest extends AssertionTest {
 
         try {
             Raw.intBufferAssertion().hasRewindAndMax(0);
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.intBufferAssertion(), null).hasRewindAndMax(0);
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.intBufferAssertion(), null, "Message").hasRewindAndMax(0);
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{2, 1})).hasRewindAndMax(4);
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's maximum value.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<2>");
         }
         try {
             initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{2, 1}), "Message").hasRewindAndMax(4);
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's maximum value.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<2>");
         }
         try {
             initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{2, 1}, 1)).hasRewindAndMax(4);
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's maximum value.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<2>");
         }
         try {
             initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{2, 1}, 1), "Message").hasRewindAndMax(4);
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's maximum value.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<2>");
         }
@@ -1172,67 +1172,67 @@ public final class IntBufferAggregateAssertionTest extends AssertionTest {
 
         try {
             Raw.intBufferAssertion().hasRewindAndMax(Integer.valueOf("0"));
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.intBufferAssertion(), null).hasRewindAndMax(Integer.valueOf("0"));
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.intBufferAssertion(), null, "Message").hasRewindAndMax(Integer.valueOf("0"));
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.intBufferAssertion(), null).hasRewindAndMax(null);
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.intBufferAssertion(), null, "Message").hasRewindAndMax(null);
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1})).hasRewindAndMax(null);
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's maximum value.\n\tActual value should be null.\n\tActual:<1>");
         }
         try {
             initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{1}), "Message").hasRewindAndMax(null);
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's maximum value.\n\tActual value should be null.\n\tActual:<1>");
         }
         try {
             initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{2, 1})).hasRewindAndMax(Integer.valueOf("4"));
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's maximum value.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<2>");
         }
         try {
             initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{2, 1}), "Message").hasRewindAndMax(Integer.valueOf("4"));
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's maximum value.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<2>");
         }
         try {
             initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{2, 1}, 1)).hasRewindAndMax(Integer.valueOf("4"));
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's maximum value.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<2>");
         }
         try {
             initialize(Raw.intBufferAssertion(), createIntBuffer(new int[]{2, 1}, 1), "Message").hasRewindAndMax(Integer.valueOf("4"));
-            Assertions.fail("IntBufferAssertion test fail");
+            Assertions.fail(IntBufferAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's maximum value.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<2>");
         }
