@@ -56,6 +56,32 @@ public final class IteratorAssertion<E> extends ReferenceAssertion<IteratorAsser
     }
 
     /**
+     * Check if the actual value has next value.
+     *
+     * @return current object for the chain call.
+     */
+    public IteratorAssertion<E> hasNextValue() {
+        checkActualIsNotNull();
+        if (!getActual().hasNext()) {
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.HAS_NEXT_VALUE).build();
+        }
+        return this;
+    }
+
+    /**
+     * Check if the actual value does not have next value.
+     *
+     * @return current object for the chain call.
+     */
+    public IteratorAssertion<E> doesNotHaveNextValue() {
+        checkActualIsNotNull();
+        if (getActual().hasNext()) {
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.DOES_NOT_HAVE_NEXT_VALUE).build();
+        }
+        return this;
+    }
+
+    /**
      * Check if the actual value does not contain any more elements.
      *
      * @return current object for the chain call.
