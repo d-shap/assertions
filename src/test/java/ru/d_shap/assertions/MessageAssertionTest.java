@@ -1643,25 +1643,25 @@ public final class MessageAssertionTest extends AssertionTest {
 
         try {
             Assertions.assertWithMessage(null).that(DataHelper.createDate(2020, Calendar.JULY, 11, 15, 23, 47)).hasDateAndTime(2019, Calendar.AUGUST, 11, 15, 23, 45, 0);
-            Assertions.fail("Assertions test fail");
+            Assertions.fail(MessageAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's year.\n\tActual and expected values should be the same.\n\tExpected:<2019> but was:<2020>");
         }
         try {
             Assertions.assertWithMessage("").that(DataHelper.createDate(2020, Calendar.JULY, 11, 15, 23, 47)).hasDateAndTime(2019, Calendar.AUGUST, 11, 15, 23, 45, 0);
-            Assertions.fail("Assertions test fail");
+            Assertions.fail(MessageAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's year.\n\tActual and expected values should be the same.\n\tExpected:<2019> but was:<2020>");
         }
         try {
             Assertions.assertWithMessage("Test message").that(DataHelper.createDate(2020, Calendar.JULY, 11, 15, 23, 47)).hasDateAndTime(2019, Calendar.AUGUST, 11, 15, 23, 45, 0);
-            Assertions.fail("Assertions test fail");
+            Assertions.fail(MessageAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message.\n\tCheck actual value's year.\n\tActual and expected values should be the same.\n\tExpected:<2019> but was:<2020>");
         }
         try {
             Assertions.assertWithMessage("value''s.").that(DataHelper.createDate(2020, Calendar.JULY, 11, 15, 23, 47)).hasDateAndTime(2019, Calendar.AUGUST, 11, 15, 23, 45, 0);
-            Assertions.fail("Assertions test fail");
+            Assertions.fail(MessageAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("value''s.\n\tCheck actual value's year.\n\tActual and expected values should be the same.\n\tExpected:<2019> but was:<2020>");
         }
@@ -1682,25 +1682,25 @@ public final class MessageAssertionTest extends AssertionTest {
 
         try {
             Assertions.assertWithMessage(null).that(DataHelper.createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "Europe/Berlin")).hasUtcDateAndTime(2019, Calendar.AUGUST, 11, 13, 23, 45, 0);
-            Assertions.fail("Assertions test fail");
+            Assertions.fail(MessageAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's date in time zone: UTC.\n\tCheck actual value's year.\n\tActual and expected values should be the same.\n\tExpected:<2019> but was:<2020>");
         }
         try {
             Assertions.assertWithMessage("").that(DataHelper.createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "Europe/Berlin")).hasUtcDateAndTime(2019, Calendar.AUGUST, 11, 13, 23, 45, 0);
-            Assertions.fail("Assertions test fail");
+            Assertions.fail(MessageAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's date in time zone: UTC.\n\tCheck actual value's year.\n\tActual and expected values should be the same.\n\tExpected:<2019> but was:<2020>");
         }
         try {
             Assertions.assertWithMessage("Test message").that(DataHelper.createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "Europe/Berlin")).hasUtcDateAndTime(2019, Calendar.AUGUST, 11, 13, 23, 45, 0);
-            Assertions.fail("Assertions test fail");
+            Assertions.fail(MessageAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message.\n\tCheck actual value's date in time zone: UTC.\n\tCheck actual value's year.\n\tActual and expected values should be the same.\n\tExpected:<2019> but was:<2020>");
         }
         try {
             Assertions.assertWithMessage("value''s.").that(DataHelper.createCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "Europe/Berlin")).hasUtcDateAndTime(2019, Calendar.AUGUST, 11, 13, 23, 45, 0);
-            Assertions.fail("Assertions test fail");
+            Assertions.fail(MessageAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("value''s.\n\tCheck actual value's date in time zone: UTC.\n\tCheck actual value's year.\n\tActual and expected values should be the same.\n\tExpected:<2019> but was:<2020>");
         }
@@ -2189,25 +2189,25 @@ public final class MessageAssertionTest extends AssertionTest {
 
         try {
             Assertions.assertWithMessage(null).that(DataHelper.createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "Europe/Berlin")).hasUtcDateAndTime(2019, Calendar.AUGUST, 11, 13, 23, 45, 0);
-            Assertions.fail("Assertions test fail");
+            Assertions.fail(MessageAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's date in time zone: UTC.\n\tCheck actual value's year.\n\tActual and expected values should be the same.\n\tExpected:<2019> but was:<2020>");
         }
         try {
             Assertions.assertWithMessage("").that(DataHelper.createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "Europe/Berlin")).hasUtcDateAndTime(2019, Calendar.AUGUST, 11, 13, 23, 45, 0);
-            Assertions.fail("Assertions test fail");
+            Assertions.fail(MessageAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's date in time zone: UTC.\n\tCheck actual value's year.\n\tActual and expected values should be the same.\n\tExpected:<2019> but was:<2020>");
         }
         try {
             Assertions.assertWithMessage("Test message").that(DataHelper.createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "Europe/Berlin")).hasUtcDateAndTime(2019, Calendar.AUGUST, 11, 13, 23, 45, 0);
-            Assertions.fail("Assertions test fail");
+            Assertions.fail(MessageAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message.\n\tCheck actual value's date in time zone: UTC.\n\tCheck actual value's year.\n\tActual and expected values should be the same.\n\tExpected:<2019> but was:<2020>");
         }
         try {
             Assertions.assertWithMessage("value''s.").that(DataHelper.createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47, "Europe/Berlin")).hasUtcDateAndTime(2019, Calendar.AUGUST, 11, 13, 23, 45, 0);
-            Assertions.fail("Assertions test fail");
+            Assertions.fail(MessageAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("value''s.\n\tCheck actual value's date in time zone: UTC.\n\tCheck actual value's year.\n\tActual and expected values should be the same.\n\tExpected:<2019> but was:<2020>");
         }
@@ -2459,7 +2459,7 @@ public final class MessageAssertionTest extends AssertionTest {
 
         try {
             Assertions.assertThat(Assertions.assertWithMessage(null).and(createAssertionInvoker(1, 0)));
-            Assertions.fail("Assertions test fail");
+            Assertions.fail(MessageAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("AND predicate failed.");
             Assertions.assertThat(ex).hasSuppressed(AssertionError.class);
@@ -2467,7 +2467,7 @@ public final class MessageAssertionTest extends AssertionTest {
         }
         try {
             Assertions.assertThat(Assertions.assertWithMessage("").and(createAssertionInvoker(1, 0)));
-            Assertions.fail("Assertions test fail");
+            Assertions.fail(MessageAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("AND predicate failed.");
             Assertions.assertThat(ex).hasSuppressed(AssertionError.class);
@@ -2475,7 +2475,7 @@ public final class MessageAssertionTest extends AssertionTest {
         }
         try {
             Assertions.assertThat(Assertions.assertWithMessage("Test message").and(createAssertionInvoker(1, 0)));
-            Assertions.fail("Assertions test fail");
+            Assertions.fail(MessageAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message.\n\tAND predicate failed.");
             Assertions.assertThat(ex).hasSuppressed(AssertionError.class);
@@ -2483,7 +2483,7 @@ public final class MessageAssertionTest extends AssertionTest {
         }
         try {
             Assertions.assertThat(Assertions.assertWithMessage("value''s.").and(createAssertionInvoker(1, 0)));
-            Assertions.fail("Assertions test fail");
+            Assertions.fail(MessageAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("value''s.\n\tAND predicate failed.");
             Assertions.assertThat(ex).hasSuppressed(AssertionError.class);
@@ -2491,7 +2491,7 @@ public final class MessageAssertionTest extends AssertionTest {
         }
         try {
             Assertions.assertThat(Assertions.assertWithMessage("Test message").and(createAssertionInvoker("Message", 1, 0)));
-            Assertions.fail("Assertions test fail");
+            Assertions.fail(MessageAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message.\n\tAND predicate failed.");
             Assertions.assertThat(ex).hasSuppressed(AssertionError.class);
@@ -2499,7 +2499,7 @@ public final class MessageAssertionTest extends AssertionTest {
         }
         try {
             Assertions.assertThat(Assertions.assertWithMessage("Test message").and(createAssertionInvoker(1, 0), createAssertionInvoker(2, 2)));
-            Assertions.fail("Assertions test fail");
+            Assertions.fail(MessageAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message.\n\tAND predicate failed.");
             Assertions.assertThat(ex).hasSuppressed(AssertionError.class);
@@ -2507,7 +2507,7 @@ public final class MessageAssertionTest extends AssertionTest {
         }
         try {
             Assertions.assertThat(Assertions.assertWithMessage("Test message").and(createAssertionInvoker(1, 1), createAssertionInvoker(2, 0)));
-            Assertions.fail("Assertions test fail");
+            Assertions.fail(MessageAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message.\n\tAND predicate failed.");
             Assertions.assertThat(ex).hasSuppressed(AssertionError.class);
@@ -2515,7 +2515,7 @@ public final class MessageAssertionTest extends AssertionTest {
         }
         try {
             Assertions.assertThat(Assertions.assertWithMessage("Test message").and(createAssertionInvoker(1, 0), createAssertionInvoker(2, 0)));
-            Assertions.fail("Assertions test fail");
+            Assertions.fail(MessageAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message.\n\tAND predicate failed.");
             Assertions.assertThat(ex).hasSuppressed(AssertionError.class, AssertionError.class);
@@ -2524,7 +2524,7 @@ public final class MessageAssertionTest extends AssertionTest {
         }
         try {
             Assertions.assertThat(Assertions.assertWithMessage("Test message").and(createAssertionInvoker(1, 0), createAssertionInvoker(2, 2), createAssertionInvoker(3, 3)));
-            Assertions.fail("Assertions test fail");
+            Assertions.fail(MessageAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message.\n\tAND predicate failed.");
             Assertions.assertThat(ex).hasSuppressed(AssertionError.class);
@@ -2532,7 +2532,7 @@ public final class MessageAssertionTest extends AssertionTest {
         }
         try {
             Assertions.assertThat(Assertions.assertWithMessage("Test message").and(createAssertionInvoker(1, 1), createAssertionInvoker(2, 0), createAssertionInvoker(3, 3)));
-            Assertions.fail("Assertions test fail");
+            Assertions.fail(MessageAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message.\n\tAND predicate failed.");
             Assertions.assertThat(ex).hasSuppressed(AssertionError.class);
@@ -2540,7 +2540,7 @@ public final class MessageAssertionTest extends AssertionTest {
         }
         try {
             Assertions.assertThat(Assertions.assertWithMessage("Test message").and(createAssertionInvoker(1, 1), createAssertionInvoker(2, 2), createAssertionInvoker(3, 0)));
-            Assertions.fail("Assertions test fail");
+            Assertions.fail(MessageAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message.\n\tAND predicate failed.");
             Assertions.assertThat(ex).hasSuppressed(AssertionError.class);
@@ -2548,7 +2548,7 @@ public final class MessageAssertionTest extends AssertionTest {
         }
         try {
             Assertions.assertThat(Assertions.assertWithMessage("Test message").and(createAssertionInvoker(1, 0), createAssertionInvoker(2, 0), createAssertionInvoker(3, 3)));
-            Assertions.fail("Assertions test fail");
+            Assertions.fail(MessageAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message.\n\tAND predicate failed.");
             Assertions.assertThat(ex).hasSuppressed(AssertionError.class, AssertionError.class);
@@ -2557,7 +2557,7 @@ public final class MessageAssertionTest extends AssertionTest {
         }
         try {
             Assertions.assertThat(Assertions.assertWithMessage("Test message").and(createAssertionInvoker(1, 0), createAssertionInvoker(2, 2), createAssertionInvoker(3, 0)));
-            Assertions.fail("Assertions test fail");
+            Assertions.fail(MessageAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message.\n\tAND predicate failed.");
             Assertions.assertThat(ex).hasSuppressed(AssertionError.class, AssertionError.class);
@@ -2566,7 +2566,7 @@ public final class MessageAssertionTest extends AssertionTest {
         }
         try {
             Assertions.assertThat(Assertions.assertWithMessage("Test message").and(createAssertionInvoker(1, 1), createAssertionInvoker(2, 0), createAssertionInvoker(3, 0)));
-            Assertions.fail("Assertions test fail");
+            Assertions.fail(MessageAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message.\n\tAND predicate failed.");
             Assertions.assertThat(ex).hasSuppressed(AssertionError.class, AssertionError.class);
@@ -2575,7 +2575,7 @@ public final class MessageAssertionTest extends AssertionTest {
         }
         try {
             Assertions.assertThat(Assertions.assertWithMessage("Test message").and(createAssertionInvoker(1, 0), createAssertionInvoker(2, 0), createAssertionInvoker(3, 0)));
-            Assertions.fail("Assertions test fail");
+            Assertions.fail(MessageAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message.\n\tAND predicate failed.");
             Assertions.assertThat(ex).hasSuppressed(AssertionError.class, AssertionError.class, AssertionError.class);
@@ -2605,7 +2605,7 @@ public final class MessageAssertionTest extends AssertionTest {
 
         try {
             Assertions.assertThat(Assertions.assertWithMessage(null).or(createAssertionInvoker(1, 0)));
-            Assertions.fail("Assertions test fail");
+            Assertions.fail(MessageAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("OR predicate failed.");
             Assertions.assertThat(ex).hasSuppressed(AssertionError.class);
@@ -2613,7 +2613,7 @@ public final class MessageAssertionTest extends AssertionTest {
         }
         try {
             Assertions.assertThat(Assertions.assertWithMessage("").or(createAssertionInvoker(1, 0)));
-            Assertions.fail("Assertions test fail");
+            Assertions.fail(MessageAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("OR predicate failed.");
             Assertions.assertThat(ex).hasSuppressed(AssertionError.class);
@@ -2621,7 +2621,7 @@ public final class MessageAssertionTest extends AssertionTest {
         }
         try {
             Assertions.assertThat(Assertions.assertWithMessage("Test message").or(createAssertionInvoker(1, 0)));
-            Assertions.fail("Assertions test fail");
+            Assertions.fail(MessageAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message.\n\tOR predicate failed.");
             Assertions.assertThat(ex).hasSuppressed(AssertionError.class);
@@ -2629,7 +2629,7 @@ public final class MessageAssertionTest extends AssertionTest {
         }
         try {
             Assertions.assertThat(Assertions.assertWithMessage("value''s.").or(createAssertionInvoker(1, 0)));
-            Assertions.fail("Assertions test fail");
+            Assertions.fail(MessageAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("value''s.\n\tOR predicate failed.");
             Assertions.assertThat(ex).hasSuppressed(AssertionError.class);
@@ -2637,7 +2637,7 @@ public final class MessageAssertionTest extends AssertionTest {
         }
         try {
             Assertions.assertThat(Assertions.assertWithMessage("Test message").or(createAssertionInvoker("Message", 1, 0)));
-            Assertions.fail("Assertions test fail");
+            Assertions.fail(MessageAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message.\n\tOR predicate failed.");
             Assertions.assertThat(ex).hasSuppressed(AssertionError.class);
@@ -2645,7 +2645,7 @@ public final class MessageAssertionTest extends AssertionTest {
         }
         try {
             Assertions.assertThat(Assertions.assertWithMessage("Test message").or(createAssertionInvoker(1, 0), createAssertionInvoker(2, 0)));
-            Assertions.fail("Assertions test fail");
+            Assertions.fail(MessageAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message.\n\tOR predicate failed.");
             Assertions.assertThat(ex).hasSuppressed(AssertionError.class, AssertionError.class);
@@ -2654,7 +2654,7 @@ public final class MessageAssertionTest extends AssertionTest {
         }
         try {
             Assertions.assertThat(Assertions.assertWithMessage("Test message").or(createAssertionInvoker(1, 0), createAssertionInvoker(2, 0), createAssertionInvoker(3, 0)));
-            Assertions.fail("Assertions test fail");
+            Assertions.fail(MessageAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message.\n\tOR predicate failed.");
             Assertions.assertThat(ex).hasSuppressed(AssertionError.class, AssertionError.class, AssertionError.class);
@@ -2680,7 +2680,7 @@ public final class MessageAssertionTest extends AssertionTest {
 
         try {
             Assertions.assertThat(Assertions.assertWithMessage(null).xor(createAssertionInvoker(1, 0)));
-            Assertions.fail("Assertions test fail");
+            Assertions.fail(MessageAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("XOR predicate failed.");
             Assertions.assertThat(ex).hasSuppressed(AssertionError.class);
@@ -2688,7 +2688,7 @@ public final class MessageAssertionTest extends AssertionTest {
         }
         try {
             Assertions.assertThat(Assertions.assertWithMessage("").xor(createAssertionInvoker(1, 0)));
-            Assertions.fail("Assertions test fail");
+            Assertions.fail(MessageAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("XOR predicate failed.");
             Assertions.assertThat(ex).hasSuppressed(AssertionError.class);
@@ -2696,7 +2696,7 @@ public final class MessageAssertionTest extends AssertionTest {
         }
         try {
             Assertions.assertThat(Assertions.assertWithMessage("Test message").xor(createAssertionInvoker(1, 0)));
-            Assertions.fail("Assertions test fail");
+            Assertions.fail(MessageAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message.\n\tXOR predicate failed.");
             Assertions.assertThat(ex).hasSuppressed(AssertionError.class);
@@ -2704,7 +2704,7 @@ public final class MessageAssertionTest extends AssertionTest {
         }
         try {
             Assertions.assertThat(Assertions.assertWithMessage("value''s.").xor(createAssertionInvoker(1, 0)));
-            Assertions.fail("Assertions test fail");
+            Assertions.fail(MessageAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("value''s.\n\tXOR predicate failed.");
             Assertions.assertThat(ex).hasSuppressed(AssertionError.class);
@@ -2712,7 +2712,7 @@ public final class MessageAssertionTest extends AssertionTest {
         }
         try {
             Assertions.assertThat(Assertions.assertWithMessage("Test message").xor(createAssertionInvoker("Message", 1, 0)));
-            Assertions.fail("Assertions test fail");
+            Assertions.fail(MessageAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message.\n\tXOR predicate failed.");
             Assertions.assertThat(ex).hasSuppressed(AssertionError.class);
@@ -2720,14 +2720,14 @@ public final class MessageAssertionTest extends AssertionTest {
         }
         try {
             Assertions.assertThat(Assertions.assertWithMessage("Test message").xor(createAssertionInvoker(1, 1), createAssertionInvoker(2, 2)));
-            Assertions.fail("Assertions test fail");
+            Assertions.fail(MessageAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message.\n\tXOR predicate failed.");
             Assertions.assertThat(ex).hasSuppressed();
         }
         try {
             Assertions.assertThat(Assertions.assertWithMessage("Test message").xor(createAssertionInvoker(1, 0), createAssertionInvoker(2, 0)));
-            Assertions.fail("Assertions test fail");
+            Assertions.fail(MessageAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message.\n\tXOR predicate failed.");
             Assertions.assertThat(ex).hasSuppressed(AssertionError.class, AssertionError.class);
@@ -2736,7 +2736,7 @@ public final class MessageAssertionTest extends AssertionTest {
         }
         try {
             Assertions.assertThat(Assertions.assertWithMessage("Test message").xor(createAssertionInvoker(1, 0), createAssertionInvoker(2, 2), createAssertionInvoker(3, 3)));
-            Assertions.fail("Assertions test fail");
+            Assertions.fail(MessageAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message.\n\tXOR predicate failed.");
             Assertions.assertThat(ex).hasSuppressed(AssertionError.class);
@@ -2744,7 +2744,7 @@ public final class MessageAssertionTest extends AssertionTest {
         }
         try {
             Assertions.assertThat(Assertions.assertWithMessage("Test message").xor(createAssertionInvoker(1, 1), createAssertionInvoker(2, 0), createAssertionInvoker(3, 3)));
-            Assertions.fail("Assertions test fail");
+            Assertions.fail(MessageAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message.\n\tXOR predicate failed.");
             Assertions.assertThat(ex).hasSuppressed(AssertionError.class);
@@ -2752,7 +2752,7 @@ public final class MessageAssertionTest extends AssertionTest {
         }
         try {
             Assertions.assertThat(Assertions.assertWithMessage("Test message").xor(createAssertionInvoker(1, 1), createAssertionInvoker(2, 2), createAssertionInvoker(3, 0)));
-            Assertions.fail("Assertions test fail");
+            Assertions.fail(MessageAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message.\n\tXOR predicate failed.");
             Assertions.assertThat(ex).hasSuppressed(AssertionError.class);
@@ -2760,7 +2760,7 @@ public final class MessageAssertionTest extends AssertionTest {
         }
         try {
             Assertions.assertThat(Assertions.assertWithMessage("Test message").xor(createAssertionInvoker(1, 0), createAssertionInvoker(2, 0), createAssertionInvoker(3, 0)));
-            Assertions.fail("Assertions test fail");
+            Assertions.fail(MessageAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message.\n\tXOR predicate failed.");
             Assertions.assertThat(ex).hasSuppressed(AssertionError.class, AssertionError.class, AssertionError.class);
@@ -2779,35 +2779,35 @@ public final class MessageAssertionTest extends AssertionTest {
 
         try {
             Assertions.assertThat(Assertions.assertWithMessage(null).not(createAssertionInvoker(1, 1)));
-            Assertions.fail("Assertions test fail");
+            Assertions.fail(MessageAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("NOT predicate failed.");
             Assertions.assertThat(ex).hasSuppressed();
         }
         try {
             Assertions.assertThat(Assertions.assertWithMessage("").not(createAssertionInvoker(1, 1)));
-            Assertions.fail("Assertions test fail");
+            Assertions.fail(MessageAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("NOT predicate failed.");
             Assertions.assertThat(ex).hasSuppressed();
         }
         try {
             Assertions.assertThat(Assertions.assertWithMessage("Test message").not(createAssertionInvoker(1, 1)));
-            Assertions.fail("Assertions test fail");
+            Assertions.fail(MessageAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message.\n\tNOT predicate failed.");
             Assertions.assertThat(ex).hasSuppressed();
         }
         try {
             Assertions.assertThat(Assertions.assertWithMessage("value''s.").not(createAssertionInvoker(1, 1)));
-            Assertions.fail("Assertions test fail");
+            Assertions.fail(MessageAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("value''s.\n\tNOT predicate failed.");
             Assertions.assertThat(ex).hasSuppressed();
         }
         try {
             Assertions.assertThat(Assertions.assertWithMessage("Test message").not(createAssertionInvoker("Message", 1, 1)));
-            Assertions.fail("Assertions test fail");
+            Assertions.fail(MessageAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Test message.\n\tNOT predicate failed.");
             Assertions.assertThat(ex).hasSuppressed();
