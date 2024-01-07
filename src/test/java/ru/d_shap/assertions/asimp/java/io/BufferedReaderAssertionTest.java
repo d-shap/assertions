@@ -54,13 +54,13 @@ public final class BufferedReaderAssertionTest extends AssertionTest {
 
         try {
             initializeWithRawActual(Raw.bufferedReaderAssertion(), new Object());
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should match the assertion.\n\tActual value should be the instance of the expected class.\n\tExpected:<java.io.BufferedReader> but was:<java.lang.Object>");
         }
         try {
             initializeWithRawActual(Raw.bufferedReaderAssertion(), new Object(), "Message");
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should match the assertion.\n\tActual value should be the instance of the expected class.\n\tExpected:<java.io.BufferedReader> but was:<java.lang.Object>");
         }
@@ -83,55 +83,55 @@ public final class BufferedReaderAssertionTest extends AssertionTest {
 
         try {
             Raw.bufferedReaderAssertion().isCompleted();
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), null).isCompleted();
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), null, "Message").isCompleted();
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), DataHelper.createReaderBuilder().setReadException("read exception").buildBufferedReader()).isCompleted();
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("java.io.IOException: read exception.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), DataHelper.createReaderBuilder().setReadException("read exception").buildBufferedReader(), "Message").isCompleted();
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tjava.io.IOException: read exception.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("\u0000\u0000"))).isCompleted();
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be completed.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("\u0000\u0000")), "Message").isCompleted();
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be completed.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("123"))).isCompleted();
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be completed.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("123")), "Message").isCompleted();
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be completed.");
         }
@@ -153,43 +153,43 @@ public final class BufferedReaderAssertionTest extends AssertionTest {
 
         try {
             Raw.bufferedReaderAssertion().isNotCompleted();
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), null).isNotCompleted();
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), null, "Message").isNotCompleted();
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), DataHelper.createReaderBuilder().setReadException("read exception").buildBufferedReader()).isNotCompleted();
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("java.io.IOException: read exception.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), DataHelper.createReaderBuilder().setReadException("read exception").buildBufferedReader(), "Message").isNotCompleted();
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tjava.io.IOException: read exception.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader(""))).isNotCompleted();
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be completed.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("")), "Message").isNotCompleted();
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be completed.");
         }
@@ -205,55 +205,55 @@ public final class BufferedReaderAssertionTest extends AssertionTest {
 
         try {
             Raw.bufferedReaderAssertion().toCharArray();
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), null).toCharArray();
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), null, "Message").toCharArray();
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), DataHelper.createReaderBuilder().setReadException("read exception").buildBufferedReader()).toCharArray();
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("java.io.IOException: read exception.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), DataHelper.createReaderBuilder().setReadException("read exception").buildBufferedReader(), "Message").toCharArray();
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tjava.io.IOException: read exception.");
         }
         try {
             clearActual(initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("123"))).toCharArray()).containsExactlyInOrder('1');
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check all actual value's chars.\n\tActual value should not be null.");
         }
         try {
             clearActual(initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("123")), "Message").toCharArray()).containsExactlyInOrder('1');
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck all actual value's chars.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("123"))).toCharArray().containsExactlyInOrder('1', '2');
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check all actual value's chars.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1(49), 2(50)]> but was:<[1(49), 2(50), 3(51)]>");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("123")), "Message").toCharArray().containsExactlyInOrder('1', '2');
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck all actual value's chars.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1(49), 2(50)]> but was:<[1(49), 2(50), 3(51)]>");
         }
@@ -272,91 +272,91 @@ public final class BufferedReaderAssertionTest extends AssertionTest {
 
         try {
             Raw.bufferedReaderAssertion().toCharArray(1);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), null).toCharArray(1);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), null, "Message").toCharArray(1);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), null).toCharArray(0);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), null, "Message").toCharArray(0);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader(""))).toCharArray(0);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should be valid: count.\n\tThe argument's value should be greater than zero.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("")), "Message").toCharArray(0);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: count.\n\tThe argument's value should be greater than zero.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader(""))).toCharArray(-1);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should be valid: count.\n\tThe argument's value should be greater than zero.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("")), "Message").toCharArray(-1);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: count.\n\tThe argument's value should be greater than zero.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), DataHelper.createReaderBuilder().setReadException("read exception").buildBufferedReader()).toCharArray(3);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("java.io.IOException: read exception.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), DataHelper.createReaderBuilder().setReadException("read exception").buildBufferedReader(), "Message").toCharArray(3);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tjava.io.IOException: read exception.");
         }
         try {
             clearActual(initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("123"))).toCharArray(1)).containsExactlyInOrder('1');
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check next N actual value's chars: 1.\n\tActual value should not be null.");
         }
         try {
             clearActual(initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("123")), "Message").toCharArray(1)).containsExactlyInOrder('1');
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck next N actual value's chars: 1.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("123"))).toCharArray(4).containsExactlyInOrder('1', '2');
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check next N actual value's chars: 4.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1(49), 2(50)]> but was:<[1(49), 2(50), 3(51)]>");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("123")), "Message").toCharArray(4).containsExactlyInOrder('1', '2');
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck next N actual value's chars: 4.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1(49), 2(50)]> but was:<[1(49), 2(50), 3(51)]>");
         }
@@ -372,67 +372,67 @@ public final class BufferedReaderAssertionTest extends AssertionTest {
 
         try {
             Raw.bufferedReaderAssertion().toCharArray(Matchers.arrayContaining((char) 0));
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), null).toCharArray(Matchers.arrayContaining((char) 0));
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), null, "Message").toCharArray(Matchers.arrayContaining((char) 0));
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), null).toCharArray(null);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), null, "Message").toCharArray(null);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader(""))).toCharArray(null);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: matcher.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("")), "Message").toCharArray(null);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: matcher.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), DataHelper.createReaderBuilder().setReadException("read exception").buildBufferedReader()).toCharArray(Matchers.arrayContaining((char) 0));
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("java.io.IOException: read exception.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), DataHelper.createReaderBuilder().setReadException("read exception").buildBufferedReader(), "Message").toCharArray(Matchers.arrayContaining((char) 0));
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tjava.io.IOException: read exception.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("123"))).toCharArray(Matchers.arrayContaining('1', '2'));
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check all actual value's chars.\nExpected: [\"1\", \"2\"] \n     but: not matched: \"3\"");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("123")), "Message").toCharArray(Matchers.arrayContaining('1', '2'));
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck all actual value's chars.\nExpected: [\"1\", \"2\"] \n     but: not matched: \"3\"");
         }
@@ -451,103 +451,103 @@ public final class BufferedReaderAssertionTest extends AssertionTest {
 
         try {
             Raw.bufferedReaderAssertion().toCharArray(1, Matchers.arrayContaining((char) 0));
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), null).toCharArray(1, Matchers.arrayContaining((char) 0));
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), null, "Message").toCharArray(1, Matchers.arrayContaining((char) 0));
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), null).toCharArray(0, Matchers.arrayContaining((char) 0));
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), null, "Message").toCharArray(0, Matchers.arrayContaining((char) 0));
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader(""))).toCharArray(0, Matchers.arrayContaining((char) 0));
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should be valid: count.\n\tThe argument's value should be greater than zero.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("")), "Message").toCharArray(0, Matchers.arrayContaining((char) 0));
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: count.\n\tThe argument's value should be greater than zero.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader(""))).toCharArray(-1, Matchers.arrayContaining((char) 0));
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should be valid: count.\n\tThe argument's value should be greater than zero.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("")), "Message").toCharArray(-1, Matchers.arrayContaining((char) 0));
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: count.\n\tThe argument's value should be greater than zero.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader(""))).toCharArray(0, null);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should be valid: count.\n\tThe argument's value should be greater than zero.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("")), "Message").toCharArray(0, null);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: count.\n\tThe argument's value should be greater than zero.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader(""))).toCharArray(1, null);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: matcher.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("")), "Message").toCharArray(1, null);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: matcher.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), DataHelper.createReaderBuilder().setReadException("read exception").buildBufferedReader()).toCharArray(3, Matchers.arrayContaining((char) 0));
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("java.io.IOException: read exception.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), DataHelper.createReaderBuilder().setReadException("read exception").buildBufferedReader(), "Message").toCharArray(3, Matchers.arrayContaining((char) 0));
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tjava.io.IOException: read exception.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("123"))).toCharArray(4, Matchers.arrayContaining('1', '2'));
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check next N actual value's chars: 4.\nExpected: [\"1\", \"2\"] \n     but: not matched: \"3\"");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("123")), "Message").toCharArray(4, Matchers.arrayContaining('1', '2'));
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck next N actual value's chars: 4.\nExpected: [\"1\", \"2\"] \n     but: not matched: \"3\"");
         }
@@ -564,55 +564,55 @@ public final class BufferedReaderAssertionTest extends AssertionTest {
 
         try {
             Raw.bufferedReaderAssertion().toStringArray();
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), null).toStringArray();
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), null, "Message").toStringArray();
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), DataHelper.createReaderBuilder().setReadException("read exception").buildBufferedReader()).toStringArray();
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("java.io.IOException: read exception.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), DataHelper.createReaderBuilder().setReadException("read exception").buildBufferedReader(), "Message").toStringArray();
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tjava.io.IOException: read exception.");
         }
         try {
             clearActual(initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("1\n2\n3"))).toStringArray()).containsExactlyInOrder("1");
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check all actual value's lines.\n\tActual value should not be null.");
         }
         try {
             clearActual(initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("1\n2\n3")), "Message").toStringArray()).containsExactlyInOrder("1");
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck all actual value's lines.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("1\n2\n3"))).toStringArray().containsExactlyInOrder("1", "2");
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check all actual value's lines.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2]> but was:<[1, 2, 3]>");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("1\n2\n3")), "Message").toStringArray().containsExactlyInOrder("1", "2");
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck all actual value's lines.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2]> but was:<[1, 2, 3]>");
         }
@@ -637,91 +637,91 @@ public final class BufferedReaderAssertionTest extends AssertionTest {
 
         try {
             Raw.bufferedReaderAssertion().toStringArray(1);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), null).toStringArray(1);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), null, "Message").toStringArray(1);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), null).toStringArray(0);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), null, "Message").toStringArray(0);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader(""))).toStringArray(0);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should be valid: count.\n\tThe argument's value should be greater than zero.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("")), "Message").toStringArray(0);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: count.\n\tThe argument's value should be greater than zero.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader(""))).toStringArray(-1);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should be valid: count.\n\tThe argument's value should be greater than zero.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("")), "Message").toStringArray(-1);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: count.\n\tThe argument's value should be greater than zero.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), DataHelper.createReaderBuilder().setReadException("read exception").buildBufferedReader()).toStringArray(3);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("java.io.IOException: read exception.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), DataHelper.createReaderBuilder().setReadException("read exception").buildBufferedReader(), "Message").toStringArray(3);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tjava.io.IOException: read exception.");
         }
         try {
             clearActual(initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("1\n2\n3"))).toStringArray(1)).containsExactlyInOrder("1");
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check next N actual value's lines: 1.\n\tActual value should not be null.");
         }
         try {
             clearActual(initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("1\n2\n3")), "Message").toStringArray(1)).containsExactlyInOrder("1");
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck next N actual value's lines: 1.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("1\n2\n3"))).toStringArray(4).containsExactlyInOrder("1", "2");
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check next N actual value's lines: 4.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2]> but was:<[1, 2, 3]>");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("1\n2\n3")), "Message").toStringArray(4).containsExactlyInOrder("1", "2");
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck next N actual value's lines: 4.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2]> but was:<[1, 2, 3]>");
         }
@@ -738,67 +738,67 @@ public final class BufferedReaderAssertionTest extends AssertionTest {
 
         try {
             Raw.bufferedReaderAssertion().toStringArray(Matchers.arrayContaining(""));
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), null).toStringArray(Matchers.arrayContaining(""));
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), null, "Message").toStringArray(Matchers.arrayContaining(""));
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), null).toStringArray(null);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), null, "Message").toStringArray(null);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader(""))).toStringArray(null);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: matcher.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("")), "Message").toStringArray(null);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: matcher.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), DataHelper.createReaderBuilder().setReadException("read exception").buildBufferedReader()).toStringArray(Matchers.arrayContaining(""));
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("java.io.IOException: read exception.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), DataHelper.createReaderBuilder().setReadException("read exception").buildBufferedReader(), "Message").toStringArray(Matchers.arrayContaining(""));
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tjava.io.IOException: read exception.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("1\n2\n3"))).toStringArray(Matchers.arrayContaining("1", "2"));
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check all actual value's lines.\nExpected: [\"1\", \"2\"] \n     but: not matched: \"3\"");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("1\n2\n3")), "Message").toStringArray(Matchers.arrayContaining("1", "2"));
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck all actual value's lines.\nExpected: [\"1\", \"2\"] \n     but: not matched: \"3\"");
         }
@@ -823,103 +823,103 @@ public final class BufferedReaderAssertionTest extends AssertionTest {
 
         try {
             Raw.bufferedReaderAssertion().toStringArray(1, Matchers.arrayContaining(""));
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), null).toStringArray(1, Matchers.arrayContaining(""));
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), null, "Message").toStringArray(1, Matchers.arrayContaining(""));
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), null).toStringArray(0, Matchers.arrayContaining(""));
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), null, "Message").toStringArray(0, Matchers.arrayContaining(""));
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader(""))).toStringArray(0, Matchers.arrayContaining(""));
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should be valid: count.\n\tThe argument's value should be greater than zero.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("")), "Message").toStringArray(0, Matchers.arrayContaining(""));
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: count.\n\tThe argument's value should be greater than zero.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader(""))).toStringArray(-1, Matchers.arrayContaining(""));
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should be valid: count.\n\tThe argument's value should be greater than zero.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("")), "Message").toStringArray(-1, Matchers.arrayContaining(""));
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: count.\n\tThe argument's value should be greater than zero.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader(""))).toStringArray(0, null);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should be valid: count.\n\tThe argument's value should be greater than zero.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("")), "Message").toStringArray(0, null);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: count.\n\tThe argument's value should be greater than zero.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader(""))).toStringArray(1, null);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: matcher.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("")), "Message").toStringArray(1, null);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: matcher.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), DataHelper.createReaderBuilder().setReadException("read exception").buildBufferedReader()).toStringArray(3, Matchers.arrayContaining(""));
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("java.io.IOException: read exception.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), DataHelper.createReaderBuilder().setReadException("read exception").buildBufferedReader(), "Message").toStringArray(3, Matchers.arrayContaining(""));
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tjava.io.IOException: read exception.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("1\n2\n3"))).toStringArray(4, Matchers.arrayContaining("1", "2"));
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check next N actual value's lines: 4.\nExpected: [\"1\", \"2\"] \n     but: not matched: \"3\"");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("1\n2\n3")), "Message").toStringArray(4, Matchers.arrayContaining("1", "2"));
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck next N actual value's lines: 4.\nExpected: [\"1\", \"2\"] \n     but: not matched: \"3\"");
         }
@@ -937,31 +937,31 @@ public final class BufferedReaderAssertionTest extends AssertionTest {
 
         try {
             Raw.bufferedReaderAssertion().isNextCharEqualTo('1');
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), null).isNextCharEqualTo('1');
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), null, "Message").isNextCharEqualTo('1');
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("123"))).isNextCharEqualTo('2');
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check next N actual value's chars: 1.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2(50)]> but was:<[1(49)]>");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("123")), "Message").isNextCharEqualTo('2');
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck next N actual value's chars: 1.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2(50)]> but was:<[1(49)]>");
         }
@@ -979,85 +979,85 @@ public final class BufferedReaderAssertionTest extends AssertionTest {
 
         try {
             Raw.bufferedReaderAssertion().isNextCharsEqualTo('1');
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), null).isNextCharsEqualTo('1');
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), null, "Message").isNextCharsEqualTo('1');
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), null).isNextCharsEqualTo((char[]) null);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), null, "Message").isNextCharsEqualTo((char[]) null);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader(""))).isNextCharsEqualTo((char[]) null);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("")), "Message").isNextCharsEqualTo((char[]) null);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader(""))).isNextCharsEqualTo();
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("")), "Message").isNextCharsEqualTo();
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("123"))).isNextCharsEqualTo('1', '3');
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check next N actual value's chars: 2.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1(49), 3(51)]> but was:<[1(49), 2(50)]>");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("123"))).isNextCharsEqualTo('1', '2', '3', '4');
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check next N actual value's chars: 4.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1(49), 2(50), 3(51), 4(52)]> but was:<[1(49), 2(50), 3(51)]>");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader(""))).isNextCharsEqualTo('1', '2');
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check next N actual value's chars: 2.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1(49), 2(50)]> but was:<<EMPTY>>");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("\u0000\u0000"))).isNextCharsEqualTo((char) 0, (char) 0, (char) 0);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check next N actual value's chars: 3.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[ (0),  (0),  (0)]> but was:<[ (0),  (0)]>");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("\u0000\u0000")), "Message").isNextCharsEqualTo((char) 0, (char) 0, (char) 0);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck next N actual value's chars: 3.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[ (0),  (0),  (0)]> but was:<[ (0),  (0)]>");
         }
@@ -1075,85 +1075,85 @@ public final class BufferedReaderAssertionTest extends AssertionTest {
 
         try {
             Raw.bufferedReaderAssertion().isNextCharsEqualTo(49);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), null).isNextCharsEqualTo(49);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), null, "Message").isNextCharsEqualTo(49);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), null).isNextCharsEqualTo((int[]) null);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), null, "Message").isNextCharsEqualTo((int[]) null);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader(""))).isNextCharsEqualTo((int[]) null);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("")), "Message").isNextCharsEqualTo((int[]) null);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader(""))).isNextCharsEqualTo(new int[]{});
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("")), "Message").isNextCharsEqualTo(new int[]{});
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("123"))).isNextCharsEqualTo(49, 51);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check next N actual value's chars: 2.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1(49), 3(51)]> but was:<[1(49), 2(50)]>");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("123"))).isNextCharsEqualTo(49, 50, 51, 52);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check next N actual value's chars: 4.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1(49), 2(50), 3(51), 4(52)]> but was:<[1(49), 2(50), 3(51)]>");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader(""))).isNextCharsEqualTo(49, 50);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check next N actual value's chars: 2.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1(49), 2(50)]> but was:<<EMPTY>>");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("\u0000\u0000"))).isNextCharsEqualTo(0, 0, 0);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check next N actual value's chars: 3.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[ (0),  (0),  (0)]> but was:<[ (0),  (0)]>");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("\u0000\u0000")), "Message").isNextCharsEqualTo(0, 0, 0);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck next N actual value's chars: 3.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[ (0),  (0),  (0)]> but was:<[ (0),  (0)]>");
         }
@@ -1171,85 +1171,85 @@ public final class BufferedReaderAssertionTest extends AssertionTest {
 
         try {
             Raw.bufferedReaderAssertion().isNextCharsEqualTo(DataHelper.<Character>createIterable());
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), null).isNextCharsEqualTo(DataHelper.<Character>createIterable());
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), null, "Message").isNextCharsEqualTo(DataHelper.<Character>createIterable());
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), null).isNextCharsEqualTo((Iterable<Character>) null);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), null, "Message").isNextCharsEqualTo((Iterable<Character>) null);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader(""))).isNextCharsEqualTo((Iterable<Character>) null);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("")), "Message").isNextCharsEqualTo((Iterable<Character>) null);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader(""))).isNextCharsEqualTo(DataHelper.<Character>createIterable());
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("")), "Message").isNextCharsEqualTo(DataHelper.<Character>createIterable());
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("123"))).isNextCharsEqualTo(DataHelper.createIterable('1', '3'));
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check next N actual value's chars: 2.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1(49), 3(51)]> but was:<[1(49), 2(50)]>");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("123"))).isNextCharsEqualTo(DataHelper.createIterable('1', '2', '3', '4'));
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check next N actual value's chars: 4.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1(49), 2(50), 3(51), 4(52)]> but was:<[1(49), 2(50), 3(51)]>");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader(""))).isNextCharsEqualTo(DataHelper.createIterable('1', '2'));
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check next N actual value's chars: 2.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1(49), 2(50)]> but was:<<EMPTY>>");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("\u0000\u0000"))).isNextCharsEqualTo(DataHelper.createIterable((char) 0, (char) 0, (char) 0));
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check next N actual value's chars: 3.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[ (0),  (0),  (0)]> but was:<[ (0),  (0)]>");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("\u0000\u0000")), "Message").isNextCharsEqualTo(DataHelper.createIterable((char) 0, (char) 0, (char) 0));
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck next N actual value's chars: 3.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[ (0),  (0),  (0)]> but was:<[ (0),  (0)]>");
         }
@@ -1267,73 +1267,73 @@ public final class BufferedReaderAssertionTest extends AssertionTest {
 
         try {
             Raw.bufferedReaderAssertion().isAllCharsEqualTo('1');
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), null).isAllCharsEqualTo('1');
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), null, "Message").isAllCharsEqualTo('1');
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), null).isAllCharsEqualTo((char[]) null);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), null, "Message").isAllCharsEqualTo((char[]) null);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader(""))).isAllCharsEqualTo((char[]) null);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("")), "Message").isAllCharsEqualTo((char[]) null);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("123"))).isAllCharsEqualTo('1', '2');
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check all actual value's chars.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1(49), 2(50)]> but was:<[1(49), 2(50), 3(51)]>");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("123"))).isAllCharsEqualTo('1', '2', '4');
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check all actual value's chars.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1(49), 2(50), 4(52)]> but was:<[1(49), 2(50), 3(51)]>");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("123"))).isAllCharsEqualTo('1', '2', '3', '4');
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check all actual value's chars.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1(49), 2(50), 3(51), 4(52)]> but was:<[1(49), 2(50), 3(51)]>");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("\u0000\u0000\u0000"))).isAllCharsEqualTo((char) 0, (char) 0);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check all actual value's chars.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[ (0),  (0)]> but was:<[ (0),  (0),  (0)]>");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("\u0000\u0000\u0000")), "Message").isAllCharsEqualTo((char) 0, (char) 0);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck all actual value's chars.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[ (0),  (0)]> but was:<[ (0),  (0),  (0)]>");
         }
@@ -1351,73 +1351,73 @@ public final class BufferedReaderAssertionTest extends AssertionTest {
 
         try {
             Raw.bufferedReaderAssertion().isAllCharsEqualTo(49);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), null).isAllCharsEqualTo(49);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), null, "Message").isAllCharsEqualTo(49);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), null).isAllCharsEqualTo((int[]) null);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), null, "Message").isAllCharsEqualTo((int[]) null);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader(""))).isAllCharsEqualTo((int[]) null);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("")), "Message").isAllCharsEqualTo((int[]) null);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("123"))).isAllCharsEqualTo(49, 50);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check all actual value's chars.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1(49), 2(50)]> but was:<[1(49), 2(50), 3(51)]>");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("123"))).isAllCharsEqualTo(49, 50, 52);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check all actual value's chars.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1(49), 2(50), 4(52)]> but was:<[1(49), 2(50), 3(51)]>");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("123"))).isAllCharsEqualTo(49, 50, 51, 52);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check all actual value's chars.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1(49), 2(50), 3(51), 4(52)]> but was:<[1(49), 2(50), 3(51)]>");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("\u0000\u0000\u0000"))).isAllCharsEqualTo(0, 0);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check all actual value's chars.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[ (0),  (0)]> but was:<[ (0),  (0),  (0)]>");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("\u0000\u0000\u0000")), "Message").isAllCharsEqualTo(0, 0);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck all actual value's chars.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[ (0),  (0)]> but was:<[ (0),  (0),  (0)]>");
         }
@@ -1435,73 +1435,73 @@ public final class BufferedReaderAssertionTest extends AssertionTest {
 
         try {
             Raw.bufferedReaderAssertion().isAllCharsEqualTo(DataHelper.<Character>createIterable());
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), null).isAllCharsEqualTo(DataHelper.<Character>createIterable());
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), null, "Message").isAllCharsEqualTo(DataHelper.<Character>createIterable());
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), null).isAllCharsEqualTo((Iterable<Character>) null);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), null, "Message").isAllCharsEqualTo((Iterable<Character>) null);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader(""))).isAllCharsEqualTo((Iterable<Character>) null);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("")), "Message").isAllCharsEqualTo((Iterable<Character>) null);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("123"))).isAllCharsEqualTo(DataHelper.createIterable('1', '2'));
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check all actual value's chars.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1(49), 2(50)]> but was:<[1(49), 2(50), 3(51)]>");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("123"))).isAllCharsEqualTo(DataHelper.createIterable('1', '2', '4'));
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check all actual value's chars.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1(49), 2(50), 4(52)]> but was:<[1(49), 2(50), 3(51)]>");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("123"))).isAllCharsEqualTo(DataHelper.createIterable('1', '2', '3', '4'));
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check all actual value's chars.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1(49), 2(50), 3(51), 4(52)]> but was:<[1(49), 2(50), 3(51)]>");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("\u0000\u0000\u0000"))).isAllCharsEqualTo(DataHelper.createIterable((char) 0, (char) 0));
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check all actual value's chars.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[ (0),  (0)]> but was:<[ (0),  (0),  (0)]>");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("\u0000\u0000\u0000")), "Message").isAllCharsEqualTo(DataHelper.createIterable((char) 0, (char) 0));
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck all actual value's chars.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[ (0),  (0)]> but was:<[ (0),  (0),  (0)]>");
         }
@@ -1519,31 +1519,31 @@ public final class BufferedReaderAssertionTest extends AssertionTest {
 
         try {
             Raw.bufferedReaderAssertion().isNextLineEqualTo("");
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), null).isNextLineEqualTo("");
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), null, "Message").isNextLineEqualTo("");
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("1\n2\n3"))).isNextLineEqualTo("2");
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check next N actual value's lines: 1.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2]> but was:<[1]>");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("1\n2\n3")), "Message").isNextLineEqualTo("2");
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck next N actual value's lines: 1.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2]> but was:<[1]>");
         }
@@ -1562,85 +1562,85 @@ public final class BufferedReaderAssertionTest extends AssertionTest {
 
         try {
             Raw.bufferedReaderAssertion().isNextLinesEqualTo("");
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), null).isNextLinesEqualTo("");
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), null, "Message").isNextLinesEqualTo("");
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), null).isNextLinesEqualTo((String[]) null);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), null, "Message").isNextLinesEqualTo((String[]) null);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader(""))).isNextLinesEqualTo((String[]) null);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("")), "Message").isNextLinesEqualTo((String[]) null);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader(""))).isNextLinesEqualTo();
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("")), "Message").isNextLinesEqualTo();
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("1\n2\n3"))).isNextLinesEqualTo("1", "3");
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check next N actual value's lines: 2.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 3]> but was:<[1, 2]>");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("1\n2\n3"))).isNextLinesEqualTo("1", "2", "3", "4");
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check next N actual value's lines: 4.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2, 3, 4]> but was:<[1, 2, 3]>");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader(""))).isNextLinesEqualTo("1", "2");
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check next N actual value's lines: 2.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2]> but was:<<EMPTY>>");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("\u0000\n\u0000"))).isNextLinesEqualTo("\u0000", "\u0000", "\u0000");
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check next N actual value's lines: 3.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[\u0000, \u0000, \u0000]> but was:<[\u0000, \u0000]>");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("\u0000\n\u0000")), "Message").isNextLinesEqualTo("\u0000", "\u0000", "\u0000");
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck next N actual value's lines: 3.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[\u0000, \u0000, \u0000]> but was:<[\u0000, \u0000]>");
         }
@@ -1659,85 +1659,85 @@ public final class BufferedReaderAssertionTest extends AssertionTest {
 
         try {
             Raw.bufferedReaderAssertion().isNextLinesEqualTo(DataHelper.<String>createIterable());
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), null).isNextLinesEqualTo(DataHelper.<String>createIterable());
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), null, "Message").isNextLinesEqualTo(DataHelper.<String>createIterable());
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), null).isNextLinesEqualTo((Iterable<String>) null);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), null, "Message").isNextLinesEqualTo((Iterable<String>) null);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader(""))).isNextLinesEqualTo((Iterable<String>) null);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("")), "Message").isNextLinesEqualTo((Iterable<String>) null);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader(""))).isNextLinesEqualTo(DataHelper.<String>createIterable());
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("")), "Message").isNextLinesEqualTo(DataHelper.<String>createIterable());
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("1\n2\n3"))).isNextLinesEqualTo(DataHelper.createIterable("1", "3"));
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check next N actual value's lines: 2.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 3]> but was:<[1, 2]>");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("1\n2\n3"))).isNextLinesEqualTo(DataHelper.createIterable("1", "2", "3", "4"));
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check next N actual value's lines: 4.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2, 3, 4]> but was:<[1, 2, 3]>");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader(""))).isNextLinesEqualTo(DataHelper.createIterable("1", "2"));
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check next N actual value's lines: 2.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2]> but was:<<EMPTY>>");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("\u0000\n\u0000"))).isNextLinesEqualTo(DataHelper.createIterable("\u0000", "\u0000", "\u0000"));
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check next N actual value's lines: 3.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[\u0000, \u0000, \u0000]> but was:<[\u0000, \u0000]>");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("\u0000\n\u0000")), "Message").isNextLinesEqualTo(DataHelper.createIterable("\u0000", "\u0000", "\u0000"));
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck next N actual value's lines: 3.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[\u0000, \u0000, \u0000]> but was:<[\u0000, \u0000]>");
         }
@@ -1756,73 +1756,73 @@ public final class BufferedReaderAssertionTest extends AssertionTest {
 
         try {
             Raw.bufferedReaderAssertion().isAllLinesEqualTo("");
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), null).isAllLinesEqualTo("");
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), null, "Message").isAllLinesEqualTo("");
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), null).isAllLinesEqualTo((String[]) null);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), null, "Message").isAllLinesEqualTo((String[]) null);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader(""))).isAllLinesEqualTo((String[]) null);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("")), "Message").isAllLinesEqualTo((String[]) null);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("1\n2\n3"))).isAllLinesEqualTo("1", "2");
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check all actual value's lines.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2]> but was:<[1, 2, 3]>");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("1\n2\n3"))).isAllLinesEqualTo("1", "2", "4");
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check all actual value's lines.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2, 4]> but was:<[1, 2, 3]>");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("1\n2\n3"))).isAllLinesEqualTo("1", "2", "3", "4");
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check all actual value's lines.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2, 3, 4]> but was:<[1, 2, 3]>");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("\u0000\n\u0000\n\u0000"))).isAllLinesEqualTo("\u0000", "\u0000");
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check all actual value's lines.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[\u0000, \u0000]> but was:<[\u0000, \u0000, \u0000]>");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("\u0000\n\u0000\n\u0000")), "Message").isAllLinesEqualTo("\u0000", "\u0000");
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck all actual value's lines.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[\u0000, \u0000]> but was:<[\u0000, \u0000, \u0000]>");
         }
@@ -1841,73 +1841,73 @@ public final class BufferedReaderAssertionTest extends AssertionTest {
 
         try {
             Raw.bufferedReaderAssertion().isAllLinesEqualTo(DataHelper.<String>createIterable());
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), null).isAllLinesEqualTo(DataHelper.<String>createIterable());
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), null, "Message").isAllLinesEqualTo(DataHelper.<String>createIterable());
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), null).isAllLinesEqualTo((Iterable<String>) null);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), null, "Message").isAllLinesEqualTo((Iterable<String>) null);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader(""))).isAllLinesEqualTo((Iterable<String>) null);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("")), "Message").isAllLinesEqualTo((Iterable<String>) null);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("1\n2\n3"))).isAllLinesEqualTo(DataHelper.createIterable("1", "2"));
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check all actual value's lines.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2]> but was:<[1, 2, 3]>");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("1\n2\n3"))).isAllLinesEqualTo(DataHelper.createIterable("1", "2", "4"));
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check all actual value's lines.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2, 4]> but was:<[1, 2, 3]>");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("1\n2\n3"))).isAllLinesEqualTo(DataHelper.createIterable("1", "2", "3", "4"));
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check all actual value's lines.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2, 3, 4]> but was:<[1, 2, 3]>");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("\u0000\n\u0000\n\u0000"))).isAllLinesEqualTo(DataHelper.createIterable("\u0000", "\u0000"));
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check all actual value's lines.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[\u0000, \u0000]> but was:<[\u0000, \u0000, \u0000]>");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("\u0000\n\u0000\n\u0000")), "Message").isAllLinesEqualTo("\u0000", "\u0000");
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck all actual value's lines.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[\u0000, \u0000]> but was:<[\u0000, \u0000, \u0000]>");
         }
@@ -1962,43 +1962,43 @@ public final class BufferedReaderAssertionTest extends AssertionTest {
 
         try {
             Raw.bufferedReaderAssertion().toLength();
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), null).toLength();
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), null, "Message").toLength();
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), DataHelper.createReaderBuilder().setReadException("read exception").buildBufferedReader()).toLength();
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("java.io.IOException: read exception.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), DataHelper.createReaderBuilder().setReadException("read exception").buildBufferedReader(), "Message").toLength();
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tjava.io.IOException: read exception.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("123"))).toLength().isEqualTo(2L);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's length.\n\tActual and expected values should be the same.\n\tExpected:<2L> but was:<3L>");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("123")), "Message").toLength().isEqualTo(2L);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's length.\n\tActual and expected values should be the same.\n\tExpected:<2L> but was:<3L>");
         }
@@ -2053,67 +2053,67 @@ public final class BufferedReaderAssertionTest extends AssertionTest {
 
         try {
             Raw.bufferedReaderAssertion().toLength(Matchers.equalTo(0L));
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), null).toLength(Matchers.equalTo(0L));
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), null, "Message").toLength(Matchers.equalTo(0L));
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), null).toLength(null);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), null, "Message").toLength(null);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader(""))).toLength(null);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: matcher.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("")), "Message").toLength(null);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: matcher.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), DataHelper.createReaderBuilder().setReadException("read exception").buildBufferedReader()).toLength(Matchers.equalTo(0L));
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("java.io.IOException: read exception.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), DataHelper.createReaderBuilder().setReadException("read exception").buildBufferedReader(), "Message").toLength(Matchers.equalTo(0L));
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tjava.io.IOException: read exception.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("123"))).toLength(Matchers.equalTo(2L));
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's length.\nExpected: <2L>\n     but: was <3L>");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("123")), "Message").toLength(Matchers.equalTo(2L));
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's length.\nExpected: <2L>\n     but: was <3L>");
         }
@@ -2168,43 +2168,43 @@ public final class BufferedReaderAssertionTest extends AssertionTest {
 
         try {
             Raw.bufferedReaderAssertion().hasLength(0L);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), null).hasLength(0L);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), null, "Message").hasLength(0L);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), DataHelper.createReaderBuilder().setReadException("read exception").buildBufferedReader()).hasLength(0L);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("java.io.IOException: read exception.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), DataHelper.createReaderBuilder().setReadException("read exception").buildBufferedReader(), "Message").hasLength(0L);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tjava.io.IOException: read exception.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("123"))).hasLength(2L);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's length.\n\tActual and expected values should be the same.\n\tExpected:<2L> but was:<3L>");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("123")), "Message").hasLength(2L);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's length.\n\tActual and expected values should be the same.\n\tExpected:<2L> but was:<3L>");
         }
@@ -2260,43 +2260,43 @@ public final class BufferedReaderAssertionTest extends AssertionTest {
 
         try {
             Raw.bufferedReaderAssertion().toLinesLength();
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), null).toLinesLength();
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), null, "Message").toLinesLength();
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), DataHelper.createReaderBuilder().setReadException("read exception").buildBufferedReader()).toLinesLength();
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("java.io.IOException: read exception.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), DataHelper.createReaderBuilder().setReadException("read exception").buildBufferedReader(), "Message").toLinesLength();
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tjava.io.IOException: read exception.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("1\n2\n3"))).toLinesLength().isEqualTo(2L);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's lines length.\n\tActual and expected values should be the same.\n\tExpected:<2L> but was:<3L>");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("1\n2\n3")), "Message").toLinesLength().isEqualTo(2L);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's lines length.\n\tActual and expected values should be the same.\n\tExpected:<2L> but was:<3L>");
         }
@@ -2352,67 +2352,67 @@ public final class BufferedReaderAssertionTest extends AssertionTest {
 
         try {
             Raw.bufferedReaderAssertion().toLinesLength(Matchers.equalTo(0L));
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), null).toLinesLength(Matchers.equalTo(0L));
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), null, "Message").toLinesLength(Matchers.equalTo(0L));
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), null).toLinesLength(null);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), null, "Message").toLinesLength(null);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader(""))).toLinesLength(null);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: matcher.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("")), "Message").toLinesLength(null);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: matcher.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), DataHelper.createReaderBuilder().setReadException("read exception").buildBufferedReader()).toLinesLength(Matchers.equalTo(0L));
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("java.io.IOException: read exception.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), DataHelper.createReaderBuilder().setReadException("read exception").buildBufferedReader(), "Message").toLinesLength(Matchers.equalTo(0L));
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tjava.io.IOException: read exception.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("1\n2\n3"))).toLinesLength(Matchers.equalTo(2L));
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's lines length.\nExpected: <2L>\n     but: was <3L>");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("1\n2\n3")), "Message").toLinesLength(Matchers.equalTo(2L));
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's lines length.\nExpected: <2L>\n     but: was <3L>");
         }
@@ -2468,43 +2468,43 @@ public final class BufferedReaderAssertionTest extends AssertionTest {
 
         try {
             Raw.bufferedReaderAssertion().hasLinesLength(0L);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), null).hasLinesLength(0L);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), null, "Message").hasLinesLength(0L);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), DataHelper.createReaderBuilder().setReadException("read exception").buildBufferedReader()).hasLinesLength(0L);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("java.io.IOException: read exception.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), DataHelper.createReaderBuilder().setReadException("read exception").buildBufferedReader(), "Message").hasLinesLength(0L);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tjava.io.IOException: read exception.");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("1\n2\n3"))).hasLinesLength(2L);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's lines length.\n\tActual and expected values should be the same.\n\tExpected:<2L> but was:<3L>");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("1\n2\n3")), "Message").hasLinesLength(2L);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's lines length.\n\tActual and expected values should be the same.\n\tExpected:<2L> but was:<3L>");
         }
@@ -2519,13 +2519,13 @@ public final class BufferedReaderAssertionTest extends AssertionTest {
 
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("\u0000\u0000\u0000"))).isNull();
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).messageMatches("Actual value should be null.\n\tActual:<java.io.BufferedReader.*>");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), new BufferedReader(new StringReader("\u0000\u0000\u0000")), "Message").isNull();
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).messageMatches("Message.\n\tActual value should be null.\n\tActual:<java.io.BufferedReader.*>");
         }
@@ -2541,13 +2541,13 @@ public final class BufferedReaderAssertionTest extends AssertionTest {
 
         try {
             initialize(Raw.bufferedReaderAssertion(), value).isSameAs(new BufferedReader(new StringReader("\u0000\u0000\u0000")));
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).messageMatches("Actual and expected values should point to the same object.\n\tExpected:<java.io.BufferedReader.*> but was:<java.io.BufferedReader.*>");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), value, "Message").isSameAs(new BufferedReader(new StringReader("\u0000\u0000\u0000")));
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).messageMatches("Message.\n\tActual and expected values should point to the same object.\n\tExpected:<java.io.BufferedReader.*> but was:<java.io.BufferedReader.*>");
         }
@@ -2563,13 +2563,13 @@ public final class BufferedReaderAssertionTest extends AssertionTest {
 
         try {
             initialize(Raw.bufferedReaderAssertion(), value).isNotSameAs(value);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).messageMatches("Actual and expected values should point to the different objects.\n\tActual:<java.io.BufferedReader.*>");
         }
         try {
             initialize(Raw.bufferedReaderAssertion(), value, "Message").isNotSameAs(value);
-            Assertions.fail("BufferedReaderAssertion test fail");
+            Assertions.fail(BufferedReaderAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).messageMatches("Message.\n\tActual and expected values should point to the different objects.\n\tActual:<java.io.BufferedReader.*>");
         }

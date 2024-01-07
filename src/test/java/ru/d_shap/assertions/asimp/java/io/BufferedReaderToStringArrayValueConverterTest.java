@@ -129,14 +129,14 @@ public final class BufferedReaderToStringArrayValueConverterTest extends Asserti
         new BufferedReaderToStringArrayValueConverter().convert(new BufferedReader(DataHelper.createReaderBuilder().setReadException("read exception").buildBufferedReader()), -1);
         try {
             new BufferedReaderToStringArrayValueConverter().convert(new BufferedReader(DataHelper.createReaderBuilder().setReadException("read exception").buildBufferedReader()), 0);
-            Assertions.fail("BufferedReaderToStringArrayValueConverter test fail");
+            Assertions.fail(BufferedReaderToStringArrayValueConverter.class);
         } catch (ConversionException ex) {
             Assertions.assertThat(ex).hasMessage("read exception");
             Assertions.assertThat(ex).hasCause(IOException.class);
         }
         try {
             new BufferedReaderToStringArrayValueConverter().convert(new BufferedReader(DataHelper.createReaderBuilder().setReadException("read exception").buildBufferedReader()), 2);
-            Assertions.fail("BufferedReaderToStringArrayValueConverter test fail");
+            Assertions.fail(BufferedReaderToStringArrayValueConverter.class);
         } catch (ConversionException ex) {
             Assertions.assertThat(ex).hasMessage("read exception");
             Assertions.assertThat(ex).hasCause(IOException.class);

@@ -117,14 +117,14 @@ public final class ReaderToCharArrayValueConverterTest extends AssertionTest {
         new ReaderToCharArrayValueConverter().convert(DataHelper.createReaderBuilder().setReadException("read exception").buildReader(), -1);
         try {
             new ReaderToCharArrayValueConverter().convert(DataHelper.createReaderBuilder().setReadException("read exception").buildReader(), 0);
-            Assertions.fail("ReaderToCharArrayValueConverter test fail");
+            Assertions.fail(ReaderToCharArrayValueConverter.class);
         } catch (ConversionException ex) {
             Assertions.assertThat(ex).hasMessage("read exception");
             Assertions.assertThat(ex).hasCause(IOException.class);
         }
         try {
             new ReaderToCharArrayValueConverter().convert(DataHelper.createReaderBuilder().setReadException("read exception").buildReader(), 2);
-            Assertions.fail("ReaderToCharArrayValueConverter test fail");
+            Assertions.fail(ReaderToCharArrayValueConverter.class);
         } catch (ConversionException ex) {
             Assertions.assertThat(ex).hasMessage("read exception");
             Assertions.assertThat(ex).hasCause(IOException.class);
