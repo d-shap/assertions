@@ -68,6 +68,102 @@ public final class IteratorAssertionTest extends AssertionTest {
      * {@link IteratorAssertion} class test.
      */
     @Test
+    public void hasNextValueTest() {
+        Iterator<String> iterator = DataHelper.createIterator("val1", "val2", "val3");
+        initialize(Raw.<String>iteratorAssertion(), iterator).hasNextValue();
+        initialize(Raw.<String>iteratorAssertion(), iterator).hasNextValue();
+        initialize(Raw.<String>iteratorAssertion(), iterator).hasNextValue();
+        Assertions.assertThat(iterator.next()).isEqualTo("val1");
+        initialize(Raw.<String>iteratorAssertion(), iterator).hasNextValue();
+        initialize(Raw.<String>iteratorAssertion(), iterator).hasNextValue();
+        Assertions.assertThat(iterator.next()).isEqualTo("val2");
+        initialize(Raw.<String>iteratorAssertion(), iterator).hasNextValue();
+        initialize(Raw.<String>iteratorAssertion(), iterator).hasNextValue();
+        Assertions.assertThat(iterator.next()).isEqualTo("val3");
+        initialize(Raw.<String>iteratorAssertion(), iterator).isCompleted();
+        initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3")).isNotNull().hasNextValue().isInstanceOf(Iterator.class);
+
+        try {
+            Raw.<String>iteratorAssertion().hasNextValue();
+            Assertions.fail(IteratorAssertion.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.<String>iteratorAssertion(), null).hasNextValue();
+            Assertions.fail(IteratorAssertion.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.<String>iteratorAssertion(), null, "Message").hasNextValue();
+            Assertions.fail(IteratorAssertion.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator()).hasNextValue();
+            Assertions.fail(IteratorAssertion.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should have next value.");
+        }
+        try {
+            initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator(), "Message").hasNextValue();
+            Assertions.fail(IteratorAssertion.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should have next value.");
+        }
+    }
+
+    /**
+     * {@link IteratorAssertion} class test.
+     */
+    @Test
+    public void doesNotHaveNextValueTest() {
+        initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator()).doesNotHaveNextValue();
+        Iterator<String> iterator = DataHelper.createIterator("val1", "val2", "val3");
+        Assertions.assertThat(iterator.next()).isEqualTo("val1");
+        Assertions.assertThat(iterator.next()).isEqualTo("val2");
+        Assertions.assertThat(iterator.next()).isEqualTo("val3");
+        initialize(Raw.<String>iteratorAssertion(), iterator).doesNotHaveNextValue();
+        initialize(Raw.<String>iteratorAssertion(), iterator).isNotNull().doesNotHaveNextValue().isInstanceOf(Iterator.class);
+
+        try {
+            Raw.<String>iteratorAssertion().doesNotHaveNextValue();
+            Assertions.fail(IteratorAssertion.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.<String>iteratorAssertion(), null).doesNotHaveNextValue();
+            Assertions.fail(IteratorAssertion.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.<String>iteratorAssertion(), null, "Message").doesNotHaveNextValue();
+            Assertions.fail(IteratorAssertion.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3", "val4")).doesNotHaveNextValue();
+            Assertions.fail(IteratorAssertion.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not have next value.");
+        }
+        try {
+            initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3", "val4"), "Message").doesNotHaveNextValue();
+            Assertions.fail(IteratorAssertion.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not have next value.");
+        }
+    }
+
+    /**
+     * {@link IteratorAssertion} class test.
+     */
+    @Test
     public void isCompletedTest() {
         initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator()).isCompleted();
         Iterator<String> iterator = DataHelper.createIterator("val1", "val2", "val3");
