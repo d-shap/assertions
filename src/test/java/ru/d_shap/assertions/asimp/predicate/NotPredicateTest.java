@@ -52,13 +52,13 @@ public final class NotPredicateTest extends AssertionTest {
 
         try {
             initializeWithRawActual(new NotPredicate(), new Object());
-            Assertions.fail("NotPredicate test fail");
+            Assertions.fail(NotPredicate.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should match the assertion.\n\tActual value should be the instance of the expected class.\n\tExpected:<ru.d_shap.assertions.AssertionInvoker> but was:<java.lang.Object>");
         }
         try {
             initializeWithRawActual(new NotPredicate(), new Object(), "Message");
-            Assertions.fail("NotPredicate test fail");
+            Assertions.fail(NotPredicate.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should match the assertion.\n\tActual value should be the instance of the expected class.\n\tExpected:<ru.d_shap.assertions.AssertionInvoker> but was:<java.lang.Object>");
         }
@@ -106,61 +106,61 @@ public final class NotPredicateTest extends AssertionTest {
 
         try {
             new NotPredicate().invoke();
-            Assertions.fail("NotPredicate test fail");
+            Assertions.fail(NotPredicate.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(new NotPredicate(), null).invoke();
-            Assertions.fail("NotPredicate test fail");
+            Assertions.fail(NotPredicate.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(new NotPredicate(), null, "Message").invoke();
-            Assertions.fail("NotPredicate test fail");
+            Assertions.fail(NotPredicate.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
 
         try {
             initialize(new NotPredicate(), assertionInvoker1).invoke();
-            Assertions.fail("NotPredicate test fail");
+            Assertions.fail(NotPredicate.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("NOT predicate failed.");
             Assertions.assertThat(ex).hasSuppressed();
         }
         try {
             initialize(new NotPredicate(), assertionInvoker1, "Message").invoke();
-            Assertions.fail("NotPredicate test fail");
+            Assertions.fail(NotPredicate.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tNOT predicate failed.");
             Assertions.assertThat(ex).hasSuppressed();
         }
         try {
             initialize(new NotPredicate(), assertionInvoker2).invoke();
-            Assertions.fail("NotPredicate test fail");
+            Assertions.fail(NotPredicate.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("NOT predicate failed.");
             Assertions.assertThat(ex).hasSuppressed();
         }
         try {
             initialize(new NotPredicate(), assertionInvoker2, "Message").invoke();
-            Assertions.fail("NotPredicate test fail");
+            Assertions.fail(NotPredicate.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tNOT predicate failed.");
             Assertions.assertThat(ex).hasSuppressed();
         }
         try {
             initialize(new NotPredicate(), assertionInvoker3).invoke();
-            Assertions.fail("NotPredicate test fail");
+            Assertions.fail(NotPredicate.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("NOT predicate failed.");
             Assertions.assertThat(ex).hasSuppressed();
         }
         try {
             initialize(new NotPredicate(), assertionInvoker3, "Message").invoke();
-            Assertions.fail("NotPredicate test fail");
+            Assertions.fail(NotPredicate.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tNOT predicate failed.");
             Assertions.assertThat(ex).hasSuppressed();

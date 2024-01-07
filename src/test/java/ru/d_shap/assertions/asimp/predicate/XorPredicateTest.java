@@ -52,13 +52,13 @@ public final class XorPredicateTest extends AssertionTest {
 
         try {
             initializeWithRawActual(new XorPredicate(), new Object());
-            Assertions.fail("XorPredicate test fail");
+            Assertions.fail(XorPredicate.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should match the assertion.\n\tActual value should be the instance of the expected class.\n\tExpected:<[Lru.d_shap.assertions.AssertionInvoker;> but was:<java.lang.Object>");
         }
         try {
             initializeWithRawActual(new XorPredicate(), new Object(), "Message");
-            Assertions.fail("XorPredicate test fail");
+            Assertions.fail(XorPredicate.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should match the assertion.\n\tActual value should be the instance of the expected class.\n\tExpected:<[Lru.d_shap.assertions.AssertionInvoker;> but was:<java.lang.Object>");
         }
@@ -117,62 +117,62 @@ public final class XorPredicateTest extends AssertionTest {
 
         try {
             new XorPredicate().invoke();
-            Assertions.fail("XorPredicate test fail");
+            Assertions.fail(XorPredicate.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(new XorPredicate(), null).invoke();
-            Assertions.fail("XorPredicate test fail");
+            Assertions.fail(XorPredicate.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(new XorPredicate(), null, "Message").invoke();
-            Assertions.fail("XorPredicate test fail");
+            Assertions.fail(XorPredicate.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(new XorPredicate(), new AssertionInvoker[]{null, assertionInvoker2, assertionInvoker3}).invoke();
-            Assertions.fail("XorPredicate test fail");
+            Assertions.fail(XorPredicate.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument's property should not be null: assertionInvoker[0].");
         }
         try {
             initialize(new XorPredicate(), new AssertionInvoker[]{null, assertionInvoker2, assertionInvoker3}, "Message").invoke();
-            Assertions.fail("XorPredicate test fail");
+            Assertions.fail(XorPredicate.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument's property should not be null: assertionInvoker[0].");
         }
         try {
             initialize(new XorPredicate(), new AssertionInvoker[]{assertionInvoker1, null, assertionInvoker3}).invoke();
-            Assertions.fail("XorPredicate test fail");
+            Assertions.fail(XorPredicate.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument's property should not be null: assertionInvoker[1].");
         }
         try {
             initialize(new XorPredicate(), new AssertionInvoker[]{assertionInvoker1, null, assertionInvoker3}, "Message").invoke();
-            Assertions.fail("XorPredicate test fail");
+            Assertions.fail(XorPredicate.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument's property should not be null: assertionInvoker[1].");
         }
         try {
             initialize(new XorPredicate(), new AssertionInvoker[]{assertionInvoker1, assertionInvoker2, null}).invoke();
-            Assertions.fail("XorPredicate test fail");
+            Assertions.fail(XorPredicate.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument's property should not be null: assertionInvoker[2].");
         }
         try {
             initialize(new XorPredicate(), new AssertionInvoker[]{assertionInvoker1, assertionInvoker2, null}, "Message").invoke();
-            Assertions.fail("XorPredicate test fail");
+            Assertions.fail(XorPredicate.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument's property should not be null: assertionInvoker[2].");
         }
 
         try {
             initialize(new XorPredicate(), new AssertionInvoker[]{assertionInvoker1Fail}).invoke();
-            Assertions.fail("XorPredicate test fail");
+            Assertions.fail(XorPredicate.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("XOR predicate failed.");
             Assertions.assertThat(ex).hasSuppressed(AssertionError.class);
@@ -180,7 +180,7 @@ public final class XorPredicateTest extends AssertionTest {
         }
         try {
             initialize(new XorPredicate(), new AssertionInvoker[]{assertionInvoker2Fail}).invoke();
-            Assertions.fail("XorPredicate test fail");
+            Assertions.fail(XorPredicate.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("XOR predicate failed.");
             Assertions.assertThat(ex).hasSuppressed(AssertionError.class);
@@ -188,7 +188,7 @@ public final class XorPredicateTest extends AssertionTest {
         }
         try {
             initialize(new XorPredicate(), new AssertionInvoker[]{assertionInvoker3Fail}).invoke();
-            Assertions.fail("XorPredicate test fail");
+            Assertions.fail(XorPredicate.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("XOR predicate failed.");
             Assertions.assertThat(ex).hasSuppressed(AssertionError.class);
@@ -196,28 +196,28 @@ public final class XorPredicateTest extends AssertionTest {
         }
         try {
             initialize(new XorPredicate(), new AssertionInvoker[]{assertionInvoker1, assertionInvoker2}).invoke();
-            Assertions.fail("XorPredicate test fail");
+            Assertions.fail(XorPredicate.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("XOR predicate failed.");
             Assertions.assertThat(ex).hasSuppressed();
         }
         try {
             initialize(new XorPredicate(), new AssertionInvoker[]{assertionInvoker1, assertionInvoker3}).invoke();
-            Assertions.fail("XorPredicate test fail");
+            Assertions.fail(XorPredicate.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("XOR predicate failed.");
             Assertions.assertThat(ex).hasSuppressed();
         }
         try {
             initialize(new XorPredicate(), new AssertionInvoker[]{assertionInvoker2, assertionInvoker3}).invoke();
-            Assertions.fail("XorPredicate test fail");
+            Assertions.fail(XorPredicate.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("XOR predicate failed.");
             Assertions.assertThat(ex).hasSuppressed();
         }
         try {
             initialize(new XorPredicate(), new AssertionInvoker[]{assertionInvoker1Fail, assertionInvoker2Fail}).invoke();
-            Assertions.fail("XorPredicate test fail");
+            Assertions.fail(XorPredicate.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("XOR predicate failed.");
             Assertions.assertThat(ex).hasSuppressed(AssertionError.class, AssertionError.class);
@@ -226,7 +226,7 @@ public final class XorPredicateTest extends AssertionTest {
         }
         try {
             initialize(new XorPredicate(), new AssertionInvoker[]{assertionInvoker1Fail, assertionInvoker3Fail}).invoke();
-            Assertions.fail("XorPredicate test fail");
+            Assertions.fail(XorPredicate.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("XOR predicate failed.");
             Assertions.assertThat(ex).hasSuppressed(AssertionError.class, AssertionError.class);
@@ -235,7 +235,7 @@ public final class XorPredicateTest extends AssertionTest {
         }
         try {
             initialize(new XorPredicate(), new AssertionInvoker[]{assertionInvoker2Fail, assertionInvoker3Fail}).invoke();
-            Assertions.fail("XorPredicate test fail");
+            Assertions.fail(XorPredicate.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("XOR predicate failed.");
             Assertions.assertThat(ex).hasSuppressed(AssertionError.class, AssertionError.class);
@@ -244,7 +244,7 @@ public final class XorPredicateTest extends AssertionTest {
         }
         try {
             initialize(new XorPredicate(), new AssertionInvoker[]{assertionInvoker1Fail, assertionInvoker2, assertionInvoker3}).invoke();
-            Assertions.fail("XorPredicate test fail");
+            Assertions.fail(XorPredicate.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("XOR predicate failed.");
             Assertions.assertThat(ex).hasSuppressed(AssertionError.class);
@@ -252,7 +252,7 @@ public final class XorPredicateTest extends AssertionTest {
         }
         try {
             initialize(new XorPredicate(), new AssertionInvoker[]{assertionInvoker1, assertionInvoker2Fail, assertionInvoker3}).invoke();
-            Assertions.fail("XorPredicate test fail");
+            Assertions.fail(XorPredicate.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("XOR predicate failed.");
             Assertions.assertThat(ex).hasSuppressed(AssertionError.class);
@@ -260,7 +260,7 @@ public final class XorPredicateTest extends AssertionTest {
         }
         try {
             initialize(new XorPredicate(), new AssertionInvoker[]{assertionInvoker1, assertionInvoker2, assertionInvoker3Fail}).invoke();
-            Assertions.fail("XorPredicate test fail");
+            Assertions.fail(XorPredicate.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("XOR predicate failed.");
             Assertions.assertThat(ex).hasSuppressed(AssertionError.class);
@@ -268,7 +268,7 @@ public final class XorPredicateTest extends AssertionTest {
         }
         try {
             initialize(new XorPredicate(), new AssertionInvoker[]{assertionInvoker1Fail, assertionInvoker2Fail, assertionInvoker3Fail}).invoke();
-            Assertions.fail("XorPredicate test fail");
+            Assertions.fail(XorPredicate.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("XOR predicate failed.");
             Assertions.assertThat(ex).hasSuppressed(AssertionError.class, AssertionError.class, AssertionError.class);
@@ -278,7 +278,7 @@ public final class XorPredicateTest extends AssertionTest {
         }
         try {
             initialize(new XorPredicate(), new AssertionInvoker[]{assertionInvoker1Fail, assertionInvoker2Fail, assertionInvoker3Fail}, "Message").invoke();
-            Assertions.fail("XorPredicate test fail");
+            Assertions.fail(XorPredicate.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tXOR predicate failed.");
             Assertions.assertThat(ex).hasSuppressed(AssertionError.class, AssertionError.class, AssertionError.class);

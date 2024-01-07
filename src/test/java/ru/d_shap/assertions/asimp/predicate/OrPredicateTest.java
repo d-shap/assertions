@@ -52,13 +52,13 @@ public final class OrPredicateTest extends AssertionTest {
 
         try {
             initializeWithRawActual(new OrPredicate(), new Object());
-            Assertions.fail("OrPredicate test fail");
+            Assertions.fail(OrPredicate.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should match the assertion.\n\tActual value should be the instance of the expected class.\n\tExpected:<[Lru.d_shap.assertions.AssertionInvoker;> but was:<java.lang.Object>");
         }
         try {
             initializeWithRawActual(new OrPredicate(), new Object(), "Message");
-            Assertions.fail("OrPredicate test fail");
+            Assertions.fail(OrPredicate.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should match the assertion.\n\tActual value should be the instance of the expected class.\n\tExpected:<[Lru.d_shap.assertions.AssertionInvoker;> but was:<java.lang.Object>");
         }
@@ -112,62 +112,62 @@ public final class OrPredicateTest extends AssertionTest {
 
         try {
             new OrPredicate().invoke();
-            Assertions.fail("OrPredicate test fail");
+            Assertions.fail(OrPredicate.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(new OrPredicate(), null).invoke();
-            Assertions.fail("OrPredicate test fail");
+            Assertions.fail(OrPredicate.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(new OrPredicate(), null, "Message").invoke();
-            Assertions.fail("OrPredicate test fail");
+            Assertions.fail(OrPredicate.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(new OrPredicate(), new AssertionInvoker[]{null, assertionInvoker2, assertionInvoker3}).invoke();
-            Assertions.fail("OrPredicate test fail");
+            Assertions.fail(OrPredicate.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument's property should not be null: assertionInvoker[0].");
         }
         try {
             initialize(new OrPredicate(), new AssertionInvoker[]{null, assertionInvoker2, assertionInvoker3}, "Message").invoke();
-            Assertions.fail("OrPredicate test fail");
+            Assertions.fail(OrPredicate.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument's property should not be null: assertionInvoker[0].");
         }
         try {
             initialize(new OrPredicate(), new AssertionInvoker[]{assertionInvoker1, null, assertionInvoker3}).invoke();
-            Assertions.fail("OrPredicate test fail");
+            Assertions.fail(OrPredicate.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument's property should not be null: assertionInvoker[1].");
         }
         try {
             initialize(new OrPredicate(), new AssertionInvoker[]{assertionInvoker1, null, assertionInvoker3}, "Message").invoke();
-            Assertions.fail("OrPredicate test fail");
+            Assertions.fail(OrPredicate.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument's property should not be null: assertionInvoker[1].");
         }
         try {
             initialize(new OrPredicate(), new AssertionInvoker[]{assertionInvoker1, assertionInvoker2, null}).invoke();
-            Assertions.fail("OrPredicate test fail");
+            Assertions.fail(OrPredicate.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument's property should not be null: assertionInvoker[2].");
         }
         try {
             initialize(new OrPredicate(), new AssertionInvoker[]{assertionInvoker1, assertionInvoker2, null}, "Message").invoke();
-            Assertions.fail("OrPredicate test fail");
+            Assertions.fail(OrPredicate.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument's property should not be null: assertionInvoker[2].");
         }
 
         try {
             initialize(new OrPredicate(), new AssertionInvoker[]{assertionInvoker1Fail}).invoke();
-            Assertions.fail("OrPredicate test fail");
+            Assertions.fail(OrPredicate.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("OR predicate failed.");
             Assertions.assertThat(ex).hasSuppressed(AssertionError.class);
@@ -175,7 +175,7 @@ public final class OrPredicateTest extends AssertionTest {
         }
         try {
             initialize(new OrPredicate(), new AssertionInvoker[]{assertionInvoker1Fail}, "Message").invoke();
-            Assertions.fail("OrPredicate test fail");
+            Assertions.fail(OrPredicate.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tOR predicate failed.");
             Assertions.assertThat(ex).hasSuppressed(AssertionError.class);
@@ -183,7 +183,7 @@ public final class OrPredicateTest extends AssertionTest {
         }
         try {
             initialize(new OrPredicate(), new AssertionInvoker[]{assertionInvoker1Fail, assertionInvoker2Fail, assertionInvoker3Fail}).invoke();
-            Assertions.fail("OrPredicate test fail");
+            Assertions.fail(OrPredicate.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("OR predicate failed.");
             Assertions.assertThat(ex).hasSuppressed(AssertionError.class, AssertionError.class, AssertionError.class);
@@ -193,7 +193,7 @@ public final class OrPredicateTest extends AssertionTest {
         }
         try {
             initialize(new OrPredicate(), new AssertionInvoker[]{assertionInvoker1Fail, assertionInvoker2Fail, assertionInvoker3Fail}, "Message").invoke();
-            Assertions.fail("OrPredicate test fail");
+            Assertions.fail(OrPredicate.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tOR predicate failed.");
             Assertions.assertThat(ex).hasSuppressed(AssertionError.class, AssertionError.class, AssertionError.class);
