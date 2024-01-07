@@ -506,6 +506,10 @@ public final class Messages {
 
             public static final String DOES_NOT_HAVE_SAME_RULES = "Actual value should not have the same rules as the expected.";
 
+            public static final String HAS_NEXT_VALUE = "Actual value should have next value.";
+
+            public static final String DOES_NOT_HAVE_NEXT_VALUE = "Actual value should not have next value.";
+
             public static final String IS_COMPLETED = "Actual value should be completed.";
 
             public static final String IS_NOT_COMPLETED = "Actual value should not be completed.";
