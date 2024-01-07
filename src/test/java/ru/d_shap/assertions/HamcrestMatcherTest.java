@@ -64,7 +64,7 @@ public final class HamcrestMatcherTest extends AssertionTest {
 
         try {
             HamcrestMatcher.matcherAssertion(10, Matchers.equalTo(11));
-            Assertions.fail("HamcrestMatcher test fail");
+            Assertions.fail(HamcrestMatcher.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("\nExpected: <11>\n     but: was <10>");
         }
@@ -79,13 +79,13 @@ public final class HamcrestMatcherTest extends AssertionTest {
 
         try {
             HamcrestMatcher.matcherAssertion(10, Matchers.equalTo(11), "message: {0}", 1);
-            Assertions.fail("HamcrestMatcher test fail");
+            Assertions.fail(HamcrestMatcher.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("message: 1.\nExpected: <11>\n     but: was <10>");
         }
         try {
             HamcrestMatcher.matcherAssertion(10, Matchers.equalTo(11), "value''s");
-            Assertions.fail("HamcrestMatcher test fail");
+            Assertions.fail(HamcrestMatcher.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("value's.\nExpected: <11>\n     but: was <10>");
         }
@@ -100,7 +100,7 @@ public final class HamcrestMatcherTest extends AssertionTest {
 
         try {
             HamcrestMatcher.matcherAssertion(10, Matchers.equalTo(11), new FailDescription("message"));
-            Assertions.fail("HamcrestMatcher test fail");
+            Assertions.fail(HamcrestMatcher.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("message.\nExpected: <11>\n     but: was <10>");
         }
@@ -115,13 +115,13 @@ public final class HamcrestMatcherTest extends AssertionTest {
 
         try {
             HamcrestMatcher.matcherAssertion(10, Matchers.equalTo(11), new FailDescription("message1"), "message2: {0}", 1);
-            Assertions.fail("HamcrestMatcher test fail");
+            Assertions.fail(HamcrestMatcher.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("message1.\n\tmessage2: 1.\nExpected: <11>\n     but: was <10>");
         }
         try {
             HamcrestMatcher.matcherAssertion(10, Matchers.equalTo(11), new FailDescription("message1"), "value''s");
-            Assertions.fail("HamcrestMatcher test fail");
+            Assertions.fail(HamcrestMatcher.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("message1.\n\tvalue's.\nExpected: <11>\n     but: was <10>");
         }
@@ -153,25 +153,25 @@ public final class HamcrestMatcherTest extends AssertionTest {
 
         try {
             HamcrestMatcher.matcherAssertion(10, Matchers.equalTo(11), "message: {0}", new ErrorType());
-            Assertions.fail("HamcrestMatcher test fail");
+            Assertions.fail(HamcrestMatcher.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("java.io.IOException: test conversion exception.");
         }
         try {
             HamcrestMatcher.matcherAssertion(10, Matchers.equalTo(11), new FailDescription("message: {0}", new ErrorType()));
-            Assertions.fail("HamcrestMatcher test fail");
+            Assertions.fail(HamcrestMatcher.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("java.io.IOException: test conversion exception");
         }
         try {
             HamcrestMatcher.matcherAssertion(10, Matchers.equalTo(11), new FailDescription("message1"), "message: {0}", new ErrorType());
-            Assertions.fail("HamcrestMatcher test fail");
+            Assertions.fail(HamcrestMatcher.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("message1.\n\tjava.io.IOException: test conversion exception.");
         }
         try {
             HamcrestMatcher.matcherAssertion(10, Matchers.equalTo(11), new FailDescription("message: {0}", new ErrorType()), "message: {0}", new ErrorType());
-            Assertions.fail("HamcrestMatcher test fail");
+            Assertions.fail(HamcrestMatcher.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("java.io.IOException: test conversion exception");
         }

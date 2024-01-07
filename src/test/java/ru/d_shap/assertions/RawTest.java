@@ -51,7 +51,7 @@ public final class RawTest extends AssertionTest {
         initialize(Raw.byteAssertion(), null).isNull();
         try {
             Raw.byteAssertion().isNull();
-            Assertions.fail("Raw test fail");
+            Assertions.fail(Raw.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
@@ -65,7 +65,7 @@ public final class RawTest extends AssertionTest {
         initialize(Raw.shortAssertion(), null).isNull();
         try {
             Raw.shortAssertion().isNull();
-            Assertions.fail("Raw test fail");
+            Assertions.fail(Raw.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
@@ -79,7 +79,7 @@ public final class RawTest extends AssertionTest {
         initialize(Raw.intAssertion(), null).isNull();
         try {
             Raw.intAssertion().isNull();
-            Assertions.fail("Raw test fail");
+            Assertions.fail(Raw.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
@@ -93,7 +93,7 @@ public final class RawTest extends AssertionTest {
         initialize(Raw.longAssertion(), null).isNull();
         try {
             Raw.longAssertion().isNull();
-            Assertions.fail("Raw test fail");
+            Assertions.fail(Raw.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
@@ -107,7 +107,7 @@ public final class RawTest extends AssertionTest {
         initialize(Raw.floatAssertion(), null).isNull();
         try {
             Raw.floatAssertion().isNull();
-            Assertions.fail("Raw test fail");
+            Assertions.fail(Raw.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
@@ -121,7 +121,7 @@ public final class RawTest extends AssertionTest {
         initialize(Raw.doubleAssertion(), null).isNull();
         try {
             Raw.doubleAssertion().isNull();
-            Assertions.fail("Raw test fail");
+            Assertions.fail(Raw.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
@@ -135,7 +135,7 @@ public final class RawTest extends AssertionTest {
         initialize(Raw.booleanAssertion(), null).isNull();
         try {
             Raw.booleanAssertion().isNull();
-            Assertions.fail("Raw test fail");
+            Assertions.fail(Raw.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
@@ -149,7 +149,7 @@ public final class RawTest extends AssertionTest {
         initialize(Raw.charAssertion(), null).isNull();
         try {
             Raw.charAssertion().isNull();
-            Assertions.fail("Raw test fail");
+            Assertions.fail(Raw.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
@@ -163,7 +163,7 @@ public final class RawTest extends AssertionTest {
         initialize(Raw.objectAssertion(), null).isNull();
         try {
             Raw.objectAssertion().isNull();
-            Assertions.fail("Raw test fail");
+            Assertions.fail(Raw.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
@@ -177,7 +177,7 @@ public final class RawTest extends AssertionTest {
         initialize(Raw.byteArrayAssertion(), null).isNull();
         try {
             Raw.byteArrayAssertion().isNull();
-            Assertions.fail("Raw test fail");
+            Assertions.fail(Raw.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
@@ -191,7 +191,7 @@ public final class RawTest extends AssertionTest {
         initialize(Raw.shortArrayAssertion(), null).isNull();
         try {
             Raw.shortArrayAssertion().isNull();
-            Assertions.fail("Raw test fail");
+            Assertions.fail(Raw.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
@@ -205,7 +205,7 @@ public final class RawTest extends AssertionTest {
         initialize(Raw.intArrayAssertion(), null).isNull();
         try {
             Raw.intArrayAssertion().isNull();
-            Assertions.fail("Raw test fail");
+            Assertions.fail(Raw.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
@@ -219,7 +219,7 @@ public final class RawTest extends AssertionTest {
         initialize(Raw.longArrayAssertion(), null).isNull();
         try {
             Raw.longArrayAssertion().isNull();
-            Assertions.fail("Raw test fail");
+            Assertions.fail(Raw.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
@@ -233,7 +233,7 @@ public final class RawTest extends AssertionTest {
         initialize(Raw.floatArrayAssertion(), null).isNull();
         try {
             Raw.floatArrayAssertion().isNull();
-            Assertions.fail("Raw test fail");
+            Assertions.fail(Raw.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
@@ -247,7 +247,7 @@ public final class RawTest extends AssertionTest {
         initialize(Raw.doubleArrayAssertion(), null).isNull();
         try {
             Raw.doubleArrayAssertion().isNull();
-            Assertions.fail("Raw test fail");
+            Assertions.fail(Raw.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
@@ -261,7 +261,7 @@ public final class RawTest extends AssertionTest {
         initialize(Raw.booleanArrayAssertion(), null).isNull();
         try {
             Raw.booleanArrayAssertion().isNull();
-            Assertions.fail("Raw test fail");
+            Assertions.fail(Raw.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
@@ -275,7 +275,7 @@ public final class RawTest extends AssertionTest {
         initialize(Raw.charArrayAssertion(), null).isNull();
         try {
             Raw.charArrayAssertion().isNull();
-            Assertions.fail("Raw test fail");
+            Assertions.fail(Raw.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
@@ -289,7 +289,7 @@ public final class RawTest extends AssertionTest {
         initialize(Raw.<String>objectArrayAssertion(), null).isNull();
         try {
             Raw.<String>objectArrayAssertion().isNull();
-            Assertions.fail("Raw test fail");
+            Assertions.fail(Raw.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
@@ -303,7 +303,7 @@ public final class RawTest extends AssertionTest {
         initialize(Raw.classAssertion(), null).isNull();
         try {
             Raw.classAssertion().isNull();
-            Assertions.fail("Raw test fail");
+            Assertions.fail(Raw.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
@@ -317,7 +317,7 @@ public final class RawTest extends AssertionTest {
         initialize(Raw.enumAssertion(), null).isNull();
         try {
             Raw.enumAssertion().isNull();
-            Assertions.fail("Raw test fail");
+            Assertions.fail(Raw.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
@@ -331,7 +331,7 @@ public final class RawTest extends AssertionTest {
         initialize(Raw.charSequenceAssertion(), null).isNull();
         try {
             Raw.charSequenceAssertion().isNull();
-            Assertions.fail("Raw test fail");
+            Assertions.fail(Raw.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
@@ -345,7 +345,7 @@ public final class RawTest extends AssertionTest {
         initialize(Raw.<Integer>comparableAssertion(), null).isNull();
         try {
             Raw.<Integer>comparableAssertion().isNull();
-            Assertions.fail("Raw test fail");
+            Assertions.fail(Raw.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
@@ -359,7 +359,7 @@ public final class RawTest extends AssertionTest {
         initialize(Raw.<String>iterableAssertion(), null).isNull();
         try {
             Raw.<String>iterableAssertion().isNull();
-            Assertions.fail("Raw test fail");
+            Assertions.fail(Raw.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
@@ -373,7 +373,7 @@ public final class RawTest extends AssertionTest {
         initialize(Raw.throwableAssertion(), null).isNull();
         try {
             Raw.throwableAssertion().isNull();
-            Assertions.fail("Raw test fail");
+            Assertions.fail(Raw.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
@@ -387,7 +387,7 @@ public final class RawTest extends AssertionTest {
         initialize(Raw.<String>iteratorAssertion(), null).isNull();
         try {
             Raw.<String>iteratorAssertion().isNull();
-            Assertions.fail("Raw test fail");
+            Assertions.fail(Raw.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
@@ -401,7 +401,7 @@ public final class RawTest extends AssertionTest {
         initialize(Raw.<String>listAssertion(), null).isNull();
         try {
             Raw.<String>listAssertion().isNull();
-            Assertions.fail("Raw test fail");
+            Assertions.fail(Raw.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
@@ -415,7 +415,7 @@ public final class RawTest extends AssertionTest {
         initialize(Raw.<String>setAssertion(), null).isNull();
         try {
             Raw.<String>setAssertion().isNull();
-            Assertions.fail("Raw test fail");
+            Assertions.fail(Raw.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
@@ -429,7 +429,7 @@ public final class RawTest extends AssertionTest {
         initialize(Raw.<String>sortedSetAssertion(), null).isNull();
         try {
             Raw.<String>sortedSetAssertion().isNull();
-            Assertions.fail("Raw test fail");
+            Assertions.fail(Raw.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
@@ -443,7 +443,7 @@ public final class RawTest extends AssertionTest {
         initialize(Raw.<String, String>mapAssertion(), null).isNull();
         try {
             Raw.<String, String>mapAssertion().isNull();
-            Assertions.fail("Raw test fail");
+            Assertions.fail(Raw.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
@@ -457,7 +457,7 @@ public final class RawTest extends AssertionTest {
         initialize(Raw.<String, String>sortedMapAssertion(), null).isNull();
         try {
             Raw.<String, String>sortedMapAssertion().isNull();
-            Assertions.fail("Raw test fail");
+            Assertions.fail(Raw.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
@@ -471,7 +471,7 @@ public final class RawTest extends AssertionTest {
         initialize(Raw.dateAssertion(), null).isNull();
         try {
             Raw.dateAssertion().isNull();
-            Assertions.fail("Raw test fail");
+            Assertions.fail(Raw.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
@@ -485,7 +485,7 @@ public final class RawTest extends AssertionTest {
         initialize(Raw.calendarAssertion(), null).isNull();
         try {
             Raw.calendarAssertion().isNull();
-            Assertions.fail("Raw test fail");
+            Assertions.fail(Raw.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
@@ -499,7 +499,7 @@ public final class RawTest extends AssertionTest {
         initialize(Raw.timeZoneAssertion(), null).isNull();
         try {
             Raw.timeZoneAssertion().isNull();
-            Assertions.fail("Raw test fail");
+            Assertions.fail(Raw.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
@@ -513,7 +513,7 @@ public final class RawTest extends AssertionTest {
         initialize(Raw.localeAssertion(), null).isNull();
         try {
             Raw.localeAssertion().isNull();
-            Assertions.fail("Raw test fail");
+            Assertions.fail(Raw.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
@@ -527,7 +527,7 @@ public final class RawTest extends AssertionTest {
         initialize(Raw.inputStreamAssertion(), null).isNull();
         try {
             Raw.inputStreamAssertion().isNull();
-            Assertions.fail("Raw test fail");
+            Assertions.fail(Raw.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
@@ -541,7 +541,7 @@ public final class RawTest extends AssertionTest {
         initialize(Raw.readerAssertion(), null).isNull();
         try {
             Raw.readerAssertion().isNull();
-            Assertions.fail("Raw test fail");
+            Assertions.fail(Raw.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
@@ -555,7 +555,7 @@ public final class RawTest extends AssertionTest {
         initialize(Raw.bufferedReaderAssertion(), null).isNull();
         try {
             Raw.bufferedReaderAssertion().isNull();
-            Assertions.fail("Raw test fail");
+            Assertions.fail(Raw.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
@@ -569,7 +569,7 @@ public final class RawTest extends AssertionTest {
         initialize(Raw.byteBufferAssertion(), null).isNull();
         try {
             Raw.byteBufferAssertion().isNull();
-            Assertions.fail("Raw test fail");
+            Assertions.fail(Raw.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
@@ -583,7 +583,7 @@ public final class RawTest extends AssertionTest {
         initialize(Raw.shortBufferAssertion(), null).isNull();
         try {
             Raw.shortBufferAssertion().isNull();
-            Assertions.fail("Raw test fail");
+            Assertions.fail(Raw.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
@@ -597,7 +597,7 @@ public final class RawTest extends AssertionTest {
         initialize(Raw.intBufferAssertion(), null).isNull();
         try {
             Raw.intBufferAssertion().isNull();
-            Assertions.fail("Raw test fail");
+            Assertions.fail(Raw.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
@@ -611,7 +611,7 @@ public final class RawTest extends AssertionTest {
         initialize(Raw.longBufferAssertion(), null).isNull();
         try {
             Raw.longBufferAssertion().isNull();
-            Assertions.fail("Raw test fail");
+            Assertions.fail(Raw.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
@@ -625,7 +625,7 @@ public final class RawTest extends AssertionTest {
         initialize(Raw.floatBufferAssertion(), null).isNull();
         try {
             Raw.floatBufferAssertion().isNull();
-            Assertions.fail("Raw test fail");
+            Assertions.fail(Raw.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
@@ -639,7 +639,7 @@ public final class RawTest extends AssertionTest {
         initialize(Raw.doubleBufferAssertion(), null).isNull();
         try {
             Raw.doubleBufferAssertion().isNull();
-            Assertions.fail("Raw test fail");
+            Assertions.fail(Raw.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
@@ -653,7 +653,7 @@ public final class RawTest extends AssertionTest {
         initialize(Raw.charBufferAssertion(), null).isNull();
         try {
             Raw.charBufferAssertion().isNull();
-            Assertions.fail("Raw test fail");
+            Assertions.fail(Raw.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
@@ -667,7 +667,7 @@ public final class RawTest extends AssertionTest {
         initialize(Raw.xmlGregorianCalendarAssertion(), null).isNull();
         try {
             Raw.xmlGregorianCalendarAssertion().isNull();
-            Assertions.fail("Raw test fail");
+            Assertions.fail(Raw.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
@@ -681,7 +681,7 @@ public final class RawTest extends AssertionTest {
         initialize(Raw.qnameAssertion(), null).isNull();
         try {
             Raw.qnameAssertion().isNull();
-            Assertions.fail("Raw test fail");
+            Assertions.fail(Raw.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
@@ -695,7 +695,7 @@ public final class RawTest extends AssertionTest {
         initialize(Raw.nodeAssertion(), null).isNull();
         try {
             Raw.nodeAssertion().isNull();
-            Assertions.fail("Raw test fail");
+            Assertions.fail(Raw.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
@@ -709,7 +709,7 @@ public final class RawTest extends AssertionTest {
         initialize(Raw.elementAssertion(), null).isNull();
         try {
             Raw.elementAssertion().isNull();
-            Assertions.fail("Raw test fail");
+            Assertions.fail(Raw.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
@@ -723,7 +723,7 @@ public final class RawTest extends AssertionTest {
         initialize(Raw.documentAssertion(), null).isNull();
         try {
             Raw.documentAssertion().isNull();
-            Assertions.fail("Raw test fail");
+            Assertions.fail(Raw.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
@@ -737,7 +737,7 @@ public final class RawTest extends AssertionTest {
         initialize(Raw.attrAssertion(), null).isNull();
         try {
             Raw.attrAssertion().isNull();
-            Assertions.fail("Raw test fail");
+            Assertions.fail(Raw.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
@@ -751,7 +751,7 @@ public final class RawTest extends AssertionTest {
         initialize(Raw.characterDataAssertion(), null).isNull();
         try {
             Raw.characterDataAssertion().isNull();
-            Assertions.fail("Raw test fail");
+            Assertions.fail(Raw.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
