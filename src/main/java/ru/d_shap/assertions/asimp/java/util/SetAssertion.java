@@ -94,6 +94,43 @@ public final class SetAssertion<E> extends ReferenceAssertion<SetAssertion<E>, S
     }
 
     /**
+     * Check if the actual value is equal to the expected value.
+     *
+     * @param expected the expected value.
+     *
+     * @return current object for the chain call.
+     */
+    public SetAssertion<E> isEqualTo(final Set<E> expected) {
+        if (expected == null) {
+            isNull();
+        } else {
+            checkActualIsNotNull();
+            if (!getActual().equals(expected)) {
+                throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_SAME).addActual().addExpected(expected).build();
+            }
+        }
+        return this;
+    }
+
+    /**
+     * Check if the actual value is NOT equal to the expected value.
+     *
+     * @param expected the expected value.
+     *
+     * @return current object for the chain call.
+     */
+    public SetAssertion<E> isNotEqualTo(final Set<E> expected) {
+        if (expected == null) {
+            isNotNull();
+        } else {
+            if (getActual() != null && getActual().equals(expected)) {
+                throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_DIFFERENT).addActual().build();
+            }
+        }
+        return this;
+    }
+
+    /**
      * Check if the actual value contains the expected value.
      *
      * @param expected the expected value.

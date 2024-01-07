@@ -115,6 +115,43 @@ public final class ListAssertion<E> extends ReferenceAssertion<ListAssertion<E>,
     }
 
     /**
+     * Check if the actual value is equal to the expected value.
+     *
+     * @param expected the expected value.
+     *
+     * @return current object for the chain call.
+     */
+    public ListAssertion<E> isEqualTo(final List<E> expected) {
+        if (expected == null) {
+            isNull();
+        } else {
+            checkActualIsNotNull();
+            if (!getActual().equals(expected)) {
+                throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_SAME).addActual().addExpected(expected).build();
+            }
+        }
+        return this;
+    }
+
+    /**
+     * Check if the actual value is NOT equal to the expected value.
+     *
+     * @param expected the expected value.
+     *
+     * @return current object for the chain call.
+     */
+    public ListAssertion<E> isNotEqualTo(final List<E> expected) {
+        if (expected == null) {
+            isNotNull();
+        } else {
+            if (getActual() != null && getActual().equals(expected)) {
+                throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.IS_DIFFERENT).addActual().build();
+            }
+        }
+        return this;
+    }
+
+    /**
      * Check if the actual value contains the expected value.
      *
      * @param expected the expected value.
