@@ -55,43 +55,43 @@ public final class CharArrayAggregateAssertionTest extends AssertionTest {
 
         try {
             Raw.charArrayAssertion().toMin();
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.charArrayAssertion(), null).toMin();
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.charArrayAssertion(), null, "Message").toMin();
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             clearActual(initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).toMin()).isEqualTo('0');
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's minimum value.\n\tActual value should not be null.");
         }
         try {
             clearActual(initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}, "Message").toMin()).isEqualTo('0');
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's minimum value.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).toMin().isEqualTo('4');
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's minimum value.\n\tActual and expected values should be the same.\n\tExpected:<4(52)> but was:<1(49)>");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}, "Message").toMin().isEqualTo('4');
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's minimum value.\n\tActual and expected values should be the same.\n\tExpected:<4(52)> but was:<1(49)>");
         }
@@ -112,55 +112,55 @@ public final class CharArrayAggregateAssertionTest extends AssertionTest {
 
         try {
             Raw.charArrayAssertion().toMin(Matchers.equalTo('0'));
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.charArrayAssertion(), null).toMin(Matchers.equalTo('0'));
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.charArrayAssertion(), null, "Message").toMin(Matchers.equalTo('0'));
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.charArrayAssertion(), null).toMin(null);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.charArrayAssertion(), null, "Message").toMin(null);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{}).toMin(null);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: matcher.");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{}, "Message").toMin(null);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: matcher.");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).toMin(Matchers.equalTo('4'));
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's minimum value.\nExpected: \"4\"\n     but: was \"1\"");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}, "Message").toMin(Matchers.equalTo('4'));
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's minimum value.\nExpected: \"4\"\n     but: was \"1\"");
         }
@@ -180,31 +180,31 @@ public final class CharArrayAggregateAssertionTest extends AssertionTest {
 
         try {
             Raw.charArrayAssertion().hasMin('0');
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.charArrayAssertion(), null).hasMin('0');
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.charArrayAssertion(), null, "Message").hasMin('0');
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).hasMin('4');
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's minimum value.\n\tActual and expected values should be the same.\n\tExpected:<4(52)> but was:<1(49)>");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}, "Message").hasMin('4');
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's minimum value.\n\tActual and expected values should be the same.\n\tExpected:<4(52)> but was:<1(49)>");
         }
@@ -225,55 +225,55 @@ public final class CharArrayAggregateAssertionTest extends AssertionTest {
 
         try {
             Raw.charArrayAssertion().hasMin(Character.valueOf('0'));
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.charArrayAssertion(), null).hasMin(Character.valueOf('0'));
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.charArrayAssertion(), null, "Message").hasMin(Character.valueOf('0'));
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.charArrayAssertion(), null).hasMin(null);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.charArrayAssertion(), null, "Message").hasMin(null);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{'1'}).hasMin(null);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's minimum value.\n\tActual value should be null.\n\tActual:<1(49)>");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{'1'}, "Message").hasMin(null);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's minimum value.\n\tActual value should be null.\n\tActual:<1(49)>");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).hasMin(Character.valueOf('4'));
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's minimum value.\n\tActual and expected values should be the same.\n\tExpected:<4(52)> but was:<1(49)>");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}, "Message").hasMin(Character.valueOf('4'));
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's minimum value.\n\tActual and expected values should be the same.\n\tExpected:<4(52)> but was:<1(49)>");
         }
@@ -294,43 +294,43 @@ public final class CharArrayAggregateAssertionTest extends AssertionTest {
 
         try {
             Raw.charArrayAssertion().toMax();
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.charArrayAssertion(), null).toMax();
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.charArrayAssertion(), null, "Message").toMax();
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             clearActual(initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).toMax()).isEqualTo('0');
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's maximum value.\n\tActual value should not be null.");
         }
         try {
             clearActual(initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}, "Message").toMax()).isEqualTo('0');
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's maximum value.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).toMax().isEqualTo('4');
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's maximum value.\n\tActual and expected values should be the same.\n\tExpected:<4(52)> but was:<2(50)>");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}, "Message").toMax().isEqualTo('4');
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's maximum value.\n\tActual and expected values should be the same.\n\tExpected:<4(52)> but was:<2(50)>");
         }
@@ -351,55 +351,55 @@ public final class CharArrayAggregateAssertionTest extends AssertionTest {
 
         try {
             Raw.charArrayAssertion().toMax(Matchers.equalTo('0'));
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.charArrayAssertion(), null).toMax(Matchers.equalTo('0'));
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.charArrayAssertion(), null, "Message").toMax(Matchers.equalTo('0'));
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.charArrayAssertion(), null).toMax(null);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.charArrayAssertion(), null, "Message").toMax(null);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{}).toMax(null);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: matcher.");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{}, "Message").toMax(null);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: matcher.");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).toMax(Matchers.equalTo('4'));
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's maximum value.\nExpected: \"4\"\n     but: was \"2\"");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}, "Message").toMax(Matchers.equalTo('4'));
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's maximum value.\nExpected: \"4\"\n     but: was \"2\"");
         }
@@ -419,31 +419,31 @@ public final class CharArrayAggregateAssertionTest extends AssertionTest {
 
         try {
             Raw.charArrayAssertion().hasMax('0');
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.charArrayAssertion(), null).hasMax('0');
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.charArrayAssertion(), null, "Message").hasMax('0');
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).hasMax('4');
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's maximum value.\n\tActual and expected values should be the same.\n\tExpected:<4(52)> but was:<2(50)>");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}, "Message").hasMax('4');
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's maximum value.\n\tActual and expected values should be the same.\n\tExpected:<4(52)> but was:<2(50)>");
         }
@@ -464,55 +464,55 @@ public final class CharArrayAggregateAssertionTest extends AssertionTest {
 
         try {
             Raw.charArrayAssertion().hasMax(Character.valueOf('0'));
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.charArrayAssertion(), null).hasMax(Character.valueOf('0'));
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.charArrayAssertion(), null, "Message").hasMax(Character.valueOf('0'));
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.charArrayAssertion(), null).hasMax(null);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.charArrayAssertion(), null, "Message").hasMax(null);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{'1'}).hasMax(null);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's maximum value.\n\tActual value should be null.\n\tActual:<1(49)>");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{'1'}, "Message").hasMax(null);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's maximum value.\n\tActual value should be null.\n\tActual:<1(49)>");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).hasMax(Character.valueOf('4'));
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's maximum value.\n\tActual and expected values should be the same.\n\tExpected:<4(52)> but was:<2(50)>");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}, "Message").hasMax(Character.valueOf('4'));
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's maximum value.\n\tActual and expected values should be the same.\n\tExpected:<4(52)> but was:<2(50)>");
         }

@@ -55,43 +55,43 @@ public final class DoubleArrayAggregateAssertionTest extends AssertionTest {
 
         try {
             Raw.doubleArrayAssertion().toMin();
-            Assertions.fail("DoubleArrayAssertion test fail");
+            Assertions.fail(DoubleArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.doubleArrayAssertion(), null).toMin();
-            Assertions.fail("DoubleArrayAssertion test fail");
+            Assertions.fail(DoubleArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.doubleArrayAssertion(), null, "Message").toMin();
-            Assertions.fail("DoubleArrayAssertion test fail");
+            Assertions.fail(DoubleArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             clearActual(initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}).toMin()).isEqualTo(0.0);
-            Assertions.fail("DoubleArrayAssertion test fail");
+            Assertions.fail(DoubleArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's minimum value.\n\tActual value should not be null.");
         }
         try {
             clearActual(initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}, "Message").toMin()).isEqualTo(0.0);
-            Assertions.fail("DoubleArrayAssertion test fail");
+            Assertions.fail(DoubleArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's minimum value.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}).toMin().isEqualTo(4.0);
-            Assertions.fail("DoubleArrayAssertion test fail");
+            Assertions.fail(DoubleArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's minimum value.\n\tActual and expected values should be the same.\n\tExpected:<4.0±9.999999960041972E-12> but was:<1.0>");
         }
         try {
             initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}, "Message").toMin().isEqualTo(4.0);
-            Assertions.fail("DoubleArrayAssertion test fail");
+            Assertions.fail(DoubleArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's minimum value.\n\tActual and expected values should be the same.\n\tExpected:<4.0±9.999999960041972E-12> but was:<1.0>");
         }
@@ -112,55 +112,55 @@ public final class DoubleArrayAggregateAssertionTest extends AssertionTest {
 
         try {
             Raw.doubleArrayAssertion().toMin(Matchers.equalTo(0.0));
-            Assertions.fail("DoubleArrayAssertion test fail");
+            Assertions.fail(DoubleArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.doubleArrayAssertion(), null).toMin(Matchers.equalTo(0.0));
-            Assertions.fail("DoubleArrayAssertion test fail");
+            Assertions.fail(DoubleArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.doubleArrayAssertion(), null, "Message").toMin(Matchers.equalTo(0.0));
-            Assertions.fail("DoubleArrayAssertion test fail");
+            Assertions.fail(DoubleArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.doubleArrayAssertion(), null).toMin(null);
-            Assertions.fail("DoubleArrayAssertion test fail");
+            Assertions.fail(DoubleArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.doubleArrayAssertion(), null, "Message").toMin(null);
-            Assertions.fail("DoubleArrayAssertion test fail");
+            Assertions.fail(DoubleArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.doubleArrayAssertion(), new double[]{}).toMin(null);
-            Assertions.fail("DoubleArrayAssertion test fail");
+            Assertions.fail(DoubleArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: matcher.");
         }
         try {
             initialize(Raw.doubleArrayAssertion(), new double[]{}, "Message").toMin(null);
-            Assertions.fail("DoubleArrayAssertion test fail");
+            Assertions.fail(DoubleArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: matcher.");
         }
         try {
             initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}).toMin(Matchers.equalTo(4.0));
-            Assertions.fail("DoubleArrayAssertion test fail");
+            Assertions.fail(DoubleArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's minimum value.\nExpected: <4.0>\n     but: was <1.0>");
         }
         try {
             initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}, "Message").toMin(Matchers.equalTo(4.0));
-            Assertions.fail("DoubleArrayAssertion test fail");
+            Assertions.fail(DoubleArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's minimum value.\nExpected: <4.0>\n     but: was <1.0>");
         }
@@ -180,31 +180,31 @@ public final class DoubleArrayAggregateAssertionTest extends AssertionTest {
 
         try {
             Raw.doubleArrayAssertion().hasMin(0.0);
-            Assertions.fail("DoubleArrayAssertion test fail");
+            Assertions.fail(DoubleArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.doubleArrayAssertion(), null).hasMin(0.0);
-            Assertions.fail("DoubleArrayAssertion test fail");
+            Assertions.fail(DoubleArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.doubleArrayAssertion(), null, "Message").hasMin(0.0);
-            Assertions.fail("DoubleArrayAssertion test fail");
+            Assertions.fail(DoubleArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}).hasMin(4.0);
-            Assertions.fail("DoubleArrayAssertion test fail");
+            Assertions.fail(DoubleArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's minimum value.\n\tActual and expected values should be the same.\n\tExpected:<4.0±9.999999960041972E-12> but was:<1.0>");
         }
         try {
             initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}, "Message").hasMin(4.0);
-            Assertions.fail("DoubleArrayAssertion test fail");
+            Assertions.fail(DoubleArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's minimum value.\n\tActual and expected values should be the same.\n\tExpected:<4.0±9.999999960041972E-12> but was:<1.0>");
         }
@@ -225,55 +225,55 @@ public final class DoubleArrayAggregateAssertionTest extends AssertionTest {
 
         try {
             Raw.doubleArrayAssertion().hasMin(Double.valueOf(0.0));
-            Assertions.fail("DoubleArrayAssertion test fail");
+            Assertions.fail(DoubleArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.doubleArrayAssertion(), null).hasMin(Double.valueOf(0.0));
-            Assertions.fail("DoubleArrayAssertion test fail");
+            Assertions.fail(DoubleArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.doubleArrayAssertion(), null, "Message").hasMin(Double.valueOf(0.0));
-            Assertions.fail("DoubleArrayAssertion test fail");
+            Assertions.fail(DoubleArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.doubleArrayAssertion(), null).hasMin(null);
-            Assertions.fail("DoubleArrayAssertion test fail");
+            Assertions.fail(DoubleArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.doubleArrayAssertion(), null, "Message").hasMin(null);
-            Assertions.fail("DoubleArrayAssertion test fail");
+            Assertions.fail(DoubleArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.doubleArrayAssertion(), new double[]{1.0}).hasMin(null);
-            Assertions.fail("DoubleArrayAssertion test fail");
+            Assertions.fail(DoubleArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's minimum value.\n\tActual value should be null.\n\tActual:<1.0>");
         }
         try {
             initialize(Raw.doubleArrayAssertion(), new double[]{1.0}, "Message").hasMin(null);
-            Assertions.fail("DoubleArrayAssertion test fail");
+            Assertions.fail(DoubleArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's minimum value.\n\tActual value should be null.\n\tActual:<1.0>");
         }
         try {
             initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}).hasMin(Double.valueOf(4.0));
-            Assertions.fail("DoubleArrayAssertion test fail");
+            Assertions.fail(DoubleArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's minimum value.\n\tActual and expected values should be the same.\n\tExpected:<4.0±9.999999960041972E-12> but was:<1.0>");
         }
         try {
             initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}, "Message").hasMin(Double.valueOf(4.0));
-            Assertions.fail("DoubleArrayAssertion test fail");
+            Assertions.fail(DoubleArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's minimum value.\n\tActual and expected values should be the same.\n\tExpected:<4.0±9.999999960041972E-12> but was:<1.0>");
         }
@@ -295,31 +295,31 @@ public final class DoubleArrayAggregateAssertionTest extends AssertionTest {
 
         try {
             Raw.doubleArrayAssertion().hasMin(0.0, 0.1);
-            Assertions.fail("DoubleArrayAssertion test fail");
+            Assertions.fail(DoubleArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.doubleArrayAssertion(), null).hasMin(0.0, 0.1);
-            Assertions.fail("DoubleArrayAssertion test fail");
+            Assertions.fail(DoubleArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.doubleArrayAssertion(), null, "Message").hasMin(0.0, 0.1);
-            Assertions.fail("DoubleArrayAssertion test fail");
+            Assertions.fail(DoubleArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}).hasMin(4.0, 0.1);
-            Assertions.fail("DoubleArrayAssertion test fail");
+            Assertions.fail(DoubleArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's minimum value.\n\tActual and expected values should be the same.\n\tExpected:<4.0±0.1> but was:<1.0>");
         }
         try {
             initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}, "Message").hasMin(4.0, 0.1);
-            Assertions.fail("DoubleArrayAssertion test fail");
+            Assertions.fail(DoubleArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's minimum value.\n\tActual and expected values should be the same.\n\tExpected:<4.0±0.1> but was:<1.0>");
         }
@@ -342,55 +342,55 @@ public final class DoubleArrayAggregateAssertionTest extends AssertionTest {
 
         try {
             Raw.doubleArrayAssertion().hasMin(Double.valueOf(0.0), 0.1);
-            Assertions.fail("DoubleArrayAssertion test fail");
+            Assertions.fail(DoubleArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.doubleArrayAssertion(), null).hasMin(Double.valueOf(0.0), 0.1);
-            Assertions.fail("DoubleArrayAssertion test fail");
+            Assertions.fail(DoubleArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.doubleArrayAssertion(), null, "Message").hasMin(Double.valueOf(0.0), 0.1);
-            Assertions.fail("DoubleArrayAssertion test fail");
+            Assertions.fail(DoubleArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.doubleArrayAssertion(), null).hasMin(null, 0.1);
-            Assertions.fail("DoubleArrayAssertion test fail");
+            Assertions.fail(DoubleArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.doubleArrayAssertion(), null, "Message").hasMin(null, 0.1);
-            Assertions.fail("DoubleArrayAssertion test fail");
+            Assertions.fail(DoubleArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.doubleArrayAssertion(), new double[]{1.0}).hasMin(null, 0.1);
-            Assertions.fail("DoubleArrayAssertion test fail");
+            Assertions.fail(DoubleArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's minimum value.\n\tActual value should be null.\n\tActual:<1.0>");
         }
         try {
             initialize(Raw.doubleArrayAssertion(), new double[]{1.0}, "Message").hasMin(null, 0.1);
-            Assertions.fail("DoubleArrayAssertion test fail");
+            Assertions.fail(DoubleArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's minimum value.\n\tActual value should be null.\n\tActual:<1.0>");
         }
         try {
             initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}).hasMin(Double.valueOf(4.0), 0.1);
-            Assertions.fail("DoubleArrayAssertion test fail");
+            Assertions.fail(DoubleArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's minimum value.\n\tActual and expected values should be the same.\n\tExpected:<4.0±0.1> but was:<1.0>");
         }
         try {
             initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}, "Message").hasMin(Double.valueOf(4.0), 0.1);
-            Assertions.fail("DoubleArrayAssertion test fail");
+            Assertions.fail(DoubleArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's minimum value.\n\tActual and expected values should be the same.\n\tExpected:<4.0±0.1> but was:<1.0>");
         }
@@ -411,43 +411,43 @@ public final class DoubleArrayAggregateAssertionTest extends AssertionTest {
 
         try {
             Raw.doubleArrayAssertion().toMax();
-            Assertions.fail("DoubleArrayAssertion test fail");
+            Assertions.fail(DoubleArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.doubleArrayAssertion(), null).toMax();
-            Assertions.fail("DoubleArrayAssertion test fail");
+            Assertions.fail(DoubleArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.doubleArrayAssertion(), null, "Message").toMax();
-            Assertions.fail("DoubleArrayAssertion test fail");
+            Assertions.fail(DoubleArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             clearActual(initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}).toMax()).isEqualTo(0.0);
-            Assertions.fail("DoubleArrayAssertion test fail");
+            Assertions.fail(DoubleArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's maximum value.\n\tActual value should not be null.");
         }
         try {
             clearActual(initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}, "Message").toMax()).isEqualTo(0.0);
-            Assertions.fail("DoubleArrayAssertion test fail");
+            Assertions.fail(DoubleArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's maximum value.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}).toMax().isEqualTo(4.0);
-            Assertions.fail("DoubleArrayAssertion test fail");
+            Assertions.fail(DoubleArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's maximum value.\n\tActual and expected values should be the same.\n\tExpected:<4.0±9.999999960041972E-12> but was:<2.0>");
         }
         try {
             initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}, "Message").toMax().isEqualTo(4.0);
-            Assertions.fail("DoubleArrayAssertion test fail");
+            Assertions.fail(DoubleArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's maximum value.\n\tActual and expected values should be the same.\n\tExpected:<4.0±9.999999960041972E-12> but was:<2.0>");
         }
@@ -468,55 +468,55 @@ public final class DoubleArrayAggregateAssertionTest extends AssertionTest {
 
         try {
             Raw.doubleArrayAssertion().toMax(Matchers.equalTo(0.0));
-            Assertions.fail("DoubleArrayAssertion test fail");
+            Assertions.fail(DoubleArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.doubleArrayAssertion(), null).toMax(Matchers.equalTo(0.0));
-            Assertions.fail("DoubleArrayAssertion test fail");
+            Assertions.fail(DoubleArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.doubleArrayAssertion(), null, "Message").toMax(Matchers.equalTo(0.0));
-            Assertions.fail("DoubleArrayAssertion test fail");
+            Assertions.fail(DoubleArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.doubleArrayAssertion(), null).toMax(null);
-            Assertions.fail("DoubleArrayAssertion test fail");
+            Assertions.fail(DoubleArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.doubleArrayAssertion(), null, "Message").toMax(null);
-            Assertions.fail("DoubleArrayAssertion test fail");
+            Assertions.fail(DoubleArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.doubleArrayAssertion(), new double[]{}).toMax(null);
-            Assertions.fail("DoubleArrayAssertion test fail");
+            Assertions.fail(DoubleArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: matcher.");
         }
         try {
             initialize(Raw.doubleArrayAssertion(), new double[]{}, "Message").toMax(null);
-            Assertions.fail("DoubleArrayAssertion test fail");
+            Assertions.fail(DoubleArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: matcher.");
         }
         try {
             initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}).toMax(Matchers.equalTo(4.0));
-            Assertions.fail("DoubleArrayAssertion test fail");
+            Assertions.fail(DoubleArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's maximum value.\nExpected: <4.0>\n     but: was <2.0>");
         }
         try {
             initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}, "Message").toMax(Matchers.equalTo(4.0));
-            Assertions.fail("DoubleArrayAssertion test fail");
+            Assertions.fail(DoubleArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's maximum value.\nExpected: <4.0>\n     but: was <2.0>");
         }
@@ -536,31 +536,31 @@ public final class DoubleArrayAggregateAssertionTest extends AssertionTest {
 
         try {
             Raw.doubleArrayAssertion().hasMax(0.0);
-            Assertions.fail("DoubleArrayAssertion test fail");
+            Assertions.fail(DoubleArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.doubleArrayAssertion(), null).hasMax(0.0);
-            Assertions.fail("DoubleArrayAssertion test fail");
+            Assertions.fail(DoubleArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.doubleArrayAssertion(), null, "Message").hasMax(0.0);
-            Assertions.fail("DoubleArrayAssertion test fail");
+            Assertions.fail(DoubleArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}).hasMax(4.0);
-            Assertions.fail("DoubleArrayAssertion test fail");
+            Assertions.fail(DoubleArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's maximum value.\n\tActual and expected values should be the same.\n\tExpected:<4.0±9.999999960041972E-12> but was:<2.0>");
         }
         try {
             initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}, "Message").hasMax(4.0);
-            Assertions.fail("DoubleArrayAssertion test fail");
+            Assertions.fail(DoubleArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's maximum value.\n\tActual and expected values should be the same.\n\tExpected:<4.0±9.999999960041972E-12> but was:<2.0>");
         }
@@ -581,55 +581,55 @@ public final class DoubleArrayAggregateAssertionTest extends AssertionTest {
 
         try {
             Raw.doubleArrayAssertion().hasMax(Double.valueOf(0.0));
-            Assertions.fail("DoubleArrayAssertion test fail");
+            Assertions.fail(DoubleArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.doubleArrayAssertion(), null).hasMax(Double.valueOf(0.0));
-            Assertions.fail("DoubleArrayAssertion test fail");
+            Assertions.fail(DoubleArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.doubleArrayAssertion(), null, "Message").hasMax(Double.valueOf(0.0));
-            Assertions.fail("DoubleArrayAssertion test fail");
+            Assertions.fail(DoubleArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.doubleArrayAssertion(), null).hasMax(null);
-            Assertions.fail("DoubleArrayAssertion test fail");
+            Assertions.fail(DoubleArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.doubleArrayAssertion(), null, "Message").hasMax(null);
-            Assertions.fail("DoubleArrayAssertion test fail");
+            Assertions.fail(DoubleArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.doubleArrayAssertion(), new double[]{1.0}).hasMax(null);
-            Assertions.fail("DoubleArrayAssertion test fail");
+            Assertions.fail(DoubleArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's maximum value.\n\tActual value should be null.\n\tActual:<1.0>");
         }
         try {
             initialize(Raw.doubleArrayAssertion(), new double[]{1.0}, "Message").hasMax(null);
-            Assertions.fail("DoubleArrayAssertion test fail");
+            Assertions.fail(DoubleArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's maximum value.\n\tActual value should be null.\n\tActual:<1.0>");
         }
         try {
             initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}).hasMax(Double.valueOf(4.0));
-            Assertions.fail("DoubleArrayAssertion test fail");
+            Assertions.fail(DoubleArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's maximum value.\n\tActual and expected values should be the same.\n\tExpected:<4.0±9.999999960041972E-12> but was:<2.0>");
         }
         try {
             initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}, "Message").hasMax(Double.valueOf(4.0));
-            Assertions.fail("DoubleArrayAssertion test fail");
+            Assertions.fail(DoubleArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's maximum value.\n\tActual and expected values should be the same.\n\tExpected:<4.0±9.999999960041972E-12> but was:<2.0>");
         }
@@ -651,31 +651,31 @@ public final class DoubleArrayAggregateAssertionTest extends AssertionTest {
 
         try {
             Raw.doubleArrayAssertion().hasMax(0.0, 0.1);
-            Assertions.fail("DoubleArrayAssertion test fail");
+            Assertions.fail(DoubleArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.doubleArrayAssertion(), null).hasMax(0.0, 0.1);
-            Assertions.fail("DoubleArrayAssertion test fail");
+            Assertions.fail(DoubleArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.doubleArrayAssertion(), null, "Message").hasMax(0.0, 0.1);
-            Assertions.fail("DoubleArrayAssertion test fail");
+            Assertions.fail(DoubleArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}).hasMax(4.0, 0.1);
-            Assertions.fail("DoubleArrayAssertion test fail");
+            Assertions.fail(DoubleArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's maximum value.\n\tActual and expected values should be the same.\n\tExpected:<4.0±0.1> but was:<2.0>");
         }
         try {
             initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}, "Message").hasMax(4.0, 0.1);
-            Assertions.fail("DoubleArrayAssertion test fail");
+            Assertions.fail(DoubleArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's maximum value.\n\tActual and expected values should be the same.\n\tExpected:<4.0±0.1> but was:<2.0>");
         }
@@ -698,55 +698,55 @@ public final class DoubleArrayAggregateAssertionTest extends AssertionTest {
 
         try {
             Raw.doubleArrayAssertion().hasMax(Double.valueOf(0.0), 0.1);
-            Assertions.fail("DoubleArrayAssertion test fail");
+            Assertions.fail(DoubleArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.doubleArrayAssertion(), null).hasMax(Double.valueOf(0.0), 0.1);
-            Assertions.fail("DoubleArrayAssertion test fail");
+            Assertions.fail(DoubleArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.doubleArrayAssertion(), null, "Message").hasMax(Double.valueOf(0.0), 0.1);
-            Assertions.fail("DoubleArrayAssertion test fail");
+            Assertions.fail(DoubleArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.doubleArrayAssertion(), null).hasMax(null, 0.1);
-            Assertions.fail("DoubleArrayAssertion test fail");
+            Assertions.fail(DoubleArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.doubleArrayAssertion(), null, "Message").hasMax(null, 0.1);
-            Assertions.fail("DoubleArrayAssertion test fail");
+            Assertions.fail(DoubleArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.doubleArrayAssertion(), new double[]{1.0}).hasMax(null, 0.1);
-            Assertions.fail("DoubleArrayAssertion test fail");
+            Assertions.fail(DoubleArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's maximum value.\n\tActual value should be null.\n\tActual:<1.0>");
         }
         try {
             initialize(Raw.doubleArrayAssertion(), new double[]{1.0}, "Message").hasMax(null, 0.1);
-            Assertions.fail("DoubleArrayAssertion test fail");
+            Assertions.fail(DoubleArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's maximum value.\n\tActual value should be null.\n\tActual:<1.0>");
         }
         try {
             initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}).hasMax(Double.valueOf(4.0), 0.1);
-            Assertions.fail("DoubleArrayAssertion test fail");
+            Assertions.fail(DoubleArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's maximum value.\n\tActual and expected values should be the same.\n\tExpected:<4.0±0.1> but was:<2.0>");
         }
         try {
             initialize(Raw.doubleArrayAssertion(), new double[]{1.0, 2.0}, "Message").hasMax(Double.valueOf(4.0), 0.1);
-            Assertions.fail("DoubleArrayAssertion test fail");
+            Assertions.fail(DoubleArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's maximum value.\n\tActual and expected values should be the same.\n\tExpected:<4.0±0.1> but was:<2.0>");
         }

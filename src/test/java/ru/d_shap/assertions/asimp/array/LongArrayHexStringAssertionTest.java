@@ -52,43 +52,43 @@ public final class LongArrayHexStringAssertionTest extends AssertionTest {
 
         try {
             Raw.longArrayAssertion().toHexString();
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.longArrayAssertion(), null).toHexString();
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.longArrayAssertion(), null, "Message").toHexString();
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             clearActual(initialize(Raw.longArrayAssertion(), new long[]{1, 2}).toHexString()).isEqualTo("00000000000000000000000000000000");
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's hex representation.\n\tActual value should not be null.");
         }
         try {
             clearActual(initialize(Raw.longArrayAssertion(), new long[]{1, 2}, "Message").toHexString()).isEqualTo("00000000000000000000000000000000");
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's hex representation.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.longArrayAssertion(), new long[]{1, 2}).toHexString().isEqualTo("00000000000000000000000000000000");
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's hex representation.\n\tActual and expected values should be the same.\n\tExpected:<00000000000000000000000000000000> but was:<00000000000000010000000000000002>");
         }
         try {
             initialize(Raw.longArrayAssertion(), new long[]{1, 2}, "Message").toHexString().isEqualTo("00000000000000000000000000000000");
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's hex representation.\n\tActual and expected values should be the same.\n\tExpected:<00000000000000000000000000000000> but was:<00000000000000010000000000000002>");
         }
@@ -120,115 +120,115 @@ public final class LongArrayHexStringAssertionTest extends AssertionTest {
 
         try {
             Raw.longArrayAssertion().toHexString(0, 0);
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.longArrayAssertion(), null).toHexString(0, 0);
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.longArrayAssertion(), null, "Message").toHexString(0, 0);
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.longArrayAssertion(), null).toHexString(-1, 0);
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.longArrayAssertion(), null, "Message").toHexString(-1, 0);
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.longArrayAssertion(), new long[]{1, 2}).toHexString(-1, 0);
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should be valid: from.\n\tThe argument's value should be greater than or equal to zero.");
         }
         try {
             initialize(Raw.longArrayAssertion(), new long[]{1, 2}, "Message").toHexString(-1, 0);
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: from.\n\tThe argument's value should be greater than or equal to zero.");
         }
         try {
             initialize(Raw.longArrayAssertion(), new long[]{1, 2}).toHexString(-1, 3);
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should be valid: from.\n\tThe argument's value should be greater than or equal to zero.");
         }
         try {
             initialize(Raw.longArrayAssertion(), new long[]{1, 2}, "Message").toHexString(-1, 3);
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: from.\n\tThe argument's value should be greater than or equal to zero.");
         }
         try {
             initialize(Raw.longArrayAssertion(), new long[]{1, 2}).toHexString(0, 3);
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should be valid: to.\n\tThe argument's value should be less than or equal to the maximum value: 2.");
         }
         try {
             initialize(Raw.longArrayAssertion(), new long[]{1, 2}, "Message").toHexString(0, 3);
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: to.\n\tThe argument's value should be less than or equal to the maximum value: 2.");
         }
         try {
             initialize(Raw.longArrayAssertion(), new long[]{1, 2}).toHexString(3, 3);
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should be valid: from.\n\tThe argument's value should be less than or equal to the maximum value: 2.");
         }
         try {
             initialize(Raw.longArrayAssertion(), new long[]{1, 2}, "Message").toHexString(3, 3);
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: from.\n\tThe argument's value should be less than or equal to the maximum value: 2.");
         }
         try {
             initialize(Raw.longArrayAssertion(), new long[]{1, 2}).toHexString(1, 0);
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should be valid: to.\n\tThe argument's value should be greater than or equal to the minimum value: 1.");
         }
         try {
             initialize(Raw.longArrayAssertion(), new long[]{1, 2}, "Message").toHexString(1, 0);
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: to.\n\tThe argument's value should be greater than or equal to the minimum value: 1.");
         }
         try {
             clearActual(initialize(Raw.longArrayAssertion(), new long[]{1, 2}).toHexString(0, 0)).isEqualTo("00000000000000000000000000000000");
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's hex representation part: 0:0.\n\tActual value should not be null.");
         }
         try {
             clearActual(initialize(Raw.longArrayAssertion(), new long[]{1, 2}, "Message").toHexString(0, 0)).isEqualTo("00000000000000000000000000000000");
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's hex representation part: 0:0.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.longArrayAssertion(), new long[]{1, 2, 3, 4}).toHexString(1, 3).isEqualTo("00000000000000010000000000000002");
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's hex representation part: 1:3.\n\tActual and expected values should be the same.\n\tExpected:<00000000000000010000000000000002> but was:<00000000000000020000000000000003>");
         }
         try {
             initialize(Raw.longArrayAssertion(), new long[]{1, 2, 3, 4}, "Message").toHexString(1, 3).isEqualTo("00000000000000010000000000000002");
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's hex representation part: 1:3.\n\tActual and expected values should be the same.\n\tExpected:<00000000000000010000000000000002> but was:<00000000000000020000000000000003>");
         }
@@ -246,55 +246,55 @@ public final class LongArrayHexStringAssertionTest extends AssertionTest {
 
         try {
             Raw.longArrayAssertion().toHexString(Matchers.equalTo(""));
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.longArrayAssertion(), null).toHexString(Matchers.equalTo(""));
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.longArrayAssertion(), null, "Message").toHexString(Matchers.equalTo(""));
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.longArrayAssertion(), null).toHexString(null);
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.longArrayAssertion(), null, "Message").toHexString(null);
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.longArrayAssertion(), new long[]{1, 2}).toHexString(null);
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: matcher.");
         }
         try {
             initialize(Raw.longArrayAssertion(), new long[]{1, 2}, "Message").toHexString(null);
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: matcher.");
         }
         try {
             initialize(Raw.longArrayAssertion(), new long[]{1, 2}).toHexString(Matchers.equalTo("00000000000000000000000000000000"));
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's hex representation.\nExpected: \"00000000000000000000000000000000\"\n     but: was \"00000000000000010000000000000002\"");
         }
         try {
             initialize(Raw.longArrayAssertion(), new long[]{1, 2}, "Message").toHexString(Matchers.equalTo("00000000000000000000000000000000"));
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's hex representation.\nExpected: \"00000000000000000000000000000000\"\n     but: was \"00000000000000010000000000000002\"");
         }
@@ -326,127 +326,127 @@ public final class LongArrayHexStringAssertionTest extends AssertionTest {
 
         try {
             Raw.longArrayAssertion().toHexString(0, 0, Matchers.equalTo("00000000000000000000000000000000"));
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.longArrayAssertion(), null).toHexString(0, 0, Matchers.equalTo("00000000000000000000000000000000"));
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.longArrayAssertion(), null, "Message").toHexString(0, 0, Matchers.equalTo("00000000000000000000000000000000"));
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.longArrayAssertion(), null).toHexString(-1, 0, Matchers.equalTo("00000000000000000000000000000000"));
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.longArrayAssertion(), null, "Message").toHexString(-1, 0, Matchers.equalTo("00000000000000000000000000000000"));
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.longArrayAssertion(), new long[]{1, 2}).toHexString(-1, 0, Matchers.equalTo("00000000000000000000000000000000"));
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should be valid: from.\n\tThe argument's value should be greater than or equal to zero.");
         }
         try {
             initialize(Raw.longArrayAssertion(), new long[]{1, 2}, "Message").toHexString(-1, 0, Matchers.equalTo("00000000000000000000000000000000"));
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: from.\n\tThe argument's value should be greater than or equal to zero.");
         }
         try {
             initialize(Raw.longArrayAssertion(), new long[]{1, 2}).toHexString(-1, 3, Matchers.equalTo("00000000000000000000000000000000"));
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should be valid: from.\n\tThe argument's value should be greater than or equal to zero.");
         }
         try {
             initialize(Raw.longArrayAssertion(), new long[]{1, 2}, "Message").toHexString(-1, 3, Matchers.equalTo("00000000000000000000000000000000"));
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: from.\n\tThe argument's value should be greater than or equal to zero.");
         }
         try {
             initialize(Raw.longArrayAssertion(), new long[]{1, 2}).toHexString(0, 3, Matchers.equalTo("00000000000000000000000000000000"));
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should be valid: to.\n\tThe argument's value should be less than or equal to the maximum value: 2.");
         }
         try {
             initialize(Raw.longArrayAssertion(), new long[]{1, 2}, "Message").toHexString(0, 3, Matchers.equalTo("00000000000000000000000000000000"));
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: to.\n\tThe argument's value should be less than or equal to the maximum value: 2.");
         }
         try {
             initialize(Raw.longArrayAssertion(), new long[]{1, 2}).toHexString(3, 3, Matchers.equalTo("00"));
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should be valid: from.\n\tThe argument's value should be less than or equal to the maximum value: 2.");
         }
         try {
             initialize(Raw.longArrayAssertion(), new long[]{1, 2}, "Message").toHexString(3, 3, Matchers.equalTo("00"));
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: from.\n\tThe argument's value should be less than or equal to the maximum value: 2.");
         }
         try {
             initialize(Raw.longArrayAssertion(), new long[]{1, 2}).toHexString(1, 0, Matchers.equalTo("00"));
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should be valid: to.\n\tThe argument's value should be greater than or equal to the minimum value: 1.");
         }
         try {
             initialize(Raw.longArrayAssertion(), new long[]{1, 2}, "Message").toHexString(1, 0, Matchers.equalTo("00"));
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: to.\n\tThe argument's value should be greater than or equal to the minimum value: 1.");
         }
         try {
             initialize(Raw.longArrayAssertion(), new long[]{1, 2}).toHexString(0, 3, null);
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should be valid: to.\n\tThe argument's value should be less than or equal to the maximum value: 2.");
         }
         try {
             initialize(Raw.longArrayAssertion(), new long[]{1, 2}, "Message").toHexString(0, 3, null);
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: to.\n\tThe argument's value should be less than or equal to the maximum value: 2.");
         }
         try {
             initialize(Raw.longArrayAssertion(), new long[]{1, 2}).toHexString(0, 2, null);
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: matcher.");
         }
         try {
             initialize(Raw.longArrayAssertion(), new long[]{1, 2}, "Message").toHexString(0, 2, null);
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: matcher.");
         }
         try {
             initialize(Raw.longArrayAssertion(), new long[]{1, 2, 3, 4}).toHexString(1, 3, Matchers.equalTo("00000000000000010000000000000002"));
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's hex representation part: 1:3.\nExpected: \"00000000000000010000000000000002\"\n     but: was \"00000000000000020000000000000003\"");
         }
         try {
             initialize(Raw.longArrayAssertion(), new long[]{1, 2, 3, 4}, "Message").toHexString(1, 3, Matchers.equalTo("00000000000000010000000000000002"));
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's hex representation part: 1:3.\nExpected: \"00000000000000010000000000000002\"\n     but: was \"00000000000000020000000000000003\"");
         }
@@ -464,55 +464,55 @@ public final class LongArrayHexStringAssertionTest extends AssertionTest {
 
         try {
             Raw.longArrayAssertion().hasHexString("");
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.longArrayAssertion(), null).hasHexString("");
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.longArrayAssertion(), null, "Message").hasHexString("");
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.longArrayAssertion(), null).hasHexString(null);
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.longArrayAssertion(), null, "Message").hasHexString(null);
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.longArrayAssertion(), new long[]{1, 2}).hasHexString(null);
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.longArrayAssertion(), new long[]{1, 2}, "Message").hasHexString(null);
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.longArrayAssertion(), new long[]{1, 2}).hasHexString("00000000000000000000000000000000");
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's hex representation.\n\tActual and expected values should be the same.\n\tExpected:<00000000000000000000000000000000> but was:<00000000000000010000000000000002>");
         }
         try {
             initialize(Raw.longArrayAssertion(), new long[]{1, 2}, "Message").hasHexString("00000000000000000000000000000000");
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's hex representation.\n\tActual and expected values should be the same.\n\tExpected:<00000000000000000000000000000000> but was:<00000000000000010000000000000002>");
         }
@@ -544,151 +544,151 @@ public final class LongArrayHexStringAssertionTest extends AssertionTest {
 
         try {
             Raw.longArrayAssertion().hasHexString(0, 0, "");
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.longArrayAssertion(), null).hasHexString(0, 0, "");
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.longArrayAssertion(), null, "Message").hasHexString(0, 0, "");
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.longArrayAssertion(), null).hasHexString(-1, 0, "");
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.longArrayAssertion(), null, "Message").hasHexString(-1, 0, "");
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.longArrayAssertion(), new long[]{1, 2}).hasHexString(-1, 0, "");
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should be valid: from.\n\tThe argument's value should be greater than or equal to zero.");
         }
         try {
             initialize(Raw.longArrayAssertion(), new long[]{1, 2}, "Message").hasHexString(-1, 0, "");
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: from.\n\tThe argument's value should be greater than or equal to zero.");
         }
         try {
             initialize(Raw.longArrayAssertion(), new long[]{1, 2}).hasHexString(-1, 3, "");
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should be valid: from.\n\tThe argument's value should be greater than or equal to zero.");
         }
         try {
             initialize(Raw.longArrayAssertion(), new long[]{1, 2}, "Message").hasHexString(-1, 3, "");
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: from.\n\tThe argument's value should be greater than or equal to zero.");
         }
         try {
             initialize(Raw.longArrayAssertion(), new long[]{1, 2}).hasHexString(0, 3, "");
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should be valid: to.\n\tThe argument's value should be less than or equal to the maximum value: 2.");
         }
         try {
             initialize(Raw.longArrayAssertion(), new long[]{1, 2}, "Message").hasHexString(0, 3, "");
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: to.\n\tThe argument's value should be less than or equal to the maximum value: 2.");
         }
         try {
             initialize(Raw.longArrayAssertion(), new long[]{1, 2}).hasHexString(3, 3, "");
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should be valid: from.\n\tThe argument's value should be less than or equal to the maximum value: 2.");
         }
         try {
             initialize(Raw.longArrayAssertion(), new long[]{1, 2}, "Message").hasHexString(3, 3, "");
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: from.\n\tThe argument's value should be less than or equal to the maximum value: 2.");
         }
         try {
             initialize(Raw.longArrayAssertion(), new long[]{1, 2}).hasHexString(3, 3, null);
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should be valid: from.\n\tThe argument's value should be less than or equal to the maximum value: 2.");
         }
         try {
             initialize(Raw.longArrayAssertion(), new long[]{1, 2}, "Message").hasHexString(3, 3, null);
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: from.\n\tThe argument's value should be less than or equal to the maximum value: 2.");
         }
         try {
             initialize(Raw.longArrayAssertion(), new long[]{1, 2}).hasHexString(1, 0, "");
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should be valid: to.\n\tThe argument's value should be greater than or equal to the minimum value: 1.");
         }
         try {
             initialize(Raw.longArrayAssertion(), new long[]{1, 2}, "Message").hasHexString(1, 0, "");
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: to.\n\tThe argument's value should be greater than or equal to the minimum value: 1.");
         }
         try {
             initialize(Raw.longArrayAssertion(), new long[]{1, 2}).hasHexString(1, 0, null);
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should be valid: to.\n\tThe argument's value should be greater than or equal to the minimum value: 1.");
         }
         try {
             initialize(Raw.longArrayAssertion(), new long[]{1, 2}, "Message").hasHexString(1, 0, null);
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: to.\n\tThe argument's value should be greater than or equal to the minimum value: 1.");
         }
         try {
             initialize(Raw.longArrayAssertion(), new long[]{1, 2}).hasHexString(0, 3, null);
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should be valid: to.\n\tThe argument's value should be less than or equal to the maximum value: 2.");
         }
         try {
             initialize(Raw.longArrayAssertion(), new long[]{1, 2}, "Message").hasHexString(0, 3, null);
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: to.\n\tThe argument's value should be less than or equal to the maximum value: 2.");
         }
         try {
             initialize(Raw.longArrayAssertion(), new long[]{1, 2}).hasHexString(0, 2, null);
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.longArrayAssertion(), new long[]{1, 2}, "Message").hasHexString(0, 2, null);
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.longArrayAssertion(), new long[]{1, 2, 3, 4}).hasHexString(1, 3, "00000000000000010000000000000002");
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's hex representation part: 1:3.\n\tActual and expected values should be the same.\n\tExpected:<00000000000000010000000000000002> but was:<00000000000000020000000000000003>");
         }
         try {
             initialize(Raw.longArrayAssertion(), new long[]{1, 2, 3, 4}, "Message").hasHexString(1, 3, "00000000000000010000000000000002");
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's hex representation part: 1:3.\n\tActual and expected values should be the same.\n\tExpected:<00000000000000010000000000000002> but was:<00000000000000020000000000000003>");
         }

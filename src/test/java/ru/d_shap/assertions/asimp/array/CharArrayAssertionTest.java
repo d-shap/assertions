@@ -50,13 +50,13 @@ public final class CharArrayAssertionTest extends AssertionTest {
 
         try {
             initializeWithRawActual(Raw.charArrayAssertion(), new Object());
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should match the assertion.\n\tActual value should be the instance of the expected class.\n\tExpected:<[C> but was:<java.lang.Object>");
         }
         try {
             initializeWithRawActual(Raw.charArrayAssertion(), new Object(), "Message");
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should match the assertion.\n\tActual value should be the instance of the expected class.\n\tExpected:<[C> but was:<java.lang.Object>");
         }
@@ -72,31 +72,31 @@ public final class CharArrayAssertionTest extends AssertionTest {
 
         try {
             Raw.charArrayAssertion().isEmpty();
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.charArrayAssertion(), null).isEmpty();
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.charArrayAssertion(), null, "Message").isEmpty();
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).isEmpty();
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be empty.\n\tActual:<[1(49), 2(50)]>");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}, "Message").isEmpty();
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be empty.\n\tActual:<[1(49), 2(50)]>");
         }
@@ -113,19 +113,19 @@ public final class CharArrayAssertionTest extends AssertionTest {
 
         try {
             Raw.charArrayAssertion().isNullOrEmpty();
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).isNullOrEmpty();
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be null or empty.\n\tActual:<[1(49), 2(50)]>");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}, "Message").isNullOrEmpty();
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be null or empty.\n\tActual:<[1(49), 2(50)]>");
         }
@@ -141,31 +141,31 @@ public final class CharArrayAssertionTest extends AssertionTest {
 
         try {
             Raw.charArrayAssertion().isNotEmpty();
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.charArrayAssertion(), null).isNotEmpty();
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.charArrayAssertion(), null, "Message").isNotEmpty();
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{}).isNotEmpty();
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be empty.");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{}, "Message").isNotEmpty();
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be empty.");
         }
@@ -182,31 +182,31 @@ public final class CharArrayAssertionTest extends AssertionTest {
 
         try {
             Raw.charArrayAssertion().contains('1');
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.charArrayAssertion(), null).contains('1');
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.charArrayAssertion(), null, "Message").contains('1');
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).contains('3');
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain the expected value.\n\tExpected:<3(51)> but was:<[1(49), 2(50)]>");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}, "Message").contains('3');
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain the expected value.\n\tExpected:<3(51)> but was:<[1(49), 2(50)]>");
         }
@@ -222,31 +222,31 @@ public final class CharArrayAssertionTest extends AssertionTest {
 
         try {
             Raw.charArrayAssertion().doesNotContain('1');
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.charArrayAssertion(), null).doesNotContain('1');
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.charArrayAssertion(), null, "Message").doesNotContain('1');
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).doesNotContain('1');
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not contain the expected value.\n\tExpected:<1(49)> but was:<[1(49), 2(50)]>");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}, "Message").doesNotContain('1');
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not contain the expected value.\n\tExpected:<1(49)> but was:<[1(49), 2(50)]>");
         }
@@ -264,67 +264,67 @@ public final class CharArrayAssertionTest extends AssertionTest {
 
         try {
             Raw.charArrayAssertion().containsAll('1');
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.charArrayAssertion(), null).containsAll('1');
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.charArrayAssertion(), null, "Message").containsAll('1');
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.charArrayAssertion(), null).containsAll((char[]) null);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.charArrayAssertion(), null, "Message").containsAll((char[]) null);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{}).containsAll((char[]) null);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{}, "Message").containsAll((char[]) null);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{}).containsAll();
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{}, "Message").containsAll();
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).containsAll('2', '3');
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values.\n\tExpected:<[2(50), 3(51)]> but was:<[1(49), 2(50)]>");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}, "Message").containsAll('2', '3');
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values.\n\tExpected:<[2(50), 3(51)]> but was:<[1(49), 2(50)]>");
         }
@@ -342,79 +342,79 @@ public final class CharArrayAssertionTest extends AssertionTest {
 
         try {
             Raw.charArrayAssertion().containsAll(49);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.charArrayAssertion(), null).containsAll(49);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.charArrayAssertion(), null, "Message").containsAll(49);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.charArrayAssertion(), null).containsAll((int[]) null);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.charArrayAssertion(), null, "Message").containsAll((int[]) null);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{}).containsAll((int[]) null);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{}, "Message").containsAll((int[]) null);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{}).containsAll(new int[]{});
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{}, "Message").containsAll(new int[]{});
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).containsAll(50, 51);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values.\n\tExpected:<[2(50), 3(51)]> but was:<[1(49), 2(50)]>");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}, "Message").containsAll(50, 51);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values.\n\tExpected:<[2(50), 3(51)]> but was:<[1(49), 2(50)]>");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).containsAll(100000, 100001);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values.\n\tExpected:<[100000, 100001]> but was:<[1(49), 2(50)]>");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}, "Message").containsAll(100000, 100001);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values.\n\tExpected:<[100000, 100001]> but was:<[1(49), 2(50)]>");
         }
@@ -432,67 +432,67 @@ public final class CharArrayAssertionTest extends AssertionTest {
 
         try {
             Raw.charArrayAssertion().containsAll(DataHelper.<Character>createIterable());
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.charArrayAssertion(), null).containsAll(DataHelper.<Character>createIterable());
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.charArrayAssertion(), null, "Message").containsAll(DataHelper.<Character>createIterable());
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.charArrayAssertion(), null).containsAll((Iterable<Character>) null);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.charArrayAssertion(), null, "Message").containsAll((Iterable<Character>) null);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{}).containsAll((Iterable<Character>) null);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{}, "Message").containsAll((Iterable<Character>) null);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{}).containsAll(DataHelper.<Character>createIterable());
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{}, "Message").containsAll(DataHelper.<Character>createIterable());
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).containsAll(DataHelper.createIterable('2', '3'));
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values.\n\tExpected:<[2(50), 3(51)]> but was:<[1(49), 2(50)]>");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}, "Message").containsAll(DataHelper.createIterable('2', '3'));
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values.\n\tExpected:<[2(50), 3(51)]> but was:<[1(49), 2(50)]>");
         }
@@ -509,73 +509,73 @@ public final class CharArrayAssertionTest extends AssertionTest {
 
         try {
             Raw.charArrayAssertion().containsAllInOrder('1');
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.charArrayAssertion(), null).containsAllInOrder('1');
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.charArrayAssertion(), null, "Message").containsAllInOrder('1');
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.charArrayAssertion(), null).containsAllInOrder((char[]) null);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.charArrayAssertion(), null, "Message").containsAllInOrder((char[]) null);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{}).containsAllInOrder((char[]) null);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{}, "Message").containsAllInOrder((char[]) null);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{}).containsAllInOrder();
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{}, "Message").containsAllInOrder();
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).containsAllInOrder('2', '3');
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[2(50), 3(51)]> but was:<[1(49), 2(50)]>");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).containsAllInOrder('2', '1');
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[2(50), 1(49)]> but was:<[1(49), 2(50)]>");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}, "Message").containsAllInOrder('2', '1');
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values in the specified order.\n\tExpected:<[2(50), 1(49)]> but was:<[1(49), 2(50)]>");
         }
@@ -592,85 +592,85 @@ public final class CharArrayAssertionTest extends AssertionTest {
 
         try {
             Raw.charArrayAssertion().containsAllInOrder(49);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.charArrayAssertion(), null).containsAllInOrder(49);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.charArrayAssertion(), null, "Message").containsAllInOrder(49);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.charArrayAssertion(), null).containsAllInOrder((int[]) null);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.charArrayAssertion(), null, "Message").containsAllInOrder((int[]) null);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{}).containsAllInOrder((int[]) null);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{}, "Message").containsAllInOrder((int[]) null);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{}).containsAllInOrder(new int[]{});
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{}, "Message").containsAllInOrder(new int[]{});
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).containsAllInOrder(50, 51);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[2(50), 3(51)]> but was:<[1(49), 2(50)]>");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).containsAllInOrder(50, 49);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[2(50), 1(49)]> but was:<[1(49), 2(50)]>");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}, "Message").containsAllInOrder(50, 49);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values in the specified order.\n\tExpected:<[2(50), 1(49)]> but was:<[1(49), 2(50)]>");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).containsAllInOrder(100000, 100001);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[100000, 100001]> but was:<[1(49), 2(50)]>");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}, "Message").containsAllInOrder(100000, 100001);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values in the specified order.\n\tExpected:<[100000, 100001]> but was:<[1(49), 2(50)]>");
         }
@@ -687,73 +687,73 @@ public final class CharArrayAssertionTest extends AssertionTest {
 
         try {
             Raw.charArrayAssertion().containsAllInOrder(DataHelper.<Character>createIterable());
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.charArrayAssertion(), null).containsAllInOrder(DataHelper.<Character>createIterable());
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.charArrayAssertion(), null, "Message").containsAllInOrder(DataHelper.<Character>createIterable());
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.charArrayAssertion(), null).containsAllInOrder((Iterable<Character>) null);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.charArrayAssertion(), null, "Message").containsAllInOrder((Iterable<Character>) null);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{}).containsAllInOrder((Iterable<Character>) null);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{}, "Message").containsAllInOrder((Iterable<Character>) null);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{}).containsAllInOrder(DataHelper.<Character>createIterable());
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{}, "Message").containsAllInOrder(DataHelper.<Character>createIterable());
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).containsAllInOrder(DataHelper.createIterable('2', '3'));
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[2(50), 3(51)]> but was:<[1(49), 2(50)]>");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).containsAllInOrder(DataHelper.createIterable('2', '1'));
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values in the specified order.\n\tExpected:<[2(50), 1(49)]> but was:<[1(49), 2(50)]>");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}, "Message").containsAllInOrder(DataHelper.createIterable('2', '1'));
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values in the specified order.\n\tExpected:<[2(50), 1(49)]> but was:<[1(49), 2(50)]>");
         }
@@ -772,73 +772,73 @@ public final class CharArrayAssertionTest extends AssertionTest {
 
         try {
             Raw.charArrayAssertion().containsExactly('1');
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.charArrayAssertion(), null).containsExactly('1');
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.charArrayAssertion(), null, "Message").containsExactly('1');
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.charArrayAssertion(), null).containsExactly((char[]) null);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.charArrayAssertion(), null, "Message").containsExactly((char[]) null);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{}).containsExactly((char[]) null);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{}, "Message").containsExactly((char[]) null);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).containsExactly('2', '3');
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[2(50), 3(51)]> but was:<[1(49), 2(50)]>");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{'1', '2', '3', '4'}).containsExactly('1', '2', '3', '4', '5');
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[1(49), 2(50), 3(51), 4(52), 5(53)]> but was:<[1(49), 2(50), 3(51), 4(52)]>");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).containsExactly();
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<<EMPTY>> but was:<[1(49), 2(50)]>");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{'1', '2', '3', '4'}).containsExactly('1', '1', '3', '2');
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[1(49), 1(49), 3(51), 2(50)]> but was:<[1(49), 2(50), 3(51), 4(52)]>");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{'1', '2', '3', '4'}, "Message").containsExactly('1', '1', '3', '2');
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly.\n\tExpected:<[1(49), 1(49), 3(51), 2(50)]> but was:<[1(49), 2(50), 3(51), 4(52)]>");
         }
@@ -857,85 +857,85 @@ public final class CharArrayAssertionTest extends AssertionTest {
 
         try {
             Raw.charArrayAssertion().containsExactly(49);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.charArrayAssertion(), null).containsExactly(49);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.charArrayAssertion(), null, "Message").containsExactly(49);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.charArrayAssertion(), null).containsExactly((int[]) null);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.charArrayAssertion(), null, "Message").containsExactly((int[]) null);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{}).containsExactly((int[]) null);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{}, "Message").containsExactly((int[]) null);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).containsExactly(50, 51);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[2(50), 3(51)]> but was:<[1(49), 2(50)]>");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{'1', '2', '3', '4'}).containsExactly(49, 50, 51, 52, 53);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[1(49), 2(50), 3(51), 4(52), 5(53)]> but was:<[1(49), 2(50), 3(51), 4(52)]>");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).containsExactly(new int[]{});
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<<EMPTY>> but was:<[1(49), 2(50)]>");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{'1', '2', '3', '4'}).containsExactly(49, 49, 51, 50);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[1(49), 1(49), 3(51), 2(50)]> but was:<[1(49), 2(50), 3(51), 4(52)]>");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{'1', '2', '3', '4'}, "Message").containsExactly(49, 49, 51, 50);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly.\n\tExpected:<[1(49), 1(49), 3(51), 2(50)]> but was:<[1(49), 2(50), 3(51), 4(52)]>");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{'1', '2', '3', '4'}).containsExactly(100000, 100001);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[100000, 100001]> but was:<[1(49), 2(50), 3(51), 4(52)]>");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{'1', '2', '3', '4'}, "Message").containsExactly(100000, 100001);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly.\n\tExpected:<[100000, 100001]> but was:<[1(49), 2(50), 3(51), 4(52)]>");
         }
@@ -954,73 +954,73 @@ public final class CharArrayAssertionTest extends AssertionTest {
 
         try {
             Raw.charArrayAssertion().containsExactly(DataHelper.<Character>createIterable());
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.charArrayAssertion(), null).containsExactly(DataHelper.<Character>createIterable());
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.charArrayAssertion(), null, "Message").containsExactly(DataHelper.<Character>createIterable());
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.charArrayAssertion(), null).containsExactly((Iterable<Character>) null);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.charArrayAssertion(), null, "Message").containsExactly((Iterable<Character>) null);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{}).containsExactly((Iterable<Character>) null);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{}, "Message").containsExactly((Iterable<Character>) null);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).containsExactly(DataHelper.createIterable('2', '3'));
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[2(50), 3(51)]> but was:<[1(49), 2(50)]>");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{'1', '2', '3', '4'}).containsExactly(DataHelper.createIterable('1', '2', '3', '4', '5'));
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[1(49), 2(50), 3(51), 4(52), 5(53)]> but was:<[1(49), 2(50), 3(51), 4(52)]>");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).containsExactly(DataHelper.<Character>createIterable());
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<<EMPTY>> but was:<[1(49), 2(50)]>");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{'1', '2', '3', '4'}).containsExactly(DataHelper.createIterable('1', '1', '3', '2'));
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly.\n\tExpected:<[1(49), 1(49), 3(51), 2(50)]> but was:<[1(49), 2(50), 3(51), 4(52)]>");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{'1', '2', '3', '4'}, "Message").containsExactly(DataHelper.createIterable('1', '1', '3', '2'));
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly.\n\tExpected:<[1(49), 1(49), 3(51), 2(50)]> but was:<[1(49), 2(50), 3(51), 4(52)]>");
         }
@@ -1038,79 +1038,79 @@ public final class CharArrayAssertionTest extends AssertionTest {
 
         try {
             Raw.charArrayAssertion().containsExactlyInOrder('1');
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.charArrayAssertion(), null).containsExactlyInOrder('1');
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.charArrayAssertion(), null, "Message").containsExactlyInOrder('1');
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.charArrayAssertion(), null).containsExactlyInOrder((char[]) null);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.charArrayAssertion(), null, "Message").containsExactlyInOrder((char[]) null);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{}).containsExactlyInOrder((char[]) null);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{}, "Message").containsExactlyInOrder((char[]) null);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).containsExactlyInOrder('2', '1');
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2(50), 1(49)]> but was:<[1(49), 2(50)]>");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{'1', '2', '3', '4'}).containsExactlyInOrder('1', '2', '3');
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1(49), 2(50), 3(51)]> but was:<[1(49), 2(50), 3(51), 4(52)]>");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{'1', '2', '3', '4'}).containsExactlyInOrder('1', '2', '3', '4', '5');
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1(49), 2(50), 3(51), 4(52), 5(53)]> but was:<[1(49), 2(50), 3(51), 4(52)]>");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).containsExactlyInOrder();
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<<EMPTY>> but was:<[1(49), 2(50)]>");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{'1', '2', '3', '4'}).containsExactlyInOrder('2', '3', '1', '4');
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2(50), 3(51), 1(49), 4(52)]> but was:<[1(49), 2(50), 3(51), 4(52)]>");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{'1', '2', '3', '4'}, "Message").containsExactlyInOrder('2', '3', '1', '4');
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2(50), 3(51), 1(49), 4(52)]> but was:<[1(49), 2(50), 3(51), 4(52)]>");
         }
@@ -1128,91 +1128,91 @@ public final class CharArrayAssertionTest extends AssertionTest {
 
         try {
             Raw.charArrayAssertion().containsExactlyInOrder(49);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.charArrayAssertion(), null).containsExactlyInOrder(49);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.charArrayAssertion(), null, "Message").containsExactlyInOrder(49);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.charArrayAssertion(), null).containsExactlyInOrder((int[]) null);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.charArrayAssertion(), null, "Message").containsExactlyInOrder((int[]) null);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{}).containsExactlyInOrder((int[]) null);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{}, "Message").containsExactlyInOrder((int[]) null);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).containsExactlyInOrder(50, 49);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2(50), 1(49)]> but was:<[1(49), 2(50)]>");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{'1', '2', '3', '4'}).containsExactlyInOrder(49, 50, 51);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1(49), 2(50), 3(51)]> but was:<[1(49), 2(50), 3(51), 4(52)]>");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{'1', '2', '3', '4'}).containsExactlyInOrder(49, 50, 51, 52, 53);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1(49), 2(50), 3(51), 4(52), 5(53)]> but was:<[1(49), 2(50), 3(51), 4(52)]>");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).containsExactlyInOrder(new int[]{});
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<<EMPTY>> but was:<[1(49), 2(50)]>");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{'1', '2', '3', '4'}).containsExactlyInOrder(50, 51, 49, 52);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2(50), 3(51), 1(49), 4(52)]> but was:<[1(49), 2(50), 3(51), 4(52)]>");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{'1', '2', '3', '4'}, "Message").containsExactlyInOrder(50, 51, 49, 52);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2(50), 3(51), 1(49), 4(52)]> but was:<[1(49), 2(50), 3(51), 4(52)]>");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{'1', '2', '3', '4'}).containsExactlyInOrder(100000, 100001);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[100000, 100001]> but was:<[1(49), 2(50), 3(51), 4(52)]>");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{'1', '2', '3', '4'}, "Message").containsExactlyInOrder(100000, 100001);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[100000, 100001]> but was:<[1(49), 2(50), 3(51), 4(52)]>");
         }
@@ -1230,79 +1230,79 @@ public final class CharArrayAssertionTest extends AssertionTest {
 
         try {
             Raw.charArrayAssertion().containsExactlyInOrder(DataHelper.<Character>createIterable());
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.charArrayAssertion(), null).containsExactlyInOrder(DataHelper.<Character>createIterable());
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.charArrayAssertion(), null, "Message").containsExactlyInOrder(DataHelper.<Character>createIterable());
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.charArrayAssertion(), null).containsExactlyInOrder((Iterable<Character>) null);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.charArrayAssertion(), null, "Message").containsExactlyInOrder((Iterable<Character>) null);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{}).containsExactlyInOrder((Iterable<Character>) null);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{}, "Message").containsExactlyInOrder((Iterable<Character>) null);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).containsExactlyInOrder(DataHelper.createIterable('2', '1'));
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2(50), 1(49)]> but was:<[1(49), 2(50)]>");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{'1', '2', '3', '4'}).containsExactlyInOrder(DataHelper.createIterable('1', '2', '3'));
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1(49), 2(50), 3(51)]> but was:<[1(49), 2(50), 3(51), 4(52)]>");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{'1', '2', '3', '4'}).containsExactlyInOrder(DataHelper.createIterable('1', '2', '3', '4', '5'));
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1(49), 2(50), 3(51), 4(52), 5(53)]> but was:<[1(49), 2(50), 3(51), 4(52)]>");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).containsExactlyInOrder(DataHelper.<Character>createIterable());
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<<EMPTY>> but was:<[1(49), 2(50)]>");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{'1', '2', '3', '4'}).containsExactlyInOrder(DataHelper.createIterable('2', '3', '1', '4'));
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2(50), 3(51), 1(49), 4(52)]> but was:<[1(49), 2(50), 3(51), 4(52)]>");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{'1', '2', '3', '4'}, "Message").containsExactlyInOrder(DataHelper.createIterable('2', '3', '1', '4'));
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2(50), 3(51), 1(49), 4(52)]> but was:<[1(49), 2(50), 3(51), 4(52)]>");
         }
@@ -1321,67 +1321,67 @@ public final class CharArrayAssertionTest extends AssertionTest {
 
         try {
             Raw.charArrayAssertion().containsAny('1');
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.charArrayAssertion(), null).containsAny('1');
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.charArrayAssertion(), null, "Message").containsAny('1');
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.charArrayAssertion(), null).containsAny((char[]) null);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.charArrayAssertion(), null, "Message").containsAny((char[]) null);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{}).containsAny((char[]) null);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{}, "Message").containsAny((char[]) null);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{}).containsAny();
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always false.");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{}, "Message").containsAny();
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always false.");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).containsAny('3', '4');
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain any of the expected values.\n\tExpected:<[3(51), 4(52)]> but was:<[1(49), 2(50)]>");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}, "Message").containsAny('3', '4');
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain any of the expected values.\n\tExpected:<[3(51), 4(52)]> but was:<[1(49), 2(50)]>");
         }
@@ -1400,79 +1400,79 @@ public final class CharArrayAssertionTest extends AssertionTest {
 
         try {
             Raw.charArrayAssertion().containsAny(49);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.charArrayAssertion(), null).containsAny(49);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.charArrayAssertion(), null, "Message").containsAny(49);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.charArrayAssertion(), null).containsAny((int[]) null);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.charArrayAssertion(), null, "Message").containsAny((int[]) null);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{}).containsAny((int[]) null);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{}, "Message").containsAny((int[]) null);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{}).containsAny(new int[]{});
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always false.");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{}, "Message").containsAny(new int[]{});
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always false.");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).containsAny(51, 52);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain any of the expected values.\n\tExpected:<[3(51), 4(52)]> but was:<[1(49), 2(50)]>");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}, "Message").containsAny(51, 52);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain any of the expected values.\n\tExpected:<[3(51), 4(52)]> but was:<[1(49), 2(50)]>");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).containsAny(100000, 100001);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain any of the expected values.\n\tExpected:<[100000, 100001]> but was:<[1(49), 2(50)]>");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}, "Message").containsAny(100000, 100001);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain any of the expected values.\n\tExpected:<[100000, 100001]> but was:<[1(49), 2(50)]>");
         }
@@ -1491,67 +1491,67 @@ public final class CharArrayAssertionTest extends AssertionTest {
 
         try {
             Raw.charArrayAssertion().containsAny(DataHelper.<Character>createIterable());
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.charArrayAssertion(), null).containsAny(DataHelper.<Character>createIterable());
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.charArrayAssertion(), null, "Message").containsAny(DataHelper.<Character>createIterable());
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.charArrayAssertion(), null).containsAny((Iterable<Character>) null);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.charArrayAssertion(), null, "Message").containsAny((Iterable<Character>) null);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{}).containsAny((Iterable<Character>) null);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{}, "Message").containsAny((Iterable<Character>) null);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{}).containsAny(DataHelper.<Character>createIterable());
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always false.");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{}, "Message").containsAny(DataHelper.<Character>createIterable());
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always false.");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).containsAny(DataHelper.createIterable('3', '4'));
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should contain any of the expected values.\n\tExpected:<[3(51), 4(52)]> but was:<[1(49), 2(50)]>");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}, "Message").containsAny(DataHelper.createIterable('3', '4'));
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should contain any of the expected values.\n\tExpected:<[3(51), 4(52)]> but was:<[1(49), 2(50)]>");
         }
@@ -1568,67 +1568,67 @@ public final class CharArrayAssertionTest extends AssertionTest {
 
         try {
             Raw.charArrayAssertion().containsNone('1');
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.charArrayAssertion(), null).containsNone('1');
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.charArrayAssertion(), null, "Message").containsNone('1');
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.charArrayAssertion(), null).containsNone((char[]) null);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.charArrayAssertion(), null, "Message").containsNone((char[]) null);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{}).containsNone((char[]) null);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{}, "Message").containsNone((char[]) null);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{}).containsNone();
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{}, "Message").containsNone();
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).containsNone('2', '1');
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not contain any of the expected values.\n\tExpected:<[2(50), 1(49)]> but was:<[1(49), 2(50)]>");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}, "Message").containsNone('2', '1');
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not contain any of the expected values.\n\tExpected:<[2(50), 1(49)]> but was:<[1(49), 2(50)]>");
         }
@@ -1646,67 +1646,67 @@ public final class CharArrayAssertionTest extends AssertionTest {
 
         try {
             Raw.charArrayAssertion().containsNone(49);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.charArrayAssertion(), null).containsNone(49);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.charArrayAssertion(), null, "Message").containsNone(49);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.charArrayAssertion(), null).containsNone((int[]) null);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.charArrayAssertion(), null, "Message").containsNone((int[]) null);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{}).containsNone((int[]) null);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{}, "Message").containsNone((int[]) null);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{}).containsNone(new int[]{});
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{}, "Message").containsNone(new int[]{});
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).containsNone(50, 49);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not contain any of the expected values.\n\tExpected:<[2(50), 1(49)]> but was:<[1(49), 2(50)]>");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}, "Message").containsNone(50, 49);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not contain any of the expected values.\n\tExpected:<[2(50), 1(49)]> but was:<[1(49), 2(50)]>");
         }
@@ -1723,67 +1723,67 @@ public final class CharArrayAssertionTest extends AssertionTest {
 
         try {
             Raw.charArrayAssertion().containsNone(DataHelper.<Character>createIterable());
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.charArrayAssertion(), null).containsNone(DataHelper.<Character>createIterable());
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.charArrayAssertion(), null, "Message").containsNone(DataHelper.<Character>createIterable());
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.charArrayAssertion(), null).containsNone((Iterable<Character>) null);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.charArrayAssertion(), null, "Message").containsNone((Iterable<Character>) null);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{}).containsNone((Iterable<Character>) null);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{}, "Message").containsNone((Iterable<Character>) null);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{}).containsNone(DataHelper.<Character>createIterable());
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{}, "Message").containsNone(DataHelper.<Character>createIterable());
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).containsNone(DataHelper.createIterable('2', '1'));
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not contain any of the expected values.\n\tExpected:<[2(50), 1(49)]> but was:<[1(49), 2(50)]>");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}, "Message").containsNone(DataHelper.createIterable('2', '1'));
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not contain any of the expected values.\n\tExpected:<[2(50), 1(49)]> but was:<[1(49), 2(50)]>");
         }
@@ -1806,43 +1806,43 @@ public final class CharArrayAssertionTest extends AssertionTest {
 
         try {
             Raw.charArrayAssertion().toLength();
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.charArrayAssertion(), null).toLength();
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.charArrayAssertion(), null, "Message").toLength();
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             clearActual(initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).toLength()).isEqualTo(0);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's length.\n\tActual value should not be null.");
         }
         try {
             clearActual(initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}, "Message").toLength()).isEqualTo(0);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's length.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).toLength().isEqualTo(4);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's length.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<2>");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}, "Message").toLength().isEqualTo(4);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's length.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<2>");
         }
@@ -1865,55 +1865,55 @@ public final class CharArrayAssertionTest extends AssertionTest {
 
         try {
             Raw.charArrayAssertion().toLength(Matchers.equalTo(0));
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.charArrayAssertion(), null).toLength(Matchers.equalTo(0));
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.charArrayAssertion(), null, "Message").toLength(Matchers.equalTo(0));
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.charArrayAssertion(), null).toLength(null);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.charArrayAssertion(), null, "Message").toLength(null);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{}).toLength(null);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: matcher.");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{}, "Message").toLength(null);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: matcher.");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).toLength(Matchers.equalTo(4));
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's length.\nExpected: <4>\n     but: was <2>");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}, "Message").toLength(Matchers.equalTo(4));
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's length.\nExpected: <4>\n     but: was <2>");
         }
@@ -1930,31 +1930,31 @@ public final class CharArrayAssertionTest extends AssertionTest {
 
         try {
             Raw.charArrayAssertion().hasLength(0);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.charArrayAssertion(), null).hasLength(0);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.charArrayAssertion(), null, "Message").hasLength(0);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).hasLength(4);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's length.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<2>");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}, "Message").hasLength(4);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's length.\n\tActual and expected values should be the same.\n\tExpected:<4> but was:<2>");
         }
@@ -1969,13 +1969,13 @@ public final class CharArrayAssertionTest extends AssertionTest {
 
         try {
             initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}).isNull();
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be null.\n\tActual:<[1(49), 2(50)]>");
         }
         try {
             initialize(Raw.charArrayAssertion(), new char[]{'1', '2'}, "Message").isNull();
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be null.\n\tActual:<[1(49), 2(50)]>");
         }
@@ -1991,13 +1991,13 @@ public final class CharArrayAssertionTest extends AssertionTest {
 
         try {
             initialize(Raw.charArrayAssertion(), value).isSameAs(new char[]{'1', '2'});
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual and expected values should point to the same object.\n\tExpected:<[1(49), 2(50)]> but was:<[1(49), 2(50)]>");
         }
         try {
             initialize(Raw.charArrayAssertion(), value, "Message").isSameAs(new char[]{'1', '2'});
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should point to the same object.\n\tExpected:<[1(49), 2(50)]> but was:<[1(49), 2(50)]>");
         }
@@ -2013,13 +2013,13 @@ public final class CharArrayAssertionTest extends AssertionTest {
 
         try {
             initialize(Raw.charArrayAssertion(), value).isNotSameAs(value);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual and expected values should point to the different objects.\n\tActual:<[1(49), 2(50)]>");
         }
         try {
             initialize(Raw.charArrayAssertion(), value, "Message").isNotSameAs(value);
-            Assertions.fail("CharArrayAssertion test fail");
+            Assertions.fail(CharArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should point to the different objects.\n\tActual:<[1(49), 2(50)]>");
         }

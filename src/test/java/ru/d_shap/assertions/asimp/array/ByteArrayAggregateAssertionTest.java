@@ -55,43 +55,43 @@ public final class ByteArrayAggregateAssertionTest extends AssertionTest {
 
         try {
             Raw.byteArrayAssertion().toMin();
-            Assertions.fail("ByteArrayAssertion test fail");
+            Assertions.fail(ByteArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.byteArrayAssertion(), null).toMin();
-            Assertions.fail("ByteArrayAssertion test fail");
+            Assertions.fail(ByteArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.byteArrayAssertion(), null, "Message").toMin();
-            Assertions.fail("ByteArrayAssertion test fail");
+            Assertions.fail(ByteArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             clearActual(initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}).toMin()).isEqualTo(0);
-            Assertions.fail("ByteArrayAssertion test fail");
+            Assertions.fail(ByteArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's minimum value.\n\tActual value should not be null.");
         }
         try {
             clearActual(initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}, "Message").toMin()).isEqualTo(0);
-            Assertions.fail("ByteArrayAssertion test fail");
+            Assertions.fail(ByteArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's minimum value.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}).toMin().isEqualTo(4);
-            Assertions.fail("ByteArrayAssertion test fail");
+            Assertions.fail(ByteArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's minimum value.\n\tActual and expected values should be the same.\n\tExpected:<4b> but was:<1b>");
         }
         try {
             initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}, "Message").toMin().isEqualTo(4);
-            Assertions.fail("ByteArrayAssertion test fail");
+            Assertions.fail(ByteArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's minimum value.\n\tActual and expected values should be the same.\n\tExpected:<4b> but was:<1b>");
         }
@@ -112,55 +112,55 @@ public final class ByteArrayAggregateAssertionTest extends AssertionTest {
 
         try {
             Raw.byteArrayAssertion().toMin(Matchers.equalTo((byte) 0));
-            Assertions.fail("ByteArrayAssertion test fail");
+            Assertions.fail(ByteArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.byteArrayAssertion(), null).toMin(Matchers.equalTo((byte) 0));
-            Assertions.fail("ByteArrayAssertion test fail");
+            Assertions.fail(ByteArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.byteArrayAssertion(), null, "Message").toMin(Matchers.equalTo((byte) 0));
-            Assertions.fail("ByteArrayAssertion test fail");
+            Assertions.fail(ByteArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.byteArrayAssertion(), null).toMin(null);
-            Assertions.fail("ByteArrayAssertion test fail");
+            Assertions.fail(ByteArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.byteArrayAssertion(), null, "Message").toMin(null);
-            Assertions.fail("ByteArrayAssertion test fail");
+            Assertions.fail(ByteArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.byteArrayAssertion(), new byte[]{}).toMin(null);
-            Assertions.fail("ByteArrayAssertion test fail");
+            Assertions.fail(ByteArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: matcher.");
         }
         try {
             initialize(Raw.byteArrayAssertion(), new byte[]{}, "Message").toMin(null);
-            Assertions.fail("ByteArrayAssertion test fail");
+            Assertions.fail(ByteArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: matcher.");
         }
         try {
             initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}).toMin(Matchers.equalTo((byte) 4));
-            Assertions.fail("ByteArrayAssertion test fail");
+            Assertions.fail(ByteArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's minimum value.\nExpected: <4>\n     but: was <1>");
         }
         try {
             initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}, "Message").toMin(Matchers.equalTo((byte) 4));
-            Assertions.fail("ByteArrayAssertion test fail");
+            Assertions.fail(ByteArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's minimum value.\nExpected: <4>\n     but: was <1>");
         }
@@ -180,31 +180,31 @@ public final class ByteArrayAggregateAssertionTest extends AssertionTest {
 
         try {
             Raw.byteArrayAssertion().hasMin(0);
-            Assertions.fail("ByteArrayAssertion test fail");
+            Assertions.fail(ByteArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.byteArrayAssertion(), null).hasMin(0);
-            Assertions.fail("ByteArrayAssertion test fail");
+            Assertions.fail(ByteArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.byteArrayAssertion(), null, "Message").hasMin(0);
-            Assertions.fail("ByteArrayAssertion test fail");
+            Assertions.fail(ByteArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}).hasMin(4);
-            Assertions.fail("ByteArrayAssertion test fail");
+            Assertions.fail(ByteArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's minimum value.\n\tActual and expected values should be the same.\n\tExpected:<4b> but was:<1b>");
         }
         try {
             initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}, "Message").hasMin(4);
-            Assertions.fail("ByteArrayAssertion test fail");
+            Assertions.fail(ByteArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's minimum value.\n\tActual and expected values should be the same.\n\tExpected:<4b> but was:<1b>");
         }
@@ -225,55 +225,55 @@ public final class ByteArrayAggregateAssertionTest extends AssertionTest {
 
         try {
             Raw.byteArrayAssertion().hasMin(Byte.valueOf("0"));
-            Assertions.fail("ByteArrayAssertion test fail");
+            Assertions.fail(ByteArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.byteArrayAssertion(), null).hasMin(Byte.valueOf("0"));
-            Assertions.fail("ByteArrayAssertion test fail");
+            Assertions.fail(ByteArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.byteArrayAssertion(), null, "Message").hasMin(Byte.valueOf("0"));
-            Assertions.fail("ByteArrayAssertion test fail");
+            Assertions.fail(ByteArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.byteArrayAssertion(), null).hasMin(null);
-            Assertions.fail("ByteArrayAssertion test fail");
+            Assertions.fail(ByteArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.byteArrayAssertion(), null, "Message").hasMin(null);
-            Assertions.fail("ByteArrayAssertion test fail");
+            Assertions.fail(ByteArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.byteArrayAssertion(), new byte[]{1}).hasMin(null);
-            Assertions.fail("ByteArrayAssertion test fail");
+            Assertions.fail(ByteArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's minimum value.\n\tActual value should be null.\n\tActual:<1b>");
         }
         try {
             initialize(Raw.byteArrayAssertion(), new byte[]{1}, "Message").hasMin(null);
-            Assertions.fail("ByteArrayAssertion test fail");
+            Assertions.fail(ByteArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's minimum value.\n\tActual value should be null.\n\tActual:<1b>");
         }
         try {
             initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}).hasMin(Byte.valueOf("4"));
-            Assertions.fail("ByteArrayAssertion test fail");
+            Assertions.fail(ByteArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's minimum value.\n\tActual and expected values should be the same.\n\tExpected:<4b> but was:<1b>");
         }
         try {
             initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}, "Message").hasMin(Byte.valueOf("4"));
-            Assertions.fail("ByteArrayAssertion test fail");
+            Assertions.fail(ByteArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's minimum value.\n\tActual and expected values should be the same.\n\tExpected:<4b> but was:<1b>");
         }
@@ -294,43 +294,43 @@ public final class ByteArrayAggregateAssertionTest extends AssertionTest {
 
         try {
             Raw.byteArrayAssertion().toMax();
-            Assertions.fail("ByteArrayAssertion test fail");
+            Assertions.fail(ByteArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.byteArrayAssertion(), null).toMax();
-            Assertions.fail("ByteArrayAssertion test fail");
+            Assertions.fail(ByteArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.byteArrayAssertion(), null, "Message").toMax();
-            Assertions.fail("ByteArrayAssertion test fail");
+            Assertions.fail(ByteArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             clearActual(initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}).toMax()).isEqualTo(0);
-            Assertions.fail("ByteArrayAssertion test fail");
+            Assertions.fail(ByteArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's maximum value.\n\tActual value should not be null.");
         }
         try {
             clearActual(initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}, "Message").toMax()).isEqualTo(0);
-            Assertions.fail("ByteArrayAssertion test fail");
+            Assertions.fail(ByteArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's maximum value.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}).toMax().isEqualTo(4);
-            Assertions.fail("ByteArrayAssertion test fail");
+            Assertions.fail(ByteArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's maximum value.\n\tActual and expected values should be the same.\n\tExpected:<4b> but was:<2b>");
         }
         try {
             initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}, "Message").toMax().isEqualTo(4);
-            Assertions.fail("ByteArrayAssertion test fail");
+            Assertions.fail(ByteArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's maximum value.\n\tActual and expected values should be the same.\n\tExpected:<4b> but was:<2b>");
         }
@@ -351,55 +351,55 @@ public final class ByteArrayAggregateAssertionTest extends AssertionTest {
 
         try {
             Raw.byteArrayAssertion().toMax(Matchers.equalTo((byte) 0));
-            Assertions.fail("ByteArrayAssertion test fail");
+            Assertions.fail(ByteArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.byteArrayAssertion(), null).toMax(Matchers.equalTo((byte) 0));
-            Assertions.fail("ByteArrayAssertion test fail");
+            Assertions.fail(ByteArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.byteArrayAssertion(), null, "Message").toMax(Matchers.equalTo((byte) 0));
-            Assertions.fail("ByteArrayAssertion test fail");
+            Assertions.fail(ByteArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.byteArrayAssertion(), null).toMax(null);
-            Assertions.fail("ByteArrayAssertion test fail");
+            Assertions.fail(ByteArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.byteArrayAssertion(), null, "Message").toMax(null);
-            Assertions.fail("ByteArrayAssertion test fail");
+            Assertions.fail(ByteArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.byteArrayAssertion(), new byte[]{}).toMax(null);
-            Assertions.fail("ByteArrayAssertion test fail");
+            Assertions.fail(ByteArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: matcher.");
         }
         try {
             initialize(Raw.byteArrayAssertion(), new byte[]{}, "Message").toMax(null);
-            Assertions.fail("ByteArrayAssertion test fail");
+            Assertions.fail(ByteArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: matcher.");
         }
         try {
             initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}).toMax(Matchers.equalTo((byte) 4));
-            Assertions.fail("ByteArrayAssertion test fail");
+            Assertions.fail(ByteArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's maximum value.\nExpected: <4>\n     but: was <2>");
         }
         try {
             initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}, "Message").toMax(Matchers.equalTo((byte) 4));
-            Assertions.fail("ByteArrayAssertion test fail");
+            Assertions.fail(ByteArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's maximum value.\nExpected: <4>\n     but: was <2>");
         }
@@ -419,31 +419,31 @@ public final class ByteArrayAggregateAssertionTest extends AssertionTest {
 
         try {
             Raw.byteArrayAssertion().hasMax(0);
-            Assertions.fail("ByteArrayAssertion test fail");
+            Assertions.fail(ByteArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.byteArrayAssertion(), null).hasMax(0);
-            Assertions.fail("ByteArrayAssertion test fail");
+            Assertions.fail(ByteArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.byteArrayAssertion(), null, "Message").hasMax(0);
-            Assertions.fail("ByteArrayAssertion test fail");
+            Assertions.fail(ByteArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}).hasMax(4);
-            Assertions.fail("ByteArrayAssertion test fail");
+            Assertions.fail(ByteArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's maximum value.\n\tActual and expected values should be the same.\n\tExpected:<4b> but was:<2b>");
         }
         try {
             initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}, "Message").hasMax(4);
-            Assertions.fail("ByteArrayAssertion test fail");
+            Assertions.fail(ByteArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's maximum value.\n\tActual and expected values should be the same.\n\tExpected:<4b> but was:<2b>");
         }
@@ -464,55 +464,55 @@ public final class ByteArrayAggregateAssertionTest extends AssertionTest {
 
         try {
             Raw.byteArrayAssertion().hasMax(Byte.valueOf("0"));
-            Assertions.fail("ByteArrayAssertion test fail");
+            Assertions.fail(ByteArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.byteArrayAssertion(), null).hasMax(Byte.valueOf("0"));
-            Assertions.fail("ByteArrayAssertion test fail");
+            Assertions.fail(ByteArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.byteArrayAssertion(), null, "Message").hasMax(Byte.valueOf("0"));
-            Assertions.fail("ByteArrayAssertion test fail");
+            Assertions.fail(ByteArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.byteArrayAssertion(), null).hasMax(null);
-            Assertions.fail("ByteArrayAssertion test fail");
+            Assertions.fail(ByteArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.byteArrayAssertion(), null, "Message").hasMax(null);
-            Assertions.fail("ByteArrayAssertion test fail");
+            Assertions.fail(ByteArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.byteArrayAssertion(), new byte[]{1}).hasMax(null);
-            Assertions.fail("ByteArrayAssertion test fail");
+            Assertions.fail(ByteArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's maximum value.\n\tActual value should be null.\n\tActual:<1b>");
         }
         try {
             initialize(Raw.byteArrayAssertion(), new byte[]{1}, "Message").hasMax(null);
-            Assertions.fail("ByteArrayAssertion test fail");
+            Assertions.fail(ByteArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's maximum value.\n\tActual value should be null.\n\tActual:<1b>");
         }
         try {
             initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}).hasMax(Byte.valueOf("4"));
-            Assertions.fail("ByteArrayAssertion test fail");
+            Assertions.fail(ByteArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's maximum value.\n\tActual and expected values should be the same.\n\tExpected:<4b> but was:<2b>");
         }
         try {
             initialize(Raw.byteArrayAssertion(), new byte[]{1, 2}, "Message").hasMax(Byte.valueOf("4"));
-            Assertions.fail("ByteArrayAssertion test fail");
+            Assertions.fail(ByteArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's maximum value.\n\tActual and expected values should be the same.\n\tExpected:<4b> but was:<2b>");
         }

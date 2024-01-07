@@ -55,43 +55,43 @@ public final class ShortArrayAggregateAssertionTest extends AssertionTest {
 
         try {
             Raw.shortArrayAssertion().toMin();
-            Assertions.fail("ShortArrayAssertion test fail");
+            Assertions.fail(ShortArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.shortArrayAssertion(), null).toMin();
-            Assertions.fail("ShortArrayAssertion test fail");
+            Assertions.fail(ShortArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.shortArrayAssertion(), null, "Message").toMin();
-            Assertions.fail("ShortArrayAssertion test fail");
+            Assertions.fail(ShortArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             clearActual(initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).toMin()).isEqualTo(0);
-            Assertions.fail("ShortArrayAssertion test fail");
+            Assertions.fail(ShortArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's minimum value.\n\tActual value should not be null.");
         }
         try {
             clearActual(initialize(Raw.shortArrayAssertion(), new short[]{1, 2}, "Message").toMin()).isEqualTo(0);
-            Assertions.fail("ShortArrayAssertion test fail");
+            Assertions.fail(ShortArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's minimum value.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).toMin().isEqualTo(4);
-            Assertions.fail("ShortArrayAssertion test fail");
+            Assertions.fail(ShortArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's minimum value.\n\tActual and expected values should be the same.\n\tExpected:<4s> but was:<1s>");
         }
         try {
             initialize(Raw.shortArrayAssertion(), new short[]{1, 2}, "Message").toMin().isEqualTo(4);
-            Assertions.fail("ShortArrayAssertion test fail");
+            Assertions.fail(ShortArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's minimum value.\n\tActual and expected values should be the same.\n\tExpected:<4s> but was:<1s>");
         }
@@ -112,55 +112,55 @@ public final class ShortArrayAggregateAssertionTest extends AssertionTest {
 
         try {
             Raw.shortArrayAssertion().toMin(Matchers.equalTo((short) 0));
-            Assertions.fail("ShortArrayAssertion test fail");
+            Assertions.fail(ShortArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.shortArrayAssertion(), null).toMin(Matchers.equalTo((short) 0));
-            Assertions.fail("ShortArrayAssertion test fail");
+            Assertions.fail(ShortArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.shortArrayAssertion(), null, "Message").toMin(Matchers.equalTo((short) 0));
-            Assertions.fail("ShortArrayAssertion test fail");
+            Assertions.fail(ShortArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.shortArrayAssertion(), null).toMin(null);
-            Assertions.fail("ShortArrayAssertion test fail");
+            Assertions.fail(ShortArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.shortArrayAssertion(), null, "Message").toMin(null);
-            Assertions.fail("ShortArrayAssertion test fail");
+            Assertions.fail(ShortArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.shortArrayAssertion(), new short[]{}).toMin(null);
-            Assertions.fail("ShortArrayAssertion test fail");
+            Assertions.fail(ShortArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: matcher.");
         }
         try {
             initialize(Raw.shortArrayAssertion(), new short[]{}, "Message").toMin(null);
-            Assertions.fail("ShortArrayAssertion test fail");
+            Assertions.fail(ShortArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: matcher.");
         }
         try {
             initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).toMin(Matchers.equalTo((short) 4));
-            Assertions.fail("ShortArrayAssertion test fail");
+            Assertions.fail(ShortArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's minimum value.\nExpected: <4s>\n     but: was <1s>");
         }
         try {
             initialize(Raw.shortArrayAssertion(), new short[]{1, 2}, "Message").toMin(Matchers.equalTo((short) 4));
-            Assertions.fail("ShortArrayAssertion test fail");
+            Assertions.fail(ShortArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's minimum value.\nExpected: <4s>\n     but: was <1s>");
         }
@@ -180,31 +180,31 @@ public final class ShortArrayAggregateAssertionTest extends AssertionTest {
 
         try {
             Raw.shortArrayAssertion().hasMin(0);
-            Assertions.fail("ShortArrayAssertion test fail");
+            Assertions.fail(ShortArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.shortArrayAssertion(), null).hasMin(0);
-            Assertions.fail("ShortArrayAssertion test fail");
+            Assertions.fail(ShortArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.shortArrayAssertion(), null, "Message").hasMin(0);
-            Assertions.fail("ShortArrayAssertion test fail");
+            Assertions.fail(ShortArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).hasMin(4);
-            Assertions.fail("ShortArrayAssertion test fail");
+            Assertions.fail(ShortArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's minimum value.\n\tActual and expected values should be the same.\n\tExpected:<4s> but was:<1s>");
         }
         try {
             initialize(Raw.shortArrayAssertion(), new short[]{1, 2}, "Message").hasMin(4);
-            Assertions.fail("ShortArrayAssertion test fail");
+            Assertions.fail(ShortArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's minimum value.\n\tActual and expected values should be the same.\n\tExpected:<4s> but was:<1s>");
         }
@@ -225,55 +225,55 @@ public final class ShortArrayAggregateAssertionTest extends AssertionTest {
 
         try {
             Raw.shortArrayAssertion().hasMin(Short.valueOf("0"));
-            Assertions.fail("ShortArrayAssertion test fail");
+            Assertions.fail(ShortArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.shortArrayAssertion(), null).hasMin(Short.valueOf("0"));
-            Assertions.fail("ShortArrayAssertion test fail");
+            Assertions.fail(ShortArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.shortArrayAssertion(), null, "Message").hasMin(Short.valueOf("0"));
-            Assertions.fail("ShortArrayAssertion test fail");
+            Assertions.fail(ShortArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.shortArrayAssertion(), null).hasMin(null);
-            Assertions.fail("ShortArrayAssertion test fail");
+            Assertions.fail(ShortArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.shortArrayAssertion(), null, "Message").hasMin(null);
-            Assertions.fail("ShortArrayAssertion test fail");
+            Assertions.fail(ShortArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.shortArrayAssertion(), new short[]{1}).hasMin(null);
-            Assertions.fail("ShortArrayAssertion test fail");
+            Assertions.fail(ShortArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's minimum value.\n\tActual value should be null.\n\tActual:<1s>");
         }
         try {
             initialize(Raw.shortArrayAssertion(), new short[]{1}, "Message").hasMin(null);
-            Assertions.fail("ShortArrayAssertion test fail");
+            Assertions.fail(ShortArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's minimum value.\n\tActual value should be null.\n\tActual:<1s>");
         }
         try {
             initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).hasMin(Short.valueOf("4"));
-            Assertions.fail("ShortArrayAssertion test fail");
+            Assertions.fail(ShortArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's minimum value.\n\tActual and expected values should be the same.\n\tExpected:<4s> but was:<1s>");
         }
         try {
             initialize(Raw.shortArrayAssertion(), new short[]{1, 2}, "Message").hasMin(Short.valueOf("4"));
-            Assertions.fail("ShortArrayAssertion test fail");
+            Assertions.fail(ShortArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's minimum value.\n\tActual and expected values should be the same.\n\tExpected:<4s> but was:<1s>");
         }
@@ -294,43 +294,43 @@ public final class ShortArrayAggregateAssertionTest extends AssertionTest {
 
         try {
             Raw.shortArrayAssertion().toMax();
-            Assertions.fail("ShortArrayAssertion test fail");
+            Assertions.fail(ShortArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.shortArrayAssertion(), null).toMax();
-            Assertions.fail("ShortArrayAssertion test fail");
+            Assertions.fail(ShortArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.shortArrayAssertion(), null, "Message").toMax();
-            Assertions.fail("ShortArrayAssertion test fail");
+            Assertions.fail(ShortArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             clearActual(initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).toMax()).isEqualTo(0);
-            Assertions.fail("ShortArrayAssertion test fail");
+            Assertions.fail(ShortArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's maximum value.\n\tActual value should not be null.");
         }
         try {
             clearActual(initialize(Raw.shortArrayAssertion(), new short[]{1, 2}, "Message").toMax()).isEqualTo(0);
-            Assertions.fail("ShortArrayAssertion test fail");
+            Assertions.fail(ShortArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's maximum value.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).toMax().isEqualTo(4);
-            Assertions.fail("ShortArrayAssertion test fail");
+            Assertions.fail(ShortArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's maximum value.\n\tActual and expected values should be the same.\n\tExpected:<4s> but was:<2s>");
         }
         try {
             initialize(Raw.shortArrayAssertion(), new short[]{1, 2}, "Message").toMax().isEqualTo(4);
-            Assertions.fail("ShortArrayAssertion test fail");
+            Assertions.fail(ShortArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's maximum value.\n\tActual and expected values should be the same.\n\tExpected:<4s> but was:<2s>");
         }
@@ -351,55 +351,55 @@ public final class ShortArrayAggregateAssertionTest extends AssertionTest {
 
         try {
             Raw.shortArrayAssertion().toMax(Matchers.equalTo((short) 0));
-            Assertions.fail("ShortArrayAssertion test fail");
+            Assertions.fail(ShortArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.shortArrayAssertion(), null).toMax(Matchers.equalTo((short) 0));
-            Assertions.fail("ShortArrayAssertion test fail");
+            Assertions.fail(ShortArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.shortArrayAssertion(), null, "Message").toMax(Matchers.equalTo((short) 0));
-            Assertions.fail("ShortArrayAssertion test fail");
+            Assertions.fail(ShortArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.shortArrayAssertion(), null).toMax(null);
-            Assertions.fail("ShortArrayAssertion test fail");
+            Assertions.fail(ShortArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.shortArrayAssertion(), null, "Message").toMax(null);
-            Assertions.fail("ShortArrayAssertion test fail");
+            Assertions.fail(ShortArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.shortArrayAssertion(), new short[]{}).toMax(null);
-            Assertions.fail("ShortArrayAssertion test fail");
+            Assertions.fail(ShortArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: matcher.");
         }
         try {
             initialize(Raw.shortArrayAssertion(), new short[]{}, "Message").toMax(null);
-            Assertions.fail("ShortArrayAssertion test fail");
+            Assertions.fail(ShortArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: matcher.");
         }
         try {
             initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).toMax(Matchers.equalTo((short) 4));
-            Assertions.fail("ShortArrayAssertion test fail");
+            Assertions.fail(ShortArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's maximum value.\nExpected: <4s>\n     but: was <2s>");
         }
         try {
             initialize(Raw.shortArrayAssertion(), new short[]{1, 2}, "Message").toMax(Matchers.equalTo((short) 4));
-            Assertions.fail("ShortArrayAssertion test fail");
+            Assertions.fail(ShortArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's maximum value.\nExpected: <4s>\n     but: was <2s>");
         }
@@ -419,31 +419,31 @@ public final class ShortArrayAggregateAssertionTest extends AssertionTest {
 
         try {
             Raw.shortArrayAssertion().hasMax(0);
-            Assertions.fail("ShortArrayAssertion test fail");
+            Assertions.fail(ShortArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.shortArrayAssertion(), null).hasMax(0);
-            Assertions.fail("ShortArrayAssertion test fail");
+            Assertions.fail(ShortArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.shortArrayAssertion(), null, "Message").hasMax(0);
-            Assertions.fail("ShortArrayAssertion test fail");
+            Assertions.fail(ShortArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).hasMax(4);
-            Assertions.fail("ShortArrayAssertion test fail");
+            Assertions.fail(ShortArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's maximum value.\n\tActual and expected values should be the same.\n\tExpected:<4s> but was:<2s>");
         }
         try {
             initialize(Raw.shortArrayAssertion(), new short[]{1, 2}, "Message").hasMax(4);
-            Assertions.fail("ShortArrayAssertion test fail");
+            Assertions.fail(ShortArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's maximum value.\n\tActual and expected values should be the same.\n\tExpected:<4s> but was:<2s>");
         }
@@ -464,55 +464,55 @@ public final class ShortArrayAggregateAssertionTest extends AssertionTest {
 
         try {
             Raw.shortArrayAssertion().hasMax(Short.valueOf("0"));
-            Assertions.fail("ShortArrayAssertion test fail");
+            Assertions.fail(ShortArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.shortArrayAssertion(), null).hasMax(Short.valueOf("0"));
-            Assertions.fail("ShortArrayAssertion test fail");
+            Assertions.fail(ShortArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.shortArrayAssertion(), null, "Message").hasMax(Short.valueOf("0"));
-            Assertions.fail("ShortArrayAssertion test fail");
+            Assertions.fail(ShortArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.shortArrayAssertion(), null).hasMax(null);
-            Assertions.fail("ShortArrayAssertion test fail");
+            Assertions.fail(ShortArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.shortArrayAssertion(), null, "Message").hasMax(null);
-            Assertions.fail("ShortArrayAssertion test fail");
+            Assertions.fail(ShortArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.shortArrayAssertion(), new short[]{1}).hasMax(null);
-            Assertions.fail("ShortArrayAssertion test fail");
+            Assertions.fail(ShortArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's maximum value.\n\tActual value should be null.\n\tActual:<1s>");
         }
         try {
             initialize(Raw.shortArrayAssertion(), new short[]{1}, "Message").hasMax(null);
-            Assertions.fail("ShortArrayAssertion test fail");
+            Assertions.fail(ShortArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's maximum value.\n\tActual value should be null.\n\tActual:<1s>");
         }
         try {
             initialize(Raw.shortArrayAssertion(), new short[]{1, 2}).hasMax(Short.valueOf("4"));
-            Assertions.fail("ShortArrayAssertion test fail");
+            Assertions.fail(ShortArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's maximum value.\n\tActual and expected values should be the same.\n\tExpected:<4s> but was:<2s>");
         }
         try {
             initialize(Raw.shortArrayAssertion(), new short[]{1, 2}, "Message").hasMax(Short.valueOf("4"));
-            Assertions.fail("ShortArrayAssertion test fail");
+            Assertions.fail(ShortArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's maximum value.\n\tActual and expected values should be the same.\n\tExpected:<4s> but was:<2s>");
         }

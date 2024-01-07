@@ -55,43 +55,43 @@ public final class LongArrayAggregateAssertionTest extends AssertionTest {
 
         try {
             Raw.longArrayAssertion().toMin();
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.longArrayAssertion(), null).toMin();
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.longArrayAssertion(), null, "Message").toMin();
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             clearActual(initialize(Raw.longArrayAssertion(), new long[]{1L, 2L}).toMin()).isEqualTo(0L);
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's minimum value.\n\tActual value should not be null.");
         }
         try {
             clearActual(initialize(Raw.longArrayAssertion(), new long[]{1L, 2L}, "Message").toMin()).isEqualTo(0L);
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's minimum value.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.longArrayAssertion(), new long[]{1L, 2L}).toMin().isEqualTo(4L);
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's minimum value.\n\tActual and expected values should be the same.\n\tExpected:<4L> but was:<1L>");
         }
         try {
             initialize(Raw.longArrayAssertion(), new long[]{1L, 2L}, "Message").toMin().isEqualTo(4L);
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's minimum value.\n\tActual and expected values should be the same.\n\tExpected:<4L> but was:<1L>");
         }
@@ -112,55 +112,55 @@ public final class LongArrayAggregateAssertionTest extends AssertionTest {
 
         try {
             Raw.longArrayAssertion().toMin(Matchers.equalTo(0L));
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.longArrayAssertion(), null).toMin(Matchers.equalTo(0L));
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.longArrayAssertion(), null, "Message").toMin(Matchers.equalTo(0L));
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.longArrayAssertion(), null).toMin(null);
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.longArrayAssertion(), null, "Message").toMin(null);
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.longArrayAssertion(), new long[]{}).toMin(null);
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: matcher.");
         }
         try {
             initialize(Raw.longArrayAssertion(), new long[]{}, "Message").toMin(null);
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: matcher.");
         }
         try {
             initialize(Raw.longArrayAssertion(), new long[]{1L, 2L}).toMin(Matchers.equalTo(4L));
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's minimum value.\nExpected: <4L>\n     but: was <1L>");
         }
         try {
             initialize(Raw.longArrayAssertion(), new long[]{1L, 2L}, "Message").toMin(Matchers.equalTo(4L));
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's minimum value.\nExpected: <4L>\n     but: was <1L>");
         }
@@ -180,31 +180,31 @@ public final class LongArrayAggregateAssertionTest extends AssertionTest {
 
         try {
             Raw.longArrayAssertion().hasMin(0L);
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.longArrayAssertion(), null).hasMin(0L);
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.longArrayAssertion(), null, "Message").hasMin(0L);
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.longArrayAssertion(), new long[]{1L, 2L}).hasMin(4L);
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's minimum value.\n\tActual and expected values should be the same.\n\tExpected:<4L> but was:<1L>");
         }
         try {
             initialize(Raw.longArrayAssertion(), new long[]{1L, 2L}, "Message").hasMin(4L);
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's minimum value.\n\tActual and expected values should be the same.\n\tExpected:<4L> but was:<1L>");
         }
@@ -225,55 +225,55 @@ public final class LongArrayAggregateAssertionTest extends AssertionTest {
 
         try {
             Raw.longArrayAssertion().hasMin(Long.valueOf("0"));
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.longArrayAssertion(), null).hasMin(Long.valueOf("0"));
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.longArrayAssertion(), null, "Message").hasMin(Long.valueOf("0"));
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.longArrayAssertion(), null).hasMin(null);
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.longArrayAssertion(), null, "Message").hasMin(null);
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.longArrayAssertion(), new long[]{1L}).hasMin(null);
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's minimum value.\n\tActual value should be null.\n\tActual:<1L>");
         }
         try {
             initialize(Raw.longArrayAssertion(), new long[]{1L}, "Message").hasMin(null);
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's minimum value.\n\tActual value should be null.\n\tActual:<1L>");
         }
         try {
             initialize(Raw.longArrayAssertion(), new long[]{1L, 2L}).hasMin(Long.valueOf("4"));
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's minimum value.\n\tActual and expected values should be the same.\n\tExpected:<4L> but was:<1L>");
         }
         try {
             initialize(Raw.longArrayAssertion(), new long[]{1L, 2L}, "Message").hasMin(Long.valueOf("4"));
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's minimum value.\n\tActual and expected values should be the same.\n\tExpected:<4L> but was:<1L>");
         }
@@ -294,43 +294,43 @@ public final class LongArrayAggregateAssertionTest extends AssertionTest {
 
         try {
             Raw.longArrayAssertion().toMax();
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.longArrayAssertion(), null).toMax();
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.longArrayAssertion(), null, "Message").toMax();
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             clearActual(initialize(Raw.longArrayAssertion(), new long[]{1L, 2L}).toMax()).isEqualTo(0L);
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's maximum value.\n\tActual value should not be null.");
         }
         try {
             clearActual(initialize(Raw.longArrayAssertion(), new long[]{1L, 2L}, "Message").toMax()).isEqualTo(0L);
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's maximum value.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.longArrayAssertion(), new long[]{1L, 2L}).toMax().isEqualTo(4L);
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's maximum value.\n\tActual and expected values should be the same.\n\tExpected:<4L> but was:<2L>");
         }
         try {
             initialize(Raw.longArrayAssertion(), new long[]{1L, 2L}, "Message").toMax().isEqualTo(4L);
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's maximum value.\n\tActual and expected values should be the same.\n\tExpected:<4L> but was:<2L>");
         }
@@ -351,55 +351,55 @@ public final class LongArrayAggregateAssertionTest extends AssertionTest {
 
         try {
             Raw.longArrayAssertion().toMax(Matchers.equalTo(0L));
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.longArrayAssertion(), null).toMax(Matchers.equalTo(0L));
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.longArrayAssertion(), null, "Message").toMax(Matchers.equalTo(0L));
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.longArrayAssertion(), null).toMax(null);
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.longArrayAssertion(), null, "Message").toMax(null);
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.longArrayAssertion(), new long[]{}).toMax(null);
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: matcher.");
         }
         try {
             initialize(Raw.longArrayAssertion(), new long[]{}, "Message").toMax(null);
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: matcher.");
         }
         try {
             initialize(Raw.longArrayAssertion(), new long[]{1L, 2L}).toMax(Matchers.equalTo(4L));
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's maximum value.\nExpected: <4L>\n     but: was <2L>");
         }
         try {
             initialize(Raw.longArrayAssertion(), new long[]{1L, 2L}, "Message").toMax(Matchers.equalTo(4L));
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's maximum value.\nExpected: <4L>\n     but: was <2L>");
         }
@@ -419,31 +419,31 @@ public final class LongArrayAggregateAssertionTest extends AssertionTest {
 
         try {
             Raw.longArrayAssertion().hasMax(0L);
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.longArrayAssertion(), null).hasMax(0L);
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.longArrayAssertion(), null, "Message").hasMax(0L);
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.longArrayAssertion(), new long[]{1L, 2L}).hasMax(4L);
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's maximum value.\n\tActual and expected values should be the same.\n\tExpected:<4L> but was:<2L>");
         }
         try {
             initialize(Raw.longArrayAssertion(), new long[]{1L, 2L}, "Message").hasMax(4L);
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's maximum value.\n\tActual and expected values should be the same.\n\tExpected:<4L> but was:<2L>");
         }
@@ -464,55 +464,55 @@ public final class LongArrayAggregateAssertionTest extends AssertionTest {
 
         try {
             Raw.longArrayAssertion().hasMax(Long.valueOf("0"));
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.longArrayAssertion(), null).hasMax(Long.valueOf("0"));
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.longArrayAssertion(), null, "Message").hasMax(Long.valueOf("0"));
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.longArrayAssertion(), null).hasMax(null);
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.longArrayAssertion(), null, "Message").hasMax(null);
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.longArrayAssertion(), new long[]{1L}).hasMax(null);
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's maximum value.\n\tActual value should be null.\n\tActual:<1L>");
         }
         try {
             initialize(Raw.longArrayAssertion(), new long[]{1L}, "Message").hasMax(null);
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's maximum value.\n\tActual value should be null.\n\tActual:<1L>");
         }
         try {
             initialize(Raw.longArrayAssertion(), new long[]{1L, 2L}).hasMax(Long.valueOf("4"));
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's maximum value.\n\tActual and expected values should be the same.\n\tExpected:<4L> but was:<2L>");
         }
         try {
             initialize(Raw.longArrayAssertion(), new long[]{1L, 2L}, "Message").hasMax(Long.valueOf("4"));
-            Assertions.fail("LongArrayAssertion test fail");
+            Assertions.fail(LongArrayAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's maximum value.\n\tActual and expected values should be the same.\n\tExpected:<4L> but was:<2L>");
         }
