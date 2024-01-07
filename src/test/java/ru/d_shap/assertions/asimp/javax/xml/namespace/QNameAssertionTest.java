@@ -51,13 +51,13 @@ public final class QNameAssertionTest extends AssertionTest {
 
         try {
             initializeWithRawActual(Raw.qnameAssertion(), new Object());
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should match the assertion.\n\tActual value should be the instance of the expected class.\n\tExpected:<javax.xml.namespace.QName> but was:<java.lang.Object>");
         }
         try {
             initializeWithRawActual(Raw.qnameAssertion(), new Object(), "Message");
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should match the assertion.\n\tActual value should be the instance of the expected class.\n\tExpected:<javax.xml.namespace.QName> but was:<java.lang.Object>");
         }
@@ -77,67 +77,67 @@ public final class QNameAssertionTest extends AssertionTest {
 
         try {
             Raw.qnameAssertion().isEqualTo(new QName("local"));
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.qnameAssertion(), null).isEqualTo(new QName("local"));
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.qnameAssertion(), null, "Message").isEqualTo(new QName("local"));
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.qnameAssertion(), new QName("local")).isEqualTo(null);
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be null.\n\tActual:<local>");
         }
         try {
             initialize(Raw.qnameAssertion(), new QName("local"), "Message").isEqualTo(null);
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be null.\n\tActual:<local>");
         }
         try {
             initialize(Raw.qnameAssertion(), new QName("local1")).isEqualTo(new QName("local2"));
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<local2> but was:<local1>");
         }
         try {
             initialize(Raw.qnameAssertion(), new QName("local1"), "Message").isEqualTo(new QName("local2"));
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be the same.\n\tExpected:<local2> but was:<local1>");
         }
         try {
             initialize(Raw.qnameAssertion(), new QName("namespace", "local1")).isEqualTo(new QName("namespace", "local2"));
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<{namespace}local2> but was:<{namespace}local1>");
         }
         try {
             initialize(Raw.qnameAssertion(), new QName("namespace", "local1"), "Message").isEqualTo(new QName("namespace", "local2"));
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be the same.\n\tExpected:<{namespace}local2> but was:<{namespace}local1>");
         }
         try {
             initialize(Raw.qnameAssertion(), new QName("namespace1", "local")).isEqualTo(new QName("namespace2", "local"));
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<{namespace2}local> but was:<{namespace1}local>");
         }
         try {
             initialize(Raw.qnameAssertion(), new QName("namespace1", "local"), "Message").isEqualTo(new QName("namespace2", "local"));
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be the same.\n\tExpected:<{namespace2}local> but was:<{namespace1}local>");
         }
@@ -158,55 +158,55 @@ public final class QNameAssertionTest extends AssertionTest {
 
         try {
             Raw.qnameAssertion().isNotEqualTo(new QName("local"));
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.qnameAssertion(), null).isNotEqualTo(null);
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.qnameAssertion(), null, "Message").isNotEqualTo(null);
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.qnameAssertion(), new QName("local")).isNotEqualTo(new QName("local"));
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual and expected values should be different.\n\tActual:<local>");
         }
         try {
             initialize(Raw.qnameAssertion(), new QName("local"), "Message").isNotEqualTo(new QName("local"));
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be different.\n\tActual:<local>");
         }
         try {
             initialize(Raw.qnameAssertion(), new QName("namespace", "local")).isNotEqualTo(new QName("namespace", "local"));
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual and expected values should be different.\n\tActual:<{namespace}local>");
         }
         try {
             initialize(Raw.qnameAssertion(), new QName("namespace", "local"), "Message").isNotEqualTo(new QName("namespace", "local"));
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be different.\n\tActual:<{namespace}local>");
         }
         try {
             initialize(Raw.qnameAssertion(), new QName("namespace", "local", "ns1")).isNotEqualTo(new QName("namespace", "local", "ns2"));
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual and expected values should be different.\n\tActual:<{namespace}local>");
         }
         try {
             initialize(Raw.qnameAssertion(), new QName("namespace", "local", "ns1"), "Message").isNotEqualTo(new QName("namespace", "local", "ns2"));
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be different.\n\tActual:<{namespace}local>");
         }
@@ -225,43 +225,43 @@ public final class QNameAssertionTest extends AssertionTest {
 
         try {
             Raw.qnameAssertion().toNamespaceURI();
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.qnameAssertion(), null).toNamespaceURI();
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.qnameAssertion(), null, "Message").toNamespaceURI();
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             clearActual(initialize(Raw.qnameAssertion(), new QName("namespace", "local")).toNamespaceURI()).isEqualTo("");
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's namespace URI.\n\tActual value should not be null.");
         }
         try {
             clearActual(initialize(Raw.qnameAssertion(), new QName("namespace", "local"), "Message").toNamespaceURI()).isEqualTo("");
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's namespace URI.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.qnameAssertion(), new QName("namespace1", "local")).toNamespaceURI().isEqualTo("namespace2");
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's namespace URI.\n\tActual and expected values should be the same.\n\tExpected:<namespace2> but was:<namespace1>");
         }
         try {
             initialize(Raw.qnameAssertion(), new QName("namespace1", "local"), "Message").toNamespaceURI().isEqualTo("namespace2");
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's namespace URI.\n\tActual and expected values should be the same.\n\tExpected:<namespace2> but was:<namespace1>");
         }
@@ -280,55 +280,55 @@ public final class QNameAssertionTest extends AssertionTest {
 
         try {
             Raw.qnameAssertion().toNamespaceURI(Matchers.equalTo(""));
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.qnameAssertion(), null).toNamespaceURI(Matchers.equalTo(""));
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.qnameAssertion(), null, "Message").toNamespaceURI(Matchers.equalTo(""));
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.qnameAssertion(), null).toNamespaceURI(null);
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.qnameAssertion(), null, "Message").toNamespaceURI(null);
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.qnameAssertion(), new QName("namespace", "local")).toNamespaceURI(null);
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: matcher.");
         }
         try {
             initialize(Raw.qnameAssertion(), new QName("namespace", "local"), "Message").toNamespaceURI(null);
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: matcher.");
         }
         try {
             initialize(Raw.qnameAssertion(), new QName("namespace1", "local")).toNamespaceURI(Matchers.equalTo("namespace2"));
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's namespace URI.\nExpected: \"namespace2\"\n     but: was \"namespace1\"");
         }
         try {
             initialize(Raw.qnameAssertion(), new QName("namespace1", "local"), "Message").toNamespaceURI(Matchers.equalTo("namespace2"));
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's namespace URI.\nExpected: \"namespace2\"\n     but: was \"namespace1\"");
         }
@@ -347,55 +347,55 @@ public final class QNameAssertionTest extends AssertionTest {
 
         try {
             Raw.qnameAssertion().hasNamespaceURI("");
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.qnameAssertion(), null).hasNamespaceURI("");
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.qnameAssertion(), null, "Message").hasNamespaceURI("");
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.qnameAssertion(), null).hasNamespaceURI(null);
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.qnameAssertion(), null, "Message").hasNamespaceURI(null);
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.qnameAssertion(), new QName("namespace", "local")).hasNamespaceURI(null);
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.qnameAssertion(), new QName("namespace", "local"), "Message").hasNamespaceURI(null);
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.qnameAssertion(), new QName("namespace1", "local")).hasNamespaceURI("namespace2");
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's namespace URI.\n\tActual and expected values should be the same.\n\tExpected:<namespace2> but was:<namespace1>");
         }
         try {
             initialize(Raw.qnameAssertion(), new QName("namespace1", "local"), "Message").hasNamespaceURI("namespace2");
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's namespace URI.\n\tActual and expected values should be the same.\n\tExpected:<namespace2> but was:<namespace1>");
         }
@@ -416,43 +416,43 @@ public final class QNameAssertionTest extends AssertionTest {
 
         try {
             Raw.qnameAssertion().toPrefix();
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.qnameAssertion(), null).toPrefix();
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.qnameAssertion(), null, "Message").toPrefix();
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             clearActual(initialize(Raw.qnameAssertion(), new QName("namespace", "local")).toPrefix()).isEqualTo("");
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's prefix.\n\tActual value should not be null.");
         }
         try {
             clearActual(initialize(Raw.qnameAssertion(), new QName("namespace", "local"), "Message").toPrefix()).isEqualTo("");
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's prefix.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.qnameAssertion(), new QName("namespace", "local", "ns1")).toPrefix().isEqualTo("ns2");
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's prefix.\n\tActual and expected values should be the same.\n\tExpected:<ns2> but was:<ns1>");
         }
         try {
             initialize(Raw.qnameAssertion(), new QName("namespace", "local", "ns1"), "Message").toPrefix().isEqualTo("ns2");
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's prefix.\n\tActual and expected values should be the same.\n\tExpected:<ns2> but was:<ns1>");
         }
@@ -473,55 +473,55 @@ public final class QNameAssertionTest extends AssertionTest {
 
         try {
             Raw.qnameAssertion().toPrefix(Matchers.equalTo(""));
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.qnameAssertion(), null).toPrefix(Matchers.equalTo(""));
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.qnameAssertion(), null, "Message").toPrefix(Matchers.equalTo(""));
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.qnameAssertion(), null).toPrefix(null);
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.qnameAssertion(), null, "Message").toPrefix(null);
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.qnameAssertion(), new QName("namespace", "local", "ns")).toPrefix(null);
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: matcher.");
         }
         try {
             initialize(Raw.qnameAssertion(), new QName("namespace", "local", "ns"), "Message").toPrefix(null);
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: matcher.");
         }
         try {
             initialize(Raw.qnameAssertion(), new QName("namespace", "local", "ns1")).toPrefix(Matchers.equalTo("ns2"));
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's prefix.\nExpected: \"ns2\"\n     but: was \"ns1\"");
         }
         try {
             initialize(Raw.qnameAssertion(), new QName("namespace", "local", "ns1"), "Message").toPrefix(Matchers.equalTo("ns2"));
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's prefix.\nExpected: \"ns2\"\n     but: was \"ns1\"");
         }
@@ -542,55 +542,55 @@ public final class QNameAssertionTest extends AssertionTest {
 
         try {
             Raw.qnameAssertion().hasPrefix("");
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.qnameAssertion(), null).hasPrefix("");
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.qnameAssertion(), null, "Message").hasPrefix("");
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.qnameAssertion(), null).hasPrefix(null);
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.qnameAssertion(), null, "Message").hasPrefix(null);
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.qnameAssertion(), new QName("namespace", "local", "ns")).hasPrefix(null);
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.qnameAssertion(), new QName("namespace", "local", "ns"), "Message").hasPrefix(null);
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.qnameAssertion(), new QName("namespace", "local", "ns1")).hasPrefix("ns2");
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's prefix.\n\tActual and expected values should be the same.\n\tExpected:<ns2> but was:<ns1>");
         }
         try {
             initialize(Raw.qnameAssertion(), new QName("namespace", "local", "ns1"), "Message").hasPrefix("ns2");
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's prefix.\n\tActual and expected values should be the same.\n\tExpected:<ns2> but was:<ns1>");
         }
@@ -608,43 +608,43 @@ public final class QNameAssertionTest extends AssertionTest {
 
         try {
             Raw.qnameAssertion().toLocalPart();
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.qnameAssertion(), null).toLocalPart();
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.qnameAssertion(), null, "Message").toLocalPart();
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             clearActual(initialize(Raw.qnameAssertion(), new QName("local")).toLocalPart()).isEqualTo("");
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's local part.\n\tActual value should not be null.");
         }
         try {
             clearActual(initialize(Raw.qnameAssertion(), new QName("local"), "Message").toLocalPart()).isEqualTo("");
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's local part.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.qnameAssertion(), new QName("local1")).toLocalPart().isEqualTo("local2");
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's local part.\n\tActual and expected values should be the same.\n\tExpected:<local2> but was:<local1>");
         }
         try {
             initialize(Raw.qnameAssertion(), new QName("local1"), "Message").toLocalPart().isEqualTo("local2");
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's local part.\n\tActual and expected values should be the same.\n\tExpected:<local2> but was:<local1>");
         }
@@ -662,55 +662,55 @@ public final class QNameAssertionTest extends AssertionTest {
 
         try {
             Raw.qnameAssertion().toLocalPart(Matchers.equalTo(""));
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.qnameAssertion(), null).toLocalPart(Matchers.equalTo(""));
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.qnameAssertion(), null, "Message").toLocalPart(Matchers.equalTo(""));
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.qnameAssertion(), null).toLocalPart(null);
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.qnameAssertion(), null, "Message").toLocalPart(null);
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.qnameAssertion(), new QName("local")).toLocalPart(null);
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: matcher.");
         }
         try {
             initialize(Raw.qnameAssertion(), new QName("local"), "Message").toLocalPart(null);
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: matcher.");
         }
         try {
             initialize(Raw.qnameAssertion(), new QName("local1")).toLocalPart(Matchers.equalTo("local2"));
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's local part.\nExpected: \"local2\"\n     but: was \"local1\"");
         }
         try {
             initialize(Raw.qnameAssertion(), new QName("local1"), "Message").toLocalPart(Matchers.equalTo("local2"));
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's local part.\nExpected: \"local2\"\n     but: was \"local1\"");
         }
@@ -729,55 +729,55 @@ public final class QNameAssertionTest extends AssertionTest {
 
         try {
             Raw.qnameAssertion().hasLocalPart("");
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.qnameAssertion(), null).hasLocalPart("");
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.qnameAssertion(), null, "Message").hasLocalPart("");
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.qnameAssertion(), null).hasLocalPart(null);
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.qnameAssertion(), null, "Message").hasLocalPart(null);
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.qnameAssertion(), new QName("local")).hasLocalPart(null);
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.qnameAssertion(), new QName("local"), "Message").hasLocalPart(null);
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.qnameAssertion(), new QName("local1")).hasLocalPart("local2");
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's local part.\n\tActual and expected values should be the same.\n\tExpected:<local2> but was:<local1>");
         }
         try {
             initialize(Raw.qnameAssertion(), new QName("local1"), "Message").hasLocalPart("local2");
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's local part.\n\tActual and expected values should be the same.\n\tExpected:<local2> but was:<local1>");
         }
@@ -796,67 +796,67 @@ public final class QNameAssertionTest extends AssertionTest {
 
         try {
             Raw.qnameAssertion().hasProperties("");
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.qnameAssertion(), null).hasProperties("");
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.qnameAssertion(), null, "Message").hasProperties("");
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.qnameAssertion(), null).hasProperties(null);
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.qnameAssertion(), null, "Message").hasProperties(null);
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.qnameAssertion(), new QName("local")).hasProperties(null);
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: expectedLocalPart.");
         }
         try {
             initialize(Raw.qnameAssertion(), new QName("local"), "Message").hasProperties(null);
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expectedLocalPart.");
         }
         try {
             initialize(Raw.qnameAssertion(), new QName("local1")).hasProperties("local2");
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's local part.\n\tActual and expected values should be the same.\n\tExpected:<local2> but was:<local1>");
         }
         try {
             initialize(Raw.qnameAssertion(), new QName("local1"), "Message").hasProperties("local2");
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's local part.\n\tActual and expected values should be the same.\n\tExpected:<local2> but was:<local1>");
         }
         try {
             initialize(Raw.qnameAssertion(), new QName("namespace", "local")).hasProperties("local");
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's namespace URI.\n\tActual and expected values should be the same.\n\tExpected:<> but was:<namespace>");
         }
         try {
             initialize(Raw.qnameAssertion(), new QName("namespace", "local"), "Message").hasProperties("local");
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's namespace URI.\n\tActual and expected values should be the same.\n\tExpected:<> but was:<namespace>");
         }
@@ -877,91 +877,91 @@ public final class QNameAssertionTest extends AssertionTest {
 
         try {
             Raw.qnameAssertion().hasProperties("", "");
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.qnameAssertion(), null).hasProperties("", "");
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.qnameAssertion(), null, "Message").hasProperties("", "");
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.qnameAssertion(), null).hasProperties(null, "");
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.qnameAssertion(), null, "Message").hasProperties(null, "");
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.qnameAssertion(), new QName("local")).hasProperties(null, "");
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: expectedNamespaceURI.");
         }
         try {
             initialize(Raw.qnameAssertion(), new QName("local"), "Message").hasProperties(null, "");
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expectedNamespaceURI.");
         }
         try {
             initialize(Raw.qnameAssertion(), new QName("local")).hasProperties(null, null);
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: expectedNamespaceURI.");
         }
         try {
             initialize(Raw.qnameAssertion(), new QName("local"), "Message").hasProperties(null, null);
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expectedNamespaceURI.");
         }
         try {
             initialize(Raw.qnameAssertion(), new QName("local")).hasProperties("", null);
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: expectedLocalPart.");
         }
         try {
             initialize(Raw.qnameAssertion(), new QName("local"), "Message").hasProperties("", null);
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expectedLocalPart.");
         }
         try {
             initialize(Raw.qnameAssertion(), new QName("namespace", "local1")).hasProperties("namespace", "local2");
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's local part.\n\tActual and expected values should be the same.\n\tExpected:<local2> but was:<local1>");
         }
         try {
             initialize(Raw.qnameAssertion(), new QName("namespace", "local1"), "Message").hasProperties("namespace", "local2");
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's local part.\n\tActual and expected values should be the same.\n\tExpected:<local2> but was:<local1>");
         }
         try {
             initialize(Raw.qnameAssertion(), new QName("namespace1", "local")).hasProperties("namespace2", "local");
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's namespace URI.\n\tActual and expected values should be the same.\n\tExpected:<namespace2> but was:<namespace1>");
         }
         try {
             initialize(Raw.qnameAssertion(), new QName("namespace1", "local"), "Message").hasProperties("namespace2", "local");
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's namespace URI.\n\tActual and expected values should be the same.\n\tExpected:<namespace2> but was:<namespace1>");
         }
@@ -976,13 +976,13 @@ public final class QNameAssertionTest extends AssertionTest {
 
         try {
             initialize(Raw.qnameAssertion(), new QName("namespace", "local")).isNull();
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be null.\n\tActual:<{namespace}local>");
         }
         try {
             initialize(Raw.qnameAssertion(), new QName("namespace", "local"), "Message").isNull();
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be null.\n\tActual:<{namespace}local>");
         }
@@ -998,13 +998,13 @@ public final class QNameAssertionTest extends AssertionTest {
 
         try {
             initialize(Raw.qnameAssertion(), value).isSameAs(new QName("namespace", "local"));
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual and expected values should point to the same object.\n\tExpected:<{namespace}local> but was:<{namespace}local>");
         }
         try {
             initialize(Raw.qnameAssertion(), value, "Message").isSameAs(new QName("namespace", "local"));
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should point to the same object.\n\tExpected:<{namespace}local> but was:<{namespace}local>");
         }
@@ -1020,13 +1020,13 @@ public final class QNameAssertionTest extends AssertionTest {
 
         try {
             initialize(Raw.qnameAssertion(), value).isNotSameAs(value);
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual and expected values should point to the different objects.\n\tActual:<{namespace}local>");
         }
         try {
             initialize(Raw.qnameAssertion(), value, "Message").isNotSameAs(value);
-            Assertions.fail("QNameAssertion test fail");
+            Assertions.fail(QNameAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should point to the different objects.\n\tActual:<{namespace}local>");
         }
