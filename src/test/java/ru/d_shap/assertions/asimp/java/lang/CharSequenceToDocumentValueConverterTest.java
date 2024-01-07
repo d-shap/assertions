@@ -92,7 +92,7 @@ public final class CharSequenceToDocumentValueConverterTest extends AssertionTes
 
         try {
             new CharSequenceToDocumentValueConverter().convert("<element>");
-            Assertions.fail("CharSequenceToDocumentValueConverter test fail");
+            Assertions.fail(CharSequenceToDocumentValueConverter.class);
         } catch (ConversionException ex) {
             Assertions.assertThat(ex).messageContains("XML document structures must start and end within the same entity.");
             Assertions.assertThat(ex).hasCause(SAXException.class);
@@ -107,7 +107,7 @@ public final class CharSequenceToDocumentValueConverterTest extends AssertionTes
         try {
             InputSource inputSource = new InputSource(DataHelper.createReaderBuilder().setReadException("read exception").buildReader());
             new CharSequenceToDocumentValueConverter().parse(inputSource);
-            Assertions.fail("CharSequenceToDocumentValueConverter test fail");
+            Assertions.fail(CharSequenceToDocumentValueConverter.class);
         } catch (ConversionException ex) {
             Assertions.assertThat(ex).messageContains("read exception");
             Assertions.assertThat(ex).hasCause(IOException.class);
@@ -155,7 +155,7 @@ public final class CharSequenceToDocumentValueConverterTest extends AssertionTes
                     xml += "<ns1:element>value</ns1:element>";
                     xml += "<document>";
                     new CharSequenceToDocumentValueConverter().convert(xml);
-                    Assertions.fail("CharSequenceToDocumentValueConverter test fail");
+                    Assertions.fail(CharSequenceToDocumentValueConverter.class);
                 } catch (ConversionException ex) {
                     Assertions.assertThat(ex).messageContains("XML document structures must start and end within the same entity.");
                     Assertions.assertThat(ex).hasCause(SAXException.class);
