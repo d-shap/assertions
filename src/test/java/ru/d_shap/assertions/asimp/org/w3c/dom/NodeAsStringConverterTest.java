@@ -83,7 +83,7 @@ public final class NodeAsStringConverterTest extends AssertionTest {
             Source source = new StreamSource(DataHelper.createReaderBuilder().setReadException("read exception").buildReader());
             Result result = new StreamResult(new StringWriter());
             new NodeAsStringConverter().transform(source, result);
-            Assertions.fail("NodeAsStringConverter test fail");
+            Assertions.fail(NodeAsStringConverter.class);
         } catch (ConversionException ex) {
             Assertions.assertThat(ex).messageContains("read exception");
             Assertions.assertThat(ex).hasCauses(TransformerException.class, IOException.class);
@@ -121,7 +121,7 @@ public final class NodeAsStringConverterTest extends AssertionTest {
                     Source source = new StreamSource(DataHelper.createReaderBuilder().setReadException("read exception").buildReader());
                     Result result = new StreamResult(new StringWriter());
                     new NodeAsStringConverter().transform(source, result);
-                    Assertions.fail("NodeAsStringConverter test fail");
+                    Assertions.fail(NodeAsStringConverter.class);
                 } catch (ConversionException ex) {
                     Assertions.assertThat(ex).messageContains("read exception");
                     Assertions.assertThat(ex).hasCause(TransformerException.class);
