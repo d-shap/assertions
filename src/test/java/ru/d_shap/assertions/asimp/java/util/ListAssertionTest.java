@@ -269,6 +269,7 @@ public final class ListAssertionTest extends AssertionTest {
         initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", null)).isEqualTo(DataHelper.createArrayList("val1", "val2", null));
         initialize(Raw.<Float>listAssertion(), DataHelper.createArrayList(Float.NaN, Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY, 3.0f)).isEqualTo(DataHelper.createArrayList(Float.NaN, Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY, 3.0f));
         initialize(Raw.<Double>listAssertion(), DataHelper.createArrayList(Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0)).isEqualTo(DataHelper.createArrayList(Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0));
+        initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("value")).isNotNull().isEqualTo(DataHelper.createArrayList("value")).isInstanceOf(List.class);
 
         try {
             Raw.<String>listAssertion().isEqualTo(DataHelper.<String>createArrayList());
@@ -356,6 +357,7 @@ public final class ListAssertionTest extends AssertionTest {
         initialize(Raw.<Integer>listAssertion(), DataHelper.createArrayList(5, 10)).isNotEqualTo(DataHelper.createArrayList(15, 20));
         initialize(Raw.<Float>listAssertion(), DataHelper.createArrayList(Float.NaN, Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY)).isNotEqualTo(DataHelper.createArrayList(Float.NEGATIVE_INFINITY, Float.NaN, Float.POSITIVE_INFINITY));
         initialize(Raw.<Double>listAssertion(), DataHelper.createArrayList(Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY)).isNotEqualTo(DataHelper.createArrayList(Double.NEGATIVE_INFINITY, Double.NaN, Double.POSITIVE_INFINITY));
+        initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1")).isNotNull().isNotEqualTo(DataHelper.createArrayList("val2")).isInstanceOf(List.class);
 
         try {
             Raw.<String>listAssertion().isNotEqualTo(DataHelper.<String>createArrayList());

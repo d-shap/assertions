@@ -188,6 +188,7 @@ public final class SortedSetAssertionTest extends AssertionTest {
         initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", null)).isEqualTo(DataHelper.createTreeSet("val1", "val2", null));
         initialize(Raw.<Float>sortedSetAssertion(), DataHelper.createTreeSet(Float.NaN, Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY, 3.0f)).isEqualTo(DataHelper.createTreeSet(Float.NaN, Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY, 3.0f));
         initialize(Raw.<Double>sortedSetAssertion(), DataHelper.createTreeSet(Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0)).isEqualTo(DataHelper.createTreeSet(Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0));
+        initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("value")).isNotNull().isEqualTo(DataHelper.createTreeSet("value")).isInstanceOf(SortedSet.class);
 
         try {
             Raw.<String>sortedSetAssertion().isEqualTo(DataHelper.<String>createTreeSet());
@@ -273,6 +274,7 @@ public final class SortedSetAssertionTest extends AssertionTest {
         initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2")).isNotEqualTo(DataHelper.createTreeSet("val1", null, "val2"));
         initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2")).isNotEqualTo(DataHelper.createTreeSet("val1", "val2", null));
         initialize(Raw.<Integer>sortedSetAssertion(), DataHelper.createTreeSet(5, 10)).isNotEqualTo(DataHelper.createTreeSet(15, 20));
+        initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1")).isNotNull().isNotEqualTo(DataHelper.createTreeSet("val2")).isInstanceOf(SortedSet.class);
 
         try {
             Raw.<String>sortedSetAssertion().isNotEqualTo(DataHelper.<String>createTreeSet());

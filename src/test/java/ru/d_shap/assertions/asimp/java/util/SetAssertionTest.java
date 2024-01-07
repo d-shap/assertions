@@ -188,6 +188,7 @@ public final class SetAssertionTest extends AssertionTest {
         initialize(Raw.<String>setAssertion(), DataHelper.createHashSet("val1", "val2", null)).isEqualTo(DataHelper.createHashSet("val1", "val2", null));
         initialize(Raw.<Float>setAssertion(), DataHelper.createHashSet(Float.NaN, Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY, 3.0f)).isEqualTo(DataHelper.createHashSet(Float.NaN, Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY, 3.0f));
         initialize(Raw.<Double>setAssertion(), DataHelper.createHashSet(Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0)).isEqualTo(DataHelper.createHashSet(Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3.0));
+        initialize(Raw.<String>setAssertion(), DataHelper.createHashSet("value")).isNotNull().isEqualTo(DataHelper.createHashSet("value")).isInstanceOf(Set.class);
 
         try {
             Raw.<String>setAssertion().isEqualTo(DataHelper.<String>createHashSet());
@@ -273,6 +274,7 @@ public final class SetAssertionTest extends AssertionTest {
         initialize(Raw.<String>setAssertion(), DataHelper.createHashSet("val1", "val2")).isNotEqualTo(DataHelper.createHashSet("val1", null, "val2"));
         initialize(Raw.<String>setAssertion(), DataHelper.createHashSet("val1", "val2")).isNotEqualTo(DataHelper.createHashSet("val1", "val2", null));
         initialize(Raw.<Integer>setAssertion(), DataHelper.createHashSet(5, 10)).isNotEqualTo(DataHelper.createHashSet(15, 20));
+        initialize(Raw.<String>setAssertion(), DataHelper.createHashSet("val1")).isNotNull().isNotEqualTo(DataHelper.createHashSet("val2")).isInstanceOf(Set.class);
 
         try {
             Raw.<String>setAssertion().isNotEqualTo(DataHelper.<String>createHashSet());

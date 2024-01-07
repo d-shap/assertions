@@ -187,6 +187,7 @@ public final class SortedMapAssertionTest extends AssertionTest {
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "val1", "key2", "val2", null, null)).isEqualTo(DataHelper.createTreeMap("key1", "val1", "key2", "val2", null, null));
         initialize(Raw.<String, Float>sortedMapAssertion(), DataHelper.createTreeMap("key1", Float.NaN, "key2", Float.POSITIVE_INFINITY, "key3", Float.NEGATIVE_INFINITY, "key4", 3.0f)).isEqualTo(DataHelper.createTreeMap("key1", Float.NaN, "key2", Float.POSITIVE_INFINITY, "key3", Float.NEGATIVE_INFINITY, "key4", 3.0f));
         initialize(Raw.<String, Double>sortedMapAssertion(), DataHelper.createTreeMap("key1", Double.NaN, "key2", Double.POSITIVE_INFINITY, "key3", Double.NEGATIVE_INFINITY, "key4", 3.0)).isEqualTo(DataHelper.createTreeMap("key1", Double.NaN, "key2", Double.POSITIVE_INFINITY, "key3", Double.NEGATIVE_INFINITY, "key4", 3.0));
+        initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key", "value")).isNotNull().isEqualTo(DataHelper.createTreeMap("key", "value")).isInstanceOf(SortedMap.class);
 
         try {
             Raw.<String, String>sortedMapAssertion().isEqualTo(DataHelper.<String, String>createTreeMap());
@@ -272,6 +273,7 @@ public final class SortedMapAssertionTest extends AssertionTest {
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "val1", "key2", "val2")).isNotEqualTo(DataHelper.createTreeMap("key1", "val1", null, null, "key2", "val2"));
         initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "val1", "key2", "val2")).isNotEqualTo(DataHelper.createTreeMap("key1", "val1", "key2", "val2", null, null));
         initialize(Raw.<String, Integer>sortedMapAssertion(), DataHelper.createTreeMap("key1", 5, "key2", 10)).isNotEqualTo(DataHelper.createTreeMap("key1", 15, "key2", 20));
+        initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "val1")).isNotNull().isNotEqualTo(DataHelper.createTreeMap("key2", "val2")).isInstanceOf(SortedMap.class);
 
         try {
             Raw.<String, String>sortedMapAssertion().isNotEqualTo(DataHelper.<String, String>createTreeMap());

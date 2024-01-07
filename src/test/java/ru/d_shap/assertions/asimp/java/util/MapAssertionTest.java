@@ -187,6 +187,7 @@ public final class MapAssertionTest extends AssertionTest {
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("key1", "val1", "key2", "val2", null, null)).isEqualTo(DataHelper.createHashMap("key1", "val1", "key2", "val2", null, null));
         initialize(Raw.<String, Float>mapAssertion(), DataHelper.createHashMap("key1", Float.NaN, "key2", Float.POSITIVE_INFINITY, "key3", Float.NEGATIVE_INFINITY, "key4", 3.0f)).isEqualTo(DataHelper.createHashMap("key1", Float.NaN, "key2", Float.POSITIVE_INFINITY, "key3", Float.NEGATIVE_INFINITY, "key4", 3.0f));
         initialize(Raw.<String, Double>mapAssertion(), DataHelper.createHashMap("key1", Double.NaN, "key2", Double.POSITIVE_INFINITY, "key3", Double.NEGATIVE_INFINITY, "key4", 3.0)).isEqualTo(DataHelper.createHashMap("key1", Double.NaN, "key2", Double.POSITIVE_INFINITY, "key3", Double.NEGATIVE_INFINITY, "key4", 3.0));
+        initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("key", "value")).isNotNull().isEqualTo(DataHelper.createHashMap("key", "value")).isInstanceOf(Map.class);
 
         try {
             Raw.<String, String>mapAssertion().isEqualTo(DataHelper.<String, String>createHashMap());
@@ -272,6 +273,7 @@ public final class MapAssertionTest extends AssertionTest {
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("key1", "val1", "key2", "val2")).isNotEqualTo(DataHelper.createHashMap("key1", "val1", null, null, "key2", "val2"));
         initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("key1", "val1", "key2", "val2")).isNotEqualTo(DataHelper.createHashMap("key1", "val1", "key2", "val2", null, null));
         initialize(Raw.<String, Integer>mapAssertion(), DataHelper.createHashMap("key1", 5, "key2", 10)).isNotEqualTo(DataHelper.createHashMap("key1", 15, "key2", 20));
+        initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("key1", "val1")).isNotNull().isNotEqualTo(DataHelper.createHashMap("key2", "val2")).isInstanceOf(Map.class);
 
         try {
             Raw.<String, String>mapAssertion().isNotEqualTo(DataHelper.<String, String>createHashMap());
