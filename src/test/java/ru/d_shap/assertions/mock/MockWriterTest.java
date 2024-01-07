@@ -125,25 +125,25 @@ public final class MockWriterTest extends AssertionTest {
 
         try {
             DataHelper.createWriterBuilder().setWriteException(new IOException("fail")).buildWriter().write('1');
-            Assertions.fail("MockWriter test fail");
+            Assertions.fail(MockWriter.class);
         } catch (IOException ex) {
             Assertions.assertThat(ex).hasMessage("fail");
         }
         try {
             DataHelper.createWriterBuilder().setWriteException(true, new IOException("fail")).buildWriter().write('1');
-            Assertions.fail("MockWriter test fail");
+            Assertions.fail(MockWriter.class);
         } catch (IOException ex) {
             Assertions.assertThat(ex).hasMessage("fail");
         }
         try {
             DataHelper.createWriterBuilder().setWriteException("fail").buildWriter().write('1');
-            Assertions.fail("MockWriter test fail");
+            Assertions.fail(MockWriter.class);
         } catch (IOException ex) {
             Assertions.assertThat(ex).hasMessage("fail");
         }
         try {
             DataHelper.createWriterBuilder().setWriteException(true, "fail").buildWriter().write('1');
-            Assertions.fail("MockWriter test fail");
+            Assertions.fail(MockWriter.class);
         } catch (IOException ex) {
             Assertions.assertThat(ex).hasMessage("fail");
         }
@@ -158,7 +158,7 @@ public final class MockWriterTest extends AssertionTest {
         Assertions.assertThat(((MockWriter) writer10).getContent()).containsExactlyInOrder('1', '2', '0', '3', '4');
         try {
             writer10.write('5');
-            Assertions.fail("MockWriter test fail");
+            Assertions.fail(MockWriter.class);
         } catch (IOException ex) {
             Assertions.assertThat(ex).hasMessage("fail");
         }
@@ -234,73 +234,73 @@ public final class MockWriterTest extends AssertionTest {
 
         try {
             DataHelper.createWriterBuilder().buildWriter().write((char[]) null, 0, 10);
-            Assertions.fail("MockWriter test fail");
+            Assertions.fail(MockWriter.class);
         } catch (NullPointerException ex) {
             Assertions.assertThat(ex).hasMessage("buffer is null");
         }
         try {
             DataHelper.createWriterBuilder().buildWriter().write((char[]) null, -1, 10);
-            Assertions.fail("MockWriter test fail");
+            Assertions.fail(MockWriter.class);
         } catch (NullPointerException ex) {
             Assertions.assertThat(ex).hasMessage("buffer is null");
         }
         try {
             DataHelper.createWriterBuilder().buildWriter().write(new char[]{'1', '2', '3', '4', '5'}, -1, 10);
-            Assertions.fail("MockWriter test fail");
+            Assertions.fail(MockWriter.class);
         } catch (IndexOutOfBoundsException ex) {
             Assertions.assertThat(ex).hasMessage("offset is out of bounds");
         }
         try {
             DataHelper.createWriterBuilder().buildWriter().write(new char[]{'1', '2', '3', '4', '5'}, 5, 10);
-            Assertions.fail("MockWriter test fail");
+            Assertions.fail(MockWriter.class);
         } catch (IndexOutOfBoundsException ex) {
             Assertions.assertThat(ex).hasMessage("offset is out of bounds");
         }
         try {
             DataHelper.createWriterBuilder().buildWriter().write(new char[]{'1', '2', '3', '4', '5'}, 0, -1);
-            Assertions.fail("MockWriter test fail");
+            Assertions.fail(MockWriter.class);
         } catch (IndexOutOfBoundsException ex) {
             Assertions.assertThat(ex).hasMessage("length is out of bounds");
         }
         try {
             DataHelper.createWriterBuilder().buildWriter().write(new char[]{'1', '2', '3', '4', '5'}, 0, 6);
-            Assertions.fail("MockWriter test fail");
+            Assertions.fail(MockWriter.class);
         } catch (IndexOutOfBoundsException ex) {
             Assertions.assertThat(ex).hasMessage("length is out of bounds");
         }
         try {
             DataHelper.createWriterBuilder().buildWriter().write(new char[]{'1', '2', '3', '4', '5'}, 4, 2);
-            Assertions.fail("MockWriter test fail");
+            Assertions.fail(MockWriter.class);
         } catch (IndexOutOfBoundsException ex) {
             Assertions.assertThat(ex).hasMessage("length is out of bounds");
         }
         try {
             DataHelper.createWriterBuilder().buildWriter().write(new char[]{}, 1, 0);
-            Assertions.fail("MockWriter test fail");
+            Assertions.fail(MockWriter.class);
         } catch (IndexOutOfBoundsException ex) {
             Assertions.assertThat(ex).hasMessage("offset is out of bounds");
         }
         try {
             DataHelper.createWriterBuilder().setWriteException(new IOException("fail")).buildWriter().write(new char[]{'1'}, 0, 1);
-            Assertions.fail("MockWriter test fail");
+            Assertions.fail(MockWriter.class);
         } catch (IOException ex) {
             Assertions.assertThat(ex).hasMessage("fail");
         }
         try {
             DataHelper.createWriterBuilder().setWriteException(true, new IOException("fail")).buildWriter().write(new char[]{'1'}, 0, 1);
-            Assertions.fail("MockWriter test fail");
+            Assertions.fail(MockWriter.class);
         } catch (IOException ex) {
             Assertions.assertThat(ex).hasMessage("fail");
         }
         try {
             DataHelper.createWriterBuilder().setWriteException("fail").buildWriter().write(new char[]{'1'}, 0, 1);
-            Assertions.fail("MockWriter test fail");
+            Assertions.fail(MockWriter.class);
         } catch (IOException ex) {
             Assertions.assertThat(ex).hasMessage("fail");
         }
         try {
             DataHelper.createWriterBuilder().setWriteException(true, "fail").buildWriter().write(new char[]{'1'}, 0, 1);
-            Assertions.fail("MockWriter test fail");
+            Assertions.fail(MockWriter.class);
         } catch (IOException ex) {
             Assertions.assertThat(ex).hasMessage("fail");
         }
@@ -310,7 +310,7 @@ public final class MockWriterTest extends AssertionTest {
         Assertions.assertThat(((MockWriter) writer09).getContent()).containsExactlyInOrder('1', '2', '3');
         try {
             writer09.write(new char[]{'4', '5', '6'}, 0, 3);
-            Assertions.fail("MockWriter test fail");
+            Assertions.fail(MockWriter.class);
         } catch (IOException ex) {
             Assertions.assertThat(ex).hasMessage("fail");
         }
@@ -386,31 +386,31 @@ public final class MockWriterTest extends AssertionTest {
 
         try {
             DataHelper.createWriterBuilder().buildWriter().write((String) null);
-            Assertions.fail("MockWriter test fail");
+            Assertions.fail(MockWriter.class);
         } catch (NullPointerException ex) {
             Assertions.assertThat(ex).hasMessage("value is null");
         }
         try {
             DataHelper.createWriterBuilder().setWriteException(new IOException("fail")).buildWriter().write("1");
-            Assertions.fail("MockWriter test fail");
+            Assertions.fail(MockWriter.class);
         } catch (IOException ex) {
             Assertions.assertThat(ex).hasMessage("fail");
         }
         try {
             DataHelper.createWriterBuilder().setWriteException(true, new IOException("fail")).buildWriter().write("1");
-            Assertions.fail("MockWriter test fail");
+            Assertions.fail(MockWriter.class);
         } catch (IOException ex) {
             Assertions.assertThat(ex).hasMessage("fail");
         }
         try {
             DataHelper.createWriterBuilder().setWriteException("fail").buildWriter().write("1");
-            Assertions.fail("MockWriter test fail");
+            Assertions.fail(MockWriter.class);
         } catch (IOException ex) {
             Assertions.assertThat(ex).hasMessage("fail");
         }
         try {
             DataHelper.createWriterBuilder().setWriteException(true, "fail").buildWriter().write("1");
-            Assertions.fail("MockWriter test fail");
+            Assertions.fail(MockWriter.class);
         } catch (IOException ex) {
             Assertions.assertThat(ex).hasMessage("fail");
         }
@@ -420,7 +420,7 @@ public final class MockWriterTest extends AssertionTest {
         Assertions.assertThat(((MockWriter) writer09).getContent()).containsExactlyInOrder('1', '2', '3');
         try {
             writer09.write("456");
-            Assertions.fail("MockWriter test fail");
+            Assertions.fail(MockWriter.class);
         } catch (IOException ex) {
             Assertions.assertThat(ex).hasMessage("fail");
         }
@@ -496,73 +496,73 @@ public final class MockWriterTest extends AssertionTest {
 
         try {
             DataHelper.createWriterBuilder().buildWriter().write((String) null, 0, 10);
-            Assertions.fail("MockWriter test fail");
+            Assertions.fail(MockWriter.class);
         } catch (NullPointerException ex) {
             Assertions.assertThat(ex).hasMessage("value is null");
         }
         try {
             DataHelper.createWriterBuilder().buildWriter().write((String) null, -1, 10);
-            Assertions.fail("MockWriter test fail");
+            Assertions.fail(MockWriter.class);
         } catch (NullPointerException ex) {
             Assertions.assertThat(ex).hasMessage("value is null");
         }
         try {
             DataHelper.createWriterBuilder().buildWriter().write("12345", -1, 10);
-            Assertions.fail("MockWriter test fail");
+            Assertions.fail(MockWriter.class);
         } catch (IndexOutOfBoundsException ex) {
             Assertions.assertThat(ex).hasMessage("offset is out of bounds");
         }
         try {
             DataHelper.createWriterBuilder().buildWriter().write("12345", 5, 10);
-            Assertions.fail("MockWriter test fail");
+            Assertions.fail(MockWriter.class);
         } catch (IndexOutOfBoundsException ex) {
             Assertions.assertThat(ex).hasMessage("offset is out of bounds");
         }
         try {
             DataHelper.createWriterBuilder().buildWriter().write("12345", 0, -1);
-            Assertions.fail("MockWriter test fail");
+            Assertions.fail(MockWriter.class);
         } catch (IndexOutOfBoundsException ex) {
             Assertions.assertThat(ex).hasMessage("length is out of bounds");
         }
         try {
             DataHelper.createWriterBuilder().buildWriter().write("12345", 0, 6);
-            Assertions.fail("MockWriter test fail");
+            Assertions.fail(MockWriter.class);
         } catch (IndexOutOfBoundsException ex) {
             Assertions.assertThat(ex).hasMessage("length is out of bounds");
         }
         try {
             DataHelper.createWriterBuilder().buildWriter().write("12345", 4, 2);
-            Assertions.fail("MockWriter test fail");
+            Assertions.fail(MockWriter.class);
         } catch (IndexOutOfBoundsException ex) {
             Assertions.assertThat(ex).hasMessage("length is out of bounds");
         }
         try {
             DataHelper.createWriterBuilder().buildWriter().write("", 1, 0);
-            Assertions.fail("MockWriter test fail");
+            Assertions.fail(MockWriter.class);
         } catch (IndexOutOfBoundsException ex) {
             Assertions.assertThat(ex).hasMessage("offset is out of bounds");
         }
         try {
             DataHelper.createWriterBuilder().setWriteException(new IOException("fail")).buildWriter().write("1", 0, 1);
-            Assertions.fail("MockWriter test fail");
+            Assertions.fail(MockWriter.class);
         } catch (IOException ex) {
             Assertions.assertThat(ex).hasMessage("fail");
         }
         try {
             DataHelper.createWriterBuilder().setWriteException(true, new IOException("fail")).buildWriter().write("1", 0, 1);
-            Assertions.fail("MockWriter test fail");
+            Assertions.fail(MockWriter.class);
         } catch (IOException ex) {
             Assertions.assertThat(ex).hasMessage("fail");
         }
         try {
             DataHelper.createWriterBuilder().setWriteException("fail").buildWriter().write("1", 0, 1);
-            Assertions.fail("MockWriter test fail");
+            Assertions.fail(MockWriter.class);
         } catch (IOException ex) {
             Assertions.assertThat(ex).hasMessage("fail");
         }
         try {
             DataHelper.createWriterBuilder().setWriteException(true, "fail").buildWriter().write("1", 0, 1);
-            Assertions.fail("MockWriter test fail");
+            Assertions.fail(MockWriter.class);
         } catch (IOException ex) {
             Assertions.assertThat(ex).hasMessage("fail");
         }
@@ -572,7 +572,7 @@ public final class MockWriterTest extends AssertionTest {
         Assertions.assertThat(((MockWriter) writer09).getContent()).containsExactlyInOrder('1', '2', '3');
         try {
             writer09.write("456", 0, 3);
-            Assertions.fail("MockWriter test fail");
+            Assertions.fail(MockWriter.class);
         } catch (IOException ex) {
             Assertions.assertThat(ex).hasMessage("fail");
         }
@@ -607,25 +607,25 @@ public final class MockWriterTest extends AssertionTest {
 
         try {
             DataHelper.createWriterBuilder().setFlushException(new IOException("fail")).buildWriter().flush();
-            Assertions.fail("MockWriter test fail");
+            Assertions.fail(MockWriter.class);
         } catch (IOException ex) {
             Assertions.assertThat(ex).hasMessage("fail");
         }
         try {
             DataHelper.createWriterBuilder().setFlushException(true, new IOException("fail")).buildWriter().flush();
-            Assertions.fail("MockWriter test fail");
+            Assertions.fail(MockWriter.class);
         } catch (IOException ex) {
             Assertions.assertThat(ex).hasMessage("fail");
         }
         try {
             DataHelper.createWriterBuilder().setFlushException("fail").buildWriter().flush();
-            Assertions.fail("MockWriter test fail");
+            Assertions.fail(MockWriter.class);
         } catch (IOException ex) {
             Assertions.assertThat(ex).hasMessage("fail");
         }
         try {
             DataHelper.createWriterBuilder().setFlushException(true, "fail").buildWriter().flush();
-            Assertions.fail("MockWriter test fail");
+            Assertions.fail(MockWriter.class);
         } catch (IOException ex) {
             Assertions.assertThat(ex).hasMessage("fail");
         }
@@ -644,7 +644,7 @@ public final class MockWriterTest extends AssertionTest {
         writer07.write('5');
         try {
             writer07.flush();
-            Assertions.fail("MockWriter test fail");
+            Assertions.fail(MockWriter.class);
         } catch (IOException ex) {
             Assertions.assertThat(ex).hasMessage("fail");
         }
@@ -679,31 +679,31 @@ public final class MockWriterTest extends AssertionTest {
 
         try {
             DataHelper.createWriterBuilder().setCloseException(new IOException("fail")).buildWriter().close();
-            Assertions.fail("MockWriter test fail");
+            Assertions.fail(MockWriter.class);
         } catch (IOException ex) {
             Assertions.assertThat(ex).hasMessage("fail");
         }
         try {
             DataHelper.createWriterBuilder().setCloseException(true, new IOException("fail")).buildWriter().close();
-            Assertions.fail("MockWriter test fail");
+            Assertions.fail(MockWriter.class);
         } catch (IOException ex) {
             Assertions.assertThat(ex).hasMessage("fail");
         }
         try {
             DataHelper.createWriterBuilder().setCloseException("fail").buildWriter().close();
-            Assertions.fail("MockWriter test fail");
+            Assertions.fail(MockWriter.class);
         } catch (IOException ex) {
             Assertions.assertThat(ex).hasMessage("fail");
         }
         try {
             DataHelper.createWriterBuilder().setCloseException(true, "fail").buildWriter().close();
-            Assertions.fail("MockWriter test fail");
+            Assertions.fail(MockWriter.class);
         } catch (IOException ex) {
             Assertions.assertThat(ex).hasMessage("fail");
         }
         try {
             DataHelper.createWriterBuilder().setContentSize(5).setCloseException("fail").buildWriter().close();
-            Assertions.fail("MockWriter test fail");
+            Assertions.fail(MockWriter.class);
         } catch (IOException ex) {
             Assertions.assertThat(ex).hasMessage("fail");
         }
@@ -716,7 +716,7 @@ public final class MockWriterTest extends AssertionTest {
         writer07.write('5');
         try {
             writer07.close();
-            Assertions.fail("MockWriter test fail");
+            Assertions.fail(MockWriter.class);
         } catch (IOException ex) {
             Assertions.assertThat(ex).hasMessage("fail");
         }
@@ -729,13 +729,13 @@ public final class MockWriterTest extends AssertionTest {
         writer08.write('5');
         try {
             writer08.close();
-            Assertions.fail("MockWriter test fail");
+            Assertions.fail(MockWriter.class);
         } catch (IOException ex) {
             Assertions.assertThat(ex).hasMessage("fail 1");
         }
         try {
             writer08.close();
-            Assertions.fail("MockWriter test fail");
+            Assertions.fail(MockWriter.class);
         } catch (IOException ex) {
             Assertions.assertThat(ex).hasMessage("fail 2");
         }
@@ -795,7 +795,7 @@ public final class MockWriterTest extends AssertionTest {
         Assertions.assertThat(((IsCloseable) writer02).isClosed()).isFalse();
         try {
             writer02.close();
-            Assertions.fail("MockWriter test fail");
+            Assertions.fail(MockWriter.class);
         } catch (IOException ex) {
             Assertions.assertThat(ex).hasMessage("fail");
         }
@@ -807,7 +807,7 @@ public final class MockWriterTest extends AssertionTest {
         Assertions.assertThat(((IsCloseable) writer03).isClosed()).isFalse();
         try {
             writer03.close();
-            Assertions.fail("MockWriter test fail");
+            Assertions.fail(MockWriter.class);
         } catch (IOException ex) {
             Assertions.assertThat(ex).hasMessage("fail 1");
         }
@@ -815,7 +815,7 @@ public final class MockWriterTest extends AssertionTest {
         Assertions.assertThat(((IsCloseable) writer03).isClosed()).isTrue();
         try {
             writer03.close();
-            Assertions.fail("MockWriter test fail");
+            Assertions.fail(MockWriter.class);
         } catch (IOException ex) {
             Assertions.assertThat(ex).hasMessage("fail 2");
         }

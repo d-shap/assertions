@@ -185,55 +185,55 @@ public final class ConverterArgumentHelperTest extends AssertionTest {
 
         try {
             ConverterArgumentHelper.checkArgumentsLength(new Object[0], -1);
-            Assertions.fail("ConverterArgumentHelper test fail");
+            Assertions.fail(ConverterArgumentHelper.class);
         } catch (ArrayIndexOutOfBoundsException ex) {
             Assertions.assertThat(ex).hasMessage("Array index out of range: 0");
         }
         try {
             ConverterArgumentHelper.checkArgumentsLength(new Object[0], 1);
-            Assertions.fail("ConverterArgumentHelper test fail");
+            Assertions.fail(ConverterArgumentHelper.class);
         } catch (ArrayIndexOutOfBoundsException ex) {
             Assertions.assertThat(ex).hasMessage("Array index out of range: 0");
         }
         try {
             ConverterArgumentHelper.checkArgumentsLength(new Object[1], -1);
-            Assertions.fail("ConverterArgumentHelper test fail");
+            Assertions.fail(ConverterArgumentHelper.class);
         } catch (ArrayIndexOutOfBoundsException ex) {
             Assertions.assertThat(ex).hasMessage("Array index out of range: 1");
         }
         try {
             ConverterArgumentHelper.checkArgumentsLength(new Object[1], 0);
-            Assertions.fail("ConverterArgumentHelper test fail");
+            Assertions.fail(ConverterArgumentHelper.class);
         } catch (ArrayIndexOutOfBoundsException ex) {
             Assertions.assertThat(ex).hasMessage("Array index out of range: 1");
         }
         try {
             ConverterArgumentHelper.checkArgumentsLength(new Object[1], 2);
-            Assertions.fail("ConverterArgumentHelper test fail");
+            Assertions.fail(ConverterArgumentHelper.class);
         } catch (ArrayIndexOutOfBoundsException ex) {
             Assertions.assertThat(ex).hasMessage("Array index out of range: 1");
         }
         try {
             ConverterArgumentHelper.checkArgumentsLength(new Object[2], -1);
-            Assertions.fail("ConverterArgumentHelper test fail");
+            Assertions.fail(ConverterArgumentHelper.class);
         } catch (ArrayIndexOutOfBoundsException ex) {
             Assertions.assertThat(ex).hasMessage("Array index out of range: 2");
         }
         try {
             ConverterArgumentHelper.checkArgumentsLength(new Object[2], 0);
-            Assertions.fail("ConverterArgumentHelper test fail");
+            Assertions.fail(ConverterArgumentHelper.class);
         } catch (ArrayIndexOutOfBoundsException ex) {
             Assertions.assertThat(ex).hasMessage("Array index out of range: 2");
         }
         try {
             ConverterArgumentHelper.checkArgumentsLength(new Object[2], 1);
-            Assertions.fail("ConverterArgumentHelper test fail");
+            Assertions.fail(ConverterArgumentHelper.class);
         } catch (ArrayIndexOutOfBoundsException ex) {
             Assertions.assertThat(ex).hasMessage("Array index out of range: 2");
         }
         try {
             ConverterArgumentHelper.checkArgumentsLength(new Object[2], 3);
-            Assertions.fail("ConverterArgumentHelper test fail");
+            Assertions.fail(ConverterArgumentHelper.class);
         } catch (ArrayIndexOutOfBoundsException ex) {
             Assertions.assertThat(ex).hasMessage("Array index out of range: 2");
         }
@@ -267,13 +267,13 @@ public final class ConverterArgumentHelperTest extends AssertionTest {
 
         try {
             ConverterArgumentHelper.getArgument(new Object[]{new Object()}, -1, String.class);
-            Assertions.fail("ConverterArgumentHelper test fail");
+            Assertions.fail(ConverterArgumentHelper.class);
         } catch (ArrayIndexOutOfBoundsException ex) {
             Assertions.assertThat(ex).hasMessage("Array index out of range: 1");
         }
         try {
             ConverterArgumentHelper.getArgument(new Object[]{new Object()}, 1, String.class);
-            Assertions.fail("ConverterArgumentHelper test fail");
+            Assertions.fail(ConverterArgumentHelper.class);
         } catch (ArrayIndexOutOfBoundsException ex) {
             Assertions.assertThat(ex).hasMessage("Array index out of range: 1");
         }

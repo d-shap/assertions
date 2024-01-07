@@ -125,25 +125,25 @@ public final class MockOutputStreamTest extends AssertionTest {
 
         try {
             DataHelper.createOutputStreamBuilder().setWriteException(new IOException("fail")).buildOutputStream().write(1);
-            Assertions.fail("MockOutputStream test fail");
+            Assertions.fail(MockOutputStream.class);
         } catch (IOException ex) {
             Assertions.assertThat(ex).hasMessage("fail");
         }
         try {
             DataHelper.createOutputStreamBuilder().setWriteException(true, new IOException("fail")).buildOutputStream().write(1);
-            Assertions.fail("MockOutputStream test fail");
+            Assertions.fail(MockOutputStream.class);
         } catch (IOException ex) {
             Assertions.assertThat(ex).hasMessage("fail");
         }
         try {
             DataHelper.createOutputStreamBuilder().setWriteException("fail").buildOutputStream().write(1);
-            Assertions.fail("MockOutputStream test fail");
+            Assertions.fail(MockOutputStream.class);
         } catch (IOException ex) {
             Assertions.assertThat(ex).hasMessage("fail");
         }
         try {
             DataHelper.createOutputStreamBuilder().setWriteException(true, "fail").buildOutputStream().write(1);
-            Assertions.fail("MockOutputStream test fail");
+            Assertions.fail(MockOutputStream.class);
         } catch (IOException ex) {
             Assertions.assertThat(ex).hasMessage("fail");
         }
@@ -158,7 +158,7 @@ public final class MockOutputStreamTest extends AssertionTest {
         Assertions.assertThat(((MockOutputStream) outputStream10).getContent()).containsExactlyInOrder(1, 2, 0, 3, 4);
         try {
             outputStream10.write(5);
-            Assertions.fail("MockOutputStream test fail");
+            Assertions.fail(MockOutputStream.class);
         } catch (IOException ex) {
             Assertions.assertThat(ex).hasMessage("fail");
         }
@@ -234,73 +234,73 @@ public final class MockOutputStreamTest extends AssertionTest {
 
         try {
             DataHelper.createOutputStreamBuilder().buildOutputStream().write(null, 0, 10);
-            Assertions.fail("MockOutputStream test fail");
+            Assertions.fail(MockOutputStream.class);
         } catch (NullPointerException ex) {
             Assertions.assertThat(ex).hasMessage("buffer is null");
         }
         try {
             DataHelper.createOutputStreamBuilder().buildOutputStream().write(null, -1, 10);
-            Assertions.fail("MockOutputStream test fail");
+            Assertions.fail(MockOutputStream.class);
         } catch (NullPointerException ex) {
             Assertions.assertThat(ex).hasMessage("buffer is null");
         }
         try {
             DataHelper.createOutputStreamBuilder().buildOutputStream().write(new byte[]{1, 2, 3, 4, 5}, -1, 10);
-            Assertions.fail("MockOutputStream test fail");
+            Assertions.fail(MockOutputStream.class);
         } catch (IndexOutOfBoundsException ex) {
             Assertions.assertThat(ex).hasMessage("offset is out of bounds");
         }
         try {
             DataHelper.createOutputStreamBuilder().buildOutputStream().write(new byte[]{1, 2, 3, 4, 5}, 5, 10);
-            Assertions.fail("MockOutputStream test fail");
+            Assertions.fail(MockOutputStream.class);
         } catch (IndexOutOfBoundsException ex) {
             Assertions.assertThat(ex).hasMessage("offset is out of bounds");
         }
         try {
             DataHelper.createOutputStreamBuilder().buildOutputStream().write(new byte[]{1, 2, 3, 4, 5}, 0, -1);
-            Assertions.fail("MockOutputStream test fail");
+            Assertions.fail(MockOutputStream.class);
         } catch (IndexOutOfBoundsException ex) {
             Assertions.assertThat(ex).hasMessage("length is out of bounds");
         }
         try {
             DataHelper.createOutputStreamBuilder().buildOutputStream().write(new byte[]{1, 2, 3, 4, 5}, 0, 6);
-            Assertions.fail("MockOutputStream test fail");
+            Assertions.fail(MockOutputStream.class);
         } catch (IndexOutOfBoundsException ex) {
             Assertions.assertThat(ex).hasMessage("length is out of bounds");
         }
         try {
             DataHelper.createOutputStreamBuilder().buildOutputStream().write(new byte[]{1, 2, 3, 4, 5}, 4, 2);
-            Assertions.fail("MockOutputStream test fail");
+            Assertions.fail(MockOutputStream.class);
         } catch (IndexOutOfBoundsException ex) {
             Assertions.assertThat(ex).hasMessage("length is out of bounds");
         }
         try {
             DataHelper.createOutputStreamBuilder().buildOutputStream().write(new byte[]{}, 1, 0);
-            Assertions.fail("MockOutputStream test fail");
+            Assertions.fail(MockOutputStream.class);
         } catch (IndexOutOfBoundsException ex) {
             Assertions.assertThat(ex).hasMessage("offset is out of bounds");
         }
         try {
             DataHelper.createOutputStreamBuilder().setWriteException(new IOException("fail")).buildOutputStream().write(new byte[]{1}, 0, 1);
-            Assertions.fail("MockOutputStream test fail");
+            Assertions.fail(MockOutputStream.class);
         } catch (IOException ex) {
             Assertions.assertThat(ex).hasMessage("fail");
         }
         try {
             DataHelper.createOutputStreamBuilder().setWriteException(true, new IOException("fail")).buildOutputStream().write(new byte[]{1}, 0, 1);
-            Assertions.fail("MockOutputStream test fail");
+            Assertions.fail(MockOutputStream.class);
         } catch (IOException ex) {
             Assertions.assertThat(ex).hasMessage("fail");
         }
         try {
             DataHelper.createOutputStreamBuilder().setWriteException("fail").buildOutputStream().write(new byte[]{1}, 0, 1);
-            Assertions.fail("MockOutputStream test fail");
+            Assertions.fail(MockOutputStream.class);
         } catch (IOException ex) {
             Assertions.assertThat(ex).hasMessage("fail");
         }
         try {
             DataHelper.createOutputStreamBuilder().setWriteException(true, "fail").buildOutputStream().write(new byte[]{1}, 0, 1);
-            Assertions.fail("MockOutputStream test fail");
+            Assertions.fail(MockOutputStream.class);
         } catch (IOException ex) {
             Assertions.assertThat(ex).hasMessage("fail");
         }
@@ -310,7 +310,7 @@ public final class MockOutputStreamTest extends AssertionTest {
         Assertions.assertThat(((MockOutputStream) outputStream09).getContent()).containsExactlyInOrder(11, 12, 13);
         try {
             outputStream09.write(new byte[]{21, 22, 23}, 0, 3);
-            Assertions.fail("MockOutputStream test fail");
+            Assertions.fail(MockOutputStream.class);
         } catch (IOException ex) {
             Assertions.assertThat(ex).hasMessage("fail");
         }
@@ -345,25 +345,25 @@ public final class MockOutputStreamTest extends AssertionTest {
 
         try {
             DataHelper.createOutputStreamBuilder().setFlushException(new IOException("fail")).buildOutputStream().flush();
-            Assertions.fail("MockOutputStream test fail");
+            Assertions.fail(MockOutputStream.class);
         } catch (IOException ex) {
             Assertions.assertThat(ex).hasMessage("fail");
         }
         try {
             DataHelper.createOutputStreamBuilder().setFlushException(true, new IOException("fail")).buildOutputStream().flush();
-            Assertions.fail("MockOutputStream test fail");
+            Assertions.fail(MockOutputStream.class);
         } catch (IOException ex) {
             Assertions.assertThat(ex).hasMessage("fail");
         }
         try {
             DataHelper.createOutputStreamBuilder().setFlushException("fail").buildOutputStream().flush();
-            Assertions.fail("MockOutputStream test fail");
+            Assertions.fail(MockOutputStream.class);
         } catch (IOException ex) {
             Assertions.assertThat(ex).hasMessage("fail");
         }
         try {
             DataHelper.createOutputStreamBuilder().setFlushException(true, "fail").buildOutputStream().flush();
-            Assertions.fail("MockOutputStream test fail");
+            Assertions.fail(MockOutputStream.class);
         } catch (IOException ex) {
             Assertions.assertThat(ex).hasMessage("fail");
         }
@@ -382,7 +382,7 @@ public final class MockOutputStreamTest extends AssertionTest {
         outputStream07.write(5);
         try {
             outputStream07.flush();
-            Assertions.fail("MockOutputStream test fail");
+            Assertions.fail(MockOutputStream.class);
         } catch (IOException ex) {
             Assertions.assertThat(ex).hasMessage("fail");
         }
@@ -417,31 +417,31 @@ public final class MockOutputStreamTest extends AssertionTest {
 
         try {
             DataHelper.createOutputStreamBuilder().setCloseException(new IOException("fail")).buildOutputStream().close();
-            Assertions.fail("MockOutputStream test fail");
+            Assertions.fail(MockOutputStream.class);
         } catch (IOException ex) {
             Assertions.assertThat(ex).hasMessage("fail");
         }
         try {
             DataHelper.createOutputStreamBuilder().setCloseException(true, new IOException("fail")).buildOutputStream().close();
-            Assertions.fail("MockOutputStream test fail");
+            Assertions.fail(MockOutputStream.class);
         } catch (IOException ex) {
             Assertions.assertThat(ex).hasMessage("fail");
         }
         try {
             DataHelper.createOutputStreamBuilder().setCloseException("fail").buildOutputStream().close();
-            Assertions.fail("MockOutputStream test fail");
+            Assertions.fail(MockOutputStream.class);
         } catch (IOException ex) {
             Assertions.assertThat(ex).hasMessage("fail");
         }
         try {
             DataHelper.createOutputStreamBuilder().setCloseException(true, "fail").buildOutputStream().close();
-            Assertions.fail("MockOutputStream test fail");
+            Assertions.fail(MockOutputStream.class);
         } catch (IOException ex) {
             Assertions.assertThat(ex).hasMessage("fail");
         }
         try {
             DataHelper.createOutputStreamBuilder().setContentSize(5).setCloseException("fail").buildOutputStream().close();
-            Assertions.fail("MockOutputStream test fail");
+            Assertions.fail(MockOutputStream.class);
         } catch (IOException ex) {
             Assertions.assertThat(ex).hasMessage("fail");
         }
@@ -454,7 +454,7 @@ public final class MockOutputStreamTest extends AssertionTest {
         outputStream07.write(5);
         try {
             outputStream07.close();
-            Assertions.fail("MockOutputStream test fail");
+            Assertions.fail(MockOutputStream.class);
         } catch (IOException ex) {
             Assertions.assertThat(ex).hasMessage("fail");
         }
@@ -467,13 +467,13 @@ public final class MockOutputStreamTest extends AssertionTest {
         outputStream08.write(5);
         try {
             outputStream08.close();
-            Assertions.fail("MockOutputStream test fail");
+            Assertions.fail(MockOutputStream.class);
         } catch (IOException ex) {
             Assertions.assertThat(ex).hasMessage("fail 1");
         }
         try {
             outputStream08.close();
-            Assertions.fail("MockOutputStream test fail");
+            Assertions.fail(MockOutputStream.class);
         } catch (IOException ex) {
             Assertions.assertThat(ex).hasMessage("fail 2");
         }
@@ -533,7 +533,7 @@ public final class MockOutputStreamTest extends AssertionTest {
         Assertions.assertThat(((IsCloseable) outputStream02).isClosed()).isFalse();
         try {
             outputStream02.close();
-            Assertions.fail("MockOutputStream test fail");
+            Assertions.fail(MockOutputStream.class);
         } catch (IOException ex) {
             Assertions.assertThat(ex).hasMessage("fail");
         }
@@ -545,7 +545,7 @@ public final class MockOutputStreamTest extends AssertionTest {
         Assertions.assertThat(((IsCloseable) outputStream03).isClosed()).isFalse();
         try {
             outputStream03.close();
-            Assertions.fail("MockOutputStream test fail");
+            Assertions.fail(MockOutputStream.class);
         } catch (IOException ex) {
             Assertions.assertThat(ex).hasMessage("fail 1");
         }
@@ -553,7 +553,7 @@ public final class MockOutputStreamTest extends AssertionTest {
         Assertions.assertThat(((IsCloseable) outputStream03).isClosed()).isTrue();
         try {
             outputStream03.close();
-            Assertions.fail("MockOutputStream test fail");
+            Assertions.fail(MockOutputStream.class);
         } catch (IOException ex) {
             Assertions.assertThat(ex).hasMessage("fail 2");
         }
