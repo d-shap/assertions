@@ -66,43 +66,43 @@ public final class LongHexStringAssertionTest extends AssertionTest {
 
         try {
             Raw.longAssertion().toHexString();
-            Assertions.fail("LongAssertion test fail");
+            Assertions.fail(LongAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.longAssertion(), null).toHexString();
-            Assertions.fail("LongAssertion test fail");
+            Assertions.fail(LongAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.longAssertion(), null, "Message").toHexString();
-            Assertions.fail("LongAssertion test fail");
+            Assertions.fail(LongAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             clearActual(initialize(Raw.longAssertion(), 11L).toHexString()).isEqualTo("0000000000000011");
-            Assertions.fail("LongAssertion test fail");
+            Assertions.fail(LongAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's hex representation.\n\tActual value should not be null.");
         }
         try {
             clearActual(initialize(Raw.longAssertion(), 11L, "Message").toHexString()).isEqualTo("0000000000000011");
-            Assertions.fail("LongAssertion test fail");
+            Assertions.fail(LongAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's hex representation.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.longAssertion(), 11L).toHexString().isEqualTo("0000000000000011");
-            Assertions.fail("LongAssertion test fail");
+            Assertions.fail(LongAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's hex representation.\n\tActual and expected values should be the same.\n\tExpected:<0000000000000011> but was:<000000000000000b>");
         }
         try {
             initialize(Raw.longAssertion(), 11L, "Message").toHexString().isEqualTo("0000000000000011");
-            Assertions.fail("LongAssertion test fail");
+            Assertions.fail(LongAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's hex representation.\n\tActual and expected values should be the same.\n\tExpected:<0000000000000011> but was:<000000000000000b>");
         }
@@ -134,55 +134,55 @@ public final class LongHexStringAssertionTest extends AssertionTest {
 
         try {
             Raw.longAssertion().toHexString(Matchers.equalTo("0"));
-            Assertions.fail("LongAssertion test fail");
+            Assertions.fail(LongAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.longAssertion(), null).toHexString(Matchers.equalTo("0"));
-            Assertions.fail("LongAssertion test fail");
+            Assertions.fail(LongAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.longAssertion(), null, "Message").toHexString(Matchers.equalTo("0"));
-            Assertions.fail("LongAssertion test fail");
+            Assertions.fail(LongAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.longAssertion(), null).toHexString(null);
-            Assertions.fail("LongAssertion test fail");
+            Assertions.fail(LongAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.longAssertion(), null, "Message").toHexString(null);
-            Assertions.fail("LongAssertion test fail");
+            Assertions.fail(LongAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.longAssertion(), 1L).toHexString(null);
-            Assertions.fail("LongAssertion test fail");
+            Assertions.fail(LongAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: matcher.");
         }
         try {
             initialize(Raw.longAssertion(), 1L, "Message").toHexString(null);
-            Assertions.fail("LongAssertion test fail");
+            Assertions.fail(LongAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: matcher.");
         }
         try {
             initialize(Raw.longAssertion(), 11L).toHexString(Matchers.equalTo("0000000000000011"));
-            Assertions.fail("LongAssertion test fail");
+            Assertions.fail(LongAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's hex representation.\nExpected: \"0000000000000011\"\n     but: was \"000000000000000b\"");
         }
         try {
             initialize(Raw.longAssertion(), 11L, "Message").toHexString(Matchers.equalTo("0000000000000011"));
-            Assertions.fail("LongAssertion test fail");
+            Assertions.fail(LongAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's hex representation.\nExpected: \"0000000000000011\"\n     but: was \"000000000000000b\"");
         }
@@ -214,55 +214,55 @@ public final class LongHexStringAssertionTest extends AssertionTest {
 
         try {
             Raw.longAssertion().hasHexString("0");
-            Assertions.fail("LongAssertion test fail");
+            Assertions.fail(LongAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.longAssertion(), null).hasHexString("0");
-            Assertions.fail("LongAssertion test fail");
+            Assertions.fail(LongAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.longAssertion(), null, "Message").hasHexString("0");
-            Assertions.fail("LongAssertion test fail");
+            Assertions.fail(LongAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.longAssertion(), null).hasHexString(null);
-            Assertions.fail("LongAssertion test fail");
+            Assertions.fail(LongAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.longAssertion(), null, "Message").hasHexString(null);
-            Assertions.fail("LongAssertion test fail");
+            Assertions.fail(LongAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.longAssertion(), 11L).hasHexString(null);
-            Assertions.fail("LongAssertion test fail");
+            Assertions.fail(LongAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.longAssertion(), 11L, "Message").hasHexString(null);
-            Assertions.fail("LongAssertion test fail");
+            Assertions.fail(LongAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.longAssertion(), 11L).hasHexString("0000000000000011");
-            Assertions.fail("LongAssertion test fail");
+            Assertions.fail(LongAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's hex representation.\n\tActual and expected values should be the same.\n\tExpected:<0000000000000011> but was:<000000000000000b>");
         }
         try {
             initialize(Raw.longAssertion(), 11L, "Message").hasHexString("0000000000000011");
-            Assertions.fail("LongAssertion test fail");
+            Assertions.fail(LongAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's hex representation.\n\tActual and expected values should be the same.\n\tExpected:<0000000000000011> but was:<000000000000000b>");
         }

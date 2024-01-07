@@ -48,13 +48,13 @@ public final class DoubleAssertionTest extends AssertionTest {
 
         try {
             initializeWithRawActual(Raw.doubleAssertion(), new Object());
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should match the assertion.\n\tActual value should be the instance of the expected class.\n\tExpected:<java.lang.Double> but was:<java.lang.Object>");
         }
         try {
             initializeWithRawActual(Raw.doubleAssertion(), new Object(), "Message");
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should match the assertion.\n\tActual value should be the instance of the expected class.\n\tExpected:<java.lang.Double> but was:<java.lang.Object>");
         }
@@ -86,121 +86,121 @@ public final class DoubleAssertionTest extends AssertionTest {
 
         try {
             Raw.doubleAssertion().isEqualTo(1.0);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.doubleAssertion(), null).isEqualTo(1.0);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.doubleAssertion(), null, "Message").isEqualTo(1.0);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.doubleAssertion(), null).isEqualTo(Double.NaN);
-            Assertions.fail("doubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.doubleAssertion(), null).isEqualTo(Double.POSITIVE_INFINITY);
-            Assertions.fail("doubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.doubleAssertion(), null).isEqualTo(Double.NEGATIVE_INFINITY);
-            Assertions.fail("doubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.doubleAssertion(), 1.0).isEqualTo(Double.NaN);
-            Assertions.fail("doubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be NaN.\n\tActual:<1.0>");
         }
         try {
             initialize(Raw.doubleAssertion(), 1.0).isEqualTo(Double.POSITIVE_INFINITY);
-            Assertions.fail("doubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be positive infinity.\n\tActual:<1.0>");
         }
         try {
             initialize(Raw.doubleAssertion(), 1.0).isEqualTo(Double.NEGATIVE_INFINITY);
-            Assertions.fail("doubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be negative infinity.\n\tActual:<1.0>");
         }
         try {
             initialize(Raw.doubleAssertion(), Double.NaN).isEqualTo(1.0);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be finite.\n\tActual:<NaN>");
         }
         try {
             initialize(Raw.doubleAssertion(), Double.NaN).isEqualTo(Double.POSITIVE_INFINITY);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be positive infinity.\n\tActual:<NaN>");
         }
         try {
             initialize(Raw.doubleAssertion(), Double.NaN).isEqualTo(Double.NEGATIVE_INFINITY);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be negative infinity.\n\tActual:<NaN>");
         }
         try {
             initialize(Raw.doubleAssertion(), Double.POSITIVE_INFINITY).isEqualTo(1.0);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be finite.\n\tActual:<Infinity>");
         }
         try {
             initialize(Raw.doubleAssertion(), Double.POSITIVE_INFINITY).isEqualTo(Double.NaN);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be NaN.\n\tActual:<Infinity>");
         }
         try {
             initialize(Raw.doubleAssertion(), Double.POSITIVE_INFINITY).isEqualTo(Double.NEGATIVE_INFINITY);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be negative infinity.\n\tActual:<Infinity>");
         }
         try {
             initialize(Raw.doubleAssertion(), Double.NEGATIVE_INFINITY).isEqualTo(1.0);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be finite.\n\tActual:<-Infinity>");
         }
         try {
             initialize(Raw.doubleAssertion(), Double.NEGATIVE_INFINITY).isEqualTo(Double.NaN);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be NaN.\n\tActual:<-Infinity>");
         }
         try {
             initialize(Raw.doubleAssertion(), Double.NEGATIVE_INFINITY).isEqualTo(Double.POSITIVE_INFINITY);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be positive infinity.\n\tActual:<-Infinity>");
         }
         try {
             initialize(Raw.doubleAssertion(), 10.00000000001).isEqualTo(10.00000000002);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<10.00000000002±9.999999960041972E-12> but was:<10.00000000001>");
         }
         try {
             initialize(Raw.doubleAssertion(), 10.00000000001, "Message").isEqualTo(10.00000000002);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be the same.\n\tExpected:<10.00000000002±9.999999960041972E-12> but was:<10.00000000001>");
         }
@@ -233,151 +233,151 @@ public final class DoubleAssertionTest extends AssertionTest {
 
         try {
             Raw.doubleAssertion().isEqualTo(Double.valueOf("1.0"));
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.doubleAssertion(), null).isEqualTo(Double.valueOf("1.0"));
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.doubleAssertion(), null, "Message").isEqualTo(Double.valueOf("1.0"));
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.doubleAssertion(), null).isEqualTo(Double.valueOf("NaN"));
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.doubleAssertion(), null).isEqualTo(Double.valueOf("Infinity"));
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.doubleAssertion(), null).isEqualTo(Double.valueOf("-Infinity"));
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.doubleAssertion(), 1.0).isEqualTo(null);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be null.\n\tActual:<1.0>");
         }
         try {
             initialize(Raw.doubleAssertion(), 1.0, "Message").isEqualTo(null);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be null.\n\tActual:<1.0>");
         }
         try {
             initialize(Raw.doubleAssertion(), 1.0).isEqualTo(Double.valueOf("NaN"));
-            Assertions.fail("doubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be NaN.\n\tActual:<1.0>");
         }
         try {
             initialize(Raw.doubleAssertion(), 1.0).isEqualTo(Double.valueOf("Infinity"));
-            Assertions.fail("doubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be positive infinity.\n\tActual:<1.0>");
         }
         try {
             initialize(Raw.doubleAssertion(), 1.0).isEqualTo(Double.valueOf("-Infinity"));
-            Assertions.fail("doubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be negative infinity.\n\tActual:<1.0>");
         }
         try {
             initialize(Raw.doubleAssertion(), Double.NaN).isEqualTo(null);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be null.\n\tActual:<NaN>");
         }
         try {
             initialize(Raw.doubleAssertion(), Double.NaN).isEqualTo(Double.valueOf("1.0"));
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be finite.\n\tActual:<NaN>");
         }
         try {
             initialize(Raw.doubleAssertion(), Double.NaN).isEqualTo(Double.valueOf("Infinity"));
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be positive infinity.\n\tActual:<NaN>");
         }
         try {
             initialize(Raw.doubleAssertion(), Double.NaN).isEqualTo(Double.valueOf("-Infinity"));
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be negative infinity.\n\tActual:<NaN>");
         }
         try {
             initialize(Raw.doubleAssertion(), Double.POSITIVE_INFINITY).isEqualTo(null);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be null.\n\tActual:<Infinity>");
         }
         try {
             initialize(Raw.doubleAssertion(), Double.POSITIVE_INFINITY).isEqualTo(Double.valueOf("1.0"));
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be finite.\n\tActual:<Infinity>");
         }
         try {
             initialize(Raw.doubleAssertion(), Double.POSITIVE_INFINITY).isEqualTo(Double.valueOf("NaN"));
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be NaN.\n\tActual:<Infinity>");
         }
         try {
             initialize(Raw.doubleAssertion(), Double.POSITIVE_INFINITY).isEqualTo(Double.valueOf("-Infinity"));
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be negative infinity.\n\tActual:<Infinity>");
         }
         try {
             initialize(Raw.doubleAssertion(), Double.NEGATIVE_INFINITY).isEqualTo(null);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be null.\n\tActual:<-Infinity>");
         }
         try {
             initialize(Raw.doubleAssertion(), Double.NEGATIVE_INFINITY).isEqualTo(Double.valueOf("1.0"));
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be finite.\n\tActual:<-Infinity>");
         }
         try {
             initialize(Raw.doubleAssertion(), Double.NEGATIVE_INFINITY).isEqualTo(Double.valueOf("NaN"));
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be NaN.\n\tActual:<-Infinity>");
         }
         try {
             initialize(Raw.doubleAssertion(), Double.NEGATIVE_INFINITY).isEqualTo(Double.valueOf("Infinity"));
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be positive infinity.\n\tActual:<-Infinity>");
         }
         try {
             initialize(Raw.doubleAssertion(), 10.00000000001).isEqualTo(Double.valueOf("10.00000000002"));
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<10.00000000002±9.999999960041972E-12> but was:<10.00000000001>");
         }
         try {
             initialize(Raw.doubleAssertion(), 10.00000000001, "Message").isEqualTo(Double.valueOf("10.00000000002"));
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be the same.\n\tExpected:<10.00000000002±9.999999960041972E-12> but was:<10.00000000001>");
         }
@@ -399,55 +399,55 @@ public final class DoubleAssertionTest extends AssertionTest {
 
         try {
             Raw.doubleAssertion().isEqualTo(1.0, 0.01);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.doubleAssertion(), null).isEqualTo(1.0, 0.01);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.doubleAssertion(), null, "Message").isEqualTo(1.0, 0.01);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.doubleAssertion(), 10.0).isEqualTo(10.01, 0.001);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<10.01±0.001> but was:<10.0>");
         }
         try {
             initialize(Raw.doubleAssertion(), 10.0, "Message").isEqualTo(10.01, 0.001);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be the same.\n\tExpected:<10.01±0.001> but was:<10.0>");
         }
         try {
             initialize(Raw.doubleAssertion(), 10.0).isEqualTo(9.99, 0.001);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<9.99±0.001> but was:<10.0>");
         }
         try {
             initialize(Raw.doubleAssertion(), 10.0, "Message").isEqualTo(9.99, 0.001);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be the same.\n\tExpected:<9.99±0.001> but was:<10.0>");
         }
         try {
             initialize(Raw.doubleAssertion(), 10.0).isEqualTo(20.0, 0.0);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<20.0±0.0> but was:<10.0>");
         }
         try {
             initialize(Raw.doubleAssertion(), 10.0, "Message").isEqualTo(20.0, 0.0);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be the same.\n\tExpected:<20.0±0.0> but was:<10.0>");
         }
@@ -468,67 +468,67 @@ public final class DoubleAssertionTest extends AssertionTest {
 
         try {
             Raw.doubleAssertion().isEqualTo(Double.valueOf("1.0"), 0.01);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.doubleAssertion(), null).isEqualTo(Double.valueOf("1.0"), 0.01);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.doubleAssertion(), null, "Message").isEqualTo(Double.valueOf("1.0"), 0.01);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.doubleAssertion(), 1.0).isEqualTo(null, 0.01);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be null.\n\tActual:<1.0>");
         }
         try {
             initialize(Raw.doubleAssertion(), 1.0, "Message").isEqualTo(null, 0.01);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be null.\n\tActual:<1.0>");
         }
         try {
             initialize(Raw.doubleAssertion(), 10.0).isEqualTo(Double.valueOf("10.01"), 0.001);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<10.01±0.001> but was:<10.0>");
         }
         try {
             initialize(Raw.doubleAssertion(), 10.0, "Message").isEqualTo(Double.valueOf("10.01"), 0.001);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be the same.\n\tExpected:<10.01±0.001> but was:<10.0>");
         }
         try {
             initialize(Raw.doubleAssertion(), 10.0).isEqualTo(Double.valueOf("9.99"), 0.001);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<9.99±0.001> but was:<10.0>");
         }
         try {
             initialize(Raw.doubleAssertion(), 10.0, "Message").isEqualTo(Double.valueOf("9.99"), 0.001);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be the same.\n\tExpected:<9.99±0.001> but was:<10.0>");
         }
         try {
             initialize(Raw.doubleAssertion(), 10.0).isEqualTo(Double.valueOf("20.0"), 0.0);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual and expected values should be the same.\n\tExpected:<20.0±0.0> but was:<10.0>");
         }
         try {
             initialize(Raw.doubleAssertion(), 10.0, "Message").isEqualTo(Double.valueOf("20.0"), 0.0);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be the same.\n\tExpected:<20.0±0.0> but was:<10.0>");
         }
@@ -570,37 +570,37 @@ public final class DoubleAssertionTest extends AssertionTest {
 
         try {
             Raw.doubleAssertion().isNotEqualTo(1.0);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.doubleAssertion(), Double.NaN).isNotEqualTo(Double.NaN);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be NaN.");
         }
         try {
             initialize(Raw.doubleAssertion(), Double.POSITIVE_INFINITY).isNotEqualTo(Double.POSITIVE_INFINITY);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be positive infinity.");
         }
         try {
             initialize(Raw.doubleAssertion(), Double.NEGATIVE_INFINITY).isNotEqualTo(Double.NEGATIVE_INFINITY);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be negative infinity.");
         }
         try {
             initialize(Raw.doubleAssertion(), 10.000000000001).isNotEqualTo(10.000000000002);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual and expected values should be different.\n\tActual:<10.000000000001±9.999999960041972E-12>");
         }
         try {
             initialize(Raw.doubleAssertion(), 10.000000000001, "Message").isNotEqualTo(10.000000000002);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be different.\n\tActual:<10.000000000001±9.999999960041972E-12>");
         }
@@ -646,49 +646,49 @@ public final class DoubleAssertionTest extends AssertionTest {
 
         try {
             Raw.doubleAssertion().isNotEqualTo(Double.valueOf("1.0"));
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.doubleAssertion(), null).isNotEqualTo(null);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.doubleAssertion(), null, "Message").isNotEqualTo(null);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.doubleAssertion(), Double.NaN).isNotEqualTo(Double.valueOf("NaN"));
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be NaN.");
         }
         try {
             initialize(Raw.doubleAssertion(), Double.POSITIVE_INFINITY).isNotEqualTo(Double.valueOf("Infinity"));
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be positive infinity.");
         }
         try {
             initialize(Raw.doubleAssertion(), Double.NEGATIVE_INFINITY).isNotEqualTo(Double.valueOf("-Infinity"));
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be negative infinity.");
         }
         try {
             initialize(Raw.doubleAssertion(), 10.000000000001).isNotEqualTo(Double.valueOf("10.000000000002"));
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual and expected values should be different.\n\tActual:<10.000000000001±9.999999960041972E-12>");
         }
         try {
             initialize(Raw.doubleAssertion(), 10.000000000001, "Message").isNotEqualTo(Double.valueOf("10.000000000002"));
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be different.\n\tActual:<10.000000000001±9.999999960041972E-12>");
         }
@@ -706,67 +706,67 @@ public final class DoubleAssertionTest extends AssertionTest {
 
         try {
             Raw.doubleAssertion().isNotEqualTo(1.0, 0.01);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.doubleAssertion(), 10.0).isNotEqualTo(10.001, 0.01);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual and expected values should be different.\n\tActual:<10.0±0.01>");
         }
         try {
             initialize(Raw.doubleAssertion(), 10.0, "Message").isNotEqualTo(10.001, 0.01);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be different.\n\tActual:<10.0±0.01>");
         }
         try {
             initialize(Raw.doubleAssertion(), 10.0).isNotEqualTo(9.999, 0.01);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual and expected values should be different.\n\tActual:<10.0±0.01>");
         }
         try {
             initialize(Raw.doubleAssertion(), 10.0, "Message").isNotEqualTo(9.999, 0.01);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be different.\n\tActual:<10.0±0.01>");
         }
         try {
             initialize(Raw.doubleAssertion(), 10.0).isNotEqualTo(10.0, 0.01);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual and expected values should be different.\n\tActual:<10.0±0.01>");
         }
         try {
             initialize(Raw.doubleAssertion(), 10.0, "Message").isNotEqualTo(10.0, 0.01);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be different.\n\tActual:<10.0±0.01>");
         }
         try {
             initialize(Raw.doubleAssertion(), +0.0).isNotEqualTo(-0.0, 0.0);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual and expected values should be different.\n\tActual:<0.0±0.0>");
         }
         try {
             initialize(Raw.doubleAssertion(), +0.0, "Message").isNotEqualTo(-0.0, 0.0);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be different.\n\tActual:<0.0±0.0>");
         }
         try {
             initialize(Raw.doubleAssertion(), -0.0).isNotEqualTo(+0.0, 0.0);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual and expected values should be different.\n\tActual:<-0.0±0.0>");
         }
         try {
             initialize(Raw.doubleAssertion(), -0.0, "Message").isNotEqualTo(+0.0, 0.0);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be different.\n\tActual:<-0.0±0.0>");
         }
@@ -786,55 +786,55 @@ public final class DoubleAssertionTest extends AssertionTest {
 
         try {
             Raw.doubleAssertion().isNotEqualTo(Double.valueOf("1.0"), 0.01);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.doubleAssertion(), null).isNotEqualTo(null, 0.01);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.doubleAssertion(), null, "Message").isNotEqualTo(null, 0.01);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.doubleAssertion(), 10.0).isNotEqualTo(Double.valueOf("10.001"), 0.01);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual and expected values should be different.\n\tActual:<10.0±0.01>");
         }
         try {
             initialize(Raw.doubleAssertion(), 10.0, "Message").isNotEqualTo(Double.valueOf("10.001"), 0.01);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be different.\n\tActual:<10.0±0.01>");
         }
         try {
             initialize(Raw.doubleAssertion(), 10.0).isNotEqualTo(Double.valueOf("9.999"), 0.01);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual and expected values should be different.\n\tActual:<10.0±0.01>");
         }
         try {
             initialize(Raw.doubleAssertion(), 10.0, "Message").isNotEqualTo(Double.valueOf("9.999"), 0.01);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be different.\n\tActual:<10.0±0.01>");
         }
         try {
             initialize(Raw.doubleAssertion(), 10.0).isNotEqualTo(Double.valueOf("10.0"), 0.01);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual and expected values should be different.\n\tActual:<10.0±0.01>");
         }
         try {
             initialize(Raw.doubleAssertion(), 10.0, "Message").isNotEqualTo(Double.valueOf("10.0"), 0.01);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should be different.\n\tActual:<10.0±0.01>");
         }
@@ -852,67 +852,67 @@ public final class DoubleAssertionTest extends AssertionTest {
 
         try {
             Raw.doubleAssertion().isGreaterThan(1.0);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.doubleAssertion(), null).isGreaterThan(1.0);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.doubleAssertion(), null, "Message").isGreaterThan(1.0);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.doubleAssertion(), Double.NaN).isGreaterThan(1.0);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be finite.\n\tActual:<NaN>");
         }
         try {
             initialize(Raw.doubleAssertion(), Double.NaN, "Message").isGreaterThan(1.0);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be finite.\n\tActual:<NaN>");
         }
         try {
             initialize(Raw.doubleAssertion(), 1.0).isGreaterThan(Double.NaN);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should be finite: expected.");
         }
         try {
             initialize(Raw.doubleAssertion(), 1.0, "Message").isGreaterThan(Double.NaN);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be finite: expected.");
         }
         try {
             initialize(Raw.doubleAssertion(), 10.0).isGreaterThan(10.0);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be greater than the expected.\n\tExpected:<10.0> but was:<10.0>");
         }
         try {
             initialize(Raw.doubleAssertion(), 10.0, "Message").isGreaterThan(10.0);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be greater than the expected.\n\tExpected:<10.0> but was:<10.0>");
         }
         try {
             initialize(Raw.doubleAssertion(), 10.0).isGreaterThan(11.0);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be greater than the expected.\n\tExpected:<11.0> but was:<10.0>");
         }
         try {
             initialize(Raw.doubleAssertion(), 10.0, "Message").isGreaterThan(11.0);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be greater than the expected.\n\tExpected:<11.0> but was:<10.0>");
         }
@@ -930,91 +930,91 @@ public final class DoubleAssertionTest extends AssertionTest {
 
         try {
             Raw.doubleAssertion().isGreaterThan(Double.valueOf("1.0"));
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.doubleAssertion(), null).isGreaterThan(Double.valueOf("1.0"));
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.doubleAssertion(), null, "Message").isGreaterThan(Double.valueOf("1.0"));
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.doubleAssertion(), Double.NaN).isGreaterThan(Double.valueOf("1.0"));
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be finite.\n\tActual:<NaN>");
         }
         try {
             initialize(Raw.doubleAssertion(), Double.NaN, "Message").isGreaterThan(Double.valueOf("1.0"));
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be finite.\n\tActual:<NaN>");
         }
         try {
             initialize(Raw.doubleAssertion(), null).isGreaterThan(null);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.doubleAssertion(), null, "Message").isGreaterThan(null);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.doubleAssertion(), 1.0).isGreaterThan(null);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.doubleAssertion(), 1.0, "Message").isGreaterThan(null);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.doubleAssertion(), 1.0).isGreaterThan(Double.valueOf("NaN"));
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should be finite: expected.");
         }
         try {
             initialize(Raw.doubleAssertion(), 1.0, "Message").isGreaterThan(Double.valueOf("NaN"));
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be finite: expected.");
         }
         try {
             initialize(Raw.doubleAssertion(), 10.0).isGreaterThan(Double.valueOf("10.0"));
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be greater than the expected.\n\tExpected:<10.0> but was:<10.0>");
         }
         try {
             initialize(Raw.doubleAssertion(), 10.0, "Message").isGreaterThan(Double.valueOf("10.0"));
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be greater than the expected.\n\tExpected:<10.0> but was:<10.0>");
         }
         try {
             initialize(Raw.doubleAssertion(), 10.0).isGreaterThan(Double.valueOf("11.0"));
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be greater than the expected.\n\tExpected:<11.0> but was:<10.0>");
         }
         try {
             initialize(Raw.doubleAssertion(), 10.0, "Message").isGreaterThan(Double.valueOf("11.0"));
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be greater than the expected.\n\tExpected:<11.0> but was:<10.0>");
         }
@@ -1032,55 +1032,55 @@ public final class DoubleAssertionTest extends AssertionTest {
 
         try {
             Raw.doubleAssertion().isGreaterThanOrEqualTo(1.0);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.doubleAssertion(), null).isGreaterThanOrEqualTo(1.0);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.doubleAssertion(), null, "Message").isGreaterThanOrEqualTo(1.0);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.doubleAssertion(), Double.NaN).isGreaterThanOrEqualTo(1.0);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be finite.\n\tActual:<NaN>");
         }
         try {
             initialize(Raw.doubleAssertion(), Double.NaN, "Message").isGreaterThanOrEqualTo(1.0);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be finite.\n\tActual:<NaN>");
         }
         try {
             initialize(Raw.doubleAssertion(), 1.0).isGreaterThanOrEqualTo(Double.NaN);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should be finite: expected.");
         }
         try {
             initialize(Raw.doubleAssertion(), 1.0, "Message").isGreaterThanOrEqualTo(Double.NaN);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be finite: expected.");
         }
         try {
             initialize(Raw.doubleAssertion(), 10.0).isGreaterThanOrEqualTo(11.0);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be greater than or equal to the expected.\n\tExpected:<11.0> but was:<10.0>");
         }
         try {
             initialize(Raw.doubleAssertion(), 10.0, "Message").isGreaterThanOrEqualTo(11.0);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be greater than or equal to the expected.\n\tExpected:<11.0> but was:<10.0>");
         }
@@ -1098,79 +1098,79 @@ public final class DoubleAssertionTest extends AssertionTest {
 
         try {
             Raw.doubleAssertion().isGreaterThanOrEqualTo(Double.valueOf("1.0"));
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.doubleAssertion(), null).isGreaterThanOrEqualTo(Double.valueOf("1.0"));
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.doubleAssertion(), null, "Message").isGreaterThanOrEqualTo(Double.valueOf("1.0"));
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.doubleAssertion(), Double.NaN).isGreaterThanOrEqualTo(Double.valueOf("1.0"));
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be finite.\n\tActual:<NaN>");
         }
         try {
             initialize(Raw.doubleAssertion(), Double.NaN, "Message").isGreaterThanOrEqualTo(Double.valueOf("1.0"));
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be finite.\n\tActual:<NaN>");
         }
         try {
             initialize(Raw.doubleAssertion(), null).isGreaterThanOrEqualTo(null);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.doubleAssertion(), null, "Message").isGreaterThanOrEqualTo(null);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.doubleAssertion(), 1.0).isGreaterThanOrEqualTo(null);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.doubleAssertion(), 1.0, "Message").isGreaterThanOrEqualTo(null);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.doubleAssertion(), 1.0).isGreaterThanOrEqualTo(Double.valueOf("NaN"));
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should be finite: expected.");
         }
         try {
             initialize(Raw.doubleAssertion(), 1.0, "Message").isGreaterThanOrEqualTo(Double.valueOf("NaN"));
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be finite: expected.");
         }
         try {
             initialize(Raw.doubleAssertion(), 10.0).isGreaterThanOrEqualTo(Double.valueOf("11.0"));
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be greater than or equal to the expected.\n\tExpected:<11.0> but was:<10.0>");
         }
         try {
             initialize(Raw.doubleAssertion(), 10.0, "Message").isGreaterThanOrEqualTo(Double.valueOf("11.0"));
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be greater than or equal to the expected.\n\tExpected:<11.0> but was:<10.0>");
         }
@@ -1188,67 +1188,67 @@ public final class DoubleAssertionTest extends AssertionTest {
 
         try {
             Raw.doubleAssertion().isLessThan(1.0);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.doubleAssertion(), null).isLessThan(1.0);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.doubleAssertion(), null, "Message").isLessThan(1.0);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.doubleAssertion(), Double.NaN).isLessThan(1.0);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be finite.\n\tActual:<NaN>");
         }
         try {
             initialize(Raw.doubleAssertion(), Double.NaN, "Message").isLessThan(1.0);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be finite.\n\tActual:<NaN>");
         }
         try {
             initialize(Raw.doubleAssertion(), 1.0).isLessThan(Double.NaN);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should be finite: expected.");
         }
         try {
             initialize(Raw.doubleAssertion(), 1.0, "Message").isLessThan(Double.NaN);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be finite: expected.");
         }
         try {
             initialize(Raw.doubleAssertion(), 10.0).isLessThan(10.0);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be less than the expected.\n\tExpected:<10.0> but was:<10.0>");
         }
         try {
             initialize(Raw.doubleAssertion(), 10.0, "Message").isLessThan(10.0);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be less than the expected.\n\tExpected:<10.0> but was:<10.0>");
         }
         try {
             initialize(Raw.doubleAssertion(), 10.0).isLessThan(9.0);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be less than the expected.\n\tExpected:<9.0> but was:<10.0>");
         }
         try {
             initialize(Raw.doubleAssertion(), 10.0, "Message").isLessThan(9.0);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be less than the expected.\n\tExpected:<9.0> but was:<10.0>");
         }
@@ -1266,91 +1266,91 @@ public final class DoubleAssertionTest extends AssertionTest {
 
         try {
             Raw.doubleAssertion().isLessThan(Double.valueOf("1.0"));
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.doubleAssertion(), null).isLessThan(Double.valueOf("1.0"));
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.doubleAssertion(), null, "Message").isLessThan(Double.valueOf("1.0"));
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.doubleAssertion(), Double.NaN).isLessThan(Double.valueOf("1.0"));
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be finite.\n\tActual:<NaN>");
         }
         try {
             initialize(Raw.doubleAssertion(), Double.NaN, "Message").isLessThan(Double.valueOf("1.0"));
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be finite.\n\tActual:<NaN>");
         }
         try {
             initialize(Raw.doubleAssertion(), null).isLessThan(null);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.doubleAssertion(), null, "Message").isLessThan(null);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.doubleAssertion(), 1.0).isLessThan(null);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.doubleAssertion(), 1.0, "Message").isLessThan(null);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.doubleAssertion(), 1.0).isLessThan(Double.valueOf("NaN"));
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should be finite: expected.");
         }
         try {
             initialize(Raw.doubleAssertion(), 1.0, "Message").isLessThan(Double.valueOf("NaN"));
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be finite: expected.");
         }
         try {
             initialize(Raw.doubleAssertion(), 10.0).isLessThan(Double.valueOf("10.0"));
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be less than the expected.\n\tExpected:<10.0> but was:<10.0>");
         }
         try {
             initialize(Raw.doubleAssertion(), 10.0, "Message").isLessThan(Double.valueOf("10.0"));
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be less than the expected.\n\tExpected:<10.0> but was:<10.0>");
         }
         try {
             initialize(Raw.doubleAssertion(), 10.0).isLessThan(Double.valueOf("9.0"));
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be less than the expected.\n\tExpected:<9.0> but was:<10.0>");
         }
         try {
             initialize(Raw.doubleAssertion(), 10.0, "Message").isLessThan(Double.valueOf("9.0"));
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be less than the expected.\n\tExpected:<9.0> but was:<10.0>");
         }
@@ -1368,55 +1368,55 @@ public final class DoubleAssertionTest extends AssertionTest {
 
         try {
             Raw.doubleAssertion().isLessThanOrEqualTo(1.0);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.doubleAssertion(), null).isLessThanOrEqualTo(1.0);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.doubleAssertion(), null, "Message").isLessThanOrEqualTo(1.0);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.doubleAssertion(), Double.NaN).isLessThanOrEqualTo(1.0);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be finite.\n\tActual:<NaN>");
         }
         try {
             initialize(Raw.doubleAssertion(), Double.NaN, "Message").isLessThanOrEqualTo(1.0);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be finite.\n\tActual:<NaN>");
         }
         try {
             initialize(Raw.doubleAssertion(), 1.0).isLessThanOrEqualTo(Double.NaN);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should be finite: expected.");
         }
         try {
             initialize(Raw.doubleAssertion(), 1.0, "Message").isLessThanOrEqualTo(Double.NaN);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be finite: expected.");
         }
         try {
             initialize(Raw.doubleAssertion(), 10.0).isLessThanOrEqualTo(9.0);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be less than or equal to the expected.\n\tExpected:<9.0> but was:<10.0>");
         }
         try {
             initialize(Raw.doubleAssertion(), 10.0, "Message").isLessThanOrEqualTo(9.0);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be less than or equal to the expected.\n\tExpected:<9.0> but was:<10.0>");
         }
@@ -1434,79 +1434,79 @@ public final class DoubleAssertionTest extends AssertionTest {
 
         try {
             Raw.doubleAssertion().isLessThanOrEqualTo(Double.valueOf("1.0"));
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.doubleAssertion(), null).isLessThanOrEqualTo(Double.valueOf("1.0"));
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.doubleAssertion(), null, "Message").isLessThanOrEqualTo(Double.valueOf("1.0"));
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.doubleAssertion(), Double.NaN).isLessThanOrEqualTo(Double.valueOf("1.0"));
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be finite.\n\tActual:<NaN>");
         }
         try {
             initialize(Raw.doubleAssertion(), Double.NaN, "Message").isLessThanOrEqualTo(Double.valueOf("1.0"));
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be finite.\n\tActual:<NaN>");
         }
         try {
             initialize(Raw.doubleAssertion(), null).isLessThanOrEqualTo(null);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.doubleAssertion(), null, "Message").isLessThanOrEqualTo(null);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.doubleAssertion(), 1.0).isLessThanOrEqualTo(null);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.doubleAssertion(), 1.0, "Message").isLessThanOrEqualTo(null);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.doubleAssertion(), 1.0).isLessThanOrEqualTo(Double.valueOf("NaN"));
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should be finite: expected.");
         }
         try {
             initialize(Raw.doubleAssertion(), 1.0, "Message").isLessThanOrEqualTo(Double.valueOf("NaN"));
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be finite: expected.");
         }
         try {
             initialize(Raw.doubleAssertion(), 10.0).isLessThanOrEqualTo(Double.valueOf("9.0"));
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be less than or equal to the expected.\n\tExpected:<9.0> but was:<10.0>");
         }
         try {
             initialize(Raw.doubleAssertion(), 10.0, "Message").isLessThanOrEqualTo(Double.valueOf("9.0"));
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be less than or equal to the expected.\n\tExpected:<9.0> but was:<10.0>");
         }
@@ -1524,91 +1524,91 @@ public final class DoubleAssertionTest extends AssertionTest {
 
         try {
             Raw.doubleAssertion().isInRange(1.0, 1.0);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.doubleAssertion(), null).isInRange(1.0, 1.0);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.doubleAssertion(), null, "Message").isInRange(1.0, 1.0);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.doubleAssertion(), Double.NaN).isInRange(1.0, 1.0);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be finite.\n\tActual:<NaN>");
         }
         try {
             initialize(Raw.doubleAssertion(), Double.NaN, "Message").isInRange(1.0, 1.0);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be finite.\n\tActual:<NaN>");
         }
         try {
             initialize(Raw.doubleAssertion(), 1.0).isInRange(Double.NaN, 1.0);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should be finite: expectedFrom.");
         }
         try {
             initialize(Raw.doubleAssertion(), 1.0, "Message").isInRange(Double.NaN, 1.0);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be finite: expectedFrom.");
         }
         try {
             initialize(Raw.doubleAssertion(), 1.0).isInRange(1.0, Double.NaN);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should be finite: expectedTo.");
         }
         try {
             initialize(Raw.doubleAssertion(), 1.0, "Message").isInRange(1.0, Double.NaN);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be finite: expectedTo.");
         }
         try {
             initialize(Raw.doubleAssertion(), 5.0).isInRange(1.0, 5.0);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be in the expected range.\n\tExpected:<1.0:5.0> but was:<5.0>");
         }
         try {
             initialize(Raw.doubleAssertion(), 5.0, "Message").isInRange(1.0, 5.0);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be in the expected range.\n\tExpected:<1.0:5.0> but was:<5.0>");
         }
         try {
             initialize(Raw.doubleAssertion(), 5.0).isInRange(6.0, 10.0);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be in the expected range.\n\tExpected:<6.0:10.0> but was:<5.0>");
         }
         try {
             initialize(Raw.doubleAssertion(), 5.0, "Message").isInRange(6.0, 10.0);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be in the expected range.\n\tExpected:<6.0:10.0> but was:<5.0>");
         }
         try {
             initialize(Raw.doubleAssertion(), 5.0).isInRange(8.0, 9.0);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be in the expected range.\n\tExpected:<8.0:9.0> but was:<5.0>");
         }
         try {
             initialize(Raw.doubleAssertion(), 5.0, "Message").isInRange(8.0, 9.0);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be in the expected range.\n\tExpected:<8.0:9.0> but was:<5.0>");
         }
@@ -1626,139 +1626,139 @@ public final class DoubleAssertionTest extends AssertionTest {
 
         try {
             Raw.doubleAssertion().isInRange(Double.valueOf("1.0"), Double.valueOf("1.0"));
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.doubleAssertion(), null).isInRange(Double.valueOf("1.0"), Double.valueOf("1.0"));
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.doubleAssertion(), null, "Message").isInRange(Double.valueOf("1.0"), Double.valueOf("1.0"));
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.doubleAssertion(), Double.NaN).isInRange(Double.valueOf("1.0"), Double.valueOf("1.0"));
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be finite.\n\tActual:<NaN>");
         }
         try {
             initialize(Raw.doubleAssertion(), Double.NaN, "Message").isInRange(Double.valueOf("1.0"), Double.valueOf("1.0"));
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be finite.\n\tActual:<NaN>");
         }
         try {
             initialize(Raw.doubleAssertion(), null).isInRange(null, Double.valueOf("1.0"));
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.doubleAssertion(), null, "Message").isInRange(null, Double.valueOf("1.0"));
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.doubleAssertion(), 1.0).isInRange(null, Double.valueOf("1.0"));
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: expectedFrom.");
         }
         try {
             initialize(Raw.doubleAssertion(), 1.0, "Message").isInRange(null, Double.valueOf("1.0"));
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expectedFrom.");
         }
         try {
             initialize(Raw.doubleAssertion(), 1.0).isInRange(Double.valueOf("NaN"), Double.valueOf("1.0"));
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should be finite: expectedFrom.");
         }
         try {
             initialize(Raw.doubleAssertion(), 1.0, "Message").isInRange(Double.valueOf("NaN"), Double.valueOf("1.0"));
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be finite: expectedFrom.");
         }
         try {
             initialize(Raw.doubleAssertion(), 1.0).isInRange(null, null);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: expectedFrom.");
         }
         try {
             initialize(Raw.doubleAssertion(), 1.0, "Message").isInRange(null, null);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expectedFrom.");
         }
         try {
             initialize(Raw.doubleAssertion(), 1.0).isInRange(Double.valueOf("1.0"), null);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: expectedTo.");
         }
         try {
             initialize(Raw.doubleAssertion(), 1.0, "Message").isInRange(Double.valueOf("1.0"), null);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expectedTo.");
         }
         try {
             initialize(Raw.doubleAssertion(), 1.0).isInRange(Double.valueOf("1.0"), Double.valueOf("NaN"));
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should be finite: expectedTo.");
         }
         try {
             initialize(Raw.doubleAssertion(), 1.0, "Message").isInRange(Double.valueOf("1.0"), Double.valueOf("NaN"));
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be finite: expectedTo.");
         }
         try {
             initialize(Raw.doubleAssertion(), 5.0).isInRange(Double.valueOf("1.0"), Double.valueOf("5.0"));
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be in the expected range.\n\tExpected:<1.0:5.0> but was:<5.0>");
         }
         try {
             initialize(Raw.doubleAssertion(), 5.0, "Message").isInRange(Double.valueOf("1.0"), Double.valueOf("5.0"));
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be in the expected range.\n\tExpected:<1.0:5.0> but was:<5.0>");
         }
         try {
             initialize(Raw.doubleAssertion(), 5.0).isInRange(Double.valueOf("6.0"), Double.valueOf("10.0"));
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be in the expected range.\n\tExpected:<6.0:10.0> but was:<5.0>");
         }
         try {
             initialize(Raw.doubleAssertion(), 5.0, "Message").isInRange(Double.valueOf("6.0"), Double.valueOf("10.0"));
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be in the expected range.\n\tExpected:<6.0:10.0> but was:<5.0>");
         }
         try {
             initialize(Raw.doubleAssertion(), 5.0).isInRange(Double.valueOf("8.0"), Double.valueOf("9.0"));
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be in the expected range.\n\tExpected:<8.0:9.0> but was:<5.0>");
         }
         try {
             initialize(Raw.doubleAssertion(), 5.0, "Message").isInRange(Double.valueOf("8.0"), Double.valueOf("9.0"));
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be in the expected range.\n\tExpected:<8.0:9.0> but was:<5.0>");
         }
@@ -1776,91 +1776,91 @@ public final class DoubleAssertionTest extends AssertionTest {
 
         try {
             Raw.doubleAssertion().isNotInRange(1.0, 1.0);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.doubleAssertion(), null).isNotInRange(1.0, 1.0);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.doubleAssertion(), null, "Message").isNotInRange(1.0, 1.0);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.doubleAssertion(), Double.NaN).isNotInRange(1.0, 1.0);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be finite.\n\tActual:<NaN>");
         }
         try {
             initialize(Raw.doubleAssertion(), Double.NaN, "Message").isNotInRange(1.0, 1.0);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be finite.\n\tActual:<NaN>");
         }
         try {
             initialize(Raw.doubleAssertion(), 1.0).isNotInRange(Double.NaN, 1.0);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should be finite: expectedFrom.");
         }
         try {
             initialize(Raw.doubleAssertion(), 1.0, "Message").isNotInRange(Double.NaN, 1.0);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be finite: expectedFrom.");
         }
         try {
             initialize(Raw.doubleAssertion(), 1.0).isNotInRange(1.0, Double.NaN);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should be finite: expectedTo.");
         }
         try {
             initialize(Raw.doubleAssertion(), 1.0, "Message").isNotInRange(1.0, Double.NaN);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be finite: expectedTo.");
         }
         try {
             initialize(Raw.doubleAssertion(), 5.0).isNotInRange(4.0, 6.0);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be in the expected range.\n\tExpected:<4.0:6.0> but was:<5.0>");
         }
         try {
             initialize(Raw.doubleAssertion(), 5.0, "Message").isNotInRange(4.0, 6.0);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be in the expected range.\n\tExpected:<4.0:6.0> but was:<5.0>");
         }
         try {
             initialize(Raw.doubleAssertion(), 5.0).isNotInRange(5.0, 6.0);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be in the expected range.\n\tExpected:<5.0:6.0> but was:<5.0>");
         }
         try {
             initialize(Raw.doubleAssertion(), 5.0, "Message").isNotInRange(5.0, 6.0);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be in the expected range.\n\tExpected:<5.0:6.0> but was:<5.0>");
         }
         try {
             initialize(Raw.doubleAssertion(), 5.0).isNotInRange(1.0, 10.0);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be in the expected range.\n\tExpected:<1.0:10.0> but was:<5.0>");
         }
         try {
             initialize(Raw.doubleAssertion(), 5.0, "Message").isNotInRange(1.0, 10.0);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be in the expected range.\n\tExpected:<1.0:10.0> but was:<5.0>");
         }
@@ -1878,139 +1878,139 @@ public final class DoubleAssertionTest extends AssertionTest {
 
         try {
             Raw.doubleAssertion().isNotInRange(Double.valueOf("1.0"), Double.valueOf("1.0"));
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.doubleAssertion(), null).isNotInRange(Double.valueOf("1.0"), Double.valueOf("1.0"));
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.doubleAssertion(), null, "Message").isNotInRange(Double.valueOf("1.0"), Double.valueOf("1.0"));
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.doubleAssertion(), Double.NaN).isNotInRange(Double.valueOf("1.0"), Double.valueOf("1.0"));
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be finite.\n\tActual:<NaN>");
         }
         try {
             initialize(Raw.doubleAssertion(), Double.NaN, "Message").isNotInRange(Double.valueOf("1.0"), Double.valueOf("1.0"));
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be finite.\n\tActual:<NaN>");
         }
         try {
             initialize(Raw.doubleAssertion(), null).isNotInRange(null, Double.valueOf("1.0"));
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.doubleAssertion(), null, "Message").isNotInRange(null, Double.valueOf("1.0"));
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.doubleAssertion(), 1.0).isNotInRange(null, Double.valueOf("1.0"));
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: expectedFrom.");
         }
         try {
             initialize(Raw.doubleAssertion(), 1.0, "Message").isNotInRange(null, Double.valueOf("1.0"));
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expectedFrom.");
         }
         try {
             initialize(Raw.doubleAssertion(), 1.0).isNotInRange(Double.valueOf("NaN"), Double.valueOf("1.0"));
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should be finite: expectedFrom.");
         }
         try {
             initialize(Raw.doubleAssertion(), 1.0, "Message").isNotInRange(Double.valueOf("NaN"), Double.valueOf("1.0"));
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be finite: expectedFrom.");
         }
         try {
             initialize(Raw.doubleAssertion(), 1.0).isNotInRange(null, null);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: expectedFrom.");
         }
         try {
             initialize(Raw.doubleAssertion(), 1.0, "Message").isNotInRange(null, null);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expectedFrom.");
         }
         try {
             initialize(Raw.doubleAssertion(), 1.0).isNotInRange(Double.valueOf("1.0"), null);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: expectedTo.");
         }
         try {
             initialize(Raw.doubleAssertion(), 1.0, "Message").isNotInRange(Double.valueOf("1.0"), null);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expectedTo.");
         }
         try {
             initialize(Raw.doubleAssertion(), 1.0).isNotInRange(Double.valueOf("1.0"), Double.valueOf("NaN"));
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should be finite: expectedTo.");
         }
         try {
             initialize(Raw.doubleAssertion(), 1.0, "Message").isNotInRange(Double.valueOf("1.0"), Double.valueOf("NaN"));
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be finite: expectedTo.");
         }
         try {
             initialize(Raw.doubleAssertion(), 5.0).isNotInRange(Double.valueOf("4.0"), Double.valueOf("6.0"));
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be in the expected range.\n\tExpected:<4.0:6.0> but was:<5.0>");
         }
         try {
             initialize(Raw.doubleAssertion(), 5.0, "Message").isNotInRange(Double.valueOf("4.0"), Double.valueOf("6.0"));
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be in the expected range.\n\tExpected:<4.0:6.0> but was:<5.0>");
         }
         try {
             initialize(Raw.doubleAssertion(), 5.0).isNotInRange(Double.valueOf("5.0"), Double.valueOf("6.0"));
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be in the expected range.\n\tExpected:<5.0:6.0> but was:<5.0>");
         }
         try {
             initialize(Raw.doubleAssertion(), 5.0, "Message").isNotInRange(Double.valueOf("5.0"), Double.valueOf("6.0"));
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be in the expected range.\n\tExpected:<5.0:6.0> but was:<5.0>");
         }
         try {
             initialize(Raw.doubleAssertion(), 5.0).isNotInRange(Double.valueOf("1.0"), Double.valueOf("10.0"));
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be in the expected range.\n\tExpected:<1.0:10.0> but was:<5.0>");
         }
         try {
             initialize(Raw.doubleAssertion(), 5.0, "Message").isNotInRange(Double.valueOf("1.0"), Double.valueOf("10.0"));
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be in the expected range.\n\tExpected:<1.0:10.0> but was:<5.0>");
         }
@@ -2028,67 +2028,67 @@ public final class DoubleAssertionTest extends AssertionTest {
 
         try {
             Raw.doubleAssertion().isZero();
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.doubleAssertion(), null).isZero();
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.doubleAssertion(), null, "Message").isZero();
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.doubleAssertion(), 10.0).isZero();
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be zero.\n\tActual:<10.0>");
         }
         try {
             initialize(Raw.doubleAssertion(), 10.0, "Message").isZero();
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be zero.\n\tActual:<10.0>");
         }
         try {
             initialize(Raw.doubleAssertion(), Double.POSITIVE_INFINITY).isZero();
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be zero.\n\tActual:<Infinity>");
         }
         try {
             initialize(Raw.doubleAssertion(), Double.POSITIVE_INFINITY, "Message").isZero();
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be zero.\n\tActual:<Infinity>");
         }
         try {
             initialize(Raw.doubleAssertion(), Double.NEGATIVE_INFINITY).isZero();
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be zero.\n\tActual:<-Infinity>");
         }
         try {
             initialize(Raw.doubleAssertion(), Double.NEGATIVE_INFINITY, "Message").isZero();
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be zero.\n\tActual:<-Infinity>");
         }
         try {
             initialize(Raw.doubleAssertion(), Double.NaN).isZero();
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be zero.\n\tActual:<NaN>");
         }
         try {
             initialize(Raw.doubleAssertion(), Double.NaN, "Message").isZero();
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be zero.\n\tActual:<NaN>");
         }
@@ -2108,55 +2108,55 @@ public final class DoubleAssertionTest extends AssertionTest {
 
         try {
             Raw.doubleAssertion().isNotZero();
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.doubleAssertion(), null).isNotZero();
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.doubleAssertion(), null, "Message").isNotZero();
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.doubleAssertion(), 0.0).isNotZero();
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be zero.");
         }
         try {
             initialize(Raw.doubleAssertion(), 0.0, "Message").isNotZero();
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be zero.");
         }
         try {
             initialize(Raw.doubleAssertion(), +0.0).isNotZero();
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be zero.");
         }
         try {
             initialize(Raw.doubleAssertion(), +0.0, "Message").isNotZero();
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be zero.");
         }
         try {
             initialize(Raw.doubleAssertion(), -0.0).isNotZero();
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be zero.");
         }
         try {
             initialize(Raw.doubleAssertion(), -0.0, "Message").isNotZero();
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be zero.");
         }
@@ -2174,67 +2174,67 @@ public final class DoubleAssertionTest extends AssertionTest {
 
         try {
             Raw.doubleAssertion().isPositiveInfinity();
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.doubleAssertion(), null).isPositiveInfinity();
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.doubleAssertion(), null, "Message").isPositiveInfinity();
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.doubleAssertion(), 0.0).isPositiveInfinity();
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be positive infinity.\n\tActual:<0.0>");
         }
         try {
             initialize(Raw.doubleAssertion(), 0.0, "Message").isPositiveInfinity();
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be positive infinity.\n\tActual:<0.0>");
         }
         try {
             initialize(Raw.doubleAssertion(), 10.0).isPositiveInfinity();
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be positive infinity.\n\tActual:<10.0>");
         }
         try {
             initialize(Raw.doubleAssertion(), 10.0, "Message").isPositiveInfinity();
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be positive infinity.\n\tActual:<10.0>");
         }
         try {
             initialize(Raw.doubleAssertion(), Double.NaN).isPositiveInfinity();
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be positive infinity.\n\tActual:<NaN>");
         }
         try {
             initialize(Raw.doubleAssertion(), Double.NaN, "Message").isPositiveInfinity();
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be positive infinity.\n\tActual:<NaN>");
         }
         try {
             initialize(Raw.doubleAssertion(), Double.NEGATIVE_INFINITY).isPositiveInfinity();
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be positive infinity.\n\tActual:<-Infinity>");
         }
         try {
             initialize(Raw.doubleAssertion(), Double.NEGATIVE_INFINITY, "Message").isPositiveInfinity();
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be positive infinity.\n\tActual:<-Infinity>");
         }
@@ -2253,31 +2253,31 @@ public final class DoubleAssertionTest extends AssertionTest {
 
         try {
             Raw.doubleAssertion().isNotPositiveInfinity();
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.doubleAssertion(), null).isNotPositiveInfinity();
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.doubleAssertion(), null, "Message").isNotPositiveInfinity();
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.doubleAssertion(), Double.POSITIVE_INFINITY).isNotPositiveInfinity();
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be positive infinity.");
         }
         try {
             initialize(Raw.doubleAssertion(), Double.POSITIVE_INFINITY, "Message").isNotPositiveInfinity();
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be positive infinity.");
         }
@@ -2295,67 +2295,67 @@ public final class DoubleAssertionTest extends AssertionTest {
 
         try {
             Raw.doubleAssertion().isNegativeInfinity();
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.doubleAssertion(), null).isNegativeInfinity();
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.doubleAssertion(), null, "Message").isNegativeInfinity();
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.doubleAssertion(), 0.0).isNegativeInfinity();
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be negative infinity.\n\tActual:<0.0>");
         }
         try {
             initialize(Raw.doubleAssertion(), 0.0, "Message").isNegativeInfinity();
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be negative infinity.\n\tActual:<0.0>");
         }
         try {
             initialize(Raw.doubleAssertion(), -10.0).isNegativeInfinity();
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be negative infinity.\n\tActual:<-10.0>");
         }
         try {
             initialize(Raw.doubleAssertion(), -10.0, "Message").isNegativeInfinity();
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be negative infinity.\n\tActual:<-10.0>");
         }
         try {
             initialize(Raw.doubleAssertion(), Double.NaN).isNegativeInfinity();
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be negative infinity.\n\tActual:<NaN>");
         }
         try {
             initialize(Raw.doubleAssertion(), Double.NaN, "Message").isNegativeInfinity();
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be negative infinity.\n\tActual:<NaN>");
         }
         try {
             initialize(Raw.doubleAssertion(), Double.POSITIVE_INFINITY).isNegativeInfinity();
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be negative infinity.\n\tActual:<Infinity>");
         }
         try {
             initialize(Raw.doubleAssertion(), Double.POSITIVE_INFINITY, "Message").isNegativeInfinity();
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be negative infinity.\n\tActual:<Infinity>");
         }
@@ -2374,31 +2374,31 @@ public final class DoubleAssertionTest extends AssertionTest {
 
         try {
             Raw.doubleAssertion().isNotNegativeInfinity();
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.doubleAssertion(), null).isNotNegativeInfinity();
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.doubleAssertion(), null, "Message").isNotNegativeInfinity();
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.doubleAssertion(), Double.NEGATIVE_INFINITY).isNotNegativeInfinity();
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be negative infinity.");
         }
         try {
             initialize(Raw.doubleAssertion(), Double.NEGATIVE_INFINITY, "Message").isNotNegativeInfinity();
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be negative infinity.");
         }
@@ -2418,67 +2418,67 @@ public final class DoubleAssertionTest extends AssertionTest {
 
         try {
             Raw.doubleAssertion().isInfinity();
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.doubleAssertion(), null).isInfinity();
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.doubleAssertion(), null, "Message").isInfinity();
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.doubleAssertion(), 0.0).isInfinity();
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be infinity.\n\tActual:<0.0>");
         }
         try {
             initialize(Raw.doubleAssertion(), 0.0, "Message").isInfinity();
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be infinity.\n\tActual:<0.0>");
         }
         try {
             initialize(Raw.doubleAssertion(), 10.0).isInfinity();
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be infinity.\n\tActual:<10.0>");
         }
         try {
             initialize(Raw.doubleAssertion(), 10.0, "Message").isInfinity();
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be infinity.\n\tActual:<10.0>");
         }
         try {
             initialize(Raw.doubleAssertion(), -10.0).isInfinity();
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be infinity.\n\tActual:<-10.0>");
         }
         try {
             initialize(Raw.doubleAssertion(), -10.0, "Message").isInfinity();
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be infinity.\n\tActual:<-10.0>");
         }
         try {
             initialize(Raw.doubleAssertion(), Double.NaN).isInfinity();
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be infinity.\n\tActual:<NaN>");
         }
         try {
             initialize(Raw.doubleAssertion(), Double.NaN, "Message").isInfinity();
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be infinity.\n\tActual:<NaN>");
         }
@@ -2497,43 +2497,43 @@ public final class DoubleAssertionTest extends AssertionTest {
 
         try {
             Raw.doubleAssertion().isNotInfinity();
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.doubleAssertion(), null).isNotInfinity();
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.doubleAssertion(), null, "Message").isNotInfinity();
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.doubleAssertion(), Double.POSITIVE_INFINITY).isNotInfinity();
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be infinity.\n\tActual:<Infinity>");
         }
         try {
             initialize(Raw.doubleAssertion(), Double.POSITIVE_INFINITY, "Message").isNotInfinity();
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be infinity.\n\tActual:<Infinity>");
         }
         try {
             initialize(Raw.doubleAssertion(), Double.NEGATIVE_INFINITY).isNotInfinity();
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be infinity.\n\tActual:<-Infinity>");
         }
         try {
             initialize(Raw.doubleAssertion(), Double.NEGATIVE_INFINITY, "Message").isNotInfinity();
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be infinity.\n\tActual:<-Infinity>");
         }
@@ -2551,79 +2551,79 @@ public final class DoubleAssertionTest extends AssertionTest {
 
         try {
             Raw.doubleAssertion().isNaN();
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.doubleAssertion(), null).isNaN();
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.doubleAssertion(), null, "Message").isNaN();
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.doubleAssertion(), 0.0).isNaN();
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be NaN.\n\tActual:<0.0>");
         }
         try {
             initialize(Raw.doubleAssertion(), 0.0, "Message").isNaN();
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be NaN.\n\tActual:<0.0>");
         }
         try {
             initialize(Raw.doubleAssertion(), 10.0).isNaN();
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be NaN.\n\tActual:<10.0>");
         }
         try {
             initialize(Raw.doubleAssertion(), 10.0, "Message").isNaN();
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be NaN.\n\tActual:<10.0>");
         }
         try {
             initialize(Raw.doubleAssertion(), -10.0).isNaN();
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be NaN.\n\tActual:<-10.0>");
         }
         try {
             initialize(Raw.doubleAssertion(), -10.0, "Message").isNaN();
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be NaN.\n\tActual:<-10.0>");
         }
         try {
             initialize(Raw.doubleAssertion(), Double.POSITIVE_INFINITY).isNaN();
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be NaN.\n\tActual:<Infinity>");
         }
         try {
             initialize(Raw.doubleAssertion(), Double.POSITIVE_INFINITY, "Message").isNaN();
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be NaN.\n\tActual:<Infinity>");
         }
         try {
             initialize(Raw.doubleAssertion(), Double.NEGATIVE_INFINITY).isNaN();
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be NaN.\n\tActual:<-Infinity>");
         }
         try {
             initialize(Raw.doubleAssertion(), Double.NEGATIVE_INFINITY, "Message").isNaN();
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be NaN.\n\tActual:<-Infinity>");
         }
@@ -2643,31 +2643,31 @@ public final class DoubleAssertionTest extends AssertionTest {
 
         try {
             Raw.doubleAssertion().isNotNaN();
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.doubleAssertion(), null).isNotNaN();
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.doubleAssertion(), null, "Message").isNotNaN();
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.doubleAssertion(), Double.NaN).isNotNaN();
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be NaN.");
         }
         try {
             initialize(Raw.doubleAssertion(), Double.NaN, "Message").isNotNaN();
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be NaN.");
         }
@@ -2685,55 +2685,55 @@ public final class DoubleAssertionTest extends AssertionTest {
 
         try {
             Raw.doubleAssertion().isFinite();
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.doubleAssertion(), null).isFinite();
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.doubleAssertion(), null, "Message").isFinite();
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.doubleAssertion(), Double.NaN).isFinite();
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be finite.\n\tActual:<NaN>");
         }
         try {
             initialize(Raw.doubleAssertion(), Double.NaN, "Message").isFinite();
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be finite.\n\tActual:<NaN>");
         }
         try {
             initialize(Raw.doubleAssertion(), Double.POSITIVE_INFINITY).isFinite();
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be finite.\n\tActual:<Infinity>");
         }
         try {
             initialize(Raw.doubleAssertion(), Double.POSITIVE_INFINITY, "Message").isFinite();
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be finite.\n\tActual:<Infinity>");
         }
         try {
             initialize(Raw.doubleAssertion(), Double.NEGATIVE_INFINITY).isFinite();
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be finite.\n\tActual:<-Infinity>");
         }
         try {
             initialize(Raw.doubleAssertion(), Double.NEGATIVE_INFINITY, "Message").isFinite();
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be finite.\n\tActual:<-Infinity>");
         }
@@ -2751,55 +2751,55 @@ public final class DoubleAssertionTest extends AssertionTest {
 
         try {
             Raw.doubleAssertion().isNotFinite();
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.doubleAssertion(), null).isNotFinite();
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.doubleAssertion(), null, "Message").isNotFinite();
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.doubleAssertion(), 0.0).isNotFinite();
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be finite.\n\tActual:<0.0>");
         }
         try {
             initialize(Raw.doubleAssertion(), 0.0, "Message").isNotFinite();
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be finite.\n\tActual:<0.0>");
         }
         try {
             initialize(Raw.doubleAssertion(), 10.0).isNotFinite();
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be finite.\n\tActual:<10.0>");
         }
         try {
             initialize(Raw.doubleAssertion(), 10.0, "Message").isNotFinite();
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be finite.\n\tActual:<10.0>");
         }
         try {
             initialize(Raw.doubleAssertion(), -10.0).isNotFinite();
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be finite.\n\tActual:<-10.0>");
         }
         try {
             initialize(Raw.doubleAssertion(), -10.0, "Message").isNotFinite();
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be finite.\n\tActual:<-10.0>");
         }
@@ -2814,13 +2814,13 @@ public final class DoubleAssertionTest extends AssertionTest {
 
         try {
             initialize(Raw.doubleAssertion(), 10.0).isNull();
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be null.\n\tActual:<10.0>");
         }
         try {
             initialize(Raw.doubleAssertion(), 10.0, "Message").isNull();
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be null.\n\tActual:<10.0>");
         }
@@ -2836,13 +2836,13 @@ public final class DoubleAssertionTest extends AssertionTest {
 
         try {
             initialize(Raw.doubleAssertion(), value).isSameAs(10000.0);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual and expected values should point to the same object.\n\tExpected:<10000.0> but was:<10000.0>");
         }
         try {
             initialize(Raw.doubleAssertion(), value, "Message").isSameAs(10000.0);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should point to the same object.\n\tExpected:<10000.0> but was:<10000.0>");
         }
@@ -2858,13 +2858,13 @@ public final class DoubleAssertionTest extends AssertionTest {
 
         try {
             initialize(Raw.doubleAssertion(), value).isNotSameAs(value);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual and expected values should point to the different objects.\n\tActual:<10000.0>");
         }
         try {
             initialize(Raw.doubleAssertion(), value, "Message").isNotSameAs(value);
-            Assertions.fail("DoubleAssertion test fail");
+            Assertions.fail(DoubleAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should point to the different objects.\n\tActual:<10000.0>");
         }

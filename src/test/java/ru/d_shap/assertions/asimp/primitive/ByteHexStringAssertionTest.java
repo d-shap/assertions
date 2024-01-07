@@ -57,43 +57,43 @@ public final class ByteHexStringAssertionTest extends AssertionTest {
 
         try {
             Raw.byteAssertion().toHexString();
-            Assertions.fail("ByteAssertion test fail");
+            Assertions.fail(ByteAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.byteAssertion(), null).toHexString();
-            Assertions.fail("ByteAssertion test fail");
+            Assertions.fail(ByteAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.byteAssertion(), null, "Message").toHexString();
-            Assertions.fail("ByteAssertion test fail");
+            Assertions.fail(ByteAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             clearActual(initialize(Raw.byteAssertion(), (byte) 11).toHexString()).isEqualTo("11");
-            Assertions.fail("ByteAssertion test fail");
+            Assertions.fail(ByteAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's hex representation.\n\tActual value should not be null.");
         }
         try {
             clearActual(initialize(Raw.byteAssertion(), (byte) 11, "Message").toHexString()).isEqualTo("11");
-            Assertions.fail("ByteAssertion test fail");
+            Assertions.fail(ByteAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's hex representation.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.byteAssertion(), (byte) 11).toHexString().isEqualTo("11");
-            Assertions.fail("ByteAssertion test fail");
+            Assertions.fail(ByteAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's hex representation.\n\tActual and expected values should be the same.\n\tExpected:<11> but was:<0b>");
         }
         try {
             initialize(Raw.byteAssertion(), (byte) 11, "Message").toHexString().isEqualTo("11");
-            Assertions.fail("ByteAssertion test fail");
+            Assertions.fail(ByteAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's hex representation.\n\tActual and expected values should be the same.\n\tExpected:<11> but was:<0b>");
         }
@@ -116,55 +116,55 @@ public final class ByteHexStringAssertionTest extends AssertionTest {
 
         try {
             Raw.byteAssertion().toHexString(Matchers.equalTo("0"));
-            Assertions.fail("ByteAssertion test fail");
+            Assertions.fail(ByteAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.byteAssertion(), null).toHexString(Matchers.equalTo("0"));
-            Assertions.fail("ByteAssertion test fail");
+            Assertions.fail(ByteAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.byteAssertion(), null, "Message").toHexString(Matchers.equalTo("0"));
-            Assertions.fail("ByteAssertion test fail");
+            Assertions.fail(ByteAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.byteAssertion(), null).toHexString(null);
-            Assertions.fail("ByteAssertion test fail");
+            Assertions.fail(ByteAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.byteAssertion(), null, "Message").toHexString(null);
-            Assertions.fail("ByteAssertion test fail");
+            Assertions.fail(ByteAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.byteAssertion(), (byte) 1).toHexString(null);
-            Assertions.fail("ByteAssertion test fail");
+            Assertions.fail(ByteAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: matcher.");
         }
         try {
             initialize(Raw.byteAssertion(), (byte) 1, "Message").toHexString(null);
-            Assertions.fail("ByteAssertion test fail");
+            Assertions.fail(ByteAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: matcher.");
         }
         try {
             initialize(Raw.byteAssertion(), (byte) 11).toHexString(Matchers.equalTo("11"));
-            Assertions.fail("ByteAssertion test fail");
+            Assertions.fail(ByteAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's hex representation.\nExpected: \"11\"\n     but: was \"0b\"");
         }
         try {
             initialize(Raw.byteAssertion(), (byte) 11, "Message").toHexString(Matchers.equalTo("11"));
-            Assertions.fail("ByteAssertion test fail");
+            Assertions.fail(ByteAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's hex representation.\nExpected: \"11\"\n     but: was \"0b\"");
         }
@@ -187,55 +187,55 @@ public final class ByteHexStringAssertionTest extends AssertionTest {
 
         try {
             Raw.byteAssertion().hasHexString("0");
-            Assertions.fail("ByteAssertion test fail");
+            Assertions.fail(ByteAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.byteAssertion(), null).hasHexString("0");
-            Assertions.fail("ByteAssertion test fail");
+            Assertions.fail(ByteAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.byteAssertion(), null, "Message").hasHexString("0");
-            Assertions.fail("ByteAssertion test fail");
+            Assertions.fail(ByteAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.byteAssertion(), null).hasHexString(null);
-            Assertions.fail("ByteAssertion test fail");
+            Assertions.fail(ByteAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.byteAssertion(), null, "Message").hasHexString(null);
-            Assertions.fail("ByteAssertion test fail");
+            Assertions.fail(ByteAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.byteAssertion(), (byte) 11).hasHexString(null);
-            Assertions.fail("ByteAssertion test fail");
+            Assertions.fail(ByteAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.byteAssertion(), (byte) 11, "Message").hasHexString(null);
-            Assertions.fail("ByteAssertion test fail");
+            Assertions.fail(ByteAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.byteAssertion(), (byte) 11).hasHexString("11");
-            Assertions.fail("ByteAssertion test fail");
+            Assertions.fail(ByteAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's hex representation.\n\tActual and expected values should be the same.\n\tExpected:<11> but was:<0b>");
         }
         try {
             initialize(Raw.byteAssertion(), (byte) 11, "Message").hasHexString("11");
-            Assertions.fail("ByteAssertion test fail");
+            Assertions.fail(ByteAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's hex representation.\n\tActual and expected values should be the same.\n\tExpected:<11> but was:<0b>");
         }

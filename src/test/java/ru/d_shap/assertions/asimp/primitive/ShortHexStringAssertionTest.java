@@ -59,43 +59,43 @@ public final class ShortHexStringAssertionTest extends AssertionTest {
 
         try {
             Raw.shortAssertion().toHexString();
-            Assertions.fail("ShortAssertion test fail");
+            Assertions.fail(ShortAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.shortAssertion(), null).toHexString();
-            Assertions.fail("ShortAssertion test fail");
+            Assertions.fail(ShortAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.shortAssertion(), null, "Message").toHexString();
-            Assertions.fail("ShortAssertion test fail");
+            Assertions.fail(ShortAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             clearActual(initialize(Raw.shortAssertion(), (short) 11).toHexString()).isEqualTo("0011");
-            Assertions.fail("ShortAssertion test fail");
+            Assertions.fail(ShortAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's hex representation.\n\tActual value should not be null.");
         }
         try {
             clearActual(initialize(Raw.shortAssertion(), (short) 11, "Message").toHexString()).isEqualTo("0011");
-            Assertions.fail("ShortAssertion test fail");
+            Assertions.fail(ShortAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's hex representation.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.shortAssertion(), (short) 11).toHexString().isEqualTo("0011");
-            Assertions.fail("ShortAssertion test fail");
+            Assertions.fail(ShortAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's hex representation.\n\tActual and expected values should be the same.\n\tExpected:<0011> but was:<000b>");
         }
         try {
             initialize(Raw.shortAssertion(), (short) 11, "Message").toHexString().isEqualTo("0011");
-            Assertions.fail("ShortAssertion test fail");
+            Assertions.fail(ShortAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's hex representation.\n\tActual and expected values should be the same.\n\tExpected:<0011> but was:<000b>");
         }
@@ -120,55 +120,55 @@ public final class ShortHexStringAssertionTest extends AssertionTest {
 
         try {
             Raw.shortAssertion().toHexString(Matchers.equalTo("0"));
-            Assertions.fail("ShortAssertion test fail");
+            Assertions.fail(ShortAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.shortAssertion(), null).toHexString(Matchers.equalTo("0"));
-            Assertions.fail("ShortAssertion test fail");
+            Assertions.fail(ShortAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.shortAssertion(), null, "Message").toHexString(Matchers.equalTo("0"));
-            Assertions.fail("ShortAssertion test fail");
+            Assertions.fail(ShortAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.shortAssertion(), null).toHexString(null);
-            Assertions.fail("ShortAssertion test fail");
+            Assertions.fail(ShortAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.shortAssertion(), null, "Message").toHexString(null);
-            Assertions.fail("ShortAssertion test fail");
+            Assertions.fail(ShortAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.shortAssertion(), (short) 1).toHexString(null);
-            Assertions.fail("ShortAssertion test fail");
+            Assertions.fail(ShortAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: matcher.");
         }
         try {
             initialize(Raw.shortAssertion(), (short) 1, "Message").toHexString(null);
-            Assertions.fail("ShortAssertion test fail");
+            Assertions.fail(ShortAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: matcher.");
         }
         try {
             initialize(Raw.shortAssertion(), (short) 11).toHexString(Matchers.equalTo("0011"));
-            Assertions.fail("ShortAssertion test fail");
+            Assertions.fail(ShortAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's hex representation.\nExpected: \"0011\"\n     but: was \"000b\"");
         }
         try {
             initialize(Raw.shortAssertion(), (short) 11, "Message").toHexString(Matchers.equalTo("0011"));
-            Assertions.fail("ShortAssertion test fail");
+            Assertions.fail(ShortAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's hex representation.\nExpected: \"0011\"\n     but: was \"000b\"");
         }
@@ -193,55 +193,55 @@ public final class ShortHexStringAssertionTest extends AssertionTest {
 
         try {
             Raw.shortAssertion().hasHexString("0");
-            Assertions.fail("ShortAssertion test fail");
+            Assertions.fail(ShortAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.shortAssertion(), null).hasHexString("0");
-            Assertions.fail("ShortAssertion test fail");
+            Assertions.fail(ShortAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.shortAssertion(), null, "Message").hasHexString("0");
-            Assertions.fail("ShortAssertion test fail");
+            Assertions.fail(ShortAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.shortAssertion(), null).hasHexString(null);
-            Assertions.fail("ShortAssertion test fail");
+            Assertions.fail(ShortAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.shortAssertion(), null, "Message").hasHexString(null);
-            Assertions.fail("ShortAssertion test fail");
+            Assertions.fail(ShortAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.shortAssertion(), (short) 11).hasHexString(null);
-            Assertions.fail("ShortAssertion test fail");
+            Assertions.fail(ShortAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.shortAssertion(), (short) 11, "Message").hasHexString(null);
-            Assertions.fail("ShortAssertion test fail");
+            Assertions.fail(ShortAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.shortAssertion(), (short) 11).hasHexString("0011");
-            Assertions.fail("ShortAssertion test fail");
+            Assertions.fail(ShortAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's hex representation.\n\tActual and expected values should be the same.\n\tExpected:<0011> but was:<000b>");
         }
         try {
             initialize(Raw.shortAssertion(), (short) 11, "Message").hasHexString("0011");
-            Assertions.fail("ShortAssertion test fail");
+            Assertions.fail(ShortAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's hex representation.\n\tActual and expected values should be the same.\n\tExpected:<0011> but was:<000b>");
         }

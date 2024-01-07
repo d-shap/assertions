@@ -48,13 +48,13 @@ public final class BooleanAssertionTest extends AssertionTest {
 
         try {
             initializeWithRawActual(Raw.booleanAssertion(), new Object());
-            Assertions.fail("BooleanAssertion test fail");
+            Assertions.fail(BooleanAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should match the assertion.\n\tActual value should be the instance of the expected class.\n\tExpected:<java.lang.Boolean> but was:<java.lang.Object>");
         }
         try {
             initializeWithRawActual(Raw.booleanAssertion(), new Object(), "Message");
-            Assertions.fail("BooleanAssertion test fail");
+            Assertions.fail(BooleanAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should match the assertion.\n\tActual value should be the instance of the expected class.\n\tExpected:<java.lang.Boolean> but was:<java.lang.Object>");
         }
@@ -70,31 +70,31 @@ public final class BooleanAssertionTest extends AssertionTest {
 
         try {
             Raw.booleanAssertion().isTrue();
-            Assertions.fail("BooleanAssertion test fail");
+            Assertions.fail(BooleanAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.booleanAssertion(), null).isTrue();
-            Assertions.fail("BooleanAssertion test fail");
+            Assertions.fail(BooleanAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.booleanAssertion(), null, "Message").isTrue();
-            Assertions.fail("BooleanAssertion test fail");
+            Assertions.fail(BooleanAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.booleanAssertion(), false).isTrue();
-            Assertions.fail("BooleanAssertion test fail");
+            Assertions.fail(BooleanAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be true.");
         }
         try {
             initialize(Raw.booleanAssertion(), false, "Message").isTrue();
-            Assertions.fail("BooleanAssertion test fail");
+            Assertions.fail(BooleanAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be true.");
         }
@@ -110,31 +110,31 @@ public final class BooleanAssertionTest extends AssertionTest {
 
         try {
             Raw.booleanAssertion().isFalse();
-            Assertions.fail("BooleanAssertion test fail");
+            Assertions.fail(BooleanAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.booleanAssertion(), null).isFalse();
-            Assertions.fail("BooleanAssertion test fail");
+            Assertions.fail(BooleanAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.booleanAssertion(), null, "Message").isFalse();
-            Assertions.fail("BooleanAssertion test fail");
+            Assertions.fail(BooleanAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.booleanAssertion(), true).isFalse();
-            Assertions.fail("BooleanAssertion test fail");
+            Assertions.fail(BooleanAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be false.");
         }
         try {
             initialize(Raw.booleanAssertion(), true, "Message").isFalse();
-            Assertions.fail("BooleanAssertion test fail");
+            Assertions.fail(BooleanAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be false.");
         }
@@ -149,13 +149,13 @@ public final class BooleanAssertionTest extends AssertionTest {
 
         try {
             initialize(Raw.booleanAssertion(), true).isNull();
-            Assertions.fail("BooleanAssertion test fail");
+            Assertions.fail(BooleanAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should be null.\n\tActual:<T>");
         }
         try {
             initialize(Raw.booleanAssertion(), true, "Message").isNull();
-            Assertions.fail("BooleanAssertion test fail");
+            Assertions.fail(BooleanAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should be null.\n\tActual:<T>");
         }
@@ -171,13 +171,13 @@ public final class BooleanAssertionTest extends AssertionTest {
 
         try {
             initialize(Raw.booleanAssertion(), value).isSameAs(false);
-            Assertions.fail("BooleanAssertion test fail");
+            Assertions.fail(BooleanAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual and expected values should point to the same object.\n\tExpected:<F> but was:<T>");
         }
         try {
             initialize(Raw.booleanAssertion(), value, "Message").isSameAs(false);
-            Assertions.fail("BooleanAssertion test fail");
+            Assertions.fail(BooleanAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should point to the same object.\n\tExpected:<F> but was:<T>");
         }
@@ -193,13 +193,13 @@ public final class BooleanAssertionTest extends AssertionTest {
 
         try {
             initialize(Raw.booleanAssertion(), value).isNotSameAs(value);
-            Assertions.fail("BooleanAssertion test fail");
+            Assertions.fail(BooleanAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual and expected values should point to the different objects.\n\tActual:<T>");
         }
         try {
             initialize(Raw.booleanAssertion(), value, "Message").isNotSameAs(value);
-            Assertions.fail("BooleanAssertion test fail");
+            Assertions.fail(BooleanAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual and expected values should point to the different objects.\n\tActual:<T>");
         }

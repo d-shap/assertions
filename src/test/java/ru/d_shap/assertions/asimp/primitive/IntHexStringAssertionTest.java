@@ -62,43 +62,43 @@ public final class IntHexStringAssertionTest extends AssertionTest {
 
         try {
             Raw.intAssertion().toHexString();
-            Assertions.fail("IntAssertion test fail");
+            Assertions.fail(IntAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.intAssertion(), null).toHexString();
-            Assertions.fail("IntAssertion test fail");
+            Assertions.fail(IntAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.intAssertion(), null, "Message").toHexString();
-            Assertions.fail("IntAssertion test fail");
+            Assertions.fail(IntAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             clearActual(initialize(Raw.intAssertion(), 11).toHexString()).isEqualTo("00000011");
-            Assertions.fail("IntAssertion test fail");
+            Assertions.fail(IntAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's hex representation.\n\tActual value should not be null.");
         }
         try {
             clearActual(initialize(Raw.intAssertion(), 11, "Message").toHexString()).isEqualTo("00000011");
-            Assertions.fail("IntAssertion test fail");
+            Assertions.fail(IntAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's hex representation.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.intAssertion(), 11).toHexString().isEqualTo("00000011");
-            Assertions.fail("IntAssertion test fail");
+            Assertions.fail(IntAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's hex representation.\n\tActual and expected values should be the same.\n\tExpected:<00000011> but was:<0000000b>");
         }
         try {
             initialize(Raw.intAssertion(), 11, "Message").toHexString().isEqualTo("00000011");
-            Assertions.fail("IntAssertion test fail");
+            Assertions.fail(IntAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's hex representation.\n\tActual and expected values should be the same.\n\tExpected:<00000011> but was:<0000000b>");
         }
@@ -126,55 +126,55 @@ public final class IntHexStringAssertionTest extends AssertionTest {
 
         try {
             Raw.intAssertion().toHexString(Matchers.equalTo("0"));
-            Assertions.fail("IntAssertion test fail");
+            Assertions.fail(IntAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.intAssertion(), null).toHexString(Matchers.equalTo("0"));
-            Assertions.fail("IntAssertion test fail");
+            Assertions.fail(IntAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.intAssertion(), null, "Message").toHexString(Matchers.equalTo("0"));
-            Assertions.fail("IntAssertion test fail");
+            Assertions.fail(IntAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.intAssertion(), null).toHexString(null);
-            Assertions.fail("IntAssertion test fail");
+            Assertions.fail(IntAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.intAssertion(), null, "Message").toHexString(null);
-            Assertions.fail("IntAssertion test fail");
+            Assertions.fail(IntAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.intAssertion(), 1).toHexString(null);
-            Assertions.fail("IntAssertion test fail");
+            Assertions.fail(IntAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: matcher.");
         }
         try {
             initialize(Raw.intAssertion(), 1, "Message").toHexString(null);
-            Assertions.fail("IntAssertion test fail");
+            Assertions.fail(IntAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: matcher.");
         }
         try {
             initialize(Raw.intAssertion(), 11).toHexString(Matchers.equalTo("00000011"));
-            Assertions.fail("IntAssertion test fail");
+            Assertions.fail(IntAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's hex representation.\nExpected: \"00000011\"\n     but: was \"0000000b\"");
         }
         try {
             initialize(Raw.intAssertion(), 11, "Message").toHexString(Matchers.equalTo("00000011"));
-            Assertions.fail("IntAssertion test fail");
+            Assertions.fail(IntAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's hex representation.\nExpected: \"00000011\"\n     but: was \"0000000b\"");
         }
@@ -202,55 +202,55 @@ public final class IntHexStringAssertionTest extends AssertionTest {
 
         try {
             Raw.intAssertion().hasHexString("0");
-            Assertions.fail("IntAssertion test fail");
+            Assertions.fail(IntAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
             initialize(Raw.intAssertion(), null).hasHexString("0");
-            Assertions.fail("IntAssertion test fail");
+            Assertions.fail(IntAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.intAssertion(), null, "Message").hasHexString("0");
-            Assertions.fail("IntAssertion test fail");
+            Assertions.fail(IntAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.intAssertion(), null).hasHexString(null);
-            Assertions.fail("IntAssertion test fail");
+            Assertions.fail(IntAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
             initialize(Raw.intAssertion(), null, "Message").hasHexString(null);
-            Assertions.fail("IntAssertion test fail");
+            Assertions.fail(IntAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
             initialize(Raw.intAssertion(), 11).hasHexString(null);
-            Assertions.fail("IntAssertion test fail");
+            Assertions.fail(IntAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
             initialize(Raw.intAssertion(), 11, "Message").hasHexString(null);
-            Assertions.fail("IntAssertion test fail");
+            Assertions.fail(IntAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
             initialize(Raw.intAssertion(), 11).hasHexString("00000011");
-            Assertions.fail("IntAssertion test fail");
+            Assertions.fail(IntAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check actual value's hex representation.\n\tActual and expected values should be the same.\n\tExpected:<00000011> but was:<0000000b>");
         }
         try {
             initialize(Raw.intAssertion(), 11, "Message").hasHexString("00000011");
-            Assertions.fail("IntAssertion test fail");
+            Assertions.fail(IntAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck actual value's hex representation.\n\tActual and expected values should be the same.\n\tExpected:<00000011> but was:<0000000b>");
         }
