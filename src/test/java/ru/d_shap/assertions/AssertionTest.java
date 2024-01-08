@@ -40,6 +40,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
@@ -981,6 +982,8 @@ public class AssertionTest {
 
         private final Iterator<String> _iterator;
 
+        private final ListIterator<String> _listIterator;
+
         private final List<String> _list;
 
         private final Set<String> _set;
@@ -1069,6 +1072,7 @@ public class AssertionTest {
                 _iterable = DataHelper.createIterable("1", "2", "3");
                 _throwable = new AssertionError("error");
                 _iterator = DataHelper.createIterator("1", "2", "3");
+                _listIterator = DataHelper.createListIterator("1", "2", "3");
                 _list = DataHelper.createArrayList("1", "2", "3");
                 _set = DataHelper.createHashSet("1", "2", "3");
                 _sortedSet = DataHelper.createTreeSet("1", "2", "3");
@@ -1230,6 +1234,10 @@ public class AssertionTest {
 
         Iterator<String> getIterator() {
             return _iterator;
+        }
+
+        ListIterator<String> getListIterator() {
+            return _listIterator;
         }
 
         List<String> getList() {
