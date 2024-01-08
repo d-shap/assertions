@@ -397,6 +397,20 @@ public final class RawTest extends AssertionTest {
      * {@link Raw} class test.
      */
     @Test
+    public void listIteratorAssertionTest() {
+        initialize(Raw.<String>listIteratorAssertion(), null).isNull();
+        try {
+            Raw.<String>listIteratorAssertion().isNull();
+            Assertions.fail(Raw.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+    }
+
+    /**
+     * {@link Raw} class test.
+     */
+    @Test
     public void listAssertionTest() {
         initialize(Raw.<String>listAssertion(), null).isNull();
         try {
