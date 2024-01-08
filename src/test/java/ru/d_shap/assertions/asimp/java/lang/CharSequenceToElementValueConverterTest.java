@@ -112,7 +112,7 @@ public final class CharSequenceToElementValueConverterTest extends AssertionTest
      * {@link CharSequenceToElementValueConverter} class test.
      */
     @Test(expected = ArrayIndexOutOfBoundsException.class)
-    public void convertWrongArgumentCountFailTest() {
+    public void convertWrongArgumentCount1FailTest() {
         new CharSequenceToElementValueConverter().convert("<element/>", new Object());
     }
 

@@ -167,7 +167,7 @@ public final class ReaderToCharArrayValueConverterTest extends AssertionTest {
      * {@link ReaderToCharArrayValueConverter} class test.
      */
     @Test(expected = ClassCastException.class)
-    public void convertWrongArgumentTypeFailTest() {
+    public void convertWrongArgumentType1FailTest() {
         new ReaderToCharArrayValueConverter().convert(new StringReader(""), new Object());
     }
 

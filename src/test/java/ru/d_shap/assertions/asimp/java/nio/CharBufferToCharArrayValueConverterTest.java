@@ -203,7 +203,7 @@ public final class CharBufferToCharArrayValueConverterTest extends AssertionTest
      * {@link CharBufferToCharArrayValueConverter} class test.
      */
     @Test(expected = ClassCastException.class)
-    public void convertWrongArgumentTypeFailTest() {
+    public void convertWrongArgumentType1FailTest() {
         new CharBufferToCharArrayValueConverter().convert(createCharBuffer(new char[]{}), new Object());
     }
 

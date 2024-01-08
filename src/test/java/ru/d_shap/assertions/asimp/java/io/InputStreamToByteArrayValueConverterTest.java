@@ -167,7 +167,7 @@ public final class InputStreamToByteArrayValueConverterTest extends AssertionTes
      * {@link InputStreamToByteArrayValueConverter} class test.
      */
     @Test(expected = ClassCastException.class)
-    public void convertWrongArgumentTypeFailTest() {
+    public void convertWrongArgumentType1FailTest() {
         new InputStreamToByteArrayValueConverter().convert(new ByteArrayInputStream(new byte[]{}), new Object());
     }
 

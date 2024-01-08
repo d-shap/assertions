@@ -203,7 +203,7 @@ public final class IntBufferToIntArrayValueConverterTest extends AssertionTest {
      * {@link IntBufferToIntArrayValueConverter} class test.
      */
     @Test(expected = ClassCastException.class)
-    public void convertWrongArgumentTypeFailTest() {
+    public void convertWrongArgumentType1FailTest() {
         new IntBufferToIntArrayValueConverter().convert(createIntBuffer(new int[]{}), new Object());
     }
 

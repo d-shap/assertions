@@ -179,7 +179,7 @@ public final class BufferedReaderToStringArrayValueConverterTest extends Asserti
      * {@link BufferedReaderToStringArrayValueConverter} class test.
      */
     @Test(expected = ClassCastException.class)
-    public void convertWrongArgumentTypeFailTest() {
+    public void convertWrongArgumentType1FailTest() {
         new BufferedReaderToStringArrayValueConverter().convert(new BufferedReader(new StringReader("")), new Object());
     }
 

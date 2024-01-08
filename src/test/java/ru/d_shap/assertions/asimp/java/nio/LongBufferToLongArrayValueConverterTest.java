@@ -203,7 +203,7 @@ public final class LongBufferToLongArrayValueConverterTest extends AssertionTest
      * {@link LongBufferToLongArrayValueConverter} class test.
      */
     @Test(expected = ClassCastException.class)
-    public void convertWrongArgumentTypeFailTest() {
+    public void convertWrongArgumentType1FailTest() {
         new LongBufferToLongArrayValueConverter().convert(createLongBuffer(new long[]{}), new Object());
     }
 

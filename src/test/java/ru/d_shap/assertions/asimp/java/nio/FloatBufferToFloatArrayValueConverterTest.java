@@ -203,7 +203,7 @@ public final class FloatBufferToFloatArrayValueConverterTest extends AssertionTe
      * {@link FloatBufferToFloatArrayValueConverter} class test.
      */
     @Test(expected = ClassCastException.class)
-    public void convertWrongArgumentTypeFailTest() {
+    public void convertWrongArgumentType1FailTest() {
         new FloatBufferToFloatArrayValueConverter().convert(createFloatBuffer(new float[]{}), new Object());
     }
 

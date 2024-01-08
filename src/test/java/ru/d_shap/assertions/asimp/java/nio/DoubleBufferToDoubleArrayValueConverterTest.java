@@ -203,7 +203,7 @@ public final class DoubleBufferToDoubleArrayValueConverterTest extends Assertion
      * {@link DoubleBufferToDoubleArrayValueConverter} class test.
      */
     @Test(expected = ClassCastException.class)
-    public void convertWrongArgumentTypeFailTest() {
+    public void convertWrongArgumentType1FailTest() {
         new DoubleBufferToDoubleArrayValueConverter().convert(createDoubleBuffer(new double[]{}), new Object());
     }
 

@@ -89,7 +89,7 @@ public final class ObjectToClassValueConverterTest extends AssertionTest {
      * {@link ObjectToClassValueConverter} class test.
      */
     @Test(expected = ArrayIndexOutOfBoundsException.class)
-    public void convertWrongArgumentCountFailTest() {
+    public void convertWrongArgumentCount1FailTest() {
         new ObjectToClassValueConverter().convert("value", new Object());
     }
 

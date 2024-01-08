@@ -203,7 +203,7 @@ public final class ShortBufferToShortArrayValueConverterTest extends AssertionTe
      * {@link ShortBufferToShortArrayValueConverter} class test.
      */
     @Test(expected = ClassCastException.class)
-    public void convertWrongArgumentTypeFailTest() {
+    public void convertWrongArgumentType1FailTest() {
         new ShortBufferToShortArrayValueConverter().convert(createShortBuffer(new short[]{}), new Object());
     }
 

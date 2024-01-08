@@ -203,7 +203,7 @@ public final class ByteBufferToByteArrayValueConverterTest extends AssertionTest
      * {@link ByteBufferToByteArrayValueConverter} class test.
      */
     @Test(expected = ClassCastException.class)
-    public void convertWrongArgumentTypeFailTest() {
+    public void convertWrongArgumentType1FailTest() {
         new ByteBufferToByteArrayValueConverter().convert(createByteBuffer(new byte[]{}), new Object());
     }
 

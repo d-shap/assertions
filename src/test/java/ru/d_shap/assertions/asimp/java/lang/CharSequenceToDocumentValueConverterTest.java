@@ -134,7 +134,7 @@ public final class CharSequenceToDocumentValueConverterTest extends AssertionTes
      * {@link CharSequenceToDocumentValueConverter} class test.
      */
     @Test(expected = ArrayIndexOutOfBoundsException.class)
-    public void convertWrongArgumentCountFailTest() {
+    public void convertWrongArgumentCount1FailTest() {
         new CharSequenceToDocumentValueConverter().convert("<element/>", new Object());
     }
 

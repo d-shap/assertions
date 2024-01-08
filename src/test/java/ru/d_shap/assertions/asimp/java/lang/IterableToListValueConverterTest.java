@@ -110,7 +110,7 @@ public final class IterableToListValueConverterTest extends AssertionTest {
      * {@link IterableToListValueConverter} class test.
      */
     @Test(expected = ArrayIndexOutOfBoundsException.class)
-    public void convertWrongArgumentCountFailTest() {
+    public void convertWrongArgumentCount1FailTest() {
         new IterableToListValueConverter().convert(DataHelper.createIterable(), new Object());
     }
 
