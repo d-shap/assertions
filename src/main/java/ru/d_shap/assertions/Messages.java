@@ -510,6 +510,10 @@ public final class Messages {
 
             public static final String DOES_NOT_HAVE_NEXT_VALUE = "Actual value should not have next value.";
 
+            public static final String HAS_PREVIOUS_VALUE = "Actual value should have previous value.";
+
+            public static final String DOES_NOT_HAVE_PREVIOUS_VALUE = "Actual value should not have previous value.";
+
             public static final String IS_COMPLETED = "Actual value should be completed.";
 
             public static final String IS_NOT_COMPLETED = "Actual value should not be completed.";
