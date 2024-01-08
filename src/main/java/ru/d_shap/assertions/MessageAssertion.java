@@ -33,6 +33,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
@@ -79,6 +80,7 @@ import ru.d_shap.assertions.asimp.java.util.CalendarAssertion;
 import ru.d_shap.assertions.asimp.java.util.DateAssertion;
 import ru.d_shap.assertions.asimp.java.util.IteratorAssertion;
 import ru.d_shap.assertions.asimp.java.util.ListAssertion;
+import ru.d_shap.assertions.asimp.java.util.ListIteratorAssertion;
 import ru.d_shap.assertions.asimp.java.util.LocaleAssertion;
 import ru.d_shap.assertions.asimp.java.util.MapAssertion;
 import ru.d_shap.assertions.asimp.java.util.SetAssertion;
@@ -614,6 +616,20 @@ public final class MessageAssertion {
     public <E> IteratorAssertion<E> that(final Iterator<E> actual) {
         IteratorAssertion<E> assertion = Raw.iteratorAssertion();
         ((BaseAssertion<Iterator<E>>) assertion).initialize(actual, Messages.SIMPLE_MESSAGE, _message);
+        return assertion;
+    }
+
+    /**
+     * Make assertion about the list iterator.
+     *
+     * @param actual the actual value.
+     * @param <E>    the generic type of the element.
+     *
+     * @return the assertion.
+     */
+    public <E> ListIteratorAssertion<E> that(final ListIterator<E> actual) {
+        ListIteratorAssertion<E> assertion = Raw.listIteratorAssertion();
+        ((BaseAssertion<ListIterator<E>>) assertion).initialize(actual, Messages.SIMPLE_MESSAGE, _message);
         return assertion;
     }
 
