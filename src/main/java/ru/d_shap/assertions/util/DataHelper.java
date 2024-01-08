@@ -113,19 +113,6 @@ public final class DataHelper {
     /**
      * Create list iterator object.
      *
-     * @param values the values.
-     * @param <E>    the generic type of the element.
-     *
-     * @return the created object.
-     */
-    @SafeVarargs
-    public static <E> ListIterator<E> createListIterator(final E... values) {
-        return createListIterator(0, values);
-    }
-
-    /**
-     * Create list iterator object.
-     *
      * @param index  the index of the first element.
      * @param values the values.
      * @param <E>    the generic type of the element.
