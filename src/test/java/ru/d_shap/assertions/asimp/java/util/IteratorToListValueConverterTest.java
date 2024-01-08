@@ -149,7 +149,7 @@ public final class IteratorToListValueConverterTest extends AssertionTest {
      * {@link IteratorToListValueConverter} class test.
      */
     @Test(expected = ClassCastException.class)
-    public void convertWrongArgumentTypeFailTest() {
+    public void convertWrongArgumentType1FailTest() {
         new IteratorToListValueConverter().convert(DataHelper.createIterator(), new Object());
     }
 

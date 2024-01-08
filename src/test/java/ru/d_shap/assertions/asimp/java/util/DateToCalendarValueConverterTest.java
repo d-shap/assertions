@@ -98,7 +98,7 @@ public final class DateToCalendarValueConverterTest extends AssertionTest {
      * {@link DateToCalendarValueConverter} class test.
      */
     @Test(expected = ArrayIndexOutOfBoundsException.class)
-    public void convertWrongArgumentCountFailTest() {
+    public void convertWrongArgumentCount1FailTest() {
         new DateToCalendarValueConverter().convert(DataHelper.createDate(2020, Calendar.JULY, 11, 15, 23, 47), new Object());
     }
 
