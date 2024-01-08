@@ -31,6 +31,7 @@ import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.ListIterator;
 import java.util.Map;
 import java.util.Set;
 import java.util.SortedMap;
@@ -106,6 +107,25 @@ public final class DataHelper {
             List<E> list = Arrays.asList(values);
             list = new ArrayList<>(list);
             return new IteratorImpl<>(list);
+        }
+    }
+
+    /**
+     * Create list iterator object.
+     *
+     * @param values the values.
+     * @param <E>    the generic type of the element.
+     *
+     * @return the created object.
+     */
+    @SafeVarargs
+    public static <E> ListIterator<E> createListIterator(final E... values) {
+        if (values == null) {
+            return null;
+        } else {
+            List<E> list = Arrays.asList(values);
+            list = new ArrayList<>(list);
+            return new ListIteratorImpl<>(list);
         }
     }
 
@@ -835,6 +855,62 @@ public final class DataHelper {
         @Override
         public void remove() {
             _iterator.remove();
+        }
+
+    }
+
+    private static final class ListIteratorImpl<E> implements ListIterator<E> {
+
+        private final ListIterator<E> _listIterator;
+
+        ListIteratorImpl(final List<E> list) {
+            super();
+            _listIterator = list.listIterator();
+        }
+
+        @Override
+        public boolean hasNext() {
+            return _listIterator.hasNext();
+        }
+
+        @Override
+        public E next() {
+            return _listIterator.next();
+        }
+
+        @Override
+        public boolean hasPrevious() {
+            return _listIterator.hasPrevious();
+        }
+
+        @Override
+        public E previous() {
+            return _listIterator.previous();
+        }
+
+        @Override
+        public int nextIndex() {
+            return _listIterator.nextIndex();
+        }
+
+        @Override
+        public int previousIndex() {
+            return _listIterator.previousIndex();
+        }
+
+        @Override
+        public void remove() {
+            _listIterator.remove();
+        }
+
+        @Override
+        public void set(final E element) {
+            _listIterator.set(element);
+        }
+
+        @Override
+        public void add(final E element) {
+            _listIterator.add(element);
         }
 
     }
