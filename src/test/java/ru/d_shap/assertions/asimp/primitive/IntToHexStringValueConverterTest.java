@@ -130,7 +130,7 @@ public final class IntToHexStringValueConverterTest extends AssertionTest {
      * {@link IntToHexStringValueConverter} class test.
      */
     @Test(expected = ArrayIndexOutOfBoundsException.class)
-    public void convertWrongArgumentCountFailTest() {
+    public void convertWrongArgumentCount1FailTest() {
         new IntToHexStringValueConverter().convert(0, new Object());
     }
 

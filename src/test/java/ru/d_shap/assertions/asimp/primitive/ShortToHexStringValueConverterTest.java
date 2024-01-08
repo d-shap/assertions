@@ -118,7 +118,7 @@ public final class ShortToHexStringValueConverterTest extends AssertionTest {
      * {@link ShortToHexStringValueConverter} class test.
      */
     @Test(expected = ArrayIndexOutOfBoundsException.class)
-    public void convertWrongArgumentCountFailTest() {
+    public void convertWrongArgumentCount1FailTest() {
         new ShortToHexStringValueConverter().convert((short) 0, new Object());
     }
 

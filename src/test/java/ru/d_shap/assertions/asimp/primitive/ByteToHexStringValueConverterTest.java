@@ -114,7 +114,7 @@ public final class ByteToHexStringValueConverterTest extends AssertionTest {
      * {@link ByteToHexStringValueConverter} class test.
      */
     @Test(expected = ArrayIndexOutOfBoundsException.class)
-    public void convertWrongArgumentCountFailTest() {
+    public void convertWrongArgumentCount1FailTest() {
         new ByteToHexStringValueConverter().convert((byte) 0, new Object());
     }
 

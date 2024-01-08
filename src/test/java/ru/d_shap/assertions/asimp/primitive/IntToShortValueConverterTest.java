@@ -109,7 +109,7 @@ public final class IntToShortValueConverterTest extends AssertionTest {
      * {@link IntToShortValueConverter} class test.
      */
     @Test(expected = ArrayIndexOutOfBoundsException.class)
-    public void convertWrongArgumentCountFailTest() {
+    public void convertWrongArgumentCount1FailTest() {
         new IntToShortValueConverter().convert(0, new Object());
     }
 

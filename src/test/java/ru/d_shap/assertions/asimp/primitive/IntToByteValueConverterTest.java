@@ -109,7 +109,7 @@ public final class IntToByteValueConverterTest extends AssertionTest {
      * {@link IntToByteValueConverter} class test.
      */
     @Test(expected = ArrayIndexOutOfBoundsException.class)
-    public void convertWrongArgumentCountFailTest() {
+    public void convertWrongArgumentCount1FailTest() {
         new IntToByteValueConverter().convert(0, new Object());
     }
 
