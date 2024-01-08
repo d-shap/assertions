@@ -49,6 +49,7 @@ import ru.d_shap.assertions.asimp.java.util.CalendarAssertion;
 import ru.d_shap.assertions.asimp.java.util.DateAssertion;
 import ru.d_shap.assertions.asimp.java.util.IteratorAssertion;
 import ru.d_shap.assertions.asimp.java.util.ListAssertion;
+import ru.d_shap.assertions.asimp.java.util.ListIteratorAssertion;
 import ru.d_shap.assertions.asimp.java.util.LocaleAssertion;
 import ru.d_shap.assertions.asimp.java.util.MapAssertion;
 import ru.d_shap.assertions.asimp.java.util.SetAssertion;
@@ -313,6 +314,17 @@ public final class Raw {
      */
     public static <E> IteratorAssertion<E> iteratorAssertion() {
         return new IteratorAssertion<>();
+    }
+
+    /**
+     * Create uninitialized assertion about the list iterator.
+     *
+     * @param <E> the generic type of the element.
+     *
+     * @return the assertion.
+     */
+    public static <E> ListIteratorAssertion<E> listIteratorAssertion() {
+        return new ListIteratorAssertion<>();
     }
 
     /**
