@@ -120,12 +120,26 @@ public final class DataHelper {
      */
     @SafeVarargs
     public static <E> ListIterator<E> createListIterator(final E... values) {
+        return createListIterator(0, values);
+    }
+
+    /**
+     * Create list iterator object.
+     *
+     * @param index  the index of the first element.
+     * @param values the values.
+     * @param <E>    the generic type of the element.
+     *
+     * @return the created object.
+     */
+    @SafeVarargs
+    public static <E> ListIterator<E> createListIterator(final int index, final E... values) {
         if (values == null) {
             return null;
         } else {
             List<E> list = Arrays.asList(values);
             list = new ArrayList<>(list);
-            return new ListIteratorImpl<>(list);
+            return new ListIteratorImpl<>(list, index);
         }
     }
 
@@ -863,9 +877,9 @@ public final class DataHelper {
 
         private final ListIterator<E> _listIterator;
 
-        ListIteratorImpl(final List<E> list) {
+        ListIteratorImpl(final List<E> list, final int index) {
             super();
-            _listIterator = list.listIterator();
+            _listIterator = list.listIterator(index);
         }
 
         @Override
