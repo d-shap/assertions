@@ -1072,7 +1072,7 @@ public class AssertionTest {
                 _iterable = DataHelper.createIterable("1", "2", "3");
                 _throwable = new AssertionError("error");
                 _iterator = DataHelper.createIterator("1", "2", "3");
-                _listIterator = DataHelper.createListIterator("1", "2", "3");
+                _listIterator = DataHelper.createListIterator(0, "1", "2", "3");
                 _list = DataHelper.createArrayList("1", "2", "3");
                 _set = DataHelper.createHashSet("1", "2", "3");
                 _sortedSet = DataHelper.createTreeSet("1", "2", "3");
