@@ -95,7 +95,7 @@ public final class FloatArrayToListValueConverterTest extends AssertionTest {
      * {@link FloatArrayToListValueConverter} class test.
      */
     @Test(expected = ArrayIndexOutOfBoundsException.class)
-    public void convertWrongArgumentCountFailTest() {
+    public void convertWrongArgumentCount1FailTest() {
         new FloatArrayToListValueConverter().convert(new float[]{}, new Object());
     }
 

@@ -97,7 +97,7 @@ public final class ObjectArrayToClassArrayValueConverterTest extends AssertionTe
      * {@link ObjectArrayToClassArrayValueConverter} class test.
      */
     @Test(expected = ArrayIndexOutOfBoundsException.class)
-    public void convertWrongArgumentCountFailTest() {
+    public void convertWrongArgumentCount1FailTest() {
         new ObjectArrayToClassArrayValueConverter().convert(new Object[]{}, new Object());
     }
 

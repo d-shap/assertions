@@ -95,7 +95,7 @@ public final class ShortArrayToListValueConverterTest extends AssertionTest {
      * {@link ShortArrayToListValueConverter} class test.
      */
     @Test(expected = ArrayIndexOutOfBoundsException.class)
-    public void convertWrongArgumentCountFailTest() {
+    public void convertWrongArgumentCount1FailTest() {
         new ShortArrayToListValueConverter().convert(new short[]{}, new Object());
     }
 

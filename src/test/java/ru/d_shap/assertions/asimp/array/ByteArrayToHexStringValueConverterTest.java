@@ -162,4 +162,20 @@ public final class ByteArrayToHexStringValueConverterTest extends AssertionTest 
         new ByteArrayToHexStringValueConverter().convert(new byte[]{}, new Object(), new Object(), new Object());
     }
 
+    /**
+     * {@link ByteArrayToHexStringValueConverter} class test.
+     */
+    @Test(expected = ClassCastException.class)
+    public void convertWrongArgumentType1FailTest() {
+        new ByteArrayToHexStringValueConverter().convert(new byte[]{}, new Object(), new Object());
+    }
+
+    /**
+     * {@link ByteArrayToHexStringValueConverter} class test.
+     */
+    @Test(expected = ClassCastException.class)
+    public void convertWrongArgumentType2FailTest() {
+        new ByteArrayToHexStringValueConverter().convert(new byte[]{}, 5, new Object());
+    }
+
 }

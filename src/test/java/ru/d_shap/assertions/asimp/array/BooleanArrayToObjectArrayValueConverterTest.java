@@ -93,7 +93,7 @@ public final class BooleanArrayToObjectArrayValueConverterTest extends Assertion
      * {@link BooleanArrayToObjectArrayValueConverter} class test.
      */
     @Test(expected = ArrayIndexOutOfBoundsException.class)
-    public void convertWrongArgumentCountFailTest() {
+    public void convertWrongArgumentCount1FailTest() {
         new BooleanArrayToObjectArrayValueConverter().convert(new boolean[]{}, new Object());
     }
 

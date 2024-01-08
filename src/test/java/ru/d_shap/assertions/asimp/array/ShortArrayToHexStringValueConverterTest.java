@@ -162,4 +162,20 @@ public final class ShortArrayToHexStringValueConverterTest extends AssertionTest
         new ShortArrayToHexStringValueConverter().convert(new short[]{}, new Object(), new Object(), new Object());
     }
 
+    /**
+     * {@link ShortArrayToHexStringValueConverter} class test.
+     */
+    @Test(expected = ClassCastException.class)
+    public void convertWrongArgumentType1FailTest() {
+        new ShortArrayToHexStringValueConverter().convert(new short[]{}, new Object(), new Object());
+    }
+
+    /**
+     * {@link ShortArrayToHexStringValueConverter} class test.
+     */
+    @Test(expected = ClassCastException.class)
+    public void convertWrongArgumentType2FailTest() {
+        new ShortArrayToHexStringValueConverter().convert(new short[]{}, 5, new Object());
+    }
+
 }

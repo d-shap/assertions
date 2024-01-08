@@ -95,7 +95,7 @@ public final class ObjectArrayToListValueConverterTest extends AssertionTest {
      * {@link ObjectArrayToListValueConverter} class test.
      */
     @Test(expected = ArrayIndexOutOfBoundsException.class)
-    public void convertWrongArgumentCountFailTest() {
+    public void convertWrongArgumentCount1FailTest() {
         new ObjectArrayToListValueConverter().convert(new String[]{}, new Object());
     }
 

@@ -95,7 +95,7 @@ public final class ByteArrayToListValueConverterTest extends AssertionTest {
      * {@link ByteArrayToListValueConverter} class test.
      */
     @Test(expected = ArrayIndexOutOfBoundsException.class)
-    public void convertWrongArgumentCountFailTest() {
+    public void convertWrongArgumentCount1FailTest() {
         new ByteArrayToListValueConverter().convert(new byte[]{}, new Object());
     }
 

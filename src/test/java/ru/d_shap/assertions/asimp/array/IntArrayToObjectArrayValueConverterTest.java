@@ -93,7 +93,7 @@ public final class IntArrayToObjectArrayValueConverterTest extends AssertionTest
      * {@link IntArrayToObjectArrayValueConverter} class test.
      */
     @Test(expected = ArrayIndexOutOfBoundsException.class)
-    public void convertWrongArgumentCountFailTest() {
+    public void convertWrongArgumentCount1FailTest() {
         new IntArrayToObjectArrayValueConverter().convert(new int[]{}, new Object());
     }
 

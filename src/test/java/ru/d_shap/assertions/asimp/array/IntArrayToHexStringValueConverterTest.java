@@ -162,4 +162,20 @@ public final class IntArrayToHexStringValueConverterTest extends AssertionTest {
         new IntArrayToHexStringValueConverter().convert(new int[]{}, new Object(), new Object(), new Object());
     }
 
+    /**
+     * {@link IntArrayToHexStringValueConverter} class test.
+     */
+    @Test(expected = ClassCastException.class)
+    public void convertWrongArgumentType1FailTest() {
+        new IntArrayToHexStringValueConverter().convert(new int[]{}, new Object(), new Object());
+    }
+
+    /**
+     * {@link IntArrayToHexStringValueConverter} class test.
+     */
+    @Test(expected = ClassCastException.class)
+    public void convertWrongArgumentType2FailTest() {
+        new IntArrayToHexStringValueConverter().convert(new int[]{}, 5, new Object());
+    }
+
 }

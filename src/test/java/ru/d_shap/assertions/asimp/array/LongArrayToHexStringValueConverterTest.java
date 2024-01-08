@@ -162,4 +162,20 @@ public final class LongArrayToHexStringValueConverterTest extends AssertionTest 
         new LongArrayToHexStringValueConverter().convert(new long[]{}, new Object(), new Object(), new Object());
     }
 
+    /**
+     * {@link LongArrayToHexStringValueConverter} class test.
+     */
+    @Test(expected = ClassCastException.class)
+    public void convertWrongArgumentType1FailTest() {
+        new LongArrayToHexStringValueConverter().convert(new long[]{}, new Object(), new Object());
+    }
+
+    /**
+     * {@link LongArrayToHexStringValueConverter} class test.
+     */
+    @Test(expected = ClassCastException.class)
+    public void convertWrongArgumentType2FailTest() {
+        new LongArrayToHexStringValueConverter().convert(new long[]{}, 5, new Object());
+    }
+
 }

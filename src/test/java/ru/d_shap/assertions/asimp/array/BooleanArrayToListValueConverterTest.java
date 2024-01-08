@@ -95,7 +95,7 @@ public final class BooleanArrayToListValueConverterTest extends AssertionTest {
      * {@link BooleanArrayToListValueConverter} class test.
      */
     @Test(expected = ArrayIndexOutOfBoundsException.class)
-    public void convertWrongArgumentCountFailTest() {
+    public void convertWrongArgumentCount1FailTest() {
         new BooleanArrayToListValueConverter().convert(new boolean[]{}, new Object());
     }
 

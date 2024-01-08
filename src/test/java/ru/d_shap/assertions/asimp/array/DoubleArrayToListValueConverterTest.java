@@ -95,7 +95,7 @@ public final class DoubleArrayToListValueConverterTest extends AssertionTest {
      * {@link DoubleArrayToListValueConverter} class test.
      */
     @Test(expected = ArrayIndexOutOfBoundsException.class)
-    public void convertWrongArgumentCountFailTest() {
+    public void convertWrongArgumentCount1FailTest() {
         new DoubleArrayToListValueConverter().convert(new double[]{}, new Object());
     }
 

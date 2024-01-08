@@ -95,7 +95,7 @@ public final class LongArrayToListValueConverterTest extends AssertionTest {
      * {@link LongArrayToListValueConverter} class test.
      */
     @Test(expected = ArrayIndexOutOfBoundsException.class)
-    public void convertWrongArgumentCountFailTest() {
+    public void convertWrongArgumentCount1FailTest() {
         new LongArrayToListValueConverter().convert(new long[]{}, new Object());
     }
 
