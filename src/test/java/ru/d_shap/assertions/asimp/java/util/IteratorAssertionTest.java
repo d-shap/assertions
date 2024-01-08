@@ -126,7 +126,7 @@ public final class IteratorAssertionTest extends AssertionTest {
         Assertions.assertThat(iterator.next()).isEqualTo("val2");
         Assertions.assertThat(iterator.next()).isEqualTo("val3");
         initialize(Raw.<String>iteratorAssertion(), iterator).doesNotHaveNextValue();
-        initialize(Raw.<String>iteratorAssertion(), iterator).isNotNull().doesNotHaveNextValue().isInstanceOf(Iterator.class);
+        initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator()).isNotNull().doesNotHaveNextValue().isInstanceOf(Iterator.class);
 
         try {
             Raw.<String>iteratorAssertion().doesNotHaveNextValue();
@@ -171,7 +171,7 @@ public final class IteratorAssertionTest extends AssertionTest {
         Assertions.assertThat(iterator.next()).isEqualTo("val2");
         Assertions.assertThat(iterator.next()).isEqualTo("val3");
         initialize(Raw.<String>iteratorAssertion(), iterator).isCompleted();
-        initialize(Raw.<String>iteratorAssertion(), iterator).isNotNull().isCompleted().isInstanceOf(Iterator.class);
+        initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator()).isNotNull().isCompleted().isInstanceOf(Iterator.class);
 
         try {
             Raw.<String>iteratorAssertion().isCompleted();
