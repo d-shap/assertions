@@ -155,7 +155,7 @@ public final class XMLGregorianCalendarToCalendarValueConverterTest extends Asse
      * {@link XMLGregorianCalendarToCalendarValueConverter} class test.
      */
     @Test(expected = ClassCastException.class)
-    public void convertWrongArgumentTypeFailTest() {
+    public void convertWrongArgumentType1FailTest() {
         new XMLGregorianCalendarToCalendarValueConverter().convert(DataHelper.createXmlCalendar(2020, Calendar.JULY, 11, 15, 23, 47), new Object());
     }
 
