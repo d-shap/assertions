@@ -19,9 +19,13 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.asimp.java.util;
 
+import java.util.List;
 import java.util.ListIterator;
 
+import org.hamcrest.Matcher;
+
 import ru.d_shap.assertions.Messages;
+import ru.d_shap.assertions.Raw;
 import ru.d_shap.assertions.asimp.ReferenceAssertion;
 
 /**
@@ -99,6 +103,120 @@ public final class ListIteratorAssertion<E> extends ReferenceAssertion<ListItera
         if (getActual().hasPrevious()) {
             throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.DOES_NOT_HAVE_PREVIOUS_VALUE).build();
         }
+        return this;
+    }
+
+    /**
+     * Make assertion about all next list iterator elements from the current position.
+     *
+     * @return the assertion.
+     */
+    public ListAssertion<E> toNextList() {
+        checkActualIsNotNull();
+        List<E> list = convertValue(getActual(), null, List.class, 0, true);
+        return initializeAssertion(Raw.<E>listAssertion(), list, Messages.Check.ELEMENTS_ALL_NEXT);
+    }
+
+    /**
+     * Make assertion about all next list iterator elements from the current position.
+     *
+     * @param count the number of elements to get from the list iterator.
+     *
+     * @return the assertion.
+     */
+    public ListAssertion<E> toNextList(final int count) {
+        checkActualIsNotNull();
+        checkArgumentIsValid(count > 0, "count", Messages.Fail.Argument.IS_GREATER_THAN_ZERO);
+        List<E> list = convertValue(getActual(), null, List.class, count, true);
+        return initializeAssertion(Raw.<E>listAssertion(), list, Messages.Check.ELEMENTS_COUNT_NEXT, count);
+    }
+
+    /**
+     * Make assertion about all next list iterator elements from the current position.
+     *
+     * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
+     */
+    public ListIteratorAssertion<E> toNextList(final Matcher<? super Iterable<E>> matcher) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(matcher, "matcher");
+        List<E> list = convertValue(getActual(), null, List.class, 0, true);
+        matcherAssertion(list, matcher, Messages.Check.ELEMENTS_ALL_NEXT);
+        return this;
+    }
+
+    /**
+     * Make assertion about all next list iterator elements from the current position.
+     *
+     * @param count   the number of elements to get from the list iterator.
+     * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
+     */
+    public ListIteratorAssertion<E> toNextList(final int count, final Matcher<? super Iterable<E>> matcher) {
+        checkActualIsNotNull();
+        checkArgumentIsValid(count > 0, "count", Messages.Fail.Argument.IS_GREATER_THAN_ZERO);
+        checkArgumentIsNotNull(matcher, "matcher");
+        List<E> list = convertValue(getActual(), null, List.class, count, true);
+        matcherAssertion(list, matcher, Messages.Check.ELEMENTS_COUNT_NEXT, count);
+        return this;
+    }
+
+    /**
+     * Make assertion about all previous list iterator elements from the current position.
+     *
+     * @return the assertion.
+     */
+    public ListAssertion<E> toPreviousList() {
+        checkActualIsNotNull();
+        List<E> list = convertValue(getActual(), null, List.class, 0, false);
+        return initializeAssertion(Raw.<E>listAssertion(), list, Messages.Check.ELEMENTS_ALL_PREVIOUS);
+    }
+
+    /**
+     * Make assertion about all previous list iterator elements from the current position.
+     *
+     * @param count the number of elements to get from the list iterator.
+     *
+     * @return the assertion.
+     */
+    public ListAssertion<E> toPreviousList(final int count) {
+        checkActualIsNotNull();
+        checkArgumentIsValid(count > 0, "count", Messages.Fail.Argument.IS_GREATER_THAN_ZERO);
+        List<E> list = convertValue(getActual(), null, List.class, count, false);
+        return initializeAssertion(Raw.<E>listAssertion(), list, Messages.Check.ELEMENTS_COUNT_PREVIOUS, count);
+    }
+
+    /**
+     * Make assertion about all previous list iterator elements from the current position.
+     *
+     * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
+     */
+    public ListIteratorAssertion<E> toPreviousList(final Matcher<? super Iterable<E>> matcher) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(matcher, "matcher");
+        List<E> list = convertValue(getActual(), null, List.class, 0, false);
+        matcherAssertion(list, matcher, Messages.Check.ELEMENTS_ALL_PREVIOUS);
+        return this;
+    }
+
+    /**
+     * Make assertion about all previous list iterator elements from the current position.
+     *
+     * @param count   the number of elements to get from the list iterator.
+     * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
+     */
+    public ListIteratorAssertion<E> toPreviousList(final int count, final Matcher<? super Iterable<E>> matcher) {
+        checkActualIsNotNull();
+        checkArgumentIsValid(count > 0, "count", Messages.Fail.Argument.IS_GREATER_THAN_ZERO);
+        checkArgumentIsNotNull(matcher, "matcher");
+        List<E> list = convertValue(getActual(), null, List.class, count, false);
+        matcherAssertion(list, matcher, Messages.Check.ELEMENTS_COUNT_PREVIOUS, count);
         return this;
     }
 
