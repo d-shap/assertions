@@ -312,7 +312,7 @@ public final class IteratorAssertionTest extends AssertionTest {
      * {@link IteratorAssertion} class test.
      */
     @Test
-    public void toListSizeTest() {
+    public void toListCountTest() {
         initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3", "val4")).toList(5).containsExactlyInOrder("val1", "val2", "val3", "val4");
         initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3", "val4")).toList(4).containsExactlyInOrder("val1", "val2", "val3", "val4");
         initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3", "val4")).toList(3).containsExactlyInOrder("val1", "val2", "val3");
@@ -468,7 +468,7 @@ public final class IteratorAssertionTest extends AssertionTest {
      * {@link IteratorAssertion} class test.
      */
     @Test
-    public void toListSizeMatcherTest() {
+    public void toListCountMatcherTest() {
         initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3", "val4")).toList(5, Matchers.hasItems("val1", "val2", "val3", "val4"));
         initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3", "val4")).toList(4, Matchers.hasItems("val1", "val2", "val3", "val4"));
         initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3", "val4")).toList(3, Matchers.hasItems("val1", "val2", "val3"));
