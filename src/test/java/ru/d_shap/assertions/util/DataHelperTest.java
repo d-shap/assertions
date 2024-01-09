@@ -25,6 +25,7 @@ import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.LinkedList;
+import java.util.ListIterator;
 import java.util.NoSuchElementException;
 import java.util.TimeZone;
 import java.util.TreeMap;
@@ -116,6 +117,103 @@ public final class DataHelperTest extends AssertionTest {
         } catch (IllegalStateException ex) {
             Assertions.assertThat(ex).isNotNull();
         }
+    }
+
+    /**
+     * {@link DataHelper} class test.
+     */
+    @Test
+    public void createListIteratorTest() {
+        Assertions.assertThat(DataHelper.createListIterator(0, (String[]) null)).isNullOrEmpty();
+        Assertions.assertThat(DataHelper.createListIterator(1, (String[]) null)).isNullOrEmpty();
+        Assertions.assertThat(DataHelper.createListIterator(0, (String) null)).containsExactlyInOrder((String) null);
+        Assertions.assertThat(DataHelper.createListIterator(1, (String) null)).isNullOrEmpty();
+        Assertions.assertThat(DataHelper.createListIterator(0, "a", "b", "c")).containsExactlyInOrder("a", "b", "c");
+        Assertions.assertThat(DataHelper.createListIterator(1, "a", "b", "c")).containsExactlyInOrder("b", "c");
+        Assertions.assertThat(DataHelper.createListIterator(2, "a", "b", "c")).containsExactlyInOrder("c");
+        Assertions.assertThat(DataHelper.createListIterator(3, "a", "b", "c")).containsExactlyInOrder();
+        Assertions.assertThat(DataHelper.createListIterator(0, 1, 2, 3)).containsExactlyInOrder(1, 2, 3);
+        Assertions.assertThat(DataHelper.createListIterator(1, 1, 2, 3)).containsExactlyInOrder(2, 3);
+        Assertions.assertThat(DataHelper.createListIterator(2, 1, 2, 3)).containsExactlyInOrder(3);
+        Assertions.assertThat(DataHelper.createListIterator(3, 1, 2, 3)).containsExactlyInOrder();
+        Assertions.assertThat(DataHelper.createListIterator(0, 1, 2, 3, 2, 1)).containsExactlyInOrder(1, 2, 3, 2, 1);
+        Assertions.assertThat(DataHelper.createListIterator(1, 1, 2, 3, 2, 1)).containsExactlyInOrder(2, 3, 2, 1);
+        Assertions.assertThat(DataHelper.createListIterator(2, 1, 2, 3, 2, 1)).containsExactlyInOrder(3, 2, 1);
+        Assertions.assertThat(DataHelper.createListIterator(3, 1, 2, 3, 2, 1)).containsExactlyInOrder(2, 1);
+        Assertions.assertThat(DataHelper.createListIterator(4, 1, 2, 3, 2, 1)).containsExactlyInOrder(1);
+        Assertions.assertThat(DataHelper.createListIterator(5, 1, 2, 3, 2, 1)).containsExactlyInOrder();
+
+        ListIterator<Integer> listIterator1 = DataHelper.createListIterator(0, 1, 2, 3);
+        Assertions.assertThat(listIterator1.hasNext()).isTrue();
+        Assertions.assertThat(listIterator1.nextIndex()).isEqualTo(0);
+        Assertions.assertThat(listIterator1.next()).isEqualTo(1);
+        Assertions.assertThat(listIterator1.nextIndex()).isEqualTo(1);
+        listIterator1.remove();
+        Assertions.assertThat(listIterator1.hasNext()).isTrue();
+        Assertions.assertThat(listIterator1.nextIndex()).isEqualTo(0);
+        Assertions.assertThat(listIterator1.next()).isEqualTo(2);
+        Assertions.assertThat(listIterator1.nextIndex()).isEqualTo(1);
+        listIterator1.remove();
+        Assertions.assertThat(listIterator1.hasNext()).isTrue();
+        Assertions.assertThat(listIterator1.nextIndex()).isEqualTo(0);
+        Assertions.assertThat(listIterator1.next()).isEqualTo(3);
+        Assertions.assertThat(listIterator1.nextIndex()).isEqualTo(1);
+        listIterator1.remove();
+        Assertions.assertThat(listIterator1.hasNext()).isFalse();
+        Assertions.assertThat(listIterator1.nextIndex()).isEqualTo(0);
+        try {
+            listIterator1.next();
+            Assertions.fail(DataHelper.class);
+        } catch (NoSuchElementException ex) {
+            Assertions.assertThat(ex).isNotNull();
+        }
+        try {
+            listIterator1.remove();
+            Assertions.fail(DataHelper.class);
+        } catch (IllegalStateException ex) {
+            Assertions.assertThat(ex).isNotNull();
+        }
+
+        ListIterator<Integer> listIterator2 = DataHelper.createListIterator(3, 1, 2, 3);
+        Assertions.assertThat(listIterator2.hasPrevious()).isTrue();
+        Assertions.assertThat(listIterator2.previousIndex()).isEqualTo(2);
+        Assertions.assertThat(listIterator2.previous()).isEqualTo(3);
+        Assertions.assertThat(listIterator2.previousIndex()).isEqualTo(1);
+        listIterator2.remove();
+        Assertions.assertThat(listIterator2.hasPrevious()).isTrue();
+        Assertions.assertThat(listIterator2.previousIndex()).isEqualTo(1);
+        Assertions.assertThat(listIterator2.previous()).isEqualTo(2);
+        Assertions.assertThat(listIterator2.previousIndex()).isEqualTo(0);
+        listIterator2.remove();
+        Assertions.assertThat(listIterator2.hasPrevious()).isTrue();
+        Assertions.assertThat(listIterator2.previousIndex()).isEqualTo(0);
+        Assertions.assertThat(listIterator2.previous()).isEqualTo(1);
+        Assertions.assertThat(listIterator2.previousIndex()).isEqualTo(-1);
+        listIterator2.remove();
+        Assertions.assertThat(listIterator2.hasPrevious()).isFalse();
+        Assertions.assertThat(listIterator2.previousIndex()).isEqualTo(-1);
+        try {
+            listIterator2.previous();
+            Assertions.fail(DataHelper.class);
+        } catch (NoSuchElementException ex) {
+            Assertions.assertThat(ex).isNotNull();
+        }
+        try {
+            listIterator2.remove();
+            Assertions.fail(DataHelper.class);
+        } catch (IllegalStateException ex) {
+            Assertions.assertThat(ex).isNotNull();
+        }
+
+        ListIterator<Integer> listIterator3 = DataHelper.createListIterator(2, 1, 2, 3);
+        listIterator3.next();
+        listIterator3.set(8);
+        listIterator3.previous();
+        listIterator3.previous();
+        listIterator3.add(9);
+        listIterator3.previous();
+        listIterator3.previous();
+        Assertions.assertThat(listIterator3).containsExactlyInOrder(1, 9, 2, 8);
     }
 
     /**
