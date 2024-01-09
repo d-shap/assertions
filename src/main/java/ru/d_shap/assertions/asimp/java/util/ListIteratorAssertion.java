@@ -261,7 +261,7 @@ public final class ListIteratorAssertion<E> extends ReferenceAssertion<ListItera
      * @return current object for the chain call.
      */
     public ListIteratorAssertion<E> isNextElementEqualTo(final E expected) {
-        isNextElementsEqualTo(expected);
+        areNextElementsEqualTo(expected);
         return this;
     }
 
@@ -273,7 +273,7 @@ public final class ListIteratorAssertion<E> extends ReferenceAssertion<ListItera
      * @return current object for the chain call.
      */
     @SafeVarargs
-    public final ListIteratorAssertion<E> isNextElementsEqualTo(final E... expected) {
+    public final ListIteratorAssertion<E> areNextElementsEqualTo(final E... expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         checkArgumentIsNotEmpty(expected.length == 0, "expected", true);
@@ -288,7 +288,7 @@ public final class ListIteratorAssertion<E> extends ReferenceAssertion<ListItera
      *
      * @return current object for the chain call.
      */
-    public ListIteratorAssertion<E> isNextElementsEqualTo(final Iterable<E> expected) {
+    public ListIteratorAssertion<E> areNextElementsEqualTo(final Iterable<E> expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         List<E> expectedList = convertValue(expected, null, List.class);
@@ -305,7 +305,7 @@ public final class ListIteratorAssertion<E> extends ReferenceAssertion<ListItera
      * @return current object for the chain call.
      */
     public ListIteratorAssertion<E> isPreviousElementEqualTo(final E expected) {
-        isPreviousElementsEqualTo(expected);
+        arePreviousElementsEqualTo(expected);
         return this;
     }
 
@@ -317,7 +317,7 @@ public final class ListIteratorAssertion<E> extends ReferenceAssertion<ListItera
      * @return current object for the chain call.
      */
     @SafeVarargs
-    public final ListIteratorAssertion<E> isPreviousElementsEqualTo(final E... expected) {
+    public final ListIteratorAssertion<E> arePreviousElementsEqualTo(final E... expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         checkArgumentIsNotEmpty(expected.length == 0, "expected", true);
@@ -332,7 +332,7 @@ public final class ListIteratorAssertion<E> extends ReferenceAssertion<ListItera
      *
      * @return current object for the chain call.
      */
-    public ListIteratorAssertion<E> isPreviousElementsEqualTo(final Iterable<E> expected) {
+    public ListIteratorAssertion<E> arePreviousElementsEqualTo(final Iterable<E> expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         List<E> expectedList = convertValue(expected, null, List.class);
@@ -349,7 +349,7 @@ public final class ListIteratorAssertion<E> extends ReferenceAssertion<ListItera
      * @return current object for the chain call.
      */
     @SafeVarargs
-    public final ListIteratorAssertion<E> isAllElementsEqualTo(final E... expected) {
+    public final ListIteratorAssertion<E> areAllElementsEqualTo(final E... expected) {
         containsExactlyInOrder(expected);
         return this;
     }
@@ -361,7 +361,7 @@ public final class ListIteratorAssertion<E> extends ReferenceAssertion<ListItera
      *
      * @return current object for the chain call.
      */
-    public ListIteratorAssertion<E> isAllElementsEqualTo(final Iterable<E> expected) {
+    public ListIteratorAssertion<E> areAllElementsEqualTo(final Iterable<E> expected) {
         containsExactlyInOrder(expected);
         return this;
     }

@@ -265,7 +265,7 @@ public final class BufferedReaderAssertion extends ReferenceAssertion<BufferedRe
      * @return current object for the chain call.
      */
     public BufferedReaderAssertion isNextLineEqualTo(final String expected) {
-        isNextLinesEqualTo(expected);
+        areNextLinesEqualTo(expected);
         return this;
     }
 
@@ -276,7 +276,7 @@ public final class BufferedReaderAssertion extends ReferenceAssertion<BufferedRe
      *
      * @return current object for the chain call.
      */
-    public BufferedReaderAssertion isNextLinesEqualTo(final String... expected) {
+    public BufferedReaderAssertion areNextLinesEqualTo(final String... expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         checkArgumentIsNotEmpty(expected.length == 0, "expected", true);
@@ -291,7 +291,7 @@ public final class BufferedReaderAssertion extends ReferenceAssertion<BufferedRe
      *
      * @return current object for the chain call.
      */
-    public BufferedReaderAssertion isNextLinesEqualTo(final Iterable<String> expected) {
+    public BufferedReaderAssertion areNextLinesEqualTo(final Iterable<String> expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         List<String> expectedList = convertValue(expected, null, List.class);
@@ -307,7 +307,7 @@ public final class BufferedReaderAssertion extends ReferenceAssertion<BufferedRe
      *
      * @return current object for the chain call.
      */
-    public BufferedReaderAssertion isAllLinesEqualTo(final String... expected) {
+    public BufferedReaderAssertion areAllLinesEqualTo(final String... expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         toStringArray().containsExactlyInOrder(expected);
@@ -321,7 +321,7 @@ public final class BufferedReaderAssertion extends ReferenceAssertion<BufferedRe
      *
      * @return current object for the chain call.
      */
-    public BufferedReaderAssertion isAllLinesEqualTo(final Iterable<String> expected) {
+    public BufferedReaderAssertion areAllLinesEqualTo(final Iterable<String> expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         List<String> expectedList = convertValue(expected, null, List.class);

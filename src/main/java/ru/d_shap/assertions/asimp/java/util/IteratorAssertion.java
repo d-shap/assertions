@@ -204,7 +204,7 @@ public final class IteratorAssertion<E> extends ReferenceAssertion<IteratorAsser
      * @return current object for the chain call.
      */
     public IteratorAssertion<E> isNextElementEqualTo(final E expected) {
-        isNextElementsEqualTo(expected);
+        areNextElementsEqualTo(expected);
         return this;
     }
 
@@ -216,7 +216,7 @@ public final class IteratorAssertion<E> extends ReferenceAssertion<IteratorAsser
      * @return current object for the chain call.
      */
     @SafeVarargs
-    public final IteratorAssertion<E> isNextElementsEqualTo(final E... expected) {
+    public final IteratorAssertion<E> areNextElementsEqualTo(final E... expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         checkArgumentIsNotEmpty(expected.length == 0, "expected", true);
@@ -231,7 +231,7 @@ public final class IteratorAssertion<E> extends ReferenceAssertion<IteratorAsser
      *
      * @return current object for the chain call.
      */
-    public IteratorAssertion<E> isNextElementsEqualTo(final Iterable<E> expected) {
+    public IteratorAssertion<E> areNextElementsEqualTo(final Iterable<E> expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         List<E> expectedList = convertValue(expected, null, List.class);
@@ -248,7 +248,7 @@ public final class IteratorAssertion<E> extends ReferenceAssertion<IteratorAsser
      * @return current object for the chain call.
      */
     @SafeVarargs
-    public final IteratorAssertion<E> isAllElementsEqualTo(final E... expected) {
+    public final IteratorAssertion<E> areAllElementsEqualTo(final E... expected) {
         containsExactlyInOrder(expected);
         return this;
     }
@@ -260,7 +260,7 @@ public final class IteratorAssertion<E> extends ReferenceAssertion<IteratorAsser
      *
      * @return current object for the chain call.
      */
-    public IteratorAssertion<E> isAllElementsEqualTo(final Iterable<E> expected) {
+    public IteratorAssertion<E> areAllElementsEqualTo(final Iterable<E> expected) {
         containsExactlyInOrder(expected);
         return this;
     }
