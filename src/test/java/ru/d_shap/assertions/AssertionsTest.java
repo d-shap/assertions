@@ -36,6 +36,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
@@ -800,6 +801,27 @@ public final class AssertionsTest extends AssertionTest {
             Assertions.fail(Assertions.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check all actual value's elements.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2, 3, 4]> but was:<[1, 2, 3]>");
+        }
+    }
+
+    /**
+     * {@link Assertions} class test.
+     */
+    @Test
+    public void listIteratorAssertionTest() {
+        Assertions.assertThat((ListIterator<String>) null).isNull();
+        Assertions.assertThat(DataHelper.createListIterator(1, "1", "2", "3")).containsExactlyInOrder("2", "3");
+        Assertions.assertThat(null, Raw.<String>listIteratorAssertion()).isNull();
+        Assertions.assertThat(DataHelper.createListIterator(1, "1", "2", "3"), Raw.<String>listIteratorAssertion()).containsExactlyInOrder("2", "3");
+        Assertions.assertThat(createNullFieldClass(), "_field", Raw.<String>listIteratorAssertion()).isNull();
+        Assertions.assertThat(createPrivateFieldsClass(), "_listIterator").isNotNull();
+        Assertions.assertThat(createPrivateFieldsClass(), "_listIterator", Raw.<String>listIteratorAssertion()).containsExactlyInOrder("2", "3");
+
+        try {
+            Assertions.assertThat(DataHelper.createListIterator(1, "1", "2", "3")).containsExactlyInOrder("1", "2", "3");
+            Assertions.fail(Assertions.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check all next actual value's elements.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2, 3]> but was:<[2, 3]>");
         }
     }
 
