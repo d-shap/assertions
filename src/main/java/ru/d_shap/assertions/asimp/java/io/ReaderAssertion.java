@@ -108,7 +108,7 @@ public final class ReaderAssertion extends ReferenceAssertion<ReaderAssertion, R
         checkActualIsNotNull();
         checkArgumentIsValid(count > 0, "count", Messages.Fail.Argument.IS_GREATER_THAN_ZERO);
         char[] nextChars = convertValue(getActual(), null, char[].class, count);
-        return initializeAssertion(Raw.charArrayAssertion(), nextChars, Messages.Check.CHARS_COUNT, count);
+        return initializeAssertion(Raw.charArrayAssertion(), nextChars, Messages.Check.CHARS_COUNT_NEXT, count);
     }
 
     /**
@@ -141,7 +141,7 @@ public final class ReaderAssertion extends ReferenceAssertion<ReaderAssertion, R
         checkArgumentIsNotNull(matcher, "matcher");
         char[] nextChars = convertValue(getActual(), null, char[].class, count);
         Character[] nextObjects = convertValue(nextChars, null, Character[].class);
-        matcherAssertion(nextObjects, matcher, Messages.Check.CHARS_COUNT, count);
+        matcherAssertion(nextObjects, matcher, Messages.Check.CHARS_COUNT_NEXT, count);
         return this;
     }
 

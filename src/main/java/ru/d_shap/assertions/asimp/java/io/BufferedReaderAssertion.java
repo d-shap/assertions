@@ -138,7 +138,7 @@ public final class BufferedReaderAssertion extends ReferenceAssertion<BufferedRe
         checkActualIsNotNull();
         checkArgumentIsValid(count > 0, "count", Messages.Fail.Argument.IS_GREATER_THAN_ZERO);
         String[] nextStrings = convertValue(getActual(), null, String[].class, count);
-        return initializeAssertion(Raw.<String>objectArrayAssertion(), nextStrings, Messages.Check.LINES_COUNT, count);
+        return initializeAssertion(Raw.<String>objectArrayAssertion(), nextStrings, Messages.Check.LINES_COUNT_NEXT, count);
     }
 
     /**
@@ -169,7 +169,7 @@ public final class BufferedReaderAssertion extends ReferenceAssertion<BufferedRe
         checkArgumentIsValid(count > 0, "count", Messages.Fail.Argument.IS_GREATER_THAN_ZERO);
         checkArgumentIsNotNull(matcher, "matcher");
         String[] nextStrings = convertValue(getActual(), null, String[].class, count);
-        matcherAssertion(nextStrings, matcher, Messages.Check.LINES_COUNT, count);
+        matcherAssertion(nextStrings, matcher, Messages.Check.LINES_COUNT_NEXT, count);
         return this;
     }
 
