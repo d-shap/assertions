@@ -1020,15 +1020,15 @@ public final class AssertionsTest extends AssertionTest {
     @Test
     public void inputStreamAssertionTest() {
         Assertions.assertThat((InputStream) null).isNull();
-        Assertions.assertThat(new ByteArrayInputStream(new byte[]{1, 2, 3})).isNextBytesEqualTo(1, 2);
+        Assertions.assertThat(new ByteArrayInputStream(new byte[]{1, 2, 3})).areNextBytesEqualTo(1, 2);
         Assertions.assertThat(null, Raw.inputStreamAssertion()).isNull();
-        Assertions.assertThat(new ByteArrayInputStream(new byte[]{1, 2, 3}), Raw.inputStreamAssertion()).isNextBytesEqualTo(1, 2);
+        Assertions.assertThat(new ByteArrayInputStream(new byte[]{1, 2, 3}), Raw.inputStreamAssertion()).areNextBytesEqualTo(1, 2);
         Assertions.assertThat(createNullFieldClass(), "_field", Raw.inputStreamAssertion()).isNull();
         Assertions.assertThat(createPrivateFieldsClass(), "_inputStream").isNotNull();
-        Assertions.assertThat(createPrivateFieldsClass(), "_inputStream", Raw.inputStreamAssertion()).isNextBytesEqualTo(1, 2);
+        Assertions.assertThat(createPrivateFieldsClass(), "_inputStream", Raw.inputStreamAssertion()).areNextBytesEqualTo(1, 2);
 
         try {
-            Assertions.assertThat(new ByteArrayInputStream(new byte[]{1, 2, 3})).isNextBytesEqualTo(2, 3);
+            Assertions.assertThat(new ByteArrayInputStream(new byte[]{1, 2, 3})).areNextBytesEqualTo(2, 3);
             Assertions.fail(Assertions.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check next N actual value's bytes: 2.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2b, 3b]> but was:<[1b, 2b]>");
@@ -1041,15 +1041,15 @@ public final class AssertionsTest extends AssertionTest {
     @Test
     public void readerAssertionTest() {
         Assertions.assertThat((Reader) null).isNull();
-        Assertions.assertThat(new StringReader("123")).isNextCharsEqualTo('1', '2');
+        Assertions.assertThat(new StringReader("123")).areNextCharsEqualTo('1', '2');
         Assertions.assertThat(null, Raw.readerAssertion()).isNull();
-        Assertions.assertThat(new StringReader("123"), Raw.readerAssertion()).isNextCharsEqualTo('1', '2');
+        Assertions.assertThat(new StringReader("123"), Raw.readerAssertion()).areNextCharsEqualTo('1', '2');
         Assertions.assertThat(createNullFieldClass(), "_field", Raw.readerAssertion()).isNull();
         Assertions.assertThat(createPrivateFieldsClass(), "_reader").isNotNull();
-        Assertions.assertThat(createPrivateFieldsClass(), "_reader", Raw.readerAssertion()).isNextCharsEqualTo('1', '2');
+        Assertions.assertThat(createPrivateFieldsClass(), "_reader", Raw.readerAssertion()).areNextCharsEqualTo('1', '2');
 
         try {
-            Assertions.assertThat(new StringReader("123")).isNextCharsEqualTo('2', '3');
+            Assertions.assertThat(new StringReader("123")).areNextCharsEqualTo('2', '3');
             Assertions.fail(Assertions.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check next N actual value's chars: 2.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2(50), 3(51)]> but was:<[1(49), 2(50)]>");
@@ -1062,15 +1062,15 @@ public final class AssertionsTest extends AssertionTest {
     @Test
     public void bufferedReaderAssertionTest() {
         Assertions.assertThat((BufferedReader) null).isNull();
-        Assertions.assertThat(new BufferedReader(new StringReader("1\n2\n3"))).isNextLinesEqualTo("1", "2");
+        Assertions.assertThat(new BufferedReader(new StringReader("1\n2\n3"))).areNextLinesEqualTo("1", "2");
         Assertions.assertThat(null, Raw.bufferedReaderAssertion()).isNull();
-        Assertions.assertThat(new BufferedReader(new StringReader("1\n2\n3")), Raw.bufferedReaderAssertion()).isNextLinesEqualTo("1", "2");
+        Assertions.assertThat(new BufferedReader(new StringReader("1\n2\n3")), Raw.bufferedReaderAssertion()).areNextLinesEqualTo("1", "2");
         Assertions.assertThat(createNullFieldClass(), "_field", Raw.bufferedReaderAssertion()).isNull();
         Assertions.assertThat(createPrivateFieldsClass(), "_bufferedReader").isNotNull();
-        Assertions.assertThat(createPrivateFieldsClass(), "_bufferedReader", Raw.bufferedReaderAssertion()).isNextLinesEqualTo("1", "2");
+        Assertions.assertThat(createPrivateFieldsClass(), "_bufferedReader", Raw.bufferedReaderAssertion()).areNextLinesEqualTo("1", "2");
 
         try {
-            Assertions.assertThat(new BufferedReader(new StringReader("1\n2\n3"))).isNextLinesEqualTo("2", "3");
+            Assertions.assertThat(new BufferedReader(new StringReader("1\n2\n3"))).areNextLinesEqualTo("2", "3");
             Assertions.fail(Assertions.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check next N actual value's lines: 2.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[2, 3]> but was:<[1, 2]>");
