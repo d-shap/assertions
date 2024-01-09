@@ -19,7 +19,6 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.asimp.java.util;
 
-import java.util.Iterator;
 import java.util.ListIterator;
 
 import org.hamcrest.Matchers;
@@ -86,7 +85,7 @@ public final class ListIteratorAssertionTest extends AssertionTest {
         initialize(Raw.<String>listIteratorAssertion(), listIterator2).hasNextValue();
         initialize(Raw.<String>listIteratorAssertion(), listIterator2).hasNextValue();
         Assertions.assertThat(listIterator2.next()).isEqualTo("val3");
-        initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(0, "val1", "val2", "val3")).isNotNull().hasNextValue().isInstanceOf(Iterator.class);
+        initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(0, "val1", "val2", "val3")).isNotNull().hasNextValue().isInstanceOf(ListIterator.class);
 
         try {
             Raw.<String>listIteratorAssertion().hasNextValue();
@@ -147,7 +146,7 @@ public final class ListIteratorAssertionTest extends AssertionTest {
         ListIterator<String> listIterator2 = DataHelper.createListIterator(2, "val1", "val2", "val3");
         Assertions.assertThat(listIterator2.next()).isEqualTo("val3");
         initialize(Raw.<String>listIteratorAssertion(), listIterator2).doesNotHaveNextValue();
-        initialize(Raw.<String>listIteratorAssertion(), DataHelper.<String>createListIterator(0)).isNotNull().doesNotHaveNextValue().isInstanceOf(Iterator.class);
+        initialize(Raw.<String>listIteratorAssertion(), DataHelper.<String>createListIterator(0)).isNotNull().doesNotHaveNextValue().isInstanceOf(ListIterator.class);
 
         try {
             Raw.<String>listIteratorAssertion().doesNotHaveNextValue();
@@ -214,7 +213,7 @@ public final class ListIteratorAssertionTest extends AssertionTest {
         initialize(Raw.<String>listIteratorAssertion(), listIterator2).hasPreviousValue();
         initialize(Raw.<String>listIteratorAssertion(), listIterator2).hasPreviousValue();
         Assertions.assertThat(listIterator2.previous()).isEqualTo("val1");
-        initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(3, "val1", "val2", "val3")).isNotNull().hasPreviousValue().isInstanceOf(Iterator.class);
+        initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(3, "val1", "val2", "val3")).isNotNull().hasPreviousValue().isInstanceOf(ListIterator.class);
 
         try {
             Raw.<String>listIteratorAssertion().hasPreviousValue();
@@ -275,7 +274,7 @@ public final class ListIteratorAssertionTest extends AssertionTest {
         ListIterator<String> listIterator2 = DataHelper.createListIterator(1, "val1", "val2", "val3");
         Assertions.assertThat(listIterator2.previous()).isEqualTo("val1");
         initialize(Raw.<String>listIteratorAssertion(), listIterator2).doesNotHavePreviousValue();
-        initialize(Raw.<String>listIteratorAssertion(), DataHelper.<String>createListIterator(0)).isNotNull().doesNotHavePreviousValue().isInstanceOf(Iterator.class);
+        initialize(Raw.<String>listIteratorAssertion(), DataHelper.<String>createListIterator(0)).isNotNull().doesNotHavePreviousValue().isInstanceOf(ListIterator.class);
 
         try {
             Raw.<String>listIteratorAssertion().doesNotHavePreviousValue();
@@ -325,7 +324,7 @@ public final class ListIteratorAssertionTest extends AssertionTest {
      * {@link ListIteratorAssertion} class test.
      */
     @Test
-    public void toListTest() {
+    public void toNextListTest() {
         initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(0, "val1", "val2", "val3", "val4")).toNextList().containsExactlyInOrder("val1", "val2", "val3", "val4");
         initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(1, "val1", "val2", "val3", "val4")).toNextList().containsExactlyInOrder("val2", "val3", "val4");
         initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(2, "val1", "val2", "val3", "val4")).toNextList().containsExactlyInOrder("val3", "val4");
@@ -393,7 +392,7 @@ public final class ListIteratorAssertionTest extends AssertionTest {
      * {@link ListIteratorAssertion} class test.
      */
     @Test
-    public void toListCountTest() {
+    public void toNextListCountTest() {
         initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(0, "val1", "val2", "val3", "val4")).toNextList(5).containsExactlyInOrder("val1", "val2", "val3", "val4");
         initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(0, "val1", "val2", "val3", "val4")).toNextList(4).containsExactlyInOrder("val1", "val2", "val3", "val4");
         initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(1, "val1", "val2", "val3", "val4")).toNextList(4).containsExactlyInOrder("val2", "val3", "val4");
@@ -504,13 +503,13 @@ public final class ListIteratorAssertionTest extends AssertionTest {
      * {@link ListIteratorAssertion} class test.
      */
     @Test
-    public void toListMatcherTest() {
+    public void toNextListMatcherTest() {
         initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(0, "val1", "val2", "val3", "val4")).toNextList(Matchers.hasItems("val1", "val2", "val3", "val4"));
         initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(1, "val1", "val2", "val3", "val4")).toNextList(Matchers.hasItems("val2", "val3", "val4"));
         initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(2, "val1", "val2", "val3", "val4")).toNextList(Matchers.hasItems("val3", "val4"));
         initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(3, "val1", "val2", "val3", "val4")).toNextList(Matchers.hasItems("val4"));
         initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(4, "val1", "val2", "val3", "val4")).toNextList(Matchers.<String>hasItems());
-        initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(0, "val1", "val2", "val3", "val4")).isNotNull().toNextList(Matchers.hasItems("val1", "val2", "val3", "val4")).isInstanceOf(Iterator.class);
+        initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(0, "val1", "val2", "val3", "val4")).isNotNull().toNextList(Matchers.hasItems("val1", "val2", "val3", "val4")).isInstanceOf(ListIterator.class);
 
         try {
             Raw.<String>listIteratorAssertion().toNextList(Matchers.hasItems(""));
@@ -584,7 +583,7 @@ public final class ListIteratorAssertionTest extends AssertionTest {
      * {@link ListIteratorAssertion} class test.
      */
     @Test
-    public void toListCountMatcherTest() {
+    public void toNextListCountMatcherTest() {
         initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(0, "val1", "val2", "val3", "val4")).toNextList(5, Matchers.hasItems("val1", "val2", "val3", "val4"));
         initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(0, "val1", "val2", "val3", "val4")).toNextList(4, Matchers.hasItems("val1", "val2", "val3", "val4"));
         initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(1, "val1", "val2", "val3", "val4")).toNextList(4, Matchers.hasItems("val2", "val3", "val4"));
@@ -597,7 +596,7 @@ public final class ListIteratorAssertionTest extends AssertionTest {
         initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(2, "val1", "val2", "val3", "val4")).toNextList(2, Matchers.hasItems("val3", "val4"));
         initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(3, "val1", "val2", "val3", "val4")).toNextList(2, Matchers.hasItems("val4"));
         initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(0, "val1", "val2", "val3", "val4")).toNextList(1, Matchers.hasItems("val1"));
-        initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(0, "val1", "val2", "val3", "val4")).isNotNull().toNextList(5, Matchers.hasItems("val1", "val2", "val3", "val4")).isInstanceOf(Iterator.class);
+        initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(0, "val1", "val2", "val3", "val4")).isNotNull().toNextList(5, Matchers.hasItems("val1", "val2", "val3", "val4")).isInstanceOf(ListIterator.class);
 
         try {
             Raw.<String>listIteratorAssertion().toNextList(1, Matchers.hasItems(""));
@@ -700,6 +699,388 @@ public final class ListIteratorAssertionTest extends AssertionTest {
             Assertions.fail(ListIteratorAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck next N actual value's elements: 5.\nExpected: (a collection containing \"val1\" and a collection containing \"val5\")\n     but: a collection containing \"val1\" mismatches were: [was \"val4\"]");
+        }
+    }
+
+    /**
+     * {@link ListIteratorAssertion} class test.
+     */
+    @Test
+    public void toPreviousListTest() {
+        initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(4, "val1", "val2", "val3", "val4")).toPreviousList().containsExactlyInOrder("val4", "val3", "val2", "val1");
+        initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(3, "val1", "val2", "val3", "val4")).toPreviousList().containsExactlyInOrder("val3", "val2", "val1");
+        initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(2, "val1", "val2", "val3", "val4")).toPreviousList().containsExactlyInOrder("val2", "val1");
+        initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(1, "val1", "val2", "val3", "val4")).toPreviousList().containsExactlyInOrder("val1");
+        initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(0, "val1", "val2", "val3", "val4")).toPreviousList().containsExactlyInOrder();
+        initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(4, "val1", "val2", "val3", "val4")).isNotNull().toPreviousList().containsExactlyInOrder("val4", "val3", "val2", "val1");
+
+        try {
+            Raw.<String>listIteratorAssertion().toPreviousList();
+            Assertions.fail(ListIteratorAssertion.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.<String>listIteratorAssertion(), null).toPreviousList();
+            Assertions.fail(ListIteratorAssertion.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.<String>listIteratorAssertion(), null, "Message").toPreviousList();
+            Assertions.fail(ListIteratorAssertion.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            clearActual(initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(4, "val1", "val2", "val3", "val4")).toPreviousList()).containsExactlyInOrder("val");
+            Assertions.fail(ListIteratorAssertion.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check all previous actual value's elements.\n\tActual value should not be null.");
+        }
+        try {
+            clearActual(initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(4, "val1", "val2", "val3", "val4"), "Message").toPreviousList()).containsExactlyInOrder("val");
+            Assertions.fail(ListIteratorAssertion.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck all previous actual value's elements.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(4, "val1", "val2", "val3", "val4")).toPreviousList().containsExactlyInOrder("val1", "val4");
+            Assertions.fail(ListIteratorAssertion.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check all previous actual value's elements.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[val1, val4]> but was:<[val4, val3, val2, val1]>");
+        }
+        try {
+            initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(4, "val1", "val2", "val3", "val4"), "Message").toPreviousList().containsExactlyInOrder("val1", "val4");
+            Assertions.fail(ListIteratorAssertion.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck all previous actual value's elements.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[val1, val4]> but was:<[val4, val3, val2, val1]>");
+        }
+        try {
+            initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(1, "val1", "val2", "val3", "val4")).toPreviousList().containsExactlyInOrder("val1", "val4");
+            Assertions.fail(ListIteratorAssertion.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check all previous actual value's elements.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[val1, val4]> but was:<[val1]>");
+        }
+        try {
+            initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(1, "val1", "val2", "val3", "val4"), "Message").toPreviousList().containsExactlyInOrder("val1", "val4");
+            Assertions.fail(ListIteratorAssertion.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck all previous actual value's elements.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[val1, val4]> but was:<[val1]>");
+        }
+    }
+
+    /**
+     * {@link ListIteratorAssertion} class test.
+     */
+    @Test
+    public void toPreviousListCountTest() {
+        initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(4, "val1", "val2", "val3", "val4")).toPreviousList(5).containsExactlyInOrder("val4", "val3", "val2", "val1");
+        initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(4, "val1", "val2", "val3", "val4")).toPreviousList(4).containsExactlyInOrder("val4", "val3", "val2", "val1");
+        initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(3, "val1", "val2", "val3", "val4")).toPreviousList(4).containsExactlyInOrder("val3", "val2", "val1");
+        initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(2, "val1", "val2", "val3", "val4")).toPreviousList(4).containsExactlyInOrder("val2", "val1");
+        initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(1, "val1", "val2", "val3", "val4")).toPreviousList(4).containsExactlyInOrder("val1");
+        initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(0, "val1", "val2", "val3", "val4")).toPreviousList(4).containsExactlyInOrder();
+        initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(4, "val1", "val2", "val3", "val4")).toPreviousList(3).containsExactlyInOrder("val4", "val3", "val2");
+        initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(4, "val1", "val2", "val3", "val4")).toPreviousList(2).containsExactlyInOrder("val4", "val3");
+        initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(3, "val1", "val2", "val3", "val4")).toPreviousList(2).containsExactlyInOrder("val3", "val2");
+        initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(2, "val1", "val2", "val3", "val4")).toPreviousList(2).containsExactlyInOrder("val2", "val1");
+        initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(1, "val1", "val2", "val3", "val4")).toPreviousList(2).containsExactlyInOrder("val1");
+        initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(4, "val1", "val2", "val3", "val4")).toPreviousList(1).containsExactlyInOrder("val4");
+        initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(4, "val1", "val2", "val3", "val4")).isNotNull().toPreviousList(5).containsExactlyInOrder("val4", "val3", "val2", "val1");
+
+        try {
+            Raw.<String>listIteratorAssertion().toPreviousList(1);
+            Assertions.fail(ListIteratorAssertion.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.<String>listIteratorAssertion(), null).toPreviousList(1);
+            Assertions.fail(ListIteratorAssertion.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.<String>listIteratorAssertion(), null, "Message").toPreviousList(1);
+            Assertions.fail(ListIteratorAssertion.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.<String>listIteratorAssertion(), null).toPreviousList(0);
+            Assertions.fail(ListIteratorAssertion.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.<String>listIteratorAssertion(), null, "Message").toPreviousList(0);
+            Assertions.fail(ListIteratorAssertion.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.<String>listIteratorAssertion(), DataHelper.<String>createListIterator(0)).toPreviousList(0);
+            Assertions.fail(ListIteratorAssertion.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should be valid: count.\n\tThe argument's value should be greater than zero.");
+        }
+        try {
+            initialize(Raw.<String>listIteratorAssertion(), DataHelper.<String>createListIterator(0), "Message").toPreviousList(0);
+            Assertions.fail(ListIteratorAssertion.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: count.\n\tThe argument's value should be greater than zero.");
+        }
+        try {
+            initialize(Raw.<String>listIteratorAssertion(), DataHelper.<String>createListIterator(0)).toPreviousList(-1);
+            Assertions.fail(ListIteratorAssertion.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should be valid: count.\n\tThe argument's value should be greater than zero.");
+        }
+        try {
+            initialize(Raw.<String>listIteratorAssertion(), DataHelper.<String>createListIterator(0), "Message").toPreviousList(-1);
+            Assertions.fail(ListIteratorAssertion.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: count.\n\tThe argument's value should be greater than zero.");
+        }
+        try {
+            clearActual(initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(0, "val1", "val2", "val3", "val4")).toPreviousList(1)).containsExactlyInOrder("val");
+            Assertions.fail(ListIteratorAssertion.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check previous N actual value's elements: 1.\n\tActual value should not be null.");
+        }
+        try {
+            clearActual(initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(0, "val1", "val2", "val3", "val4"), "Message").toPreviousList(1)).containsExactlyInOrder("val");
+            Assertions.fail(ListIteratorAssertion.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck previous N actual value's elements: 1.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(4, "val1", "val2", "val3", "val4")).toPreviousList(5).containsExactlyInOrder("val1", "val4");
+            Assertions.fail(ListIteratorAssertion.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check previous N actual value's elements: 5.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[val1, val4]> but was:<[val4, val3, val2, val1]>");
+        }
+        try {
+            initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(4, "val1", "val2", "val3", "val4"), "Message").toPreviousList(5).containsExactlyInOrder("val1", "val4");
+            Assertions.fail(ListIteratorAssertion.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck previous N actual value's elements: 5.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[val1, val4]> but was:<[val4, val3, val2, val1]>");
+        }
+        try {
+            initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(1, "val1", "val2", "val3", "val4")).toPreviousList(5).containsExactlyInOrder("val1", "val4");
+            Assertions.fail(ListIteratorAssertion.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check previous N actual value's elements: 5.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[val1, val4]> but was:<[val1]>");
+        }
+        try {
+            initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(1, "val1", "val2", "val3", "val4"), "Message").toPreviousList(5).containsExactlyInOrder("val1", "val4");
+            Assertions.fail(ListIteratorAssertion.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck previous N actual value's elements: 5.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[val1, val4]> but was:<[val1]>");
+        }
+    }
+
+    /**
+     * {@link ListIteratorAssertion} class test.
+     */
+    @Test
+    public void toPreviousListMatcherTest() {
+        initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(4, "val1", "val2", "val3", "val4")).toPreviousList(Matchers.hasItems("val4", "val3", "val2", "val1"));
+        initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(3, "val1", "val2", "val3", "val4")).toPreviousList(Matchers.hasItems("val3", "val2", "val1"));
+        initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(2, "val1", "val2", "val3", "val4")).toPreviousList(Matchers.hasItems("val2", "val1"));
+        initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(1, "val1", "val2", "val3", "val4")).toPreviousList(Matchers.hasItems("val1"));
+        initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(0, "val1", "val2", "val3", "val4")).toPreviousList(Matchers.<String>hasItems());
+        initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(4, "val1", "val2", "val3", "val4")).isNotNull().toPreviousList(Matchers.hasItems("val4", "val3", "val2", "val1")).isInstanceOf(ListIterator.class);
+
+        try {
+            Raw.<String>listIteratorAssertion().toPreviousList(Matchers.hasItems(""));
+            Assertions.fail(ListIteratorAssertion.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.<String>listIteratorAssertion(), null).toPreviousList(Matchers.hasItems(""));
+            Assertions.fail(ListIteratorAssertion.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.<String>listIteratorAssertion(), null, "Message").toPreviousList(Matchers.hasItems(""));
+            Assertions.fail(ListIteratorAssertion.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.<String>listIteratorAssertion(), null).toPreviousList(null);
+            Assertions.fail(ListIteratorAssertion.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.<String>listIteratorAssertion(), null, "Message").toPreviousList(null);
+            Assertions.fail(ListIteratorAssertion.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.<String>listIteratorAssertion(), DataHelper.<String>createListIterator(0)).toPreviousList(null);
+            Assertions.fail(ListIteratorAssertion.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: matcher.");
+        }
+        try {
+            initialize(Raw.<String>listIteratorAssertion(), DataHelper.<String>createListIterator(0), "Message").toPreviousList(null);
+            Assertions.fail(ListIteratorAssertion.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: matcher.");
+        }
+        try {
+            initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(4, "val1", "val2", "val3", "val4")).toPreviousList(Matchers.hasItems("val1", "val5"));
+            Assertions.fail(ListIteratorAssertion.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check all previous actual value's elements.\nExpected: (a collection containing \"val1\" and a collection containing \"val5\")\n     but: a collection containing \"val5\" mismatches were: [was \"val4\", was \"val3\", was \"val2\", was \"val1\"]");
+        }
+        try {
+            initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(4, "val1", "val2", "val3", "val4"), "Message").toPreviousList(Matchers.hasItems("val1", "val5"));
+            Assertions.fail(ListIteratorAssertion.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck all previous actual value's elements.\nExpected: (a collection containing \"val1\" and a collection containing \"val5\")\n     but: a collection containing \"val5\" mismatches were: [was \"val4\", was \"val3\", was \"val2\", was \"val1\"]");
+        }
+        try {
+            initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(1, "val1", "val2", "val3", "val4")).toPreviousList(Matchers.hasItems("val1", "val5"));
+            Assertions.fail(ListIteratorAssertion.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check all previous actual value's elements.\nExpected: (a collection containing \"val1\" and a collection containing \"val5\")\n     but: a collection containing \"val5\" mismatches were: [was \"val1\"]");
+        }
+        try {
+            initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(1, "val1", "val2", "val3", "val4"), "Message").toPreviousList(Matchers.hasItems("val1", "val5"));
+            Assertions.fail(ListIteratorAssertion.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck all previous actual value's elements.\nExpected: (a collection containing \"val1\" and a collection containing \"val5\")\n     but: a collection containing \"val5\" mismatches were: [was \"val1\"]");
+        }
+    }
+
+    /**
+     * {@link ListIteratorAssertion} class test.
+     */
+    @Test
+    public void toPreviousListCountMatcherTest() {
+        initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(4, "val1", "val2", "val3", "val4")).toPreviousList(5, Matchers.hasItems("val4", "val3", "val2", "val1"));
+        initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(4, "val1", "val2", "val3", "val4")).toPreviousList(4, Matchers.hasItems("val4", "val3", "val2", "val1"));
+        initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(3, "val1", "val2", "val3", "val4")).toPreviousList(4, Matchers.hasItems("val3", "val2", "val1"));
+        initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(2, "val1", "val2", "val3", "val4")).toPreviousList(4, Matchers.hasItems("val2", "val1"));
+        initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(1, "val1", "val2", "val3", "val4")).toPreviousList(4, Matchers.hasItems("val1"));
+        initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(0, "val1", "val2", "val3", "val4")).toPreviousList(4, Matchers.<String>hasItems());
+        initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(4, "val1", "val2", "val3", "val4")).toPreviousList(3, Matchers.hasItems("val4", "val3", "val2"));
+        initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(4, "val1", "val2", "val3", "val4")).toPreviousList(2, Matchers.hasItems("val4", "val3"));
+        initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(3, "val1", "val2", "val3", "val4")).toPreviousList(2, Matchers.hasItems("val3", "val2"));
+        initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(2, "val1", "val2", "val3", "val4")).toPreviousList(2, Matchers.hasItems("val2", "val1"));
+        initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(1, "val1", "val2", "val3", "val4")).toPreviousList(2, Matchers.hasItems("val1"));
+        initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(4, "val1", "val2", "val3", "val4")).toPreviousList(1, Matchers.hasItems("val4"));
+        initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(4, "val1", "val2", "val3", "val4")).isNotNull().toPreviousList(5, Matchers.hasItems("val4", "val3", "val2", "val1")).isInstanceOf(ListIterator.class);
+
+        try {
+            Raw.<String>listIteratorAssertion().toPreviousList(1, Matchers.hasItems(""));
+            Assertions.fail(ListIteratorAssertion.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.<String>listIteratorAssertion(), null).toPreviousList(1, Matchers.hasItems(""));
+            Assertions.fail(ListIteratorAssertion.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.<String>listIteratorAssertion(), null, "Message").toPreviousList(1, Matchers.hasItems(""));
+            Assertions.fail(ListIteratorAssertion.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.<String>listIteratorAssertion(), null).toPreviousList(0, Matchers.hasItems(""));
+            Assertions.fail(ListIteratorAssertion.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.<String>listIteratorAssertion(), null, "Message").toPreviousList(0, Matchers.hasItems(""));
+            Assertions.fail(ListIteratorAssertion.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.<String>listIteratorAssertion(), DataHelper.<String>createListIterator(0)).toPreviousList(0, Matchers.hasItems(""));
+            Assertions.fail(ListIteratorAssertion.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should be valid: count.\n\tThe argument's value should be greater than zero.");
+        }
+        try {
+            initialize(Raw.<String>listIteratorAssertion(), DataHelper.<String>createListIterator(0), "Message").toPreviousList(0, Matchers.hasItems(""));
+            Assertions.fail(ListIteratorAssertion.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: count.\n\tThe argument's value should be greater than zero.");
+        }
+        try {
+            initialize(Raw.<String>listIteratorAssertion(), DataHelper.<String>createListIterator(0)).toPreviousList(-1, Matchers.hasItems(""));
+            Assertions.fail(ListIteratorAssertion.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should be valid: count.\n\tThe argument's value should be greater than zero.");
+        }
+        try {
+            initialize(Raw.<String>listIteratorAssertion(), DataHelper.<String>createListIterator(0), "Message").toPreviousList(-1, Matchers.hasItems(""));
+            Assertions.fail(ListIteratorAssertion.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: count.\n\tThe argument's value should be greater than zero.");
+        }
+        try {
+            initialize(Raw.<String>listIteratorAssertion(), DataHelper.<String>createListIterator(0)).toPreviousList(0, null);
+            Assertions.fail(ListIteratorAssertion.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should be valid: count.\n\tThe argument's value should be greater than zero.");
+        }
+        try {
+            initialize(Raw.<String>listIteratorAssertion(), DataHelper.<String>createListIterator(0), "Message").toPreviousList(0, null);
+            Assertions.fail(ListIteratorAssertion.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should be valid: count.\n\tThe argument's value should be greater than zero.");
+        }
+        try {
+            initialize(Raw.<String>listIteratorAssertion(), DataHelper.<String>createListIterator(0)).toPreviousList(1, null);
+            Assertions.fail(ListIteratorAssertion.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Argument should not be null: matcher.");
+        }
+        try {
+            initialize(Raw.<String>listIteratorAssertion(), DataHelper.<String>createListIterator(0), "Message").toPreviousList(1, null);
+            Assertions.fail(ListIteratorAssertion.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: matcher.");
+        }
+        try {
+            initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(4, "val1", "val2", "val3", "val4")).toPreviousList(5, Matchers.hasItems("val1", "val5"));
+            Assertions.fail(ListIteratorAssertion.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check previous N actual value's elements: 5.\nExpected: (a collection containing \"val1\" and a collection containing \"val5\")\n     but: a collection containing \"val5\" mismatches were: [was \"val4\", was \"val3\", was \"val2\", was \"val1\"]");
+        }
+        try {
+            initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(4, "val1", "val2", "val3", "val4"), "Message").toPreviousList(5, Matchers.hasItems("val1", "val5"));
+            Assertions.fail(ListIteratorAssertion.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck previous N actual value's elements: 5.\nExpected: (a collection containing \"val1\" and a collection containing \"val5\")\n     but: a collection containing \"val5\" mismatches were: [was \"val4\", was \"val3\", was \"val2\", was \"val1\"]");
+        }
+        try {
+            initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(1, "val1", "val2", "val3", "val4")).toPreviousList(5, Matchers.hasItems("val1", "val5"));
+            Assertions.fail(ListIteratorAssertion.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check previous N actual value's elements: 5.\nExpected: (a collection containing \"val1\" and a collection containing \"val5\")\n     but: a collection containing \"val5\" mismatches were: [was \"val1\"]");
+        }
+        try {
+            initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(1, "val1", "val2", "val3", "val4"), "Message").toPreviousList(5, Matchers.hasItems("val1", "val5"));
+            Assertions.fail(ListIteratorAssertion.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck previous N actual value's elements: 5.\nExpected: (a collection containing \"val1\" and a collection containing \"val5\")\n     but: a collection containing \"val5\" mismatches were: [was \"val1\"]");
         }
     }
 
