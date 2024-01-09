@@ -77,7 +77,9 @@ public final class Messages {
 
         public static final String ELEMENTS_ALL_PREVIOUS = "Check all previous actual value''s elements.";
 
-        public static final String ELEMENTS_COUNT = "Check next N actual value''s elements: {0}.";
+        public static final String ELEMENTS_COUNT_NEXT = "Check next N actual value''s elements: {0}.";
+
+        public static final String ELEMENTS_COUNT_PREVIOUS = "Check previous N actual value''s elements: {0}.";
 
         public static final String ELEMENTS_HEAD_ELEMENT = "Check actual value''s head elements up to element: {0}.";
 
@@ -169,15 +171,15 @@ public final class Messages {
 
         public static final String BYTES_ALL = "Check all actual value''s bytes.";
 
-        public static final String BYTES_COUNT = "Check next N actual value''s bytes: {0}.";
+        public static final String BYTES_COUNT_NEXT = "Check next N actual value''s bytes: {0}.";
 
         public static final String CHARS_ALL = "Check all actual value''s chars.";
 
-        public static final String CHARS_COUNT = "Check next N actual value''s chars: {0}.";
+        public static final String CHARS_COUNT_NEXT = "Check next N actual value''s chars: {0}.";
 
         public static final String LINES_ALL = "Check all actual value''s lines.";
 
-        public static final String LINES_COUNT = "Check next N actual value''s lines: {0}.";
+        public static final String LINES_COUNT_NEXT = "Check next N actual value''s lines: {0}.";
 
         public static final String LINES_LENGTH = "Check actual value''s lines length.";
 
