@@ -71,6 +71,10 @@ public final class Messages {
 
         public static final String MAX_VALUE = "Check actual value''s maximum value";
 
+        public static final String NEXT_INDEX = "Check actual value''s next index";
+
+        public static final String PREVIOUS_INDEX = "Check actual value''s previous index";
+
         public static final String ELEMENTS_ALL = "Check all actual value''s elements.";
 
         public static final String ELEMENTS_ALL_NEXT = "Check all next actual value''s elements.";
