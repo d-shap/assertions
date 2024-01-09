@@ -776,93 +776,93 @@ public final class IteratorAssertionTest extends AssertionTest {
      * {@link IteratorAssertion} class test.
      */
     @Test
-    public void isNextElementsEqualToArrayTest() {
-        initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3", "val4")).isNextElementsEqualTo("val1", "val2");
-        initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3", "val4")).isNextElementsEqualTo("val1", "val2", "val3");
-        initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3", "val4")).isNextElementsEqualTo("val1", "val2", "val3", "val4");
-        initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", null, "val4")).isNextElementsEqualTo("val1", "val2", null, "val4");
-        initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3", "val4")).isNotNull().isNextElementsEqualTo("val1", "val2").isInstanceOf(Iterator.class);
+    public void areNextElementsEqualToArrayTest() {
+        initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3", "val4")).areNextElementsEqualTo("val1", "val2");
+        initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3", "val4")).areNextElementsEqualTo("val1", "val2", "val3");
+        initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3", "val4")).areNextElementsEqualTo("val1", "val2", "val3", "val4");
+        initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", null, "val4")).areNextElementsEqualTo("val1", "val2", null, "val4");
+        initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3", "val4")).isNotNull().areNextElementsEqualTo("val1", "val2").isInstanceOf(Iterator.class);
 
         try {
-            Raw.<String>iteratorAssertion().isNextElementsEqualTo("val");
+            Raw.<String>iteratorAssertion().areNextElementsEqualTo("val");
             Assertions.fail(IteratorAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), null).isNextElementsEqualTo("val");
+            initialize(Raw.<String>iteratorAssertion(), null).areNextElementsEqualTo("val");
             Assertions.fail(IteratorAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), null, "Message").isNextElementsEqualTo("val");
+            initialize(Raw.<String>iteratorAssertion(), null, "Message").areNextElementsEqualTo("val");
             Assertions.fail(IteratorAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), null).isNextElementsEqualTo((String[]) null);
+            initialize(Raw.<String>iteratorAssertion(), null).areNextElementsEqualTo((String[]) null);
             Assertions.fail(IteratorAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), null, "Message").isNextElementsEqualTo((String[]) null);
+            initialize(Raw.<String>iteratorAssertion(), null, "Message").areNextElementsEqualTo((String[]) null);
             Assertions.fail(IteratorAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator()).isNextElementsEqualTo((String[]) null);
+            initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator()).areNextElementsEqualTo((String[]) null);
             Assertions.fail(IteratorAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator(), "Message").isNextElementsEqualTo((String[]) null);
+            initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator(), "Message").areNextElementsEqualTo((String[]) null);
             Assertions.fail(IteratorAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator()).isNextElementsEqualTo();
+            initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator()).areNextElementsEqualTo();
             Assertions.fail(IteratorAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator(), "Message").isNextElementsEqualTo();
+            initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator(), "Message").areNextElementsEqualTo();
             Assertions.fail(IteratorAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3", "val4")).isNextElementsEqualTo("val2", "val3");
+            initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3", "val4")).areNextElementsEqualTo("val2", "val3");
             Assertions.fail(IteratorAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check next N actual value's elements: 2.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[val2, val3]> but was:<[val1, val2]>");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3", "val4")).isNextElementsEqualTo("val1", "val2", "val3", "val4", "val5");
+            initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3", "val4")).areNextElementsEqualTo("val1", "val2", "val3", "val4", "val5");
             Assertions.fail(IteratorAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check next N actual value's elements: 5.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[val1, val2, val3, val4, val5]> but was:<[val1, val2, val3, val4]>");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3", "val4"), "Message").isNextElementsEqualTo("val1", "val2", "val3", "val4", "val5");
+            initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3", "val4"), "Message").areNextElementsEqualTo("val1", "val2", "val3", "val4", "val5");
             Assertions.fail(IteratorAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck next N actual value's elements: 5.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[val1, val2, val3, val4, val5]> but was:<[val1, val2, val3, val4]>");
         }
         try {
-            initialize(Raw.iteratorAssertion(), DataHelper.createIterator((Object) "val1", "val2", "val3", '1')).isNextElementsEqualTo("val1", "val2", "val3", "val4", "val5");
+            initialize(Raw.iteratorAssertion(), DataHelper.createIterator((Object) "val1", "val2", "val3", '1')).areNextElementsEqualTo("val1", "val2", "val3", "val4", "val5");
             Assertions.fail(IteratorAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check next N actual value's elements: 5.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[val1, val2, val3, val4, val5]> but was:<[val1, val2, val3, 1(49)]>");
         }
         try {
-            initialize(Raw.iteratorAssertion(), DataHelper.createIterator((Object) "val1", "val2", "val3", '1'), "Message").isNextElementsEqualTo("val1", "val2", "val3", "val4", "val5");
+            initialize(Raw.iteratorAssertion(), DataHelper.createIterator((Object) "val1", "val2", "val3", '1'), "Message").areNextElementsEqualTo("val1", "val2", "val3", "val4", "val5");
             Assertions.fail(IteratorAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck next N actual value's elements: 5.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[val1, val2, val3, val4, val5]> but was:<[val1, val2, val3, 1(49)]>");
@@ -873,81 +873,81 @@ public final class IteratorAssertionTest extends AssertionTest {
      * {@link IteratorAssertion} class test.
      */
     @Test
-    public void isNextElementsEqualToIterableTest() {
-        initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3", "val4")).isNextElementsEqualTo(DataHelper.createIterable("val1", "val2"));
-        initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3", "val4")).isNextElementsEqualTo(DataHelper.createIterable("val1", "val2", "val3"));
-        initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3", "val4")).isNextElementsEqualTo(DataHelper.createIterable("val1", "val2", "val3", "val4"));
-        initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", null, "val4")).isNextElementsEqualTo(DataHelper.createIterable("val1", "val2", null, "val4"));
-        initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3", "val4")).isNotNull().isNextElementsEqualTo(DataHelper.createIterable("val1", "val2")).isInstanceOf(Iterator.class);
+    public void areNextElementsEqualToIterableTest() {
+        initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3", "val4")).areNextElementsEqualTo(DataHelper.createIterable("val1", "val2"));
+        initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3", "val4")).areNextElementsEqualTo(DataHelper.createIterable("val1", "val2", "val3"));
+        initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3", "val4")).areNextElementsEqualTo(DataHelper.createIterable("val1", "val2", "val3", "val4"));
+        initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", null, "val4")).areNextElementsEqualTo(DataHelper.createIterable("val1", "val2", null, "val4"));
+        initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3", "val4")).isNotNull().areNextElementsEqualTo(DataHelper.createIterable("val1", "val2")).isInstanceOf(Iterator.class);
 
         try {
-            Raw.<String>iteratorAssertion().isNextElementsEqualTo(DataHelper.<String>createIterable());
+            Raw.<String>iteratorAssertion().areNextElementsEqualTo(DataHelper.<String>createIterable());
             Assertions.fail(IteratorAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), null).isNextElementsEqualTo(DataHelper.<String>createIterable());
+            initialize(Raw.<String>iteratorAssertion(), null).areNextElementsEqualTo(DataHelper.<String>createIterable());
             Assertions.fail(IteratorAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), null, "Message").isNextElementsEqualTo(DataHelper.<String>createIterable());
+            initialize(Raw.<String>iteratorAssertion(), null, "Message").areNextElementsEqualTo(DataHelper.<String>createIterable());
             Assertions.fail(IteratorAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), null).isNextElementsEqualTo((Iterable<String>) null);
+            initialize(Raw.<String>iteratorAssertion(), null).areNextElementsEqualTo((Iterable<String>) null);
             Assertions.fail(IteratorAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), null, "Message").isNextElementsEqualTo((Iterable<String>) null);
+            initialize(Raw.<String>iteratorAssertion(), null, "Message").areNextElementsEqualTo((Iterable<String>) null);
             Assertions.fail(IteratorAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator()).isNextElementsEqualTo((Iterable<String>) null);
+            initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator()).areNextElementsEqualTo((Iterable<String>) null);
             Assertions.fail(IteratorAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator(), "Message").isNextElementsEqualTo((Iterable<String>) null);
+            initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator(), "Message").areNextElementsEqualTo((Iterable<String>) null);
             Assertions.fail(IteratorAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator()).isNextElementsEqualTo(DataHelper.<String>createIterable());
+            initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator()).areNextElementsEqualTo(DataHelper.<String>createIterable());
             Assertions.fail(IteratorAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator(), "Message").isNextElementsEqualTo(DataHelper.<String>createIterable());
+            initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator(), "Message").areNextElementsEqualTo(DataHelper.<String>createIterable());
             Assertions.fail(IteratorAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be empty: expected.\n\tThe result is always true.");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3", "val4")).isNextElementsEqualTo(DataHelper.createIterable("val2", "val3"));
+            initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3", "val4")).areNextElementsEqualTo(DataHelper.createIterable("val2", "val3"));
             Assertions.fail(IteratorAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check next N actual value's elements: 2.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[val2, val3]> but was:<[val1, val2]>");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3", "val4")).isNextElementsEqualTo(DataHelper.createIterable("val1", "val2", "val3", "val4", "val5"));
+            initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3", "val4")).areNextElementsEqualTo(DataHelper.createIterable("val1", "val2", "val3", "val4", "val5"));
             Assertions.fail(IteratorAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check next N actual value's elements: 5.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[val1, val2, val3, val4, val5]> but was:<[val1, val2, val3, val4]>");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3", "val4"), "Message").isNextElementsEqualTo(DataHelper.createIterable("val1", "val2", "val3", "val4", "val5"));
+            initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3", "val4"), "Message").areNextElementsEqualTo(DataHelper.createIterable("val1", "val2", "val3", "val4", "val5"));
             Assertions.fail(IteratorAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck next N actual value's elements: 5.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[val1, val2, val3, val4, val5]> but was:<[val1, val2, val3, val4]>");
@@ -958,105 +958,105 @@ public final class IteratorAssertionTest extends AssertionTest {
      * {@link IteratorAssertion} class test.
      */
     @Test
-    public void isAllElementsEqualToArrayTest() {
-        initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3")).isAllElementsEqualTo("val1", "val2", "val3");
-        initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3", "val4", "val5")).isAllElementsEqualTo("val1", "val2", "val3", "val4", "val5");
-        initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3", "val4", null)).isAllElementsEqualTo("val1", "val2", "val3", "val4", null);
-        initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator()).isAllElementsEqualTo();
-        initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3")).isNotNull().isAllElementsEqualTo("val1", "val2", "val3").isInstanceOf(Iterator.class);
+    public void areAllElementsEqualToArrayTest() {
+        initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3")).areAllElementsEqualTo("val1", "val2", "val3");
+        initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3", "val4", "val5")).areAllElementsEqualTo("val1", "val2", "val3", "val4", "val5");
+        initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3", "val4", null)).areAllElementsEqualTo("val1", "val2", "val3", "val4", null);
+        initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator()).areAllElementsEqualTo();
+        initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3")).isNotNull().areAllElementsEqualTo("val1", "val2", "val3").isInstanceOf(Iterator.class);
 
         try {
-            Raw.<String>iteratorAssertion().isAllElementsEqualTo("val");
+            Raw.<String>iteratorAssertion().areAllElementsEqualTo("val");
             Assertions.fail(IteratorAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), null).isAllElementsEqualTo("val");
+            initialize(Raw.<String>iteratorAssertion(), null).areAllElementsEqualTo("val");
             Assertions.fail(IteratorAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), null, "Message").isAllElementsEqualTo("val");
+            initialize(Raw.<String>iteratorAssertion(), null, "Message").areAllElementsEqualTo("val");
             Assertions.fail(IteratorAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), null).isAllElementsEqualTo((String[]) null);
+            initialize(Raw.<String>iteratorAssertion(), null).areAllElementsEqualTo((String[]) null);
             Assertions.fail(IteratorAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), null, "Message").isAllElementsEqualTo((String[]) null);
+            initialize(Raw.<String>iteratorAssertion(), null, "Message").areAllElementsEqualTo((String[]) null);
             Assertions.fail(IteratorAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator()).isAllElementsEqualTo((String[]) null);
+            initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator()).areAllElementsEqualTo((String[]) null);
             Assertions.fail(IteratorAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator(), "Message").isAllElementsEqualTo((String[]) null);
+            initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator(), "Message").areAllElementsEqualTo((String[]) null);
             Assertions.fail(IteratorAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3")).isAllElementsEqualTo("val1", "val2");
+            initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3")).areAllElementsEqualTo("val1", "val2");
             Assertions.fail(IteratorAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check all actual value's elements.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[val1, val2]> but was:<[val1, val2, val3]>");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3")).isAllElementsEqualTo("val2", "val3");
+            initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3")).areAllElementsEqualTo("val2", "val3");
             Assertions.fail(IteratorAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check all actual value's elements.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[val2, val3]> but was:<[val1, val2, val3]>");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3")).isAllElementsEqualTo("val1", "val2", "val4");
+            initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3")).areAllElementsEqualTo("val1", "val2", "val4");
             Assertions.fail(IteratorAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check all actual value's elements.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[val1, val2, val4]> but was:<[val1, val2, val3]>");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3")).isAllElementsEqualTo("val1", "val2", "val3", "val4");
+            initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3")).areAllElementsEqualTo("val1", "val2", "val3", "val4");
             Assertions.fail(IteratorAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check all actual value's elements.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[val1, val2, val3, val4]> but was:<[val1, val2, val3]>");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3")).isAllElementsEqualTo();
+            initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3")).areAllElementsEqualTo();
             Assertions.fail(IteratorAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check all actual value's elements.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<<EMPTY>> but was:<[val1, val2, val3]>");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3")).isAllElementsEqualTo("val3", "val1", "val2");
+            initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3")).areAllElementsEqualTo("val3", "val1", "val2");
             Assertions.fail(IteratorAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check all actual value's elements.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[val3, val1, val2]> but was:<[val1, val2, val3]>");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3"), "Message").isAllElementsEqualTo("val3", "val1", "val2");
+            initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3"), "Message").areAllElementsEqualTo("val3", "val1", "val2");
             Assertions.fail(IteratorAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck all actual value's elements.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[val3, val1, val2]> but was:<[val1, val2, val3]>");
         }
         try {
-            initialize(Raw.iteratorAssertion(), DataHelper.createIterator((Object) "val1", "val2", '1')).isAllElementsEqualTo("val3", "val1", "val2");
+            initialize(Raw.iteratorAssertion(), DataHelper.createIterator((Object) "val1", "val2", '1')).areAllElementsEqualTo("val3", "val1", "val2");
             Assertions.fail(IteratorAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check all actual value's elements.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[val3, val1, val2]> but was:<[val1, val2, 1(49)]>");
         }
         try {
-            initialize(Raw.iteratorAssertion(), DataHelper.createIterator((Object) "val1", "val2", '1'), "Message").isAllElementsEqualTo("val3", "val1", "val2");
+            initialize(Raw.iteratorAssertion(), DataHelper.createIterator((Object) "val1", "val2", '1'), "Message").areAllElementsEqualTo("val3", "val1", "val2");
             Assertions.fail(IteratorAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck all actual value's elements.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[val3, val1, val2]> but was:<[val1, val2, 1(49)]>");
@@ -1067,93 +1067,93 @@ public final class IteratorAssertionTest extends AssertionTest {
      * {@link IteratorAssertion} class test.
      */
     @Test
-    public void isAllElementsEqualToIterableTest() {
-        initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3")).isAllElementsEqualTo(DataHelper.createIterable("val1", "val2", "val3"));
-        initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3", "val4", "val5")).isAllElementsEqualTo(DataHelper.createIterable("val1", "val2", "val3", "val4", "val5"));
-        initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3", "val4", null)).isAllElementsEqualTo(DataHelper.createIterable("val1", "val2", "val3", "val4", null));
-        initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator()).isAllElementsEqualTo(DataHelper.<String>createIterable());
-        initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3")).isNotNull().isAllElementsEqualTo(DataHelper.createIterable("val1", "val2", "val3")).isInstanceOf(Iterator.class);
+    public void areAllElementsEqualToIterableTest() {
+        initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3")).areAllElementsEqualTo(DataHelper.createIterable("val1", "val2", "val3"));
+        initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3", "val4", "val5")).areAllElementsEqualTo(DataHelper.createIterable("val1", "val2", "val3", "val4", "val5"));
+        initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3", "val4", null)).areAllElementsEqualTo(DataHelper.createIterable("val1", "val2", "val3", "val4", null));
+        initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator()).areAllElementsEqualTo(DataHelper.<String>createIterable());
+        initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3")).isNotNull().areAllElementsEqualTo(DataHelper.createIterable("val1", "val2", "val3")).isInstanceOf(Iterator.class);
 
         try {
-            Raw.<String>iteratorAssertion().isAllElementsEqualTo(DataHelper.<String>createIterable());
+            Raw.<String>iteratorAssertion().areAllElementsEqualTo(DataHelper.<String>createIterable());
             Assertions.fail(IteratorAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), null).isAllElementsEqualTo(DataHelper.<String>createIterable());
+            initialize(Raw.<String>iteratorAssertion(), null).areAllElementsEqualTo(DataHelper.<String>createIterable());
             Assertions.fail(IteratorAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), null, "Message").isAllElementsEqualTo(DataHelper.<String>createIterable());
+            initialize(Raw.<String>iteratorAssertion(), null, "Message").areAllElementsEqualTo(DataHelper.<String>createIterable());
             Assertions.fail(IteratorAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), null).isAllElementsEqualTo((Iterable<String>) null);
+            initialize(Raw.<String>iteratorAssertion(), null).areAllElementsEqualTo((Iterable<String>) null);
             Assertions.fail(IteratorAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), null, "Message").isAllElementsEqualTo((Iterable<String>) null);
+            initialize(Raw.<String>iteratorAssertion(), null, "Message").areAllElementsEqualTo((Iterable<String>) null);
             Assertions.fail(IteratorAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator()).isAllElementsEqualTo((Iterable<String>) null);
+            initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator()).areAllElementsEqualTo((Iterable<String>) null);
             Assertions.fail(IteratorAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Argument should not be null: expected.");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator(), "Message").isAllElementsEqualTo((Iterable<String>) null);
+            initialize(Raw.<String>iteratorAssertion(), DataHelper.<String>createIterator(), "Message").areAllElementsEqualTo((Iterable<String>) null);
             Assertions.fail(IteratorAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tArgument should not be null: expected.");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3")).isAllElementsEqualTo(DataHelper.createIterable("val1", "val2"));
+            initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3")).areAllElementsEqualTo(DataHelper.createIterable("val1", "val2"));
             Assertions.fail(IteratorAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check all actual value's elements.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[val1, val2]> but was:<[val1, val2, val3]>");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3")).isAllElementsEqualTo(DataHelper.createIterable("val2", "val3"));
+            initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3")).areAllElementsEqualTo(DataHelper.createIterable("val2", "val3"));
             Assertions.fail(IteratorAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check all actual value's elements.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[val2, val3]> but was:<[val1, val2, val3]>");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3")).isAllElementsEqualTo(DataHelper.createIterable("val1", "val2", "val4"));
+            initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3")).areAllElementsEqualTo(DataHelper.createIterable("val1", "val2", "val4"));
             Assertions.fail(IteratorAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check all actual value's elements.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[val1, val2, val4]> but was:<[val1, val2, val3]>");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3")).isAllElementsEqualTo(DataHelper.createIterable("val1", "val2", "val3", "val4"));
+            initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3")).areAllElementsEqualTo(DataHelper.createIterable("val1", "val2", "val3", "val4"));
             Assertions.fail(IteratorAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check all actual value's elements.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[val1, val2, val3, val4]> but was:<[val1, val2, val3]>");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3")).isAllElementsEqualTo(DataHelper.<String>createIterable());
+            initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3")).areAllElementsEqualTo(DataHelper.<String>createIterable());
             Assertions.fail(IteratorAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check all actual value's elements.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<<EMPTY>> but was:<[val1, val2, val3]>");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3")).isAllElementsEqualTo(DataHelper.createIterable("val3", "val1", "val2"));
+            initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3")).areAllElementsEqualTo(DataHelper.createIterable("val3", "val1", "val2"));
             Assertions.fail(IteratorAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Check all actual value's elements.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[val3, val1, val2]> but was:<[val1, val2, val3]>");
         }
         try {
-            initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3"), "Message").isAllElementsEqualTo(DataHelper.createIterable("val3", "val1", "val2"));
+            initialize(Raw.<String>iteratorAssertion(), DataHelper.createIterator("val1", "val2", "val3"), "Message").areAllElementsEqualTo(DataHelper.createIterable("val3", "val1", "val2"));
             Assertions.fail(IteratorAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck all actual value's elements.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[val3, val1, val2]> but was:<[val1, val2, val3]>");
