@@ -254,6 +254,78 @@ public final class ListIteratorAssertion<E> extends ReferenceAssertion<ListItera
     }
 
     /**
+     * Make assertion about the actual value's next index.
+     *
+     * @return the assertion.
+     */
+    public IntAssertion toNextIndex() {
+        checkActualIsNotNull();
+        return initializeAssertion(Raw.intAssertion(), getActual().nextIndex(), Messages.Check.NEXT_INDEX);
+    }
+
+    /**
+     * Make assertion about the actual value's next index.
+     *
+     * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
+     */
+    public ListIteratorAssertion<E> toNextIndex(final Matcher<? super Integer> matcher) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(matcher, "matcher");
+        matcherAssertion(getActual().nextIndex(), matcher, Messages.Check.NEXT_INDEX);
+        return this;
+    }
+
+    /**
+     * Check if the actual value's next index is equal to the expected index.
+     *
+     * @param expected the expected index.
+     *
+     * @return current object for the chain call.
+     */
+    public ListIteratorAssertion<E> hasNextIndex(final int expected) {
+        toNextIndex().isEqualTo(expected);
+        return this;
+    }
+
+    /**
+     * Make assertion about the actual value's previous index.
+     *
+     * @return the assertion.
+     */
+    public IntAssertion toPreviousIndex() {
+        checkActualIsNotNull();
+        return initializeAssertion(Raw.intAssertion(), getActual().previousIndex(), Messages.Check.PREVIOUS_INDEX);
+    }
+
+    /**
+     * Make assertion about the actual value's previous index.
+     *
+     * @param matcher the hamcrest matcher.
+     *
+     * @return current object for the chain call.
+     */
+    public ListIteratorAssertion<E> toPreviousIndex(final Matcher<? super Integer> matcher) {
+        checkActualIsNotNull();
+        checkArgumentIsNotNull(matcher, "matcher");
+        matcherAssertion(getActual().previousIndex(), matcher, Messages.Check.PREVIOUS_INDEX);
+        return this;
+    }
+
+    /**
+     * Check if the actual value's previous index is equal to the expected index.
+     *
+     * @param expected the expected index.
+     *
+     * @return current object for the chain call.
+     */
+    public ListIteratorAssertion<E> hasPreviousIndex(final int expected) {
+        toPreviousIndex().isEqualTo(expected);
+        return this;
+    }
+
+    /**
      * Check if the actual value's next element is equal to the expected value from the current position.
      *
      * @param expected the expected value.
