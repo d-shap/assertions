@@ -73,6 +73,10 @@ public final class Messages {
 
         public static final String ELEMENTS_ALL = "Check all actual value''s elements.";
 
+        public static final String ELEMENTS_ALL_NEXT = "Check all next actual value''s elements.";
+
+        public static final String ELEMENTS_ALL_PREVIOUS = "Check all previous actual value''s elements.";
+
         public static final String ELEMENTS_COUNT = "Check next N actual value''s elements: {0}.";
 
         public static final String ELEMENTS_HEAD_ELEMENT = "Check actual value''s head elements up to element: {0}.";
