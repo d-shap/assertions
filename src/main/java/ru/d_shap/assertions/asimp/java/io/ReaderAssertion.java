@@ -153,7 +153,7 @@ public final class ReaderAssertion extends ReferenceAssertion<ReaderAssertion, R
      * @return current object for the chain call.
      */
     public ReaderAssertion isNextCharEqualTo(final int expected) {
-        isNextCharsEqualTo(expected);
+        areNextCharsEqualTo(expected);
         return this;
     }
 
@@ -164,7 +164,7 @@ public final class ReaderAssertion extends ReferenceAssertion<ReaderAssertion, R
      *
      * @return current object for the chain call.
      */
-    public ReaderAssertion isNextCharsEqualTo(final char... expected) {
+    public ReaderAssertion areNextCharsEqualTo(final char... expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         checkArgumentIsNotEmpty(expected.length == 0, "expected", true);
@@ -179,7 +179,7 @@ public final class ReaderAssertion extends ReferenceAssertion<ReaderAssertion, R
      *
      * @return current object for the chain call.
      */
-    public ReaderAssertion isNextCharsEqualTo(final int... expected) {
+    public ReaderAssertion areNextCharsEqualTo(final int... expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         checkArgumentIsNotEmpty(expected.length == 0, "expected", true);
@@ -194,7 +194,7 @@ public final class ReaderAssertion extends ReferenceAssertion<ReaderAssertion, R
      *
      * @return current object for the chain call.
      */
-    public ReaderAssertion isNextCharsEqualTo(final Iterable<Character> expected) {
+    public ReaderAssertion areNextCharsEqualTo(final Iterable<Character> expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         List<Character> expectedList = convertValue(expected, null, List.class);
@@ -210,7 +210,7 @@ public final class ReaderAssertion extends ReferenceAssertion<ReaderAssertion, R
      *
      * @return current object for the chain call.
      */
-    public ReaderAssertion isAllCharsEqualTo(final char... expected) {
+    public ReaderAssertion areAllCharsEqualTo(final char... expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         toCharArray().containsExactlyInOrder(expected);
@@ -224,7 +224,7 @@ public final class ReaderAssertion extends ReferenceAssertion<ReaderAssertion, R
      *
      * @return current object for the chain call.
      */
-    public ReaderAssertion isAllCharsEqualTo(final int... expected) {
+    public ReaderAssertion areAllCharsEqualTo(final int... expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         toCharArray().containsExactlyInOrder(expected);
@@ -238,7 +238,7 @@ public final class ReaderAssertion extends ReferenceAssertion<ReaderAssertion, R
      *
      * @return current object for the chain call.
      */
-    public ReaderAssertion isAllCharsEqualTo(final Iterable<Character> expected) {
+    public ReaderAssertion areAllCharsEqualTo(final Iterable<Character> expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         List<Character> expectedList = convertValue(expected, null, List.class);

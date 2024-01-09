@@ -192,8 +192,8 @@ public final class BufferedReaderAssertion extends ReferenceAssertion<BufferedRe
      *
      * @return current object for the chain call.
      */
-    public BufferedReaderAssertion isNextCharsEqualTo(final char... expected) {
-        createReaderAssertion().isNextCharsEqualTo(expected);
+    public BufferedReaderAssertion areNextCharsEqualTo(final char... expected) {
+        createReaderAssertion().areNextCharsEqualTo(expected);
         return this;
     }
 
@@ -204,8 +204,8 @@ public final class BufferedReaderAssertion extends ReferenceAssertion<BufferedRe
      *
      * @return current object for the chain call.
      */
-    public BufferedReaderAssertion isNextCharsEqualTo(final int... expected) {
-        createReaderAssertion().isNextCharsEqualTo(expected);
+    public BufferedReaderAssertion areNextCharsEqualTo(final int... expected) {
+        createReaderAssertion().areNextCharsEqualTo(expected);
         return this;
     }
 
@@ -216,8 +216,8 @@ public final class BufferedReaderAssertion extends ReferenceAssertion<BufferedRe
      *
      * @return current object for the chain call.
      */
-    public BufferedReaderAssertion isNextCharsEqualTo(final Iterable<Character> expected) {
-        createReaderAssertion().isNextCharsEqualTo(expected);
+    public BufferedReaderAssertion areNextCharsEqualTo(final Iterable<Character> expected) {
+        createReaderAssertion().areNextCharsEqualTo(expected);
         return this;
     }
 
@@ -228,8 +228,8 @@ public final class BufferedReaderAssertion extends ReferenceAssertion<BufferedRe
      *
      * @return current object for the chain call.
      */
-    public BufferedReaderAssertion isAllCharsEqualTo(final char... expected) {
-        createReaderAssertion().isAllCharsEqualTo(expected);
+    public BufferedReaderAssertion areAllCharsEqualTo(final char... expected) {
+        createReaderAssertion().areAllCharsEqualTo(expected);
         return this;
     }
 
@@ -240,8 +240,8 @@ public final class BufferedReaderAssertion extends ReferenceAssertion<BufferedRe
      *
      * @return current object for the chain call.
      */
-    public BufferedReaderAssertion isAllCharsEqualTo(final int... expected) {
-        createReaderAssertion().isAllCharsEqualTo(expected);
+    public BufferedReaderAssertion areAllCharsEqualTo(final int... expected) {
+        createReaderAssertion().areAllCharsEqualTo(expected);
         return this;
     }
 
@@ -252,8 +252,8 @@ public final class BufferedReaderAssertion extends ReferenceAssertion<BufferedRe
      *
      * @return current object for the chain call.
      */
-    public BufferedReaderAssertion isAllCharsEqualTo(final Iterable<Character> expected) {
-        createReaderAssertion().isAllCharsEqualTo(expected);
+    public BufferedReaderAssertion areAllCharsEqualTo(final Iterable<Character> expected) {
+        createReaderAssertion().areAllCharsEqualTo(expected);
         return this;
     }
 

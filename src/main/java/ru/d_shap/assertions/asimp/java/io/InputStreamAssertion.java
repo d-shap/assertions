@@ -155,7 +155,7 @@ public final class InputStreamAssertion extends ReferenceAssertion<InputStreamAs
      * @return current object for the chain call.
      */
     public InputStreamAssertion isNextByteEqualTo(final int expected) {
-        isNextBytesEqualTo(expected);
+        areNextBytesEqualTo(expected);
         return this;
     }
 
@@ -166,7 +166,7 @@ public final class InputStreamAssertion extends ReferenceAssertion<InputStreamAs
      *
      * @return current object for the chain call.
      */
-    public InputStreamAssertion isNextBytesEqualTo(final byte... expected) {
+    public InputStreamAssertion areNextBytesEqualTo(final byte... expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         checkArgumentIsNotEmpty(expected.length == 0, "expected", true);
@@ -181,7 +181,7 @@ public final class InputStreamAssertion extends ReferenceAssertion<InputStreamAs
      *
      * @return current object for the chain call.
      */
-    public InputStreamAssertion isNextBytesEqualTo(final int... expected) {
+    public InputStreamAssertion areNextBytesEqualTo(final int... expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         checkArgumentIsNotEmpty(expected.length == 0, "expected", true);
@@ -196,7 +196,7 @@ public final class InputStreamAssertion extends ReferenceAssertion<InputStreamAs
      *
      * @return current object for the chain call.
      */
-    public InputStreamAssertion isNextBytesEqualTo(final Iterable<Byte> expected) {
+    public InputStreamAssertion areNextBytesEqualTo(final Iterable<Byte> expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         List<Byte> expectedList = convertValue(expected, null, List.class);
@@ -212,7 +212,7 @@ public final class InputStreamAssertion extends ReferenceAssertion<InputStreamAs
      *
      * @return current object for the chain call.
      */
-    public InputStreamAssertion isAllBytesEqualTo(final byte... expected) {
+    public InputStreamAssertion areAllBytesEqualTo(final byte... expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         toByteArray().containsExactlyInOrder(expected);
@@ -226,7 +226,7 @@ public final class InputStreamAssertion extends ReferenceAssertion<InputStreamAs
      *
      * @return current object for the chain call.
      */
-    public InputStreamAssertion isAllBytesEqualTo(final int... expected) {
+    public InputStreamAssertion areAllBytesEqualTo(final int... expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         toByteArray().containsExactlyInOrder(expected);
@@ -240,7 +240,7 @@ public final class InputStreamAssertion extends ReferenceAssertion<InputStreamAs
      *
      * @return current object for the chain call.
      */
-    public InputStreamAssertion isAllBytesEqualTo(final Iterable<Byte> expected) {
+    public InputStreamAssertion areAllBytesEqualTo(final Iterable<Byte> expected) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(expected, "expected");
         List<Byte> expectedList = convertValue(expected, null, List.class);
