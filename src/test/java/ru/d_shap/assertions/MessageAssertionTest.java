@@ -35,6 +35,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
@@ -1430,6 +1431,45 @@ public final class MessageAssertionTest extends AssertionTest {
             Assertions.fail(MessageAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("value''s.\n\tCheck all actual value's elements.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2, 3, 4]> but was:<[1, 2, 3]>");
+        }
+    }
+
+    /**
+     * {@link Assertions} class test.
+     */
+    @Test
+    public void listIteratorAssertionTest() {
+        Assertions.assertWithMessage("Test message").that((ListIterator<String>) null).isNull();
+        Assertions.assertWithMessage("Test message").that(DataHelper.createListIterator(1, "1", "2", "3")).containsExactlyInOrder("2", "3");
+        Assertions.assertWithMessage("Test message").that(null, Raw.<String>listIteratorAssertion()).isNull();
+        Assertions.assertWithMessage("Test message").that(DataHelper.createListIterator(1, "1", "2", "3"), Raw.<String>listIteratorAssertion()).containsExactlyInOrder("2", "3");
+        Assertions.assertWithMessage("Test message").that(createNullFieldClass(), "_field", Raw.<String>listIteratorAssertion()).isNull();
+        Assertions.assertWithMessage("Test message").that(createPrivateFieldsClass(), "_listIterator").isNotNull();
+        Assertions.assertWithMessage("Test message").that(createPrivateFieldsClass(), "_listIterator", Raw.<String>listIteratorAssertion()).containsExactlyInOrder("2", "3");
+
+        try {
+            Assertions.assertWithMessage(null).that(DataHelper.createListIterator(1, "1", "2", "3")).containsExactlyInOrder("1", "2", "3");
+            Assertions.fail(MessageAssertion.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check all next actual value's elements.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2, 3]> but was:<[2, 3]>");
+        }
+        try {
+            Assertions.assertWithMessage("").that(DataHelper.createListIterator(1, "1", "2", "3")).containsExactlyInOrder("1", "2", "3");
+            Assertions.fail(MessageAssertion.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check all next actual value's elements.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2, 3]> but was:<[2, 3]>");
+        }
+        try {
+            Assertions.assertWithMessage("Test message").that(DataHelper.createListIterator(1, "1", "2", "3")).containsExactlyInOrder("1", "2", "3");
+            Assertions.fail(MessageAssertion.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Test message.\n\tCheck all next actual value's elements.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2, 3]> but was:<[2, 3]>");
+        }
+        try {
+            Assertions.assertWithMessage("value''s.").that(DataHelper.createListIterator(1, "1", "2", "3")).containsExactlyInOrder("1", "2", "3");
+            Assertions.fail(MessageAssertion.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("value''s.\n\tCheck all next actual value's elements.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[1, 2, 3]> but was:<[2, 3]>");
         }
     }
 
