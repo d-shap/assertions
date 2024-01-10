@@ -3831,6 +3831,8 @@ public final class ListIteratorAssertionTest extends AssertionTest {
     public void containsNoneArrayTest() {
         initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(0, "val1", "val2", "val3")).containsNone("val4", "val5", "val6");
         initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(0, "val1", "val2", "val3")).containsNone("val8", "val4");
+        initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(1, "val1", "val2", "val3")).containsNone("val1", "val4");
+        initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(2, "val1", "val2", "val3")).containsNone("val1", "val4");
         initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(0, "val1", "val2", null)).containsNone("val8", "val4");
         initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(0, "val1", "val2", "val3")).containsNone("val8", "val4", null);
         initialize(Raw.listIteratorAssertion(), DataHelper.createListIterator(0, (Object) "val1", "val2", '1')).containsNone("val8", "val4");
@@ -3909,6 +3911,18 @@ public final class ListIteratorAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck all next actual value's elements.\n\tActual value should not contain any of the expected values.\n\tExpected:<[val5, val4, val2, val6]> but was:<[val1, val2, val3]>");
         }
         try {
+            initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(1, "val1", "val2", "val3")).containsNone("val1", "val4", "val2");
+            Assertions.fail(ListIteratorAssertion.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check all next actual value's elements.\n\tActual value should not contain any of the expected values.\n\tExpected:<[val1, val4, val2]> but was:<[val2, val3]>");
+        }
+        try {
+            initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(1, "val1", "val2", "val3"), "Message").containsNone("val1", "val4", "val2");
+            Assertions.fail(ListIteratorAssertion.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck all next actual value's elements.\n\tActual value should not contain any of the expected values.\n\tExpected:<[val1, val4, val2]> but was:<[val2, val3]>");
+        }
+        try {
             initialize(Raw.listIteratorAssertion(), DataHelper.createListIterator(0, (Object) "val1", "val2", '1')).containsNone("val5", "val4", "val2", "val6");
             Assertions.fail(ListIteratorAssertion.class);
         } catch (AssertionError ex) {
@@ -3929,6 +3943,8 @@ public final class ListIteratorAssertionTest extends AssertionTest {
     public void containsNoneIterableTest() {
         initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(0, "val1", "val2", "val3")).containsNone(DataHelper.createIterable("val4", "val5", "val6"));
         initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(0, "val1", "val2", "val3")).containsNone(DataHelper.createIterable("val8", "val4"));
+        initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(1, "val1", "val2", "val3")).containsNone(DataHelper.createIterable("val1", "val4"));
+        initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(2, "val1", "val2", "val3")).containsNone(DataHelper.createIterable("val1", "val4"));
         initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(0, "val1", "val2", null)).containsNone(DataHelper.createIterable("val8", "val4"));
         initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(0, "val1", "val2", "val3")).containsNone(DataHelper.createIterable("val8", "val4", null));
         initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(0, "val1", "val2", "val3")).isNotNull().containsNone(DataHelper.createIterable("val4", "val5", "val6")).isInstanceOf(ListIterator.class);
@@ -4004,6 +4020,18 @@ public final class ListIteratorAssertionTest extends AssertionTest {
             Assertions.fail(ListIteratorAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck all next actual value's elements.\n\tActual value should not contain any of the expected values.\n\tExpected:<[val5, val4, val2, val6]> but was:<[val1, val2, val3]>");
+        }
+        try {
+            initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(1, "val1", "val2", "val3")).containsNone(DataHelper.createIterable("val1", "val4", "val2"));
+            Assertions.fail(ListIteratorAssertion.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check all next actual value's elements.\n\tActual value should not contain any of the expected values.\n\tExpected:<[val1, val4, val2]> but was:<[val2, val3]>");
+        }
+        try {
+            initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(1, "val1", "val2", "val3"), "Message").containsNone(DataHelper.createIterable("val1", "val4", "val2"));
+            Assertions.fail(ListIteratorAssertion.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck all next actual value's elements.\n\tActual value should not contain any of the expected values.\n\tExpected:<[val1, val4, val2]> but was:<[val2, val3]>");
         }
     }
 
