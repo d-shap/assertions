@@ -19,6 +19,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 package ru.d_shap.assertions.asimp.java.util;
 
+import java.util.Iterator;
 import java.util.ListIterator;
 
 import org.hamcrest.Matchers;
@@ -1081,6 +1082,185 @@ public final class ListIteratorAssertionTest extends AssertionTest {
             Assertions.fail(ListIteratorAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck previous N actual value's elements: 5.\nExpected: (a collection containing \"val1\" and a collection containing \"val5\")\n     but: a collection containing \"val5\" mismatches were: [was \"val1\"]");
+        }
+    }
+
+    /**
+     * {@link ListIteratorAssertion} class test.
+     */
+    @Test
+    public void isEmptyTest() {
+        initialize(Raw.<String>listIteratorAssertion(), DataHelper.<String>createListIterator(0)).isEmpty();
+        initialize(Raw.listIteratorAssertion(), DataHelper.createArrayList().listIterator()).isEmpty();
+        initialize(Raw.listIteratorAssertion(), DataHelper.createLinkedList().listIterator()).isEmpty();
+        initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(1, "value")).isEmpty();
+        initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(2, "val1", "val2")).isEmpty();
+        initialize(Raw.<String>listIteratorAssertion(), DataHelper.<String>createListIterator(0)).isNotNull().isEmpty().isInstanceOf(Iterator.class);
+
+        try {
+            Raw.<String>listIteratorAssertion().isEmpty();
+            Assertions.fail(IteratorAssertion.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.<String>listIteratorAssertion(), null).isEmpty();
+            Assertions.fail(IteratorAssertion.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.<String>listIteratorAssertion(), null, "Message").isEmpty();
+            Assertions.fail(IteratorAssertion.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(0, "val1", "val2")).isEmpty();
+            Assertions.fail(IteratorAssertion.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check all next actual value's elements.\n\tActual value should be empty.\n\tActual:<[val1, val2]>");
+        }
+        try {
+            initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(0, "val1", "val2"), "Message").isEmpty();
+            Assertions.fail(IteratorAssertion.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck all next actual value's elements.\n\tActual value should be empty.\n\tActual:<[val1, val2]>");
+        }
+        try {
+            initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(1, "val1", "val2")).isEmpty();
+            Assertions.fail(IteratorAssertion.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check all next actual value's elements.\n\tActual value should be empty.\n\tActual:<[val2]>");
+        }
+        try {
+            initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(1, "val1", "val2"), "Message").isEmpty();
+            Assertions.fail(IteratorAssertion.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck all next actual value's elements.\n\tActual value should be empty.\n\tActual:<[val2]>");
+        }
+    }
+
+    /**
+     * {@link ListIteratorAssertion} class test.
+     */
+    @Test
+    public void isNullOrEmptyTest() {
+        initialize(Raw.<String>listIteratorAssertion(), DataHelper.<String>createListIterator(0)).isNullOrEmpty();
+        initialize(Raw.listIteratorAssertion(), DataHelper.createArrayList().listIterator()).isNullOrEmpty();
+        initialize(Raw.listIteratorAssertion(), DataHelper.createLinkedList().listIterator()).isNullOrEmpty();
+        initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(1, "value")).isNullOrEmpty();
+        initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(2, "val1", "val2")).isNullOrEmpty();
+        initialize(Raw.<String>listIteratorAssertion(), null).isNullOrEmpty();
+        initialize(Raw.<String>listIteratorAssertion(), DataHelper.<String>createListIterator(0)).isNotNull().isNullOrEmpty().isInstanceOf(Iterator.class);
+
+        try {
+            Raw.<String>listIteratorAssertion().isNullOrEmpty();
+            Assertions.fail(IteratorAssertion.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(0, "val1", "val2")).isNullOrEmpty();
+            Assertions.fail(IteratorAssertion.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check all next actual value's elements.\n\tActual value should be null or empty.\n\tActual:<[val1, val2]>");
+        }
+        try {
+            initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(0, "val1", "val2"), "Message").isNullOrEmpty();
+            Assertions.fail(IteratorAssertion.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck all next actual value's elements.\n\tActual value should be null or empty.\n\tActual:<[val1, val2]>");
+        }
+        try {
+            initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(1, "val1", "val2")).isNullOrEmpty();
+            Assertions.fail(IteratorAssertion.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check all next actual value's elements.\n\tActual value should be null or empty.\n\tActual:<[val2]>");
+        }
+        try {
+            initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(1, "val1", "val2"), "Message").isNullOrEmpty();
+            Assertions.fail(IteratorAssertion.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck all next actual value's elements.\n\tActual value should be null or empty.\n\tActual:<[val2]>");
+        }
+    }
+
+    /**
+     * {@link ListIteratorAssertion} class test.
+     */
+    @Test
+    public void isNotEmptyTest() {
+        initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(0, "val1", "val2")).isNotEmpty();
+        initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(1, "val1", "val2")).isNotEmpty();
+        initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(0, "test1", "test2")).isNotEmpty();
+        initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(0, "val1", "val2")).isNotNull().isNotEmpty().isInstanceOf(Iterator.class);
+
+        try {
+            Raw.<String>listIteratorAssertion().isNotEmpty();
+            Assertions.fail(IteratorAssertion.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.<String>listIteratorAssertion(), null).isNotEmpty();
+            Assertions.fail(IteratorAssertion.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.<String>listIteratorAssertion(), null, "Message").isNotEmpty();
+            Assertions.fail(IteratorAssertion.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+        try {
+            initialize(Raw.<String>listIteratorAssertion(), DataHelper.<String>createListIterator(0)).isNotEmpty();
+            Assertions.fail(IteratorAssertion.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check all next actual value's elements.\n\tActual value should not be empty.");
+        }
+        try {
+            initialize(Raw.<String>listIteratorAssertion(), DataHelper.<String>createListIterator(0), "Message").isNotEmpty();
+            Assertions.fail(IteratorAssertion.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck all next actual value's elements.\n\tActual value should not be empty.");
+        }
+        try {
+            initialize(Raw.listIteratorAssertion(), DataHelper.createArrayList().listIterator()).isNotEmpty();
+            Assertions.fail(IteratorAssertion.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check all next actual value's elements.\n\tActual value should not be empty.");
+        }
+        try {
+            initialize(Raw.listIteratorAssertion(), DataHelper.createArrayList().listIterator(), "Message").isNotEmpty();
+            Assertions.fail(IteratorAssertion.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck all next actual value's elements.\n\tActual value should not be empty.");
+        }
+        try {
+            initialize(Raw.listIteratorAssertion(), DataHelper.createLinkedList().listIterator()).isNotEmpty();
+            Assertions.fail(IteratorAssertion.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check all next actual value's elements.\n\tActual value should not be empty.");
+        }
+        try {
+            initialize(Raw.listIteratorAssertion(), DataHelper.createLinkedList().listIterator(), "Message").isNotEmpty();
+            Assertions.fail(IteratorAssertion.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck all next actual value's elements.\n\tActual value should not be empty.");
+        }
+        try {
+            initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(3, "val1", "val2", "val3")).isNotEmpty();
+            Assertions.fail(IteratorAssertion.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check all next actual value's elements.\n\tActual value should not be empty.");
+        }
+        try {
+            initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(3, "val1", "val2", "val3"), "Message").isNotEmpty();
+            Assertions.fail(IteratorAssertion.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck all next actual value's elements.\n\tActual value should not be empty.");
         }
     }
 
