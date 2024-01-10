@@ -2658,6 +2658,8 @@ public final class ListIteratorAssertionTest extends AssertionTest {
         initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(0, "val1", "val2", "val3", "val4", "val5")).containsAll("val3", "val1");
         initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(0, "val1", "val2", "val3", "val4", "val5")).containsAll("val5", "val1", "val3");
         initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(0, "val1", "val2", "val3", "val4", "val5")).containsAll("val3", "val5", "val4");
+        initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(1, "val1", "val2", "val3", "val4", "val5")).containsAll("val3", "val5", "val4");
+        initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(2, "val1", "val2", "val3", "val4", "val5")).containsAll("val3", "val5", "val4");
         initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(0, "val1", "val2", "val3", "val4", "val5")).containsAll("val3", "val1", "val4", "val5", "val2");
         initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(0, "val1", "val2", "val3", "val4", null)).containsAll("val3", "val1", "val4", null, "val2");
         initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(0, "val1", "val2", "val3", "val4", "val5")).isNotNull().containsAll("val1", "val2").isInstanceOf(ListIterator.class);
@@ -2747,6 +2749,18 @@ public final class ListIteratorAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck all next actual value's elements.\n\tActual value should contain all of the expected values.\n\tExpected:<[val1, val2, val3, val4, val5, val6]> but was:<[val1, val2, val3, val4, val5]>");
         }
         try {
+            initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(2, "val1", "val2", "val3", "val4", "val5")).containsAll("val2", "val3", "val4");
+            Assertions.fail(ListIteratorAssertion.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check all next actual value's elements.\n\tActual value should contain all of the expected values.\n\tExpected:<[val2, val3, val4]> but was:<[val3, val4, val5]>");
+        }
+        try {
+            initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(2, "val1", "val2", "val3", "val4", "val5"), "Message").containsAll("val2", "val3", "val4");
+            Assertions.fail(ListIteratorAssertion.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck all next actual value's elements.\n\tActual value should contain all of the expected values.\n\tExpected:<[val2, val3, val4]> but was:<[val3, val4, val5]>");
+        }
+        try {
             initialize(Raw.listIteratorAssertion(), DataHelper.createListIterator(0, (Object) "val1", "val2", "val3", "val4", '1')).containsAll("val1", "val2", "val3", "val4", "val5", "val6");
             Assertions.fail(ListIteratorAssertion.class);
         } catch (AssertionError ex) {
@@ -2770,6 +2784,8 @@ public final class ListIteratorAssertionTest extends AssertionTest {
         initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(0, "val1", "val2", "val3", "val4", "val5")).containsAll(DataHelper.createIterable("val3", "val1"));
         initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(0, "val1", "val2", "val3", "val4", "val5")).containsAll(DataHelper.createIterable("val5", "val1", "val3"));
         initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(0, "val1", "val2", "val3", "val4", "val5")).containsAll(DataHelper.createIterable("val3", "val5", "val4"));
+        initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(1, "val1", "val2", "val3", "val4", "val5")).containsAll(DataHelper.createIterable("val3", "val5", "val4"));
+        initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(2, "val1", "val2", "val3", "val4", "val5")).containsAll(DataHelper.createIterable("val3", "val5", "val4"));
         initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(0, "val1", "val2", "val3", "val4", "val5")).containsAll(DataHelper.createIterable("val3", "val1", "val4", "val5", "val2"));
         initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(0, "val1", "val2", "val3", "val4", null)).containsAll(DataHelper.createIterable("val3", "val1", "val4", null, "val2"));
         initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(0, "val1", "val2", "val3", "val4", "val5")).isNotNull().containsAll(DataHelper.createIterable("val1", "val2")).isInstanceOf(ListIterator.class);
@@ -2857,6 +2873,18 @@ public final class ListIteratorAssertionTest extends AssertionTest {
             Assertions.fail(ListIteratorAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck all next actual value's elements.\n\tActual value should contain all of the expected values.\n\tExpected:<[val1, val2, val3, val4, val5, val6]> but was:<[val1, val2, val3, val4, val5]>");
+        }
+        try {
+            initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(2, "val1", "val2", "val3", "val4", "val5")).containsAll(DataHelper.createIterable("val2", "val3", "val4"));
+            Assertions.fail(ListIteratorAssertion.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check all next actual value's elements.\n\tActual value should contain all of the expected values.\n\tExpected:<[val2, val3, val4]> but was:<[val3, val4, val5]>");
+        }
+        try {
+            initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(2, "val1", "val2", "val3", "val4", "val5"), "Message").containsAll(DataHelper.createIterable("val2", "val3", "val4"));
+            Assertions.fail(ListIteratorAssertion.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck all next actual value's elements.\n\tActual value should contain all of the expected values.\n\tExpected:<[val2, val3, val4]> but was:<[val3, val4, val5]>");
         }
     }
 
