@@ -3377,6 +3377,11 @@ public final class ListIteratorAssertionTest extends AssertionTest {
     public void containsExactlyInOrderArrayTest() {
         initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(0, "val1", "val2", "val3")).containsExactlyInOrder("val1", "val2", "val3");
         initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(0, "val1", "val2", "val3", "val4", "val5")).containsExactlyInOrder("val1", "val2", "val3", "val4", "val5");
+        initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(1, "val1", "val2", "val3", "val4", "val5")).containsExactlyInOrder("val2", "val3", "val4", "val5");
+        initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(2, "val1", "val2", "val3", "val4", "val5")).containsExactlyInOrder("val3", "val4", "val5");
+        initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(3, "val1", "val2", "val3", "val4", "val5")).containsExactlyInOrder("val4", "val5");
+        initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(4, "val1", "val2", "val3", "val4", "val5")).containsExactlyInOrder("val5");
+        initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(5, "val1", "val2", "val3", "val4", "val5")).containsExactlyInOrder();
         initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(0, "val1", "val2", "val3", "val4", null)).containsExactlyInOrder("val1", "val2", "val3", "val4", null);
         initialize(Raw.<String>listIteratorAssertion(), DataHelper.<String>createListIterator(0)).containsExactlyInOrder();
         initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(0, "val1", "val2", "val3")).isNotNull().containsExactlyInOrder("val1", "val2", "val3").isInstanceOf(ListIterator.class);
@@ -3466,6 +3471,18 @@ public final class ListIteratorAssertionTest extends AssertionTest {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck all next actual value's elements.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[val3, val1, val2]> but was:<[val1, val2, val3]>");
         }
         try {
+            initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(1, "val1", "val2", "val3")).containsExactlyInOrder("val3", "val2");
+            Assertions.fail(ListIteratorAssertion.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check all next actual value's elements.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[val3, val2]> but was:<[val2, val3]>");
+        }
+        try {
+            initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(1, "val1", "val2", "val3"), "Message").containsExactlyInOrder("val3", "val2");
+            Assertions.fail(ListIteratorAssertion.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck all next actual value's elements.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[val3, val2]> but was:<[val2, val3]>");
+        }
+        try {
             initialize(Raw.listIteratorAssertion(), DataHelper.createListIterator(0, (Object) "val1", "val2", '1')).containsExactlyInOrder("val3", "val1", "val2");
             Assertions.fail(ListIteratorAssertion.class);
         } catch (AssertionError ex) {
@@ -3486,6 +3503,11 @@ public final class ListIteratorAssertionTest extends AssertionTest {
     public void containsExactlyInOrderIterableTest() {
         initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(0, "val1", "val2", "val3")).containsExactlyInOrder(DataHelper.createIterable("val1", "val2", "val3"));
         initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(0, "val1", "val2", "val3", "val4", "val5")).containsExactlyInOrder(DataHelper.createIterable("val1", "val2", "val3", "val4", "val5"));
+        initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(1, "val1", "val2", "val3", "val4", "val5")).containsExactlyInOrder(DataHelper.createIterable("val2", "val3", "val4", "val5"));
+        initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(2, "val1", "val2", "val3", "val4", "val5")).containsExactlyInOrder(DataHelper.createIterable("val3", "val4", "val5"));
+        initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(3, "val1", "val2", "val3", "val4", "val5")).containsExactlyInOrder(DataHelper.createIterable("val4", "val5"));
+        initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(4, "val1", "val2", "val3", "val4", "val5")).containsExactlyInOrder(DataHelper.createIterable("val5"));
+        initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(5, "val1", "val2", "val3", "val4", "val5")).containsExactlyInOrder(DataHelper.<String>createIterable());
         initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(0, "val1", "val2", "val3", "val4", null)).containsExactlyInOrder(DataHelper.createIterable("val1", "val2", "val3", "val4", null));
         initialize(Raw.<String>listIteratorAssertion(), DataHelper.<String>createListIterator(0)).containsExactlyInOrder(DataHelper.<String>createIterable());
         initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(0, "val1", "val2", "val3")).isNotNull().containsExactlyInOrder(DataHelper.createIterable("val1", "val2", "val3")).isInstanceOf(ListIterator.class);
@@ -3573,6 +3595,18 @@ public final class ListIteratorAssertionTest extends AssertionTest {
             Assertions.fail(ListIteratorAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tCheck all next actual value's elements.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[val3, val1, val2]> but was:<[val1, val2, val3]>");
+        }
+        try {
+            initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(1, "val1", "val2", "val3")).containsExactlyInOrder(DataHelper.createIterable("val3", "val2"));
+            Assertions.fail(ListIteratorAssertion.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Check all next actual value's elements.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[val3, val2]> but was:<[val2, val3]>");
+        }
+        try {
+            initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(1, "val1", "val2", "val3"), "Message").containsExactlyInOrder(DataHelper.createIterable("val3", "val2"));
+            Assertions.fail(ListIteratorAssertion.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tCheck all next actual value's elements.\n\tActual value should contain all of the expected values exactly in the specified order.\n\tExpected:<[val3, val2]> but was:<[val2, val3]>");
         }
     }
 
