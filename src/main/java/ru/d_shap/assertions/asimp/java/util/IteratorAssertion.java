@@ -114,7 +114,7 @@ public final class IteratorAssertion<E> extends ReferenceAssertion<IteratorAsser
      */
     public ListAssertion<E> toList() {
         checkActualIsNotNull();
-        List<E> list = convertValue(getActual(), null, List.class, 0);
+        List<E> list = convertValue(getActual(), null, List.class, 0, true);
         return initializeAssertion(Raw.<E>listAssertion(), list, Messages.Check.ELEMENTS_ALL);
     }
 
@@ -128,7 +128,7 @@ public final class IteratorAssertion<E> extends ReferenceAssertion<IteratorAsser
     public ListAssertion<E> toList(final int count) {
         checkActualIsNotNull();
         checkArgumentIsValid(count > 0, "count", Messages.Fail.Argument.IS_GREATER_THAN_ZERO);
-        List<E> list = convertValue(getActual(), null, List.class, count);
+        List<E> list = convertValue(getActual(), null, List.class, count, true);
         return initializeAssertion(Raw.<E>listAssertion(), list, Messages.Check.ELEMENTS_COUNT_NEXT, count);
     }
 
@@ -142,7 +142,7 @@ public final class IteratorAssertion<E> extends ReferenceAssertion<IteratorAsser
     public IteratorAssertion<E> toList(final Matcher<? super Iterable<E>> matcher) {
         checkActualIsNotNull();
         checkArgumentIsNotNull(matcher, "matcher");
-        List<E> list = convertValue(getActual(), null, List.class, 0);
+        List<E> list = convertValue(getActual(), null, List.class, 0, true);
         matcherAssertion(list, matcher, Messages.Check.ELEMENTS_ALL);
         return this;
     }
@@ -159,7 +159,7 @@ public final class IteratorAssertion<E> extends ReferenceAssertion<IteratorAsser
         checkActualIsNotNull();
         checkArgumentIsValid(count > 0, "count", Messages.Fail.Argument.IS_GREATER_THAN_ZERO);
         checkArgumentIsNotNull(matcher, "matcher");
-        List<E> list = convertValue(getActual(), null, List.class, count);
+        List<E> list = convertValue(getActual(), null, List.class, count, true);
         matcherAssertion(list, matcher, Messages.Check.ELEMENTS_COUNT_NEXT, count);
         return this;
     }
