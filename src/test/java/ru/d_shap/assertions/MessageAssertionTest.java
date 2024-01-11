@@ -1402,11 +1402,14 @@ public final class MessageAssertionTest extends AssertionTest {
     public void iteratorAssertionTest() {
         Assertions.assertWithMessage("Test message").that((Iterator<String>) null).isNull();
         Assertions.assertWithMessage("Test message").that(DataHelper.createIterator("1", "2", "3")).containsExactlyInOrder("1", "2", "3");
+        Assertions.assertWithMessage("Test message").that((Iterator<String>) DataHelper.createListIterator(0, "1", "2", "3")).containsExactlyInOrder("1", "2", "3");
         Assertions.assertWithMessage("Test message").that(null, Raw.<String>iteratorAssertion()).isNull();
         Assertions.assertWithMessage("Test message").that(DataHelper.createIterator("1", "2", "3"), Raw.<String>iteratorAssertion()).containsExactlyInOrder("1", "2", "3");
+        Assertions.assertWithMessage("Test message").that(DataHelper.createListIterator(0, "1", "2", "3"), Raw.<String>iteratorAssertion()).containsExactlyInOrder("1", "2", "3");
         Assertions.assertWithMessage("Test message").that(createNullFieldClass(), "_field", Raw.<String>iteratorAssertion()).isNull();
         Assertions.assertWithMessage("Test message").that(createPrivateFieldsClass(), "_iterator").isNotNull();
         Assertions.assertWithMessage("Test message").that(createPrivateFieldsClass(), "_iterator", Raw.<String>iteratorAssertion()).containsExactlyInOrder("1", "2", "3");
+        Assertions.assertWithMessage("Test message").that(createPrivateFieldsClass(), "_listIterator", Raw.<String>iteratorAssertion()).containsExactlyInOrder("2", "3");
 
         try {
             Assertions.assertWithMessage(null).that(DataHelper.createIterator("1", "2", "3")).containsExactlyInOrder("1", "2", "3", "4");

@@ -790,11 +790,14 @@ public final class AssertionsTest extends AssertionTest {
     public void iteratorAssertionTest() {
         Assertions.assertThat((Iterator<String>) null).isNull();
         Assertions.assertThat(DataHelper.createIterator("1", "2", "3")).containsExactlyInOrder("1", "2", "3");
+        Assertions.assertThat((Iterator<String>) DataHelper.createListIterator(0, "1", "2", "3")).containsExactlyInOrder("1", "2", "3");
         Assertions.assertThat(null, Raw.<String>iteratorAssertion()).isNull();
         Assertions.assertThat(DataHelper.createIterator("1", "2", "3"), Raw.<String>iteratorAssertion()).containsExactlyInOrder("1", "2", "3");
+        Assertions.assertThat(DataHelper.createListIterator(0, "1", "2", "3"), Raw.<String>iteratorAssertion()).containsExactlyInOrder("1", "2", "3");
         Assertions.assertThat(createNullFieldClass(), "_field", Raw.<String>iteratorAssertion()).isNull();
         Assertions.assertThat(createPrivateFieldsClass(), "_iterator").isNotNull();
         Assertions.assertThat(createPrivateFieldsClass(), "_iterator", Raw.<String>iteratorAssertion()).containsExactlyInOrder("1", "2", "3");
+        Assertions.assertThat(createPrivateFieldsClass(), "_listIterator", Raw.<String>iteratorAssertion()).containsExactlyInOrder("2", "3");
 
         try {
             Assertions.assertThat(DataHelper.createIterator("1", "2", "3")).containsExactlyInOrder("1", "2", "3", "4");
