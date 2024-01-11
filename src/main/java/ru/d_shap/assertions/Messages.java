@@ -516,13 +516,13 @@ public final class Messages {
 
             public static final String DOES_NOT_HAVE_SAME_RULES = "Actual value should not have the same rules as the expected.";
 
-            public static final String HAS_NEXT_VALUE = "Actual value should have next value.";
+            public static final String HAS_NEXT_ELEMENT = "Actual value should have next element.";
 
-            public static final String DOES_NOT_HAVE_NEXT_VALUE = "Actual value should not have next value.";
+            public static final String DOES_NOT_HAVE_NEXT_ELEMENT = "Actual value should not have next element.";
 
-            public static final String HAS_PREVIOUS_VALUE = "Actual value should have previous value.";
+            public static final String HAS_PREVIOUS_ELEMENT = "Actual value should have previous element.";
 
-            public static final String DOES_NOT_HAVE_PREVIOUS_VALUE = "Actual value should not have previous value.";
+            public static final String DOES_NOT_HAVE_PREVIOUS_ELEMENT = "Actual value should not have previous element.";
 
             public static final String IS_COMPLETED = "Actual value should be completed.";
 
