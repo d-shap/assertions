@@ -56,53 +56,53 @@ public final class ListIteratorAssertion<E> extends ReferenceAssertion<ListItera
     }
 
     /**
-     * Check if the actual value has next value.
+     * Check if the actual value has next element.
      *
      * @return current object for the chain call.
      */
-    public ListIteratorAssertion<E> hasNextValue() {
+    public ListIteratorAssertion<E> hasNextElement() {
         checkActualIsNotNull();
         if (!getActual().hasNext()) {
-            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.HAS_NEXT_VALUE).build();
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.HAS_NEXT_ELEMENT).build();
         }
         return this;
     }
 
     /**
-     * Check if the actual value does not have next value.
+     * Check if the actual value does not have next element.
      *
      * @return current object for the chain call.
      */
-    public ListIteratorAssertion<E> doesNotHaveNextValue() {
+    public ListIteratorAssertion<E> doesNotHaveNextElement() {
         checkActualIsNotNull();
         if (getActual().hasNext()) {
-            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.DOES_NOT_HAVE_NEXT_VALUE).build();
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.DOES_NOT_HAVE_NEXT_ELEMENT).build();
         }
         return this;
     }
 
     /**
-     * Check if the actual value has previous value.
+     * Check if the actual value has previous element.
      *
      * @return current object for the chain call.
      */
-    public ListIteratorAssertion<E> hasPreviousValue() {
+    public ListIteratorAssertion<E> hasPreviousElement() {
         checkActualIsNotNull();
         if (!getActual().hasPrevious()) {
-            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.HAS_PREVIOUS_VALUE).build();
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.HAS_PREVIOUS_ELEMENT).build();
         }
         return this;
     }
 
     /**
-     * Check if the actual value does not have previous value.
+     * Check if the actual value does not have previous element.
      *
      * @return current object for the chain call.
      */
-    public ListIteratorAssertion<E> doesNotHavePreviousValue() {
+    public ListIteratorAssertion<E> doesNotHavePreviousElement() {
         checkActualIsNotNull();
         if (getActual().hasPrevious()) {
-            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.DOES_NOT_HAVE_PREVIOUS_VALUE).build();
+            throw getAssertionErrorBuilder().addMessage(Messages.Fail.Actual.DOES_NOT_HAVE_PREVIOUS_ELEMENT).build();
         }
         return this;
     }
