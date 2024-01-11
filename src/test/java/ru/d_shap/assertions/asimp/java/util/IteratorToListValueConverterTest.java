@@ -111,6 +111,54 @@ public final class IteratorToListValueConverterTest extends AssertionTest {
         Assertions.assertThat(new IteratorToListValueConverter().convert(DataHelper.createIterator("val1", "val2", "val3", "val4", "val5"), 3, true)).isInstanceOf(List.class);
         Assertions.assertThat(new IteratorToListValueConverter().convert(DataHelper.createIterator("val1", "val2", "val3", "val4", "val5"), 3, true), Raw.<String>listAssertion()).containsExactlyInOrder("val1", "val2", "val3");
         Assertions.assertThat(new IteratorToListValueConverter().convert(DataHelper.createIterator("val1", "val2", "val3", "val4", "val5"), 3, true)).as(Raw.<String>listAssertion()).containsExactlyInOrder("val1", "val2", "val3");
+
+        Assertions.assertThat(new IteratorToListValueConverter().convert(DataHelper.createIterator(), -1, false)).isInstanceOf(List.class);
+        Assertions.assertThat(new IteratorToListValueConverter().convert(DataHelper.createIterator(), -1, false), Raw.<String>listAssertion()).containsExactlyInOrder();
+        Assertions.assertThat(new IteratorToListValueConverter().convert(DataHelper.createIterator(), -1, false)).as(Raw.<String>listAssertion()).containsExactlyInOrder();
+
+        Assertions.assertThat(new IteratorToListValueConverter().convert(DataHelper.createIterator("val1"), -1, false)).isInstanceOf(List.class);
+        Assertions.assertThat(new IteratorToListValueConverter().convert(DataHelper.createIterator("val1"), -1, false), Raw.<String>listAssertion()).containsExactlyInOrder();
+        Assertions.assertThat(new IteratorToListValueConverter().convert(DataHelper.createIterator("val1"), -1, false)).as(Raw.<String>listAssertion()).containsExactlyInOrder();
+
+        Assertions.assertThat(new IteratorToListValueConverter().convert(DataHelper.createIterator("val1", "val2", "val3"), -1, false)).isInstanceOf(List.class);
+        Assertions.assertThat(new IteratorToListValueConverter().convert(DataHelper.createIterator("val1", "val2", "val3"), -1, false), Raw.<String>listAssertion()).containsExactlyInOrder();
+        Assertions.assertThat(new IteratorToListValueConverter().convert(DataHelper.createIterator("val1", "val2", "val3"), -1, false)).as(Raw.<String>listAssertion()).containsExactlyInOrder();
+
+        Assertions.assertThat(new IteratorToListValueConverter().convert(DataHelper.createIterator("val1", "val2", "val3", "val4", "val5"), -1, false)).isInstanceOf(List.class);
+        Assertions.assertThat(new IteratorToListValueConverter().convert(DataHelper.createIterator("val1", "val2", "val3", "val4", "val5"), -1, false), Raw.<String>listAssertion()).containsExactlyInOrder();
+        Assertions.assertThat(new IteratorToListValueConverter().convert(DataHelper.createIterator("val1", "val2", "val3", "val4", "val5"), -1, false)).as(Raw.<String>listAssertion()).containsExactlyInOrder();
+
+        Assertions.assertThat(new IteratorToListValueConverter().convert(DataHelper.createIterator(), 0, false)).isInstanceOf(List.class);
+        Assertions.assertThat(new IteratorToListValueConverter().convert(DataHelper.createIterator(), 0, false), Raw.<String>listAssertion()).containsExactlyInOrder();
+        Assertions.assertThat(new IteratorToListValueConverter().convert(DataHelper.createIterator(), 0, false)).as(Raw.<String>listAssertion()).containsExactlyInOrder();
+
+        Assertions.assertThat(new IteratorToListValueConverter().convert(DataHelper.createIterator("val1"), 0, false)).isInstanceOf(List.class);
+        Assertions.assertThat(new IteratorToListValueConverter().convert(DataHelper.createIterator("val1"), 0, false), Raw.<String>listAssertion()).containsExactlyInOrder();
+        Assertions.assertThat(new IteratorToListValueConverter().convert(DataHelper.createIterator("val1"), 0, false)).as(Raw.<String>listAssertion()).containsExactlyInOrder();
+
+        Assertions.assertThat(new IteratorToListValueConverter().convert(DataHelper.createIterator("val1", "val2", "val3"), 0, false)).isInstanceOf(List.class);
+        Assertions.assertThat(new IteratorToListValueConverter().convert(DataHelper.createIterator("val1", "val2", "val3"), 0, false), Raw.<String>listAssertion()).containsExactlyInOrder();
+        Assertions.assertThat(new IteratorToListValueConverter().convert(DataHelper.createIterator("val1", "val2", "val3"), 0, false)).as(Raw.<String>listAssertion()).containsExactlyInOrder();
+
+        Assertions.assertThat(new IteratorToListValueConverter().convert(DataHelper.createIterator("val1", "val2", "val3", "val4", "val5"), 0, false)).isInstanceOf(List.class);
+        Assertions.assertThat(new IteratorToListValueConverter().convert(DataHelper.createIterator("val1", "val2", "val3", "val4", "val5"), 0, false), Raw.<String>listAssertion()).containsExactlyInOrder();
+        Assertions.assertThat(new IteratorToListValueConverter().convert(DataHelper.createIterator("val1", "val2", "val3", "val4", "val5"), 0, false)).as(Raw.<String>listAssertion()).containsExactlyInOrder();
+
+        Assertions.assertThat(new IteratorToListValueConverter().convert(DataHelper.createIterator(), 3, false)).isInstanceOf(List.class);
+        Assertions.assertThat(new IteratorToListValueConverter().convert(DataHelper.createIterator(), 3, false), Raw.<String>listAssertion()).containsExactlyInOrder();
+        Assertions.assertThat(new IteratorToListValueConverter().convert(DataHelper.createIterator(), 3, false)).as(Raw.<String>listAssertion()).containsExactlyInOrder();
+
+        Assertions.assertThat(new IteratorToListValueConverter().convert(DataHelper.createIterator("val1"), 3, false)).isInstanceOf(List.class);
+        Assertions.assertThat(new IteratorToListValueConverter().convert(DataHelper.createIterator("val1"), 3, false), Raw.<String>listAssertion()).containsExactlyInOrder();
+        Assertions.assertThat(new IteratorToListValueConverter().convert(DataHelper.createIterator("val1"), 3, false)).as(Raw.<String>listAssertion()).containsExactlyInOrder();
+
+        Assertions.assertThat(new IteratorToListValueConverter().convert(DataHelper.createIterator("val1", "val2", "val3"), 3, false)).isInstanceOf(List.class);
+        Assertions.assertThat(new IteratorToListValueConverter().convert(DataHelper.createIterator("val1", "val2", "val3"), 3, false), Raw.<String>listAssertion()).containsExactlyInOrder();
+        Assertions.assertThat(new IteratorToListValueConverter().convert(DataHelper.createIterator("val1", "val2", "val3"), 3, false)).as(Raw.<String>listAssertion()).containsExactlyInOrder();
+
+        Assertions.assertThat(new IteratorToListValueConverter().convert(DataHelper.createIterator("val1", "val2", "val3", "val4", "val5"), 3, false)).isInstanceOf(List.class);
+        Assertions.assertThat(new IteratorToListValueConverter().convert(DataHelper.createIterator("val1", "val2", "val3", "val4", "val5"), 3, false), Raw.<String>listAssertion()).containsExactlyInOrder();
+        Assertions.assertThat(new IteratorToListValueConverter().convert(DataHelper.createIterator("val1", "val2", "val3", "val4", "val5"), 3, false)).as(Raw.<String>listAssertion()).containsExactlyInOrder();
     }
 
     /**
