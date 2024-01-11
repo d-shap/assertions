@@ -68,66 +68,66 @@ public final class ListIteratorAssertionTest extends AssertionTest {
      * {@link ListIteratorAssertion} class test.
      */
     @Test
-    public void hasNextValueTest() {
+    public void hasNextElementTest() {
         ListIterator<String> listIterator1 = DataHelper.createListIterator(0, "val1", "val2", "val3");
-        initialize(Raw.<String>listIteratorAssertion(), listIterator1).hasNextValue();
-        initialize(Raw.<String>listIteratorAssertion(), listIterator1).hasNextValue();
-        initialize(Raw.<String>listIteratorAssertion(), listIterator1).hasNextValue();
+        initialize(Raw.<String>listIteratorAssertion(), listIterator1).hasNextElement();
+        initialize(Raw.<String>listIteratorAssertion(), listIterator1).hasNextElement();
+        initialize(Raw.<String>listIteratorAssertion(), listIterator1).hasNextElement();
         Assertions.assertThat(listIterator1.next()).isEqualTo("val1");
-        initialize(Raw.<String>listIteratorAssertion(), listIterator1).hasNextValue();
-        initialize(Raw.<String>listIteratorAssertion(), listIterator1).hasNextValue();
+        initialize(Raw.<String>listIteratorAssertion(), listIterator1).hasNextElement();
+        initialize(Raw.<String>listIteratorAssertion(), listIterator1).hasNextElement();
         Assertions.assertThat(listIterator1.next()).isEqualTo("val2");
-        initialize(Raw.<String>listIteratorAssertion(), listIterator1).hasNextValue();
-        initialize(Raw.<String>listIteratorAssertion(), listIterator1).hasNextValue();
+        initialize(Raw.<String>listIteratorAssertion(), listIterator1).hasNextElement();
+        initialize(Raw.<String>listIteratorAssertion(), listIterator1).hasNextElement();
         Assertions.assertThat(listIterator1.next()).isEqualTo("val3");
         ListIterator<String> listIterator2 = DataHelper.createListIterator(2, "val1", "val2", "val3");
-        initialize(Raw.<String>listIteratorAssertion(), listIterator2).hasNextValue();
-        initialize(Raw.<String>listIteratorAssertion(), listIterator2).hasNextValue();
-        initialize(Raw.<String>listIteratorAssertion(), listIterator2).hasNextValue();
+        initialize(Raw.<String>listIteratorAssertion(), listIterator2).hasNextElement();
+        initialize(Raw.<String>listIteratorAssertion(), listIterator2).hasNextElement();
+        initialize(Raw.<String>listIteratorAssertion(), listIterator2).hasNextElement();
         Assertions.assertThat(listIterator2.next()).isEqualTo("val3");
-        initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(0, "val1", "val2", "val3")).isNotNull().hasNextValue().isInstanceOf(ListIterator.class);
+        initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(0, "val1", "val2", "val3")).isNotNull().hasNextElement().isInstanceOf(ListIterator.class);
 
         try {
-            Raw.<String>listIteratorAssertion().hasNextValue();
+            Raw.<String>listIteratorAssertion().hasNextElement();
             Assertions.fail(ListIteratorAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
-            initialize(Raw.<String>listIteratorAssertion(), null).hasNextValue();
+            initialize(Raw.<String>listIteratorAssertion(), null).hasNextElement();
             Assertions.fail(ListIteratorAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
-            initialize(Raw.<String>listIteratorAssertion(), null, "Message").hasNextValue();
+            initialize(Raw.<String>listIteratorAssertion(), null, "Message").hasNextElement();
             Assertions.fail(ListIteratorAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.<String>listIteratorAssertion(), DataHelper.<String>createListIterator(0)).hasNextValue();
+            initialize(Raw.<String>listIteratorAssertion(), DataHelper.<String>createListIterator(0)).hasNextElement();
             Assertions.fail(ListIteratorAssertion.class);
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should have next value.");
+            Assertions.assertThat(ex).hasMessage("Actual value should have next element.");
         }
         try {
-            initialize(Raw.<String>listIteratorAssertion(), DataHelper.<String>createListIterator(0), "Message").hasNextValue();
+            initialize(Raw.<String>listIteratorAssertion(), DataHelper.<String>createListIterator(0), "Message").hasNextElement();
             Assertions.fail(ListIteratorAssertion.class);
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should have next value.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should have next element.");
         }
         try {
-            initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(1, "value")).hasNextValue();
+            initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(1, "value")).hasNextElement();
             Assertions.fail(ListIteratorAssertion.class);
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should have next value.");
+            Assertions.assertThat(ex).hasMessage("Actual value should have next element.");
         }
         try {
-            initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(1, "value"), "Message").hasNextValue();
+            initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(1, "value"), "Message").hasNextElement();
             Assertions.fail(ListIteratorAssertion.class);
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should have next value.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should have next element.");
         }
     }
 
@@ -135,60 +135,60 @@ public final class ListIteratorAssertionTest extends AssertionTest {
      * {@link ListIteratorAssertion} class test.
      */
     @Test
-    public void doesNotHaveNextValueTest() {
-        initialize(Raw.<String>listIteratorAssertion(), DataHelper.<String>createListIterator(0)).doesNotHaveNextValue();
-        initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(1, "value")).doesNotHaveNextValue();
+    public void doesNotHaveNextElementTest() {
+        initialize(Raw.<String>listIteratorAssertion(), DataHelper.<String>createListIterator(0)).doesNotHaveNextElement();
+        initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(1, "value")).doesNotHaveNextElement();
         ListIterator<String> listIterator1 = DataHelper.createListIterator(0, "val1", "val2", "val3");
         Assertions.assertThat(listIterator1.next()).isEqualTo("val1");
         Assertions.assertThat(listIterator1.next()).isEqualTo("val2");
         Assertions.assertThat(listIterator1.next()).isEqualTo("val3");
-        initialize(Raw.<String>listIteratorAssertion(), listIterator1).doesNotHaveNextValue();
+        initialize(Raw.<String>listIteratorAssertion(), listIterator1).doesNotHaveNextElement();
         ListIterator<String> listIterator2 = DataHelper.createListIterator(2, "val1", "val2", "val3");
         Assertions.assertThat(listIterator2.next()).isEqualTo("val3");
-        initialize(Raw.<String>listIteratorAssertion(), listIterator2).doesNotHaveNextValue();
-        initialize(Raw.<String>listIteratorAssertion(), DataHelper.<String>createListIterator(0)).isNotNull().doesNotHaveNextValue().isInstanceOf(ListIterator.class);
+        initialize(Raw.<String>listIteratorAssertion(), listIterator2).doesNotHaveNextElement();
+        initialize(Raw.<String>listIteratorAssertion(), DataHelper.<String>createListIterator(0)).isNotNull().doesNotHaveNextElement().isInstanceOf(ListIterator.class);
 
         try {
-            Raw.<String>listIteratorAssertion().doesNotHaveNextValue();
+            Raw.<String>listIteratorAssertion().doesNotHaveNextElement();
             Assertions.fail(ListIteratorAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
-            initialize(Raw.<String>listIteratorAssertion(), null).doesNotHaveNextValue();
+            initialize(Raw.<String>listIteratorAssertion(), null).doesNotHaveNextElement();
             Assertions.fail(ListIteratorAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
-            initialize(Raw.<String>listIteratorAssertion(), null, "Message").doesNotHaveNextValue();
+            initialize(Raw.<String>listIteratorAssertion(), null, "Message").doesNotHaveNextElement();
             Assertions.fail(ListIteratorAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(0, "val1", "val2", "val3", "val4")).doesNotHaveNextValue();
+            initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(0, "val1", "val2", "val3", "val4")).doesNotHaveNextElement();
             Assertions.fail(ListIteratorAssertion.class);
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not have next value.");
+            Assertions.assertThat(ex).hasMessage("Actual value should not have next element.");
         }
         try {
-            initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(0, "val1", "val2", "val3", "val4"), "Message").doesNotHaveNextValue();
+            initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(0, "val1", "val2", "val3", "val4"), "Message").doesNotHaveNextElement();
             Assertions.fail(ListIteratorAssertion.class);
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not have next value.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not have next element.");
         }
         try {
-            initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(3, "val1", "val2", "val3", "val4")).doesNotHaveNextValue();
+            initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(3, "val1", "val2", "val3", "val4")).doesNotHaveNextElement();
             Assertions.fail(ListIteratorAssertion.class);
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not have next value.");
+            Assertions.assertThat(ex).hasMessage("Actual value should not have next element.");
         }
         try {
-            initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(3, "val1", "val2", "val3", "val4"), "Message").doesNotHaveNextValue();
+            initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(3, "val1", "val2", "val3", "val4"), "Message").doesNotHaveNextElement();
             Assertions.fail(ListIteratorAssertion.class);
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not have next value.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not have next element.");
         }
     }
 
@@ -196,66 +196,66 @@ public final class ListIteratorAssertionTest extends AssertionTest {
      * {@link ListIteratorAssertion} class test.
      */
     @Test
-    public void hasPreviousValueTest() {
+    public void hasPreviousElementTest() {
         ListIterator<String> listIterator1 = DataHelper.createListIterator(3, "val1", "val2", "val3");
-        initialize(Raw.<String>listIteratorAssertion(), listIterator1).hasPreviousValue();
-        initialize(Raw.<String>listIteratorAssertion(), listIterator1).hasPreviousValue();
-        initialize(Raw.<String>listIteratorAssertion(), listIterator1).hasPreviousValue();
+        initialize(Raw.<String>listIteratorAssertion(), listIterator1).hasPreviousElement();
+        initialize(Raw.<String>listIteratorAssertion(), listIterator1).hasPreviousElement();
+        initialize(Raw.<String>listIteratorAssertion(), listIterator1).hasPreviousElement();
         Assertions.assertThat(listIterator1.previous()).isEqualTo("val3");
-        initialize(Raw.<String>listIteratorAssertion(), listIterator1).hasPreviousValue();
-        initialize(Raw.<String>listIteratorAssertion(), listIterator1).hasPreviousValue();
+        initialize(Raw.<String>listIteratorAssertion(), listIterator1).hasPreviousElement();
+        initialize(Raw.<String>listIteratorAssertion(), listIterator1).hasPreviousElement();
         Assertions.assertThat(listIterator1.previous()).isEqualTo("val2");
-        initialize(Raw.<String>listIteratorAssertion(), listIterator1).hasPreviousValue();
-        initialize(Raw.<String>listIteratorAssertion(), listIterator1).hasPreviousValue();
+        initialize(Raw.<String>listIteratorAssertion(), listIterator1).hasPreviousElement();
+        initialize(Raw.<String>listIteratorAssertion(), listIterator1).hasPreviousElement();
         Assertions.assertThat(listIterator1.previous()).isEqualTo("val1");
         ListIterator<String> listIterator2 = DataHelper.createListIterator(1, "val1", "val2", "val3");
-        initialize(Raw.<String>listIteratorAssertion(), listIterator2).hasPreviousValue();
-        initialize(Raw.<String>listIteratorAssertion(), listIterator2).hasPreviousValue();
-        initialize(Raw.<String>listIteratorAssertion(), listIterator2).hasPreviousValue();
+        initialize(Raw.<String>listIteratorAssertion(), listIterator2).hasPreviousElement();
+        initialize(Raw.<String>listIteratorAssertion(), listIterator2).hasPreviousElement();
+        initialize(Raw.<String>listIteratorAssertion(), listIterator2).hasPreviousElement();
         Assertions.assertThat(listIterator2.previous()).isEqualTo("val1");
-        initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(3, "val1", "val2", "val3")).isNotNull().hasPreviousValue().isInstanceOf(ListIterator.class);
+        initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(3, "val1", "val2", "val3")).isNotNull().hasPreviousElement().isInstanceOf(ListIterator.class);
 
         try {
-            Raw.<String>listIteratorAssertion().hasPreviousValue();
+            Raw.<String>listIteratorAssertion().hasPreviousElement();
             Assertions.fail(ListIteratorAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
-            initialize(Raw.<String>listIteratorAssertion(), null).hasPreviousValue();
+            initialize(Raw.<String>listIteratorAssertion(), null).hasPreviousElement();
             Assertions.fail(ListIteratorAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
-            initialize(Raw.<String>listIteratorAssertion(), null, "Message").hasPreviousValue();
+            initialize(Raw.<String>listIteratorAssertion(), null, "Message").hasPreviousElement();
             Assertions.fail(ListIteratorAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.<String>listIteratorAssertion(), DataHelper.<String>createListIterator(0)).hasPreviousValue();
+            initialize(Raw.<String>listIteratorAssertion(), DataHelper.<String>createListIterator(0)).hasPreviousElement();
             Assertions.fail(ListIteratorAssertion.class);
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should have previous value.");
+            Assertions.assertThat(ex).hasMessage("Actual value should have previous element.");
         }
         try {
-            initialize(Raw.<String>listIteratorAssertion(), DataHelper.<String>createListIterator(0), "Message").hasPreviousValue();
+            initialize(Raw.<String>listIteratorAssertion(), DataHelper.<String>createListIterator(0), "Message").hasPreviousElement();
             Assertions.fail(ListIteratorAssertion.class);
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should have previous value.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should have previous element.");
         }
         try {
-            initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(0, "value")).hasPreviousValue();
+            initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(0, "value")).hasPreviousElement();
             Assertions.fail(ListIteratorAssertion.class);
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should have previous value.");
+            Assertions.assertThat(ex).hasMessage("Actual value should have previous element.");
         }
         try {
-            initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(0, "value"), "Message").hasPreviousValue();
+            initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(0, "value"), "Message").hasPreviousElement();
             Assertions.fail(ListIteratorAssertion.class);
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should have previous value.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should have previous element.");
         }
     }
 
@@ -263,60 +263,60 @@ public final class ListIteratorAssertionTest extends AssertionTest {
      * {@link ListIteratorAssertion} class test.
      */
     @Test
-    public void doesNotHavePreviousValueTest() {
-        initialize(Raw.<String>listIteratorAssertion(), DataHelper.<String>createListIterator(0)).doesNotHavePreviousValue();
-        initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(0, "value")).doesNotHavePreviousValue();
+    public void doesNotHavePreviousElementTest() {
+        initialize(Raw.<String>listIteratorAssertion(), DataHelper.<String>createListIterator(0)).doesNotHavePreviousElement();
+        initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(0, "value")).doesNotHavePreviousElement();
         ListIterator<String> listIterator1 = DataHelper.createListIterator(3, "val1", "val2", "val3");
         Assertions.assertThat(listIterator1.previous()).isEqualTo("val3");
         Assertions.assertThat(listIterator1.previous()).isEqualTo("val2");
         Assertions.assertThat(listIterator1.previous()).isEqualTo("val1");
-        initialize(Raw.<String>listIteratorAssertion(), listIterator1).doesNotHavePreviousValue();
+        initialize(Raw.<String>listIteratorAssertion(), listIterator1).doesNotHavePreviousElement();
         ListIterator<String> listIterator2 = DataHelper.createListIterator(1, "val1", "val2", "val3");
         Assertions.assertThat(listIterator2.previous()).isEqualTo("val1");
-        initialize(Raw.<String>listIteratorAssertion(), listIterator2).doesNotHavePreviousValue();
-        initialize(Raw.<String>listIteratorAssertion(), DataHelper.<String>createListIterator(0)).isNotNull().doesNotHavePreviousValue().isInstanceOf(ListIterator.class);
+        initialize(Raw.<String>listIteratorAssertion(), listIterator2).doesNotHavePreviousElement();
+        initialize(Raw.<String>listIteratorAssertion(), DataHelper.<String>createListIterator(0)).isNotNull().doesNotHavePreviousElement().isInstanceOf(ListIterator.class);
 
         try {
-            Raw.<String>listIteratorAssertion().doesNotHavePreviousValue();
+            Raw.<String>listIteratorAssertion().doesNotHavePreviousElement();
             Assertions.fail(ListIteratorAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
         }
         try {
-            initialize(Raw.<String>listIteratorAssertion(), null).doesNotHavePreviousValue();
+            initialize(Raw.<String>listIteratorAssertion(), null).doesNotHavePreviousElement();
             Assertions.fail(ListIteratorAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
         }
         try {
-            initialize(Raw.<String>listIteratorAssertion(), null, "Message").doesNotHavePreviousValue();
+            initialize(Raw.<String>listIteratorAssertion(), null, "Message").doesNotHavePreviousElement();
             Assertions.fail(ListIteratorAssertion.class);
         } catch (AssertionError ex) {
             Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
         }
         try {
-            initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(4, "val1", "val2", "val3", "val4")).doesNotHavePreviousValue();
+            initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(4, "val1", "val2", "val3", "val4")).doesNotHavePreviousElement();
             Assertions.fail(ListIteratorAssertion.class);
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not have previous value.");
+            Assertions.assertThat(ex).hasMessage("Actual value should not have previous element.");
         }
         try {
-            initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(4, "val1", "val2", "val3", "val4"), "Message").doesNotHavePreviousValue();
+            initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(4, "val1", "val2", "val3", "val4"), "Message").doesNotHavePreviousElement();
             Assertions.fail(ListIteratorAssertion.class);
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not have previous value.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not have previous element.");
         }
         try {
-            initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(1, "val1", "val2", "val3", "val4")).doesNotHavePreviousValue();
+            initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(1, "val1", "val2", "val3", "val4")).doesNotHavePreviousElement();
             Assertions.fail(ListIteratorAssertion.class);
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Actual value should not have previous value.");
+            Assertions.assertThat(ex).hasMessage("Actual value should not have previous element.");
         }
         try {
-            initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(1, "val1", "val2", "val3", "val4"), "Message").doesNotHavePreviousValue();
+            initialize(Raw.<String>listIteratorAssertion(), DataHelper.createListIterator(1, "val1", "val2", "val3", "val4"), "Message").doesNotHavePreviousElement();
             Assertions.fail(ListIteratorAssertion.class);
         } catch (AssertionError ex) {
-            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not have previous value.");
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not have previous element.");
         }
     }
 
