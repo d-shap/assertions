@@ -248,12 +248,3 @@ Assertions library does not support custom assertions.
 But Assertions library can use Hamcrest matchers.
 In this case Assertions library can be used as a main library for the unit testing.
 And in case of specific assertions custom Hamcrest matchers can be used.
-
-# The latest release
-Assertions library:
-* **&lt;groupId&gt;**: ru.d-shap
-* **&lt;artifactId&gt;**: assertions
-* **&lt;version&gt;**: 2.3
-
-# Donation
-If you find my code useful, you can [bye me a coffee](https://www.paypal.me/dshapovalov)
