@@ -2719,6 +2719,35 @@ public final class SortedSetAssertionTest extends AssertionTest {
      * {@link SortedSetAssertion} class test.
      */
     @Test
+    public void andClearTest() {
+        initialize(Raw.<String>sortedSetAssertion(), DataHelper.<String>createTreeSet()).andClear().isEmpty();
+        initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3")).andClear().isEmpty();
+        initialize(Raw.<String>sortedSetAssertion(), DataHelper.createTreeSet("val1", "val2", "val3")).hasSize(3).andClear().hasSize(0);
+
+        try {
+            Raw.<String>sortedSetAssertion().isEmpty();
+            Assertions.fail(SortedSetAssertion.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.<String>sortedSetAssertion(), null).isEmpty();
+            Assertions.fail(SortedSetAssertion.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.<String>sortedSetAssertion(), null, "Message").isEmpty();
+            Assertions.fail(SortedSetAssertion.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+    }
+
+    /**
+     * {@link SortedSetAssertion} class test.
+     */
+    @Test
     public void isNullTest() {
         initialize(Raw.<String>sortedSetAssertion(), null).isNull();
 
