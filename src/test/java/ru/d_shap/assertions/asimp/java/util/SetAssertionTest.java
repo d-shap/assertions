@@ -2106,6 +2106,35 @@ public final class SetAssertionTest extends AssertionTest {
      * {@link SetAssertion} class test.
      */
     @Test
+    public void andClearTest() {
+        initialize(Raw.<String>setAssertion(), DataHelper.<String>createHashSet()).andClear().isEmpty();
+        initialize(Raw.<String>setAssertion(), DataHelper.createHashSet("val1", "val2", "val3")).andClear().isEmpty();
+        initialize(Raw.<String>setAssertion(), DataHelper.createHashSet("val1", "val2", "val3")).hasSize(3).andClear().hasSize(0);
+
+        try {
+            Raw.<String>setAssertion().andClear();
+            Assertions.fail(SetAssertion.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.<String>setAssertion(), null).andClear();
+            Assertions.fail(SetAssertion.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.<String>setAssertion(), null, "Message").andClear();
+            Assertions.fail(SetAssertion.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+    }
+
+    /**
+     * {@link SetAssertion} class test.
+     */
+    @Test
     public void isNullTest() {
         initialize(Raw.<String>setAssertion(), null).isNull();
 
