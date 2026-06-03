@@ -493,6 +493,17 @@ public final class SortedSetAssertion<E> extends ReferenceAssertion<SortedSetAss
         return this;
     }
 
+    /**
+     * Clear the actual value.
+     *
+     * @return current object for the chain call.
+     */
+    public SortedSetAssertion<E> andClear() {
+        checkActualIsNotNull();
+        getActual().clear();
+        return this;
+    }
+
     private IterableAssertion<E> createIterableAssertion() {
         return initializeAssertion(Raw.<E>iterableAssertion(), getActual());
     }

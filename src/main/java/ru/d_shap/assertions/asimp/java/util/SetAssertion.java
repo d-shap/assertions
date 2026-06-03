@@ -346,6 +346,17 @@ public final class SetAssertion<E> extends ReferenceAssertion<SetAssertion<E>, S
         return this;
     }
 
+    /**
+     * Clear the actual value.
+     *
+     * @return current object for the chain call.
+     */
+    public SetAssertion<E> andClear() {
+        checkActualIsNotNull();
+        getActual().clear();
+        return this;
+    }
+
     private IterableAssertion<E> createIterableAssertion() {
         return initializeAssertion(Raw.<E>iterableAssertion(), getActual());
     }

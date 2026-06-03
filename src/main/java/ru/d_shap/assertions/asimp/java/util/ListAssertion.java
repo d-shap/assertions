@@ -367,6 +367,17 @@ public final class ListAssertion<E> extends ReferenceAssertion<ListAssertion<E>,
         return this;
     }
 
+    /**
+     * Clear the actual value.
+     *
+     * @return current object for the chain call.
+     */
+    public ListAssertion<E> andClear() {
+        checkActualIsNotNull();
+        getActual().clear();
+        return this;
+    }
+
     private IterableAssertion<E> createIterableAssertion() {
         return initializeAssertion(Raw.<E>iterableAssertion(), getActual());
     }

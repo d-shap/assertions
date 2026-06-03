@@ -1258,4 +1258,15 @@ public final class MapAssertion<K, V> extends ReferenceAssertion<MapAssertion<K,
         return this;
     }
 
+    /**
+     * Clear the actual value.
+     *
+     * @return current object for the chain call.
+     */
+    public MapAssertion<K, V> andClear() {
+        checkActualIsNotNull();
+        getActual().clear();
+        return this;
+    }
+
 }

@@ -1440,6 +1440,17 @@ public final class SortedMapAssertion<K, V> extends ReferenceAssertion<SortedMap
         return this;
     }
 
+    /**
+     * Clear the actual value.
+     *
+     * @return current object for the chain call.
+     */
+    public SortedMapAssertion<K, V> andClear() {
+        checkActualIsNotNull();
+        getActual().clear();
+        return this;
+    }
+
     private MapAssertion<K, V> createMapAssertion() {
         return initializeAssertion(Raw.<K, V>mapAssertion(), getActual());
     }
