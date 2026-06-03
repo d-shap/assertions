@@ -2119,6 +2119,34 @@ public final class ListAssertionTest extends AssertionTest {
      * {@link ListAssertion} class test.
      */
     @Test
+    public void andClearTest() {
+        initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3")).andClear().isEmpty();
+        initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3")).hasSize(3).andClear().hasSize(0);
+
+        try {
+            Raw.<String>listAssertion().andClear();
+            Assertions.fail(ListAssertion.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.<String>listAssertion(), null).andClear();
+            Assertions.fail(ListAssertion.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.<String>listAssertion(), null, "Message").andClear();
+            Assertions.fail(ListAssertion.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+    }
+
+    /**
+     * {@link ListAssertion} class test.
+     */
+    @Test
     public void isNullTest() {
         initialize(Raw.<String>listAssertion(), null).isNull();
 
