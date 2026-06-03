@@ -2120,6 +2120,7 @@ public final class ListAssertionTest extends AssertionTest {
      */
     @Test
     public void andClearTest() {
+        initialize(Raw.<String>listAssertion(), DataHelper.<String>createArrayList()).andClear().isEmpty();
         initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3")).andClear().isEmpty();
         initialize(Raw.<String>listAssertion(), DataHelper.createArrayList("val1", "val2", "val3")).hasSize(3).andClear().hasSize(0);
 
