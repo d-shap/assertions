@@ -6028,6 +6028,35 @@ public final class SortedMapAssertionTest extends AssertionTest {
      * {@link SortedMapAssertion} class test.
      */
     @Test
+    public void andClearTest() {
+        initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.<String, String>createTreeMap()).andClear().isEmpty();
+        initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", "value2", "key3", "value3")).andClear().isEmpty();
+        initialize(Raw.<String, String>sortedMapAssertion(), DataHelper.createTreeMap("key1", "value1", "key2", "value2", "key3", "value3")).hasSize(3).andClear().hasSize(0);
+
+        try {
+            Raw.<String, String>sortedMapAssertion().andClear();
+            Assertions.fail(SortedMapAssertion.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.<String, String>sortedMapAssertion(), null).andClear();
+            Assertions.fail(SortedMapAssertion.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.<String, String>sortedMapAssertion(), null, "Message").andClear();
+            Assertions.fail(SortedMapAssertion.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+    }
+
+    /**
+     * {@link SortedMapAssertion} class test.
+     */
+    @Test
     public void isNullTest() {
         initialize(Raw.<String, String>sortedMapAssertion(), null).isNull();
 
