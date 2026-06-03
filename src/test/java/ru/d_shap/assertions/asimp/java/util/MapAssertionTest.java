@@ -4401,6 +4401,35 @@ public final class MapAssertionTest extends AssertionTest {
      * {@link MapAssertion} class test.
      */
     @Test
+    public void andClearTest() {
+        initialize(Raw.<String, String>mapAssertion(), DataHelper.<String, String>createHashMap()).andClear().isEmpty();
+        initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("key1", "value1", "key2", "value2", "key3", "value3")).andClear().isEmpty();
+        initialize(Raw.<String, String>mapAssertion(), DataHelper.createHashMap("key1", "value1", "key2", "value2", "key3", "value3")).hasSize(3).andClear().hasSize(0);
+
+        try {
+            Raw.<String, String>mapAssertion().andClear();
+            Assertions.fail(MapAssertion.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Assertion should be initialized.");
+        }
+        try {
+            initialize(Raw.<String, String>mapAssertion(), null).andClear();
+            Assertions.fail(MapAssertion.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Actual value should not be null.");
+        }
+        try {
+            initialize(Raw.<String, String>mapAssertion(), null, "Message").andClear();
+            Assertions.fail(MapAssertion.class);
+        } catch (AssertionError ex) {
+            Assertions.assertThat(ex).hasMessage("Message.\n\tActual value should not be null.");
+        }
+    }
+
+    /**
+     * {@link MapAssertion} class test.
+     */
+    @Test
     public void isNullTest() {
         initialize(Raw.<String, String>mapAssertion(), null).isNull();
 
